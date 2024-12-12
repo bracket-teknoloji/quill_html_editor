@@ -95,86 +95,86 @@ _$EBelgeListesiModelImpl _$$EBelgeListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$EBelgeListesiModelImplToJson(
-    _$EBelgeListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('EBELGE_TURU', instance.ebelgeTuru);
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('EFATMAS_INCKEYNO', instance.efatmasInckeyno);
-  writeNotNull('GELEN', instance.gelen);
-  writeNotNull('TASLAK', instance.taslak);
-  writeNotNull('GONDERILDI', instance.gonderildi);
-  writeNotNull('FATURA_ISLENDI', instance.faturaIslendi);
-  writeNotNull('DEKONT_ISLENDI', instance.dekontIslendi);
-  writeNotNull('IPTAL_EDILDI', instance.iptalEdildi);
-  writeNotNull('CEVAP_KODU', instance.cevapKodu);
-  writeNotNull('CEVAP_ACIKLAMA', instance.cevapAciklama);
-  writeNotNull('BASARIYLA_GONDERILDI', instance.basariylaGonderildi);
-  writeNotNull('ONAY_DURUM_KODU', instance.onayDurumKodu);
-  writeNotNull('ONAY_ACIKLAMA', instance.onayAciklama);
-  writeNotNull('RESMI_BELGE_NO', instance.resmiBelgeNo);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  writeNotNull('BELGE_TURU', instance.belgeTuru);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('VERGI_NO', instance.vergiNo);
-  writeNotNull('CARI_ILCE', instance.cariIlce);
-  writeNotNull('CARI_IL', instance.cariIl);
-  writeNotNull('DOVIZ_KURU', instance.dovizKuru);
-  writeNotNull('BASIM_YAPILDI', instance.basimYapildi);
-  writeNotNull('GENEL_TOPLAM', instance.genelToplam);
-  writeNotNull('KDV_TUTARI', instance.kdvTutari);
-  writeNotNull('SENARYO', instance.senaryo);
-  writeNotNull('ZARFID', instance.zarfid);
-  writeNotNull('UUID', instance.uuid);
-  writeNotNull('FATURA_TIPI', instance.faturaTipi);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('KONTROL_EDILDI', instance.kontrolEdildi);
-  writeNotNull('KAYITLI_CARI_KODU', instance.kayitliCariKodu);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('ISLENEN_BELGE_NO', instance.islenenBelgeNo);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
-  writeNotNull('ISKONTO_TUTARI', instance.iskontoTutari);
-  writeNotNull('DEKONT_JSON', instance.dekontJson);
-  writeNotNull('KONTROL_ACIKLAMA', instance.kontrolAciklama);
-  writeNotNull('DIZAYN_YOLU', instance.dizaynYolu);
-  writeNotNull('GONDERME_DURUMU', instance.gondermeDurumu);
-  writeNotNull('ZARF_SILINEBILIR', instance.zarfSilinebilir);
-  writeNotNull('IPTAL_TARIHI', instance.iptalTarihi?.toIso8601String());
-  writeNotNull('EPOSTA', instance.eposta);
-  writeNotNull('E_BELGE_TURU', instance.eBelgeTuru);
-  writeNotNull('ID', instance.id);
-  writeNotNull('E_FAT_MAS_ID', instance.eFatMasId);
-  writeNotNull('E_IRS_MAS_ID', instance.eIrsMasId);
-  writeNotNull('KAYIT_TARIHI', instance.kayitTarihi?.toIso8601String());
-  writeNotNull(
-      'E_FATURA_IPTAL_TARIHI', instance.eFaturaIptalTarihi?.toIso8601String());
-  writeNotNull('ILCE', instance.ilce);
-  writeNotNull('SEHIR', instance.sehir);
-  writeNotNull('KAYIT_YAPAN_KUL', instance.kayitYapanKul);
-  writeNotNull('GELEN_E_FAT_KONTROL_EDILDI', instance.gelenEFatKontrolEdildi);
-  writeNotNull(
-      'GELEN_E_FAT_KONTROL_ACIKLAMA', instance.gelenEFatKontrolAciklama);
-  writeNotNull('GONDERIM_SEKLI_E_POSTA', instance.gonderimSekliEPosta);
-  writeNotNull('E_POSTA', instance.ePosta);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('KUTU_TURU', instance.kutuTuru);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('SENARYO_TIPI', instance.senaryoTipi);
-  writeNotNull('KOPYA_SAYISI', instance.kopyaSayisi);
-  writeNotNull('YAZICI_ADI', instance.yaziciAdi);
-  writeNotNull('DIZAYN_NO', instance.dizaynNo);
-  writeNotNull('DOVIZLI_OLUSTUR', instance.dovizliOlustur);
-  writeNotNull('INTERNET_FATURASI', instance.internetFaturasi);
-  writeNotNull('EIRS_BILGI', instance.eirsBilgi?.toJson());
-  return val;
-}
+        _$EBelgeListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.ebelgeTuru case final value?) 'EBELGE_TURU': value,
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.efatmasInckeyno case final value?) 'EFATMAS_INCKEYNO': value,
+      if (instance.gelen case final value?) 'GELEN': value,
+      if (instance.taslak case final value?) 'TASLAK': value,
+      if (instance.gonderildi case final value?) 'GONDERILDI': value,
+      if (instance.faturaIslendi case final value?) 'FATURA_ISLENDI': value,
+      if (instance.dekontIslendi case final value?) 'DEKONT_ISLENDI': value,
+      if (instance.iptalEdildi case final value?) 'IPTAL_EDILDI': value,
+      if (instance.cevapKodu case final value?) 'CEVAP_KODU': value,
+      if (instance.cevapAciklama case final value?) 'CEVAP_ACIKLAMA': value,
+      if (instance.basariylaGonderildi case final value?)
+        'BASARIYLA_GONDERILDI': value,
+      if (instance.onayDurumKodu case final value?) 'ONAY_DURUM_KODU': value,
+      if (instance.onayAciklama case final value?) 'ONAY_ACIKLAMA': value,
+      if (instance.resmiBelgeNo case final value?) 'RESMI_BELGE_NO': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.kayittarihi?.toIso8601String() case final value?)
+        'KAYITTARIHI': value,
+      if (instance.belgeTuru case final value?) 'BELGE_TURU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.vergiNo case final value?) 'VERGI_NO': value,
+      if (instance.cariIlce case final value?) 'CARI_ILCE': value,
+      if (instance.cariIl case final value?) 'CARI_IL': value,
+      if (instance.dovizKuru case final value?) 'DOVIZ_KURU': value,
+      if (instance.basimYapildi case final value?) 'BASIM_YAPILDI': value,
+      if (instance.genelToplam case final value?) 'GENEL_TOPLAM': value,
+      if (instance.kdvTutari case final value?) 'KDV_TUTARI': value,
+      if (instance.senaryo case final value?) 'SENARYO': value,
+      if (instance.zarfid case final value?) 'ZARFID': value,
+      if (instance.uuid case final value?) 'UUID': value,
+      if (instance.faturaTipi case final value?) 'FATURA_TIPI': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.kontrolEdildi case final value?) 'KONTROL_EDILDI': value,
+      if (instance.kayitliCariKodu case final value?)
+        'KAYITLI_CARI_KODU': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.islenenBelgeNo case final value?) 'ISLENEN_BELGE_NO': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.iskontoTutari case final value?) 'ISKONTO_TUTARI': value,
+      if (instance.dekontJson case final value?) 'DEKONT_JSON': value,
+      if (instance.kontrolAciklama case final value?) 'KONTROL_ACIKLAMA': value,
+      if (instance.dizaynYolu case final value?) 'DIZAYN_YOLU': value,
+      if (instance.gondermeDurumu case final value?) 'GONDERME_DURUMU': value,
+      if (instance.zarfSilinebilir case final value?) 'ZARF_SILINEBILIR': value,
+      if (instance.iptalTarihi?.toIso8601String() case final value?)
+        'IPTAL_TARIHI': value,
+      if (instance.eposta case final value?) 'EPOSTA': value,
+      if (instance.eBelgeTuru case final value?) 'E_BELGE_TURU': value,
+      if (instance.id case final value?) 'ID': value,
+      if (instance.eFatMasId case final value?) 'E_FAT_MAS_ID': value,
+      if (instance.eIrsMasId case final value?) 'E_IRS_MAS_ID': value,
+      if (instance.kayitTarihi?.toIso8601String() case final value?)
+        'KAYIT_TARIHI': value,
+      if (instance.eFaturaIptalTarihi?.toIso8601String() case final value?)
+        'E_FATURA_IPTAL_TARIHI': value,
+      if (instance.ilce case final value?) 'ILCE': value,
+      if (instance.sehir case final value?) 'SEHIR': value,
+      if (instance.kayitYapanKul case final value?) 'KAYIT_YAPAN_KUL': value,
+      if (instance.gelenEFatKontrolEdildi case final value?)
+        'GELEN_E_FAT_KONTROL_EDILDI': value,
+      if (instance.gelenEFatKontrolAciklama case final value?)
+        'GELEN_E_FAT_KONTROL_ACIKLAMA': value,
+      if (instance.gonderimSekliEPosta case final value?)
+        'GONDERIM_SEKLI_E_POSTA': value,
+      if (instance.ePosta case final value?) 'E_POSTA': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.kutuTuru case final value?) 'KUTU_TURU': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.senaryoTipi case final value?) 'SENARYO_TIPI': value,
+      if (instance.kopyaSayisi case final value?) 'KOPYA_SAYISI': value,
+      if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
+      if (instance.dizaynNo case final value?) 'DIZAYN_NO': value,
+      if (instance.dovizliOlustur case final value?) 'DOVIZLI_OLUSTUR': value,
+      if (instance.internetFaturasi case final value?)
+        'INTERNET_FATURASI': value,
+      if (instance.eirsBilgi?.toJson() case final value?) 'EIRS_BILGI': value,
+    };

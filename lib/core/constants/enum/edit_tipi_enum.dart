@@ -98,46 +98,30 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
 
   bool get kalemSecilecekMi {
     if (this == null) return false;
-    switch (this!) {
-      case EditTipiEnum.satisFatura:
-      case EditTipiEnum.satisIrsaliye:
-      case EditTipiEnum.alisFatura:
-      case EditTipiEnum.alisIrsaliye:
-        return true;
-      default:
-        return false;
-    }
+    return switch (this!) {
+      EditTipiEnum.satisFatura || EditTipiEnum.satisIrsaliye || EditTipiEnum.alisFatura || EditTipiEnum.alisIrsaliye => true,
+      _ => false,
+    };
   }
 
   int get kademeliIskontoSayisi {
     if (this == null) return 0;
-    switch (this!) {
-      case EditTipiEnum.satici:
-      case EditTipiEnum.alisFatura:
-      case EditTipiEnum.alisIrsaliye:
-      case EditTipiEnum.ambarGirisi:
-        return YetkiController().alisKademeliIskontoSayisi;
-      case EditTipiEnum.musteri:
-      case EditTipiEnum.satisFatura:
-      case EditTipiEnum.satisIrsaliye:
-      case EditTipiEnum.ambarCikisi:
-        return YetkiController().satisKademeliIskontoSayisi;
-      case EditTipiEnum.alisTalebi:
-      case EditTipiEnum.satisTeklifi:
-      case EditTipiEnum.satisTalebi:
-        return YetkiController().talTekSatirKademeliIskontoSayisi(this?.rawValue ?? "");
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-      case EditTipiEnum.cari:
-      case EditTipiEnum.isEmri:
-      case EditTipiEnum.altIsEmri:
-      case EditTipiEnum.isEmriTakip:
-      case EditTipiEnum.uretimSonuKaydi:
-      case EditTipiEnum.uretim:
-      case EditTipiEnum.paket:
-      case EditTipiEnum.belgesizIslem:
-        return 0;
-    }
+    return switch (this!) {
+      EditTipiEnum.satici || EditTipiEnum.alisFatura || EditTipiEnum.alisIrsaliye || EditTipiEnum.ambarGirisi => YetkiController().alisKademeliIskontoSayisi,
+      EditTipiEnum.musteri || EditTipiEnum.satisFatura || EditTipiEnum.satisIrsaliye || EditTipiEnum.ambarCikisi => YetkiController().satisKademeliIskontoSayisi,
+      EditTipiEnum.alisTalebi || EditTipiEnum.satisTeklifi || EditTipiEnum.satisTalebi => YetkiController().talTekSatirKademeliIskontoSayisi(this?.rawValue ?? ""),
+      EditTipiEnum.depoTransferi ||
+      EditTipiEnum.olcumdenDepoTransferi ||
+      EditTipiEnum.cari ||
+      EditTipiEnum.isEmri ||
+      EditTipiEnum.altIsEmri ||
+      EditTipiEnum.isEmriTakip ||
+      EditTipiEnum.uretimSonuKaydi ||
+      EditTipiEnum.uretim ||
+      EditTipiEnum.paket ||
+      EditTipiEnum.belgesizIslem =>
+        0,
+    };
   }
 }
 
@@ -418,21 +402,14 @@ extension EditTipiEnumExtension on EditTipiEnum {
         _ => true
       };
 
-  bool get siparisBaglantisiGoster {
-    switch (this) {
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-        return yetkiController.transferLokalDatSiparisBaglantisi;
-      case EditTipiEnum.ambarGirisi:
-        return yetkiController.transferAgSiparisBaglantisi;
-      case EditTipiEnum.ambarCikisi:
-        return yetkiController.transferAcSiparisBaglantisi;
-      case EditTipiEnum.isEmri:
-      case EditTipiEnum.altIsEmri:
-      default:
-        return true;
-    }
-  }
+  bool get siparisBaglantisiGoster => switch (this) {
+        EditTipiEnum.depoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,
+        EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisi,
+        EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisi,
+        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
+        _ => true,
+      };
 
   bool get siparisBaglantisiVarMi {
     if (transferMi) {
@@ -455,21 +432,13 @@ extension EditTipiEnumExtension on EditTipiEnum {
     return false;
   }
 
-  bool get siparisBaglantisiOpsiyonelMi {
-    switch (this) {
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-        return yetkiController.transferLokalDatSiparisBaglantisiOpsiyonelMi;
-      case EditTipiEnum.ambarGirisi:
-        return yetkiController.transferAgSiparisBaglantisiOpsiyonelMi;
-      case EditTipiEnum.ambarCikisi:
-        return yetkiController.transferAcSiparisBaglantisiOpsiyonelMi;
-      case EditTipiEnum.isEmri:
-      case EditTipiEnum.altIsEmri:
-      default:
-        return true;
-    }
-  }
+  bool get siparisBaglantisiOpsiyonelMi => switch (this) {
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatSiparisBaglantisiOpsiyonelMi,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiOpsiyonelMi,
+        EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiOpsiyonelMi,
+        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
+        _ => true
+      };
 
   bool get ekAlan1GorunsunMu {
     if (talepTeklifMi) {
@@ -501,147 +470,66 @@ extension EditTipiEnumExtension on EditTipiEnum {
         _ => false
       };
 
-  bool get eklensinMi {
-    switch (this) {
-      case EditTipiEnum.musteri:
-        return yetkiController.siparisMSKaydet;
-      case EditTipiEnum.satici:
-        return yetkiController.siparisSSKaydet;
-      case EditTipiEnum.satisFatura:
-        return yetkiController.satisFatEkle;
-      case EditTipiEnum.satisIrsaliye:
-        return yetkiController.satisIrsEkle;
-      case EditTipiEnum.alisFatura:
-        return yetkiController.alisFatEkle;
-      case EditTipiEnum.alisIrsaliye:
-        return yetkiController.alisIrsEkle;
-      case EditTipiEnum.satisTeklifi:
-        return yetkiController.satisTeklifiEkle;
-      case EditTipiEnum.alisTalebi:
-        return yetkiController.alisTalebiEkle;
-      case EditTipiEnum.satisTalebi:
-        return yetkiController.satisTalebiEkle;
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-        return yetkiController.transferDatEkle;
-      case EditTipiEnum.ambarGirisi:
-        return yetkiController.transferAGEkle;
-      case EditTipiEnum.ambarCikisi:
-        return yetkiController.transferACEkle;
-      case EditTipiEnum.cari:
-        return yetkiController.cariKartiYeniKayit; //TODO
-      case EditTipiEnum.isEmri:
-      case EditTipiEnum.altIsEmri:
-      case EditTipiEnum.isEmriTakip:
-      case EditTipiEnum.uretimSonuKaydi:
-      case EditTipiEnum.uretim:
-      case EditTipiEnum.paket:
-      case EditTipiEnum.belgesizIslem:
-        return false;
-    }
-  }
+  bool get eklensinMi => switch (this) {
+        EditTipiEnum.musteri => yetkiController.siparisMSKaydet,
+        EditTipiEnum.satici => yetkiController.siparisSSKaydet,
+        EditTipiEnum.satisFatura => yetkiController.satisFatEkle,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsEkle,
+        EditTipiEnum.alisFatura => yetkiController.alisFatEkle,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsEkle,
+        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiEkle,
+        EditTipiEnum.alisTalebi => yetkiController.alisTalebiEkle,
+        EditTipiEnum.satisTalebi => yetkiController.satisTalebiEkle,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatEkle,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAGEkle,
+        EditTipiEnum.ambarCikisi => yetkiController.transferACEkle,
+        EditTipiEnum.cari => yetkiController.cariKartiYeniKayit, //TODO
+        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri || EditTipiEnum.isEmriTakip || EditTipiEnum.uretimSonuKaydi || EditTipiEnum.uretim || EditTipiEnum.paket || EditTipiEnum.belgesizIslem => false,
+      };
 
-  bool get duzenlensinMi {
-    switch (this) {
-      case EditTipiEnum.musteri:
-        return yetkiController.siparisMSDuzelt;
-      case EditTipiEnum.satici:
-        return yetkiController.siparisSSDuzelt;
-      case EditTipiEnum.satisFatura:
-        return yetkiController.satisFatDuzenle;
-      case EditTipiEnum.satisIrsaliye:
-        return yetkiController.satisIrsDuzenle;
-      case EditTipiEnum.alisFatura:
-        return yetkiController.alisFatDuzenle;
-      case EditTipiEnum.alisIrsaliye:
-        return yetkiController.alisIrsDuzenle;
-      case EditTipiEnum.satisTeklifi:
-        return yetkiController.satisTeklifiDuzenle;
-      case EditTipiEnum.alisTalebi:
-        return yetkiController.alisTalebiDuzenle;
-      case EditTipiEnum.satisTalebi:
-        return yetkiController.satisTalebiDuzenle;
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-        return yetkiController.transferDatDuzenle;
-      case EditTipiEnum.ambarGirisi:
-        return yetkiController.transferAGDuzenle;
-      case EditTipiEnum.ambarCikisi:
-        return yetkiController.transferACDuzenle;
-      case EditTipiEnum.cari:
-        return yetkiController.cariKartiDuzenleme;
-      case EditTipiEnum.isEmri:
-      case EditTipiEnum.altIsEmri:
-      case EditTipiEnum.isEmriTakip:
-      case EditTipiEnum.uretimSonuKaydi:
-      case EditTipiEnum.uretim:
-      case EditTipiEnum.paket:
-      case EditTipiEnum.belgesizIslem:
-        return false;
-    }
-  }
+  bool get duzenlensinMi => switch (this) {
+        EditTipiEnum.musteri => yetkiController.siparisMSDuzelt,
+        EditTipiEnum.satici => yetkiController.siparisSSDuzelt,
+        EditTipiEnum.satisFatura => yetkiController.satisFatDuzenle,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDuzenle,
+        EditTipiEnum.alisFatura => yetkiController.alisFatDuzenle,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsDuzenle,
+        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiDuzenle,
+        EditTipiEnum.alisTalebi => yetkiController.alisTalebiDuzenle,
+        EditTipiEnum.satisTalebi => yetkiController.satisTalebiDuzenle,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatDuzenle,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAGDuzenle,
+        EditTipiEnum.ambarCikisi => yetkiController.transferACDuzenle,
+        EditTipiEnum.cari => yetkiController.cariKartiDuzenleme,
+        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri || EditTipiEnum.isEmriTakip || EditTipiEnum.uretimSonuKaydi || EditTipiEnum.uretim || EditTipiEnum.paket || EditTipiEnum.belgesizIslem => false
+      };
 
-  bool get silinsinMi {
-    switch (this) {
-      case EditTipiEnum.musteri:
-        return yetkiController.siparisMSSil;
-      case EditTipiEnum.satici:
-        return yetkiController.siparisSSSil;
-      case EditTipiEnum.satisFatura:
-        return yetkiController.satisFatSil;
-      case EditTipiEnum.satisIrsaliye:
-        return yetkiController.satisIrsSil;
-      case EditTipiEnum.alisFatura:
-        return yetkiController.alisFatSil;
-      case EditTipiEnum.alisIrsaliye:
-        return yetkiController.alisIrsSil;
-      case EditTipiEnum.satisTeklifi:
-        return yetkiController.satisTeklifiSil;
-      case EditTipiEnum.alisTalebi:
-        return yetkiController.alisTalebiSil;
-      case EditTipiEnum.satisTalebi:
-        return yetkiController.satisTalebiSil;
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-        return yetkiController.transferDatSil;
-      case EditTipiEnum.ambarGirisi:
-        return yetkiController.transferAGSil;
-      case EditTipiEnum.ambarCikisi:
-        return yetkiController.transferACSil;
-      case EditTipiEnum.cari:
-        return yetkiController.cariKartiSilme;
-      case EditTipiEnum.isEmri:
-      case EditTipiEnum.altIsEmri:
-      case EditTipiEnum.isEmriTakip:
-      case EditTipiEnum.uretimSonuKaydi:
-      case EditTipiEnum.uretim:
-      case EditTipiEnum.paket:
-      case EditTipiEnum.belgesizIslem:
-        return false;
-    }
-  }
+  bool get silinsinMi => switch (this) {
+        EditTipiEnum.musteri => yetkiController.siparisMSSil,
+        EditTipiEnum.satici => yetkiController.siparisSSSil,
+        EditTipiEnum.satisFatura => yetkiController.satisFatSil,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsSil,
+        EditTipiEnum.alisFatura => yetkiController.alisFatSil,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsSil,
+        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiSil,
+        EditTipiEnum.alisTalebi => yetkiController.alisTalebiSil,
+        EditTipiEnum.satisTalebi => yetkiController.satisTalebiSil,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSil,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAGSil,
+        EditTipiEnum.ambarCikisi => yetkiController.transferACSil,
+        EditTipiEnum.cari => yetkiController.cariKartiSilme,
+        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri || EditTipiEnum.isEmriTakip || EditTipiEnum.uretimSonuKaydi || EditTipiEnum.uretim || EditTipiEnum.paket || EditTipiEnum.belgesizIslem => false,
+      };
 
-  bool get transferMi {
-    switch (this) {
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-      case EditTipiEnum.ambarGirisi:
-      case EditTipiEnum.ambarCikisi:
-        return true;
-      default:
-        return false;
-    }
-  }
+  bool get transferMi => switch (this) {
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi || EditTipiEnum.ambarGirisi || EditTipiEnum.ambarCikisi => true,
+        _ => false,
+      };
 
-  bool get siparisMi {
-    switch (this) {
-      case EditTipiEnum.musteri:
-      case EditTipiEnum.satici:
-        return true;
-      default:
-        return false;
-    }
-  }
+  bool get siparisMi => switch (this) {
+        EditTipiEnum.musteri || EditTipiEnum.satici => true,
+        _ => false,
+      };
 
   int? get varsayilanBelgeTipi {
     final paramModel = CacheManager.getAnaVeri?.userModel?.profilYetki;
@@ -652,33 +540,17 @@ extension EditTipiEnumExtension on EditTipiEnum {
     };
   }
 
-  bool get faturaMi {
-    switch (this) {
-      case EditTipiEnum.satisFatura:
-      case EditTipiEnum.satisIrsaliye:
-      case EditTipiEnum.alisFatura:
-      case EditTipiEnum.alisIrsaliye:
-      case EditTipiEnum.ambarGirisi:
-      case EditTipiEnum.ambarCikisi:
-      case EditTipiEnum.cari:
-        return true;
-      default:
-        return false;
-    }
-  }
-
-  // BaseSiparisEditModel? get getEditModel {
-  //   switch (this) {
-  //     case EditTipiEnum.musteri:
-  //     case EditTipiEnum.satici:
-  //       return CacheManager.getSiparisEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
-  //     case EditTipiEnum.satisFatura:
-  //     case EditTipiEnum.satisIrsaliye:
-  //     case EditTipiEnum.alisFatura:
-  //     case EditTipiEnum.alisIrsaliye:
-  //       return CacheManager.getFaturaEdit(BaseSiparisEditModel.instance.belgeNo ?? "");
-  //   }
-  // }
+  bool get faturaMi => switch (this) {
+        EditTipiEnum.satisFatura ||
+        EditTipiEnum.satisIrsaliye ||
+        EditTipiEnum.alisFatura ||
+        EditTipiEnum.alisIrsaliye ||
+        EditTipiEnum.ambarGirisi ||
+        EditTipiEnum.ambarCikisi ||
+        EditTipiEnum.cari =>
+          true,
+        _ => false,
+      };
 
   void setEditModel() {
     switch (this) {
@@ -740,55 +612,31 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
   }
 
-  String get getRoute {
-    switch (this) {
-      case EditTipiEnum.musteri:
-        return "/mainPage/siparisMusteriSiparisi";
-      case EditTipiEnum.satici:
-        return "/mainPage/siparisSaticiSiparisi";
-      default:
-        return "/mainPage/siparisSaticiSiparisi";
-    }
-  }
+  String get getRoute => switch (this) {
+        EditTipiEnum.musteri => "/mainPage/siparisMusteriSiparisi",
+        EditTipiEnum.satici => "/mainPage/siparisSaticiSiparisi",
+        _ => "/mainPage/siparisSaticiSiparisi",
+      };
 
-  String get getListRoute {
-    switch (this) {
-      case EditTipiEnum.satisFatura:
-        return "/mainPage/sevkiyatSatisFaturasi";
-      case EditTipiEnum.satisIrsaliye:
-        return "/mainPage/sevkiyatSatisIrsaliyesi";
-      case EditTipiEnum.alisFatura:
-        return "/mainPage/malKabulAlisFaturasi";
-      case EditTipiEnum.alisIrsaliye:
-        return "/mainPage/malKabulAlisIrsaliyesi";
-      default:
-        return "";
-    }
-  }
+  String get getListRoute => switch (this) {
+        EditTipiEnum.satisFatura => "/mainPage/sevkiyatSatisFaturasi",
+        EditTipiEnum.satisIrsaliye => "/mainPage/sevkiyatSatisIrsaliyesi",
+        EditTipiEnum.alisFatura => "/mainPage/malKabulAlisFaturasi",
+        EditTipiEnum.alisIrsaliye => "/mainPage/malKabulAlisIrsaliyesi",
+        _ => "",
+      };
 
-  String get aciklamaDuzenleRoute {
-    switch (this) {
-      case EditTipiEnum.satisFatura:
-        return "/mainPage/faturaSatisFaturasiAciklamaDuzenle";
-      case EditTipiEnum.satisIrsaliye:
-        return "/mainPage/faturaSatisIrsaliyesiAciklamaDuzenle";
-      case EditTipiEnum.alisFatura:
-        return "/mainPage/faturaAlisFaturasiAciklamaDuzenle";
-      case EditTipiEnum.alisIrsaliye:
-        return "/mainPage/faturaAlisIrsaliyesiAciklamaDuzenle";
-      case EditTipiEnum.satisTeklifi:
-        return "/mainPage/talTekSatisTeklifAciklamaDuzenle";
-      case EditTipiEnum.alisTalebi:
-        return "/mainPage/talTekAlisTalepAciklamaDuzenle";
-      case EditTipiEnum.satisTalebi:
-        return "/mainPage/talTekSatisTalepAciklamaDuzenle";
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-        return "/mainPage/transferDepoAciklamaDuzenle";
-      default:
-        throw Exception("Açıklama düzenleme route bulunamadı");
-    }
-  }
+  String get aciklamaDuzenleRoute => switch (this) {
+        EditTipiEnum.satisFatura => "/mainPage/faturaSatisFaturasiAciklamaDuzenle",
+        EditTipiEnum.satisIrsaliye => "/mainPage/faturaSatisIrsaliyesiAciklamaDuzenle",
+        EditTipiEnum.alisFatura => "/mainPage/faturaAlisFaturasiAciklamaDuzenle",
+        EditTipiEnum.alisIrsaliye => "/mainPage/faturaAlisIrsaliyesiAciklamaDuzenle",
+        EditTipiEnum.satisTeklifi => "/mainPage/talTekSatisTeklifAciklamaDuzenle",
+        EditTipiEnum.alisTalebi => "/mainPage/talTekAlisTalepAciklamaDuzenle",
+        EditTipiEnum.satisTalebi => "/mainPage/talTekSatisTalepAciklamaDuzenle",
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "/mainPage/transferDepoAciklamaDuzenle",
+        _ => throw Exception("Açıklama düzenleme route bulunamadı"),
+      };
 
   EditTipiEnum? getEditTipiEnumWithRawValue(String? rawValue) => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
 

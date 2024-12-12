@@ -13,16 +13,8 @@ StokOlcuBirimleriModel _$StokOlcuBirimleriModelFromJson(
       ..olcuBirimi = json['OLCU_BIRIMI'] as String?;
 
 Map<String, dynamic> _$StokOlcuBirimleriModelToJson(
-    StokOlcuBirimleriModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BIRIM_NO', instance.birimNo);
-  writeNotNull('OLCU_BIRIMI', instance.olcuBirimi);
-  return val;
-}
+        StokOlcuBirimleriModel instance) =>
+    <String, dynamic>{
+      if (instance.birimNo case final value?) 'BIRIM_NO': value,
+      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
+    };

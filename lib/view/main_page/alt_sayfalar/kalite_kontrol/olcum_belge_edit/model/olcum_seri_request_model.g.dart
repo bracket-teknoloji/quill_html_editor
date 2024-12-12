@@ -20,20 +20,12 @@ _$OlcumSeriRequestModelImpl _$$OlcumSeriRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumSeriRequestModelImplToJson(
-    _$OlcumSeriRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('GIRIS_DEPO', instance.girisDepo);
-  writeNotNull('CIKIS_DEPO', instance.cikisDepo);
-  writeNotNull('RED_GIRIS_DEPO', instance.redGirisDepo);
-  writeNotNull('KABUL_GIRIS_DEPO', instance.kabulGirisDepo);
-  writeNotNull('SERI_LISTE', instance.seriListe);
-  return val;
-}
+        _$OlcumSeriRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
+      if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
+      if (instance.redGirisDepo case final value?) 'RED_GIRIS_DEPO': value,
+      if (instance.kabulGirisDepo case final value?) 'KABUL_GIRIS_DEPO': value,
+      if (instance.seriListe case final value?) 'SERI_LISTE': value,
+    };

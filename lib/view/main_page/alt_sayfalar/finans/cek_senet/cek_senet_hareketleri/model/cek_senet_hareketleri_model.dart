@@ -32,33 +32,19 @@ class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkManagerMi
 }
 
 extension CekSenetHareketleriExtensions on CekSenetHareketleriModel {
-  String get durumAdi {
-    switch (durum) {
-      case "B":
-        return "Bekliyor";
-      case "O":
-        return "Ödendi";
-      case "P":
-        return "Karşılıksız";
-      default:
-        return "";
-    }
-  }
+  String get durumAdi => switch (durum) {
+        "B" => "Bekliyor",
+        "O" => "Ödendi",
+        "P" => "Karşılıksız",
+        _ => "",
+      };
 
-  String get yerAdi {
-    switch (yeri) {
-      case "P":
-        return "Portföy";
-      case "C":
-        return "Ciro";
-      case "T":
-        return "Tahsilat";
-      case "E":
-        return "Teminat";
-      case "I":
-        return "İade";
-      default:
-        return "";
-    }
-  }
+  String get yerAdi => switch (yeri) {
+        "P" => "Portföy",
+        "C" => "Ciro",
+        "T" => "Tahsilat",
+        "E" => "Teminat",
+        "I" => "İade",
+        _ => "",
+      };
 }

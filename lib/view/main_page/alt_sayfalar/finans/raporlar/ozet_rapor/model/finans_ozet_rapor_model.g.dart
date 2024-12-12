@@ -17,19 +17,11 @@ _$FinansOzetRaporModelImpl _$$FinansOzetRaporModelImplFromJson(
     );
 
 Map<String, dynamic> _$$FinansOzetRaporModelImplToJson(
-    _$FinansOzetRaporModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('TABLO_TIPI', instance.tabloTipi);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('AY_KODU', instance.ayKodu);
-  writeNotNull('TUTAR1', instance.tutar1);
-  writeNotNull('TUTAR2', instance.tutar2);
-  return val;
-}
+        _$FinansOzetRaporModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.tabloTipi case final value?) 'TABLO_TIPI': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.ayKodu case final value?) 'AY_KODU': value,
+      if (instance.tutar1 case final value?) 'TUTAR1': value,
+      if (instance.tutar2 case final value?) 'TUTAR2': value,
+    };

@@ -590,42 +590,28 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
 
   String grupAdiWithItem(BaseGrupKoduModel? item, int index) {
     if (item == null) return "";
-    switch (index) {
-      case 0:
-        return item.grupAdi ?? "";
-      case 1:
-        return (viewModel.kategoriMi ? item.kod1Adi ?? item.kod1 : item.grupAdi) ?? "";
-      case 2:
-        return (viewModel.kategoriMi ? item.kod2Adi ?? item.kod2 : item.grupAdi) ?? "";
-      case 3:
-        return (viewModel.kategoriMi ? item.kod3Adi ?? item.kod3 : item.grupAdi) ?? "";
-      case 4:
-        return (viewModel.kategoriMi ? item.kod4Adi ?? item.kod4 : item.grupAdi) ?? "";
-      case 5:
-        return (viewModel.kategoriMi ? item.kod5Adi ?? item.kod5 : item.grupAdi) ?? "";
-      default:
-        return "";
-    }
+    return switch (index) {
+      0 => item.grupAdi ?? "",
+      1 => (viewModel.kategoriMi ? item.kod1Adi ?? item.kod1 : item.grupAdi) ?? "",
+      2 => (viewModel.kategoriMi ? item.kod2Adi ?? item.kod2 : item.grupAdi) ?? "",
+      3 => (viewModel.kategoriMi ? item.kod3Adi ?? item.kod3 : item.grupAdi) ?? "",
+      4 => (viewModel.kategoriMi ? item.kod4Adi ?? item.kod4 : item.grupAdi) ?? "",
+      5 => (viewModel.kategoriMi ? item.kod5Adi ?? item.kod5 : item.grupAdi) ?? "",
+      _ => "",
+    };
   }
 
   String grupKoduWithItem(BaseGrupKoduModel? item, int index) {
     if (item == null) return "";
-    switch (index) {
-      case 0:
-        return item.grupKodu ?? "";
-      case 1:
-        return item.kod1 ?? item.grupKodu ?? "";
-      case 2:
-        return item.kod2 ?? item.grupKodu ?? "";
-      case 3:
-        return item.kod3 ?? item.grupKodu ?? "";
-      case 4:
-        return item.kod4 ?? item.grupKodu ?? "";
-      case 5:
-        return item.kod5 ?? item.grupKodu ?? "";
-      default:
-        return "";
-    }
+    return switch (index) {
+      0 => item.grupKodu ?? "",
+      1 => item.kod1 ?? item.grupKodu ?? "",
+      2 => item.kod2 ?? item.grupKodu ?? "",
+      3 => item.kod3 ?? item.grupKodu ?? "",
+      4 => item.kod4 ?? item.grupKodu ?? "",
+      5 => item.kod5 ?? item.grupKodu ?? "",
+      _ => ""
+    };
   }
 
   List<BaseGrupKoduModel>? grupKoduWithIndex(int index) {

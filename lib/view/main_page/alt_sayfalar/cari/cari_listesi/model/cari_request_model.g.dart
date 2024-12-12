@@ -17,6 +17,7 @@ _$CariRequestModelImpl _$$CariRequestModelImplFromJson(
       siralama: json['SIRALAMA'] as String?,
       menuKodu: json['MenuKodu'] as String?,
       eFaturaGoster: json['EFaturaGoster'] as bool?,
+      bagliCariKodu: json['BagliCariKodu'] as String?,
       filterBakiye: json['FILTER_BAKIYE'] as String?,
       arrGrupKodu: (json['ArrGrupKodu'] as List<dynamic>?)
           ?.map((e) => e as String)
@@ -48,39 +49,34 @@ _$CariRequestModelImpl _$$CariRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CariRequestModelImplToJson(
-    _$CariRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('FilterText', instance.filterText);
-  writeNotNull('Kod', instance.kod);
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('Ilce', instance.ilce);
-  writeNotNull('CariTipi', instance.cariTipi);
-  writeNotNull('SIRALAMA', instance.siralama);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('EFaturaGoster', instance.eFaturaGoster);
-  writeNotNull('FILTER_BAKIYE', instance.filterBakiye);
-  writeNotNull('ArrGrupKodu', instance.arrGrupKodu);
-  writeNotNull('ArrKod1', instance.arrKod1);
-  writeNotNull('ArrKod2', instance.arrKod2);
-  writeNotNull('ArrKod3', instance.arrKod3);
-  writeNotNull('ArrKod4', instance.arrKod4);
-  writeNotNull('ArrKod5', instance.arrKod5);
-  writeNotNull('ArrSehir', instance.arrSehir);
-  writeNotNull('ArrPlasiyerKodu', instance.arrPlasiyerKodu);
-  writeNotNull('PlasiyerKisitiYok', instance.plasiyerKisitiYok);
-  writeNotNull('BelgeTuru', instance.belgeTuru);
-  writeNotNull('VergiNo', instance.vergiNo);
-  writeNotNull('SiparisKarsilanmaDurumu', instance.siparisKarsilanmaDurumu);
-  writeNotNull('KisitYok', instance.kisitYok);
-  writeNotNull('Secildi', instance.secildi);
-  writeNotNull('TeslimCari', instance.teslimCari);
-  writeNotNull('RotaDisi', instance.rotaDisi);
-  return val;
-}
+        _$CariRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.filterText case final value?) 'FilterText': value,
+      if (instance.kod case final value?) 'Kod': value,
+      if (instance.sayfa case final value?) 'Sayfa': value,
+      if (instance.ilce case final value?) 'Ilce': value,
+      if (instance.cariTipi case final value?) 'CariTipi': value,
+      if (instance.siralama case final value?) 'SIRALAMA': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.eFaturaGoster case final value?) 'EFaturaGoster': value,
+      if (instance.bagliCariKodu case final value?) 'BagliCariKodu': value,
+      if (instance.filterBakiye case final value?) 'FILTER_BAKIYE': value,
+      if (instance.arrGrupKodu case final value?) 'ArrGrupKodu': value,
+      if (instance.arrKod1 case final value?) 'ArrKod1': value,
+      if (instance.arrKod2 case final value?) 'ArrKod2': value,
+      if (instance.arrKod3 case final value?) 'ArrKod3': value,
+      if (instance.arrKod4 case final value?) 'ArrKod4': value,
+      if (instance.arrKod5 case final value?) 'ArrKod5': value,
+      if (instance.arrSehir case final value?) 'ArrSehir': value,
+      if (instance.arrPlasiyerKodu case final value?) 'ArrPlasiyerKodu': value,
+      if (instance.plasiyerKisitiYok case final value?)
+        'PlasiyerKisitiYok': value,
+      if (instance.belgeTuru case final value?) 'BelgeTuru': value,
+      if (instance.vergiNo case final value?) 'VergiNo': value,
+      if (instance.siparisKarsilanmaDurumu case final value?)
+        'SiparisKarsilanmaDurumu': value,
+      if (instance.kisitYok case final value?) 'KisitYok': value,
+      if (instance.secildi case final value?) 'Secildi': value,
+      if (instance.teslimCari case final value?) 'TeslimCari': value,
+      if (instance.rotaDisi case final value?) 'RotaDisi': value,
+    };

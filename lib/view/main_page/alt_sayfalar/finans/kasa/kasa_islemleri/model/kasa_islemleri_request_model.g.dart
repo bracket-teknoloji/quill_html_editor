@@ -23,25 +23,17 @@ _$KasaIslemleriRequestModelImpl _$$KasaIslemleriRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$KasaIslemleriRequestModelImplToJson(
-    _$KasaIslemleriRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('PlasiyerKodu', instance.plasiyerKodu);
-  writeNotNull('HesapTipi', instance.hesapTipi);
-  writeNotNull('HesapKodu', instance.hesapKodu);
-  writeNotNull('KasaKodu', instance.kasaKodu);
-  writeNotNull('Gc', instance.gc);
-  writeNotNull('KisitYok', instance.kisitYok);
-  writeNotNull('RefKey', instance.refKey);
-  return val;
-}
+        _$KasaIslemleriRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.sayfa case final value?) 'Sayfa': value,
+      if (instance.plasiyerKodu case final value?) 'PlasiyerKodu': value,
+      if (instance.hesapTipi case final value?) 'HesapTipi': value,
+      if (instance.hesapKodu case final value?) 'HesapKodu': value,
+      if (instance.kasaKodu case final value?) 'KasaKodu': value,
+      if (instance.gc case final value?) 'Gc': value,
+      if (instance.kisitYok case final value?) 'KisitYok': value,
+      if (instance.refKey case final value?) 'RefKey': value,
+    };

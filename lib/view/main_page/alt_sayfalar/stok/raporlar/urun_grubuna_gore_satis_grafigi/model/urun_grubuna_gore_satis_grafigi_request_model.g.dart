@@ -25,24 +25,17 @@ _$UrunGrubunaGoreSatisGrafigiRequestModelImpl
         );
 
 Map<String, dynamic> _$$UrunGrubunaGoreSatisGrafigiRequestModelImplToJson(
-    _$UrunGrubunaGoreSatisGrafigiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ARR_PLASIYER_KODU', instance.arrPlasiyerKodu);
-  writeNotNull('BASLAMA_TARIHI', instance.baslamaTarihi);
-  writeNotNull('BITIS_TARIHI', instance.bitisTarihi);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('DONEM_TIPI', instance.donemTipi);
-  writeNotNull('GRUP_NO', instance.grupNo);
-  writeNotNull('IRS_DAHIL', instance.irsDahil);
-  writeNotNull('GRUPLA', instance.grupla);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('TIPI', instance.tipi);
-  return val;
-}
+        _$UrunGrubunaGoreSatisGrafigiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.arrPlasiyerKodu case final value?)
+        'ARR_PLASIYER_KODU': value,
+      if (instance.baslamaTarihi case final value?) 'BASLAMA_TARIHI': value,
+      if (instance.bitisTarihi case final value?) 'BITIS_TARIHI': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.donemTipi case final value?) 'DONEM_TIPI': value,
+      if (instance.grupNo case final value?) 'GRUP_NO': value,
+      if (instance.irsDahil case final value?) 'IRS_DAHIL': value,
+      if (instance.grupla case final value?) 'GRUPLA': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.tipi case final value?) 'TIPI': value,
+    };

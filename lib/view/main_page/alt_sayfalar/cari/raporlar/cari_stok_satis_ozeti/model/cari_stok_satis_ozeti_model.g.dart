@@ -25,27 +25,19 @@ CariStokSatisOzetiModel _$CariStokSatisOzetiModelFromJson(
       ..dovizSimge = json['DOVIZ_SIMGE'] as String?;
 
 Map<String, dynamic> _$CariStokSatisOzetiModelToJson(
-    CariStokSatisOzetiModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('OLCU_BIRIM_ADI', instance.olcuBirimAdi);
-  writeNotNull('NET_TUTAR', instance.netTutar);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('DOV_NET_TUTAR', instance.dovNetTutar);
-  writeNotNull('DOV_BRUT_TUTAR', instance.dovBrutTutar);
-  writeNotNull('DOVIZ_KURU', instance.dovizKuru);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('DOVIZ_SIMGE', instance.dovizSimge);
-  return val;
-}
+        CariStokSatisOzetiModel instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.olcuBirimAdi case final value?) 'OLCU_BIRIM_ADI': value,
+      if (instance.netTutar case final value?) 'NET_TUTAR': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.dovNetTutar case final value?) 'DOV_NET_TUTAR': value,
+      if (instance.dovBrutTutar case final value?) 'DOV_BRUT_TUTAR': value,
+      if (instance.dovizKuru case final value?) 'DOVIZ_KURU': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.dovizSimge case final value?) 'DOVIZ_SIMGE': value,
+    };

@@ -42,40 +42,33 @@ _$IsEmirleriModelImpl _$$IsEmirleriModelImplFromJson(
     );
 
 Map<String, dynamic> _$$IsEmirleriModelImplToJson(
-    _$IsEmirleriModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('TESLIM_TARIHI', instance.teslimTarihi?.toIso8601String());
-  writeNotNull('ISEMRI_NO', instance.isemriNo);
-  writeNotNull('ISEMRI_SIRA', instance.isemriSira);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('REQUEST_VERSION', instance.requestVersion);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('KALAN', instance.kalan);
-  writeNotNull('CIKIS_DEPO', instance.cikisDepo);
-  writeNotNull('GIRIS_DEPO', instance.girisDepo);
-  writeNotNull('KAPALI', instance.kapali);
-  writeNotNull('REWORK', instance.rework);
-  writeNotNull('CIKIS_DEPO_ADI', instance.cikisDepoAdi);
-  writeNotNull('GIRIS_DEPO_ADI', instance.girisDepoAdi);
-  writeNotNull('STOK_OLCU_BIRIMI', instance.stokOlcuBirimi);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('REF_ISEMRINO', instance.refIsemrino);
-  writeNotNull('SIPARIS_NO', instance.siparisNo);
-  writeNotNull('SIPARIS_SIRA', instance.siparisSira);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('TAMAMLANAN', instance.tamamlanan);
-  return val;
-}
+        _$IsEmirleriModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.teslimTarihi?.toIso8601String() case final value?)
+        'TESLIM_TARIHI': value,
+      if (instance.isemriNo case final value?) 'ISEMRI_NO': value,
+      if (instance.isemriSira case final value?) 'ISEMRI_SIRA': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.kalan case final value?) 'KALAN': value,
+      if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
+      if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
+      if (instance.kapali case final value?) 'KAPALI': value,
+      if (instance.rework case final value?) 'REWORK': value,
+      if (instance.cikisDepoAdi case final value?) 'CIKIS_DEPO_ADI': value,
+      if (instance.girisDepoAdi case final value?) 'GIRIS_DEPO_ADI': value,
+      if (instance.stokOlcuBirimi case final value?) 'STOK_OLCU_BIRIMI': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.refIsemrino case final value?) 'REF_ISEMRINO': value,
+      if (instance.siparisNo case final value?) 'SIPARIS_NO': value,
+      if (instance.siparisSira case final value?) 'SIPARIS_SIRA': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.tamamlanan case final value?) 'TAMAMLANAN': value,
+    };

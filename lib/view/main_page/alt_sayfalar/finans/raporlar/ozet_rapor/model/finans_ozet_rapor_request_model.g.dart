@@ -20,22 +20,15 @@ _$FinansOzetRaporRequestModelImpl _$$FinansOzetRaporRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$FinansOzetRaporRequestModelImplToJson(
-    _$FinansOzetRaporRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('PlasiyerKodu', instance.plasiyerKodu);
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('TarihTipi', instance.tarihTipi);
-  writeNotNull('CariKoduIleBaslar', instance.cariKoduIleBaslar);
-  writeNotNull('KDVDahil', instance.kdvDahil);
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  writeNotNull('IadeDurumu', instance.iadeDurumu);
-  return val;
-}
+        _$FinansOzetRaporRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.plasiyerKodu case final value?) 'PlasiyerKodu': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.tarihTipi case final value?) 'TarihTipi': value,
+      if (instance.cariKoduIleBaslar case final value?)
+        'CariKoduIleBaslar': value,
+      if (instance.kdvDahil case final value?) 'KDVDahil': value,
+      if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+      if (instance.iadeDurumu case final value?) 'IadeDurumu': value,
+    };

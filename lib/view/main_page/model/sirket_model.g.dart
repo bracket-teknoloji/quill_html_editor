@@ -58,18 +58,10 @@ SirketModel _$SirketModelFromJson(Map<String, dynamic> json) => SirketModel()
   ..yil = (json['YIL'] as num?)?.toInt()
   ..isDevredilmis = json['isDevredilmis'] as bool?;
 
-Map<String, dynamic> _$SirketModelToJson(SirketModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SIRKET', instance.sirket);
-  writeNotNull('DEVSIRKET', instance.devsirket);
-  writeNotNull('YIL', instance.yil);
-  writeNotNull('isDevredilmis', instance.isDevredilmis);
-  return val;
-}
+Map<String, dynamic> _$SirketModelToJson(SirketModel instance) =>
+    <String, dynamic>{
+      if (instance.sirket case final value?) 'SIRKET': value,
+      if (instance.devsirket case final value?) 'DEVSIRKET': value,
+      if (instance.yil case final value?) 'YIL': value,
+      if (instance.isDevredilmis case final value?) 'isDevredilmis': value,
+    };

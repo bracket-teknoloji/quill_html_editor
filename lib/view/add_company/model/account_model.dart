@@ -163,7 +163,7 @@ class AccountModel with NetworkManagerMixin {
 
     final AccountResponseModel? account = CacheManager.getAccounts(uyeEmail ?? "");
     uzakErisim = CacheManager.getUzaktanMi(account?.firmaKisaAdi) ? "E" : "H";
-  
+
     //* Uygulama Bilgileri
     ///  [uygulamaSurumu = packageInfo.version;]
     //* olarak değiştirilecek fakat API bu uygulamanın sürümünü kabul etmediği için manuel verdim.

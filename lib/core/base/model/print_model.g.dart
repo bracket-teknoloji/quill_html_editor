@@ -20,22 +20,14 @@ _$PrintModelImpl _$$PrintModelImplFromJson(Map<String, dynamic> json) =>
       standart: json['STANDART'] as bool?,
     );
 
-Map<String, dynamic> _$$PrintModelImplToJson(_$PrintModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DIZAYN_ID', instance.dizaynId);
-  writeNotNull('ETIKET_SAYISI', instance.etiketSayisi);
-  val['RAPOR_OZEL_KOD'] = instance.raporOzelKod;
-  writeNotNull('YAZDIR', instance.yazdir);
-  writeNotNull('YAZICI_ADI', instance.yaziciAdi);
-  writeNotNull('YAZICI_TIPI', instance.yaziciTipi);
-  writeNotNull('DIC_PARAMS', instance.dicParams?.toJson());
-  writeNotNull('STANDART', instance.standart);
-  return val;
-}
+Map<String, dynamic> _$$PrintModelImplToJson(_$PrintModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.dizaynId case final value?) 'DIZAYN_ID': value,
+      if (instance.etiketSayisi case final value?) 'ETIKET_SAYISI': value,
+      'RAPOR_OZEL_KOD': instance.raporOzelKod,
+      if (instance.yazdir case final value?) 'YAZDIR': value,
+      if (instance.yaziciAdi case final value?) 'YAZICI_ADI': value,
+      if (instance.yaziciTipi case final value?) 'YAZICI_TIPI': value,
+      if (instance.dicParams?.toJson() case final value?) 'DIC_PARAMS': value,
+      if (instance.standart case final value?) 'STANDART': value,
+    };

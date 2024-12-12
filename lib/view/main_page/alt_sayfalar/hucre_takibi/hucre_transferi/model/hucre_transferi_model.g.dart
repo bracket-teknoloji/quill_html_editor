@@ -24,26 +24,19 @@ _$HucreTransferiModelImpl _$$HucreTransferiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$HucreTransferiModelImplToJson(
-    _$HucreTransferiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('HEDEF_HUCRE', instance.hedefHucre);
-  writeNotNull('HUCRE_KODU', instance.hucreKodu);
-  writeNotNull('ISLEM_TURU', instance.islemTuru);
-  writeNotNull('PICKER_BELGE_TURU', instance.pickerBelgeTuru);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('PAKET_KODU', instance.paketKodu);
-  writeNotNull('BELGE_TURU', instance.belgeTuru);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  return val;
-}
+        _$HucreTransferiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.hedefHucre case final value?) 'HEDEF_HUCRE': value,
+      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+      if (instance.islemTuru case final value?) 'ISLEM_TURU': value,
+      if (instance.pickerBelgeTuru case final value?)
+        'PICKER_BELGE_TURU': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.paketKodu case final value?) 'PAKET_KODU': value,
+      if (instance.belgeTuru case final value?) 'BELGE_TURU': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+    };

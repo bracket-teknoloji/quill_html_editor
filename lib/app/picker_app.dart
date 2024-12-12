@@ -4,11 +4,11 @@ import "package:picker/core/base/view/genel_rehber/view/genel_rehber_view.dart";
 import "../core/base/view/base_scaffold.dart";
 import "picker_app_imports.dart";
 
-bool isDarkMode(BuildContext context) =>
-    CacheManager.getProfilParametre.temaModu == ThemeMode.dark || (CacheManager.getProfilParametre.temaModu == ThemeMode.system && MediaQuery.platformBrightnessOf(context) == Brightness.dark);
-
 final class PickerApp extends StatelessWidget {
   const PickerApp({super.key});
+
+  bool isDarkMode(BuildContext context) =>
+      CacheManager.getProfilParametre.temaModu == ThemeMode.dark || (CacheManager.getProfilParametre.temaModu == ThemeMode.system && MediaQuery.platformBrightnessOf(context) == Brightness.dark);
 
   @override
   Widget build(BuildContext context) => Container(

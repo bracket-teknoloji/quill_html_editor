@@ -18,21 +18,13 @@ SerbestRaporResponseModel _$SerbestRaporResponseModelFromJson(
       ..paramMap = json['PARAM_MAP'] as Map<String, dynamic>?;
 
 Map<String, dynamic> _$SerbestRaporResponseModelToJson(
-    SerbestRaporResponseModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ADI', instance.adi);
-  writeNotNull('BOS_GECILEBILIR', instance.bosGecilebilir);
-  writeNotNull('TIPI', instance.tipi);
-  writeNotNull('DEGER', instance.deger);
-  writeNotNull('REHBER_TIPI', instance.rehberTipi);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('PARAM_MAP', instance.paramMap);
-  return val;
-}
+        SerbestRaporResponseModel instance) =>
+    <String, dynamic>{
+      if (instance.adi case final value?) 'ADI': value,
+      if (instance.bosGecilebilir case final value?) 'BOS_GECILEBILIR': value,
+      if (instance.tipi case final value?) 'TIPI': value,
+      if (instance.deger case final value?) 'DEGER': value,
+      if (instance.rehberTipi case final value?) 'REHBER_TIPI': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.paramMap case final value?) 'PARAM_MAP': value,
+    };

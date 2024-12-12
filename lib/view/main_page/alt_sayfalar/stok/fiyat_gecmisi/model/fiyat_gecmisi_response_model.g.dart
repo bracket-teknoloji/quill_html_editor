@@ -31,31 +31,24 @@ FiyatGecmisiResponseModel _$FiyatGecmisiResponseModelFromJson(
       ..yazdirildi = json['YAZDIRILDI'] as String?;
 
 Map<String, dynamic> _$FiyatGecmisiResponseModelToJson(
-    FiyatGecmisiResponseModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('SUBE_KODU', instance.subeKodu);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('YER', instance.yer);
-  writeNotNull('A_S', instance.aS);
-  writeNotNull('FIYAT', instance.fiyat);
-  writeNotNull('DOVIZ_FIYATI', instance.dovizFiyati);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('FIYAT_SIRASI', instance.fiyatSirasi);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('FIYAT_TIPI', instance.fiyatTipi);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('YAZDIRANKUL', instance.yazdirankul);
-  writeNotNull('YAZDIRMATARIHI', instance.yazdirmatarihi?.toIso8601String());
-  writeNotNull('YAZDIRILDI', instance.yazdirildi);
-  return val;
-}
+        FiyatGecmisiResponseModel instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.yer case final value?) 'YER': value,
+      if (instance.aS case final value?) 'A_S': value,
+      if (instance.fiyat case final value?) 'FIYAT': value,
+      if (instance.dovizFiyati case final value?) 'DOVIZ_FIYATI': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.fiyatTipi case final value?) 'FIYAT_TIPI': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.yazdirankul case final value?) 'YAZDIRANKUL': value,
+      if (instance.yazdirmatarihi?.toIso8601String() case final value?)
+        'YAZDIRMATARIHI': value,
+      if (instance.yazdirildi case final value?) 'YAZDIRILDI': value,
+    };

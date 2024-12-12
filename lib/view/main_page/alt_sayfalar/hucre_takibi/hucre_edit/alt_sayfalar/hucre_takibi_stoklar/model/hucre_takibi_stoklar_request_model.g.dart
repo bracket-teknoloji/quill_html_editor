@@ -18,20 +18,12 @@ _$HucreTakibiStoklarRequestModelImpl
         );
 
 Map<String, dynamic> _$$HucreTakibiStoklarRequestModelImplToJson(
-    _$HucreTakibiStoklarRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DepoKodu', instance.depoKodu);
-  writeNotNull('IslemTuru', instance.islemTuru);
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
-  writeNotNull('StokKodu', instance.stokKodu);
-  writeNotNull('BelgeNo', instance.belgeNo);
-  return val;
-}
+        _$HucreTakibiStoklarRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.depoKodu case final value?) 'DepoKodu': value,
+      if (instance.islemTuru case final value?) 'IslemTuru': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+    };

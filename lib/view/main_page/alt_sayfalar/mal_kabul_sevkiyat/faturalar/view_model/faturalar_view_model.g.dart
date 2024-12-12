@@ -594,6 +594,17 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
+  void setTeslimCari(String? value) {
+    final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
+        name: '_FaturalarViewModelBase.setTeslimCari');
+    try {
+      return super.setTeslimCari(value);
+    } finally {
+      _$_FaturalarViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setCariTipi(String? value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.setCariTipi');

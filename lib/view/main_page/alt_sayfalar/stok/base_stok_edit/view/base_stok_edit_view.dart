@@ -177,16 +177,10 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
 
   bool get kaydetButonuYetki {
     if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) return false;
-    switch (widget.model?.baseEditEnum) {
-      case BaseEditEnum.ekle:
-      case BaseEditEnum.kopyala:
-      case BaseEditEnum.revize:
-      case BaseEditEnum.taslak:
-        return yetkiController.stokKartiYeniKayit;
-      case BaseEditEnum.duzenle:
-        return yetkiController.stokKartiDuzenleme;
-      default:
-        return false;
-    }
+    return switch (widget.model?.baseEditEnum) {
+      BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => yetkiController.stokKartiYeniKayit,
+      BaseEditEnum.duzenle => yetkiController.stokKartiDuzenleme,
+      _ => false,
+    };
   }
 }

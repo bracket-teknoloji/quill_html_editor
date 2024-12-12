@@ -18,26 +18,19 @@ _$PdfModelImpl _$$PdfModelImplFromJson(Map<String, dynamic> json) =>
       etiketSayisi: (json['ETIKET_SAYISI'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$PdfModelImplToJson(_$PdfModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('RAPOR_OZEL_KOD', instance.raporOzelKod);
-  writeNotNull('STANDART', instance.standart);
-  writeNotNull('DIC_PARAMS', instance.dicParams?.toJson());
-  writeNotNull('DIZAYN_ID', instance.dizaynId);
-  writeNotNull('ETIKET_SAYISI', instance.etiketSayisi);
-  return val;
-}
+Map<String, dynamic> _$$PdfModelImplToJson(_$PdfModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.raporOzelKod case final value?) 'RAPOR_OZEL_KOD': value,
+      if (instance.standart case final value?) 'STANDART': value,
+      if (instance.dicParams?.toJson() case final value?) 'DIC_PARAMS': value,
+      if (instance.dizaynId case final value?) 'DIZAYN_ID': value,
+      if (instance.etiketSayisi case final value?) 'ETIKET_SAYISI': value,
+    };
 
 _$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
     _$DicParamsImpl(
       cariKodu: json['CARI_KODU'] as String?,
+      teslimCariKodu: json['TESLIM_CARI_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
       sifirHaric: json['SIFIR_HARIC'] as String?,
       maliyetTipi: json['MALIYET_TIPI'] as String?,
@@ -86,61 +79,59 @@ _$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
       tempBelgeId: json['TEMP_BELGE_ID'] as String?,
     );
 
-Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('SIFIR_HARIC', instance.sifirHaric);
-  writeNotNull('MALIYET_TIPI', instance.maliyetTipi);
-  writeNotNull('TL_HAR_DOKULSUN', instance.tlHarDokulsun);
-  writeNotNull('DEPO_KODLARI', instance.depoKodlari);
-  writeNotNull('HARIC_STOK_KODLARI', instance.haricStokKodlari);
-  writeNotNull('HARIC_STOK_GRUP_KODLARI', instance.haricStokGrupKodlari);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('BASTAR', instance.bastar);
-  writeNotNull('BITTAR', instance.bittar);
-  writeNotNull('GRUP_KODU', instance.grupKodu);
-  writeNotNull('BORC_ALACAK', instance.borcAlacak);
-  writeNotNull('REF_TARIH', instance.refTarih);
-  writeNotNull('TARIH_TIPI', instance.tarihTipi);
-  writeNotNull('KOD1', instance.kod1);
-  writeNotNull('KOD2', instance.kod2);
-  writeNotNull('KOD3', instance.kod3);
-  writeNotNull('KOD4', instance.kod4);
-  writeNotNull('KOD5', instance.kod5);
-  writeNotNull('KAPALI', instance.kapali);
-  writeNotNull('DURUM', instance.durum);
-  writeNotNull('VERGI_NO', instance.vergiNo);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('ARALIK_TIPI', instance.aralikTipi);
-  writeNotNull('SIRALA', instance.sirala);
-  writeNotNull('BAKIYE_DURUMU', instance.bakiyeDurumu);
-  writeNotNull('CAHAR_INCKEY', instance.caharInckey);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('ISEMRI_NO', instance.isemriNo);
-  writeNotNull('DINAMIK_PARAM', instance.dinamikParam);
-  writeNotNull('KASAHAR_INCKEY', instance.kasaharInckey);
-  writeNotNull('URETIM_FIYATI_DAHIL', instance.uretimFiyatiDahil);
-  writeNotNull('FIYAT_TIPI', instance.fiyatTipi);
-  writeNotNull('TBLNF_STOKFIYATGECMISI_ID', instance.tblnfStokfiyatgecmisiId);
-  writeNotNull('GORUNECEK_ALANLAR', instance.gorunecekAlanlar);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('OPKODU', instance.opkodu);
-  writeNotNull('KASA_KODU', instance.kasaKodu);
-  writeNotNull('MUHASEBE_KODU', instance.muhasebeKodu);
-  writeNotNull('FILTRE', instance.filtre);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('HUCRE_KODU', instance.hucreKodu);
-  writeNotNull('KALEM_ID', instance.kalemId);
-  writeNotNull('TEMP_BELGE_ID', instance.tempBelgeId);
-  return val;
-}
+Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) =>
+    <String, dynamic>{
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.teslimCariKodu case final value?) 'TESLIM_CARI_KODU': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.sifirHaric case final value?) 'SIFIR_HARIC': value,
+      if (instance.maliyetTipi case final value?) 'MALIYET_TIPI': value,
+      if (instance.tlHarDokulsun case final value?) 'TL_HAR_DOKULSUN': value,
+      if (instance.depoKodlari case final value?) 'DEPO_KODLARI': value,
+      if (instance.haricStokKodlari case final value?)
+        'HARIC_STOK_KODLARI': value,
+      if (instance.haricStokGrupKodlari case final value?)
+        'HARIC_STOK_GRUP_KODLARI': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.bastar case final value?) 'BASTAR': value,
+      if (instance.bittar case final value?) 'BITTAR': value,
+      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
+      if (instance.borcAlacak case final value?) 'BORC_ALACAK': value,
+      if (instance.refTarih case final value?) 'REF_TARIH': value,
+      if (instance.tarihTipi case final value?) 'TARIH_TIPI': value,
+      if (instance.kod1 case final value?) 'KOD1': value,
+      if (instance.kod2 case final value?) 'KOD2': value,
+      if (instance.kod3 case final value?) 'KOD3': value,
+      if (instance.kod4 case final value?) 'KOD4': value,
+      if (instance.kod5 case final value?) 'KOD5': value,
+      if (instance.kapali case final value?) 'KAPALI': value,
+      if (instance.durum case final value?) 'DURUM': value,
+      if (instance.vergiNo case final value?) 'VERGI_NO': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.aralikTipi case final value?) 'ARALIK_TIPI': value,
+      if (instance.sirala case final value?) 'SIRALA': value,
+      if (instance.bakiyeDurumu case final value?) 'BAKIYE_DURUMU': value,
+      if (instance.caharInckey case final value?) 'CAHAR_INCKEY': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.isemriNo case final value?) 'ISEMRI_NO': value,
+      if (instance.dinamikParam case final value?) 'DINAMIK_PARAM': value,
+      if (instance.kasaharInckey case final value?) 'KASAHAR_INCKEY': value,
+      if (instance.uretimFiyatiDahil case final value?)
+        'URETIM_FIYATI_DAHIL': value,
+      if (instance.fiyatTipi case final value?) 'FIYAT_TIPI': value,
+      if (instance.tblnfStokfiyatgecmisiId case final value?)
+        'TBLNF_STOKFIYATGECMISI_ID': value,
+      if (instance.gorunecekAlanlar case final value?)
+        'GORUNECEK_ALANLAR': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.opkodu case final value?) 'OPKODU': value,
+      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+      if (instance.muhasebeKodu case final value?) 'MUHASEBE_KODU': value,
+      if (instance.filtre case final value?) 'FILTRE': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+      if (instance.kalemId case final value?) 'KALEM_ID': value,
+      if (instance.tempBelgeId case final value?) 'TEMP_BELGE_ID': value,
+    };

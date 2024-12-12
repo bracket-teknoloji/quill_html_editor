@@ -73,7 +73,6 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
     BaseSiparisEditModel.setInstance(model);
   }
 
-
   @action
   void setGenIsk1(double? value) {
     if (value == 0 || value == null) {

@@ -22,25 +22,17 @@ _$DovizKurlariModelImpl _$$DovizKurlariModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DovizKurlariModelImplToJson(
-    _$DovizKurlariModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('DOV_ALIS', instance.dovAlis);
-  writeNotNull('DOV_SATIS', instance.dovSatis);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('EFF_ALIS', instance.effAlis);
-  writeNotNull('EFF_SATIS', instance.effSatis);
-  return val;
-}
+        _$DovizKurlariModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.dovAlis case final value?) 'DOV_ALIS': value,
+      if (instance.dovSatis case final value?) 'DOV_SATIS': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.effAlis case final value?) 'EFF_ALIS': value,
+      if (instance.effSatis case final value?) 'EFF_SATIS': value,
+    };
 
 _$DovizKurlariRequestModelImpl _$$DovizKurlariRequestModelImplFromJson(
         Map<String, dynamic> json) =>
@@ -58,22 +50,14 @@ _$DovizKurlariRequestModelImpl _$$DovizKurlariRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DovizKurlariRequestModelImplToJson(
-    _$DovizKurlariRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('Tarih', instance.tarih?.toIso8601String());
-  writeNotNull('Sira', instance.sira);
-  writeNotNull('DovizTipi', instance.dovizTipi);
-  writeNotNull('Alis', instance.alis);
-  writeNotNull('Satis', instance.satis);
-  writeNotNull('DovizAdi', instance.dovizAdi);
-  writeNotNull('EFAlis', instance.eFAlis);
-  writeNotNull('EFSatis', instance.eFSatis);
-  return val;
-}
+        _$DovizKurlariRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.tarih?.toIso8601String() case final value?) 'Tarih': value,
+      if (instance.sira case final value?) 'Sira': value,
+      if (instance.dovizTipi case final value?) 'DovizTipi': value,
+      if (instance.alis case final value?) 'Alis': value,
+      if (instance.satis case final value?) 'Satis': value,
+      if (instance.dovizAdi case final value?) 'DovizAdi': value,
+      if (instance.eFAlis case final value?) 'EFAlis': value,
+      if (instance.eFSatis case final value?) 'EFSatis': value,
+    };

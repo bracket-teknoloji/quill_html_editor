@@ -30,30 +30,22 @@ _$OlcumEkleModelImpl _$$OlcumEkleModelImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$OlcumEkleModelImplToJson(
-    _$OlcumEkleModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BELGE_SIRA', instance.belgeSira);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('OPKODU', instance.opkodu);
-  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('BELGE_ID', instance.belgeId);
-  writeNotNull('TAMAMLANDI', instance.tamamlandi);
-  writeNotNull(
-      'PROSESLER', instance.prosesler?.map((e) => e.toJson()).toList());
-  return val;
-}
+        _$OlcumEkleModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.belgeSira case final value?) 'BELGE_SIRA': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.opkodu case final value?) 'OPKODU': value,
+      if (instance.kayitOperator case final value?) 'KAYIT_OPERATOR': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.belgeId case final value?) 'BELGE_ID': value,
+      if (instance.tamamlandi case final value?) 'TAMAMLANDI': value,
+      if (instance.prosesler?.map((e) => e.toJson()).toList() case final value?)
+        'PROSESLER': value,
+    };

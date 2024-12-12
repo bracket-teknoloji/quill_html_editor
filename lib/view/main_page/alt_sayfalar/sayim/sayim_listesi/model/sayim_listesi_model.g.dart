@@ -60,49 +60,45 @@ _$SayimListesiModelImpl _$$SayimListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$SayimListesiModelImplToJson(
-    _$SayimListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('FISNO', instance.fisno);
-  writeNotNull('BASLANGIC_TARIHI', instance.baslangicTarihi?.toIso8601String());
-  writeNotNull('DEPO', instance.depo);
-  writeNotNull('AKTIF', instance.aktif);
-  writeNotNull('KULLANICILAR_JSON', instance.kullanicilarJson);
-  writeNotNull('DEPO_LIST', instance.depoList);
-  writeNotNull('KULLANICI_LIST', instance.kullaniciList);
-  writeNotNull('KULLANICILAR', instance.kullanicilar);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('DEPO_MIKTARI', instance.depoMiktari);
-  writeNotNull('TIPI', instance.tipi);
-  writeNotNull('FILTRE', instance.filtre?.toJson());
-  writeNotNull('FILTRE_STR', instance.filtreStr);
-  writeNotNull('BITIS_TARIHI', instance.bitisTarihi?.toIso8601String());
-  writeNotNull('ID', instance.id);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('CEVRIM', instance.cevrim);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  writeNotNull('BARKOD', instance.barkod);
-  writeNotNull('STOK_BAKIYE', instance.stokBakiye);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('SERI2', instance.seri2);
-  writeNotNull('SERI3', instance.seri3);
-  writeNotNull('SERI4', instance.seri4);
-  writeNotNull(
-      'SON_KULLANMA_TARIHI', instance.sonKullanmaTarihi?.toIso8601String());
-  writeNotNull('STOK_MODEL', instance.stokModel?.toJson());
-  return val;
-}
+        _$SayimListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.fisno case final value?) 'FISNO': value,
+      if (instance.baslangicTarihi?.toIso8601String() case final value?)
+        'BASLANGIC_TARIHI': value,
+      if (instance.depo case final value?) 'DEPO': value,
+      if (instance.aktif case final value?) 'AKTIF': value,
+      if (instance.kullanicilarJson case final value?)
+        'KULLANICILAR_JSON': value,
+      if (instance.depoList case final value?) 'DEPO_LIST': value,
+      if (instance.kullaniciList case final value?) 'KULLANICI_LIST': value,
+      if (instance.kullanicilar case final value?) 'KULLANICILAR': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.depoMiktari case final value?) 'DEPO_MIKTARI': value,
+      if (instance.tipi case final value?) 'TIPI': value,
+      if (instance.filtre?.toJson() case final value?) 'FILTRE': value,
+      if (instance.filtreStr case final value?) 'FILTRE_STR': value,
+      if (instance.bitisTarihi?.toIso8601String() case final value?)
+        'BITIS_TARIHI': value,
+      if (instance.id case final value?) 'ID': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.cevrim case final value?) 'CEVRIM': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.kayittarihi?.toIso8601String() case final value?)
+        'KAYITTARIHI': value,
+      if (instance.barkod case final value?) 'BARKOD': value,
+      if (instance.stokBakiye case final value?) 'STOK_BAKIYE': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.seri2 case final value?) 'SERI2': value,
+      if (instance.seri3 case final value?) 'SERI3': value,
+      if (instance.seri4 case final value?) 'SERI4': value,
+      if (instance.sonKullanmaTarihi?.toIso8601String() case final value?)
+        'SON_KULLANMA_TARIHI': value,
+      if (instance.stokModel?.toJson() case final value?) 'STOK_MODEL': value,
+    };
 
 _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
         Map<String, dynamic> json) =>
@@ -149,42 +145,36 @@ _$SayimFiltreModelImpl _$$SayimFiltreModelImplFromJson(
     );
 
 Map<String, dynamic> _$$SayimFiltreModelImplToJson(
-    _$SayimFiltreModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ArrGrupKodu', instance.arrGrupKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('SeriList', instance.seriList?.map((e) => e.toJson()).toList());
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('TIPI', instance.tipi);
-  writeNotNull('ArrKod1', instance.arrKod1);
-  writeNotNull('ArrKod2', instance.arrKod2);
-  writeNotNull('ArrKod3', instance.arrKod3);
-  writeNotNull('ArrKod4', instance.arrKod4);
-  writeNotNull('ArrKod5', instance.arrKod5);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('OLCU_BIRIM_KODU', instance.olcuBirimKodu);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('PROJE_ADI', instance.projeAdi);
-  writeNotNull('KULL1S', instance.kull1s);
-  writeNotNull('KULL2S', instance.kull2s);
-  writeNotNull('KULL3S', instance.kull3s);
-  writeNotNull('KULL4S', instance.kull4s);
-  writeNotNull('KULL5S', instance.kull5s);
-  writeNotNull('ID', instance.id);
-  writeNotNull('CEVRIM', instance.cevrim);
-  writeNotNull('FISNO', instance.fisno);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  return val;
-}
+        _$SayimFiltreModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.arrGrupKodu case final value?) 'ArrGrupKodu': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
+        'SeriList': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.tipi case final value?) 'TIPI': value,
+      if (instance.arrKod1 case final value?) 'ArrKod1': value,
+      if (instance.arrKod2 case final value?) 'ArrKod2': value,
+      if (instance.arrKod3 case final value?) 'ArrKod3': value,
+      if (instance.arrKod4 case final value?) 'ArrKod4': value,
+      if (instance.arrKod5 case final value?) 'ArrKod5': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.olcuBirimKodu case final value?) 'OLCU_BIRIM_KODU': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.projeAdi case final value?) 'PROJE_ADI': value,
+      if (instance.kull1s case final value?) 'KULL1S': value,
+      if (instance.kull2s case final value?) 'KULL2S': value,
+      if (instance.kull3s case final value?) 'KULL3S': value,
+      if (instance.kull4s case final value?) 'KULL4S': value,
+      if (instance.kull5s case final value?) 'KULL5S': value,
+      if (instance.id case final value?) 'ID': value,
+      if (instance.cevrim case final value?) 'CEVRIM': value,
+      if (instance.fisno case final value?) 'FISNO': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      if (instance.kayittarihi?.toIso8601String() case final value?)
+        'KAYITTARIHI': value,
+    };

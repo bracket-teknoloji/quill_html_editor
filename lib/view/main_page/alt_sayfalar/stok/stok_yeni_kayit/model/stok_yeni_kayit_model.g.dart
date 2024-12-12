@@ -36,36 +36,28 @@ _$StokYeniKayitModelImpl _$$StokYeniKayitModelImplFromJson(
     );
 
 Map<String, dynamic> _$$StokYeniKayitModelImplToJson(
-    _$StokYeniKayitModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('GC', instance.gc);
-  writeNotNull('GUID', instance.guid);
-  writeNotNull('HESAP_KODU', instance.hesapKodu);
-  writeNotNull('HESAP_TIPI', instance.hesapTipi);
-  writeNotNull('KASA_KODU', instance.kasaKodu);
-  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('TAG', instance.tag);
-  writeNotNull('TAHSILATMI', instance.tahsilatmi);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('TUTAR', instance.tutar);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('HAREKET_TURU', instance.hareketTuru);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('FIYAT', instance.fiyat);
-  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('_YeniKayit', instance.yeniKayit);
-  return val;
-}
+        _$StokYeniKayitModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.gc case final value?) 'GC': value,
+      if (instance.guid case final value?) 'GUID': value,
+      if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
+      if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
+      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+      if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.tag case final value?) 'TAG': value,
+      if (instance.tahsilatmi case final value?) 'TAHSILATMI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.hareketTuru case final value?) 'HAREKET_TURU': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.fiyat case final value?) 'FIYAT': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.yeniKayit case final value?) '_YeniKayit': value,
+    };

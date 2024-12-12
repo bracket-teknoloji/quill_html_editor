@@ -24,26 +24,18 @@ _$StokRehberiRequestModelImpl _$$StokRehberiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$StokRehberiRequestModelImplToJson(
-    _$StokRehberiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BelgeNo', instance.belgeNo);
-  writeNotNull('BelgeTarihi', instance.belgeTarihi);
-  writeNotNull('BelgeTipi', instance.belgeTipi);
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('FaturaTipi', instance.faturaTipi);
-  writeNotNull('KisitYok', instance.kisitYok);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('ResimGoster', instance.resimGoster);
-  writeNotNull('StokKodu', instance.stokKodu);
-  writeNotNull('SeriTakibiVar', instance.seriTakibiVar);
-  writeNotNull('DepoKodu', instance.depoKodu);
-  return val;
-}
+        _$StokRehberiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+      if (instance.belgeTarihi case final value?) 'BelgeTarihi': value,
+      if (instance.belgeTipi case final value?) 'BelgeTipi': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.faturaTipi case final value?) 'FaturaTipi': value,
+      if (instance.kisitYok case final value?) 'KisitYok': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.resimGoster case final value?) 'ResimGoster': value,
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+      if (instance.seriTakibiVar case final value?) 'SeriTakibiVar': value,
+      if (instance.depoKodu case final value?) 'DepoKodu': value,
+    };

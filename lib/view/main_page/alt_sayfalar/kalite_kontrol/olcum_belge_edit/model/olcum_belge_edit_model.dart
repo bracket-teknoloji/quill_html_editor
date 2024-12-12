@@ -231,35 +231,21 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
 
 extension OlcumEkleProsesExtensions on OlcumProsesModel? {
   bool get olculecekMi => this?.olculecekmi == "E" ? true : false;
-  String get sonucAdi {
-    switch (this?.sonuc) {
-      case null:
-        return "";
-      case "K":
-        return "Kabul";
-      case "R":
-        return "Ret";
-      case "S":
-        return "Şartlı Kabul (${this?.sartliKabulNedeniAciklama})";
-      default:
-        return "";
-    }
-  }
+  String get sonucAdi => switch (this?.sonuc) {
+        null => "",
+        "K" => "Kabul",
+        "R" => "Ret",
+        "S" => "Şartlı Kabul (${this?.sartliKabulNedeniAciklama})",
+        _ => "",
+      };
 
-  BadgeColorEnum get cardColor {
-    switch (this?.sonuc) {
-      case null:
-        return BadgeColorEnum.basarili;
-      case "K":
-        return BadgeColorEnum.basarili;
-      case "R":
-        return BadgeColorEnum.hata;
-      case "S":
-        return BadgeColorEnum.uyari;
-      default:
-        return BadgeColorEnum.uyari;
-    }
-  }
+  BadgeColorEnum get cardColor => switch (this?.sonuc) {
+        null => BadgeColorEnum.basarili,
+        "K" => BadgeColorEnum.basarili,
+        "R" => BadgeColorEnum.hata,
+        "S" => BadgeColorEnum.uyari,
+        _ => BadgeColorEnum.uyari,
+      };
 }
 
 extension OlcumOlcumlerModelExtensions on OlcumOlcumlerModel? {

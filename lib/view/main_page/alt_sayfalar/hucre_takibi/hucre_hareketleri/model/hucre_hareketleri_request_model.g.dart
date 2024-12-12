@@ -15,17 +15,9 @@ _$HucreHareketleriRequestModelImpl _$$HucreHareketleriRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$HucreHareketleriRequestModelImplToJson(
-    _$HucreHareketleriRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('FiltreKodu', instance.filtreKodu);
-  writeNotNull('StokKodu', instance.stokKodu);
-  return val;
-}
+        _$HucreHareketleriRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.filtreKodu case final value?) 'FiltreKodu': value,
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+    };

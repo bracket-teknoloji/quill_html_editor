@@ -20,22 +20,14 @@ _$HucreListesiModelImpl _$$HucreListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$HucreListesiModelImplToJson(
-    _$HucreListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('HUCRE_KODU', instance.hucreKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('SeriList', instance.seriList);
-  writeNotNull('EKSIYE_DUSEBILIR', instance.eksiyeDusebilir);
-  writeNotNull('NET_MIKTAR', instance.netMiktar);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  return val;
-}
+        _$HucreListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      if (instance.seriList case final value?) 'SeriList': value,
+      if (instance.eksiyeDusebilir case final value?) 'EKSIYE_DUSEBILIR': value,
+      if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+    };

@@ -19,21 +19,13 @@ _$YapilandirmaRehberiModelImpl _$$YapilandirmaRehberiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$YapilandirmaRehberiModelImplToJson(
-    _$YapilandirmaRehberiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('YAPACIK', instance.yapacik);
-  writeNotNull('KOD', instance.kod);
-  writeNotNull('KOD_ACIKLAMA', instance.kodAciklama);
-  writeNotNull('DEGER', instance.deger);
-  writeNotNull('DEGER_ACIKLAMA', instance.degerAciklama);
-  writeNotNull('OZELLIK_SIRA', instance.ozellikSira);
-  return val;
-}
+        _$YapilandirmaRehberiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.yapacik case final value?) 'YAPACIK': value,
+      if (instance.kod case final value?) 'KOD': value,
+      if (instance.kodAciklama case final value?) 'KOD_ACIKLAMA': value,
+      if (instance.deger case final value?) 'DEGER': value,
+      if (instance.degerAciklama case final value?) 'DEGER_ACIKLAMA': value,
+      if (instance.ozellikSira case final value?) 'OZELLIK_SIRA': value,
+    };

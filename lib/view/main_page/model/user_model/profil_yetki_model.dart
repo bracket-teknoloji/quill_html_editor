@@ -1964,8 +1964,6 @@ class ProfilYetkiModel {
   @JsonKey(name: "finans_Kasa_KacGunlukKayitlarListelensin")
   int? finansKasaKacGunlukKayitlarListelensin;
 
-
-
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);

@@ -28,30 +28,23 @@ _$EBelgeRequestModelImpl _$$EBelgeRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$EBelgeRequestModelImplToJson(
-    _$EBelgeRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BasimDurumu', instance.basimDurumu);
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  writeNotNull('EBelgeTuru', instance.eBelgeTuru);
-  writeNotNull('Islendi', instance.islendi);
-  writeNotNull('KayitTarihineGore', instance.kayitTarihineGore);
-  writeNotNull('KontrolEdildi', instance.kontrolEdildi);
-  writeNotNull('FaturaYonu', instance.faturaYonu);
-  writeNotNull('OnayDurumu', instance.onayDurumu);
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('Senaryo', instance.senaryo);
-  writeNotNull('Sirala', instance.sirala);
-  writeNotNull('Sorgulanmasin', instance.sorgulanmasin);
-  writeNotNull('SearchText', instance.searchText);
-  writeNotNull('Taslak', instance.taslak);
-  writeNotNull('ResmiBelgeNo', instance.resmiBelgeNo);
-  return val;
-}
+        _$EBelgeRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.basimDurumu case final value?) 'BasimDurumu': value,
+      if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+      if (instance.eBelgeTuru case final value?) 'EBelgeTuru': value,
+      if (instance.islendi case final value?) 'Islendi': value,
+      if (instance.kayitTarihineGore case final value?)
+        'KayitTarihineGore': value,
+      if (instance.kontrolEdildi case final value?) 'KontrolEdildi': value,
+      if (instance.faturaYonu case final value?) 'FaturaYonu': value,
+      if (instance.onayDurumu case final value?) 'OnayDurumu': value,
+      if (instance.sayfa case final value?) 'Sayfa': value,
+      if (instance.senaryo case final value?) 'Senaryo': value,
+      if (instance.sirala case final value?) 'Sirala': value,
+      if (instance.sorgulanmasin case final value?) 'Sorgulanmasin': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+      if (instance.taslak case final value?) 'Taslak': value,
+      if (instance.resmiBelgeNo case final value?) 'ResmiBelgeNo': value,
+    };

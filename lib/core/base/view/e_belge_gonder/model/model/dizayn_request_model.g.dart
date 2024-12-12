@@ -14,16 +14,8 @@ _$DizaynRequestModelImpl _$$DizaynRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DizaynRequestModelImplToJson(
-    _$DizaynRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ModulID', instance.modulId);
-  writeNotNull('ERPDizaynlari', instance.erpDizaynlari);
-  return val;
-}
+        _$DizaynRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.modulId case final value?) 'ModulID': value,
+      if (instance.erpDizaynlari case final value?) 'ERPDizaynlari': value,
+    };

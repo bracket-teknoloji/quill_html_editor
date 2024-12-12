@@ -16,16 +16,9 @@ _$OrtalamaVadeTarihiModelImpl _$$OrtalamaVadeTarihiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OrtalamaVadeTarihiModelImplToJson(
-    _$OrtalamaVadeTarihiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
-  writeNotNull('TUTAR', instance.tutar);
-  return val;
-}
+        _$OrtalamaVadeTarihiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.vadeTarihi?.toIso8601String() case final value?)
+        'VADE_TARIHI': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+    };

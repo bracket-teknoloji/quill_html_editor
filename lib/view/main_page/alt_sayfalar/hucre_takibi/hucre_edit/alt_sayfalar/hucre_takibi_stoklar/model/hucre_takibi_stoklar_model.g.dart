@@ -31,31 +31,27 @@ _$HucreTakibiStoklarModelImpl _$$HucreTakibiStoklarModelImplFromJson(
     );
 
 Map<String, dynamic> _$$HucreTakibiStoklarModelImplToJson(
-    _$HucreTakibiStoklarModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('NET_MIKTAR', instance.netMiktar);
-  writeNotNull('BAKIYE', instance.bakiye);
-  writeNotNull('BELGE_OLCU_BIRIM_KODU', instance.belgeOlcuBirimKodu);
-  writeNotNull('BELGE_OLCU_BIRIM_ADI', instance.belgeOlcuBirimAdi);
-  writeNotNull('STOK_OLCU_BIRIMI1', instance.stokOlcuBirimi1);
-  writeNotNull('KALEM_SAYISI', instance.kalemSayisi);
-  writeNotNull('HUCRE_KODU', instance.hucreKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('YAPACIK', instance.yapacik);
-  writeNotNull('OLCU_BIRIMI', instance.olcuBirimi);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('SERI_LIST', instance.seriList?.map((e) => e.toJson()).toList());
-  writeNotNull('EKSIYE_DUSEBILIR', instance.eksiyeDusebilir);
-  return val;
-}
+        _$HucreTakibiStoklarModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
+      if (instance.bakiye case final value?) 'BAKIYE': value,
+      if (instance.belgeOlcuBirimKodu case final value?)
+        'BELGE_OLCU_BIRIM_KODU': value,
+      if (instance.belgeOlcuBirimAdi case final value?)
+        'BELGE_OLCU_BIRIM_ADI': value,
+      if (instance.stokOlcuBirimi1 case final value?)
+        'STOK_OLCU_BIRIMI1': value,
+      if (instance.kalemSayisi case final value?) 'KALEM_SAYISI': value,
+      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.yapacik case final value?) 'YAPACIK': value,
+      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
+        'SERI_LIST': value,
+      if (instance.eksiyeDusebilir case final value?) 'EKSIYE_DUSEBILIR': value,
+    };

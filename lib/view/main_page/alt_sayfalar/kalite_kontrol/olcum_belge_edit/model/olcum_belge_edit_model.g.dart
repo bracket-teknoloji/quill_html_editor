@@ -30,30 +30,25 @@ _$OlcumBelgeEditModelImpl _$$OlcumBelgeEditModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumBelgeEditModelImplToJson(
-    _$OlcumBelgeEditModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BELGE_SIRA', instance.belgeSira);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('OPKODU', instance.opkodu);
-  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
-  writeNotNull('KAYIT_OPERATOR_KODU', instance.kayitOperatorKodu);
-  writeNotNull('BELGE', instance.belge?.map((e) => e.toJson()).toList());
-  writeNotNull('OLCUMLER', instance.olcumler?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'PROSESLER', instance.prosesler?.map((e) => e.toJson()).toList());
-  return val;
-}
+        _$OlcumBelgeEditModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.belgeSira case final value?) 'BELGE_SIRA': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.opkodu case final value?) 'OPKODU': value,
+      if (instance.kayitOperator case final value?) 'KAYIT_OPERATOR': value,
+      if (instance.kayitOperatorKodu case final value?)
+        'KAYIT_OPERATOR_KODU': value,
+      if (instance.belge?.map((e) => e.toJson()).toList() case final value?)
+        'BELGE': value,
+      if (instance.olcumler?.map((e) => e.toJson()).toList() case final value?)
+        'OLCUMLER': value,
+      if (instance.prosesler?.map((e) => e.toJson()).toList() case final value?)
+        'PROSESLER': value,
+    };
 
 _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
         Map<String, dynamic> json) =>
@@ -95,49 +90,44 @@ _$OlcumBelgeModelImpl _$$OlcumBelgeModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumBelgeModelImplToJson(
-    _$OlcumBelgeModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BELGE_SIRA', instance.belgeSira);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('YAPACIK', instance.yapacik);
-  writeNotNull('OLCUM_ADEDI', instance.olcumAdedi);
-  writeNotNull('KABUL_ADET', instance.kabulAdet);
-  writeNotNull('SARTLI_ADET', instance.sartliAdet);
-  writeNotNull('RET_ADET', instance.retAdet);
-  writeNotNull('OPKODU', instance.opkodu);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('BELGE_TURU', instance.belgeTuru);
-  writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('PROSES_VAR', instance.prosesVar);
-  writeNotNull('TEKNIK_RESIM_VARMI', instance.teknikResimVarmi);
-  writeNotNull('KONTROL_PLANI_VARMI', instance.kontrolPlaniVarmi);
-  writeNotNull('YARIM_OLCUM_YAPABILIRMI', instance.yarimOlcumYapabilirmi);
-  writeNotNull('OPKODU_TANIMI', instance.opkoduTanimi);
-  writeNotNull('ISTASYON_KODU', instance.istasyonKodu);
-  writeNotNull('ISTASYON_TANIMI', instance.istasyonTanimi);
-  writeNotNull('DAT_ADEDI', instance.datAdedi);
-  writeNotNull('SERI_SORULSUNMU', instance.seriSorulsunmu);
-  writeNotNull('TUR', instance.tur);
-  writeNotNull('SearchText', instance.searchText);
-  writeNotNull('Sayfa', instance.sayfa);
-  return val;
-}
+        _$OlcumBelgeModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.belgeSira case final value?) 'BELGE_SIRA': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.yapacik case final value?) 'YAPACIK': value,
+      if (instance.olcumAdedi case final value?) 'OLCUM_ADEDI': value,
+      if (instance.kabulAdet case final value?) 'KABUL_ADET': value,
+      if (instance.sartliAdet case final value?) 'SARTLI_ADET': value,
+      if (instance.retAdet case final value?) 'RET_ADET': value,
+      if (instance.opkodu case final value?) 'OPKODU': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.belgeTuru case final value?) 'BELGE_TURU': value,
+      if (instance.kalemAdedi case final value?) 'KALEM_ADEDI': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.prosesVar case final value?) 'PROSES_VAR': value,
+      if (instance.teknikResimVarmi case final value?)
+        'TEKNIK_RESIM_VARMI': value,
+      if (instance.kontrolPlaniVarmi case final value?)
+        'KONTROL_PLANI_VARMI': value,
+      if (instance.yarimOlcumYapabilirmi case final value?)
+        'YARIM_OLCUM_YAPABILIRMI': value,
+      if (instance.opkoduTanimi case final value?) 'OPKODU_TANIMI': value,
+      if (instance.istasyonKodu case final value?) 'ISTASYON_KODU': value,
+      if (instance.istasyonTanimi case final value?) 'ISTASYON_TANIMI': value,
+      if (instance.datAdedi case final value?) 'DAT_ADEDI': value,
+      if (instance.seriSorulsunmu case final value?) 'SERI_SORULSUNMU': value,
+      if (instance.tur case final value?) 'TUR': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+      if (instance.sayfa case final value?) 'Sayfa': value,
+    };
 
 _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
         Map<String, dynamic> json) =>
@@ -161,31 +151,26 @@ _$OlcumOlcumlerModelImpl _$$OlcumOlcumlerModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumOlcumlerModelImplToJson(
-    _$OlcumOlcumlerModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('BELGE_SIRA', instance.belgeSira);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('OLCUMLER_OPERATOR', instance.olcumlerOperator);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
-  writeNotNull('KAYIT_OPERATOR_KODU', instance.kayitOperatorKodu);
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  writeNotNull('KABUL_ADET', instance.kabulAdet);
-  writeNotNull('SARTLI_ADET', instance.sartliAdet);
-  writeNotNull('RET_ADET', instance.retAdet);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('TAMAMLANDI', instance.tamamlandi);
-  return val;
-}
+        _$OlcumOlcumlerModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.belgeSira case final value?) 'BELGE_SIRA': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.olcumlerOperator case final value?)
+        'OLCUMLER_OPERATOR': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.kayitOperator case final value?) 'KAYIT_OPERATOR': value,
+      if (instance.kayitOperatorKodu case final value?)
+        'KAYIT_OPERATOR_KODU': value,
+      if (instance.kayittarihi?.toIso8601String() case final value?)
+        'KAYITTARIHI': value,
+      if (instance.kabulAdet case final value?) 'KABUL_ADET': value,
+      if (instance.sartliAdet case final value?) 'SARTLI_ADET': value,
+      if (instance.retAdet case final value?) 'RET_ADET': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.tamamlandi case final value?) 'TAMAMLANDI': value,
+    };
 
 _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
         Map<String, dynamic> json) =>
@@ -226,48 +211,43 @@ _$OlcumProsesModelImpl _$$OlcumProsesModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumProsesModelImplToJson(
-    _$OlcumProsesModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('PROSES', instance.proses);
-  writeNotNull('KRITER', instance.kriter);
-  writeNotNull('KABUL_SARTI', instance.kabulSarti);
-  writeNotNull('TOLERANS', instance.tolerans);
-  writeNotNull('EKIPMAN', instance.ekipman);
-  writeNotNull('OLCULECEKMI', instance.olculecekmi);
-  writeNotNull('ONEMLIMI', instance.onemlimi);
-  writeNotNull('ALT_SINIR', instance.altSinir);
-  writeNotNull('UST_SINIR', instance.ustSinir);
-  writeNotNull('TUR', instance.tur);
-  writeNotNull('OLCUM_SIKLIGI', instance.olcumSikligi);
-  writeNotNull('NUMUNE_MIKTARI', instance.numuneMiktari);
-  writeNotNull('DETAY_ID', instance.detayId);
-  writeNotNull('PROSES_TIPI', instance.prosesTipi);
-  writeNotNull('SONUC', instance.sonuc);
-  writeNotNull('SARTLI_KABUL_NEDENI', instance.sartliKabulNedeni);
-  writeNotNull(
-      'SARTLI_KABUL_NEDENI_ACIKLAMA', instance.sartliKabulNedeniAciklama);
-  writeNotNull(
-      'OLCUM_OPERATOR_MODEL_OPERATOR', instance.olcumOperatorModelOperator);
-  writeNotNull('ONCEKI_OLCUDE_SARTLIVARMI', instance.oncekiOlcudeSartlivarmi);
-  writeNotNull('PROSES_ID', instance.prosesId);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('KAYIT_OPERATOR', instance.kayitOperator);
-  writeNotNull('OLCU_BIRIMI', instance.olcuBirimi);
-  writeNotNull('TALNO', instance.talno);
-  writeNotNull('FORM', instance.form);
-  writeNotNull('DETAY_ACIKLAMA', instance.detayAciklama);
-  writeNotNull('OLCUMLER', instance.olcumler?.map((e) => e.toJson()).toList());
-  return val;
-}
+        _$OlcumProsesModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.proses case final value?) 'PROSES': value,
+      if (instance.kriter case final value?) 'KRITER': value,
+      if (instance.kabulSarti case final value?) 'KABUL_SARTI': value,
+      if (instance.tolerans case final value?) 'TOLERANS': value,
+      if (instance.ekipman case final value?) 'EKIPMAN': value,
+      if (instance.olculecekmi case final value?) 'OLCULECEKMI': value,
+      if (instance.onemlimi case final value?) 'ONEMLIMI': value,
+      if (instance.altSinir case final value?) 'ALT_SINIR': value,
+      if (instance.ustSinir case final value?) 'UST_SINIR': value,
+      if (instance.tur case final value?) 'TUR': value,
+      if (instance.olcumSikligi case final value?) 'OLCUM_SIKLIGI': value,
+      if (instance.numuneMiktari case final value?) 'NUMUNE_MIKTARI': value,
+      if (instance.detayId case final value?) 'DETAY_ID': value,
+      if (instance.prosesTipi case final value?) 'PROSES_TIPI': value,
+      if (instance.sonuc case final value?) 'SONUC': value,
+      if (instance.sartliKabulNedeni case final value?)
+        'SARTLI_KABUL_NEDENI': value,
+      if (instance.sartliKabulNedeniAciklama case final value?)
+        'SARTLI_KABUL_NEDENI_ACIKLAMA': value,
+      if (instance.olcumOperatorModelOperator case final value?)
+        'OLCUM_OPERATOR_MODEL_OPERATOR': value,
+      if (instance.oncekiOlcudeSartlivarmi case final value?)
+        'ONCEKI_OLCUDE_SARTLIVARMI': value,
+      if (instance.prosesId case final value?) 'PROSES_ID': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.kayitOperator case final value?) 'KAYIT_OPERATOR': value,
+      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
+      if (instance.talno case final value?) 'TALNO': value,
+      if (instance.form case final value?) 'FORM': value,
+      if (instance.detayAciklama case final value?) 'DETAY_ACIKLAMA': value,
+      if (instance.olcumler?.map((e) => e.toJson()).toList() case final value?)
+        'OLCUMLER': value,
+    };
 
 _$OlcumEkleDetayModelImpl _$$OlcumEkleDetayModelImplFromJson(
         Map<String, dynamic> json) =>
@@ -280,17 +260,9 @@ _$OlcumEkleDetayModelImpl _$$OlcumEkleDetayModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumEkleDetayModelImplToJson(
-    _$OlcumEkleDetayModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DEGER', instance.deger);
-  writeNotNull('DETAY_ID', instance.detayId);
-  writeNotNull('ZAMAN', instance.zaman?.toIso8601String());
-  return val;
-}
+        _$OlcumEkleDetayModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.deger case final value?) 'DEGER': value,
+      if (instance.detayId case final value?) 'DETAY_ID': value,
+      if (instance.zaman?.toIso8601String() case final value?) 'ZAMAN': value,
+    };

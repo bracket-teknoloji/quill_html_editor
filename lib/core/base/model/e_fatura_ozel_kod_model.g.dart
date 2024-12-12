@@ -16,18 +16,10 @@ _$EFaturaOzelKodModelImpl _$$EFaturaOzelKodModelImplFromJson(
     );
 
 Map<String, dynamic> _$$EFaturaOzelKodModelImplToJson(
-    _$EFaturaOzelKodModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('TIP', instance.tip);
-  writeNotNull('TIP_ADI', instance.tipAdi);
-  writeNotNull('KOD', instance.kod);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  return val;
-}
+        _$EFaturaOzelKodModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.tip case final value?) 'TIP': value,
+      if (instance.tipAdi case final value?) 'TIP_ADI': value,
+      if (instance.kod case final value?) 'KOD': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+    };

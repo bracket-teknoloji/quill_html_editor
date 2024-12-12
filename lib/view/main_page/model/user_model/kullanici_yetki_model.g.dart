@@ -57,52 +57,53 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
-    _$KullaniciYetkiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('bagliPlasiyerler', instance.bagliPlasiyerler);
-  writeNotNull('eIrsOnEki', instance.eIrsOnEki);
-  writeNotNull('eIrsAmbarOnEki', instance.eIrsAmbarOnEki);
-  writeNotNull('yetkiliKasalar', instance.yetkiliKasalar);
-  writeNotNull('kkartiHesaplar', instance.kkartiHesaplar);
-  writeNotNull('kkartiKasalar', instance.kkartiKasalar);
-  writeNotNull('acikHesapLimiti', instance.acikHesapLimiti);
-  writeNotNull('acikHesapTolerans', instance.acikHesapTolerans);
-  writeNotNull(
-      'acikHesapLimitiBelgeTipleri', instance.acikHesapLimitiBelgeTipleri);
-  writeNotNull('stok_FiltreSQLTipi', instance.stokFiltreSQLTipi);
-  writeNotNull('cari_FiltreSQLTipi', instance.cariFiltreSQLTipi);
-  writeNotNull(
-      'hizliTahsilat_SozlesmeKodlari', instance.hizliTahsilatSozlesmeKodlari);
-  writeNotNull(
-      'siparis_MusSip_EkstraAlanlar', instance.siparisMusSipEkstraAlanlar);
-  writeNotNull('sirket_alisDepo', instance.sirketAlisDepo);
-  writeNotNull('sirket_satisDepo', instance.sirketSatisDepo);
-  writeNotNull('transfer_DAT_VarsayilanCikisDepo',
-      instance.transferDATVarsayilanCikisDepo);
-  writeNotNull('transfer_DAT_VarsayilanGirisDepo',
-      instance.transferDATVarsayilanGirisDepo);
-  writeNotNull('cariRehPlaEslesmesinBelgeTipleri',
-      instance.cariRehPlaEslesmesinBelgeTipleri);
-  writeNotNull('profilKodu', instance.profilKodu);
-  writeNotNull('sirket_aktifDepolar', instance.sirketAktifDepolar);
-  writeNotNull('sirket_DAT_YetkiliDepolar', instance.sirketDatYetkiliDepolar);
-  writeNotNull('ADMIN_MI', instance.adminMi);
-  writeNotNull('varsayilan_PlasiyerTanimi', instance.varsayilanPlasiyerTanimi);
-  writeNotNull('siparis_MusSip_BakiyesizStokSecilmesin',
-      instance.siparisMusSipBakiyesizStokSecilmesin);
-  writeNotNull('sevkiyat_SatisIrs_BakiyesizStokSecilmesin',
-      instance.sevkiyatSatisIrsBakiyesizStokSecilmesin);
-  writeNotNull('sevkiyat_SatisFat_BakiyesizStokSecilmesin',
-      instance.sevkiyatSatisFatBakiyesizStokSecilmesin);
-  writeNotNull('plasiyerKodu', instance.plasiyerKodu);
-  writeNotNull('varsayilan_PlasiyerKodu', instance.varsayilanPlasiyerKodu);
-  writeNotNull('kkartiTahsilatYontemi', instance.kkartiTahsilatYontemi);
-  return val;
-}
+        _$KullaniciYetkiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.bagliPlasiyerler case final value?)
+        'bagliPlasiyerler': value,
+      if (instance.eIrsOnEki case final value?) 'eIrsOnEki': value,
+      if (instance.eIrsAmbarOnEki case final value?) 'eIrsAmbarOnEki': value,
+      if (instance.yetkiliKasalar case final value?) 'yetkiliKasalar': value,
+      if (instance.kkartiHesaplar case final value?) 'kkartiHesaplar': value,
+      if (instance.kkartiKasalar case final value?) 'kkartiKasalar': value,
+      if (instance.acikHesapLimiti case final value?) 'acikHesapLimiti': value,
+      if (instance.acikHesapTolerans case final value?)
+        'acikHesapTolerans': value,
+      if (instance.acikHesapLimitiBelgeTipleri case final value?)
+        'acikHesapLimitiBelgeTipleri': value,
+      if (instance.stokFiltreSQLTipi case final value?)
+        'stok_FiltreSQLTipi': value,
+      if (instance.cariFiltreSQLTipi case final value?)
+        'cari_FiltreSQLTipi': value,
+      if (instance.hizliTahsilatSozlesmeKodlari case final value?)
+        'hizliTahsilat_SozlesmeKodlari': value,
+      if (instance.siparisMusSipEkstraAlanlar case final value?)
+        'siparis_MusSip_EkstraAlanlar': value,
+      if (instance.sirketAlisDepo case final value?) 'sirket_alisDepo': value,
+      if (instance.sirketSatisDepo case final value?) 'sirket_satisDepo': value,
+      if (instance.transferDATVarsayilanCikisDepo case final value?)
+        'transfer_DAT_VarsayilanCikisDepo': value,
+      if (instance.transferDATVarsayilanGirisDepo case final value?)
+        'transfer_DAT_VarsayilanGirisDepo': value,
+      if (instance.cariRehPlaEslesmesinBelgeTipleri case final value?)
+        'cariRehPlaEslesmesinBelgeTipleri': value,
+      if (instance.profilKodu case final value?) 'profilKodu': value,
+      if (instance.sirketAktifDepolar case final value?)
+        'sirket_aktifDepolar': value,
+      if (instance.sirketDatYetkiliDepolar case final value?)
+        'sirket_DAT_YetkiliDepolar': value,
+      if (instance.adminMi case final value?) 'ADMIN_MI': value,
+      if (instance.varsayilanPlasiyerTanimi case final value?)
+        'varsayilan_PlasiyerTanimi': value,
+      if (instance.siparisMusSipBakiyesizStokSecilmesin case final value?)
+        'siparis_MusSip_BakiyesizStokSecilmesin': value,
+      if (instance.sevkiyatSatisIrsBakiyesizStokSecilmesin case final value?)
+        'sevkiyat_SatisIrs_BakiyesizStokSecilmesin': value,
+      if (instance.sevkiyatSatisFatBakiyesizStokSecilmesin case final value?)
+        'sevkiyat_SatisFat_BakiyesizStokSecilmesin': value,
+      if (instance.plasiyerKodu case final value?) 'plasiyerKodu': value,
+      if (instance.varsayilanPlasiyerKodu case final value?)
+        'varsayilan_PlasiyerKodu': value,
+      if (instance.kkartiTahsilatYontemi case final value?)
+        'kkartiTahsilatYontemi': value,
+    };

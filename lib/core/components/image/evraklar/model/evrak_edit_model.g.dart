@@ -17,20 +17,12 @@ _$EvrakEditModelImpl _$$EvrakEditModelImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$EvrakEditModelImplToJson(
-    _$EvrakEditModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('BASE64_DATA', instance.base64Data);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BOYUT_BYTE', instance.boyutByte);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  return val;
-}
+        _$EvrakEditModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.base64Data case final value?) 'BASE64_DATA': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.boyutByte case final value?) 'BOYUT_BYTE': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+    };

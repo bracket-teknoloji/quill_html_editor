@@ -20,18 +20,11 @@ _$YapilandirmaProfilModelImpl _$$YapilandirmaProfilModelImplFromJson(
     );
 
 Map<String, dynamic> _$$YapilandirmaProfilModelImplToJson(
-    _$YapilandirmaProfilModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('OZELLIK_KODU', instance.ozellikKodu);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('DEGER', instance.deger?.map((e) => e?.toJson()).toList());
-  return val;
-}
+        _$YapilandirmaProfilModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.ozellikKodu case final value?) 'OZELLIK_KODU': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.deger?.map((e) => e?.toJson()).toList() case final value?)
+        'DEGER': value,
+    };

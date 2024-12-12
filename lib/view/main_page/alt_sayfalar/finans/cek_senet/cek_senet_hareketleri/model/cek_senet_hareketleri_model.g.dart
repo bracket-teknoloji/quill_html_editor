@@ -28,28 +28,20 @@ _$CekSenetHareketleriModelImpl _$$CekSenetHareketleriModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CekSenetHareketleriModelImplToJson(
-    _$CekSenetHareketleriModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('YERI', instance.yeri);
-  writeNotNull('DURUM', instance.durum);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('HESAP_KODU', instance.hesapKodu);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('ISLEM_ADI', instance.islemAdi);
-  writeNotNull('ALINAN_BORDRO_NO', instance.alinanBordroNo);
-  writeNotNull('DEVIR', instance.devir);
-  writeNotNull('NEREYE', instance.nereye);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('KAYITTARIHI', instance.kayittarihi);
-  return val;
-}
+        _$CekSenetHareketleriModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.yeri case final value?) 'YERI': value,
+      if (instance.durum case final value?) 'DURUM': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.islemAdi case final value?) 'ISLEM_ADI': value,
+      if (instance.alinanBordroNo case final value?) 'ALINAN_BORDRO_NO': value,
+      if (instance.devir case final value?) 'DEVIR': value,
+      if (instance.nereye case final value?) 'NEREYE': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.kayittarihi case final value?) 'KAYITTARIHI': value,
+    };

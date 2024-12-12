@@ -22,23 +22,15 @@ _$IsEmriHammaddeTakibiListesiModelImpl
         );
 
 Map<String, dynamic> _$$IsEmriHammaddeTakibiListesiModelImplToJson(
-    _$IsEmriHammaddeTakibiListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('TAKIPNO', instance.takipno);
-  writeNotNull('NFISEMRINO', instance.nfisemrino);
-  writeNotNull('ISEMRINO', instance.isemrino);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('YAPACIK', instance.yapacik);
-  writeNotNull('MAKINE_KODU', instance.makineKodu);
-  writeNotNull('MIKTAR', instance.miktar);
-  return val;
-}
+        _$IsEmriHammaddeTakibiListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.takipno case final value?) 'TAKIPNO': value,
+      if (instance.nfisemrino case final value?) 'NFISEMRINO': value,
+      if (instance.isemrino case final value?) 'ISEMRINO': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.yapacik case final value?) 'YAPACIK': value,
+      if (instance.makineKodu case final value?) 'MAKINE_KODU': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+    };

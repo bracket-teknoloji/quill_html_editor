@@ -18,19 +18,12 @@ _$IsEmriHammaddeTakibiDetayRequestModelImpl
         );
 
 Map<String, dynamic> _$$IsEmriHammaddeTakibiDetayRequestModelImplToJson(
-    _$IsEmriHammaddeTakibiDetayRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('TAKIPNO', instance.takipno);
-  writeNotNull('TIP', instance.tip);
-  writeNotNull('BARCODE', instance.barcode);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('REFERANS_STOK_KODU', instance.referansStokKodu);
-  return val;
-}
+        _$IsEmriHammaddeTakibiDetayRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.takipno case final value?) 'TAKIPNO': value,
+      if (instance.tip case final value?) 'TIP': value,
+      if (instance.barcode case final value?) 'BARCODE': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.referansStokKodu case final value?)
+        'REFERANS_STOK_KODU': value,
+    };

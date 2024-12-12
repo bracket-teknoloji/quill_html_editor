@@ -189,7 +189,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
         BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
           if (element.olcuBirimCarpani != null) {
             element.gercekMiktar = element.miktar;
-            element.miktar = (element.miktar ?? 0) * ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null) ? 1 : element.olcuBirimCarpani!) ;
+            element.miktar = (element.miktar ?? 0) * ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null) ? 1 : element.olcuBirimCarpani!);
           }
           return element;
         }).toList();
@@ -545,7 +545,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           ?.map(
             (e) => e
               ..olcuBirimKodu = 1
-              ..miktar = (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!) 
+              ..miktar = (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!)
               ..gercekMiktar = null
               ..olcuBirimCarpani = null,
           )
@@ -756,16 +756,10 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
 
   bool get kaydetButonuYetki {
     if (widget.model.baseEditEnum == BaseEditEnum.goruntule) return false;
-    switch (widget.model.baseEditEnum) {
-      case BaseEditEnum.ekle:
-      case BaseEditEnum.kopyala:
-      case BaseEditEnum.revize:
-      case BaseEditEnum.taslak:
-        return widget.model.editTipiEnum?.eklensinMi ?? false;
-      case BaseEditEnum.duzenle:
-        return widget.model.editTipiEnum?.duzenlensinMi ?? false;
-      default:
-        return false;
-    }
+    return switch (widget.model.baseEditEnum) {
+      BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => widget.model.editTipiEnum?.eklensinMi ?? false,
+      BaseEditEnum.duzenle => widget.model.editTipiEnum?.duzenlensinMi ?? false,
+      _ => false,
+    };
   }
 }

@@ -21,21 +21,13 @@ _$DekontListesiModelImpl _$$DekontListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DekontListesiModelImplToJson(
-    _$DekontListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('SERI', instance.seri);
-  writeNotNull('DEKONT_NO', instance.dekontNo);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('KALEM_SAYISI', instance.kalemSayisi);
-  writeNotNull('BORC_TOPLAMI', instance.borcToplami);
-  writeNotNull('SERI_ADI', instance.seriAdi);
-  return val;
-}
+        _$DekontListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.seri case final value?) 'SERI': value,
+      if (instance.dekontNo case final value?) 'DEKONT_NO': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.kalemSayisi case final value?) 'KALEM_SAYISI': value,
+      if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
+      if (instance.seriAdi case final value?) 'SERI_ADI': value,
+    };

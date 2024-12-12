@@ -18,20 +18,12 @@ TemsilciProfilRequestModel _$TemsilciProfilRequestModelFromJson(
     );
 
 Map<String, dynamic> _$TemsilciProfilRequestModelToJson(
-    TemsilciProfilRequestModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('DonemTipi', instance.donemTipi);
-  writeNotNull('SATIS_IRS_DAHIL', instance.satisIrsDahil);
-  writeNotNull('CariVKN', instance.cariVKN);
-  writeNotNull('KDVDahil', instance.kdvDahil);
-  writeNotNull('IadeDurumu', instance.iadeDurumu);
-  return val;
-}
+        TemsilciProfilRequestModel instance) =>
+    <String, dynamic>{
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.donemTipi case final value?) 'DonemTipi': value,
+      if (instance.satisIrsDahil case final value?) 'SATIS_IRS_DAHIL': value,
+      if (instance.cariVKN case final value?) 'CariVKN': value,
+      if (instance.kdvDahil case final value?) 'KDVDahil': value,
+      if (instance.iadeDurumu case final value?) 'IadeDurumu': value,
+    };

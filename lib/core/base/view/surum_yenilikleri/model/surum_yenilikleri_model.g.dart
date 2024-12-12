@@ -25,24 +25,17 @@ _$SurumYenilikleriModelImpl _$$SurumYenilikleriModelImplFromJson(
     );
 
 Map<String, dynamic> _$$SurumYenilikleriModelImplToJson(
-    _$SurumYenilikleriModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SURUM_KODU', instance.surumKodu);
-  writeNotNull('VERSIYON', instance.versiyon);
-  writeNotNull('SURUM_ADI', instance.surumAdi);
-  writeNotNull('YER', instance.yer);
-  writeNotNull('LISTE', instance.liste?.map((e) => e.toJson()).toList());
-  writeNotNull('LIST_ACIKLAMA', instance.listAciklama);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  return val;
-}
+        _$SurumYenilikleriModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.surumKodu case final value?) 'SURUM_KODU': value,
+      if (instance.versiyon case final value?) 'VERSIYON': value,
+      if (instance.surumAdi case final value?) 'SURUM_ADI': value,
+      if (instance.yer case final value?) 'YER': value,
+      if (instance.liste?.map((e) => e.toJson()).toList() case final value?)
+        'LISTE': value,
+      if (instance.listAciklama case final value?) 'LIST_ACIKLAMA': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+    };
 
 _$ValueListImpl _$$ValueListImplFromJson(Map<String, dynamic> json) =>
     _$ValueListImpl(
@@ -51,17 +44,9 @@ _$ValueListImpl _$$ValueListImplFromJson(Map<String, dynamic> json) =>
       talepEden: json['TALEP_EDEN'] as bool?,
     );
 
-Map<String, dynamic> _$$ValueListImplToJson(_$ValueListImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('TALEP_EDEN', instance.talepEden);
-  return val;
-}
+Map<String, dynamic> _$$ValueListImplToJson(_$ValueListImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.talepEden case final value?) 'TALEP_EDEN': value,
+    };

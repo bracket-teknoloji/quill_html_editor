@@ -104,6 +104,19 @@ mixin _$SiparisTeslimRaporuViewModel
   }
 
   @override
+  void setTeslimCariKodu(String? value) {
+    final _$actionInfo =
+        _$_SiparisTeslimRaporuViewModelBaseActionController.startAction(
+            name: '_SiparisTeslimRaporuViewModelBase.setTeslimCariKodu');
+    try {
+      return super.setTeslimCariKodu(value);
+    } finally {
+      _$_SiparisTeslimRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setBelgeNo(String? value) {
     final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
         .startAction(name: '_SiparisTeslimRaporuViewModelBase.setBelgeNo');

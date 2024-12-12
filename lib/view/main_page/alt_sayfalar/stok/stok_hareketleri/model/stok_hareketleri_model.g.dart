@@ -42,43 +42,39 @@ StokHareketleriModel _$StokHareketleriModelFromJson(
       ..seriDurumAdi = json['SERI_DURUM_ADI'] as String?;
 
 Map<String, dynamic> _$StokHareketleriModelToJson(
-    StokHareketleriModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('CIKIS_ISLEMI', instance.cikisIslemi);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('FISNO', instance.fisno);
-  writeNotNull('STHAR_GCMIK', instance.stharGcmik);
-  writeNotNull('STHAR_TARIH', instance.stharTarih?.toIso8601String());
-  writeNotNull('STHAR_NF', instance.stharNf);
-  writeNotNull('STHAR_BF', instance.stharBf);
-  writeNotNull('STHAR_KDV', instance.stharKdv);
-  writeNotNull('HAREKET_TURU', instance.hareketTuru);
-  writeNotNull('HAREKET_TURU_ACIKLAMA', instance.hareketTuruAciklama);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BELGE_TIPI_ACIKLAMA', instance.belgeTipiAciklama);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('AMBAR_ISLEMI', instance.ambarIslemi);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('DEPO_ADI', instance.depoAdi);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('DOVIZ_FIYATI', instance.dovizFiyati);
-  writeNotNull('SERI_AKTIF', instance.seriAktif);
-  writeNotNull('EKALAN1', instance.ekalan1);
-  writeNotNull('EKALAN2', instance.ekalan2);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('SERI_DURUM_ADI', instance.seriDurumAdi);
-  return val;
-}
+        StokHareketleriModel instance) =>
+    <String, dynamic>{
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.cikisIslemi case final value?) 'CIKIS_ISLEMI': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.fisno case final value?) 'FISNO': value,
+      if (instance.stharGcmik case final value?) 'STHAR_GCMIK': value,
+      if (instance.stharTarih?.toIso8601String() case final value?)
+        'STHAR_TARIH': value,
+      if (instance.stharNf case final value?) 'STHAR_NF': value,
+      if (instance.stharBf case final value?) 'STHAR_BF': value,
+      if (instance.stharKdv case final value?) 'STHAR_KDV': value,
+      if (instance.hareketTuru case final value?) 'HAREKET_TURU': value,
+      if (instance.hareketTuruAciklama case final value?)
+        'HAREKET_TURU_ACIKLAMA': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.belgeTipiAciklama case final value?)
+        'BELGE_TIPI_ACIKLAMA': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.ambarIslemi case final value?) 'AMBAR_ISLEMI': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.depoAdi case final value?) 'DEPO_ADI': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.dovizFiyati case final value?) 'DOVIZ_FIYATI': value,
+      if (instance.seriAktif case final value?) 'SERI_AKTIF': value,
+      if (instance.ekalan1 case final value?) 'EKALAN1': value,
+      if (instance.ekalan2 case final value?) 'EKALAN2': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.plasiyerAciklama case final value?)
+        'PLASIYER_ACIKLAMA': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.seriDurumAdi case final value?) 'SERI_DURUM_ADI': value,
+    };

@@ -35,33 +35,26 @@ _$HucreHareketleriModelImpl _$$HucreHareketleriModelImplFromJson(
     );
 
 Map<String, dynamic> _$$HucreHareketleriModelImplToJson(
-    _$HucreHareketleriModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('GC', instance.gc);
-  writeNotNull('HUCRE_KODU', instance.hucreKodu);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('NET_MIKTAR', instance.netMiktar);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('HAREKET_TURU', instance.hareketTuru);
-  writeNotNull('HAREKET_ADI', instance.hareketAdi);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('EKSI_BAKIYE', instance.eksiBakiye);
-  writeNotNull('STOK_OLCU_BIRIMI', instance.stokOlcuBirimi);
-  writeNotNull('STHAR_FISNO', instance.stharFisno);
-  writeNotNull('STHAR_INC', instance.stharInc);
-  writeNotNull('YAPKOD', instance.yapkod);
-  return val;
-}
+        _$HucreHareketleriModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.gc case final value?) 'GC': value,
+      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.hareketTuru case final value?) 'HAREKET_TURU': value,
+      if (instance.hareketAdi case final value?) 'HAREKET_ADI': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.kayittarihi?.toIso8601String() case final value?)
+        'KAYITTARIHI': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      if (instance.eksiBakiye case final value?) 'EKSI_BAKIYE': value,
+      if (instance.stokOlcuBirimi case final value?) 'STOK_OLCU_BIRIMI': value,
+      if (instance.stharFisno case final value?) 'STHAR_FISNO': value,
+      if (instance.stharInc case final value?) 'STHAR_INC': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+    };

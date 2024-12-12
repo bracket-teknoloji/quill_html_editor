@@ -32,6 +32,8 @@ abstract class _SiparisTeslimRaporuViewModelBase with Store {
   @action
   void setCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
   @action
+  void setTeslimCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(teslimCariKodu: value);
+  @action
   void setBelgeNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
   @action
   void setVergiNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(vergiNo: value);

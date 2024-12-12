@@ -344,7 +344,7 @@ class CacheManager {
   static void removeAccounts(String key) => accountsBox.delete(key);
   static void removeFavoriWithIndex(int index) => favorilerBox.deleteAt(index);
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
-  static void removeSiparisEditList(String belgeNo) {    
+  static void removeSiparisEditList(String belgeNo) {
     final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
     if (list != null) {
       list.removeWhere((element) => element.belgeNo == belgeNo);
@@ -390,6 +390,7 @@ class CacheManager {
     );
     return true;
   }
+
   static void removeTransferEdit(String key) => transferEditBox.delete(key);
   static void removeTransferEditList(String belgeNo) {
     final list = transferEditListBox.get(StaticVariables.getSiparisString)?.list;

@@ -13,17 +13,9 @@ _$SeriUretModelImpl _$$SeriUretModelImplFromJson(Map<String, dynamic> json) =>
       sonNo: (json['SON_NO'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$SeriUretModelImplToJson(_$SeriUretModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('SON_NO', instance.sonNo);
-  return val;
-}
+Map<String, dynamic> _$$SeriUretModelImplToJson(_$SeriUretModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.sonNo case final value?) 'SON_NO': value,
+    };

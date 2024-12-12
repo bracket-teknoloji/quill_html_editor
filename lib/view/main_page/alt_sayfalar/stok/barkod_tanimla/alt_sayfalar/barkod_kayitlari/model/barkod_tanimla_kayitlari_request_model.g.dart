@@ -15,16 +15,8 @@ _$BarkodTanimlaKayitlariRequestModelImpl
         );
 
 Map<String, dynamic> _$$BarkodTanimlaKayitlariRequestModelImplToJson(
-    _$BarkodTanimlaKayitlariRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('StokKodu', instance.stokKodu);
-  writeNotNull('KayitTipi', instance.kayitTipi);
-  return val;
-}
+        _$BarkodTanimlaKayitlariRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+      if (instance.kayitTipi case final value?) 'KayitTipi': value,
+    };

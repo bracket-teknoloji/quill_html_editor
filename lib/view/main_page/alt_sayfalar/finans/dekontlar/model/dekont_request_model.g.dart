@@ -15,17 +15,9 @@ _$DekontRequestModelImpl _$$DekontRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DekontRequestModelImplToJson(
-    _$DekontRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('SearchText', instance.searchText);
-  return val;
-}
+        _$DekontRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.sayfa case final value?) 'Sayfa': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+    };

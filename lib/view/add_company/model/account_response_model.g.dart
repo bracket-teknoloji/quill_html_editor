@@ -146,39 +146,37 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..bracketCihazi = json['BRACKET_CIHAZI'] as bool?;
 
 Map<String, dynamic> _$AccountResponseModelToJson(
-    AccountResponseModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('FIRMA', instance.firma);
-  writeNotNull('EMAIL', instance.email);
-  writeNotNull('PAROLA', instance.parola);
-  writeNotNull('PICKER_LISANSI_VAR', instance.pickerLisansiVar);
-  writeNotNull('WS_LAN', instance.wsLan);
-  writeNotNull('WS_WAN', instance.wsWan);
-  writeNotNull('WEB_SERVIS', instance.webServis);
-  writeNotNull('LISANS_BITIS_TARIHI', instance.lisansBitisTarihi);
-  writeNotNull('KULLANICI_SAYISI', instance.kullaniciSayisi);
-  writeNotNull('FIRMA_KISA_ADI', instance.firmaKisaAdi);
-  writeNotNull('SOZLESME_BITIS_TARIHI', instance.sozlesmeBitisTarihi);
-  writeNotNull('SOZLESME_BITIS_KALAN_GUN', instance.sozlesmeBitisKalanGun);
-  writeNotNull('KARSILAMA_MESAJI', instance.karsilamaMesaji);
-  writeNotNull('KARSILAMA_RESIM_URL', instance.karsilamaResimUrl);
-  writeNotNull('KARSILAMA_SANIYE', instance.karsilamaSaniye);
-  writeNotNull('GUNCELLEME_VARMI', instance.guncellemeVarmi);
-  writeNotNull('MAX_APK_VERSION', instance.maxApkVersion);
-  writeNotNull('MAX_WS_VERSION', instance.maxWsVersion);
-  writeNotNull('DEMO_BITIS_TARIHI', instance.demoBitisTarihi);
-  writeNotNull('UZAKTAN_MI', instance.uzaktanMi);
-  writeNotNull('SERVICE_DEBUG', instance.serviceDebug);
-  writeNotNull('BAYI_KODU', instance.bayiKodu);
-  writeNotNull('BAYI_EMAIL', instance.bayiEmail);
-  writeNotNull('BAYI_UNVAN', instance.bayiUnvan);
-  writeNotNull('BRACKET_CIHAZI', instance.bracketCihazi);
-  return val;
-}
+        AccountResponseModel instance) =>
+    <String, dynamic>{
+      if (instance.firma case final value?) 'FIRMA': value,
+      if (instance.email case final value?) 'EMAIL': value,
+      if (instance.parola case final value?) 'PAROLA': value,
+      if (instance.pickerLisansiVar case final value?)
+        'PICKER_LISANSI_VAR': value,
+      if (instance.wsLan case final value?) 'WS_LAN': value,
+      if (instance.wsWan case final value?) 'WS_WAN': value,
+      if (instance.webServis case final value?) 'WEB_SERVIS': value,
+      if (instance.lisansBitisTarihi case final value?)
+        'LISANS_BITIS_TARIHI': value,
+      if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
+      if (instance.firmaKisaAdi case final value?) 'FIRMA_KISA_ADI': value,
+      if (instance.sozlesmeBitisTarihi case final value?)
+        'SOZLESME_BITIS_TARIHI': value,
+      if (instance.sozlesmeBitisKalanGun case final value?)
+        'SOZLESME_BITIS_KALAN_GUN': value,
+      if (instance.karsilamaMesaji case final value?) 'KARSILAMA_MESAJI': value,
+      if (instance.karsilamaResimUrl case final value?)
+        'KARSILAMA_RESIM_URL': value,
+      if (instance.karsilamaSaniye case final value?) 'KARSILAMA_SANIYE': value,
+      if (instance.guncellemeVarmi case final value?) 'GUNCELLEME_VARMI': value,
+      if (instance.maxApkVersion case final value?) 'MAX_APK_VERSION': value,
+      if (instance.maxWsVersion case final value?) 'MAX_WS_VERSION': value,
+      if (instance.demoBitisTarihi case final value?)
+        'DEMO_BITIS_TARIHI': value,
+      if (instance.uzaktanMi case final value?) 'UZAKTAN_MI': value,
+      if (instance.serviceDebug case final value?) 'SERVICE_DEBUG': value,
+      if (instance.bayiKodu case final value?) 'BAYI_KODU': value,
+      if (instance.bayiEmail case final value?) 'BAYI_EMAIL': value,
+      if (instance.bayiUnvan case final value?) 'BAYI_UNVAN': value,
+      if (instance.bracketCihazi case final value?) 'BRACKET_CIHAZI': value,
+    };

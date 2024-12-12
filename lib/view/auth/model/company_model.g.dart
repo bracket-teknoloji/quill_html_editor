@@ -12,18 +12,10 @@ CompanyModel _$CompanyModelFromJson(Map<String, dynamic> json) => CompanyModel()
   ..devSirket = json['DEVSIRKET'] as String?
   ..isDevredilmis = json['isDevredilmis'] as bool?;
 
-Map<String, dynamic> _$CompanyModelToJson(CompanyModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SIRKET', instance.company);
-  writeNotNull('YIL', instance.year);
-  writeNotNull('DEVSIRKET', instance.devSirket);
-  writeNotNull('isDevredilmis', instance.isDevredilmis);
-  return val;
-}
+Map<String, dynamic> _$CompanyModelToJson(CompanyModel instance) =>
+    <String, dynamic>{
+      if (instance.company case final value?) 'SIRKET': value,
+      if (instance.year case final value?) 'YIL': value,
+      if (instance.devSirket case final value?) 'DEVSIRKET': value,
+      if (instance.isDevredilmis case final value?) 'isDevredilmis': value,
+    };

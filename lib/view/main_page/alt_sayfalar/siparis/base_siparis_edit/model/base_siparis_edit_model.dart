@@ -970,16 +970,10 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     }
   }
 
-  bool get silinebilirMi {
-    switch (efaturaDurumu) {
-      case "TMM":
-      case "BEK":
-      case "TAS":
-        return false;
-      default:
-        return true;
-    }
-  }
+  bool get silinebilirMi => switch (efaturaDurumu) {
+        "TMM" || "BEK" || "TAS" => false,
+        _ => true,
+      };
 
   double get genelDovizliToplamTutar {
     dovizTutari = kalemList?.map((e) => e.dovizAdi != null ? e.dovizBrutTutar : 0).sum.toDouble() ?? 0;

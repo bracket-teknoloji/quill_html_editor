@@ -96,89 +96,86 @@ _$TalepTeklifListesiModelImpl _$$TalepTeklifListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$TalepTeklifListesiModelImplToJson(
-    _$TalepTeklifListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('CARI_DOVIZLI', instance.cariDovizli);
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('TESLIM_TARIHI', instance.teslimTarihi?.toIso8601String());
-  writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
-  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
-  writeNotNull('GENEL_ISKONTO1', instance.genelIskonto1);
-  writeNotNull('GENEL_ISKONTO2', instance.genelIskonto2);
-  writeNotNull('GENEL_ISKONTO3', instance.genelIskonto3);
-  writeNotNull('GENEL_TOPLAM', instance.genelToplam);
-  writeNotNull('GEN_ISK1_O', instance.genIsk1O);
-  writeNotNull('GENISK1_TIPI', instance.genisk1Tipi);
-  writeNotNull('GEN_ISK2_O', instance.genIsk2O);
-  writeNotNull('GEN_ISK3_O', instance.genIsk3O);
-  writeNotNull('KALAN_MIKTAR', instance.kalanMiktar);
-  writeNotNull('KDV', instance.kdv);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('TAMAMLANAN_MIKTAR', instance.tamamlananMiktar);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('GENISK3_TIPI', instance.genisk3Tipi);
-  writeNotNull('KALEM_ADEDI', instance.kalemAdedi);
-  writeNotNull('TIPI', instance.tipi);
-  writeNotNull('VADE_GUNU', instance.vadeGunu);
-  writeNotNull('TEMP_SIP_LIST', instance.tempSipList);
-  writeNotNull(
-      'KALEM_LIST', instance.kalemList?.map((e) => e.toJson()).toList());
-  writeNotNull('ACIK1', instance.acik1);
-  writeNotNull('ACIK2', instance.acik2);
-  writeNotNull('ACIK3', instance.acik3);
-  writeNotNull('ACIK4', instance.acik4);
-  writeNotNull('ACIK5', instance.acik5);
-  writeNotNull('ACIK6', instance.acik6);
-  writeNotNull('ACIK7', instance.acik7);
-  writeNotNull('ACIK8', instance.acik8);
-  writeNotNull('ACIK9', instance.acik9);
-  writeNotNull('ACIK10', instance.acik10);
-  writeNotNull('ACIK11', instance.acik11);
-  writeNotNull('ACIK12', instance.acik12);
-  writeNotNull('ACIK13', instance.acik13);
-  writeNotNull('ACIK14', instance.acik14);
-  writeNotNull('ACIK15', instance.acik15);
-  writeNotNull('ACIK16', instance.acik16);
-  writeNotNull('BELGE_KODU', instance.belgeKodu);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TURU', instance.belgeTuru);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('C_YEDEK6', instance.cYedek6);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('EK_ACIKLAMA', instance.ekAciklama);
-  writeNotNull('FATURALASTI', instance.faturalasti);
-  writeNotNull('KASA_KODU', instance.kasaKodu);
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('KDV_DAHIL', instance.kdvDahil);
-  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('SIPARISLESTI', instance.siparislesti);
-  writeNotNull('EK_ACIK1', instance.ekAcik1);
-  writeNotNull('EK_ACIK10', instance.ekAcik10);
-  writeNotNull('EK_ACIK11', instance.ekAcik11);
-  writeNotNull('EK_ACIK12', instance.ekAcik12);
-  writeNotNull('EK_ACIK13', instance.ekAcik13);
-  writeNotNull('EK_ACIK14', instance.ekAcik14);
-  writeNotNull('EK_ACIK15', instance.ekAcik15);
-  writeNotNull('EK_ACIK16', instance.ekAcik16);
-  writeNotNull('EK_ACIK2', instance.ekAcik2);
-  writeNotNull('EK_ACIK3', instance.ekAcik3);
-  writeNotNull('EK_ACIK4', instance.ekAcik4);
-  writeNotNull('EK_ACIK5', instance.ekAcik5);
-  writeNotNull('EK_ACIK6', instance.ekAcik6);
-  writeNotNull('EK_ACIK7', instance.ekAcik7);
-  writeNotNull('EK_ACIK8', instance.ekAcik8);
-  writeNotNull('EK_ACIK9', instance.ekAcik9);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('TAG', instance.tag);
-  return val;
-}
+        _$TalepTeklifListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.cariDovizli case final value?) 'CARI_DOVIZLI': value,
+      if (instance.kayittarihi?.toIso8601String() case final value?)
+        'KAYITTARIHI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.teslimTarihi?.toIso8601String() case final value?)
+        'TESLIM_TARIHI': value,
+      if (instance.vadeTarihi?.toIso8601String() case final value?)
+        'VADE_TARIHI': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.genelIskonto1 case final value?) 'GENEL_ISKONTO1': value,
+      if (instance.genelIskonto2 case final value?) 'GENEL_ISKONTO2': value,
+      if (instance.genelIskonto3 case final value?) 'GENEL_ISKONTO3': value,
+      if (instance.genelToplam case final value?) 'GENEL_TOPLAM': value,
+      if (instance.genIsk1O case final value?) 'GEN_ISK1_O': value,
+      if (instance.genisk1Tipi case final value?) 'GENISK1_TIPI': value,
+      if (instance.genIsk2O case final value?) 'GEN_ISK2_O': value,
+      if (instance.genIsk3O case final value?) 'GEN_ISK3_O': value,
+      if (instance.kalanMiktar case final value?) 'KALAN_MIKTAR': value,
+      if (instance.kdv case final value?) 'KDV': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.tamamlananMiktar case final value?)
+        'TAMAMLANAN_MIKTAR': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.genisk3Tipi case final value?) 'GENISK3_TIPI': value,
+      if (instance.kalemAdedi case final value?) 'KALEM_ADEDI': value,
+      if (instance.tipi case final value?) 'TIPI': value,
+      if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
+      if (instance.tempSipList case final value?) 'TEMP_SIP_LIST': value,
+      if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?)
+        'KALEM_LIST': value,
+      if (instance.acik1 case final value?) 'ACIK1': value,
+      if (instance.acik2 case final value?) 'ACIK2': value,
+      if (instance.acik3 case final value?) 'ACIK3': value,
+      if (instance.acik4 case final value?) 'ACIK4': value,
+      if (instance.acik5 case final value?) 'ACIK5': value,
+      if (instance.acik6 case final value?) 'ACIK6': value,
+      if (instance.acik7 case final value?) 'ACIK7': value,
+      if (instance.acik8 case final value?) 'ACIK8': value,
+      if (instance.acik9 case final value?) 'ACIK9': value,
+      if (instance.acik10 case final value?) 'ACIK10': value,
+      if (instance.acik11 case final value?) 'ACIK11': value,
+      if (instance.acik12 case final value?) 'ACIK12': value,
+      if (instance.acik13 case final value?) 'ACIK13': value,
+      if (instance.acik14 case final value?) 'ACIK14': value,
+      if (instance.acik15 case final value?) 'ACIK15': value,
+      if (instance.acik16 case final value?) 'ACIK16': value,
+      if (instance.belgeKodu case final value?) 'BELGE_KODU': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTuru case final value?) 'BELGE_TURU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cYedek6 case final value?) 'C_YEDEK6': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.ekAciklama case final value?) 'EK_ACIKLAMA': value,
+      if (instance.faturalasti case final value?) 'FATURALASTI': value,
+      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.kdvDahil case final value?) 'KDV_DAHIL': value,
+      if (instance.plasiyerAciklama case final value?)
+        'PLASIYER_ACIKLAMA': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.siparislesti case final value?) 'SIPARISLESTI': value,
+      if (instance.ekAcik1 case final value?) 'EK_ACIK1': value,
+      if (instance.ekAcik10 case final value?) 'EK_ACIK10': value,
+      if (instance.ekAcik11 case final value?) 'EK_ACIK11': value,
+      if (instance.ekAcik12 case final value?) 'EK_ACIK12': value,
+      if (instance.ekAcik13 case final value?) 'EK_ACIK13': value,
+      if (instance.ekAcik14 case final value?) 'EK_ACIK14': value,
+      if (instance.ekAcik15 case final value?) 'EK_ACIK15': value,
+      if (instance.ekAcik16 case final value?) 'EK_ACIK16': value,
+      if (instance.ekAcik2 case final value?) 'EK_ACIK2': value,
+      if (instance.ekAcik3 case final value?) 'EK_ACIK3': value,
+      if (instance.ekAcik4 case final value?) 'EK_ACIK4': value,
+      if (instance.ekAcik5 case final value?) 'EK_ACIK5': value,
+      if (instance.ekAcik6 case final value?) 'EK_ACIK6': value,
+      if (instance.ekAcik7 case final value?) 'EK_ACIK7': value,
+      if (instance.ekAcik8 case final value?) 'EK_ACIK8': value,
+      if (instance.ekAcik9 case final value?) 'EK_ACIK9': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.tag case final value?) 'TAG': value,
+    };

@@ -246,6 +246,9 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   void setCari(String? value) => faturaRequestModel = faturaRequestModel.copyWith(cariKodu: value);
 
   @action
+  void setTeslimCari(String? value) => faturaRequestModel = faturaRequestModel.copyWith(teslimCariKodu: value);
+
+  @action
   void setCariTipi(String? value) => faturaRequestModel = faturaRequestModel.copyWith(cariTipi: value);
 
   @action

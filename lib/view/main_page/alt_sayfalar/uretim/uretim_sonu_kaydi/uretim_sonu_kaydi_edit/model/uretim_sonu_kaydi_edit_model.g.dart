@@ -30,30 +30,23 @@ _$UretimSonuKaydiEditModelImpl _$$UretimSonuKaydiEditModelImplFromJson(
     );
 
 Map<String, dynamic> _$$UretimSonuKaydiEditModelImplToJson(
-    _$UretimSonuKaydiEditModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TARIHI', instance.belgeTarihi?.toIso8601String());
-  writeNotNull('CIKIS_DEPO', instance.cikisDepo);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('DEPO_ONCELIGI', instance.depoOnceligi);
-  writeNotNull('EkAlanlar', instance.ekAlanlar?.toJson());
-  writeNotNull('GIRIS_DEPO', instance.girisDepo);
-  writeNotNull('GUID', instance.guid);
-  writeNotNull(
-      'KalemList', instance.kalemList?.map((e) => e.toJson()).toList());
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('TARIH', instance.tarih);
-  writeNotNull('_YeniKayit', instance.yeniKayit);
-  return val;
-}
+        _$UretimSonuKaydiEditModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTarihi?.toIso8601String() case final value?)
+        'BELGE_TARIHI': value,
+      if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.depoOnceligi case final value?) 'DEPO_ONCELIGI': value,
+      if (instance.ekAlanlar?.toJson() case final value?) 'EkAlanlar': value,
+      if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
+      if (instance.guid case final value?) 'GUID': value,
+      if (instance.kalemList?.map((e) => e.toJson()).toList() case final value?)
+        'KalemList': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.tarih case final value?) 'TARIH': value,
+      if (instance.yeniKayit case final value?) '_YeniKayit': value,
+    };
 
 _$EkAlanlarImpl _$$EkAlanlarImplFromJson(Map<String, dynamic> json) =>
     _$EkAlanlarImpl(
@@ -62,17 +55,9 @@ _$EkAlanlarImpl _$$EkAlanlarImplFromJson(Map<String, dynamic> json) =>
       ktAlan4: json['KT_ALAN4'] as String?,
     );
 
-Map<String, dynamic> _$$EkAlanlarImplToJson(_$EkAlanlarImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('KT_ALAN1', instance.ktAlan1);
-  writeNotNull('KT_ALAN3', instance.ktAlan3);
-  writeNotNull('KT_ALAN4', instance.ktAlan4);
-  return val;
-}
+Map<String, dynamic> _$$EkAlanlarImplToJson(_$EkAlanlarImpl instance) =>
+    <String, dynamic>{
+      if (instance.ktAlan1 case final value?) 'KT_ALAN1': value,
+      if (instance.ktAlan3 case final value?) 'KT_ALAN3': value,
+      if (instance.ktAlan4 case final value?) 'KT_ALAN4': value,
+    };

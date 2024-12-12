@@ -27,6 +27,8 @@ mixin _$SiparislerRequestModel {
   set iadeMi(bool? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
   set cariKodu(String? value) => throw _privateConstructorUsedError;
+  String? get teslimCariKodu => throw _privateConstructorUsedError;
+  set teslimCariKodu(String? value) => throw _privateConstructorUsedError;
   String? get ozelKod2 => throw _privateConstructorUsedError;
   set ozelKod2(String? value) => throw _privateConstructorUsedError;
   String? get cariTipi => throw _privateConstructorUsedError;
@@ -126,6 +128,7 @@ abstract class $SiparislerRequestModelCopyWith<$Res> {
       {String? pickerBelgeTuru,
       bool? iadeMi,
       String? cariKodu,
+      String? teslimCariKodu,
       String? ozelKod2,
       String? cariTipi,
       String? miktarGetir,
@@ -183,6 +186,7 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
     Object? pickerBelgeTuru = freezed,
     Object? iadeMi = freezed,
     Object? cariKodu = freezed,
+    Object? teslimCariKodu = freezed,
     Object? ozelKod2 = freezed,
     Object? cariTipi = freezed,
     Object? miktarGetir = freezed,
@@ -232,6 +236,10 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      teslimCariKodu: freezed == teslimCariKodu
+          ? _value.teslimCariKodu
+          : teslimCariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       ozelKod2: freezed == ozelKod2
           ? _value.ozelKod2
@@ -394,6 +402,7 @@ abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
       {String? pickerBelgeTuru,
       bool? iadeMi,
       String? cariKodu,
+      String? teslimCariKodu,
       String? ozelKod2,
       String? cariTipi,
       String? miktarGetir,
@@ -450,6 +459,7 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
     Object? pickerBelgeTuru = freezed,
     Object? iadeMi = freezed,
     Object? cariKodu = freezed,
+    Object? teslimCariKodu = freezed,
     Object? ozelKod2 = freezed,
     Object? cariTipi = freezed,
     Object? miktarGetir = freezed,
@@ -499,6 +509,10 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      teslimCariKodu: freezed == teslimCariKodu
+          ? _value.teslimCariKodu
+          : teslimCariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       ozelKod2: freezed == ozelKod2
           ? _value.ozelKod2
@@ -656,6 +670,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       {this.pickerBelgeTuru,
       this.iadeMi,
       this.cariKodu = "",
+      this.teslimCariKodu,
       this.ozelKod2,
       this.cariTipi,
       this.miktarGetir,
@@ -703,6 +718,8 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   @override
   @JsonKey()
   String? cariKodu;
+  @override
+  String? teslimCariKodu;
   @override
   String? ozelKod2;
   @override
@@ -781,7 +798,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
 
   @override
   String toString() {
-    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT, faturalanmisIrsaliyelerGelsin: $faturalanmisIrsaliyelerGelsin)';
+    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, teslimCariKodu: $teslimCariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT, faturalanmisIrsaliyelerGelsin: $faturalanmisIrsaliyelerGelsin)';
   }
 
   /// Create a copy of SiparislerRequestModel
@@ -806,6 +823,7 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       {String? pickerBelgeTuru,
       bool? iadeMi,
       String? cariKodu,
+      String? teslimCariKodu,
       String? ozelKod2,
       String? cariTipi,
       String? miktarGetir,
@@ -855,6 +873,9 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   @override
   String? get cariKodu;
   set cariKodu(String? value);
+  @override
+  String? get teslimCariKodu;
+  set teslimCariKodu(String? value);
   @override
   String? get ozelKod2;
   set ozelKod2(String? value);

@@ -23,14 +23,10 @@ Map<String, LibraryLoader> _deferredLibraries = {
   "en": () => new SynchronousFuture(null),
 };
 
-MessageLookupByLibrary? _findExact(String localeName) {
-  switch (localeName) {
-    case "en":
-      return messages_en.messages;
-    default:
-      return null;
-  }
-}
+MessageLookupByLibrary? _findExact(String localeName) => switch (localeName) {
+      "en" => messages_en.messages,
+      _ => null,
+    };
 
 /// User programs should call this before using [localeName] for messages.
 Future<bool> initializeMessages(String localeName) {

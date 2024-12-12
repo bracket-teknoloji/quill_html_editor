@@ -23,25 +23,17 @@ _$BarkodTanimlaKayitlariModelImpl _$$BarkodTanimlaKayitlariModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BarkodTanimlaKayitlariModelImplToJson(
-    _$BarkodTanimlaKayitlariModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('BARKOD', instance.barkod);
-  writeNotNull('BIRIM', instance.birim);
-  writeNotNull('KILIT', instance.kilit);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('BIRIM_ADI', instance.birimAdi);
-  writeNotNull('BARKOD_TIPI', instance.barkodTipi);
-  writeNotNull('BARKOD_TIPI_ADI', instance.barkodTipiAdi);
-  writeNotNull('BIRIM_PAY', instance.birimPay);
-  writeNotNull('BIRIM_PAYDA', instance.birimPayda);
-  writeNotNull('STOK_BIRIM1_ADI', instance.stokBirim1Adi);
-  return val;
-}
+        _$BarkodTanimlaKayitlariModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.barkod case final value?) 'BARKOD': value,
+      if (instance.birim case final value?) 'BIRIM': value,
+      if (instance.kilit case final value?) 'KILIT': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.birimAdi case final value?) 'BIRIM_ADI': value,
+      if (instance.barkodTipi case final value?) 'BARKOD_TIPI': value,
+      if (instance.barkodTipiAdi case final value?) 'BARKOD_TIPI_ADI': value,
+      if (instance.birimPay case final value?) 'BIRIM_PAY': value,
+      if (instance.birimPayda case final value?) 'BIRIM_PAYDA': value,
+      if (instance.stokBirim1Adi case final value?) 'STOK_BIRIM1_ADI': value,
+    };

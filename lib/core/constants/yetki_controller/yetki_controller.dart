@@ -431,7 +431,6 @@ final class YetkiController {
 
   //! MAL KABUL
 
-
   bool malKabulAlisFatBelgeTipleri(int? value) => _isTrue(_yetkiModel?.malKabulAlisFaturasiBelgeTipleri?.contains(value));
   bool malKabulAlisIrsBelgeTipleri(int? value) => _isTrue(_yetkiModel?.malKabulAlisIrsBelgeTipleri?.contains(value));
   bool malKabulAlisFatAciklamaAlanlari(int? index) => _isTrue(!_isTrue(_yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index)));
@@ -633,7 +632,6 @@ final class YetkiController {
   bool get transferDatBirim1Kaydet => _isTrue(_yetkiModel?.transferDatBirim1DenKaydet, skipAdmin: true);
   bool get transferAGBirim1Kaydet => _isTrue(_yetkiModel?.transferAgBirim1DenKaydet, skipAdmin: true);
   bool get transferACBirim1Kaydet => _isTrue(_yetkiModel?.transferAcBirim1DenKaydet, skipAdmin: true);
-
 
   //* Fiyat Gör
   bool get transferDatFiyatGor => _isTrue(_yetkiModel?.transferDatFiyatGor);

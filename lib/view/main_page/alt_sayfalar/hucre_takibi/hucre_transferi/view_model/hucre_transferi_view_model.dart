@@ -50,7 +50,7 @@ abstract class _HucreTransferiViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioPost(
       path: ApiUrls.getPaketler,
       bodyModel: PaketlemeListesiModel(),
-      data: (paketRequestModel.copyWith(depoKodu: model.depoKodu, paketKodu: paketKodu)).toJson(),
+      data: paketRequestModel.copyWith(depoKodu: model.depoKodu, paketKodu: paketKodu).toJson(),
       showLoading: true,
     );
     if (result.isSuccess) {

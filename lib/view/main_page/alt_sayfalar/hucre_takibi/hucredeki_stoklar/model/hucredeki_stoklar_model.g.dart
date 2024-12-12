@@ -22,24 +22,16 @@ _$HucredekiStoklarModelImpl _$$HucredekiStoklarModelImplFromJson(
     );
 
 Map<String, dynamic> _$$HucredekiStoklarModelImplToJson(
-    _$HucredekiStoklarModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('HUCRE_KODU', instance.hucreKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('NET_MIKTAR', instance.netMiktar);
-  writeNotNull('YAPKOD', instance.yapkod);
-  writeNotNull('YAPACIK', instance.yapacik);
-  writeNotNull('BAKIYE', instance.bakiye);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('OLCU_BIRIMI', instance.olcuBirimi);
-  return val;
-}
+        _$HucredekiStoklarModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
+      if (instance.yapkod case final value?) 'YAPKOD': value,
+      if (instance.yapacik case final value?) 'YAPACIK': value,
+      if (instance.bakiye case final value?) 'BAKIYE': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
+    };

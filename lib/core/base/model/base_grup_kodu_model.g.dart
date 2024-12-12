@@ -27,29 +27,21 @@ _$BaseGrupKoduModelImpl _$$BaseGrupKoduModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BaseGrupKoduModelImplToJson(
-    _$BaseGrupKoduModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('MODUL', instance.modul);
-  writeNotNull('GRUP_NO', instance.grupNo);
-  writeNotNull('GRUP_KODU', instance.grupKodu);
-  writeNotNull('GRUP_ADI', instance.grupAdi);
-  writeNotNull('TIP', instance.tip);
-  writeNotNull('KOD1', instance.kod1);
-  writeNotNull('KOD2', instance.kod2);
-  writeNotNull('KOD3', instance.kod3);
-  writeNotNull('KOD4', instance.kod4);
-  writeNotNull('KOD5', instance.kod5);
-  writeNotNull('KOD1_ADI', instance.kod1Adi);
-  writeNotNull('KOD2_ADI', instance.kod2Adi);
-  writeNotNull('KOD3_ADI', instance.kod3Adi);
-  writeNotNull('KOD4_ADI', instance.kod4Adi);
-  writeNotNull('KOD5_ADI', instance.kod5Adi);
-  return val;
-}
+        _$BaseGrupKoduModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.modul case final value?) 'MODUL': value,
+      if (instance.grupNo case final value?) 'GRUP_NO': value,
+      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
+      if (instance.grupAdi case final value?) 'GRUP_ADI': value,
+      if (instance.tip case final value?) 'TIP': value,
+      if (instance.kod1 case final value?) 'KOD1': value,
+      if (instance.kod2 case final value?) 'KOD2': value,
+      if (instance.kod3 case final value?) 'KOD3': value,
+      if (instance.kod4 case final value?) 'KOD4': value,
+      if (instance.kod5 case final value?) 'KOD5': value,
+      if (instance.kod1Adi case final value?) 'KOD1_ADI': value,
+      if (instance.kod2Adi case final value?) 'KOD2_ADI': value,
+      if (instance.kod3Adi case final value?) 'KOD3_ADI': value,
+      if (instance.kod4Adi case final value?) 'KOD4_ADI': value,
+      if (instance.kod5Adi case final value?) 'KOD5_ADI': value,
+    };

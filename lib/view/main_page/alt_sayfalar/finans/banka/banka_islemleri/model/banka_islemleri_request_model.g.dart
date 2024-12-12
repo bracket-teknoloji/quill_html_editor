@@ -17,19 +17,11 @@ _$BankaIslemleriRequestModelImpl _$$BankaIslemleriRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BankaIslemleriRequestModelImplToJson(
-    _$BankaIslemleriRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('HesapTipi', instance.hesapTipi);
-  writeNotNull('HesapKodu', instance.hesapKodu);
-  return val;
-}
+        _$BankaIslemleriRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.hesapTipi case final value?) 'HesapTipi': value,
+      if (instance.hesapKodu case final value?) 'HesapKodu': value,
+    };

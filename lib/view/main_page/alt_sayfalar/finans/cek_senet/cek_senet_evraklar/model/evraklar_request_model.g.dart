@@ -15,17 +15,9 @@ _$EvraklarRequestModelImpl _$$EvraklarRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$EvraklarRequestModelImplToJson(
-    _$EvraklarRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BelgeTipi', instance.belgeTipi);
-  writeNotNull('UrlGetir', instance.urlGetir);
-  writeNotNull('BelgeNo', instance.belgeNo);
-  return val;
-}
+        _$EvraklarRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeTipi case final value?) 'BelgeTipi': value,
+      if (instance.urlGetir case final value?) 'UrlGetir': value,
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+    };

@@ -11,15 +11,7 @@ BaseEditSiradakiKodModel _$BaseEditSiradakiKodModelFromJson(
     BaseEditSiradakiKodModel()..siradakiKod = json['SIRADAKI_KOD'] as String?;
 
 Map<String, dynamic> _$BaseEditSiradakiKodModelToJson(
-    BaseEditSiradakiKodModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SIRADAKI_KOD', instance.siradakiKod);
-  return val;
-}
+        BaseEditSiradakiKodModel instance) =>
+    <String, dynamic>{
+      if (instance.siradakiKod case final value?) 'SIRADAKI_KOD': value,
+    };

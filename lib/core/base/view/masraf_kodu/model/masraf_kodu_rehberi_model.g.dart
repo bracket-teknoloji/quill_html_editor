@@ -14,16 +14,8 @@ _$MasrafKoduRehberiModelImpl _$$MasrafKoduRehberiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$MasrafKoduRehberiModelImplToJson(
-    _$MasrafKoduRehberiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('MASRAF_KODU', instance.masrafKodu);
-  writeNotNull('MASRAF_ADI', instance.masrafAdi);
-  return val;
-}
+        _$MasrafKoduRehberiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.masrafKodu case final value?) 'MASRAF_KODU': value,
+      if (instance.masrafAdi case final value?) 'MASRAF_ADI': value,
+    };

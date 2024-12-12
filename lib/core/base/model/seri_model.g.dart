@@ -17,21 +17,13 @@ _$SeriModelImpl _$$SeriModelImplFromJson(Map<String, dynamic> json) =>
       depoTanimi: json['DEPO_TANIMI'] as String?,
     );
 
-Map<String, dynamic> _$$SeriModelImplToJson(_$SeriModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  return val;
-}
+Map<String, dynamic> _$$SeriModelImplToJson(_$SeriModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+    };

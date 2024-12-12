@@ -23,6 +23,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     @JsonKey(name: "SIRALAMA") String? siralama,
     String? menuKodu,
     bool? eFaturaGoster,
+    String? bagliCariKodu,
     @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
     List<String>? arrGrupKodu,
     List<String>? arrKod1,

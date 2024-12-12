@@ -35,40 +35,32 @@ CariKosullarModel _$CariKosullarModelFromJson(Map<String, dynamic> json) =>
       ..iskAraIsk2 = (json['ISK_ARA_ISK2'] as num?)?.toDouble()
       ..iskAraIsk3 = (json['ISK_ARA_ISK3'] as num?)?.toDouble();
 
-Map<String, dynamic> _$CariKosullarModelToJson(CariKosullarModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('KOSUL_SABIT_ADI', instance.kosulSabitAdi);
-  writeNotNull('KOSUL_KODU', instance.kosulKodu);
-  writeNotNull('GENISK1_O', instance.genisk1O);
-  writeNotNull('GENISK2_O', instance.genisk2O);
-  writeNotNull('GENISK3_O', instance.genisk3O);
-  writeNotNull('GENEL_KOSUL_ADI', instance.genelKosulAdi);
-  writeNotNull('BASLANGICTAR', instance.baslangictar);
-  writeNotNull('VADE_GUNU', instance.vadeGunu);
-  writeNotNull('GENISK1_TIPI', instance.genisk1Tipi);
-  writeNotNull('GENISK2_TIPI', instance.genisk2Tipi);
-  writeNotNull('GENISK3_TIPI', instance.genisk3Tipi);
-  writeNotNull('SATISK1_TIPI', instance.satisk1Tipi);
-  writeNotNull('SATISK2_TIPI', instance.satisk2Tipi);
-  writeNotNull('SATISK3_TIPI', instance.satisk3Tipi);
-  writeNotNull('SATISK4_TIPI', instance.satisk4Tipi);
-  writeNotNull('SATISK5_TIPI', instance.satisk5Tipi);
-  writeNotNull('SATISK6_TIPI', instance.satisk6Tipi);
-  writeNotNull('ISK_ARA_AKTIF', instance.iskAraAktif);
-  writeNotNull('ISK_ARA_MIKTUT', instance.iskAraMiktut);
-  writeNotNull('ISK_ARA_DEGER1', instance.iskAraDeger1);
-  writeNotNull('ISK_ARA_DEGER2', instance.iskAraDeger2);
-  writeNotNull('ISK_ARA_DEGER3', instance.iskAraDeger3);
-  writeNotNull('ISK_ARA_HANGI_ISK', instance.iskAraHangiIsk);
-  writeNotNull('ISK_ARA_ISK1', instance.iskAraIsk1);
-  writeNotNull('ISK_ARA_ISK2', instance.iskAraIsk2);
-  writeNotNull('ISK_ARA_ISK3', instance.iskAraIsk3);
-  return val;
-}
+Map<String, dynamic> _$CariKosullarModelToJson(CariKosullarModel instance) =>
+    <String, dynamic>{
+      if (instance.kosulSabitAdi case final value?) 'KOSUL_SABIT_ADI': value,
+      if (instance.kosulKodu case final value?) 'KOSUL_KODU': value,
+      if (instance.genisk1O case final value?) 'GENISK1_O': value,
+      if (instance.genisk2O case final value?) 'GENISK2_O': value,
+      if (instance.genisk3O case final value?) 'GENISK3_O': value,
+      if (instance.genelKosulAdi case final value?) 'GENEL_KOSUL_ADI': value,
+      if (instance.baslangictar case final value?) 'BASLANGICTAR': value,
+      if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
+      if (instance.genisk1Tipi case final value?) 'GENISK1_TIPI': value,
+      if (instance.genisk2Tipi case final value?) 'GENISK2_TIPI': value,
+      if (instance.genisk3Tipi case final value?) 'GENISK3_TIPI': value,
+      if (instance.satisk1Tipi case final value?) 'SATISK1_TIPI': value,
+      if (instance.satisk2Tipi case final value?) 'SATISK2_TIPI': value,
+      if (instance.satisk3Tipi case final value?) 'SATISK3_TIPI': value,
+      if (instance.satisk4Tipi case final value?) 'SATISK4_TIPI': value,
+      if (instance.satisk5Tipi case final value?) 'SATISK5_TIPI': value,
+      if (instance.satisk6Tipi case final value?) 'SATISK6_TIPI': value,
+      if (instance.iskAraAktif case final value?) 'ISK_ARA_AKTIF': value,
+      if (instance.iskAraMiktut case final value?) 'ISK_ARA_MIKTUT': value,
+      if (instance.iskAraDeger1 case final value?) 'ISK_ARA_DEGER1': value,
+      if (instance.iskAraDeger2 case final value?) 'ISK_ARA_DEGER2': value,
+      if (instance.iskAraDeger3 case final value?) 'ISK_ARA_DEGER3': value,
+      if (instance.iskAraHangiIsk case final value?) 'ISK_ARA_HANGI_ISK': value,
+      if (instance.iskAraIsk1 case final value?) 'ISK_ARA_ISK1': value,
+      if (instance.iskAraIsk2 case final value?) 'ISK_ARA_ISK2': value,
+      if (instance.iskAraIsk3 case final value?) 'ISK_ARA_ISK3': value,
+    };

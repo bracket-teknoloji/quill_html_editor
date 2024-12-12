@@ -15,17 +15,9 @@ _$GenelRehberModelImpl _$$GenelRehberModelImplFromJson(
     );
 
 Map<String, dynamic> _$$GenelRehberModelImplToJson(
-    _$GenelRehberModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('KODU', instance.kodu);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('ADI', instance.adi);
-  return val;
-}
+        _$GenelRehberModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.kodu case final value?) 'KODU': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.adi case final value?) 'ADI': value,
+    };

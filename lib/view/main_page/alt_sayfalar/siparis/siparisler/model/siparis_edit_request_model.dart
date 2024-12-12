@@ -126,7 +126,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
 
   factory SiparisEditRequestModel.fromStokHareketleriModel(StokHareketleriModel? model) => SiparisEditRequestModel(
         belgeNo: model?.fisno,
-        cariKodu: model?.cariKodu, 
+        cariKodu: model?.cariKodu,
         belgeTipi: model?.belgeTipi,
         belgeTuru: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model?.belgeTipiAciklama)?.rawValue,
       );

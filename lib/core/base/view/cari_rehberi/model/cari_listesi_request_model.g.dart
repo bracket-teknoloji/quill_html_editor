@@ -57,42 +57,37 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
-    _$CariListesiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('EFaturaGoster', instance.eFaturaGoster);
-  writeNotNull('SIRALAMA', instance.siralama);
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('FilterText', instance.filterText);
-  writeNotNull('Kod', instance.kod);
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi?.toIso8601String());
-  writeNotNull('BitisTarihi', instance.bitisTarihi?.toIso8601String());
-  writeNotNull('Filtreler', instance.filtreler);
-  writeNotNull('Kullanici', instance.kullanici);
-  writeNotNull('ArrPlasiyer', instance.arrPlasiyer);
-  writeNotNull('ArrKod1', instance.arrKod1);
-  writeNotNull('ArrKod2', instance.arrKod2);
-  writeNotNull('ArrKod3', instance.arrKod3);
-  writeNotNull('ArrKod4', instance.arrKod4);
-  writeNotNull('ArrKod5', instance.arrKod5);
-  writeNotNull('ArrSehir', instance.arrSehir);
-  writeNotNull('ArrGrupKodu', instance.arrGrupKodu);
-  writeNotNull('Ilce', instance.ilce);
-  writeNotNull('CariTipi', instance.cariTipi);
-  writeNotNull('FILTER_BAKIYE', instance.filterBakiye);
-  writeNotNull('BagliCariKodu', instance.bagliCariKodu);
-  writeNotNull('BelgeTuru', instance.belgeTuru);
-  writeNotNull('TeslimCari', instance.teslimCari);
-  writeNotNull('Sehir', instance.sehir);
-  writeNotNull('SiparisKarsilanmaDurumu', instance.siparisKarsilanmaDurumu);
-  writeNotNull('SearchText', instance.searchText);
-  return val;
-}
+        _$CariListesiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.eFaturaGoster case final value?) 'EFaturaGoster': value,
+      if (instance.siralama case final value?) 'SIRALAMA': value,
+      if (instance.sayfa case final value?) 'Sayfa': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.filterText case final value?) 'FilterText': value,
+      if (instance.kod case final value?) 'Kod': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.baslamaTarihi?.toIso8601String() case final value?)
+        'BaslamaTarihi': value,
+      if (instance.bitisTarihi?.toIso8601String() case final value?)
+        'BitisTarihi': value,
+      if (instance.filtreler case final value?) 'Filtreler': value,
+      if (instance.kullanici case final value?) 'Kullanici': value,
+      if (instance.arrPlasiyer case final value?) 'ArrPlasiyer': value,
+      if (instance.arrKod1 case final value?) 'ArrKod1': value,
+      if (instance.arrKod2 case final value?) 'ArrKod2': value,
+      if (instance.arrKod3 case final value?) 'ArrKod3': value,
+      if (instance.arrKod4 case final value?) 'ArrKod4': value,
+      if (instance.arrKod5 case final value?) 'ArrKod5': value,
+      if (instance.arrSehir case final value?) 'ArrSehir': value,
+      if (instance.arrGrupKodu case final value?) 'ArrGrupKodu': value,
+      if (instance.ilce case final value?) 'Ilce': value,
+      if (instance.cariTipi case final value?) 'CariTipi': value,
+      if (instance.filterBakiye case final value?) 'FILTER_BAKIYE': value,
+      if (instance.bagliCariKodu case final value?) 'BagliCariKodu': value,
+      if (instance.belgeTuru case final value?) 'BelgeTuru': value,
+      if (instance.teslimCari case final value?) 'TeslimCari': value,
+      if (instance.sehir case final value?) 'Sehir': value,
+      if (instance.siparisKarsilanmaDurumu case final value?)
+        'SiparisKarsilanmaDurumu': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+    };

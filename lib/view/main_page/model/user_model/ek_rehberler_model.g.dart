@@ -16,18 +16,10 @@ _$EkRehberlerModelImpl _$$EkRehberlerModelImplFromJson(
     );
 
 Map<String, dynamic> _$$EkRehberlerModelImplToJson(
-    _$EkRehberlerModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('BASLIK', instance.baslik);
-  writeNotNull('EKRAN', instance.ekran);
-  writeNotNull('ALAN', instance.alan);
-  return val;
-}
+        _$EkRehberlerModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.baslik case final value?) 'BASLIK': value,
+      if (instance.ekran case final value?) 'EKRAN': value,
+      if (instance.alan case final value?) 'ALAN': value,
+    };

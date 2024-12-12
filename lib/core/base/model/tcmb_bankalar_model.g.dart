@@ -17,19 +17,11 @@ _$TcmbBankalarModelImpl _$$TcmbBankalarModelImplFromJson(
     );
 
 Map<String, dynamic> _$$TcmbBankalarModelImplToJson(
-    _$TcmbBankalarModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BANKAKODU', instance.bankakodu);
-  writeNotNull('BANKAADI', instance.bankaadi);
-  writeNotNull('SUBEKODU', instance.subekodu);
-  writeNotNull('SUBEADI', instance.subeadi);
-  writeNotNull('SEHIRADI', instance.sehiradi);
-  return val;
-}
+        _$TcmbBankalarModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.bankakodu case final value?) 'BANKAKODU': value,
+      if (instance.bankaadi case final value?) 'BANKAADI': value,
+      if (instance.subekodu case final value?) 'SUBEKODU': value,
+      if (instance.subeadi case final value?) 'SUBEADI': value,
+      if (instance.sehiradi case final value?) 'SEHIRADI': value,
+    };

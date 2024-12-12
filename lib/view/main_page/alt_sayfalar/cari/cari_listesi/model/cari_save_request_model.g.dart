@@ -982,85 +982,82 @@ CariSaveRequestModel _$CariSaveRequestModelFromJson(
     );
 
 Map<String, dynamic> _$CariSaveRequestModelToJson(
-    CariSaveRequestModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('REQUEST_VERSION', instance.requestVersion);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('_YeniKayit', instance.yeniKayit);
-  writeNotNull('SahisFirmasi', instance.sahisFirmasi);
-  writeNotNull('SUBE_KODU', instance.subeKodu);
-  writeNotNull('KODU', instance.kodu);
-  writeNotNull('TIPI', instance.tipi);
-  writeNotNull('ADI', instance.adi);
-  writeNotNull('ULKE_KODU', instance.ulkeKodu);
-  writeNotNull('SEHIR', instance.sehir);
-  writeNotNull('ILCE', instance.ilce);
-  writeNotNull('ADRES', instance.adres);
-  writeNotNull('TELEFON', instance.telefon);
-  writeNotNull('EPOSTA', instance.eposta);
-  writeNotNull('ENLEM', instance.enlem);
-  writeNotNull('BOYLAM', instance.boylam);
-  writeNotNull('POSTA_KODU', instance.postaKodu);
-  writeNotNull('WEBSITE', instance.website);
-  writeNotNull('VERGI_DAIRESI', instance.vergiDairesi);
-  writeNotNull('VERGI_NO', instance.vergiNo);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('DOVIZLI', instance.dovizli);
-  writeNotNull('DOVIZ_KODU', instance.dovizKodu);
-  writeNotNull('GRUP_KODU', instance.grupKodu);
-  writeNotNull('KOD1', instance.kod1);
-  writeNotNull('KOD2', instance.kod2);
-  writeNotNull('KOD3', instance.kod3);
-  writeNotNull('KOD4', instance.kod4);
-  writeNotNull('KOD5', instance.kod5);
-  writeNotNull('KOD1_TANIMI', instance.kod1Tanimi);
-  writeNotNull('KOD2_TANIMI', instance.kod2Tanimi);
-  writeNotNull('KOD3_TANIMI', instance.kod3Tanimi);
-  writeNotNull('KOD4_TANIMI', instance.kod4Tanimi);
-  writeNotNull('KOD5_TANIMI', instance.kod5Tanimi);
-  writeNotNull('BILGI', instance.bilgi);
-  writeNotNull('KILIT', instance.kilit);
-  writeNotNull('BAGLI_CARI', instance.bagliCari);
-  writeNotNull('KOSUL_KODU', instance.kosulKodu);
-  writeNotNull('MUHASEBE_KODU', instance.muhasebeKodu);
-  writeNotNull('KURFARKIBORC_KODU', instance.kurfarkiborcKodu);
-  writeNotNull('KURFARKIALACAK_KODU', instance.kurfarkialacakKodu);
-  writeNotNull('VADE_GUNU', instance.vadeGunu);
-  writeNotNull('ODEME_TIPI', instance.odemeTipi);
-  writeNotNull('MUHTELIF_CARI', instance.muhtelifCari);
-  writeNotNull('MUHTELIF_BELGE_TIPI', instance.muhtelifBelgeTipi);
-  writeNotNull('MUHTELIF_BELGE_NO', instance.muhtelifBelgeNo);
-  writeNotNull('EFATURA_SENARYO', instance.efaturaSenaryo);
-  writeNotNull('KULL1S', instance.kull1s);
-  writeNotNull('KULL2S', instance.kull2s);
-  writeNotNull('KULL3S', instance.kull3s);
-  writeNotNull('KULL4S', instance.kull4s);
-  writeNotNull('KULL5S', instance.kull5s);
-  writeNotNull('KULL6S', instance.kull6s);
-  writeNotNull('KULL7S', instance.kull7s);
-  writeNotNull('KULL8S', instance.kull8s);
-  writeNotNull('KULL1N', instance.kull1n);
-  writeNotNull('KULL2N', instance.kull2n);
-  writeNotNull('KULL3N', instance.kull3n);
-  writeNotNull('KULL4N', instance.kull4n);
-  writeNotNull('KULL5N', instance.kull5n);
-  writeNotNull('KULL6N', instance.kull6n);
-  writeNotNull('KULL7N', instance.kull7n);
-  writeNotNull('KULL8N', instance.kull8n);
-  writeNotNull('ACIKLAMA1', instance.aciklama1);
-  writeNotNull('ACIKLAMA2', instance.aciklama2);
-  writeNotNull('ACIKLAMA3', instance.aciklama3);
-  writeNotNull('POSTAKODU', instance.postakodu);
-  writeNotNull('KURFARKIBORC_ADI', instance.kurfarkiborcAdi);
-  writeNotNull('KURFARKIALACAK_ADI', instance.kurfarkialacakAdi);
-  writeNotNull('MUH_ADI', instance.muhAdi);
-  writeNotNull('EFAT_AKTIF', instance.efatAktif);
-  return val;
-}
+        CariSaveRequestModel instance) =>
+    <String, dynamic>{
+      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.yeniKayit case final value?) '_YeniKayit': value,
+      if (instance.sahisFirmasi case final value?) 'SahisFirmasi': value,
+      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+      if (instance.kodu case final value?) 'KODU': value,
+      if (instance.tipi case final value?) 'TIPI': value,
+      if (instance.adi case final value?) 'ADI': value,
+      if (instance.ulkeKodu case final value?) 'ULKE_KODU': value,
+      if (instance.sehir case final value?) 'SEHIR': value,
+      if (instance.ilce case final value?) 'ILCE': value,
+      if (instance.adres case final value?) 'ADRES': value,
+      if (instance.telefon case final value?) 'TELEFON': value,
+      if (instance.eposta case final value?) 'EPOSTA': value,
+      if (instance.enlem case final value?) 'ENLEM': value,
+      if (instance.boylam case final value?) 'BOYLAM': value,
+      if (instance.postaKodu case final value?) 'POSTA_KODU': value,
+      if (instance.website case final value?) 'WEBSITE': value,
+      if (instance.vergiDairesi case final value?) 'VERGI_DAIRESI': value,
+      if (instance.vergiNo case final value?) 'VERGI_NO': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.dovizli case final value?) 'DOVIZLI': value,
+      if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
+      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
+      if (instance.kod1 case final value?) 'KOD1': value,
+      if (instance.kod2 case final value?) 'KOD2': value,
+      if (instance.kod3 case final value?) 'KOD3': value,
+      if (instance.kod4 case final value?) 'KOD4': value,
+      if (instance.kod5 case final value?) 'KOD5': value,
+      if (instance.kod1Tanimi case final value?) 'KOD1_TANIMI': value,
+      if (instance.kod2Tanimi case final value?) 'KOD2_TANIMI': value,
+      if (instance.kod3Tanimi case final value?) 'KOD3_TANIMI': value,
+      if (instance.kod4Tanimi case final value?) 'KOD4_TANIMI': value,
+      if (instance.kod5Tanimi case final value?) 'KOD5_TANIMI': value,
+      if (instance.bilgi case final value?) 'BILGI': value,
+      if (instance.kilit case final value?) 'KILIT': value,
+      if (instance.bagliCari case final value?) 'BAGLI_CARI': value,
+      if (instance.kosulKodu case final value?) 'KOSUL_KODU': value,
+      if (instance.muhasebeKodu case final value?) 'MUHASEBE_KODU': value,
+      if (instance.kurfarkiborcKodu case final value?)
+        'KURFARKIBORC_KODU': value,
+      if (instance.kurfarkialacakKodu case final value?)
+        'KURFARKIALACAK_KODU': value,
+      if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
+      if (instance.odemeTipi case final value?) 'ODEME_TIPI': value,
+      if (instance.muhtelifCari case final value?) 'MUHTELIF_CARI': value,
+      if (instance.muhtelifBelgeTipi case final value?)
+        'MUHTELIF_BELGE_TIPI': value,
+      if (instance.muhtelifBelgeNo case final value?)
+        'MUHTELIF_BELGE_NO': value,
+      if (instance.efaturaSenaryo case final value?) 'EFATURA_SENARYO': value,
+      if (instance.kull1s case final value?) 'KULL1S': value,
+      if (instance.kull2s case final value?) 'KULL2S': value,
+      if (instance.kull3s case final value?) 'KULL3S': value,
+      if (instance.kull4s case final value?) 'KULL4S': value,
+      if (instance.kull5s case final value?) 'KULL5S': value,
+      if (instance.kull6s case final value?) 'KULL6S': value,
+      if (instance.kull7s case final value?) 'KULL7S': value,
+      if (instance.kull8s case final value?) 'KULL8S': value,
+      if (instance.kull1n case final value?) 'KULL1N': value,
+      if (instance.kull2n case final value?) 'KULL2N': value,
+      if (instance.kull3n case final value?) 'KULL3N': value,
+      if (instance.kull4n case final value?) 'KULL4N': value,
+      if (instance.kull5n case final value?) 'KULL5N': value,
+      if (instance.kull6n case final value?) 'KULL6N': value,
+      if (instance.kull7n case final value?) 'KULL7N': value,
+      if (instance.kull8n case final value?) 'KULL8N': value,
+      if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
+      if (instance.aciklama2 case final value?) 'ACIKLAMA2': value,
+      if (instance.aciklama3 case final value?) 'ACIKLAMA3': value,
+      if (instance.postakodu case final value?) 'POSTAKODU': value,
+      if (instance.kurfarkiborcAdi case final value?) 'KURFARKIBORC_ADI': value,
+      if (instance.kurfarkialacakAdi case final value?)
+        'KURFARKIALACAK_ADI': value,
+      if (instance.muhAdi case final value?) 'MUH_ADI': value,
+      if (instance.efatAktif case final value?) 'EFAT_AKTIF': value,
+    };

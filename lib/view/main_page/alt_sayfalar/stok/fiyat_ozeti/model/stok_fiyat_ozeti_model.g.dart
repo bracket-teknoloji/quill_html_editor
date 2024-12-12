@@ -26,26 +26,19 @@ _$StokFiyatOzetiModelImpl _$$StokFiyatOzetiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$StokFiyatOzetiModelImplToJson(
-    _$StokFiyatOzetiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('GRUP', instance.grup);
-  writeNotNull('TIP', instance.tip);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('FIYAT', instance.fiyat);
-  writeNotNull('DOVIZ_FIYATI', instance.dovizFiyati);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('BRUT_FIYAT', instance.brutFiyat);
-  writeNotNull('BRUT_DOVIZ_FIYATI', instance.brutDovizFiyati);
-  return val;
-}
+        _$StokFiyatOzetiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.grup case final value?) 'GRUP': value,
+      if (instance.tip case final value?) 'TIP': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.fiyat case final value?) 'FIYAT': value,
+      if (instance.dovizFiyati case final value?) 'DOVIZ_FIYATI': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.brutFiyat case final value?) 'BRUT_FIYAT': value,
+      if (instance.brutDovizFiyati case final value?)
+        'BRUT_DOVIZ_FIYATI': value,
+    };

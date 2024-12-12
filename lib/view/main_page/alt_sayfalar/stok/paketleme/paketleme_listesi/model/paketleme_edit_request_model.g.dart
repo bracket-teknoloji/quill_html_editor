@@ -15,17 +15,9 @@ _$PaketlemeEditRequestModelImpl _$$PaketlemeEditRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$PaketlemeEditRequestModelImplToJson(
-    _$PaketlemeEditRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('PAKET_ID', instance.paketId);
-  writeNotNull('KALEM_ID', instance.kalemId);
-  return val;
-}
+        _$PaketlemeEditRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.paketId case final value?) 'PAKET_ID': value,
+      if (instance.kalemId case final value?) 'KALEM_ID': value,
+    };

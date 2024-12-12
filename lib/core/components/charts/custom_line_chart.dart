@@ -187,7 +187,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
         text = const Text("Aralık", style: style);
       default:
         text = const Text("", style: style);
-        break;
     }
     return RotationTransition(
       turns: const AlwaysStoppedAnimation(340 / 360),

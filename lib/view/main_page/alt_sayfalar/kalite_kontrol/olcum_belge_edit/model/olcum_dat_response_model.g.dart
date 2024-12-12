@@ -17,19 +17,11 @@ _$OlcumDatResponseModelImpl _$$OlcumDatResponseModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumDatResponseModelImplToJson(
-    _$OlcumDatResponseModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('GIRIS_DEPO', instance.girisDepo);
-  writeNotNull('CIKIS_DEPO', instance.cikisDepo);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('MIKTAR', instance.miktar);
-  return val;
-}
+        _$OlcumDatResponseModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.girisDepo case final value?) 'GIRIS_DEPO': value,
+      if (instance.cikisDepo case final value?) 'CIKIS_DEPO': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+    };

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
@@ -32,6 +33,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
   late final SiparisTeslimRaporuViewModel viewModel;
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;
+  late final TextEditingController teslimCariController;
   late final TextEditingController vergiNoController;
   late final TextEditingController stokController;
   late final TextEditingController baslangicTarihiController;
@@ -44,6 +46,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
     viewModel.setCariKodu(widget.baseSiparisEditModel?.cariKodu);
     belgeNoController = TextEditingController(text: widget.baseSiparisEditModel?.belgeNo ?? "");
     cariController = TextEditingController(text: widget.baseSiparisEditModel?.cariAdi ?? "");
+    teslimCariController = TextEditingController();
     vergiNoController = TextEditingController();
     stokController = TextEditingController();
     baslangicTarihiController = TextEditingController();
@@ -55,6 +58,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
   void dispose() {
     belgeNoController.dispose();
     cariController.dispose();
+    teslimCariController.dispose();
     vergiNoController.dispose();
     stokController.dispose();
     baslangicTarihiController.dispose();
@@ -145,6 +149,20 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
               if (result is CariListesiModel) {
                 cariController.text = result.cariAdi ?? "";
                 viewModel.setCariKodu(result.cariKodu);
+              }
+            },
+          ),
+          CustomTextField(
+            labelText: "Teslim Cari",
+            readOnly: true,
+            suffixMore: true,
+            controller: teslimCariController,
+            onClear: () => viewModel.setCariKodu(null),
+            onTap: () async {
+              final result = await Get.toNamed("/mainPage/cariListesiOzel", arguments: CariRequestModel(bagliCariKodu: viewModel.pdfModel.dicParams?.teslimCariKodu, teslimCari: "E"));
+              if (result is CariListesiModel) {
+                teslimCariController.text = result.cariAdi ?? "";
+                viewModel.setTeslimCariKodu(result.cariKodu ?? "");
               }
             },
           ),

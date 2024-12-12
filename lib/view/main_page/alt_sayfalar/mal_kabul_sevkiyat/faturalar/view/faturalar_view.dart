@@ -3,9 +3,9 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -50,6 +50,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
   late final TextEditingController _baslangicTarihiController;
   late final TextEditingController _bitisTarihiController;
   late final TextEditingController _cariController;
+  late final TextEditingController _teslimCariController;
   late final TextEditingController _cariTipiController;
   late final TextEditingController _plasiyerController;
   late final TextEditingController _projeController;
@@ -71,6 +72,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
     _baslangicTarihiController = TextEditingController();
     _bitisTarihiController = TextEditingController();
     _cariController = TextEditingController();
+    _teslimCariController = TextEditingController();
     _cariTipiController = TextEditingController();
     _plasiyerController = TextEditingController();
     _projeController = TextEditingController();
@@ -98,6 +100,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
     _baslangicTarihiController.dispose();
     _bitisTarihiController.dispose();
     _cariController.dispose();
+    _teslimCariController.dispose();
     _cariTipiController.dispose();
     _plasiyerController.dispose();
     _projeController.dispose();
@@ -302,21 +305,48 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               baslangicTarihiController: _baslangicTarihiController,
               bitisTarihiController: _bitisTarihiController,
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
+            CustomLayoutBuilder.divideInHalf(
+              children: [
+                CustomWidgetWithLabel(
+                  text: "Kapalı belgeler listelenmesin",
+                  isVertical: true,
+                  child: Observer(
+                    builder: (_) => Switch.adaptive(
+                      value: viewModel.faturaRequestModel.kapaliBelgelerListelenmesin ?? false,
+                      onChanged: (bool value) => viewModel.setKapaliBelgelerListelenmesin(value),
+                    ),
+                  ),
+                ),
+                if (widget.editTipiEnum.irsaliyeMi)
+                  CustomWidgetWithLabel(
+                    text: "Faturalananları göster",
+                    isVertical: true,
+                    child: Observer(
+                      builder: (_) => Switch.adaptive(
+                        value: viewModel.faturaRequestModel.faturalanmisIrsaliyelerGelsin ?? false,
+                        onChanged: (bool value) => viewModel.setFaturalasmaGoster(value),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+            CustomLayoutBuilder.divideInHalf(
+              children: [
+                if (yetkiController.cariListesi)
+                  CustomTextField(
                     labelText: "Cari",
                     suffixMore: true,
                     readOnly: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.cariKodu ?? "")),
                     controller: _cariController,
+                    onClear: () => viewModel.setCari(null),
                     suffix: IconButton(
                       onPressed: () async {
-                        if (viewModel.faturaRequestModel.cariKodu != null && viewModel.faturaRequestModel.cariKodu != "") {
+                        if (viewModel.faturaRequestModel.cariKodu case (null || "")) {
+                          await dialogManager.showAlertDialog("Cari Seçiniz");
+                        } else {
                           Get.back();
                           dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.faturaRequestModel.cariKodu);
-                        } else {
-                          await dialogManager.showAlertDialog("Cari Seçiniz");
                         }
                       },
                       icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
@@ -329,13 +359,29 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.cariListesi),
-                Expanded(
-                  child: CustomTextField(
+                if (yetkiController.cariListesi)
+                  CustomTextField(
+                    labelText: "Teslim Cari",
+                    suffixMore: true,
+                    readOnly: true,
+                    controller: _teslimCariController,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.teslimCariKodu ?? "")),
+                    onClear: () => viewModel.setTeslimCari(null),
+                    onTap: () async {
+                      final result = await Get.toNamed("/mainPage/cariListesiOzel", arguments: CariRequestModel(bagliCariKodu: viewModel.faturaRequestModel.cariKodu, teslimCari: "E"));
+                      if (result is CariListesiModel) {
+                        _teslimCariController.text = result.cariAdi ?? "";
+                        viewModel.setTeslimCari(result.cariKodu ?? "");
+                      }
+                    },
+                  ),
+                if (yetkiController.cariListesi)
+                  CustomTextField(
                     labelText: "Cari Tipi",
                     suffixMore: true,
                     readOnly: true,
                     controller: _cariTipiController,
+                    onClear: () => viewModel.setCariTipi(null),
                     onTap: () async {
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
@@ -354,41 +400,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.cariListesi),
-              ],
-            ),
-            CustomLayoutBuilder.divideInHalf(
-              children: [
-                CustomWidgetWithLabel(
-                  text: "Kapalı belgeler listelenmesin",
-                  isVertical: true,
-                  child: Observer(
-                    builder: (_) => Switch.adaptive(
-                      value: viewModel.faturaRequestModel.kapaliBelgelerListelenmesin ?? false,
-                      onChanged: (bool value) => viewModel.setKapaliBelgelerListelenmesin(value),
-                    ),
-                  ),
-                ),
-                if (widget.editTipiEnum.irsaliyeMi) CustomWidgetWithLabel(
-                  text: "Faturalananları göster",
-                  isVertical: true,
-                  child: Observer(
-                    builder: (_) => Switch.adaptive(
-                      value: viewModel.faturaRequestModel.faturalanmisIrsaliyelerGelsin ?? false,
-                      onChanged: (bool value) => viewModel.setFaturalasmaGoster(value),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
+                if (yetkiController.plasiyerUygulamasiAcikMi)
+                  CustomTextField(
                     labelText: "Plasiyer",
                     suffixMore: true,
                     readOnly: true,
                     controller: _plasiyerController,
+                    onClear: () => viewModel.setPlasiyerArr([]),
                     onTap: () async {
                       final List<PlasiyerList?>? result =
                           await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? "[]"));
@@ -398,13 +416,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                Expanded(
-                  child: CustomTextField(
+                if (yetkiController.projeUygulamasiAcikMi)
+                  CustomTextField(
                     labelText: "Proje",
                     suffixMore: true,
                     readOnly: true,
                     controller: _projeController,
+                    onClear: () => viewModel.setProjeKodu(null),
                     onTap: () async {
                       final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.faturaRequestModel.projeKodu);
                       if (result != null) {
@@ -413,48 +431,41 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                       }
                     },
                   ),
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Özel Kod 1",
-                    controller: _ozelKod1Controller,
-                    onChanged: (String value) => viewModel.setOzelKod1(value),
-                    suffix: IconButton(
-                      onPressed: () async {
-                        // var result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Özel Kod Seçiniz",
-                          children: List.generate(viewModel.tipiList.length, (int index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index])),
-                        );
-                        if (result != null) {
-                          _ozelKod1Controller.text = result;
-                          viewModel.setOzelKod1(result);
-                        }
-                      },
-                      icon: const Icon(Icons.more_horiz_outlined),
-                    ),
+                CustomTextField(
+                  labelText: "Özel Kod 1",
+                  controller: _ozelKod1Controller,
+                  onChanged: (String value) => viewModel.setOzelKod1(value),
+                  onClear: () => viewModel.setOzelKod1(null),
+                  suffix: IconButton(
+                    onPressed: () async {
+                      // var result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "Özel Kod Seçiniz",
+                        children: List.generate(viewModel.tipiList.length, (int index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index])),
+                      );
+                      if (result != null) {
+                        _ozelKod1Controller.text = result;
+                        viewModel.setOzelKod1(result);
+                      }
+                    },
+                    icon: const Icon(Icons.more_horiz_outlined),
                   ),
                 ),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Özel Kod 2",
-                    controller: _ozelKod2Controller,
-                    onChanged: (String value) => viewModel.setOzelKod2(value),
-                    suffix: IconButton(
-                      onPressed: () async {
-                        final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.faturaRequestModel.ozelKod2);
-                        if (result != null) {
-                          _ozelKod2Controller.text = result.kod ?? "";
-                          viewModel.setOzelKod2(result.kod);
-                        }
-                      },
-                      icon: const Icon(Icons.more_horiz_outlined),
-                    ),
+                CustomTextField(
+                  labelText: "Özel Kod 2",
+                  controller: _ozelKod2Controller,
+                  onChanged: (String value) => viewModel.setOzelKod2(value),
+                  onClear: () => viewModel.setOzelKod2(null),
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.faturaRequestModel.ozelKod2);
+                      if (result != null) {
+                        _ozelKod2Controller.text = result.kod ?? "";
+                        viewModel.setOzelKod2(result.kod);
+                      }
+                    },
+                    icon: const Icon(Icons.more_horiz_outlined),
                   ),
                 ),
               ],
@@ -464,6 +475,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               suffixMore: true,
               controller: _belgeTipiController,
               readOnly: true,
+              onClear: () => viewModel.setBelgeTipi(null),
               onTap: () async {
                 final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, int>>(
                   context,
@@ -505,6 +517,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             controller: _kod0Controller,
                             readOnly: true,
                             suffixMore: true,
+                            onClear: () => viewModel.changeArrKod0([]),
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
@@ -534,6 +547,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             controller: _kod1Controller,
                             readOnly: true,
                             suffixMore: true,
+                            onClear: () => viewModel.changeArrKod1([]),
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
@@ -566,6 +580,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             labelText: "Kod 2",
                             controller: _kod2Controller,
                             readOnly: true,
+                            onClear: () => viewModel.changeArrKod2([]),
                             suffixMore: true,
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
@@ -596,6 +611,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             controller: _kod3Controller,
                             readOnly: true,
                             suffixMore: true,
+                            onClear: () => viewModel.changeArrKod3([]),
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
@@ -629,6 +645,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             controller: _kod4Controller,
                             readOnly: true,
                             suffixMore: true,
+                            onClear: () => viewModel.changeArrKod4([]),
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
                                 context,
@@ -657,6 +674,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             labelText: "Kod 5",
                             controller: _kod5Controller,
                             readOnly: true,
+                            onClear: () => viewModel.changeArrKod5([]),
                             suffixMore: true,
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
@@ -688,6 +706,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               ),
             ),
             Row(
+              spacing: 10,
               children: <Widget>[
                 Expanded(
                   child: ElevatedButton(
@@ -701,7 +720,6 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                     child: const Text("Temizle"),
                   ),
                 ),
-                SizedBox(width: context.sized.dynamicWidth(0.02)),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {

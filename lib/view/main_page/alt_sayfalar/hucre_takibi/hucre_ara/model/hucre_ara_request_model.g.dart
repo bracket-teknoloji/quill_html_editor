@@ -20,19 +20,12 @@ _$HucreAraRequestModelImpl _$$HucreAraRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$HucreAraRequestModelImplToJson(
-    _$HucreAraRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('Barkod', instance.barkod);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('FiltreKodu', instance.filtreKodu);
-  writeNotNull('HucreMiktarArray', instance.hucreMiktarArray);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  return val;
-}
+        _$HucreAraRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.barkod case final value?) 'Barkod': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.filtreKodu case final value?) 'FiltreKodu': value,
+      if (instance.hucreMiktarArray case final value?)
+        'HucreMiktarArray': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+    };

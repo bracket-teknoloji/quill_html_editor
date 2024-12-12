@@ -15,17 +15,9 @@ _$StokFiyatOzetiRequestModelImpl _$$StokFiyatOzetiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$StokFiyatOzetiRequestModelImplToJson(
-    _$StokFiyatOzetiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('YapKod', instance.yapKod);
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('StokKodu', instance.stokKodu);
-  return val;
-}
+        _$StokFiyatOzetiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.yapKod case final value?) 'YapKod': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+    };

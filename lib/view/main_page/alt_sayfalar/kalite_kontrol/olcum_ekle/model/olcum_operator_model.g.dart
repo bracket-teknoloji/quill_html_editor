@@ -24,26 +24,18 @@ _$OlcumOperatorModelImpl _$$OlcumOperatorModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumOperatorModelImplToJson(
-    _$OlcumOperatorModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('ISYERI', instance.isyeri);
-  writeNotNull('ADI', instance.adi);
-  writeNotNull('ISTASYON_KODU', instance.istasyonKodu);
-  writeNotNull('ISTASYON_TANIMI', instance.istasyonTanimi);
-  writeNotNull('DURUM', instance.durum);
-  writeNotNull('SICILNO', instance.sicilno);
-  writeNotNull('ADI_SOYADI', instance.adiSoyadi);
-  writeNotNull('SOYADI', instance.soyadi);
-  writeNotNull('ISLETME_KODU', instance.isletmeKodu);
-  writeNotNull('KARTID', instance.kartid);
-  writeNotNull('RESIM', instance.resim);
-  return val;
-}
+        _$OlcumOperatorModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.isyeri case final value?) 'ISYERI': value,
+      if (instance.adi case final value?) 'ADI': value,
+      if (instance.istasyonKodu case final value?) 'ISTASYON_KODU': value,
+      if (instance.istasyonTanimi case final value?) 'ISTASYON_TANIMI': value,
+      if (instance.durum case final value?) 'DURUM': value,
+      if (instance.sicilno case final value?) 'SICILNO': value,
+      if (instance.adiSoyadi case final value?) 'ADI_SOYADI': value,
+      if (instance.soyadi case final value?) 'SOYADI': value,
+      if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
+      if (instance.kartid case final value?) 'KARTID': value,
+      if (instance.resim case final value?) 'RESIM': value,
+    };

@@ -97,6 +97,8 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   @action
   void setCariKodu(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(cariKodu: value);
   @action
+  void setTeslimCariKodu(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(teslimCariKodu: value);
+  @action
   void setBelgeNo(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(belgeNo: value);
   @action
   void setBaslamaTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(baslamaTarihi: value);

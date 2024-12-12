@@ -15,17 +15,9 @@ _$UretimSonuRaporuRequestModelImpl _$$UretimSonuRaporuRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$UretimSonuRaporuRequestModelImplToJson(
-    _$UretimSonuRaporuRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BelgeNo', instance.belgeNo);
-  writeNotNull('FiltreKodu', instance.filtreKodu);
-  writeNotNull('StokKodu', instance.stokKodu);
-  return val;
-}
+        _$UretimSonuRaporuRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+      if (instance.filtreKodu case final value?) 'FiltreKodu': value,
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+    };

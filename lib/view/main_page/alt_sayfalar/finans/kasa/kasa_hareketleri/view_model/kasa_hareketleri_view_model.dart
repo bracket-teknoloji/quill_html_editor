@@ -88,7 +88,7 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
     final result = await networkManager.dioGet<KasaIslemleriModel>(
       path: ApiUrls.getKasaHareketleri,
       bodyModel: KasaIslemleriModel(),
-      queryParameters: {"FilterModel": jsonEncode((kasaIslemleriRequestModel.copyWith(sayfa: page)).toJson())},
+      queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.copyWith(sayfa: page).toJson())},
     );
     if (result.isSuccess) {
       if (page > 1) {

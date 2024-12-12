@@ -114,17 +114,32 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), floatingActionButton: fab(), body: body(context));
+  Widget build(BuildContext context) => BaseScaffold(
+        appBar: appBar(),
+        floatingActionButton: fab(),
+        body: body(context),
+      );
 
   AppBar appBar() => AppBar(
-        title: Observer(builder: (_) => AppBarTitle(title: "Kalem Ekle", subtitle: viewModel.model?.stokAdi ?? "")),
+        title: Observer(
+          builder: (_) => AppBarTitle(
+            title: "Kalem Ekle",
+            subtitle: viewModel.model?.stokAdi ?? "",
+          ),
+        ),
         actions: [
           IconButton(
             onPressed: () async {
               await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
                 title: loc.generalStrings.options,
-                children: [BottomSheetModel(title: "Döviz Kurları", iconWidget: Icons.money_outlined, onTap: () => Get.toNamed("/dovizKurlari"))],
+                children: [
+                  BottomSheetModel(
+                    title: "Döviz Kurları",
+                    iconWidget: Icons.money_outlined,
+                    onTap: () => Get.toNamed("/dovizKurlari"),
+                  ),
+                ],
               );
             },
             icon: const Icon(Icons.more_vert_outlined),
@@ -132,7 +147,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
           IconButton(
             onPressed: () {
               if (viewModel.model?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length && seriliMi) {
-                dialogManager.showErrorSnackBar("Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})");
+                dialogManager.showErrorSnackBar(
+                  "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})",
+                );
                 return;
               }
               if (viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.map((e) => e.miktar).sum && seriliMi) {
@@ -170,11 +187,17 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 }
                 log(viewModel.kalemModel.dovizliFiyat.toString());
                 if (widget.kalemModel != null) {
-                  Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null));
+                  Get.back(
+                    result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi ?? (viewModel.koliMi ? "K" : null),
+                  );
                   dialogManager.showSuccessSnackBar("Kalem düzenlendi.");
                 } else {
-                  model.kalemList?.add(viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
-                  Get.back(result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi);
+                  model.kalemList?.add(
+                    viewModel.kalemModel..paketMi = viewModel.model?.paketMi,
+                  );
+                  Get.back(
+                    result: viewModel.kalemModel..paketMi = viewModel.model?.paketMi,
+                  );
                   dialogManager.showSuccessSnackBar("Kalem eklendi.");
                 }
                 // if (model.kalemList?.any((element) => element.stokKodu == viewModel.kalemModel.stokKodu) ?? false) {
@@ -219,7 +242,17 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             splitCount: 2,
                             children: [
                               Text.rich(
-                                TextSpan(children: [const TextSpan(text: "Stok Kodu: "), TextSpan(text: viewModel.model?.stokKodu ?? "", style: const TextStyle(fontWeight: FontWeight.bold))]),
+                                TextSpan(
+                                  children: [
+                                    const TextSpan(text: "Stok Kodu: "),
+                                    TextSpan(
+                                      text: viewModel.model?.stokKodu ?? "",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               Text.rich(
                                 TextSpan(
@@ -227,7 +260,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                     const TextSpan(text: "Stok Bakiye: "),
                                     TextSpan(
                                       text: "${viewModel.model?.bakiye.toIntIfDouble.toStringIfNotNull ?? "0"} ${viewModel.model?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? ""}",
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -240,7 +275,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                       TextSpan(
                                         text:
                                             "${viewModel.kalemModel.brutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.getDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -253,11 +290,15 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                       TextSpan(
                                         text:
                                             "${viewModel.kalemModel.mfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizMfTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
+                                ).yetkiVarMi(
+                                  !editTipi.talepTeklifMi && !transferMi,
+                                ),
                               if (editTipi?.fiyatGor == true)
                                 Text.rich(
                                   TextSpan(
@@ -266,7 +307,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                       TextSpan(
                                         text:
                                             "${viewModel.kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizIskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -279,7 +322,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                       TextSpan(
                                         text:
                                             "${viewModel.kalemModel.getAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.getKdvsizDovizAraToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -293,12 +338,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                         TextSpan(
                                           text:
                                               "${viewModel.kalemModel.otvTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizliOTVTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                          style: const TextStyle(fontWeight: FontWeight.bold),
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ).yetkiVarMi(viewModel.kalemModel.otvVarmi == true && (viewModel.kalemModel.otvTutar ?? 0) > 0),
+                                ).yetkiVarMi(
+                                  viewModel.kalemModel.otvVarmi == true && (viewModel.kalemModel.otvTutar ?? 0) > 0,
+                                ),
                               if (editTipi?.fiyatGor == true)
                                 Text.rich(
                                   TextSpan(
@@ -307,11 +356,15 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                       TextSpan(
                                         text:
                                             "${viewModel.kalemModel.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizKdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ],
                                   ),
-                                ).yetkiVarMi(!editTipi.talepTeklifMi && !transferMi),
+                                ).yetkiVarMi(
+                                  !editTipi.talepTeklifMi && !transferMi,
+                                ),
                               if (editTipi?.fiyatGor == true)
                                 Text.rich(
                                   TextSpan(
@@ -320,7 +373,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                       TextSpan(
                                         text:
                                             "${viewModel.kalemModel.genelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency ${(viewModel.showDovizBilgileri) ? '\n(${viewModel.kalemModel.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.kalemModel.dovizAdi ?? ""})' : ""}",
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -330,8 +385,19 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           Card(
                             color: theme.colorScheme.primary.withOpacity(0.1),
                             child: Center(
-                              child: Text.rich(TextSpan(children: [const TextSpan(text: "Son Fiyat: "), TextSpan(text: "0,00 $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold))]))
-                                  .paddingOnly(top: UIHelper.lowSize),
+                              child: Text.rich(
+                                TextSpan(
+                                  children: [
+                                    const TextSpan(text: "Son Fiyat: "),
+                                    TextSpan(
+                                      text: "0,00 $mainCurrency",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ).paddingOnly(top: UIHelper.lowSize),
                             ),
                           ),
                         ],
@@ -389,7 +455,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       viewModel.kalemModel.ekalan1 = result.masrafKodu;
                     }
                   },
-                ).yetkiVarMi((editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == true),
+                ).yetkiVarMi(
+                  (editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == true,
+                ),
                 //* Geri Kalanlar
                 CustomTextField(
                   labelText: "Ek Alan 1",
@@ -405,12 +473,20 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   },
                   onTap: () {
                     if (viewModel.kalemModel.kalemAdiDegistimi ?? false) {
-                      dialogManager.showInfoDialog("Alan 1 açıkken Alan 1'de yapılan değişiklikler kalem adına yansıtılacaktır.");
+                      dialogManager.showInfoDialog(
+                        "Alan 1 açıkken Alan 1'de yapılan değişiklikler kalem adına yansıtılacaktır.",
+                      );
                     }
                     getGenelRehberModel("EKALAN1");
                   },
-                  valueWidget: getEkRehberModel("EKALAN1") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.ekalan1 ?? "")),
-                ).yetkiVarMi((editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == false),
+                  valueWidget: getEkRehberModel("EKALAN1") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.ekalan1 ?? ""),
+                        ),
+                ).yetkiVarMi(
+                  (editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == false,
+                ),
                 CustomTextField(
                   labelText: "Ek Alan 2",
                   controller: ekAlan2Controller,
@@ -418,7 +494,11 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   suffixMore: getEkRehberModel("EKALAN2") != null,
                   onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0,
                   onTap: () => getGenelRehberModel("EKALAN2"),
-                  valueWidget: getEkRehberModel("EKALAN2") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.ekalan2 ?? "")),
+                  valueWidget: getEkRehberModel("EKALAN2") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.ekalan2 ?? ""),
+                        ),
                 ).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
                 CustomTextField(
                   labelText: "İş Emri",
@@ -435,7 +515,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   (parametreModel.satisSatirdaIsEmriSorulsun ?? false) &&
                       (editTipi?.satisMi ?? false) &&
                       (editTipi?.depoTransferiMi ?? false) &&
-                      !yetkiController.transferLokalDatGizlenecekAlanlar("FATURA_BOS_GECILMESIN_ISEMR"),
+                      !yetkiController.transferLokalDatGizlenecekAlanlar(
+                        "FATURA_BOS_GECILMESIN_ISEMR",
+                      ),
                 ),
                 Observer(
                   builder: (_) => Row(
@@ -448,7 +530,11 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           isMust: model.faturaIrsaliyeMi,
                           onClear: !model.faturaIrsaliyeMi ? () => viewModel.setMuhasebeKodu(null) : null,
                           controller: muhKoduController,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhasebeKodu ?? "")),
+                          valueWidget: Observer(
+                            builder: (_) => Text(
+                              viewModel.kalemModel.muhasebeKodu ?? "",
+                            ),
+                          ),
                           onTap: () async {
                             final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
                               context,
@@ -471,7 +557,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi(((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)) || (editTipi?.ambarFisiMi == true)),
+                      ).yetkiVarMi(
+                        ((viewModel.model?.hizmetMi ?? false) && !(editTipi?.talepTeklifMi ?? false)) || (editTipi?.ambarFisiMi == true),
+                      ),
                       Expanded(
                         child: CustomTextField(
                           labelText: "Muh. Ref. Kodu",
@@ -483,7 +571,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           suffixMore: true,
                           controller: muhRefKoduController,
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showMuhasebeReferansKoduBottomSheetDialog(context, viewModel.kalemModel.muhRefKodu);
+                            final result = await bottomSheetDialogManager.showMuhasebeReferansKoduBottomSheetDialog(
+                              context,
+                              viewModel.kalemModel.muhRefKodu,
+                            );
                             if (result != null) {
                               muhRefKoduController.text = result.hesapAdi ?? result.hesapKodu ?? "";
                               viewModel.setMuhasebeReferansKodu(result.hesapKodu);
@@ -514,7 +605,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       viewModel.setYapKod(result.yapkod);
                     }
                   },
-                ).yetkiVarMi(widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null && !transferMi),
+                ).yetkiVarMi(
+                  widget.stokListesiModel?.yapkod != null || widget.kalemModel?.yapkod != null && !transferMi,
+                ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -547,23 +640,33 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           ],
                         ),
                       ),
-                    ).yetkiVarMi(yetkiController.siparisSatirdaTeslimTarihiSor && !transferMi),
+                    ).yetkiVarMi(
+                      yetkiController.siparisSatirdaTeslimTarihiSor && !transferMi,
+                    ),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Koşul",
                         readOnly: true,
                         suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.kosulKodu ?? "")),
+                        valueWidget: Observer(
+                          builder: (_) => Text(viewModel.kalemModel.kosulKodu ?? ""),
+                        ),
                         controller: kosulController,
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.kalemModel.kosulKodu, model.kayittarihi);
+                          final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(
+                            context,
+                            viewModel.kalemModel.kosulKodu,
+                            model.kayittarihi,
+                          );
                           if (result != null) {
                             kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
                             viewModel.setKosul(result.kosulKodu ?? "");
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.siparisKosulSatirdaSor && !transferMi),
+                    ).yetkiVarMi(
+                      yetkiController.siparisKosulSatirdaSor && !transferMi,
+                    ),
                   ],
                 ),
                 Row(
@@ -576,9 +679,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         isMust: true,
                         readOnly: true,
                         suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.depoKodu.toStringIfNotNull ?? "")),
+                        valueWidget: Observer(
+                          builder: (_) => Text(
+                            viewModel.kalemModel.depoKodu.toStringIfNotNull ?? "",
+                          ),
+                        ),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.kalemModel.depoKodu);
+                          final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+                            context,
+                            viewModel.kalemModel.depoKodu,
+                          );
                           if (result != null) {
                             depoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
                             viewModel.kalemModel.depoTanimi = result.depoTanimi;
@@ -588,7 +698,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi && (editTipi?.depoTransferiMi != true)),
+                    ).yetkiVarMi(
+                      yetkiController.lokalDepoUygulamasiAcikMi && (editTipi?.depoTransferiMi != true),
+                    ),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Proje",
@@ -596,16 +708,23 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         isMust: true,
                         readOnly: true,
                         suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.projeKodu ?? "")),
+                        valueWidget: Observer(
+                          builder: (_) => Text(viewModel.kalemModel.projeKodu ?? ""),
+                        ),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.kalemModel.projeKodu);
+                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                            context,
+                            viewModel.kalemModel.projeKodu,
+                          );
                           if (result != null) {
                             projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                             viewModel.setProjeKodu(result.projeKodu ?? "");
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && (editTipi?.depoTransferiMi != true)),
+                    ).yetkiVarMi(
+                      yetkiController.projeUygulamasiAcikMi && (editTipi?.depoTransferiMi != true),
+                    ),
                   ],
                 ),
                 Row(
@@ -619,12 +738,20 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           isFormattedString: true,
                           isMust: true,
                           controller: viewModel.koliMi ? null : miktarController,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
                           onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
                           suffix: Wrap(
                             children: [
-                              IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar(miktarController)),
-                              IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar(miktarController)),
+                              IconButton(
+                                icon: const Icon(Icons.remove_outlined),
+                                onPressed: () => viewModel.decreaseMiktar(miktarController),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.add_outlined),
+                                onPressed: () => viewModel.increaseMiktar(miktarController),
+                              ),
                             ],
                           ),
                         ),
@@ -636,14 +763,22 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           labelText: "Miktar 2",
                           controller: miktar2Controller,
                           isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
                           validator: miktar2Validator,
                           isMust: viewModel.model?.koliMi,
                           onChanged: (value) => viewModel.setMiktar2(value.toDoubleWithFormattedString),
                           suffix: Wrap(
                             children: [
-                              IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMiktar2(miktar2Controller)),
-                              IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMiktar2(miktar2Controller)),
+                              IconButton(
+                                icon: const Icon(Icons.remove_outlined),
+                                onPressed: () => viewModel.decreaseMiktar2(miktar2Controller),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.add_outlined),
+                                onPressed: () => viewModel.increaseMiktar2(miktar2Controller),
+                              ),
                             ],
                           ),
                         ),
@@ -657,17 +792,27 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     Expanded(
                       child: CustomTextField(
                         labelText: "Mal. Faz. Miktar",
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
+                        ),
                         controller: malFazMiktarController,
                         onChanged: (value) => viewModel.setMFMiktar(value.toDoubleWithFormattedString),
                         suffix: Wrap(
                           children: [
-                            IconButton(icon: const Icon(Icons.remove_outlined), onPressed: () => viewModel.decreaseMFMiktar(malFazMiktarController)),
-                            IconButton(icon: const Icon(Icons.add_outlined), onPressed: () => viewModel.increaseMFMiktar(malFazMiktarController)),
+                            IconButton(
+                              icon: const Icon(Icons.remove_outlined),
+                              onPressed: () => viewModel.decreaseMFMiktar(malFazMiktarController),
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.add_outlined),
+                              onPressed: () => viewModel.increaseMFMiktar(malFazMiktarController),
+                            ),
                           ],
                         ),
                       ),
-                    ).yetkiVarMi(!editTipi.talepTeklifMi && (editTipi?.depoTransferiMi != true)),
+                    ).yetkiVarMi(
+                      !editTipi.talepTeklifMi && (editTipi?.depoTransferiMi != true),
+                    ),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Ölçü Birimi",
@@ -694,7 +839,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 title: viewModel.olcuBirimiMap[index].adi ?? "",
                                 description: (index + 1).toStringIfNotNull,
                                 groupValue: index + 1,
-                                value: MapEntry<Olculer, int>(viewModel.olcuBirimiMap[index], index + 1),
+                                value: MapEntry<Olculer, int>(
+                                  viewModel.olcuBirimiMap[index],
+                                  index + 1,
+                                ),
                               ),
                             ),
                           );
@@ -720,20 +868,31 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
                             readOnly: true,
                             suffixMore: true,
-                            valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.dovizTipi.toStringIfNotNull ?? "")),
+                            valueWidget: Observer(
+                              builder: (_) => Text(
+                                viewModel.kalemModel.dovizTipi.toStringIfNotNull ?? "",
+                              ),
+                            ),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.kalemModel.dovizKodu);
+                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
+                                context,
+                                viewModel.kalemModel.dovizKodu,
+                              );
                               if (result != null) {
                                 viewModel.kalemModel.dovizTipi = result.dovizKodu;
                                 viewModel.kalemModel.dovizKodu = result.dovizKodu;
                                 viewModel.setDovizAdi(result.isim ?? mainCurrency);
                                 dovizTipiController.text = result.isim ?? "";
-                                viewModel.setShowDovizBilgileri(result.dovizTipi != 0);
+                                viewModel.setShowDovizBilgileri(
+                                  result.dovizTipi != 0,
+                                );
                                 await getDovizData();
                               }
                             },
                           ),
-                        ).yetkiVarMi((viewModel.model?.dovizliMi ?? false) && !transferMi),
+                        ).yetkiVarMi(
+                          (viewModel.model?.dovizliMi ?? false) && !transferMi,
+                        ),
                         Expanded(
                           child: CustomTextField(
                             labelText: "Döviz Kuru",
@@ -741,14 +900,22 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             controller: dovizKuruController,
                             enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
                             isFormattedString: true,
-                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true,
+                            ),
                             onChanged: (value) {
                               viewModel.kalemModel.dovizKuru = value.toDoubleWithFormattedString;
-                              viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
-                              fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+                              viewModel.setBrutFiyat(
+                                (viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1),
+                              );
+                              fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(
+                                OndalikEnum.fiyat,
+                              );
                             },
                           ),
-                        ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
+                        ).yetkiVarMi(
+                          viewModel.kalemModel.dovizliMi && !transferMi,
+                        ),
                       ],
                     ),
                   ),
@@ -763,10 +930,14 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       isFormattedString: true,
                       onChanged: (p0) {
                         viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
-                        viewModel.setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
+                        viewModel.setBrutFiyat(
+                          (viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1),
+                        );
                         log(viewModel.kalemModel.brutFiyat.toString());
                         log(viewModel.kalemModel.dovizliFiyat.toString());
-                        fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
+                        fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(
+                          OndalikEnum.dovizFiyati,
+                        );
                       },
                     ).yetkiVarMi(viewModel.kalemModel.dovizliMi && !transferMi),
                   ),
@@ -779,13 +950,18 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         labelText: "KDV Oranı",
                         controller: kdvOraniController,
                         isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        keyboardType: const TextInputType.numberWithOptions(
+                          decimal: true,
+                        ),
                         isFormattedString: true,
                         onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
                         suffix: IconButton(
                           icon: const Icon(Icons.more_horiz_outlined),
                           onPressed: () async {
-                            final result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(context, viewModel.kalemModel.kdvOrani);
+                            final result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(
+                              context,
+                              viewModel.kalemModel.kdvOrani,
+                            );
                             if (result != null) {
                               viewModel.setKdvOrani(result);
                               kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
@@ -795,20 +971,28 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           },
                         ),
                       ),
-                    ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
+                    ).yetkiVarMi(
+                      !editTipi.talepKalemlerFiltrele && !transferMi,
+                    ),
                     if (editTipi?.fiyatGor == true)
                       Expanded(
                         child: CustomTextField(
                           labelText: "Fiyat",
                           controller: fiyatController,
                           enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
                           isFormattedString: true,
                           onChanged: (p0) {
                             viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
                             if (viewModel.model?.dovizliMi ?? false) {
-                              viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
-                              dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+                              viewModel.setDovizFiyati(
+                                (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1),
+                              );
+                              dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(
+                                OndalikEnum.fiyat,
+                              );
                             }
                           },
                         ),
@@ -843,13 +1027,17 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         child: CustomTextField(
                           labelText: "İsk.${index + 1}${index != 0 ? " %" : ""}",
                           controller: iskontoController(index + 1),
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
                           isFormattedString: true,
                           suffix: yetkiController.siparisMSISk1YuzdeSor(editTipi) && index == 0
                               ? Observer(
                                   builder: (_) => IconButton(
                                     onPressed: viewModel.changeIskonto1OranMi,
-                                    icon: Icon((viewModel.kalemModel.iskonto1OranMi ?? false) ? Icons.percent_outlined : Icons.payments_outlined),
+                                    icon: Icon(
+                                      (viewModel.kalemModel.iskonto1OranMi ?? false) ? Icons.percent_outlined : Icons.payments_outlined,
+                                    ),
                                   ),
                                 )
                               : null,
@@ -861,11 +1049,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           labelText: "İsk.Tipi ${index + 1}",
                           readOnly: true,
                           suffixMore: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: true,
+                          ),
                           controller: iskontoTipiController(index + 1),
                           onClear: () => iskontoFiller(index + 1, null),
                           onTap: () async {
-                            final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, getIskontoWithIndex(index + 1));
+                            final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
+                              context,
+                              getIskontoWithIndex(index + 1),
+                            );
                             if (result != null) {
                               iskontoFiller(index + 1, result);
                             }
@@ -876,109 +1069,172 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
                 ),
                 // TODO Açıklama parametrelerini düzenle
-                const Text("Açıklamalar", style: TextStyle(fontSize: UIHelper.highSize))
-                    .paddingSymmetric(vertical: UIHelper.lowSize)
-                    .yetkiVarMi(yetkiController.siparisSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi),
+                const Text(
+                  "Açıklamalar",
+                  style: TextStyle(fontSize: UIHelper.highSize),
+                ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(
+                      yetkiController.siparisSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi,
+                    ),
                 CustomTextField(
                   labelText: getAciklamaLabel(1),
                   readOnly: getEkRehberModel("SATIR_ACIK1") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK1") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK1"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK1") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama1 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK1") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama1 ?? ""),
+                        ),
                   onClear: () => viewModel.setAciklama1(null),
                   controller: aciklama1Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama1 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(1) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(1) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(2),
                   readOnly: getEkRehberModel("SATIR_ACIK2") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK2") != null,
                   onClear: () => viewModel.setAciklama2(null),
                   onTap: () async => getGenelRehberModel("SATIR_ACIK2"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK2") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama2 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK2") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama2 ?? ""),
+                        ),
                   controller: aciklama2Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama2 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(2) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(2) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(3),
                   readOnly: getEkRehberModel("SATIR_ACIK3") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK3") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK3"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK3") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama3 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK3") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama3 ?? ""),
+                        ),
                   onClear: () => viewModel.setAciklama3(null),
                   controller: aciklama3Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama3 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(3) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(3) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(4),
                   readOnly: getEkRehberModel("SATIR_ACIK4") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK4") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK4"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK4") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama4 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK4") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama4 ?? ""),
+                        ),
                   onClear: () => viewModel.setAciklama4(null),
                   controller: aciklama4Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama4 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(4) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(4) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(5),
                   readOnly: getEkRehberModel("SATIR_ACIK5") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK5") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK5"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK5") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama5 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK5") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama5 ?? ""),
+                        ),
                   onClear: () => viewModel.setAciklama5(null),
                   controller: aciklama5Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama5 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(5) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(5) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(6),
                   readOnly: getEkRehberModel("SATIR_ACIK6") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK6") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK6"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK6") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama6 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK6") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama6 ?? ""),
+                        ),
                   onClear: () => viewModel.setAciklama6(null),
                   controller: aciklama6Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama6 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(6) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(6) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(7),
                   readOnly: getEkRehberModel("SATIR_ACIK7") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK7") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK7"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK7") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama7 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK7") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama7 ?? ""),
+                        ),
                   onClear: () => viewModel.setAciklama7(null),
                   controller: aciklama7Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama7 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(7) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(7) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(8),
                   readOnly: getEkRehberModel("SATIR_ACIK8") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK8") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK8"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK8") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama8 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK8") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama8 ?? ""),
+                        ),
                   onClear: () => viewModel.setAciklama8(null),
                   controller: aciklama8Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama8 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(8) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(8) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(9),
                   readOnly: getEkRehberModel("SATIR_ACIK9") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK9") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK9"),
-                  valueWidget: getEkRehberModel("SATIR_ACIK9") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama9 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK9") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama9 ?? ""),
+                        ),
                   onClear: () => viewModel.setAciklama9(null),
                   controller: aciklama9Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama9 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(9) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(9) && !transferMi,
+                ),
                 CustomTextField(
                   labelText: getAciklamaLabel(10),
                   readOnly: getEkRehberModel("SATIR_ACIK10") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK10") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK10"),
                   onClear: () => viewModel.setAciklama10(null),
-                  valueWidget: getEkRehberModel("SATIR_ACIK10") == null ? null : Observer(builder: (_) => Text(viewModel.kalemModel.aciklama10 ?? "")),
+                  valueWidget: getEkRehberModel("SATIR_ACIK10") == null
+                      ? null
+                      : Observer(
+                          builder: (_) => Text(viewModel.kalemModel.aciklama10 ?? ""),
+                        ),
                   controller: aciklama10Controller,
                   onChanged: (value) => viewModel.kalemModel.aciklama10 = value,
-                ).yetkiVarMi(!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(10) && !transferMi),
+                ).yetkiVarMi(
+                  !editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(10) && !transferMi,
+                ),
                 const SizedBox(height: 50),
               ],
             ),
@@ -1043,7 +1299,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     aciklama8Controller = TextEditingController();
     aciklama9Controller = TextEditingController();
     aciklama10Controller = TextEditingController();
-    viewModel.setShowDovizBilgileri(widget.kalemModel?.dovizliMi ?? widget.stokListesiModel?.dovizliMi ?? false);
+    viewModel.setShowDovizBilgileri(
+      widget.kalemModel?.dovizliMi ?? widget.stokListesiModel?.dovizliMi ?? false,
+    );
   }
 
   Future<void> getData() async {
@@ -1073,10 +1331,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         final dovizResult = await networkManager.dioGet(
           path: ApiUrls.getDovizKurlari,
           bodyModel: DovizKurlariModel(),
-          queryParameters: {"EkranTipi": "D", "DovizTipi": viewModel.kalemModel.dovizKodu, "Tarih": model.tarih?.toDateString},
+          queryParameters: {
+            "EkranTipi": "D",
+            "DovizTipi": viewModel.kalemModel.dovizKodu,
+            "Tarih": model.tarih?.toDateString,
+          },
         );
         if (dovizResult.isSuccess && viewModel.kalemModel.dovizTipi != null) {
-          final result = dovizResult.dataList.firstWhereOrNull((element) => element.dovizTipi == viewModel.kalemModel.dovizTipi);
+          final result = dovizResult.dataList.firstWhereOrNull(
+            (element) => element.dovizTipi == viewModel.kalemModel.dovizTipi,
+          );
           if (result != null) {
             switch (parametreModel.satisDovizTakipHangiDeger) {
               case 1:
@@ -1097,7 +1361,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
           viewModel.setShowDovizBilgileri((result?.dovizTipi ?? 0) > 0);
         }
       }
-      viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
+      viewModel.setDovizFiyati(
+        (viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1),
+      );
       dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
       dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari);
     } else {
@@ -1210,11 +1476,23 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     if (editTipi?.depoTransferiMi == true) {
       viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? viewModel.model?.depoKodu;
       viewModel.kalemModel.hedefDepo ??= model.girisDepoKodu;
-      viewModel.kalemModel.hedefDepoAdi = parametreModel.depoList?.where((element) => element.depoKodu == viewModel.kalemModel.hedefDepo).firstOrNull?.depoTanimi ?? "";
+      viewModel.kalemModel.hedefDepoAdi = parametreModel.depoList
+              ?.where(
+                (element) => element.depoKodu == viewModel.kalemModel.hedefDepo,
+              )
+              .firstOrNull
+              ?.depoTanimi ??
+          "";
     } else {
       viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? model.topluDepo ?? viewModel.model?.depoKodu ?? parametreModel.satisHizmetDepoKodu;
     }
-    viewModel.kalemModel.depoTanimi = parametreModel.depoList?.where((element) => element.depoKodu == viewModel.kalemModel.depoKodu).firstOrNull?.depoTanimi ?? "";
+    viewModel.kalemModel.depoTanimi = parametreModel.depoList
+            ?.where(
+              (element) => element.depoKodu == viewModel.kalemModel.depoKodu,
+            )
+            .firstOrNull
+            ?.depoTanimi ??
+        "";
     depoController.text = viewModel.kalemModel.depoTanimi ?? "";
     viewModel.kalemModel.depoTanimi ??= depoController.text;
     if (widget.kalemModel == null) {
@@ -1302,24 +1580,15 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     }
   }
 
-  int? getIskontoWithIndex(int index) {
-    switch (index) {
-      case 1:
-        return viewModel.kalemModel.isk1Tipi;
-      case 2:
-        return viewModel.kalemModel.isk2Tipi;
-      case 3:
-        return viewModel.kalemModel.isk3Tipi;
-      case 4:
-        return viewModel.kalemModel.isk4Tipi;
-      case 5:
-        return viewModel.kalemModel.isk5Tipi;
-      case 6:
-        return viewModel.kalemModel.isk6Tipi;
-      default:
-        return null;
-    }
-  }
+  int? getIskontoWithIndex(int index) => switch (index) {
+        1 => viewModel.kalemModel.isk1Tipi,
+        2 => viewModel.kalemModel.isk2Tipi,
+        3 => viewModel.kalemModel.isk3Tipi,
+        4 => viewModel.kalemModel.isk4Tipi,
+        5 => viewModel.kalemModel.isk5Tipi,
+        6 => viewModel.kalemModel.isk6Tipi,
+        _ => null,
+      };
 
   TextEditingController iskontoController(int index) {
     switch (index) {
@@ -1408,7 +1677,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   EkRehberlerModel? getEkRehberModel(String? name) {
     if (name == null) return null;
-    return userModel.ekRehberler?.firstWhereOrNull((element) => element.alan == name && element.ekran == editTipi?.rawValue);
+    return userModel.ekRehberler?.firstWhereOrNull(
+      (element) => element.alan == name && element.ekran == editTipi?.rawValue,
+    );
   }
 
   Future<void> getGenelRehberModel(String? name) async {

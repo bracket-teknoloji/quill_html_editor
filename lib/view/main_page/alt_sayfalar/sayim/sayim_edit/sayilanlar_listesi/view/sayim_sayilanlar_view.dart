@@ -76,8 +76,12 @@ class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
                 splitCount: 2,
                 children: [
                   Text("Stok Kodu: ${sayimModel.stokKodu}"),
-                  Text("Miktar: ${sayimModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  Text("Depo: ${sayimModel.depoKodu} (${sayimModel.depoTanimi})"),
+                  Text(
+                    "Miktar: ${sayimModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                  ),
+                  Text(
+                    "Depo: ${sayimModel.depoKodu} (${sayimModel.depoTanimi})",
+                  ),
                   Text("Kullanıcı: ${sayimModel.kayityapankul}"),
                 ],
               ),
@@ -122,7 +126,14 @@ class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
             Get.back();
             await bottomSheetDialogManager.showPrintBottomSheetDialog(
               context,
-              PrintModel(raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi, dicParams: DicParams(stokKodu: model.stokKodu, kalemId: model.id.toStringIfNotNull, belgeTipi: "SAYI,")),
+              PrintModel(
+                raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
+                dicParams: DicParams(
+                  stokKodu: model.stokKodu,
+                  kalemId: model.id.toStringIfNotNull,
+                  belgeTipi: "SAYI,",
+                ),
+              ),
               true,
               true,
             );
@@ -133,7 +144,11 @@ class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
           iconWidget: Icons.list_alt_outlined,
           onTap: () async {
             Get.back();
-            dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: model.stokKodu)));
+            dialogManager.showStokGridViewDialog(
+              await networkManager.getStokModel(
+                StokRehberiRequestModel(stokKodu: model.stokKodu),
+              ),
+            );
           },
         ),
       ],

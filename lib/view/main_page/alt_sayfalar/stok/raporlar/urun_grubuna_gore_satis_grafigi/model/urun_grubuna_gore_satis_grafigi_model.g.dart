@@ -20,23 +20,15 @@ UrunGrubunaGoreSatisGrafigiModel _$UrunGrubunaGoreSatisGrafigiModelFromJson(
       ..oranTutar = (json['ORAN_TUTAR'] as num?)?.toDouble();
 
 Map<String, dynamic> _$UrunGrubunaGoreSatisGrafigiModelToJson(
-    UrunGrubunaGoreSatisGrafigiModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('GRUP_KODU', instance.grupKodu);
-  writeNotNull('GRUP_ADI', instance.grupAdi);
-  writeNotNull('NET_TUTAR', instance.netTutar);
-  writeNotNull('TOPLAM_TUTAR', instance.toplamTutar);
-  writeNotNull('ORAN', instance.oran);
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('ORAN_MIKTAR', instance.oranMiktar);
-  writeNotNull('ORAN_TUTAR', instance.oranTutar);
-  return val;
-}
+        UrunGrubunaGoreSatisGrafigiModel instance) =>
+    <String, dynamic>{
+      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
+      if (instance.grupAdi case final value?) 'GRUP_ADI': value,
+      if (instance.netTutar case final value?) 'NET_TUTAR': value,
+      if (instance.toplamTutar case final value?) 'TOPLAM_TUTAR': value,
+      if (instance.oran case final value?) 'ORAN': value,
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.oranMiktar case final value?) 'ORAN_MIKTAR': value,
+      if (instance.oranTutar case final value?) 'ORAN_TUTAR': value,
+    };

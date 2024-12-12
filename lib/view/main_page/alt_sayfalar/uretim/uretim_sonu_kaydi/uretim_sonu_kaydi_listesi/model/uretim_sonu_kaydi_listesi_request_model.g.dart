@@ -17,18 +17,10 @@ _$UretimSonuKaydiListesiRequestModelImpl
         );
 
 Map<String, dynamic> _$$UretimSonuKaydiListesiRequestModelImplToJson(
-    _$UretimSonuKaydiListesiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('BelgeNo', instance.belgeNo);
-  writeNotNull('SearchText', instance.searchText);
-  return val;
-}
+        _$UretimSonuKaydiListesiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.sayfa case final value?) 'Sayfa': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+    };

@@ -24,26 +24,18 @@ _$CekSenetListesiRequestModelImpl _$$CekSenetListesiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CekSenetListesiRequestModelImplToJson(
-    _$CekSenetListesiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('VerenKodu', instance.verenKodu);
-  writeNotNull('Sirala', instance.sirala);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('Yer', instance.yer);
-  writeNotNull('DonemTipi', instance.donemTipi);
-  writeNotNull('TarihTipi', instance.tarihTipi);
-  writeNotNull('Tipi', instance.tipi);
-  writeNotNull('VerilenKodu', instance.verilenKodu);
-  writeNotNull('Durum', instance.durum);
-  writeNotNull('SearchText', instance.searchText);
-  writeNotNull('BaslangicTarihi', instance.baslangicTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  return val;
-}
+        _$CekSenetListesiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.verenKodu case final value?) 'VerenKodu': value,
+      if (instance.sirala case final value?) 'Sirala': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.yer case final value?) 'Yer': value,
+      if (instance.donemTipi case final value?) 'DonemTipi': value,
+      if (instance.tarihTipi case final value?) 'TarihTipi': value,
+      if (instance.tipi case final value?) 'Tipi': value,
+      if (instance.verilenKodu case final value?) 'VerilenKodu': value,
+      if (instance.durum case final value?) 'Durum': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+      if (instance.baslangicTarihi case final value?) 'BaslangicTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+    };

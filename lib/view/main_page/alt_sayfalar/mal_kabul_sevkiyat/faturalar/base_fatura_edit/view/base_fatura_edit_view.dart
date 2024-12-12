@@ -864,17 +864,10 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
 
   bool get kaydetButonuYetki {
     if (widget.model.baseEditEnum == BaseEditEnum.goruntule) return false;
-    switch (widget.model.baseEditEnum) {
-      case BaseEditEnum.ekle:
-      case BaseEditEnum.kopyala:
-      case BaseEditEnum.siparistenKopyala:
-      case BaseEditEnum.revize:
-      case BaseEditEnum.taslak:
-        return widget.model.editTipiEnum?.eklensinMi ?? false;
-      case BaseEditEnum.duzenle:
-        return widget.model.editTipiEnum?.duzenlensinMi ?? false;
-      default:
-        return false;
-    }
+    return switch (widget.model.baseEditEnum) {
+      BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.siparistenKopyala || BaseEditEnum.revize || BaseEditEnum.taslak => widget.model.editTipiEnum?.eklensinMi ?? false,
+      BaseEditEnum.duzenle => widget.model.editTipiEnum?.duzenlensinMi ?? false,
+      _ => false,
+    };
   }
 }

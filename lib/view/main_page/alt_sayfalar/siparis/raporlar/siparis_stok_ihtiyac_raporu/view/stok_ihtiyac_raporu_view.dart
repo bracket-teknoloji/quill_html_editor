@@ -200,22 +200,13 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
     return null;
   }
 
-  String? getKodWithIndex(int? index) {
-    switch (index) {
-      case 0:
-        return viewModel.pdfModel.dicParams?.grupKodu;
-      case 1:
-        return viewModel.pdfModel.dicParams?.kod1;
-      case 2:
-        return viewModel.pdfModel.dicParams?.kod2;
-      case 3:
-        return viewModel.pdfModel.dicParams?.kod3;
-      case 4:
-        return viewModel.pdfModel.dicParams?.kod4;
-      case 5:
-        return viewModel.pdfModel.dicParams?.kod5;
-      default:
-        return null;
-    }
-  }
+  String? getKodWithIndex(int? index) => switch (index) {
+        0 => viewModel.pdfModel.dicParams?.grupKodu,
+        1 => viewModel.pdfModel.dicParams?.kod1,
+        2 => viewModel.pdfModel.dicParams?.kod2,
+        3 => viewModel.pdfModel.dicParams?.kod3,
+        4 => viewModel.pdfModel.dicParams?.kod4,
+        5 => viewModel.pdfModel.dicParams?.kod5,
+        _ => null,
+      };
 }

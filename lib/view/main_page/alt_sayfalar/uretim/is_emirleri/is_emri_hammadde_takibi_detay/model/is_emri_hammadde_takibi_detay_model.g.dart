@@ -18,22 +18,15 @@ _$IsEmriHammaddeTakibiDetayModelImpl
         );
 
 Map<String, dynamic> _$$IsEmriHammaddeTakibiDetayModelImplToJson(
-    _$IsEmriHammaddeTakibiDetayModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('HAM_KODU', instance.hamKodu);
-  writeNotNull('HAM_ADI', instance.hamAdi);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull(
-      'REFERANSLAR', instance.referanslar?.map((e) => e.toJson()).toList());
-  return val;
-}
+        _$IsEmriHammaddeTakibiDetayModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.hamKodu case final value?) 'HAM_KODU': value,
+      if (instance.hamAdi case final value?) 'HAM_ADI': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.referanslar?.map((e) => e.toJson()).toList()
+          case final value?)
+        'REFERANSLAR': value,
+    };
 
 _$ReferanslarImpl _$$ReferanslarImplFromJson(Map<String, dynamic> json) =>
     _$ReferanslarImpl(
@@ -45,20 +38,14 @@ _$ReferanslarImpl _$$ReferanslarImplFromJson(Map<String, dynamic> json) =>
       referansStokAdi: json['REFERANS_STOK_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$ReferanslarImplToJson(_$ReferanslarImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('HAMMADDE_NO', instance.hammaddeNo);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('REFERANS_STOK_KODU', instance.referansStokKodu);
-  writeNotNull('REFERANS_STOK_ADI', instance.referansStokAdi);
-  return val;
-}
+Map<String, dynamic> _$$ReferanslarImplToJson(_$ReferanslarImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.hammaddeNo case final value?) 'HAMMADDE_NO': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.referansStokKodu case final value?)
+        'REFERANS_STOK_KODU': value,
+      if (instance.referansStokAdi case final value?)
+        'REFERANS_STOK_ADI': value,
+    };

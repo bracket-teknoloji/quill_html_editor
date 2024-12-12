@@ -21,23 +21,15 @@ _$DepoBakiyeDurumuModelImpl _$$DepoBakiyeDurumuModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DepoBakiyeDurumuModelImplToJson(
-    _$DepoBakiyeDurumuModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SUBE_KODU', instance.subeKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('GIRIS', instance.giris);
-  writeNotNull('CIKIS', instance.cikis);
-  writeNotNull('BAKIYE', instance.bakiye);
-  writeNotNull('SUBE_ADI', instance.subeAdi);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('DEPO_ADI', instance.depoAdi);
-  return val;
-}
+        _$DepoBakiyeDurumuModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.giris case final value?) 'GIRIS': value,
+      if (instance.cikis case final value?) 'CIKIS': value,
+      if (instance.bakiye case final value?) 'BAKIYE': value,
+      if (instance.subeAdi case final value?) 'SUBE_ADI': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.depoAdi case final value?) 'DEPO_ADI': value,
+    };

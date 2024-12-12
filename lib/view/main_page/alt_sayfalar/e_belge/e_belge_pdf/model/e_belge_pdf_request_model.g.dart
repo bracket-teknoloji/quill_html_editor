@@ -16,18 +16,10 @@ _$EBelgePdfRequestModelImpl _$$EBelgePdfRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$EBelgePdfRequestModelImplToJson(
-    _$EBelgePdfRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BELGE_TURU', instance.belgeTuru);
-  writeNotNull('EBELGE_TURU', instance.ebelgeTuru);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('RESMI_BELGE_NO', instance.resmiBelgeNo);
-  return val;
-}
+        _$EBelgePdfRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeTuru case final value?) 'BELGE_TURU': value,
+      if (instance.ebelgeTuru case final value?) 'EBELGE_TURU': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.resmiBelgeNo case final value?) 'RESMI_BELGE_NO': value,
+    };

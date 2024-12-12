@@ -18,22 +18,14 @@ _$EvraklarModelImpl _$$EvraklarModelImplFromJson(Map<String, dynamic> json) =>
       islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$EvraklarModelImplToJson(_$EvraklarModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('RESIM_URL', instance.resimUrl);
-  writeNotNull('RESIM_URL_KUCUK', instance.resimUrlKucuk);
-  writeNotNull('BOYUT_BYTE', instance.boyutByte);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  return val;
-}
+Map<String, dynamic> _$$EvraklarModelImplToJson(_$EvraklarModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.resimUrl case final value?) 'RESIM_URL': value,
+      if (instance.resimUrlKucuk case final value?) 'RESIM_URL_KUCUK': value,
+      if (instance.boyutByte case final value?) 'BOYUT_BYTE': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+    };

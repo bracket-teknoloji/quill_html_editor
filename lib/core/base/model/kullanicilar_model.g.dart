@@ -14,16 +14,8 @@ _$KullanicilarModelImpl _$$KullanicilarModelImplFromJson(
     );
 
 Map<String, dynamic> _$$KullanicilarModelImplToJson(
-    _$KullanicilarModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('KODU', instance.kodu);
-  writeNotNull('ADI', instance.adi);
-  return val;
-}
+        _$KullanicilarModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.kodu case final value?) 'KODU': value,
+      if (instance.adi case final value?) 'ADI': value,
+    };

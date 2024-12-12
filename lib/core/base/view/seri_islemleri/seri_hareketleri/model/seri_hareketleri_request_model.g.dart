@@ -15,17 +15,9 @@ _$SeriHareketleriRequestModelImpl _$$SeriHareketleriRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$SeriHareketleriRequestModelImplToJson(
-    _$SeriHareketleriRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('StokKodu', instance.stokKodu);
-  writeNotNull('SeriNo', instance.seriNo);
-  writeNotNull('Sirala', instance.sirala);
-  return val;
-}
+        _$SeriHareketleriRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+      if (instance.seriNo case final value?) 'SeriNo': value,
+      if (instance.sirala case final value?) 'Sirala': value,
+    };

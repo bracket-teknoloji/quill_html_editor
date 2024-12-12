@@ -15,19 +15,11 @@ _$EBelgePdfModelImpl _$$EBelgePdfModelImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$EBelgePdfModelImplToJson(
-    _$EBelgePdfModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('FileModel', instance.fileModel?.toJson());
-  return val;
-}
+        _$EBelgePdfModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.fileModel?.toJson() case final value?) 'FileModel': value,
+    };
 
 _$FileModelImpl _$$FileModelImplFromJson(Map<String, dynamic> json) =>
     _$FileModelImpl(
@@ -39,18 +31,11 @@ _$FileModelImpl _$$FileModelImplFromJson(Map<String, dynamic> json) =>
       dosyaAdi: json['DOSYA_ADI'] as String?,
     );
 
-Map<String, dynamic> _$$FileModelImplToJson(_$FileModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BYTE_DATA', instance.byteData);
-  writeNotNull('UZANTI', instance.uzanti);
-  writeNotNull('DOSYA_TARIHI', instance.dosyaTarihi?.toIso8601String());
-  writeNotNull('DOSYA_ADI', instance.dosyaAdi);
-  return val;
-}
+Map<String, dynamic> _$$FileModelImplToJson(_$FileModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.byteData case final value?) 'BYTE_DATA': value,
+      if (instance.uzanti case final value?) 'UZANTI': value,
+      if (instance.dosyaTarihi?.toIso8601String() case final value?)
+        'DOSYA_TARIHI': value,
+      if (instance.dosyaAdi case final value?) 'DOSYA_ADI': value,
+    };

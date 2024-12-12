@@ -48,46 +48,40 @@ _$KasaIslemleriModelImpl _$$KasaIslemleriModelImplFromJson(
     );
 
 Map<String, dynamic> _$$KasaIslemleriModelImplToJson(
-    _$KasaIslemleriModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('CAHAR_INCKEYNO', instance.caharInckeyno);
-  writeNotNull('KASA_KODU', instance.kasaKodu);
-  writeNotNull('KASA_ADI', instance.kasaAdi);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('TIP', instance.tip);
-  writeNotNull('TIP_ACIKLAMA', instance.tipAciklama);
-  writeNotNull('HEDEF_ACIKLAMA', instance.hedefAciklama);
-  writeNotNull('TUTAR', instance.tutar);
-  writeNotNull('CARI_MUH', instance.cariMuh);
-  writeNotNull('GC', instance.gc);
-  writeNotNull('KOD', instance.kod);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('HESAP_ADI', instance.hesapAdi);
-  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
-  writeNotNull('DOVIZ_KURU', instance.dovizKuru);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PLASIYER_ADI', instance.plasiyerAdi);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('PROJE_ADI', instance.projeAdi);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('REFKEY', instance.refkey);
-  writeNotNull(
-      'KASA_DEVIR_TARIHI', instance.kasaDevirTarihi?.toIso8601String());
-  writeNotNull('KASA_DEVIR_TUTARI', instance.kasaDevirTutari);
-  writeNotNull('KASA_DOVIZ_DEVIR_TUTARI', instance.kasaDovizDevirTutari);
-  writeNotNull('KASA_DOVIZ_TIPI', instance.kasaDovizTipi);
-  writeNotNull('SAAT', instance.saat);
-  writeNotNull('KDV_ORANI', instance.kdvOrani);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  return val;
-}
+        _$KasaIslemleriModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.caharInckeyno case final value?) 'CAHAR_INCKEYNO': value,
+      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+      if (instance.kasaAdi case final value?) 'KASA_ADI': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.tip case final value?) 'TIP': value,
+      if (instance.tipAciklama case final value?) 'TIP_ACIKLAMA': value,
+      if (instance.hedefAciklama case final value?) 'HEDEF_ACIKLAMA': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+      if (instance.cariMuh case final value?) 'CARI_MUH': value,
+      if (instance.gc case final value?) 'GC': value,
+      if (instance.kod case final value?) 'KOD': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.dovizKuru case final value?) 'DOVIZ_KURU': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.plasiyerAdi case final value?) 'PLASIYER_ADI': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.projeAdi case final value?) 'PROJE_ADI': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.refkey case final value?) 'REFKEY': value,
+      if (instance.kasaDevirTarihi?.toIso8601String() case final value?)
+        'KASA_DEVIR_TARIHI': value,
+      if (instance.kasaDevirTutari case final value?)
+        'KASA_DEVIR_TUTARI': value,
+      if (instance.kasaDovizDevirTutari case final value?)
+        'KASA_DOVIZ_DEVIR_TUTARI': value,
+      if (instance.kasaDovizTipi case final value?) 'KASA_DOVIZ_TIPI': value,
+      if (instance.saat case final value?) 'SAAT': value,
+      if (instance.kdvOrani case final value?) 'KDV_ORANI': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+    };

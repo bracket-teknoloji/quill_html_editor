@@ -4,107 +4,59 @@ enum CekSenetListesiEnum { cekMusteri, senetMusteri, cekBorc, senetBorc }
 
 extension CekSenetExtensions on CekSenetListesiEnum {
   YetkiController get _yetkiController => YetkiController();
-  String get title {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-        return "Müşteri Çekleri";
-      case CekSenetListesiEnum.senetMusteri:
-        return "Müşteri Senetleri";
-      case CekSenetListesiEnum.cekBorc:
-        return "Borç Çekleri";
-      case CekSenetListesiEnum.senetBorc:
-        return "Borç Senetleri";
-    }
-  }
+  String get title => switch (this) {
+        CekSenetListesiEnum.cekMusteri => "Müşteri Çekleri",
+        CekSenetListesiEnum.senetMusteri => "Müşteri Senetleri",
+        CekSenetListesiEnum.cekBorc => "Borç Çekleri",
+        CekSenetListesiEnum.senetBorc => "Borç Senetleri",
+      };
 
-  String get dekontTitle {
-    switch (this) {
-      case CekSenetListesiEnum.cekBorc:
-        return "Çek Ödeme Dekontu";
-      case CekSenetListesiEnum.cekMusteri:
-        return "Çek Tahsil Dekontu";
-      case CekSenetListesiEnum.senetBorc:
-        return "Senet Ödeme Dekontu";
-      case CekSenetListesiEnum.senetMusteri:
-        return "Senet Tahsil Dekontu";
-    }
-  }
+  String get dekontTitle => switch (this) {
+        CekSenetListesiEnum.cekBorc => "Çek Ödeme Dekontu",
+        CekSenetListesiEnum.cekMusteri => "Çek Tahsil Dekontu",
+        CekSenetListesiEnum.senetBorc => "Senet Ödeme Dekontu",
+        CekSenetListesiEnum.senetMusteri => "Senet Tahsil Dekontu",
+      };
 
-  String get dekontAciklama {
-    switch (this) {
-      case CekSenetListesiEnum.senetBorc:
-        return "No. Senet Ode.";
-      case CekSenetListesiEnum.senetMusteri:
-        return "No. Senet Tah.";
-      case CekSenetListesiEnum.cekBorc:
-        return "No. Çek Ode.";
-      case CekSenetListesiEnum.cekMusteri:
-        return "No. Çek. Tah.";
-    }
-  }
+  String get dekontAciklama => switch (this) {
+        CekSenetListesiEnum.senetBorc => "No. Senet Ode.",
+        CekSenetListesiEnum.senetMusteri => "No. Senet Tah.",
+        CekSenetListesiEnum.cekBorc => "No. Çek Ode.",
+        CekSenetListesiEnum.cekMusteri => "No. Çek. Tah.",
+      };
 
-  String get belgeTipi {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-        return "MCEK";
-      case CekSenetListesiEnum.senetMusteri:
-        return "MSEN";
-      case CekSenetListesiEnum.cekBorc:
-        return "BCEK";
-      case CekSenetListesiEnum.senetBorc:
-        return "BSEN";
-    }
-  }
+  String get belgeTipi => switch (this) {
+        CekSenetListesiEnum.cekMusteri => "MCEK",
+        CekSenetListesiEnum.senetMusteri => "MSEN",
+        CekSenetListesiEnum.cekBorc => "BCEK",
+        CekSenetListesiEnum.senetBorc => "BSEN",
+      };
 
-  bool get silebilirMi {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-        return _yetkiController.musteriCekSil;
-      case CekSenetListesiEnum.senetMusteri:
-        return _yetkiController.musteriSenetSil;
-      case CekSenetListesiEnum.cekBorc:
-        return _yetkiController.borcCekSil;
-      case CekSenetListesiEnum.senetBorc:
-        return _yetkiController.borcSenetSil;
-    }
-  }
+  bool get silebilirMi => switch (this) {
+        CekSenetListesiEnum.cekMusteri => _yetkiController.musteriCekSil,
+        CekSenetListesiEnum.senetMusteri => _yetkiController.musteriSenetSil,
+        CekSenetListesiEnum.cekBorc => _yetkiController.borcCekSil,
+        CekSenetListesiEnum.senetBorc => _yetkiController.borcSenetSil,
+      };
 
-  bool get eklenebilirMi {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-        return _yetkiController.musteriCekEkle;
-      case CekSenetListesiEnum.senetMusteri:
-        return _yetkiController.musteriSenetEkle;
-      case CekSenetListesiEnum.cekBorc:
-        return _yetkiController.borcCekEkle;
-      case CekSenetListesiEnum.senetBorc:
-        return _yetkiController.borcSenetEkle;
-    }
-  }
+  bool get eklenebilirMi => switch (this) {
+        CekSenetListesiEnum.cekMusteri => _yetkiController.musteriCekEkle,
+        CekSenetListesiEnum.senetMusteri => _yetkiController.musteriSenetEkle,
+        CekSenetListesiEnum.cekBorc => _yetkiController.borcCekEkle,
+        CekSenetListesiEnum.senetBorc => _yetkiController.borcSenetEkle,
+      };
 
-  bool get hareketlerGorulebilirMi {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-        return _yetkiController.musteriCekHareketler;
-      case CekSenetListesiEnum.senetMusteri:
-        return _yetkiController.musteriSenetHareketler;
-      case CekSenetListesiEnum.cekBorc:
-        return _yetkiController.borcCekHareketler;
-      case CekSenetListesiEnum.senetBorc:
-        return _yetkiController.borcSenetHareketler;
-    }
-  }
+  bool get hareketlerGorulebilirMi => switch (this) {
+        CekSenetListesiEnum.cekMusteri => _yetkiController.musteriCekHareketler,
+        CekSenetListesiEnum.senetMusteri => _yetkiController.musteriSenetHareketler,
+        CekSenetListesiEnum.cekBorc => _yetkiController.borcCekHareketler,
+        CekSenetListesiEnum.senetBorc => _yetkiController.borcSenetHareketler,
+      };
 
-  bool get borcMu {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-      case CekSenetListesiEnum.senetMusteri:
-        return false;
-      case CekSenetListesiEnum.cekBorc:
-      case CekSenetListesiEnum.senetBorc:
-        return true;
-    }
-  }
+  bool get borcMu => switch (this) {
+        CekSenetListesiEnum.cekMusteri || CekSenetListesiEnum.senetMusteri => false,
+        CekSenetListesiEnum.cekBorc || CekSenetListesiEnum.senetBorc => true,
+      };
 
   bool get tahsilatCirola => switch (this) {
         CekSenetListesiEnum.cekMusteri => _yetkiController.musteriCekTahsilHesabinaCirola,
@@ -124,53 +76,29 @@ extension CekSenetExtensions on CekSenetListesiEnum {
         _ => false
       };
 
-  String get tahsilatRoute {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-        return "/mainPage/cekMusteriTahsilat";
-      case CekSenetListesiEnum.senetMusteri:
-        return "/mainPage/senetMusteriTahsilat";
-      case CekSenetListesiEnum.cekBorc:
-        return "/mainPage/cekBorcTahsilat";
-      case CekSenetListesiEnum.senetBorc:
-        return "/mainPage/senetBorcTahsilat";
-    }
-  }
+  String get tahsilatRoute => switch (this) {
+        CekSenetListesiEnum.cekMusteri => "/mainPage/cekMusteriTahsilat",
+        CekSenetListesiEnum.senetMusteri => "/mainPage/senetMusteriTahsilat",
+        CekSenetListesiEnum.cekBorc => "/mainPage/cekBorcTahsilat",
+        CekSenetListesiEnum.senetBorc => "/mainPage/senetBorcTahsilat",
+      };
 
-  bool get cekMi {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-      case CekSenetListesiEnum.cekBorc:
-        return true;
-      case CekSenetListesiEnum.senetMusteri:
-      case CekSenetListesiEnum.senetBorc:
-        return false;
-    }
-  }
+  bool get cekMi => switch (this) {
+        CekSenetListesiEnum.cekMusteri || CekSenetListesiEnum.cekBorc => true,
+        CekSenetListesiEnum.senetMusteri || CekSenetListesiEnum.senetBorc => false,
+      };
 
-  String get dekontIslemTuru {
-    switch (this) {
-      case CekSenetListesiEnum.cekBorc:
-        return "BCO";
-      case CekSenetListesiEnum.senetBorc:
-        return "BSO";
-      case CekSenetListesiEnum.cekMusteri:
-        return "DCT";
-      case CekSenetListesiEnum.senetMusteri:
-        return "DST";
-    }
-  }
+  String get dekontIslemTuru => switch (this) {
+        CekSenetListesiEnum.cekBorc => "BCO",
+        CekSenetListesiEnum.senetBorc => "BSO",
+        CekSenetListesiEnum.cekMusteri => "DCT",
+        CekSenetListesiEnum.senetMusteri => "DST",
+      };
 
-  String get tahsilatEkleRoute {
-    switch (this) {
-      case CekSenetListesiEnum.cekMusteri:
-        return "/mainPage/cekMusteriTahsilatEkle";
-      case CekSenetListesiEnum.senetMusteri:
-        return "/mainPage/senetMusteriTahsilatEkle";
-      case CekSenetListesiEnum.cekBorc:
-        return "/mainPage/cekBorcTahsilatEkle";
-      case CekSenetListesiEnum.senetBorc:
-        return "/mainPage/senetBorcTahsilatEkle";
-    }
-  }
+  String get tahsilatEkleRoute => switch (this) {
+        CekSenetListesiEnum.cekMusteri => "/mainPage/cekMusteriTahsilatEkle",
+        CekSenetListesiEnum.senetMusteri => "/mainPage/senetMusteriTahsilatEkle",
+        CekSenetListesiEnum.cekBorc => "/mainPage/cekBorcTahsilatEkle",
+        CekSenetListesiEnum.senetBorc => "/mainPage/senetBorcTahsilatEkle",
+      };
 }

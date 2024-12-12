@@ -38,6 +38,8 @@ mixin _$CariRequestModel {
   set menuKodu(String? value) => throw _privateConstructorUsedError;
   bool? get eFaturaGoster => throw _privateConstructorUsedError;
   set eFaturaGoster(bool? value) => throw _privateConstructorUsedError;
+  String? get bagliCariKodu => throw _privateConstructorUsedError;
+  set bagliCariKodu(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "FILTER_BAKIYE")
   String? get filterBakiye => throw _privateConstructorUsedError;
   @JsonKey(name: "FILTER_BAKIYE")
@@ -104,6 +106,7 @@ abstract class $CariRequestModelCopyWith<$Res> {
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? menuKodu,
       bool? eFaturaGoster,
+      String? bagliCariKodu,
       @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
       List<String>? arrGrupKodu,
       List<String>? arrKod1,
@@ -146,6 +149,7 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
     Object? siralama = freezed,
     Object? menuKodu = freezed,
     Object? eFaturaGoster = freezed,
+    Object? bagliCariKodu = freezed,
     Object? filterBakiye = freezed,
     Object? arrGrupKodu = freezed,
     Object? arrKod1 = freezed,
@@ -197,6 +201,10 @@ class _$CariRequestModelCopyWithImpl<$Res, $Val extends CariRequestModel>
           ? _value.eFaturaGoster
           : eFaturaGoster // ignore: cast_nullable_to_non_nullable
               as bool?,
+      bagliCariKodu: freezed == bagliCariKodu
+          ? _value.bagliCariKodu
+          : bagliCariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       filterBakiye: freezed == filterBakiye
           ? _value.filterBakiye
           : filterBakiye // ignore: cast_nullable_to_non_nullable
@@ -286,6 +294,7 @@ abstract class _$$CariRequestModelImplCopyWith<$Res>
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? menuKodu,
       bool? eFaturaGoster,
+      String? bagliCariKodu,
       @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
       List<String>? arrGrupKodu,
       List<String>? arrKod1,
@@ -326,6 +335,7 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
     Object? siralama = freezed,
     Object? menuKodu = freezed,
     Object? eFaturaGoster = freezed,
+    Object? bagliCariKodu = freezed,
     Object? filterBakiye = freezed,
     Object? arrGrupKodu = freezed,
     Object? arrKod1 = freezed,
@@ -377,6 +387,10 @@ class __$$CariRequestModelImplCopyWithImpl<$Res>
           ? _value.eFaturaGoster
           : eFaturaGoster // ignore: cast_nullable_to_non_nullable
               as bool?,
+      bagliCariKodu: freezed == bagliCariKodu
+          ? _value.bagliCariKodu
+          : bagliCariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       filterBakiye: freezed == filterBakiye
           ? _value.filterBakiye
           : filterBakiye // ignore: cast_nullable_to_non_nullable
@@ -462,6 +476,7 @@ class _$CariRequestModelImpl extends _CariRequestModel {
       @JsonKey(name: "SIRALAMA") this.siralama,
       this.menuKodu,
       this.eFaturaGoster,
+      this.bagliCariKodu,
       @JsonKey(name: "FILTER_BAKIYE") this.filterBakiye,
       this.arrGrupKodu,
       this.arrKod1,
@@ -502,6 +517,8 @@ class _$CariRequestModelImpl extends _CariRequestModel {
   String? menuKodu;
   @override
   bool? eFaturaGoster;
+  @override
+  String? bagliCariKodu;
   @override
   @JsonKey(name: "FILTER_BAKIYE")
   String? filterBakiye;
@@ -566,6 +583,7 @@ abstract class _CariRequestModel extends CariRequestModel {
       @JsonKey(name: "SIRALAMA") String? siralama,
       String? menuKodu,
       bool? eFaturaGoster,
+      String? bagliCariKodu,
       @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
       List<String>? arrGrupKodu,
       List<String>? arrKod1,
@@ -614,6 +632,9 @@ abstract class _CariRequestModel extends CariRequestModel {
   @override
   bool? get eFaturaGoster;
   set eFaturaGoster(bool? value);
+  @override
+  String? get bagliCariKodu;
+  set bagliCariKodu(String? value);
   @override
   @JsonKey(name: "FILTER_BAKIYE")
   String? get filterBakiye;

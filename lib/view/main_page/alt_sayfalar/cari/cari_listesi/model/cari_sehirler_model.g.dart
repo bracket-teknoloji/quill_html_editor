@@ -45,15 +45,7 @@ class CariSehirlerModelAdapter extends TypeAdapter<CariSehirlerModel> {
 CariSehirlerModel _$CariSehirlerModelFromJson(Map<String, dynamic> json) =>
     CariSehirlerModel()..sehirAdi = json['SEHIR_ADI'] as String?;
 
-Map<String, dynamic> _$CariSehirlerModelToJson(CariSehirlerModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SEHIR_ADI', instance.sehirAdi);
-  return val;
-}
+Map<String, dynamic> _$CariSehirlerModelToJson(CariSehirlerModel instance) =>
+    <String, dynamic>{
+      if (instance.sehirAdi case final value?) 'SEHIR_ADI': value,
+    };

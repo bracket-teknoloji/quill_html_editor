@@ -35,33 +35,28 @@ _$EditFaturaModelImpl _$$EditFaturaModelImplFromJson(
     );
 
 Map<String, dynamic> _$$EditFaturaModelImplToJson(
-    _$EditFaturaModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BelgeTipi', instance.belgeTipi);
-  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
-  writeNotNull('REMOTE_TEMP_BELGE', instance.remoteTempBelge);
-  writeNotNull('TEMP_BELGE_ID', instance.tempBelgeId);
-  writeNotNull('TIPI', instance.tipi);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TURU', instance.belgeTuru);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('ISLEM_ID', instance.islemId);
-  writeNotNull('MEVCUT_BELGE_NO', instance.mevcutBelgeNo);
-  writeNotNull('YENI_BELGE_NO', instance.yeniBelgeNo);
-  writeNotNull('MEVCUT_CARI_KODU', instance.mevcutCariKodu);
-  writeNotNull('PARAM_MAP', instance.paramMap);
-  writeNotNull('TAG', instance.tag);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
-  writeNotNull('IRSALIYEDEN_FATURA', instance.irsaliyedenFatura);
-  writeNotNull('RESMI_BELGE_NO', instance.resmiBelgeNo);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  return val;
-}
+        _$EditFaturaModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeTipi case final value?) 'BelgeTipi': value,
+      if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
+      if (instance.remoteTempBelge case final value?)
+        'REMOTE_TEMP_BELGE': value,
+      if (instance.tempBelgeId case final value?) 'TEMP_BELGE_ID': value,
+      if (instance.tipi case final value?) 'TIPI': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTuru case final value?) 'BELGE_TURU': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.islemId case final value?) 'ISLEM_ID': value,
+      if (instance.mevcutBelgeNo case final value?) 'MEVCUT_BELGE_NO': value,
+      if (instance.yeniBelgeNo case final value?) 'YENI_BELGE_NO': value,
+      if (instance.mevcutCariKodu case final value?) 'MEVCUT_CARI_KODU': value,
+      if (instance.paramMap case final value?) 'PARAM_MAP': value,
+      if (instance.tag case final value?) 'TAG': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?)
+        'KALEMLER': value,
+      if (instance.irsaliyedenFatura case final value?)
+        'IRSALIYEDEN_FATURA': value,
+      if (instance.resmiBelgeNo case final value?) 'RESMI_BELGE_NO': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+    };

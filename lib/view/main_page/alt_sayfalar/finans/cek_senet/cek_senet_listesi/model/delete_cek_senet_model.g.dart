@@ -17,19 +17,12 @@ _$DeleteCekSenetModelImpl _$$DeleteCekSenetModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DeleteCekSenetModelImplToJson(
-    _$DeleteCekSenetModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('PickerTahsilatTuru', instance.pickerTahsilatTuru);
-  writeNotNull('TAG', instance.tag);
-  return val;
-}
+        _$DeleteCekSenetModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.pickerTahsilatTuru case final value?)
+        'PickerTahsilatTuru': value,
+      if (instance.tag case final value?) 'TAG': value,
+    };

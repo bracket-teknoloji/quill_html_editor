@@ -26,26 +26,19 @@ CariHareketYeniKayitModel _$CariHareketYeniKayitModelFromJson(
       ..yeniKayit = json['_YeniKayit'] as bool?;
 
 Map<String, dynamic> _$CariHareketYeniKayitModelToJson(
-    CariHareketYeniKayitModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('ALACAK', instance.alacak);
-  writeNotNull('BORC', instance.borc);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('HAREKET_KODU', instance.hareketKodu);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
-  writeNotNull('_YeniKayit', instance.yeniKayit);
-  return val;
-}
+        CariHareketYeniKayitModel instance) =>
+    <String, dynamic>{
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.alacak case final value?) 'ALACAK': value,
+      if (instance.borc case final value?) 'BORC': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.hareketKodu case final value?) 'HAREKET_KODU': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.vadeTarihi?.toIso8601String() case final value?)
+        'VADE_TARIHI': value,
+      if (instance.yeniKayit case final value?) '_YeniKayit': value,
+    };

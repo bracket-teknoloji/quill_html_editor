@@ -37,37 +37,29 @@ _$SeriHareketleriModelImpl _$$SeriHareketleriModelImplFromJson(
     );
 
 Map<String, dynamic> _$$SeriHareketleriModelImplToJson(
-    _$SeriHareketleriModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('KAYIT_TIPI', instance.kayitTipi);
-  writeNotNull('KAYIT_TIPI_ADI', instance.kayitTipiAdi);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BELGE_TIPI_ADI', instance.belgeTipiAdi);
-  writeNotNull('HARACIK', instance.haracik);
-  writeNotNull('GCKOD', instance.gckod);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('STHAR_INC', instance.stharInc);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('ACIK1', instance.acik1);
-  writeNotNull('ACIK2', instance.acik2);
-  writeNotNull('ACIKLAMA1', instance.aciklama1);
-  writeNotNull('SERI1', instance.seri1);
-  writeNotNull('REQUEST_VERSION', instance.requestVersion);
-  writeNotNull('SERI2', instance.seri2);
-  return val;
-}
+        _$SeriHareketleriModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      if (instance.kayitTipi case final value?) 'KAYIT_TIPI': value,
+      if (instance.kayitTipiAdi case final value?) 'KAYIT_TIPI_ADI': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.belgeTipiAdi case final value?) 'BELGE_TIPI_ADI': value,
+      if (instance.haracik case final value?) 'HARACIK': value,
+      if (instance.gckod case final value?) 'GCKOD': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.stharInc case final value?) 'STHAR_INC': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.acik1 case final value?) 'ACIK1': value,
+      if (instance.acik2 case final value?) 'ACIK2': value,
+      if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
+      if (instance.seri1 case final value?) 'SERI1': value,
+      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+      if (instance.seri2 case final value?) 'SERI2': value,
+    };

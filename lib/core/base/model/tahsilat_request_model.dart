@@ -164,20 +164,13 @@ extension DekontKalemlerExtensions on DekontKalemler {
 
   bool get stokMu => hesapTipi == "S";
 
-  String get hesapAdi {
-    switch (hesapTipi) {
-      case "C":
-        return "Cari";
-      case "M":
-        return "Muhasebe";
-      case "B":
-        return "Banka";
-      case "S":
-        return "Stok";
-      default:
-        return "";
-    }
-  }
+  String get hesapAdi => switch (hesapTipi) {
+        "C" => "Cari",
+        "M" => "Muhasebe",
+        "B" => "Banka",
+        "S" => "Stok",
+        _ => "",
+      };
 
   double get dovizKuru => (dovizTutari ?? 0) / (tutar ?? 1);
 

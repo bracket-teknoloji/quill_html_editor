@@ -22,22 +22,14 @@ _$BelgeRehberiModelImpl _$$BelgeRehberiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BelgeRehberiModelImplToJson(
-    _$BelgeRehberiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('KALEM_SAYISI', instance.kalemSayisi);
-  return val;
-}
+        _$BelgeRehberiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      if (instance.kalemSayisi case final value?) 'KALEM_SAYISI': value,
+    };

@@ -122,36 +122,31 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
       ?.map((e) => EkRehberlerModel.fromJson(e as Map<String, dynamic>))
       .toList();
 
-Map<String, dynamic> _$UserModelToJson(UserModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('KULADI', instance.kuladi);
-  writeNotNull('PAROLA', instance.parola);
-  writeNotNull('ADI', instance.adi);
-  writeNotNull('SOYADI', instance.soyadi);
-  writeNotNull('ERP_KULLANICI', instance.erpKullanici);
-  writeNotNull('ERP_PAROLA', instance.erpParola);
-  writeNotNull('PROFIL_KODU', instance.profilKodu);
-  writeNotNull('PROFIL_ADI', instance.profilAdi);
-  writeNotNull('PROFIL_YETKI', instance.profilYetki?.toJson());
-  writeNotNull('KULLANICI_YETKI', instance.kullaniciYetki?.toJson());
-  writeNotNull('PICKER_YETKILI', instance.pickerYetkili);
-  writeNotNull('YETKILI_SUBELER_JSON', instance.yetkiliSubelerJson);
-  writeNotNull('KONUM_ENLEM', instance.konumEnlem);
-  writeNotNull('KONUM_BOYLAM', instance.konumBoylam);
-  writeNotNull('AD_SOYAD', instance.adSoyad);
-  writeNotNull('ADMIN', instance.admin);
-  writeNotNull('ADMIN_MI', instance.adminMi);
-  writeNotNull('PLASIYER_TANIMI', instance.plasiyerTanimi);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull(
-      'EKREHBERLER', instance.ekRehberler?.map((e) => e.toJson()).toList());
-  return val;
-}
+Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.kuladi case final value?) 'KULADI': value,
+      if (instance.parola case final value?) 'PAROLA': value,
+      if (instance.adi case final value?) 'ADI': value,
+      if (instance.soyadi case final value?) 'SOYADI': value,
+      if (instance.erpKullanici case final value?) 'ERP_KULLANICI': value,
+      if (instance.erpParola case final value?) 'ERP_PAROLA': value,
+      if (instance.profilKodu case final value?) 'PROFIL_KODU': value,
+      if (instance.profilAdi case final value?) 'PROFIL_ADI': value,
+      if (instance.profilYetki?.toJson() case final value?)
+        'PROFIL_YETKI': value,
+      if (instance.kullaniciYetki?.toJson() case final value?)
+        'KULLANICI_YETKI': value,
+      if (instance.pickerYetkili case final value?) 'PICKER_YETKILI': value,
+      if (instance.yetkiliSubelerJson case final value?)
+        'YETKILI_SUBELER_JSON': value,
+      if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
+      if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,
+      if (instance.adSoyad case final value?) 'AD_SOYAD': value,
+      if (instance.admin case final value?) 'ADMIN': value,
+      if (instance.adminMi case final value?) 'ADMIN_MI': value,
+      if (instance.plasiyerTanimi case final value?) 'PLASIYER_TANIMI': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.ekRehberler?.map((e) => e.toJson()).toList()
+          case final value?)
+        'EKREHBERLER': value,
+    };

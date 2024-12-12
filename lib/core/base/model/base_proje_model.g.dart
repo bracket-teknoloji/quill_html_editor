@@ -13,17 +13,9 @@ BaseProjeModel _$BaseProjeModelFromJson(Map<String, dynamic> json) =>
       aktif: json['AKTIF'] as String?,
     );
 
-Map<String, dynamic> _$BaseProjeModelToJson(BaseProjeModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
-  writeNotNull('AKTIF', instance.aktif);
-  return val;
-}
+Map<String, dynamic> _$BaseProjeModelToJson(BaseProjeModel instance) =>
+    <String, dynamic>{
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.projeAciklama case final value?) 'PROJE_ACIKLAMA': value,
+      if (instance.aktif case final value?) 'AKTIF': value,
+    };

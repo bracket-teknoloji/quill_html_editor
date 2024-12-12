@@ -24,25 +24,17 @@ _$EkAlanlarModelImpl _$$EkAlanlarModelImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$EkAlanlarModelImplToJson(
-    _$EkAlanlarModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('TABLO_ADI', instance.tabloAdi);
-  writeNotNull('ALAN_KODU', instance.alanKodu);
-  writeNotNull('ALAN_ACIKLAMA', instance.alanAciklama);
-  writeNotNull('ZORUNLU', instance.zorunlu);
-  writeNotNull('AKTIF', instance.aktif);
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('VERI_TIPI', instance.veriTipi);
-  writeNotNull('UZUNLUK', instance.uzunluk);
-  writeNotNull('COMPONENT_TIPI', instance.componentTipi);
-  writeNotNull('SecimListesi', instance.secimListesi);
-  writeNotNull('ONDEGER', instance.ondeger);
-  return val;
-}
+        _$EkAlanlarModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.tabloAdi case final value?) 'TABLO_ADI': value,
+      if (instance.alanKodu case final value?) 'ALAN_KODU': value,
+      if (instance.alanAciklama case final value?) 'ALAN_ACIKLAMA': value,
+      if (instance.zorunlu case final value?) 'ZORUNLU': value,
+      if (instance.aktif case final value?) 'AKTIF': value,
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.veriTipi case final value?) 'VERI_TIPI': value,
+      if (instance.uzunluk case final value?) 'UZUNLUK': value,
+      if (instance.componentTipi case final value?) 'COMPONENT_TIPI': value,
+      if (instance.secimListesi case final value?) 'SecimListesi': value,
+      if (instance.ondeger case final value?) 'ONDEGER': value,
+    };

@@ -20,22 +20,14 @@ _$OlcumGirisiRequestModelImpl _$$OlcumGirisiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$OlcumGirisiRequestModelImplToJson(
-    _$OlcumGirisiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DURUM', instance.durum);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('BASTAR', instance.bastar);
-  writeNotNull('BITTAR', instance.bittar);
-  writeNotNull('SIRALAMA', instance.siralama);
-  writeNotNull('QRSTRING', instance.qrstring);
-  writeNotNull('SearchText', instance.searchText);
-  writeNotNull('Sayfa', instance.sayfa);
-  return val;
-}
+        _$OlcumGirisiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.durum case final value?) 'DURUM': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.bastar case final value?) 'BASTAR': value,
+      if (instance.bittar case final value?) 'BITTAR': value,
+      if (instance.siralama case final value?) 'SIRALAMA': value,
+      if (instance.qrstring case final value?) 'QRSTRING': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+      if (instance.sayfa case final value?) 'Sayfa': value,
+    };

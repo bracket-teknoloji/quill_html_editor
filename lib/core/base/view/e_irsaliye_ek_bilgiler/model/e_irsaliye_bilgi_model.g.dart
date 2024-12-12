@@ -38,38 +38,32 @@ _$EIrsaliyeBilgiModelImpl _$$EIrsaliyeBilgiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$EIrsaliyeBilgiModelImplToJson(
-    _$EIrsaliyeBilgiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DORSE_PLAKA1', instance.dorsePlaka1);
-  writeNotNull('DORSE_PLAKA2', instance.dorsePlaka2);
-  writeNotNull('DORSE_PLAKA3', instance.dorsePlaka3);
-  writeNotNull('PLAKA', instance.plaka);
-  writeNotNull('SEVKTAR', instance.sevktar?.toIso8601String());
-  writeNotNull('SOFOR_1_ACIKLAMA', instance.sofor1Aciklama);
-  writeNotNull('SOFOR_1_ADI', instance.sofor1Adi);
-  writeNotNull('SOFOR_1_KIMLIK_NO', instance.sofor1KimlikNo);
-  writeNotNull('SOFOR_1_SOYADI', instance.sofor1Soyadi);
-  writeNotNull('SOFOR_2_ACIKLAMA', instance.sofor2Aciklama);
-  writeNotNull('SOFOR_2_ADI', instance.sofor2Adi);
-  writeNotNull('SOFOR_2_KIMLIK_NO', instance.sofor2KimlikNo);
-  writeNotNull('SOFOR_2_SOYADI', instance.sofor2Soyadi);
-  writeNotNull('SOFOR_3_ACIKLAMA', instance.sofor3Aciklama);
-  writeNotNull('SOFOR_3_ADI', instance.sofor3Adi);
-  writeNotNull('SOFOR_3_KIMLIK_NO', instance.sofor3KimlikNo);
-  writeNotNull('SOFOR_3_SOYADI', instance.sofor3Soyadi);
-  writeNotNull('TASIYICI_IL', instance.tasiyiciIl);
-  writeNotNull('TASIYICI_ILCE', instance.tasiyiciIlce);
-  writeNotNull('TASIYICI_POSTAKODU', instance.tasiyiciPostakodu);
-  writeNotNull('TASIYICI_ULKE', instance.tasiyiciUlke);
-  writeNotNull('TASIYICI_UNVAN', instance.tasiyiciUnvan);
-  writeNotNull('TASIYICI_VKN', instance.tasiyiciVkn);
-  writeNotNull('SABLON_KODU', instance.sablonKodu);
-  return val;
-}
+        _$EIrsaliyeBilgiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.dorsePlaka1 case final value?) 'DORSE_PLAKA1': value,
+      if (instance.dorsePlaka2 case final value?) 'DORSE_PLAKA2': value,
+      if (instance.dorsePlaka3 case final value?) 'DORSE_PLAKA3': value,
+      if (instance.plaka case final value?) 'PLAKA': value,
+      if (instance.sevktar?.toIso8601String() case final value?)
+        'SEVKTAR': value,
+      if (instance.sofor1Aciklama case final value?) 'SOFOR_1_ACIKLAMA': value,
+      if (instance.sofor1Adi case final value?) 'SOFOR_1_ADI': value,
+      if (instance.sofor1KimlikNo case final value?) 'SOFOR_1_KIMLIK_NO': value,
+      if (instance.sofor1Soyadi case final value?) 'SOFOR_1_SOYADI': value,
+      if (instance.sofor2Aciklama case final value?) 'SOFOR_2_ACIKLAMA': value,
+      if (instance.sofor2Adi case final value?) 'SOFOR_2_ADI': value,
+      if (instance.sofor2KimlikNo case final value?) 'SOFOR_2_KIMLIK_NO': value,
+      if (instance.sofor2Soyadi case final value?) 'SOFOR_2_SOYADI': value,
+      if (instance.sofor3Aciklama case final value?) 'SOFOR_3_ACIKLAMA': value,
+      if (instance.sofor3Adi case final value?) 'SOFOR_3_ADI': value,
+      if (instance.sofor3KimlikNo case final value?) 'SOFOR_3_KIMLIK_NO': value,
+      if (instance.sofor3Soyadi case final value?) 'SOFOR_3_SOYADI': value,
+      if (instance.tasiyiciIl case final value?) 'TASIYICI_IL': value,
+      if (instance.tasiyiciIlce case final value?) 'TASIYICI_ILCE': value,
+      if (instance.tasiyiciPostakodu case final value?)
+        'TASIYICI_POSTAKODU': value,
+      if (instance.tasiyiciUlke case final value?) 'TASIYICI_ULKE': value,
+      if (instance.tasiyiciUnvan case final value?) 'TASIYICI_UNVAN': value,
+      if (instance.tasiyiciVkn case final value?) 'TASIYICI_VKN': value,
+      if (instance.sablonKodu case final value?) 'SABLON_KODU': value,
+    };

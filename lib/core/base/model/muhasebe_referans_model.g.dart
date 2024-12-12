@@ -14,16 +14,8 @@ _$MuhasebeReferansModelImpl _$$MuhasebeReferansModelImplFromJson(
     );
 
 Map<String, dynamic> _$$MuhasebeReferansModelImplToJson(
-    _$MuhasebeReferansModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('KODU', instance.kodu);
-  writeNotNull('TANIMI', instance.tanimi);
-  return val;
-}
+        _$MuhasebeReferansModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.kodu case final value?) 'KODU': value,
+      if (instance.tanimi case final value?) 'TANIMI': value,
+    };

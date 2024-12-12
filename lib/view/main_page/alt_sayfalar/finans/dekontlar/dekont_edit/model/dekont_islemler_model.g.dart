@@ -35,35 +35,30 @@ _$DekontIslemlerModelImpl _$$DekontIslemlerModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DekontIslemlerModelImplToJson(
-    _$DekontIslemlerModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('DEKONT_NO', instance.dekontNo);
-  writeNotNull('SIRA_NO', instance.siraNo);
-  writeNotNull('BA', instance.ba);
-  writeNotNull('HESAP_TIPI', instance.hesapTipi);
-  writeNotNull('HESAP_TIPI_ACIKLAMA', instance.hesapTipiAciklama);
-  writeNotNull('HESAP_KODU', instance.hesapKodu);
-  writeNotNull('HESAP_ADI', instance.hesapAdi);
-  writeNotNull('TUTAR', instance.tutar);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('REFKEY', instance.refkey);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('EXPORT_TIPI', instance.exportTipi);
-  writeNotNull('MUHASEBE_HESAP_TIPI', instance.muhasebeHesapTipi);
-  return val;
-}
+        _$DekontIslemlerModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.dekontNo case final value?) 'DEKONT_NO': value,
+      if (instance.siraNo case final value?) 'SIRA_NO': value,
+      if (instance.ba case final value?) 'BA': value,
+      if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
+      if (instance.hesapTipiAciklama case final value?)
+        'HESAP_TIPI_ACIKLAMA': value,
+      if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
+      if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.refkey case final value?) 'REFKEY': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.plasiyerAciklama case final value?)
+        'PLASIYER_ACIKLAMA': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.exportTipi case final value?) 'EXPORT_TIPI': value,
+      if (instance.muhasebeHesapTipi case final value?)
+        'MUHASEBE_HESAP_TIPI': value,
+    };

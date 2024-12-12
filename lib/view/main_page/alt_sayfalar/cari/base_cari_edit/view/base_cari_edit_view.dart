@@ -220,16 +220,10 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
 
   bool get kaydetButonuYetki {
     if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) return false;
-    switch (widget.model?.baseEditEnum) {
-      case BaseEditEnum.ekle:
-      case BaseEditEnum.kopyala:
-      case BaseEditEnum.revize:
-      case BaseEditEnum.taslak:
-        return widget.model?.editTipiEnum?.eklensinMi ?? false;
-      case BaseEditEnum.duzenle:
-        return widget.model?.editTipiEnum?.duzenlensinMi ?? false;
-      default:
-        return false;
-    }
+    return switch (widget.model?.baseEditEnum) {
+      BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => widget.model?.editTipiEnum?.eklensinMi ?? false,
+      BaseEditEnum.duzenle => widget.model?.editTipiEnum?.duzenlensinMi ?? false,
+      _ => false,
+    };
   }
 }

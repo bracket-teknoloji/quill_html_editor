@@ -22,20 +22,15 @@ _$BankaSozlesmesiModelImpl _$$BankaSozlesmesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BankaSozlesmesiModelImplToJson(
-    _$BankaSozlesmesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SOZLESME_KODU', instance.sozlesmeKodu);
-  writeNotNull('SOZLESME_ADI', instance.sozlesmeAdi);
-  writeNotNull('KREDI_KARTI_TANIMI', instance.krediKartiTanimi);
-  writeNotNull('BANKA_TANIMI', instance.bankaTanimi);
-  writeNotNull('BASLAMA_TARIHI', instance.baslamaTarihi?.toIso8601String());
-  writeNotNull('BITIS_TARIHI', instance.bitisTarihi?.toIso8601String());
-  return val;
-}
+        _$BankaSozlesmesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.sozlesmeKodu case final value?) 'SOZLESME_KODU': value,
+      if (instance.sozlesmeAdi case final value?) 'SOZLESME_ADI': value,
+      if (instance.krediKartiTanimi case final value?)
+        'KREDI_KARTI_TANIMI': value,
+      if (instance.bankaTanimi case final value?) 'BANKA_TANIMI': value,
+      if (instance.baslamaTarihi?.toIso8601String() case final value?)
+        'BASLAMA_TARIHI': value,
+      if (instance.bitisTarihi?.toIso8601String() case final value?)
+        'BITIS_TARIHI': value,
+    };

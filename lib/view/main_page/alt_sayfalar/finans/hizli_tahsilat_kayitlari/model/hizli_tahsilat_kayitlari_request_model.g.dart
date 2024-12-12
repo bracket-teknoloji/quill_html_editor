@@ -17,18 +17,10 @@ _$HizliTahsilatKayitlariRequestModelImpl
         );
 
 Map<String, dynamic> _$$HizliTahsilatKayitlariRequestModelImplToJson(
-    _$HizliTahsilatKayitlariRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('Sayfa', instance.sayfa);
-  return val;
-}
+        _$HizliTahsilatKayitlariRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.sayfa case final value?) 'Sayfa': value,
+    };

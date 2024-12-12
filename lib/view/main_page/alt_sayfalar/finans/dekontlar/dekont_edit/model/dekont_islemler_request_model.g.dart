@@ -26,24 +26,18 @@ _$DekontIslemlerRequestModelImpl _$$DekontIslemlerRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$DekontIslemlerRequestModelImplToJson(
-    _$DekontIslemlerRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DEKONT_ISLEM_TURU', instance.dekontIslemTuru);
-  writeNotNull('DEKONT_SERI', instance.dekontSeri);
-  writeNotNull('GUID', instance.guid);
-  writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('TAG', instance.tag);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('_YeniKayit', instance.yeniKayit);
-  writeNotNull('DEKONT_NO', instance.dekontNo);
-  return val;
-}
+        _$DekontIslemlerRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.dekontIslemTuru case final value?)
+        'DEKONT_ISLEM_TURU': value,
+      if (instance.dekontSeri case final value?) 'DEKONT_SERI': value,
+      if (instance.guid case final value?) 'GUID': value,
+      if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?)
+        'KALEMLER': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.tag case final value?) 'TAG': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.yeniKayit case final value?) '_YeniKayit': value,
+      if (instance.dekontNo case final value?) 'DEKONT_NO': value,
+    };

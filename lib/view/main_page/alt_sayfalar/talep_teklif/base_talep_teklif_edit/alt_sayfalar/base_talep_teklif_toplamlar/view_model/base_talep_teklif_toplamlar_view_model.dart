@@ -67,7 +67,6 @@ abstract class _BaseTalepTeklifToplamlarViewModelBase with Store {
     BaseSiparisEditModel.setInstance(model);
   }
 
-
   @action
   void setGenIsk1(double? value) {
     if (value == 0 || value == null) {
@@ -117,7 +116,6 @@ abstract class _BaseTalepTeklifToplamlarViewModelBase with Store {
     }
     BaseSiparisEditModel.setInstance(model);
   }
-
 
   @action
   void changeGenIsk1O(TextEditingController controller) {

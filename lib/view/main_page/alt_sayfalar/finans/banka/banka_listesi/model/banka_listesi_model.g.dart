@@ -31,33 +31,28 @@ _$BankaListesiModelImpl _$$BankaListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BankaListesiModelImplToJson(
-    _$BankaListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('BANKA_KODU', instance.bankaKodu);
-  writeNotNull('BANKASUBE_KODU', instance.bankasubeKodu);
-  writeNotNull('HESAP_KODU', instance.hesapKodu);
-  writeNotNull('HESAP_ADI', instance.hesapAdi);
-  writeNotNull('MUHASEBE_HESAP_TIPI', instance.muhasebeHesapTipi);
-  writeNotNull('HESAP_NO', instance.hesapNo);
-  writeNotNull('IBAN_NO', instance.ibanNo);
-  writeNotNull('KILIT', instance.kilit);
-  writeNotNull('HESAP_TIPI', instance.hesapTipi);
-  writeNotNull('HESAP_TIPI_ADI', instance.hesapTipiAdi);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('BORC_TOPLAMI', instance.borcToplami);
-  writeNotNull('ALACAK_TOPLAMI', instance.alacakToplami);
-  writeNotNull('DOVIZBORC_TOPLAMI', instance.dovizborcToplami);
-  writeNotNull('DOVIZALACAK_TOPLAMI', instance.dovizalacakToplami);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('BANKA_ADI', instance.bankaAdi);
-  writeNotNull('SUBE_ADI', instance.subeAdi);
-  writeNotNull('BAGLIHESAP_KODU', instance.baglihesapKodu);
-  return val;
-}
+        _$BankaListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.bankaKodu case final value?) 'BANKA_KODU': value,
+      if (instance.bankasubeKodu case final value?) 'BANKASUBE_KODU': value,
+      if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
+      if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
+      if (instance.muhasebeHesapTipi case final value?)
+        'MUHASEBE_HESAP_TIPI': value,
+      if (instance.hesapNo case final value?) 'HESAP_NO': value,
+      if (instance.ibanNo case final value?) 'IBAN_NO': value,
+      if (instance.kilit case final value?) 'KILIT': value,
+      if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
+      if (instance.hesapTipiAdi case final value?) 'HESAP_TIPI_ADI': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.borcToplami case final value?) 'BORC_TOPLAMI': value,
+      if (instance.alacakToplami case final value?) 'ALACAK_TOPLAMI': value,
+      if (instance.dovizborcToplami case final value?)
+        'DOVIZBORC_TOPLAMI': value,
+      if (instance.dovizalacakToplami case final value?)
+        'DOVIZALACAK_TOPLAMI': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.bankaAdi case final value?) 'BANKA_ADI': value,
+      if (instance.subeAdi case final value?) 'SUBE_ADI': value,
+      if (instance.baglihesapKodu case final value?) 'BAGLIHESAP_KODU': value,
+    };

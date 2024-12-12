@@ -264,69 +264,70 @@ AccountModel _$AccountModelFromJson(Map<String, dynamic> json) => AccountModel()
   ..konumEnlem = json['KONUM_ENLEM'] as String?
   ..konumBoylam = json['KONUM_BOYLAM'] as String?;
 
-Map<String, dynamic> _$AccountModelToJson(AccountModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ISIM', instance.isim);
-  writeNotNull('ADMIN', instance.admin);
-  writeNotNull('AKTIF_ISLETME_KODU', instance.aktifIsletmeKodu);
-  writeNotNull('AKTIF_SUBE_KODU', instance.aktifSubeKodu);
-  writeNotNull('AKTIF_VERITABANI', instance.aktifVeritabani);
-  writeNotNull('CIHAZ_SISTEM_VERSIYONU', instance.cihazSistemVersiyonu);
-  writeNotNull(
-      'APK_DERLEME_TARIHI', instance.apkDerlemeTarihi?.toIso8601String());
-  writeNotNull('CIHAZ_DILI', instance.cihazDili);
-  writeNotNull('G_CID', instance.gCid);
-  writeNotNull('CIHAZ_MARKASI', instance.cihazMarkasi);
-  writeNotNull('CIHAZ_KIMLIGI', instance.cihazKimligi);
-  writeNotNull('CIHAZ_MODELI', instance.cihazModeli);
-  writeNotNull('G_DSN', instance.gDsn);
-  writeNotNull('CIHAZ_TARIHI', instance.cihazTarihi);
-  writeNotNull('CIHAZ_TARIHI_UTC', instance.cihazTarihiUtc?.toIso8601String());
-  writeNotNull('CIHAZ_TIME_ZONE_DAKIKA', instance.cihazTimeZoneDakika);
-  writeNotNull('FCM_TOKEN', instance.fcmToken);
-  writeNotNull('UYE_EMAIL', instance.uyeEmail);
-  writeNotNull('UYE_SIFRE', instance.uyeSifre);
-  writeNotNull('KONUM_DATE', instance.konumDate?.toIso8601String());
-  writeNotNull('KONUM_TARIHI', instance.konumTarihi);
-  writeNotNull('G_KA', instance.gKa);
-  writeNotNull('G_BO', instance.gBo);
-  writeNotNull('G_EN', instance.gEn);
-  writeNotNull('KULLANICI_ADI', instance.kullaniciAdi);
-  writeNotNull('KURULU_HESAPLAR', instance.kuruluHesaplar);
-  writeNotNull('LOCAL_IP', instance.localIp);
-  writeNotNull('OZEL_CIHAZ_KIMLIGI', instance.ozelCihazKimligi);
-  writeNotNull('OFFLINE', instance.offline);
-  writeNotNull('SIM_OPERATOR', instance.simOperator);
-  writeNotNull('PAKET_ADI', instance.paketAdi);
-  writeNotNull('PARAM_MAP', instance.paramMap);
-  writeNotNull('PLATFORM', instance.platform);
-  writeNotNull('REQUEST_VERSION', instance.requestVersion);
-  writeNotNull('SOYADI', instance.soyadi);
-  writeNotNull('SERVICE_VERSION', instance.serviceVersion);
-  writeNotNull('TZ_INFO', instance.tzInfo);
-  writeNotNull('UYGULAMA_DILI', instance.uygulamaDili);
-  writeNotNull('UYGULAMA_GUNCELLEME_TARIHI', instance.uygulamaGuncellemeTarihi);
-  writeNotNull('UYGULAMA_SURUMU', instance.uygulamaSurumu);
-  writeNotNull('UYGULAMA_SURUM_KODU', instance.uygulamaSurumKodu);
-  writeNotNull('UZAK_ERISIM', instance.uzakErisim);
-  writeNotNull('WIFIDEN_BAGLI', instance.wifidenBagli);
-  writeNotNull('QR_DATA', instance.qrData);
-  writeNotNull('DEBUG_MU', instance.debugMu);
-  writeNotNull('ADI', instance.adi);
-  writeNotNull('WIFI_ADI', instance.wifiAdi);
-  writeNotNull('DEBUG', instance.debug);
-  writeNotNull('GIRIS_TARIHI', instance.girisTarihi?.toIso8601String());
-  writeNotNull(
-      'SON_KULLANIM_TARIHI', instance.sonKullanimTarihi?.toIso8601String());
-  writeNotNull('ONAYLI', instance.onayli);
-  writeNotNull('KONUM_ENLEM', instance.konumEnlem);
-  writeNotNull('KONUM_BOYLAM', instance.konumBoylam);
-  return val;
-}
+Map<String, dynamic> _$AccountModelToJson(AccountModel instance) =>
+    <String, dynamic>{
+      if (instance.isim case final value?) 'ISIM': value,
+      if (instance.admin case final value?) 'ADMIN': value,
+      if (instance.aktifIsletmeKodu case final value?)
+        'AKTIF_ISLETME_KODU': value,
+      if (instance.aktifSubeKodu case final value?) 'AKTIF_SUBE_KODU': value,
+      if (instance.aktifVeritabani case final value?) 'AKTIF_VERITABANI': value,
+      if (instance.cihazSistemVersiyonu case final value?)
+        'CIHAZ_SISTEM_VERSIYONU': value,
+      if (instance.apkDerlemeTarihi?.toIso8601String() case final value?)
+        'APK_DERLEME_TARIHI': value,
+      if (instance.cihazDili case final value?) 'CIHAZ_DILI': value,
+      if (instance.gCid case final value?) 'G_CID': value,
+      if (instance.cihazMarkasi case final value?) 'CIHAZ_MARKASI': value,
+      if (instance.cihazKimligi case final value?) 'CIHAZ_KIMLIGI': value,
+      if (instance.cihazModeli case final value?) 'CIHAZ_MODELI': value,
+      if (instance.gDsn case final value?) 'G_DSN': value,
+      if (instance.cihazTarihi case final value?) 'CIHAZ_TARIHI': value,
+      if (instance.cihazTarihiUtc?.toIso8601String() case final value?)
+        'CIHAZ_TARIHI_UTC': value,
+      if (instance.cihazTimeZoneDakika case final value?)
+        'CIHAZ_TIME_ZONE_DAKIKA': value,
+      if (instance.fcmToken case final value?) 'FCM_TOKEN': value,
+      if (instance.uyeEmail case final value?) 'UYE_EMAIL': value,
+      if (instance.uyeSifre case final value?) 'UYE_SIFRE': value,
+      if (instance.konumDate?.toIso8601String() case final value?)
+        'KONUM_DATE': value,
+      if (instance.konumTarihi case final value?) 'KONUM_TARIHI': value,
+      if (instance.gKa case final value?) 'G_KA': value,
+      if (instance.gBo case final value?) 'G_BO': value,
+      if (instance.gEn case final value?) 'G_EN': value,
+      if (instance.kullaniciAdi case final value?) 'KULLANICI_ADI': value,
+      if (instance.kuruluHesaplar case final value?) 'KURULU_HESAPLAR': value,
+      if (instance.localIp case final value?) 'LOCAL_IP': value,
+      if (instance.ozelCihazKimligi case final value?)
+        'OZEL_CIHAZ_KIMLIGI': value,
+      if (instance.offline case final value?) 'OFFLINE': value,
+      if (instance.simOperator case final value?) 'SIM_OPERATOR': value,
+      if (instance.paketAdi case final value?) 'PAKET_ADI': value,
+      if (instance.paramMap case final value?) 'PARAM_MAP': value,
+      if (instance.platform case final value?) 'PLATFORM': value,
+      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+      if (instance.soyadi case final value?) 'SOYADI': value,
+      if (instance.serviceVersion case final value?) 'SERVICE_VERSION': value,
+      if (instance.tzInfo case final value?) 'TZ_INFO': value,
+      if (instance.uygulamaDili case final value?) 'UYGULAMA_DILI': value,
+      if (instance.uygulamaGuncellemeTarihi case final value?)
+        'UYGULAMA_GUNCELLEME_TARIHI': value,
+      if (instance.uygulamaSurumu case final value?) 'UYGULAMA_SURUMU': value,
+      if (instance.uygulamaSurumKodu case final value?)
+        'UYGULAMA_SURUM_KODU': value,
+      if (instance.uzakErisim case final value?) 'UZAK_ERISIM': value,
+      if (instance.wifidenBagli case final value?) 'WIFIDEN_BAGLI': value,
+      if (instance.qrData case final value?) 'QR_DATA': value,
+      if (instance.debugMu case final value?) 'DEBUG_MU': value,
+      if (instance.adi case final value?) 'ADI': value,
+      if (instance.wifiAdi case final value?) 'WIFI_ADI': value,
+      if (instance.debug case final value?) 'DEBUG': value,
+      if (instance.girisTarihi?.toIso8601String() case final value?)
+        'GIRIS_TARIHI': value,
+      if (instance.sonKullanimTarihi?.toIso8601String() case final value?)
+        'SON_KULLANIM_TARIHI': value,
+      if (instance.onayli case final value?) 'ONAYLI': value,
+      if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
+      if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,
+    };

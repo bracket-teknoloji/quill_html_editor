@@ -15,17 +15,9 @@ _$SayimKalemRequestModelImpl _$$SayimKalemRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$SayimKalemRequestModelImplToJson(
-    _$SayimKalemRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  return val;
-}
+        _$SayimKalemRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+    };

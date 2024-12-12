@@ -61,55 +61,52 @@ _$CekSenetListesiModelImpl _$$CekSenetListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CekSenetListesiModelImplToJson(
-    _$CekSenetListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('IS_CIRO_TIPLI', instance.isCiroTipli);
-  writeNotNull('CIKIS_TARIHI', instance.cikisTarihi?.toIso8601String());
-  writeNotNull('ODEME_TARIHI', instance.odemeTarihi?.toIso8601String());
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
-  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
-  writeNotNull('GetDovizTutari', instance.getDovizTutari);
-  writeNotNull('TUTAR', instance.tutar);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('EVRAK_SAYISI', instance.evrakSayisi);
-  writeNotNull('GetDovizTipi', instance.getDovizTipi);
-  writeNotNull('ACIKLAMA1', instance.aciklama1);
-  writeNotNull('ACIKLAMA2', instance.aciklama2);
-  writeNotNull('ACIKLAMA3', instance.aciklama3);
-  writeNotNull('ALINAN_BORDRO_NO', instance.alinanBordroNo);
-  writeNotNull('ASIL_CARI', instance.asilCari);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_RAPOR_KODU', instance.cariRaporKodu);
-  writeNotNull('CEK_BANKA', instance.cekBanka);
-  writeNotNull('CEK_SUBE', instance.cekSube);
-  writeNotNull('CIRO_TIPI', instance.ciroTipi);
-  writeNotNull('DOVIZ_KODU', instance.dovizKodu);
-  writeNotNull('DURUM', instance.durum);
-  writeNotNull('DURUM_ACIKLAMA', instance.durumAciklama);
-  writeNotNull('GetAsilCariAdi', instance.getAsilCariAdi);
-  writeNotNull('GetCekBankaAdi', instance.getCekBankaAdi);
-  writeNotNull('GetCekSubeAdi', instance.getCekSubeAdi);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('RAPOR_KODU', instance.raporKodu);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('VEREN_KODU', instance.verenKodu);
-  writeNotNull('VERILEN_ADI', instance.verilenAdi);
-  writeNotNull('VERILEN_BANKA_KODU', instance.verilenBankaKodu);
-  writeNotNull('VERILEN_BORDRO_NO', instance.verilenBordroNo);
-  writeNotNull('VERILEN_KODU', instance.verilenKodu);
-  writeNotNull('YER_ACIKLAMA', instance.yerAciklama);
-  writeNotNull('YERI', instance.yeri);
-  return val;
-}
+        _$CekSenetListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.isCiroTipli case final value?) 'IS_CIRO_TIPLI': value,
+      if (instance.cikisTarihi?.toIso8601String() case final value?)
+        'CIKIS_TARIHI': value,
+      if (instance.odemeTarihi?.toIso8601String() case final value?)
+        'ODEME_TARIHI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.vadeTarihi?.toIso8601String() case final value?)
+        'VADE_TARIHI': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.getDovizTutari case final value?) 'GetDovizTutari': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.evrakSayisi case final value?) 'EVRAK_SAYISI': value,
+      if (instance.getDovizTipi case final value?) 'GetDovizTipi': value,
+      if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
+      if (instance.aciklama2 case final value?) 'ACIKLAMA2': value,
+      if (instance.aciklama3 case final value?) 'ACIKLAMA3': value,
+      if (instance.alinanBordroNo case final value?) 'ALINAN_BORDRO_NO': value,
+      if (instance.asilCari case final value?) 'ASIL_CARI': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariRaporKodu case final value?) 'CARI_RAPOR_KODU': value,
+      if (instance.cekBanka case final value?) 'CEK_BANKA': value,
+      if (instance.cekSube case final value?) 'CEK_SUBE': value,
+      if (instance.ciroTipi case final value?) 'CIRO_TIPI': value,
+      if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
+      if (instance.durum case final value?) 'DURUM': value,
+      if (instance.durumAciklama case final value?) 'DURUM_ACIKLAMA': value,
+      if (instance.getAsilCariAdi case final value?) 'GetAsilCariAdi': value,
+      if (instance.getCekBankaAdi case final value?) 'GetCekBankaAdi': value,
+      if (instance.getCekSubeAdi case final value?) 'GetCekSubeAdi': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.raporKodu case final value?) 'RAPOR_KODU': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.verenKodu case final value?) 'VEREN_KODU': value,
+      if (instance.verilenAdi case final value?) 'VERILEN_ADI': value,
+      if (instance.verilenBankaKodu case final value?)
+        'VERILEN_BANKA_KODU': value,
+      if (instance.verilenBordroNo case final value?)
+        'VERILEN_BORDRO_NO': value,
+      if (instance.verilenKodu case final value?) 'VERILEN_KODU': value,
+      if (instance.yerAciklama case final value?) 'YER_ACIKLAMA': value,
+      if (instance.yeri case final value?) 'YERI': value,
+    };

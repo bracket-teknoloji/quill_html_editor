@@ -22,24 +22,16 @@ _$PaketlemeListesiRequestModelImpl _$$PaketlemeListesiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$PaketlemeListesiRequestModelImplToJson(
-    _$PaketlemeListesiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('StokKodu', instance.stokKodu);
-  writeNotNull('BelgeNo', instance.belgeNo);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('DepoKodu', instance.depoKodu);
-  writeNotNull('PaketKodu', instance.paketKodu);
-  writeNotNull('IslemKodu', instance.islemKodu);
-  writeNotNull('KisitYok', instance.kisitYok);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('PaketID', instance.paketId);
-  return val;
-}
+        _$PaketlemeListesiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.depoKodu case final value?) 'DepoKodu': value,
+      if (instance.paketKodu case final value?) 'PaketKodu': value,
+      if (instance.islemKodu case final value?) 'IslemKodu': value,
+      if (instance.kisitYok case final value?) 'KisitYok': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.paketId case final value?) 'PaketID': value,
+    };

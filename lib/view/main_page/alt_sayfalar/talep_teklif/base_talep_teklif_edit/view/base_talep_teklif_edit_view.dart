@@ -539,12 +539,12 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
         instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(instance.getEditTipiEnum?.rawValue) ? true : null;
       }
     }
-     if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
+    if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
       instance.kalemList = instance.kalemList
           ?.map(
             (e) => e
               ..olcuBirimKodu = 1
-              ..miktar = (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!) 
+              ..miktar = (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!)
               ..gercekMiktar = null
               ..olcuBirimCarpani = null,
           )
@@ -591,16 +591,10 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
 
   bool get kaydetButonuYetki {
     if (widget.model.baseEditEnum == BaseEditEnum.goruntule) return false;
-    switch (widget.model.baseEditEnum) {
-      case BaseEditEnum.ekle:
-      case BaseEditEnum.kopyala:
-      case BaseEditEnum.revize:
-      case BaseEditEnum.taslak:
-        return widget.model.editTipiEnum?.eklensinMi ?? false;
-      case BaseEditEnum.duzenle:
-        return widget.model.editTipiEnum?.duzenlensinMi ?? false;
-      default:
-        return false;
-    }
+    return switch (widget.model.baseEditEnum) {
+      BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => widget.model.editTipiEnum?.eklensinMi ?? false,
+      BaseEditEnum.duzenle => widget.model.editTipiEnum?.duzenlensinMi ?? false,
+      _ => false
+    };
   }
 }

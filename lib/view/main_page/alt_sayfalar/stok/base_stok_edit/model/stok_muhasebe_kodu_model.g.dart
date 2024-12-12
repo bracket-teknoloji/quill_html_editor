@@ -19,22 +19,14 @@ StokMuhasebeKoduModel _$StokMuhasebeKoduModelFromJson(
       ..hesapTipi = json['HESAP_TIPI'] as String?;
 
 Map<String, dynamic> _$StokMuhasebeKoduModelToJson(
-    StokMuhasebeKoduModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('MUH_KODU', instance.muhKodu);
-  writeNotNull('ADI', instance.adi);
-  writeNotNull('ALIS_HESABI', instance.alisHesabi);
-  writeNotNull('SATIS_HESABI', instance.satisHesabi);
-  writeNotNull('HESAP_KODU', instance.hesapKodu);
-  writeNotNull('HESAP_ADI', instance.hesapAdi);
-  writeNotNull('AGM', instance.agm);
-  writeNotNull('HESAP_TIPI', instance.hesapTipi);
-  return val;
-}
+        StokMuhasebeKoduModel instance) =>
+    <String, dynamic>{
+      if (instance.muhKodu case final value?) 'MUH_KODU': value,
+      if (instance.adi case final value?) 'ADI': value,
+      if (instance.alisHesabi case final value?) 'ALIS_HESABI': value,
+      if (instance.satisHesabi case final value?) 'SATIS_HESABI': value,
+      if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
+      if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
+      if (instance.agm case final value?) 'AGM': value,
+      if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
+    };

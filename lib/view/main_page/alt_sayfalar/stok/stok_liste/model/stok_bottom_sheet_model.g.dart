@@ -64,41 +64,40 @@ _$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
     );
 
 Map<String, dynamic> _$$StokBottomSheetModelImplToJson(
-    _$StokBottomSheetModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('BakiyeDurumu', instance.bakiyeDurumu);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('ResimleriGoster', instance.resimleriGoster);
-  writeNotNull('Siralama', instance.siralama);
-  writeNotNull('SearchText', instance.searchText);
-  writeNotNull('BelgeNo', instance.belgeNo);
-  writeNotNull('BelgeTarihi', instance.belgeTarihi);
-  writeNotNull('BelgeTipi', instance.belgeTipi);
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('FaturaTipi', instance.faturaTipi);
-  writeNotNull('ResimGoster', instance.resimGoster);
-  writeNotNull('KisitYok', instance.kisitYok);
-  writeNotNull('StokKodu', instance.stokKodu);
-  writeNotNull('Okutuldu', instance.okutuldu);
-  writeNotNull('SeriTakibiVar', instance.seriTakibiVar);
-  writeNotNull(
-      'SearchList', instance.searchList?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'ArrGrupKodu', instance.arrGrupKodu?.map((e) => e.toJson()).toList());
-  writeNotNull('ArrKod1', instance.arrKod1?.map((e) => e.toJson()).toList());
-  writeNotNull('ArrKod2', instance.arrKod2?.map((e) => e.toJson()).toList());
-  writeNotNull('ArrKod3', instance.arrKod3?.map((e) => e.toJson()).toList());
-  writeNotNull('ArrKod4', instance.arrKod4?.map((e) => e.toJson()).toList());
-  writeNotNull('ArrKod5', instance.arrKod5?.map((e) => e.toJson()).toList());
-  writeNotNull('ReceteliStoklar', instance.receteliStoklar);
-  return val;
-}
+        _$StokBottomSheetModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.sayfa case final value?) 'Sayfa': value,
+      if (instance.bakiyeDurumu case final value?) 'BakiyeDurumu': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.resimleriGoster case final value?) 'ResimleriGoster': value,
+      if (instance.siralama case final value?) 'Siralama': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+      if (instance.belgeTarihi case final value?) 'BelgeTarihi': value,
+      if (instance.belgeTipi case final value?) 'BelgeTipi': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.faturaTipi case final value?) 'FaturaTipi': value,
+      if (instance.resimGoster case final value?) 'ResimGoster': value,
+      if (instance.kisitYok case final value?) 'KisitYok': value,
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+      if (instance.okutuldu case final value?) 'Okutuldu': value,
+      if (instance.seriTakibiVar case final value?) 'SeriTakibiVar': value,
+      if (instance.searchList?.map((e) => e.toJson()).toList()
+          case final value?)
+        'SearchList': value,
+      if (instance.arrGrupKodu?.map((e) => e.toJson()).toList()
+          case final value?)
+        'ArrGrupKodu': value,
+      if (instance.arrKod1?.map((e) => e.toJson()).toList() case final value?)
+        'ArrKod1': value,
+      if (instance.arrKod2?.map((e) => e.toJson()).toList() case final value?)
+        'ArrKod2': value,
+      if (instance.arrKod3?.map((e) => e.toJson()).toList() case final value?)
+        'ArrKod3': value,
+      if (instance.arrKod4?.map((e) => e.toJson()).toList() case final value?)
+        'ArrKod4': value,
+      if (instance.arrKod5?.map((e) => e.toJson()).toList() case final value?)
+        'ArrKod5': value,
+      if (instance.receteliStoklar case final value?) 'ReceteliStoklar': value,
+    };

@@ -16,18 +16,10 @@ _$BelgeRehberiRequestModelImpl _$$BelgeRehberiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BelgeRehberiRequestModelImplToJson(
-    _$BelgeRehberiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DepoKodu', instance.depoKodu);
-  writeNotNull('IslemTuru', instance.islemTuru);
-  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
-  writeNotNull('SearchText', instance.searchText);
-  return val;
-}
+        _$BelgeRehberiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.depoKodu case final value?) 'DepoKodu': value,
+      if (instance.islemTuru case final value?) 'IslemTuru': value,
+      if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+    };

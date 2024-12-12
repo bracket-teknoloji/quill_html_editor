@@ -12,6 +12,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     String? pickerBelgeTuru,
     bool? iadeMi,
     @Default("") String? cariKodu,
+    String? teslimCariKodu,
     String? ozelKod2,
     String? cariTipi,
     String? miktarGetir,
@@ -66,7 +67,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
         belgeNo: model.belgeNo ?? "",
         arrBelgeNo: model.arrBelgeNo,
         cariKodu: model.cariKodu ?? "",
-        
+
         // refBelgeTuru: model.belgeTuru,
         projeKodu: model.projeKodu,
       );

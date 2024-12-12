@@ -28,29 +28,26 @@ _$UskReceteModelImpl _$$UskReceteModelImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$UskReceteModelImplToJson(
-    _$UskReceteModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('MAMUL_KODU', instance.mamulKodu);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('SON_OPERASYON', instance.sonOperasyon);
-  writeNotNull('OB', instance.ob);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('CIKISTA_SERI', instance.cikistaSeri);
-  writeNotNull('SERI_MIKTAR_KADAR', instance.seriMiktarKadar);
-  writeNotNull('SERI_BAKIYE_KONTROL', instance.seriBakiyeKontrol);
-  writeNotNull('SERI_CIKISTA_OTOMATIK', instance.seriCikistaOtomatik);
-  writeNotNull('SERI_GIRISTE_OTOMATIK', instance.seriGiristeOtomatik);
-  writeNotNull('SIRA', instance.sira);
-  writeNotNull('OTOREC', instance.otorec);
-  writeNotNull('SERI_LIST', instance.seriList?.map((e) => e.toJson()).toList());
-  writeNotNull('GIRISTE_SERI', instance.giristeSeri);
-  return val;
-}
+        _$UskReceteModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.mamulKodu case final value?) 'MAMUL_KODU': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.sonOperasyon case final value?) 'SON_OPERASYON': value,
+      if (instance.ob case final value?) 'OB': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.cikistaSeri case final value?) 'CIKISTA_SERI': value,
+      if (instance.seriMiktarKadar case final value?)
+        'SERI_MIKTAR_KADAR': value,
+      if (instance.seriBakiyeKontrol case final value?)
+        'SERI_BAKIYE_KONTROL': value,
+      if (instance.seriCikistaOtomatik case final value?)
+        'SERI_CIKISTA_OTOMATIK': value,
+      if (instance.seriGiristeOtomatik case final value?)
+        'SERI_GIRISTE_OTOMATIK': value,
+      if (instance.sira case final value?) 'SIRA': value,
+      if (instance.otorec case final value?) 'OTOREC': value,
+      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
+        'SERI_LIST': value,
+      if (instance.giristeSeri case final value?) 'GIRISTE_SERI': value,
+    };

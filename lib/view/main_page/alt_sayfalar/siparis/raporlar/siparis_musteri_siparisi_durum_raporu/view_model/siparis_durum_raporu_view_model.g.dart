@@ -269,6 +269,19 @@ mixin _$SiparisDurumRaporuViewModel on _SiparisDurumRaporuViewModelBase, Store {
   }
 
   @override
+  void setTeslimCariKodu(String? value) {
+    final _$actionInfo =
+        _$_SiparisDurumRaporuViewModelBaseActionController.startAction(
+            name: '_SiparisDurumRaporuViewModelBase.setTeslimCariKodu');
+    try {
+      return super.setTeslimCariKodu(value);
+    } finally {
+      _$_SiparisDurumRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setBelgeNo(String? value) {
     final _$actionInfo = _$_SiparisDurumRaporuViewModelBaseActionController
         .startAction(name: '_SiparisDurumRaporuViewModelBase.setBelgeNo');

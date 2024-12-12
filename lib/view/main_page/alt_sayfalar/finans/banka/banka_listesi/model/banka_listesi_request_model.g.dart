@@ -21,23 +21,16 @@ _$BankaListesiRequestModelImpl _$$BankaListesiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BankaListesiRequestModelImplToJson(
-    _$BankaListesiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('Bakiye', instance.bakiye);
-  writeNotNull('ArrHesapTipi', instance.arrHesapTipi);
-  writeNotNull('HaricHesaplarArray', instance.haricHesaplarArray);
-  writeNotNull('Sirala', instance.sirala);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('BelgeTipi', instance.belgeTipi);
-  writeNotNull('BankaKodu', instance.bankaKodu);
-  writeNotNull('IslemModulu', instance.islemModulu);
-  return val;
-}
+        _$BankaListesiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.bakiye case final value?) 'Bakiye': value,
+      if (instance.arrHesapTipi case final value?) 'ArrHesapTipi': value,
+      if (instance.haricHesaplarArray case final value?)
+        'HaricHesaplarArray': value,
+      if (instance.sirala case final value?) 'Sirala': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.belgeTipi case final value?) 'BelgeTipi': value,
+      if (instance.bankaKodu case final value?) 'BankaKodu': value,
+      if (instance.islemModulu case final value?) 'IslemModulu': value,
+    };

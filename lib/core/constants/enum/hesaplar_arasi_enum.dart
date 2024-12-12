@@ -1,25 +1,13 @@
 enum HesaplarArasiEnum { virman, eftHavale }
 
 extension HesaplarArasiExtensions on HesaplarArasiEnum {
-  String get name {
-    switch (this) {
-      case HesaplarArasiEnum.virman:
-        return "Virman";
-      case HesaplarArasiEnum.eftHavale:
-        return "EFT/Havale";
-      default:
-        return "";
-    }
-  }
+  String get name => switch (this) {
+        HesaplarArasiEnum.virman => "Virman",
+        HesaplarArasiEnum.eftHavale => "EFT/Havale",
+      };
 
-  String get belgeAdi {
-    switch (this) {
-      case HesaplarArasiEnum.virman:
-        return "DHV";
-      case HesaplarArasiEnum.eftHavale:
-        return "DHE";
-      default:
-        return "";
-    }
-  }
+  String get belgeAdi => switch (this) {
+        HesaplarArasiEnum.virman => "DHV",
+        HesaplarArasiEnum.eftHavale => "DHE",
+      };
 }

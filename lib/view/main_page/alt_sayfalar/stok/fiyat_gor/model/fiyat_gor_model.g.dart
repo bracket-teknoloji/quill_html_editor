@@ -17,22 +17,14 @@ FiyatGorModel _$FiyatGorModelFromJson(Map<String, dynamic> json) =>
       ..fiyat4 = (json['FIYAT4'] as num?)?.toDouble()
       ..kdvOrani = (json['KDV_ORANI'] as num?)?.toDouble();
 
-Map<String, dynamic> _$FiyatGorModelToJson(FiyatGorModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('A_S', instance.aS);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('FIYAT1', instance.fiyat1);
-  writeNotNull('FIYAT2', instance.fiyat2);
-  writeNotNull('FIYAT3', instance.fiyat3);
-  writeNotNull('FIYAT4', instance.fiyat4);
-  writeNotNull('KDV_ORANI', instance.kdvOrani);
-  return val;
-}
+Map<String, dynamic> _$FiyatGorModelToJson(FiyatGorModel instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.aS case final value?) 'A_S': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.fiyat1 case final value?) 'FIYAT1': value,
+      if (instance.fiyat2 case final value?) 'FIYAT2': value,
+      if (instance.fiyat3 case final value?) 'FIYAT3': value,
+      if (instance.fiyat4 case final value?) 'FIYAT4': value,
+      if (instance.kdvOrani case final value?) 'KDV_ORANI': value,
+    };

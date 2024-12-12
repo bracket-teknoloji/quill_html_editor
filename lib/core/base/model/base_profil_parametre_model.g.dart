@@ -66,53 +66,45 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
-    _$BaseProfilParametreModelImpl instance) {
-  final val = <String, dynamic>{
-    'SIPARIS_YENI_KAYDA_HAZIRLA': instance.siparisYeniKaydaHazirla,
-    'FATURA_YENI_KAYDA_HAZIRLA': instance.faturaYeniKaydaHazirla,
-    'TALEP_TEKLIF_YENI_KAYDA_HAZIRLA': instance.talepTeklifYeniKaydaHazirla,
-    'TRANSFER_YENI_KAYDA_HAZIRLA': instance.transferYeniKaydaHazirla,
-    'SIPARIS_EK_ALAN': instance.siparisEkAlan,
-    'SIPARIS_MIKTAR': instance.siparisMiktar,
-    'SIPARIS_VADE': instance.siparisVade,
-    'KURLARI_SIL_TEKRAR_GUNCELLE': instance.kurlariSilTekrarGuncelle,
-    'STOK_RESIMLERI_GOSTER': instance.stokResimleriGoster,
-    'STOK_YAZDIR_DIZAYN_VE_YAZICI_HATIRLA':
-        instance.stokYazdirDizaynVeYaziciHatirla,
-    'STOK_SECILDIGINDE_YAZDIR': instance.stokSecildigindeYazdir,
-    'FINANS_OZEL_RAPOR_GRAFIK_GOSTER': instance.finansOzelRaporGrafikGoster,
-    'ACIK_TEMA_MI': instance.acikTemaMi,
-    'TEMA_MODU': _$ThemeModeEnumMap[instance.temaModu]!,
-    'ROTA_DISI_GORUNSUN_MU': instance.rotaDisiGorunsunMu,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('NET_FECT_DIZAYN_LIST', instance.netFectDizaynList?.toJson());
-  writeNotNull('YAZICI_LIST', instance.yaziciList?.toJson());
-  val['OLCUM_GIRISI_BELGE_TIPI'] =
-      _$EditTipiEnumEnumMap[instance.olcumGirisiBelgeTipi]!;
-  val['KAPALI_BELGELER_LISTELENMESIN_MI'] =
-      instance.kapaliBelgelerListelenmesinMi;
-  val['SAYIM_STOK_SECILDIGINDE_HEMEN_KAYDET'] =
-      instance.sayimStokSecildigindeHemenKaydet;
-  val['SAYIM_OTOMATIK_ETIKET_YAZDIR'] = instance.sayimOtomatikEtiketYazdir;
-  val['STOK_GORUNECEK_EKSTRA_ALANLAR'] = instance.stokGorunecekEkstraAlanlar;
-  val['STOK_LISTESI_GRID_SAYISI'] = instance.stokListesiGridSayisi;
-  val['URUN_GRUBUNA_GORE_SATIS_RAPOR_TIPI'] =
-      instance.urunGrubunaGoreSatisRaporTipi;
-  val['URUN_GRUBUNA_GORE_GRUPLANSIN'] = instance.urunGrubunaGoreGruplansin;
-  val['CARI_LISTESI_SIRALA'] = instance.cariListesiSirala;
-  val['STOK_LISTESI_SIRALA'] = instance.stokListesiSirala;
-  val['IRS_FATURALASAN_IRSALIYELER_GELSIN'] =
-      instance.irsFaturalasanIrsaliyelerGelsin;
-  val['E_IRSALIYE_SECILI_GELSIN'] = instance.eIrsaliyeSeciliGelsin;
-  return val;
-}
+        _$BaseProfilParametreModelImpl instance) =>
+    <String, dynamic>{
+      'SIPARIS_YENI_KAYDA_HAZIRLA': instance.siparisYeniKaydaHazirla,
+      'FATURA_YENI_KAYDA_HAZIRLA': instance.faturaYeniKaydaHazirla,
+      'TALEP_TEKLIF_YENI_KAYDA_HAZIRLA': instance.talepTeklifYeniKaydaHazirla,
+      'TRANSFER_YENI_KAYDA_HAZIRLA': instance.transferYeniKaydaHazirla,
+      'SIPARIS_EK_ALAN': instance.siparisEkAlan,
+      'SIPARIS_MIKTAR': instance.siparisMiktar,
+      'SIPARIS_VADE': instance.siparisVade,
+      'KURLARI_SIL_TEKRAR_GUNCELLE': instance.kurlariSilTekrarGuncelle,
+      'STOK_RESIMLERI_GOSTER': instance.stokResimleriGoster,
+      'STOK_YAZDIR_DIZAYN_VE_YAZICI_HATIRLA':
+          instance.stokYazdirDizaynVeYaziciHatirla,
+      'STOK_SECILDIGINDE_YAZDIR': instance.stokSecildigindeYazdir,
+      'FINANS_OZEL_RAPOR_GRAFIK_GOSTER': instance.finansOzelRaporGrafikGoster,
+      'ACIK_TEMA_MI': instance.acikTemaMi,
+      'TEMA_MODU': _$ThemeModeEnumMap[instance.temaModu]!,
+      'ROTA_DISI_GORUNSUN_MU': instance.rotaDisiGorunsunMu,
+      if (instance.netFectDizaynList?.toJson() case final value?)
+        'NET_FECT_DIZAYN_LIST': value,
+      if (instance.yaziciList?.toJson() case final value?) 'YAZICI_LIST': value,
+      'OLCUM_GIRISI_BELGE_TIPI':
+          _$EditTipiEnumEnumMap[instance.olcumGirisiBelgeTipi]!,
+      'KAPALI_BELGELER_LISTELENMESIN_MI':
+          instance.kapaliBelgelerListelenmesinMi,
+      'SAYIM_STOK_SECILDIGINDE_HEMEN_KAYDET':
+          instance.sayimStokSecildigindeHemenKaydet,
+      'SAYIM_OTOMATIK_ETIKET_YAZDIR': instance.sayimOtomatikEtiketYazdir,
+      'STOK_GORUNECEK_EKSTRA_ALANLAR': instance.stokGorunecekEkstraAlanlar,
+      'STOK_LISTESI_GRID_SAYISI': instance.stokListesiGridSayisi,
+      'URUN_GRUBUNA_GORE_SATIS_RAPOR_TIPI':
+          instance.urunGrubunaGoreSatisRaporTipi,
+      'URUN_GRUBUNA_GORE_GRUPLANSIN': instance.urunGrubunaGoreGruplansin,
+      'CARI_LISTESI_SIRALA': instance.cariListesiSirala,
+      'STOK_LISTESI_SIRALA': instance.stokListesiSirala,
+      'IRS_FATURALASAN_IRSALIYELER_GELSIN':
+          instance.irsFaturalasanIrsaliyelerGelsin,
+      'E_IRSALIYE_SECILI_GELSIN': instance.eIrsaliyeSeciliGelsin,
+    };
 
 const _$ThemeModeEnumMap = {
   ThemeMode.system: 'system',

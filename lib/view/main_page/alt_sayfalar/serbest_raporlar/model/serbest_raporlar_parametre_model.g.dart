@@ -15,18 +15,11 @@ SerbestRaporParametreModel _$SerbestRaporParametreModelFromJson(
       ..enterIslemYap = json['ENTER_ISLEM_YAP'] as bool?;
 
 Map<String, dynamic> _$SerbestRaporParametreModelToJson(
-    SerbestRaporParametreModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('PARAMETRE_ADI', instance.parametreAdi);
-  writeNotNull('PARAMETRE_TANIMI', instance.parametreTanimi);
-  writeNotNull('DEGER_TEMIZLENMESIN', instance.degerTemizlenmesin);
-  writeNotNull('ENTER_ISLEM_YAP', instance.enterIslemYap);
-  return val;
-}
+        SerbestRaporParametreModel instance) =>
+    <String, dynamic>{
+      if (instance.parametreAdi case final value?) 'PARAMETRE_ADI': value,
+      if (instance.parametreTanimi case final value?) 'PARAMETRE_TANIMI': value,
+      if (instance.degerTemizlenmesin case final value?)
+        'DEGER_TEMIZLENMESIN': value,
+      if (instance.enterIslemYap case final value?) 'ENTER_ISLEM_YAP': value,
+    };

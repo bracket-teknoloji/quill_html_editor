@@ -29,31 +29,27 @@ _$KasaListesiModelImpl _$$KasaListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$KasaListesiModelImplToJson(
-    _$KasaListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('KASA_KODU', instance.kasaKodu);
-  writeNotNull('KASA_TANIMI', instance.kasaTanimi);
-  writeNotNull('SUBE_KODU', instance.subeKodu);
-  writeNotNull('DOVIZLI', instance.dovizli);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('KKART_KASASI', instance.kkartKasasi);
-  writeNotNull('TOPLAM_GIRIS', instance.toplamGiris);
-  writeNotNull('TOPLAM_CIKIS', instance.toplamCikis);
-  writeNotNull('BAKIYE', instance.bakiye);
-  writeNotNull('DEVIRLI_BAKIYE', instance.devirliBakiye);
-  writeNotNull('DEVIR_TUTARI', instance.devirTutari);
-  writeNotNull('DOVIZ_TOPLAM_GIRIS', instance.dovizToplamGiris);
-  writeNotNull('DOVIZ_TOPLAM_CIKIS', instance.dovizToplamCikis);
-  writeNotNull('DOVIZ_BAKIYE', instance.dovizBakiye);
-  writeNotNull('DEVIRLI_DOVIZ_BAKIYE', instance.devirliDovizBakiye);
-  writeNotNull('DOVIZ_DEVIR_TUTARI', instance.dovizDevirTutari);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  return val;
-}
+        _$KasaListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+      if (instance.kasaTanimi case final value?) 'KASA_TANIMI': value,
+      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+      if (instance.dovizli case final value?) 'DOVIZLI': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.kkartKasasi case final value?) 'KKART_KASASI': value,
+      if (instance.toplamGiris case final value?) 'TOPLAM_GIRIS': value,
+      if (instance.toplamCikis case final value?) 'TOPLAM_CIKIS': value,
+      if (instance.bakiye case final value?) 'BAKIYE': value,
+      if (instance.devirliBakiye case final value?) 'DEVIRLI_BAKIYE': value,
+      if (instance.devirTutari case final value?) 'DEVIR_TUTARI': value,
+      if (instance.dovizToplamGiris case final value?)
+        'DOVIZ_TOPLAM_GIRIS': value,
+      if (instance.dovizToplamCikis case final value?)
+        'DOVIZ_TOPLAM_CIKIS': value,
+      if (instance.dovizBakiye case final value?) 'DOVIZ_BAKIYE': value,
+      if (instance.devirliDovizBakiye case final value?)
+        'DEVIRLI_DOVIZ_BAKIYE': value,
+      if (instance.dovizDevirTutari case final value?)
+        'DOVIZ_DEVIR_TUTARI': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+    };

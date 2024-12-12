@@ -27,24 +27,13 @@ enum OndalikEnum {
 }
 
 extension OndalikEnumExtension on OndalikEnum {
-  int get ondalik {
-    switch (this) {
-      case OndalikEnum.miktar:
-        return OndalikUtils.baseMiktar;
-      case OndalikEnum.fiyat:
-        return OndalikUtils.baseFiyat;
-      case OndalikEnum.tutar:
-        return OndalikUtils.baseTutar;
-      case OndalikEnum.kur:
-        return OndalikUtils.baseKur;
-      case OndalikEnum.oran:
-        return OndalikUtils.baseOran;
-      case OndalikEnum.dovizTutari:
-        return OndalikUtils.baseDovizTutari;
-      case OndalikEnum.dovizFiyati:
-        return OndalikUtils.baseDovizFiyati;
-      default:
-        return 2;
-    }
-  }
+  int get ondalik => switch (this) {
+        OndalikEnum.miktar => OndalikUtils.baseMiktar,
+        OndalikEnum.fiyat => OndalikUtils.baseFiyat,
+        OndalikEnum.tutar => OndalikUtils.baseTutar,
+        OndalikEnum.kur => OndalikUtils.baseKur,
+        OndalikEnum.oran => OndalikUtils.baseOran,
+        OndalikEnum.dovizTutari => OndalikUtils.baseDovizTutari,
+        OndalikEnum.dovizFiyati => OndalikUtils.baseDovizFiyati
+      };
 }

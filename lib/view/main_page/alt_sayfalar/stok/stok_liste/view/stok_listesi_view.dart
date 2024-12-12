@@ -1093,42 +1093,28 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   String grupAdiWithItem(BaseGrupKoduModel? item, int index) {
     if (item == null) return "";
-    switch (index) {
-      case 0:
-        return item.grupAdi ?? "";
-      case 1:
-        return (viewModel.kategoriMi ? item.kod1Adi ?? item.kod1 : item.grupAdi) ?? "";
-      case 2:
-        return (viewModel.kategoriMi ? item.kod2Adi ?? item.kod2 : item.grupAdi) ?? "";
-      case 3:
-        return (viewModel.kategoriMi ? item.kod3Adi ?? item.kod3 : item.grupAdi) ?? "";
-      case 4:
-        return (viewModel.kategoriMi ? item.kod4Adi ?? item.kod4 : item.grupAdi) ?? "";
-      case 5:
-        return (viewModel.kategoriMi ? item.kod5Adi ?? item.kod5 : item.grupAdi) ?? "";
-      default:
-        return "";
-    }
+    return switch (index) {
+      0 => item.grupAdi ?? "",
+      1 => (viewModel.kategoriMi ? item.kod1Adi ?? item.kod1 : item.grupAdi) ?? "",
+      2 => (viewModel.kategoriMi ? item.kod2Adi ?? item.kod2 : item.grupAdi) ?? "",
+      3 => (viewModel.kategoriMi ? item.kod3Adi ?? item.kod3 : item.grupAdi) ?? "",
+      4 => (viewModel.kategoriMi ? item.kod4Adi ?? item.kod4 : item.grupAdi) ?? "",
+      5 => (viewModel.kategoriMi ? item.kod5Adi ?? item.kod5 : item.grupAdi) ?? "",
+      _ => "",
+    };
   }
 
   String grupKoduWithItem(BaseGrupKoduModel? item, int index) {
     if (item == null) return "";
-    switch (index) {
-      case 0:
-        return item.grupKodu ?? "";
-      case 1:
-        return item.kod1 ?? item.grupKodu ?? "";
-      case 2:
-        return item.kod2 ?? item.grupKodu ?? "";
-      case 3:
-        return item.kod3 ?? item.grupKodu ?? "";
-      case 4:
-        return item.kod4 ?? item.grupKodu ?? "";
-      case 5:
-        return item.kod5 ?? item.grupKodu ?? "";
-      default:
-        return "";
-    }
+    return switch (index) {
+      0 => item.grupKodu ?? "",
+      1 => item.kod1 ?? item.grupKodu ?? "",
+      2 => item.kod2 ?? item.grupKodu ?? "",
+      3 => item.kod3 ?? item.grupKodu ?? "",
+      4 => item.kod4 ?? item.grupKodu ?? "",
+      5 => item.kod5 ?? item.grupKodu ?? "",
+      _ => "",
+    };
   }
 
   List<BaseGrupKoduModel>? grupKoduWithIndex(int index) {
@@ -1154,22 +1140,15 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
     // if (filteredList?.every((element) => element.kod3 == null) ?? false) viewModel.changeArrKod3(null);
     // if (filteredList?.every((element) => element.kod4 == null) ?? false) viewModel.changeArrKod4(null);
     // if (filteredList?.every((element) => element.kod5 == null) ?? false) viewModel.changeArrKod5(null);
-    switch (index) {
-      case 0:
-        return filteredList?.where((e) => e.grupKodu != null).toList();
-      case 1:
-        return filteredList?.where((e) => e.kod1 != null).toList();
-      case 2:
-        return filteredList?.where((e) => e.kod2 != null).toList();
-      case 3:
-        return filteredList?.where((e) => e.kod3 != null).toList();
-      case 4:
-        return filteredList?.where((e) => e.kod4 != null).toList();
-      case 5:
-        return filteredList?.where((e) => e.kod5 != null).toList();
-      default:
-        return null;
-    }
+    return switch (index) {
+      0 => filteredList?.where((e) => e.grupKodu != null).toList(),
+      1 => filteredList?.where((e) => e.kod1 != null).toList(),
+      2 => filteredList?.where((e) => e.kod2 != null).toList(),
+      3 => filteredList?.where((e) => e.kod3 != null).toList(),
+      4 => filteredList?.where((e) => e.kod4 != null).toList(),
+      5 => filteredList?.where((e) => e.kod5 != null).toList(),
+      _ => null,
+    };
   }
 
   Future<void> grupKoduOnClear(int value) async {

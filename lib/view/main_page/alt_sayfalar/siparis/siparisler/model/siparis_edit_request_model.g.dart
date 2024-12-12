@@ -65,68 +65,64 @@ _$SiparisEditRequestModelImpl _$$SiparisEditRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$SiparisEditRequestModelImplToJson(
-    _$SiparisEditRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('KisitYok', instance.kisitYok);
-  writeNotNull('BelgeTipi', instance.belgeTipi);
-  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
-  writeNotNull('RemoteTempBelge', instance.remoteTempBelge);
-  writeNotNull('FaturaTipi', instance.faturaTipi);
-  writeNotNull('TempBelgeId', instance.tempBelgeId);
-  writeNotNull('Tipi', instance.tipi);
-  writeNotNull('BelgeNo', instance.belgeNo);
-  writeNotNull('BelgeTarihi', instance.belgeTarihi);
-  writeNotNull('BelgeTuru', instance.belgeTuru);
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('IslemId', instance.islemId);
-  writeNotNull('KayitModu', instance.kayitModu);
-  writeNotNull('MenuKodu', instance.menuKodu);
-  writeNotNull('MevcutBelgeNo', instance.mevcutBelgeNo);
-  writeNotNull('MevcutCariKodu', instance.mevcutCariKodu);
-  writeNotNull('ParamMap', instance.paramMap);
-  writeNotNull('ResimGoster', instance.resimGoster);
-  writeNotNull('StokKodu', instance.stokKodu);
-  writeNotNull('Tag', instance.tag);
-  writeNotNull('SiparisSevkEdilenGoster', instance.siparisSevkEdilenGoster);
-  writeNotNull('FiltreKodu', instance.filtreKodu);
-  writeNotNull('EFaturaIncKeyNo', instance.eFaturaIncKeyNo);
-  writeNotNull('DepoKodu', instance.depoKodu);
-  writeNotNull('IadeMi', instance.iadeMi);
-  writeNotNull('OzelKod2', instance.ozelKod2);
-  writeNotNull('CariTipi', instance.cariTipi);
-  writeNotNull('MiktarGetir', instance.miktarGetir);
-  writeNotNull('SIRALAMA', instance.siralama);
-  writeNotNull('SiparisKarsilanmaDurumu', instance.siparisKarsilanmaDurumu);
-  writeNotNull('OzelKod1', instance.ozelKod1);
-  writeNotNull(
-      'KapaliBelgelerListelenmesin', instance.kapaliBelgelerListelenmesin);
-  writeNotNull('ProjeKodu', instance.projeKodu);
-  writeNotNull('FaturalasmaGoster', instance.faturalasmaGoster);
-  writeNotNull('ArrKod5', instance.arrKod5);
-  writeNotNull('ArrGrupKodu', instance.arrGrupKodu);
-  writeNotNull('ArrKod4', instance.arrKod4);
-  writeNotNull('ArrKod3', instance.arrKod3);
-  writeNotNull('ArrKod2', instance.arrKod2);
-  writeNotNull('ArrPlasiyerKodu', instance.arrPlasiyerKodu);
-  writeNotNull('ArrKod1', instance.arrKod1);
-  writeNotNull('Sayfa', instance.sayfa);
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  writeNotNull('SearchText', instance.searchText);
-  writeNotNull('SiparisDurumu', instance.siparisDurumu);
-  writeNotNull('ReferansStokKodu', instance.referansStokKodu);
-  writeNotNull('RefBelgeTuru', instance.refBelgeTuru);
-  writeNotNull('ArrBelgeTipi', instance.arrBelgeTipi);
-  writeNotNull('ArrBelgeNo', instance.arrBelgeNo);
-  writeNotNull('BakiyeDurumu', instance.bakiyeDurumu);
-  writeNotNull('IsNew', instance.isNew);
-  return val;
-}
+        _$SiparisEditRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.kisitYok case final value?) 'KisitYok': value,
+      if (instance.belgeTipi case final value?) 'BelgeTipi': value,
+      if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
+      if (instance.remoteTempBelge case final value?) 'RemoteTempBelge': value,
+      if (instance.faturaTipi case final value?) 'FaturaTipi': value,
+      if (instance.tempBelgeId case final value?) 'TempBelgeId': value,
+      if (instance.tipi case final value?) 'Tipi': value,
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+      if (instance.belgeTarihi case final value?) 'BelgeTarihi': value,
+      if (instance.belgeTuru case final value?) 'BelgeTuru': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.islemId case final value?) 'IslemId': value,
+      if (instance.kayitModu case final value?) 'KayitModu': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.mevcutBelgeNo case final value?) 'MevcutBelgeNo': value,
+      if (instance.mevcutCariKodu case final value?) 'MevcutCariKodu': value,
+      if (instance.paramMap case final value?) 'ParamMap': value,
+      if (instance.resimGoster case final value?) 'ResimGoster': value,
+      if (instance.stokKodu case final value?) 'StokKodu': value,
+      if (instance.tag case final value?) 'Tag': value,
+      if (instance.siparisSevkEdilenGoster case final value?)
+        'SiparisSevkEdilenGoster': value,
+      if (instance.filtreKodu case final value?) 'FiltreKodu': value,
+      if (instance.eFaturaIncKeyNo case final value?) 'EFaturaIncKeyNo': value,
+      if (instance.depoKodu case final value?) 'DepoKodu': value,
+      if (instance.iadeMi case final value?) 'IadeMi': value,
+      if (instance.ozelKod2 case final value?) 'OzelKod2': value,
+      if (instance.cariTipi case final value?) 'CariTipi': value,
+      if (instance.miktarGetir case final value?) 'MiktarGetir': value,
+      if (instance.siralama case final value?) 'SIRALAMA': value,
+      if (instance.siparisKarsilanmaDurumu case final value?)
+        'SiparisKarsilanmaDurumu': value,
+      if (instance.ozelKod1 case final value?) 'OzelKod1': value,
+      if (instance.kapaliBelgelerListelenmesin case final value?)
+        'KapaliBelgelerListelenmesin': value,
+      if (instance.projeKodu case final value?) 'ProjeKodu': value,
+      if (instance.faturalasmaGoster case final value?)
+        'FaturalasmaGoster': value,
+      if (instance.arrKod5 case final value?) 'ArrKod5': value,
+      if (instance.arrGrupKodu case final value?) 'ArrGrupKodu': value,
+      if (instance.arrKod4 case final value?) 'ArrKod4': value,
+      if (instance.arrKod3 case final value?) 'ArrKod3': value,
+      if (instance.arrKod2 case final value?) 'ArrKod2': value,
+      if (instance.arrPlasiyerKodu case final value?) 'ArrPlasiyerKodu': value,
+      if (instance.arrKod1 case final value?) 'ArrKod1': value,
+      if (instance.sayfa case final value?) 'Sayfa': value,
+      if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+      if (instance.searchText case final value?) 'SearchText': value,
+      if (instance.siparisDurumu case final value?) 'SiparisDurumu': value,
+      if (instance.referansStokKodu case final value?)
+        'ReferansStokKodu': value,
+      if (instance.refBelgeTuru case final value?) 'RefBelgeTuru': value,
+      if (instance.arrBelgeTipi case final value?) 'ArrBelgeTipi': value,
+      if (instance.arrBelgeNo case final value?) 'ArrBelgeNo': value,
+      if (instance.bakiyeDurumu case final value?) 'BakiyeDurumu': value,
+      if (instance.isNew case final value?) 'IsNew': value,
+    };

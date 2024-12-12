@@ -32,9 +32,9 @@ void main() async {
     } catch (e) {
       log(e.toString());
     }
-    if (!kIsWeb){
+    if (!kIsWeb) {
       if (Platform.isAndroid) {
-      await AccountModel.instance.init();
+        await AccountModel.instance.init();
       }
     }
     await firebaseInitialized();

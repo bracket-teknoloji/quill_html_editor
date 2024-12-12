@@ -41,41 +41,36 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
       ..resmiBelgeNo = json['RESMI_BELGE_NO'] as String?;
 
 Map<String, dynamic> _$CariHareketleriModelToJson(
-    CariHareketleriModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('BORC', instance.borc);
-  writeNotNull('HAREKET_ACIKLAMA', instance.hareketAciklama);
-  writeNotNull('HAREKET_KODU', instance.hareketKodu);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
-  writeNotNull('YURUYEN_BAKIYE', instance.yuruyenBakiye);
-  writeNotNull('DOV_YURUYEN_BAKIYE', instance.dovYuruyenBakiye);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('PROJE_ACIKLAMA', instance.projeAciklama);
-  writeNotNull('DOVIZ_BORC', instance.dovizBorc);
-  writeNotNull('DOVIZ_TURU', instance.dovizTuru);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('REFKEY', instance.refkey);
-  writeNotNull('VADE_TARIHI', instance.vadeTarihi?.toIso8601String());
-  writeNotNull('BELGE_TIPI', instance.belgeTipi);
-  writeNotNull('ALACAK', instance.alacak);
-  writeNotNull('BORDRO_MU', instance.bordroMu);
-  writeNotNull('DOVIZ_ALACAK', instance.dovizAlacak);
-  writeNotNull('SUBE_KODU', instance.subeKodu);
-  writeNotNull('EBELGE_TURU', instance.ebelgeTuru);
-  writeNotNull('RESMI_BELGE_NO', instance.resmiBelgeNo);
-  return val;
-}
+        CariHareketleriModel instance) =>
+    <String, dynamic>{
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.borc case final value?) 'BORC': value,
+      if (instance.hareketAciklama case final value?) 'HAREKET_ACIKLAMA': value,
+      if (instance.hareketKodu case final value?) 'HAREKET_KODU': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.plasiyerAciklama case final value?)
+        'PLASIYER_ACIKLAMA': value,
+      if (instance.yuruyenBakiye case final value?) 'YURUYEN_BAKIYE': value,
+      if (instance.dovYuruyenBakiye case final value?)
+        'DOV_YURUYEN_BAKIYE': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.projeAciklama case final value?) 'PROJE_ACIKLAMA': value,
+      if (instance.dovizBorc case final value?) 'DOVIZ_BORC': value,
+      if (instance.dovizTuru case final value?) 'DOVIZ_TURU': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.refkey case final value?) 'REFKEY': value,
+      if (instance.vadeTarihi?.toIso8601String() case final value?)
+        'VADE_TARIHI': value,
+      if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
+      if (instance.alacak case final value?) 'ALACAK': value,
+      if (instance.bordroMu case final value?) 'BORDRO_MU': value,
+      if (instance.dovizAlacak case final value?) 'DOVIZ_ALACAK': value,
+      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
+      if (instance.ebelgeTuru case final value?) 'EBELGE_TURU': value,
+      if (instance.resmiBelgeNo case final value?) 'RESMI_BELGE_NO': value,
+    };

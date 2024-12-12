@@ -16,21 +16,13 @@ FiyatGecmisiModel _$FiyatGecmisiModelFromJson(Map<String, dynamic> json) =>
       ..yazdirildi = json['Yazdirildi'] as String?
       ..fiyatTipi = json['FiyatTipi'] as String?;
 
-Map<String, dynamic> _$FiyatGecmisiModelToJson(FiyatGecmisiModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('AlisSatis', instance.alisSatis);
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('Sirala', instance.sirala);
-  writeNotNull('Yazdirildi', instance.yazdirildi);
-  writeNotNull('FiyatTipi', instance.fiyatTipi);
-  return val;
-}
+Map<String, dynamic> _$FiyatGecmisiModelToJson(FiyatGecmisiModel instance) =>
+    <String, dynamic>{
+      if (instance.alisSatis case final value?) 'AlisSatis': value,
+      if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.sirala case final value?) 'Sirala': value,
+      if (instance.yazdirildi case final value?) 'Yazdirildi': value,
+      if (instance.fiyatTipi case final value?) 'FiyatTipi': value,
+    };

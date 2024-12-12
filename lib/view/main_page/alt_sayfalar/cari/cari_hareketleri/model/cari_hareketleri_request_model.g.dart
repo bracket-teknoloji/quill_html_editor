@@ -21,23 +21,16 @@ _$CariHareketleriRequestModelImpl _$$CariHareketleriRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CariHareketleriRequestModelImplToJson(
-    _$CariHareketleriRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('SIRALAMA', instance.siralama);
-  writeNotNull('SadeceTahsilatlarOdemeler', instance.sadeceTahsilatlarOdemeler);
-  writeNotNull('CariKodu', instance.cariKodu);
-  writeNotNull('EkranTipi', instance.ekranTipi);
-  writeNotNull('ArrPlasiyerKodu', instance.arrPlasiyerKodu);
-  writeNotNull('ArrHareketTuru', instance.arrHareketTuru);
-  writeNotNull('BaslamaTarihi', instance.baslamaTarihi);
-  writeNotNull('BitisTarihi', instance.bitisTarihi);
-  writeNotNull('Ba', instance.ba);
-  return val;
-}
+        _$CariHareketleriRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.siralama case final value?) 'SIRALAMA': value,
+      if (instance.sadeceTahsilatlarOdemeler case final value?)
+        'SadeceTahsilatlarOdemeler': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+      if (instance.ekranTipi case final value?) 'EkranTipi': value,
+      if (instance.arrPlasiyerKodu case final value?) 'ArrPlasiyerKodu': value,
+      if (instance.arrHareketTuru case final value?) 'ArrHareketTuru': value,
+      if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
+      if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
+      if (instance.ba case final value?) 'Ba': value,
+    };

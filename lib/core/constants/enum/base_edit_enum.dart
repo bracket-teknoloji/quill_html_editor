@@ -11,26 +11,16 @@ extension ToString on BaseEditEnum? {
   bool get kopyalaMi => this == BaseEditEnum.kopyala || this == BaseEditEnum.siparistenKopyala;
   bool get siparistenKopyalaMi => this == BaseEditEnum.siparistenKopyala;
 
-  String? _getName(BaseEditEnum? baseEditEnum) {
-    switch (baseEditEnum) {
-      case BaseEditEnum.ekle:
-        return "Yeni Kayıt";
-      case BaseEditEnum.duzenle:
-        return "Düzenle";
-      case BaseEditEnum.goruntule:
-        return "Görüntüle";
-      case BaseEditEnum.kopyala || BaseEditEnum.siparistenKopyala:
-        return "Kopyala";
-      case BaseEditEnum.revize:
-        return "Revize";
-      case BaseEditEnum.taslak:
-        return "Yeni Kayıt";
-      case BaseEditEnum.bitir:
-        return "Kaydı Tamamla";
-      default:
-        return "";
-    }
-  }
+  String? _getName(BaseEditEnum? baseEditEnum) => switch (baseEditEnum) {
+        BaseEditEnum.ekle => "Yeni Kayıt",
+        BaseEditEnum.duzenle => "Düzenle",
+        BaseEditEnum.goruntule => "Görüntüle",
+        BaseEditEnum.kopyala || BaseEditEnum.siparistenKopyala => "Kopyala",
+        BaseEditEnum.revize => "Revize",
+        BaseEditEnum.taslak => "Yeni Kayıt",
+        BaseEditEnum.bitir => "Kaydı Tamamla",
+        _ => ""
+      };
 
   int get islemKodu {
     if (this == BaseEditEnum.ekle) return 1;

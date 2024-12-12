@@ -74,22 +74,15 @@ TokenModel _$TokenModelFromJson(Map<String, dynamic> json) => TokenModel()
   ..error = json['error'] as String?
   ..errorDescription = json['error_description'] as String?;
 
-Map<String, dynamic> _$TokenModelToJson(TokenModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('access_token', instance.accessToken);
-  writeNotNull('token_type', instance.tokenType);
-  writeNotNull('expires_in', instance.expiresIn);
-  writeNotNull('USER_JSON', instance.userJson?.toJson());
-  writeNotNull('.issued', instance.issued);
-  writeNotNull('.expires', instance.expires);
-  writeNotNull('error', instance.error);
-  writeNotNull('error_description', instance.errorDescription);
-  return val;
-}
+Map<String, dynamic> _$TokenModelToJson(TokenModel instance) =>
+    <String, dynamic>{
+      if (instance.accessToken case final value?) 'access_token': value,
+      if (instance.tokenType case final value?) 'token_type': value,
+      if (instance.expiresIn case final value?) 'expires_in': value,
+      if (instance.userJson?.toJson() case final value?) 'USER_JSON': value,
+      if (instance.issued case final value?) '.issued': value,
+      if (instance.expires case final value?) '.expires': value,
+      if (instance.error case final value?) 'error': value,
+      if (instance.errorDescription case final value?)
+        'error_description': value,
+    };

@@ -62,8 +62,8 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                           );
                         }),
                       ),
-                      swapAnimationCurve: Curves.linear,
-                      swapAnimationDuration: DurationHelper.durationLow,
+                      curve: Curves.linear,
+                      duration: DurationHelper.durationLow,
                     ),
                   )
                 : const Card(

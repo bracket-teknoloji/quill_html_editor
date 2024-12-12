@@ -440,6 +440,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                       ),
                     ),
                     Row(
+                      spacing: 10,
                       children: [
                         Expanded(
                           child: ElevatedButton(
@@ -453,7 +454,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             child: const Text("Temizle"),
                           ),
                         ),
-                        SizedBox(width: context.sized.dynamicWidth(0.02)),
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
@@ -711,24 +711,15 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     return null;
   }
 
-  List grupKodList(int index) {
-    switch (index) {
-      case 0:
-        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrGrupKodu ?? "[]").toList();
-      case 1:
-        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod1 ?? "[]").toList();
-      case 2:
-        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod2 ?? "[]").toList();
-      case 3:
-        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod3 ?? "[]").toList();
-      case 4:
-        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod4 ?? "[]").toList();
-      case 5:
-        return jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod5 ?? "[]").toList();
-      default:
-        return [];
-    }
-  }
+  List grupKodList(int index) => switch (index) {
+        0 => jsonDecode(viewModel.musteriSiparisleriRequestModel.arrGrupKodu ?? "[]").toList(),
+        1 => jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod1 ?? "[]").toList(),
+        2 => jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod2 ?? "[]").toList(),
+        3 => jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod3 ?? "[]").toList(),
+        4 => jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod4 ?? "[]").toList(),
+        5 => jsonDecode(viewModel.musteriSiparisleriRequestModel.arrKod5 ?? "[]").toList(),
+        _ => [],
+      };
 
   void clearTextEditingControllers() {
     baslangicTarihiController.clear();

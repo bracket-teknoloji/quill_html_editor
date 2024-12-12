@@ -62,63 +62,58 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
-    _$TahsilatRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('GC', instance.gc);
-  writeNotNull('GUID', instance.guid);
-  writeNotNull('HESAP_KODU', instance.hesapKodu);
-  writeNotNull('HESAP_TIPI', instance.hesapTipi);
-  writeNotNull('KASA_KODU', instance.kasaKodu);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('TAG', instance.tag);
-  writeNotNull('TAHSILATMI', instance.tahsilatmi);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('TUTAR', instance.tutar);
-  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('KKT_YONTEMI', instance.kktYontemi);
-  writeNotNull('REF_KOD', instance.refKod);
-  writeNotNull('PickerBelgeTuru', instance.pickerBelgeTuru);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('HAREKET_TURU', instance.hareketTuru);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('FIYAT', instance.fiyat);
-  writeNotNull('DEKONT_SERI', instance.dekontSeri);
-  writeNotNull('_YeniKayit', instance.yeniKayit);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('SOZLESME_KODU', instance.sozlesmeKodu);
-  writeNotNull('KREDI_KART_NO', instance.krediKartNo);
-  writeNotNull('HEDEF_ACIKLAMA', instance.hedefAciklama);
-  writeNotNull('VADE_GUNU', instance.vadeGunu);
-  writeNotNull('BSMV_TUTARI', instance.bsmvTutari);
-  writeNotNull('DEKONT_ISLEM_TURU', instance.dekontIslemTuru);
-  writeNotNull('DEKONT_BELGE_NO', instance.dekontBelgeNo);
-  writeNotNull('HEDEF_HESAP_KODU', instance.hedefHesapKodu);
-  writeNotNull('ISLEM_MODULU', instance.islemModulu);
-  writeNotNull('MASRAF_MUH_KODU', instance.masrafMuhKodu);
-  writeNotNull('MASRAF_TUTARI', instance.masrafTutari);
-  writeNotNull('CARIYI_BORCLANDIR', instance.cariyiBorclandir);
-  writeNotNull('HESAP_NO', instance.hesapNo);
-  writeNotNull('IBAN', instance.iban);
-  writeNotNull('TCMB_BANKA_KODU', instance.tcmbBankaKodu);
-  writeNotNull('TCMB_SUBE_KODU', instance.tcmbSubeKodu);
-  writeNotNull('KALEMLER', instance.kalemler?.map((e) => e.toJson()).toList());
-  writeNotNull('HEDEF_CARI_KODU', instance.hedefCariKodu);
-  writeNotNull('TAHSILAT_BAKIYE', instance.tahsilatBakiye);
-  writeNotNull('ODEME_BAKIYE', instance.odemeBakiye);
-  return val;
-}
+        _$TahsilatRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.gc case final value?) 'GC': value,
+      if (instance.guid case final value?) 'GUID': value,
+      if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
+      if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
+      if (instance.kasaKodu case final value?) 'KASA_KODU': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.tag case final value?) 'TAG': value,
+      if (instance.tahsilatmi case final value?) 'TAHSILATMI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.kktYontemi case final value?) 'KKT_YONTEMI': value,
+      if (instance.refKod case final value?) 'REF_KOD': value,
+      if (instance.pickerBelgeTuru case final value?) 'PickerBelgeTuru': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.hareketTuru case final value?) 'HAREKET_TURU': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.fiyat case final value?) 'FIYAT': value,
+      if (instance.dekontSeri case final value?) 'DEKONT_SERI': value,
+      if (instance.yeniKayit case final value?) '_YeniKayit': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.sozlesmeKodu case final value?) 'SOZLESME_KODU': value,
+      if (instance.krediKartNo case final value?) 'KREDI_KART_NO': value,
+      if (instance.hedefAciklama case final value?) 'HEDEF_ACIKLAMA': value,
+      if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
+      if (instance.bsmvTutari case final value?) 'BSMV_TUTARI': value,
+      if (instance.dekontIslemTuru case final value?)
+        'DEKONT_ISLEM_TURU': value,
+      if (instance.dekontBelgeNo case final value?) 'DEKONT_BELGE_NO': value,
+      if (instance.hedefHesapKodu case final value?) 'HEDEF_HESAP_KODU': value,
+      if (instance.islemModulu case final value?) 'ISLEM_MODULU': value,
+      if (instance.masrafMuhKodu case final value?) 'MASRAF_MUH_KODU': value,
+      if (instance.masrafTutari case final value?) 'MASRAF_TUTARI': value,
+      if (instance.cariyiBorclandir case final value?)
+        'CARIYI_BORCLANDIR': value,
+      if (instance.hesapNo case final value?) 'HESAP_NO': value,
+      if (instance.iban case final value?) 'IBAN': value,
+      if (instance.tcmbBankaKodu case final value?) 'TCMB_BANKA_KODU': value,
+      if (instance.tcmbSubeKodu case final value?) 'TCMB_SUBE_KODU': value,
+      if (instance.kalemler?.map((e) => e.toJson()).toList() case final value?)
+        'KALEMLER': value,
+      if (instance.hedefCariKodu case final value?) 'HEDEF_CARI_KODU': value,
+      if (instance.tahsilatBakiye case final value?) 'TAHSILAT_BAKIYE': value,
+      if (instance.odemeBakiye case final value?) 'ODEME_BAKIYE': value,
+    };
 
 _$DekontKalemlerImpl _$$DekontKalemlerImplFromJson(Map<String, dynamic> json) =>
     _$DekontKalemlerImpl(
@@ -161,48 +156,44 @@ _$DekontKalemlerImpl _$$DekontKalemlerImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$DekontKalemlerImplToJson(
-    _$DekontKalemlerImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('BELGE_NO', instance.belgeNo);
-  writeNotNull('BA', instance.ba);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('DOVIZ_TUTARI', instance.dovizTutari);
-  writeNotNull('EXPORT_REFNO', instance.exportRefno);
-  writeNotNull('EXPORT_TIPI', instance.exportTipi);
-  writeNotNull('HESAP_KODU', instance.hesapKodu);
-  writeNotNull('HESAP_TIPI', instance.hesapTipi);
-  writeNotNull('PLASIYER_KODU', instance.plasiyerKodu);
-  writeNotNull('PROJE_KODU', instance.projeKodu);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('TUTAR', instance.tutar);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('DEKONT_NO', instance.dekontNo);
-  writeNotNull('SIRA_NO', instance.siraNo);
-  writeNotNull('HESAP_TIPI_ACIKLAMA', instance.hesapTipiAciklama);
-  writeNotNull('HESAP_ADI', instance.hesapAdi);
-  writeNotNull('DOVIZ_ADI', instance.dovizAdi);
-  writeNotNull('REFKEY', instance.refkey);
-  writeNotNull('PLASIYER_ACIKLAMA', instance.plasiyerAciklama);
-  writeNotNull('MUHASEBE_HESAP_TIPI', instance.muhasebeHesapTipi);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('DEKONT_ISLEM_TURU', instance.dekontIslemTuru);
-  writeNotNull('DEKONT_SERI', instance.dekontSeri);
-  writeNotNull('GUID', instance.guid);
-  writeNotNull('HEDEF_ACIKLAMA', instance.hedefAciklama);
-  writeNotNull('HEDEF_CARI_KODU', instance.hedefCariKodu);
-  writeNotNull('ISLEM_MODULU', instance.islemModulu);
-  writeNotNull('TAG', instance.tag);
-  writeNotNull('VADE_GUNU', instance.vadeGunu);
-  writeNotNull('YENI_KAYIT', instance.yeniKayit);
-  return val;
-}
+        _$DekontKalemlerImpl instance) =>
+    <String, dynamic>{
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.belgeNo case final value?) 'BELGE_NO': value,
+      if (instance.ba case final value?) 'BA': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.dovizTutari case final value?) 'DOVIZ_TUTARI': value,
+      if (instance.exportRefno case final value?) 'EXPORT_REFNO': value,
+      if (instance.exportTipi case final value?) 'EXPORT_TIPI': value,
+      if (instance.hesapKodu case final value?) 'HESAP_KODU': value,
+      if (instance.hesapTipi case final value?) 'HESAP_TIPI': value,
+      if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,
+      if (instance.projeKodu case final value?) 'PROJE_KODU': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.tutar case final value?) 'TUTAR': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.dekontNo case final value?) 'DEKONT_NO': value,
+      if (instance.siraNo case final value?) 'SIRA_NO': value,
+      if (instance.hesapTipiAciklama case final value?)
+        'HESAP_TIPI_ACIKLAMA': value,
+      if (instance.hesapAdi case final value?) 'HESAP_ADI': value,
+      if (instance.dovizAdi case final value?) 'DOVIZ_ADI': value,
+      if (instance.refkey case final value?) 'REFKEY': value,
+      if (instance.plasiyerAciklama case final value?)
+        'PLASIYER_ACIKLAMA': value,
+      if (instance.muhasebeHesapTipi case final value?)
+        'MUHASEBE_HESAP_TIPI': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.dekontIslemTuru case final value?)
+        'DEKONT_ISLEM_TURU': value,
+      if (instance.dekontSeri case final value?) 'DEKONT_SERI': value,
+      if (instance.guid case final value?) 'GUID': value,
+      if (instance.hedefAciklama case final value?) 'HEDEF_ACIKLAMA': value,
+      if (instance.hedefCariKodu case final value?) 'HEDEF_CARI_KODU': value,
+      if (instance.islemModulu case final value?) 'ISLEM_MODULU': value,
+      if (instance.tag case final value?) 'TAG': value,
+      if (instance.vadeGunu case final value?) 'VADE_GUNU': value,
+      if (instance.yeniKayit case final value?) 'YENI_KAYIT': value,
+    };

@@ -37,37 +37,29 @@ _$HucreListesiRequestModelImpl _$$HucreListesiRequestModelImplFromJson(
     );
 
 Map<String, dynamic> _$$HucreListesiRequestModelImplToJson(
-    _$HucreListesiRequestModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('DepoKodu', instance.depoKodu);
-  writeNotNull('HucreKodu', instance.hucreKodu);
-  writeNotNull('FilterText', instance.filterText);
-  writeNotNull('TempBarkod', instance.tempBarkod);
-  writeNotNull('Inckeyno', instance.inckeyno);
-  writeNotNull('DepoTanimi', instance.depoTanimi);
-  writeNotNull('HareketId', instance.hareketId);
-  writeNotNull('KayitTipi', instance.kayitTipi);
-  writeNotNull('KayitTipiAdi', instance.kayitTipiAdi);
-  writeNotNull('BelgeNo', instance.belgeNo);
-  writeNotNull('BelgeTipi', instance.belgeTipi);
-  writeNotNull('BelgeTipiAdi', instance.belgeTipiAdi);
-  writeNotNull('Haracik', instance.haracik);
-  writeNotNull('Gckod', instance.gckod);
-  writeNotNull('SubeKodu', instance.subeKodu);
-  writeNotNull('Tarih', instance.tarih?.toIso8601String());
-  writeNotNull('StharInc', instance.stharInc);
-  writeNotNull('Yedek4', instance.yedek4);
-  writeNotNull('Yedek4Str', instance.yedek4Str);
-  writeNotNull('Yedek8', instance.yedek8);
-  writeNotNull('SeriSayisi', instance.seriSayisi);
-  writeNotNull('PaketKodu', instance.paketKodu);
-  writeNotNull('CariKodu', instance.cariKodu);
-  return val;
-}
+        _$HucreListesiRequestModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.depoKodu case final value?) 'DepoKodu': value,
+      if (instance.hucreKodu case final value?) 'HucreKodu': value,
+      if (instance.filterText case final value?) 'FilterText': value,
+      if (instance.tempBarkod case final value?) 'TempBarkod': value,
+      if (instance.inckeyno case final value?) 'Inckeyno': value,
+      if (instance.depoTanimi case final value?) 'DepoTanimi': value,
+      if (instance.hareketId case final value?) 'HareketId': value,
+      if (instance.kayitTipi case final value?) 'KayitTipi': value,
+      if (instance.kayitTipiAdi case final value?) 'KayitTipiAdi': value,
+      if (instance.belgeNo case final value?) 'BelgeNo': value,
+      if (instance.belgeTipi case final value?) 'BelgeTipi': value,
+      if (instance.belgeTipiAdi case final value?) 'BelgeTipiAdi': value,
+      if (instance.haracik case final value?) 'Haracik': value,
+      if (instance.gckod case final value?) 'Gckod': value,
+      if (instance.subeKodu case final value?) 'SubeKodu': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'Tarih': value,
+      if (instance.stharInc case final value?) 'StharInc': value,
+      if (instance.yedek4 case final value?) 'Yedek4': value,
+      if (instance.yedek4Str case final value?) 'Yedek4Str': value,
+      if (instance.yedek8 case final value?) 'Yedek8': value,
+      if (instance.seriSayisi case final value?) 'SeriSayisi': value,
+      if (instance.paketKodu case final value?) 'PaketKodu': value,
+      if (instance.cariKodu case final value?) 'CariKodu': value,
+    };

@@ -3,24 +3,13 @@
 enum IconMenuEnum { Cari, Cuzdan, ElSikisma, Kamyon, MalKabul, Transpalet, Banka }
 
 extension GetPath on IconMenuEnum {
-  String get path {
-    switch (this) {
-      case IconMenuEnum.Cari:
-        return "assets/icons/PickerSvgIcon/AnaMenu/$name.svg";
-      case IconMenuEnum.Cuzdan:
-        return "assets/icons/PickerSvgIcon/AnaMenu/Cuzdan.svg";
-      case IconMenuEnum.ElSikisma:
-        return "assets/icons/PickerSvgIcon/AnaMenu/ElSikisma.svg";
-      case IconMenuEnum.Kamyon:
-        return "assets/icons/PickerSvgIcon/AnaMenu/Kamyon.svg";
-      case IconMenuEnum.MalKabul:
-        return "assets/icons/PickerSvgIcon/AnaMenu/MalKabul.svg";
-      case IconMenuEnum.Transpalet:
-        return "assets/icons/PickerSvgIcon/AnaMenu/Transpalet.svg";
-      case IconMenuEnum.Banka:
-        return "assets/icons/PickerSvgIcon/AnaMenu/Banka.svg";
-      default:
-        return "assets/icons/PickerSvgIcon/AnaMenu/Cari.svg";
-    }
-  }
+  String get path => switch (this) {
+        IconMenuEnum.Cari => "assets/icons/PickerSvgIcon/AnaMenu/$name.svg",
+        IconMenuEnum.Cuzdan => "assets/icons/PickerSvgIcon/AnaMenu/Cuzdan.svg",
+        IconMenuEnum.ElSikisma => "assets/icons/PickerSvgIcon/AnaMenu/ElSikisma.svg",
+        IconMenuEnum.Kamyon => "assets/icons/PickerSvgIcon/AnaMenu/Kamyon.svg",
+        IconMenuEnum.MalKabul => "assets/icons/PickerSvgIcon/AnaMenu/MalKabul.svg",
+        IconMenuEnum.Transpalet => "assets/icons/PickerSvgIcon/AnaMenu/Transpalet.svg",
+        IconMenuEnum.Banka => "assets/icons/PickerSvgIcon/AnaMenu/Banka.svg"
+      };
 }

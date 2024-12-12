@@ -48,37 +48,32 @@ _$CariAktiviteListesiModelImpl _$$CariAktiviteListesiModelImplFromJson(
     );
 
 Map<String, dynamic> _$$CariAktiviteListesiModelImplToJson(
-    _$CariAktiviteListesiModelImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('ID', instance.id);
-  writeNotNull('ISLEM_KODU', instance.islemKodu);
-  writeNotNull('CARI_KODU', instance.cariKodu);
-  writeNotNull('CARI_ADI', instance.cariAdi);
-  writeNotNull('KULLANICI_ADI', instance.kullaniciAdi);
-  writeNotNull('KULLANICI_TITLE', instance.kullaniciTitle);
-  writeNotNull('AKTIVITE_TIPI', instance.aktiviteTipi);
-  writeNotNull('AKTIVITE_ID', instance.aktiviteId);
-  writeNotNull('AKTIVITE_ADI', instance.aktiviteAdi);
-  writeNotNull('BASTAR', instance.bastar?.toIso8601String());
-  writeNotNull('KAYITTARIHI', instance.kayittarihi?.toIso8601String());
-  writeNotNull('KAYITYAPANKUL', instance.kayityapankul);
-  writeNotNull('BITTAR', instance.bittar?.toIso8601String());
-  writeNotNull('SONUC_ACIKLAMA', instance.sonucAciklama);
-  writeNotNull('SURE', instance.sure);
-  writeNotNull('ACIKLAMA', instance.aciklama);
-  writeNotNull('DUZELTMETARIHI', instance.duzeltmetarihi?.toIso8601String());
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('DUZELTMEYAPANKUL', instance.duzeltmeyapankul);
-  writeNotNull('ILGILI_KISI', instance.ilgiliKisi);
-  writeNotNull('BOLUM', instance.bolum);
-  writeNotNull(
-      'LIST_DETAY', instance.listDetay?.map((e) => e.toJson()).toList());
-  return val;
-}
+        _$CariAktiviteListesiModelImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'ID': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.cariAdi case final value?) 'CARI_ADI': value,
+      if (instance.kullaniciAdi case final value?) 'KULLANICI_ADI': value,
+      if (instance.kullaniciTitle case final value?) 'KULLANICI_TITLE': value,
+      if (instance.aktiviteTipi case final value?) 'AKTIVITE_TIPI': value,
+      if (instance.aktiviteId case final value?) 'AKTIVITE_ID': value,
+      if (instance.aktiviteAdi case final value?) 'AKTIVITE_ADI': value,
+      if (instance.bastar?.toIso8601String() case final value?) 'BASTAR': value,
+      if (instance.kayittarihi?.toIso8601String() case final value?)
+        'KAYITTARIHI': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.bittar?.toIso8601String() case final value?) 'BITTAR': value,
+      if (instance.sonucAciklama case final value?) 'SONUC_ACIKLAMA': value,
+      if (instance.sure case final value?) 'SURE': value,
+      if (instance.aciklama case final value?) 'ACIKLAMA': value,
+      if (instance.duzeltmetarihi?.toIso8601String() case final value?)
+        'DUZELTMETARIHI': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.duzeltmeyapankul case final value?)
+        'DUZELTMEYAPANKUL': value,
+      if (instance.ilgiliKisi case final value?) 'ILGILI_KISI': value,
+      if (instance.bolum case final value?) 'BOLUM': value,
+      if (instance.listDetay?.map((e) => e.toJson()).toList() case final value?)
+        'LIST_DETAY': value,
+    };

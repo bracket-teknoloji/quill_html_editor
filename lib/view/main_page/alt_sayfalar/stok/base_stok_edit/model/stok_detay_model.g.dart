@@ -131,24 +131,18 @@ StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
           ?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>))
           .toList();
 
-Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('SeriList', instance.seriList?.map((e) => e.toJson()).toList());
-  writeNotNull('YapList', instance.yapList);
-  writeNotNull('StokList', instance.stokList?.map((e) => e.toJson()).toList());
-  writeNotNull(
-      'FiyatList', instance.fiyatList?.map((e) => e.toJson()).toList());
-  return val;
-}
+Map<String, dynamic> _$StokDetayModelToJson(StokDetayModel instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
+        'SeriList': value,
+      if (instance.yapList case final value?) 'YapList': value,
+      if (instance.stokList?.map((e) => e.toJson()).toList() case final value?)
+        'StokList': value,
+      if (instance.fiyatList?.map((e) => e.toJson()).toList() case final value?)
+        'FiyatList': value,
+    };
 
 FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..aS = json['A_S'] as String?
@@ -165,28 +159,19 @@ FiyatList _$FiyatListFromJson(Map<String, dynamic> json) => FiyatList()
   ..fiyat3 = (json['FIYAT3'] as num?)?.toDouble()
   ..fiyat4 = (json['FIYAT4'] as num?)?.toDouble();
 
-Map<String, dynamic> _$FiyatListToJson(FiyatList instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('A_S', instance.aS);
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('DOVIZ_TIPI', instance.dovizTipi);
-  writeNotNull('DOVIZ_KODU', instance.dovizKodu);
-  writeNotNull('BASTAR', instance.bastar?.toIso8601String());
-  writeNotNull('BITTAR', instance.bittar?.toIso8601String());
-  writeNotNull('GECERLI', instance.gecerli);
-  writeNotNull('FIYAT1', instance.fiyat1);
-  writeNotNull('FIYAT2', instance.fiyat2);
-  writeNotNull('FIYAT3', instance.fiyat3);
-  writeNotNull('FIYAT4', instance.fiyat4);
-  return val;
-}
+Map<String, dynamic> _$FiyatListToJson(FiyatList instance) => <String, dynamic>{
+      if (instance.aS case final value?) 'A_S': value,
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.dovizTipi case final value?) 'DOVIZ_TIPI': value,
+      if (instance.dovizKodu case final value?) 'DOVIZ_KODU': value,
+      if (instance.bastar?.toIso8601String() case final value?) 'BASTAR': value,
+      if (instance.bittar?.toIso8601String() case final value?) 'BITTAR': value,
+      if (instance.gecerli case final value?) 'GECERLI': value,
+      if (instance.fiyat1 case final value?) 'FIYAT1': value,
+      if (instance.fiyat2 case final value?) 'FIYAT2': value,
+      if (instance.fiyat3 case final value?) 'FIYAT3': value,
+      if (instance.fiyat4 case final value?) 'FIYAT4': value,
+    };
 
 _$SeriListImpl _$$SeriListImplFromJson(Map<String, dynamic> json) =>
     _$SeriListImpl(
@@ -221,40 +206,32 @@ _$SeriListImpl _$$SeriListImplFromJson(Map<String, dynamic> json) =>
       aciklama1: json['ACIKLAMA1'] as String?,
     );
 
-Map<String, dynamic> _$$SeriListImplToJson(_$SeriListImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('STOK_KODU', instance.stokKodu);
-  writeNotNull('DEPO_KODU', instance.depoKodu);
-  writeNotNull('MIKTAR', instance.miktar);
-  writeNotNull('SERI_NO', instance.seriNo);
-  writeNotNull('INCKEYNO', instance.inckeyno);
-  writeNotNull('DEPO_TANIMI', instance.depoTanimi);
-  writeNotNull('HAREKET_ID', instance.hareketId);
-  writeNotNull('BARKOD', instance.barkod);
-  writeNotNull('GCKOD', instance.gckod);
-  writeNotNull('SERI1', instance.seri1);
-  writeNotNull('REQUEST_VERSION', instance.requestVersion);
-  writeNotNull('TEMP_BARKOD', instance.tempBarkod);
-  writeNotNull('SERI2', instance.seri2);
-  writeNotNull('SERI3', instance.seri3);
-  writeNotNull('SERI4', instance.seri4);
-  writeNotNull('ACIK1', instance.acik1);
-  writeNotNull('ACIK2', instance.acik2);
-  writeNotNull('ACIK3', instance.acik3);
-  writeNotNull('ACIK4', instance.acik4);
-  writeNotNull(
-      'SON_KULLANMA_TARIHI', instance.sonKullanmaTarihi?.toIso8601String());
-  writeNotNull('STOK_ADI', instance.stokAdi);
-  writeNotNull('HUCRE_KODU', instance.hucreKodu);
-  writeNotNull('TARIH', instance.tarih?.toIso8601String());
-  writeNotNull('REF_ID', instance.refId);
-  writeNotNull('ACIKLAMA1', instance.aciklama1);
-  return val;
-}
+Map<String, dynamic> _$$SeriListImplToJson(_$SeriListImpl instance) =>
+    <String, dynamic>{
+      if (instance.stokKodu case final value?) 'STOK_KODU': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.seriNo case final value?) 'SERI_NO': value,
+      if (instance.inckeyno case final value?) 'INCKEYNO': value,
+      if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
+      if (instance.hareketId case final value?) 'HAREKET_ID': value,
+      if (instance.barkod case final value?) 'BARKOD': value,
+      if (instance.gckod case final value?) 'GCKOD': value,
+      if (instance.seri1 case final value?) 'SERI1': value,
+      if (instance.requestVersion case final value?) 'REQUEST_VERSION': value,
+      if (instance.tempBarkod case final value?) 'TEMP_BARKOD': value,
+      if (instance.seri2 case final value?) 'SERI2': value,
+      if (instance.seri3 case final value?) 'SERI3': value,
+      if (instance.seri4 case final value?) 'SERI4': value,
+      if (instance.acik1 case final value?) 'ACIK1': value,
+      if (instance.acik2 case final value?) 'ACIK2': value,
+      if (instance.acik3 case final value?) 'ACIK3': value,
+      if (instance.acik4 case final value?) 'ACIK4': value,
+      if (instance.sonKullanmaTarihi?.toIso8601String() case final value?)
+        'SON_KULLANMA_TARIHI': value,
+      if (instance.stokAdi case final value?) 'STOK_ADI': value,
+      if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
+      if (instance.tarih?.toIso8601String() case final value?) 'TARIH': value,
+      if (instance.refId case final value?) 'REF_ID': value,
+      if (instance.aciklama1 case final value?) 'ACIKLAMA1': value,
+    };

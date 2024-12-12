@@ -71,18 +71,12 @@ extension CekSenetExtensions on CekSenetListesiModel {
 
   String get yerAciklamaDurum => "${yerAciklama ?? ""} - $durumString";
 
-  String get durumString {
-    switch (durum) {
-      case "B":
-        return "Bekliyor";
-      case "O":
-        return "Ödendi";
-      case "K":
-        return "Karşılıksız";
-      default:
-        return "Onaylandı";
-    }
-  }
+  String get durumString => switch (durum) {
+        "B" => "Bekliyor",
+        "O" => "Ödendi",
+        "K" => "Karşılıksız",
+        _ => "Onaylandı",
+      };
 
   String get aciklamalar {
     String aciklama = "";
