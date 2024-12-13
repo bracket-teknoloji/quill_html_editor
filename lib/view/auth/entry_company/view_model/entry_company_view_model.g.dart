@@ -93,8 +93,8 @@ mixin _$EntryCompanyViewModel on _EntryCompanyViewModelBase, Store {
       AsyncAction('_EntryCompanyViewModelBase.getData', context: context);
 
   @override
-  Future<bool> getData({String? name}) {
-    return _$getDataAsyncAction.run(() => super.getData(name: name));
+  Future<bool> getData() {
+    return _$getDataAsyncAction.run(() => super.getData());
   }
 
   late final _$getSubeAsyncAction =

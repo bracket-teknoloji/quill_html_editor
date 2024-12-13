@@ -64,7 +64,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<bool> getData({String? name}) async {
+  Future<bool> getData() async {
     final response = await networkManager.dioGet<CompanyModel>(path: ApiUrls.veriTabanlari, bodyModel: CompanyModel(), showError: true);
     if (response.isSuccess) {
       setSirket(response.dataList);
