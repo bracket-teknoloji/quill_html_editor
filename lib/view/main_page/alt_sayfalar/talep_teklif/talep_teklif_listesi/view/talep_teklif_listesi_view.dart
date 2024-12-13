@@ -507,7 +507,6 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
             ),
           ),
           Row(
-            spacing: 10,
             children: [
               Expanded(
                 child: ElevatedButton(
@@ -531,6 +530,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                   child: const Text("Temizle"),
                 ),
               ),
+              SizedBox(width: context.sized.dynamicWidth(0.02)),
               Expanded(
                 child: ElevatedButton(
                   onPressed: () async {

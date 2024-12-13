@@ -440,7 +440,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                       ),
                     ),
                     Row(
-                      spacing: 10,
                       children: [
                         Expanded(
                           child: ElevatedButton(
@@ -454,6 +453,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                             child: const Text("Temizle"),
                           ),
                         ),
+                        SizedBox(width: context.sized.dynamicWidth(0.02)),
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {

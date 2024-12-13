@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -251,7 +252,6 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
             ),
           ).yetkiVarMi(widget.editTipiEnum.depoTransferiMi),
           Row(
-            spacing: 10,
             children: <Widget>[
               Expanded(
                 child: ElevatedButton(
@@ -268,6 +268,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
                   child: const Text("Temizle"),
                 ),
               ),
+              SizedBox(width: context.sized.dynamicWidth(0.02)),
               Expanded(
                 child: ElevatedButton(
                   onPressed: () async {

@@ -3,6 +3,7 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -706,7 +707,6 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               ),
             ),
             Row(
-              spacing: 10,
               children: <Widget>[
                 Expanded(
                   child: ElevatedButton(
@@ -720,6 +720,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                     child: const Text("Temizle"),
                   ),
                 ),
+                SizedBox(width: context.sized.dynamicWidth(0.02)),
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
