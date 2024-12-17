@@ -20,9 +20,9 @@ PrintModel _$PrintModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PrintModel {
+  String get raporOzelKod => throw _privateConstructorUsedError;
   int? get dizaynId => throw _privateConstructorUsedError;
   int? get etiketSayisi => throw _privateConstructorUsedError;
-  String get raporOzelKod => throw _privateConstructorUsedError;
   bool? get yazdir => throw _privateConstructorUsedError;
   String? get yaziciAdi => throw _privateConstructorUsedError;
   String? get yaziciTipi => throw _privateConstructorUsedError;
@@ -46,9 +46,9 @@ abstract class $PrintModelCopyWith<$Res> {
       _$PrintModelCopyWithImpl<$Res, PrintModel>;
   @useResult
   $Res call(
-      {int? dizaynId,
+      {String raporOzelKod,
+      int? dizaynId,
       int? etiketSayisi,
-      String raporOzelKod,
       bool? yazdir,
       String? yaziciAdi,
       String? yaziciTipi,
@@ -73,9 +73,9 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? raporOzelKod = null,
     Object? dizaynId = freezed,
     Object? etiketSayisi = freezed,
-    Object? raporOzelKod = null,
     Object? yazdir = freezed,
     Object? yaziciAdi = freezed,
     Object? yaziciTipi = freezed,
@@ -83,6 +83,10 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
     Object? standart = freezed,
   }) {
     return _then(_value.copyWith(
+      raporOzelKod: null == raporOzelKod
+          ? _value.raporOzelKod
+          : raporOzelKod // ignore: cast_nullable_to_non_nullable
+              as String,
       dizaynId: freezed == dizaynId
           ? _value.dizaynId
           : dizaynId // ignore: cast_nullable_to_non_nullable
@@ -91,10 +95,6 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
           ? _value.etiketSayisi
           : etiketSayisi // ignore: cast_nullable_to_non_nullable
               as int?,
-      raporOzelKod: null == raporOzelKod
-          ? _value.raporOzelKod
-          : raporOzelKod // ignore: cast_nullable_to_non_nullable
-              as String,
       yazdir: freezed == yazdir
           ? _value.yazdir
           : yazdir // ignore: cast_nullable_to_non_nullable
@@ -142,9 +142,9 @@ abstract class _$$PrintModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? dizaynId,
+      {String raporOzelKod,
+      int? dizaynId,
       int? etiketSayisi,
-      String raporOzelKod,
       bool? yazdir,
       String? yaziciAdi,
       String? yaziciTipi,
@@ -168,9 +168,9 @@ class __$$PrintModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? raporOzelKod = null,
     Object? dizaynId = freezed,
     Object? etiketSayisi = freezed,
-    Object? raporOzelKod = null,
     Object? yazdir = freezed,
     Object? yaziciAdi = freezed,
     Object? yaziciTipi = freezed,
@@ -178,6 +178,10 @@ class __$$PrintModelImplCopyWithImpl<$Res>
     Object? standart = freezed,
   }) {
     return _then(_$PrintModelImpl(
+      raporOzelKod: null == raporOzelKod
+          ? _value.raporOzelKod
+          : raporOzelKod // ignore: cast_nullable_to_non_nullable
+              as String,
       dizaynId: freezed == dizaynId
           ? _value.dizaynId
           : dizaynId // ignore: cast_nullable_to_non_nullable
@@ -186,10 +190,6 @@ class __$$PrintModelImplCopyWithImpl<$Res>
           ? _value.etiketSayisi
           : etiketSayisi // ignore: cast_nullable_to_non_nullable
               as int?,
-      raporOzelKod: null == raporOzelKod
-          ? _value.raporOzelKod
-          : raporOzelKod // ignore: cast_nullable_to_non_nullable
-              as String,
       yazdir: freezed == yazdir
           ? _value.yazdir
           : yazdir // ignore: cast_nullable_to_non_nullable
@@ -218,9 +218,9 @@ class __$$PrintModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PrintModelImpl extends _PrintModel {
   _$PrintModelImpl(
-      {this.dizaynId,
+      {required this.raporOzelKod,
+      this.dizaynId,
       this.etiketSayisi,
-      required this.raporOzelKod,
       this.yazdir = true,
       this.yaziciAdi,
       this.yaziciTipi,
@@ -232,11 +232,11 @@ class _$PrintModelImpl extends _PrintModel {
       _$$PrintModelImplFromJson(json);
 
   @override
+  final String raporOzelKod;
+  @override
   final int? dizaynId;
   @override
   final int? etiketSayisi;
-  @override
-  final String raporOzelKod;
   @override
   @JsonKey()
   final bool? yazdir;
@@ -267,9 +267,9 @@ class _$PrintModelImpl extends _PrintModel {
 
 abstract class _PrintModel extends PrintModel {
   factory _PrintModel(
-      {final int? dizaynId,
+      {required final String raporOzelKod,
+      final int? dizaynId,
       final int? etiketSayisi,
-      required final String raporOzelKod,
       final bool? yazdir,
       final String? yaziciAdi,
       final String? yaziciTipi,
@@ -281,11 +281,11 @@ abstract class _PrintModel extends PrintModel {
       _$PrintModelImpl.fromJson;
 
   @override
+  String get raporOzelKod;
+  @override
   int? get dizaynId;
   @override
   int? get etiketSayisi;
-  @override
-  String get raporOzelKod;
   @override
   bool? get yazdir;
   @override

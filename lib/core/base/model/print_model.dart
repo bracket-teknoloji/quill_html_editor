@@ -9,7 +9,8 @@ part "print_model.g.dart";
 @freezed
 class PrintModel with _$PrintModel, NetworkManagerMixin {
   factory PrintModel({
-    required String raporOzelKod, int? dizaynId,
+    required String raporOzelKod,
+    int? dizaynId,
     int? etiketSayisi,
     @Default(true) bool? yazdir,
     String? yaziciAdi,

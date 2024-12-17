@@ -14,7 +14,6 @@ part "cari_listesi_model.g.dart";
 @HiveType(typeId: 195)
 @JsonSerializable(explicitToJson: true)
 class CariListesiModel with NetworkManagerMixin {
-
   CariListesiModel({
     this.cariKodu,
     this.cariAdi,
@@ -125,6 +124,41 @@ class CariListesiModel with NetworkManagerMixin {
     this.idx,
     this.kurfarkiborcAdi,
     this.kurfarkialacakAdi,
+    this.adresi,
+    this.anaCari,
+    this.cariHarf,
+    this.duzeltmeYapanKullanici,
+    this.eFatAktif,
+    this.eFaturaMi,
+    this.eFaturaMiEh,
+    this.eFaturaSenaryo,
+    this.eIrsaliyeMi,
+    this.faxNo,
+    this.fiyatSirasi,
+    this.genIsk1O,
+    this.hesapTutmaSekli,
+    this.irsaliyeRiskOrani,
+    this.isletmeKodu,
+    this.kayitYapanKullanici,
+    this.konumMetre,
+    this.kilitTipi,
+    this.kurFarkiBorcMuhAdi,
+    this.kurFarkiBorcMuhKodu,
+    this.kurFarkiAlacakMuhAdi,
+    this.kurFarkiAlacakMuhKodu,
+    this.muhAdi,
+    this.odemeKodu,
+    this.plasiyerAdi,
+    this.postaKodu,
+    this.riskTutari,
+    this.sahisSirketiMi,
+    this.siparisRiskOrani,
+    this.tempMuhtelifCari,
+    this.tempNoterlerSorgula,
+    this.tipAciklama,
+    this.vadeUyarisi,
+    this.webAdresi,
+    this.yurtIciDovizKodu,
   });
 
   CariListesiModel._init();
@@ -398,6 +432,74 @@ class CariListesiModel with NetworkManagerMixin {
   String? kurfarkialacakAdi;
   @HiveField(110)
   String? muhAdi;
+  @HiveField(111)
+  bool? tempMuhtelifCari;
+  @HiveField(112)
+  bool? tempNoterlerSorgula;
+  @HiveField(113)
+  String? anaCari;
+  @HiveField(114)
+  String? tipAciklama;
+  @HiveField(115)
+  String? kilitTipi;
+  @HiveField(116)
+  bool? sahisSirketiMi;
+  @HiveField(117)
+  String? odemeKodu;
+  @HiveField(118)
+  String? hesapTutmaSekli;
+  @HiveField(119)
+  int? isletmeKodu;
+  @HiveField(120)
+  String? plasiyerAdi;
+  @HiveField(121)
+  String? kurFarkiBorcMuhKodu;
+  @HiveField(122)
+  String? kurFarkiBorcMuhAdi;
+  @HiveField(123)
+  String? kurFarkiAlacakMuhKodu;
+  @HiveField(124)
+  String? kurFarkiAlacakMuhAdi;
+  @HiveField(125)
+  int? yurtIciDovizKodu;
+  @HiveField(126)
+  double? genIsk1O;
+  @HiveField(127)
+  String? faxNo;
+  @HiveField(128)
+  String? postaKodu;
+  @HiveField(129)
+  String? webAdresi;
+  @HiveField(130)
+  String? adresi;
+  @HiveField(131)
+  String? kayitYapanKullanici;
+  @HiveField(132)
+  String? duzeltmeYapanKullanici;
+  @HiveField(133)
+  bool? eFaturaMi;
+  @HiveField(134)
+  String? eFaturaMiEh;
+  @HiveField(135)
+  String? eFaturaSenaryo;
+  @HiveField(136)
+  bool? eIrsaliyeMi;
+  @HiveField(137)
+  bool? eFatAktif;
+  @HiveField(138)
+  String? cariHarf;
+  @HiveField(139)
+  double? riskTutari;
+  @HiveField(140)
+  String? vadeUyarisi;
+  @HiveField(141)
+  double? siparisRiskOrani;
+  @HiveField(142)
+  double? irsaliyeRiskOrani;
+  @HiveField(143)
+  int? konumMetre;
+  @HiveField(144)
+  int? fiyatSirasi;
 
   @override
   CariListesiModel fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);

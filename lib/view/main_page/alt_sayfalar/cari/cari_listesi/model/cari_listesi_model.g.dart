@@ -225,6 +225,76 @@ abstract class _$CariListesiModelCWProxy {
 
   CariListesiModel kurfarkialacakAdi(String? kurfarkialacakAdi);
 
+  CariListesiModel adresi(String? adresi);
+
+  CariListesiModel anaCari(String? anaCari);
+
+  CariListesiModel cariHarf(String? cariHarf);
+
+  CariListesiModel duzeltmeYapanKullanici(String? duzeltmeYapanKullanici);
+
+  CariListesiModel eFatAktif(bool? eFatAktif);
+
+  CariListesiModel eFaturaMi(bool? eFaturaMi);
+
+  CariListesiModel eFaturaMiEh(String? eFaturaMiEh);
+
+  CariListesiModel eFaturaSenaryo(String? eFaturaSenaryo);
+
+  CariListesiModel eIrsaliyeMi(bool? eIrsaliyeMi);
+
+  CariListesiModel faxNo(String? faxNo);
+
+  CariListesiModel fiyatSirasi(int? fiyatSirasi);
+
+  CariListesiModel genIsk1O(double? genIsk1O);
+
+  CariListesiModel hesapTutmaSekli(String? hesapTutmaSekli);
+
+  CariListesiModel irsaliyeRiskOrani(double? irsaliyeRiskOrani);
+
+  CariListesiModel isletmeKodu(int? isletmeKodu);
+
+  CariListesiModel kayitYapanKullanici(String? kayitYapanKullanici);
+
+  CariListesiModel konumMetre(int? konumMetre);
+
+  CariListesiModel kilitTipi(String? kilitTipi);
+
+  CariListesiModel kurFarkiBorcMuhAdi(String? kurFarkiBorcMuhAdi);
+
+  CariListesiModel kurFarkiBorcMuhKodu(String? kurFarkiBorcMuhKodu);
+
+  CariListesiModel kurFarkiAlacakMuhAdi(String? kurFarkiAlacakMuhAdi);
+
+  CariListesiModel kurFarkiAlacakMuhKodu(String? kurFarkiAlacakMuhKodu);
+
+  CariListesiModel muhAdi(String? muhAdi);
+
+  CariListesiModel odemeKodu(String? odemeKodu);
+
+  CariListesiModel plasiyerAdi(String? plasiyerAdi);
+
+  CariListesiModel postaKodu(String? postaKodu);
+
+  CariListesiModel riskTutari(double? riskTutari);
+
+  CariListesiModel sahisSirketiMi(bool? sahisSirketiMi);
+
+  CariListesiModel siparisRiskOrani(double? siparisRiskOrani);
+
+  CariListesiModel tempMuhtelifCari(bool? tempMuhtelifCari);
+
+  CariListesiModel tempNoterlerSorgula(bool? tempNoterlerSorgula);
+
+  CariListesiModel tipAciklama(String? tipAciklama);
+
+  CariListesiModel vadeUyarisi(String? vadeUyarisi);
+
+  CariListesiModel webAdresi(String? webAdresi);
+
+  CariListesiModel yurtIciDovizKodu(int? yurtIciDovizKodu);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -341,6 +411,41 @@ abstract class _$CariListesiModelCWProxy {
     int? idx,
     String? kurfarkiborcAdi,
     String? kurfarkialacakAdi,
+    String? adresi,
+    String? anaCari,
+    String? cariHarf,
+    String? duzeltmeYapanKullanici,
+    bool? eFatAktif,
+    bool? eFaturaMi,
+    String? eFaturaMiEh,
+    String? eFaturaSenaryo,
+    bool? eIrsaliyeMi,
+    String? faxNo,
+    int? fiyatSirasi,
+    double? genIsk1O,
+    String? hesapTutmaSekli,
+    double? irsaliyeRiskOrani,
+    int? isletmeKodu,
+    String? kayitYapanKullanici,
+    int? konumMetre,
+    String? kilitTipi,
+    String? kurFarkiBorcMuhAdi,
+    String? kurFarkiBorcMuhKodu,
+    String? kurFarkiAlacakMuhAdi,
+    String? kurFarkiAlacakMuhKodu,
+    String? muhAdi,
+    String? odemeKodu,
+    String? plasiyerAdi,
+    String? postaKodu,
+    double? riskTutari,
+    bool? sahisSirketiMi,
+    double? siparisRiskOrani,
+    bool? tempMuhtelifCari,
+    bool? tempNoterlerSorgula,
+    String? tipAciklama,
+    String? vadeUyarisi,
+    String? webAdresi,
+    int? yurtIciDovizKodu,
   });
 }
 
@@ -718,6 +823,133 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
       this(kurfarkialacakAdi: kurfarkialacakAdi);
 
   @override
+  CariListesiModel adresi(String? adresi) => this(adresi: adresi);
+
+  @override
+  CariListesiModel anaCari(String? anaCari) => this(anaCari: anaCari);
+
+  @override
+  CariListesiModel cariHarf(String? cariHarf) => this(cariHarf: cariHarf);
+
+  @override
+  CariListesiModel duzeltmeYapanKullanici(String? duzeltmeYapanKullanici) =>
+      this(duzeltmeYapanKullanici: duzeltmeYapanKullanici);
+
+  @override
+  CariListesiModel eFatAktif(bool? eFatAktif) => this(eFatAktif: eFatAktif);
+
+  @override
+  CariListesiModel eFaturaMi(bool? eFaturaMi) => this(eFaturaMi: eFaturaMi);
+
+  @override
+  CariListesiModel eFaturaMiEh(String? eFaturaMiEh) =>
+      this(eFaturaMiEh: eFaturaMiEh);
+
+  @override
+  CariListesiModel eFaturaSenaryo(String? eFaturaSenaryo) =>
+      this(eFaturaSenaryo: eFaturaSenaryo);
+
+  @override
+  CariListesiModel eIrsaliyeMi(bool? eIrsaliyeMi) =>
+      this(eIrsaliyeMi: eIrsaliyeMi);
+
+  @override
+  CariListesiModel faxNo(String? faxNo) => this(faxNo: faxNo);
+
+  @override
+  CariListesiModel fiyatSirasi(int? fiyatSirasi) =>
+      this(fiyatSirasi: fiyatSirasi);
+
+  @override
+  CariListesiModel genIsk1O(double? genIsk1O) => this(genIsk1O: genIsk1O);
+
+  @override
+  CariListesiModel hesapTutmaSekli(String? hesapTutmaSekli) =>
+      this(hesapTutmaSekli: hesapTutmaSekli);
+
+  @override
+  CariListesiModel irsaliyeRiskOrani(double? irsaliyeRiskOrani) =>
+      this(irsaliyeRiskOrani: irsaliyeRiskOrani);
+
+  @override
+  CariListesiModel isletmeKodu(int? isletmeKodu) =>
+      this(isletmeKodu: isletmeKodu);
+
+  @override
+  CariListesiModel kayitYapanKullanici(String? kayitYapanKullanici) =>
+      this(kayitYapanKullanici: kayitYapanKullanici);
+
+  @override
+  CariListesiModel konumMetre(int? konumMetre) => this(konumMetre: konumMetre);
+
+  @override
+  CariListesiModel kilitTipi(String? kilitTipi) => this(kilitTipi: kilitTipi);
+
+  @override
+  CariListesiModel kurFarkiBorcMuhAdi(String? kurFarkiBorcMuhAdi) =>
+      this(kurFarkiBorcMuhAdi: kurFarkiBorcMuhAdi);
+
+  @override
+  CariListesiModel kurFarkiBorcMuhKodu(String? kurFarkiBorcMuhKodu) =>
+      this(kurFarkiBorcMuhKodu: kurFarkiBorcMuhKodu);
+
+  @override
+  CariListesiModel kurFarkiAlacakMuhAdi(String? kurFarkiAlacakMuhAdi) =>
+      this(kurFarkiAlacakMuhAdi: kurFarkiAlacakMuhAdi);
+
+  @override
+  CariListesiModel kurFarkiAlacakMuhKodu(String? kurFarkiAlacakMuhKodu) =>
+      this(kurFarkiAlacakMuhKodu: kurFarkiAlacakMuhKodu);
+
+  @override
+  CariListesiModel muhAdi(String? muhAdi) => this(muhAdi: muhAdi);
+
+  @override
+  CariListesiModel odemeKodu(String? odemeKodu) => this(odemeKodu: odemeKodu);
+
+  @override
+  CariListesiModel plasiyerAdi(String? plasiyerAdi) =>
+      this(plasiyerAdi: plasiyerAdi);
+
+  @override
+  CariListesiModel postaKodu(String? postaKodu) => this(postaKodu: postaKodu);
+
+  @override
+  CariListesiModel riskTutari(double? riskTutari) =>
+      this(riskTutari: riskTutari);
+
+  @override
+  CariListesiModel sahisSirketiMi(bool? sahisSirketiMi) =>
+      this(sahisSirketiMi: sahisSirketiMi);
+
+  @override
+  CariListesiModel siparisRiskOrani(double? siparisRiskOrani) =>
+      this(siparisRiskOrani: siparisRiskOrani);
+
+  @override
+  CariListesiModel tempMuhtelifCari(bool? tempMuhtelifCari) =>
+      this(tempMuhtelifCari: tempMuhtelifCari);
+
+  @override
+  CariListesiModel tempNoterlerSorgula(bool? tempNoterlerSorgula) =>
+      this(tempNoterlerSorgula: tempNoterlerSorgula);
+
+  @override
+  CariListesiModel tipAciklama(String? tipAciklama) =>
+      this(tipAciklama: tipAciklama);
+
+  @override
+  CariListesiModel vadeUyarisi(String? vadeUyarisi) =>
+      this(vadeUyarisi: vadeUyarisi);
+
+  @override
+  CariListesiModel webAdresi(String? webAdresi) => this(webAdresi: webAdresi);
+
+  @override
+  CariListesiModel yurtIciDovizKodu(int? yurtIciDovizKodu) =>
+      this(yurtIciDovizKodu: yurtIciDovizKodu);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `CariListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -835,6 +1067,41 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
     Object? idx = const $CopyWithPlaceholder(),
     Object? kurfarkiborcAdi = const $CopyWithPlaceholder(),
     Object? kurfarkialacakAdi = const $CopyWithPlaceholder(),
+    Object? adresi = const $CopyWithPlaceholder(),
+    Object? anaCari = const $CopyWithPlaceholder(),
+    Object? cariHarf = const $CopyWithPlaceholder(),
+    Object? duzeltmeYapanKullanici = const $CopyWithPlaceholder(),
+    Object? eFatAktif = const $CopyWithPlaceholder(),
+    Object? eFaturaMi = const $CopyWithPlaceholder(),
+    Object? eFaturaMiEh = const $CopyWithPlaceholder(),
+    Object? eFaturaSenaryo = const $CopyWithPlaceholder(),
+    Object? eIrsaliyeMi = const $CopyWithPlaceholder(),
+    Object? faxNo = const $CopyWithPlaceholder(),
+    Object? fiyatSirasi = const $CopyWithPlaceholder(),
+    Object? genIsk1O = const $CopyWithPlaceholder(),
+    Object? hesapTutmaSekli = const $CopyWithPlaceholder(),
+    Object? irsaliyeRiskOrani = const $CopyWithPlaceholder(),
+    Object? isletmeKodu = const $CopyWithPlaceholder(),
+    Object? kayitYapanKullanici = const $CopyWithPlaceholder(),
+    Object? konumMetre = const $CopyWithPlaceholder(),
+    Object? kilitTipi = const $CopyWithPlaceholder(),
+    Object? kurFarkiBorcMuhAdi = const $CopyWithPlaceholder(),
+    Object? kurFarkiBorcMuhKodu = const $CopyWithPlaceholder(),
+    Object? kurFarkiAlacakMuhAdi = const $CopyWithPlaceholder(),
+    Object? kurFarkiAlacakMuhKodu = const $CopyWithPlaceholder(),
+    Object? muhAdi = const $CopyWithPlaceholder(),
+    Object? odemeKodu = const $CopyWithPlaceholder(),
+    Object? plasiyerAdi = const $CopyWithPlaceholder(),
+    Object? postaKodu = const $CopyWithPlaceholder(),
+    Object? riskTutari = const $CopyWithPlaceholder(),
+    Object? sahisSirketiMi = const $CopyWithPlaceholder(),
+    Object? siparisRiskOrani = const $CopyWithPlaceholder(),
+    Object? tempMuhtelifCari = const $CopyWithPlaceholder(),
+    Object? tempNoterlerSorgula = const $CopyWithPlaceholder(),
+    Object? tipAciklama = const $CopyWithPlaceholder(),
+    Object? vadeUyarisi = const $CopyWithPlaceholder(),
+    Object? webAdresi = const $CopyWithPlaceholder(),
+    Object? yurtIciDovizKodu = const $CopyWithPlaceholder(),
   }) {
     return CariListesiModel(
       cariKodu: cariKodu == const $CopyWithPlaceholder()
@@ -1273,6 +1540,148 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
           ? _value.kurfarkialacakAdi
           // ignore: cast_nullable_to_non_nullable
           : kurfarkialacakAdi as String?,
+      adresi: adresi == const $CopyWithPlaceholder()
+          ? _value.adresi
+          // ignore: cast_nullable_to_non_nullable
+          : adresi as String?,
+      anaCari: anaCari == const $CopyWithPlaceholder()
+          ? _value.anaCari
+          // ignore: cast_nullable_to_non_nullable
+          : anaCari as String?,
+      cariHarf: cariHarf == const $CopyWithPlaceholder()
+          ? _value.cariHarf
+          // ignore: cast_nullable_to_non_nullable
+          : cariHarf as String?,
+      duzeltmeYapanKullanici:
+          duzeltmeYapanKullanici == const $CopyWithPlaceholder()
+              ? _value.duzeltmeYapanKullanici
+              // ignore: cast_nullable_to_non_nullable
+              : duzeltmeYapanKullanici as String?,
+      eFatAktif: eFatAktif == const $CopyWithPlaceholder()
+          ? _value.eFatAktif
+          // ignore: cast_nullable_to_non_nullable
+          : eFatAktif as bool?,
+      eFaturaMi: eFaturaMi == const $CopyWithPlaceholder()
+          ? _value.eFaturaMi
+          // ignore: cast_nullable_to_non_nullable
+          : eFaturaMi as bool?,
+      eFaturaMiEh: eFaturaMiEh == const $CopyWithPlaceholder()
+          ? _value.eFaturaMiEh
+          // ignore: cast_nullable_to_non_nullable
+          : eFaturaMiEh as String?,
+      eFaturaSenaryo: eFaturaSenaryo == const $CopyWithPlaceholder()
+          ? _value.eFaturaSenaryo
+          // ignore: cast_nullable_to_non_nullable
+          : eFaturaSenaryo as String?,
+      eIrsaliyeMi: eIrsaliyeMi == const $CopyWithPlaceholder()
+          ? _value.eIrsaliyeMi
+          // ignore: cast_nullable_to_non_nullable
+          : eIrsaliyeMi as bool?,
+      faxNo: faxNo == const $CopyWithPlaceholder()
+          ? _value.faxNo
+          // ignore: cast_nullable_to_non_nullable
+          : faxNo as String?,
+      fiyatSirasi: fiyatSirasi == const $CopyWithPlaceholder()
+          ? _value.fiyatSirasi
+          // ignore: cast_nullable_to_non_nullable
+          : fiyatSirasi as int?,
+      genIsk1O: genIsk1O == const $CopyWithPlaceholder()
+          ? _value.genIsk1O
+          // ignore: cast_nullable_to_non_nullable
+          : genIsk1O as double?,
+      hesapTutmaSekli: hesapTutmaSekli == const $CopyWithPlaceholder()
+          ? _value.hesapTutmaSekli
+          // ignore: cast_nullable_to_non_nullable
+          : hesapTutmaSekli as String?,
+      irsaliyeRiskOrani: irsaliyeRiskOrani == const $CopyWithPlaceholder()
+          ? _value.irsaliyeRiskOrani
+          // ignore: cast_nullable_to_non_nullable
+          : irsaliyeRiskOrani as double?,
+      isletmeKodu: isletmeKodu == const $CopyWithPlaceholder()
+          ? _value.isletmeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : isletmeKodu as int?,
+      kayitYapanKullanici: kayitYapanKullanici == const $CopyWithPlaceholder()
+          ? _value.kayitYapanKullanici
+          // ignore: cast_nullable_to_non_nullable
+          : kayitYapanKullanici as String?,
+      konumMetre: konumMetre == const $CopyWithPlaceholder()
+          ? _value.konumMetre
+          // ignore: cast_nullable_to_non_nullable
+          : konumMetre as int?,
+      kilitTipi: kilitTipi == const $CopyWithPlaceholder()
+          ? _value.kilitTipi
+          // ignore: cast_nullable_to_non_nullable
+          : kilitTipi as String?,
+      kurFarkiBorcMuhAdi: kurFarkiBorcMuhAdi == const $CopyWithPlaceholder()
+          ? _value.kurFarkiBorcMuhAdi
+          // ignore: cast_nullable_to_non_nullable
+          : kurFarkiBorcMuhAdi as String?,
+      kurFarkiBorcMuhKodu: kurFarkiBorcMuhKodu == const $CopyWithPlaceholder()
+          ? _value.kurFarkiBorcMuhKodu
+          // ignore: cast_nullable_to_non_nullable
+          : kurFarkiBorcMuhKodu as String?,
+      kurFarkiAlacakMuhAdi: kurFarkiAlacakMuhAdi == const $CopyWithPlaceholder()
+          ? _value.kurFarkiAlacakMuhAdi
+          // ignore: cast_nullable_to_non_nullable
+          : kurFarkiAlacakMuhAdi as String?,
+      kurFarkiAlacakMuhKodu:
+          kurFarkiAlacakMuhKodu == const $CopyWithPlaceholder()
+              ? _value.kurFarkiAlacakMuhKodu
+              // ignore: cast_nullable_to_non_nullable
+              : kurFarkiAlacakMuhKodu as String?,
+      muhAdi: muhAdi == const $CopyWithPlaceholder()
+          ? _value.muhAdi
+          // ignore: cast_nullable_to_non_nullable
+          : muhAdi as String?,
+      odemeKodu: odemeKodu == const $CopyWithPlaceholder()
+          ? _value.odemeKodu
+          // ignore: cast_nullable_to_non_nullable
+          : odemeKodu as String?,
+      plasiyerAdi: plasiyerAdi == const $CopyWithPlaceholder()
+          ? _value.plasiyerAdi
+          // ignore: cast_nullable_to_non_nullable
+          : plasiyerAdi as String?,
+      postaKodu: postaKodu == const $CopyWithPlaceholder()
+          ? _value.postaKodu
+          // ignore: cast_nullable_to_non_nullable
+          : postaKodu as String?,
+      riskTutari: riskTutari == const $CopyWithPlaceholder()
+          ? _value.riskTutari
+          // ignore: cast_nullable_to_non_nullable
+          : riskTutari as double?,
+      sahisSirketiMi: sahisSirketiMi == const $CopyWithPlaceholder()
+          ? _value.sahisSirketiMi
+          // ignore: cast_nullable_to_non_nullable
+          : sahisSirketiMi as bool?,
+      siparisRiskOrani: siparisRiskOrani == const $CopyWithPlaceholder()
+          ? _value.siparisRiskOrani
+          // ignore: cast_nullable_to_non_nullable
+          : siparisRiskOrani as double?,
+      tempMuhtelifCari: tempMuhtelifCari == const $CopyWithPlaceholder()
+          ? _value.tempMuhtelifCari
+          // ignore: cast_nullable_to_non_nullable
+          : tempMuhtelifCari as bool?,
+      tempNoterlerSorgula: tempNoterlerSorgula == const $CopyWithPlaceholder()
+          ? _value.tempNoterlerSorgula
+          // ignore: cast_nullable_to_non_nullable
+          : tempNoterlerSorgula as bool?,
+      tipAciklama: tipAciklama == const $CopyWithPlaceholder()
+          ? _value.tipAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : tipAciklama as String?,
+      vadeUyarisi: vadeUyarisi == const $CopyWithPlaceholder()
+          ? _value.vadeUyarisi
+          // ignore: cast_nullable_to_non_nullable
+          : vadeUyarisi as String?,
+      webAdresi: webAdresi == const $CopyWithPlaceholder()
+          ? _value.webAdresi
+          // ignore: cast_nullable_to_non_nullable
+          : webAdresi as String?,
+      yurtIciDovizKodu: yurtIciDovizKodu == const $CopyWithPlaceholder()
+          ? _value.yurtIciDovizKodu
+          // ignore: cast_nullable_to_non_nullable
+          : yurtIciDovizKodu as int?,
     );
   }
 }
@@ -1407,13 +1816,48 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       idx: fields[107] as int?,
       kurfarkiborcAdi: fields[108] as String?,
       kurfarkialacakAdi: fields[109] as String?,
-    )..muhAdi = fields[110] as String?;
+      adresi: fields[130] as String?,
+      anaCari: fields[113] as String?,
+      cariHarf: fields[138] as String?,
+      duzeltmeYapanKullanici: fields[132] as String?,
+      eFatAktif: fields[137] as bool?,
+      eFaturaMi: fields[133] as bool?,
+      eFaturaMiEh: fields[134] as String?,
+      eFaturaSenaryo: fields[135] as String?,
+      eIrsaliyeMi: fields[136] as bool?,
+      faxNo: fields[127] as String?,
+      fiyatSirasi: fields[144] as int?,
+      genIsk1O: fields[126] as double?,
+      hesapTutmaSekli: fields[118] as String?,
+      irsaliyeRiskOrani: fields[142] as double?,
+      isletmeKodu: fields[119] as int?,
+      kayitYapanKullanici: fields[131] as String?,
+      konumMetre: fields[143] as int?,
+      kilitTipi: fields[115] as String?,
+      kurFarkiBorcMuhAdi: fields[122] as String?,
+      kurFarkiBorcMuhKodu: fields[121] as String?,
+      kurFarkiAlacakMuhAdi: fields[124] as String?,
+      kurFarkiAlacakMuhKodu: fields[123] as String?,
+      muhAdi: fields[110] as String?,
+      odemeKodu: fields[117] as String?,
+      plasiyerAdi: fields[120] as String?,
+      postaKodu: fields[128] as String?,
+      riskTutari: fields[139] as double?,
+      sahisSirketiMi: fields[116] as bool?,
+      siparisRiskOrani: fields[141] as double?,
+      tempMuhtelifCari: fields[111] as bool?,
+      tempNoterlerSorgula: fields[112] as bool?,
+      tipAciklama: fields[114] as String?,
+      vadeUyarisi: fields[140] as String?,
+      webAdresi: fields[129] as String?,
+      yurtIciDovizKodu: fields[125] as int?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, CariListesiModel obj) {
     writer
-      ..writeByte(110)
+      ..writeByte(144)
       ..writeByte(0)
       ..write(obj.cariKodu)
       ..writeByte(1)
@@ -1633,7 +2077,75 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..writeByte(109)
       ..write(obj.kurfarkialacakAdi)
       ..writeByte(110)
-      ..write(obj.muhAdi);
+      ..write(obj.muhAdi)
+      ..writeByte(111)
+      ..write(obj.tempMuhtelifCari)
+      ..writeByte(112)
+      ..write(obj.tempNoterlerSorgula)
+      ..writeByte(113)
+      ..write(obj.anaCari)
+      ..writeByte(114)
+      ..write(obj.tipAciklama)
+      ..writeByte(115)
+      ..write(obj.kilitTipi)
+      ..writeByte(116)
+      ..write(obj.sahisSirketiMi)
+      ..writeByte(117)
+      ..write(obj.odemeKodu)
+      ..writeByte(118)
+      ..write(obj.hesapTutmaSekli)
+      ..writeByte(119)
+      ..write(obj.isletmeKodu)
+      ..writeByte(120)
+      ..write(obj.plasiyerAdi)
+      ..writeByte(121)
+      ..write(obj.kurFarkiBorcMuhKodu)
+      ..writeByte(122)
+      ..write(obj.kurFarkiBorcMuhAdi)
+      ..writeByte(123)
+      ..write(obj.kurFarkiAlacakMuhKodu)
+      ..writeByte(124)
+      ..write(obj.kurFarkiAlacakMuhAdi)
+      ..writeByte(125)
+      ..write(obj.yurtIciDovizKodu)
+      ..writeByte(126)
+      ..write(obj.genIsk1O)
+      ..writeByte(127)
+      ..write(obj.faxNo)
+      ..writeByte(128)
+      ..write(obj.postaKodu)
+      ..writeByte(129)
+      ..write(obj.webAdresi)
+      ..writeByte(130)
+      ..write(obj.adresi)
+      ..writeByte(131)
+      ..write(obj.kayitYapanKullanici)
+      ..writeByte(132)
+      ..write(obj.duzeltmeYapanKullanici)
+      ..writeByte(133)
+      ..write(obj.eFaturaMi)
+      ..writeByte(134)
+      ..write(obj.eFaturaMiEh)
+      ..writeByte(135)
+      ..write(obj.eFaturaSenaryo)
+      ..writeByte(136)
+      ..write(obj.eIrsaliyeMi)
+      ..writeByte(137)
+      ..write(obj.eFatAktif)
+      ..writeByte(138)
+      ..write(obj.cariHarf)
+      ..writeByte(139)
+      ..write(obj.riskTutari)
+      ..writeByte(140)
+      ..write(obj.vadeUyarisi)
+      ..writeByte(141)
+      ..write(obj.siparisRiskOrani)
+      ..writeByte(142)
+      ..write(obj.irsaliyeRiskOrani)
+      ..writeByte(143)
+      ..write(obj.konumMetre)
+      ..writeByte(144)
+      ..write(obj.fiyatSirasi);
   }
 
   @override
@@ -1765,7 +2277,42 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       idx: (json['IDX'] as num?)?.toInt(),
       kurfarkiborcAdi: json['KURFARKIBORC_ADI'] as String?,
       kurfarkialacakAdi: json['KURFARKIALACAK_ADI'] as String?,
-    )..muhAdi = json['MUH_ADI'] as String?;
+      adresi: json['ADRESI'] as String?,
+      anaCari: json['ANA_CARI'] as String?,
+      cariHarf: json['CARI_HARF'] as String?,
+      duzeltmeYapanKullanici: json['DUZELTME_YAPAN_KULLANICI'] as String?,
+      eFatAktif: json['E_FAT_AKTIF'] as bool?,
+      eFaturaMi: json['E_FATURA_MI'] as bool?,
+      eFaturaMiEh: json['E_FATURA_MI_EH'] as String?,
+      eFaturaSenaryo: json['E_FATURA_SENARYO'] as String?,
+      eIrsaliyeMi: json['E_IRSALIYE_MI'] as bool?,
+      faxNo: json['FAX_NO'] as String?,
+      fiyatSirasi: (json['FIYAT_SIRASI'] as num?)?.toInt(),
+      genIsk1O: (json['GEN_ISK1_O'] as num?)?.toDouble(),
+      hesapTutmaSekli: json['HESAP_TUTMA_SEKLI'] as String?,
+      irsaliyeRiskOrani: (json['IRSALIYE_RISK_ORANI'] as num?)?.toDouble(),
+      isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
+      kayitYapanKullanici: json['KAYIT_YAPAN_KULLANICI'] as String?,
+      konumMetre: (json['KONUM_METRE'] as num?)?.toInt(),
+      kilitTipi: json['KILIT_TIPI'] as String?,
+      kurFarkiBorcMuhAdi: json['KUR_FARKI_BORC_MUH_ADI'] as String?,
+      kurFarkiBorcMuhKodu: json['KUR_FARKI_BORC_MUH_KODU'] as String?,
+      kurFarkiAlacakMuhAdi: json['KUR_FARKI_ALACAK_MUH_ADI'] as String?,
+      kurFarkiAlacakMuhKodu: json['KUR_FARKI_ALACAK_MUH_KODU'] as String?,
+      muhAdi: json['MUH_ADI'] as String?,
+      odemeKodu: json['ODEME_KODU'] as String?,
+      plasiyerAdi: json['PLASIYER_ADI'] as String?,
+      postaKodu: json['POSTA_KODU'] as String?,
+      riskTutari: (json['RISK_TUTARI'] as num?)?.toDouble(),
+      sahisSirketiMi: json['SAHIS_SIRKETI_MI'] as bool?,
+      siparisRiskOrani: (json['SIPARIS_RISK_ORANI'] as num?)?.toDouble(),
+      tempMuhtelifCari: json['TEMP_MUHTELIF_CARI'] as bool?,
+      tempNoterlerSorgula: json['TEMP_NOTERLER_SORGULA'] as bool?,
+      tipAciklama: json['TIP_ACIKLAMA'] as String?,
+      vadeUyarisi: json['VADE_UYARISI'] as String?,
+      webAdresi: json['WEB_ADRESI'] as String?,
+      yurtIciDovizKodu: (json['YURT_ICI_DOVIZ_KODU'] as num?)?.toInt(),
+    );
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
     <String, dynamic>{
@@ -1888,6 +2435,52 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
       if (instance.kurfarkialacakAdi case final value?)
         'KURFARKIALACAK_ADI': value,
       if (instance.muhAdi case final value?) 'MUH_ADI': value,
+      if (instance.tempMuhtelifCari case final value?)
+        'TEMP_MUHTELIF_CARI': value,
+      if (instance.tempNoterlerSorgula case final value?)
+        'TEMP_NOTERLER_SORGULA': value,
+      if (instance.anaCari case final value?) 'ANA_CARI': value,
+      if (instance.tipAciklama case final value?) 'TIP_ACIKLAMA': value,
+      if (instance.kilitTipi case final value?) 'KILIT_TIPI': value,
+      if (instance.sahisSirketiMi case final value?) 'SAHIS_SIRKETI_MI': value,
+      if (instance.odemeKodu case final value?) 'ODEME_KODU': value,
+      if (instance.hesapTutmaSekli case final value?)
+        'HESAP_TUTMA_SEKLI': value,
+      if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
+      if (instance.plasiyerAdi case final value?) 'PLASIYER_ADI': value,
+      if (instance.kurFarkiBorcMuhKodu case final value?)
+        'KUR_FARKI_BORC_MUH_KODU': value,
+      if (instance.kurFarkiBorcMuhAdi case final value?)
+        'KUR_FARKI_BORC_MUH_ADI': value,
+      if (instance.kurFarkiAlacakMuhKodu case final value?)
+        'KUR_FARKI_ALACAK_MUH_KODU': value,
+      if (instance.kurFarkiAlacakMuhAdi case final value?)
+        'KUR_FARKI_ALACAK_MUH_ADI': value,
+      if (instance.yurtIciDovizKodu case final value?)
+        'YURT_ICI_DOVIZ_KODU': value,
+      if (instance.genIsk1O case final value?) 'GEN_ISK1_O': value,
+      if (instance.faxNo case final value?) 'FAX_NO': value,
+      if (instance.postaKodu case final value?) 'POSTA_KODU': value,
+      if (instance.webAdresi case final value?) 'WEB_ADRESI': value,
+      if (instance.adresi case final value?) 'ADRESI': value,
+      if (instance.kayitYapanKullanici case final value?)
+        'KAYIT_YAPAN_KULLANICI': value,
+      if (instance.duzeltmeYapanKullanici case final value?)
+        'DUZELTME_YAPAN_KULLANICI': value,
+      if (instance.eFaturaMi case final value?) 'E_FATURA_MI': value,
+      if (instance.eFaturaMiEh case final value?) 'E_FATURA_MI_EH': value,
+      if (instance.eFaturaSenaryo case final value?) 'E_FATURA_SENARYO': value,
+      if (instance.eIrsaliyeMi case final value?) 'E_IRSALIYE_MI': value,
+      if (instance.eFatAktif case final value?) 'E_FAT_AKTIF': value,
+      if (instance.cariHarf case final value?) 'CARI_HARF': value,
+      if (instance.riskTutari case final value?) 'RISK_TUTARI': value,
+      if (instance.vadeUyarisi case final value?) 'VADE_UYARISI': value,
+      if (instance.siparisRiskOrani case final value?)
+        'SIPARIS_RISK_ORANI': value,
+      if (instance.irsaliyeRiskOrani case final value?)
+        'IRSALIYE_RISK_ORANI': value,
+      if (instance.konumMetre case final value?) 'KONUM_METRE': value,
+      if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
     };
 
 BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()
