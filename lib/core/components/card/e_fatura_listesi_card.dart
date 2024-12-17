@@ -592,7 +592,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               return;
             }
           }
-          final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [""], filterText: "", vergiNo: widget.eBelgeListesiModel.vergiNo, eFaturaGoster: true, plasiyerKisitiYok: true));
+          final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [""], vergiNo: widget.eBelgeListesiModel.vergiNo, eFaturaGoster: true, plasiyerKisitiYok: true));
 
           if (cariModel == null) {
             return;

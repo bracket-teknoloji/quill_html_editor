@@ -23,7 +23,6 @@ class SayilanKalemlerRequestModel with _$SayilanKalemlerRequestModel {
         depoKodu: model.depoList?.firstOrNull,
         kullaniciAdi: model.kullanicilar,
         filtreKodu: 3,
-        ekranTipi: "L",
         belgeNo: model.fisno,
         id: model.id,
       );

@@ -607,7 +607,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
       instance
-        ..kalemList = instance.kalemList?.map((e) => e.copyWith(teklifKalemSira: null, teklifNo: null)).toList()
+        ..kalemList = instance.kalemList?.map((e) => e.copyWith()).toList()
         ..tarih = DateTime.now().dateTimeWithoutTime;
     }
     if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
@@ -624,8 +624,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     const Uuid uuid = Uuid();
     BaseSiparisEditModel newInstance = instance.copyWith(
       islemId: uuid.v4(),
-      cariModel: null,
-      kalemList: null,
       otvTutari: instance.getOTVToplam,
       belgeTuru: widget.model.editTipiEnum?.rawValue,
       kalemler: instance.kalemList?.map((e) => e..siparisSira = e.sira).toList(),
@@ -636,22 +634,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         ..mevcutCariKodu = widget.model.model?.cariKodu;
     } else if (widget.model.baseEditEnum.kopyalaMi) {
       newInstance = newInstance.copyWith(
-        // kalemler: BaseSiparisEditModel.instance.kalemList
-        //     .map(
-        //       (e) => e
-        //         ..siparisNo = e.belgeNo
-        //         ..belgeNo = null,
-        //     )
-        //     .toList(),
-        kayityapankul: null,
-        plasiyerAciklama: null,
-        //TODO kontrol et
-        // efatOzelkod: null,
-        // efaturaTipi: null,
-
-        // vadeTarihi: null,
-        // projeAciklama: null,
-        kalemList: null,
+        
       );
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
@@ -710,7 +693,6 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                 final result = await Get.toNamed(
                   "mainPage/cariRehberi",
                   arguments: CariListesiRequestModel(
-                    menuKodu: "CARI_CREH",
                     belgeTuru: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
                   ),
                 );

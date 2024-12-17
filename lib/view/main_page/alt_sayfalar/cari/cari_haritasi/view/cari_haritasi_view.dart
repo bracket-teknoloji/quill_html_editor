@@ -116,7 +116,6 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                         },
                       ),
                     },
-                    mapType: MapType.normal,
                     initialCameraPosition: myLocation,
                     onMapCreated: (controller) async {
                       _controller = controller;
@@ -156,9 +155,7 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                       }
                       setState(() {});
                     },
-                    buildingsEnabled: true,
                     myLocationEnabled: true,
-                    myLocationButtonEnabled: true,
                     markers: viewModel.markerSet,
                     onCameraMove: widget.isGetData != true
                         ? null

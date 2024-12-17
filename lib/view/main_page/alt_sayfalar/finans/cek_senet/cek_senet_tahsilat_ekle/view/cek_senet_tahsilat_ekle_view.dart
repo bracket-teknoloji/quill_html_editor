@@ -399,7 +399,6 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
               ),
               LayoutBuilder(
                 builder: (context, constraints) => Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
@@ -621,7 +620,6 @@ class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView>
             keepExif: true,
             numberOfRetries: 10,
             quality: 30,
-            autoCorrectionAngle: true,
           );
           if (compressedImage != null) {
             if (index == 1) {

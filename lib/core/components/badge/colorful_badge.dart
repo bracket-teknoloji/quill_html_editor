@@ -23,7 +23,7 @@ class _ColorfulBadgeState extends BaseState<ColorfulBadge> {
           onTap: widget.onTap,
           child: widget.label,
         ),
-        textColor: (widget.badgeColorEnum?.getColor.computeLuminance() ?? 0) > 0.3 ? Colors.black : Colors.white,
-        backgroundColor: widget.badgeColorEnum?.getColor ?? UIHelper.primaryColor,
+        textColor: (widget.badgeColorEnum.getColor.computeLuminance()) > 0.3 ? Colors.black : Colors.white,
+        backgroundColor: widget.badgeColorEnum.getColor,
       ).yetkiVarMi(widget.label != null);
 }

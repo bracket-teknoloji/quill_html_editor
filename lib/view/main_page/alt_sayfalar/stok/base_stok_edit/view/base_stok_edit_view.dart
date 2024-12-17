@@ -151,9 +151,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
     final result = await networkManager.dioPost<SaveStokModel>(
       path: ApiUrls.saveStok,
       bodyModel: SaveStokModel(),
-      addCKey: true,
       showLoading: true,
-      addSirketBilgileri: true,
       data: saveStokModel.toJson(),
     );
     if (result.isSuccess) {

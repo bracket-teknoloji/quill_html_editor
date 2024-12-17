@@ -230,7 +230,6 @@ class _LoginViewState extends BaseState<LoginView> {
                         }
                       },
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Observer(
                             builder: (_) => Text("${viewModel.baglantiTipi} Sunucu", style: TextStyle(color: theme.colorScheme.primary)),

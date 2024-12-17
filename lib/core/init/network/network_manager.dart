@@ -82,9 +82,7 @@ class NetworkManager {
       dio.interceptors.add(
         TalkerDioLogger(
           settings: TalkerDioLoggerSettings(
-            printResponseMessage: true,
             printResponseData: false,
-            printErrorData: true,
             requestFilter: (requestOptions) => !requestOptions.path.contains("GetEvrakResim"),
             responseFilter: (response) => !response.requestOptions.path.contains("GetEvrakResim"),
           ),
@@ -108,7 +106,6 @@ class NetworkManager {
         receiveDataWhenStatusError: true,
         persistentConnection: true,
         contentType: Headers.jsonContentType,
-        responseType: ResponseType.json,
       );
 
   BaseOptions get eBelgeDioOptions => BaseOptions(
@@ -120,7 +117,6 @@ class NetworkManager {
         receiveDataWhenStatusError: true,
         persistentConnection: true,
         contentType: Headers.jsonContentType,
-        responseType: ResponseType.json,
       );
 
   Future<TokenModel?> getToken({Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {

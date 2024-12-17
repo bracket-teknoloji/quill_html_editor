@@ -53,7 +53,6 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
         child: Card(
           shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),
           color: widget.model?.color,
-          semanticContainer: true,
           child: GridTile(
             header: header(),
             footer: footer(),
@@ -73,7 +72,6 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                   )
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       AnimatedContainer(
                         duration: const Duration(milliseconds: 500),

@@ -188,7 +188,6 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
             ],
           ),
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Row(
@@ -215,7 +214,6 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
               Text("Resmi Belge No: ${model.resmiBelgeNo ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.resmiBelgeNo != null),
               LayoutBuilder(
                 builder: (context, constraints) => Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
 
                   children: <Widget>[

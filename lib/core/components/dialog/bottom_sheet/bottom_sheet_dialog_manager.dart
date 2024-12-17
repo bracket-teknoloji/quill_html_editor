@@ -312,7 +312,6 @@ class BottomSheetDialogManager {
                                                       groupValue: groupValue,
                                                       title: Text(item?.title ?? ""),
                                                       subtitle: Column(
-                                                        mainAxisAlignment: MainAxisAlignment.start,
                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
                                                           item?.descriptionWidget,
@@ -1401,7 +1400,6 @@ class BottomSheetDialogManager {
           keepExif: true,
           numberOfRetries: 10,
           quality: 30,
-          autoCorrectionAngle: true,
         );
         if (compressedImage != null) {
           return MemoryImage(compressedImage);

@@ -40,7 +40,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                 LineChartData(
                   borderData: FlBorderData(show: false),
                   lineTouchData: LineTouchData(
-                    enabled: true,
                     touchTooltipData: LineTouchTooltipData(
                       getTooltipColor: (touchedSpot) => touchedSpot.bar.color ?? UIHelper.primaryColor,
                       fitInsideHorizontally: true,
@@ -69,12 +68,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                       tooltipPadding: const EdgeInsets.all(5),
                     ),
                   ),
-                  gridData: const FlGridData(
-                    show: true,
-                    drawVerticalLine: true,
-                  ),
                   titlesData: FlTitlesData(
-                    show: true,
                     topTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
@@ -111,20 +105,15 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                               ),
                             )
                           : [],
-                      show: true,
                       preventCurveOverShooting: true,
                       isCurved: true,
                       curveSmoothness: 0.5,
                       isStrokeJoinRound: true,
-                      barWidth: 2,
                       gradient: LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
                         colors: Colors.primaries.sublist(0, (widget.lineChartValue?.length ?? 0) < 2 ? 2 : widget.lineChartValue?.length),
                       ),
                       isStrokeCapRound: true,
                       dotData: FlDotData(
-                        show: true,
                         getDotPainter: (
                           spot,
                           xPercentage,
@@ -141,7 +130,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                       belowBarData: BarAreaData(
                         show: true,
                         gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
                           end: Alignment.topRight,
                           colors: Colors.primaries.sublist(0, (widget.lineChartValue?.length ?? 0) < 2 ? 2 : widget.lineChartValue?.length).map((e) => e.withOpacity(0.3)).toList(),
                         ),
@@ -149,7 +137,6 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                     ),
                   ],
                 ),
-                curve: Curves.linear,
                 duration: DurationHelper.durationLow,
               )
             : const SizedBox(),

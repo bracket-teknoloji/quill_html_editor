@@ -22,10 +22,10 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
   TahsilatRequestModel model = TahsilatRequestModel(tag: "DekontModel", yeniKayit: true, islemModulu: "B");
 
   @observable
-  BankaListesiRequestModel cikisBankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHV", ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel cikisBankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHV", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
 
   @observable
-  BankaListesiRequestModel girisBankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHV", ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel girisBankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHV", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
 
   @observable
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;

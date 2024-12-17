@@ -87,7 +87,6 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
   factory SiparisEditRequestModel.fromCariHareketleriModel(CariHareketleriModel model) => SiparisEditRequestModel(
         cariKodu: model.cariKodu,
         belgeNo: model.belgeNo,
-        kisitYok: true,
         belgeTuru: model.belgeTipi,
         belgeTipi: model.belgeTipi,
         pickerBelgeTuru: model.belgeTipi,

@@ -629,7 +629,6 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                 final result = await Get.toNamed(
                   "mainPage/cariRehberi",
                   arguments: CariListesiRequestModel(
-                    menuKodu: "CARI_CREH",
                     belgeTuru: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
                   ),
                 );

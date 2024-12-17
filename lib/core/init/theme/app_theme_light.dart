@@ -13,7 +13,7 @@ class AppThemeLight extends AppTheme {
   static AppThemeLight? _instance;
   static AppThemeLight? get instance => _instance ??= AppThemeLight._init();
 
-  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withOpacity(0.2), brightness: Brightness.light);
+  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withOpacity(0.2));
   @override
   ThemeData get theme => ThemeData(
         cupertinoOverrideTheme: const CupertinoThemeData(

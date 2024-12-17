@@ -159,7 +159,6 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                   children: [
                     if (stokModel.resimBase64 != null || widget.model.ekleMi)
                       Expanded(
-                        flex: 1,
                         child: Observer(
                           builder: (_) => InkWell(
                             child: stokModel.resimBase64 != null
@@ -733,10 +732,9 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
           keepExif: true,
           numberOfRetries: 10,
           quality: 30,
-          autoCorrectionAngle: true,
         );
       } catch (e) {
-        compressedImage = await FlutterImageCompress.compressWithFile(result.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true, autoCorrectionAngle: true);
+        compressedImage = await FlutterImageCompress.compressWithFile(result.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true);
       }
       final base64 = base64Encode(compressedImage!.toList());
       viewModel.setImage(base64);
@@ -804,9 +802,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     final result = await networkManager.dioGet<BaseEditSiradakiKodModel>(
       path: ApiUrls.getSiradakiKod,
       bodyModel: BaseEditSiradakiKodModel(),
-      addCKey: true,
       showLoading: true,
-      addSirketBilgileri: true,
       queryParameters: {
         "SonKoduGetir": sonKoduGetir ? "E" : "H",
         "Kod": kod != null || kod != "" ? kod : null,
@@ -836,8 +832,6 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     final result = await networkManager.dioGet<StokOlcuBirimleriModel>(
       path: ApiUrls.getOlcuBirimleri,
       bodyModel: StokOlcuBirimleriModel(),
-      addCKey: true,
-      addSirketBilgileri: true,
     );
     return result.dataList;
   }
@@ -862,8 +856,6 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     final GenericResponseModel result = await networkManager.dioPost<StokOlcuBirimleriModel>(
       path: ApiUrls.barkodUret,
       bodyModel: StokOlcuBirimleriModel(),
-      addCKey: true,
-      addSirketBilgileri: true,
       data: {"BarkodSira": controller.toStringIfNotNull, "StokKodu": viewModel.stokDetayModel.stokKodu ?? stokKoduController.text, "Seri": seriValue},
     );
     return result.paramData!["URETILEN_BARKOD"];

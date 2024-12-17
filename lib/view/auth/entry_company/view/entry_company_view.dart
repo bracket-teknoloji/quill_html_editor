@@ -224,7 +224,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.max,
                         children: [
                           CustomWidgetWithLabel(
                             text: "Şirket",
@@ -294,7 +293,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                 final response = await networkManager.dioPost<MainPageModel>(
                                   path: ApiUrls.createSession,
                                   bodyModel: MainPageModel(),
-                                  showError: true,
                                   showLoading: true,
                                   data: model,
                                   headers: {
@@ -340,7 +338,6 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const CircularProgressIndicator.adaptive(),
                     context.sized.emptySizedHeightBoxLow,

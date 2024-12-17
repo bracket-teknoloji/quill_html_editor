@@ -12,7 +12,6 @@ class _CustomToggleButtonState extends State<CustomToggleButton> {
   @override
   Widget build(BuildContext context) => LayoutBuilder(
         builder: (context, constraints) => ToggleButtons(
-          direction: Axis.horizontal,
           constraints: BoxConstraints(
             minWidth: ((context.isPortrait ? constraints.maxWidth : 600) * 0.2) / 5,
             minHeight: constraints.maxHeight * 0.05,

@@ -128,7 +128,6 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
           child: TextFormField(
             autofillHints: widget.keyboardType == TextInputType.emailAddress ? <String>[AutofillHints.email] : null,
             textInputAction: TextInputAction.next,
-            autocorrect: true,
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
             onTap: () async {
@@ -161,7 +160,6 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
             controller: controller,
             obscureText: widget.keyboardType == TextInputType.visiblePassword,
             readOnly: widget.readOnly ?? false,
-            enableSuggestions: true,
             decoration: InputDecoration(
               enabled: widget.enabled ?? true,
               floatingLabelBehavior: FloatingLabelBehavior.always,

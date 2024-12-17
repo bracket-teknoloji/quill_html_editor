@@ -72,7 +72,6 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
           ],
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Observer(
@@ -172,7 +171,6 @@ class _SeriListesiViewState extends BaseState<SeriListesiView> {
                     return const Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Icon(Icons.dashboard_outlined),
                           Text("Seri Listesi Boş"),

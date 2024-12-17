@@ -20,9 +20,6 @@ class CustomWidgetWithLabel extends StatelessWidget {
         child: Wrap(
           direction: (isVertical ?? false) ? Axis.vertical : Axis.horizontal,
           runSpacing: UIHelper.lowSize,
-          crossAxisAlignment: WrapCrossAlignment.start,
-          runAlignment: WrapAlignment.start,
-          alignment: WrapAlignment.start,
           children: [
             Text(
               text ?? "",

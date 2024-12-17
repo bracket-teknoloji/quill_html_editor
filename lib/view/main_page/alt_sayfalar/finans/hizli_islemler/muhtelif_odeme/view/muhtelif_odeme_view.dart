@@ -141,7 +141,6 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         child: Form(
           key: formKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTextField(

@@ -75,7 +75,6 @@ class _SeriRehberiViewState extends State<SeriRehberiView> {
       );
 
   Column body() => Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -96,7 +95,6 @@ class _SeriRehberiViewState extends State<SeriRehberiView> {
                     },
                     title: Text(item.seriNo ?? ""),
                     subtitle: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Açıklama 1: ${item.acik1 ?? ""}").yetkiVarMi(item.acik1 != null),

@@ -190,7 +190,6 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 ),
                 Observer(
                   builder: (_) => Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [

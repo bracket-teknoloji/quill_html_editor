@@ -53,7 +53,7 @@ class PickerMaterialApp extends StatelessWidget {
         themeMode: CacheManager.getProfilParametre.temaModu,
         initialRoute: "/",
         onUnknownRoute: (settings) => GetPageRoute(settings: const RouteSettings(name: "/"), page: SplashAuthView.new),
-        onGenerateRoute: (settings) => GetPageRoute(settings: null, page: () => BaseScaffold(body: const Center(child: Text("data")))),
+        onGenerateRoute: (settings) => GetPageRoute(page: () => BaseScaffold(body: const Center(child: Text("data")))),
         getPages: <GetPage>[
           GetPage(name: "/", page: SplashAuthView.new),
           GetPage(name: "/login", page: () => const LoginView()),

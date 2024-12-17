@@ -136,9 +136,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
           final result = await Get.toNamed(
             "mainPage/cariRehberi",
             arguments: CariListesiRequestModel(
-              menuKodu: "CARI_CREH",
               belgeTuru: model.editTipiEnum?.rawValue,
-              siparisKarsilanmaDurumu: null,
             ),
           );
           if ((result as CariListesiModel?)?.muhtelifMi ?? false) {

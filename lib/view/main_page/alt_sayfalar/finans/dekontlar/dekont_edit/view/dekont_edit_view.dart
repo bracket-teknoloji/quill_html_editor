@@ -48,7 +48,7 @@ class _DekontEditViewState extends BaseState<DekontEditView> with TickerProvider
       } else if (widget.baseEditEnum == BaseEditEnum.taslak) {
         final EBelgeListesiModel model = widget.eBelgeModel!;
         final CariListesiModel? cariModel =
-            await networkManager.getCariModel(CariRequestModel(vergiNo: model.vergiNo, plasiyerKisitiYok: true, filterText: "", eFaturaGoster: true, kod: [widget.eBelgeModel?.cariKodu ?? ""]));
+            await networkManager.getCariModel(CariRequestModel(vergiNo: model.vergiNo, plasiyerKisitiYok: true, eFaturaGoster: true, kod: [widget.eBelgeModel?.cariKodu ?? ""]));
         SingletonDekontIslemlerRequestModel.instance.yeniKayit = true;
         SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
         SingletonDekontIslemlerRequestModel.instance.tarih = DateTime.now().dateTimeWithoutTime;

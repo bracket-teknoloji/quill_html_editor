@@ -11,7 +11,6 @@ class AppBarTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Wrap(
         direction: Axis.vertical,
-        alignment: WrapAlignment.start,
         runAlignment: WrapAlignment.center,
         children: [
           AnimatedTextKit(
@@ -19,8 +18,6 @@ class AppBarTitle extends StatelessWidget {
             animatedTexts: [
               TypewriterAnimatedText(
                 title ?? "",
-                speed: const Duration(milliseconds: 30),
-                curve: Curves.linear,
                 cursor: "",
               ),
             ],

@@ -45,7 +45,6 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
         ),
         body: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             GridView.builder(

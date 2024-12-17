@@ -67,7 +67,6 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   @observable
   SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(
     sayfa: 1,
-    ekranTipi: "R",
     baslamaTarihi: DateTime.now().toDateString,
     bitisTarihi: DateTime.now().toDateString,
     siralama: "TARIH_ZA",

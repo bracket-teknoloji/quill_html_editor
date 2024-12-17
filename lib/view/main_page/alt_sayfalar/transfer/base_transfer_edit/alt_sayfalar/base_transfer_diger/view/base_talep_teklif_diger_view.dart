@@ -40,7 +40,6 @@ class _BaseTransferDigerViewState extends BaseState<BaseTransferDigerView> {
         children: <Widget>[
           Expanded(
             child: Card(
-              borderOnForeground: true,
               elevation: UIHelper.highSize,
               child: QuillHtmlEditor(
                 hintText: "Buraya notlarınızı yazabilirsiniz...",
@@ -49,9 +48,7 @@ class _BaseTransferDigerViewState extends BaseState<BaseTransferDigerView> {
                 controller: controller,
                 isEnabled: enable,
                 minHeight: height,
-                hintTextAlign: TextAlign.start,
                 padding: const EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.lowSize),
-                inputAction: InputAction.newline,
                 textStyle: TextStyle(color: theme.colorScheme.onSurface),
                 backgroundColor: theme.colorScheme.surface,
                 onTextChanged: (text) => model.ekAciklama = text != "" ? text : null,

@@ -159,7 +159,6 @@ class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerView> {
           children: [Expanded(child: Text(kalemModel.kalemAdi ?? kalemModel.stokAdi ?? kalemModel.stokKodu ?? "", softWrap: true)), const Icon(Icons.more_vert_outlined)],
         ),
         subtitle: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel.paketMi == "K"),

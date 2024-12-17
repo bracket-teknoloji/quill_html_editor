@@ -26,7 +26,6 @@ class AppBarButton extends StatelessWidget {
         onPressed: onPressed,
         child: Wrap(
           alignment: WrapAlignment.center,
-          runAlignment: WrapAlignment.start,
           crossAxisAlignment: WrapCrossAlignment.center,
           direction: context.isPortrait ? Axis.vertical : Axis.horizontal,
           children: [

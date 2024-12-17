@@ -56,7 +56,6 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   Text(loc.rightDrawer.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       if (CacheManager.getAnaVeri!.userModel!.admin == "E") const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize),
                       Text(
@@ -124,7 +123,6 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                           Get.toNamed("/entryCompany", arguments: false);
                         },
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             // Icon(Icons.rule_s)
@@ -157,7 +155,6 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                           dialogManager.showExitDialog();
                         },
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),

@@ -85,7 +85,6 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: true,
         child: BaseScaffold(
           appBar: appBar,
           body: body,
@@ -201,7 +200,6 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
               ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.giden || (widget.eBelgeEnum == EBelgeEnum.gelen && viewModel.eBelgeRequestModel.eBelgeTuru != "AFT")),
               // ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" ),
               Row(
-                mainAxisSize: MainAxisSize.max,
                 children: [
                   IconButton(
                     onPressed: () async {

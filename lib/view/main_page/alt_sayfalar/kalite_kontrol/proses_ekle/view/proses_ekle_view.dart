@@ -120,7 +120,6 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   Card(
                     child: ListTile(
                       subtitle: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Observer(

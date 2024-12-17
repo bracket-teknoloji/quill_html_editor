@@ -50,7 +50,6 @@ class BaseScaffold extends Scaffold {
               : PreferredSize(
                   preferredSize: Size(kIsWeb ? Get.width * 0.5 : double.maxFinite, (appBar.bottom != null ? 2 : 1) * kToolbarHeight),
                   child: Align(
-                    alignment: Alignment.center,
                     child: SizedBox(width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.5 : null, child: appBar),
                   ),
                 ),

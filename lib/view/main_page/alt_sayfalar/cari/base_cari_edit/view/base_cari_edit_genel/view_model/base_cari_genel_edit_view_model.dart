@@ -182,8 +182,6 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioGet<CariSehirlerModel>(
       path: ApiUrls.getCariKayitliSehirler,
       bodyModel: CariSehirlerModel(),
-      addTokenKey: true,
-      addSirketBilgileri: true,
       headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
     );
     if (result.isSuccess) {
@@ -193,7 +191,7 @@ abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getUlkeData() async {
-    final response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
+    final response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel());
     ulkeler = response.dataList;
   }
 }

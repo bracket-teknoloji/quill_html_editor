@@ -158,7 +158,6 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
               onPressed: filtreleButtonOnTap,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Observer(
                     builder: (_) => Icon(
@@ -302,7 +301,6 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
       context,
       title: loc.generalStrings.filter,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RaporFiltreDateTimeBottomSheetView(

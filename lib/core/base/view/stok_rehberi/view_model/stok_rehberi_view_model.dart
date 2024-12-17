@@ -87,11 +87,9 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   BaseSiparisEditModel get baseSiparisEditModel => BaseSiparisEditModel.instance;
 
   StokBottomSheetModel stokBottomSheetModel = StokBottomSheetModel(
-    siralama: "AZ",
     belgeNo: BaseSiparisEditModel.instance.belgeNo,
     belgeTarihi: BaseSiparisEditModel.instance.tarih.toDateString,
     belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
-    ekranTipi: "R",
     resimGoster: "E",
     faturaTipi: 2,
     okutuldu: true,

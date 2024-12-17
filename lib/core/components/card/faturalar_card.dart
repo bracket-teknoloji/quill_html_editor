@@ -211,7 +211,6 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
             ],
           ),
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Row(

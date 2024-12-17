@@ -206,7 +206,6 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
                   }
                 },
                 canShowHyperlinkDialog: false,
-                interactionMode: PdfInteractionMode.selection,
                 onTextSelectionChanged: (details) {
                   if (kIsWeb) {
                     return;

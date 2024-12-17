@@ -268,7 +268,6 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                             "/mainPage/bankaListesiOzel",
                             arguments: BankaListesiRequestModel(
                               arrHesapTipi: jsonEncode(arrHesapTipi),
-                              ekranTipi: "R",
                               belgeTipi: widget.cekSenetListesiEnum.belgeTipi,
                               menuKodu: "YONE_BHRE",
                             ),

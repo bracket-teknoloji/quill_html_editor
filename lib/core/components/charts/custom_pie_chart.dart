@@ -62,7 +62,6 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                           );
                         }),
                       ),
-                      curve: Curves.linear,
                       duration: DurationHelper.durationLow,
                     ),
                   )

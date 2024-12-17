@@ -54,7 +54,6 @@ class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
         } else {
           list.add(
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: rowChildren.map((e) => Expanded(child: e)).toList(),
             ),
@@ -84,7 +83,6 @@ class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
         }
         list.add(
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: rowChildren.map((e) => Expanded(child: e)).toList(),
           ),

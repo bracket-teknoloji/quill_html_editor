@@ -24,7 +24,7 @@ abstract class _BankaMuhtelifIslemlerViewModelBase with Store, MobxNetworkMixin 
   TahsilatRequestModel model = TahsilatRequestModel(yeniKayit: true, tag: "DekontModel", islemModulu: "B");
 
   @observable
-  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
 
   @observable
   ObservableList<SeriModel>? seriList;

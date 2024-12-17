@@ -223,7 +223,7 @@ class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
               //   BankaListesiRequestModel(menuKodu: "YONE_BHRE", ekranTipi: "R"),
               //   viewModel.bankaIslemleriRequestModel.hesapKodu,
               // );
-              final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: BankaListesiRequestModel(menuKodu: "YONE_BHRE", ekranTipi: "R"));
+              final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: BankaListesiRequestModel(menuKodu: "YONE_BHRE"));
               if (result is BankaListesiModel) {
                 hesapController.text = result.hesapAdi ?? "";
                 viewModel.setHesapKodu(result.hesapKodu ?? "");

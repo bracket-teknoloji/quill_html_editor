@@ -56,7 +56,6 @@ class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
         child: ListTile(
           onTap: widget.onTap,
           title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Checkbox(
                 value: widget.value,
@@ -77,7 +76,6 @@ class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
             ],
           ),
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -94,7 +92,6 @@ class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
               Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
               LayoutBuilder(
                 builder: (context, constrains) => Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.start,
                   children: [
                     Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
                     Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),

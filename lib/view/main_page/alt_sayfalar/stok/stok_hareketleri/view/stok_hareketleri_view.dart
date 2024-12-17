@@ -299,8 +299,6 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     final result = await networkManager.dioPost<StokHareketleriModel>(
                                       path: ApiUrls.deleteStokHareket,
                                       bodyModel: StokHareketleriModel(),
-                                      addCKey: true,
-                                      addSirketBilgileri: true,
                                       queryParameters: {"INCKEYNO": model.inckeyno.toString()},
                                     );
                                     if (result.isSuccess) {
@@ -406,7 +404,6 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                         Container(
                                           width: UIHelper.lowSize,
                                           decoration: const BoxDecoration(
-                                            shape: BoxShape.rectangle,
                                             color: UIHelper.primaryColor,
                                           ),
                                         ).yetkiVarMi(children2.ext.isNotNullOrEmpty),
@@ -449,7 +446,6 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
             ],
           ),
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(model.cariAdi ?? "").yetkiVarMi(model.cariAdi != null),
@@ -506,8 +502,6 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
     final result = await networkManager.dioGet<StokHareketleriModel>(
       path: ApiUrls.getStokHareketleri,
       bodyModel: StokHareketleriModel(),
-      addCKey: true,
-      addSirketBilgileri: true,
       queryParameters: queryParameters,
     );
     viewModel

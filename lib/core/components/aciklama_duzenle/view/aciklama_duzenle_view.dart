@@ -115,7 +115,6 @@ class _AciklamaDuzenleViewState extends BaseState<AciklamaDuzenleView> {
         ),
         body: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTextField(

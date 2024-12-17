@@ -26,7 +26,6 @@ class _ToggleButtonState extends BaseState<ToggleButton> {
 
   @override
   Widget build(BuildContext context) => ToggleButtons(
-        direction: Axis.horizontal,
         constraints: BoxConstraints(
           minWidth: ((context.isPortrait ? width : 600) * 0.2) / viewModel.title.length,
           minHeight: height * 0.05,

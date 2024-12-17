@@ -44,7 +44,6 @@ class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
               return Center(child: Text("${viewModel.stokListesiModel?.stokKodu ?? ""} ürünü için özellik tanımları bulunamadı!"));
             }
             return Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Observer(builder: (_) => Text(viewModel.title)).paddingAll(UIHelper.highSize),

@@ -115,10 +115,9 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
           keepExif: true,
           numberOfRetries: 10,
           quality: 30,
-          autoCorrectionAngle: true,
         );
       } catch (e) {
-        compressedImage = await FlutterImageCompress.compressWithFile(result.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true, autoCorrectionAngle: true);
+        compressedImage = await FlutterImageCompress.compressWithFile(result.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true);
       }
       final list = compressedImage!.toList();
       final base64 = base64Encode(list);

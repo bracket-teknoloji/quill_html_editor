@@ -91,7 +91,6 @@ class _SayimListesiViewState extends BaseState<SayimListesiView> {
               return Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(Icons.dashboard_outlined, size: 100, color: Colors.grey.shade300),
                     //TODO Bunları da refreshable list'e ekle

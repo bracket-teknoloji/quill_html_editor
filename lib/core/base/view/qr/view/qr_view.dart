@@ -125,7 +125,7 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
         ),
       );
 
-  Widget buildQrView(BuildContext context) => MobileScanner(controller: qrViewController, fit: BoxFit.cover, onDetect: _onQRViewCreated);
+  Widget buildQrView(BuildContext context) => MobileScanner(controller: qrViewController, onDetect: _onQRViewCreated);
   Future<void> _onQRViewCreated(BarcodeCapture barcode) async {
     final PermissionStatus status = await Permission.camera.status;
     if (status.isDenied) {

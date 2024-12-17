@@ -30,8 +30,6 @@ class CariNetworkManager {
     final response = await networkManager.dioGet<CariSehirlerModel>(
       path: ApiUrls.getCariKayitliSehirler,
       bodyModel: CariSehirlerModel(),
-      addTokenKey: true,
-      addSirketBilgileri: true,
       headers: <String, String>{"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
     );
 

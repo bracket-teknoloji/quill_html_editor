@@ -166,7 +166,6 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
           ],
         ),
         subtitle: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel.dovizliMi),
@@ -338,7 +337,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             Get.back();
             final result = await Get.toNamed(
               "/mainPage/stokEdit",
-              arguments: BaseEditModel<StokListesiModel>(model: StokListesiModel.fromKalemModel(model.copyWith(stokKodu: null)), baseEditEnum: BaseEditEnum.ekle),
+              arguments: BaseEditModel<StokListesiModel>(model: StokListesiModel.fromKalemModel(model.copyWith()), baseEditEnum: BaseEditEnum.ekle),
             );
             if (result is SaveStokModel) {
               BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList![index].copyWith(

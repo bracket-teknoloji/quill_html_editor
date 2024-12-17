@@ -56,7 +56,6 @@ Future<void> firebaseInitialized() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: "flutter-picker");
   await FirebaseAppCheck.instance.activate(
     webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
-    androidProvider: AndroidProvider.playIntegrity,
     appleProvider: AppleProvider.appAttest,
   );
   final FirebaseMessaging messaging = FirebaseMessaging.instance;

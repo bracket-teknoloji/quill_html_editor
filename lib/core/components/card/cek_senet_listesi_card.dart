@@ -57,15 +57,12 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
             }
           },
           title: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Wrap(
-                    alignment: WrapAlignment.start,
-                    runAlignment: WrapAlignment.start,
                     crossAxisAlignment: WrapCrossAlignment.center,
                     spacing: UIHelper.lowSize,
                     children: [

@@ -107,7 +107,6 @@ class _GenelPdfViewState extends BaseState<GenelPdfView> {
               builder: (_) => SfPdfViewer.file(
                 viewModel.pdfFile!,
                 controller: pdfViewerController,
-                interactionMode: PdfInteractionMode.selection,
                 onTextSelectionChanged: (details) {
                   if (kIsWeb) {
                     return;

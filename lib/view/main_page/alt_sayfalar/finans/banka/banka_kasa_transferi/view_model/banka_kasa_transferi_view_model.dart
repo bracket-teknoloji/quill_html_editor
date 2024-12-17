@@ -26,7 +26,7 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
   bool bankaDovizliMi = false;
 
   @observable
-  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "BKT", ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "BKT", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
 
   @observable
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;

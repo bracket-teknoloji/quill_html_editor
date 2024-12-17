@@ -40,7 +40,6 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
         child: ListTile(
           onTap: bottomSheet,
           title: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(model.fisno ?? ""),

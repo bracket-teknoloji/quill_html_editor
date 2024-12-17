@@ -208,7 +208,6 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
             ],
           ),
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -271,8 +270,6 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
               ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.sonrakiRevizeNo != null),
               LayoutBuilder(
                 builder: (context, constrains) => Wrap(
-                  // mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: WrapCrossAlignment.start,
                   children: [
                     // Text("Tipi: ${widget.model.tipi ? "Yurtiçi" : "Yurtdışı"}"),
                     Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),

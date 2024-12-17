@@ -134,7 +134,6 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
           child: SingleChildScrollView(
             child: Observer(
               builder: (_) => Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Observer(

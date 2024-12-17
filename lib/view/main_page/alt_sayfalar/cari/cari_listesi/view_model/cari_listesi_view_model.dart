@@ -67,10 +67,10 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   List<CariSehirlerModel>? sehirler;
 
   @observable
-  CariRequestModel cariRequestModel = CariRequestModel(eFaturaGoster: true, siralama: "AZ", sayfa: 1, menuKodu: "CARI_CARI", filterText: "");
+  CariRequestModel cariRequestModel = CariRequestModel(eFaturaGoster: true, siralama: "AZ", sayfa: 1, menuKodu: "CARI_CARI");
 
   @observable
-  CariRequestModel cariRequestModelTemp = CariRequestModel(eFaturaGoster: true, siralama: "AZ", sayfa: 1, menuKodu: "CARI_CARI", filterText: "");
+  CariRequestModel cariRequestModelTemp = CariRequestModel(eFaturaGoster: true, siralama: "AZ", sayfa: 1, menuKodu: "CARI_CARI");
 
   //* Computed
 
@@ -311,8 +311,6 @@ abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableM
     final result = await networkManager.dioGet<CariSehirlerModel>(
       path: ApiUrls.getCariKayitliSehirler,
       bodyModel: CariSehirlerModel(),
-      addTokenKey: true,
-      addSirketBilgileri: true,
       headers: {"Modul": "CARI", "GrupNo": "-1", "Kullanimda": "E"},
     );
     if (result.isSuccess) {

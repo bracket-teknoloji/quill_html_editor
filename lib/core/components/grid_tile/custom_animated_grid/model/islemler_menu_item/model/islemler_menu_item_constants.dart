@@ -961,7 +961,6 @@ class IslemlerMenuItemConstants<T> {
               final saveCari = await _networkManager.dioPost(
                 path: ApiUrls.saveCari,
                 bodyModel: CariListesiModel(),
-                showError: true,
                 showLoading: true,
                 data: CariSaveRequestModel(requestVersion: 6, islemKodu: 3, kodu: cariModel.cariKodu, enlem: result.latitude, boylam: result.longitude).toJson(),
               );
@@ -1181,12 +1180,8 @@ class IslemlerMenuItemConstants<T> {
               "mainPage/faturaEdit",
               arguments: BaseEditModel(
                 model: siparisModel.copyWith(
-                  efaturaDurumAciklama: null,
-                  efaturaGibDurumKodu: null,
                   kalemList: detayModel?.kalemList,
-                  efaturaMi: null,
                   tarih: DateTime.now().dateTimeWithoutTime,
-                  kasaKodu: null,
                 ),
                 baseEditEnum: BaseEditEnum.kopyala,
                 editTipiEnum: EditTipiEnum.satisFatura,
@@ -1371,7 +1366,6 @@ class IslemlerMenuItemConstants<T> {
                     model: result..kalemList = kalemList.map((e) => e..miktar = e.kalan).toList(),
                     baseEditEnum: BaseEditEnum.siparistenKopyala,
                     editTipiEnum: siparisTipi?.saticiMi == true ? EditTipiEnum.alisFatura : EditTipiEnum.satisFatura,
-                    belgeNo: null,
                   ),
                 );
                 if (boolean == true) {

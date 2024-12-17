@@ -110,7 +110,6 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
       );
 
   Column body() => Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Card(

@@ -70,8 +70,6 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioGet<StokDetayModel>(
       path: ApiUrls.getStokDetay,
       bodyModel: StokDetayModel(),
-      addCKey: true,
-      addSirketBilgileri: true,
       showLoading: true,
       queryParameters: {
         "stokKodu": stokListesiModel.stokKodu ?? "",

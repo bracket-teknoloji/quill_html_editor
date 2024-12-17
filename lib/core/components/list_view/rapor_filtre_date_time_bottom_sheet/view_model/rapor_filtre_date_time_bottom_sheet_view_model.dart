@@ -50,9 +50,9 @@ abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
     "Bugün": DateTime.now(),
     "Dün": DateTime.now().subtract(const Duration(days: 1)),
     "Bu Hafta": DateTime.now().subtract(Duration(days: DateTime.now().weekday - 1)),
-    "Bu Ay": DateTime(DateTime.now().year, DateTime.now().month, 1),
-    "Geçen Ay": DateTime(DateTime.now().year, DateTime.now().month - 1, 1),
-    "Son 3 Ay": DateTime(DateTime.now().year, DateTime.now().month - 2, 1),
+    "Bu Ay": DateTime(DateTime.now().year, DateTime.now().month),
+    "Geçen Ay": DateTime(DateTime.now().year, DateTime.now().month - 1),
+    "Son 3 Ay": DateTime(DateTime.now().year, DateTime.now().month - 2),
     "Bu Yıl": DateTime(DateTime.now().year),
     "Geçen Yıl": DateTime(DateTime.now().year - 1),
   };

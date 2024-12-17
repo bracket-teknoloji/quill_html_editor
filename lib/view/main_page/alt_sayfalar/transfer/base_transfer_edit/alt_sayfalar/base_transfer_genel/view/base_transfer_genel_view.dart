@@ -264,7 +264,6 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                       final cariModel = await Get.toNamed(
                         "mainPage/cariRehberi",
                         arguments: CariListesiRequestModel(
-                          menuKodu: "CARI_CREH",
                           belgeTuru: model.getEditTipiEnum?.rawValue,
                         ),
                       );
@@ -387,7 +386,6 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                             final cariModel = await Get.toNamed(
                               "mainPage/cariRehberi",
                               arguments: CariListesiRequestModel(
-                                menuKodu: "CARI_CREH",
                                 belgeTuru: model.getEditTipiEnum?.rawValue,
                               ),
                             );

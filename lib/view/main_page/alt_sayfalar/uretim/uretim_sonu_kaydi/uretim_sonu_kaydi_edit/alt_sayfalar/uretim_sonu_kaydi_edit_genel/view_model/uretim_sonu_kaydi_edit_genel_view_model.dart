@@ -135,7 +135,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
       if (item.girisdepoKodu != null) {
         setRequestModel(requestModel.copyWith(girisDepo: item.girisdepoKodu));
         setRequestModel(requestModel.copyWith(cikisDepo: item.cikisdepoKodu));
-        setModel(item.copyWith(girisdepoKodu: null, cikisdepoKodu: null, girisDepo: item.girisdepoKodu, cikisDepo: item.cikisdepoKodu));
+        setModel(item.copyWith(girisDepo: item.girisdepoKodu, cikisDepo: item.cikisdepoKodu));
       }
     }
   }
@@ -149,8 +149,6 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.getSiradakiKod,
       bodyModel: BaseEditSiradakiKodModel(),
       showLoading: true,
-      addCKey: true,
-      addSirketBilgileri: true,
       queryParameters: {
         "SonKoduGetir": "H",
         "Kod": kod != null || kod != "" ? kod : null,

@@ -44,5 +44,5 @@ abstract class _PdfViewerViewModelBase with Store {
   }
 
   @action
-  void resetFuture() => futureController = ObservableFuture(Future.value(null));
+  void resetFuture() => futureController = ObservableFuture(Future.value());
 }

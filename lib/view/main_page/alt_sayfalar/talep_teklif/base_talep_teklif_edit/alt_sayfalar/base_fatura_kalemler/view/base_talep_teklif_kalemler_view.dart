@@ -162,7 +162,6 @@ class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifKalemle
           ],
         ),
         subtitle: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel.dovizliMi),

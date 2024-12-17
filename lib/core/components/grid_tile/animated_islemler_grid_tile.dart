@@ -36,8 +36,6 @@ class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> 
           child: GridTile(
             footer: (widget.item?.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : null,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 if (widget.item?.iconData == null)
                   IconHelper.middleMenuIcon(widget.item?.icon ?? "", color: widget.item?.color ?? UIHelper.primaryColor).marginOnly(bottom: UIHelper.lowSize)

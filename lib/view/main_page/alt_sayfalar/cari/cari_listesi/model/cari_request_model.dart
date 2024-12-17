@@ -13,7 +13,6 @@ part "cari_request_model.g.dart";
 class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
 
   factory CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => CariRequestModel(
-        filterText: "",
         kod: [model.cariKodu ?? ""],
         sayfa: 1,
         eFaturaGoster: true,
@@ -22,7 +21,6 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
       );
 
   factory CariRequestModel.fromCariListesiModel(CariListesiModel model) => CariRequestModel(
-        filterText: "",
         kod: [model.cariKodu ?? ""],
         // sayfa: 1,
         eFaturaGoster: true,
@@ -31,7 +29,6 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
       );
 
   factory CariRequestModel.fromTahsilatRequestModel(TahsilatRequestModel model) => CariRequestModel(
-        filterText: "",
         kod: [model.hesapKodu ?? ""],
         // sayfa: 1,
         eFaturaGoster: true,
@@ -40,7 +37,6 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
       );
 
   factory CariRequestModel.fromSaveCekSenetModel(SaveCekSenetModel model) => CariRequestModel(
-        filterText: "",
         kod: [model.cariKodu ?? ""],
         // sayfa: 1,
         eFaturaGoster: true,

@@ -17,7 +17,7 @@ class SayimGirisiViewModel = _SayimGirisiViewModelBase with _$SayimGirisiViewMod
 
 abstract class _SayimGirisiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  SayimFiltreModel filtreModel = SingletonModels.sayimListesi?.filtre ?? SayimFiltreModel(islemKodu: 1, belgeNo: SingletonModels.sayimListesi?.fisno, miktar: 1);
+  SayimFiltreModel filtreModel = SingletonModels.sayimListesi?.filtre ?? SayimFiltreModel(islemKodu: 1, belgeNo: SingletonModels.sayimListesi?.fisno);
 
   @observable
   StokListesiModel? stokModel = SingletonModels.sayimListesi?.stokModel;

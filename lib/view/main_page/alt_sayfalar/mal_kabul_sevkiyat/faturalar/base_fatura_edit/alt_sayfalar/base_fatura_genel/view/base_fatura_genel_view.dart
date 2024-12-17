@@ -246,7 +246,6 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     final result = await Get.toNamed(
                       "mainPage/cariRehberi",
                       arguments: CariListesiRequestModel(
-                        menuKodu: "CARI_CREH",
                         belgeTuru: model.getEditTipiEnum?.rawValue,
                       ),
                     );
@@ -292,7 +291,6 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               "mainPage/cariRehberi",
                               arguments: CariListesiRequestModel(
                                 bagliCariKodu: model.cariKodu,
-                                menuKodu: "CARI_CREH",
                                 teslimCari: "E",
                                 belgeTuru: widget.model.editTipiEnum?.rawValue,
                               ),
@@ -335,7 +333,6 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               "mainPage/cariRehberi",
                               arguments: CariListesiRequestModel(
                                 bagliCariKodu: model.cariKodu,
-                                menuKodu: "CARI_CREH",
                                 teslimCari: "E",
                                 belgeTuru: widget.model.editTipiEnum?.rawValue,
                               ),

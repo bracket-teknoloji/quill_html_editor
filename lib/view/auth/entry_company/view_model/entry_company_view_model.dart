@@ -65,7 +65,7 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<bool> getData() async {
-    final response = await networkManager.dioGet<CompanyModel>(path: ApiUrls.veriTabanlari, bodyModel: CompanyModel(), showError: true);
+    final response = await networkManager.dioGet<CompanyModel>(path: ApiUrls.veriTabanlari, bodyModel: CompanyModel());
     if (response.isSuccess) {
       setSirket(response.dataList);
       return true;
@@ -79,7 +79,6 @@ abstract class _EntryCompanyViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.isletmelerSubeler,
       bodyModel: IsletmeModel(),
       queryParameters: {"Veritabani": selected["Şirket"]},
-      showError: true,
     );
     if (response.isSuccess) {
       final List<IsletmeModel> isletmeModelList = response.dataList;

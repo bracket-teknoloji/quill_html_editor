@@ -265,7 +265,6 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
             title: loc.generalStrings.filter,
             body: Observer(
               builder: (_) => Column(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(

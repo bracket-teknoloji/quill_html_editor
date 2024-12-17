@@ -124,7 +124,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   AppBar appBar() => AppBar(
-        primary: true,
         // controller: scrollController,
         leading: IconButton(
           onPressed: () {
@@ -715,7 +714,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
           onTap: () => stokOnTap(item),
           child: GridTile(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -734,7 +732,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                   child: SingleChildScrollView(
                     primary: false,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -826,7 +823,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
             ),
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text.rich(
                   TextSpan(

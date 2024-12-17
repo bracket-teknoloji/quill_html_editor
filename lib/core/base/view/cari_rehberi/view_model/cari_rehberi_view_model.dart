@@ -63,8 +63,6 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   @observable
   CariListesiRequestModel? cariListesiRequestModel = CariListesiRequestModel(
     eFaturaGoster: true,
-    sayfa: 1,
-    siralama: "AZ",
   );
   @override
   @action

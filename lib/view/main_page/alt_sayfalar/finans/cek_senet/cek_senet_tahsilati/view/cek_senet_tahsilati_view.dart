@@ -219,7 +219,6 @@ class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
                             subtitle: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text("Asıl/Ciro: ${item.ciroTipi == "C" ? "Ciro" : "Asıl"}"),
                                 Text(item.cekBanka ?? "").yetkiVarMi(item.cekBanka != null),

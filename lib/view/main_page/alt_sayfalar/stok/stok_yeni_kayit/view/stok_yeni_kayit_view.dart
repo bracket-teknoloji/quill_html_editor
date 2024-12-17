@@ -56,8 +56,6 @@ class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
                       path: ApiUrls.saveStokHareket,
                       bodyModel: StokYeniKayitModel(),
-                      addCKey: true,
-                      addSirketBilgileri: true,
                       data: viewModel.model.toJson(),
                     );
                     dialogManager.hideAlertDialog;

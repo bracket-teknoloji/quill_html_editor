@@ -23,7 +23,6 @@ class _BaseStokEditFiyatListesiViewState extends State<BaseStokEditFiyatListesiV
           itemCount: model.fiyatList?.length,
           itemBuilder: (context, index) => Card(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Visibility(

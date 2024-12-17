@@ -56,7 +56,7 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
   String? searchText;
 
   @observable
-  SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(sayfa: 1, faturalasmaGoster: true, miktarGetir: "E", ekranTipi: "L", iadeMi: false, cariKodu: "", siralama: "TARIH_ZA");
+  SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(sayfa: 1, faturalasmaGoster: true, miktarGetir: "E", ekranTipi: "L", iadeMi: false, siralama: "TARIH_ZA");
 
   @override
   @observable

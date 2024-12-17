@@ -92,7 +92,6 @@ class DialogManager {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(bottom: UIHelper.midSize),
@@ -552,7 +551,6 @@ class DialogManager {
     Widget? body,
   }) =>
       AwesomeDialog(
-        keyboardAware: true,
         //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
         bodyHeaderDistance: dialogType != DialogType.noHeader ? UIHelper.highSize : UIHelper.lowSize,
         enableEnterKey: true,
@@ -568,12 +566,9 @@ class DialogManager {
                     : MediaQuery.sizeOf(context).width * 0.8
                 : null,
         customHeader: customHeader,
-        alignment: Alignment.center,
         onDismissCallback: (type) {},
-        reverseBtnOrder: false,
         barrierColor: Colors.black.withOpacity(0.6),
         dialogBorderRadius: UIHelper.highBorderRadius,
-        useRootNavigator: false,
         headerAnimationLoop: false,
         padding: UIHelper.midPaddingVertical,
         buttonsBorderRadius: UIHelper.midBorderRadius,

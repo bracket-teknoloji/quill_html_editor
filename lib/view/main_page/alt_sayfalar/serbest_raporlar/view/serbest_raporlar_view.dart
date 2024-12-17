@@ -172,7 +172,7 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
                         }
                       },
                 onChanged: (value) {
-                  viewModel.changeDicParams(e.adi ?? "", value, changeController: true);
+                  viewModel.changeDicParams(e.adi ?? "", value);
                 },
               );
             }

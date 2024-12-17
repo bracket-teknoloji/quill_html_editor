@@ -103,7 +103,6 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
           belgeTuru: model.belgeTuru,
           eFaturaGoster: true,
           plasiyerKisitiYok: true,
-          filterText: "",
         ),
       );
 

@@ -462,7 +462,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
       );
 
   Future<List<UlkeModel>?> getUlkeData() async {
-    final response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel(), addCKey: true, addSirketBilgileri: true, addTokenKey: true);
+    final response = await networkManager.dioGet<UlkeModel>(path: ApiUrls.getUlkeler, bodyModel: UlkeModel());
     if (response.isSuccess) return response.dataList;
     return null;
   }

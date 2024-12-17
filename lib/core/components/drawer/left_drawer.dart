@@ -37,7 +37,6 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                 ),
               ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Flexible(

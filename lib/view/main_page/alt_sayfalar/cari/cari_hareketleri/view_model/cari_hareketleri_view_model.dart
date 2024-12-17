@@ -146,7 +146,6 @@ abstract class _CariHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
       path: ApiUrls.getCariHareketleri,
       bodyModel: CariHareketleriModel(),
       queryParameters: CariHareketleriRequestModel(siralama: siralama, ekranTipi: "L", cariKodu: cariListesiModel?.cariKodu).toJson(),
-      addSirketBilgileri: true,
     );
     if (result.isSuccess) {
       setObservableList(result.dataList);

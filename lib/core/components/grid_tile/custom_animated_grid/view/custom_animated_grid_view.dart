@@ -66,7 +66,6 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
   @override
   Widget build(BuildContext context) => Column(
         mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Row(

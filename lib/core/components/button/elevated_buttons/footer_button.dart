@@ -17,7 +17,6 @@ class FooterButton extends StatelessWidget {
         onPressed: onPressed,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: children,
         ),
       );

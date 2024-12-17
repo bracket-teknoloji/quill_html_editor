@@ -82,7 +82,7 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   String? searchText = "";
 
   @observable
-  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T", siralama: "AZ");
+  StokBottomSheetModel bottomSheetModel = StokBottomSheetModel(bakiyeDurumu: "T");
 
   @observable
   StokBottomSheetModel bottomSheetModelTemp = StokBottomSheetModel(bakiyeDurumu: "T");

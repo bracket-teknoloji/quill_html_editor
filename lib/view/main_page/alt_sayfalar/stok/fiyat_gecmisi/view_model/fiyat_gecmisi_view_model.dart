@@ -23,7 +23,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
   ObservableList<FiyatGecmisiResponseModel?>? filteredModelList;
 
   @observable
-  PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket", yazdir: true);
+  PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket");
 
   @action
   void setDizaynId(int? value) => printModel = printModel.copyWith(dizaynId: value);

@@ -162,7 +162,6 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
           ],
         ),
         subtitle: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(

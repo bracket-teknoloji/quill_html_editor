@@ -39,7 +39,6 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
   Widget build(BuildContext context) {
     final slidableList = [
       SlidableAction(
-        autoClose: true,
         onPressed: (context) async {
           if (model.faturaMi) {
             await Get.toNamed(
@@ -88,7 +87,6 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                 Container(
                   width: UIHelper.lowSize,
                   decoration: const BoxDecoration(
-                    shape: BoxShape.rectangle,
                     color: UIHelper.primaryColor,
                   ),
                 ).yetkiVarMi(slidableList.ext.isNotNullOrEmpty && yetkiController.cariHareketleriHarDetayGorsun),
@@ -108,7 +106,6 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text("${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.alacakBorcHarf}) "),

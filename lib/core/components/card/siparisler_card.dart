@@ -230,7 +230,6 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
             ],
           ),
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -248,8 +247,6 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
               Text("Teslim Cari: ${widget.model.teslimCariAdi}").yetkiVarMi(widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi),
               LayoutBuilder(
                 builder: (context, constrains) => Wrap(
-                  // mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: WrapCrossAlignment.start,
                   children: [
                     Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
                     Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),

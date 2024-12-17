@@ -140,7 +140,6 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                   child: Observer(
                                     builder: (_) => Column(
                                       mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.stretch,
                                       children: [
                                         Text.rich(
@@ -190,7 +189,6 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                 Card(
                                   child: Observer(
                                     builder: (_) => Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.stretch,
                                       children: [
                                         Text.rich(

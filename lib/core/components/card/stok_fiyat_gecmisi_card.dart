@@ -53,7 +53,6 @@ class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
             ],
           ),
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model?.dovizAdi != null),

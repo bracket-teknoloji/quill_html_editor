@@ -25,7 +25,7 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
 
   @observable
-  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DCE", ekranTipi: "R", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DCE", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
 
   @observable
   CariListesiModel? cariModel;

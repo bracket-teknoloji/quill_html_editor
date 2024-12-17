@@ -179,7 +179,6 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                 context,
                 title: loc.generalStrings.filter,
                 body: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RaporFiltreDateTimeBottomSheetView(

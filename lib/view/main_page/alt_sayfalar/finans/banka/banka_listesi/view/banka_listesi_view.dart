@@ -234,7 +234,6 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                           final BankaListesiModel item = itemList[index];
                           return Card(
                             elevation: 0,
-                            borderOnForeground: true,
                             child: ListTile(
                               onTap: () async => widget.isGetData == true ? Get.back(result: item) : await dialogManager.showBankaGridViewDialog(item),
                               leading: CircleAvatar(

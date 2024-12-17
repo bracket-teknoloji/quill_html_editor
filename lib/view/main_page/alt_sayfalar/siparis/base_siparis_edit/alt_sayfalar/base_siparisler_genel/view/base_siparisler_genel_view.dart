@@ -93,7 +93,6 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
           child: Padding(
             padding: UIHelper.lowPaddingOnlyTop,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Card(
@@ -172,7 +171,6 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                               "mainPage/cariRehberi",
                               arguments: CariListesiRequestModel(
                                 bagliCariKodu: model.cariKodu,
-                                menuKodu: "CARI_CREH",
                                 teslimCari: "E",
                                 belgeTuru: widget.model.editTipiEnum?.rawValue,
                               ),
@@ -215,7 +213,6 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                               "mainPage/cariRehberi",
                               arguments: CariListesiRequestModel(
                                 bagliCariKodu: model.cariKodu,
-                                menuKodu: "CARI_CREH",
                                 teslimCari: "E",
                                 belgeTuru: widget.model.editTipiEnum?.rawValue,
                               ),

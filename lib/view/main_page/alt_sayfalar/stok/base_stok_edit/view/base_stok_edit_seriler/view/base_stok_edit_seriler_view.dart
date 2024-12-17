@@ -34,7 +34,6 @@ class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerView> {
   Widget body() => SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomLayoutBuilder(
@@ -104,7 +103,6 @@ class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerView> {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Icon(Icons.info_outline),
             Text("Kayıt Bulunamadı.", style: theme.textTheme.titleMedium).paddingSymmetric(vertical: UIHelper.midSize),

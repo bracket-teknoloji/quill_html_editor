@@ -235,7 +235,6 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     builder: (_) => Padding(
                       padding: UIHelper.lowPadding,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           CustomLayoutBuilder(

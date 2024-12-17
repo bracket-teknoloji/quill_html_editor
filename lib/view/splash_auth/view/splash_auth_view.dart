@@ -40,7 +40,6 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        primary: true,
         // backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         floatingActionButton: Text.rich(
@@ -97,7 +96,6 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Observer(
                     builder: (_) => viewModel.accountResponseModel?.karsilamaMesaji != null
@@ -119,7 +117,6 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Assets.appIcon.pickerLogoBeyaz.svg(height: height * 0.1),
                       const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),

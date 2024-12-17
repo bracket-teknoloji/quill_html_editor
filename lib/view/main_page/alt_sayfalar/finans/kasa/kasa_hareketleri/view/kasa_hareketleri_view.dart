@@ -104,7 +104,6 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                       padding: UIHelper.lowPadding,
                       primary: false,
                       controller: _scrollController,
-                      shrinkWrap: false,
                       physics: const BouncingScrollPhysics(
                         parent: AlwaysScrollableScrollPhysics(),
                       ),

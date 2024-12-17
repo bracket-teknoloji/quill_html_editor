@@ -171,7 +171,6 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
               CustomTextField(enabled: enable, labelText: "Belge No", controller: belgeNoController, onChanged: (value) => viewModel.model.belgeNo = value),
               CustomTextField(enabled: enable, labelText: "Açıklama", controller: aciklamaController, onChanged: (value) => viewModel.model.aciklama = value),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
@@ -212,7 +211,6 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
@@ -276,8 +274,6 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
       bodyModel: CariHareketleriModel(),
       showLoading: true,
       data: viewModel.model.toJson(),
-      addCKey: true,
-      addSirketBilgileri: true,
     );
     if (result.isSuccess) {
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
@@ -289,7 +285,7 @@ class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
 
   Future<List<BaseProjeModel>?> getProjeData() async {
     dialogManager.showLoadingDialog("Proje Listesi Getiriliyor...");
-    final result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel(), addCKey: true, addSirketBilgileri: true);
+    final result = await networkManager.dioGet<BaseProjeModel>(path: ApiUrls.getProjeler, bodyModel: BaseProjeModel());
 
     dialogManager.hideAlertDialog;
     if (result.isSuccess) {

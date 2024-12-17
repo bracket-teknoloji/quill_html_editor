@@ -32,7 +32,6 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
         color: (model.bittar != null) ? ColorPalette.mantisWithOpacity : null,
         child: ListTile(
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(

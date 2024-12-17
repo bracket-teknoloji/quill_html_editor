@@ -56,7 +56,7 @@ extension WidgetExtension on Widget {
 
     final RenderView renderView = RenderView(
       view: view,
-      child: RenderPositionedBox(alignment: Alignment.center, child: repaintBoundary),
+      child: RenderPositionedBox(child: repaintBoundary),
       configuration: ViewConfiguration(
         physicalConstraints: BoxConstraints.tight(logicalSize) * view.devicePixelRatio,
         logicalConstraints: BoxConstraints.tight(logicalSize),

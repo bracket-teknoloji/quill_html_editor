@@ -86,7 +86,6 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
                       ),
                     ),
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(Icons.info_outline_rounded, color: theme.colorScheme.primary),
                         Expanded(
