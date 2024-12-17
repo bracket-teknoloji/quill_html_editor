@@ -24,9 +24,9 @@ import "../model/save_cek_senet_model.dart";
 import "../view_model/cek_senet_tahsilati_view_model.dart";
 
 class CekSenetTahsilatiView extends StatefulWidget {
+  const CekSenetTahsilatiView({super.key, required this.cekSenetListesiEnum, this.cariListesiModel});
   final CekSenetListesiEnum cekSenetListesiEnum;
   final CariListesiModel? cariListesiModel;
-  const CekSenetTahsilatiView({super.key, required this.cekSenetListesiEnum, this.cariListesiModel});
 
   @override
   State<CekSenetTahsilatiView> createState() => _CekSenetTahsilatiViewState();

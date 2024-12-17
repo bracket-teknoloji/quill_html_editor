@@ -15,8 +15,8 @@ import "../model/belge_rehberi_request_model.dart";
 import "../view_model/belge_rehberi_view_model.dart";
 
 final class BelgeRehberiView extends StatefulWidget {
-  final HucreTransferiModel model;
   const BelgeRehberiView({super.key, required this.model});
+  final HucreTransferiModel model;
 
   @override
   State<BelgeRehberiView> createState() => _BelgeRehberiViewState();

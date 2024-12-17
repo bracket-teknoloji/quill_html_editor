@@ -15,8 +15,8 @@ import "../../../state/base_state.dart";
 import "../view_model/genel_pdf_view_model.dart";
 
 class GenelPdfView extends StatefulWidget {
-  final BasePdfModel? model;
   const GenelPdfView({super.key, this.model});
+  final BasePdfModel? model;
 
   @override
   State<GenelPdfView> createState() => _GenelPdfViewState();

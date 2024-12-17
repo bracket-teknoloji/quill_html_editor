@@ -15,9 +15,9 @@ import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_dovizli_ekstre_view_model.dart";
 
 class CariDovizliEkstreView extends StatefulWidget {
-  final CariListesiModel? model;
 
   const CariDovizliEkstreView({super.key, this.model});
+  final CariListesiModel? model;
 
   @override
   State<CariDovizliEkstreView> createState() => _CariDovizliEkstreViewState();

@@ -21,8 +21,8 @@ import "../../banka_listesi/model/banka_listesi_model.dart";
 import "../view_model/cari_havale_eft_view_model.dart";
 
 final class CariHavaleEftView extends StatefulWidget {
-  final CariListesiModel? cariListesiModel;
   const CariHavaleEftView({super.key, this.cariListesiModel});
+  final CariListesiModel? cariListesiModel;
 
   @override
   State<CariHavaleEftView> createState() => _CariHavaleEftViewState();

@@ -31,8 +31,8 @@ class LocaleBase {
 }
 
 class LocalerightDrawer {
-  late final Map<String, String> _data;
   LocalerightDrawer(this._data);
+  late final Map<String, String> _data;
 
   String getByKey(String key) => _data[key]!;
 
@@ -50,8 +50,8 @@ class LocalerightDrawer {
 }
 
 class LocaleserviceOperations {
-  late final Map<String, String> _data;
   LocaleserviceOperations(this._data);
+  late final Map<String, String> _data;
 
   String getByKey(String key) => _data[key]!;
 
@@ -73,8 +73,8 @@ class LocaleserviceOperations {
 }
 
 class LocalegeneralStrings {
-  late final Map<String, String> _data;
   LocalegeneralStrings(this._data);
+  late final Map<String, String> _data;
 
   String getByKey(String key) => _data[key]!;
 

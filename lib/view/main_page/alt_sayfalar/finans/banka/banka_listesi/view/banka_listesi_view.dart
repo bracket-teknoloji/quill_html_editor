@@ -27,9 +27,9 @@ import "../model/banka_listesi_request_model.dart";
 import "../view_model/banka_listesi_view_model.dart";
 
 class BankaListesiView extends StatefulWidget {
+  const BankaListesiView({super.key, this.isGetData, this.requestModel});
   final bool? isGetData;
   final BankaListesiRequestModel? requestModel;
-  const BankaListesiView({super.key, this.isGetData, this.requestModel});
 
   @override
   State<BankaListesiView> createState() => _BankaListesiViewState();

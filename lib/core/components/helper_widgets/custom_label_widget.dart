@@ -5,6 +5,7 @@ import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class CustomWidgetWithLabel extends StatelessWidget {
+  const CustomWidgetWithLabel({super.key, this.text, required this.child, this.isVertical, this.isTitleSmall, this.isMust, this.width, this.addPadding = true});
   final String? text;
   final Widget child;
   final bool? isVertical;
@@ -12,7 +13,6 @@ class CustomWidgetWithLabel extends StatelessWidget {
   final bool? isMust;
   final double? width;
   final bool addPadding;
-  const CustomWidgetWithLabel({super.key, this.text, required this.child, this.isVertical, this.isTitleSmall, this.isMust, this.width, this.addPadding = true});
 
   @override
   Widget build(BuildContext context) => SizedBox(

@@ -42,10 +42,10 @@ import "../alt_sayfalar/base_fatura_toplamlar/view/base_fatura_toplamlar_view.da
 import "../view_model/base_fatura_edit_view_model.dart";
 
 class BaseFaturaEditView extends StatefulWidget {
+  const BaseFaturaEditView({super.key, this.isSubTitleSmall, required this.model});
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
   final BaseEditModel model;
-  const BaseFaturaEditView({super.key, this.isSubTitleSmall, required this.model});
 
   @override
   State<BaseFaturaEditView> createState() => _BaseFaturaEditViewState();

@@ -26,15 +26,15 @@ import "../model/serbest_rapor_response_model.dart";
 import "../view_model/serbest_raporlar_view_model.dart";
 
 class SerbestRaporlarView extends StatefulWidget {
-  final NetFectDizaynList? dizaynList;
-  final CariListesiModel? cariListesiModel;
-  final StokListesiModel? stokListesiModel;
   const SerbestRaporlarView({
     super.key,
     this.dizaynList,
     this.cariListesiModel,
     this.stokListesiModel,
   });
+  final NetFectDizaynList? dizaynList;
+  final CariListesiModel? cariListesiModel;
+  final StokListesiModel? stokListesiModel;
 
   @override
   State<SerbestRaporlarView> createState() => _SerbestRaporlarViewState();

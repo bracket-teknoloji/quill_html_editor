@@ -6,6 +6,10 @@ part "kalem_list_model.g.dart";
 
 @JsonSerializable(includeIfNull: true, createFactory: true)
 class KalemListModel with NetworkManagerMixin {
+
+  KalemListModel();
+
+  factory KalemListModel.fromJson(Map<String, dynamic> json) => _$KalemListModelFromJson(json);
   List<dynamic>? tempBarkodList;
   int? sira;
   String? belgeNo;
@@ -36,10 +40,6 @@ class KalemListModel with NetworkManagerMixin {
   double? stokBakiye;
   String? kosulKodu;
   double? stokBirimAgirlik;
-
-  KalemListModel();
-
-  factory KalemListModel.fromJson(Map<String, dynamic> json) => _$KalemListModelFromJson(json);
 
   @override
   KalemListModel fromJson(Map<String, dynamic> json) => KalemListModel.fromJson(json);

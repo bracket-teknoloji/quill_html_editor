@@ -74,6 +74,33 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
 
 @unfreezed
 class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
+
+  factory DekontKalemler.fromDekontDuzenleModel(DekontDuzenleRequestModel model) => DekontKalemler(
+        aciklama: model.aciklama,
+        ba: model.ba,
+        dovizTipi: model.dovizTipi,
+        dovizTutari: model.dovizTutari,
+        exportTipi: model.exportTipi != 0 ? model.exportTipi : null,
+        hesapKodu: model.hesapKodu,
+        hesapTipi: model.hesapTipi,
+        plasiyerKodu: model.plasiyerKodu,
+        tarih: model.tarih,
+        kalemAdi: model.hesapAdi,
+        tutar: model.tutar,
+        depoKodu: model.depoKodu,
+        inckeyno: model.inckeyno,
+        seriNo: model.seriNo,
+        dekontNo: model.dekontNo,
+        siraNo: model.siraNo,
+        hesapTipiAciklama: model.hesapTipiAciklama,
+        hesapAdi: model.hesapAdi,
+        dovizAdi: model.dovizAdi,
+        plasiyerAciklama: model.plasiyerAciklama,
+        muhasebeHesapTipi: model.muhasebeHesapTipi,
+        belgeNo: model.belgeNo,
+        plasiyerAdi: model.plasiyerAciklama,
+        dovizTipiAdi: model.dovizAdi,
+      );
   DekontKalemler._();
   factory DekontKalemler({
     String? aciklama,
@@ -122,33 +149,6 @@ class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
 
   @override
   DekontKalemler fromJson(Map<String, dynamic> json) => _$DekontKalemlerFromJson(json);
-
-  factory DekontKalemler.fromDekontDuzenleModel(DekontDuzenleRequestModel model) => DekontKalemler(
-        aciklama: model.aciklama,
-        ba: model.ba,
-        dovizTipi: model.dovizTipi,
-        dovizTutari: model.dovizTutari,
-        exportTipi: model.exportTipi != 0 ? model.exportTipi : null,
-        hesapKodu: model.hesapKodu,
-        hesapTipi: model.hesapTipi,
-        plasiyerKodu: model.plasiyerKodu,
-        tarih: model.tarih,
-        kalemAdi: model.hesapAdi,
-        tutar: model.tutar,
-        depoKodu: model.depoKodu,
-        inckeyno: model.inckeyno,
-        seriNo: model.seriNo,
-        dekontNo: model.dekontNo,
-        siraNo: model.siraNo,
-        hesapTipiAciklama: model.hesapTipiAciklama,
-        hesapAdi: model.hesapAdi,
-        dovizAdi: model.dovizAdi,
-        plasiyerAciklama: model.plasiyerAciklama,
-        muhasebeHesapTipi: model.muhasebeHesapTipi,
-        belgeNo: model.belgeNo,
-        plasiyerAdi: model.plasiyerAciklama,
-        dovizTipiAdi: model.dovizAdi,
-      );
 }
 
 extension TahsilatRequestExtensions on TahsilatRequestModel {

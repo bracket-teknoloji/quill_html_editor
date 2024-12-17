@@ -1,18 +1,6 @@
 import "base_network_mixin.dart";
 
 class GenericResponseModel<T extends NetworkManagerMixin> {
-  String? message;
-  String? messageDetail;
-  bool? _success;
-  dynamic _data;
-  T? model;
-  String? exceptionName;
-  String? errorDetails;
-  String? exceptionStackTrace;
-  Map<String, dynamic>? paramData;
-  String? serviceVersion;
-  int? errorCode;
-  Map<String, dynamic>? ex;
   GenericResponseModel({
     this.message,
     this.messageDetail,
@@ -46,6 +34,18 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
       _data = json["Data"];
     }
   }
+  String? message;
+  String? messageDetail;
+  bool? _success;
+  dynamic _data;
+  T? model;
+  String? exceptionName;
+  String? errorDetails;
+  String? exceptionStackTrace;
+  Map<String, dynamic>? paramData;
+  String? serviceVersion;
+  int? errorCode;
+  Map<String, dynamic>? ex;
 
   bool get isSuccess => _success == true;
 

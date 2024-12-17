@@ -22,9 +22,9 @@ import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_o
 import "package:picker/view/main_page/model/param_model.dart";
 
 class NakitOdemeView extends StatefulWidget {
+  const NakitOdemeView({super.key, this.tahsilatMi, this.cariListesiModel});
   final bool? tahsilatMi;
   final CariListesiModel? cariListesiModel;
-  const NakitOdemeView({super.key, this.tahsilatMi, this.cariListesiModel});
 
   @override
   State<NakitOdemeView> createState() => _NakitOdemeViewState();

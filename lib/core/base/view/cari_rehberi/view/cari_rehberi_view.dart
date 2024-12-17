@@ -24,9 +24,9 @@ import "../../../state/base_state.dart";
 import "../view_model/cari_rehberi_view_model.dart";
 
 final class CariRehberiView extends StatefulWidget {
-  final CariListesiRequestModel cariRequestModel;
 
   const CariRehberiView({super.key, required this.cariRequestModel});
+  final CariListesiRequestModel cariRequestModel;
 
   @override
   State<CariRehberiView> createState() => _CariRehberiViewState();

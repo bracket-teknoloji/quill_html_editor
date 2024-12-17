@@ -8,8 +8,8 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../layout/custom_layout_builder.dart";
 
 class HucreAraCard extends StatefulWidget {
-  final HucreTakibiStoklarModel model;
   const HucreAraCard({super.key, required this.model});
+  final HucreTakibiStoklarModel model;
 
   @override
   State<HucreAraCard> createState() => _HucreAraCardState();

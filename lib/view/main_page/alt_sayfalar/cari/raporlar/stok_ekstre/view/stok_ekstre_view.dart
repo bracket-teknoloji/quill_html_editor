@@ -11,9 +11,9 @@ import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/stok_ekstre_view_model.dart";
 
 class StokEkstreView extends StatefulWidget {
-  final CariListesiModel? model;
 
   const StokEkstreView({super.key, this.model});
+  final CariListesiModel? model;
 
   @override
   State<StokEkstreView> createState() => _StokEkstreViewState();

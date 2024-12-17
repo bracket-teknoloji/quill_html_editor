@@ -15,6 +15,112 @@ typedef OlcuBirimiRecord = ({String? adi, int? kodu});
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
 class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
+
+  StokListesiModel({
+    this.seriBakiyeKontrolu,
+    this.seriCikislardaAcik,
+    this.seriCikistaOtomatikMi,
+    this.seriGirislerdeAcik,
+    this.seriGiristeOtomatikMi,
+    this.seriMiktarKadarSor,
+    this.duzeltmetarihi,
+    this.alisFiat1,
+    this.alisFiat2,
+    this.alisFiat3,
+    this.alisFiat4,
+    this.alisKdv,
+    this.bakiye,
+    this.birimAgirlik,
+    this.dovAlisFiat,
+    this.dovSatisFiat,
+    this.olcuBirimi2Pay,
+    this.olcuBirimi2Payda,
+    this.olcuBirimi3Pay,
+    this.olcuBirimi3Payda,
+    this.satisFiat1,
+    this.satisFiat2,
+    this.satisFiat3,
+    this.satisFiat4,
+    this.satisKdv,
+    this.alisDovTip,
+    this.bulunanFiyat,
+    this.depoKodu,
+    this.fiatBirimi,
+    this.muhdetayKodu,
+    this.satDovTip,
+    this.subeKodu,
+    this.stokFiyatList,
+    this.stokList,
+    this.alisDovizAdi,
+    this.barkod1,
+    this.barkod2,
+    this.barkod3,
+    this.duzeltmeyapankul,
+    this.grupKodu,
+    this.grupTanimi,
+    this.kayittarihi,
+    this.kayityapankul,
+    this.kilitAlis,
+    this.kilitGenel,
+    this.kilitMussip,
+    this.kilitSaticisip,
+    this.kilitSatis,
+    this.kod1,
+    this.kod1Tanimi,
+    this.kod2,
+    this.kod2Tanimi,
+    this.kod3,
+    this.kod3Tanimi,
+    this.kod4,
+    this.kod4Tanimi,
+    this.kod5,
+    this.kod5Tanimi,
+    this.muhdetayAdi,
+    this.olcuBirimi,
+    this.olcuBirimi2,
+    this.olcuBirimi3,
+    this.paketMi,
+    this.resimBase64,
+    this.resimUrl,
+    this.resimUrlKucuk,
+    this.satisDovizAdi,
+    this.stokAdi,
+    this.stokKodu,
+    this.ureticiKodu,
+    this.yapilandirmaAktif,
+    this.yapkod,
+    this.yapkodAciklama,
+    this.idx,
+    this.alisKuru,
+    this.alisKurTarihi,
+    this.satisKuru,
+    this.satisKurTarihi,
+    this.bulunanDovizFiyati,
+    this.bulunanDovizTipi = 0,
+  });
+
+  factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
+
+  factory StokListesiModel.fromKalemModel(KalemModel model) => StokListesiModel()
+    ..stokKodu = model.stokKodu
+    ..stokAdi = model.stokAdi
+    ..paketMi = model.paketMi
+    ..alisKdv = model.kdvOrani
+    ..satisKdv = model.kdvOrani
+    ..alisDovTip = model.dovizTipi ?? 0
+    ..satDovTip = model.dovizTipi ?? 0
+    ..alisDovizAdi = model.dovizAdi
+    ..satisDovizAdi = model.dovizAdi
+    ..alisFiat1 = model.brutFiyat
+    ..satisFiat1 = model.brutFiyat
+    ..seriCikislardaAcik = model.seriCikislardaAcik
+    ..seriGirislerdeAcik = model.seriGirislerdeAcik
+    ..seriMiktarKadarSor = model.seriMiktarKadarSor
+    ..dovAlisFiat = model.dovizliFiyat
+    ..dovSatisFiat = model.dovizliFiyat
+    ..satisDovizAdi = model.dovizAdi
+    ..alisDovizAdi = model.dovizAdi
+    ..depoKodu = model.depoKodu;
   StokListesiModel._init();
   @override
   String? stokAdi;
@@ -131,117 +237,11 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
   static StokListesiModel? _instance;
 
-  StokListesiModel({
-    this.seriBakiyeKontrolu,
-    this.seriCikislardaAcik,
-    this.seriCikistaOtomatikMi,
-    this.seriGirislerdeAcik,
-    this.seriGiristeOtomatikMi,
-    this.seriMiktarKadarSor,
-    this.duzeltmetarihi,
-    this.alisFiat1,
-    this.alisFiat2,
-    this.alisFiat3,
-    this.alisFiat4,
-    this.alisKdv,
-    this.bakiye,
-    this.birimAgirlik,
-    this.dovAlisFiat,
-    this.dovSatisFiat,
-    this.olcuBirimi2Pay,
-    this.olcuBirimi2Payda,
-    this.olcuBirimi3Pay,
-    this.olcuBirimi3Payda,
-    this.satisFiat1,
-    this.satisFiat2,
-    this.satisFiat3,
-    this.satisFiat4,
-    this.satisKdv,
-    this.alisDovTip,
-    this.bulunanFiyat,
-    this.depoKodu,
-    this.fiatBirimi,
-    this.muhdetayKodu,
-    this.satDovTip,
-    this.subeKodu,
-    this.stokFiyatList,
-    this.stokList,
-    this.alisDovizAdi,
-    this.barkod1,
-    this.barkod2,
-    this.barkod3,
-    this.duzeltmeyapankul,
-    this.grupKodu,
-    this.grupTanimi,
-    this.kayittarihi,
-    this.kayityapankul,
-    this.kilitAlis,
-    this.kilitGenel,
-    this.kilitMussip,
-    this.kilitSaticisip,
-    this.kilitSatis,
-    this.kod1,
-    this.kod1Tanimi,
-    this.kod2,
-    this.kod2Tanimi,
-    this.kod3,
-    this.kod3Tanimi,
-    this.kod4,
-    this.kod4Tanimi,
-    this.kod5,
-    this.kod5Tanimi,
-    this.muhdetayAdi,
-    this.olcuBirimi,
-    this.olcuBirimi2,
-    this.olcuBirimi3,
-    this.paketMi,
-    this.resimBase64,
-    this.resimUrl,
-    this.resimUrlKucuk,
-    this.satisDovizAdi,
-    this.stokAdi,
-    this.stokKodu,
-    this.ureticiKodu,
-    this.yapilandirmaAktif,
-    this.yapkod,
-    this.yapkodAciklama,
-    this.idx,
-    this.alisKuru,
-    this.alisKurTarihi,
-    this.satisKuru,
-    this.satisKurTarihi,
-    this.bulunanDovizFiyati,
-    this.bulunanDovizTipi = 0,
-  });
-
   @override
   StokListesiModel fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
 
-  factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
-
   @override
   Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);
-
-  factory StokListesiModel.fromKalemModel(KalemModel model) => StokListesiModel()
-    ..stokKodu = model.stokKodu
-    ..stokAdi = model.stokAdi
-    ..paketMi = model.paketMi
-    ..alisKdv = model.kdvOrani
-    ..satisKdv = model.kdvOrani
-    ..alisDovTip = model.dovizTipi ?? 0
-    ..satDovTip = model.dovizTipi ?? 0
-    ..alisDovizAdi = model.dovizAdi
-    ..satisDovizAdi = model.dovizAdi
-    ..alisFiat1 = model.brutFiyat
-    ..satisFiat1 = model.brutFiyat
-    ..seriCikislardaAcik = model.seriCikislardaAcik
-    ..seriGirislerdeAcik = model.seriGirislerdeAcik
-    ..seriMiktarKadarSor = model.seriMiktarKadarSor
-    ..dovAlisFiat = model.dovizliFiyat
-    ..dovSatisFiat = model.dovizliFiyat
-    ..satisDovizAdi = model.dovizAdi
-    ..alisDovizAdi = model.dovizAdi
-    ..depoKodu = model.depoKodu;
 
   static StokListesiModel get instance {
     _instance ??= StokListesiModel._init()..stokList = [];
@@ -467,10 +467,6 @@ class StokList with BaseStokMixin {
 
 @JsonSerializable()
 class DepoBakiyeListe {
-  int? depoKodu;
-  double? giris;
-  double? cikis;
-  double? bakiye;
 
   DepoBakiyeListe({
     this.depoKodu,
@@ -480,15 +476,16 @@ class DepoBakiyeListe {
   });
 
   factory DepoBakiyeListe.fromJson(Map<String, dynamic> json) => _$DepoBakiyeListeFromJson(json);
+  int? depoKodu;
+  double? giris;
+  double? cikis;
+  double? bakiye;
 
   Map<String, dynamic> toJson() => _$DepoBakiyeListeToJson(this);
 }
 
 @JsonSerializable()
 class OtvAralikModel {
-  double alt;
-  double ust;
-  double oran;
 
   OtvAralikModel(
     this.alt,
@@ -497,6 +494,9 @@ class OtvAralikModel {
   );
 
   factory OtvAralikModel.fromJson(Map<String, dynamic> json) => _$OtvAralikModelFromJson(json);
+  double alt;
+  double ust;
+  double oran;
 
   Map<String, dynamic> toJson() => _$OtvAralikModelToJson(this);
 }

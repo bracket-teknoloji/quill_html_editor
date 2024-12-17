@@ -16,8 +16,8 @@ import "../../../wrap/appbar_title.dart";
 import "../view_model/image_picker_view_model.dart";
 
 final class ImagePickerView extends StatefulWidget {
-  final EvraklarRequestModel requestModel;
   const ImagePickerView({super.key, required this.requestModel});
+  final EvraklarRequestModel requestModel;
 
   @override
   State<ImagePickerView> createState() => _ImagePickerViewState();

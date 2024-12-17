@@ -20,8 +20,8 @@ import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_toplamlar_view_model.dart";
 
 class BaseSiparisToplamlarView extends StatefulWidget {
-  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseSiparisToplamlarView({super.key, required this.model});
+  final BaseEditModel<SiparisEditRequestModel> model;
 
   @override
   State<BaseSiparisToplamlarView> createState() => _BaseSiparisToplamlarViewState();

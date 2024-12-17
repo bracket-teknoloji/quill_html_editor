@@ -27,8 +27,8 @@ import "../model/ulke_model.dart";
 import "../view_model/base_cari_genel_edit_view_model.dart";
 
 class BaseEditCariGenelView extends StatefulWidget {
-  final BaseEditModel? model;
   const BaseEditCariGenelView({super.key, this.model});
+  final BaseEditModel? model;
 
   @override
   State<BaseEditCariGenelView> createState() => BaseEditCariGenelViewState();

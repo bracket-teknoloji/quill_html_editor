@@ -1,6 +1,7 @@
 import "package:package_info_plus/package_info_plus.dart";
 
 class AppInfoModel {
+  AppInfoModel._init();
   String? appName;
   String? packageName;
   String? version;
@@ -9,7 +10,6 @@ class AppInfoModel {
   //singleton
   static final AppInfoModel _instance = AppInfoModel._init();
   static AppInfoModel get instance => _instance;
-  AppInfoModel._init();
 
   Future<void> init() async {
     final packageInfo = await PackageInfo.fromPlatform();

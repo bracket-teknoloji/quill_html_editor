@@ -18,9 +18,9 @@ import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/doviz_bakiye_raporu_view_model.dart";
 
 class DovizBakiyeRaporuView extends StatefulWidget {
-  final CariListesiModel? model;
 
   const DovizBakiyeRaporuView({super.key, this.model});
+  final CariListesiModel? model;
 
   @override
   State<DovizBakiyeRaporuView> createState() => _DovizBakiyeRaporuViewState();

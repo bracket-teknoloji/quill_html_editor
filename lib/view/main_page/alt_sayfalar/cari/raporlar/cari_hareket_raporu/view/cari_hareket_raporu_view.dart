@@ -18,9 +18,9 @@ import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_hareket_raporu_view_model.dart";
 
 class CariHareketRaporuView extends StatefulWidget {
-  final CariListesiModel? model;
 
   const CariHareketRaporuView({super.key, this.model});
+  final CariListesiModel? model;
 
   @override
   State<CariHareketRaporuView> createState() => _CariHareketRaporuViewState();

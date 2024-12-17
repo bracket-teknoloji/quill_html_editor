@@ -22,9 +22,9 @@ import "../../../model/dekont_islemler_request_model.dart";
 import "../view_model/dekont_kalem_ekle_view_model.dart";
 
 class DekontKalemEkleView extends StatefulWidget {
+  const DekontKalemEkleView({super.key, this.model, required this.baseEditEnum});
   final DekontKalemler? model;
   final BaseEditEnum baseEditEnum;
-  const DekontKalemEkleView({super.key, this.model, required this.baseEditEnum});
 
   @override
   State<DekontKalemEkleView> createState() => _DekontKalemEkleViewState();

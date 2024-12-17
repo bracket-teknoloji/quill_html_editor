@@ -28,6 +28,8 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../layout/custom_layout_builder.dart";
 
 class FaturalarCard extends StatefulWidget {
+
+  const FaturalarCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, required this.editTipiEnum, this.onDeleted, this.index, this.isGetData});
   final BaseSiparisEditModel model;
   final ValueChanged<bool>? onUpdated;
   final bool? showMiktar;
@@ -37,8 +39,6 @@ class FaturalarCard extends StatefulWidget {
   final Function? onDeleted;
   final bool? isGetData;
   final int? index;
-
-  const FaturalarCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, required this.editTipiEnum, this.onDeleted, this.index, this.isGetData});
 
   @override
   State<FaturalarCard> createState() => _FaturalarCardState();

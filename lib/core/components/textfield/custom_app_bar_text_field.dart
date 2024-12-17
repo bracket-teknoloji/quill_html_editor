@@ -2,15 +2,15 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 class CustomAppBarTextField extends StatefulWidget {
-  final void Function(String)? onFieldSubmitted;
-  final void Function(String)? onChanged;
-  final TextEditingController? controller;
   const CustomAppBarTextField({
     super.key,
     this.onFieldSubmitted,
     this.controller,
     this.onChanged,
   });
+  final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onChanged;
+  final TextEditingController? controller;
 
   @override
   State<CustomAppBarTextField> createState() => _CustomAppBarTextFieldState();

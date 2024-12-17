@@ -34,8 +34,8 @@ import "../model/olcum_pdf_model.dart";
 import "view_model/olcum_belge_edit_view_model.dart";
 
 class OlcumBelgeEditView extends StatefulWidget {
-  final OlcumBelgeModel model;
   const OlcumBelgeEditView({super.key, required this.model});
+  final OlcumBelgeModel model;
 
   @override
   State<OlcumBelgeEditView> createState() => _OlcumBelgeEditViewState();

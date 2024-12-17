@@ -19,9 +19,9 @@ import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/dekont_edit_kalemler_view_model.dart";
 
 class DekontEditKalemlerView extends StatefulWidget {
+  const DekontEditKalemlerView({super.key, required this.onChanged, required this.baseEditEnum});
   final ValueChanged<int> onChanged;
   final BaseEditEnum baseEditEnum;
-  const DekontEditKalemlerView({super.key, required this.onChanged, required this.baseEditEnum});
 
   @override
   State<DekontEditKalemlerView> createState() => _DekontEditKalemlerViewState();

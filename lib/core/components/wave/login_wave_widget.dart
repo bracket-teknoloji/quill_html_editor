@@ -5,8 +5,8 @@ import "package:wave/wave.dart";
 import "../../base/state/base_state.dart";
 
 class LoginWaveWidget extends StatefulWidget {
-  final Color? foreoregroundColor;
   const LoginWaveWidget({super.key, this.foreoregroundColor});
+  final Color? foreoregroundColor;
 
   @override
   State<LoginWaveWidget> createState() => _LoginWaveWidgetState();

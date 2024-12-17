@@ -11,8 +11,8 @@ import "../../../../model/param_model.dart";
 import "../view_model/stok_detayli_arama_view_model.dart";
 
 final class StokDetayliAramaView extends StatefulWidget {
-  final List<StokDetayliAramaAlanlar> aramaList;
   const StokDetayliAramaView({super.key, required this.aramaList});
+  final List<StokDetayliAramaAlanlar> aramaList;
 
   @override
   State<StokDetayliAramaView> createState() => _StokDetayliAramaViewState();

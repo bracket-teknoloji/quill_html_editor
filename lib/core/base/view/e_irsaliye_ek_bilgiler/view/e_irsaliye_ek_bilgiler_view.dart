@@ -13,8 +13,8 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 class EIrsaliyeEkBilgilerView extends StatefulWidget {
-  final EIrsaliyeBilgiModel? model;
   const EIrsaliyeEkBilgilerView({super.key, this.model});
+  final EIrsaliyeBilgiModel? model;
 
   @override
   State<EIrsaliyeEkBilgilerView> createState() => _EIrsaliyeEkBilgilerViewState();

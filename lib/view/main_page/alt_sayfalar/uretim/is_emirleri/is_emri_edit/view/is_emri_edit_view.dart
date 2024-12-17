@@ -23,8 +23,8 @@ import "../../is_emri_rehberi/model/is_emirleri_model.dart";
 import "../view_model/is_emri_edit_view_model.dart";
 
 final class IsEmriEditView extends StatefulWidget {
-  final BaseEditModel<IsEmirleriModel> model;
   const IsEmriEditView({super.key, required this.model});
+  final BaseEditModel<IsEmirleriModel> model;
 
   @override
   State<IsEmriEditView> createState() => _IsEmriEditViewState();

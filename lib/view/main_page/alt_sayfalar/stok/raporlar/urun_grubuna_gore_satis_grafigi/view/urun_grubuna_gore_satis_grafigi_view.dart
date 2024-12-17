@@ -22,8 +22,8 @@ import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/urun_grubuna_gore_satis_grafigi_view_model.dart";
 
 final class UrunGrubunaGoreSatisGrafigiView extends StatefulWidget {
-  final CariListesiModel? model;
   const UrunGrubunaGoreSatisGrafigiView({super.key, this.model});
+  final CariListesiModel? model;
 
   @override
   State<UrunGrubunaGoreSatisGrafigiView> createState() => _UrunGrubunaGoreSatisGrafigiViewState();

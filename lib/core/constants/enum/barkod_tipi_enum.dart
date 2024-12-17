@@ -20,8 +20,8 @@ enum BarkodTipiEnum {
   code93("S", "Code 93"),
   ascii("T", "ASCII");
 
+  const BarkodTipiEnum(this.barkodTipi, this.barkodAdi);
+
   final String barkodTipi;
   final String barkodAdi;
-
-  const BarkodTipiEnum(this.barkodTipi, this.barkodAdi);
 }

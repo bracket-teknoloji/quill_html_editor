@@ -16,8 +16,8 @@ import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart
 import "../view_model/uretim_sonu_raporu_view_model.dart";
 
 final class UretimSonuRaporuView extends StatefulWidget {
-  final KalemModel model;
   const UretimSonuRaporuView({super.key, required this.model});
+  final KalemModel model;
 
   @override
   State<UretimSonuRaporuView> createState() => _UretimSonuRaporuViewState();

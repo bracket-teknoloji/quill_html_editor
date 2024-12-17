@@ -6,6 +6,8 @@ part "profil_yetki_model.g.dart";
 
 @JsonSerializable(createFactory: true)
 class ProfilYetkiModel {
+
+  factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
   ProfilYetkiModel();
   @JsonKey(name: "yazdirma_SatisIrs_Yazicilari")
   List<String>? yazdirmaSatisIrsYazicilari;
@@ -1964,8 +1966,6 @@ class ProfilYetkiModel {
   @JsonKey(name: "finans_Kasa_KacGunlukKayitlarListelensin")
   int? finansKasaKacGunlukKayitlarListelensin;
 
-  factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
-
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 
   @override
@@ -1974,12 +1974,12 @@ class ProfilYetkiModel {
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class SevkemriMalKontrolTipi {
-  int? kod;
-  String? tanim;
 
   SevkemriMalKontrolTipi();
 
   factory SevkemriMalKontrolTipi.fromJson(Map<String, dynamic> json) => _$SevkemriMalKontrolTipiFromJson(json);
+  int? kod;
+  String? tanim;
 
   Map<String, dynamic> toJson() => _$SevkemriMalKontrolTipiToJson(this);
 }

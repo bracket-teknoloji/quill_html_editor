@@ -14,12 +14,12 @@ import "../enum/edit_tipi_enum.dart";
 import "yetki_model.dart";
 
 final class YetkiController {
-  //* Singleton
-  static final YetkiController _singleton = YetkiController._internal();
 
   YetkiController._internal();
 
   factory YetkiController() => _singleton;
+  //* Singleton
+  static final YetkiController _singleton = YetkiController._internal();
 
   MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
 

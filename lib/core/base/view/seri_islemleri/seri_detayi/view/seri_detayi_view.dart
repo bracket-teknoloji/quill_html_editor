@@ -16,9 +16,9 @@ import "../../seri_listesi/model/seri_detayi_model.dart";
 import "../view_model/seri_detayi_view_model.dart";
 
 class SeriDetayiView extends StatefulWidget {
+  const SeriDetayiView({super.key, required this.seriDetayiModel});
   /// İlki Hareket Miktarı, İkincisi Kalan Miktar
   final SeriDetayiModel seriDetayiModel;
-  const SeriDetayiView({super.key, required this.seriDetayiModel});
 
   @override
   State<SeriDetayiView> createState() => _SeriDetayiViewState();

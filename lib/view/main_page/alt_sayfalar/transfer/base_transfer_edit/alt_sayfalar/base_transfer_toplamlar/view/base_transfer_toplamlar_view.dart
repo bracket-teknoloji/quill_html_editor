@@ -23,8 +23,8 @@ import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart"
 import "../view_model/base_transfer_toplamlar_view_model.dart";
 
 class BaseTransferToplamlarView extends StatefulWidget {
-  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseTransferToplamlarView({super.key, required this.model});
+  final BaseEditModel<SiparisEditRequestModel> model;
 
   @override
   State<BaseTransferToplamlarView> createState() => _BaseTransferToplamlarViewState();

@@ -9,16 +9,8 @@ part "cari_detay_model.g.dart";
 @CopyWith()
 @JsonSerializable()
 class CariDetayModel with NetworkManagerMixin {
-  //singleton
-  static CariDetayModel? _instance;
-  static CariDetayModel get instance {
-    _instance ??= CariDetayModel._init();
-    return _instance!;
-  }
 
   CariDetayModel._init();
-  //setter singleton
-  static void setInstance(CariDetayModel? instance) => _instance = instance;
   CariDetayModel({
     this.cariKodu,
     this.cariAdi,
@@ -53,6 +45,16 @@ class CariDetayModel with NetworkManagerMixin {
     this.cariList,
     this.bakiyeList,
   });
+
+  factory CariDetayModel.fromJson(Map<String, dynamic> json) => _$CariDetayModelFromJson(json);
+  //singleton
+  static CariDetayModel? _instance;
+  static CariDetayModel get instance {
+    _instance ??= CariDetayModel._init();
+    return _instance!;
+  }
+  //setter singleton
+  static void setInstance(CariDetayModel? instance) => _instance = instance;
   String? cariKodu;
   String? cariAdi;
   double? riskBorcToplami;
@@ -90,8 +92,6 @@ class CariDetayModel with NetworkManagerMixin {
   @JsonKey(name: "BakiyeList")
   List<BakiyeList>? bakiyeList;
 
-  factory CariDetayModel.fromJson(Map<String, dynamic> json) => _$CariDetayModelFromJson(json);
-
   @override
   Map<String, dynamic> toJson() => _$CariDetayModelToJson(this);
 
@@ -101,6 +101,8 @@ class CariDetayModel with NetworkManagerMixin {
 
 @JsonSerializable(createFactory: true)
 class BakiyeList {
+
+  factory BakiyeList.fromJson(Map<String, dynamic> json) => _$BakiyeListFromJson(json);
   BakiyeList();
   String? cariKodu;
   int? dovizTipi;
@@ -108,13 +110,13 @@ class BakiyeList {
   double? alacakToplami;
   double? bakiye;
   String? dovizAdi;
-
-  factory BakiyeList.fromJson(Map<String, dynamic> json) => _$BakiyeListFromJson(json);
   Map<String, dynamic> toJson() => _$BakiyeListToJson(this);
 }
 
 @JsonSerializable(createFactory: true)
 class BankaList {
+
+  factory BankaList.fromJson(Map<String, dynamic> json) => _$BankaListFromJson(json);
   BankaList();
   String? cariKodu;
   String? ibanno;
@@ -128,8 +130,6 @@ class BankaList {
   int? borcToplami;
   double? alacakToplami;
   double? bakiye;
-
-  factory BankaList.fromJson(Map<String, dynamic> json) => _$BankaListFromJson(json);
   Map<String, dynamic> toJson() => _$BankaListToJson(this);
 }
 
@@ -216,6 +216,8 @@ class BankaList {
 
 @JsonSerializable(createFactory: true)
 class IrtibatList {
+
+  factory IrtibatList.fromJson(Map<String, dynamic> json) => _$IrtibatListFromJson(json);
   IrtibatList();
   String? cariKodu;
   String? yetkiliKisi;
@@ -223,7 +225,5 @@ class IrtibatList {
   String? sabitTel1;
   String? emailSplit;
   bool? aktif;
-
-  factory IrtibatList.fromJson(Map<String, dynamic> json) => _$IrtibatListFromJson(json);
   Map<String, dynamic> toJson() => _$IrtibatListToJson(this);
 }

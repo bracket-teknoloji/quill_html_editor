@@ -10,9 +10,9 @@ import "../../init/network/login/api_urls.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class DekontlarCard extends StatefulWidget {
+  const DekontlarCard({super.key, required this.model, required this.onSelected});
   final DekontListesiModel model;
   final ValueChanged<bool> onSelected;
-  const DekontlarCard({super.key, required this.model, required this.onSelected});
 
   @override
   State<DekontlarCard> createState() => _DekontlarCardState();

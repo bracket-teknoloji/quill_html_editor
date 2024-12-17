@@ -33,12 +33,12 @@ import "../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_editing_view_model.dart";
 
 class BaseSiparisEditingView extends StatefulWidget {
+  const BaseSiparisEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, required this.model});
   final String? appBarTitle;
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
   final BaseEditModel model;
-  const BaseSiparisEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, required this.model});
 
   @override
   State<BaseSiparisEditingView> createState() => _BaseSiparisEditingViewState();

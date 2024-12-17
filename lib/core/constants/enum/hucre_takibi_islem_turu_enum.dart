@@ -3,8 +3,9 @@ enum HucreTakibiIslemTuruEnum {
   hucreBosalt("HB"),
   hucreTransferi("HT");
 
-  final String kodu;
   const HucreTakibiIslemTuruEnum(this.kodu);
+
+  final String kodu;
 
   String get getName => switch (this) {
         //* When kullanımı için örnek (this hucreYerlestir'se ve indeksi 0 değilse)

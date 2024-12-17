@@ -15,8 +15,8 @@ import "../../../../../../core/components/layout/custom_layout_builder.dart";
 import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 
 final class FiyatOzetiView extends StatefulWidget {
-  final StokListesiModel model;
   const FiyatOzetiView({super.key, required this.model});
+  final StokListesiModel model;
 
   @override
   State<FiyatOzetiView> createState() => _FiyatOzetiViewState();

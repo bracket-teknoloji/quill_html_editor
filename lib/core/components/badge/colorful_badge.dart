@@ -6,10 +6,10 @@ import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class ColorfulBadge extends StatefulWidget {
+  const ColorfulBadge({super.key, this.badgeColorEnum, this.label, this.onTap});
   final Widget? label;
   final BadgeColorEnum? badgeColorEnum;
   final void Function()? onTap;
-  const ColorfulBadge({super.key, this.badgeColorEnum, this.label, this.onTap});
 
   @override
   State<ColorfulBadge> createState() => _ColorfulBadgeState();

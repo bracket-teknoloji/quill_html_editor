@@ -9,13 +9,6 @@ import "../../../textfield/custom_text_field.dart";
 import "../view_model/rapor_filtre_date_time_bottom_sheet_view_model.dart";
 
 class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
-  final TextEditingController baslangicTarihiController;
-  final TextEditingController bitisTarihiController;
-  final void Function(int? index) filterOnChanged;
-  final dynamic Function()? baslangicOnTap;
-  final bool? isChanged;
-  final dynamic Function()? bitisOnTap;
-  final bool? showBugunFirst;
 
   const RaporFiltreDateTimeBottomSheetView({
     super.key,
@@ -27,6 +20,13 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
     this.showBugunFirst,
     this.isChanged,
   });
+  final TextEditingController baslangicTarihiController;
+  final TextEditingController bitisTarihiController;
+  final void Function(int? index) filterOnChanged;
+  final dynamic Function()? baslangicOnTap;
+  final bool? isChanged;
+  final dynamic Function()? bitisOnTap;
+  final bool? showBugunFirst;
 
   @override
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();

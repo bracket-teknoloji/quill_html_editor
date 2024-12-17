@@ -16,8 +16,8 @@ import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uret
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/view_model/uretim_sonu_kaydi_edit_view_model.dart";
 
 final class UretimSonuKaydiEditView extends StatefulWidget {
-  final BaseEditModel<KalemModel> model;
   const UretimSonuKaydiEditView({super.key, required this.model});
+  final BaseEditModel<KalemModel> model;
 
   @override
   State<UretimSonuKaydiEditView> createState() => _UretimSonuKaydiEditViewState();

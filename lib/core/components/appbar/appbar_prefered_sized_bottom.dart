@@ -7,11 +7,11 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../button/elevated_buttons/bottom_appbar_button.dart";
 
 class AppBarPreferedSizedBottom extends StatefulWidget implements PreferredSizeWidget {
-  final List<AppBarButton?> children;
-  final Widget? filter;
 
   const AppBarPreferedSizedBottom({super.key, required this.children}) : filter = null;
   const AppBarPreferedSizedBottom.forStokFilter({super.key, required this.children, required this.filter});
+  final List<AppBarButton?> children;
+  final Widget? filter;
 
   @override
   State<AppBarPreferedSizedBottom> createState() => _AppBarPreferedSizedBottomState();

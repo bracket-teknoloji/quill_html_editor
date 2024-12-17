@@ -35,9 +35,9 @@ import "../../yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "../view_model/kalem_ekle_view_model.dart";
 
 final class KalemEkleView extends StatefulWidget {
+  const KalemEkleView({super.key, this.stokListesiModel, this.kalemModel});
   final StokListesiModel? stokListesiModel;
   final KalemModel? kalemModel;
-  const KalemEkleView({super.key, this.stokListesiModel, this.kalemModel});
 
   @override
   State<KalemEkleView> createState() => _KalemEkleViewState();

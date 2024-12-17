@@ -15,8 +15,8 @@ import "../model/evraklar_request_model.dart";
 import "../view_model/cek_senet_evraklar_view_model.dart";
 
 class CekSenetEvraklarView extends StatefulWidget {
-  final CekSenetListesiModel model;
   const CekSenetEvraklarView({super.key, required this.model});
+  final CekSenetListesiModel model;
 
   @override
   State<CekSenetEvraklarView> createState() => _CekSenetEvraklarViewState();

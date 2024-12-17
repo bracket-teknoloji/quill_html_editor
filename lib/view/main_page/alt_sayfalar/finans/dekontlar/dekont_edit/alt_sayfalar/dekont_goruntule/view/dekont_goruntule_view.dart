@@ -16,9 +16,9 @@ import "../../../model/dekont_duzenle_request_model.dart";
 import "../view_model/dekont_goruntule_view_model.dart";
 
 class DekontGoruntuleView extends StatefulWidget {
+  const DekontGoruntuleView({super.key, this.model, this.refKey});
   final DekontListesiModel? model;
   final String? refKey;
-  const DekontGoruntuleView({super.key, this.model, this.refKey});
 
   @override
   State<DekontGoruntuleView> createState() => _DekontGoruntuleViewState();

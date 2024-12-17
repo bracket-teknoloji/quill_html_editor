@@ -9,8 +9,8 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 
 class BaseTransferDigerView extends StatefulWidget {
-  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseTransferDigerView({super.key, required this.model});
+  final BaseEditModel<SiparisEditRequestModel> model;
 
   @override
   State<BaseTransferDigerView> createState() => _BaseTransferDigerViewState();

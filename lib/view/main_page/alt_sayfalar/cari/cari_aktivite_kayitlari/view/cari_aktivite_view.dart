@@ -21,8 +21,8 @@ import "../model/cari_aktivite_listesi_model.dart";
 import "../view_model/cari_aktivite_view_model.dart";
 
 final class CariAktiviteView extends StatefulWidget {
-  final CariListesiModel? cariModel;
   const CariAktiviteView({super.key, this.cariModel});
+  final CariListesiModel? cariModel;
 
   @override
   State<CariAktiviteView> createState() => _CariAktiviteViewState();

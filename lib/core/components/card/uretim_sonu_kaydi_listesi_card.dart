@@ -13,9 +13,9 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../layout/custom_layout_builder.dart";
 
 final class UretimSonuKaydiListesiCard extends StatefulWidget {
+  const UretimSonuKaydiListesiCard({super.key, required this.model, required this.onChanged});
   final KalemModel model;
   final Future<void> Function() onChanged;
-  const UretimSonuKaydiListesiCard({super.key, required this.model, required this.onChanged});
 
   @override
   State<UretimSonuKaydiListesiCard> createState() => _UretimSonuKaydiListesiCardState();

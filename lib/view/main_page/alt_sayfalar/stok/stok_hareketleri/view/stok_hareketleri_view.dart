@@ -37,10 +37,10 @@ import "../model/stok_hareketleri_model.dart";
 import "../view_model/stok_hareketleri_view_model.dart";
 
 class StokHareketleriView extends StatefulWidget {
+  const StokHareketleriView({super.key, this.model, this.stokKodu, this.cariModel});
   final StokListesiModel? model;
   final String? stokKodu;
   final CariListesiModel? cariModel;
-  const StokHareketleriView({super.key, this.model, this.stokKodu, this.cariModel});
 
   @override
   State<StokHareketleriView> createState() => _StokHareketleriViewState();

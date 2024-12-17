@@ -6,11 +6,11 @@ part "logout_model.g.dart";
 
 @JsonSerializable()
 class LogoutModel with NetworkManagerMixin {
+  LogoutModel();
   @JsonKey(name: "Success")
   String? succes;
   @JsonKey(name: "Message")
   String? message;
-  LogoutModel();
 
   @override
   LogoutModel fromJson(Map<String, dynamic> json) => _$LogoutModelFromJson(json);

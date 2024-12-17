@@ -36,9 +36,9 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/faturalar_view_model.dart";
 
 final class FaturalarView extends StatefulWidget {
+  const FaturalarView({super.key, required this.editTipiEnum, this.isGetData});
   final EditTipiEnum editTipiEnum;
   final bool? isGetData;
-  const FaturalarView({super.key, required this.editTipiEnum, this.isGetData});
 
   @override
   State<FaturalarView> createState() => _FaturalarViewState();

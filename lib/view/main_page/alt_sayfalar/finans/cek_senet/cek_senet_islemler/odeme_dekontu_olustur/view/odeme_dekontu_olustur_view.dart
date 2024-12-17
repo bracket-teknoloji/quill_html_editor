@@ -23,8 +23,8 @@ import "../../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "../view_model/odeme_dekontu_olustur_view_model.dart";
 
 class OdemeDekontuOlusturView extends StatefulWidget {
-  final CekSenetListesiModel model;
   const OdemeDekontuOlusturView({super.key, required this.model});
+  final CekSenetListesiModel model;
 
   @override
   State<OdemeDekontuOlusturView> createState() => _OdemeDekontuOlusturViewState();

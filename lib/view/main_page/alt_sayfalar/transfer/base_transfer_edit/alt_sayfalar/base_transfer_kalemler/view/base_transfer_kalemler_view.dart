@@ -24,9 +24,9 @@ import "../../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/base_transfer_kalemler_view_model.dart";
 
 class BaseTransferKalemlerView extends StatefulWidget {
+  const BaseTransferKalemlerView({super.key, required this.model, this.updater});
   final BaseEditModel<SiparisEditRequestModel> model;
   final bool? updater;
-  const BaseTransferKalemlerView({super.key, required this.model, this.updater});
 
   @override
   State<BaseTransferKalemlerView> createState() => _BaseTransferKalemlerViewState();

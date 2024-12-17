@@ -25,9 +25,9 @@ import "../model/olcum_ekle_model.dart";
 import "../view_model/olcum_ekle_view_model.dart";
 
 class OlcumEkleView extends StatefulWidget {
+  const OlcumEkleView({super.key, required this.model, required this.baseEditEnum});
   final OlcumBelgeEditModel model;
   final BaseEditEnum baseEditEnum;
-  const OlcumEkleView({super.key, required this.model, required this.baseEditEnum});
 
   @override
   State<OlcumEkleView> createState() => _OlcumEkleViewState();

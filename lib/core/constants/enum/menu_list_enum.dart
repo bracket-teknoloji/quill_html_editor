@@ -20,6 +20,7 @@ enum MenuItemsEnum {
   uetds("EUTD"),
   kalkon("KALKON");
 
-  final String yetkiName;
   const MenuItemsEnum(this.yetkiName);
+
+  final String yetkiName;
 }

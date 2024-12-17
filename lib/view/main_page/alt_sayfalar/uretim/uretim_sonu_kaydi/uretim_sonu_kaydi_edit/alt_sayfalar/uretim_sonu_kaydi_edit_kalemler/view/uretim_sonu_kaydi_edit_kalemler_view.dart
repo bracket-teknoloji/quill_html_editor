@@ -21,11 +21,11 @@ import "../../../model/uretim_sonu_kaydi_edit_model.dart";
 import "../view_model/uretim_sonu_kaydi_edit_kalemler_view_model.dart";
 
 final class UretimSonuKaydiEditKalemlerView extends StatefulWidget {
+  const UretimSonuKaydiEditKalemlerView({super.key, required this.kalemList, required this.model, required this.requestModel, required this.onKalemListChange});
   final BaseEditModel<KalemModel> model;
   final UretimSonuKaydiEditModel requestModel;
   final List<KalemModel>? kalemList;
   final Function(List<KalemModel>?) onKalemListChange;
-  const UretimSonuKaydiEditKalemlerView({super.key, required this.kalemList, required this.model, required this.requestModel, required this.onKalemListChange});
 
   @override
   State<UretimSonuKaydiEditKalemlerView> createState() => _UretimSonuKaydiEditKalemlerViewState();

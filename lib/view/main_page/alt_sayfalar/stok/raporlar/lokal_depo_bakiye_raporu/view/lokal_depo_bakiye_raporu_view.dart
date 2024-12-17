@@ -15,8 +15,8 @@ import "../../../stok_liste/model/stok_listesi_model.dart";
 import "../view_model/lokal_depo_bakiye_raporu_view_model.dart";
 
 class LokalDepoBakiyeRaporuView extends StatefulWidget {
-  final StokListesiModel? model;
   const LokalDepoBakiyeRaporuView({super.key, this.model});
+  final StokListesiModel? model;
 
   @override
   State<LokalDepoBakiyeRaporuView> createState() => _LokalDepoBakiyeRaporuViewState();

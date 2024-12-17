@@ -32,8 +32,8 @@ import "../../../../../uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_mode
 import "../view_model/base_transfer_genel_view_model.dart";
 
 class BaseTransferGenelView extends StatefulWidget {
-  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseTransferGenelView({super.key, required this.model});
+  final BaseEditModel<SiparisEditRequestModel> model;
 
   @override
   State<BaseTransferGenelView> createState() => BaseTransferGenelViewState();

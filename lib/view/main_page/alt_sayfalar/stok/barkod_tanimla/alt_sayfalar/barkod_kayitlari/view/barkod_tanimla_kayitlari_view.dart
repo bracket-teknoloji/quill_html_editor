@@ -15,8 +15,8 @@ import "../model/barkod_tanimla_kayitlari_model.dart";
 import "../view_model/barkod_tanimla_kayitlari_view_model.dart";
 
 final class BarkodTanimlaKayitlariView extends StatefulWidget {
-  final StokListesiModel? model;
   const BarkodTanimlaKayitlariView({super.key, this.model});
+  final StokListesiModel? model;
 
   @override
   State<BarkodTanimlaKayitlariView> createState() => _BarkodTanimlaKayitlariViewState();

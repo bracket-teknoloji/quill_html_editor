@@ -11,42 +11,6 @@ part "cari_request_model.g.dart";
 
 @unfreezed
 class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
-  CariRequestModel._();
-
-  @JsonSerializable(fieldRename: FieldRename.pascal)
-  factory CariRequestModel({
-    @Default("") String? filterText,
-    List<String>? kod,
-    int? sayfa,
-    String? ilce,
-    String? cariTipi,
-    @JsonKey(name: "SIRALAMA") String? siralama,
-    String? menuKodu,
-    bool? eFaturaGoster,
-    String? bagliCariKodu,
-    @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
-    List<String>? arrGrupKodu,
-    List<String>? arrKod1,
-    List<String>? arrKod2,
-    List<String>? arrKod3,
-    List<String>? arrKod4,
-    List<String>? arrKod5,
-    List<String>? arrSehir,
-    @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
-    bool? plasiyerKisitiYok,
-    String? belgeTuru,
-    String? vergiNo,
-    String? siparisKarsilanmaDurumu,
-    bool? kisitYok,
-    String? secildi,
-    String? teslimCari,
-    String? rotaDisi,
-  }) = _CariRequestModel;
-
-  factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
-
-  @override
-  CariRequestModel fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
 
   factory CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => CariRequestModel(
         filterText: "",
@@ -83,4 +47,40 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
         plasiyerKisitiYok: true,
         // belgeTuru: model,
       );
+  CariRequestModel._();
+
+  @JsonSerializable(fieldRename: FieldRename.pascal)
+  factory CariRequestModel({
+    @Default("") String? filterText,
+    List<String>? kod,
+    int? sayfa,
+    String? ilce,
+    String? cariTipi,
+    @JsonKey(name: "SIRALAMA") String? siralama,
+    String? menuKodu,
+    bool? eFaturaGoster,
+    String? bagliCariKodu,
+    @JsonKey(name: "FILTER_BAKIYE") String? filterBakiye,
+    List<String>? arrGrupKodu,
+    List<String>? arrKod1,
+    List<String>? arrKod2,
+    List<String>? arrKod3,
+    List<String>? arrKod4,
+    List<String>? arrKod5,
+    List<String>? arrSehir,
+    @JsonKey(name: "ArrPlasiyerKodu") List<String>? arrPlasiyerKodu,
+    bool? plasiyerKisitiYok,
+    String? belgeTuru,
+    String? vergiNo,
+    String? siparisKarsilanmaDurumu,
+    bool? kisitYok,
+    String? secildi,
+    String? teslimCari,
+    String? rotaDisi,
+  }) = _CariRequestModel;
+
+  factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
+
+  @override
+  CariRequestModel fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
 }

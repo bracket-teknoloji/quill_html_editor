@@ -7,8 +7,8 @@ import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/model/belge_rehberi_model.dart";
 
 class BelgeRehberiCard extends StatelessWidget {
-  final BelgeRehberiModel model;
   const BelgeRehberiCard({super.key, required this.model});
+  final BelgeRehberiModel model;
 
   @override
   Widget build(BuildContext context) => Card(

@@ -12,8 +12,8 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 class CekSenetGoruntuleView extends StatefulWidget {
-  final CekSenetListesiModel model;
   const CekSenetGoruntuleView({super.key, required this.model});
+  final CekSenetListesiModel model;
 
   @override
   State<CekSenetGoruntuleView> createState() => _CekSenetGoruntuleViewState();

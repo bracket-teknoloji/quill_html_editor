@@ -14,22 +14,8 @@ part "cari_listesi_model.g.dart";
 @HiveType(typeId: 195)
 @JsonSerializable(explicitToJson: true)
 class CariListesiModel with NetworkManagerMixin {
-  //singleton
-  static CariListesiModel? _instance;
-  static CariListesiModel get instance {
-    _instance ??= CariListesiModel._init();
-    return _instance!;
-  }
 
   CariListesiModel._init();
-
-  //setter for singleton
-  static void setInstance(CariListesiModel? instance) {
-    _instance = instance;
-    if (instance != null) {
-      CariDetayModel.setInstance(CariDetayModel.instance..cariList = [instance]);
-    }
-  }
 
   CariListesiModel({
     this.cariKodu,
@@ -142,6 +128,53 @@ class CariListesiModel with NetworkManagerMixin {
     this.kurfarkiborcAdi,
     this.kurfarkialacakAdi,
   });
+
+  factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
+
+  factory CariListesiModel.fromCariHareketleriModel(CariHareketleriModel? model) => CariListesiModel(
+        cariAdi: model?.cariAdi,
+        cariKodu: model?.cariKodu,
+        plasiyerAciklama: model?.plasiyerAciklama,
+        plasiyerKodu: model?.plasiyerKodu,
+        bakiye: ((model?.alacak ?? 0) - (model?.borc ?? 0)).abs(),
+        vadeGunu: DateTime.now().compareTo(model?.vadeTarihi ?? DateTime.now()),
+      );
+
+  factory CariListesiModel.fromSiparisModel(BaseSiparisEditModel? model) => CariListesiModel(
+        cariAdi: model?.cariAdi,
+        cariKodu: model?.cariKodu,
+        plasiyerAciklama: model?.plasiyerAciklama,
+        plasiyerKodu: model?.plasiyerKodu,
+      );
+
+  factory CariListesiModel.fromEBelgeListesiModel(EBelgeListesiModel? model) => CariListesiModel(
+        cariAdi: model?.cariAdi,
+        cariKodu: model?.cariKodu,
+        cariIl: model?.cariIl,
+        cariIlce: model?.cariIlce,
+        vergiNo: model?.vergiNo,
+        dovizli: model?.dovizliMi,
+        cariTip: model?.gelenMi == true ? "S" : "A",
+        cariTipAciklama: model?.gelenMi == true ? "Satıcı" : "Alıcı",
+        dovizAdi: model?.dovizAdi,
+        dovizKodu: model?.dovizTipi,
+        email: model?.ePosta,
+        sahisFirmasiMi: model?.vergiNo?.length == 11,
+      );
+  //singleton
+  static CariListesiModel? _instance;
+  static CariListesiModel get instance {
+    _instance ??= CariListesiModel._init();
+    return _instance!;
+  }
+
+  //setter for singleton
+  static void setInstance(CariListesiModel? instance) {
+    _instance = instance;
+    if (instance != null) {
+      CariDetayModel.setInstance(CariDetayModel.instance..cariList = [instance]);
+    }
+  }
 
   @HiveField(0)
   String? cariKodu;
@@ -366,44 +399,11 @@ class CariListesiModel with NetworkManagerMixin {
   @HiveField(110)
   String? muhAdi;
 
-  factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
-
   @override
   CariListesiModel fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CariListesiModelToJson(this);
-
-  factory CariListesiModel.fromCariHareketleriModel(CariHareketleriModel? model) => CariListesiModel(
-        cariAdi: model?.cariAdi,
-        cariKodu: model?.cariKodu,
-        plasiyerAciklama: model?.plasiyerAciklama,
-        plasiyerKodu: model?.plasiyerKodu,
-        bakiye: ((model?.alacak ?? 0) - (model?.borc ?? 0)).abs(),
-        vadeGunu: DateTime.now().compareTo(model?.vadeTarihi ?? DateTime.now()),
-      );
-
-  factory CariListesiModel.fromSiparisModel(BaseSiparisEditModel? model) => CariListesiModel(
-        cariAdi: model?.cariAdi,
-        cariKodu: model?.cariKodu,
-        plasiyerAciklama: model?.plasiyerAciklama,
-        plasiyerKodu: model?.plasiyerKodu,
-      );
-
-  factory CariListesiModel.fromEBelgeListesiModel(EBelgeListesiModel? model) => CariListesiModel(
-        cariAdi: model?.cariAdi,
-        cariKodu: model?.cariKodu,
-        cariIl: model?.cariIl,
-        cariIlce: model?.cariIlce,
-        vergiNo: model?.vergiNo,
-        dovizli: model?.dovizliMi,
-        cariTip: model?.gelenMi == true ? "S" : "A",
-        cariTipAciklama: model?.gelenMi == true ? "Satıcı" : "Alıcı",
-        dovizAdi: model?.dovizAdi,
-        dovizKodu: model?.dovizTipi,
-        email: model?.ePosta,
-        sahisFirmasiMi: model?.vergiNo?.length == 11,
-      );
 
   bool get muhtelifMi => cariKodu == "0" * 15;
 }

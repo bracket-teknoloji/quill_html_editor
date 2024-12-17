@@ -2,6 +2,14 @@ import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 
 class BaseEditModel<T> {
+
+  BaseEditModel({
+    this.model,
+    this.baseEditEnum,
+    this.siradakiKod,
+    this.editTipiEnum,
+    this.belgeNo,
+  });
   T? model;
   BaseEditEnum? baseEditEnum;
   String? siradakiKod;
@@ -22,14 +30,6 @@ class BaseEditModel<T> {
   bool get isTaslak => baseEditEnum == BaseEditEnum.taslak;
   bool get isRevize => baseEditEnum == BaseEditEnum.revize;
   String? get getSubTitle => (isKopyala || isEkle || isRevize || isTaslak) ? "Yeni Belge" : null;
-
-  BaseEditModel({
-    this.model,
-    this.baseEditEnum,
-    this.siradakiKod,
-    this.editTipiEnum,
-    this.belgeNo,
-  });
 
   @override
   // ignore: hash_and_equals

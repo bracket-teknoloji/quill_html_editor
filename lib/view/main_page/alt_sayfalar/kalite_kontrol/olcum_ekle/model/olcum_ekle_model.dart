@@ -8,6 +8,19 @@ part "olcum_ekle_model.g.dart";
 
 @unfreezed
 class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
+
+  factory OlcumEkleModel.fromOlcumBelgeEditModel(OlcumBelgeEditModel model) => OlcumEkleModel(
+        belgeNo: model.belge?.firstOrNull?.belgeNo,
+        belgeTipi: model.belge?.firstOrNull?.belgeTipi,
+        stokKodu: model.belge?.firstOrNull?.stokKodu,
+        belgeSira: model.belge?.firstOrNull?.belgeSira,
+        belgeId: model.olcumler?.firstOrNull?.id,
+        yapkod: model.yapkod,
+        opkodu: model.opkodu,
+        kayitOperator: model.kayitOperatorKodu,
+        prosesler: model.prosesler,
+        seriNo: model.seriNo,
+      );
   OlcumEkleModel._();
 
   factory OlcumEkleModel({
@@ -32,19 +45,6 @@ class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
 
   @override
   OlcumEkleModel fromJson(Map<String, dynamic> json) => _$OlcumEkleModelFromJson(json);
-
-  factory OlcumEkleModel.fromOlcumBelgeEditModel(OlcumBelgeEditModel model) => OlcumEkleModel(
-        belgeNo: model.belge?.firstOrNull?.belgeNo,
-        belgeTipi: model.belge?.firstOrNull?.belgeTipi,
-        stokKodu: model.belge?.firstOrNull?.stokKodu,
-        belgeSira: model.belge?.firstOrNull?.belgeSira,
-        belgeId: model.olcumler?.firstOrNull?.id,
-        yapkod: model.yapkod,
-        opkodu: model.opkodu,
-        kayitOperator: model.kayitOperatorKodu,
-        prosesler: model.prosesler,
-        seriNo: model.seriNo,
-      );
 }
 
 // @unfreezed

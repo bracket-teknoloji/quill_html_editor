@@ -6,6 +6,8 @@ part "company_model.g.dart";
 
 @JsonSerializable()
 class CompanyModel with NetworkManagerMixin {
+
+  CompanyModel();
   @JsonKey(name: "SIRKET")
   String? company;
   @JsonKey(name: "YIL")
@@ -14,8 +16,6 @@ class CompanyModel with NetworkManagerMixin {
   String? devSirket;
   @JsonKey(name: "isDevredilmis")
   bool? isDevredilmis;
-
-  CompanyModel();
   @override
   CompanyModel fromJson(dynamic json) => _$CompanyModelFromJson(json);
 

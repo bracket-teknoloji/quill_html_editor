@@ -15,8 +15,8 @@ import "../../../model/stok_detay_model.dart";
 import "../view_model/base_stok_edit_seriler_view_model.dart";
 
 class BaseStokEditSerilerView extends StatefulWidget {
-  final BaseEditEnum? model;
   const BaseStokEditSerilerView({super.key, this.model});
+  final BaseEditEnum? model;
 
   @override
   State<BaseStokEditSerilerView> createState() => _BaseStokEditSerilerViewState();

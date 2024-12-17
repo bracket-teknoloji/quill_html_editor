@@ -22,8 +22,8 @@ import "../model/menu_item/menu_item_constants.dart";
 import "../view_model/main_page_view_model.dart";
 
 final class MainPageView extends StatefulWidget {
-  final bool fromSplash;
   const MainPageView({super.key, this.fromSplash = false});
+  final bool fromSplash;
 
   @override
   State<MainPageView> createState() => _MainPageViewState();

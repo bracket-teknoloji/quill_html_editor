@@ -8,10 +8,10 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "app_theme.dart";
 
 class AppThemeLight extends AppTheme {
-  static AppThemeLight? _instance;
-  static AppThemeLight? get instance => _instance ??= AppThemeLight._init();
 
   AppThemeLight._init();
+  static AppThemeLight? _instance;
+  static AppThemeLight? get instance => _instance ??= AppThemeLight._init();
 
   ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withOpacity(0.2), brightness: Brightness.light);
   @override

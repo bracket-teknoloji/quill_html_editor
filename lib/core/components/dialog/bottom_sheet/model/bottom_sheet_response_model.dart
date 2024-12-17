@@ -1,10 +1,12 @@
 import "../../../button/toggle_buttons/view/toggle_button.dart";
 
 class BottomSheetResponseModel {
+  BottomSheetResponseModel._init();
+
+  BottomSheetResponseModel();
   //Sİngleton
   static final BottomSheetResponseModel _instance = BottomSheetResponseModel._init();
   static BottomSheetResponseModel get instance => _instance;
-  BottomSheetResponseModel._init();
 
   String? filterBakiye = ToggleButton.selected;
   List? arrSehir;
@@ -17,8 +19,6 @@ class BottomSheetResponseModel {
   List? arrKod5;
   String? ilce;
   String? cariTipi;
-
-  BottomSheetResponseModel();
 
   void clear() {
     filterBakiye = ToggleButton.selected;

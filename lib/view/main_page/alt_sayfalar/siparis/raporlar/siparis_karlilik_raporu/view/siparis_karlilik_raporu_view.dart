@@ -17,8 +17,8 @@ import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/siparis_karlilik_raporu_view_model.dart";
 
 class SiparisKarlilikRaporuView extends StatefulWidget {
-  final BaseSiparisEditModel? model;
   const SiparisKarlilikRaporuView({super.key, this.model});
+  final BaseSiparisEditModel? model;
 
   @override
   State<SiparisKarlilikRaporuView> createState() => _YaslandirmaRaporuViewState();

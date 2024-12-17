@@ -7,6 +7,24 @@ part "servis_info_model.g.dart";
 
 @JsonSerializable()
 class ServisInfoModel with NetworkManagerMixin {
+
+  ServisInfoModel({
+    this.version,
+    this.updateDate,
+    this.siteName,
+    this.assemblyName,
+    this.isDebug,
+    this.path,
+    this.serverTime,
+    this.applicationVirtualPath,
+    this.serverName,
+    this.serverIp,
+    this.appPoolName,
+    this.netFectWinService,
+    this.processId,
+  });
+
+  factory ServisInfoModel.fromJson(Map<String, dynamic> json) => _$ServisInfoModelFromJson(json);
   @JsonKey(name: "Version")
   String? version;
   @JsonKey(name: "UpdateDate")
@@ -33,24 +51,6 @@ class ServisInfoModel with NetworkManagerMixin {
   String? netFectWinService;
   @JsonKey(name: "ProcessID")
   int? processId;
-
-  ServisInfoModel({
-    this.version,
-    this.updateDate,
-    this.siteName,
-    this.assemblyName,
-    this.isDebug,
-    this.path,
-    this.serverTime,
-    this.applicationVirtualPath,
-    this.serverName,
-    this.serverIp,
-    this.appPoolName,
-    this.netFectWinService,
-    this.processId,
-  });
-
-  factory ServisInfoModel.fromJson(Map<String, dynamic> json) => _$ServisInfoModelFromJson(json);
 
   @override
   ServisInfoModel fromJson(Map<String, dynamic> json) => _$ServisInfoModelFromJson(json);

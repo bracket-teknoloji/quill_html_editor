@@ -27,8 +27,8 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/transferler_view_model.dart";
 
 final class TransferlerView extends StatefulWidget {
-  final EditTipiEnum editTipiEnum;
   const TransferlerView({super.key, required this.editTipiEnum});
+  final EditTipiEnum editTipiEnum;
 
   @override
   State<TransferlerView> createState() => _TransferlerViewState();

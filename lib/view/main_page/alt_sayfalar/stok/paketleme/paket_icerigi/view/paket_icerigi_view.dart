@@ -14,8 +14,8 @@ import "../model/paket_icerigi_model.dart";
 import "../view_model/paket_icerigi_view_model.dart";
 
 final class PaketIcerigiView extends StatefulWidget {
-  final PaketlemeListesiModel model;
   const PaketIcerigiView({super.key, required this.model});
+  final PaketlemeListesiModel model;
 
   @override
   State<PaketIcerigiView> createState() => _PaketIcerigiViewState();

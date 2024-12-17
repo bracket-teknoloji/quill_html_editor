@@ -13,8 +13,8 @@ import "../../seri_hareketleri/model/seri_hareketleri_model.dart";
 import "../view_model/seri_girisi_view_model.dart";
 
 class SeriGirisiView extends StatefulWidget {
-  final SeriHareketleriModel? seriHareketleriModel;
   const SeriGirisiView({super.key, this.seriHareketleriModel});
+  final SeriHareketleriModel? seriHareketleriModel;
 
   @override
   State<SeriGirisiView> createState() => _SeriGirisiViewState();

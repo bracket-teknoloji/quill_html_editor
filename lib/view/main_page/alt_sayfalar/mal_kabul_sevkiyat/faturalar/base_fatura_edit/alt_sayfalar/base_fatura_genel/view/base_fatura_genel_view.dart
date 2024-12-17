@@ -37,8 +37,8 @@ import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.da
 import "../view_model/base_fatura_genel_view_model.dart";
 
 class BaseFaturaGenelView extends StatefulWidget {
-  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseFaturaGenelView({super.key, required this.model});
+  final BaseEditModel<SiparisEditRequestModel> model;
 
   @override
   State<BaseFaturaGenelView> createState() => BaseFaturaGenelViewState();

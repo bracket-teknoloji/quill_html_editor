@@ -137,9 +137,8 @@ class BottomSheetDialogManager {
               if (value == "") {
                 children2 = children;
               }
-              children2 = children2!
-                  .where((element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
-                  .toList();
+              children2 =
+                  children2!.where((element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false)).toList();
             },
           ).paddingAll(UIHelper.midSize),
         if (body != null)
@@ -224,7 +223,7 @@ class BottomSheetDialogManager {
                     // viewModel.isSelectedListMap![title]![index] = value!;
                     list = selectedChecker(children, title, onlyValue);
                     if (children?[index].onTap != null) {
-                      children?[index].onTap!();
+                      children?[index].onTap?.call();
                     }
                     if (!value) {
                       list!.remove(children?[index].title);
@@ -1212,8 +1211,7 @@ class BottomSheetDialogManager {
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else if (dizaynListe.length > 1) {
-        final result =
-            await showBottomSheetDialog(context, title: "Dizayn Seçiniz", children: dizaynListe.map((e) => BottomSheetModel(title: e?.dizaynAdi ?? "", value: e)).toList());
+        final result = await showBottomSheetDialog(context, title: "Dizayn Seçiniz", children: dizaynListe.map((e) => BottomSheetModel(title: e?.dizaynAdi ?? "", value: e)).toList());
         if (result != null) {
           printModel = printModel.copyWith(dizaynId: result.id);
         } else {

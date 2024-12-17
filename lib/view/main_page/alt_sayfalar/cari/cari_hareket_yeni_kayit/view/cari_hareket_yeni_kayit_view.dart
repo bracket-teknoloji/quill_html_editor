@@ -23,8 +23,8 @@ import "../model/cari_hareket_yeni_kayit_model.dart";
 import "../view_model/cari_hareket_yeni_kayit_view_model.dart";
 
 class CariYeniKayitView extends StatefulWidget {
-  final BaseEditModel<CariHareketleriModel>? model;
   const CariYeniKayitView({super.key, this.model});
+  final BaseEditModel<CariHareketleriModel>? model;
 
   @override
   State<CariYeniKayitView> createState() => _CariYeniKayitViewState();

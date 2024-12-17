@@ -15,8 +15,8 @@ import "../model/fiyat_gor_model.dart";
 import "../view_model/fiyat_gor_view_model.dart";
 
 class FiyatGorView extends StatefulWidget {
-  final StokListesiModel? model;
   const FiyatGorView({super.key, this.model});
+  final StokListesiModel? model;
 
   @override
   State<FiyatGorView> createState() => _FiyatGorViewState();

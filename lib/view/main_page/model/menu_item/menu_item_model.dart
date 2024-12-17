@@ -3,6 +3,8 @@ import "package:flutter/material.dart";
 import "../../../../core/components/grid_tile/grid_tile.dart";
 
 class MenuItemModel {
+
+  MenuItemModel({this.title, this.icon, this.route});
   String? title;
   String? icon;
   Color? color;
@@ -24,6 +26,4 @@ class MenuItemModel {
   String? get getRoute => route;
 
   set setRoute(String? route) => this.route = route;
-
-  MenuItemModel({this.title, this.icon, this.route});
 }

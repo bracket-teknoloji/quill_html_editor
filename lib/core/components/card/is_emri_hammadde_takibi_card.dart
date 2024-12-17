@@ -9,8 +9,8 @@ import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_ha
 import "../../base/state/base_state.dart";
 
 final class IsEmriHammaddeTakibiCard extends StatefulWidget {
-  final IsEmriHammaddeTakibiListesiModel model;
   const IsEmriHammaddeTakibiCard({super.key, required this.model});
+  final IsEmriHammaddeTakibiListesiModel model;
 
   @override
   State<IsEmriHammaddeTakibiCard> createState() => _IsEmriHammaddeTakibiCardState();

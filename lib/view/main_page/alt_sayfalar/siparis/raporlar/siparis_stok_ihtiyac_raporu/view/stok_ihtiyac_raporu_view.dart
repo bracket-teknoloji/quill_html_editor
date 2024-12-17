@@ -15,8 +15,8 @@ import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/stok_ihtiyac_raporu_view_model.dart";
 
 class StokIhtiyacRaporuView extends StatefulWidget {
-  final BaseSiparisEditModel? model;
   const StokIhtiyacRaporuView({super.key, this.model});
+  final BaseSiparisEditModel? model;
 
   @override
   State<StokIhtiyacRaporuView> createState() => _StokIhtiyacRaporuViewViewState();

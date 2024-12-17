@@ -21,8 +21,8 @@ import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart"
 import "../view_model/base_talep_teklif_toplamlar_view_model.dart";
 
 class BaseTalepTeklifToplamlarView extends StatefulWidget {
-  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseTalepTeklifToplamlarView({super.key, required this.model});
+  final BaseEditModel<SiparisEditRequestModel> model;
 
   @override
   State<BaseTalepTeklifToplamlarView> createState() => _BaseTalepTeklifToplamlarViewState();

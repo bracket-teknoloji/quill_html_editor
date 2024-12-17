@@ -19,8 +19,8 @@ import "../model/uretim_sonu_kaydi_recete_model.dart";
 import "../view_model/uretim_sonu_kaydi_seri_listesi_view_model.dart";
 
 final class UretimSonuKaydiSeriListesi extends StatefulWidget {
-  final KalemModel model;
   const UretimSonuKaydiSeriListesi({super.key, required this.model});
+  final KalemModel model;
 
   @override
   State<UretimSonuKaydiSeriListesi> createState() => _UretimSonuKaydiSeriListesiState();

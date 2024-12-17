@@ -9,8 +9,8 @@ import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_mode
 import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 
 class BaseFaturaDigerView extends StatefulWidget {
-  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseFaturaDigerView({super.key, required this.model});
+  final BaseEditModel<SiparisEditRequestModel> model;
 
   @override
   State<BaseFaturaDigerView> createState() => _BaseFaturaDigerViewState();

@@ -15,8 +15,8 @@ import "../model/hucre_listesi_model.dart";
 import "../view_model/hucre_listesi_view_model.dart";
 
 final class HucreListesiView extends StatefulWidget {
-  final int? depoKodu;
   const HucreListesiView({super.key, this.depoKodu});
+  final int? depoKodu;
 
   @override
   State<HucreListesiView> createState() => _HucreListesiViewState();

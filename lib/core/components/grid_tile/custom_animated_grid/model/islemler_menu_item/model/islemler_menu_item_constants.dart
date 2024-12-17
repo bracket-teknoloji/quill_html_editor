@@ -54,20 +54,6 @@ import "../../kod_degistir_model.dart";
 import "../view_model/islemler_menu_item_constants_view_model.dart";
 
 class IslemlerMenuItemConstants<T> {
-  BuildContext context;
-  IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
-  IslemTipiEnum islemTipi;
-  ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
-  EditTipiEnum? siparisTipi;
-  List<GridItemModel?> islemlerList = [];
-  T? model;
-  // T? get model2 => model;
-  DialogManager get _dialogManager => DialogManager();
-  NetworkManager get _networkManager => NetworkManager();
-  ParamModel get _paramModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
-  YetkiController get _yetkiController => YetkiController();
-  ProfilYetkiModel? get _userModel => CacheManager.getAnaVeri?.userModel?.profilYetki;
-  BottomSheetDialogManager get _bottomSheetDialogManager => BottomSheetDialogManager();
 
   IslemlerMenuItemConstants(this.context, {required this.islemTipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemTipi == IslemTipiEnum.stok) {
@@ -252,6 +238,20 @@ class IslemlerMenuItemConstants<T> {
         ..add(kopyala);
     }
   }
+  BuildContext context;
+  IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
+  IslemTipiEnum islemTipi;
+  ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
+  EditTipiEnum? siparisTipi;
+  List<GridItemModel?> islemlerList = [];
+  T? model;
+  // T? get model2 => model;
+  DialogManager get _dialogManager => DialogManager();
+  NetworkManager get _networkManager => NetworkManager();
+  ParamModel get _paramModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
+  YetkiController get _yetkiController => YetkiController();
+  ProfilYetkiModel? get _userModel => CacheManager.getAnaVeri?.userModel?.profilYetki;
+  BottomSheetDialogManager get _bottomSheetDialogManager => BottomSheetDialogManager();
 
   GridItemModel? get cariHareketleri => GridItemModel.islemler(
         isEnabled: _yetkiController.cariHareketleri,

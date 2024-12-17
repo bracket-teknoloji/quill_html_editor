@@ -22,9 +22,9 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class TahsilatOdemeKayitlariCard extends StatefulWidget {
+  const TahsilatOdemeKayitlariCard({super.key, required this.cariHareketleriModel, required this.update});
   final CariHareketleriModel cariHareketleriModel;
   final ValueChanged update;
-  const TahsilatOdemeKayitlariCard({super.key, required this.cariHareketleriModel, required this.update});
 
   @override
   State<TahsilatOdemeKayitlariCard> createState() => _TahsilatOdemeKayitlariCardState();

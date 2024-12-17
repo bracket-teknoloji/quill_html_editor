@@ -6,9 +6,9 @@ enum DepoFarkRaporuFiltreEnum {
   eksikSayilanlar("Eksik Sayılanlar"),
   farkVerenler("Fark Verenler");
 
-  final String filtreAdi;
-
   const DepoFarkRaporuFiltreEnum(this.filtreAdi);
+
+  final String filtreAdi;
 
   bool get tumuMu => this == DepoFarkRaporuFiltreEnum.tumu;
 

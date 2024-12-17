@@ -11,8 +11,8 @@ import "../model/masraf_kodu_rehberi_model.dart";
 import "../view_model/masraf_kodu_rehberi_view_model.dart";
 
 final class MasrafKoduRehberiView extends StatefulWidget {
-  final int tipi;
   const MasrafKoduRehberiView({super.key, required this.tipi});
+  final int tipi;
 
   @override
   State<MasrafKoduRehberiView> createState() => _MasrafKoduRehberiViewState();

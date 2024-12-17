@@ -28,8 +28,8 @@ import "../../../siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/siparis_durum_raporu_view_model.dart";
 
 class SiparisDurumRaporuView extends StatefulWidget {
-  final EditTipiEnum editTipiEnum;
   const SiparisDurumRaporuView({super.key, required this.editTipiEnum});
+  final EditTipiEnum editTipiEnum;
 
   @override
   State<SiparisDurumRaporuView> createState() => _YaslandirmaRaporuViewState();

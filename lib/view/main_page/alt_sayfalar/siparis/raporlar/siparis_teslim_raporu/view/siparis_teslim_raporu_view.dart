@@ -16,13 +16,13 @@ import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/siparis_teslim_raporu_view_model.dart";
 
 class SiparisTeslimRaporuView extends StatefulWidget {
-  final EditTipiEnum editTipiEnum;
-  final BaseSiparisEditModel? baseSiparisEditModel;
   const SiparisTeslimRaporuView({
     super.key,
     required this.editTipiEnum,
     this.baseSiparisEditModel,
   });
+  final EditTipiEnum editTipiEnum;
+  final BaseSiparisEditModel? baseSiparisEditModel;
 
   @override
   State<SiparisTeslimRaporuView> createState() => _YaslandirmaRaporuViewState();

@@ -38,8 +38,8 @@ import "../model/cari_hareketleri_model.dart";
 import "../view_model/cari_hareketleri_view_model.dart";
 
 final class CariHareketleriView extends StatefulWidget {
-  final CariListesiModel? cari;
   const CariHareketleriView({super.key, this.cari});
+  final CariListesiModel? cari;
 
   @override
   State<CariHareketleriView> createState() => _CariHareketleriViewState();

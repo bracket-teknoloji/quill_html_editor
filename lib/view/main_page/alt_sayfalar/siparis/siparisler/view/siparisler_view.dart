@@ -38,8 +38,8 @@ import "../model/siparisler_widget_model.dart";
 import "../view_model/siparisler_view_model.dart";
 
 class SiparislerView extends StatefulWidget {
-  final SiparislerWidgetModel widgetModel;
   const SiparislerView({super.key, required this.widgetModel});
+  final SiparislerWidgetModel widgetModel;
 
   @override
   State<SiparislerView> createState() => _SiparislerViewState();

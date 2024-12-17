@@ -16,8 +16,8 @@ import "../model/depo_bakiye_durumu_model.dart";
 import "../view_model/depo_bakiye_durumu_view_model.dart";
 
 class DepoBakiyeDurumuView extends StatefulWidget {
-  final StokListesiModel? model;
   const DepoBakiyeDurumuView({super.key, this.model});
+  final StokListesiModel? model;
 
   @override
   State<DepoBakiyeDurumuView> createState() => _DepoBakiyeDurumuViewState();

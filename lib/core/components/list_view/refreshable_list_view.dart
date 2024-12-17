@@ -11,30 +11,6 @@ import "../shimmer/list_view_shimmer.dart";
 ///* Yenileme işlemi yapıldığında sayfa yenilenir.
 ///* Bu widget'ın State'ini yönetmek için `Observer` widget'ı kullanınız.
 final class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget {
-  /// Refresh işlemleri için gerekli fonksiyon
-  final Future<void> Function() onRefresh;
-
-  /// Liste elemanları
-  final List<T>? items;
-
-  /// Liste elemanlarının görünümü için builder
-  final Widget Function(T item) itemBuilder;
-
-  /// Bu widget'ın sayfalama yapısına ait olup olmadığını kontrol etmek için kullanılır.
-  /// Sadece constructor üzerinden çağırılıp değiştirilebilir.
-  final bool _isPageable;
-
-  /// Liste sayfalama yapısına sahipse kullanılır.
-  /// Bunun sayesinde ekranda [CircularProgressIndicator] görünüp görünmemesini sağlarız.
-  /// Eğer [true] ise [CircularProgressIndicator] görünür.
-  final bool dahaVarMi;
-
-  /// Bu widget sayfalama yapısına ait ise istenir.
-  /// Sayfa hareketlerini takip etmek içn kullanılır.
-  final ScrollController? scrollController;
-
-  /// Gelecek olan listenin Sliver olup olmadığını kontrol etmek için kullanılır.
-  final bool _isSliver;
 
   /// Tek istekle bütün verilerin geldiği durumda bunu kullanınız.
   const RefreshableListView({
@@ -82,6 +58,30 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
     required this.itemBuilder,
   })  : _isPageable = true,
         _isSliver = true;
+  /// Refresh işlemleri için gerekli fonksiyon
+  final Future<void> Function() onRefresh;
+
+  /// Liste elemanları
+  final List<T>? items;
+
+  /// Liste elemanlarının görünümü için builder
+  final Widget Function(T item) itemBuilder;
+
+  /// Bu widget'ın sayfalama yapısına ait olup olmadığını kontrol etmek için kullanılır.
+  /// Sadece constructor üzerinden çağırılıp değiştirilebilir.
+  final bool _isPageable;
+
+  /// Liste sayfalama yapısına sahipse kullanılır.
+  /// Bunun sayesinde ekranda [CircularProgressIndicator] görünüp görünmemesini sağlarız.
+  /// Eğer [true] ise [CircularProgressIndicator] görünür.
+  final bool dahaVarMi;
+
+  /// Bu widget sayfalama yapısına ait ise istenir.
+  /// Sayfa hareketlerini takip etmek içn kullanılır.
+  final ScrollController? scrollController;
+
+  /// Gelecek olan listenin Sliver olup olmadığını kontrol etmek için kullanılır.
+  final bool _isSliver;
 
   ///Bu widget adaptive olarak çalışmaktadır.
   ///Padding'i önden tanımlanmıştır.

@@ -26,9 +26,9 @@ import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/sayim_girisi_view_model.dart";
 
 final class SayimGirisiView extends StatefulWidget {
+  const SayimGirisiView({super.key, required this.onStokSelected, required this.resetFiltreModel});
   final Future<void> Function() onStokSelected;
   final void Function() resetFiltreModel;
-  const SayimGirisiView({super.key, required this.onStokSelected, required this.resetFiltreModel});
 
   @override
   State<SayimGirisiView> createState() => _SayimGirisiViewState();

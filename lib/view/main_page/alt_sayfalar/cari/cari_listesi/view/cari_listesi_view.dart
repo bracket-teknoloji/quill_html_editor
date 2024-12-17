@@ -46,9 +46,9 @@ import "../model/cari_sehirler_model.dart";
 import "../view_model/cari_listesi_view_model.dart";
 
 final class CariListesiView extends StatefulWidget {
+  const CariListesiView({super.key, this.isGetData = false, this.cariRequestModel});
   final bool isGetData;
   final CariRequestModel? cariRequestModel;
-  const CariListesiView({super.key, this.isGetData = false, this.cariRequestModel});
 
   @override
   State<CariListesiView> createState() => _CariListesiViewState();

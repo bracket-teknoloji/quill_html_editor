@@ -15,11 +15,11 @@ import "../badge/colorful_badge.dart";
 import "../layout/custom_layout_builder.dart";
 
 class StokFiyatGecmisiCard extends StatefulWidget {
+  const StokFiyatGecmisiCard({super.key, this.model, this.onTap, this.onLongPress, this.onPrint});
   final FiyatGecmisiResponseModel? model;
   final void Function()? onTap;
   final void Function()? onLongPress;
   final void Function()? onPrint;
-  const StokFiyatGecmisiCard({super.key, this.model, this.onTap, this.onLongPress, this.onPrint});
 
   @override
   State<StokFiyatGecmisiCard> createState() => StokFiyatGecmisiCardState();

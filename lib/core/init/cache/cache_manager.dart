@@ -25,6 +25,28 @@ import "../../constants/static_variables/static_variables.dart";
 import "favorites_model.dart";
 
 class CacheManager {
+  CacheManager._init() {
+    WidgetsFlutterBinding.ensureInitialized();
+    Hive
+      ..registerAdapter(UserModelAdapter())
+      ..registerAdapter(SirketModelAdapter())
+      ..registerAdapter(AccountResponseModelAdapter())
+      ..registerAdapter(MainPageModelAdapter())
+      ..registerAdapter(FavoritesModelAdapter())
+      ..registerAdapter(AccountModelAdapter())
+      ..registerAdapter(CariSehirlerModelAdapter())
+      ..registerAdapter(IsletmeModelAdapter())
+      ..registerAdapter(NetFectDizaynListAdapter())
+      ..registerAdapter(LoginDialogModelAdapter())
+      ..registerAdapter(BaseSiparisEditModelAdapter())
+      ..registerAdapter(KalemModelAdapter())
+      ..registerAdapter(CariListesiModelAdapter())
+      ..registerAdapter(EditTipiEnumAdapter())
+      ..registerAdapter(ListSiparisEditModelAdapter())
+      ..registerAdapter(StokListAdapter())
+      ..registerAdapter(SeriListImplAdapter());
+    initHiveBoxes();
+  }
   static late Box tokenBox;
   static late Box preferencesBox;
   static late Box companiesBox;
@@ -54,28 +76,6 @@ class CacheManager {
 
   static final CacheManager _instance = CacheManager._init();
   static CacheManager get instance => _instance;
-  CacheManager._init() {
-    WidgetsFlutterBinding.ensureInitialized();
-    Hive
-      ..registerAdapter(UserModelAdapter())
-      ..registerAdapter(SirketModelAdapter())
-      ..registerAdapter(AccountResponseModelAdapter())
-      ..registerAdapter(MainPageModelAdapter())
-      ..registerAdapter(FavoritesModelAdapter())
-      ..registerAdapter(AccountModelAdapter())
-      ..registerAdapter(CariSehirlerModelAdapter())
-      ..registerAdapter(IsletmeModelAdapter())
-      ..registerAdapter(NetFectDizaynListAdapter())
-      ..registerAdapter(LoginDialogModelAdapter())
-      ..registerAdapter(BaseSiparisEditModelAdapter())
-      ..registerAdapter(KalemModelAdapter())
-      ..registerAdapter(CariListesiModelAdapter())
-      ..registerAdapter(EditTipiEnumAdapter())
-      ..registerAdapter(ListSiparisEditModelAdapter())
-      ..registerAdapter(StokListAdapter())
-      ..registerAdapter(SeriListImplAdapter());
-    initHiveBoxes();
-  }
 
   Future<void> initHiveBoxes() async {
     await Hive.initFlutter("picker/hive");

@@ -17,10 +17,10 @@ import "../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_haritasi_view_model.dart";
 
 final class CariHaritasiView extends StatefulWidget {
+  const CariHaritasiView({super.key, this.isGetData, this.konum, this.model});
   final bool? isGetData;
   final CariListesiModel? model;
   final (double? enlem, double? boylam)? konum;
-  const CariHaritasiView({super.key, this.isGetData, this.konum, this.model});
 
   @override
   State<CariHaritasiView> createState() => CariHaritasiViewState();

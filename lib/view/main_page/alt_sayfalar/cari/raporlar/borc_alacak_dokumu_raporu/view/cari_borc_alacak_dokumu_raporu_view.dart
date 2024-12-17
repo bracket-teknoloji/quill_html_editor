@@ -12,9 +12,9 @@ import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_borc_alacak_dokumu_raporu_view_model.dart";
 
 final class CariBorcAlacakDokumuRaporuView extends StatefulWidget {
-  final CariListesiModel? model;
 
   const CariBorcAlacakDokumuRaporuView({super.key, this.model});
+  final CariListesiModel? model;
 
   @override
   State<CariBorcAlacakDokumuRaporuView> createState() => _CariBorcAlacakDokumuRaporuViewState();

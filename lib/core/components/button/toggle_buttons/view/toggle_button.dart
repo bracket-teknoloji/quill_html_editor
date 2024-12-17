@@ -6,10 +6,10 @@ import "../../../../constants/ui_helper/ui_helper.dart";
 import "../view_model/toggle_button_view_model.dart";
 
 class ToggleButton extends StatefulWidget {
+  const ToggleButton({super.key, this.onChanged});
   static String selected = "";
   // onCHanged fonksiyonu ile seçilen butonun değerini almak için kullanılan değişken
   final Function(String)? onChanged;
-  const ToggleButton({super.key, this.onChanged});
 
   @override
   State<ToggleButton> createState() => _ToggleButtonState();

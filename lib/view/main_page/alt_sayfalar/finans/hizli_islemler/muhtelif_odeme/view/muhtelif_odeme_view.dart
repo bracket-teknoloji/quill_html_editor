@@ -21,8 +21,8 @@ import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/sto
 import "package:picker/view/main_page/model/param_model.dart";
 
 class MuhtelifOdemeView extends StatefulWidget {
-  final bool? tahsilatMi;
   const MuhtelifOdemeView({super.key, this.tahsilatMi});
+  final bool? tahsilatMi;
 
   @override
   State<MuhtelifOdemeView> createState() => _MuhtelifOdemeViewState();

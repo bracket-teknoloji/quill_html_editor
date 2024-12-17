@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 
 class FooterButton extends StatelessWidget {
+  const FooterButton({super.key, this.color, required this.children, this.onPressed});
   final Color? color;
   final List<Widget> children;
   final dynamic Function()? onPressed;
-  const FooterButton({super.key, this.color, required this.children, this.onPressed});
 
   @override
   Widget build(BuildContext context) => ElevatedButton(

@@ -19,8 +19,8 @@ import "../../../banka_listesi/model/banka_listesi_model.dart";
 import "../../view_model/banka_muhtelif_islemler_view_model.dart";
 
 class BankaMuhtelifIslemlerView extends StatefulWidget {
-  final BankaMuhtelifIslemlerEnum bankaMuhtelifIslemlerEnum;
   const BankaMuhtelifIslemlerView({super.key, required this.bankaMuhtelifIslemlerEnum});
+  final BankaMuhtelifIslemlerEnum bankaMuhtelifIslemlerEnum;
 
   @override
   State<BankaMuhtelifIslemlerView> createState() => _BankaMuhtelifIslemlerViewState();

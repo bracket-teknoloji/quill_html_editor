@@ -13,8 +13,8 @@ import "../../../state/base_state.dart";
 import "../view_model/siparis_rehberi_view_model.dart";
 
 class SiparisRehberiView extends StatefulWidget {
-  final BaseSiparisEditModel model;
   const SiparisRehberiView({super.key, required this.model});
+  final BaseSiparisEditModel model;
 
   @override
   State<SiparisRehberiView> createState() => _SiparisRehberiViewState();

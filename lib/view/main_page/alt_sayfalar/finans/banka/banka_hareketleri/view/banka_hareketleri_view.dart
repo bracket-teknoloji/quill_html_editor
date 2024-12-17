@@ -17,8 +17,8 @@ import "../model/banka_hareketleri_model.dart";
 import "../view_model/banka_hareketleri_view_model.dart";
 
 class BankaHareketleriView extends StatefulWidget {
-  final BankaListesiModel model;
   const BankaHareketleriView({super.key, required this.model});
+  final BankaListesiModel model;
 
   @override
   State<BankaHareketleriView> createState() => _BankaHareketleriViewState();

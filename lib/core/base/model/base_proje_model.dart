@@ -6,11 +6,11 @@ part "base_proje_model.g.dart";
 
 @JsonSerializable()
 class BaseProjeModel with NetworkManagerMixin {
+
+  BaseProjeModel({this.projeKodu, this.projeAciklama, this.aktif});
   String? projeKodu;
   String? projeAciklama;
   String? aktif;
-
-  BaseProjeModel({this.projeKodu, this.projeAciklama, this.aktif});
 
   @override
   BaseProjeModel fromJson(Map<String, dynamic> json) => _$BaseProjeModelFromJson(json);

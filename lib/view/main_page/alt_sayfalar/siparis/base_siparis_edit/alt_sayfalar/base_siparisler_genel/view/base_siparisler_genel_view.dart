@@ -26,8 +26,8 @@ import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparisler_genel_view_model.dart";
 
 final class BaseSiparislerGenelView extends StatefulWidget {
-  final BaseEditModel<SiparisEditRequestModel> model;
   const BaseSiparislerGenelView({super.key, required this.model});
+  final BaseEditModel<SiparisEditRequestModel> model;
 
   @override
   State<BaseSiparislerGenelView> createState() => _BaseSiparislerGenelViewState();

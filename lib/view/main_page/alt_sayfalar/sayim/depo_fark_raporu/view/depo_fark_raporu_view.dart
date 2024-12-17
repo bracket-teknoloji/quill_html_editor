@@ -22,8 +22,8 @@ import "../../sayim_listesi/model/sayim_listesi_model.dart";
 import "../view_model/depo_fark_raporu_view_model.dart";
 
 final class DepoFarkRaporuView extends StatefulWidget {
-  final SayimListesiModel model;
   const DepoFarkRaporuView({super.key, required this.model});
+  final SayimListesiModel model;
 
   @override
   State<DepoFarkRaporuView> createState() => _DepoFarkRaporuViewState();

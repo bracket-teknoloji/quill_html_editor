@@ -17,8 +17,8 @@ import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "../view_model/olcum_kalem_sec_view_model.dart";
 
 class OlcumKalemSecView extends StatefulWidget {
-  final OlcumBelgeModel model;
   const OlcumKalemSecView({super.key, required this.model});
+  final OlcumBelgeModel model;
 
   @override
   State<OlcumKalemSecView> createState() => _OlcumKalemSecViewState();

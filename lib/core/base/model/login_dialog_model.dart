@@ -6,16 +6,16 @@ part "login_dialog_model.g.dart";
 
 @HiveType(typeId: 68)
 class LoginDialogModel {
-  @HiveField(0)
-  AccountResponseModel? account;
-  @HiveField(1)
-  String? username;
-  @HiveField(2)
-  String? password;
 
   LoginDialogModel({
     required this.account,
     required this.username,
     required this.password,
   });
+  @HiveField(0)
+  AccountResponseModel? account;
+  @HiveField(1)
+  String? username;
+  @HiveField(2)
+  String? password;
 }

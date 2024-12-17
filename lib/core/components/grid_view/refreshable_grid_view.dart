@@ -6,30 +6,6 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../shimmer/grid_view_shimmer.dart";
 
 class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget {
-  /// Refresh işlemleri için gerekli fonksiyon
-  final Future<void> Function() onRefresh;
-
-  /// Liste elemanları
-  final List<T>? items;
-
-  /// Liste elemanlarının görünümü için builder
-  final Widget Function(T item, {int? crossAxisCount}) itemBuilder;
-
-  /// Bu widget'ın sayfalama yapısına ait olup olmadığını kontrol etmek için kullanılır.
-  /// Sadece constructor üzerinden çağırılıp değiştirilebilir.
-  final bool _isPageable;
-
-  /// Liste sayfalama yapısına sahipse kullanılır.
-  /// Bunun sayesinde ekranda [CircularProgressIndicator] görünüp görünmemesini sağlarız.
-  /// Eğer [true] ise [CircularProgressIndicator] görünür.
-  final bool dahaVarMi;
-
-  /// Bu widget sayfalama yapısına ait ise istenir.
-  /// Sayfa hareketlerini takip etmek içn kullanılır.
-  final ScrollController? scrollController;
-
-  /// Yatay eksendeki eleman sayısıdır.
-  final int crossAxisCount;
 
   /// Gelecek olan listenin Sliver olup olmadığını kontrol etmek için kullanılır.
   // final bool _isSliver;
@@ -59,6 +35,30 @@ class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget
     required this.itemBuilder,
     required this.crossAxisCount,
   }) : _isPageable = true;
+  /// Refresh işlemleri için gerekli fonksiyon
+  final Future<void> Function() onRefresh;
+
+  /// Liste elemanları
+  final List<T>? items;
+
+  /// Liste elemanlarının görünümü için builder
+  final Widget Function(T item, {int? crossAxisCount}) itemBuilder;
+
+  /// Bu widget'ın sayfalama yapısına ait olup olmadığını kontrol etmek için kullanılır.
+  /// Sadece constructor üzerinden çağırılıp değiştirilebilir.
+  final bool _isPageable;
+
+  /// Liste sayfalama yapısına sahipse kullanılır.
+  /// Bunun sayesinde ekranda [CircularProgressIndicator] görünüp görünmemesini sağlarız.
+  /// Eğer [true] ise [CircularProgressIndicator] görünür.
+  final bool dahaVarMi;
+
+  /// Bu widget sayfalama yapısına ait ise istenir.
+  /// Sayfa hareketlerini takip etmek içn kullanılır.
+  final ScrollController? scrollController;
+
+  /// Yatay eksendeki eleman sayısıdır.
+  final int crossAxisCount;
   // _isSliver = false;
 
   @override

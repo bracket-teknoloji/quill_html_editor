@@ -7,6 +7,19 @@ part "user_json_model.g.dart";
 
 @JsonSerializable()
 class UserJson {
+  UserJson();
+
+  factory UserJson.fromJson(String? json) {
+    if (json == null) {
+      return UserJson();
+    }
+    log(json);
+    // final encoded = base64.encode("ÜĞŞİÖÇ".codeUnits);
+    // log(utf8.decode(encoded.codeUnits));
+    return _$UserJsonFromJson(
+      jsonDecode(utf8.decode(base64Decode(json), allowMalformed: true)),
+    );
+  }
   @JsonKey(name: "profilModel")
   ProfilModel? profilModel;
   @JsonKey(name: "yetkiModel")
@@ -33,19 +46,6 @@ class UserJson {
   String? pickerYetkili;
   @JsonKey(name: "AD_SOYAD")
   late final String? adSoyad = "$ad $soyad";
-  UserJson();
-
-  factory UserJson.fromJson(String? json) {
-    if (json == null) {
-      return UserJson();
-    }
-    log(json);
-    // final encoded = base64.encode("ÜĞŞİÖÇ".codeUnits);
-    // log(utf8.decode(encoded.codeUnits));
-    return _$UserJsonFromJson(
-      jsonDecode(utf8.decode(base64Decode(json), allowMalformed: true)),
-    );
-  }
 
   Map<String, dynamic> toJson() => _$UserJsonToJson(this);
 
@@ -55,6 +55,9 @@ class UserJson {
 
 @JsonSerializable()
 class ProfilModel {
+  ProfilModel();
+
+  factory ProfilModel.fromJson(Map<String, dynamic> json) => _$ProfilModelFromJson(json);
   @JsonKey(name: "kullaniciYetkiModel")
   Map? kullaniciYetkiModel;
   @JsonKey(name: "sirket_KalemKayitKontrol_BelgeTipleri")
@@ -63,9 +66,6 @@ class ProfilModel {
   String? sevkiyatSatisIrsEArsivMukellefineKesilmesin;
   @JsonKey(name: "sevkiyat_SatisFat_EFaturaMukellefineKesilmesin")
   String? sevkiyatSatisFatEFaturaMukellefineKesilmesin;
-  ProfilModel();
-
-  factory ProfilModel.fromJson(Map<String, dynamic> json) => _$ProfilModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProfilModelToJson(this);
 }

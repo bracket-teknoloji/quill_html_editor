@@ -14,31 +14,6 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "custom_text_field_view_model.dart";
 
 class CustomTextField extends StatefulWidget {
-  final TextEditingController? controller;
-  final String? labelText;
-  final String? valueText;
-  final TextSpan? descriptionWidget;
-  final Widget? valueWidget;
-  final bool? isMust;
-  final bool? readOnly;
-  final bool? enabled;
-  final Widget? suffix;
-  final TextInputType? keyboardType;
-  final FocusNode? focusNode;
-  final int? maxLength;
-  final String? controllerText;
-  final List<TextInputFormatter>? inputFormatter;
-  final void Function()? onTap;
-  final String? Function(String? value)? validator;
-  final void Function(String value)? onChanged;
-  final void Function(String value)? onSubmitted;
-  final void Function(DateTime? value)? onDateChange;
-  final void Function()? onClear;
-  final bool? suffixMore;
-  final bool? isFormattedString;
-  final bool? isDateTime;
-  final bool? isTime;
-  final bool obscureText;
   const CustomTextField({
     super.key,
     this.controller,
@@ -94,6 +69,31 @@ class CustomTextField extends StatefulWidget {
         suffixMore = false,
         onSubmitted = null,
         isTime = false;
+  final TextEditingController? controller;
+  final String? labelText;
+  final String? valueText;
+  final TextSpan? descriptionWidget;
+  final Widget? valueWidget;
+  final bool? isMust;
+  final bool? readOnly;
+  final bool? enabled;
+  final Widget? suffix;
+  final TextInputType? keyboardType;
+  final FocusNode? focusNode;
+  final int? maxLength;
+  final String? controllerText;
+  final List<TextInputFormatter>? inputFormatter;
+  final void Function()? onTap;
+  final String? Function(String? value)? validator;
+  final void Function(String value)? onChanged;
+  final void Function(String value)? onSubmitted;
+  final void Function(DateTime? value)? onDateChange;
+  final void Function()? onClear;
+  final bool? suffixMore;
+  final bool? isFormattedString;
+  final bool? isDateTime;
+  final bool? isTime;
+  final bool obscureText;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }

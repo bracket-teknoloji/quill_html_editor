@@ -8,6 +8,11 @@ part "cari_aktivite_listesi_model.g.dart";
 
 @unfreezed
 class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMixin {
+
+  factory CariAktiviteListesiModel.fromCariListesiModel(CariListesiModel? model) => CariAktiviteListesiModel(
+        cariAdi: model?.cariAdi,
+        cariKodu: model?.cariKodu,
+      );
   CariAktiviteListesiModel._();
   factory CariAktiviteListesiModel({
     int? id,
@@ -39,11 +44,6 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
 
   @override
   CariAktiviteListesiModel? fromJson(Map<String, dynamic> json) => _$CariAktiviteListesiModelFromJson(json);
-
-  factory CariAktiviteListesiModel.fromCariListesiModel(CariListesiModel? model) => CariAktiviteListesiModel(
-        cariAdi: model?.cariAdi,
-        cariKodu: model?.cariKodu,
-      );
 }
 
 extension CariAktiviteExtensions on CariAktiviteListesiModel {

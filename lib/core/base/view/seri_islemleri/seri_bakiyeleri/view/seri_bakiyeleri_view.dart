@@ -21,8 +21,8 @@ import "../../../../state/base_state.dart";
 import "../view_model/seri_bakiyeleri_view_model.dart";
 
 class SeriBakiyeleriView extends StatefulWidget {
-  final StokListesiModel stokModel;
   const SeriBakiyeleriView({super.key, required this.stokModel});
+  final StokListesiModel stokModel;
 
   @override
   State<SeriBakiyeleriView> createState() => _SeriBakiyeleriViewState();

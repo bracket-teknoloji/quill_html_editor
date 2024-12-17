@@ -4,6 +4,8 @@ part "lang_model.g.dart";
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.none)
 class LangModel {
+
+  factory LangModel.fromJson(Map<String, dynamic>? json) => json != null ? _$LangModelFromJson(json) : LangModel();
   LangModel();
 
   @JsonKey(name: "DilKodu")
@@ -323,8 +325,6 @@ class LangModel {
   String? servisPickerYetkinizBulunmuyor;
   String? servisSunucuHatasi;
   String? servisYeniBelgeNoAlinamadi;
-
-  factory LangModel.fromJson(Map<String, dynamic>? json) => json != null ? _$LangModelFromJson(json) : LangModel();
   Map<String, dynamic> toJson() => _$LangModelToJson(this);
 
   @override

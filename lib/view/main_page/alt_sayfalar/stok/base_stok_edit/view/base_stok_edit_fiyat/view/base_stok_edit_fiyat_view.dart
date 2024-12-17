@@ -19,8 +19,8 @@ import "../../../model/stok_detay_model.dart";
 import "../view_model/base_stok_edit_fiyat_view_model.dart";
 
 final class BaseStokEditFiyatView extends StatefulWidget {
-  final BaseEditEnum? model;
   const BaseStokEditFiyatView({super.key, this.model});
+  final BaseEditEnum? model;
 
   @override
   State<BaseStokEditFiyatView> createState() => _BaseStokEditFiyatViewState();

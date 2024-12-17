@@ -7,14 +7,14 @@ import "../../constants/ui_helper/icon_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class AnimatedIslemlerGridTile extends StatefulWidget {
-  final GridItemModel? item;
-  final Function()? onTap;
 
   const AnimatedIslemlerGridTile({
     super.key,
     this.item,
     this.onTap,
   });
+  final GridItemModel? item;
+  final Function()? onTap;
 
   @override
   AnimatedIslemlerGridTileState createState() => AnimatedIslemlerGridTileState();

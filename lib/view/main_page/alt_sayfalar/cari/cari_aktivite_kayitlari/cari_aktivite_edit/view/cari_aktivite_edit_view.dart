@@ -14,8 +14,8 @@ import "../alt_sayfalar/cari_aktivite_genel/view/cari_aktivite_genel_view.dart";
 import "../view_model/cari_aktivite_edit_view_model.dart";
 
 class CariAktiviteEditView extends StatefulWidget {
-  final BaseEditModel<CariAktiviteListesiModel> model;
   const CariAktiviteEditView({super.key, required this.model});
+  final BaseEditModel<CariAktiviteListesiModel> model;
 
   @override
   State<CariAktiviteEditView> createState() => _CariAktiviteEditViewState();

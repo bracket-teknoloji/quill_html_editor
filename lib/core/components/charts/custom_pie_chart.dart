@@ -10,10 +10,10 @@ import "../../constants/ui_helper/duration_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 final class CustomPieChart extends StatefulWidget {
+  const CustomPieChart({super.key, this.pieChartValue, this.pieChartTitle, this.pieChartSelectedValue});
   final List<String>? pieChartTitle;
   final List<double>? pieChartSelectedValue;
   final List<double>? pieChartValue;
-  const CustomPieChart({super.key, this.pieChartValue, this.pieChartTitle, this.pieChartSelectedValue});
 
   @override
   State<CustomPieChart> createState() => _CustomPieChartState();

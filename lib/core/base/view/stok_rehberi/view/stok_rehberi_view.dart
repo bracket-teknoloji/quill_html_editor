@@ -33,9 +33,9 @@ import "../../yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "../view_model/stok_rehberi_view_model.dart";
 
 final class StokRehberiView extends StatefulWidget {
+  const StokRehberiView({super.key, this.searchText, this.isTalepTeklif});
   final String? searchText;
   final bool? isTalepTeklif;
-  const StokRehberiView({super.key, this.searchText, this.isTalepTeklif});
 
   @override
   State<StokRehberiView> createState() => _StokRehberiViewState();

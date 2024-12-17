@@ -26,8 +26,8 @@ import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/e_belge_gelen_giden_kutusu_view_model.dart";
 
 class EBelgeGelenGidenKutusuView extends StatefulWidget {
-  final EBelgeEnum eBelgeEnum;
   const EBelgeGelenGidenKutusuView({super.key, required this.eBelgeEnum});
+  final EBelgeEnum eBelgeEnum;
 
   @override
   State<EBelgeGelenGidenKutusuView> createState() => _EBelgeGelenGidenKutusuViewState();

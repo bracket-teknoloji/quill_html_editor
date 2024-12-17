@@ -6,11 +6,6 @@ part "siradaki_belge_no_model.g.dart";
 
 @JsonSerializable(fieldRename: FieldRename.pascal, createFactory: true)
 class SiradakiBelgeNoModel with NetworkManagerMixin {
-  String? seri;
-  String? belgeTipi;
-  String? eIrsaliye;
-  String? cariKodu;
-  String? belgeNo;
 
   SiradakiBelgeNoModel({
     this.seri,
@@ -19,6 +14,11 @@ class SiradakiBelgeNoModel with NetworkManagerMixin {
     this.cariKodu,
     this.belgeNo,
   });
+  String? seri;
+  String? belgeTipi;
+  String? eIrsaliye;
+  String? cariKodu;
+  String? belgeNo;
 
   @override
   SiradakiBelgeNoModel fromJson(Map<String, dynamic> json) => _$SiradakiBelgeNoModelFromJson(json);

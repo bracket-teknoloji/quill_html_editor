@@ -6,6 +6,17 @@ part "dizayn_model.g.dart";
 
 @JsonSerializable()
 class DizaynModel with NetworkManagerMixin {
+
+  DizaynModel({
+    this.id,
+    this.dizaynAdi,
+    this.modulId,
+    this.dizaynKodu,
+    this.erpDizayni,
+    this.varsayilanMi,
+  });
+
+  factory DizaynModel.fromJson(Map<String, dynamic> json) => _$DizaynModelFromJson(json);
   @JsonKey(name: "ID")
   final int? id;
   @JsonKey(name: "DIZAYN_ADI")
@@ -18,17 +29,6 @@ class DizaynModel with NetworkManagerMixin {
   final String? erpDizayni;
   @JsonKey(name: "VARSAYILAN_MI")
   final bool? varsayilanMi;
-
-  DizaynModel({
-    this.id,
-    this.dizaynAdi,
-    this.modulId,
-    this.dizaynKodu,
-    this.erpDizayni,
-    this.varsayilanMi,
-  });
-
-  factory DizaynModel.fromJson(Map<String, dynamic> json) => _$DizaynModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$DizaynModelToJson(this);

@@ -19,8 +19,8 @@ import "../../../../cari/cari_listesi/model/cari_request_model.dart";
 import "../view_model/cari_virman_view_model.dart";
 
 class CariVirmanView extends StatefulWidget {
-  final CariListesiModel? model;
   const CariVirmanView({super.key, this.model});
+  final CariListesiModel? model;
 
   @override
   State<CariVirmanView> createState() => _CariVirmanViewState();

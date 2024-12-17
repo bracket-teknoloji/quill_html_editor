@@ -21,9 +21,9 @@ import "../../stok_liste/model/stok_listesi_model.dart";
 import "../view_model/stok_yazdir_view_model.dart";
 
 class StokYazdirView extends StatefulWidget {
+  const StokYazdirView({super.key, this.model, this.hucreModel});
   final StokListesiModel? model;
   final HucreListesiModel? hucreModel;
-  const StokYazdirView({super.key, this.model, this.hucreModel});
 
   @override
   State<StokYazdirView> createState() => _StokYazdirViewState();

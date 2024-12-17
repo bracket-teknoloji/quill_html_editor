@@ -15,8 +15,8 @@ import "../../../../model/cari_aktivite_listesi_model.dart";
 import "../view_model/cari_aktivite_detayi_view_model.dart";
 
 class CariAktiviteDetayiEditView extends StatefulWidget {
-  final BaseEditModel<CariAktiviteListesiModel>? model;
   const CariAktiviteDetayiEditView({super.key, this.model});
+  final BaseEditModel<CariAktiviteListesiModel>? model;
 
   @override
   State<CariAktiviteDetayiEditView> createState() => CariAktiviteDetayiEditViewState();

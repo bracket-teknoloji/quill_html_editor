@@ -9,6 +9,8 @@ part "login_model.g.dart";
 @HiveType(typeId: 99)
 @JsonSerializable()
 class TokenModel with NetworkManagerMixin {
+
+  TokenModel();
   @HiveField(0)
   @JsonKey(name: "access_token")
   String? accessToken;
@@ -33,8 +35,6 @@ class TokenModel with NetworkManagerMixin {
   @HiveField(7)
   @JsonKey(name: "error_description")
   String? errorDescription;
-
-  TokenModel();
 
   @override
   TokenModel fromJson(Map<String, dynamic> json) => _$TokenModelFromJson(json);

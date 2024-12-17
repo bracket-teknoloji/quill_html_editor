@@ -43,8 +43,8 @@ linter:
     avoid_web_libraries_in_flutter: false
     # prefer_final_parameters: true
     prefer_final_in_for_each: true
-    # prefer_null_aware_method_calls: true
-    # sort_constructors_first: true
+    prefer_null_aware_method_calls: true
+    sort_constructors_first: true
     # use_if_null_to_convert_nulls_to_bools: true
     prefer_if_elements_to_conditional_expressions: true
     prefer_interpolation_to_compose_strings: true

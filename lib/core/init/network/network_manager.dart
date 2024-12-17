@@ -55,8 +55,6 @@ import "../../constants/enum/dio_enum.dart";
 import "login/api_urls.dart";
 
 class NetworkManager {
-  //create singleton
-  static final NetworkManager _singleton = NetworkManager._internal();
 
   factory NetworkManager() => _singleton;
 
@@ -94,6 +92,8 @@ class NetworkManager {
       );
     }
   }
+  //create singleton
+  static final NetworkManager _singleton = NetworkManager._internal();
 
   final Dio dio = Dio();
 

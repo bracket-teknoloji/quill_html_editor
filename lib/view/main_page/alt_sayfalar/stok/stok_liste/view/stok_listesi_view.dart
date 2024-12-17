@@ -48,10 +48,10 @@ import "../model/stok_listesi_model.dart";
 import "../view_model/stok_listesi_view_model.dart";
 
 final class StokListesiView extends StatefulWidget {
+  const StokListesiView({super.key, this.isGetData, this.searchText, this.requestModel});
   final bool? isGetData;
   final StokBottomSheetModel? requestModel;
   final String? searchText;
-  const StokListesiView({super.key, this.isGetData, this.searchText, this.requestModel});
 
   @override
   State<StokListesiView> createState() => _StokListesiViewState();

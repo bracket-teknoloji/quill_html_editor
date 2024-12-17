@@ -16,9 +16,9 @@ import "../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../model/param_model.dart";
 
 class MalKabulSevkiyatKalemRaporuView extends StatefulWidget {
-  final EditTipiEnum editTipiEnum;
 
   const MalKabulSevkiyatKalemRaporuView({super.key, required this.editTipiEnum});
+  final EditTipiEnum editTipiEnum;
 
   @override
   State<MalKabulSevkiyatKalemRaporuView> createState() => _MalKabulSevkiyatKalemRaporuViewState();

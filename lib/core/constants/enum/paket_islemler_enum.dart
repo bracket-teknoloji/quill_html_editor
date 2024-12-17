@@ -5,6 +5,7 @@ enum PaketIslemlerEnum {
   paketSil(2),
   paketIcerigiSil(5);
 
-  final int islemKodu;
   const PaketIslemlerEnum(this.islemKodu);
+
+  final int islemKodu;
 }

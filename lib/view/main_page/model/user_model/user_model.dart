@@ -10,6 +10,8 @@ part "user_model.g.dart";
 @JsonSerializable(createFactory: true)
 @HiveType(typeId: 101)
 class UserModel {
+
+  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
   UserModel();
   @HiveField(0)
   int? id;
@@ -57,8 +59,6 @@ class UserModel {
   String? plasiyerKodu;
   @JsonKey(name: "EKREHBERLER")
   List<EkRehberlerModel>? ekRehberler;
-
-  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   String get adiSoyadi => "$adi $soyadi";

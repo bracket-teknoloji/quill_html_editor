@@ -13,8 +13,8 @@ import "../../../state/base_state.dart";
 import "../view_model/doviz_kuru_girisi_view_model.dart";
 
 class DovizKuruGirisiView extends StatefulWidget {
-  final DovizKurlariModel? dovizKurlariModel;
   const DovizKuruGirisiView({super.key, this.dovizKurlariModel});
+  final DovizKurlariModel? dovizKurlariModel;
 
   @override
   State<DovizKuruGirisiView> createState() => _DovizKuruGirisiViewState();

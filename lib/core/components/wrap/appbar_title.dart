@@ -3,10 +3,10 @@ import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 
 class AppBarTitle extends StatelessWidget {
+  const AppBarTitle({super.key, this.title, this.subtitle, this.isSubTitleSmall});
   final String? title;
   final String? subtitle;
   final bool? isSubTitleSmall;
-  const AppBarTitle({super.key, this.title, this.subtitle, this.isSubTitleSmall});
 
   @override
   Widget build(BuildContext context) => Wrap(

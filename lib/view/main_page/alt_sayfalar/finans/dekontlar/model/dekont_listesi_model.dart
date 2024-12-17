@@ -10,21 +10,6 @@ part "dekont_listesi_model.g.dart";
 
 @unfreezed
 class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
-  DekontListesiModel._();
-  factory DekontListesiModel({
-    int? inckeyno,
-    String? seri,
-    int? dekontNo,
-    DateTime? tarih,
-    int? kalemSayisi,
-    double? borcToplami,
-    String? seriAdi,
-  }) = _DekontListesiModel;
-
-  factory DekontListesiModel.fromJson(Map<String, dynamic> json) => _$DekontListesiModelFromJson(json);
-
-  @override
-  DekontListesiModel fromJson(Map<String, dynamic> json) => DekontListesiModel.fromJson(json);
 
   factory DekontListesiModel.fromCariHareketleriModel(CariHareketleriModel model) => DekontListesiModel(
         inckeyno: model.inckeyno,
@@ -40,6 +25,21 @@ class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
       );
 
   factory DekontListesiModel.fromEBelgeListesiModel(EBelgeListesiModel model) => DekontListesiModel();
+  DekontListesiModel._();
+  factory DekontListesiModel({
+    int? inckeyno,
+    String? seri,
+    int? dekontNo,
+    DateTime? tarih,
+    int? kalemSayisi,
+    double? borcToplami,
+    String? seriAdi,
+  }) = _DekontListesiModel;
+
+  factory DekontListesiModel.fromJson(Map<String, dynamic> json) => _$DekontListesiModelFromJson(json);
+
+  @override
+  DekontListesiModel fromJson(Map<String, dynamic> json) => DekontListesiModel.fromJson(json);
 }
 
 extension DekontListesiExtensions on DekontListesiModel {

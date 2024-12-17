@@ -15,8 +15,8 @@ import "../../../stok_liste/model/stok_listesi_model.dart";
 import "../view_model/ambar_maliyet_raporu_view_model.dart";
 
 class AmbarMaliyetRaporuView extends StatefulWidget {
-  final StokListesiModel? model;
   const AmbarMaliyetRaporuView({super.key, this.model});
+  final StokListesiModel? model;
 
   @override
   State<AmbarMaliyetRaporuView> createState() => _AmbarMaliyetRaporuViewState();

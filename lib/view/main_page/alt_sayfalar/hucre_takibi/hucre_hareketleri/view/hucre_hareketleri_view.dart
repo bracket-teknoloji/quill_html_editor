@@ -14,8 +14,8 @@ import "../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/hucre_hareketleri_view_model.dart";
 
 final class HucreHareketleriView extends StatefulWidget {
-  final StokListesiModel model;
   const HucreHareketleriView({super.key, required this.model});
+  final StokListesiModel model;
 
   @override
   State<HucreHareketleriView> createState() => _HucreHareketleriViewState();

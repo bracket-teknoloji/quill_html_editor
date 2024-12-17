@@ -23,6 +23,8 @@ part "account_model.g.dart";
 @HiveType(typeId: 73)
 @JsonSerializable()
 class AccountModel with NetworkManagerMixin {
+
+  AccountModel();
   AccountModel.getValue() {
     init();
     // uyeEmail = CacheManager.getHesapBilgileri?.uyeEmail;
@@ -37,8 +39,6 @@ class AccountModel with NetworkManagerMixin {
 
   //setter for instance
   static void setInstance(AccountModel value) => instance = value;
-
-  AccountModel();
   @HiveField(0)
   String? isim;
   @HiveField(1)

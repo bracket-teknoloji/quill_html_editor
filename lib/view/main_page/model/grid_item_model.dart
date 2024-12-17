@@ -8,22 +8,6 @@ import "../../../core/init/cache/cache_manager.dart";
 import "user_model/user_model.dart";
 
 class GridItemModel {
-  UserModel? get _cacheManager => CacheManager.getAnaVeri?.userModel;
-  List<String>? get _menuList => CacheManager.getAnaVeri?.menuList;
-
-  String? name;
-  String title;
-  String? icon;
-  IconData? iconData;
-  List<bool?>? yetkiListesi;
-  Color? color;
-  List<GridItemModel>? altMenuler;
-  String? route;
-  Function()? onTap;
-  dynamic arguments;
-  EditTipiEnum? siparisTipi;
-  late final String menuTipi;
-  bool? isEnabled;
 
   GridItemModel.anamenu({required this.name, required this.title, required this.color, required this.altMenuler, this.icon, this.iconData, this.yetkiListesi}) : menuTipi = "A";
 
@@ -64,6 +48,22 @@ class GridItemModel {
     route = "/mainPage/serbestRaporlar";
     onTap = () async => await Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);
   }
+  UserModel? get _cacheManager => CacheManager.getAnaVeri?.userModel;
+  List<String>? get _menuList => CacheManager.getAnaVeri?.menuList;
+
+  String? name;
+  String title;
+  String? icon;
+  IconData? iconData;
+  List<bool?>? yetkiListesi;
+  Color? color;
+  List<GridItemModel>? altMenuler;
+  String? route;
+  Function()? onTap;
+  dynamic arguments;
+  EditTipiEnum? siparisTipi;
+  late final String menuTipi;
+  bool? isEnabled;
 
   bool get yetkiKontrol {
     if (menuTipi == "A") {

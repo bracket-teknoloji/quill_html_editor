@@ -9,8 +9,8 @@ import "../../constants/ui_helper/duration_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class CustomLineChart extends StatefulWidget {
-  final List<double>? lineChartValue;
   const CustomLineChart({super.key, this.lineChartValue});
+  final List<double>? lineChartValue;
 
   @override
   State<CustomLineChart> createState() => _CustomLineChartState();

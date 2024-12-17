@@ -22,11 +22,11 @@ import "../badge/colorful_badge.dart";
 import "../helper_widgets/custom_label_widget.dart";
 
 class CariHareketlerCard extends StatefulWidget {
+
+  const CariHareketlerCard({super.key, this.onTap, required this.cariHareketleriModel, this.dovizTipi});
   final String? dovizTipi;
   final CariHareketleriModel cariHareketleriModel;
   final dynamic Function()? onTap;
-
-  const CariHareketlerCard({super.key, this.onTap, required this.cariHareketleriModel, this.dovizTipi});
 
   @override
   State<CariHareketlerCard> createState() => _CariHareketlerCardState();

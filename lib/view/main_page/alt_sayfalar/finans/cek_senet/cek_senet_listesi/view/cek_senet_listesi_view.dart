@@ -34,8 +34,8 @@ import "../../../banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "../view_model/cek_senet_listesi_view_model.dart";
 
 class CekSenetListesiView extends StatefulWidget {
-  final CekSenetListesiEnum cekSenetListesiEnum;
   const CekSenetListesiView({super.key, required this.cekSenetListesiEnum});
+  final CekSenetListesiEnum cekSenetListesiEnum;
 
   @override
   State<CekSenetListesiView> createState() => _CekSenetListesiViewState();

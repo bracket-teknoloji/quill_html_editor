@@ -24,6 +24,8 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class TransferlerCard extends StatefulWidget {
+
+  const TransferlerCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, required this.editTipiEnum, this.onDeleted, this.index});
   final BaseSiparisEditModel model;
   final ValueChanged<bool>? onUpdated;
   final bool? showMiktar;
@@ -32,8 +34,6 @@ class TransferlerCard extends StatefulWidget {
   final bool? showEkAciklama;
   final Function? onDeleted;
   final int? index;
-
-  const TransferlerCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, required this.editTipiEnum, this.onDeleted, this.index});
 
   @override
   State<TransferlerCard> createState() => TransferlerCardState();

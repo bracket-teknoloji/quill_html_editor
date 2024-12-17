@@ -23,9 +23,9 @@ import "../model/is_emirleri_model.dart";
 import "../view_model/is_emri_rehberi_view_model.dart";
 
 final class IsEmriRehberiView extends StatefulWidget {
+  const IsEmriRehberiView({super.key, this.isGetData, this.stokKodu});
   final bool? isGetData;
   final String? stokKodu;
-  const IsEmriRehberiView({super.key, this.isGetData, this.stokKodu});
 
   @override
   State<IsEmriRehberiView> createState() => _IsEmriRehberiViewState();

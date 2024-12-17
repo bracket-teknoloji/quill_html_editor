@@ -20,8 +20,8 @@ import "../view_model/kalem_rehberi_view_model.dart";
 
 /// KalemModel Listesi dönüyor
 class KalemRehberiView extends StatefulWidget {
-  final SiparislerRequestModel model;
   const KalemRehberiView({super.key, required this.model});
+  final SiparislerRequestModel model;
 
   @override
   State<KalemRehberiView> createState() => _KalemRehberiViewState();

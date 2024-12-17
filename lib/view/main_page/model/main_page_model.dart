@@ -11,6 +11,7 @@ part "main_page_model.g.dart";
 @JsonSerializable()
 @HiveType(typeId: 100)
 class MainPageModel with NetworkManagerMixin {
+  MainPageModel();
   @JsonKey(name: "UserModel")
   @HiveField(0)
   UserModel? userModel;
@@ -30,7 +31,6 @@ class MainPageModel with NetworkManagerMixin {
   List<String>? menuList;
   @JsonKey(name: "ParamModel", fromJson: ParamModel.fromJson)
   ParamModel? paramModel;
-  MainPageModel();
 
   @override
   MainPageModel fromJson(Map<String, dynamic> json) => _$MainPageModelFromJson(json);

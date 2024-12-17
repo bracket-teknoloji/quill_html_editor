@@ -29,8 +29,8 @@ import "../../../../cari_listesi/model/cari_listesi_model.dart";
 import "../../../../cari_network_manager.dart";
 
 class CariEditDigerView extends StatefulWidget {
-  final BaseEditModel? model;
   const CariEditDigerView({super.key, this.model});
+  final BaseEditModel? model;
 
   @override
   State<CariEditDigerView> createState() => _CariEditDigerViewState();

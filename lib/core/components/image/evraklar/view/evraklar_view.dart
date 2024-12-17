@@ -19,8 +19,8 @@ import "../../image_widget.dart";
 import "../view_model/evraklar_view_model.dart";
 
 final class EvraklarView extends StatefulWidget {
-  final EvraklarRequestModel model;
   const EvraklarView({super.key, required this.model});
+  final EvraklarRequestModel model;
 
   @override
   State<EvraklarView> createState() => _EvraklarViewState();

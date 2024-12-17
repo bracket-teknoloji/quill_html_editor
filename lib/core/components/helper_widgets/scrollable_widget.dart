@@ -3,13 +3,13 @@ import "package:flutter/material.dart";
 import "../../constants/ui_helper/duration_helper.dart";
 
 class ScrollableWidget extends StatefulWidget {
-  final Widget child;
-  final bool isScrolledDown;
   const ScrollableWidget({
     super.key,
     required this.child,
     required this.isScrolledDown,
   });
+  final Widget child;
+  final bool isScrolledDown;
 
   @override
   State<ScrollableWidget> createState() => _ScrollableWidgetState();

@@ -10,15 +10,6 @@ part "cari_save_request_model.g.dart";
 @CopyWith()
 @JsonSerializable()
 class CariSaveRequestModel with NetworkManagerMixin {
-  //singleton
-  static CariSaveRequestModel? _instance;
-  static CariSaveRequestModel get instance {
-    _instance ??= CariSaveRequestModel._init();
-    return _instance!;
-  }
-
-  //setter for singleton
-  static void setInstance(CariSaveRequestModel? instance) => _instance = instance;
 
   CariSaveRequestModel._init();
   CariSaveRequestModel({
@@ -98,6 +89,21 @@ class CariSaveRequestModel with NetworkManagerMixin {
     this.dovizKoduAciklama,
     this.efatAktif,
   });
+
+  factory CariSaveRequestModel.mukellefiyetDegistir(CariSaveRequestModel? model) => CariSaveRequestModel(
+        requestVersion: 6,
+        kodu: model?.kodu,
+        islemKodu: model?.efatAktif == true ? 6 : 5,
+      );
+  //singleton
+  static CariSaveRequestModel? _instance;
+  static CariSaveRequestModel get instance {
+    _instance ??= CariSaveRequestModel._init();
+    return _instance!;
+  }
+
+  //setter for singleton
+  static void setInstance(CariSaveRequestModel? instance) => _instance = instance;
   int? requestVersion;
   int? islemKodu;
   @JsonKey(name: "_YeniKayit")
@@ -257,12 +263,6 @@ class CariSaveRequestModel with NetworkManagerMixin {
         ulkeKoduAciklama: model?.ulkeAdi,
         dovizKoduAciklama: model?.dovizAdi,
         efatAktif: model?.efatAktif,
-      );
-
-  factory CariSaveRequestModel.mukellefiyetDegistir(CariSaveRequestModel? model) => CariSaveRequestModel(
-        requestVersion: 6,
-        kodu: model?.kodu,
-        islemKodu: model?.efatAktif == true ? 6 : 5,
       );
 
   String get efaturaButonAciklama => efatAktif == true ? "Pasifleştir" : "Aktifleştir";

@@ -8,6 +8,24 @@ part "isletme_model.g.dart";
 @JsonSerializable()
 @HiveType(typeId: 107)
 class IsletmeModel with NetworkManagerMixin {
+
+  IsletmeModel({
+    this.sirket,
+    this.isletmeKodu,
+    this.subeKodu,
+    this.subeAdi,
+    this.isletmeAdi,
+    this.lokalDepoAktif,
+    this.merkezmi,
+    this.adres,
+    this.telefon,
+    this.faks,
+    this.email,
+    this.ilAdi,
+    this.ilce,
+    this.vergiNumarasi,
+    this.vergiDairesi,
+  });
   @HiveField(0)
   @JsonKey(name: "SIRKET")
   String? sirket;
@@ -53,24 +71,6 @@ class IsletmeModel with NetworkManagerMixin {
   @HiveField(14)
   @JsonKey(name: "VERGI_DAIRESI")
   String? vergiDairesi;
-
-  IsletmeModel({
-    this.sirket,
-    this.isletmeKodu,
-    this.subeKodu,
-    this.subeAdi,
-    this.isletmeAdi,
-    this.lokalDepoAktif,
-    this.merkezmi,
-    this.adres,
-    this.telefon,
-    this.faks,
-    this.email,
-    this.ilAdi,
-    this.ilce,
-    this.vergiNumarasi,
-    this.vergiDairesi,
-  });
 
   @override
   IsletmeModel fromJson(Map<String, dynamic> json) => _$IsletmeModelFromJson(json);

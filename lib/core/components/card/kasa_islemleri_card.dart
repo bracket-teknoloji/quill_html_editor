@@ -22,9 +22,9 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class KasaIslemleriCard extends StatefulWidget {
+  const KasaIslemleriCard({super.key, this.kasaIslemleriModel, this.onDeleted});
   final KasaIslemleriModel? kasaIslemleriModel;
   final ValueChanged? onDeleted;
-  const KasaIslemleriCard({super.key, this.kasaIslemleriModel, this.onDeleted});
 
   @override
   State<KasaIslemleriCard> createState() => _KasaIslemleriCardState();

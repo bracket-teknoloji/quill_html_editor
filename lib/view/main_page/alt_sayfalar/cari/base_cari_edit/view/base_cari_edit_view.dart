@@ -26,12 +26,12 @@ import "base_cari_edit_iletisim/view/base_edit_cari_iletisim_view.dart";
 import "base_cari_edit_ozel/view/base_edit_cari_ozet_view.dart";
 
 class BaseCariEditingView extends StatefulWidget {
+  const BaseCariEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
   final String? appBarTitle;
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
   final BaseEditModel? model;
-  const BaseCariEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
 
   @override
   State<BaseCariEditingView> createState() => _BasCariEditingViewState();

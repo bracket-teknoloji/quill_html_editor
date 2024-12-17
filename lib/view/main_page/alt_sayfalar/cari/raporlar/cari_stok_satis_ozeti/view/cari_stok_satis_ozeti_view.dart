@@ -26,8 +26,8 @@ import "../model/cari_stok_satis_ozeti_model.dart";
 import "../view_model/cari_stok_satis_ozeti_view_model.dart";
 
 class CariStokSatisOzetiView extends StatefulWidget {
-  final CariListesiModel? model;
   const CariStokSatisOzetiView({super.key, this.model});
+  final CariListesiModel? model;
 
   @override
   State<CariStokSatisOzetiView> createState() => _CariStokSatisOzetiViewState();

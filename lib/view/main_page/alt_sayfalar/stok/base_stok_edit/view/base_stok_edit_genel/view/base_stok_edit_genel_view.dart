@@ -35,8 +35,8 @@ import "../../../model/stok_olcu_birimleri_model.dart";
 import "../view_model/base_stok_edit_genel_view_model.dart";
 
 final class BaseStokEditGenelView extends StatefulWidget {
-  final BaseEditEnum? model;
   const BaseStokEditGenelView({super.key, this.model});
+  final BaseEditEnum? model;
 
   @override
   State<BaseStokEditGenelView> createState() => _BaseStokEditGenelViewState();

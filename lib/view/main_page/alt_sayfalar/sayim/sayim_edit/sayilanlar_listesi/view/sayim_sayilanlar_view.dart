@@ -19,8 +19,8 @@ import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/say
 import "../../../../../../../core/base/model/print_model.dart";
 
 class SayimSayilanlarView extends StatefulWidget {
-  final Future<void> Function(SayimFiltreModel model) onEdit;
   const SayimSayilanlarView({super.key, required this.onEdit});
+  final Future<void> Function(SayimFiltreModel model) onEdit;
 
   @override
   State<SayimSayilanlarView> createState() => SayimSayilanlarViewState();

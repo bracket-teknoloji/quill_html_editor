@@ -6,8 +6,8 @@ import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class BakiyeText extends StatelessWidget {
-  final double? value;
   const BakiyeText({super.key, this.value});
+  final double? value;
 
   @override
   Widget build(BuildContext context) => Text(

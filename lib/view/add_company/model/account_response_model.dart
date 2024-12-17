@@ -8,6 +8,10 @@ part "account_response_model.g.dart";
 @JsonSerializable(explicitToJson: true)
 @HiveType(typeId: 123)
 class AccountResponseModel with NetworkManagerMixin {
+
+  AccountResponseModel();
+
+  AccountResponseModel.demo({this.firma, this.email});
   @HiveField(0)
   String? firma;
   @HiveField(1)
@@ -59,10 +63,6 @@ class AccountResponseModel with NetworkManagerMixin {
   dynamic bayiUnvan;
   @HiveField(24)
   bool? bracketCihazi;
-
-  AccountResponseModel();
-
-  AccountResponseModel.demo({this.firma, this.email});
 
   @override
   AccountResponseModel fromJson(Map<String, dynamic> json) => _$AccountResponseModelFromJson(json);

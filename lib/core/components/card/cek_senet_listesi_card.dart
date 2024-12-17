@@ -26,10 +26,10 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class CekSenetListesiCard extends StatefulWidget {
+  const CekSenetListesiCard({super.key, required this.model, required this.cekSenetListesiEnum, this.onUpdate});
   final CekSenetListesiModel model;
   final CekSenetListesiEnum cekSenetListesiEnum;
   final ValueChanged<bool>? onUpdate;
-  const CekSenetListesiCard({super.key, required this.model, required this.cekSenetListesiEnum, this.onUpdate});
 
   @override
   State<CekSenetListesiCard> createState() => _CekSenetListesiCardState();

@@ -24,9 +24,9 @@ import "../../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/base_talep_teklif_kalemler_view_model.dart";
 
 class BaseTalepTeklifKalemlerView extends StatefulWidget {
+  const BaseTalepTeklifKalemlerView({super.key, required this.model, this.updater});
   final BaseEditModel<SiparisEditRequestModel> model;
   final bool? updater;
-  const BaseTalepTeklifKalemlerView({super.key, required this.model, this.updater});
 
   @override
   State<BaseTalepTeklifKalemlerView> createState() => _BaseTalepTeklifKalemlerViewState();

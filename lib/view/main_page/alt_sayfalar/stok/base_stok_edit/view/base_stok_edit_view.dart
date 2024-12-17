@@ -19,12 +19,12 @@ import "base_stok_edit_genel/view/base_stok_edit_genel_view.dart";
 import "base_stok_edit_seriler/view/base_stok_edit_seriler_view.dart";
 
 final class BaseStokEditingView extends StatefulWidget {
+  const BaseStokEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
   final String? appBarTitle;
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
   final BaseEditModel<StokListesiModel>? model;
-  const BaseStokEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
 
   @override
   State<BaseStokEditingView> createState() => _BaseStokEditingViewState();

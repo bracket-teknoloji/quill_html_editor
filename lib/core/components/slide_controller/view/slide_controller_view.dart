@@ -7,12 +7,6 @@ import "../../helper_widgets/custom_label_widget.dart";
 
 /// merhaba ben volkan konak
 class SlideControllerWidget extends StatefulWidget {
-  final String? title;
-  final List<String> childrenTitleList;
-  final List childrenValueList;
-  final dynamic groupValue;
-  final bool? scroll;
-  final void Function(int? index) filterOnChanged;
   const SlideControllerWidget({
     super.key,
     required this.childrenTitleList,
@@ -22,6 +16,12 @@ class SlideControllerWidget extends StatefulWidget {
     this.title,
     this.scroll = true,
   }) : assert(childrenTitleList.length == childrenValueList.length, "childrenTitleList and childrenValueList length must be equal");
+  final String? title;
+  final List<String> childrenTitleList;
+  final List childrenValueList;
+  final dynamic groupValue;
+  final bool? scroll;
+  final void Function(int? index) filterOnChanged;
 
   @override
   State<SlideControllerWidget> createState() => _SlideControllerWidgetState();

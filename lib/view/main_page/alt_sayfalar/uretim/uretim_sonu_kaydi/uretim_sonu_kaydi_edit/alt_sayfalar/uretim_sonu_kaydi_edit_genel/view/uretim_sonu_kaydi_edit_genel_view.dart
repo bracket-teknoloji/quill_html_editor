@@ -28,11 +28,11 @@ import "../../../model/uretim_sonu_kaydi_edit_model.dart";
 import "../view_model/uretim_sonu_kaydi_edit_genel_view_model.dart";
 
 final class UretimSonuKaydiEditGenelView extends StatefulWidget {
+  const UretimSonuKaydiEditGenelView({super.key, required this.model, required this.ekAlanlarList, required this.onSave, required this.requestModel});
   final BaseEditModel<KalemModel> model;
   final List<EkAlanlarModel>? ekAlanlarList;
   final UretimSonuKaydiEditModel requestModel;
   final void Function(UretimSonuKaydiEditModel model) onSave;
-  const UretimSonuKaydiEditGenelView({super.key, required this.model, required this.ekAlanlarList, required this.onSave, required this.requestModel});
 
   @override
   State<UretimSonuKaydiEditGenelView> createState() => _UretimSonuKaydiEditGenelViewState();

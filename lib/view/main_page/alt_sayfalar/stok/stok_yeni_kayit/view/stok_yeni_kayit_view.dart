@@ -21,8 +21,8 @@ import "../model/stok_yeni_kayit_model.dart";
 import "../view_model/stok_yeni_kayit_view_model.dart";
 
 class StokYeniKayitView extends StatefulWidget {
-  final StokHareketleriModel? model;
   const StokYeniKayitView({super.key, this.model});
+  final StokHareketleriModel? model;
 
   @override
   State<StokYeniKayitView> createState() => _StokYeniKayitViewState();

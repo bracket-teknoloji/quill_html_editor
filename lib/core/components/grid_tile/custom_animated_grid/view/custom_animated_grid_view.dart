@@ -17,13 +17,13 @@ import "../model/islemler_menu_item/model/islemler_menu_item_constants.dart";
 import "../view_model/custom_animated_grid_view_model.dart";
 
 final class CustomAnimatedGridView<T> extends StatefulWidget {
+  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, required this.title, this.siparisTipi, this.onSelected});
   final CariListesiModel? cariListesiModel;
   final IslemTipiEnum islemTipi;
   final EditTipiEnum? siparisTipi;
   final T? model;
   final String? title;
   final ValueChanged<bool>? onSelected;
-  const CustomAnimatedGridView({super.key, this.cariListesiModel, required this.islemTipi, this.model, required this.title, this.siparisTipi, this.onSelected});
   @override
   State<CustomAnimatedGridView> createState() => _CustomAnimatedGridViewState();
 }

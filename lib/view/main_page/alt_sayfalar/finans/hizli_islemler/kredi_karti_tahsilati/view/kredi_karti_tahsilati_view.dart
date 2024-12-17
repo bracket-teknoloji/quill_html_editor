@@ -25,8 +25,8 @@ import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_k
 import "package:picker/view/main_page/model/param_model.dart";
 
 class KrediKartiTahsilatiView extends StatefulWidget {
-  final CariListesiModel? cariListesiModel;
   const KrediKartiTahsilatiView({super.key, this.cariListesiModel});
+  final CariListesiModel? cariListesiModel;
 
   @override
   State<KrediKartiTahsilatiView> createState() => _KrediKartiTahsilatiViewState();

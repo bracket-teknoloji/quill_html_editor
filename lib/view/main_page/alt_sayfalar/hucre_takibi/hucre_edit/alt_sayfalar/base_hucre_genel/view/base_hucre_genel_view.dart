@@ -13,8 +13,8 @@ import "../../../../belge_rehberi/model/belge_rehberi_model.dart";
 import "../view_model/base_hucre_genel_view_model.dart";
 
 final class BaseHucreGenelView extends StatefulWidget {
-  final TabController tabController;
   const BaseHucreGenelView({super.key, required this.tabController});
+  final TabController tabController;
 
   @override
   State<BaseHucreGenelView> createState() => _BaseHucreGenelViewState();

@@ -33,10 +33,10 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../textfield/custom_text_field.dart";
 
 class EFaturaListesiCard extends StatefulWidget {
+  const EFaturaListesiCard({super.key, required this.eBelgeListesiModel, required this.eBelgeEnum, required this.onRefresh});
   final EBelgeListesiModel eBelgeListesiModel;
   final ValueChanged<bool> onRefresh;
   final EBelgeEnum eBelgeEnum;
-  const EFaturaListesiCard({super.key, required this.eBelgeListesiModel, required this.eBelgeEnum, required this.onRefresh});
 
   @override
   State<EFaturaListesiCard> createState() => _EFaturaListesiCardState();

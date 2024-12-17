@@ -16,9 +16,9 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../layout/custom_layout_builder.dart";
 
 class OlcumGirisiListesiCard extends StatefulWidget {
+  const OlcumGirisiListesiCard({super.key, required this.model, required this.onTapped});
   final OlcumBelgeModel model;
   final Future Function(bool) onTapped;
-  const OlcumGirisiListesiCard({super.key, required this.model, required this.onTapped});
 
   @override
   State<OlcumGirisiListesiCard> createState() => _OlcumGirisiListesiCardState();

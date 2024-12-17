@@ -25,9 +25,9 @@ import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_kalemler_view_model.dart";
 
 class BaseSiparisKalemlerView extends StatefulWidget {
+  const BaseSiparisKalemlerView({super.key, required this.model, this.updater});
   final BaseEditModel<SiparisEditRequestModel> model;
   final bool? updater;
-  const BaseSiparisKalemlerView({super.key, required this.model, this.updater});
 
   @override
   State<BaseSiparisKalemlerView> createState() => _BaseSiparisKalemlerViewState();
