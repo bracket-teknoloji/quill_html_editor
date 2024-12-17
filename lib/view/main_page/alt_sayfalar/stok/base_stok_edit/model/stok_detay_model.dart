@@ -10,7 +10,6 @@ part "stok_detay_model.g.dart";
 
 @JsonSerializable()
 class StokDetayModel with NetworkManagerMixin {
-
   StokDetayModel();
   //singleton
   static StokDetayModel? _instance;

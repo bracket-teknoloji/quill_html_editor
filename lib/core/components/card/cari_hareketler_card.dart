@@ -22,7 +22,6 @@ import "../badge/colorful_badge.dart";
 import "../helper_widgets/custom_label_widget.dart";
 
 class CariHareketlerCard extends StatefulWidget {
-
   const CariHareketlerCard({required this.cariHareketleriModel, super.key, this.onTap, this.dovizTipi});
   final String? dovizTipi;
   final CariHareketleriModel cariHareketleriModel;

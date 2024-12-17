@@ -8,7 +8,6 @@ import "../../../core/init/cache/cache_manager.dart";
 import "user_model/user_model.dart";
 
 class GridItemModel {
-
   GridItemModel.anamenu({required this.name, required this.title, required this.color, required this.altMenuler, this.icon, this.iconData, this.yetkiListesi}) : menuTipi = "A";
 
   GridItemModel.altmenu({required this.name, required this.title, required this.altMenuler, this.icon, this.iconData}) : menuTipi = "S";

@@ -18,7 +18,10 @@ import "../badge/colorful_badge.dart";
 
 class SiparisRehberiCard extends StatefulWidget {
   const SiparisRehberiCard({
-    required this.model, required this.editTipiEnum, required this.value, super.key,
+    required this.model,
+    required this.editTipiEnum,
+    required this.value,
+    super.key,
     this.showEkAciklama,
     this.showMiktar,
     this.showVade,

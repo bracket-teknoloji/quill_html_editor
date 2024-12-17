@@ -29,7 +29,6 @@ part "base_siparis_edit_model.g.dart";
 
 @HiveType(typeId: 151)
 class ListSiparisEditModel {
-
   ListSiparisEditModel({this.list});
   @HiveField(0)
   List<BaseSiparisEditModel>? list;
@@ -50,7 +49,6 @@ class ListSiparisEditModel {
 @HiveType(typeId: 152)
 @JsonSerializable(createFactory: true)
 class BaseSiparisEditModel with NetworkManagerMixin {
-
   BaseSiparisEditModel({
     this.duzeltmetarihi,
     this.kalemAdedi,
@@ -1234,7 +1232,6 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @HiveType(typeId: 17)
 @JsonSerializable(createFactory: true)
 class KalemModel with NetworkManagerMixin {
-
   KalemModel({
     this.iskonto1OranMi,
     this.tarih,

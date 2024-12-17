@@ -1974,7 +1974,6 @@ class ProfilYetkiModel {
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class SevkemriMalKontrolTipi {
-
   SevkemriMalKontrolTipi();
 
   factory SevkemriMalKontrolTipi.fromJson(Map<String, dynamic> json) => _$SevkemriMalKontrolTipiFromJson(json);

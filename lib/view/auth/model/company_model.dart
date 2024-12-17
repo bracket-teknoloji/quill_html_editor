@@ -6,7 +6,6 @@ part "company_model.g.dart";
 
 @JsonSerializable()
 class CompanyModel with NetworkManagerMixin {
-
   CompanyModel();
   @JsonKey(name: "SIRKET")
   String? company;

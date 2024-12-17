@@ -113,12 +113,10 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
     _topluGirisDepoController = TextEditingController(text: model.topluGirisDepoTanimi ?? viewModel.model.girisDepoKodu.toStringIfNotNull);
     _topluCikisDepoController = TextEditingController(text: model.topluCikisDepoTanimi ?? viewModel.model.cikisDepoKodu.toStringIfNotNull);
     _ozelKod1Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod1)?.aciklama ??
-          model.ozelKod1,
+      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod1)?.aciklama ?? model.ozelKod1,
     );
     _ozelKod2Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
-          model.ozelKod2,
+      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ?? model.ozelKod2,
     );
     _isEmriController = TextEditingController(text: model.isemriAciklama);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);

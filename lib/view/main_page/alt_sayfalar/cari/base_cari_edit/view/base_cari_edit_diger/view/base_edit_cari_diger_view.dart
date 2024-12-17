@@ -116,8 +116,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     muhasebeKoduController = TextEditingController(text: viewModel.model?.muhAdi);
     kurFarkiBorcMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurfarkiborcAdi);
     kurFarkiAlacakMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurfarkialacakAdi);
-    eFaturaSenaryoController =
-        TextEditingController(text: viewModel.senaryoMap.entries.firstWhereOrNull((element) => element.value == viewModel.model?.efaturaSenaryo)?.key ?? "");
+    eFaturaSenaryoController = TextEditingController(text: viewModel.senaryoMap.entries.firstWhereOrNull((element) => element.value == viewModel.model?.efaturaSenaryo)?.key ?? "");
 
     viewModel
       ..changeSubeKodu(int.tryParse(viewModel.model?.subeKodu ?? ""))
@@ -459,8 +458,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 final result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
                   title: "Kilit",
-                  children:
-                      List.generate(viewModel.kilitMap.length, (index) => BottomSheetModel(title: viewModel.kilitMap.keys.toList()[index], value: viewModel.kilitMap.entries.toList()[index])),
+                  children: List.generate(viewModel.kilitMap.length, (index) => BottomSheetModel(title: viewModel.kilitMap.keys.toList()[index], value: viewModel.kilitMap.entries.toList()[index])),
                 );
                 if (result != null) {
                   kilitController.text = result.key;

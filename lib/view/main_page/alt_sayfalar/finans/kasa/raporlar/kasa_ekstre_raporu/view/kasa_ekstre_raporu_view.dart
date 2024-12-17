@@ -52,8 +52,9 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
         children: [
           RaporFiltreDateTimeBottomSheetView(
             filterOnChanged: (index) {
-              viewModel..setBastar(baslangicController.text)
-              ..setBittar(bitisController.text);
+              viewModel
+                ..setBastar(baslangicController.text)
+                ..setBittar(bitisController.text);
             },
             baslangicTarihiController: baslangicController,
             bitisTarihiController: bitisController,

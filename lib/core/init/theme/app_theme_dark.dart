@@ -8,7 +8,6 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "app_theme.dart";
 
 class AppThemeDark extends AppTheme {
-
   AppThemeDark._init();
   static AppThemeDark? _instance;
   static AppThemeDark? get instance => _instance ??= AppThemeDark._init();

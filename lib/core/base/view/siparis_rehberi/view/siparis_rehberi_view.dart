@@ -72,8 +72,9 @@ class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
           children: [
             RaporFiltreDateTimeBottomSheetView(
               filterOnChanged: (index) async {
-                viewModel..setBaslangicTarihi(_baslangicTarihiController.text)
-                ..setBitisTarihi(_bitisTarihiController.text);
+                viewModel
+                  ..setBaslangicTarihi(_baslangicTarihiController.text)
+                  ..setBitisTarihi(_bitisTarihiController.text);
                 await viewModel.resetPage();
               },
               baslangicTarihiController: _baslangicTarihiController,

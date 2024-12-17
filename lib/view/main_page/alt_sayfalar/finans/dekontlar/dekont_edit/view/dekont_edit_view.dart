@@ -92,8 +92,9 @@ class _DekontEditViewState extends BaseState<DekontEditView> with TickerProvider
             plasiyerKodu: cariModel?.plasiyerKodu,
           ),
         ];
-        viewModel..setKalemSayisi(SingletonDekontIslemlerRequestModel.instance.kalemler?.length ?? 0)
-        ..setIslemTamamlandi(true);
+        viewModel
+          ..setKalemSayisi(SingletonDekontIslemlerRequestModel.instance.kalemler?.length ?? 0)
+          ..setIslemTamamlandi(true);
       }
     });
     _tabController = TabController(length: 2, vsync: this);

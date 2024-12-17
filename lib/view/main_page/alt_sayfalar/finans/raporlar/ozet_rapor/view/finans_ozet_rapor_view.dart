@@ -59,8 +59,9 @@ class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
           children: [
             RaporFiltreDateTimeBottomSheetView(
               filterOnChanged: (value) async {
-                viewModel..setBaslangicTarihi(baslangicTarihiController.text)
-                ..setBitisTarihi(bitisTarihiController.text);
+                viewModel
+                  ..setBaslangicTarihi(baslangicTarihiController.text)
+                  ..setBitisTarihi(bitisTarihiController.text);
                 await viewModel.getGunSonuRaporu();
               },
               baslangicTarihiController: baslangicTarihiController,

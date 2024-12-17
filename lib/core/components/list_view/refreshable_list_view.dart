@@ -11,10 +11,12 @@ import "../shimmer/list_view_shimmer.dart";
 ///* Yenileme işlemi yapıldığında sayfa yenilenir.
 ///* Bu widget'ın State'ini yönetmek için `Observer` widget'ı kullanınız.
 final class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget {
-
   /// Tek istekle bütün verilerin geldiği durumda bunu kullanınız.
   const RefreshableListView({
-    required this.onRefresh, required this.items, required this.itemBuilder, super.key,
+    required this.onRefresh,
+    required this.items,
+    required this.itemBuilder,
+    super.key,
   })  : _isPageable = false,
         dahaVarMi = false,
         _isSliver = false,
@@ -25,13 +27,21 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   ///* [scrollController] ile sayfa hareketlerini takip edebilirsiniz.
   ///* [dahaVarMi] ile ekranda [CircularProgressIndicator] görünüp görünmemesini sağlayabilirsiniz.
   const RefreshableListView.pageable({
-    required this.scrollController, required this.onRefresh, required this.dahaVarMi, required this.items, required this.itemBuilder, super.key,
+    required this.scrollController,
+    required this.onRefresh,
+    required this.dahaVarMi,
+    required this.items,
+    required this.itemBuilder,
+    super.key,
   })  : _isPageable = true,
         _isSliver = false;
 
   @Deprecated("Sliver versiyonları daha bitmedi.")
   const RefreshableListView.withSliver({
-    required this.onRefresh, required this.items, required this.itemBuilder, super.key,
+    required this.onRefresh,
+    required this.items,
+    required this.itemBuilder,
+    super.key,
   })  : _isPageable = false,
         dahaVarMi = false,
         _isSliver = true,
@@ -39,9 +49,15 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
 
   @Deprecated("Sliver versiyonları daha bitmedi.")
   const RefreshableListView.pageableWithSliver({
-    required this.scrollController, required this.onRefresh, required this.dahaVarMi, required this.items, required this.itemBuilder, super.key,
+    required this.scrollController,
+    required this.onRefresh,
+    required this.dahaVarMi,
+    required this.items,
+    required this.itemBuilder,
+    super.key,
   })  : _isPageable = true,
         _isSliver = true;
+
   /// Refresh işlemleri için gerekli fonksiyon
   final Future<void> Function() onRefresh;
 

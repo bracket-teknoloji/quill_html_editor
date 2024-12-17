@@ -17,7 +17,8 @@ import "../view_model/siparis_teslim_raporu_view_model.dart";
 
 class SiparisTeslimRaporuView extends StatefulWidget {
   const SiparisTeslimRaporuView({
-    required this.editTipiEnum, super.key,
+    required this.editTipiEnum,
+    super.key,
     this.baseSiparisEditModel,
   });
   final EditTipiEnum editTipiEnum;

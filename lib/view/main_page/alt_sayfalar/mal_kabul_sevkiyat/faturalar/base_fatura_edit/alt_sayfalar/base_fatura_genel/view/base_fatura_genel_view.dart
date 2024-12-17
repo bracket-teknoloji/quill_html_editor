@@ -338,8 +338,9 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ),
                             );
                             if (result != null && result is CariListesiModel) {
-                              model..teslimCari = result.cariKodu
-                              ..teslimCariAdi = result.cariAdi;
+                              model
+                                ..teslimCari = result.cariKodu
+                                ..teslimCariAdi = result.cariAdi;
                               _teslimCariController.text = result.cariAdi ?? "";
                             }
                           }

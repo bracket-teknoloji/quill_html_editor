@@ -55,7 +55,6 @@ import "../../constants/enum/dio_enum.dart";
 import "login/api_urls.dart";
 
 class NetworkManager {
-
   factory NetworkManager() => _singleton;
 
   NetworkManager._internal() {

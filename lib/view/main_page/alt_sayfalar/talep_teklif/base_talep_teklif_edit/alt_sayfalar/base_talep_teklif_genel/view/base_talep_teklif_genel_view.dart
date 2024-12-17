@@ -85,8 +85,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod2Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
-          model.ozelKod2,
+      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ?? model.ozelKod2,
     );
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);

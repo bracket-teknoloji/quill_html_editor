@@ -11,7 +11,6 @@ part "cari_request_model.g.dart";
 
 @unfreezed
 class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
-
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory CariRequestModel({
     @Default("") String? filterText,

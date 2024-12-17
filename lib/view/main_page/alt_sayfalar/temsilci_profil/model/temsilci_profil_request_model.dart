@@ -4,7 +4,6 @@ part "temsilci_profil_request_model.g.dart";
 
 @JsonSerializable()
 class TemsilciProfilRequestModel {
-
   TemsilciProfilRequestModel({
     this.cariKodu,
     this.donemTipi,

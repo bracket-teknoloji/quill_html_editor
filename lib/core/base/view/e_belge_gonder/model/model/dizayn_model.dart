@@ -6,7 +6,6 @@ part "dizayn_model.g.dart";
 
 @JsonSerializable()
 class DizaynModel with NetworkManagerMixin {
-
   DizaynModel({
     this.id,
     this.dizaynAdi,

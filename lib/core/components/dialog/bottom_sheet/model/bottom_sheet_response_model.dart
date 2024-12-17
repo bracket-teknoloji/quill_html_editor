@@ -1,7 +1,6 @@
 import "../../../button/toggle_buttons/view/toggle_button.dart";
 
 class BottomSheetResponseModel {
-
   BottomSheetResponseModel();
   BottomSheetResponseModel._init();
   //Sİngleton

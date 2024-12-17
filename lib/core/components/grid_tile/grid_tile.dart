@@ -12,7 +12,6 @@ import "../../init/cache/cache_manager.dart";
 import "../../init/cache/favorites_model.dart";
 
 class CustomGridTile extends StatefulWidget {
-
   const CustomGridTile({super.key, this.onTap, this.model});
   final Function()? onTap;
   // final String? menuTipi;

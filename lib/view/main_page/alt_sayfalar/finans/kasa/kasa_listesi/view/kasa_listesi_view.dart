@@ -170,8 +170,9 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
               } else {
                 viewModel.setFiltreGroupValue(0);
               }
-              viewModel..setObservableList(null)
-              ..getData();
+              viewModel
+                ..setObservableList(null)
+                ..getData();
             },
           ),
           FooterButton(
@@ -185,8 +186,9 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
               } else {
                 viewModel.setFiltreGroupValue(0);
               }
-              viewModel..setObservableList(null)
-              ..getData();
+              viewModel
+                ..setObservableList(null)
+                ..getData();
             },
           ),
           FooterButton(
@@ -213,9 +215,10 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
       ),
     );
     if (result != null) {
-      viewModel..setSirala(result)
-      ..setObservableList(null)
-      ..getData();
+      viewModel
+        ..setSirala(result)
+        ..setObservableList(null)
+        ..getData();
     }
   }
 
@@ -240,8 +243,9 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
                   style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   onPressed: () {
                     Get.back();
-                    viewModel..setFiltreGroupValue(0)
-                    ..getData();
+                    viewModel
+                      ..setFiltreGroupValue(0)
+                      ..getData();
                   },
                   child: const Text("Sıfırla"),
                 ),
@@ -251,8 +255,9 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
                 child: ElevatedButton(
                   onPressed: () {
                     Get.back();
-                    viewModel..setObservableList(null)
-                    ..getData();
+                    viewModel
+                      ..setObservableList(null)
+                      ..getData();
                   },
                   child: Text(loc.generalStrings.apply),
                 ),

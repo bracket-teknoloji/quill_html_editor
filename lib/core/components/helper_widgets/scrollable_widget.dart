@@ -4,7 +4,9 @@ import "../../constants/ui_helper/duration_helper.dart";
 
 class ScrollableWidget extends StatefulWidget {
   const ScrollableWidget({
-    required this.child, required this.isScrolledDown, super.key,
+    required this.child,
+    required this.isScrolledDown,
+    super.key,
   });
   final Widget child;
   final bool isScrolledDown;

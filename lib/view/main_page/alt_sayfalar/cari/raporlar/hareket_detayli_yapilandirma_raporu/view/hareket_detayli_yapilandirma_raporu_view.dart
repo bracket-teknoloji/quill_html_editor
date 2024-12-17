@@ -12,7 +12,6 @@ import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/hareket_detayli_yapilandirma_raporu_view_model.dart";
 
 class HareketDetayliYaslandirmaRaporuView extends StatefulWidget {
-
   const HareketDetayliYaslandirmaRaporuView({super.key, this.model});
   final CariListesiModel? model;
 

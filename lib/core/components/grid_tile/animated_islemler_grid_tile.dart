@@ -7,7 +7,6 @@ import "../../constants/ui_helper/icon_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class AnimatedIslemlerGridTile extends StatefulWidget {
-
   const AnimatedIslemlerGridTile({
     super.key,
     this.item,

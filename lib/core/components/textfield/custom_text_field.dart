@@ -43,7 +43,9 @@ class CustomTextField extends StatefulWidget {
   }) : onDateChange = null;
 
   const CustomTextField.dateTime({
-    required this.controller, required this.onDateChange, super.key,
+    required this.controller,
+    required this.onDateChange,
+    super.key,
     this.labelText,
     this.valueText,
     this.descriptionWidget,

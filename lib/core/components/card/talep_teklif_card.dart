@@ -30,7 +30,9 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class TalepTeklifCard extends StatefulWidget {
   const TalepTeklifCard({
-    required this.model, required this.talepTeklifEnum, super.key,
+    required this.model,
+    required this.talepTeklifEnum,
+    super.key,
     this.onDeleted,
     this.index,
     this.isGetData,

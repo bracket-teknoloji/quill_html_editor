@@ -473,7 +473,8 @@ class BottomSheetDialogManager {
     BuildContext context, {
     required GrupKoduEnum modul,
     required int grupKodu,
-    required List<BaseGrupKoduModel>? groupValues, bool? kullanimda,
+    required List<BaseGrupKoduModel>? groupValues,
+    bool? kullanimda,
   }) async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {
       viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
@@ -1411,7 +1412,8 @@ class BottomSheetDialogManager {
 
 class SearchField extends StatefulWidget {
   const SearchField({
-    required this.viewModel, super.key,
+    required this.viewModel,
+    super.key,
     this.children,
   });
 

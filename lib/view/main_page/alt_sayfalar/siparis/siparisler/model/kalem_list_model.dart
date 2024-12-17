@@ -6,7 +6,6 @@ part "kalem_list_model.g.dart";
 
 @JsonSerializable(includeIfNull: true, createFactory: true)
 class KalemListModel with NetworkManagerMixin {
-
   KalemListModel();
 
   factory KalemListModel.fromJson(Map<String, dynamic> json) => _$KalemListModelFromJson(json);

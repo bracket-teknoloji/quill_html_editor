@@ -7,7 +7,6 @@ part "servis_info_model.g.dart";
 
 @JsonSerializable()
 class ServisInfoModel with NetworkManagerMixin {
-
   ServisInfoModel({
     this.version,
     this.updateDate,

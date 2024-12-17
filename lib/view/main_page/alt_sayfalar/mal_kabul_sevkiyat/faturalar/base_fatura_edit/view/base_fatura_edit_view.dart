@@ -633,9 +633,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         ..mevcutBelgeNo = widget.model.model?.belgeNo
         ..mevcutCariKodu = widget.model.model?.cariKodu;
     } else if (widget.model.baseEditEnum.kopyalaMi) {
-      newInstance = newInstance.copyWith(
-        
-      );
+      newInstance = newInstance.copyWith();
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
       newInstance = newInstance.copyWith(

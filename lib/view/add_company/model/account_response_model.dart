@@ -8,7 +8,6 @@ part "account_response_model.g.dart";
 @JsonSerializable(explicitToJson: true)
 @HiveType(typeId: 123)
 class AccountResponseModel with NetworkManagerMixin {
-
   AccountResponseModel();
 
   AccountResponseModel.demo({this.firma, this.email});

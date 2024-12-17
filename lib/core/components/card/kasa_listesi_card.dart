@@ -9,7 +9,8 @@ import "../../constants/ondalik_utils.dart";
 
 class KasaListesiCard extends StatefulWidget {
   const KasaListesiCard({
-    required this.item, super.key,
+    required this.item,
+    super.key,
     this.onSelected,
   });
 

@@ -115,6 +115,7 @@ class SaveStokModel with NetworkManagerMixin {
     _instance ??= SaveStokModel._init();
     return _instance!;
   }
+
   //setter for singleton
   static void setInstance(SaveStokModel? instance) => _instance = instance;
   String? adi;

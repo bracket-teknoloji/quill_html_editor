@@ -54,7 +54,6 @@ import "../../kod_degistir_model.dart";
 import "../view_model/islemler_menu_item_constants_view_model.dart";
 
 class IslemlerMenuItemConstants<T> {
-
   IslemlerMenuItemConstants(this.context, {required this.islemTipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemTipi == IslemTipiEnum.stok) {
       islemlerList

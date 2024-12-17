@@ -14,7 +14,6 @@ import "../enum/edit_tipi_enum.dart";
 import "yetki_model.dart";
 
 final class YetkiController {
-
   factory YetkiController() => _singleton;
 
   YetkiController._internal();

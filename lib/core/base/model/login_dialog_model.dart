@@ -6,7 +6,6 @@ part "login_dialog_model.g.dart";
 
 @HiveType(typeId: 68)
 class LoginDialogModel {
-
   LoginDialogModel({
     required this.account,
     required this.username,

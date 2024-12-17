@@ -51,8 +51,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
 
   @override
   void initState() {
-    viewModel..setGirisDepo(yetkiController.transferLokalDatGirisDepo)
-    ..setCikisDepo(yetkiController.transferLokalDatCikisDepo);
+    viewModel
+      ..setGirisDepo(yetkiController.transferLokalDatGirisDepo)
+      ..setCikisDepo(yetkiController.transferLokalDatCikisDepo);
     girisDepoController = TextEditingController(text: yetkiController.transferLokalDatGirisDepo?.depoTanimi);
     kabulGirisDepoController = TextEditingController();
     retGirisDepoController = TextEditingController();

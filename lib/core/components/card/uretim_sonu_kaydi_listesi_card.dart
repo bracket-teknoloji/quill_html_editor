@@ -35,16 +35,18 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
                   title: loc.generalStrings.view,
                   iconWidget: Icons.preview_outlined,
                   onTap: () {
-                    Get..back()
-                    ..toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(model: KalemModel.forUretimSonuKaydiEdit(model), baseEditEnum: BaseEditEnum.goruntule));
+                    Get
+                      ..back()
+                      ..toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(model: KalemModel.forUretimSonuKaydiEdit(model), baseEditEnum: BaseEditEnum.goruntule));
                   },
                 ),
                 BottomSheetModel(
                   title: "Üretim Sonu Raporu",
                   iconWidget: Icons.list_alt_outlined,
                   onTap: () {
-                    Get..back()
-                    ..toNamed("mainPage/uretimSonuRaporu", arguments: model);
+                    Get
+                      ..back()
+                      ..toNamed("mainPage/uretimSonuRaporu", arguments: model);
                   },
                 ),
                 BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined),

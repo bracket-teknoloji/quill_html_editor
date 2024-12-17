@@ -53,6 +53,7 @@ class CariDetayModel with NetworkManagerMixin {
     _instance ??= CariDetayModel._init();
     return _instance!;
   }
+
   //setter singleton
   static void setInstance(CariDetayModel? instance) => _instance = instance;
   String? cariKodu;

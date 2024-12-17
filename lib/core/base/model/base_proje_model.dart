@@ -6,7 +6,6 @@ part "base_proje_model.g.dart";
 
 @JsonSerializable()
 class BaseProjeModel with NetworkManagerMixin {
-
   BaseProjeModel({this.projeKodu, this.projeAciklama, this.aktif});
   String? projeKodu;
   String? projeAciklama;

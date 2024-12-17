@@ -23,7 +23,6 @@ part "account_model.g.dart";
 @HiveType(typeId: 73)
 @JsonSerializable()
 class AccountModel with NetworkManagerMixin {
-
   AccountModel();
   AccountModel.getValue() {
     init();

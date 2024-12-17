@@ -10,7 +10,6 @@ part "edit_fatura_model.g.dart";
 
 @unfreezed
 class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
-
   factory EditFaturaModel({
     @JsonKey(name: "BelgeTipi") int? belgeTipi,
     @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,

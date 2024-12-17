@@ -7,7 +7,6 @@ part "favorites_model.g.dart";
 
 @HiveType(typeId: 24)
 class FavoritesModel {
-
   FavoritesModel({
     this.name,
     this.title,

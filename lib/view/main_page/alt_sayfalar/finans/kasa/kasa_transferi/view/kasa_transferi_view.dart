@@ -184,8 +184,9 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                             dovizTipiController.text = result.dovizAdi ?? " ";
                             await getDovizDialog();
                           } else {
-                            viewModel..setDovizTutari(null)
-                            ..setDovizTipi(null);
+                            viewModel
+                              ..setDovizTutari(null)
+                              ..setDovizTipi(null);
                             dovizTipiController.clear();
                             dovizKuruController.clear();
                             dovizTutariController.clear();
@@ -249,8 +250,9 @@ class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
                         onChanged: (value) {
-                          viewModel..setDovizTutari(value.toDoubleWithFormattedString)
-                          ..setTutar((viewModel.model.dovizTutari ?? 0) * (dovizKuruController.text.toDoubleWithFormattedString));
+                          viewModel
+                            ..setDovizTutari(value.toDoubleWithFormattedString)
+                            ..setTutar((viewModel.model.dovizTutari ?? 0) * (dovizKuruController.text.toDoubleWithFormattedString));
                           tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                         },
                       ),
