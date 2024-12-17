@@ -402,7 +402,7 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
       groupValue: viewModel.model.kasaKodu,
       children: list
           .map(
-            (KasaList e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.kasaTanimi ?? e.kasaKodu ?? "",
               value: e,
               groupValue: e.kasaKodu,

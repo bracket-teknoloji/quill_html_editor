@@ -120,7 +120,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
     if (model.editTipiEnum?.irsaliyeMi ?? false) {
       model.model?.siparisSevkEdilenGoster = true;
     }
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (model.model?.isNew ?? false) {
         BaseSiparisEditModel.setInstance(widget.model.model);
       } else if (widget.model.baseEditEnum == BaseEditEnum.taslak) {
@@ -401,7 +401,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                             final result = await bottomSheetDialogManager.showBottomSheetDialog(
                               Get.context!,
                               title: "PDF Görüntüle",
-                              children: dizaynList.map((NetFectDizaynList e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
+                              children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
                             );
                             if (result is NetFectDizaynList) {
                               await Get.to(
@@ -518,7 +518,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                 BaseFaturaDigerView(model: model).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
                 BaseFaturaKalemlerView(model: model),
                 BaseFaturaToplamlarView(model: model),
-              ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
+              ].where((element) => element is! SizedBox).toList().nullCheckWithGeneric,
             ),
           ),
         ),
@@ -771,7 +771,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                     List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
                     list = list
                         .map(
-                          (KalemModel e) => e
+                          (e) => e
                             ..miktar = e.kalan
                             ..kalan = 0,
                         )
@@ -860,7 +860,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
       list = list
           .map(
-            (KalemModel e) => e
+            (e) => e
               ..miktar = e.kalan
               ..kalan = 0,
           )

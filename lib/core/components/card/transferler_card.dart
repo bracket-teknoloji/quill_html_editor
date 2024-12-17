@@ -44,7 +44,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
 
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
 
-  List<Widget> aciklamaList() => List.generate(16, (int index) => aciklamaText(index + 1)).whereType<Text>().toList();
+  List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
 
   Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle)
       .yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
@@ -209,12 +209,12 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                       .yetkiVarMi((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E")),
                   dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariliMi),
                   const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.efatOnayDurumKodu == "1"),
-                ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+                ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.cariAdi != null),
               Text("Resmi Belge No: ${model.resmiBelgeNo ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.resmiBelgeNo != null),
               LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) => Wrap(
+                builder: (context, constraints) => Wrap(
                   crossAxisAlignment: WrapCrossAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
 
@@ -229,7 +229,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                     Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                     Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                     Text("Genel Toplam: ${(model.genelToplam ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                  ].map((Widget e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 2, child: e)).whereType<Widget>().toList(),
+                  ].map((e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 2, child: e)).whereType<Widget>().toList(),
                 ),
               ),
               const Divider(
@@ -241,7 +241,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Text>[
                   Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                ].map((Text e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
+                ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
               ).yetkiVarMi(widget.showMiktar == true),
               const Divider(
                 indent: 0,

@@ -44,7 +44,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
     if (yetkiController.temsilciProfilKdvDahilMi) {
       viewModel.setKDVDahil(true);
     }
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await getData();
     });
     super.initState();
@@ -82,18 +82,18 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                       builder: (_) => SlideControllerWidget(
                         title: "İade Durumu",
                         childrenTitleList: const <String>["Hariç", "Dahil", "Sadece İadeler"],
-                        filterOnChanged: (int? value) => viewModel.setIadeDurumuValueList(value ?? 0),
+                        filterOnChanged: (value) => viewModel.setIadeDurumuValueList(value ?? 0),
                         childrenValueList: viewModel.iadeDurumuValueList,
-                        groupValue: viewModel.iadeDurumuValueList.firstWhereOrNull((bool element) => element),
+                        groupValue: viewModel.iadeDurumuValueList.firstWhereOrNull((element) => element),
                       ),
                     ),
                     Observer(
                       builder: (_) => SlideControllerWidget(
                         title: "Dönem",
                         childrenTitleList: <String>["Şirket Yılı (${CacheManager.getAnaVeri?.sirketModel?.yil ?? ""})", "Bu Yıl (${DateTime.now().year})", "Geçen Yıl (${DateTime.now().year - 1})"],
-                        filterOnChanged: (int? value) => viewModel.setDonemValueList(value ?? 0),
+                        filterOnChanged: (value) => viewModel.setDonemValueList(value ?? 0),
                         childrenValueList: viewModel.donemValueList,
-                        groupValue: viewModel.donemValueList.firstWhereOrNull((bool element) => element),
+                        groupValue: viewModel.donemValueList.firstWhereOrNull((element) => element),
                       ),
                     ),
                     CustomTextField(
@@ -109,7 +109,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                         },
                         icon: const Icon(Icons.more_horiz_outlined),
                       ),
-                      onChanged: (String p0) => viewModel.temsilciProfilRequestModel.cariVKN = p0,
+                      onChanged: (p0) => viewModel.temsilciProfilRequestModel.cariVKN = p0,
                     ),
                     Row(
                       children: <Widget>[
@@ -153,14 +153,14 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                           child: CustomWidgetWithLabel(
                             isVertical: true,
                             text: "KDV Dahil",
-                            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (bool value) => viewModel.setKDVDahil(value))),
+                            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value))),
                           ).paddingAll(UIHelper.lowSize),
                         ).yetkiVarMi(!yetkiController.temsilciProfilKdvDahilMi && AccountModel.instance.admin == "E"),
                         Expanded(
                           child: CustomWidgetWithLabel(
                             isVertical: true,
                             text: "İrsaliyeler Dahil",
-                            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (bool value) => viewModel.setIrsaliyelerDahil(value))),
+                            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsaliyelerDahil, onChanged: (value) => viewModel.setIrsaliyelerDahil(value))),
                           ).paddingAll(UIHelper.lowSize),
                         ),
                       ],
@@ -347,7 +347,7 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                     final result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "Dönem",
-                      children: viewModel.aylar.map((String e) => BottomSheetModel(title: e, value: e)).toList(),
+                      children: viewModel.aylar.map((e) => BottomSheetModel(title: e, value: e)).toList(),
                     );
                     if (result != null) {
                       viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);

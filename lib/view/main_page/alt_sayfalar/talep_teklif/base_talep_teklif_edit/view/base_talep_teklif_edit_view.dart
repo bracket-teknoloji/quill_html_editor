@@ -447,7 +447,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                           child: ListView.builder(
                             shrinkWrap: true,
                             itemCount: kalemList?.length ?? 0,
-                            itemBuilder: (BuildContext context, int index) {
+                            itemBuilder: (context, index) {
                               final KalemModel? model = kalemList?[index];
                               final TextEditingController controller = TextEditingController(text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNotNull);
                               return topluIskontoListTile(model, iskontoList, index, controller);

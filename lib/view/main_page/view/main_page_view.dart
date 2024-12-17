@@ -39,7 +39,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   void initState() {
     viewModel.setItems(MenuItemConstants(context).getList());
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      FirebaseMessaging.onMessage.listen((message) {
         if (message.data["route"] != null && widget.fromSplash) Get.toNamed(message.data["route"] ?? "/");
       });
     });

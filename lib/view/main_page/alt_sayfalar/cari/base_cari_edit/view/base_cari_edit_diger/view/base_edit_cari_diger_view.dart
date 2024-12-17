@@ -91,7 +91,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     bilgiController = TextEditingController(text: viewModel.model?.bilgi);
     subeController = TextEditingController(text: viewModel.model?.subeKodu);
     konumController = TextEditingController(text: viewModel.model?.enlem == null ? "" : "${viewModel.model?.enlem?.toStringAsFixed(5)}, ${viewModel.model?.boylam?.toStringAsFixed(5)}");
-    kilitController = TextEditingController(text: viewModel.kilitMap.entries.firstWhereOrNull((MapEntry<String, String> element) => element.value == viewModel.model?.kilit)?.key ?? "");
+    kilitController = TextEditingController(text: viewModel.kilitMap.entries.firstWhereOrNull((element) => element.value == viewModel.model?.kilit)?.key ?? "");
     bagliCariController = TextEditingController(text: viewModel.model?.bagliCariAciklama);
     kosulKoduController = TextEditingController(text: viewModel.model?.kosulKoduAciklama);
     aciklama1Controller = TextEditingController(text: viewModel.model?.aciklama1);
@@ -117,7 +117,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     kurFarkiBorcMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurfarkiborcAdi);
     kurFarkiAlacakMuhasebeKoduController = TextEditingController(text: viewModel.model?.kurfarkialacakAdi);
     eFaturaSenaryoController =
-        TextEditingController(text: viewModel.senaryoMap.entries.firstWhereOrNull((MapEntry<String, String> element) => element.value == viewModel.model?.efaturaSenaryo)?.key ?? "");
+        TextEditingController(text: viewModel.senaryoMap.entries.firstWhereOrNull((element) => element.value == viewModel.model?.efaturaSenaryo)?.key ?? "");
 
     viewModel
       ..changeSubeKodu(int.tryParse(viewModel.model?.subeKodu ?? ""))
@@ -128,10 +128,10 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     }
     StaticVariables.instance.cariKartiDigerFormKey.currentState?.activate();
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await dataChecker();
       await subeChecker();
-      subeController.text = subeList.firstWhereOrNull((IsletmeModel element) {
+      subeController.text = subeList.firstWhereOrNull((element) {
             if (viewModel.model?.subeKodu == null) {
               viewModel.changeSubeKodu(-1);
             }
@@ -205,12 +205,12 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     controller: grupKoduController,
                     onClear: () => viewModel.changeGrupKodu(null),
                     onTap: () async {
-                      final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 0).toList();
+                      final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 0).toList();
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         aramaVarMi: true,
                         title: "GrupKodu",
-                        children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
+                        children: List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
                       );
                       if (result != null) {
                         grupKoduController.text = result.grupAdi ?? "";
@@ -229,12 +229,12 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod1 ?? "")),
                     onClear: () => viewModel.changeKod1(null),
                     onTap: () async {
-                      final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 1).toList();
+                      final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 1).toList();
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         aramaVarMi: true,
                         title: "Kod 1",
-                        children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
+                        children: List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
                       );
                       if (result is BaseGrupKoduModel) {
                         kod1Controller.text = result.grupAdi ?? "";
@@ -258,12 +258,12 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod2 ?? "")),
                     onClear: () => viewModel.changeKod2(null),
                     onTap: () async {
-                      final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 2).toList();
+                      final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 2).toList();
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         aramaVarMi: true,
                         title: "Kod 2",
-                        children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
+                        children: List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
                       );
                       if (result is BaseGrupKoduModel) {
                         kod2Controller.text = result.grupAdi ?? "";
@@ -283,12 +283,12 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod3 ?? "")),
                     onClear: () => viewModel.changeKod3(null),
                     onTap: () async {
-                      final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 3).toList();
+                      final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 3).toList();
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         aramaVarMi: true,
                         title: "Kod 3",
-                        children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
+                        children: List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
                       );
                       if (result is BaseGrupKoduModel) {
                         kod3Controller.text = result.grupAdi ?? "";
@@ -312,12 +312,12 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod4 ?? "")),
                     onClear: () => viewModel.changeKod4(null),
                     onTap: () async {
-                      final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 4).toList();
+                      final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 4).toList();
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         aramaVarMi: true,
                         title: "Kod 4",
-                        children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
+                        children: List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
                       );
                       if (result is BaseGrupKoduModel) {
                         kod4Controller.text = result.grupAdi ?? "";
@@ -336,12 +336,12 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                     valueWidget: Observer(builder: (_) => Text(viewModel.model?.kod5 ?? "")),
                     onClear: () => viewModel.changeKod5(null),
                     onTap: () async {
-                      final List<BaseGrupKoduModel>? liste = list?.where((BaseGrupKoduModel element) => element.grupNo == 5).toList();
+                      final List<BaseGrupKoduModel>? liste = list?.where((element) => element.grupNo == 5).toList();
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         aramaVarMi: true,
                         title: "Kod 5",
-                        children: List.generate(liste!.length, (int index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
+                        children: List.generate(liste!.length, (index) => BottomSheetModel(title: liste[index].grupAdi ?? "", value: liste[index])),
                       );
                       if (result is BaseGrupKoduModel) {
                         kod5Controller.text = result.grupAdi ?? "";
@@ -356,7 +356,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("bilgi"),
               labelText: "Bilgi",
               controller: bilgiController,
-              onChanged: (String p0) => viewModel.changeBilgi(p0),
+              onChanged: (p0) => viewModel.changeBilgi(p0),
             ),
             CustomTextField(
               enabled: enabled,
@@ -410,7 +410,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               },
             ).yetkiVarMi(parametreModel.muhasebeEntegre == true),
             CustomTextField(
-              enabled: (enabled && subeList.firstWhereOrNull((IsletmeModel element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") ||
+              enabled: (enabled && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") ||
                   widget.model?.baseEditEnum != BaseEditEnum.goruntule && yetkiController.cariKartiDegistirilmeyecekAlanlar("sube"),
               readOnly: true,
               suffixMore: true,
@@ -422,7 +422,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               onTap: () async {
                 final List<BottomSheetModel<IsletmeModel>> children2 = List.generate(
                   subeList.length,
-                  (int index) => BottomSheetModel(title: subeList[index].subeAdi ?? "", description: subeList[index].subeAdi ?? "", value: subeList[index], groupValue: subeList[index].subeKodu),
+                  (index) => BottomSheetModel(title: subeList[index].subeAdi ?? "", description: subeList[index].subeAdi ?? "", value: subeList[index], groupValue: subeList[index].subeKodu),
                 );
                 final IsletmeModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "Şube", children: children2, groupValue: viewModel.model?.subeKodu);
                 if (result is IsletmeModel) {
@@ -460,7 +460,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   context,
                   title: "Kilit",
                   children:
-                      List.generate(viewModel.kilitMap.length, (int index) => BottomSheetModel(title: viewModel.kilitMap.keys.toList()[index], value: viewModel.kilitMap.entries.toList()[index])),
+                      List.generate(viewModel.kilitMap.length, (index) => BottomSheetModel(title: viewModel.kilitMap.keys.toList()[index], value: viewModel.kilitMap.entries.toList()[index])),
                 );
                 if (result != null) {
                   kilitController.text = result.key;
@@ -502,9 +502,9 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               },
               //TODO İlhami abiye parametreyi sor
             ).yetkiVarMi(parametreModel.konsinyeUygulamasi == true),
-            CustomTextField(enabled: enabled, labelText: "Açıklama 1", controller: aciklama1Controller, onChanged: (String p0) => viewModel.changeAciklama(1, p0)),
-            CustomTextField(enabled: enabled, labelText: "Açıklama 2", controller: aciklama2Controller, onChanged: (String p0) => viewModel.changeAciklama(2, p0)),
-            CustomTextField(enabled: enabled, labelText: "Açıklama 3", controller: aciklama3Controller, onChanged: (String p0) => viewModel.changeAciklama(3, p0)),
+            CustomTextField(enabled: enabled, labelText: "Açıklama 1", controller: aciklama1Controller, onChanged: (p0) => viewModel.changeAciklama(1, p0)),
+            CustomTextField(enabled: enabled, labelText: "Açıklama 2", controller: aciklama2Controller, onChanged: (p0) => viewModel.changeAciklama(2, p0)),
+            CustomTextField(enabled: enabled, labelText: "Açıklama 3", controller: aciklama3Controller, onChanged: (p0) => viewModel.changeAciklama(3, p0)),
             CustomWidgetWithLabel(
               text: "Kullanıcı Tanımlı Sahalar",
               child: Wrap(
@@ -512,35 +512,35 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 1", controller: a1Controller, onChanged: (String p0) => viewModel.changeKullA(1, p0)))
+                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 1", controller: a1Controller, onChanged: (p0) => viewModel.changeKullA(1, p0)))
                           .yetkiVarMi(parametreModel.mapCariKullSahalar?.the1S != null),
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 2", controller: a2Controller, onChanged: (String p0) => viewModel.changeKullA(2, p0)))
+                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 2", controller: a2Controller, onChanged: (p0) => viewModel.changeKullA(2, p0)))
                           .yetkiVarMi(parametreModel.mapCariKullSahalar?.the2S != null),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 3", controller: a3Controller, onChanged: (String p0) => viewModel.changeKullA(3, p0)))
+                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 3", controller: a3Controller, onChanged: (p0) => viewModel.changeKullA(3, p0)))
                           .yetkiVarMi(parametreModel.mapCariKullSahalar?.the3S != null),
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 4", controller: a4Controller, onChanged: (String p0) => viewModel.changeKullA(4, p0)))
+                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 4", controller: a4Controller, onChanged: (p0) => viewModel.changeKullA(4, p0)))
                           .yetkiVarMi(parametreModel.mapCariKullSahalar?.the4S != null),
                     ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 5", controller: a5Controller, onChanged: (String p0) => viewModel.changeKullA(5, p0)))
+                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 5", controller: a5Controller, onChanged: (p0) => viewModel.changeKullA(5, p0)))
                           .yetkiVarMi(parametreModel.mapCariKullSahalar?.the5S != null),
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 6", controller: a6Controller, onChanged: (String p0) => viewModel.changeKullA(6, p0)))
+                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 6", controller: a6Controller, onChanged: (p0) => viewModel.changeKullA(6, p0)))
                           .yetkiVarMi(parametreModel.mapCariKullSahalar?.the6S != null),
                     ],
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 7", controller: a7Controller, onChanged: (String p0) => viewModel.changeKullA(7, p0)))
+                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 7", controller: a7Controller, onChanged: (p0) => viewModel.changeKullA(7, p0)))
                           .yetkiVarMi(parametreModel.mapCariKullSahalar?.the7S != null),
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 8", controller: a8Controller, onChanged: (String p0) => viewModel.changeKullA(8, p0)))
+                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 8", controller: a8Controller, onChanged: (p0) => viewModel.changeKullA(8, p0)))
                           .yetkiVarMi(parametreModel.mapCariKullSahalar?.the8S != null),
                     ],
                   ),
@@ -554,7 +554,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: n1Controller,
-                          onChanged: (String p0) => viewModel.changeKullN(1, p0),
+                          onChanged: (p0) => viewModel.changeKullN(1, p0),
                         ),
                       ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the1N != null),
                       Expanded(
@@ -564,7 +564,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: n2Controller,
-                          onChanged: (String p0) => viewModel.changeKullN(2, p0),
+                          onChanged: (p0) => viewModel.changeKullN(2, p0),
                         ),
                       ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the2N != null),
                     ],
@@ -579,7 +579,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: n3Controller,
-                          onChanged: (String p0) => viewModel.changeKullN(3, p0),
+                          onChanged: (p0) => viewModel.changeKullN(3, p0),
                         ),
                       ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the3N != null),
                       Expanded(
@@ -589,7 +589,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: n4Controller,
-                          onChanged: (String p0) => viewModel.changeKullN(4, p0),
+                          onChanged: (p0) => viewModel.changeKullN(4, p0),
                         ),
                       ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the4N != null),
                     ],
@@ -604,7 +604,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: n5Controller,
-                          onChanged: (String p0) => viewModel.changeKullN(5, p0),
+                          onChanged: (p0) => viewModel.changeKullN(5, p0),
                         ),
                       ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the5N != null),
                       Expanded(
@@ -614,7 +614,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: n6Controller,
-                          onChanged: (String p0) => viewModel.changeKullN(6, p0),
+                          onChanged: (p0) => viewModel.changeKullN(6, p0),
                         ),
                       ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the6N != null),
                     ],
@@ -629,7 +629,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: n7Controller,
-                          onChanged: (String p0) => viewModel.changeKullN(7, p0),
+                          onChanged: (p0) => viewModel.changeKullN(7, p0),
                         ),
                       ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the7N != null),
                       Expanded(
@@ -639,7 +639,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                           isFormattedString: true,
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           controller: n8Controller,
-                          onChanged: (String p0) => viewModel.changeKullN(8, p0),
+                          onChanged: (p0) => viewModel.changeKullN(8, p0),
                         ),
                       ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the8N != null),
                     ],
@@ -666,7 +666,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                         title: "E-Fatura Senaryo",
                         children: List.generate(
                           viewModel.senaryoMap.length,
-                          (int index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
+                          (index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
                         ),
                       );
                       if (result != null) {
@@ -713,7 +713,7 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   Future<void> subeChecker() async {
     final List result = CacheManager.getSubeListesi();
     subeList = result.map((e) => e as IsletmeModel).toList().cast<IsletmeModel>();
-    if (subeList.any((IsletmeModel element) => element.subeAdi != "Şubelerde Ortak")) {
+    if (subeList.any((element) => element.subeAdi != "Şubelerde Ortak")) {
       subeList.insert(0, IsletmeModel(subeKodu: -1, subeAdi: "Şubelerde Ortak"));
     }
   }

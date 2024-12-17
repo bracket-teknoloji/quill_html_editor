@@ -27,7 +27,7 @@ class MenuItemConstants {
   static List<NetFectDizaynList> get _serbestRapor => CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
       ? _anaVeri?.paramModel?.netFectDizaynList
               ?.where(
-                (NetFectDizaynList element) =>
+                (element) =>
                     element.ozelKod == "Serbest" &&
                     ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest?.any((element2) => element2 == element.id) ?? false) || AccountModel.instance.adminMi),
               )
@@ -36,19 +36,19 @@ class MenuItemConstants {
       : [];
 
   static List<GridItemModel> get getGridItemModel =>
-      _serbestRapor.map((NetFectDizaynList e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
+      _serbestRapor.map((e) => GridItemModel.serbestRaporlar(name: e.detayKod, title: e.dizaynAdi ?? "", color: ColorPalette.asparagus, arguments: e)).toList();
 
   static List<GridItemModel>? get getCariSerbestRapor => _getSerbestRapor.call(SerbestRaporDetayKodEnum.cari);
 
   static List<GridItemModel>? get getStokSerbestRapor => _getSerbestRapor.call(SerbestRaporDetayKodEnum.stok);
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
-    final List<NetFectDizaynList> serbestRaporList = _serbestRapor.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).toList();
+    final List<NetFectDizaynList> serbestRaporList = _serbestRapor.where((element) => element.detayKod == detayKod.detayKod).toList();
     if (serbestRaporList.ext.isNullOrEmpty || (CacheManager.getAnaVeri!.userModel?.profilYetki?.yazdirmaSerbest != true && AccountModel.instance.admin != "E")) {
       return [];
     }
     return List.generate(
-      _serbestRapor.where((NetFectDizaynList element) => element.detayKod == detayKod.detayKod).length,
-      (int index) => GridItemModel.serbestRaporlar(title: serbestRaporList[index].dizaynAdi ?? "", arguments: serbestRaporList[index], color: ColorPalette.asparagus),
+      _serbestRapor.where((element) => element.detayKod == detayKod.detayKod).length,
+      (index) => GridItemModel.serbestRaporlar(title: serbestRaporList[index].dizaynAdi ?? "", arguments: serbestRaporList[index], color: ColorPalette.asparagus),
     );
   }
 
@@ -488,23 +488,23 @@ class MenuItemConstants {
     ),
   ].whereType<GridItemModel>().toList();
 
-  List<GridItemModel> getList() => gridItemModel.where((GridItemModel element) => element.yetkiKontrol).toList();
+  List<GridItemModel> getList() => gridItemModel.where((element) => element.yetkiKontrol).toList();
 
-  List<GridItemModel?> getAltMenuList(String name) => getGridItemModel.where((GridItemModel element) => element.name == name).toList();
+  List<GridItemModel?> getAltMenuList(String name) => getGridItemModel.where((element) => element.name == name).toList();
 
   static List<GridItemModel> groupBySerbestRaporList() {
     if (_serbestRapor.length >= 16) {
       final Map<String?, GridItemModel> result = groupBy(
         _serbestRapor,
-        (NetFectDizaynList obj) => obj.detayKod,
-      ).map((String? key, List<NetFectDizaynList> value) {
+        (obj) => obj.detayKod,
+      ).map((key, value) {
         if (value.length != 1) {
           return MapEntry(
             key,
             GridItemModel.altmenu(
               name: "stok_Raporlar",
               title: key ?? "",
-              altMenuler: List.generate(value.length, (int index) => GridItemModel.serbestRaporlar(title: value[index].dizaynAdi ?? "", arguments: value[index])),
+              altMenuler: List.generate(value.length, (index) => GridItemModel.serbestRaporlar(title: value[index].dizaynAdi ?? "", arguments: value[index])),
             ),
           );
         } else {
@@ -517,7 +517,7 @@ class MenuItemConstants {
           );
         }
       });
-      return result.values.sortedBy((GridItemModel element) => element.menuTipi).toList();
+      return result.values.sortedBy((element) => element.menuTipi).toList();
     } else {
       return getGridItemModel;
     }

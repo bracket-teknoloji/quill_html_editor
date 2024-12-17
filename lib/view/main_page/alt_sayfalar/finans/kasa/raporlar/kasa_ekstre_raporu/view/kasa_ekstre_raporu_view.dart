@@ -51,7 +51,7 @@ class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           RaporFiltreDateTimeBottomSheetView(
-            filterOnChanged: (int? index) {
+            filterOnChanged: (index) {
               viewModel..setBastar(baslangicController.text)
               ..setBittar(bitisController.text);
             },

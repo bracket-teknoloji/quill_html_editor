@@ -85,7 +85,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
       ..changeCariTipi(viewModel.model?.tipi)
       ..changeKodu(viewModel.model?.kodu);
     kodController = TextEditingController(text: viewModel.model?.kodu);
-    cariTipiController = TextEditingController(text: viewModel.cariTipiMap.entries.firstWhereOrNull((MapEntry<String, String> element) => element.value == viewModel.model?.tipi)?.key);
+    cariTipiController = TextEditingController(text: viewModel.cariTipiMap.entries.firstWhereOrNull((element) => element.value == viewModel.model?.tipi)?.key);
     adController = TextEditingController(text: viewModel.model?.adi);
     ulkeController = TextEditingController(text: viewModel.model?.ulkeKoduAciklama);
     ilController = TextEditingController(text: viewModel.model?.sehir);
@@ -98,7 +98,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     vergiDairesiController = TextEditingController(text: viewModel.model?.vergiDairesi);
     vergiNoController = TextEditingController(text: viewModel.model?.vergiNo);
     dovizController = TextEditingController(text: (viewModel.model?.dovizli == "E" && viewModel.model?.dovizKoduAciklama == null) ? mainCurrency : viewModel.model?.dovizKoduAciklama);
-    plasiyerController = TextEditingController(text: parametreModel.plasiyerList?.firstWhereOrNull((PlasiyerList element) => element.plasiyerKodu == viewModel.model?.plasiyerKodu)?.plasiyerAciklama);
+    plasiyerController = TextEditingController(text: parametreModel.plasiyerList?.firstWhereOrNull((element) => element.plasiyerKodu == viewModel.model?.plasiyerKodu)?.plasiyerAciklama);
     vadeGunuController = TextEditingController(text: viewModel.model?.vadeGunu ?? "");
     odemeTipiController = TextEditingController(
       text: viewModel.model?.odemeTipi == "0"
@@ -112,7 +112,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     // if (widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != BaseEditEnum.kopyala) {
     //   getCariDetay(model?.cariKodu ?? "");
     // }
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (viewModel.model?.kodu == null) {
         final String? kod = await CariNetworkManager.getSiradakiKod(kod: kodController.text);
         kodController.text = kod ?? "";
@@ -138,7 +138,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 alignment: Alignment.centerLeft,
                 child: CustomWidgetWithLabel(
                   text: "Şahıs Firması",
-                  child: Observer(builder: (_) => Switch.adaptive(value: viewModel.isSahisFirmasi, onChanged: enabled ? (bool value) => viewModel.changeIsSahisFirmasi(value) : null)),
+                  child: Observer(builder: (_) => Switch.adaptive(value: viewModel.isSahisFirmasi, onChanged: enabled ? (value) => viewModel.changeIsSahisFirmasi(value) : null)),
                 ),
               ),
               Row(
@@ -173,7 +173,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                             },
                             icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                           ),
-                        ].map((IconButton e) => SizedBox(width: 35, child: e)).toList(),
+                        ].map((e) => SizedBox(width: 35, child: e)).toList(),
                       ),
                     ),
                   ),
@@ -192,7 +192,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           title: "Cari Tipi",
                           children: List.generate(
                             viewModel.cariTipiMap.length,
-                            (int index) => BottomSheetModel(
+                            (index) => BottomSheetModel(
                               title: viewModel.cariTipiMap.keys.toList()[index],
                               value: viewModel.cariTipiMap.entries.toList()[index],
                               description: viewModel.cariTipiMap.values.toList()[index],
@@ -213,7 +213,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 labelText: "Adı",
                 controller: adController,
                 isMust: true,
-                onChanged: (String p0) {
+                onChanged: (p0) {
                   viewModel.changeAdi(p0);
                 },
               ),
@@ -234,7 +234,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                       title: "Ülkeler",
                       children: List.generate(
                         ulkeler!.length,
-                        (int index) => BottomSheetModel(
+                        (index) => BottomSheetModel(
                           title: ulkeler?[index].ulkeAdi ?? "",
                           value: ulkeler?[index],
                           groupValue: ulkeler?[index].ulkeKodu,
@@ -271,7 +271,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                           groupValue: viewModel.model?.sehir,
                           children: List.generate(
                             viewModel.sehirler?.length ?? 0,
-                            (int index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index], groupValue: viewModel.sehirler?[index].sehirAdi ?? ""),
+                            (index) => BottomSheetModel(title: viewModel.sehirler?[index].sehirAdi ?? "", value: viewModel.sehirler?[index], groupValue: viewModel.sehirler?[index].sehirAdi ?? ""),
                           ),
                         );
                         if (result is CariSehirlerModel) {
@@ -286,7 +286,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                       enabled: enabled,
                       labelText: "İlçe",
                       controller: ilceCOntroller,
-                      onChanged: (String p0) => viewModel.changeIlce(p0),
+                      onChanged: (p0) => viewModel.changeIlce(p0),
                     ),
                   ),
                 ],
@@ -295,20 +295,20 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 enabled: enabled,
                 labelText: "Posta Kodu",
                 controller: postaKoduController,
-                onChanged: (String p0) => viewModel.changePostaKodu(p0),
+                onChanged: (p0) => viewModel.changePostaKodu(p0),
               ),
               CustomTextField(
                 enabled: enabled,
                 labelText: "Adres",
                 controller: adresController,
-                onChanged: (String p0) => viewModel.changeAdres(p0),
+                onChanged: (p0) => viewModel.changeAdres(p0),
               ),
               CustomTextField(
                 enabled: enabled,
                 labelText: "Telefon",
                 controller: telefonController,
                 keyboardType: TextInputType.phone,
-                onChanged: (String p0) {
+                onChanged: (p0) {
                   viewModel.changeTelefon(p0);
                 },
               ),
@@ -316,13 +316,13 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                 enabled: enabled,
                 labelText: "E-Posta",
                 controller: ePostaController,
-                onChanged: (String p0) => viewModel.changeEposta(p0),
+                onChanged: (p0) => viewModel.changeEposta(p0),
               ),
               CustomTextField(
                 enabled: enabled,
                 labelText: "Web",
                 controller: webController,
-                onChanged: (String p0) => viewModel.changeWeb(p0),
+                onChanged: (p0) => viewModel.changeWeb(p0),
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -332,7 +332,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                       enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
                       labelText: "Vergi Dairesi",
                       controller: vergiDairesiController,
-                      onChanged: (String p0) => viewModel.changeVergiDairesi(p0),
+                      onChanged: (p0) => viewModel.changeVergiDairesi(p0),
                     ),
                   ),
                   Expanded(
@@ -343,7 +343,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         controller: vergiNoController,
                         keyboardType: TextInputType.number,
                         maxLength: viewModel.isSahisFirmasi ? 11 : 10,
-                        onChanged: (String p0) => viewModel.changeVergiNo(p0),
+                        onChanged: (p0) => viewModel.changeVergiNo(p0),
                       ),
                     ),
                   ),
@@ -379,7 +379,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                         builder: (_) => Switch.adaptive(
                           value: viewModel.isDovizli,
                           onChanged: enabled
-                              ? (bool value) {
+                              ? (value) {
                                   if (!value) {
                                     dovizController.clear();
                                     viewModel.changeDovizTipi(null);
@@ -422,7 +422,7 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
                       labelText: "Vade Günü",
                       controller: vadeGunuController,
                       keyboardType: TextInputType.number,
-                      onChanged: (String p0) => viewModel.changeVadeGunu(int.tryParse(p0)),
+                      onChanged: (p0) => viewModel.changeVadeGunu(int.tryParse(p0)),
                     ),
                   ),
                   Expanded(

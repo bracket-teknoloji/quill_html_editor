@@ -54,13 +54,13 @@ class _BaseTransferDigerViewState extends BaseState<BaseTransferDigerView> {
                 inputAction: InputAction.newline,
                 textStyle: TextStyle(color: theme.colorScheme.onSurface),
                 backgroundColor: theme.colorScheme.surface,
-                onTextChanged: (String text) => model.ekAciklama = text != "" ? text : null,
+                onTextChanged: (text) => model.ekAciklama = text != "" ? text : null,
                 onEditorCreated: () async {
                   if (model.ekAciklama != null) {
                     await controller.insertText(model.ekAciklama ?? "");
                   }
                 },
-                loadingBuilder: (BuildContext context) => const Center(child: CircularProgressIndicator.adaptive()),
+                loadingBuilder: (context) => const Center(child: CircularProgressIndicator.adaptive()),
               ),
             ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),
           ),

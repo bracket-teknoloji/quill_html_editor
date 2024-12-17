@@ -694,7 +694,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                         onRefresh: viewModel.resetList,
                         dahaVarMi: viewModel.dahaVarMi,
                         items: viewModel.observableList,
-                        itemBuilder: (item, {int? crossAxisCount}) => stokListesiGridTile(item, crossAxisCount),
+                        itemBuilder: (item, {crossAxisCount}) => stokListesiGridTile(item, crossAxisCount),
                       ),
                     )
                   : RefreshableListView.pageable(

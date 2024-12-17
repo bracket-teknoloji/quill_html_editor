@@ -81,7 +81,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
           builder: (_) {
             if (viewModel.isSearchBarOpen) {
               return CustomAppBarTextField(
-                onFieldSubmitted: (String value) async {
+                onFieldSubmitted: (value) async {
                   viewModel.setSearchText(value);
                   await viewModel.resetList();
                 },
@@ -113,7 +113,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
                   groupValue: viewModel.faturaRequestModel.siralama,
                   children: List.generate(
                     viewModel.siralaMap.length,
-                    (int index) => BottomSheetModel(
+                    (index) => BottomSheetModel(
                       title: viewModel.siralaMap.keys.toList()[index],
                       value: viewModel.siralaMap.values.toList()[index],
                       groupValue: viewModel.siralaMap.values.toList()[index],
@@ -146,14 +146,14 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
                                 builder: (_) => SwitchListTile.adaptive(
                                   title: const Text("Ek Açıklamalar"),
                                   value: viewModel.ekstraAlanlarMap["EK"] ?? false,
-                                  onChanged: (bool value) => viewModel.changeEkstraAlanlarMap("EK", value),
+                                  onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value),
                                 ),
                               ),
                               Observer(
                                 builder: (_) => SwitchListTile.adaptive(
                                   title: const Text("Miktar"),
                                   value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
-                                  onChanged: (bool value) {
+                                  onChanged: (value) {
                                     viewModel.changeEkstraAlanlarMap("MİK", value);
                                   },
                                 ),
@@ -162,7 +162,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
                                 builder: (_) => SwitchListTile.adaptive(
                                   title: const Text("Vade"),
                                   value: viewModel.ekstraAlanlarMap["VADE"] ?? false,
-                                  onChanged: (bool value) => viewModel.changeEkstraAlanlarMap("VADE", value),
+                                  onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value),
                                 ),
                               ),
                             ],

@@ -133,12 +133,12 @@ class BottomSheetDialogManager {
           CustomTextField(
             focusNode: focusNode,
             labelText: "Aramak istediğiniz metni yazınız.",
-            onChanged: (String value) {
+            onChanged: (value) {
               if (value == "") {
                 children2 = children;
               }
               children2 = children2!
-                  .where((BottomSheetModel element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
+                  .where((element) => element.title.toLowerCase().contains(value.toLowerCase()) || (element.description?.toLowerCase().contains(value.toLowerCase()) ?? false))
                   .toList();
             },
           ).paddingAll(UIHelper.midSize),
@@ -156,7 +156,7 @@ class BottomSheetDialogManager {
               shrinkWrap: true,
               itemCount: children2?.length,
               primary: false,
-              itemBuilder: (BuildContext context, int index) {
+              itemBuilder: (context, index) {
                 final item = children2![index];
                 return Column(
                   children: <Widget>[
@@ -192,10 +192,10 @@ class BottomSheetDialogManager {
     // List<T>? list;
 
     if (viewModel.isSelectedListMap?[title] == null) {
-      viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
+      viewModel.changeIsSelectedListMap(title, List.generate(children!.length, (index) => groupValues?.contains(children[index].groupValue) ?? false));
     } else {
       if (children!.length != viewModel.isSelectedListMap?[title]!.length) {
-        viewModel.changeIsSelectedListMap(title, List.generate(children.length, (int index) => groupValues?.contains(children[index].groupValue) ?? false));
+        viewModel.changeIsSelectedListMap(title, List.generate(children.length, (index) => groupValues?.contains(children[index].groupValue) ?? false));
       }
     }
     return _generalBottomSheet<T>(context, title: title, body: checkboxBody, onlyValue: onlyValue, children: children);
@@ -219,7 +219,7 @@ class BottomSheetDialogManager {
                   controlAffinity: ListTileControlAffinity.leading,
                   value: viewModel.isSelectedListMap?[title]?[index] ?? false,
                   title: Text(children?[index].title ?? ""),
-                  onChanged: (bool? value) {
+                  onChanged: (value) {
                     viewModel.changeIndexIsSelectedListMap(title, index, value!);
                     // viewModel.isSelectedListMap![title]![index] = value!;
                     list = selectedChecker(children, title, onlyValue);
@@ -259,7 +259,7 @@ class BottomSheetDialogManager {
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),
-      builder: (BuildContext context) => SafeArea(
+      builder: (context) => SafeArea(
         child: Padding(
           padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
           child: Observer(
@@ -294,7 +294,7 @@ class BottomSheetDialogManager {
                                         children: <Widget>[
                                           ...List.generate(
                                             viewModel.getFilteredList!.length,
-                                            (int index) {
+                                            (index) {
                                               final BottomSheetModel? item = viewModel.getFilteredList?[index];
                                               return Observer(
                                                 builder: (_) => Wrap(
@@ -377,7 +377,7 @@ class BottomSheetDialogManager {
         children: _paramModel?.depoList
             ?.where((element) => (element.subeKodu ?? 0) == CacheManager.getVeriTabani["Şube"])
             .map(
-              (DepoList e) => BottomSheetModel(
+              (e) => BottomSheetModel(
                 title: e.depoTanimi ?? "",
                 description: e.depoKodu.toStringIfNotNull,
                 descriptionWidget: e.hucreTakibi == "E" ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
@@ -393,7 +393,7 @@ class BottomSheetDialogManager {
         groupValue: groupValue,
         children: _paramModel?.depoList
             ?.where((element) => element.hucreTakibi == "E")
-            .map((DepoList e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
+            .map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e, groupValue: e.depoKodu))
             .toList(),
       );
 
@@ -401,7 +401,7 @@ class BottomSheetDialogManager {
     final List<int>? onayList = CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.sirketAktifDepolar;
     final List<DepoList> depoList = _paramModel?.depoList ?? <DepoList>[];
     final List<DepoList> filteredDepoList = depoList
-        .where((DepoList element) => onayList?.contains(element.depoKodu) ?? true && (element.subeKodu == null || (element.subeKodu != null && element.subeKodu == CacheManager.getVeriTabani["Şube"])))
+        .where((element) => onayList?.contains(element.depoKodu) ?? true && (element.subeKodu == null || (element.subeKodu != null && element.subeKodu == CacheManager.getVeriTabani["Şube"])))
         .toList();
     return await showRadioBottomSheetDialog(
       context,
@@ -409,7 +409,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: filteredDepoList
           .map(
-            (DepoList e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.depoTanimi ?? "",
               description: e.depoKodu.toStringIfNotNull,
               value: e,
@@ -427,7 +427,7 @@ class BottomSheetDialogManager {
         groupValue: groupValue,
         children: _paramModel?.listCariOdemeKodu
             ?.map(
-              (ListCariOdemeKodu e) => BottomSheetModel(
+              (e) => BottomSheetModel(
                 title: e.aciklama ?? "",
                 value: e,
                 groupValue: e.odemeKodu,
@@ -459,7 +459,7 @@ class BottomSheetDialogManager {
       groupValues: groupValues,
       children: plasiyerList
           .map(
-            (PlasiyerList e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "",
               value: e,
               groupValue: e.plasiyerKodu,
@@ -488,7 +488,7 @@ class BottomSheetDialogManager {
       groupValues: groupValues,
       children: viewModel.filteredGrupKoduList
           ?.map(
-            (BaseGrupKoduModel e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.grupAdi ?? "",
               value: e,
               groupValue: e.grupKodu,
@@ -510,7 +510,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: viewModel.filteredGrupKoduList
           ?.map(
-            (BaseGrupKoduModel e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.grupAdi ?? "",
               value: e,
               groupValue: e.grupKodu,
@@ -539,7 +539,7 @@ class BottomSheetDialogManager {
       title: "Muhasebe Kodu Seçiniz",
       children: viewModel.muhasebeKoduList
           ?.map(
-            (StokMuhasebeKoduModel e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "",
               description: "ALIŞ: ${e.alisHesabi ?? ""}\nSATIŞ: ${e.satisHesabi ?? ""}",
               value: e,
@@ -565,7 +565,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: viewModel.muhasebeKoduList
           ?.map(
-            (StokMuhasebeKoduModel e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.hesapAdi ?? e.hesapKodu ?? "",
               description: e.hesapKodu,
               value: e,
@@ -587,7 +587,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: viewModel.muhasebeKoduList
           ?.map(
-            (StokMuhasebeKoduModel e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.hesapAdi ?? e.hesapKodu ?? "",
               description: e.hesapKodu,
               value: e,
@@ -606,7 +606,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: plasiyerList
           .map(
-            (PlasiyerList e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.plasiyerAciklama ?? e.plasiyerKodu ?? "",
               description: e.plasiyerKodu,
               value: e,
@@ -668,7 +668,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: projeList
           ?.map(
-            (BaseProjeModel e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.projeAciklama ?? e.projeKodu ?? "",
               description: e.projeKodu,
               value: e,
@@ -688,7 +688,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: dovizList
           .map(
-            (DovizList e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.isim ?? e.dovizKodu.toStringIfNotNull ?? "",
               value: e,
               groupValue: e.dovizKodu,
@@ -707,7 +707,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: yaziciList
               ?.map(
-                (YaziciList e) => BottomSheetModel(
+                (e) => BottomSheetModel(
                   title: e.aciklama ?? e.yaziciAdi ?? "",
                   description: e.yaziciAdi,
                   value: e,
@@ -736,7 +736,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: netFectDizaynList
           .map(
-            (NetFectDizaynList e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.dizaynAdi ?? e.detayKod ?? "",
               value: e,
               groupValue: e.detayKod ?? e.ozelKod,
@@ -781,7 +781,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: belgeTipiList
           .map(
-            (BelgeTipiModel e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.belgeTipi ?? e.belgeTipiId.toStringIfNotNull ?? "",
               value: e,
               groupValue: e.belgeTipiId,
@@ -799,7 +799,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: iskontoTipiList
           .map(
-            (ListIskTip e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.aciklama ?? e.iskontoTipi.toStringIfNotNull ?? "",
               value: e,
               groupValue: e.iskontoTipi,
@@ -818,7 +818,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: data
           ?.map(
-            (CariKosullarModel e) => BottomSheetModel(title: e.genelKosulAdi ?? e.kosulKodu ?? "", value: e, groupValue: e.kosulKodu),
+            (e) => BottomSheetModel(title: e.genelKosulAdi ?? e.kosulKodu ?? "", value: e, groupValue: e.kosulKodu),
           )
           .toList(),
     );
@@ -923,28 +923,28 @@ class BottomSheetDialogManager {
   }
 
   Future<ListOzelKodTum?> showOzelKod1BottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<ListOzelKodTum> list = _paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
+    final List<ListOzelKodTum> list = _paramModel?.listOzelKodTum?.where((element) => element.belgeTipi == "S" && element.fiyatSirasi != 0).toList() ?? <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Özel Kod Seçiniz",
       groupValue: groupValue,
       children: list
           .map(
-            (ListOzelKodTum e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e, groupValue: e.kod),
+            (e) => BottomSheetModel(title: e.aciklama ?? e.kod ?? "", value: e, groupValue: e.kod),
           )
           .toList(),
     );
   }
 
   Future<ListOzelKodTum?> showOzelKod2BottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<ListOzelKodTum> list = _paramModel?.listOzelKodTum?.where((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
+    final List<ListOzelKodTum> list = _paramModel?.listOzelKodTum?.where((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0).toList() ?? <ListOzelKodTum>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Özel Kod Seçiniz",
       groupValue: groupValue,
       children: list
           .map(
-            (ListOzelKodTum e) => BottomSheetModel(
+            (e) => BottomSheetModel(
               title: e.aciklama ?? e.kod ?? "",
               value: e,
               groupValue: e.kod,
@@ -975,7 +975,7 @@ class BottomSheetDialogManager {
         children: list
             .where((element) => filterText != null ? filterText.contains(element.belgeTipi) : true)
             .map(
-              (KalemListModel e) => BottomSheetModel(
+              (e) => BottomSheetModel(
                 title: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == e.belgeTipi)?.getName ?? "",
                 description: e.belgeNo ?? "",
                 value: e,
@@ -998,7 +998,7 @@ class BottomSheetDialogManager {
         groupValue: groupValue,
         children: list
             .map(
-              (EFaturaOzelKodModel e) => BottomSheetModel(
+              (e) => BottomSheetModel(
                 title: e.aciklama ?? e.tipAdi ?? "",
                 description: e.kod.toStringIfNotNull ?? "",
                 value: e,
@@ -1021,7 +1021,7 @@ class BottomSheetDialogManager {
         groupValue: groupValue,
         children: list
             .map(
-              (TcmbBankalarModel e) => BottomSheetModel(
+              (e) => BottomSheetModel(
                 title: e.bankaadi ?? "",
                 description: e.bankakodu ?? "",
                 value: e,
@@ -1044,7 +1044,7 @@ class BottomSheetDialogManager {
         groupValue: groupValue,
         children: list
             .map(
-              (TcmbBankalarModel e) => BottomSheetModel(
+              (e) => BottomSheetModel(
                 title: e.subeadi ?? "",
                 description: e.subekodu ?? "",
                 value: e,
@@ -1097,7 +1097,7 @@ class BottomSheetDialogManager {
         groupValue: groupValue,
         children: list
             .map(
-              (MuhasebeReferansModel e) => BottomSheetModel(
+              (e) => BottomSheetModel(
                 title: e.tanimi ?? "",
                 description: e.kodu ?? "",
                 value: e,
@@ -1120,7 +1120,7 @@ class BottomSheetDialogManager {
         groupValue: groupValue,
         children: list
             .map(
-              (SeriModel e) => BottomSheetModel(
+              (e) => BottomSheetModel(
                 title: e.aciklama ?? "",
                 description: e.seriNo ?? "",
                 value: e,
@@ -1141,7 +1141,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: list
           .map(
-            (KasaList e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu),
+            (e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu),
           )
           .toList(),
     );
@@ -1165,7 +1165,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: operatorList
           ?.map(
-            (OlcumOperatorModel e) => BottomSheetModel(title: e.adiSoyadi ?? e.sicilno ?? "", value: e, groupValue: e.sicilno),
+            (e) => BottomSheetModel(title: e.adiSoyadi ?? e.sicilno ?? "", value: e, groupValue: e.sicilno),
           )
           .toList(),
     );
@@ -1179,7 +1179,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: sartliKabullerList
           ?.map(
-            (MuhasebeReferansModel e) => BottomSheetModel(title: e.tanimi ?? e.kodu ?? "", value: e, groupValue: e.kodu),
+            (e) => BottomSheetModel(title: e.tanimi ?? e.kodu ?? "", value: e, groupValue: e.kodu),
           )
           .toList(),
     );
@@ -1191,7 +1191,7 @@ class BottomSheetDialogManager {
       if (yaziciListe.length == 1) {
         printModel = printModel.copyWith(yaziciAdi: yaziciListe.first?.yaziciAdi, yaziciTipi: yaziciListe.first?.yaziciTipi);
       } else if (yaziciListe.length > 1) {
-        final result = await showBottomSheetDialog(context, title: "Yazıcı Seçiniz", children: yaziciListe.map((YaziciList? e) => BottomSheetModel(title: e?.yaziciAdi ?? "", value: e)).toList());
+        final result = await showBottomSheetDialog(context, title: "Yazıcı Seçiniz", children: yaziciListe.map((e) => BottomSheetModel(title: e?.yaziciAdi ?? "", value: e)).toList());
         if (result != null) {
           printModel = printModel.copyWith(yaziciAdi: result.yaziciAdi, yaziciTipi: result.yaziciTipi);
         } else {
@@ -1208,12 +1208,12 @@ class BottomSheetDialogManager {
     }
     if (askDizayn == true) {
       final List<NetFectDizaynList?> dizaynListe =
-          _paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((NetFectDizaynList element) => element.ozelKod == printModel.raporOzelKod).toList() ?? <NetFectDizaynList?>[];
+          _paramModel?.netFectDizaynList?.filteredDizaynList(editTipiEnum).where((element) => element.ozelKod == printModel.raporOzelKod).toList() ?? <NetFectDizaynList?>[];
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else if (dizaynListe.length > 1) {
         final result =
-            await showBottomSheetDialog(context, title: "Dizayn Seçiniz", children: dizaynListe.map((NetFectDizaynList? e) => BottomSheetModel(title: e?.dizaynAdi ?? "", value: e)).toList());
+            await showBottomSheetDialog(context, title: "Dizayn Seçiniz", children: dizaynListe.map((e) => BottomSheetModel(title: e?.dizaynAdi ?? "", value: e)).toList());
         if (result != null) {
           printModel = printModel.copyWith(dizaynId: result.id);
         } else {
@@ -1245,7 +1245,7 @@ class BottomSheetDialogManager {
               isMust: true,
               controller: kopyaController,
               keyboardType: TextInputType.number,
-              onChanged: (String value) {
+              onChanged: (value) {
                 int kopya = int.tryParse(value) ?? 0;
                 if (kopya <= 0) {
                   kopya = 1;
@@ -1332,7 +1332,7 @@ class BottomSheetDialogManager {
             isMust: true,
             controller: kopyaController,
             keyboardType: TextInputType.number,
-            onChanged: (String value) {
+            onChanged: (value) {
               int kopya = int.tryParse(value) ?? 0;
               if ((int.tryParse(value) ?? 0) <= 0) {
                 kopya = 1;

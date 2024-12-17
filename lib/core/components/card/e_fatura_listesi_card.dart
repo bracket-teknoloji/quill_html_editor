@@ -419,7 +419,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                       yaziciList = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         title: "Yazıcı Seçiniz",
-                        children: yaziciListe.map((YaziciList? e) => BottomSheetModel(title: e?.yaziciAdi ?? "", value: e)).toList(),
+                        children: yaziciListe.map((e) => BottomSheetModel(title: e?.yaziciAdi ?? "", value: e)).toList(),
                       );
                     }
                     yaziciController.text = yaziciList?.yaziciAdi ?? "";

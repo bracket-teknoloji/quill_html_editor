@@ -61,7 +61,7 @@ class AppThemeLight extends AppTheme {
           textStyle: TextStyle(color: colorManager.onSurface, fontSize: 12),
         ),
         switchTheme: SwitchThemeData(
-          thumbIcon: WidgetStateProperty.resolveWith((Set<WidgetState> states) {
+          thumbIcon: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
               return const Icon(Icons.check);
             }

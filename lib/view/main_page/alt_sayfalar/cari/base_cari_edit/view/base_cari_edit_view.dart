@@ -55,11 +55,11 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
         const BaseEditCariOzetView().yetkiVarMi(goruntulenecekMi),
         const BaseCariEditBankaView().yetkiVarMi(goruntulenecekMi),
         const BaseCariEditIletisimView().yetkiVarMi(goruntulenecekMi),
-      ].where((Widget element) => element is! SizedBox).toList();
+      ].where((element) => element is! SizedBox).toList();
   @override
   void initState() {
     tabController = TabController(length: goruntulenecekMi ? 5 : 2, vsync: this);
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       tabController.addListener(() async {
         if (tabController.index != 0 && !tabController.indexIsChanging) {
           await vergiNoChecker();
@@ -87,7 +87,7 @@ class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with Ticke
             CariSaveRequestModel.instance.kodu = kod;
           }
           final List<CariKosullarModel>? kosulList = await CariNetworkManager.getkosullar(null);
-          CariSaveRequestModel.instance.kosulKoduAciklama = kosulList?.firstWhereOrNull((CariKosullarModel element) => element.kosulKodu == CariSaveRequestModel.instance.kosulKodu)?.kosulSabitAdi;
+          CariSaveRequestModel.instance.kosulKoduAciklama = kosulList?.firstWhereOrNull((element) => element.kosulKodu == CariSaveRequestModel.instance.kosulKodu)?.kosulSabitAdi;
         } else {
           await dialogManager.showAlertDialog(result.message ?? result.messageDetail ?? result.errorDetails ?? "Bilinmeyen bir hata oluştu");
           Get.back(result: true);

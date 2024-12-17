@@ -86,7 +86,7 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                           ],
                         ),
                       ),
-                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 2) ?? false),
+                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 2) ?? false),
                     CustomWidgetWithLabel(
                       text: "\$",
                       isVertical: false,
@@ -99,7 +99,7 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                           ],
                         ),
                       ),
-                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 1) ?? false),
+                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 1) ?? false),
                     CustomWidgetWithLabel(
                       text: mainCurrency,
                       isVertical: false,
@@ -112,7 +112,7 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                           ],
                         ),
                       ),
-                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((BakiyeList element) => element.dovizTipi == 0) ?? false),
+                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 0) ?? false),
                   ],
                 ),
               ),
@@ -203,20 +203,20 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   String getBakiye(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == null)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Dolar") {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizTipi == 1) != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizTipi == 1)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Euro") {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizTipi == 2) != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizTipi == 2)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
@@ -231,20 +231,20 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   String getAlacak(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == null)?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Dolar") {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == "\$") != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == "\$")?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Euro") {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == "€") != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == "€")?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "0";
         }
@@ -259,20 +259,20 @@ class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   String getBorc(String paraBirimi) {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == null)?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }
       } else if (paraBirimi == "Dolar") {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == "\$") != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == "\$")?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }
       } else if (paraBirimi == "Euro") {
-        if (bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == "€") != null) {
-          return bakiyeList?.firstWhereOrNull((BakiyeList element) => element.dovizAdi == "€")?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+        if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
+          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else {
           return "";
         }

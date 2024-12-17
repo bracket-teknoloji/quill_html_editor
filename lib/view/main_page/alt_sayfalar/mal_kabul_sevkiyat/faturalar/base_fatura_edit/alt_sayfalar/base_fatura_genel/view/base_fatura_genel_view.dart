@@ -96,7 +96,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _ozelKod2Controller = TextEditingController(
       text: parametreModel.listOzelKodTum
               ?.firstWhereOrNull(
-                (ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2,
+                (element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2,
               )
               ?.aciklama ??
           model.ozelKod2,
@@ -366,7 +366,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                             title: "Belge Tipi",
                             children: List.generate(
                               viewModel.belgeTipi.length,
-                              (int index) => BottomSheetModel(
+                              (index) => BottomSheetModel(
                                 title: viewModel.belgeTipi[index].key,
                                 description: viewModel.belgeTipi[index].value.toStringIfNotNull,
                                 value: viewModel.belgeTipi.toList()[index],
@@ -505,7 +505,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       child: Observer(
                         builder: (_) => Switch.adaptive(
                           value: viewModel.kdvDahil,
-                          onChanged: (enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (bool value) => viewModel.changeKdvDahil(value) : null,
+                          onChanged: (enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (value) => viewModel.changeKdvDahil(value) : null,
                         ),
                       ),
                     ).yetkiVarMi(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false),
@@ -516,7 +516,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         builder: (_) => Switch.adaptive(
                           value: viewModel.ebelgeCheckbox,
                           onChanged: enable
-                              ? (bool value) async {
+                              ? (value) async {
                                   viewModel.changeEbelgeCheckBox(value);
                                   if (value) {
                                     await getBelgeNo(false, seri: parametreModel.seriEIrsaliye ?? "");

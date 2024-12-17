@@ -103,7 +103,7 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       viewModel.setShowClearButton(controller.text != "");
       controller.addListener(() => viewModel.setShowClearButton(controller.text != ""));
     });
@@ -119,8 +119,8 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
   Widget build(BuildContext context) => textFormField;
 
   Widget get textFormField => TextFieldTapRegion(
-        onTapOutside: (PointerDownEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
-        onTapInside: (PointerDownEvent event) {
+        onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+        onTapInside: (event) {
           //select all
         },
         child: MouseRegion(
@@ -239,7 +239,7 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
                             ),
                           ),
                         ),
-                      ].where((Widget element) => element is! SizedBox).toList().nullCheckWithGeneric,
+                      ].where((element) => element is! SizedBox).toList().nullCheckWithGeneric,
                     )
                   : null,
               label: Row(

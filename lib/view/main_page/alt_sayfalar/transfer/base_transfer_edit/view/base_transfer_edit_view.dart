@@ -453,7 +453,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                           child: ListView.builder(
                             shrinkWrap: true,
                             itemCount: kalemList?.length ?? 0,
-                            itemBuilder: (BuildContext context, int index) {
+                            itemBuilder: (context, index) {
                               final KalemModel? model = kalemList?[index];
                               final TextEditingController controller = TextEditingController(text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNotNull);
                               return topluIskontoListTile(model, iskontoList, index, controller);
@@ -689,7 +689,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                     BaseSiparisEditModel.instance.vadeGunu = cariModel?.vadeGunu;
                     list = list
                         .map(
-                          (KalemModel e) => e
+                          (e) => e
                             ..miktar = e.kalan
                             ..kalan = 0,
                         )

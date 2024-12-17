@@ -24,7 +24,7 @@ class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
     }
     return ListView.builder(
       itemCount: _cariDetayModel.irtibatList?.length ?? 0,
-      itemBuilder: (BuildContext context, int index) => Card(
+      itemBuilder: (context, index) => Card(
         child: SizedBox(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

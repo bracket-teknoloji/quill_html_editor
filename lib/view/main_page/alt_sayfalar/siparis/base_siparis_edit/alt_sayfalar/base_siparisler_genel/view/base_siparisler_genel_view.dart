@@ -704,7 +704,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
     kosulController.text = model.kosulKodu ?? "";
     ozelKod1Controller.text = model.ozelKod1 ?? "";
     ozelKod2Controller.text =
-        parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
+        parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
             model.ozelKod2 ??
             "";
     _aciklama1Controller.text = model.acik1 ?? "";

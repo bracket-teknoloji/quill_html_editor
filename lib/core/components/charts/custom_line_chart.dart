@@ -46,7 +46,7 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                       fitInsideHorizontally: true,
                       fitInsideVertically: true,
                       tooltipRoundedRadius: 8,
-                      getTooltipItems: (List<LineBarSpot> touchedBarSpots) => touchedBarSpots.map((barSpot) {
+                      getTooltipItems: (touchedBarSpots) => touchedBarSpots.map((barSpot) {
                         final flSpot = barSpot;
                         return LineTooltipItem(
                           flSpot.y.commaSeparatedWithDecimalDigits(
@@ -126,10 +126,10 @@ class _CustomLineChartState extends BaseState<CustomLineChart> {
                       dotData: FlDotData(
                         show: true,
                         getDotPainter: (
-                          FlSpot spot,
-                          double xPercentage,
-                          LineChartBarData bar,
-                          int index,
+                          spot,
+                          xPercentage,
+                          bar,
+                          index,
                         ) =>
                             FlDotCirclePainter(
                           radius: 4,

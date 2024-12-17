@@ -80,12 +80,12 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _projeController = TextEditingController(text: model.projeAciklama ?? model.projeKodu);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
-    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((String element) => viewModel.belgeTipi[element] == model.tipi));
+    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((element) => viewModel.belgeTipi[element] == model.tipi));
     _belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod2Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
+      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
           model.ozelKod2,
     );
     _aciklama1Controller = TextEditingController(text: model.acik1);
@@ -350,7 +350,7 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                   child: Observer(
                     builder: (_) => Switch.adaptive(
                       value: viewModel.kdvDahil,
-                      onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (bool value) => viewModel.changeKdvDahil(value) : null,
+                      onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (value) => viewModel.changeKdvDahil(value) : null,
                     ),
                   ),
                 ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("kdv_dahil_haric")),

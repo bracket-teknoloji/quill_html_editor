@@ -78,7 +78,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               child: CustomTextField(
                 labelText: "Stok Kodu / Barkod Giriniz",
                 controller: _searchTextController,
-                onSubmitted: (String p0) async {
+                onSubmitted: (p0) async {
                   if (p0.ext.isNotNullOrNoEmpty) {
                     await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
                     viewModel.updateKalemList();
@@ -127,14 +127,14 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                           },
                           primary: true,
                           itemCount: viewModel.kalemList?.length ?? 0,
-                          itemBuilder: (BuildContext context, int index) {
+                          itemBuilder: (context, index) {
                             final kalemModel = viewModel.kalemList![index];
                             return Card(
                               key: Key((kalemModel.sira ?? index).toString()),
                               child: Column(
                                 children: <Widget>[
                                   kalemListTile(context, index, kalemModel),
-                                  ...List.generate(kalemModel.kalemList?.length ?? 0, (int index2) {
+                                  ...List.generate(kalemModel.kalemList?.length ?? 0, (index2) {
                                     final KalemModel? model = kalemModel.kalemList?[index2];
                                     return Column(
                                       children: <Widget>[
@@ -184,7 +184,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             Text("${kalemModel.depoKodu ?? ""} - ${kalemModel.depoTanimi ?? ""}").yetkiVarMi(kalemModel.depoKodu != null && kalemModel.depoTanimi != null),
             Text(kalemModel.faturaKalemAciklama, style: const TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel.faturaKalemAciklama != ""),
             LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints constrains) => Wrap(
+              builder: (context, constrains) => Wrap(
                 children: <Widget>[
                   Text("Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}  ${kalemModel.olcuBirimCarpani != null ? "(${kalemModel.gercekMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${kalemModel.stokOlcuBirimi})" : ""}")
                       .yetkiVarMi(!(kalemModel.miktar == null || kalemModel.miktar == 0.0)),
@@ -238,7 +238,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
                   // Text("Teslim Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.miktar != null),
                   // Text("Kalan Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.miktar != null),
                   Text("Teslim Tarihi: ${kalemModel.teslimTarihi.toDateStringIfNull ?? ""}").yetkiVarMi(kalemModel.teslimTarihi != null),
-                ].map((Widget e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric,
+                ].map((e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric,
               ),
             ),
           ].nullCheckWithGeneric,
@@ -291,7 +291,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
               ),
           ]
               .map(
-                (Text e) => SizedBox(
+                (e) => SizedBox(
                   width: width * 0.4,
                   child: e,
                 ),

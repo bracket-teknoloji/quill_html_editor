@@ -31,7 +31,7 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                     child: PieChart(
                       PieChartData(
                         pieTouchData: PieTouchData(
-                          touchCallback: (FlTouchEvent event, PieTouchResponse? pieTouchResponse) {
+                          touchCallback: (event, pieTouchResponse) {
                             if (event.isInterestedForInteractions || pieTouchResponse == null || pieTouchResponse.touchedSection == null) {
                               setState(() {
                                 touchedIndex = -1;
@@ -46,7 +46,7 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
                             }
                           },
                         ),
-                        sections: List.generate(widget.pieChartValue?.length ?? 0, (int index) {
+                        sections: List.generate(widget.pieChartValue?.length ?? 0, (index) {
                           final bool isTouched = index == touchedIndex;
                           final double? fontSize = isTouched ? 16.0 : null;
                           final double radius = isTouched ? 40.0 : 35.0;

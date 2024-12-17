@@ -184,8 +184,9 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             RaporFiltreDateTimeBottomSheetView(
               showBugunFirst: false,
               filterOnChanged: (index) {
-                viewModel..setBastar(baslangicTarihiController.text)
-                ..setBittar(bitisTarihiController.text);
+                viewModel
+                  ..setBastar(baslangicTarihiController.text)
+                  ..setBittar(bitisTarihiController.text);
               },
               baslangicTarihiController: baslangicTarihiController,
               bitisTarihiController: bitisTarihiController,

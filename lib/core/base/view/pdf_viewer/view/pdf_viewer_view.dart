@@ -184,7 +184,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
                       final NetFectDizaynList? netFectDizaynList = (CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
                               ? parametreModel.netFectDizaynList
                                       ?.where(
-                                        (NetFectDizaynList element) =>
+                                        (element) =>
                                             element.ozelKod == "Serbest" &&
                                             ((CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaDizaynSerbest?.any((element2) => element2 == element.id) ?? false) ||
                                                 AccountModel.instance.adminMi),

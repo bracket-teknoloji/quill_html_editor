@@ -49,7 +49,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
 
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
 
-  List<Widget> aciklamaList() => List.generate(16, (int index) => aciklamaText(index + 1)).whereType<Text>().toList();
+  List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
 
   Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${model.toJson()["ACIK$index"]}", style: greyTextStyle)
       .yetkiVarMi(model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
@@ -232,7 +232,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
                   const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
                   ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
-                ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+                ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
               Text("Cari Kodu: ${model.cariKodu ?? ""}"),
@@ -264,7 +264,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Text>[
                   Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                ].map((Text e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
+                ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
               ).yetkiVarMi(widget.showMiktar == true),
               const Divider(
                 indent: 0,

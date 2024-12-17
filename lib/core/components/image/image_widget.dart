@@ -19,7 +19,7 @@ class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepAliveCl
     super.build(context);
     return FutureBuilder<MemoryImage?>(
       future: networkManager.getImage(widget.path),
-      builder: (BuildContext context, AsyncSnapshot<MemoryImage?> snapshot) {
+      builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator.adaptive());
         }

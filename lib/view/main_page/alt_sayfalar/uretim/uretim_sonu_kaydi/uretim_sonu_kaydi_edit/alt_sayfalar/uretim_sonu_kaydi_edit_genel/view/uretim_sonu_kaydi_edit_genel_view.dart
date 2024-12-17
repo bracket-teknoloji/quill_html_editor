@@ -510,7 +510,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
                       groupValue: viewModel.requestModel.ekAlanlar?[index],
                       children: List.generate(
                         item?.secimListesi?.length ?? 0,
-                        (int newIndex) => BottomSheetModel(
+                        (newIndex) => BottomSheetModel(
                           title: item?.secimListesi?[newIndex] ?? "",
                           value: item?.secimListesi?[newIndex] ?? "",
                           groupValue: item?.secimListesi?[newIndex] ?? "",

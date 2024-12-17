@@ -229,7 +229,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   controller: genelIskonto1Controller,
                   isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (String p0) => viewModel.setGenIsk1(p0.toDoubleWithFormattedString),
+                  onChanged: (p0) => viewModel.setGenIsk1(p0.toDoubleWithFormattedString),
                   valueWidget: Observer(
                     builder: (_) => Text(
                       viewModel.isGenIsk1T
@@ -260,7 +260,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                     }
                   },
                 ),
-              ].map((CustomTextField e) => Expanded(child: e)).toList(),
+              ].map((e) => Expanded(child: e)).toList(),
             ),
             Row(
               children: <CustomTextField>[
@@ -278,7 +278,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                           : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                     ),
                   ),
-                  onChanged: (String p0) => viewModel.setGenIsk2(p0.toDoubleWithFormattedString),
+                  onChanged: (p0) => viewModel.setGenIsk2(p0.toDoubleWithFormattedString),
                   suffix: IconButton(
                     onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
                     icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined)),
@@ -301,7 +301,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                     }
                   },
                 ),
-              ].map((CustomTextField e) => Expanded(child: e)).toList(),
+              ].map((e) => Expanded(child: e)).toList(),
             ),
             Row(
               children: <CustomTextField>[
@@ -312,7 +312,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                   controller: genelIskonto3Controller,
                   isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (String p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
+                  onChanged: (p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
                   valueWidget: Observer(
                     builder: (_) => Text(
                       viewModel.isGenIsk3T
@@ -342,7 +342,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                     }
                   },
                 ),
-              ].map((CustomTextField e) => Expanded(child: e)).toList(),
+              ].map((e) => Expanded(child: e)).toList(),
             ),
             Row(
               children: <Widget>[
@@ -360,7 +360,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                           title: "Tevkifat Oranı",
                           children: List.generate(
                             viewModel.tevkifatMap.length,
-                            (int index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),
+                            (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),
                           ),
                         );
                         if (result != null) {
@@ -455,7 +455,7 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
                         title: "E-Fatura Senaryo",
                         children: List.generate(
                           viewModel.senaryoMap.length,
-                          (int index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
+                          (index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
                         ),
                       );
                       if (result != null) {
@@ -497,9 +497,9 @@ class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
     ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     final List<ListIskTip?>? iskList = parametreModel.listIskTip;
     if (iskList != null) {
-      iskontoTipi1Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk1Tipi)?.aciklama ?? "";
-      iskontoTipi2Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk2Tipi)?.aciklama ?? "";
-      iskontoTipi3Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
+      iskontoTipi1Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk1Tipi)?.aciklama ?? "";
+      iskontoTipi2Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk2Tipi)?.aciklama ?? "";
+      iskontoTipi3Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
     }
     // if (model.vadeTarihi?.isBefore(DateTime.now()) ?? false) {
     //   viewModel.model.vadeGunu = 0;

@@ -26,7 +26,7 @@ void main() async {
   //* AccountModel'i splashAuthView'da init ediyoruz.
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
-  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((Duration timeStamp) async {
+  WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
     try {
       await AppInfoModel.instance.init();
     } catch (e) {
@@ -68,9 +68,9 @@ Future<void> firebaseInitialized() async {
     FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
     // messaging.
     await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
-    FlutterError.onError = (FlutterErrorDetails errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-    PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
-      AccountModel.instance.toJson().forEach((String key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
+    FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    PlatformDispatcher.instance.onError = (error, stack) {
+      AccountModel.instance.toJson().forEach((key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
       FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;

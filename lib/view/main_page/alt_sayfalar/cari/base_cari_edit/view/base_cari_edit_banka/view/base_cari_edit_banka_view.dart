@@ -22,7 +22,7 @@ class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
         )
       : ListView.builder(
           itemCount: cariDetayModel.bankaList?.length,
-          itemBuilder: (BuildContext context, int index) => Card(
+          itemBuilder: (context, index) => Card(
             child: Column(
               children: <Widget>[
                 Row(

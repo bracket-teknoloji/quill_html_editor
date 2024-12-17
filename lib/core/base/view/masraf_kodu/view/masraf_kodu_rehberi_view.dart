@@ -25,7 +25,7 @@ final class _MasrafKoduRehberiViewState extends State<MasrafKoduRehberiView> {
   @override
   void initState() {
     viewModel.requestModel.tipi = widget.tipi;
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       _scrollController.addListener(() async => viewModel.changeScrollStatus(_scrollController.position));
       await viewModel.getData();
     });

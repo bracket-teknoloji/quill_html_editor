@@ -119,7 +119,7 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                       const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(!widget.cariHareketleriModel.alacakMi),
                       const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)
                           .yetkiVarMi(widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null),
-                    ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+                    ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
                   ),
                 ],
               ),

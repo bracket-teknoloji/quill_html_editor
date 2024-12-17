@@ -198,7 +198,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       controller: genelIskonto1Controller,
                       isFormattedString: true,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      onChanged: (String p0) => viewModel.setGenIsk1(p0.toDoubleWithFormattedString),
+                      onChanged: (p0) => viewModel.setGenIsk1(p0.toDoubleWithFormattedString),
                       valueWidget: Observer(
                         builder: (_) => Text(
                           viewModel.isGenIsk1T
@@ -228,7 +228,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                         }
                       },
                     ),
-                  ].map((CustomTextField e) => Expanded(child: e)).toList(),
+                  ].map((e) => Expanded(child: e)).toList(),
                 ).yetkiVarMi(yetkiController.genIsk1AktifMi(model.getEditTipiEnum) && !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false)),
                 Row(
                   children: <CustomTextField>[
@@ -246,7 +246,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                               : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                         ),
                       ),
-                      onChanged: (String p0) => viewModel.setGenIsk2(p0.toDoubleWithFormattedString),
+                      onChanged: (p0) => viewModel.setGenIsk2(p0.toDoubleWithFormattedString),
                       suffix: IconButton(
                         onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
                         icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined)),
@@ -269,7 +269,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                         }
                       },
                     ),
-                  ].map((CustomTextField e) => Expanded(child: e)).toList(),
+                  ].map((e) => Expanded(child: e)).toList(),
                 ).yetkiVarMi(yetkiController.genIsk2AktifMi(model.getEditTipiEnum) && !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false)),
                 Row(
                   children: <CustomTextField>[
@@ -279,7 +279,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                       enabled: enable,
                       controller: genelIskonto3Controller,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      onChanged: (String p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
+                      onChanged: (p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
                       isFormattedString: true,
                       valueWidget: Observer(
                         builder: (_) => Text(
@@ -310,7 +310,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                         }
                       },
                     ),
-                  ].map((CustomTextField e) => Expanded(child: e)).toList(),
+                  ].map((e) => Expanded(child: e)).toList(),
                 ).yetkiVarMi(yetkiController.genIsk3AktifMi(model.getEditTipiEnum) && !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false)),
               ],
             ),
@@ -322,7 +322,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                     enabled: enable,
                     controller: ekMal1Controller,
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (String value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                    onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
                   ),
                 ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
                 Expanded(
@@ -339,7 +339,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                           title: "Tevkifat Oranı",
                           children: List.generate(
                             viewModel.tevkifatMap.length,
-                            (int index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),
+                            (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),
                           ),
                         );
                         if (result != null) {
@@ -362,7 +362,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                     enabled: enable,
                     controller: ekMal3Controller,
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (String value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                    onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
                   ),
                 ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
                 Expanded(
@@ -408,7 +408,7 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
                     enabled: enable,
                     controller: ekMal1Controller,
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (String value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                    onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
                   ),
                 ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
                 // Expanded(
@@ -507,9 +507,9 @@ class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarVie
     ekMal3Controller = TextEditingController(text: model.ekMaliyet3Tutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     final List<ListIskTip?>? iskList = parametreModel.listIskTip;
     if (iskList != null) {
-      iskontoTipi1Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk1Tipi)?.aciklama ?? "";
-      iskontoTipi2Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk2Tipi)?.aciklama ?? "";
-      iskontoTipi3Controller.text = iskList.firstWhereOrNull((ListIskTip? element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
+      iskontoTipi1Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk1Tipi)?.aciklama ?? "";
+      iskontoTipi2Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk2Tipi)?.aciklama ?? "";
+      iskontoTipi3Controller.text = iskList.firstWhereOrNull((element) => element?.iskontoTipi == model.genisk3Tipi)?.aciklama ?? "";
     }
     // if (model.vadeTarihi?.isBefore(DateTime.now()) ?? false) {
     //   viewModel.model.vadeGunu = 0;

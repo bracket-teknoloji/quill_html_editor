@@ -93,7 +93,7 @@ class _DekontlarViewState extends BaseState<DekontlarView> {
               shrinkWrap: true,
               padding: UIHelper.lowPadding,
               itemCount: (viewModel.dekontListesi?.length ?? 0) + 1,
-              itemBuilder: (BuildContext context, int index) {
+              itemBuilder: (context, index) {
                 if (index == viewModel.dekontListesi?.length) {
                   return Visibility(
                     visible: viewModel.dahaVarMi,

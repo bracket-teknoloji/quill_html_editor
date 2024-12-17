@@ -83,7 +83,7 @@ class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> with Ti
           children: [
             CariAktiviteGenelView(
               model: widget.model,
-              onSave: (GlobalKey<FormState> value) => formKey = value,
+              onSave: (value) => formKey = value,
             ),
             CariAktiviteDetayView(baseEditEnum: widget.model.baseEditEnum!).yetkiVarMi(yetkiController.cariAktiviteDetayliMi),
           ].whereNot((element) => element is SizedBox).toList(),

@@ -248,7 +248,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           RaporFiltreDateTimeBottomSheetView(
-            filterOnChanged: (int? index) {
+            filterOnChanged: (index) {
               viewModel
                 ..setBaslamaTarihi(baslangicTarihiController.text != "" ? baslangicTarihiController.text : null)
                 ..setBitisTarihi(bitisTarihiController.text != "" ? bitisTarihiController.text : null);
@@ -372,7 +372,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               groupValue: viewModel.karsilanmaGroupValue,
               childrenTitleList: const ["Tümü", "Kalanlar", "Tamamlananlar"],
               childrenValueList: const [1, 2, 3],
-              filterOnChanged: (int? index) => viewModel.setKarsilanmaGroupValue(index ?? 0),
+              filterOnChanged: (index) => viewModel.setKarsilanmaGroupValue(index ?? 0),
             ),
           ),
           Observer(
@@ -381,7 +381,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
               groupValue: viewModel.durumGroupValue,
               childrenTitleList: const ["Tümü", "Açık", "Kapalı"],
               childrenValueList: const [1, 2, 3],
-              filterOnChanged: (int? index) => viewModel.setDurumGroupValue(index ?? 0),
+              filterOnChanged: (index) => viewModel.setDurumGroupValue(index ?? 0),
             ),
           ),
           ElevatedButton(

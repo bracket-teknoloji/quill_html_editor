@@ -113,11 +113,11 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
     _topluGirisDepoController = TextEditingController(text: model.topluGirisDepoTanimi ?? viewModel.model.girisDepoKodu.toStringIfNotNull);
     _topluCikisDepoController = TextEditingController(text: model.topluCikisDepoTanimi ?? viewModel.model.cikisDepoKodu.toStringIfNotNull);
     _ozelKod1Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod1)?.aciklama ??
+      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod1)?.aciklama ??
           model.ozelKod1,
     );
     _ozelKod2Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
+      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
           model.ozelKod2,
     );
     _isEmriController = TextEditingController(text: model.isemriAciklama);
@@ -307,7 +307,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         child: Observer(
                           builder: (_) => Switch.adaptive(
                             value: viewModel.model.lokalDat == "E",
-                            onChanged: enable ? (bool value) => viewModel.setLokalDepo(value) : null,
+                            onChanged: enable ? (value) => viewModel.setLokalDepo(value) : null,
                           ),
                         ),
                       ),
@@ -319,7 +319,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         child: Observer(
                           builder: (_) => Switch.adaptive(
                             value: viewModel.kdvDahil,
-                            onChanged: enable ? (bool value) => viewModel.changeKdvDahil(value) : null,
+                            onChanged: enable ? (value) => viewModel.changeKdvDahil(value) : null,
                           ),
                         ),
                       ),
@@ -332,7 +332,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           builder: (_) => Switch.adaptive(
                             value: viewModel.model.ebelgeCheckbox == "E",
                             onChanged: enable && !(model.getEditTipiEnum?.eIrsaliyeIsaretleyemesin ?? false)
-                                ? (bool value) {
+                                ? (value) {
                                     viewModel.setEIrsaliye(value);
                                     if (value) {
                                       dialogManager.showInfoSnackBar("E-İrsaliye için ${parametreModel.arrEIrsSeri?.join(", ")} serisi kullanılmalı.");

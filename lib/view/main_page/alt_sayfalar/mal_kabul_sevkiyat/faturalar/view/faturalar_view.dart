@@ -86,7 +86,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
     _kod3Controller = TextEditingController();
     _kod4Controller = TextEditingController();
     _kod5Controller = TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((Duration timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       _scrollController.addListener(() async => viewModel.changeScrollStatus(_scrollController.position));
       await viewModel.getData();
     });
@@ -133,7 +133,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
           builder: (_) {
             if (viewModel.searchBar) {
               return CustomAppBarTextField(
-                onFieldSubmitted: (String value) async {
+                onFieldSubmitted: (value) async {
                   viewModel.setSearchText(value);
                   await viewModel.resetList();
                 },
@@ -162,7 +162,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                   groupValue: viewModel.faturaRequestModel.siralama,
                   children: List.generate(
                     viewModel.siralaMap.length,
-                    (int index) => BottomSheetModel(
+                    (index) => BottomSheetModel(
                       title: viewModel.siralaMap.keys.toList()[index],
                       value: viewModel.siralaMap.values.toList()[index],
                       groupValue: viewModel.siralaMap.values.toList()[index],
@@ -195,14 +195,14 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 builder: (_) => SwitchListTile.adaptive(
                                   title: const Text("Ek Açıklamalar"),
                                   value: viewModel.ekstraAlanlarMap["EK"] ?? false,
-                                  onChanged: (bool value) => viewModel.changeEkstraAlanlarMap("EK", value),
+                                  onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value),
                                 ),
                               ),
                               Observer(
                                 builder: (_) => SwitchListTile.adaptive(
                                   title: const Text("Miktar"),
                                   value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
-                                  onChanged: (bool value) {
+                                  onChanged: (value) {
                                     viewModel.changeEkstraAlanlarMap("MİK", value);
                                   },
                                 ),
@@ -211,7 +211,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 builder: (_) => SwitchListTile.adaptive(
                                   title: const Text("Vade"),
                                   value: viewModel.ekstraAlanlarMap["VADE"] ?? false,
-                                  onChanged: (bool value) => viewModel.changeEkstraAlanlarMap("VADE", value),
+                                  onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value),
                                 ),
                               ),
                             ],
@@ -299,7 +299,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
         body: Column(
           children: <Widget>[
             RaporFiltreDateTimeBottomSheetView(
-              filterOnChanged: (int? index) async {
+              filterOnChanged: (index) async {
                 viewModel
                   ..setBaslamaTarihi(_baslangicTarihiController.text)
                   ..setBitisTarihi(_bitisTarihiController.text);
@@ -315,7 +315,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                   child: Observer(
                     builder: (_) => Switch.adaptive(
                       value: viewModel.faturaRequestModel.kapaliBelgelerListelenmesin ?? false,
-                      onChanged: (bool value) => viewModel.setKapaliBelgelerListelenmesin(value),
+                      onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value),
                     ),
                   ),
                 ),
@@ -326,7 +326,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                     child: Observer(
                       builder: (_) => Switch.adaptive(
                         value: viewModel.faturaRequestModel.faturalanmisIrsaliyelerGelsin ?? false,
-                        onChanged: (bool value) => viewModel.setFaturalasmaGoster(value),
+                        onChanged: (value) => viewModel.setFaturalasmaGoster(value),
                       ),
                     ),
                   ),
@@ -390,7 +390,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                         title: "Cari Tipi",
                         children: List.generate(
                           viewModel.tipiMap.length,
-                          (int index) => BottomSheetModel(
+                          (index) => BottomSheetModel(
                             title: viewModel.tipiMap.keys.toList()[index],
                             value: viewModel.tipiMap.entries.toList()[index],
                           ),
@@ -413,8 +413,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                       final List<PlasiyerList?>? result =
                           await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? "[]"));
                       if (result != null) {
-                        _plasiyerController.text = result.map((PlasiyerList? e) => e?.plasiyerAciklama).join(", ");
-                        viewModel.setPlasiyerArr(result.map((PlasiyerList? e) => e?.plasiyerKodu).toList());
+                        _plasiyerController.text = result.map((e) => e?.plasiyerAciklama).join(", ");
+                        viewModel.setPlasiyerArr(result.map((e) => e?.plasiyerKodu).toList());
                       }
                     },
                   ),
@@ -436,7 +436,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                 CustomTextField(
                   labelText: "Özel Kod 1",
                   controller: _ozelKod1Controller,
-                  onChanged: (String value) => viewModel.setOzelKod1(value),
+                  onChanged: (value) => viewModel.setOzelKod1(value),
                   onClear: () => viewModel.setOzelKod1(null),
                   suffix: IconButton(
                     onPressed: () async {
@@ -444,7 +444,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         title: "Özel Kod Seçiniz",
-                        children: List.generate(viewModel.tipiList.length, (int index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index])),
+                        children: List.generate(viewModel.tipiList.length, (index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index])),
                       );
                       if (result != null) {
                         _ozelKod1Controller.text = result;
@@ -457,7 +457,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                 CustomTextField(
                   labelText: "Özel Kod 2",
                   controller: _ozelKod2Controller,
-                  onChanged: (String value) => viewModel.setOzelKod2(value),
+                  onChanged: (value) => viewModel.setOzelKod2(value),
                   onClear: () => viewModel.setOzelKod2(null),
                   suffix: IconButton(
                     onPressed: () async {
@@ -485,7 +485,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                   groupValues: jsonDecode(viewModel.faturaRequestModel.arrBelgeTipi ?? "[]"),
                   children: List.generate(
                     viewModel.belgeTipiMap.length,
-                    (int index) => BottomSheetModel(
+                    (index) => BottomSheetModel(
                       title: viewModel.belgeTipiMap.keys.toList()[index],
                       description: viewModel.belgeTipiMap.values.toList()[index].toStringIfNotNull,
                       value: viewModel.belgeTipiMap.entries.toList()[index],
@@ -527,7 +527,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrGrupKodu ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod0?.length ?? 0,
-                                  (int index) => BottomSheetModel(
+                                  (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod0?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod0?[index],
                                     groupValue: viewModel.getGrupKod0?[index].grupKodu,
@@ -536,13 +536,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                               );
                               if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod0(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
-                                _kod0Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
+                                viewModel.changeArrKod0(list.map((e) => e?.grupKodu).toList());
+                                _kod0Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
                           ),
-                        ).yetkiVarMi(viewModel.grupKodList?.any((BaseGrupKoduModel element) => element.grupNo == 0) ?? false),
+                        ).yetkiVarMi(viewModel.grupKodList?.any((element) => element.grupNo == 0) ?? false),
                         Expanded(
                           child: CustomTextField(
                             labelText: "Kod 1",
@@ -557,7 +557,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod1 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod1?.length ?? 0,
-                                  (int index) => BottomSheetModel(
+                                  (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod1?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod1?[index],
                                     groupValue: viewModel.getGrupKod1?[index].grupKodu,
@@ -566,13 +566,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                               );
                               if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod1(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
-                                _kod1Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
+                                viewModel.changeArrKod1(list.map((e) => e?.grupKodu).toList());
+                                _kod1Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
                           ),
-                        ).yetkiVarMi(viewModel.grupKodList?.any((BaseGrupKoduModel element) => element.grupNo == 1) ?? false),
+                        ).yetkiVarMi(viewModel.grupKodList?.any((element) => element.grupNo == 1) ?? false),
                       ],
                     ),
                     Row(
@@ -591,7 +591,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod2 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod2?.length ?? 0,
-                                  (int index) => BottomSheetModel(
+                                  (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod2?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod2?[index],
                                     groupValue: viewModel.getGrupKod2?[index].grupKodu,
@@ -600,13 +600,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                               );
                               if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod2(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
-                                _kod2Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
+                                viewModel.changeArrKod2(list.map((e) => e?.grupKodu).toList());
+                                _kod2Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
                           ),
-                        ).yetkiVarMi(viewModel.grupKodList?.any((BaseGrupKoduModel element) => element.grupNo == 2) ?? false),
+                        ).yetkiVarMi(viewModel.grupKodList?.any((element) => element.grupNo == 2) ?? false),
                         Expanded(
                           child: CustomTextField(
                             labelText: "Kod 3",
@@ -621,7 +621,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod3 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod3?.length ?? 0,
-                                  (int index) => BottomSheetModel(
+                                  (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod3?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod3?[index],
                                     groupValue: viewModel.getGrupKod3?[index].grupKodu,
@@ -630,13 +630,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                               );
                               if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod3(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
-                                _kod3Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
+                                viewModel.changeArrKod3(list.map((e) => e?.grupKodu).toList());
+                                _kod3Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
                           ),
-                        ).yetkiVarMi(viewModel.grupKodList?.any((BaseGrupKoduModel element) => element.grupNo == 3) ?? false),
+                        ).yetkiVarMi(viewModel.grupKodList?.any((element) => element.grupNo == 3) ?? false),
                       ],
                     ),
                     Row(
@@ -655,7 +655,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod4 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod4?.length ?? 0,
-                                  (int index) => BottomSheetModel(
+                                  (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod4?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod4?[index],
                                     groupValue: viewModel.getGrupKod4?[index].grupKodu,
@@ -664,13 +664,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                               );
                               if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod4(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
-                                _kod4Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
+                                viewModel.changeArrKod4(list.map((e) => e?.grupKodu).toList());
+                                _kod4Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
                           ),
-                        ).yetkiVarMi(viewModel.grupKodList?.any((BaseGrupKoduModel element) => element.grupNo == 4) ?? false),
+                        ).yetkiVarMi(viewModel.grupKodList?.any((element) => element.grupNo == 4) ?? false),
                         Expanded(
                           child: CustomTextField(
                             labelText: "Kod 5",
@@ -685,7 +685,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod5 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod5?.length ?? 0,
-                                  (int index) => BottomSheetModel(
+                                  (index) => BottomSheetModel(
                                     title: viewModel.getGrupKod5?[index].grupAdi ?? "",
                                     value: viewModel.getGrupKod5?[index],
                                     groupValue: viewModel.getGrupKod5?[index].grupKodu,
@@ -694,13 +694,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                               );
                               if (result != null) {
                                 final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod5(list.map((BaseGrupKoduModel? e) => e?.grupKodu).toList());
-                                _kod5Controller.text = list.map((BaseGrupKoduModel? e) => e?.grupAdi).join(", ");
+                                viewModel.changeArrKod5(list.map((e) => e?.grupKodu).toList());
+                                _kod5Controller.text = list.map((e) => e?.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
                           ),
-                        ).yetkiVarMi(viewModel.grupKodList?.any((BaseGrupKoduModel element) => element.grupNo == 5) ?? false),
+                        ).yetkiVarMi(viewModel.grupKodList?.any((element) => element.grupNo == 5) ?? false),
                       ],
                     ),
                   ],

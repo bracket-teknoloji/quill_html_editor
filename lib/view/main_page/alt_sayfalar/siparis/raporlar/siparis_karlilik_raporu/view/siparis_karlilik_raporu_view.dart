@@ -89,12 +89,9 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
           children: [
             RaporFiltreDateTimeBottomSheetView(
               filterOnChanged: (value) {
-                viewModel..setBaslangicTarihi(
-                  baslangicTarihiController.text != "" ? baslangicTarihiController.text : null,
-                )
-                ..setBitisTarihi(
-                  bitisTarihiController.text != "" ? bitisTarihiController.text : null,
-                );
+                viewModel
+                  ..setBaslangicTarihi(baslangicTarihiController.text != "" ? baslangicTarihiController.text : null)
+                  ..setBitisTarihi(bitisTarihiController.text != "" ? bitisTarihiController.text : null);
               },
               baslangicTarihiController: baslangicTarihiController,
               bitisTarihiController: bitisTarihiController,

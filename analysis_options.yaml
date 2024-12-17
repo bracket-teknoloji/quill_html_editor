@@ -86,7 +86,7 @@ linter:
     invalid_case_patterns: true
     always_declare_return_types: true
     noop_primitive_operations: true
-    # avoid_types_on_closure_parameters: true
+    avoid_types_on_closure_parameters: true
     # avoid_catches_without_on_clauses: true
 
     # public_member_api_docs: true
