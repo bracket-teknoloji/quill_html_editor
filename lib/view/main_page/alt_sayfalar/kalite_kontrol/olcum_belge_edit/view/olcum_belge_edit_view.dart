@@ -51,8 +51,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
 
   @override
   void initState() {
-    viewModel.setGirisDepo(yetkiController.transferLokalDatGirisDepo);
-    viewModel.setCikisDepo(yetkiController.transferLokalDatCikisDepo);
+    viewModel..setGirisDepo(yetkiController.transferLokalDatGirisDepo)
+    ..setCikisDepo(yetkiController.transferLokalDatCikisDepo);
     girisDepoController = TextEditingController(text: yetkiController.transferLokalDatGirisDepo?.depoTanimi);
     kabulGirisDepoController = TextEditingController();
     retGirisDepoController = TextEditingController();
@@ -324,30 +324,31 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
           ..seriCikislardaAcik = viewModel.seriRequestModel.girisDepo != null,
       );
     } else {
-      kalemListesi.add(
-        KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
-          // ..seriList = viewModel.olcumDatResponseListesi?.where((element) => element.gckod == "G").toList()
-          ..hedefDepo = viewModel.seriRequestModel.kabulGirisDepo
-          ..sira = 1
-          ..kabulMu = true
-          ..miktar = viewModel.model?.olcumler?.where((element) => !element.retMi).length.toDouble() ?? 0.0
-          ..seriList =
-              viewModel.olcumDatResponseListesi?.where((element) => viewModel.model?.olcumler?.where((element2) => !element2.retMi).map((e) => e.seriNo).contains(element.seriNo) ?? false).toList()
-          ..seriCikislardaAcik = viewModel.seriRequestModel.kabulGirisDepo != null,
-      );
-      kalemListesi.add(
-        KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
-          // ..seriList = viewModel.olcumDatResponseListesi?.where((element) => element.gckod == "C").toList()
-          ..hedefDepo = viewModel.seriRequestModel.redGirisDepo
-          ..sira = 2
-          ..miktar = viewModel.model?.olcumler?.where((element) => element.retMi).length.toDouble() ?? 0.0
-          ..kabulMu = false
-          ..seriList = viewModel.olcumDatResponseListesi
-              ?.where((element) => viewModel.model?.olcumler?.where((element2) => element2.retMi).map((e) => e.seriNo).contains(element.seriNo) ?? false)
-              .toList()
-              .toList()
-          ..seriCikislardaAcik = viewModel.seriRequestModel.redGirisDepo != null,
-      );
+      kalemListesi
+        ..add(
+          KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
+            // ..seriList = viewModel.olcumDatResponseListesi?.where((element) => element.gckod == "G").toList()
+            ..hedefDepo = viewModel.seriRequestModel.kabulGirisDepo
+            ..sira = 1
+            ..kabulMu = true
+            ..miktar = viewModel.model?.olcumler?.where((element) => !element.retMi).length.toDouble() ?? 0.0
+            ..seriList =
+                viewModel.olcumDatResponseListesi?.where((element) => viewModel.model?.olcumler?.where((element2) => !element2.retMi).map((e) => e.seriNo).contains(element.seriNo) ?? false).toList()
+            ..seriCikislardaAcik = viewModel.seriRequestModel.kabulGirisDepo != null,
+        )
+        ..add(
+          KalemModel.fromOlcumBelgeModel(viewModel.model?.belge?.firstOrNull)
+            // ..seriList = viewModel.olcumDatResponseListesi?.where((element) => element.gckod == "C").toList()
+            ..hedefDepo = viewModel.seriRequestModel.redGirisDepo
+            ..sira = 2
+            ..miktar = viewModel.model?.olcumler?.where((element) => element.retMi).length.toDouble() ?? 0.0
+            ..kabulMu = false
+            ..seriList = viewModel.olcumDatResponseListesi
+                ?.where((element) => viewModel.model?.olcumler?.where((element2) => element2.retMi).map((e) => e.seriNo).contains(element.seriNo) ?? false)
+                .toList()
+                .toList()
+            ..seriCikislardaAcik = viewModel.seriRequestModel.redGirisDepo != null,
+        );
     }
 
     await Get.toNamed(
@@ -380,8 +381,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
     if (result is DepoList) {
       if (result.depoKodu != null) {
         if (kabulMu == true) {
-          viewModel.setKabulGirisDepo(result);
-          viewModel.setGirisDepo(result);
+          viewModel
+            ..setKabulGirisDepo(result)
+            ..setGirisDepo(result);
           girisDepoController.text = result.depoTanimi ?? "";
           kabulGirisDepoController.text = result.depoTanimi ?? "";
         } else if (kabulMu == false) {

@@ -50,11 +50,13 @@ class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
   void initState() {
     viewModel.setBaseEditEnum(widget.model.baseEditEnum);
     if (SingletonModels.cariAktiviteListesi != null) {
-      viewModel.setModel(SingletonModels.cariAktiviteListesi!);
-      viewModel.setAktiviteBitirilsinMi(viewModel.model.aktiviteBitirilsin == true);
+      viewModel
+        ..setModel(SingletonModels.cariAktiviteListesi!)
+        ..setAktiviteBitirilsinMi(viewModel.model.aktiviteBitirilsin == true);
     } else if (widget.model.model != null) {
-      viewModel.setModel(widget.model.model!);
-      viewModel.setAktiviteBitirilsinMi(viewModel.model.aktiviteBitirilsin == true);
+      viewModel
+        ..setModel(widget.model.model!)
+        ..setAktiviteBitirilsinMi(viewModel.model.aktiviteBitirilsin == true);
     }
     if (widget.model.baseEditEnum?.ekleMi == true) {
       viewModel.setBaslangicTarihi(DateTime.now());

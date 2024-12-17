@@ -42,8 +42,9 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
 
   @override
   void initState() {
-    viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
-    viewModel.setTutar(widget.model?.bakiye);
+    viewModel
+      ..setTarih(DateTime.now().dateTimeWithoutTime)
+      ..setTutar(widget.model?.bakiye);
     _tarihController = TextEditingController(text: viewModel.requestModel.tarih.toDateString);
     _seriController = TextEditingController();
     _tahsilatiYapilacakCariController = TextEditingController();
@@ -285,15 +286,17 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
       ],
     );
     if (result == false) {
-      viewModel.setOdemeCari(widget.model?.cariKodu);
-      viewModel.setOdemeBakiye(widget.model?.bakiye ?? 0);
+      viewModel
+        ..setOdemeCari(widget.model?.cariKodu)
+        ..setOdemeBakiye(widget.model?.bakiye ?? 0);
       _odemesiYapilacakCariController.text = widget.model?.cariAdi ?? "";
       _odemeYapilanCariAciklamaController.text = "CARİ VİR. ${widget.model?.cariAdi} (BANKA İŞLEMİ)";
       viewModel.setHedefAciklama(_odemeYapilanCariAciklamaController.text);
     } else {
-      viewModel.setTahsilatCari(widget.model?.cariKodu);
-      viewModel.setTahsilatBakiye(widget.model?.bakiye ?? 0);
-      viewModel.setVadeGunu(widget.model?.vadeGunu);
+      viewModel
+        ..setTahsilatCari(widget.model?.cariKodu)
+        ..setTahsilatBakiye(widget.model?.bakiye ?? 0)
+        ..setVadeGunu(widget.model?.vadeGunu);
       _vadeGunuController.text = (widget.model?.vadeGunu ?? 0).toString();
       _tahsilatiYapilacakCariController.text = widget.model?.cariAdi ?? "";
       _tahsilatYapilanCariAciklamaController.text = "CARİ VİR. ${widget.model?.cariAdi} (BANKA İŞLEMİ)";
@@ -306,8 +309,9 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
   Future<void> odemeCariBottomSheet() async {
     final result = await Get.toNamed("mainPage/cariListesiOzel");
     if (result is CariListesiModel) {
-      viewModel.setOdemeCari(result.cariKodu);
-      viewModel.setOdemeBakiye(result.bakiye ?? 0);
+      viewModel
+        ..setOdemeCari(result.cariKodu)
+        ..setOdemeBakiye(result.bakiye ?? 0);
       _odemesiYapilacakCariController.text = result.cariAdi ?? "";
       _odemeYapilanCariAciklamaController.text = "CARİ VİR. ${result.cariAdi} (BANKA İŞLEMİ)";
       viewModel.setHedefAciklama(_odemeYapilanCariAciklamaController.text);
@@ -317,9 +321,10 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
   Future<void> tahsilatCariBottomSheet() async {
     final result = await Get.toNamed("mainPage/cariListesiOzel");
     if (result is CariListesiModel) {
-      viewModel.setTahsilatCari(result.cariKodu);
-      viewModel.setVadeGunu(result.vadeGunu);
-      viewModel.setTahsilatBakiye(result.bakiye ?? 0);
+      viewModel
+        ..setTahsilatCari(result.cariKodu)
+        ..setVadeGunu(result.vadeGunu)
+        ..setTahsilatBakiye(result.bakiye ?? 0);
       _vadeGunuController.text = (result.vadeGunu ?? 0).toString();
       _tahsilatiYapilacakCariController.text = result.cariAdi ?? "";
       _tahsilatYapilanCariAciklamaController.text = "CARİ VİR. ${result.cariAdi} (BANKA İŞLEMİ)";

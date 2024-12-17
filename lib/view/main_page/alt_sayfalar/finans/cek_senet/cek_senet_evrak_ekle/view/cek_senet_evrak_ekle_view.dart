@@ -95,8 +95,9 @@ class _CekSenetEvrakEkleViewState extends BaseState<CekSenetEvrakEkleView> {
   Future<void> addImage() async {
     final result = await bottomSheetDialogManager.getPhoto(context);
     if (result != null) {
-      viewModel.setBase64Data(base64Encode(result.bytes));
-      viewModel.setBoyutByte(result.bytes.length);
+      viewModel
+        ..setBase64Data(base64Encode(result.bytes))
+        ..setBoyutByte(result.bytes.length);
       log(result.bytes.length.toString());
     }
   }

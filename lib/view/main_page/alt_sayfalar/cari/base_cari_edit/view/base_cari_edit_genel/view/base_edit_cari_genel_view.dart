@@ -70,8 +70,9 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
     } else if (widget.model?.baseEditEnum == BaseEditEnum.duzenle) {
       viewModel.changeIslemKodu(2);
     }
-    viewModel.changeIsSahisFirmasi(viewModel.model?.sahisFirmasi ?? false);
-    viewModel.changeIsDovizli(viewModel.model?.dovizli == "E");
+    viewModel
+      ..changeIsSahisFirmasi(viewModel.model?.sahisFirmasi ?? false)
+      ..changeIsDovizli(viewModel.model?.dovizli == "E");
     if (viewModel.model?.dovizli == "E" && viewModel.model?.dovizKoduAciklama == null) {
       viewModel.changeDovizTipi(
         DovizList()
@@ -79,9 +80,10 @@ class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
           ..dovizKodu = 0,
       );
     }
-    viewModel.changeAdi(viewModel.model?.adi);
-    viewModel.changeCariTipi(viewModel.model?.tipi);
-    viewModel.changeKodu(viewModel.model?.kodu);
+    viewModel
+      ..changeAdi(viewModel.model?.adi)
+      ..changeCariTipi(viewModel.model?.tipi)
+      ..changeKodu(viewModel.model?.kodu);
     kodController = TextEditingController(text: viewModel.model?.kodu);
     cariTipiController = TextEditingController(text: viewModel.cariTipiMap.entries.firstWhereOrNull((MapEntry<String, String> element) => element.value == viewModel.model?.tipi)?.key);
     adController = TextEditingController(text: viewModel.model?.adi);

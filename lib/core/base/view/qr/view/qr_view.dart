@@ -214,16 +214,15 @@ class BorderPainter extends CustomPainter {
       ..addRect(clippingRect2)
       ..addRect(clippingRect3);
 
-    canvas.clipPath(path);
-    // canvas.drawArc(rrect, pi / 2, 3 * pi / 4, false, Paint()..color = UIHelper.primaryColor);
-    canvas.drawRRect(
-      rrect,
-      Paint()
-        ..color = UIHelper.primaryColor
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = width,
-    );
-    // canvas.drawCircle(const Offset(20, 50), radius, Paint()..color = UIHelper.primaryColor);
+    canvas
+      ..clipPath(path)
+      ..drawRRect(
+        rrect,
+        Paint()
+          ..color = UIHelper.primaryColor
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = width,
+      );
   }
 
   @override

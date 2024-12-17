@@ -159,8 +159,9 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                   }
                   viewModel.onActionTypeChanged(index);
                   _stokKoduController.clear();
-                  viewModel.setSeriNo(null);
-                  viewModel.setStokKodu(null);
+                  viewModel
+                    ..setSeriNo(null)
+                    ..setStokKodu(null);
                 },
                 children: const [
                   Text("Stok Kodundan"),
@@ -180,11 +181,13 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                   return;
                 }
                 if (viewModel.selectedActionType.first) {
-                  viewModel.setSeriNo(null);
-                  viewModel.setStokKodu(value);
+                  viewModel
+                    ..setSeriNo(null)
+                    ..setStokKodu(value);
                 } else {
-                  viewModel.setSeriNo(null);
-                  viewModel.setSeriNo(value);
+                  viewModel
+                    ..setSeriNo(null)
+                    ..setSeriNo(value);
                 }
               },
               onTap: !viewModel.selectedActionType.first
@@ -200,8 +203,9 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                       );
                       if (result is StokListesiModel) {
                         _stokKoduController.text = result.stokKodu ?? "";
-                        viewModel.stokListesiModel = result;
-                        viewModel.setStokKodu(result.stokKodu ?? "");
+                        viewModel
+                          ..stokListesiModel = result
+                          ..setStokKodu(result.stokKodu ?? "");
                         await viewModel.getData();
                       }
                     },

@@ -70,8 +70,9 @@ final class _PaketIcerigiCardState extends BaseState<PaketIcerigiCard> {
             title: "Seri Listesi",
             iconWidget: Icons.dynamic_form_outlined,
             onTap: () async {
-              Get.back();
-              Get.toNamed("/seriHareketleri", arguments: await getStok);
+              Get
+                ..back()
+                ..toNamed("/seriHareketleri", arguments: await getStok);
             },
           ).yetkiKontrol(yetkiController.seriIslemleri && yetkiController.seriUygulamasiAcikMi),
           BottomSheetModel(

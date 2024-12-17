@@ -260,8 +260,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                     List.generate(viewModel.siralamaMap.length, (index) => BottomSheetModel(title: viewModel.siralamaMap.keys.toList()[index], value: viewModel.siralamaMap.values.toList()[index])),
               );
               if (result != null) {
-                viewModel.setSiralama(result);
-                viewModel.resetList();
+                viewModel
+                  ..setSiralama(result)
+                  ..resetList();
               }
             },
             icon: const Icon(Icons.sort_by_alpha_outlined),
@@ -331,16 +332,18 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
               focusNode: focusNode,
               controller: _searchTextController,
               onSubmitted: (p0) {
-                viewModel.setSearchText(p0);
-                viewModel.resetList();
+                viewModel
+                  ..setSearchText(p0)
+                  ..resetList();
               },
               suffix: Wrap(
                 children: [
                   IconButton(
                     icon: const Icon(Icons.check),
                     onPressed: () {
-                      viewModel.setSearchText(_searchTextController.text);
-                      viewModel.resetList();
+                      viewModel
+                        ..setSearchText(_searchTextController.text)
+                        ..resetList();
                     },
                   ),
                   IconButton(
@@ -349,8 +352,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                       final result = await Get.toNamed("/qr");
                       if (result != null) {
                         _searchTextController.text = result;
-                        viewModel.setSearchText(result);
-                        viewModel.resetList();
+                        viewModel
+                          ..setSearchText(result)
+                          ..resetList();
                       }
                     },
                   ),
@@ -581,8 +585,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
         kod5Controller.text = grupAdiWithItem(result, value);
     }
     if (!viewModel.kategoriMi) {
-      viewModel.setKategoriMi(true);
-      viewModel.setGrupNo(value);
+      viewModel
+        ..setKategoriMi(true)
+        ..setGrupNo(value);
       await viewModel.getKategoriGrupKodlari();
     }
     await viewModel.resetList();
@@ -650,9 +655,10 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
 
   Future<void> grupKoduOnClear(int value) async {
     if (grupKoduController.text.isEmpty && kod1Controller.text.isEmpty && kod2Controller.text.isEmpty && kod3Controller.text.isEmpty && kod4Controller.text.isEmpty && kod5Controller.text.isEmpty) {
-      viewModel.setKategoriMi(false);
-      viewModel.setGrupNo(-1);
-      viewModel.setKategoriGrupKodlari(null);
+      viewModel
+        ..setKategoriMi(false)
+        ..setGrupNo(-1)
+        ..setKategoriGrupKodlari(null);
     }
     switch (value) {
       case 0:

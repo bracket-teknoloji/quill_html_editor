@@ -53,8 +53,9 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
     baslangicTarihiController = TextEditingController(text: DateTime.now().toDateString);
     bitisTarihiController = TextEditingController(text: DateTime.now().toDateString);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      viewModel.setBaslamaTarihi(baslangicTarihiController.text);
-      viewModel.setBitisTarihi(bitisTarihiController.text);
+      viewModel
+        ..setBaslamaTarihi(baslangicTarihiController.text)
+        ..setBitisTarihi(bitisTarihiController.text);
       await viewModel.getData();
       _scrollController.addListener(() async {
         if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {
@@ -135,8 +136,9 @@ class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariV
           RaporFiltreDateTimeBottomSheetView(
             showBugunFirst: true,
             filterOnChanged: (index) async {
-              viewModel.setBaslamaTarihi(baslangicTarihiController.text);
-              viewModel.setBitisTarihi(bitisTarihiController.text);
+              viewModel
+                ..setBaslamaTarihi(baslangicTarihiController.text)
+                ..setBitisTarihi(bitisTarihiController.text);
               await viewModel.resetPage();
             },
             baslangicTarihiController: baslangicTarihiController,

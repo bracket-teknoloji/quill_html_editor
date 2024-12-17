@@ -133,6 +133,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
         await networkManager.dioGet<YapilandirmaProfilModel>(path: ApiUrls.getYapilandirmaProfili, bodyModel: YapilandirmaProfilModel(), queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
     if (yapilandirmaListesi.isSuccess) {
       final ObservableList<YapilandirmaProfilModel> list = <YapilandirmaProfilModel>[].asObservable();
+      // ignore: cascade_invocations
       list.addAll(yapilandirmaListesi.dataList);
       yapilandirmaProfilList = list;
     }
@@ -140,6 +141,7 @@ abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
         await networkManager.dioGet<YapilandirmaRehberiModel>(path: ApiUrls.getYapilandirmaListesi, bodyModel: YapilandirmaRehberiModel(), queryParameters: {"stokKodu": stokListesiModel?.stokKodu});
     if (result.isSuccess) {
       final ObservableList<YapilandirmaRehberiModel> list = <YapilandirmaRehberiModel>[].asObservable();
+      // ignore: cascade_invocations
       list.addAll(result.dataList);
       yapilandirmaList = list;
 

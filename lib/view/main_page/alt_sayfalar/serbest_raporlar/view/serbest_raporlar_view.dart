@@ -45,8 +45,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   void initState() {
-    viewModel.setDizaynId(widget.dizaynList?.id);
-    viewModel.setEtiketSayisi(widget.dizaynList?.kopyaSayisi);
+    viewModel
+      ..setDizaynId(widget.dizaynList?.id)
+      ..setEtiketSayisi(widget.dizaynList?.kopyaSayisi);
 
     super.initState();
   }
@@ -237,8 +238,9 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
             .toList(),
       );
       if (result != null) {
-        viewModel.changeDicParams(model.adi ?? "", result.grupKodu ?? "");
-        viewModel.changeControllerText(model.adi ?? "", result.grupAdi ?? "");
+        viewModel
+          ..changeDicParams(model.adi ?? "", result.grupKodu ?? "")
+          ..changeControllerText(model.adi ?? "", result.grupAdi ?? "");
       }
     } else if (model.numaraliGrupKoduMu) {
       final grupKodList = await networkManager.getGrupKod(

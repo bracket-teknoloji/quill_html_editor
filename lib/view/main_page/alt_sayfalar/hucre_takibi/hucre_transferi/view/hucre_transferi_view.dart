@@ -251,8 +251,9 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
   Future<void> sendData() async {
     final result = await viewModel.sendData();
     if (result) {
-      viewModel.setStokKodu(null);
-      viewModel.setMiktar(null);
+      viewModel
+        ..setStokKodu(null)
+        ..setMiktar(null);
       stokController.clear();
       stokAdiController.clear();
       hucreMiktariController.clear();
@@ -289,8 +290,9 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
       stokAdiController.text = result.stokAdi ?? "";
       hucreMiktariController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
       islemMiktariController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
-      viewModel.setMiktar(result.getMiktar);
-      viewModel.setStokKodu(result.stokKodu);
+      viewModel
+        ..setMiktar(result.getMiktar)
+        ..setStokKodu(result.stokKodu);
     }
   }
 

@@ -213,8 +213,9 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             isFormattedString: true,
                             onChanged: (value) {
-                              viewModel.setDovizTutari(value.toDoubleWithFormattedString);
-                              viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                              viewModel
+                                ..setDovizTutari(value.toDoubleWithFormattedString)
+                                ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
                               _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             },
                           ),

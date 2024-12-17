@@ -88,18 +88,19 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
       viewModel.setHareketTuru(yetkiController.transferLokalDatHareketTuru);
     }
     if (!widget.model.isEkle) {
-      viewModel.setCariAdi(BaseSiparisEditModel.instance.cariModel?.cariAdi);
-      viewModel.setCariKodu(BaseSiparisEditModel.instance.cariModel?.cariKodu);
-      viewModel.setTopluCikisDepoKodu(
-        DepoList()
-          ..depoKodu = BaseSiparisEditModel.instance.cikisSubeKodu
-          ..depoTanimi = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.cikisSubeKodu)?.depoTanimi,
-      );
-      viewModel.setTopluGirisDepoKodu(
-        DepoList()
-          ..depoKodu = BaseSiparisEditModel.instance.girisSubeKodu
-          ..depoTanimi = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.girisSubeKodu)?.depoTanimi,
-      );
+      viewModel
+        ..setCariAdi(BaseSiparisEditModel.instance.cariModel?.cariAdi)
+        ..setCariKodu(BaseSiparisEditModel.instance.cariModel?.cariKodu)
+        ..setTopluCikisDepoKodu(
+          DepoList()
+            ..depoKodu = BaseSiparisEditModel.instance.cikisSubeKodu
+            ..depoTanimi = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.cikisSubeKodu)?.depoTanimi,
+        )
+        ..setTopluGirisDepoKodu(
+          DepoList()
+            ..depoKodu = BaseSiparisEditModel.instance.girisSubeKodu
+            ..depoTanimi = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.girisSubeKodu)?.depoTanimi,
+        );
     }
     _belgeNoController = TextEditingController(text: model.belgeNo);
     _cariController = TextEditingController(text: viewModel.model.cariAdi);
@@ -286,8 +287,9 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         // if (yetkiController.transferDatCarininDepoGetir) {
                         //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
                         // }
-                        viewModel.setCariAdi(result.cariAdi);
-                        viewModel.setCariKodu(result.cariKodu);
+                        viewModel
+                          ..setCariAdi(result.cariAdi)
+                          ..setCariKodu(result.cariKodu);
                         viewModel.model.vadeGunu = result.vadeGunu;
                         viewModel.model.efaturaTipi = result.efaturaTipi;
                         // _belgeNoController.clear();
@@ -398,8 +400,9 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                                 ..eFaturaGoster = true,
                             );
                             if (result is CariListesiModel) {
-                              viewModel.setTeslimCariAdi(result.cariAdi);
-                              viewModel.setTeslimCariKodu(result.cariKodu);
+                              viewModel
+                                ..setTeslimCariAdi(result.cariAdi)
+                                ..setTeslimCariKodu(result.cariKodu);
                               _teslimCariController.text = result.cariAdi ?? "";
                             }
                           },
@@ -505,8 +508,9 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                             ),
                           );
                           if (result != null) {
-                            viewModel.changeCikisYeri(result.value);
-                            viewModel.setMasrafKoduTipi(viewModel.cikisYeriMap.entries.indexed.firstWhereOrNull((element) => element.$2.value == viewModel.model.cikisYeri)?.$1 ?? -1);
+                            viewModel
+                              ..changeCikisYeri(result.value)
+                              ..setMasrafKoduTipi(viewModel.cikisYeriMap.entries.indexed.firstWhereOrNull((element) => element.$2.value == viewModel.model.cikisYeri)?.$1 ?? -1);
 
                             _cikisYeriController.text = result.key;
                           }

@@ -135,8 +135,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
           builder: (_) => (viewModel.searchBar
               ? CustomAppBarTextField(
                   onFieldSubmitted: (value) async {
-                    viewModel.changeFilterText(value);
-                    viewModel.resetList();
+                    viewModel
+                      ..changeFilterText(value)
+                      ..resetList();
                   },
                 )
               : AppBarTitle(
@@ -147,9 +148,10 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
         leading: IconButton(
           onPressed: () {
             if (viewModel.searchBar) {
-              viewModel.changeSearchBar();
-              viewModel.changeArama("");
-              viewModel.changeFilterText(null);
+              viewModel
+                ..changeSearchBar()
+                ..changeArama("")
+                ..changeFilterText(null);
             } else {
               Get.back();
             }
@@ -193,8 +195,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                       title: "Cari Haritası",
                       iconWidget: Icons.map_outlined,
                       onTap: () {
-                        Get.back();
-                        Get.toNamed("mainPage/cariHaritasi");
+                        Get
+                          ..back()
+                          ..toNamed("mainPage/cariHaritasi");
                       },
                     ),
                     BottomSheetModel(
@@ -217,8 +220,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
             onPressed: () async {
               viewModel.changeSearchBar();
               if (!viewModel.searchBar) {
-                viewModel.changeFilterText(null);
-                viewModel.resetList();
+                viewModel
+                  ..changeFilterText(null)
+                  ..resetList();
               }
             },
             icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
@@ -241,8 +245,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       ),
     );
     if (result != viewModel.cariRequestModel.siralama && result != null) {
-      viewModel.changeSiralama(result);
-      viewModel.resetList();
+      viewModel
+        ..changeSiralama(result)
+        ..resetList();
     }
   }
 
@@ -381,13 +386,15 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               ],
               onPressed: () async {
                 if (viewModel.cariRequestModel.filterBakiye == "T") {
-                  viewModel.changeFilterBakiye("");
-                  viewModel.changeFilterBakiyeTemp("");
-                  viewModel.changeSiralama("AZ");
+                  viewModel
+                    ..changeFilterBakiye("")
+                    ..changeFilterBakiyeTemp("")
+                    ..changeSiralama("AZ");
                 } else {
-                  viewModel.changeFilterBakiye("T");
-                  viewModel.changeFilterBakiyeTemp("T");
-                  viewModel.changeSiralama("BAKIYE_ZA");
+                  viewModel
+                    ..changeFilterBakiye("T")
+                    ..changeFilterBakiyeTemp("T")
+                    ..changeSiralama("BAKIYE_ZA");
                 }
                 viewModel.resetList();
               },
@@ -404,13 +411,15 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               ],
               onPressed: () async {
                 if (viewModel.cariRequestModel.filterBakiye == "Ö") {
-                  viewModel.changeFilterBakiye("");
-                  viewModel.changeFilterBakiyeTemp("");
-                  viewModel.changeSiralama("AZ");
+                  viewModel
+                    ..changeFilterBakiye("")
+                    ..changeFilterBakiyeTemp("")
+                    ..changeSiralama("AZ");
                 } else {
-                  viewModel.changeFilterBakiye("Ö");
-                  viewModel.changeFilterBakiyeTemp("Ö");
-                  viewModel.changeSiralama("BAKIYE_AZ");
+                  viewModel
+                    ..changeFilterBakiye("Ö")
+                    ..changeFilterBakiyeTemp("Ö")
+                    ..changeSiralama("BAKIYE_AZ");
                 }
                 viewModel.resetList();
               },
@@ -864,18 +873,19 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                   child: ElevatedButton(
                     onPressed: () async {
                       Get.back();
-                      viewModel.changeArrKod0(viewModel.cariRequestModelTemp.arrGrupKodu);
-                      viewModel.changeArrKod1(viewModel.cariRequestModelTemp.arrKod1);
-                      viewModel.changeArrKod2(viewModel.cariRequestModelTemp.arrKod2);
-                      viewModel.changeArrKod3(viewModel.cariRequestModelTemp.arrKod3);
-                      viewModel.changeArrKod4(viewModel.cariRequestModelTemp.arrKod4);
-                      viewModel.changeArrKod5(viewModel.cariRequestModelTemp.arrKod5);
-                      viewModel.changeArrSehir(viewModel.cariRequestModelTemp.arrSehir);
-                      viewModel.changeArrPlasiyerKodu(viewModel.cariRequestModelTemp.arrPlasiyerKodu);
-                      viewModel.changeCariTipi(viewModel.cariRequestModelTemp.cariTipi);
-                      viewModel.changeFilterBakiye(viewModel.cariRequestModelTemp.filterBakiye);
-                      viewModel.changeIlce(viewModel.cariRequestModelTemp.ilce);
-                      viewModel.resetList();
+                      viewModel
+                        ..changeArrKod0(viewModel.cariRequestModelTemp.arrGrupKodu)
+                        ..changeArrKod1(viewModel.cariRequestModelTemp.arrKod1)
+                        ..changeArrKod2(viewModel.cariRequestModelTemp.arrKod2)
+                        ..changeArrKod3(viewModel.cariRequestModelTemp.arrKod3)
+                        ..changeArrKod4(viewModel.cariRequestModelTemp.arrKod4)
+                        ..changeArrKod5(viewModel.cariRequestModelTemp.arrKod5)
+                        ..changeArrSehir(viewModel.cariRequestModelTemp.arrSehir)
+                        ..changeArrPlasiyerKodu(viewModel.cariRequestModelTemp.arrPlasiyerKodu)
+                        ..changeCariTipi(viewModel.cariRequestModelTemp.cariTipi)
+                        ..changeFilterBakiye(viewModel.cariRequestModelTemp.filterBakiye)
+                        ..changeIlce(viewModel.cariRequestModelTemp.ilce)
+                        ..resetList();
                     },
                     child: Text(loc.generalStrings.apply),
                   ),

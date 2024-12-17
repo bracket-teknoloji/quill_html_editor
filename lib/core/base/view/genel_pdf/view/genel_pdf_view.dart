@@ -163,8 +163,7 @@ class _GenelPdfViewState extends BaseState<GenelPdfView> {
     final file = File(
       "${appStorage.path}/picker/pdf/${widget.model?.dosyaAdi ?? "demo.pdf"}${widget.model?.uzanti}",
     );
-    final fileWriter = file.openSync(mode: FileMode.write);
-    fileWriter.writeFromSync(base64Decode(widget.model?.byteData ?? ""));
+    final fileWriter = file.openSync(mode: FileMode.write)..writeFromSync(base64Decode(widget.model?.byteData ?? ""));
     await fileWriter.close();
     if (file.lengthSync() > 0) {
       viewModel.changePdfFile(file);

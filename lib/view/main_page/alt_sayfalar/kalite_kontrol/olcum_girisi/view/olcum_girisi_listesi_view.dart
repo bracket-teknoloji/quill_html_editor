@@ -184,8 +184,8 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
             RaporFiltreDateTimeBottomSheetView(
               showBugunFirst: false,
               filterOnChanged: (index) {
-                viewModel.setBastar(baslangicTarihiController.text);
-                viewModel.setBittar(bitisTarihiController.text);
+                viewModel..setBastar(baslangicTarihiController.text)
+                ..setBittar(bitisTarihiController.text);
               },
               baslangicTarihiController: baslangicTarihiController,
               bitisTarihiController: bitisTarihiController,
@@ -248,10 +248,11 @@ class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
               onPressed: () async {
                 if (formKey.currentState?.validate() ?? false) {
                   Get.back(result: true);
-                  viewModel.setBastar(baslangicTarihiController.text);
-                  viewModel.setBittar(bitisTarihiController.text);
-                  viewModel.setAppBarTitle(belgeTipiController.text);
-                  viewModel.setOlcumList(null);
+                  viewModel
+                    ..setBastar(baslangicTarihiController.text)
+                    ..setBittar(bitisTarihiController.text)
+                    ..setAppBarTitle(belgeTipiController.text)
+                    ..setOlcumList(null);
                   await viewModel.resetSayfa();
                 }
               },

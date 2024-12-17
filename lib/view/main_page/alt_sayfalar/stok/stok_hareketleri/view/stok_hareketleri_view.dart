@@ -207,9 +207,10 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             child: ElevatedButton(
                               onPressed: () {
                                 Get.back();
-                                viewModel.clearArrHareketTuru();
-                                viewModel.setCariListesiModel(null);
-                                viewModel.setFuture(getData());
+                                viewModel
+                                  ..clearArrHareketTuru()
+                                  ..setCariListesiModel(null)
+                                  ..setFuture(getData());
                               },
                               style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                               child: const Text("Temizle"),
@@ -247,8 +248,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                   ],
                 );
                 if (result != null) {
-                  viewModel.setSiralama(result);
-                  viewModel.setStokHareketleri(await getData()!);
+                  viewModel
+                    ..setSiralama(result)
+                    ..setStokHareketleri(await getData()!);
                 }
               },
             ),
@@ -508,8 +510,9 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
       addSirketBilgileri: true,
       queryParameters: queryParameters,
     );
-    viewModel.setFuture(Future.value(result.dataList));
-    viewModel.setStokHareketleri(result.dataList);
+    viewModel
+      ..setFuture(Future.value(result.dataList))
+      ..setStokHareketleri(result.dataList);
     setState(() {});
 
     return result.dataList;

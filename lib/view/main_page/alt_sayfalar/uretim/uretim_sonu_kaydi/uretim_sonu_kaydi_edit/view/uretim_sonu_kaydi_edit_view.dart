@@ -36,12 +36,13 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
           ..belgeTarihi = DateTime.now(),
       );
     } else {
-      viewModel.setModel(widget.model.model);
-      viewModel.setRequestModel(
-        viewModel.requestModel
-          ..tarih = viewModel.model?.tarih.toDateString
-          ..belgeTarihi = viewModel.model?.tarih,
-      );
+      viewModel
+        ..setModel(widget.model.model)
+        ..setRequestModel(
+          viewModel.requestModel
+            ..tarih = viewModel.model?.tarih.toDateString
+            ..belgeTarihi = viewModel.model?.tarih,
+        );
     }
     viewModel.setBelgeNo(widget.model.model?.belgeNo);
     tabController = TabController(length: tabSize, vsync: this);

@@ -76,14 +76,16 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
     if (widget.model.model is BaseSiparisEditModel) {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel.fromSiparislerModel(widget.model.model as BaseSiparisEditModel);
-      model.baseEditEnum = widget.model.baseEditEnum;
-      model.editTipiEnum = widget.model.editTipiEnum;
+      model
+        ..baseEditEnum = widget.model.baseEditEnum
+        ..editTipiEnum = widget.model.editTipiEnum;
     } else if (widget.model.model is SiparisEditRequestModel) {
       model = widget.model as BaseEditModel<SiparisEditRequestModel>;
     } else {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
-      model.baseEditEnum = widget.model.baseEditEnum;
-      model.editTipiEnum = widget.model.editTipiEnum;
+      model
+        ..baseEditEnum = widget.model.baseEditEnum
+        ..editTipiEnum = widget.model.editTipiEnum;
     }
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
@@ -162,8 +164,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
       if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
         BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
           if (element.olcuBirimCarpani != null) {
-            element.gercekMiktar = element.miktar;
-            element.miktar = (element.miktar ?? 0) * ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null) ? 1 : element.olcuBirimCarpani!);
+            element
+              ..gercekMiktar = element.miktar
+              ..miktar = (element.miktar ?? 0) * ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null) ? 1 : element.olcuBirimCarpani!);
           }
           return element;
         }).toList();
@@ -254,8 +257,9 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                         title: "Döviz Kurları",
                         iconWidget: Icons.attach_money_outlined,
                         onTap: () {
-                          Get.back();
-                          Get.toNamed("/dovizKurlari");
+                          Get
+                            ..back()
+                            ..toNamed("/dovizKurlari");
                         },
                       ),
                       BottomSheetModel(
@@ -270,11 +274,13 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                               if (!e.dovizliMi) return e;
                               final dovizModel = result.firstWhereOrNull((element) => element.dovizTipi == e.dovizTipi);
                               if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
-                                e.dovizKuru = dovizModel?.dovSatis;
-                                e.brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovSatis ?? 0);
+                                e
+                                  ..dovizKuru = dovizModel?.dovSatis
+                                  ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovSatis ?? 0);
                               } else {
-                                e.dovizKuru = dovizModel?.dovAlis;
-                                e.brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovAlis ?? 0);
+                                e
+                                  ..dovizKuru = dovizModel?.dovAlis
+                                  ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovAlis ?? 0);
                               }
                               return e;
                             }).toList();

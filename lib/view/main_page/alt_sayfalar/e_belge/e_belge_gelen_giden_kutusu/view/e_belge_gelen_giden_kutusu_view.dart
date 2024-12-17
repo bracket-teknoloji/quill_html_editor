@@ -120,8 +120,9 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
         actions: [
           IconButton(
             onPressed: () async {
-              viewModel.changeSearchBar();
-              viewModel.changeSearchText(null);
+              viewModel
+                ..changeSearchBar()
+                ..changeSearchText(null);
               if (!viewModel.searchBar) {
                 await viewModel.resetPage();
               }
@@ -193,8 +194,9 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                 bitisTarihiController: _bitisTarihiController,
                 isChanged: viewModel.isChanged,
                 filterOnChanged: (index) {
-                  viewModel.changeBaslangicTarihi(_baslangicTarihiController.text);
-                  viewModel.changeBitisTarihi(_bitisTarihiController.text);
+                  viewModel
+                    ..changeBaslangicTarihi(_baslangicTarihiController.text)
+                    ..changeBitisTarihi(_bitisTarihiController.text);
                 },
               ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.giden || (widget.eBelgeEnum == EBelgeEnum.gelen && viewModel.eBelgeRequestModel.eBelgeTuru != "AFT")),
               // ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" ),
@@ -232,8 +234,9 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                     filterOnChanged: (index) {
                       viewModel.changeEBelgeTuru(viewModel.eBelgeTuru.map((e) => e.value).toList()[index ?? 0]);
                       if (viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" && widget.eBelgeEnum == EBelgeEnum.gelen) {
-                        viewModel.decreaseGetWeek();
-                        viewModel.increaseGetWeek();
+                        viewModel
+                          ..decreaseGetWeek()
+                          ..increaseGetWeek();
                         _baslangicTarihiController.text = viewModel.eBelgeRequestModel.baslamaTarihi ?? "";
                         _bitisTarihiController.text = viewModel.eBelgeRequestModel.bitisTarihi ?? "";
                         _eArsivTarihiController.text = viewModel.eArsivDateString;

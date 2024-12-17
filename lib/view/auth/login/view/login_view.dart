@@ -289,8 +289,9 @@ class _LoginViewState extends BaseState<LoginView> {
           data: {"grant_type": "password", "username": emailController.text, "password": passwordController.text},
         );
       } on Exception catch (e) {
-        dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(e.toString());
+        dialogManager
+          ..hideAlertDialog
+          ..showAlertDialog(e.toString());
       }
       if (response?.error == null) {
         log(jsonEncode(instance.toJson()), name: "sea");
@@ -322,12 +323,12 @@ class _LoginViewState extends BaseState<LoginView> {
           Get.toNamed("/entryCompany");
         }
       } else {
-        dialogManager.hideAlertDialog;
-        dialogManager.showAlertDialog(response?.errorDescription ?? response?.error ?? "Hata");
+        dialogManager
+          ..hideAlertDialog
+          ..showAlertDialog(response?.errorDescription ?? response?.error ?? "Hata");
       }
     } else {
       Navigator.of(context, rootNavigator: true).pop();
-      dialogManager.hideSnackBar;
       dialogManager.showErrorSnackBar("Lütfen boş alan bırakmayınız.");
     }
   }

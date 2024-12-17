@@ -69,9 +69,10 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
 
   @override
   void initState() {
-    viewModel.setRequestModel(widget.requestModel);
-    viewModel.setOnSave(widget.onSave);
-    viewModel.setEkAlanlarList(widget.ekAlanlarList);
+    viewModel
+      ..setRequestModel(widget.requestModel)
+      ..setOnSave(widget.onSave)
+      ..setEkAlanlarList(widget.ekAlanlarList);
     if (!widget.model.baseEditEnum.ekleMi && widget.model.model != null) {
       viewModel.setModel(widget.model.model);
       viewModel.requestModel.kalemList = [widget.model.model!];
@@ -329,7 +330,6 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         isMust: true,
         suffixMore: true,
         readOnly: true,
-        //TODO Projeyi ekle
         valueWidget: Observer(builder: (_) => Text(viewModel.kalem?.projeKodu ?? "")),
         onTap: () async {
           final item = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.kalem);
@@ -368,8 +368,9 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
           if (result is StokListesiModel) {
             mamulKoduController.text = result.stokKodu ?? "";
             serilerController.text = "";
-            viewModel.setMamulKodu(result);
-            viewModel.setSeriList(null);
+            viewModel
+              ..setMamulKodu(result)
+              ..setSeriList(null);
             getSeriler();
           }
         },

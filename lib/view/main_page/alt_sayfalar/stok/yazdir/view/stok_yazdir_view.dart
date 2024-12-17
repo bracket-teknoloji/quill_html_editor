@@ -58,9 +58,10 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
     kopyaSayisiController = TextEditingController(text: viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "");
     viewModel.changeStokSecildigindeYazdir(CacheManager.getProfilParametre.stokYazdirDizaynVeYaziciHatirla);
     if (viewModel.stokSecildigindeYazdir) {
-      viewModel.changeYaziciVeDizayniHatirla(true);
-      viewModel.setDizaynId(CacheManager.getProfilParametre.netFectDizaynList?.id);
-      viewModel.setYaziciAdi(CacheManager.getProfilParametre.yaziciList?.yaziciAdi);
+      viewModel
+        ..changeYaziciVeDizayniHatirla(true)
+        ..setDizaynId(CacheManager.getProfilParametre.netFectDizaynList?.id)
+        ..setYaziciAdi(CacheManager.getProfilParametre.yaziciList?.yaziciAdi);
       dizaynController.text = CacheManager.getProfilParametre.netFectDizaynList?.dizaynAdi ?? "";
       yaziciController.text = CacheManager.getProfilParametre.yaziciList?.aciklama ?? CacheManager.getProfilParametre.yaziciList?.yaziciAdi ?? "";
     }

@@ -56,23 +56,24 @@ class CacheManager {
   static CacheManager get instance => _instance;
   CacheManager._init() {
     WidgetsFlutterBinding.ensureInitialized();
-    Hive.registerAdapter(UserModelAdapter());
-    Hive.registerAdapter(SirketModelAdapter());
-    Hive.registerAdapter(AccountResponseModelAdapter());
-    Hive.registerAdapter(MainPageModelAdapter());
-    Hive.registerAdapter(FavoritesModelAdapter());
-    Hive.registerAdapter(AccountModelAdapter());
-    Hive.registerAdapter(CariSehirlerModelAdapter());
-    Hive.registerAdapter(IsletmeModelAdapter());
-    Hive.registerAdapter(NetFectDizaynListAdapter());
-    Hive.registerAdapter(LoginDialogModelAdapter());
-    Hive.registerAdapter(BaseSiparisEditModelAdapter());
-    Hive.registerAdapter(KalemModelAdapter());
-    Hive.registerAdapter(CariListesiModelAdapter());
-    Hive.registerAdapter(EditTipiEnumAdapter());
-    Hive.registerAdapter(ListSiparisEditModelAdapter());
-    Hive.registerAdapter(StokListAdapter());
-    Hive.registerAdapter(SeriListImplAdapter());
+    Hive
+      ..registerAdapter(UserModelAdapter())
+      ..registerAdapter(SirketModelAdapter())
+      ..registerAdapter(AccountResponseModelAdapter())
+      ..registerAdapter(MainPageModelAdapter())
+      ..registerAdapter(FavoritesModelAdapter())
+      ..registerAdapter(AccountModelAdapter())
+      ..registerAdapter(CariSehirlerModelAdapter())
+      ..registerAdapter(IsletmeModelAdapter())
+      ..registerAdapter(NetFectDizaynListAdapter())
+      ..registerAdapter(LoginDialogModelAdapter())
+      ..registerAdapter(BaseSiparisEditModelAdapter())
+      ..registerAdapter(KalemModelAdapter())
+      ..registerAdapter(CariListesiModelAdapter())
+      ..registerAdapter(EditTipiEnumAdapter())
+      ..registerAdapter(ListSiparisEditModelAdapter())
+      ..registerAdapter(StokListAdapter())
+      ..registerAdapter(SeriListImplAdapter());
     initHiveBoxes();
   }
 

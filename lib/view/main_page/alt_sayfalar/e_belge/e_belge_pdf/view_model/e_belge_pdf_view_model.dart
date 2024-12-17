@@ -50,6 +50,7 @@ abstract class _EBelgePdfViewModelBase with Store, MobxNetworkMixin {
     await Directory("${appStorage.path}/picker/e_pdf").create(recursive: true);
     final file = File("${appStorage.path}/picker/e_pdf/${eBelgePdfModel?.fileModel?.dosyaAdi}");
     final fileWriter = file.openSync(mode: FileMode.write);
+    // ignore: cascade_invocations
     fileWriter.writeFromSync(base64Decode(eBelgePdfModel?.fileModel?.byteData ?? ""));
     await fileWriter.close();
     if (file.lengthSync() > 0) {

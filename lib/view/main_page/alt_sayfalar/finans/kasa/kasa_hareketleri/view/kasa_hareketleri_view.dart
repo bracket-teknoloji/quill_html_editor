@@ -36,8 +36,9 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
   @override
   void initState() {
     _scrollController = ScrollController();
-    viewModel.setDovizAdi(widget.model?.dovizli == "E" ? widget.model?.dovizAdi : mainCurrency);
-    viewModel.setKasaKodu(widget.model?.kasaKodu);
+    viewModel
+      ..setDovizAdi(widget.model?.dovizli == "E" ? widget.model?.dovizAdi : mainCurrency)
+      ..setKasaKodu(widget.model?.kasaKodu);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       _scrollController.addListener(() async => viewModel.changeScrollStatus(_scrollController.position));

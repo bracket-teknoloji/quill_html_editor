@@ -79,12 +79,14 @@ extension WidgetExtension on Widget {
 
     await Future.delayed(waitToRender);
 
-    buildOwner.buildScope(rootElement);
-    buildOwner.finalizeTree();
+    buildOwner
+      ..buildScope(rootElement)
+      ..finalizeTree();
 
-    pipelineOwner.flushLayout();
-    pipelineOwner.flushCompositingBits();
-    pipelineOwner.flushPaint();
+    pipelineOwner
+      ..flushLayout()
+      ..flushCompositingBits()
+      ..flushPaint();
 
     final ui.Image image = await repaintBoundary.toImage(pixelRatio: imageSize.width / logicalSize.width);
     final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);

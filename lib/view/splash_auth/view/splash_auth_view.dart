@@ -148,8 +148,9 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
       final lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "", password: CacheManager.getVerifiedUser.account?.parola);
       viewModel.setAccountResponseModel(lisansResponse.dataList.firstOrNull);
       if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
-        viewModel.setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.");
-        viewModel.setIsError(true);
+        viewModel
+          ..setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.")
+          ..setIsError(true);
         return;
       }
       if (viewModel.accountResponseModel?.karsilamaMesaji != null) {
@@ -188,8 +189,9 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
           Get.offAllNamed("/login");
         }
       } else {
-        viewModel.setTitle("\n\n${response?.errorDescription ?? response?.error ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin."}");
-        viewModel.setIsError(true);
+        viewModel
+          ..setTitle("\n\n${response?.errorDescription ?? response?.error ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin."}")
+          ..setIsError(true);
       }
     } else {
       Get.offAllNamed("/login");

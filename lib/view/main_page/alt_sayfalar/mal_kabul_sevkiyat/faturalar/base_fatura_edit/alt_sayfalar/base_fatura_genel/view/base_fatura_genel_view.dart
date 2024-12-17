@@ -89,13 +89,16 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.firstOrNull?.key);
     if (viewModel.model.belgeTipi == null) viewModel.setBelgeTipi(model.getEditTipiEnum?.varsayilanBelgeTipi ?? viewModel.belgeTipi.firstOrNull?.value);
     _belgeTipiController.text = viewModel.belgeTipi.firstWhereOrNull((element) => element.value == viewModel.model.belgeTipi)?.key ?? "";
-
     _projeController = TextEditingController(text: model.projeAciklama ?? model.projeKodu);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod1Controller = TextEditingController(text: model.ozelKod1);
     _ozelKod2Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum?.firstWhereOrNull((ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ??
+      text: parametreModel.listOzelKodTum
+              ?.firstWhereOrNull(
+                (ListOzelKodTum element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2,
+              )
+              ?.aciklama ??
           model.ozelKod2,
     );
     _aciklama1Controller = TextEditingController(text: model.acik1);
@@ -256,14 +259,18 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           : cariModel.efaturaCarisi == "H"
                               ? "E-Arşiv"
                               : null;
-                      viewModel.setCariAdi(cariModel.cariAdi);
-                      viewModel.setCariKodu(cariModel.cariKodu);
-                      viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu));
+                      viewModel
+                        ..setCariAdi(cariModel.cariAdi)
+                        ..setCariKodu(cariModel.cariKodu)
+                        ..setPlasiyer(PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu));
                       viewModel.model.vadeGunu = cariModel.vadeGunu;
                       viewModel.model.efaturaTipi = cariModel.efaturaTipi;
                       _plasiyerController.text = cariModel.plasiyerAciklama ?? "";
                       _belgeNoController.clear();
-                      await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi, seri: viewModel.model.ebelgeCheckbox == "E" ? parametreModel.seriEIrsaliye : null);
+                      await getBelgeNo(
+                        widget.model.baseEditEnum.siparistenKopyalaMi,
+                        seri: viewModel.model.ebelgeCheckbox == "E" ? parametreModel.seriEIrsaliye : null,
+                      );
                     }
                   },
                 ),
@@ -291,16 +298,18 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ),
                             );
                             if (result != null && result is CariListesiModel) {
-                              model.teslimCari = result.cariKodu;
-                              model.teslimCariAdi = result.cariAdi;
+                              model
+                                ..teslimCari = result.cariKodu
+                                ..teslimCariAdi = result.cariAdi;
                               _teslimCariController.text = result.cariAdi ?? "";
                             }
                           },
                           icon: const Icon(Icons.hub_outlined),
                         ),
                   onClear: () {
-                    model.teslimCari = null;
-                    model.teslimCariAdi = null;
+                    model
+                      ..teslimCari = null
+                      ..teslimCariAdi = null;
                     _teslimCariController.clear();
                   },
                   onTap: !yetkiController.siparisFarkliTeslimCariAktif
@@ -309,10 +318,11 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
                             final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                             if (result != null && result is CariListesiModel) {
-                              model.teslimCari = result.cariKodu;
-                              model.teslimCariAdi = result.cariAdi;
-                              model.plasiyerAciklama = result.plasiyerAciklama;
-                              model.plasiyerKodu = result.plasiyerKodu;
+                              model
+                                ..teslimCari = result.cariKodu
+                                ..teslimCariAdi = result.cariAdi
+                                ..plasiyerAciklama = result.plasiyerAciklama
+                                ..plasiyerKodu = result.plasiyerKodu;
                               _teslimCariController.text = result.cariAdi ?? "";
                               _plasiyerController.text = result.plasiyerAciklama ?? "";
                             }
@@ -331,8 +341,8 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ),
                             );
                             if (result != null && result is CariListesiModel) {
-                              model.teslimCari = result.cariKodu;
-                              model.teslimCariAdi = result.cariAdi;
+                              model..teslimCari = result.cariKodu
+                              ..teslimCariAdi = result.cariAdi;
                               _teslimCariController.text = result.cariAdi ?? "";
                             }
                           }

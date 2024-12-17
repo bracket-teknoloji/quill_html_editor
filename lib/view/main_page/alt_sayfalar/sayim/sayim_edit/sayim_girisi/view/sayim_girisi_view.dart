@@ -349,8 +349,9 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
       }
     }
     if (stokModel is! BaseStokMixin) return;
-    viewModel.setStokModel(stokModel);
-    viewModel.setOlcuBirimi(yetkiController.sayimVarsayilanOlcuBirimi);
+    viewModel
+      ..setStokModel(stokModel)
+      ..setOlcuBirimi(yetkiController.sayimVarsayilanOlcuBirimi);
     stokController.text = stokModel?.stokKodu ?? "";
     stokAdiController.text = stokModel?.stokAdi ?? "";
     olcuBirimiController.text = stokModel?.olcuBirimiSelector(yetkiController.sayimVarsayilanOlcuBirimi) ?? "";

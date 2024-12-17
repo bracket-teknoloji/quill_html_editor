@@ -199,8 +199,8 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             isFormattedString: true,
                             onChanged: (value) {
-                              viewModel.setDovizTutari(value.toDoubleWithFormattedString);
-                              viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                              viewModel..setDovizTutari(value.toDoubleWithFormattedString)
+                              ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
                               _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             },
                           ),
@@ -359,8 +359,8 @@ class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
     }
 
     if (hesapKodu != null) {
-      viewModel.setHesapKodu(hesapKodu);
-      viewModel.setKalemAdi(_hesapController.text);
+      viewModel..setHesapKodu(hesapKodu)
+      ..setKalemAdi(_hesapController.text);
     }
   }
 

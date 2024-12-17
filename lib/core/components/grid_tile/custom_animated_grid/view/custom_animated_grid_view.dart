@@ -76,8 +76,9 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
                   visible: viewModel.returnGridItemModel.isNotEmpty,
                   child: IconButton(
                     onPressed: () {
-                      viewModel.setGridItemModel(viewModel.returnGridItemModel.last.toList());
-                      viewModel.deleteLastReturnGridItemModel();
+                      viewModel
+                        ..setGridItemModel(viewModel.returnGridItemModel.last.toList())
+                        ..deleteLastReturnGridItemModel();
                     },
                     icon: Icon(Icons.arrow_back_outlined, color: theme.colorScheme.primary),
                   ),
@@ -141,13 +142,14 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
                                   ? null
                                   : () async {
                                       if (item.altMenuVarMi) {
-                                        viewModel.addReturnGridItemModel(viewModel.gridItemModelList);
-                                        // await Future.delayed(const Duration(milliseconds: 1));
-                                        viewModel.setGridItemModel(item.altMenuler?.where((element) => element.yetkiKontrol).toList() ?? []);
+                                        viewModel
+                                          ..addReturnGridItemModel(viewModel.gridItemModelList)
+                                          ..setGridItemModel(item.altMenuler?.where((element) => element.yetkiKontrol).toList() ?? []);
                                       } else {
                                         if (item.route != null && item.menuTipi != "SR") {
-                                          Get.back();
-                                          Get.toNamed(item.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
+                                          Get
+                                            ..back()
+                                            ..toNamed(item.route ?? "", arguments: widget.cariListesiModel ?? widget.model);
                                         } else {
                                           Get.back();
                                           final result = await item.onTap?.call();

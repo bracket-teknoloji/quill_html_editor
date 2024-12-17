@@ -42,8 +42,9 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
   @override
   void initState() {
     viewModel = SiparisTeslimRaporuViewModel(editTipiEnum);
-    viewModel.setBelgeNo(widget.baseSiparisEditModel?.belgeNo);
-    viewModel.setCariKodu(widget.baseSiparisEditModel?.cariKodu);
+    viewModel
+      ..setBelgeNo(widget.baseSiparisEditModel?.belgeNo)
+      ..setCariKodu(widget.baseSiparisEditModel?.cariKodu);
     belgeNoController = TextEditingController(text: widget.baseSiparisEditModel?.belgeNo ?? "");
     cariController = TextEditingController(text: widget.baseSiparisEditModel?.cariAdi ?? "");
     teslimCariController = TextEditingController();
@@ -83,12 +84,13 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
         children: [
           RaporFiltreDateTimeBottomSheetView(
             filterOnChanged: (value) {
-              viewModel.setBaslangicTarihi(
-                baslangicTarihiController.text != "" ? baslangicTarihiController.text : null,
-              );
-              viewModel.setBitisTarihi(
-                bitisTarihiController.text != "" ? bitisTarihiController.text : null,
-              );
+              viewModel
+                ..setBaslangicTarihi(
+                  baslangicTarihiController.text != "" ? baslangicTarihiController.text : null,
+                )
+                ..setBitisTarihi(
+                  bitisTarihiController.text != "" ? bitisTarihiController.text : null,
+                );
             },
             baslangicTarihiController: baslangicTarihiController,
             bitisTarihiController: bitisTarihiController,

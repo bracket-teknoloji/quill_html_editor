@@ -112,8 +112,9 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
           title: "Paket İçeriği",
           iconWidget: Icons.inventory_outlined,
           onTap: () async {
-            Get.back();
-            Get.toNamed("/mainPage/paketIcerigi", arguments: item);
+            Get
+              ..back()
+              ..toNamed("/mainPage/paketIcerigi", arguments: item);
           },
         ),
         BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined).yetkiKontrol(yetkiController.stokPaketlemeEkle && item.kilit != "E"),

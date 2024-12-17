@@ -60,8 +60,9 @@ class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
     isletmeController = TextEditingController();
     subeController = TextEditingController();
     if (CacheManager.getLogout == true) {
-      viewModel.selected = CacheManager.getVeriTabani.asObservable();
-      viewModel.userData = CacheManager.getIsletmeSube.asObservable();
+      viewModel
+        ..selected = CacheManager.getVeriTabani.asObservable()
+        ..userData = CacheManager.getIsletmeSube.asObservable();
     }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       try {

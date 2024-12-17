@@ -77,9 +77,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
       viewModel.setTarih(await dialogManager.showDateTimePicker());
       _tarihController.text = viewModel.model.tarih.toDateString;
       if (widget.cariListesiModel != null) {
-        viewModel.setCariKodu(widget.cariListesiModel?.cariKodu);
-        viewModel.setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu);
-        viewModel.setDovizTipi(widget.cariListesiModel?.dovizKodu);
+        viewModel
+          ..setCariKodu(widget.cariListesiModel?.cariKodu)
+          ..setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu)
+          ..setDovizTipi(widget.cariListesiModel?.dovizKodu);
         _aciklamaController.text = "EFT/HAVALE - ${widget.cariListesiModel?.cariAdi ?? ""}";
         viewModel.setAciklama(_aciklamaController.text);
         _cariController.text = widget.cariListesiModel?.cariAdi ?? "";
@@ -349,8 +350,9 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           keyboardType: const TextInputType.numberWithOptions(decimal: true),
                           isFormattedString: true,
                           onChanged: (value) {
-                            viewModel.setDovizTutari(value.toDoubleWithFormattedString);
-                            viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                            viewModel
+                              ..setDovizTutari(value.toDoubleWithFormattedString)
+                              ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
                             _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           },
                         ),
@@ -500,10 +502,11 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   void setGirisCikis(int value) {
     viewModel.setGc(value == 0 ? null : true);
     if (value == 0) {
-      viewModel.setTCMBBankaKodu(null);
-      viewModel.setTCMBSubeKodu(null);
-      viewModel.setBankaHesapNo(null);
-      viewModel.setIBAN(null);
+      viewModel
+        ..setTCMBBankaKodu(null)
+        ..setTCMBSubeKodu(null)
+        ..setBankaHesapNo(null)
+        ..setIBAN(null);
     } else {
       if (_tcmbBankaKoduController.text.isEmpty) {
         _tcmbBankaKoduController.text = parametreModel.finansBankaTcmbBankaKodu ?? "";
@@ -512,9 +515,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
       if (_tcmbSubeKoduController.text.isEmpty) {
         _tcmbSubeKoduController.text = parametreModel.finansBankaTcmbSubeKodu ?? "";
       }
-      viewModel.setTCMBSubeKodu(_tcmbSubeKoduController.text);
-      viewModel.setBankaHesapNo(_bankaHesapNoController.text);
-      viewModel.setIBAN(_ibanController.text);
+      viewModel
+        ..setTCMBSubeKodu(_tcmbSubeKoduController.text)
+        ..setBankaHesapNo(_bankaHesapNoController.text)
+        ..setIBAN(_ibanController.text);
     }
   }
 
@@ -525,10 +529,11 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
       _cariController.text = result.cariAdi ?? "";
       _plasiyerController.text = result.plasiyerAciklama ?? "";
       _aciklamaController.text = "EFT/HAVALE - ${result.cariAdi ?? ""}";
-      viewModel.setAciklama(_aciklamaController.text);
-      viewModel.setPlasiyerKodu(result.plasiyerKodu);
-      viewModel.setCariKodu(result.cariKodu);
-      viewModel.setDovizTipi(result.dovizKodu);
+      viewModel
+        ..setAciklama(_aciklamaController.text)
+        ..setPlasiyerKodu(result.plasiyerKodu)
+        ..setCariKodu(result.cariKodu)
+        ..setDovizTipi(result.dovizKodu);
       _dovizTipiController.text = result.dovizAdi ?? result.dovizKodu.toStringIfNotNull ?? "";
       if (result.dovizli == true) {
         await getDovizDialog();

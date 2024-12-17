@@ -119,8 +119,9 @@ class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
     eFaturaSenaryoController =
         TextEditingController(text: viewModel.senaryoMap.entries.firstWhereOrNull((MapEntry<String, String> element) => element.value == viewModel.model?.efaturaSenaryo)?.key ?? "");
 
-    viewModel.changeSubeKodu(int.tryParse(viewModel.model?.subeKodu ?? ""));
-    viewModel.changeKilit(viewModel.model?.kilit);
+    viewModel
+      ..changeSubeKodu(int.tryParse(viewModel.model?.subeKodu ?? ""))
+      ..changeKilit(viewModel.model?.kilit);
     if (viewModel.model?.kilit == null) {
       kilitController.text = "Kilitli Değil";
       viewModel.changeKilit("H");

@@ -49,8 +49,9 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
   @override
   void initState() {
     viewModel = HesaplarArasiIslemViewModel();
-    viewModel.changeBelgeTipi(widget.hesaplarArasiEnum);
-    viewModel.setTarih(DateTime.now());
+    viewModel
+      ..changeBelgeTipi(widget.hesaplarArasiEnum)
+      ..setTarih(DateTime.now());
     _tarihController = TextEditingController(text: DateTime.now().toDateString);
     _dekontNoController = TextEditingController();
     _cikisHesabiController = TextEditingController();
@@ -196,12 +197,14 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
                             if (value == "") {
                               _dovizTutariController.text = "0";
                               _tutarController.text = "0";
-                              viewModel.setDovizTutari(0);
-                              viewModel.setTutar(0);
+                              viewModel
+                                ..setDovizTutari(0)
+                                ..setTutar(0);
                               return;
                             }
-                            viewModel.setDovizTutari(value.toDoubleWithFormattedString);
-                            viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                            viewModel
+                              ..setDovizTutari(value.toDoubleWithFormattedString)
+                              ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
                             _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           },
                         ),
@@ -406,8 +409,9 @@ class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
     if (result is BankaListesiModel) {
       // if (result != null) {
       _cikisHesabiController.text = result.hesapAdi ?? "";
-      viewModel.setCikisHesabi(result);
-      viewModel.setDovizTipi(result.dovizTipi);
+      viewModel
+        ..setCikisHesabi(result)
+        ..setDovizTipi(result.dovizTipi);
       _dovizTipiController.text = result.dovizAdi ?? "";
       await getGirisHesapListesi();
     }

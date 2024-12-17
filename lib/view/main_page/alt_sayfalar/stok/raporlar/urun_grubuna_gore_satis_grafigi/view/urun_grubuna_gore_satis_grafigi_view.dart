@@ -191,8 +191,9 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                     if (result != null) {
                       projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                       viewModel.model.projeKodu = result.projeKodu ?? "";
-                      viewModel.setProje(result);
-                      viewModel.getData();
+                      viewModel
+                        ..setProje(result)
+                        ..getData();
                     }
                   },
                 ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
@@ -221,8 +222,9 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                     );
                     if (result != null) {
                       raporTipiController.text = result.key;
-                      viewModel.setRaporTipi(result.value);
-                      viewModel.getData();
+                      viewModel
+                        ..setRaporTipi(result.value)
+                        ..getData();
                     }
                   },
                 ),
@@ -241,8 +243,9 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                               contentPadding: UIHelper.midPadding,
                               value: viewModel.irsDahilValue,
                               onChanged: (value) {
-                                viewModel.setIrsDahilValue(value);
-                                viewModel.getData();
+                                viewModel
+                                  ..setIrsDahilValue(value)
+                                  ..getData();
                               },
                               title: const Text("İrsaliye Dahil"),
                             ),
@@ -260,8 +263,9 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                               contentPadding: UIHelper.midPadding,
                               value: viewModel.gruplansinValue,
                               onChanged: (value) {
-                                viewModel.setGruplansinValue(value);
-                                viewModel.getData();
+                                viewModel
+                                  ..setGruplansinValue(value)
+                                  ..getData();
                               },
                               title: const Text("Küçük Değerler Gruplansın"),
                             ),

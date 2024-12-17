@@ -51,9 +51,9 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         canPop: false,
         onPopInvokedWithResult: (didPop, value) async {
           if (viewModel.lastItems.isNotEmpty) {
-            viewModel.setItems(viewModel.lastItems.last);
-            // viewModel.removeLastTitle();
-            viewModel.removeLastItem(context);
+            viewModel
+              ..setItems(viewModel.lastItems.last)
+              ..removeLastItem(context);
           } else {
             if (scaffoldKey.currentState!.isDrawerOpen || scaffoldKey.currentState!.isEndDrawerOpen) {
               scaffoldKey.currentState!.closeDrawer();
@@ -96,8 +96,9 @@ final class _MainPageViewState extends BaseState<MainPageView> {
               ? IconButton(
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () {
-                    viewModel.setItems(viewModel.lastItems.last);
-                    viewModel.removeLastItem(context);
+                    viewModel
+                      ..setItems(viewModel.lastItems.last)
+                      ..removeLastItem(context);
                   },
                 )
               : (kIsWeb && context.isLandscape)
@@ -162,8 +163,9 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                             return;
                           }
                           if (details.localPosition.dx < 50) {
-                            viewModel.setItems(viewModel.lastItems.last);
-                            viewModel.removeLastItem(context);
+                            viewModel
+                              ..setItems(viewModel.lastItems.last)
+                              ..removeLastItem(context);
                           }
                         },
                         onHorizontalDragEnd: (details) {
@@ -171,8 +173,9 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                             return;
                           }
                           if (details.primaryVelocity! > 0) {
-                            viewModel.setItems(viewModel.lastItems.last);
-                            viewModel.removeLastItem(context);
+                            viewModel
+                              ..setItems(viewModel.lastItems.last)
+                              ..removeLastItem(context);
                           }
                         },
                       ),

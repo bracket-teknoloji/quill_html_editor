@@ -57,9 +57,10 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
   void initState() {
     viewModel.setModel(model ?? IsEmirleriModel());
     if (ekleMi) {
-      viewModel.setIslemKodu(1);
-      viewModel.setTarih(DateTime.now());
-      viewModel.setTeslimTarihi(DateTime.now());
+      viewModel
+        ..setIslemKodu(1)
+        ..setTarih(DateTime.now())
+        ..setTeslimTarihi(DateTime.now());
     }
     if (duzenleMi) {
       viewModel.setIslemKodu(2);

@@ -130,8 +130,9 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                 controller: _searchController,
                 onChanged: viewModel.setSearchText,
                 onFieldSubmitted: (value) async {
-                  viewModel.setSearchText(value);
-                  viewModel.resetList();
+                  viewModel
+                    ..setSearchText(value)
+                    ..resetList();
                 },
               );
             }
@@ -306,8 +307,9 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
         children: [
           RaporFiltreDateTimeBottomSheetView(
             filterOnChanged: (index) {
-              viewModel.setBaslamaTarihi(_baslangicTarihiController.text);
-              viewModel.setBitisTarihi(_bitisTarihiController.text);
+              viewModel
+                ..setBaslamaTarihi(_baslangicTarihiController.text)
+                ..setBitisTarihi(_bitisTarihiController.text);
             },
             baslangicTarihiController: _baslangicTarihiController,
             bitisTarihiController: _bitisTarihiController,
@@ -562,8 +564,9 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
       ),
     );
     if (result != null) {
-      viewModel.setSiralama(result);
-      viewModel.resetList();
+      viewModel
+        ..setSiralama(result)
+        ..resetList();
     }
   }
 

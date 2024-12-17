@@ -123,8 +123,7 @@ class BottomSheetDialogManager {
     List<BottomSheetModel>? children2 = children;
     FocusNode? focusNode;
     if ((children?.length ?? 0) > 20) {
-      focusNode = FocusNode();
-      focusNode.requestFocus();
+      focusNode = FocusNode()..requestFocus();
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

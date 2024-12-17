@@ -82,8 +82,9 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
         children: [
           RaporFiltreDateTimeBottomSheetView(
             filterOnChanged: (index) async {
-              viewModel.setBaslangicTarihi(baslangicTarihiController.text);
-              viewModel.setBitisTarihi(bitisTarihiController.text);
+              viewModel
+                ..setBaslangicTarihi(baslangicTarihiController.text)
+                ..setBitisTarihi(bitisTarihiController.text);
               await viewModel.resetList();
             },
             baslangicTarihiController: baslangicTarihiController,

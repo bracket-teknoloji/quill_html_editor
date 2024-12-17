@@ -176,8 +176,9 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
   }
 
   void hareketlerCekSenet() {
-    Get.back();
-    Get.toNamed("/mainPage/cekSenetHareketleri", arguments: model);
+    Get
+      ..back()
+      ..toNamed("/mainPage/cekSenetHareketleri", arguments: model);
   }
 
   Future<void> deleteCekSenet() async {

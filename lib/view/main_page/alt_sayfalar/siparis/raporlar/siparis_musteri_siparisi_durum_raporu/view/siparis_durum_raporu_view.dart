@@ -139,9 +139,10 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
                   children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
                 );
                 if (result != null) {
-                  viewModel.setSiralama(result);
-                  viewModel.resetSayfa();
-                  viewModel.setKalemList(null);
+                  viewModel
+                    ..setSiralama(result)
+                    ..resetSayfa()
+                    ..setKalemList(null);
                   getData();
                 }
               },
@@ -159,8 +160,9 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
 
   Widget body() => RefreshIndicator.adaptive(
         onRefresh: () async {
-          viewModel.setKalemList(null);
-          viewModel.resetSayfa();
+          viewModel
+            ..setKalemList(null)
+            ..resetSayfa();
           getData();
         },
         child: Observer(
@@ -247,8 +249,9 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
         children: [
           RaporFiltreDateTimeBottomSheetView(
             filterOnChanged: (int? index) {
-              viewModel.setBaslamaTarihi(baslangicTarihiController.text != "" ? baslangicTarihiController.text : null);
-              viewModel.setBitisTarihi(bitisTarihiController.text != "" ? bitisTarihiController.text : null);
+              viewModel
+                ..setBaslamaTarihi(baslangicTarihiController.text != "" ? baslangicTarihiController.text : null)
+                ..setBitisTarihi(bitisTarihiController.text != "" ? bitisTarihiController.text : null);
             },
             baslangicTarihiController: baslangicTarihiController,
             bitisTarihiController: bitisTarihiController,
@@ -406,8 +409,9 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
       if (kalemList.length < parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(false);
       } else {
-        viewModel.increaseSayfa();
-        viewModel.setDahaVarMi(true);
+        viewModel
+          ..increaseSayfa()
+          ..setDahaVarMi(true);
       }
     }
   }

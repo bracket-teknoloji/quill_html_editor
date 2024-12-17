@@ -76,7 +76,7 @@ linter:
     implicit_reopen : true
     avoid_null_checks_in_equality_operators : true
     package_names: true
-    # cascade_invocations: true
+    cascade_invocations: true
     package_api_docs: true
     prefer_typing_uninitialized_variables: true
     slash_for_doc_comments: true

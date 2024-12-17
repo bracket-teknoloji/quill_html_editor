@@ -532,10 +532,10 @@ extension EditTipiEnumExtension on EditTipiEnum {
       };
 
   int? get varsayilanBelgeTipi {
-    final paramModel = CacheManager.getAnaVeri?.userModel?.profilYetki;
+    final profilYetki = CacheManager.getAnaVeri?.userModel?.profilYetki;
     return switch (this) {
-      EditTipiEnum.satisFatura => paramModel?.sevkiyatSatisFatVarsayilanBelgeTipi ?? 0,
-      EditTipiEnum.satisIrsaliye => paramModel?.sevkiyatSatisIrsVarsayilanBelgeTipi ?? 0,
+      EditTipiEnum.satisFatura => profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi,
+      EditTipiEnum.satisIrsaliye => profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi,
       _ => null,
     };
   }

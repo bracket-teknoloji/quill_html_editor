@@ -215,9 +215,10 @@ class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> 
                           : result.efaturaCarisi == "H"
                               ? "E-Arşiv"
                               : null;
-                      viewModel.setCariAdi(result.cariAdi);
-                      viewModel.setCariKodu(result.cariKodu);
-                      viewModel.setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
+                      viewModel
+                        ..setCariAdi(result.cariAdi)
+                        ..setCariKodu(result.cariKodu)
+                        ..setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
                       viewModel.model.vadeGunu = result.vadeGunu;
                       viewModel.model.efaturaTipi = result.efaturaTipi;
                       _belgeNoController.clear();

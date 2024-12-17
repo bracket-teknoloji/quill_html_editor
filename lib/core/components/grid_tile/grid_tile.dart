@@ -33,7 +33,6 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
           if (widget.model?.menuTipi == "I" || widget.model?.menuTipi == "SR") {
             if (CacheManager.favorilerBox.values.any((element) => element.title == widget.model?.title)) {
               CacheManager.removeFavoriler(widget.model?.title ?? "");
-              dialogManager.hideSnackBar;
               dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
             } else {
               CacheManager.setFavoriler(
@@ -47,7 +46,6 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                   menuTipi: widget.model?.menuTipi,
                 ),
               );
-              dialogManager.hideSnackBar;
               dialogManager.showColorfulSnackBar("Favorilere eklendi", widget.model?.color ?? ColorPalette.blueGray);
             }
           }
@@ -126,7 +124,6 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
               if (CacheManager.favorilerBox.values.any((element) => element.title == widget.model?.title)) {
                 // icon = const Icon(Icons.star_border, size: 20, color: Colors.white);
                 CacheManager.removeFavoriler(widget.model?.title ?? "");
-                dialogManager.hideSnackBar;
                 dialogManager.showInfoSnackBar("Favorilerden çıkarıldı");
               } else {
                 // icon = const Icon(Icons.star, size: 20, color: Colors.white);
@@ -141,7 +138,6 @@ class CustomGridTileState extends BaseState<CustomGridTile> {
                     menuTipi: widget.model?.menuTipi,
                   ),
                 );
-                dialogManager.hideSnackBar;
                 dialogManager.showInfoSnackBar("Favorilere eklendi");
               }
             },

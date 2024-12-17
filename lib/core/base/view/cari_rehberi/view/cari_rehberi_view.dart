@@ -106,8 +106,9 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                   focusNode: searchFocusNode,
                   controller: searchController,
                   onSubmitted: (value) {
-                    viewModel.setSearchText(value);
-                    viewModel.resetList();
+                    viewModel
+                      ..setSearchText(value)
+                      ..resetList();
                   },
                   onClear: () => viewModel.setSearchText(""),
                 )
@@ -123,8 +124,9 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
               if (viewModel.isSearchBarOpen) {
                 searchFocusNode.requestFocus();
               } else {
-                viewModel.setSearchText("");
-                viewModel.resetList();
+                viewModel
+                  ..setSearchText("")
+                  ..resetList();
               }
             },
             icon: Observer(
@@ -222,8 +224,9 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
             ),
           );
           if (result != null) {
-            viewModel.changeSiralama(result);
-            viewModel.resetList();
+            viewModel
+              ..changeSiralama(result)
+              ..resetList();
           }
         },
       );

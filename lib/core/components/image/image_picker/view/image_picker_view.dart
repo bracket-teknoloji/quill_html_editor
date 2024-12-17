@@ -104,8 +104,9 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
     final ImagePicker picker = ImagePicker();
     final XFile? result = await picker.pickImage(source: sourceType, imageQuality: 30, maxHeight: 1024, maxWidth: 768);
     if (result != null) {
-      viewModel.setIsProcessing(true);
-      viewModel.setImage(await result.readAsBytes());
+      viewModel
+        ..setIsProcessing(true)
+        ..setImage(await result.readAsBytes());
       Uint8List? compressedImage;
       try {
         compressedImage = await FlutterImageCompress.compressWithFile(
@@ -124,8 +125,9 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
       viewModel.setBoyutByte(list.length);
       // wait for a second
       await Future.delayed(const Duration(seconds: 1));
-      viewModel.setByteData(base64);
-      viewModel.setIsProcessing(false);
+      viewModel
+        ..setByteData(base64)
+        ..setIsProcessing(false);
     }
   }
 }

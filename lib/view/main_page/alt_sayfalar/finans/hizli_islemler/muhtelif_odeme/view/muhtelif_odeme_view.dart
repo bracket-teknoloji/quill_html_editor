@@ -49,8 +49,9 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
 
   @override
   void initState() {
-    viewModel.setTahsilatMi(widget.tahsilatMi);
-    viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
+    viewModel
+      ..setTahsilatMi(widget.tahsilatMi)
+      ..setTarih(DateTime.now().dateTimeWithoutTime);
     _belgeNoController = TextEditingController();
     _tarihController = TextEditingController(text: viewModel.model.tarih?.toDateString);
     _kasaController = TextEditingController();
@@ -251,8 +252,9 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         isFormattedString: true,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         onChanged: (value) {
-                          viewModel.setDovizTutari(value.toDoubleWithFormattedString);
-                          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                          viewModel
+                            ..setDovizTutari(value.toDoubleWithFormattedString)
+                            ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
                           _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                         },
                         // onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
@@ -384,9 +386,10 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.muo.value, hesapTipi: viewModel.model.hesapTipi);
     if (result is StokMuhasebeKoduModel) {
       _hesapController.text = result.hesapAdi ?? result.hesapKodu ?? "";
-      viewModel.setHesapTipi(result.agm);
-      viewModel.setShowReferansKodu(result.hesapTipi);
-      viewModel.setHesapKodu(result.hesapKodu);
+      viewModel
+        ..setHesapTipi(result.agm)
+        ..setShowReferansKodu(result.hesapTipi)
+        ..setHesapKodu(result.hesapKodu);
     }
   }
 
@@ -402,8 +405,9 @@ class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         _dovizTipiController.clear();
         _dovizKuruController.clear();
         _dovizTutariController.clear();
-        viewModel.setDovizTipi(null);
-        viewModel.setDovizTutari(null);
+        viewModel
+          ..setDovizTipi(null)
+          ..setDovizTutari(null);
       }
     }
   }

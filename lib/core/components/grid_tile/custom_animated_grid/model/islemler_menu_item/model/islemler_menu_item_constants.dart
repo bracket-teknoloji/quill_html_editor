@@ -71,177 +71,185 @@ class IslemlerMenuItemConstants<T> {
 
   IslemlerMenuItemConstants(this.context, {required this.islemTipi, List<GridItemModel?>? raporlar, this.model, this.siparisTipi}) {
     if (islemTipi == IslemTipiEnum.stok) {
-      islemlerList.add(stokKarti);
-      islemlerList.add(kopyala);
-      islemlerList.add(stokHareketleri);
-      islemlerList.add(stokYazdir);
-      islemlerList.add(hucreHareketleri);
-      islemlerList.add(depoBakiyeDurumu);
-      islemlerList.add(fiyatGor);
-      islemlerList.add(stokResimleri);
-      islemlerList.add(stokFiyatOzeti);
-      islemlerList.add(seriHareketleri);
-      islemlerList.add(seriBakiyeleri);
+      islemlerList
+        ..add(stokKarti)
+        ..add(kopyala)
+        ..add(stokHareketleri)
+        ..add(stokYazdir)
+        ..add(hucreHareketleri)
+        ..add(depoBakiyeDurumu)
+        ..add(fiyatGor)
+        ..add(stokResimleri)
+        ..add(stokFiyatOzeti)
+        ..add(seriHareketleri)
+        ..add(seriBakiyeleri);
 
       if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
     } else if (islemTipi case (IslemTipiEnum.cari || IslemTipiEnum.cariListesi)) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
-        islemlerList.add(cariSatisTeklifi);
-        islemlerList.add(cariSatisTalebi);
-        islemlerList.add(cariMusteriSiparisi);
-        islemlerList.add(cariSaticiSiparisi);
-        islemlerList.add(cariAlisIrsaliyesi);
-        islemlerList.add(cariAlisFaturasi);
-        islemlerList.add(cariSatisIrsaliyesi);
-        islemlerList.add(cariSatisFaturasi);
-        islemlerList.add(bankaCariEFTHavale(model: model as CariListesiModel));
-        islemlerList.add(nakitTahsilat(model));
-        islemlerList.add(nakitOdeme(model));
-        islemlerList.add(krediKartiTahsilati(model));
-        islemlerList.add(borcCeki);
-        islemlerList.add(borcSenedi);
-        islemlerList.add(cekTahsilati);
-        islemlerList.add(tahsilatSenedi);
-        islemlerList.add(cariVirman);
-        islemlerList.addIfConditionTrue(newModel.enlem != null, konumGoster);
-        islemlerList.add(konumAta);
-        islemlerList.add(paylas);
-        islemlerList.addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala);
-        islemlerList.add(cariHareketleri);
-        islemlerList.add(stokHareketleri);
-        islemlerList.add(cariAktivite);
-        islemlerList.add(cariAktiviteKaydiGir);
-        islemlerList.addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi, cariKoduDegistir(newModel.cariKodu));
+        islemlerList
+          ..add(cariSatisTeklifi)
+          ..add(cariSatisTalebi)
+          ..add(cariMusteriSiparisi)
+          ..add(cariSaticiSiparisi)
+          ..add(cariAlisIrsaliyesi)
+          ..add(cariAlisFaturasi)
+          ..add(cariSatisIrsaliyesi)
+          ..add(cariSatisFaturasi)
+          ..add(bankaCariEFTHavale(model: model as CariListesiModel))
+          ..add(nakitTahsilat(model))
+          ..add(nakitOdeme(model))
+          ..add(krediKartiTahsilati(model))
+          ..add(borcCeki)
+          ..add(borcSenedi)
+          ..add(cekTahsilati)
+          ..add(tahsilatSenedi)
+          ..add(cariVirman)
+          ..addIfConditionTrue(newModel.enlem != null, konumGoster)
+          ..add(konumAta)
+          ..add(paylas)
+          ..addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala)
+          ..add(cariHareketleri)
+          ..add(stokHareketleri)
+          ..add(cariAktivite)
+          ..add(cariAktiviteKaydiGir)
+          ..addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi, cariKoduDegistir(newModel.cariKodu));
         if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
       }
     } else if (islemTipi == IslemTipiEnum.siparis) {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         // islemlerList.add(irsaliyeOlustur);
-        islemlerList.add(siparisPDFGoruntule);
         if (siparisModel.getEditTipiEnum?.musteriMi ?? false) islemlerList.addIfConditionTrue(!siparisModel.onaydaMi && _yetkiController.satisIrsEkle, satisIrsaliyeOlustur);
         if (siparisModel.getEditTipiEnum?.saticiMi ?? false) islemlerList.addIfConditionTrue(!siparisModel.onaydaMi && _yetkiController.alisIrsEkle, alisIrsaliyeOlustur);
-        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, siparistenFaturaOlustur);
-        islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
-        islemlerList.add(belgeNoDegistir);
-        islemlerList.add(siparisCariKoduDegistir);
-        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
-        islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.siparisOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
-        islemlerList.add(kopyala);
+        islemlerList
+          ..add(siparisPDFGoruntule)
+          ..addIfConditionTrue(!siparisModel.onaydaMi, siparistenFaturaOlustur)
+          ..addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari)
+          ..add(belgeNoDegistir)
+          ..add(siparisCariKoduDegistir)
+          ..addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc)
+          ..addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.siparisOnayIslemleri(siparisModel.belgeTuru), talTekOnayla)
+          ..add(kopyala);
 
         if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
       }
     } else if (islemTipi == IslemTipiEnum.cariIslemleri) {
-      islemlerList.addIfConditionTrue(_yetkiController.cariKarti, cariKarti);
-      islemlerList.addIfConditionTrue(_yetkiController.cariHareketleri, cariHareketleri);
+      islemlerList
+        ..addIfConditionTrue(_yetkiController.cariKarti, cariKarti)
+        ..addIfConditionTrue(_yetkiController.cariHareketleri, cariHareketleri);
 
       if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
-      islemlerList.add(konumaGit);
-      islemlerList.add(cariIslemleri((model as CariListesiModel).cariKodu));
-      islemlerList.add(paylas);
+      islemlerList
+        ..add(konumaGit)
+        ..add(cariIslemleri((model as CariListesiModel).cariKodu))
+        ..add(paylas);
     } else if (islemTipi == IslemTipiEnum.kasa) {
       if (model != null) {
         islemlerList.add(kasaHareketleri);
       }
-      islemlerList.add(bankaKasaTransferi);
-      islemlerList.add(nakitTahsilat(null));
-      islemlerList.add(nakitOdeme(null));
-      islemlerList.add(krediKartiTahsilati(null));
-      islemlerList.add(kasaTransferi);
-      islemlerList.add(muhtelifTahsilat);
-      islemlerList.add(muhtelifOdeme);
+      islemlerList
+        ..add(bankaKasaTransferi)
+        ..add(nakitTahsilat(null))
+        ..add(nakitOdeme(null))
+        ..add(krediKartiTahsilati(null))
+        ..add(kasaTransferi)
+        ..add(muhtelifTahsilat)
+        ..add(muhtelifOdeme);
 
       if (raporlar?.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar!);
     } else if (islemTipi == IslemTipiEnum.cariHareketleri) {
-      islemlerList.add(nakitOdeme(model));
-      islemlerList.add(nakitTahsilat(model));
-      islemlerList.add(krediKartiTahsilati(model));
-      islemlerList.add(tahsilatSenedi);
-      islemlerList.add(cekTahsilati);
-      islemlerList.add(borcCeki);
-      islemlerList.add(borcSenedi);
-      islemlerList.add(bankaCariEFTHavale(model: model as CariListesiModel));
+      islemlerList
+        ..add(nakitOdeme(model))
+        ..add(nakitTahsilat(model))
+        ..add(krediKartiTahsilati(model))
+        ..add(tahsilatSenedi)
+        ..add(cekTahsilati)
+        ..add(borcCeki)
+        ..add(borcSenedi)
+        ..add(bankaCariEFTHavale(model: model as CariListesiModel));
     } else if (islemTipi == IslemTipiEnum.banka) {
-      if (model != null) {
-        islemlerList.add(bankaHareketleri);
-      }
-      islemlerList.add(bankaCariEFTHavale());
-      islemlerList.add(bankaKasaTransferi);
-      islemlerList.add(hesaplarArasiVirman);
-      islemlerList.add(hesaplarArasiEftHavale);
-      islemlerList.add(bankaMuhtelifTahsilat);
-      islemlerList.add(bnkaMuhtelifOdeme);
+      islemlerList
+        ..addIfConditionTrue(model != null, bankaHareketleri)
+        ..add(bankaCariEFTHavale())
+        ..add(bankaKasaTransferi)
+        ..add(hesaplarArasiVirman)
+        ..add(hesaplarArasiEftHavale)
+        ..add(bankaMuhtelifTahsilat)
+        ..add(bnkaMuhtelifOdeme);
     } else if (islemTipi == IslemTipiEnum.cekSenet) {
       final CekSenetListesiModel cekModel = model as CekSenetListesiModel;
       if (cekModel.cekSenetListesiEnum.borcMu) {
         islemlerList.add(odemeDekontOlustur);
       } else {
-        islemlerList.addIfConditionTrue(cekModel.yeri == "P" && cekModel.cekSenetListesiEnum.cariHesabinaCirola, cariHesabaCirola);
-        islemlerList.addIfConditionTrue(cekModel.yeri == "P" && cekModel.cekSenetListesiEnum.tahsilatCirola, tahsilHesabaCirola);
-        islemlerList.addIfConditionTrue(cekModel.yeri == "P" && _yetkiController.finansKasaIslemleri, kasaTahsilEt);
-        islemlerList.addIfConditionTrue(cekModel.yeri == "T" && cekModel.cekSenetListesiEnum.tahsilDekontu, tahsilatDekontOlustur);
+        islemlerList
+          ..addIfConditionTrue(cekModel.yeri == "P" && cekModel.cekSenetListesiEnum.cariHesabinaCirola, cariHesabaCirola)
+          ..addIfConditionTrue(cekModel.yeri == "P" && cekModel.cekSenetListesiEnum.tahsilatCirola, tahsilHesabaCirola)
+          ..addIfConditionTrue(cekModel.yeri == "P" && _yetkiController.finansKasaIslemleri, kasaTahsilEt)
+          ..addIfConditionTrue(cekModel.yeri == "T" && cekModel.cekSenetListesiEnum.tahsilDekontu, tahsilatDekontOlustur);
       }
     } else if (islemTipi == IslemTipiEnum.tahsilatOdeme) {
-      islemlerList.add(nakitOdeme(model));
-      islemlerList.add(nakitTahsilat(model));
-      islemlerList.add(krediKartiTahsilati(model));
-      islemlerList.add(tahsilatSenedi);
-      islemlerList.add(cekTahsilati);
-      islemlerList.add(borcSenedi);
-      islemlerList.add(borcCeki);
+      islemlerList
+        ..add(nakitOdeme(model))
+        ..add(nakitTahsilat(model))
+        ..add(krediKartiTahsilati(model))
+        ..add(tahsilatSenedi)
+        ..add(cekTahsilati)
+        ..add(borcSenedi)
+        ..add(borcCeki);
     } else if (islemTipi == IslemTipiEnum.talepTeklif) {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-        islemlerList.add(siparisPDFGoruntule);
-        islemlerList.addIfConditionTrue(!siparisModel.kapaliMi && siparisModel.stekMi, talTekRevizeEt);
-        islemlerList.addIfConditionTrue(siparisModel.atalMi && siparisModel.teklifSipariseDonerMi, saticiSiparisiOlustur);
-        islemlerList.addIfConditionTrue((siparisModel.stalMi || siparisModel.stekMi) && siparisModel.teklifSipariseDonerMi, musteriSiparisiOlustur);
-        islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur);
-        islemlerList.addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifFaturayaDonerMi && !siparisModel.irsaliyelestiMi, siparistenFaturaOlustur);
-        islemlerList.addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari);
-        islemlerList.addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc);
-        islemlerList.add(kopyala);
-        islemlerList.add(cariIslemleri(siparisModel.cariKodu ?? ""));
-        islemlerList.add(siparisCariKoduDegistir);
-        islemlerList.addIfConditionTrue(!siparisModel.kapaliMi, belgeNoDegistir);
-        islemlerList.addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
+        islemlerList
+          ..add(siparisPDFGoruntule)
+          ..addIfConditionTrue(!siparisModel.kapaliMi && siparisModel.stekMi, talTekRevizeEt)
+          ..addIfConditionTrue(siparisModel.atalMi && siparisModel.teklifSipariseDonerMi, saticiSiparisiOlustur)
+          ..addIfConditionTrue((siparisModel.stalMi || siparisModel.stekMi) && siparisModel.teklifSipariseDonerMi, musteriSiparisiOlustur)
+          ..addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur)
+          ..addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifFaturayaDonerMi && !siparisModel.irsaliyelestiMi, siparistenFaturaOlustur)
+          ..addIfConditionTrue(siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi, belgeBaglantilari)
+          ..addIfConditionTrue(!siparisModel.onaydaMi, belgeyiKapatAc)
+          ..add(kopyala)
+          ..add(cariIslemleri(siparisModel.cariKodu ?? ""))
+          ..add(siparisCariKoduDegistir)
+          ..addIfConditionTrue(!siparisModel.kapaliMi, belgeNoDegistir)
+          ..addIfConditionTrue((siparisModel.onaydaMi || siparisModel.onaylandiMi) && _yetkiController.taltekOnayIslemleri(siparisModel.belgeTuru), talTekOnayla);
       }
     } else if (islemTipi == IslemTipiEnum.fatura) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-      islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum?.irsaliyeMi == true, irsaliyeFaturalastir);
-      islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum?.alisIrsaliyesiMi == true && kDebugMode, satisIrsaliyeOlustur);
-
-      islemlerList.add(siparisPDFGoruntule);
-      islemlerList.add(siparisCariKoduDegistir);
-      islemlerList.add(faturaBelgeNoDegistir);
-      islemlerList.addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
-      // islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi, durumSorgula);
-      islemlerList.add(kopyala);
+      islemlerList
+        ..addIfConditionTrue(siparisModel.getEditTipiEnum?.irsaliyeMi == true, irsaliyeFaturalastir)
+        ..addIfConditionTrue(siparisModel.getEditTipiEnum?.alisIrsaliyesiMi == true && kDebugMode, satisIrsaliyeOlustur)
+        ..add(siparisPDFGoruntule)
+        ..add(siparisCariKoduDegistir)
+        ..add(faturaBelgeNoDegistir)
+        ..addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
     } else if (islemTipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-      // islemlerList.add(eBelgeGoruntule);
-      islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeGoruntule);
-      islemlerList.addIfConditionTrue(siparisModel.taslakMi, eBelgetaslakSil);
-      islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && !siparisModel.eFaturaMi, eBelgeEslestir);
-      islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && siparisModel.eFaturaMi, eBelgeEslestirmeKaldir);
-      islemlerList.addIfConditionTrue(
-        !siparisModel.uyariMi &&
-            !siparisModel.hataliMi &&
-            !siparisModel.basariliMi &&
-            (siparisModel.getEditTipiEnum.satisFaturasiMi || (siparisModel.getEditTipiEnum.satisIrsaliyesiMi && siparisModel.ebelgeCheckbox == "E")),
-        eFaturaGonder,
-      );
-      islemlerList.addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi || siparisModel.hataliMi, durumSorgula);
-      islemlerList.addIfConditionTrue(siparisModel.eBelgeMi, eBelgeYazdir);
+      islemlerList
+        ..addIfConditionTrue(siparisModel.eBelgeMi, eBelgeGoruntule)
+        ..addIfConditionTrue(siparisModel.taslakMi, eBelgetaslakSil)
+        ..addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && !siparisModel.eFaturaMi, eBelgeEslestir)
+        ..addIfConditionTrue(siparisModel.getEditTipiEnum.alisFaturasiMi && siparisModel.eFaturaMi, eBelgeEslestirmeKaldir)
+        ..addIfConditionTrue(
+          !siparisModel.uyariMi &&
+              !siparisModel.hataliMi &&
+              !siparisModel.basariliMi &&
+              (siparisModel.getEditTipiEnum.satisFaturasiMi || (siparisModel.getEditTipiEnum.satisIrsaliyesiMi && siparisModel.ebelgeCheckbox == "E")),
+          eFaturaGonder,
+        )
+        ..addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi || siparisModel.hataliMi, durumSorgula)
+        ..addIfConditionTrue(siparisModel.eBelgeMi, eBelgeYazdir);
       // islemlerList.add(eBelgeYazdir);
     } else if (islemTipi == IslemTipiEnum.depoTransferi) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-      islemlerList.addIfConditionTrue(_yetkiController.transferDatOnay && siparisModel.datOnayda == "E", transferOnayla);
-      islemlerList.add(siparisPDFGoruntule);
-      islemlerList.add(siparisCariKoduDegistir);
-      islemlerList.add(faturaBelgeNoDegistir);
-      islemlerList.add(kopyala);
+      islemlerList
+        ..addIfConditionTrue(_yetkiController.transferDatOnay && siparisModel.datOnayda == "E", transferOnayla)
+        ..add(siparisPDFGoruntule)
+        ..add(siparisCariKoduDegistir)
+        ..add(faturaBelgeNoDegistir)
+        ..add(kopyala);
     }
   }
 
@@ -1246,10 +1254,11 @@ class IslemlerMenuItemConstants<T> {
                 );
               }
             } else {
-              siparisModel.teslimCari = null;
-              siparisModel.teslimCariAdi = null;
-              siparisModel.teslimTarihi = null;
-              siparisModel.istenilenTeslimTarihi = null;
+              siparisModel
+                ..teslimCari = null
+                ..teslimCariAdi = null
+                ..teslimTarihi = null
+                ..istenilenTeslimTarihi = null;
               return await Get.toNamed(
                 "mainPage/faturaEdit",
                 arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.satisIrsaliye, belgeNo: siparisModel.belgeNo),
@@ -1297,10 +1306,11 @@ class IslemlerMenuItemConstants<T> {
                 );
               }
             } else {
-              siparisModel.teslimCari = null;
-              siparisModel.teslimCariAdi = null;
-              siparisModel.teslimTarihi = null;
-              siparisModel.istenilenTeslimTarihi = null;
+              siparisModel
+                ..teslimCari = null
+                ..teslimCariAdi = null
+                ..teslimTarihi = null
+                ..istenilenTeslimTarihi = null;
               return await Get.toNamed(
                 "mainPage/faturaEdit",
                 arguments: BaseEditModel(model: siparisModel, baseEditEnum: BaseEditEnum.kopyala, editTipiEnum: EditTipiEnum.alisIrsaliye, belgeNo: siparisModel.belgeNo),

@@ -77,8 +77,9 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
     kod5Controller = TextEditingController();
     scrollController = ScrollController();
     if (widget.requestModel != null) {
-      viewModel.setIsGetData(true);
-      viewModel.bottomSheetModel = widget.requestModel!;
+      viewModel
+        ..setIsGetData(true)
+        ..bottomSheetModel = widget.requestModel!;
     }
     viewModel.setSiralama(CacheManager.getProfilParametre.stokListesiSirala);
     scrollController.addListener(() async {
@@ -86,8 +87,9 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
     });
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (widget.isGetData ?? false) {
-        viewModel.changeSearchBarStatus();
-        viewModel.setSearchText(widget.searchText);
+        viewModel
+          ..changeSearchBarStatus()
+          ..setSearchText(widget.searchText);
       }
       await viewModel.getGrupKodlari();
       await viewModel.getData();
@@ -127,9 +129,10 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
         leading: IconButton(
           onPressed: () {
             if (viewModel.isSearchBarOpen) {
-              viewModel.changeSearchBarStatus();
-              viewModel.setSearchText("");
-              viewModel.resetList();
+              viewModel
+                ..changeSearchBarStatus()
+                ..setSearchText("")
+                ..resetList();
             } else {
               Get.back();
             }
@@ -141,9 +144,10 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               ? CustomAppBarTextField(
                   controller: TextEditingController(text: viewModel.searchText),
                   onFieldSubmitted: (value) {
-                    viewModel.setSearchText(value);
-                    viewModel.resetList();
-                    viewModel.getData();
+                    viewModel
+                      ..setSearchText(value)
+                      ..resetList()
+                      ..getData();
                   },
                 )
               : AppBarTitle(
@@ -549,10 +553,11 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                 kod4Controller.clear();
                                 kod5Controller.clear();
                                 // viewModel.setBottomSheetModel(StokBottomSheetModel());
-                                viewModel.changeBakiyeDurumu("T");
-                                viewModel.changeBakiyeDurumuTemp(0);
-                                viewModel.resetSelectedArr();
-                                viewModel.resetList();
+                                viewModel
+                                  ..changeBakiyeDurumu("T")
+                                  ..changeBakiyeDurumuTemp(0)
+                                  ..resetSelectedArr()
+                                  ..resetList();
                                 Get.back();
                               },
                               style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
@@ -563,14 +568,15 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                           Expanded(
                             child: ElevatedButton(
                               onPressed: () async {
-                                viewModel.changeBakiyeDurumu(viewModel.bottomSheetModelTemp.bakiyeDurumu);
-                                viewModel.changeArrGrupKodu(viewModel.bottomSheetModelTemp.arrGrupKodu ?? <BaseGrupKoduModel>[]);
-                                viewModel.changeArrKod1(viewModel.bottomSheetModelTemp.arrKod1 ?? <BaseGrupKoduModel>[]);
-                                viewModel.changeArrKod2(viewModel.bottomSheetModelTemp.arrKod2 ?? <BaseGrupKoduModel>[]);
-                                viewModel.changeArrKod3(viewModel.bottomSheetModelTemp.arrKod3 ?? <BaseGrupKoduModel>[]);
-                                viewModel.changeArrKod4(viewModel.bottomSheetModelTemp.arrKod4 ?? <BaseGrupKoduModel>[]);
-                                viewModel.changeArrKod5(viewModel.bottomSheetModelTemp.arrKod5 ?? <BaseGrupKoduModel>[]);
-                                viewModel.resetList();
+                                viewModel
+                                  ..changeBakiyeDurumu(viewModel.bottomSheetModelTemp.bakiyeDurumu)
+                                  ..changeArrGrupKodu(viewModel.bottomSheetModelTemp.arrGrupKodu ?? <BaseGrupKoduModel>[])
+                                  ..changeArrKod1(viewModel.bottomSheetModelTemp.arrKod1 ?? <BaseGrupKoduModel>[])
+                                  ..changeArrKod2(viewModel.bottomSheetModelTemp.arrKod2 ?? <BaseGrupKoduModel>[])
+                                  ..changeArrKod3(viewModel.bottomSheetModelTemp.arrKod3 ?? <BaseGrupKoduModel>[])
+                                  ..changeArrKod4(viewModel.bottomSheetModelTemp.arrKod4 ?? <BaseGrupKoduModel>[])
+                                  ..changeArrKod5(viewModel.bottomSheetModelTemp.arrKod5 ?? <BaseGrupKoduModel>[])
+                                  ..resetList();
                                 Get.back();
                               },
                               child: Text(loc.generalStrings.apply),
@@ -604,8 +610,9 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               ],
             );
             if (result != null) {
-              viewModel.setSiralama(result);
-              viewModel.resetList();
+              viewModel
+                ..setSiralama(result)
+                ..resetList();
             }
           },
         ),
@@ -637,8 +644,9 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                 );
               }
               if (count != null) {
-                viewModel.setGridSayisi(count);
-                viewModel.resetList();
+                viewModel
+                  ..setGridSayisi(count)
+                  ..resetList();
               }
             }
           },
@@ -651,8 +659,9 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
           onPressed: () {
             viewModel.changeSearchBarStatus();
             if (!viewModel.isSearchBarOpen) {
-              viewModel.resetList();
-              viewModel.getData();
+              viewModel
+                ..resetList()
+                ..getData();
             }
           },
           icon: Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
@@ -1084,8 +1093,9 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
         kod5Controller.text = grupAdiWithItem(result, value);
     }
     if (!viewModel.kategoriMi) {
-      viewModel.setKategoriMi(true);
-      viewModel.setGrupNo(value);
+      viewModel
+        ..setKategoriMi(true)
+        ..setGrupNo(value);
       await viewModel.getKategoriGrupKodlari();
     }
     await viewModel.resetList();
@@ -1153,9 +1163,10 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   Future<void> grupKoduOnClear(int value) async {
     if (grupKoduController.text.isEmpty && kod1Controller.text.isEmpty && kod2Controller.text.isEmpty && kod3Controller.text.isEmpty && kod4Controller.text.isEmpty && kod5Controller.text.isEmpty) {
-      viewModel.setKategoriMi(false);
-      viewModel.setGrupNo(-1);
-      viewModel.setKategoriGrupKodlari(null);
+      viewModel
+        ..setKategoriMi(false)
+        ..setGrupNo(-1)
+        ..setKategoriGrupKodlari(null);
     }
     switch (value) {
       case 0:

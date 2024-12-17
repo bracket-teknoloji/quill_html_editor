@@ -196,8 +196,9 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
     if (result.ext.isNotNullOrEmpty) {
       Get.back();
       if (result!.length == 1) {
-        pdfModel.dizaynId = result.firstOrNull?.id;
-        pdfModel.etiketSayisi = result.firstOrNull?.kopyaSayisi;
+        pdfModel
+          ..dizaynId = result.firstOrNull?.id
+          ..etiketSayisi = result.firstOrNull?.kopyaSayisi;
         pdfModel.dicParams?.caharInckey = inckeyno;
         dizaynList = result.first;
       } else {
@@ -207,8 +208,9 @@ class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariC
           children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList(),
         );
         if (dizaynList == null) return;
-        pdfModel.dizaynId = dizaynList.id;
-        pdfModel.etiketSayisi = dizaynList.kopyaSayisi;
+        pdfModel
+          ..dizaynId = dizaynList.id
+          ..etiketSayisi = dizaynList.kopyaSayisi;
         pdfModel.dicParams?.caharInckey = inckeyno;
         // pdfModel.dicParams?.belgeNo = dizaynList?.;
       }

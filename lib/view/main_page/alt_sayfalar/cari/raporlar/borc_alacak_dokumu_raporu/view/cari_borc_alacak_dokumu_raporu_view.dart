@@ -59,8 +59,9 @@ final class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlaca
         children: [
           RaporFiltreDateTimeBottomSheetView(
             filterOnChanged: (index) {
-              viewModel.setBastar(_baslangicTarihiController.text);
-              viewModel.setBittar(_bitisTarihiController.text);
+              viewModel
+                ..setBastar(_baslangicTarihiController.text)
+                ..setBittar(_bitisTarihiController.text);
             },
             baslangicTarihiController: _baslangicTarihiController,
             bitisTarihiController: _bitisTarihiController,

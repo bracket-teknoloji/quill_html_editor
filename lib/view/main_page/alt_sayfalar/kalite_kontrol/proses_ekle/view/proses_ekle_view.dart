@@ -37,8 +37,8 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
 
   @override
   void initState() {
-    viewModel.setEkleModel(widget.model.model!);
-    viewModel.setProsesDetayListesi(widget.model.model!.numuneMiktari ?? 0);
+    viewModel..setEkleModel(widget.model.model!)
+    ..setProsesDetayListesi(widget.model.model!.numuneMiktari ?? 0);
     numuneControllers = List.generate(widget.model.model!.numuneMiktari ?? 0, (index) {
       try {
         final double? deger = widget.model.model?.numuneler?.olcumler?[index].deger;

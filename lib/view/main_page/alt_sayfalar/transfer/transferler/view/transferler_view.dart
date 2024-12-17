@@ -220,8 +220,9 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
         children: [
           RaporFiltreDateTimeBottomSheetView(
             filterOnChanged: (index) {
-              viewModel.setBaslangicTarihi(baslangicTarihiController.text);
-              viewModel.setBitisTarihi(bitisTarihiController.text);
+              viewModel
+                ..setBaslangicTarihi(baslangicTarihiController.text)
+                ..setBitisTarihi(bitisTarihiController.text);
             },
             baslangicTarihiController: baslangicTarihiController,
             bitisTarihiController: bitisTarihiController,

@@ -317,8 +317,7 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
         "ArrStokKod3": jsonEncode(viewModel.arrStokKod3.toList()),
         "ArrStokKod4": jsonEncode(viewModel.arrStokKod4.toList()),
         "ArrStokKod5": jsonEncode(viewModel.arrStokKod5.toList()),
-      };
-      map.removeWhere((key, value) => value == null || value == "[]");
+      }..removeWhere((key, value) => value == null || value == "[]");
       final result = await networkManager.dioGet<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
       if (result.isSuccess) {
         viewModel.setModelList(result.dataList);

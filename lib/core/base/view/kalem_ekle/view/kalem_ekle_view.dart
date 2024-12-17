@@ -929,10 +929,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       isFormattedString: true,
                       onChanged: (p0) {
-                        viewModel.setDovizFiyati(p0.toDoubleWithFormattedString);
-                        viewModel.setBrutFiyat(
-                          (viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1),
-                        );
+                        viewModel
+                          ..setDovizFiyati(p0.toDoubleWithFormattedString)
+                          ..setBrutFiyat((viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1));
                         log(viewModel.kalemModel.brutFiyat.toString());
                         log(viewModel.kalemModel.dovizliFiyat.toString());
                         fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(
@@ -1460,18 +1459,19 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       if (yetkiController.projeUygulamasiAcikMi) {
         viewModel.setProjeKodu(model.projeKodu ?? "");
       }
-      viewModel.setFiyat(fiyatController.text.toDoubleWithFormattedString);
-      viewModel.setBrutFiyat(fiyatController.text.toDoubleWithFormattedString);
-      viewModel.setMiktar2(double.tryParse(miktar2Controller.text) ?? 0);
-      viewModel.setMiktar(double.tryParse(miktarController.text) ?? 0);
-      viewModel.setMFMiktar(double.tryParse(malFazMiktarController.text) ?? 0);
-      viewModel.setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0);
-      viewModel.setIskonto1(double.tryParse(isk1Controller?.text ?? "") ?? 0);
-      viewModel.setIskonto2(double.tryParse(isk2YuzdeController?.text ?? "") ?? 0);
-      viewModel.setIskonto3(double.tryParse(isk3YuzdeController?.text ?? "") ?? 0);
-      viewModel.setIskonto4(double.tryParse(isk4YuzdeController?.text ?? "") ?? 0);
-      viewModel.setIskonto5(double.tryParse(isk5YuzdeController?.text ?? "") ?? 0);
-      viewModel.setIskonto6(double.tryParse(isk6YuzdeController?.text ?? "") ?? 0);
+      viewModel
+        ..setFiyat(fiyatController.text.toDoubleWithFormattedString)
+        ..setBrutFiyat(fiyatController.text.toDoubleWithFormattedString)
+        ..setMiktar2(double.tryParse(miktar2Controller.text) ?? 0)
+        ..setMiktar(double.tryParse(miktarController.text) ?? 0)
+        ..setMFMiktar(double.tryParse(malFazMiktarController.text) ?? 0)
+        ..setKdvOrani(double.tryParse(kdvOraniController.text) ?? 0)
+        ..setIskonto1(double.tryParse(isk1Controller?.text ?? "") ?? 0)
+        ..setIskonto2(double.tryParse(isk2YuzdeController?.text ?? "") ?? 0)
+        ..setIskonto3(double.tryParse(isk3YuzdeController?.text ?? "") ?? 0)
+        ..setIskonto4(double.tryParse(isk4YuzdeController?.text ?? "") ?? 0)
+        ..setIskonto5(double.tryParse(isk5YuzdeController?.text ?? "") ?? 0)
+        ..setIskonto6(double.tryParse(isk6YuzdeController?.text ?? "") ?? 0);
     }
     if (editTipi?.depoTransferiMi == true) {
       viewModel.kalemModel.depoKodu ??= model.cikisDepoKodu ?? viewModel.model?.depoKodu;

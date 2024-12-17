@@ -43,8 +43,9 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
 
   @override
   void initState() {
-    viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
-    viewModel.setBelgeTuru(widget.bankaMuhtelifIslemlerEnum.belgeTuru);
+    viewModel
+      ..setTarih(DateTime.now().dateTimeWithoutTime)
+      ..setBelgeTuru(widget.bankaMuhtelifIslemlerEnum.belgeTuru);
     _tarihController = TextEditingController(text: DateTime.now().toDateString);
     _seriController = TextEditingController();
     _hesapController = TextEditingController();
@@ -193,8 +194,9 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),
                         isFormattedString: true,
                         onChanged: (value) {
-                          viewModel.setDovizTutari(value.toDoubleWithFormattedString);
-                          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                          viewModel
+                            ..setDovizTutari(value.toDoubleWithFormattedString)
+                            ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
                           _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                         },
                       ),
@@ -352,8 +354,9 @@ class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerVie
     if (result is BankaListesiModel) {
       _hesapController.text = result.hesapAdi ?? "";
       _dovizTipiController.text = result.dovizAdi ?? "";
-      viewModel.setHesapNo(result.hesapKodu);
-      viewModel.setDovizTipi(result.dovizTipi);
+      viewModel
+        ..setHesapNo(result.hesapKodu)
+        ..setDovizTipi(result.dovizTipi);
       if (result.dovizAdi != null) {
         await getDovizDialog();
       } else {

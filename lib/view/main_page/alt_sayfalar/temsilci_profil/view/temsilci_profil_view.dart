@@ -389,8 +389,9 @@ class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
     final result =
         await networkManager.dioGet<TemsilciProfilModel>(path: ApiUrls.getPlasiyerOzetRaporu, bodyModel: TemsilciProfilModel(), queryParameters: viewModel.temsilciProfilRequestModel.toJson());
     if (result.isSuccess) {
-      viewModel.setAciklama(result.paramData?["ACIKLAMA"]);
-      viewModel.setTemsilciProfilList(result.dataList);
+      viewModel
+        ..setAciklama(result.paramData?["ACIKLAMA"])
+        ..setTemsilciProfilList(result.dataList);
     }
   }
 }

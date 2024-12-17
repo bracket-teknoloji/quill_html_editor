@@ -67,8 +67,9 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       viewModel.setTahsilatmi(widget.tahsilatMi == true);
       if (widget.cariListesiModel != null) {
-        viewModel.setHesapKodu(widget.cariListesiModel!.cariKodu);
-        viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
+        viewModel
+          ..setHesapKodu(widget.cariListesiModel!.cariKodu)
+          ..setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
       } else {
         await getCari();
         if (viewModel.model.hesapKodu == null) return;
@@ -270,8 +271,9 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                             isFormattedString: true,
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             onChanged: (value) {
-                              viewModel.setDovizTutari(value.toDoubleWithFormattedString);
-                              viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                              viewModel
+                                ..setDovizTutari(value.toDoubleWithFormattedString)
+                                ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
                               _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             },
                             // onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
@@ -396,8 +398,9 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       _cariHareketiAciklamaController.text = "Nakit ${viewModel.formTipi} (${result.kasaKodu ?? ""})";
       if (result.dovizli == "E") {
         _dovizTipiController.text = result.dovizAdi ?? " ";
-        viewModel.setHedefAciklama(_cariHareketiAciklamaController.text);
-        viewModel.setDovizTipi(result.dovizli == "E" ? result.dovizTipi ?? 0 : null);
+        viewModel
+          ..setHedefAciklama(_cariHareketiAciklamaController.text)
+          ..setDovizTipi(result.dovizli == "E" ? result.dovizTipi ?? 0 : null);
         _dovizTipiController.text = result.dovizli == "E" ? result.dovizAdi ?? mainCurrency : "";
         if (result.dovizAdi != null) {
           await getDovizDialog();
@@ -421,10 +424,11 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       _cariController.text = result.cariAdi ?? "";
       _kasaHareketiAciklamaController.text = "${result.cariAdi ?? ""} .KODU: ${result.cariKodu ?? ""}";
       _plasiyerController.text = result.plasiyerAciklama ?? "";
-      viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
-      viewModel.setAciklama(_kasaHareketiAciklamaController.text);
-      viewModel.setHedefAciklama(result.cariAdi);
-      viewModel.setHesapKodu(result.cariKodu);
+      viewModel
+        ..setPlasiyerKodu(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu))
+        ..setAciklama(_kasaHareketiAciklamaController.text)
+        ..setHedefAciklama(result.cariAdi)
+        ..setHesapKodu(result.cariKodu);
       if (result.dovizli == true) {
         if (viewModel.kasa?.dovizli != "E") {
           viewModel.setDovizTipi(result.dovizKodu);

@@ -119,10 +119,11 @@ class _CariEkstreViewState extends BaseState<CariEkstreView> {
               );
               if (result != null) {
                 dovizController!.text = result.isim ?? "";
-                viewModel.changeDovizTipi(
-                  result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0,
-                );
-                viewModel.changeDovizValue((result.dovizKodu ?? -1).toString());
+                viewModel
+                  ..changeDovizTipi(
+                    result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0,
+                  )
+                  ..changeDovizValue((result.dovizKodu ?? -1).toString());
               }
             },
           ),

@@ -306,8 +306,9 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                                 if (result.isSuccess) {
                                   final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                                   if (siparisModel != null) {
-                                    viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
-                                    viewModel.setSiparisModel(siparisModel);
+                                    viewModel
+                                      ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
+                                      ..setSiparisModel(siparisModel);
                                     dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
                                   }
                                 }
@@ -332,9 +333,9 @@ class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                               final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
                               if (siparisModel != null) {
                                 dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                                viewModel.setModel(EBelgeListesiModel.faturaGonder(siparisModel));
-
-                                viewModel.setSiparisModel(siparisModel);
+                                viewModel
+                                  ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
+                                  ..setSiparisModel(siparisModel);
                               }
                             }
                           });

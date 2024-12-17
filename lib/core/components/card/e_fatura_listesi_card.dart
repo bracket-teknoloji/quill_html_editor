@@ -181,8 +181,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         title: "E-Belge Görüntüle",
         iconWidget: Icons.preview_outlined,
         onTap: () {
-          Get.back();
-          Get.toNamed("/mainPage/eBelgePdf", arguments: model);
+          Get
+            ..back()
+            ..toNamed("/mainPage/eBelgePdf", arguments: model);
         },
       );
 
@@ -210,11 +211,13 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                 ElevatedButton(
                   onPressed: () async {
                     if (controller.text == "") {
-                      model.kontrolEdildi = "H";
-                      model.kontrolAciklama = null;
+                      model
+                        ..kontrolEdildi = "H"
+                        ..kontrolAciklama = null;
                     } else {
-                      model.kontrolEdildi = "E";
-                      model.kontrolAciklama = controller.text;
+                      model
+                        ..kontrolEdildi = "E"
+                        ..kontrolAciklama = controller.text;
                     }
                     final result = await networkManager.dioPost(
                       path: ApiUrls.eBelgeIslemi,
@@ -611,8 +614,9 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           if (siparisModel == null) {
             return;
           } else {
-            siparisModel.genIsk1t = widget.eBelgeListesiModel.iskontoTutari;
-            siparisModel.genIsk1o = siparisModel.tutarToIskonto1;
+            siparisModel
+              ..genIsk1t = widget.eBelgeListesiModel.iskontoTutari
+              ..genIsk1o = siparisModel.tutarToIskonto1;
           }
           final result = await Get.toNamed(
             "/mainPage/faturaEdit",

@@ -253,8 +253,9 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
     if (result.isSuccess) {
       // pdfFile = result.dataList.firstOrNull!;
       if (result.isSuccess) {
-        viewModel.setFuture(result.isSuccess);
-        viewModel.setPdfModel(result.dataList.firstOrNull);
+        viewModel
+          ..setFuture(result.isSuccess)
+          ..setPdfModel(result.dataList.firstOrNull);
         // final File? pdf = await getFile;
         // if (pdf != null) {
         // }
@@ -281,8 +282,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
     final file = File(
       '${appStorage.path}/picker/pdf/${widget.pdfData?.raporOzelKod}${widget.pdfData?.dicParams?.cariKodu ?? widget.pdfData?.dicParams?.stokKodu ?? ""}${DateTime.now().toDateTimeHypenString}.${viewModel.pdfModel?.uzanti ?? "pdf"}',
     );
-    final fileWriter = file.openSync(mode: FileMode.write);
-    fileWriter.writeFromSync(base64Decode(viewModel.pdfModel?.byteData ?? ""));
+    final fileWriter = file.openSync(mode: FileMode.write)..writeFromSync(base64Decode(viewModel.pdfModel?.byteData ?? ""));
     await fileWriter.close();
     if (file.lengthSync() > 0) {
       viewModel.changePdfFile(file);

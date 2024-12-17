@@ -169,8 +169,9 @@ class _BankaListesiViewState extends BaseState<BankaListesiView> {
                   ),
                 );
                 if (result != null) {
-                  viewModel.setSiralama(result);
-                  viewModel.resetPage();
+                  viewModel
+                    ..setSiralama(result)
+                    ..resetPage();
                 }
               },
             ),

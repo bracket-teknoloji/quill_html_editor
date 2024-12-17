@@ -300,8 +300,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
           children: <Widget>[
             RaporFiltreDateTimeBottomSheetView(
               filterOnChanged: (int? index) async {
-                viewModel.setBaslamaTarihi(_baslangicTarihiController.text);
-                viewModel.setBitisTarihi(_bitisTarihiController.text);
+                viewModel
+                  ..setBaslamaTarihi(_baslangicTarihiController.text)
+                  ..setBitisTarihi(_bitisTarihiController.text);
               },
               baslangicTarihiController: _baslangicTarihiController,
               bitisTarihiController: _bitisTarihiController,
@@ -713,8 +714,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                     onPressed: () {
                       Get.back();
                       resetFilters();
-                      viewModel.resetFilter();
-                      viewModel.resetList();
+                      viewModel
+                        ..resetFilter()
+                        ..resetList();
                     },
                     style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                     child: const Text("Temizle"),

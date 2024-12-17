@@ -51,8 +51,8 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
 
   List<Widget> aciklamaList() => List.generate(16, (int index) => aciklamaText(index + 1)).whereType<Text>().toList();
 
-  Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle)
-      .yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
+  Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${model.toJson()["ACIK$index"]}", style: greyTextStyle)
+      .yetkiVarMi(model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
 
   BaseSiparisEditModel get model => widget.model;
   @override
@@ -60,7 +60,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
         child: ListTile(
           onLongPress: () async {
             await dialogManager.showFaturaGridViewDialog(
-              model: widget.model,
+              model: model,
               onSelected: (value) {
                 widget.onUpdated?.call(value);
               },
@@ -90,20 +90,20 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     Get.back();
                     final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
                     if (result == true) {
-                      if (widget.model.isNew == true) {
+                      if (model.isNew == true) {
                         CacheManager.removeFaturaEditList(model.belgeNo ?? "");
                       }
                       widget.onUpdated?.call(result);
                     }
                   },
-                ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.basariliMi && !model.taslakMi) && !widget.model.eBelgeMi),
+                ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.basariliMi && !model.taslakMi) && !model.eBelgeMi),
                 BottomSheetModel(
                   title: loc.generalStrings.delete,
                   iconWidget: Icons.delete_outline_outlined,
                   onTap: () async {
                     Get.back();
                     return dialogManager.showAreYouSureDialog(() async {
-                      if (widget.model.isNew == true) {
+                      if (model.isNew == true) {
                         try {
                           CacheManager.removeFaturaEditList(model.belgeNo ?? "");
                           dialogManager.showSuccessSnackBar("Silindi");
@@ -113,14 +113,14 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                         }
                         return;
                       }
-                      final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(widget.model.toJson()));
+                      final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(model.toJson()));
                       if (result.isSuccess) {
                         dialogManager.showSuccessSnackBar("Silindi");
                         widget.onDeleted?.call();
                       }
                     });
                   },
-                ).yetkiKontrol((widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi) || model.efatOnayDurumKodu == "1"),
+                ).yetkiKontrol((widget.editTipiEnum.silinsinMi && model.silinebilirMi) || model.efatOnayDurumKodu == "1"),
                 BottomSheetModel(
                   title: "Açıklama Düzenle",
                   iconWidget: Icons.edit_note_outlined,
@@ -128,7 +128,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     Get.back();
                     final result = await Get.toNamed(
                       widget.editTipiEnum.aciklamaDuzenleRoute,
-                      arguments: widget.model,
+                      arguments: model,
                     );
                     if (result != null) {
                       widget.onUpdated?.call(result);
@@ -143,11 +143,11 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     final PrintModel printModel = PrintModel(
                       raporOzelKod: widget.editTipiEnum.getPrintValue,
                       etiketSayisi: 1,
-                      dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.getEditTipiEnum?.rawValue, cariKodu: widget.model.cariKodu),
+                      dicParams: DicParams(belgeNo: model.belgeNo, belgeTipi: model.getEditTipiEnum?.rawValue, cariKodu: model.cariKodu),
                     );
                     await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
                   },
-                ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                ).yetkiKontrol(model.remoteTempBelgeEtiketi == null),
                 BottomSheetModel(
                   title: loc.generalStrings.actions,
                   iconWidget: Icons.list_alt_outlined,
@@ -161,18 +161,18 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                       },
                     );
                   },
-                ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
+                ).yetkiKontrol(model.remoteTempBelgeEtiketi == null),
                 BottomSheetModel(
                   title: "E-Belge İşlemleri",
                   iconWidget: Icons.receipt_long_outlined,
                   onTap: () async {
                     Get.back();
                     // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-                    // final BaseSiparisEditModel newModel = widget.model.copyWith(
+                    // final BaseSiparisEditModel newModel = model.copyWith(
                     //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
                     // );
                     final result = await dialogManager.showEBelgeGridViewDialog(
-                      model: widget.model,
+                      model: model,
                       onSelected: (value) {
                         widget.onUpdated?.call(value);
                       },
@@ -181,7 +181,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                       widget.onUpdated?.call(true);
                     }
                   },
-                ).yetkiKontrol(widget.model.eBelgeIslemlerGorunsunMu),
+                ).yetkiKontrol(model.eBelgeIslemlerGorunsunMu),
                 BottomSheetModel(
                   title: "Cari İşlemleri",
                   iconWidget: Icons.person_outline_outlined,
@@ -235,43 +235,35 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                 ].nullCheck.map((Widget e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-              Text("Teslim Cari: ${widget.model.teslimCariAdi}").yetkiVarMi(widget.model.teslimCariAdi != null && widget.model.teslimCariAdi != widget.model.cariAdi),
-              LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) => Wrap(
-                  crossAxisAlignment: WrapCrossAlignment.start,
-                  // mainAxisAlignment: MainAxisAlignment.start,
-
-                  children: <Widget>[
-                    Text("Tipi: ${model.tipiName}", style: TextStyle(color: model.tipi != 2 ? UIHelper.primaryColor : null)),
-                    Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
-                    Text("Cari Kodu: ${model.cariKodu ?? ""}"),
-                    Text("Koşul: ${model.kosulKodu ?? ""}").yetkiVarMi(model.kosulKodu != null),
-                    Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
-                    Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
-                  ].map((Widget e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 2, child: e)).whereType<Widget>().toList(),
-                ),
-              ),
-              if (model.getEditTipiEnum?.fiyatGor == true)
-                CustomLayoutBuilder(
-                  splitCount: 2,
-                  children: [
-                    Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}").yetkiVarMi(model.dovizTutari != null && model.dovizAdi != null),
-                    Text("Kur: ${model.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(model.dovizTutari != null && model.dovizAdi != null),
+              Text("Cari Kodu: ${model.cariKodu ?? ""}"),
+              Text("Teslim Cari: ${model.teslimCari}").yetkiVarMi(model.teslimCari != null),
+              CustomLayoutBuilder.divideInHalf(
+                children: [
+                  Text("Tipi: ${model.tipiName}", style: TextStyle(color: model.tipi != 2 ? UIHelper.primaryColor : null)),
+                  Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
+                  if (model.kosulKodu != null) Text("Koşul: ${model.kosulKodu ?? ""}"),
+                  Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
+                  if (widget.showVade == true) Text("Vade Günü: ${model.vadeGunu ?? "0"}"),
+                  if (model.getEditTipiEnum?.fiyatGor == true) ...[
+                    if (model.dovizTutari != null && model.dovizAdi != null) Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}"),
+                    if (model.dovizTutari != null && model.dovizAdi != null) Text("Kur: ${model.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                     Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                     Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("ÖTV Tutarı: ${model.otvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(model.otvTutari != null),
+                    if (model.otvTutari != null) Text("ÖTV Tutarı: ${model.otvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                     Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                   ],
-                ),
+                ],
+              ),
+
               const Divider(
                 indent: 0,
                 endIndent: 0,
               ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showMiktar == true),
-              // Text("Miktar: ${widget.model.miktar.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
+              // Text("Miktar: ${model.miktar.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Text>[
-                  Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                 ].map((Text e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
               ).yetkiVarMi(widget.showMiktar == true),
               const Divider(

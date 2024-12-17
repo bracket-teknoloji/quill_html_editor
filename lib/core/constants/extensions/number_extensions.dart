@@ -39,15 +39,8 @@ extension NumExtensionWithFixedDigits on num? {
   }
 
   num? get toIntIfDouble {
-    if (this != null) {
-      if (this! % 1 == 0) {
-        return this?.toInt();
-      } else {
-        return this;
-      }
-    } else {
-      return null;
-    }
+    if (this == null) return null;
+    return this! % 1 == 0 ? this?.toInt() : this;
   }
 }
 

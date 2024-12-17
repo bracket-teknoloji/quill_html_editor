@@ -100,8 +100,9 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                         }
                         final item = list.elementAt(oldIndex);
                         final item2 = list.elementAt(newIndex);
-                        list.removeAt(oldIndex);
-                        list.insert(newIndex, item);
+                        list
+                          ..removeAt(oldIndex)
+                          ..insert(newIndex, item);
                         CacheManager.setFavorilerSira(oldIndex, item2);
                         CacheManager.setFavorilerSira(newIndex, item);
                       },

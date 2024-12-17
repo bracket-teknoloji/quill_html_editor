@@ -83,9 +83,10 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
       _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
       if (widget.cariListesiModel != null) {
-        viewModel.setHesapKodu(widget.cariListesiModel!.cariKodu);
-        viewModel.setCariKodu(widget.cariListesiModel!.cariKodu);
-        viewModel.setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
+        viewModel
+          ..setHesapKodu(widget.cariListesiModel!.cariKodu)
+          ..setCariKodu(widget.cariListesiModel!.cariKodu)
+          ..setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
       } else {
         await getCari();
       }
@@ -389,15 +390,16 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       _aciklamaController.text = result.cariAdi ?? "";
       _cariController.text = result.cariAdi ?? "";
       _plasiyerController.text = result.plasiyerAciklama ?? "";
-      viewModel.setAciklama(result.cariAdi);
-      viewModel.setCariKodu(result.cariKodu);
-      viewModel.setHesapKodu(result.cariKodu);
-      viewModel.setCariBakiye(result.bakiye);
-      viewModel.setPlasiyerKodu(
-        PlasiyerList()
-          ..plasiyerAciklama = result.plasiyerAciklama
-          ..plasiyerKodu = result.plasiyerKodu,
-      );
+      viewModel
+        ..setAciklama(result.cariAdi)
+        ..setCariKodu(result.cariKodu)
+        ..setHesapKodu(result.cariKodu)
+        ..setCariBakiye(result.bakiye)
+        ..setPlasiyerKodu(
+          PlasiyerList()
+            ..plasiyerAciklama = result.plasiyerAciklama
+            ..plasiyerKodu = result.plasiyerKodu,
+        );
     }
   }
 
@@ -412,8 +414,9 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       ],
     );
     if (result != null) {
-      viewModel.setAppBarSubTitle(result);
-      viewModel.setKktYontemi(result.substring(0, 1));
+      viewModel
+        ..setAppBarSubTitle(result)
+        ..setKktYontemi(result.substring(0, 1));
     }
   }
 
@@ -472,9 +475,10 @@ class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
       );
       if (result is BankaListesiModel) {
         _hesapController.text = result.hesapAdi ?? "";
-        viewModel.setHesapKodu(result.hesapKodu);
-        viewModel.setHedefAciklama(result.hesapAdi);
-        viewModel.setHesapTipi("B");
+        viewModel
+          ..setHesapKodu(result.hesapKodu)
+          ..setHedefAciklama(result.hesapAdi)
+          ..setHesapTipi("B");
       }
     }
   }

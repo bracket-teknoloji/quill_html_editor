@@ -138,10 +138,11 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
           builder: (_) => viewModel.searchBar
               ? CustomAppBarTextField(
                   onFieldSubmitted: (value) {
-                    viewModel.setSearchText(value);
-                    viewModel.setSiparislerList(null);
-                    viewModel.setDahaVarMi(true);
-                    viewModel.resetSayfa();
+                    viewModel
+                      ..setSearchText(value)
+                      ..setSiparislerList(null)
+                      ..setDahaVarMi(true)
+                      ..resetSayfa();
                     getData();
                   },
                 )
@@ -183,8 +184,9 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                   children: [
                     RaporFiltreDateTimeBottomSheetView(
                       filterOnChanged: (index) {
-                        viewModel.setBaslamaTarihi(baslangicTarihiController.text);
-                        viewModel.setBitisTarihi(bitisTarihiController.text);
+                        viewModel
+                          ..setBaslamaTarihi(baslangicTarihiController.text)
+                          ..setBitisTarihi(bitisTarihiController.text);
                       },
                       baslangicTarihiController: baslangicTarihiController,
                       bitisTarihiController: bitisTarihiController,
@@ -457,9 +459,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
-                              viewModel.setSiparislerList(null);
-                              viewModel.setDahaVarMi(true);
-                              viewModel.resetSayfa();
+                              viewModel
+                                ..setSiparislerList(null)
+                                ..setDahaVarMi(true)
+                                ..resetSayfa();
                               getData();
                               Get.back();
                             },
@@ -489,10 +492,11 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                   ),
                 );
                 if (result != null) {
-                  viewModel.setSiralama(result);
-                  viewModel.resetSayfa();
-                  viewModel.setSiparislerList(null);
-                  viewModel.setDahaVarMi(true);
+                  viewModel
+                    ..setSiralama(result)
+                    ..resetSayfa()
+                    ..setSiparislerList(null)
+                    ..setDahaVarMi(true);
                   getData();
                 }
               },
@@ -541,9 +545,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                           ),
                         );
                         if (viewModel.ekstraAlanlarMap["MİK"] == true) {
-                          viewModel.resetSayfa();
-                          viewModel.setSiparislerList(null);
-                          viewModel.setDahaVarMi(true);
+                          viewModel
+                            ..resetSayfa()
+                            ..setSiparislerList(null)
+                            ..setDahaVarMi(true);
                           await getData();
                         }
                       },
@@ -567,9 +572,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                 "mainPage/siparisEdit",
                 arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.widgetModel.editTipiEnum),
               );
-              viewModel.setSiparislerList(null);
-              viewModel.setDahaVarMi(true);
-              viewModel.resetSayfa();
+              viewModel
+                ..setSiparislerList(null)
+                ..setDahaVarMi(true)
+                ..resetSayfa();
               getData();
             },
           ),
@@ -578,9 +584,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: () async {
-          viewModel.setSiparislerList(null);
-          viewModel.setDahaVarMi(true);
-          viewModel.resetSayfa();
+          viewModel
+            ..setSiparislerList(null)
+            ..setDahaVarMi(true)
+            ..resetSayfa();
           getData();
         },
         child: Observer(
@@ -613,9 +620,10 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
                           onDeleted: () => viewModel.removeSiparislerList(index),
                           onUpdated: (value) {
                             if (value) {
-                              viewModel.setSiparislerList(null);
-                              viewModel.setDahaVarMi(true);
-                              viewModel.resetSayfa();
+                              viewModel
+                                ..setSiparislerList(null)
+                                ..setDahaVarMi(true)
+                                ..resetSayfa();
                               getData();
                             }
                           },
@@ -659,15 +667,17 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
     if (result.isSuccess) {
       if (viewModel.sayfa == 1) {
-        viewModel.setSiparislerList(CacheManager.getSiparisEditLists(widget.widgetModel.editTipiEnum)?.toList().cast<BaseSiparisEditModel?>());
-        viewModel.setParamData(result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).cast<String, dynamic>() ?? {});
+        viewModel
+          ..setSiparislerList(CacheManager.getSiparisEditLists(widget.widgetModel.editTipiEnum)?.toList().cast<BaseSiparisEditModel?>())
+          ..setParamData(result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).cast<String, dynamic>() ?? {});
       }
       final List<BaseSiparisEditModel?> list = result.dataList;
       if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(false);
       } else {
-        viewModel.setDahaVarMi(true);
-        viewModel.increaseSayfa();
+        viewModel
+          ..setDahaVarMi(true)
+          ..increaseSayfa();
       }
       if (viewModel.musteriSiparisleriList.ext.isNullOrEmpty) {
         viewModel.setSiparislerList(list);

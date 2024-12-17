@@ -41,10 +41,11 @@ class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
   void initState() {
     viewModel.model.belgeTipi = model.belgeTipi;
     viewModel.model.pickerTahsilatTuru = widget.cirolaEnum.belgeTipi;
-    viewModel.setBelgeNo(model.belgeNo);
-    viewModel.setIslemTarihi((model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0 ? model.tarih : DateTime.now());
-    viewModel.setProjekodu(model.projeKodu);
-    viewModel.setPlasiyerKodu(model.plasiyerKodu);
+    viewModel
+      ..setBelgeNo(model.belgeNo)
+      ..setIslemTarihi((model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0 ? model.tarih : DateTime.now())
+      ..setProjekodu(model.projeKodu)
+      ..setPlasiyerKodu(model.plasiyerKodu);
     if (widget.cirolaEnum == CirolaEnum.cari) {
       viewModel.setCariKodu(CariListesiModel(cariAdi: model.cariAdi, cariKodu: model.cariKodu));
       _cariController = TextEditingController(text: model.cariAdi);

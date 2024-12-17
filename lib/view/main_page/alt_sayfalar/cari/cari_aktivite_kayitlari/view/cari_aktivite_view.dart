@@ -107,8 +107,9 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
             ),
             RaporFiltreDateTimeBottomSheetView(
               filterOnChanged: (value) async {
-                viewModel.setBaslangicTarihi(baslangicTarihiController.text.toDateTimeDDMMYYYY());
-                viewModel.setBitisTarihi(bitisTarihiController.text.toDateTimeDDMMYYYY());
+                viewModel
+                  ..setBaslangicTarihi(baslangicTarihiController.text.toDateTimeDDMMYYYY())
+                  ..setBitisTarihi(bitisTarihiController.text.toDateTimeDDMMYYYY());
                 await viewModel.getData();
               },
               baslangicTarihiController: baslangicTarihiController,

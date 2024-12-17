@@ -188,8 +188,9 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                       baslangicTarihiController.clear();
                                       bitisTarihiController.clear();
                                       fiyatTipiController.clear();
-                                      viewModel.yazdirmaGroupValue = "";
-                                      viewModel.alisSatisGroupValue = "";
+                                      viewModel
+                                        ..yazdirmaGroupValue = ""
+                                        ..alisSatisGroupValue = "";
                                       viewModel.model.sirala = "";
                                       viewModel.model.fiyatTipi = "";
                                       getData();

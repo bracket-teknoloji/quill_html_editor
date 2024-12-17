@@ -136,13 +136,15 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                   onTap: () async {
                     final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                     if (result != null && result is CariListesiModel) {
-                      model.cariAdi = result.cariAdi ?? "";
-                      model.cariKodu = result.cariKodu ?? "";
-                      model.vadeGunu = result.vadeGunu ?? 0;
+                      model
+                        ..cariAdi = result.cariAdi ?? ""
+                        ..cariKodu = result.cariKodu ?? ""
+                        ..vadeGunu = result.vadeGunu ?? 0;
                       cariController.text = result.cariAdi ?? "";
                       if (yetkiController.plasiyerUygulamasiAcikMi) {
-                        model.plasiyerAciklama = result.plasiyerAciklama;
-                        model.plasiyerKodu = result.plasiyerKodu;
+                        model
+                          ..plasiyerAciklama = result.plasiyerAciklama
+                          ..plasiyerKodu = result.plasiyerKodu;
                         plasiyerController.text = result.plasiyerAciklama ?? result.plasiyerKodu ?? "";
                       }
                       if (!yetkiController.siparisFarkliTeslimCariAktif) {
@@ -176,16 +178,18 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                               ),
                             );
                             if (result != null && result is CariListesiModel) {
-                              model.teslimCari = result.cariKodu;
-                              model.teslimCariAdi = result.cariAdi;
+                              model
+                                ..teslimCari = result.cariKodu
+                                ..teslimCariAdi = result.cariAdi;
                               teslimCariController.text = result.cariAdi ?? "";
                             }
                           },
                           icon: const Icon(Icons.hub_outlined),
                         ),
                   onClear: () {
-                    model.teslimCari = null;
-                    model.teslimCariAdi = null;
+                    model
+                      ..teslimCari = null
+                      ..teslimCariAdi = null;
                     teslimCariController.clear();
                   },
                   onTap: !yetkiController.siparisFarkliTeslimCariAktif
@@ -194,10 +198,11 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                           if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
                             final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                             if (result != null && result is CariListesiModel) {
-                              model.teslimCari = result.cariKodu;
-                              model.teslimCariAdi = result.cariAdi;
-                              model.plasiyerAciklama = result.plasiyerAciklama;
-                              model.plasiyerKodu = result.plasiyerKodu;
+                              model
+                                ..teslimCari = result.cariKodu
+                                ..teslimCariAdi = result.cariAdi
+                                ..plasiyerAciklama = result.plasiyerAciklama
+                                ..plasiyerKodu = result.plasiyerKodu;
                               teslimCariController.text = result.cariAdi ?? "";
                               plasiyerController.text = result.plasiyerAciklama ?? "";
                             }
@@ -216,8 +221,9 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                               ),
                             );
                             if (result != null && result is CariListesiModel) {
-                              model.teslimCari = result.cariKodu;
-                              model.teslimCariAdi = result.cariAdi;
+                              model
+                                ..teslimCari = result.cariKodu
+                                ..teslimCariAdi = result.cariAdi;
                               teslimCariController.text = result.cariAdi ?? "";
                             }
                           }
@@ -239,8 +245,9 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.belgeTipi);
                           if (result != null) {
-                            model.belgeTipi = result.belgeTipiId;
-                            model.tipi = result.belgeTipiId;
+                            model
+                              ..belgeTipi = result.belgeTipiId
+                              ..tipi = result.belgeTipiId;
                             belgeTipiController.text = result.belgeTipi ?? "";
                           }
                         },
@@ -259,8 +266,9 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                           final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
                           if (result != null) {
                             viewModel.setPlasiyer(result);
-                            model.plasiyerKodu = result.plasiyerKodu;
-                            model.plasiyerAciklama = result.plasiyerAciklama;
+                            model
+                              ..plasiyerKodu = result.plasiyerKodu
+                              ..plasiyerAciklama = result.plasiyerAciklama;
                             plasiyerController.text = result.plasiyerAciklama ?? "";
                           }
                         },

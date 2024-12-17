@@ -143,11 +143,12 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
                       title: loc.generalStrings.edit,
                       iconWidget: Icons.edit_outlined,
                       onTap: () async {
-                        Get.back();
-                        Get.toNamed(
-                          "/mainPage/isEmriEdit",
-                          arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
-                        );
+                        Get
+                          ..back()
+                          ..toNamed(
+                            "/mainPage/isEmriEdit",
+                            arguments: BaseEditModel<IsEmirleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
+                          );
                       },
                     ),
                     BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete_outline_outlined),

@@ -241,12 +241,14 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                           final List<int> arrHesapTipi = [];
                           if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekMusteri &&
                               (yetkiController.kayitliHesapTipiMi(BankaConstants.tahsilCekleri) || yetkiController.kayitliHesapTipiMi(BankaConstants.teminatCekleri))) {
-                            arrHesapTipi.add(BankaConstants.tahsilCekleri);
-                            arrHesapTipi.add(BankaConstants.teminatCekleri);
+                            arrHesapTipi
+                              ..add(BankaConstants.tahsilCekleri)
+                              ..add(BankaConstants.teminatCekleri);
                           } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.senetMusteri &&
                               (yetkiController.kayitliHesapTipiMi(BankaConstants.tahsilSenetleri) || yetkiController.kayitliHesapTipiMi(BankaConstants.teminatSenetleri))) {
-                            arrHesapTipi.add(BankaConstants.tahsilSenetleri);
-                            arrHesapTipi.add(BankaConstants.teminatSenetleri);
+                            arrHesapTipi
+                              ..add(BankaConstants.tahsilSenetleri)
+                              ..add(BankaConstants.teminatSenetleri);
                           } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekBorc && yetkiController.kayitliHesapTipiMi(BankaConstants.borcCekleri)) {
                             arrHesapTipi.add(BankaConstants.borcCekleri);
                           } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.senetBorc && yetkiController.kayitliHesapTipiMi(BankaConstants.borcSenetleri)) {
@@ -304,9 +306,10 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                               }
                               return;
                             }
-                            viewModel.setBaslangicTarihi(null);
-                            viewModel.setBitisTarihi(null);
-                            viewModel.setVadeTarihi(result.value);
+                            viewModel
+                              ..setBaslangicTarihi(null)
+                              ..setBitisTarihi(null)
+                              ..setVadeTarihi(result.value);
                             _vadeTarihiController.text = result.key;
                           }
                         },
@@ -364,8 +367,9 @@ class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
             ),
             ElevatedButton(
               onPressed: () {
-                viewModel.setBaslangicTarihi(_baslangicController.text);
-                viewModel.setBitisTarihi(_bitisController.text);
+                viewModel
+                  ..setBaslangicTarihi(_baslangicController.text)
+                  ..setBitisTarihi(_bitisController.text);
                 Get.back(result: true);
               },
               child: const Text("Uygula"),

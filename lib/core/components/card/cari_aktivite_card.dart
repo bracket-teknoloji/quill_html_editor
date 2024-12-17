@@ -63,8 +63,9 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                   title: loc.generalStrings.view,
                   iconWidget: Icons.preview_outlined,
                   onTap: () async {
-                    Get.back();
-                    Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: await widget.updatedModel.call()));
+                    Get
+                      ..back()
+                      ..toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: await widget.updatedModel.call()));
                   },
                 ).yetkiKontrol(model.bittiMi),
                 BottomSheetModel(
