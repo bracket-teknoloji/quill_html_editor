@@ -30,6 +30,7 @@ import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/icon_helper.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
@@ -830,7 +831,7 @@ class BottomSheetDialogManager {
       groupValue: groupValue,
       children: list
           ?.map(
-            (e) => BottomSheetModel(title: e.toString(), value: e, groupValue: e),
+            (e) => BottomSheetModel(title: e.commaSeparatedWithDecimalDigits(OndalikEnum.oran), value: e, groupValue: e),
           )
           .toList(),
     );

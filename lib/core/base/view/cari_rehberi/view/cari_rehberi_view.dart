@@ -32,7 +32,7 @@ final class CariRehberiView extends StatefulWidget {
 }
 
 final class _CariRehberiViewState extends BaseState<CariRehberiView> {
-  late final CariRehberiViewModel viewModel;
+  final CariRehberiViewModel viewModel = CariRehberiViewModel();
   late final TextEditingController searchController;
   late final TextEditingController sehirController;
   late final TextEditingController ilceController;
@@ -47,7 +47,6 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
 
   @override
   void initState() {
-    viewModel = CariRehberiViewModel();
     searchController = TextEditingController();
     sehirController = TextEditingController();
     ilceController = TextEditingController();
@@ -276,7 +275,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             viewModel.changeSehir(null);
                             sehirController.clear();
                           },
-                          onChanged: (value) => viewModel.changeSehir(value),
+                          onChanged: viewModel.changeSehir,
                           suffix: IconButton(
                             onPressed: () async {
                               if (viewModel.sehirler == null) {
@@ -310,7 +309,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             viewModel.changeIlce(null);
                             ilceController.clear();
                           },
-                          onChanged: (value) => viewModel.changeIlce(value),
+                          onChanged: viewModel.changeIlce,
                         ),
                       ),
                     ],

@@ -87,7 +87,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
     _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.firstOrNull?.key);
-    if (viewModel.model.belgeTipi == null) viewModel.setBelgeTipi(model.getEditTipiEnum?.varsayilanBelgeTipi ?? viewModel.belgeTipi.firstOrNull?.value);
+    if (viewModel.model.belgeTipi == null && enable) viewModel.setBelgeTipi(model.getEditTipiEnum?.varsayilanBelgeTipi ?? viewModel.belgeTipi.firstOrNull?.value);
     _belgeTipiController.text = viewModel.belgeTipi.firstWhereOrNull((element) => element.value == viewModel.model.belgeTipi)?.key ?? "";
     _projeController = TextEditingController(text: model.projeAciklama ?? model.projeKodu);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
@@ -279,11 +279,12 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: _teslimCariController,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.teslimCari ?? "")),
                   suffix: yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi
                       ? null
                       : IconButton(
                           onPressed: () async {
-                            if (_cariController.text.isEmpty) {
+                            if (model.cariKodu == null) {
                               dialogManager.showAlertDialog("Önce Cari Seçiniz");
                               return;
                             }
@@ -359,15 +360,17 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.belgeTipi.toStringIfNotNull ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                             context,
                             title: "Belge Tipi",
+                            groupValue: viewModel.model.belgeTipi,
                             children: List.generate(
                               viewModel.belgeTipi.length,
                               (index) => BottomSheetModel(
                                 title: viewModel.belgeTipi[index].key,
                                 description: viewModel.belgeTipi[index].value.toStringIfNotNull,
                                 value: viewModel.belgeTipi.toList()[index],
+                                groupValue: viewModel.belgeTipi.toList()[index].value,
                               ),
                             ),
                           );

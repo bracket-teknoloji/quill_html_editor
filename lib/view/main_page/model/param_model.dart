@@ -496,9 +496,6 @@ class ParamModel {
   @JsonKey(name: "CariRotaUygulamasi")
   String? cariRotaUygulamasi;
   Map<String, dynamic> toJson() => _$ParamModelToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -510,9 +507,6 @@ class CariAktiviteTipleri {
   @JsonKey(name: "AKTIVITE_ADI")
   String? aktiviteAdi;
   Map<String, dynamic> toJson() => _$CariAktiviteTipleriToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -531,9 +525,6 @@ class CekSenParam {
   @JsonKey(name: "CIKISTA_BANKA_KODU")
   String? cikistaBankaKodu;
   Map<String, dynamic> toJson() => _$CekSenParamToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -552,9 +543,6 @@ class DepoList {
   @JsonKey(name: "SUBE_KODU")
   int? subeKodu;
   Map<String, dynamic> toJson() => _$DepoListToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -586,9 +574,6 @@ class DovizList {
   double? efSatis;
 
   Map<String, dynamic> toJson() => _$DovizListToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -637,9 +622,6 @@ class KasaList with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$KasaListToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -651,9 +633,6 @@ class ListCariOdemeKodu {
   String? odemeKodu;
   String? aciklama;
   Map<String, dynamic> toJson() => _$ListCariOdemeKoduToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -666,9 +645,6 @@ class ListFatuEkMaliyet {
   String? belgeTipi;
   String? adi;
   Map<String, dynamic> toJson() => _$ListFatuEkMaliyetToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -680,9 +656,6 @@ class ListIskTip {
   int? iskontoTipi;
   String? aciklama;
   Map<String, dynamic> toJson() => _$ListIskTipToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -697,9 +670,6 @@ class ListOzelKodTum {
   String? aciklama;
   int? fiyatSirasi;
   Map<String, dynamic> toJson() => _$ListOzelKodTumToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.none)
@@ -713,9 +683,6 @@ class MapEkAlanlar {
   @JsonKey(name: "-veriTipi")
   String? veriTipi;
   Map<String, dynamic> toJson() => _$MapEkAlanlarToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable()
@@ -757,9 +724,6 @@ class MapCariKullSahalar {
   @JsonKey(name: "8N")
   String? the8N;
   Map<String, dynamic> toJson() => _$MapCariKullSahalarToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -775,9 +739,6 @@ class MapKdvSifirBelgeTipiOzelKod2 {
   String? sf;
   String? stek;
   Map<String, dynamic> toJson() => _$MapKdvSifirBelgeTipiOzelKod2ToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.pascal)
@@ -793,9 +754,6 @@ class MapStokGrupAdlari {
   dynamic kod4;
   dynamic kod5;
   Map<String, dynamic> toJson() => _$MapStokGrupAdlariToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -837,9 +795,6 @@ class MapStokKullSahalar {
   @JsonKey(name: "8N")
   String? the8N;
   Map<String, dynamic> toJson() => _$MapStokKullSahalarToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -856,9 +811,6 @@ class MustahsilParam {
   double? meraOrani;
   String? borsaUcretDuzenlemesi;
   Map<String, dynamic> toJson() => _$MustahsilParamToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -894,9 +846,6 @@ class NetFectDizaynList {
   String? detayKod;
   Map<String, dynamic> toJson() => _$NetFectDizaynListToJson(this);
 
-  @override
-  String toString() => toJson().toString();
-
   bool get aktifMi => aktif == "E";
 }
 
@@ -915,9 +864,6 @@ class NetsisOndalikResponseModel {
   int? dovizFiyati;
   int? oran;
   Map<String, dynamic> toJson() => _$NetsisOndalikResponseModelToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -932,9 +878,6 @@ class PlasiyerList {
   String? plasiyerKodu;
   String? plasiyerAciklama;
   Map<String, dynamic> toJson() => _$PlasiyerListToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -955,9 +898,6 @@ class SatirAcikBaslikList {
   String? aciklama9;
   String? aciklama10;
   Map<String, dynamic> toJson() => _$SatirAcikBaslikListToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.pascal)
@@ -970,9 +910,6 @@ class StokDetayliAramaAlanlar {
   String? searchCriter;
   String? searchText;
   Map<String, dynamic> toJson() => _$StokDetayliAramaAlanlarToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -1001,9 +938,6 @@ class SubeList {
   String? cariKodu;
   String? cariAdi;
   Map<String, dynamic> toJson() => _$SubeListToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @JsonSerializable(createFactory: true)
@@ -1079,9 +1013,6 @@ class TalTekParam {
   String? kdvSifirlanacakOzelkod2;
   String? kosulSatirdaAktif;
   Map<String, dynamic> toJson() => _$TalTekParamToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }
 
 @HiveType(typeId: 48)
@@ -1098,7 +1029,4 @@ class YaziciList {
   @HiveField(2)
   String? aciklama;
   Map<String, dynamic> toJson() => _$YaziciListToJson(this);
-
-  @override
-  String toString() => toJson().toString();
 }

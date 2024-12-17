@@ -372,7 +372,7 @@ class NetworkManager {
         "ISLETME_KODU": veriTabani["İşletme"].toString(),
         "SUBE_KODU": veriTabani["Şube"].toString(),
         "Platform": AccountModel.instance.platform ?? "",
-        "X-App-Version": AppInfoModel.instance.version ?? "",
+        "X-app-version": AppInfoModel.instance.version ?? "",
       };
       header.addEntries(sirketBilgileri.entries);
     }
