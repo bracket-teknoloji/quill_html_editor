@@ -10,8 +10,6 @@ part "cari_save_request_model.g.dart";
 @CopyWith()
 @JsonSerializable()
 class CariSaveRequestModel with NetworkManagerMixin {
-
-  CariSaveRequestModel._init();
   CariSaveRequestModel({
     this.requestVersion,
     this.islemKodu,
@@ -89,6 +87,8 @@ class CariSaveRequestModel with NetworkManagerMixin {
     this.dovizKoduAciklama,
     this.efatAktif,
   });
+
+  CariSaveRequestModel._init();
 
   factory CariSaveRequestModel.mukellefiyetDegistir(CariSaveRequestModel? model) => CariSaveRequestModel(
         requestVersion: 6,

@@ -7,7 +7,6 @@ part "seri_model.g.dart";
 
 @freezed
 class SeriModel with _$SeriModel, NetworkManagerMixin {
-  SeriModel._();
   factory SeriModel({
     String? seriNo,
     String? aciklama,
@@ -17,6 +16,7 @@ class SeriModel with _$SeriModel, NetworkManagerMixin {
     int? miktar,
     String? depoTanimi,
   }) = _SeriModel;
+  SeriModel._();
 
   factory SeriModel.fromJson(Map<String, dynamic> json) => _$SeriModelFromJson(json);
 

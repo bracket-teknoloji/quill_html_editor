@@ -7,7 +7,6 @@ part "finans_ozet_rapor_model.g.dart";
 
 @unfreezed
 class FinansOzetRaporModel with _$FinansOzetRaporModel, NetworkManagerMixin {
-  FinansOzetRaporModel._();
   factory FinansOzetRaporModel({
     String? tabloTipi,
     String? belgeTipi,
@@ -15,6 +14,7 @@ class FinansOzetRaporModel with _$FinansOzetRaporModel, NetworkManagerMixin {
     double? tutar1,
     double? tutar2,
   }) = _FinansOzetRaporModel;
+  FinansOzetRaporModel._();
 
   factory FinansOzetRaporModel.fromJson(Map<String, dynamic> json) => _$FinansOzetRaporModelFromJson(json);
 

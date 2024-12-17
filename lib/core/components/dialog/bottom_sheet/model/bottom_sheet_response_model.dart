@@ -1,9 +1,9 @@
 import "../../../button/toggle_buttons/view/toggle_button.dart";
 
 class BottomSheetResponseModel {
-  BottomSheetResponseModel._init();
 
   BottomSheetResponseModel();
+  BottomSheetResponseModel._init();
   //Sİngleton
   static final BottomSheetResponseModel _instance = BottomSheetResponseModel._init();
   static BottomSheetResponseModel get instance => _instance;

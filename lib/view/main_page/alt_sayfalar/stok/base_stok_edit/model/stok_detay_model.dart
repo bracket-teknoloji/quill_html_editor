@@ -37,9 +37,9 @@ class StokDetayModel with NetworkManagerMixin {
 
 @JsonSerializable(explicitToJson: true)
 class FiyatList {
+  FiyatList();
 
   factory FiyatList.fromJson(Map<String, dynamic> json) => _$FiyatListFromJson(json);
-  FiyatList();
   String? aS;
   String? stokKodu;
   int? dovizTipi;
@@ -57,14 +57,6 @@ class FiyatList {
 
 @unfreezed
 class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
-
-  factory SeriList.fromOlcumDatResponseModel(OlcumDatResponseModel model) => SeriList(
-        seriNo: model.seriNo,
-        stokKodu: model.stokKodu,
-        miktar: model.miktar,
-      );
-  @JsonSerializable(explicitToJson: true)
-  SeriList._();
   @HiveType(typeId: 196)
   factory SeriList({
     @HiveField(0) String? stokKodu,
@@ -93,6 +85,14 @@ class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
     @HiveField(23) int? refId,
     @HiveField(24) String? aciklama1,
   }) = _SeriList;
+
+  factory SeriList.fromOlcumDatResponseModel(OlcumDatResponseModel model) => SeriList(
+        seriNo: model.seriNo,
+        stokKodu: model.stokKodu,
+        miktar: model.miktar,
+      );
+  @JsonSerializable(explicitToJson: true)
+  SeriList._();
   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);
 
   @override

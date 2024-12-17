@@ -7,7 +7,6 @@ part "e_irsaliye_bilgi_model.g.dart";
 
 @unfreezed
 class EIrsaliyeBilgiModel with _$EIrsaliyeBilgiModel, NetworkManagerMixin {
-  EIrsaliyeBilgiModel._();
   factory EIrsaliyeBilgiModel({
     String? dorsePlaka1,
     String? dorsePlaka2,
@@ -34,6 +33,7 @@ class EIrsaliyeBilgiModel with _$EIrsaliyeBilgiModel, NetworkManagerMixin {
     String? tasiyiciVkn,
     String? sablonKodu,
   }) = _EIrsaliyeBilgiModel;
+  EIrsaliyeBilgiModel._();
 
   factory EIrsaliyeBilgiModel.fromJson(Map<String, dynamic> json) => _$EIrsaliyeBilgiModelFromJson(json);
 

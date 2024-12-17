@@ -7,7 +7,6 @@ part "kasa_islemleri_model.g.dart";
 
 @unfreezed
 class KasaIslemleriModel with _$KasaIslemleriModel, NetworkManagerMixin {
-  KasaIslemleriModel._();
   factory KasaIslemleriModel({
     int? inckeyno,
     int? caharInckeyno,
@@ -41,6 +40,7 @@ class KasaIslemleriModel with _$KasaIslemleriModel, NetworkManagerMixin {
     double? kdvOrani,
     String? dovizAdi,
   }) = _KasaIslemleriModel;
+  KasaIslemleriModel._();
 
   factory KasaIslemleriModel.fromJson(Map<String, dynamic> json) => _$KasaIslemleriModelFromJson(json);
 

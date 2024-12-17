@@ -10,7 +10,6 @@ part "save_cek_senet_model.g.dart";
 
 @unfreezed
 class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
-  SaveCekSenetModel._();
   factory SaveCekSenetModel({
     String? belgeTipi,
     String? cariAdi,
@@ -35,6 +34,7 @@ class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
     bool? tahsilatmi,
     double? tutar,
   }) = _SaveCekSenetModel;
+  SaveCekSenetModel._();
 
   factory SaveCekSenetModel.fromJson(Map<String, dynamic> json) => _$SaveCekSenetModelFromJson(json);
 

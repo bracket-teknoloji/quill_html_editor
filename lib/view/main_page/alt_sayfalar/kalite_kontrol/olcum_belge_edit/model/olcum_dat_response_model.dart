@@ -7,7 +7,6 @@ part "olcum_dat_response_model.g.dart";
 
 @freezed
 class OlcumDatResponseModel with _$OlcumDatResponseModel, NetworkManagerMixin {
-  const OlcumDatResponseModel._();
   const factory OlcumDatResponseModel({
     String? girisDepo,
     String? cikisDepo,
@@ -15,6 +14,7 @@ class OlcumDatResponseModel with _$OlcumDatResponseModel, NetworkManagerMixin {
     String? seriNo,
     double? miktar,
   }) = _OlcumDatResponseModel;
+  const OlcumDatResponseModel._();
 
   factory OlcumDatResponseModel.fromJson(Map<String, dynamic> json) => _$OlcumDatResponseModelFromJson(json);
 

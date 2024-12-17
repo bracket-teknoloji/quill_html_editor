@@ -7,7 +7,6 @@ part "belge_rehberi_model.g.dart";
 
 @freezed
 class BelgeRehberiModel with _$BelgeRehberiModel, NetworkManagerMixin {
-  BelgeRehberiModel._();
   factory BelgeRehberiModel({
     String? belgeNo,
     String? belgeTipi,
@@ -18,6 +17,7 @@ class BelgeRehberiModel with _$BelgeRehberiModel, NetworkManagerMixin {
     String? depoTanimi,
     double? kalemSayisi,
   }) = _BelgeRehberiModel;
+  BelgeRehberiModel._();
 
   factory BelgeRehberiModel.fromJson(Map<String, dynamic> json) => _$BelgeRehberiModelFromJson(json);
 

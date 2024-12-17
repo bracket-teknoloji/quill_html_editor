@@ -8,7 +8,6 @@ part "is_emirleri_model.g.dart";
 
 @unfreezed
 class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin {
-  IsEmirleriModel._();
   factory IsEmirleriModel({
     DateTime? tarih,
     DateTime? teslimTarihi,
@@ -37,6 +36,7 @@ class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin
     String? aciklama,
     double? tamamlanan,
   }) = _IsEmirleriModel;
+  IsEmirleriModel._();
 
   factory IsEmirleriModel.fromJson(Map<String, dynamic> json) => _$IsEmirleriModelFromJson(json);
 

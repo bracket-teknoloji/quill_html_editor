@@ -9,7 +9,6 @@ part "cari_listesi_request_model.g.dart";
 
 @freezed
 class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixin {
-  CariListesiRequestModel._();
   @JsonSerializable(fieldRename: FieldRename.pascal, createToJson: true)
   factory CariListesiRequestModel({
     bool? eFaturaGoster,
@@ -41,6 +40,7 @@ class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixi
     String? siparisKarsilanmaDurumu,
     String? searchText,
   }) = _CariListesiRequestModel;
+  CariListesiRequestModel._();
 
   factory CariListesiRequestModel.fromJson(Map<String, dynamic> json) => _$CariListesiRequestModelFromJson(json);
 

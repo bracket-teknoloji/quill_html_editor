@@ -7,11 +7,11 @@ part "masraf_kodu_rehberi_model.g.dart";
 
 @unfreezed
 class MasrafKoduRehberiModel with _$MasrafKoduRehberiModel, NetworkManagerMixin {
-  MasrafKoduRehberiModel._();
   factory MasrafKoduRehberiModel({
     String? masrafKodu,
     String? masrafAdi,
   }) = _MasrafKoduRehberiModel;
+  MasrafKoduRehberiModel._();
 
   factory MasrafKoduRehberiModel.fromJson(Map<String, dynamic> json) => _$MasrafKoduRehberiModelFromJson(json);
 

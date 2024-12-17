@@ -7,7 +7,6 @@ part "banka_sozlesmesi_model.g.dart";
 
 @unfreezed
 class BankaSozlesmesiModel with _$BankaSozlesmesiModel, NetworkManagerMixin {
-  BankaSozlesmesiModel._();
   factory BankaSozlesmesiModel({
     String? sozlesmeKodu,
     String? sozlesmeAdi,
@@ -16,6 +15,7 @@ class BankaSozlesmesiModel with _$BankaSozlesmesiModel, NetworkManagerMixin {
     DateTime? baslamaTarihi,
     DateTime? bitisTarihi,
   }) = _BankaSozlesmesiModel;
+  BankaSozlesmesiModel._();
 
   factory BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) => _$BankaSozlesmesiModelFromJson(json);
 

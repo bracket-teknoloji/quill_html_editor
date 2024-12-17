@@ -9,7 +9,6 @@ part "uretim_sonu_kaydi_edit_model.g.dart";
 
 @unfreezed
 class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMixin {
-  UretimSonuKaydiEditModel._();
   factory UretimSonuKaydiEditModel({
     String? belgeNo,
     DateTime? belgeTarihi,
@@ -28,6 +27,7 @@ class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMi
     String? tarih,
     @JsonKey(name: "_YeniKayit") bool? yeniKayit,
   }) = _UretimSonuKaydiEditModel;
+  UretimSonuKaydiEditModel._();
 
   factory UretimSonuKaydiEditModel.fromJson(Map<String, dynamic> json) => _$UretimSonuKaydiEditModelFromJson(json);
 
@@ -39,12 +39,12 @@ class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMi
 
 @unfreezed
 class EkAlanlar with _$EkAlanlar {
-  EkAlanlar._();
   factory EkAlanlar({
     String? ktAlan1,
     String? ktAlan3,
     String? ktAlan4,
   }) = _EkAlanlar;
+  EkAlanlar._();
 
   factory EkAlanlar.fromJson(Map<String, dynamic> json) => _$EkAlanlarFromJson(json);
 

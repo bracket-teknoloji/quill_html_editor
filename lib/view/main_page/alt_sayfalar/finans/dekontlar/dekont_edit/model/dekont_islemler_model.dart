@@ -7,7 +7,6 @@ part "dekont_islemler_model.g.dart";
 
 @unfreezed
 class DekontIslemlerModel with _$DekontIslemlerModel, NetworkManagerMixin {
-  DekontIslemlerModel._();
   factory DekontIslemlerModel({
     int? inckeyno,
     DateTime? tarih,
@@ -31,6 +30,7 @@ class DekontIslemlerModel with _$DekontIslemlerModel, NetworkManagerMixin {
     int? exportTipi,
     String? muhasebeHesapTipi,
   }) = _DekontIslemlerModel;
+  DekontIslemlerModel._();
 
   factory DekontIslemlerModel.fromJson(Map<String, dynamic> json) => _$DekontIslemlerModelFromJson(json);
 

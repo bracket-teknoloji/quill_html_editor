@@ -7,7 +7,6 @@ part "tcmb_bankalar_model.g.dart";
 
 @unfreezed
 class TcmbBankalarModel with _$TcmbBankalarModel, NetworkManagerMixin {
-  TcmbBankalarModel._();
   factory TcmbBankalarModel({
     String? bankakodu,
     String? bankaadi,
@@ -15,6 +14,7 @@ class TcmbBankalarModel with _$TcmbBankalarModel, NetworkManagerMixin {
     String? subeadi,
     String? sehiradi,
   }) = _TcmbBankalarModel;
+  TcmbBankalarModel._();
 
   factory TcmbBankalarModel.fromJson(Map<String, dynamic> json) => _$TcmbBankalarModelFromJson(json);
 

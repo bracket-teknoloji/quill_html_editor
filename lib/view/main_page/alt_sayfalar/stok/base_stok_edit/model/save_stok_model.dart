@@ -8,9 +8,9 @@ part "save_stok_model.g.dart";
 
 @JsonSerializable(explicitToJson: true)
 class SaveStokModel with NetworkManagerMixin {
+  SaveStokModel();
 
   SaveStokModel._init();
-  SaveStokModel();
 
   factory SaveStokModel.forDeleteBarkodModel(BarkodTanimlaKayitlariModel model) => SaveStokModel()
     ..stokBarkodModel = model

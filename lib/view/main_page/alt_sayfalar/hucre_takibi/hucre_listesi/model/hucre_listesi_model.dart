@@ -7,7 +7,6 @@ part "hucre_listesi_model.g.dart";
 
 @freezed
 class HucreListesiModel with _$HucreListesiModel, NetworkManagerMixin {
-  HucreListesiModel._();
   factory HucreListesiModel({
     String? hucreKodu,
     int? depoKodu,
@@ -18,6 +17,7 @@ class HucreListesiModel with _$HucreListesiModel, NetworkManagerMixin {
     String? stokKodu,
     String? stokAdi,
   }) = _HucreListesiModel;
+  HucreListesiModel._();
 
   factory HucreListesiModel.fromJson(Map<String, dynamic> json) => _$HucreListesiModelFromJson(json);
 

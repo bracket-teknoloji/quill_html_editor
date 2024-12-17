@@ -7,7 +7,6 @@ part "surum_yenilikleri_model.g.dart";
 
 @unfreezed
 class SurumYenilikleriModel with _$SurumYenilikleriModel, NetworkManagerMixin {
-  SurumYenilikleriModel._();
   factory SurumYenilikleriModel({
     int? surumKodu,
     String? versiyon,
@@ -17,6 +16,7 @@ class SurumYenilikleriModel with _$SurumYenilikleriModel, NetworkManagerMixin {
     List<String>? listAciklama,
     DateTime? tarih,
   }) = _SurumYenilikleriModel;
+  SurumYenilikleriModel._();
 
   factory SurumYenilikleriModel.fromJson(Map<String, dynamic> json) => _$SurumYenilikleriModelFromJson(json);
 

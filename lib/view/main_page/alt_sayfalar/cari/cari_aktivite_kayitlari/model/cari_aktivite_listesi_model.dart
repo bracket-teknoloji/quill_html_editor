@@ -8,12 +8,6 @@ part "cari_aktivite_listesi_model.g.dart";
 
 @unfreezed
 class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMixin {
-
-  factory CariAktiviteListesiModel.fromCariListesiModel(CariListesiModel? model) => CariAktiviteListesiModel(
-        cariAdi: model?.cariAdi,
-        cariKodu: model?.cariKodu,
-      );
-  CariAktiviteListesiModel._();
   factory CariAktiviteListesiModel({
     int? id,
     int? islemKodu,
@@ -39,6 +33,12 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
     @JsonKey(includeToJson: false) bool? aktiviteBitirilsin,
     List<CariAktiviteListesiModel>? listDetay,
   }) = _CariAktiviteListesiModel;
+
+  factory CariAktiviteListesiModel.fromCariListesiModel(CariListesiModel? model) => CariAktiviteListesiModel(
+        cariAdi: model?.cariAdi,
+        cariKodu: model?.cariKodu,
+      );
+  CariAktiviteListesiModel._();
 
   factory CariAktiviteListesiModel.fromJson(Map<String, dynamic> json) => _$CariAktiviteListesiModelFromJson(json);
 

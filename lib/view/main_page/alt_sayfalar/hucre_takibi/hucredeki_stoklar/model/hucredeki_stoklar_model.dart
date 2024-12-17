@@ -8,7 +8,6 @@ part "hucredeki_stoklar_model.g.dart";
 
 @freezed
 class HucredekiStoklarModel with _$HucredekiStoklarModel, NetworkManagerMixin, BaseStokMixin {
-  HucredekiStoklarModel._();
   factory HucredekiStoklarModel({
     String? hucreKodu,
     int? depoKodu,
@@ -21,6 +20,7 @@ class HucredekiStoklarModel with _$HucredekiStoklarModel, NetworkManagerMixin, B
     double? miktar,
     String? olcuBirimi,
   }) = _HucredekiStoklarModel;
+  HucredekiStoklarModel._();
 
   factory HucredekiStoklarModel.fromJson(Map<String, dynamic> json) => _$HucredekiStoklarModelFromJson(json);
 

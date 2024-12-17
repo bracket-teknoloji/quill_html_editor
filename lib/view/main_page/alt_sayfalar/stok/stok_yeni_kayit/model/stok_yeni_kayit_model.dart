@@ -38,7 +38,6 @@ part "stok_yeni_kayit_model.g.dart";
 
 @unfreezed
 class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
-  StokYeniKayitModel._();
   factory StokYeniKayitModel({
     String? aciklama,
     String? belgeNo,
@@ -63,6 +62,7 @@ class StokYeniKayitModel with _$StokYeniKayitModel, NetworkManagerMixin {
     int? dovizTipi,
     @JsonKey(name: "_YeniKayit") bool? yeniKayit,
   }) = _StokYeniKayitModel;
+  StokYeniKayitModel._();
 
   factory StokYeniKayitModel.fromJson(Map<String, dynamic> json) => _$StokYeniKayitModelFromJson(json);
 

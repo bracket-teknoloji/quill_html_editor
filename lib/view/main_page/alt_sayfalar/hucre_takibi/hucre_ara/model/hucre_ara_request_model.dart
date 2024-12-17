@@ -7,7 +7,6 @@ part "hucre_ara_request_model.g.dart";
 
 @unfreezed
 class HucreAraRequestModel with _$HucreAraRequestModel, NetworkManagerMixin {
-  HucreAraRequestModel._();
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory HucreAraRequestModel({
     String? barkod,
@@ -16,6 +15,7 @@ class HucreAraRequestModel with _$HucreAraRequestModel, NetworkManagerMixin {
     Map<String, double>? hucreMiktarArray,
     String? menuKodu,
   }) = _HucreAraRequestModel;
+  HucreAraRequestModel._();
 
   factory HucreAraRequestModel.fromJson(Map<String, dynamic> json) => _$HucreAraRequestModelFromJson(json);
 

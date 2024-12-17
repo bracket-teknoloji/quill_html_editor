@@ -7,7 +7,6 @@ part "ek_alanlar_model.g.dart";
 
 @unfreezed
 class EkAlanlarModel with _$EkAlanlarModel, NetworkManagerMixin {
-  EkAlanlarModel._();
   factory EkAlanlarModel({
     String? tabloAdi,
     String? alanKodu,
@@ -21,6 +20,7 @@ class EkAlanlarModel with _$EkAlanlarModel, NetworkManagerMixin {
     @JsonKey(name: "SecimListesi") List<String>? secimListesi,
     String? ondeger,
   }) = _EkAlanlarModel;
+  EkAlanlarModel._();
 
   factory EkAlanlarModel.fromJson(Map<String, dynamic> json) => _$EkAlanlarModelFromJson(json);
 

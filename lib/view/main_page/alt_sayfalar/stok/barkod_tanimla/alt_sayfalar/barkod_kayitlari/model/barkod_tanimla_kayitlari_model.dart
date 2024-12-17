@@ -7,7 +7,6 @@ part "barkod_tanimla_kayitlari_model.g.dart";
 
 @freezed
 class BarkodTanimlaKayitlariModel with _$BarkodTanimlaKayitlariModel, NetworkManagerMixin {
-  BarkodTanimlaKayitlariModel._();
 
   factory BarkodTanimlaKayitlariModel({
     String? stokKodu,
@@ -22,6 +21,7 @@ class BarkodTanimlaKayitlariModel with _$BarkodTanimlaKayitlariModel, NetworkMan
     double? birimPayda,
     String? stokBirim1Adi,
   }) = _BarkodTanimlaKayitlariModel;
+  BarkodTanimlaKayitlariModel._();
 
   factory BarkodTanimlaKayitlariModel.fromJson(Map<String, dynamic> json) => _$BarkodTanimlaKayitlariModelFromJson(json);
 

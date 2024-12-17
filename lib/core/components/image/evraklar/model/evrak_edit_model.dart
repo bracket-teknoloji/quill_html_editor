@@ -5,7 +5,6 @@ part "evrak_edit_model.g.dart";
 
 @unfreezed
 class EvrakEditModel with _$EvrakEditModel {
-  EvrakEditModel._();
   factory EvrakEditModel({
     String? aciklama,
     String? base64Data,
@@ -14,6 +13,7 @@ class EvrakEditModel with _$EvrakEditModel {
     int? boyutByte,
     int? islemKodu,
   }) = _EvrakEditModel;
+  EvrakEditModel._();
 
   factory EvrakEditModel.fromJson(Map<String, dynamic> json) => _$EvrakEditModelFromJson(json);
 }

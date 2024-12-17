@@ -10,17 +10,6 @@ part "dekont_islemler_request_model.g.dart";
 
 @unfreezed
 class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManagerMixin {
-
-  factory DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(List<DekontDuzenleRequestModel> list) => DekontIslemlerRequestModel(
-        plasiyerKodu: list.firstOrNull?.plasiyerKodu,
-        tarih: list.firstOrNull?.tarih,
-        dekontSeri: list.firstOrNull?.seriNo,
-        plasiyerAdi: list.firstOrNull?.plasiyerAciklama,
-        seriAdi: list.firstOrNull?.seriNo,
-        dekontNo: list.firstOrNull?.dekontNo,
-        kalemler: list.map(DekontKalemler.fromDekontDuzenleModel).toList(),
-      );
-  DekontIslemlerRequestModel._();
   // factory DekontIslemlerRequestModel.singleton();
   factory DekontIslemlerRequestModel({
     String? dekontIslemTuru,
@@ -37,6 +26,17 @@ class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManag
     @JsonKey(includeFromJson: false, includeToJson: false) String? plasiyerAdi,
     @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
   }) = _DekontIslemlerRequestModel;
+
+  factory DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(List<DekontDuzenleRequestModel> list) => DekontIslemlerRequestModel(
+        plasiyerKodu: list.firstOrNull?.plasiyerKodu,
+        tarih: list.firstOrNull?.tarih,
+        dekontSeri: list.firstOrNull?.seriNo,
+        plasiyerAdi: list.firstOrNull?.plasiyerAciklama,
+        seriAdi: list.firstOrNull?.seriNo,
+        dekontNo: list.firstOrNull?.dekontNo,
+        kalemler: list.map(DekontKalemler.fromDekontDuzenleModel).toList(),
+      );
+  DekontIslemlerRequestModel._();
 
   factory DekontIslemlerRequestModel.fromJson(Map<String, dynamic> json) => _$DekontIslemlerRequestModelFromJson(json);
 

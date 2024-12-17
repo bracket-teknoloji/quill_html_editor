@@ -7,7 +7,6 @@ part "depo_bakiye_durumu_model.g.dart";
 
 @freezed
 class DepoBakiyeDurumuModel with _$DepoBakiyeDurumuModel, NetworkManagerMixin {
-  const DepoBakiyeDurumuModel._();
   const factory DepoBakiyeDurumuModel({
     int? subeKodu,
     int? depoKodu,
@@ -19,6 +18,7 @@ class DepoBakiyeDurumuModel with _$DepoBakiyeDurumuModel, NetworkManagerMixin {
     String? stokAdi,
     String? depoAdi,
   }) = _DepoBakiyeDurumuModel;
+  const DepoBakiyeDurumuModel._();
 
   factory DepoBakiyeDurumuModel.fromJson(Map<String, dynamic> json) => _$DepoBakiyeDurumuModelFromJson(json);
 

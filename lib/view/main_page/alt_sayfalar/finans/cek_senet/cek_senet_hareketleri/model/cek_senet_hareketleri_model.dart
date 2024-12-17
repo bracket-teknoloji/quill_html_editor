@@ -7,7 +7,6 @@ part "cek_senet_hareketleri_model.g.dart";
 
 @unfreezed
 class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkManagerMixin {
-  CekSenetHareketleriModel._();
   factory CekSenetHareketleriModel({
     int? inckeyno,
     String? belgeTipi,
@@ -24,6 +23,7 @@ class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkManagerMi
     String? kayityapankul,
     String? kayittarihi,
   }) = _CekSenetHareketleriModel;
+  CekSenetHareketleriModel._();
 
   factory CekSenetHareketleriModel.fromJson(Map<String, dynamic> json) => _$CekSenetHareketleriModelFromJson(json);
 

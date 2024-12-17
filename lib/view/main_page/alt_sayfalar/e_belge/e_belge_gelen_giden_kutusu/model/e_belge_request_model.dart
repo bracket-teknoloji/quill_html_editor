@@ -5,7 +5,6 @@ part "e_belge_request_model.g.dart";
 
 @unfreezed
 class EBelgeRequestModel with _$EBelgeRequestModel {
-  EBelgeRequestModel._();
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory EBelgeRequestModel({
     String? basimDurumu,
@@ -25,6 +24,7 @@ class EBelgeRequestModel with _$EBelgeRequestModel {
     String? taslak,
     String? resmiBelgeNo,
   }) = _EBelgeRequestModel;
+  EBelgeRequestModel._();
 
   factory EBelgeRequestModel.fromJson(Map<String, dynamic> json) => _$EBelgeRequestModelFromJson(json);
 

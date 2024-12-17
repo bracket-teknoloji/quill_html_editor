@@ -7,7 +7,6 @@ part "hucre_hareketleri_model.g.dart";
 
 @freezed
 class HucreHareketleriModel with _$HucreHareketleriModel, NetworkManagerMixin {
-  HucreHareketleriModel._();
   factory HucreHareketleriModel({
     int? inckeyno,
     String? stokKodu,
@@ -30,6 +29,7 @@ class HucreHareketleriModel with _$HucreHareketleriModel, NetworkManagerMixin {
     int? stharInc,
     String? yapkod,
   }) = _HucreHareketleriModel;
+  HucreHareketleriModel._();
 
   factory HucreHareketleriModel.fromJson(Map<String, dynamic> json) => _$HucreHareketleriModelFromJson(json);
 

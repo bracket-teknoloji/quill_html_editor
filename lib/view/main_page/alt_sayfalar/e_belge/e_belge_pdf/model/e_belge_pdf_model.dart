@@ -7,11 +7,11 @@ part "e_belge_pdf_model.g.dart";
 
 @unfreezed
 class EBelgePdfModel with _$EBelgePdfModel, NetworkManagerMixin {
-  EBelgePdfModel._();
   factory EBelgePdfModel({
     int? islemKodu,
     @JsonKey(name: "FileModel") FileModel? fileModel,
   }) = _EBelgePdfModel;
+  EBelgePdfModel._();
 
   factory EBelgePdfModel.fromJson(Map<String, dynamic> json) => _$EBelgePdfModelFromJson(json);
 

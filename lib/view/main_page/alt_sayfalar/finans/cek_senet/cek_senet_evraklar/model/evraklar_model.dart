@@ -7,7 +7,6 @@ part "evraklar_model.g.dart";
 
 @unfreezed
 class EvraklarModel with _$EvraklarModel, NetworkManagerMixin {
-  EvraklarModel._();
   factory EvraklarModel({
     int? id,
     String? belgeNo,
@@ -18,6 +17,7 @@ class EvraklarModel with _$EvraklarModel, NetworkManagerMixin {
     int? boyutByte,
     int? islemKodu,
   }) = _EvraklarModel;
+  EvraklarModel._();
 
   factory EvraklarModel.fromJson(Map<String, dynamic> json) => _$EvraklarModelFromJson(json);
 

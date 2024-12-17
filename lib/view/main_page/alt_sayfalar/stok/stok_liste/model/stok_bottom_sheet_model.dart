@@ -10,16 +10,6 @@ part "stok_bottom_sheet_model.g.dart";
 
 @unfreezed
 class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
-
-  factory StokBottomSheetModel.fromSayimFiltreModel(SayimFiltreModel model) => StokBottomSheetModel(
-        arrGrupKodu: model.arrGrupKodu?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
-        arrKod1: model.arrKod1?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
-        arrKod2: model.arrKod2?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
-        arrKod3: model.arrKod3?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
-        arrKod4: model.arrKod4?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
-        arrKod5: model.arrKod5?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
-      );
-  StokBottomSheetModel._();
   @JsonSerializable(fieldRename: FieldRename.pascal)
   factory StokBottomSheetModel({
     int? sayfa,
@@ -48,6 +38,16 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
     @Default([]) List<BaseGrupKoduModel>? arrKod5,
     bool? receteliStoklar,
   }) = _StokBottomSheetModel;
+
+  factory StokBottomSheetModel.fromSayimFiltreModel(SayimFiltreModel model) => StokBottomSheetModel(
+        arrGrupKodu: model.arrGrupKodu?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod1: model.arrKod1?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod2: model.arrKod2?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod3: model.arrKod3?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod4: model.arrKod4?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+        arrKod5: model.arrKod5?.map((e) => BaseGrupKoduModel(grupKodu: e)).toList(),
+      );
+  StokBottomSheetModel._();
 
   factory StokBottomSheetModel.fromJson(Map<String, dynamic> json) => _$StokBottomSheetModelFromJson(json);
 

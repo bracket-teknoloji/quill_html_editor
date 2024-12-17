@@ -10,7 +10,6 @@ part "edit_fatura_model.g.dart";
 
 @unfreezed
 class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
-  EditFaturaModel._();
 
   factory EditFaturaModel({
     @JsonKey(name: "BelgeTipi") int? belgeTipi,
@@ -33,6 +32,7 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
     String? resmiBelgeNo,
     DateTime? tarih,
   }) = _EditFaturaModel;
+  EditFaturaModel._();
 
   factory EditFaturaModel.fromJson(Map<String, Object?> json) => _$EditFaturaModelFromJson(json);
 

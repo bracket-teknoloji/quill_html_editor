@@ -7,7 +7,6 @@ part "stok_fiyat_ozeti_model.g.dart";
 
 @freezed
 class StokFiyatOzetiModel with _$StokFiyatOzetiModel, NetworkManagerMixin {
-  const StokFiyatOzetiModel._();
   const factory StokFiyatOzetiModel({
     int? sira,
     String? grup,
@@ -22,6 +21,7 @@ class StokFiyatOzetiModel with _$StokFiyatOzetiModel, NetworkManagerMixin {
     int? brutFiyat,
     int? brutDovizFiyati,
   }) = _StokFiyatOzetiModel;
+  const StokFiyatOzetiModel._();
 
   factory StokFiyatOzetiModel.fromJson(Map<String, dynamic> json) => _$StokFiyatOzetiModelFromJson(json);
 

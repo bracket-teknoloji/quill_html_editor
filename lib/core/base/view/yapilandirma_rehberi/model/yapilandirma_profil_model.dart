@@ -8,13 +8,13 @@ part "yapilandirma_profil_model.g.dart";
 
 @unfreezed
 class YapilandirmaProfilModel with _$YapilandirmaProfilModel, NetworkManagerMixin {
-  YapilandirmaProfilModel._();
   factory YapilandirmaProfilModel({
     int? sira,
     String? ozellikKodu,
     String? aciklama,
     List<YapilandirmaRehberiModel?>? deger,
   }) = _YapilandirmaProfilModel;
+  YapilandirmaProfilModel._();
 
   factory YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) => _$YapilandirmaProfilModelFromJson(json);
 

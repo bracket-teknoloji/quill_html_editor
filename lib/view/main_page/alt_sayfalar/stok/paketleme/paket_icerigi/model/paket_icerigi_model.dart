@@ -7,7 +7,6 @@ part "paket_icerigi_model.g.dart";
 
 @freezed
 class PaketIcerigiModel with _$PaketIcerigiModel, NetworkManagerMixin {
-  PaketIcerigiModel._();
   factory PaketIcerigiModel({
     int? id,
     int? paketId,
@@ -23,6 +22,7 @@ class PaketIcerigiModel with _$PaketIcerigiModel, NetworkManagerMixin {
     String? seriCikistaOtomatik,
     List<SeriList>? seriList,
   }) = _PaketIcerigiModel;
+  PaketIcerigiModel._();
 
   factory PaketIcerigiModel.fromJson(Map<String, dynamic> json) => _$PaketIcerigiModelFromJson(json);
 

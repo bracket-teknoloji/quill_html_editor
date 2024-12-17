@@ -7,11 +7,11 @@ part "muhasebe_referans_model.g.dart";
 
 @unfreezed
 class MuhasebeReferansModel with _$MuhasebeReferansModel, NetworkManagerMixin {
-  MuhasebeReferansModel._();
   factory MuhasebeReferansModel({
     String? kodu,
     String? tanimi,
   }) = _MuhasebeReferansModel;
+  MuhasebeReferansModel._();
 
   factory MuhasebeReferansModel.fromJson(Map<String, dynamic> json) => _$MuhasebeReferansModelFromJson(json);
 

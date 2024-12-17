@@ -7,7 +7,6 @@ part "seri_hareketleri_model.g.dart";
 
 @unfreezed
 class SeriHareketleriModel with _$SeriHareketleriModel, NetworkManagerMixin {
-  SeriHareketleriModel._();
   factory SeriHareketleriModel({
     String? stokKodu,
     String? stokAdi,
@@ -33,6 +32,7 @@ class SeriHareketleriModel with _$SeriHareketleriModel, NetworkManagerMixin {
     int? requestVersion,
     String? seri2,
   }) = _SeriHareketleriModel;
+  SeriHareketleriModel._();
 
   factory SeriHareketleriModel.fromJson(Map<String, dynamic> json) => _$SeriHareketleriModelFromJson(json);
 

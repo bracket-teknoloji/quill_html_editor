@@ -9,7 +9,6 @@ part "tahsilat_request_model.g.dart";
 
 @unfreezed
 class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
-  TahsilatRequestModel._();
   factory TahsilatRequestModel({
     String? aciklama,
     String? belgeNo,
@@ -58,6 +57,7 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     double? tahsilatBakiye,
     double? odemeBakiye,
   }) = _TahsilatRequestModel;
+  TahsilatRequestModel._();
 
   factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
 
@@ -74,34 +74,6 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
 
 @unfreezed
 class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
-
-  factory DekontKalemler.fromDekontDuzenleModel(DekontDuzenleRequestModel model) => DekontKalemler(
-        aciklama: model.aciklama,
-        ba: model.ba,
-        dovizTipi: model.dovizTipi,
-        dovizTutari: model.dovizTutari,
-        exportTipi: model.exportTipi != 0 ? model.exportTipi : null,
-        hesapKodu: model.hesapKodu,
-        hesapTipi: model.hesapTipi,
-        plasiyerKodu: model.plasiyerKodu,
-        tarih: model.tarih,
-        kalemAdi: model.hesapAdi,
-        tutar: model.tutar,
-        depoKodu: model.depoKodu,
-        inckeyno: model.inckeyno,
-        seriNo: model.seriNo,
-        dekontNo: model.dekontNo,
-        siraNo: model.siraNo,
-        hesapTipiAciklama: model.hesapTipiAciklama,
-        hesapAdi: model.hesapAdi,
-        dovizAdi: model.dovizAdi,
-        plasiyerAciklama: model.plasiyerAciklama,
-        muhasebeHesapTipi: model.muhasebeHesapTipi,
-        belgeNo: model.belgeNo,
-        plasiyerAdi: model.plasiyerAciklama,
-        dovizTipiAdi: model.dovizAdi,
-      );
-  DekontKalemler._();
   factory DekontKalemler({
     String? aciklama,
     String? belgeNo,
@@ -144,6 +116,34 @@ class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
     int? vadeGunu,
     bool? yeniKayit,
   }) = _DekontKalemler;
+
+  factory DekontKalemler.fromDekontDuzenleModel(DekontDuzenleRequestModel model) => DekontKalemler(
+        aciklama: model.aciklama,
+        ba: model.ba,
+        dovizTipi: model.dovizTipi,
+        dovizTutari: model.dovizTutari,
+        exportTipi: model.exportTipi != 0 ? model.exportTipi : null,
+        hesapKodu: model.hesapKodu,
+        hesapTipi: model.hesapTipi,
+        plasiyerKodu: model.plasiyerKodu,
+        tarih: model.tarih,
+        kalemAdi: model.hesapAdi,
+        tutar: model.tutar,
+        depoKodu: model.depoKodu,
+        inckeyno: model.inckeyno,
+        seriNo: model.seriNo,
+        dekontNo: model.dekontNo,
+        siraNo: model.siraNo,
+        hesapTipiAciklama: model.hesapTipiAciklama,
+        hesapAdi: model.hesapAdi,
+        dovizAdi: model.dovizAdi,
+        plasiyerAciklama: model.plasiyerAciklama,
+        muhasebeHesapTipi: model.muhasebeHesapTipi,
+        belgeNo: model.belgeNo,
+        plasiyerAdi: model.plasiyerAciklama,
+        dovizTipiAdi: model.dovizAdi,
+      );
+  DekontKalemler._();
 
   factory DekontKalemler.fromJson(Map<String, dynamic> json) => _$DekontKalemlerFromJson(json);
 

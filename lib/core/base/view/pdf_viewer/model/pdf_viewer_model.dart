@@ -7,7 +7,6 @@ part "pdf_viewer_model.g.dart";
 
 @unfreezed
 abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
-  PdfModel._();
   @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
   factory PdfModel({
     String? raporOzelKod,
@@ -17,6 +16,7 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
     int? dizaynId,
     int? etiketSayisi,
   }) = _PdfModel;
+  PdfModel._();
   // String? raporOzelKod;
   // bool? standart;
   // int? dizaynId;

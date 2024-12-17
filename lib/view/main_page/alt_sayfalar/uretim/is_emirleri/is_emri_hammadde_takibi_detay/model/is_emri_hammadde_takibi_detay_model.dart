@@ -7,13 +7,13 @@ part "is_emri_hammadde_takibi_detay_model.g.dart";
 
 @unfreezed
 class IsEmriHammaddeTakibiDetayModel with _$IsEmriHammaddeTakibiDetayModel, NetworkManagerMixin {
-  IsEmriHammaddeTakibiDetayModel._();
   factory IsEmriHammaddeTakibiDetayModel({
     String? hamKodu,
     String? hamAdi,
     int? miktar,
     List<Referanslar>? referanslar,
   }) = _IsEmriHammaddeTakibiDetayModel;
+  IsEmriHammaddeTakibiDetayModel._();
 
   factory IsEmriHammaddeTakibiDetayModel.fromJson(Map<String, dynamic> json) => _$IsEmriHammaddeTakibiDetayModelFromJson(json);
 

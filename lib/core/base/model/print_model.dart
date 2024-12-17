@@ -8,7 +8,6 @@ part "print_model.g.dart";
 
 @freezed
 class PrintModel with _$PrintModel, NetworkManagerMixin {
-  PrintModel._();
   factory PrintModel({
     required String raporOzelKod, int? dizaynId,
     int? etiketSayisi,
@@ -18,6 +17,7 @@ class PrintModel with _$PrintModel, NetworkManagerMixin {
     DicParams? dicParams,
     bool? standart,
   }) = _PrintModel;
+  PrintModel._();
 
   factory PrintModel.fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);
 

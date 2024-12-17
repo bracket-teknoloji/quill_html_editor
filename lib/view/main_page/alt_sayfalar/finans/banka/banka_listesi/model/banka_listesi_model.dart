@@ -8,7 +8,6 @@ part "banka_listesi_model.g.dart";
 
 @unfreezed
 class BankaListesiModel with _$BankaListesiModel, NetworkManagerMixin {
-  BankaListesiModel._();
   factory BankaListesiModel({
     String? bankaKodu,
     String? bankasubeKodu,
@@ -30,6 +29,7 @@ class BankaListesiModel with _$BankaListesiModel, NetworkManagerMixin {
     String? subeAdi,
     String? baglihesapKodu,
   }) = _BankaListesiModel;
+  BankaListesiModel._();
 
   factory BankaListesiModel.fromJson(Map<String, dynamic> json) => _$BankaListesiModelFromJson(json);
 

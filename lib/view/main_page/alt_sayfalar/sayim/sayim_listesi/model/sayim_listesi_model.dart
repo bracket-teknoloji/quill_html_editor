@@ -11,7 +11,6 @@ part "sayim_listesi_model.g.dart";
 
 @unfreezed
 class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
-  SayimListesiModel._();
   factory SayimListesiModel({
     String? fisno,
     DateTime? baslangicTarihi,
@@ -45,6 +44,7 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
     DateTime? sonKullanmaTarihi,
     StokListesiModel? stokModel,
   }) = _SayimListesiModel;
+  SayimListesiModel._();
 
   factory SayimListesiModel.fromJson(Map<String, dynamic> json) => _$SayimListesiModelFromJson(json);
 
@@ -54,7 +54,6 @@ class SayimListesiModel with _$SayimListesiModel, NetworkManagerMixin {
 
 @unfreezed
 class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin, BaseStokMixin {
-  SayimFiltreModel._();
   factory SayimFiltreModel({
     @JsonKey(name: "ArrGrupKodu") List<String>? arrGrupKodu,
     int? depoKodu,
@@ -86,6 +85,7 @@ class SayimFiltreModel with _$SayimFiltreModel, NetworkManagerMixin, BaseStokMix
     DateTime? kayittarihi,
     @Default(false) @JsonKey(includeFromJson: false, includeToJson: false) bool? duzenleMi,
   }) = _SayimFiltreModel;
+  SayimFiltreModel._();
 
   factory SayimFiltreModel.fromJson(Map<String, dynamic> json) => _$SayimFiltreModelFromJson(json);
 

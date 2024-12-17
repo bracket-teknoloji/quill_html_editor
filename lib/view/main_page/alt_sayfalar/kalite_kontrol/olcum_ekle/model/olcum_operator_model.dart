@@ -7,7 +7,6 @@ part "olcum_operator_model.g.dart";
 
 @unfreezed
 class OlcumOperatorModel with _$OlcumOperatorModel, NetworkManagerMixin {
-  OlcumOperatorModel._();
   factory OlcumOperatorModel({
     int? id,
     String? isyeri,
@@ -22,6 +21,7 @@ class OlcumOperatorModel with _$OlcumOperatorModel, NetworkManagerMixin {
     String? kartid,
     String? resim,
   }) = _OlcumOperatorModel;
+  OlcumOperatorModel._();
 
   factory OlcumOperatorModel.fromJson(Map<String, dynamic> json) => _$OlcumOperatorModelFromJson(json);
 

@@ -15,9 +15,9 @@ import "yetki_model.dart";
 
 final class YetkiController {
 
-  YetkiController._internal();
-
   factory YetkiController() => _singleton;
+
+  YetkiController._internal();
   //* Singleton
   static final YetkiController _singleton = YetkiController._internal();
 

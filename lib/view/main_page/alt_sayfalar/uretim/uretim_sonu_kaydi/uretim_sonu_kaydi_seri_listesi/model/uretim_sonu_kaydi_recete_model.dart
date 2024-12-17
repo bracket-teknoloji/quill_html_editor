@@ -11,7 +11,6 @@ part "uretim_sonu_kaydi_recete_model.g.dart";
 
 @unfreezed
 class UskReceteModel with _$UskReceteModel, NetworkManagerMixin, BaseStokMixin {
-  UskReceteModel._();
   factory UskReceteModel({
     String? mamulKodu,
     String? stokKodu,
@@ -29,6 +28,7 @@ class UskReceteModel with _$UskReceteModel, NetworkManagerMixin, BaseStokMixin {
     List<SeriList>? seriList,
     String? giristeSeri,
   }) = _UskReceteModel;
+  UskReceteModel._();
 
   factory UskReceteModel.fromJson(Map<String, dynamic> json) => _$UskReceteModelFromJson(json);
 

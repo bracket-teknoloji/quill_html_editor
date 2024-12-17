@@ -8,7 +8,6 @@ part "talep_teklif_listesi_model.g.dart";
 
 @unfreezed
 class TalepTeklifListesiModel with _$TalepTeklifListesiModel, NetworkManagerMixin {
-  TalepTeklifListesiModel._();
   factory TalepTeklifListesiModel({
     bool? cariDovizli,
     DateTime? kayittarihi,
@@ -85,6 +84,7 @@ class TalepTeklifListesiModel with _$TalepTeklifListesiModel, NetworkManagerMixi
     int? islemKodu,
     @Default("FaturaModel") String? tag,
   }) = _TalepTeklifListesiModel;
+  TalepTeklifListesiModel._();
 
   factory TalepTeklifListesiModel.fromJson(Map<String, dynamic> json) => _$TalepTeklifListesiModelFromJson(json);
 

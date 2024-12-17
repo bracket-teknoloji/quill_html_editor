@@ -6,9 +6,9 @@ part "profil_yetki_model.g.dart";
 
 @JsonSerializable(createFactory: true)
 class ProfilYetkiModel {
+  ProfilYetkiModel();
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
-  ProfilYetkiModel();
   @JsonKey(name: "yazdirma_SatisIrs_Yazicilari")
   List<String>? yazdirmaSatisIrsYazicilari;
   @JsonKey(name: "yazdirma_Dizayn_SatisIrs")

@@ -11,7 +11,6 @@ part "olcum_belge_edit_model.g.dart";
 
 @unfreezed
 class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
-  OlcumBelgeEditModel._();
   factory OlcumBelgeEditModel({
     String? belgeNo,
     String? belgeTipi,
@@ -26,6 +25,7 @@ class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
     List<OlcumOlcumlerModel>? olcumler,
     List<OlcumProsesModel>? prosesler,
   }) = _OlcumBelgeEditModel;
+  OlcumBelgeEditModel._();
 
   factory OlcumBelgeEditModel.fromJson(Map<String, dynamic> json) => _$OlcumBelgeEditModelFromJson(json);
 
@@ -35,7 +35,6 @@ class OlcumBelgeEditModel with _$OlcumBelgeEditModel, NetworkManagerMixin {
 
 @unfreezed
 class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
-  OlcumBelgeModel._();
   factory OlcumBelgeModel({
     String? belgeNo,
     String? belgeTipi,
@@ -70,6 +69,7 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
     @JsonKey(name: "SearchText") String? searchText,
     @JsonKey(name: "Sayfa") int? sayfa,
   }) = _OlcumBelgeModel;
+  OlcumBelgeModel._();
 
   factory OlcumBelgeModel.fromJson(Map<String, dynamic> json) => _$OlcumBelgeModelFromJson(json);
 
@@ -79,7 +79,6 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
 
 @unfreezed
 class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
-  OlcumOlcumlerModel._();
   factory OlcumOlcumlerModel({
     int? id,
     int? belgeSira,
@@ -96,6 +95,7 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
     String? seriNo,
     String? tamamlandi,
   }) = _OlcumOlcumlerModel;
+  OlcumOlcumlerModel._();
 
   factory OlcumOlcumlerModel.fromJson(Map<String, dynamic> json) => _$OlcumOlcumlerModelFromJson(json);
 
@@ -105,7 +105,6 @@ class OlcumOlcumlerModel with _$OlcumOlcumlerModel, NetworkManagerMixin {
 
 @unfreezed
 class OlcumProsesModel with _$OlcumProsesModel, NetworkManagerMixin {
-  OlcumProsesModel._();
   factory OlcumProsesModel({
     int? id,
     int? sira,
@@ -138,6 +137,7 @@ class OlcumProsesModel with _$OlcumProsesModel, NetworkManagerMixin {
     String? detayAciklama,
     List<OlcumEkleDetayModel>? olcumler,
   }) = _OlcumProsesModel;
+  OlcumProsesModel._();
 
   factory OlcumProsesModel.fromJson(Map<String, dynamic> json) => _$OlcumProsesModelFromJson(json);
 

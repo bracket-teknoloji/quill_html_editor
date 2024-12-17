@@ -7,12 +7,12 @@ part "seri_uret_model.g.dart";
 
 @unfreezed
 class SeriUretModel with _$SeriUretModel, NetworkManagerMixin {
-  SeriUretModel._();
   factory SeriUretModel({
     String? seriNo,
     String? stokKodu,
     int? sonNo,
   }) = _SeriUretModel;
+  SeriUretModel._();
 
   factory SeriUretModel.fromJson(Map<String, dynamic> json) => _$SeriUretModelFromJson(json);
 

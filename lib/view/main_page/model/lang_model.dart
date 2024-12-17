@@ -4,9 +4,9 @@ part "lang_model.g.dart";
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.none)
 class LangModel {
+  LangModel();
 
   factory LangModel.fromJson(Map<String, dynamic>? json) => json != null ? _$LangModelFromJson(json) : LangModel();
-  LangModel();
 
   @JsonKey(name: "DilKodu")
   String? dilKodu;

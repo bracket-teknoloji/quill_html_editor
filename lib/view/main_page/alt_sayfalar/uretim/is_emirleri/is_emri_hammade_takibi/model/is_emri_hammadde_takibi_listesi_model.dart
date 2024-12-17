@@ -8,7 +8,6 @@ part "is_emri_hammadde_takibi_listesi_model.g.dart";
 
 @unfreezed
 class IsEmriHammaddeTakibiListesiModel with _$IsEmriHammaddeTakibiListesiModel, NetworkManagerMixin, BaseStokMixin {
-  IsEmriHammaddeTakibiListesiModel._();
   factory IsEmriHammaddeTakibiListesiModel({
     int? takipno,
     int? nfisemrino,
@@ -20,6 +19,7 @@ class IsEmriHammaddeTakibiListesiModel with _$IsEmriHammaddeTakibiListesiModel, 
     String? makineKodu,
     double? miktar,
   }) = _IsEmriHammaddeTakibiListesiModel;
+  IsEmriHammaddeTakibiListesiModel._();
 
   factory IsEmriHammaddeTakibiListesiModel.fromJson(Map<String, dynamic> json) => _$IsEmriHammaddeTakibiListesiModelFromJson(json);
 

@@ -15,8 +15,6 @@ part "cari_listesi_model.g.dart";
 @JsonSerializable(explicitToJson: true)
 class CariListesiModel with NetworkManagerMixin {
 
-  CariListesiModel._init();
-
   CariListesiModel({
     this.cariKodu,
     this.cariAdi,
@@ -128,6 +126,8 @@ class CariListesiModel with NetworkManagerMixin {
     this.kurfarkiborcAdi,
     this.kurfarkialacakAdi,
   });
+
+  CariListesiModel._init();
 
   factory CariListesiModel.fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
 

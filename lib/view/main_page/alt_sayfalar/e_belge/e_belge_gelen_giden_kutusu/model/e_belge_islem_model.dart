@@ -7,7 +7,6 @@ part "e_belge_islem_model.g.dart";
 
 @unfreezed
 class EBelgeIslemModel with _$EBelgeIslemModel {
-  EBelgeIslemModel._();
   factory EBelgeIslemModel({
     String? aciklama,
     String? belgeTuru,
@@ -29,6 +28,7 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
     bool? internetFaturasi,
     String? kabul,
   }) = _EBelgeIslemModel;
+  EBelgeIslemModel._();
 
   factory EBelgeIslemModel.fromJson(Map<String, dynamic> json) => _$EBelgeIslemModelFromJson(json);
 

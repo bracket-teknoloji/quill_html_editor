@@ -7,7 +7,6 @@ part "doviz_kurlari_model.g.dart";
 
 @unfreezed
 abstract class DovizKurlariModel with _$DovizKurlariModel, NetworkManagerMixin {
-  DovizKurlariModel._();
   @JsonSerializable(
     createFactory: true,
     explicitToJson: true,
@@ -23,6 +22,7 @@ abstract class DovizKurlariModel with _$DovizKurlariModel, NetworkManagerMixin {
     double? effAlis,
     double? effSatis,
   }) = _DovizKurlariModel;
+  DovizKurlariModel._();
   factory DovizKurlariModel.fromJson(Map<String, dynamic> json) => _$DovizKurlariModelFromJson(json);
   @override
   DovizKurlariModel fromJson(Map<String, dynamic> json) => _$DovizKurlariModelFromJson(json);
@@ -33,7 +33,6 @@ abstract class DovizKurlariModel with _$DovizKurlariModel, NetworkManagerMixin {
 
 @unfreezed
 abstract class DovizKurlariRequestModel with _$DovizKurlariRequestModel, NetworkManagerMixin {
-  DovizKurlariRequestModel._();
   @JsonSerializable(
     createFactory: true,
     explicitToJson: true,
@@ -50,6 +49,7 @@ abstract class DovizKurlariRequestModel with _$DovizKurlariRequestModel, Network
     double? eFAlis,
     double? eFSatis,
   }) = _DovizKurlariRequestModel;
+  DovizKurlariRequestModel._();
   factory DovizKurlariRequestModel.fromJson(Map<String, dynamic> json) => _$DovizKurlariRequestModelFromJson(json);
   factory DovizKurlariRequestModel.fromDovizKurlariModel(
     DovizKurlariModel model,

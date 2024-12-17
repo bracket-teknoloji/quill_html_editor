@@ -7,7 +7,6 @@ part "paketleme_listesi_model.g.dart";
 
 @freezed
 class PaketlemeListesiModel with _$PaketlemeListesiModel, NetworkManagerMixin {
-  PaketlemeListesiModel._();
   factory PaketlemeListesiModel({
     int? id,
     String? kodu,
@@ -20,6 +19,7 @@ class PaketlemeListesiModel with _$PaketlemeListesiModel, NetworkManagerMixin {
     String? kilit,
     String? ukey,
   }) = _PaketlemeListesiModel;
+  PaketlemeListesiModel._();
 
   factory PaketlemeListesiModel.fromJson(Map<String, dynamic> json) => _$PaketlemeListesiModelFromJson(json);
 

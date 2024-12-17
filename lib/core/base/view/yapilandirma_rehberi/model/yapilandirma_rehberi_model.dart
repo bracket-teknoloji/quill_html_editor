@@ -7,7 +7,6 @@ part "yapilandirma_rehberi_model.g.dart";
 
 @unfreezed
 class YapilandirmaRehberiModel with _$YapilandirmaRehberiModel, NetworkManagerMixin {
-  YapilandirmaRehberiModel._();
   factory YapilandirmaRehberiModel({
     String? yapkod,
     String? yapacik,
@@ -17,6 +16,7 @@ class YapilandirmaRehberiModel with _$YapilandirmaRehberiModel, NetworkManagerMi
     String? degerAciklama,
     int? ozellikSira,
   }) = _YapilandirmaRehberiModel;
+  YapilandirmaRehberiModel._();
 
   factory YapilandirmaRehberiModel.fromJson(Map<String, dynamic> json) => _$YapilandirmaRehberiModelFromJson(json);
 

@@ -7,7 +7,6 @@ part "dekont_duzenle_request_model.g.dart";
 
 @unfreezed
 class DekontDuzenleRequestModel with _$DekontDuzenleRequestModel, NetworkManagerMixin {
-  DekontDuzenleRequestModel._();
   factory DekontDuzenleRequestModel({
     int? inckeyno,
     DateTime? tarih,
@@ -34,6 +33,7 @@ class DekontDuzenleRequestModel with _$DekontDuzenleRequestModel, NetworkManager
     String? exportRefno,
     String? cariAdi,
   }) = _DekontDuzenleRequestModel;
+  DekontDuzenleRequestModel._();
 
   factory DekontDuzenleRequestModel.fromJson(Map<String, dynamic> json) => _$DekontDuzenleRequestModelFromJson(json);
 
