@@ -15,8 +15,8 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 class SeriRehberiView extends StatefulWidget {
-  const SeriRehberiView({super.key, required this.stokModel}) : uskMi = false;
-  const SeriRehberiView.usk({super.key, required this.stokModel}) : uskMi = true;
+  const SeriRehberiView({required this.stokModel, super.key}) : uskMi = false;
+  const SeriRehberiView.usk({required this.stokModel, super.key}) : uskMi = true;
   final StokListesiModel stokModel;
   final bool uskMi;
 

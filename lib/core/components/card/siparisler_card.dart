@@ -29,11 +29,8 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class SiparislerCard extends StatefulWidget {
   const SiparislerCard({
-    super.key,
-    required this.model,
+    required this.model, required this.editTipiEnum, required this.index, super.key,
     this.onDeleted,
-    required this.editTipiEnum,
-    required this.index,
     this.isGetData,
     this.showEkAciklama,
     this.showMiktar,

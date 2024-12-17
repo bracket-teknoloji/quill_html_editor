@@ -11,7 +11,7 @@ import "../model/cek_senet_hareketleri_model.dart";
 import "../view_model/cek_senet_hareketleri_view_model.dart";
 
 class CekSenetHareketleriView extends StatefulWidget {
-  const CekSenetHareketleriView({super.key, required this.model});
+  const CekSenetHareketleriView({required this.model, super.key});
   final CekSenetListesiModel model;
 
   @override

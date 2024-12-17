@@ -20,7 +20,7 @@ import "../../banka_listesi/model/banka_listesi_model.dart";
 import "../view_model/hesaplar_arasi_islem_view_model.dart";
 
 class HesaplarArasiIslemView extends StatefulWidget {
-  const HesaplarArasiIslemView({super.key, required this.hesaplarArasiEnum});
+  const HesaplarArasiIslemView({required this.hesaplarArasiEnum, super.key});
   final HesaplarArasiEnum hesaplarArasiEnum;
 
   @override

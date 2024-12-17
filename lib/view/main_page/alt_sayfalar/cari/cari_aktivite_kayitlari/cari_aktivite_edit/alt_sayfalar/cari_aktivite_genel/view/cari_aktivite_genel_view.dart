@@ -20,7 +20,7 @@ import "../../../../model/cari_aktivite_listesi_model.dart";
 import "../view_model/cari_aktivite_genel_view_model.dart";
 
 class CariAktiviteGenelView extends StatefulWidget {
-  const CariAktiviteGenelView({super.key, required this.model, required this.onSave});
+  const CariAktiviteGenelView({required this.model, required this.onSave, super.key});
   final BaseEditModel<CariAktiviteListesiModel> model;
   final Function(GlobalKey<FormState> value) onSave;
 

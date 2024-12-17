@@ -11,7 +11,7 @@ import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/dekont_edit_genel_view_model.dart";
 
 class DekontEditGenelView extends StatefulWidget {
-  const DekontEditGenelView({super.key, this.onChanged, required this.baseEditEnum});
+  const DekontEditGenelView({required this.baseEditEnum, super.key, this.onChanged});
   final ValueChanged<bool>? onChanged;
   final BaseEditEnum baseEditEnum;
 

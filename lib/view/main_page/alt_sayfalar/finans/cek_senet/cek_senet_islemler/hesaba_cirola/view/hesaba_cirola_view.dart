@@ -19,7 +19,7 @@ import "../../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "../view_model/hesaba_cirola_view_model.dart";
 
 class HesabaCirolaView extends StatefulWidget {
-  const HesabaCirolaView({super.key, required this.model, required this.cirolaEnum});
+  const HesabaCirolaView({required this.model, required this.cirolaEnum, super.key});
   final CekSenetListesiModel model;
   final CirolaEnum cirolaEnum;
 

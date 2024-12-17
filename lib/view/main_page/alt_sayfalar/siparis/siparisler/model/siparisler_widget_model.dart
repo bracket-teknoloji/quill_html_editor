@@ -1,7 +1,7 @@
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 
 class SiparislerWidgetModel {
-  SiparislerWidgetModel({this.isGetData, required this.editTipiEnum});
+  SiparislerWidgetModel({required this.editTipiEnum, this.isGetData});
   bool? isGetData;
   EditTipiEnum editTipiEnum;
 }

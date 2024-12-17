@@ -187,7 +187,7 @@ class BottomSheetDialogManager {
   }
 
   //* CheckBox
-  Future<List<T>?> showCheckBoxBottomSheetDialog<T>(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, bool onlyValue = false, required List? groupValues}) async {
+  Future<List<T>?> showCheckBoxBottomSheetDialog<T>(BuildContext context, {required String title, required List? groupValues, List<BottomSheetModel<T>>? children, bool onlyValue = false}) async {
     // List<T>? list;
 
     if (viewModel.isSelectedListMap?[title] == null) {
@@ -243,7 +243,7 @@ class BottomSheetDialogManager {
         ],
       );
 
-  Future<T?> showRadioBottomSheetDialog<T>(BuildContext context, {required String title, List<BottomSheetModel<T>>? children, required Object? groupValue}) async {
+  Future<T?> showRadioBottomSheetDialog<T>(BuildContext context, {required String title, required Object? groupValue, List<BottomSheetModel<T>>? children}) async {
     viewModel.setUnFilteredList(children);
     final double height = children!.map((e) => e.descriptionWidget != null || e.description != null ? 65.0 : 55.0).sum;
     //FocusScope.of(context).unfocus();
@@ -473,8 +473,7 @@ class BottomSheetDialogManager {
     BuildContext context, {
     required GrupKoduEnum modul,
     required int grupKodu,
-    bool? kullanimda,
-    required List<BaseGrupKoduModel>? groupValues,
+    required List<BaseGrupKoduModel>? groupValues, bool? kullanimda,
   }) async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {
       viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
@@ -1412,8 +1411,7 @@ class BottomSheetDialogManager {
 
 class SearchField extends StatefulWidget {
   const SearchField({
-    super.key,
-    required this.viewModel,
+    required this.viewModel, super.key,
     this.children,
   });
 

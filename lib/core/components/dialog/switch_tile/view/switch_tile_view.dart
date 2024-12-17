@@ -4,7 +4,7 @@ import "../../../../base/state/base_state.dart";
 import "../view_model/switch_tile_view_model.dart";
 
 class DialogSwitchTile extends StatefulWidget {
-  const DialogSwitchTile({super.key, this.title, required this.value});
+  const DialogSwitchTile({required this.value, super.key, this.title});
   final String? title;
   final bool? value;
 

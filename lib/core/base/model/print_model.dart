@@ -10,9 +10,8 @@ part "print_model.g.dart";
 class PrintModel with _$PrintModel, NetworkManagerMixin {
   PrintModel._();
   factory PrintModel({
-    int? dizaynId,
+    required String raporOzelKod, int? dizaynId,
     int? etiketSayisi,
-    required String raporOzelKod,
     @Default(true) bool? yazdir,
     String? yaziciAdi,
     String? yaziciTipi,

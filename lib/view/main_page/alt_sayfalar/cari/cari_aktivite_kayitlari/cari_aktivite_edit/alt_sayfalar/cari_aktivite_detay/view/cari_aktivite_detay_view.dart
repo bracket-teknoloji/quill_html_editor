@@ -15,7 +15,7 @@ import "../../../../model/cari_aktivite_listesi_model.dart";
 import "../view_model/cari_aktivite_detay_view_model.dart";
 
 class CariAktiviteDetayView extends StatefulWidget {
-  const CariAktiviteDetayView({super.key, required this.baseEditEnum});
+  const CariAktiviteDetayView({required this.baseEditEnum, super.key});
   final BaseEditEnum baseEditEnum;
 
   @override

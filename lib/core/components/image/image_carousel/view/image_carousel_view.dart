@@ -12,7 +12,7 @@ import "../../image_widget.dart";
 import "../view_model/image_carousel_view_model.dart";
 
 final class ImageCarouselView extends StatefulWidget {
-  const ImageCarouselView({super.key, required this.model});
+  const ImageCarouselView({required this.model, super.key});
   final BaseStokMixin model;
 
   @override

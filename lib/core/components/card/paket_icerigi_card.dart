@@ -16,7 +16,7 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../layout/custom_layout_builder.dart";
 
 final class PaketIcerigiCard extends StatefulWidget {
-  const PaketIcerigiCard({super.key, required this.item, required this.onDeleted, required this.kilitliMi});
+  const PaketIcerigiCard({required this.item, required this.onDeleted, required this.kilitliMi, super.key});
   final PaketIcerigiModel item;
   final bool kilitliMi;
   final void Function() onDeleted;

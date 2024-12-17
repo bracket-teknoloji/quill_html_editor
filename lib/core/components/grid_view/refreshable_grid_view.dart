@@ -12,11 +12,7 @@ class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget
 
   /// Tek istekle bütün verilerin geldiği durumda bunu kullanınız.
   const RefreshableGridView({
-    super.key,
-    required this.onRefresh,
-    required this.items,
-    required this.itemBuilder,
-    required this.crossAxisCount,
+    required this.onRefresh, required this.items, required this.itemBuilder, required this.crossAxisCount, super.key,
   })  : _isPageable = false,
         dahaVarMi = false,
         // _isSliver = false,
@@ -27,13 +23,7 @@ class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget
   ///* [scrollController] ile sayfa hareketlerini takip edebilirsiniz.
   ///* [dahaVarMi] ile ekranda [CircularProgressIndicator] görünüp görünmemesini sağlayabilirsiniz.
   const RefreshableGridView.pageable({
-    super.key,
-    required this.scrollController,
-    required this.onRefresh,
-    required this.dahaVarMi,
-    required this.items,
-    required this.itemBuilder,
-    required this.crossAxisCount,
+    required this.scrollController, required this.onRefresh, required this.dahaVarMi, required this.items, required this.itemBuilder, required this.crossAxisCount, super.key,
   }) : _isPageable = true;
   /// Refresh işlemleri için gerekli fonksiyon
   final Future<void> Function() onRefresh;

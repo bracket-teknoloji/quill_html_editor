@@ -23,7 +23,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bo
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 class SeriHareketleriView extends StatefulWidget {
-  const SeriHareketleriView({super.key, required this.model});
+  const SeriHareketleriView({required this.model, super.key});
   final StokListesiModel? model;
 
   @override

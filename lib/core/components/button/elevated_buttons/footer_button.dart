@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
 class FooterButton extends StatelessWidget {
-  const FooterButton({super.key, this.color, required this.children, this.onPressed});
+  const FooterButton({required this.children, super.key, this.color, this.onPressed});
   final Color? color;
   final List<Widget> children;
   final dynamic Function()? onPressed;

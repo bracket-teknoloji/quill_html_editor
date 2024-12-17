@@ -11,10 +11,7 @@ import "../view_model/rapor_filtre_date_time_bottom_sheet_view_model.dart";
 class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
 
   const RaporFiltreDateTimeBottomSheetView({
-    super.key,
-    required this.filterOnChanged,
-    required this.baslangicTarihiController,
-    required this.bitisTarihiController,
+    required this.filterOnChanged, required this.baslangicTarihiController, required this.bitisTarihiController, super.key,
     this.baslangicOnTap,
     this.bitisOnTap,
     this.showBugunFirst,

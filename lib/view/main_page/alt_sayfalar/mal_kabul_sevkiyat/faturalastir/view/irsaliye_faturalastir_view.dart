@@ -15,7 +15,7 @@ import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 
 class IrsaliyeFaturalastirView extends StatefulWidget {
-  const IrsaliyeFaturalastirView({super.key, required this.model});
+  const IrsaliyeFaturalastirView({required this.model, super.key});
   final BaseEditModel<BaseSiparisEditModel> model;
 
   @override

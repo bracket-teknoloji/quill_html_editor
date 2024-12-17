@@ -22,7 +22,7 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class TahsilatOdemeKayitlariCard extends StatefulWidget {
-  const TahsilatOdemeKayitlariCard({super.key, required this.cariHareketleriModel, required this.update});
+  const TahsilatOdemeKayitlariCard({required this.cariHareketleriModel, required this.update, super.key});
   final CariHareketleriModel cariHareketleriModel;
   final ValueChanged update;
 

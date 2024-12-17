@@ -20,7 +20,7 @@ import "../../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "../view_model/kasadan_tahsil_et_view_model.dart";
 
 class KasadanTahsilEtView extends StatefulWidget {
-  const KasadanTahsilEtView({super.key, required this.model});
+  const KasadanTahsilEtView({required this.model, super.key});
   final CekSenetListesiModel model;
 
   @override

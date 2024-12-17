@@ -7,7 +7,7 @@ import "../button/elevated_buttons/footer_button.dart";
 import "../helper_widgets/scrollable_widget.dart";
 
 class BottomBarWidget extends StatefulWidget {
-  const BottomBarWidget({super.key, required this.isScrolledDown, required this.children, this.visible = true});
+  const BottomBarWidget({required this.isScrolledDown, required this.children, super.key, this.visible = true});
   final bool isScrolledDown;
   final bool visible;
   final List<FooterButton> children;

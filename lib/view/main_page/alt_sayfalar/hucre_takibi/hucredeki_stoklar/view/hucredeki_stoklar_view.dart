@@ -15,7 +15,7 @@ import "../model/hucredeki_stoklar_model.dart";
 import "../view_model/hucredeki_stoklar_view_model.dart";
 
 final class HucredekiStoklarView extends StatefulWidget {
-  const HucredekiStoklarView({super.key, required this.model});
+  const HucredekiStoklarView({required this.model, super.key});
   final HucreListesiRequestModel model;
 
   @override

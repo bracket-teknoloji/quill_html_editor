@@ -11,7 +11,7 @@ class GridItemModel {
 
   GridItemModel.anamenu({required this.name, required this.title, required this.color, required this.altMenuler, this.icon, this.iconData, this.yetkiListesi}) : menuTipi = "A";
 
-  GridItemModel.altmenu({required this.name, required this.title, this.icon, required this.altMenuler, this.iconData}) : menuTipi = "S";
+  GridItemModel.altmenu({required this.name, required this.title, required this.altMenuler, this.icon, this.iconData}) : menuTipi = "S";
   GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.onTap, this.route, this.arguments, this.siparisTipi}) : menuTipi = "I" {
     if (onTap == null) {
       if (route == null) {

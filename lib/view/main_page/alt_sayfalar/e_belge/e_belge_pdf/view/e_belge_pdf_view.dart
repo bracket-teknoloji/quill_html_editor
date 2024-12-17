@@ -23,7 +23,7 @@ import "../model/e_belge_pdf_request_model.dart";
 import "../view_model/e_belge_pdf_view_model.dart";
 
 class EBelgePdfView extends StatefulWidget {
-  const EBelgePdfView({super.key, required this.model});
+  const EBelgePdfView({required this.model, super.key});
   final EBelgeListesiModel model;
 
   @override

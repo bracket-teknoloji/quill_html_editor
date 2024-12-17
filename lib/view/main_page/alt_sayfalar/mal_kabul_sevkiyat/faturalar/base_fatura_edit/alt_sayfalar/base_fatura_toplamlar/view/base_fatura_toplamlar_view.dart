@@ -26,7 +26,7 @@ import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.da
 import "../view_model/base_fatura_toplamlar_view_model.dart";
 
 class BaseFaturaToplamlarView extends StatefulWidget {
-  const BaseFaturaToplamlarView({super.key, required this.model});
+  const BaseFaturaToplamlarView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
   @override

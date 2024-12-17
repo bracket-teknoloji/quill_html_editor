@@ -9,7 +9,7 @@ import "../../constants/color_palette.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 final class GridViewShimmer extends StatefulWidget {
-  const GridViewShimmer({super.key, required this.gridDelegate});
+  const GridViewShimmer({required this.gridDelegate, super.key});
   final SliverGridDelegateWithFixedCrossAxisCount gridDelegate;
 
   @override

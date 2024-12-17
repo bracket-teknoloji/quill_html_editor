@@ -20,7 +20,7 @@ import "../model/seri_detayi_model.dart";
 import "../view_model/seri_listesi_view_model.dart";
 
 class SeriListesiView extends StatefulWidget {
-  const SeriListesiView({super.key, required this.kalemModel});
+  const SeriListesiView({required this.kalemModel, super.key});
   final KalemModel kalemModel;
 
   @override

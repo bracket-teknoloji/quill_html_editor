@@ -12,7 +12,7 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../badge/colorful_badge.dart";
 
 class CariRehberiCard extends StatefulWidget {
-  const CariRehberiCard({super.key, required this.model, this.onPressed, required this.teslimCariMi});
+  const CariRehberiCard({required this.model, required this.teslimCariMi, super.key, this.onPressed});
   final CariListesiModel model;
   final bool teslimCariMi;
   final Function(CariListesiModel model)? onPressed;

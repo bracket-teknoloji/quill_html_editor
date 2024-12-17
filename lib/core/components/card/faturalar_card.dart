@@ -29,7 +29,7 @@ import "../layout/custom_layout_builder.dart";
 
 class FaturalarCard extends StatefulWidget {
 
-  const FaturalarCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, required this.editTipiEnum, this.onDeleted, this.index, this.isGetData});
+  const FaturalarCard({required this.model, required this.editTipiEnum, super.key, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.onDeleted, this.index, this.isGetData});
   final BaseSiparisEditModel model;
   final ValueChanged<bool>? onUpdated;
   final bool? showMiktar;

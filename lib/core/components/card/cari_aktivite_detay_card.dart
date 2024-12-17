@@ -10,7 +10,7 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class CariAktiviteDetayCard extends StatefulWidget {
 
-  const CariAktiviteDetayCard({super.key, required this.model, required this.baseEditEnum, required this.onAktiviteSil, required this.onAktiviteDuzenle});
+  const CariAktiviteDetayCard({required this.model, required this.baseEditEnum, required this.onAktiviteSil, required this.onAktiviteDuzenle, super.key});
   final CariAktiviteListesiModel model;
   final BaseEditEnum baseEditEnum;
   final void Function() onAktiviteSil;

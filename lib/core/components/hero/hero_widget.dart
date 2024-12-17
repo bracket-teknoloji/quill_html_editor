@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "../../base/state/base_state.dart";
 
 class HeroWidget extends StatefulWidget {
-  const HeroWidget({super.key, required this.child, this.tag});
+  const HeroWidget({required this.child, super.key, this.tag});
   final Widget child;
   final dynamic tag;
 

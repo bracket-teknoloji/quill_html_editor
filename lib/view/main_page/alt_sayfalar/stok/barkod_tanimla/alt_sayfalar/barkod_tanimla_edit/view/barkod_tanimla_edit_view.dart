@@ -15,7 +15,7 @@ import "../../../../stok_liste/model/stok_listesi_model.dart";
 import "../view_model/barkod_tanimla_edit_view_model.dart";
 
 final class BarkodTanimlaEditView extends StatefulWidget {
-  const BarkodTanimlaEditView({super.key, required this.model});
+  const BarkodTanimlaEditView({required this.model, super.key});
   final StokListesiModel model;
 
   @override

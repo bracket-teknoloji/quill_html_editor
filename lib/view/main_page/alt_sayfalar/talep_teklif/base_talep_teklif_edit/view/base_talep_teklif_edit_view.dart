@@ -35,7 +35,7 @@ import "../alt_sayfalar/base_talep_teklif_toplamlar/view/base_talep_teklif_topla
 import "../view_model/base_talep_teklif_editing_view_model.dart";
 
 class BaseTalepTeklifEditingView extends StatefulWidget {
-  const BaseTalepTeklifEditingView({super.key, this.appBarTitle, this.isSubTitleSmall, required this.model});
+  const BaseTalepTeklifEditingView({required this.model, super.key, this.appBarTitle, this.isSubTitleSmall});
   final String? appBarTitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;

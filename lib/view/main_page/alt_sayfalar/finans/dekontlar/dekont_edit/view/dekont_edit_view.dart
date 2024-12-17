@@ -20,7 +20,7 @@ import "../model/dekont_islemler_request_model.dart";
 import "../view_model/dekont_edit_view_model.dart";
 
 class DekontEditView extends StatefulWidget {
-  const DekontEditView({super.key, required this.baseEditEnum, this.model, this.eBelgeModel});
+  const DekontEditView({required this.baseEditEnum, super.key, this.model, this.eBelgeModel});
   final BaseEditEnum baseEditEnum;
   final DekontListesiModel? model;
   final EBelgeListesiModel? eBelgeModel;

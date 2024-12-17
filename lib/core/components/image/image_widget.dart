@@ -4,7 +4,7 @@ import "../../base/state/base_state.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 class ImageWidget extends StatefulWidget {
-  const ImageWidget({super.key, required this.path, this.onTap, this.fit = true});
+  const ImageWidget({required this.path, super.key, this.onTap, this.fit = true});
   final String? path;
   final void Function()? onTap;
   final bool fit;

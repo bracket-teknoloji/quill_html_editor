@@ -23,7 +23,7 @@ import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/say
 import "../../base/model/print_model.dart";
 
 class SayimlarCard extends StatefulWidget {
-  const SayimlarCard({super.key, required this.model, required this.onChanged});
+  const SayimlarCard({required this.model, required this.onChanged, super.key});
   final SayimListesiModel model;
   final Function(bool) onChanged;
 

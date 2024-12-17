@@ -11,7 +11,7 @@ import "../../wrap/appbar_title.dart";
 import "../view_model/aciklama_duzenle_view_model.dart";
 
 class AciklamaDuzenleView extends StatefulWidget {
-  const AciklamaDuzenleView({super.key, required this.editEnum, required this.model});
+  const AciklamaDuzenleView({required this.editEnum, required this.model, super.key});
   final EditTipiEnum editEnum;
   final BaseSiparisEditModel model;
 

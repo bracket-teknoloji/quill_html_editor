@@ -25,7 +25,7 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 class TransferlerCard extends StatefulWidget {
 
-  const TransferlerCard({super.key, required this.model, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, required this.editTipiEnum, this.onDeleted, this.index});
+  const TransferlerCard({required this.model, required this.editTipiEnum, super.key, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.onDeleted, this.index});
   final BaseSiparisEditModel model;
   final ValueChanged<bool>? onUpdated;
   final bool? showMiktar;

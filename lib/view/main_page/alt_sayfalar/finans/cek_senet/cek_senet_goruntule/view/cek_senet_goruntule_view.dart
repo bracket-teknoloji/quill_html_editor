@@ -12,7 +12,7 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
 class CekSenetGoruntuleView extends StatefulWidget {
-  const CekSenetGoruntuleView({super.key, required this.model});
+  const CekSenetGoruntuleView({required this.model, super.key});
   final CekSenetListesiModel model;
 
   @override

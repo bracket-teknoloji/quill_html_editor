@@ -36,7 +36,7 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/talep_teklif_listesi_view_model.dart";
 
 final class TalepTeklifListesiView extends StatefulWidget {
-  const TalepTeklifListesiView({super.key, required this.talepTeklifEnum});
+  const TalepTeklifListesiView({required this.talepTeklifEnum, super.key});
   final TalepTeklifEnum talepTeklifEnum;
 
   @override

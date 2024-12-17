@@ -47,7 +47,7 @@ extension WidgetExtension on Widget {
     );
   }
 
-  Future<Uint8List> createImageFromWidget(Widget widget, {Size? logicalSize, required Duration waitToRender, required ui.FlutterView view, Size? imageSize}) async {
+  Future<Uint8List> createImageFromWidget(Widget widget, {required Duration waitToRender, required ui.FlutterView view, Size? logicalSize, Size? imageSize}) async {
     final RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
     logicalSize ??= view.physicalSize / view.devicePixelRatio;
     imageSize ??= view.physicalSize;

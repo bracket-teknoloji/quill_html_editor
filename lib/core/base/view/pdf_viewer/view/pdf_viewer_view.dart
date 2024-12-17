@@ -29,7 +29,7 @@ import "../model/pdf_viewer_model.dart";
 import "../view_model/pdf_viewer_view_model.dart";
 
 final class PDFViewerView extends StatefulWidget {
-  const PDFViewerView({super.key, this.pdfData, this.filterBottomSheet, required this.title, this.serbestMi, this.filtreVarMi = true});
+  const PDFViewerView({required this.title, super.key, this.pdfData, this.filterBottomSheet, this.serbestMi, this.filtreVarMi = true});
   final String title;
   final PdfModel? pdfData;
   final bool? serbestMi;

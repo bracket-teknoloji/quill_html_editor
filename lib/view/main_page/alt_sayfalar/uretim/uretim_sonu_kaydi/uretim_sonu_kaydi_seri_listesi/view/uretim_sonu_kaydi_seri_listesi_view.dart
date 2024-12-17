@@ -19,7 +19,7 @@ import "../model/uretim_sonu_kaydi_recete_model.dart";
 import "../view_model/uretim_sonu_kaydi_seri_listesi_view_model.dart";
 
 final class UretimSonuKaydiSeriListesi extends StatefulWidget {
-  const UretimSonuKaydiSeriListesi({super.key, required this.model});
+  const UretimSonuKaydiSeriListesi({required this.model, super.key});
   final KalemModel model;
 
   @override

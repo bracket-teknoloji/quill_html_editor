@@ -15,7 +15,7 @@ import "../../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "drawer_model.dart";
 
 class EndDrawer extends StatefulWidget {
-  const EndDrawer({super.key, required this.scaffoldKey});
+  const EndDrawer({required this.scaffoldKey, super.key});
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override

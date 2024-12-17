@@ -17,7 +17,7 @@ import "../../../../../model/param_model.dart";
 
 class MalKabulSevkiyatKalemRaporuView extends StatefulWidget {
 
-  const MalKabulSevkiyatKalemRaporuView({super.key, required this.editTipiEnum});
+  const MalKabulSevkiyatKalemRaporuView({required this.editTipiEnum, super.key});
   final EditTipiEnum editTipiEnum;
 
   @override

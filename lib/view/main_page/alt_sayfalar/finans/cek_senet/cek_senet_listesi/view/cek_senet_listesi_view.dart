@@ -34,7 +34,7 @@ import "../../../banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "../view_model/cek_senet_listesi_view_model.dart";
 
 class CekSenetListesiView extends StatefulWidget {
-  const CekSenetListesiView({super.key, required this.cekSenetListesiEnum});
+  const CekSenetListesiView({required this.cekSenetListesiEnum, super.key});
   final CekSenetListesiEnum cekSenetListesiEnum;
 
   @override

@@ -26,7 +26,7 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
 class EBelgeGonderView extends StatefulWidget {
-  const EBelgeGonderView({super.key, required this.model});
+  const EBelgeGonderView({required this.model, super.key});
   final BaseSiparisEditModel model;
 
   @override

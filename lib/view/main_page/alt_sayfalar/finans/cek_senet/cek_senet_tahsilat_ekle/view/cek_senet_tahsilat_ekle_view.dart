@@ -30,7 +30,7 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/cek_senet_tahsilat_ekle_view_model.dart";
 
 class CekSenetTahsilatEkleView extends StatefulWidget {
-  const CekSenetTahsilatEkleView({super.key, this.model, required this.cekSenetListesiEnum});
+  const CekSenetTahsilatEkleView({required this.cekSenetListesiEnum, super.key, this.model});
   final CekSenetKalemlerModel? model;
   final CekSenetListesiEnum cekSenetListesiEnum;
 

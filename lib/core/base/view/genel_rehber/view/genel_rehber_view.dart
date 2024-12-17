@@ -10,7 +10,7 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/wrap/appbar_title.dart";
 
 class GenelRehberView extends StatefulWidget {
-  const GenelRehberView({super.key, required this.model});
+  const GenelRehberView({required this.model, super.key});
 
   final EkRehberRequestModel model;
 

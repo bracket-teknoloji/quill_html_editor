@@ -14,7 +14,7 @@ import "../../kasa_islemleri/model/kasa_islemleri_request_model.dart";
 import "../view_model/kasa_hareket_detay_view_model.dart";
 
 class KasaHareketDetayiView extends StatefulWidget {
-  const KasaHareketDetayiView({super.key, required this.cariListesiModel});
+  const KasaHareketDetayiView({required this.cariListesiModel, super.key});
   final CariHareketleriModel cariListesiModel;
 
   @override

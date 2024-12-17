@@ -30,7 +30,7 @@ import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart"
 import "../view_model/base_talep_teklif_genel_view_model.dart";
 
 class BaseTalepTeklifGenelView extends StatefulWidget {
-  const BaseTalepTeklifGenelView({super.key, required this.model});
+  const BaseTalepTeklifGenelView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
   @override

@@ -6,7 +6,7 @@ import "../wrap/appbar_title.dart";
 import "image_widget.dart";
 
 class ImageView extends StatefulWidget {
-  const ImageView({super.key, required this.path, required this.title});
+  const ImageView({required this.path, required this.title, super.key});
   final String path;
   final String title;
 

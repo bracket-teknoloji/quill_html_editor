@@ -10,7 +10,7 @@ import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 
 class BaseHucreEditView extends StatefulWidget {
-  const BaseHucreEditView({super.key, required this.islemTuru});
+  const BaseHucreEditView({required this.islemTuru, super.key});
   final HucreTakibiIslemTuruEnum islemTuru;
 
   @override

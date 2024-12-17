@@ -13,7 +13,7 @@ import "../../init/cache/favorites_model.dart";
 import "../wave/login_wave_widget.dart";
 
 class LeftDrawer extends StatefulWidget {
-  const LeftDrawer({super.key, required this.scaffoldKey});
+  const LeftDrawer({required this.scaffoldKey, super.key});
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   @override

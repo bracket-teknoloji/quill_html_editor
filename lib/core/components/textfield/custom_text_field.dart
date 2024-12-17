@@ -43,8 +43,7 @@ class CustomTextField extends StatefulWidget {
   }) : onDateChange = null;
 
   const CustomTextField.dateTime({
-    super.key,
-    required this.controller,
+    required this.controller, required this.onDateChange, super.key,
     this.labelText,
     this.valueText,
     this.descriptionWidget,
@@ -60,7 +59,6 @@ class CustomTextField extends StatefulWidget {
     this.validator,
     this.onChanged,
     this.onClear,
-    required this.onDateChange,
     this.obscureText = false,
   })  : isDateTime = true,
         isFormattedString = false,

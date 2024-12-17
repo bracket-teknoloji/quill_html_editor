@@ -33,7 +33,7 @@ import "../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_editing_view_model.dart";
 
 class BaseSiparisEditingView extends StatefulWidget {
-  const BaseSiparisEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, required this.model});
+  const BaseSiparisEditingView({required this.model, super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall});
   final String? appBarTitle;
   final String? appBarSubtitle;
   final bool? isSubTitleSmall;

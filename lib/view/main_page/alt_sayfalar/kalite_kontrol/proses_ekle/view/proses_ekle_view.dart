@@ -18,7 +18,7 @@ import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "../view_model/proses_ekle_view_model.dart";
 
 class ProsesEkleView extends StatefulWidget {
-  const ProsesEkleView({super.key, required this.model});
+  const ProsesEkleView({required this.model, super.key});
   final BaseEditModel<OlcumProsesModel> model;
 
   @override

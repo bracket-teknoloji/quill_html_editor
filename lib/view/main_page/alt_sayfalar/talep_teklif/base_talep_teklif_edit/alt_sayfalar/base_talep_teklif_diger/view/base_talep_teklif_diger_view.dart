@@ -9,7 +9,7 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 
 class BaseTalepTeklifDigerView extends StatefulWidget {
-  const BaseTalepTeklifDigerView({super.key, required this.model});
+  const BaseTalepTeklifDigerView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
   @override

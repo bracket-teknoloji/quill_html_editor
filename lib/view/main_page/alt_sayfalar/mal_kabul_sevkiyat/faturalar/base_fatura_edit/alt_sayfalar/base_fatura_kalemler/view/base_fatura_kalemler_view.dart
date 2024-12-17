@@ -28,7 +28,7 @@ import "../../../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/base_fatura_kalemler_view_model.dart";
 
 class BaseFaturaKalemlerView extends StatefulWidget {
-  const BaseFaturaKalemlerView({super.key, required this.model, this.updater});
+  const BaseFaturaKalemlerView({required this.model, super.key, this.updater});
   final BaseEditModel<SiparisEditRequestModel> model;
   final bool? updater;
 

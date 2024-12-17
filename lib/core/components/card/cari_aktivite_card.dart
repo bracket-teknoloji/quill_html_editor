@@ -16,7 +16,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
 class CariAktiviteCard extends StatefulWidget {
-  const CariAktiviteCard({super.key, required this.model, required this.onRefresh, required this.updatedModel});
+  const CariAktiviteCard({required this.model, required this.onRefresh, required this.updatedModel, super.key});
   final CariAktiviteListesiModel model;
   final void Function(bool) onRefresh;
   final Future<CariAktiviteListesiModel?> Function() updatedModel;

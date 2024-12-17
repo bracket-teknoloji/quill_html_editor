@@ -40,7 +40,7 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 
 class BaseTransferEditingView extends StatefulWidget {
-  const BaseTransferEditingView({super.key, this.appBarTitle, this.isSubTitleSmall, required this.model});
+  const BaseTransferEditingView({required this.model, super.key, this.appBarTitle, this.isSubTitleSmall});
   final String? appBarTitle;
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;

@@ -13,7 +13,7 @@ import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparisler_diger_view_model.dart";
 
 class BaseSiparislerDigerView extends StatefulWidget {
-  const BaseSiparislerDigerView({super.key, required this.model});
+  const BaseSiparislerDigerView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
   @override

@@ -3,8 +3,8 @@ import "package:flutter/material.dart";
 import "../../base/state/base_state.dart";
 
 class CustomLayoutBuilder extends StatefulWidget {
-  const CustomLayoutBuilder({super.key, required this.splitCount, required this.children, this.lastItemExpanded, this.doNotExpand = false});
-  const CustomLayoutBuilder.divideInHalf({super.key, required this.children, this.lastItemExpanded, this.doNotExpand = false}) : splitCount = 2;
+  const CustomLayoutBuilder({required this.splitCount, required this.children, super.key, this.lastItemExpanded, this.doNotExpand = false});
+  const CustomLayoutBuilder.divideInHalf({required this.children, super.key, this.lastItemExpanded, this.doNotExpand = false}) : splitCount = 2;
   final List<Widget> children;
   final int splitCount;
   final bool? lastItemExpanded;

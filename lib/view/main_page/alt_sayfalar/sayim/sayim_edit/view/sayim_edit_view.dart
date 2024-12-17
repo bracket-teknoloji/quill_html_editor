@@ -29,7 +29,7 @@ import "../sayim_girisi/view/sayim_girisi_view.dart";
 import "../view_model/sayim_edit_view_model.dart";
 
 class SayimEditView extends StatefulWidget {
-  const SayimEditView({super.key, required this.model});
+  const SayimEditView({required this.model, super.key});
   final SayimListesiModel model;
 
   @override

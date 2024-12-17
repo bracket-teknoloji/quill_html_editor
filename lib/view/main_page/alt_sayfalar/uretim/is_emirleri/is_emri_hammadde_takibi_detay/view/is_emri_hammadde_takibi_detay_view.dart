@@ -18,7 +18,7 @@ import "../../is_emri_hammade_takibi/model/is_emri_hammadde_takibi_listesi_model
 import "../view_model/is_emri_hammadde_takibi_detay_view_model.dart";
 
 final class IsEmriHammaddeTakibiDetayView extends StatefulWidget {
-  const IsEmriHammaddeTakibiDetayView({super.key, required this.model});
+  const IsEmriHammaddeTakibiDetayView({required this.model, super.key});
   final IsEmriHammaddeTakibiListesiModel model;
 
   @override

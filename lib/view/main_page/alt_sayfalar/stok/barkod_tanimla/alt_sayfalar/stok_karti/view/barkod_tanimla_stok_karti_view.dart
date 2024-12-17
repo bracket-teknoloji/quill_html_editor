@@ -9,7 +9,7 @@ import "../../../../../../../../core/constants/extensions/widget_extensions.dart
 import "../../../../stok_liste/model/stok_listesi_model.dart";
 
 final class BarkodTanimlaStokKartiView extends StatefulWidget {
-  const BarkodTanimlaStokKartiView({super.key, this.model, required this.onChanged});
+  const BarkodTanimlaStokKartiView({required this.onChanged, super.key, this.model});
   final StokListesiModel? model;
   final Function(StokListesiModel?) onChanged;
 
