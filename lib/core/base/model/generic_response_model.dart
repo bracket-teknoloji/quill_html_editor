@@ -49,7 +49,7 @@ class GenericResponseModel<T extends NetworkManagerMixin> {
 
   bool get isSuccess => _success == true;
 
-  List<T> get dataList => (_data as List).map((e) => e as T).toList();
+  List<T> get dataList => _data is List ? (_data as List).map((e) => e as T).toList() : [];
 
   T get dataItem => _data as T;
 }
