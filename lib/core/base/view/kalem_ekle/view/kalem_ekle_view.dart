@@ -1380,6 +1380,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         viewModel.setKdvOrani(0);
       }
     } else {
+      viewModel.setOTVliMi();
       viewModel.kalemModel.kalemList ??= viewModel.model?.stokList?.map(KalemModel.fromStokList).toList();
       viewModel.kalemModel.stokKodu ??= viewModel.model?.stokKodu;
       if (editTipi?.satisMi == true) {

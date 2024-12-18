@@ -63,6 +63,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
     kalemModel = kalemModel.copyWith(
       otvVarmi: model?.otvUygula == (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "S" : "A"),
       otvDegeri: model?.otvDeger,
+      otvOranmi: model?.otvOranmi == "E",
     );
     if (kalemModel.otvVarmi == true) {
       updateOtv();
@@ -121,7 +122,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   @action
   void updateOtv() {
     if (kalemModel.otvOranmi == true) {
-      kalemModel = kalemModel.copyWith(otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.araToplamTutari);
+      kalemModel = kalemModel.copyWith(otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.getAraToplamTutari);
     } else {
       kalemModel = kalemModel.copyWith(otvTutar: (model?.otvDeger ?? 0) * (kalemModel.miktar ?? 0));
     }
