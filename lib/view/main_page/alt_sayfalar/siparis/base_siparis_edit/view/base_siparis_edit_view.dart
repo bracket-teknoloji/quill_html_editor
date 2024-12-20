@@ -499,7 +499,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
 
   Future<bool> postData() async {
     final BaseSiparisEditModel instance = BaseSiparisEditModel.instance;
-    if (widget.model.baseEditEnum == BaseEditEnum.ekle || (BaseSiparisEditModel.instance.isNew ?? false)) {
+    if (widget.model.baseEditEnum.ekleMi || widget.model.baseEditEnum.kopyalaMi || (instance.isNew ?? false)) {
       instance.yeniKayit = true;
       if (yetkiController.kontrolluBelgeAktarimAktif) {
         instance.remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(instance.getEditTipiEnum?.rawValue) ? true : null;

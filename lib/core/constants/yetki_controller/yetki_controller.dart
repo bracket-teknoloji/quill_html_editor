@@ -59,7 +59,7 @@ final class YetkiController {
   //! Şirket
 
   bool get kontrolluBelgeAktarimAktif => _isTrue(_paramModel?.kontrolluBelgeAktarimAktif, skipAdmin: true);
-  bool kontrolluAktarBelgeTipleri(String? belgeTuru) => _isTrue(kontrolluBelgeAktarimAktif && (_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(belgeTuru) ?? false));
+  bool kontrolluAktarBelgeTipleri(String? belgeTuru) => _isTrue(kontrolluBelgeAktarimAktif && (_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(belgeTuru) ?? false)) && !adminMi;
 
   bool get satisMuhRefSorulsun => _isTrue(_paramModel?.satisMuhRefKodSorulsun, skipAdmin: true);
   bool get alisMuhRefSorulsun => _isTrue(_paramModel?.alisMuhRefKodSorulsun, skipAdmin: true);
