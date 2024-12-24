@@ -17,7 +17,6 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -245,18 +244,18 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                             splitCount: 2,
                             children: [
                               Text("Tarih: ${item.tarih?.toDateString ?? ""}"),
-                              Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}").yetkiVarMi(item.depoKodu != null),
-                              Text("Açıklama 1: ${item.acik1 ?? ""}").yetkiVarMi(item.acik1 != null),
-                              Text("Açıklama 2: ${item.acik2 ?? ""}").yetkiVarMi(item.acik2 != null),
+                              if (item.depoKodu != null) Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
+                              if (item.acik1 != null) Text("Açıklama 1: ${item.acik1 ?? ""}"),
+                              if (item.acik2 != null) Text("Açıklama 2: ${item.acik2 ?? ""}"),
                               Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
                               Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
-                              Text("Açıklama: ${item.haracik ?? ""}").yetkiVarMi(item.haracik != null),
-                              Text("Giriş/Çıkış: ${item.gckod ?? ""}").yetkiVarMi(item.gckod != null),
-                              Text("Belge Tipi: ${item.belgeTipi ?? ""} - ${item.belgeTipiAdi ?? ""}").yetkiVarMi(item.belgeTipi != null),
-                              Text("Kayıt Tipi: ${item.kayitTipi ?? ""} - ${item.kayitTipiAdi ?? ""}").yetkiVarMi(item.kayitTipi != null),
+                              if (item.haracik != null) Text("Açıklama: ${item.haracik ?? ""}"),
+                              if (item.gckod != null) Text("Giriş/Çıkış: ${item.gckod ?? ""}"),
+                              if (item.belgeTipi != null) Text("Belge Tipi: ${item.belgeTipi ?? ""} - ${item.belgeTipiAdi ?? ""}"),
+                              if (item.kayitTipi != null) Text("Kayıt Tipi: ${item.kayitTipi ?? ""} - ${item.kayitTipiAdi ?? ""}"),
                               // Text("Şube: ${item. ?? ""}"),
-                              Text("StHarInc: ${item.stharInc ?? ""}").yetkiVarMi(item.stharInc != null),
-                              Text("Belge No: ${item.belgeNo ?? ""}").yetkiVarMi(item.belgeNo != null),
+                              if (item.stharInc != null) Text("StHarInc: ${item.stharInc ?? ""}"),
+                              if (item.belgeNo != null) Text("Belge No: ${item.belgeNo ?? ""}"),
                             ].whereType<Text>().toList(),
                           ),
                           onTap: () async {

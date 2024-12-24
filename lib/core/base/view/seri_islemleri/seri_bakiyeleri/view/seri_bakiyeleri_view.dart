@@ -15,7 +15,6 @@ import "../../../../../components/textfield/custom_text_field.dart";
 import "../../../../../components/wrap/appbar_title.dart";
 import "../../../../../constants/extensions/iterable_extensions.dart";
 import "../../../../../constants/extensions/number_extensions.dart";
-import "../../../../../constants/extensions/widget_extensions.dart";
 import "../../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../state/base_state.dart";
 import "../view_model/seri_bakiyeleri_view_model.dart";
@@ -121,11 +120,11 @@ class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
                             subtitle: CustomLayoutBuilder(
                               splitCount: 2,
                               children: [
-                                Text("Seri 1: ${seriModel.seri1}").yetkiVarMi(seriModel.seri1 != null),
-                                Text("Seri 2: ${seriModel.seri2}").yetkiVarMi(seriModel.seri2 != null),
-                                Text("Depo: ${seriModel.depoTanimi}").yetkiVarMi(seriModel.depoTanimi != null),
-                                Text("Hücre: ${seriModel.hucreKodu}").yetkiVarMi(seriModel.hucreKodu != null),
-                                Text("Miktar: ${seriModel.miktar.toIntIfDouble}").yetkiVarMi(seriModel.miktar != null),
+                                if (seriModel.seri1 != null) Text("Seri 1: ${seriModel.seri1}"),
+                                if (seriModel.seri2 != null) Text("Seri 2: ${seriModel.seri2}"),
+                                if (seriModel.depoTanimi != null) Text("Depo: ${seriModel.depoTanimi}"),
+                                if (seriModel.hucreKodu != null) Text("Hücre: ${seriModel.hucreKodu}"),
+                                if (seriModel.miktar != null) Text("Miktar: ${seriModel.miktar.toIntIfDouble}"),
                               ].where((element) => element is! SizedBox).toList(),
                             ),
                           ),

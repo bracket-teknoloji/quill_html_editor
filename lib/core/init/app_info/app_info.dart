@@ -9,7 +9,7 @@ class AppInfoModel {
 
   //singleton
   static final AppInfoModel _instance = AppInfoModel._init();
-  static AppInfoModel get instance => _instance;
+  static AppInfoModel get instance => _instance..init();
 
   Future<void> init() async {
     final packageInfo = await PackageInfo.fromPlatform();

@@ -111,10 +111,10 @@ class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                   Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: theme.colorScheme.primary)),
                   Row(
                     children: [
-                      const ColorfulBadge(label: Text("Alacak"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(widget.cariHareketleriModel.alacakMi),
-                      const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(!widget.cariHareketleriModel.alacakMi),
-                      const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)
-                          .yetkiVarMi(widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null),
+                      if (widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Alacak"), badgeColorEnum: BadgeColorEnum.basarili),
+                      if (!widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata),
+                      if (widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null)
+                        const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
                     ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
                   ),
                 ],

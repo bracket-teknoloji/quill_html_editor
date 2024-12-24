@@ -13,7 +13,6 @@ import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -84,73 +83,77 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               Text(model.cariAdi ?? ""),
               Row(
                 children: [
-                  InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariylaGonderildiMi),
-                  const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizliMi),
-                  const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.taslakMi),
-                  ColorfulBadge(label: Text(loc.generalStrings.warning), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(model.uyariMi),
-                  const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.reddedildiMi),
-                  ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.iptalEdildiMi),
-                  const Icon(Icons.print_outlined, size: UIHelper.highSize).yetkiVarMi(model.basimYapildiMi),
-                  ColorfulBadge(
-                    label: const Text("Hata"),
-                    badgeColorEnum: BadgeColorEnum.hata,
-                    onTap: () {
-                      dialogManager.showAlertDialog("${model.cevapKodu}\n${model.cevapAciklama}");
-                    },
-                  ).yetkiVarMi(model.basariylaGonderildi != "E" && !model.gelenMi),
+                  if (model.basariylaGonderildiMi) InkWell(onTap: showCevapAciklamaSnackBar, child: const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)),
+                  if (model.dovizliMi) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+                  if (model.taslakMi) const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.hata),
+                  if (model.uyariMi) ColorfulBadge(label: Text(loc.generalStrings.warning), badgeColorEnum: BadgeColorEnum.uyari),
+                  if (model.reddedildiMi) const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata),
+                  if (model.iptalEdildiMi) ColorfulBadge(label: Text("İptal (${model.iptalTarihi.toDateString})"), badgeColorEnum: BadgeColorEnum.hata),
+                  if (model.basimYapildiMi) const Icon(Icons.print_outlined, size: UIHelper.highSize),
+                  if (model.basariylaGonderildi != "E" && !model.gelenMi)
+                    ColorfulBadge(
+                      label: const Text("Hata"),
+                      badgeColorEnum: BadgeColorEnum.hata,
+                      onTap: () {
+                        dialogManager.showAlertDialog("${model.cevapKodu}\n${model.cevapAciklama}");
+                      },
+                    ),
                 ].map((e) => e is! SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
-              Text(model.faturaAciklama).yetkiVarMi(model.belgeIslendiMi),
+              if (model.belgeIslendiMi) Text(model.faturaAciklama),
               LayoutBuilder(
                 builder: (context, constraints) {
                   final efaturaList = [
                     Text("Vergi No: ${model.vergiNo ?? ""}"),
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
                     Text("Onay: ${model.onayAciklama ?? ""}", style: TextStyle(color: model.yanitBekliyorMu ? UIHelper.primaryColor : null)),
-                    InkWell(
-                      onTap: showCevapAciklamaSnackBar,
-                      child: Row(
-                        children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
-                          Text(" Senaryo: ${model.senaryo ?? ""}"),
-                        ],
+                    if (!model.gelenMi)
+                      InkWell(
+                        onTap: showCevapAciklamaSnackBar,
+                        child: Row(
+                          children: [
+                            Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
+                            Text(" Senaryo: ${model.senaryo ?? ""}"),
+                          ],
+                        ),
                       ),
-                    ).yetkiVarMi(!model.gelenMi),
-                    Text("Senaryo: ${model.senaryo ?? ""}").yetkiVarMi(model.gelenMi),
+                    if (model.gelenMi) Text("Senaryo: ${model.senaryo ?? ""}"),
                     Text("Tipi: ${model.faturaTipi ?? ""}"),
                     Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("Genel Döv. Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}").yetkiVarMi(model.dovizliMi),
+                    if (model.dovizliMi) Text("Genel Döv. Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}"),
                   ];
                   final eArsivList = [
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
                     Text("Cevap Kodu: ${model.cevapKodu ?? ""}"),
-                    InkWell(
-                      onTap: showCevapAciklamaSnackBar,
-                      child: Row(
-                        children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
-                          Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
-                        ],
+                    if (!model.gelenMi)
+                      InkWell(
+                        onTap: showCevapAciklamaSnackBar,
+                        child: Row(
+                          children: [
+                            Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
+                            Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
+                          ],
+                        ),
                       ),
-                    ).yetkiVarMi(!model.gelenMi),
                     Text("Tipi: ${model.faturaTipi ?? ""}"),
                     Text("Gönderme Şekli: ${model.gondermeDurumu ?? ""}"),
-                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency").yetkiVarMi(!model.dovizliMi),
-                    Text("Genel Döv. Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}").yetkiVarMi(model.dovizliMi),
+                    if (!model.dovizliMi) Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                    if (model.dovizliMi) Text("Genel Döv. Toplam: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi}"),
                   ];
                   final eIrsaliyeList = [
                     Text("Vergi No: ${model.vergiNo ?? ""}"),
                     Text("Kayıt Tarihi: ${model.kayittarihi.toDateString}"),
                     Text("Onay: ${model.onayAciklama ?? ""}"),
-                    InkWell(
-                      onTap: showCevapAciklamaSnackBar,
-                      child: Row(
-                        children: [
-                          Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
-                          Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
-                        ],
+                    if (!model.gelenMi)
+                      InkWell(
+                        onTap: showCevapAciklamaSnackBar,
+                        child: Row(
+                          children: [
+                            Icon(Icons.open_in_new_outlined, size: theme.textTheme.titleSmall?.fontSize, color: UIHelper.primaryColor),
+                            Text(" Cevap Kodu: ${model.cevapKodu ?? ""}"),
+                          ],
+                        ),
                       ),
-                    ).yetkiVarMi(!model.gelenMi),
                   ];
 
                   final List<Widget> selectedList = model.eFaturaMi
@@ -169,7 +172,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                     "Kontrol: ${model.kontrolEdildi == "E" ? model.kontrolAciklama : "Hayır"}",
                     style: TextStyle(color: model.kontrolEdildi == "E" ? ColorPalette.mantis : null),
                   ).paddingSymmetric(vertical: UIHelper.lowSize),
-                  const Icon(Icons.check_circle_outline_outlined, size: UIHelper.midSize * 2, color: ColorPalette.mantis).paddingOnly(right: UIHelper.lowSize).yetkiVarMi(model.kontrolEdildi == "E"),
+                  if (model.kontrolEdildi == "E") const Icon(Icons.check_circle_outline_outlined, size: UIHelper.midSize * 2, color: ColorPalette.mantis).paddingOnly(right: UIHelper.lowSize),
                 ],
               ),
             ],
@@ -199,7 +202,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text("* Kontrolü kaldırmak için açıklamayı boş bırakın.", style: theme.textTheme.bodyLarge?.copyWith(color: UIHelper.primaryColor)).yetkiVarMi(model.kontrolAciklama != null),
+                if (model.kontrolAciklama != null) Text("* Kontrolü kaldırmak için açıklamayı boş bırakın.", style: theme.textTheme.bodyLarge?.copyWith(color: UIHelper.primaryColor)),
                 CustomTextField(
                   labelText: "Kontrol Açıklaması",
                   controller: controller,
