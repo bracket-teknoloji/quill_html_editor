@@ -30,7 +30,19 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
   void initState() {
     super.initState();
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
+      try {
         await AccountModel.instance.init();
+      } on Error catch (e) {
+        viewModel
+          ..setIsError(true)
+          ..setTitle(e.toString());
+        return;
+      } on Exception catch (e) {
+        viewModel
+          ..setIsError(true)
+          ..setTitle(e.toString());
+        return;
+      }
       login();
     });
   }

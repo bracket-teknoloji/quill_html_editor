@@ -1,5 +1,4 @@
 import "dart:developer";
-import "dart:io";
 
 import "package:app_tracking_transparency/app_tracking_transparency.dart";
 import "package:easy_localization/easy_localization.dart";
@@ -27,16 +26,6 @@ void main() async {
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
   WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
-    try {
-      await AppInfoModel.instance.init();
-    } catch (e) {
-      log(e.toString());
-    }
-    if (!kIsWeb) {
-      if (Platform.isAndroid) {
-        await AccountModel.instance.init();
-      }
-    }
     await firebaseInitialized();
     await EasyLocalization.ensureInitialized();
   });

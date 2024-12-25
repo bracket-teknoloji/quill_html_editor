@@ -153,6 +153,11 @@ class AccountModel with NetworkManagerMixin {
   bool get demoMu => uyeEmail == "demo@netfect.com";
 
   Future<void> init() async {
+    try {
+      await AppInfoModel.instance.init();
+    } catch (e) {
+      log(e.toString());
+    }
     if (isDebug) {
       debugMu = isDebug;
     } else {
