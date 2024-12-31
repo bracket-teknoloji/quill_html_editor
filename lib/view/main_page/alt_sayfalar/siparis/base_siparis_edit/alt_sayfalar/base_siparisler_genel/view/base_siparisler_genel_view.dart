@@ -146,7 +146,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                           ..plasiyerKodu = result.plasiyerKodu;
                         plasiyerController.text = result.plasiyerAciklama ?? result.plasiyerKodu ?? "";
                       }
-                      if (!yetkiController.siparisFarkliTeslimCariAktif) {
+                      if (!yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)) {
                         cariController.text = result.cariAdi ?? "";
                         model.teslimCariAdi = result.cariAdi;
                       }
@@ -154,7 +154,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                   },
                 ),
                 CustomTextField(
-                  enabled: enable && yetkiController.siparisFarkliTeslimCariAktif,
+                  enabled: enable && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum),
                   labelText: "Teslim Cari",
                   readOnly: true,
                   suffixMore: true,
@@ -190,7 +190,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       ..teslimCariAdi = null;
                     teslimCariController.clear();
                   },
-                  onTap: !yetkiController.siparisFarkliTeslimCariAktif
+                  onTap: !yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)
                       ? null
                       : () async {
                           if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
@@ -225,7 +225,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                             }
                           }
                         },
-                ).yetkiVarMi(yetkiController.siparisFarkliTeslimCariAktif && parametreModel.bagliCariVar == true),
+                ).yetkiVarMi(yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum) && parametreModel.bagliCariVar == true),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -372,7 +372,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.siparisKosulAktifMi),
+                    ).yetkiVarMi(yetkiController.siparisKosulAktifMi(model.getEditTipiEnum)),
                     Expanded(
                       child: CustomTextField(
                         enabled: enable,
@@ -389,7 +389,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.siparisKosulAktifMi),
+                    ).yetkiVarMi(yetkiController.siparisKosulAktifMi(model.getEditTipiEnum)),
                   ],
                 ),
                 Row(

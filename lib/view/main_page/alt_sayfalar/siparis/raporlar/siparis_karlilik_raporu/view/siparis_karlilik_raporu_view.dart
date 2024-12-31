@@ -42,7 +42,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
   @override
   void initState() {
     viewModel = SiparisKarlilikRaporuViewModel();
-    viewModel.setBelgeNo(widget.model?.belgeNo);
+    if (widget.model?.belgeNo case final belgeNo?) viewModel.setBelgeNo(belgeNo);
     belgeNoController = TextEditingController(text: widget.model?.belgeNo ?? "");
     viewModel.setCariKodu(widget.model?.cariKodu);
     cariController = TextEditingController(text: widget.model?.cariAdi ?? "");
@@ -102,7 +102,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
               suffixMore: true,
               controller: belgeNoController,
               onClear: () {
-                viewModel.setBelgeNo(null);
+                viewModel.setBelgeNo("");
                 belgeNoController.clear();
               },
               onTap: () async {
@@ -112,7 +112,7 @@ class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
                 );
                 if (result is BaseSiparisEditModel) {
                   belgeNoController.text = result.belgeNo ?? "";
-                  viewModel.setBelgeNo(result.belgeNo);
+                  if (result.belgeNo case final belgeNo?) viewModel.setBelgeNo(belgeNo);
                   if (result.cariKodu != null) {
                     viewModel.setCariKodu(result.cariKodu);
                     cariController.text = result.cariAdi ?? "";

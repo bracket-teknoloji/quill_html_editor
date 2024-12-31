@@ -32,7 +32,7 @@ abstract class _StokIhtiyacRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_StokIhtiyac",
     standart: true,
-    dicParams: DicParams(sirala: "IHTIYAC_DESC"),
+    dicParams: DicParams(sirala: "IHTIYAC_DESC", belgeNo: ""),
   );
 
   @action
@@ -42,7 +42,7 @@ abstract class _StokIhtiyacRaporuViewModelBase with Store {
   @action
   void setCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(cariKodu: value);
   @action
-  void setBelgeNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
+  void setBelgeNo(String value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
   //* Future
   //*
   @observable

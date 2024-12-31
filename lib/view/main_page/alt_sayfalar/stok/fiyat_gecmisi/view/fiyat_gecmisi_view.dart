@@ -339,6 +339,7 @@ class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
                                   return;
                                 }
                                 final DicParams dicParams = DicParams(
+                                  belgeNo: model?.stokKodu ?? "",
                                   stokKodu: model?.stokKodu,
                                   fiyatTipi: model?.fiyatTipi,
                                   tblnfStokfiyatgecmisiId: model?.id.toStringIfNotNull,

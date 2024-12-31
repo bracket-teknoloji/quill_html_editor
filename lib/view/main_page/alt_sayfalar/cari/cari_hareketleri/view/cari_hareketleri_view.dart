@@ -271,13 +271,13 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                   BottomSheetModel(
                     iconWidget: Icons.receipt_long_outlined,
                     title: "Tahsilat Makbuzu",
-                    onTap: () async => await showPdf("TahsilatMakbuzu", item.inckeyno.toStringIfNotNull ?? ""),
+                    onTap: () async => await showPdf("TahsilatMakbuzu", item),
                   ).yetkiKontrol(item.kasaMi),
                   BottomSheetModel(
                     iconWidget: Icons.picture_as_pdf_outlined,
                     title: "PDF Görüntüle",
                     onTap: () async {
-                      await showPdf("CariHareket", item.inckeyno.toStringIfNotNull ?? "");
+                      await showPdf("CariHareket", item);
                     },
                   ),
                 ].nullCheckWithGeneric,
@@ -336,8 +336,8 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
       model.aciklama!.toLowerCase().contains(filter.toLowerCase());
   // ("${"("})").toLowerCase().contains(filter.toLowerCase());
 
-  Future<void> showPdf(String ozelKod, String inckeyno) async {
-    final PdfModel pdfModel = PdfModel(raporOzelKod: ozelKod, dicParams: DicParams());
+  Future<void> showPdf(String ozelKod, CariHareketleriModel model) async {
+    final PdfModel pdfModel = PdfModel(raporOzelKod: ozelKod, dicParams: DicParams(belgeNo: model.belgeNo ?? ""));
     final result = parametreModel.netFectDizaynList?.where((element) => element.ozelKod == ozelKod).toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {
@@ -346,7 +346,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         pdfModel
           ..dizaynId = result.firstOrNull?.id
           ..etiketSayisi = result.firstOrNull?.kopyaSayisi;
-        pdfModel.dicParams?.caharInckey = inckeyno;
+        pdfModel.dicParams?.caharInckey = model.inckeyno.toStringIfNotNull;
         dizaynList = result.first;
       } else {
         dizaynList = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -357,7 +357,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         pdfModel
           ..dizaynId = dizaynList?.id
           ..etiketSayisi = dizaynList?.kopyaSayisi;
-        pdfModel.dicParams?.caharInckey = inckeyno;
+        pdfModel.dicParams?.caharInckey = model.inckeyno.toStringIfNotNull;
         // pdfModel.dicParams?.belgeNo = dizaynList?.;
       }
       Get.to(() => PDFViewerView(title: dizaynList?.dizaynAdi ?? "", pdfData: pdfModel));

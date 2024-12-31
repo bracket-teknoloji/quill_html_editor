@@ -15,7 +15,7 @@ abstract class _LokalDepoBakiyeRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_StokLokalDepo",
     standart: true,
-    dicParams: DicParams()..sifirHaric = "H",
+    dicParams: DicParams(belgeNo: "")..sifirHaric = "H",
   );
 
   List<BottomSheetModel>? bottomSheetList = CacheManager.getAnaVeri?.paramModel?.depoList

@@ -475,7 +475,7 @@ class IslemlerMenuItemConstants<T> {
                   dizaynId: result.id,
                   raporOzelKod: result.ozelKod,
                   etiketSayisi: result.kopyaSayisi,
-                  dicParams: DicParams(belgeNo: siparisModel?.belgeNo, cariKodu: siparisModel?.cariKodu, belgeTipi: siparisModel?.getEditTipiEnum?.rawValue),
+                  dicParams: DicParams(belgeNo: siparisModel?.belgeNo ?? "", cariKodu: siparisModel?.cariKodu, belgeTipi: siparisModel?.getEditTipiEnum?.rawValue),
                 ),
               ),
             );

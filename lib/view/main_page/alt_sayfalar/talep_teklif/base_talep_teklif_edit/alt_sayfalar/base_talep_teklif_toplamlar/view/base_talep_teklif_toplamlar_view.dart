@@ -181,7 +181,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                     CustomTextField(
                       labelText: "Gen. İsk 1",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk1AktifMi,
+                      enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
                       controller: genelIskonto1Controller,
                       isFormattedString: true,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -201,7 +201,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                     CustomTextField(
                       labelText: "İsk.Tipi 1",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk1AktifMi,
+                      enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
                       readOnly: true,
                       suffixMore: true,
                       controller: iskontoTipi1Controller,
@@ -222,7 +222,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                     CustomTextField(
                       labelText: "Gen. İsk 2",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk2AktifMi,
+                      enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
                       controller: genelIskonto2Controller,
                       isFormattedString: true,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -242,7 +242,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                     CustomTextField(
                       labelText: "İsk.Tipi 2",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk2AktifMi,
+                      enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
                       readOnly: true,
                       suffixMore: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi.toStringIfNotNull ?? "")),
@@ -263,7 +263,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                     CustomTextField(
                       labelText: "Gen. İsk 3",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk3AktifMi,
+                      enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
                       controller: genelIskonto3Controller,
                       keyboardType: const TextInputType.numberWithOptions(decimal: true),
                       onChanged: (p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
@@ -283,7 +283,7 @@ class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklifToplam
                     CustomTextField(
                       labelText: "İsk.Tipi 3",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                      enabled: enable && yetkiController.siparisGenIsk3AktifMi,
+                      enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
                       suffixMore: true,
                       readOnly: true,
                       controller: iskontoTipi3Controller,

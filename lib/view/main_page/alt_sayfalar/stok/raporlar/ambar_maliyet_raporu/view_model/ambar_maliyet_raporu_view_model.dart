@@ -13,7 +13,7 @@ abstract class _AmbarMaliyetRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_StokAmbarMaliyet",
     standart: true,
-    dicParams: DicParams()..sifirHaric = "H",
+    dicParams: DicParams(belgeNo: "")..sifirHaric = "H",
   );
   @observable
   bool sifirHaricValue = false;

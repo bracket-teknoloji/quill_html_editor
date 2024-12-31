@@ -29,6 +29,7 @@ Map<String, dynamic> _$$PdfModelImplToJson(_$PdfModelImpl instance) =>
 
 _$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
     _$DicParamsImpl(
+      belgeNo: json['BELGE_NO'] as String,
       cariKodu: json['CARI_KODU'] as String?,
       teslimCariKodu: json['TESLIM_CARI_KODU'] as String?,
       stokKodu: json['STOK_KODU'] as String?,
@@ -59,7 +60,6 @@ _$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
       bakiyeDurumu: json['BAKIYE_DURUMU'] as String?,
       caharInckey: json['CAHAR_INCKEY'] as String?,
       belgeTipi: json['BELGE_TIPI'] as String?,
-      belgeNo: json['BELGE_NO'] as String?,
       isemriNo: json['ISEMRI_NO'] as String?,
       dinamikParam: json['DINAMIK_PARAM'] as String?,
       kasaharInckey: json['KASAHAR_INCKEY'] as String?,
@@ -81,6 +81,7 @@ _$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) =>
     <String, dynamic>{
+      'BELGE_NO': instance.belgeNo,
       if (instance.cariKodu case final value?) 'CARI_KODU': value,
       if (instance.teslimCariKodu case final value?) 'TESLIM_CARI_KODU': value,
       if (instance.stokKodu case final value?) 'STOK_KODU': value,
@@ -113,7 +114,6 @@ Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) =>
       if (instance.bakiyeDurumu case final value?) 'BAKIYE_DURUMU': value,
       if (instance.caharInckey case final value?) 'CAHAR_INCKEY': value,
       if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
-      if (instance.belgeNo case final value?) 'BELGE_NO': value,
       if (instance.isemriNo case final value?) 'ISEMRI_NO': value,
       if (instance.dinamikParam case final value?) 'DINAMIK_PARAM': value,
       if (instance.kasaharInckey case final value?) 'KASAHAR_INCKEY': value,

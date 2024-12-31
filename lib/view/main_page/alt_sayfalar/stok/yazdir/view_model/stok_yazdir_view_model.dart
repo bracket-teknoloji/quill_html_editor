@@ -38,10 +38,10 @@ abstract class _StokYazdirViewModelBase with Store {
 
   //* PrintModel
   @observable
-  PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket", dicParams: DicParams());
+  PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket", dicParams: DicParams(belgeNo: ""));
 
   @action
-  void setPrintModel(PrintModel? model) => printModel = model ?? PrintModel(raporOzelKod: "StokEtiket", dicParams: DicParams());
+  void setPrintModel(PrintModel? model) => printModel = model ?? PrintModel(raporOzelKod: "StokEtiket", dicParams: DicParams(belgeNo: ""));
 
   @action
   void setYapilandirmaKodu(String? yapilandirmaKodu) {

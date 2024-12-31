@@ -243,7 +243,7 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
                                   raporOzelKod: result.ozelKod,
                                   etiketSayisi: result.kopyaSayisi,
                                   dicParams: DicParams(
-                                    belgeNo: BaseSiparisEditModel.instance.belgeNo,
+                                    belgeNo: BaseSiparisEditModel.instance.belgeNo ?? "",
                                     cariKodu: BaseSiparisEditModel.instance.cariKodu,
                                     belgeTipi: model.editTipiEnum?.rawValue,
                                   ),

@@ -303,22 +303,25 @@ class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
     if (viewModel.model != null) {
       cariController.text = viewModel.model?.cariAdi ?? "";
       final map = {
-        "CariKodu": viewModel.model?.cariKodu,
-        "SIRALAMA": viewModel.sirala,
+        if (viewModel.model?.cariKodu case final value?) "CariKodu": value,
         "EkranTipi": "L",
+        if (bitisTarihiController.text case (!= "" && != null)) "BitisTarihi": bitisTarihiController.text,
+        if (viewModel.donemTipiList[viewModel.donemTipiIndex] case final value) "DonemTipi": value,
         "FiltreKodu": 1,
+        "SIRALAMA": viewModel.sirala,
+        if (baslangicTarihiController.text case (!= "" && != null)) "BaslamaTarihi": baslangicTarihiController.text,
         "IrsDahil": viewModel.irsDahil ? "E" : null,
-        "DonemTipi": viewModel.donemTipiList[viewModel.donemTipiIndex],
-        "BaslamaTarihi": baslangicTarihiController.text,
-        "BitisTarihi": bitisTarihiController.text,
-        "ArrStokGrupKodu": jsonEncode(viewModel.arrStokGrupKodu.toList()),
-        "ArrStokKod1": jsonEncode(viewModel.arrStokKod1.toList()),
-        "ArrStokKod2": jsonEncode(viewModel.arrStokKod2.toList()),
-        "ArrStokKod3": jsonEncode(viewModel.arrStokKod3.toList()),
-        "ArrStokKod4": jsonEncode(viewModel.arrStokKod4.toList()),
-        "ArrStokKod5": jsonEncode(viewModel.arrStokKod5.toList()),
-      }..removeWhere((key, value) => value == null || value == "[]");
-      final result = await networkManager.dioGet<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
+        "PickerBelgeTuru": "",
+        "CariKodu": "",
+        "BelgeNo" : "",
+        if (viewModel.arrStokGrupKodu.ext.isNotNullOrEmpty) "ArrStokGrupKodu": jsonEncode(viewModel.arrStokGrupKodu.toList()),
+        if (viewModel.arrStokKod1.ext.isNotNullOrEmpty) "ArrStokKod1": jsonEncode(viewModel.arrStokKod1.toList()),
+        if (viewModel.arrStokKod2.ext.isNotNullOrEmpty) "ArrStokKod2": jsonEncode(viewModel.arrStokKod2.toList()),
+        if (viewModel.arrStokKod3.ext.isNotNullOrEmpty) "ArrStokKod3": jsonEncode(viewModel.arrStokKod3.toList()),
+        if (viewModel.arrStokKod4.ext.isNotNullOrEmpty) "ArrStokKod4": jsonEncode(viewModel.arrStokKod4.toList()),
+        if (viewModel.arrStokKod5.ext.isNotNullOrEmpty) "ArrStokKod5": jsonEncode(viewModel.arrStokKod5.toList()),
+      };
+      final result = await networkManager.dioPost<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
       if (result.isSuccess) {
         viewModel.setModelList(result.dataList);
       }

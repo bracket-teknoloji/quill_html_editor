@@ -171,7 +171,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
               etiketSayisi: 1,
               raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
               dicParams: DicParams(
-                belgeNo: widget.model.fisno,
+                belgeNo: widget.model.fisno ?? "",
               ),
             );
             final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
@@ -204,7 +204,7 @@ class _SayimlarCardState extends BaseState<SayimlarCard> {
               PrintModel(
                 raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
                 dicParams: DicParams(
-                  belgeNo: widget.model.fisno,
+                  belgeNo: widget.model.fisno ?? "",
                   belgeTipi: "SAYI",
                 ),
               ),

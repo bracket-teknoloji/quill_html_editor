@@ -56,8 +56,8 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     _cariController = TextEditingController(text: widget.cariListesiModel?.cariAdi ?? "");
     _dovizTipiController = TextEditingController();
     _dovizKuruController = TextEditingController();
-    _dovizTutariController = TextEditingController();
-    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    _dovizTutariController = TextEditingController(text: widget.cariListesiModel?.dovBakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari));
+    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
     _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");
     _projekoduController = TextEditingController();
     _referansKoduController = TextEditingController();
@@ -65,7 +65,10 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     _cariHareketiAciklamaController = TextEditingController();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      viewModel.setTahsilatmi(widget.tahsilatMi == true);
+      viewModel
+        ..setTahsilatmi(widget.tahsilatMi == true)
+        ..setDovizTutari(widget.cariListesiModel?.dovBakiye?.abs())
+        ..setTutar(widget.cariListesiModel?.bakiye?.abs());
       if (widget.cariListesiModel != null) {
         viewModel
           ..setHesapKodu(widget.cariListesiModel!.cariKodu)

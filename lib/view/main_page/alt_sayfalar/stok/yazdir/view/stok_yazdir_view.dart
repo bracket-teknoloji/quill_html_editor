@@ -106,7 +106,7 @@ class _StokYazdirViewState extends BaseState<StokYazdirView> {
                         dizaynId: viewModel.printModel.dizaynId,
                         raporOzelKod: viewModel.printModel.raporOzelKod,
                         etiketSayisi: viewModel.printModel.etiketSayisi,
-                        dicParams: DicParams(stokKodu: widget.model?.stokKodu),
+                        dicParams: DicParams(stokKodu: widget.model?.stokKodu, belgeNo: ""),
                       ),
                     ),
                   );

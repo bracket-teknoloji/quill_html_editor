@@ -123,7 +123,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             widget.onUpdated?.call(true);
                           }
                         },
-                      ).yetkiKontrol(yetkiController.siparisDuzelt && widget.model.tipi != 1),
+                      ).yetkiKontrol(yetkiController.siparisDuzelt(widget.model.getEditTipiEnum) && widget.model.tipi != 1),
                       BottomSheetModel(
                         title: loc.generalStrings.delete,
                         iconWidget: Icons.delete_outline_outlined,
@@ -147,7 +147,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             }
                           });
                         },
-                      ).yetkiKontrol((yetkiController.siparisSil || widget.model.isNew == true) && widget.model.tipi != 1),
+                      ).yetkiKontrol((yetkiController.siparisSil(widget.model.getEditTipiEnum) || widget.model.isNew == true) && widget.model.tipi != 1),
                       BottomSheetModel(
                         title: "PDF Görüntüle",
                         iconWidget: Icons.picture_as_pdf_outlined,
@@ -162,7 +162,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                             raporOzelKod: widget.editTipiEnum.getPrintValue,
                             dizaynId: dizayn.id,
                             dicParams: DicParams(
-                              belgeNo: widget.model.isTempBelge ? null : widget.model.belgeNo,
+                              belgeNo: widget.model.isTempBelge ? "" : widget.model.belgeNo!,
                               belgeTipi: widget.model.getEditTipiEnum?.rawValue,
                               cariKodu: widget.model.cariKodu,
                               tempBelgeId: widget.model.isTempBelge ? widget.model.tempBelgeId.toStringIfNotNull : null,
@@ -179,7 +179,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                           final PrintModel printModel = PrintModel(
                             raporOzelKod: widget.editTipiEnum.getPrintValue,
                             etiketSayisi: 1,
-                            dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.getEditTipiEnum?.rawValue, cariKodu: widget.model.cariKodu),
+                            dicParams: DicParams(belgeNo: widget.model.belgeNo ?? "", belgeTipi: widget.model.getEditTipiEnum?.rawValue, cariKodu: widget.model.cariKodu),
                           );
                           await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
                         },
@@ -199,7 +199,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                         },
                       ).yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null),
                       BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
-                          .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
+                          .yetkiKontrol(widget.model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi(widget.model.getEditTipiEnum) && false),
                       BottomSheetModel(
                         title: "Cari İşlemleri",
                         iconWidget: Icons.person_outline_outlined,

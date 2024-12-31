@@ -1784,7 +1784,7 @@ class KalemModel with NetworkManagerMixin {
 
   double get brutTutar => (getSelectedMiktar ?? 0) * (brutFiyat ?? 0);
 
-  double get getBrutTutar => brutTutar + (otvTutar ?? 0);
+  double get getBrutTutar => brutTutar + (otvTutar ?? 0) - iskontoTutari;
 
   double get dovizliOTVTutar => dovizliMi ? (otvTutar ?? 0) / (dovizKuru ?? 1) : 0;
 

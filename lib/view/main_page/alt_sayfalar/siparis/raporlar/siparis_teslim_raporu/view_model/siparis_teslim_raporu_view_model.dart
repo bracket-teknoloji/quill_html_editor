@@ -20,7 +20,7 @@ abstract class _SiparisTeslimRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: editTipiEnum.musteriMi ? "Rapor_SiparisMSTeslim" : "Rapor_SiparisSSTeslim",
     standart: true,
-    dicParams: DicParams(),
+    dicParams: DicParams(belgeNo: ""),
   );
   @observable
   bool kapaliMi = false;
@@ -34,7 +34,7 @@ abstract class _SiparisTeslimRaporuViewModelBase with Store {
   @action
   void setTeslimCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(teslimCariKodu: value);
   @action
-  void setBelgeNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
+  void setBelgeNo(String value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
   @action
   void setVergiNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(vergiNo: value);
   @action

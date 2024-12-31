@@ -15,7 +15,7 @@ abstract class _DepoBakiyeDurumuViewModelBase with Store, MobxNetworkMixin {
   ObservableList<DepoBakiyeDurumuModel>? depoBakiyeDurumuList;
 
   @observable
-  DicParams dicParams = DicParams();
+  DicParams dicParams = DicParams(belgeNo: "");
 
   @computed
   List<String>? get subeAdiList => depoBakiyeDurumuList?.map((e) => e.subeAdi ?? "").toSet().toList();

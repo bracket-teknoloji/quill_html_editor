@@ -159,7 +159,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
                               if (index == (viewModel.getKasaIslemleriListesi?.length ?? 0)) {
                                 return const Center(child: CircularProgressIndicator.adaptive());
                               } else {
-                                final KasaIslemleriModel? item = viewModel.getKasaIslemleriListesi?[index];
+                                final KasaIslemleriModel item = viewModel.getKasaIslemleriListesi![index];
                                 return KasaIslemleriCard(
                                   kasaIslemleriModel: item,
                                   onDeleted: (deneme) {

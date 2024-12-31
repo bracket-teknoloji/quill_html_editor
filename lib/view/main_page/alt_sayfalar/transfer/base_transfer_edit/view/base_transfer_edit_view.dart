@@ -244,7 +244,7 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
                               final PdfModel pdfModel = PdfModel(
                                 raporOzelKod: BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue ?? "",
                                 dicParams: DicParams(
-                                  belgeNo: BaseSiparisEditModel.instance.belgeNo,
+                                  belgeNo: BaseSiparisEditModel.instance.belgeNo ?? "",
                                   cariKodu: BaseSiparisEditModel.instance.cariKodu,
                                   belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
                                 ),

@@ -13,7 +13,7 @@ abstract class _KasaEkstreRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_KasaEkstre",
     standart: true,
-    dicParams: DicParams(),
+    dicParams: DicParams(belgeNo: ""),
   );
 
   @action

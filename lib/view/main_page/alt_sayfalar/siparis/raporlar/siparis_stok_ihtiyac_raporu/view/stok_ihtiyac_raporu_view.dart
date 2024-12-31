@@ -36,7 +36,7 @@ class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
 
   @override
   void initState() {
-    viewModel.setBelgeNo(widget.model?.belgeNo);
+    if (widget.model?.belgeNo case final belgeNo?) viewModel.setBelgeNo(belgeNo);
     stokController = TextEditingController();
     plasiyerController = TextEditingController();
     siralaController = TextEditingController(text: "İhtiyaç (Azalan)");

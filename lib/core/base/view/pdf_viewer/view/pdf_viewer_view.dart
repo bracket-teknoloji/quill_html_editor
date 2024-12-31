@@ -126,7 +126,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
               icon: Icons.picture_as_pdf_outlined,
               child: const Text("PDF Görüntüle"),
               onPressed: () async {
-                if (kIsWeb) return fileDownload(base64Decode(viewModel.pdfModel?.byteData ?? ""), viewModel.pdfModel?.dosyaAdi ?? "pdf");
+                if (kIsWeb) return fileDownload(base64Decode(viewModel.pdfModel?.byteData ?? ""), "${widget.pdfData?.raporOzelKod}_${widget.pdfData?.dicParams?.belgeNo}.pdf");
                 if (await getFile != null) {
                   await OpenFilex.open((await getFile)!.path);
                 }

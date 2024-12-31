@@ -196,14 +196,13 @@ class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
 
   Future<void> showTahsilatMakbuzu() async {
     Get.back();
-    final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams());
+    final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams(belgeNo: model.belgeNo!));
     final anaVeri = CacheManager.getAnaVeri;
     final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {
       pdfModel.dicParams?.caharInckey = "0";
       pdfModel.dicParams?.kasaharInckey = "0";
-      pdfModel.dicParams?.belgeNo = model.belgeNo;
       pdfModel.dicParams?.belgeTipi = model.belgeTipi;
       if (result!.length == 1) {
         pdfModel.dizaynId = result.firstOrNull?.id;

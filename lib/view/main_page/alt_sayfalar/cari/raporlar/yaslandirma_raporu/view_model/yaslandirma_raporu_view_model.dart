@@ -52,7 +52,7 @@ abstract class _YaslandirmaRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_CariYaslandirma",
     standart: true,
-    dicParams: DicParams(),
+    dicParams: DicParams(belgeNo: ""),
   );
 
   //* Future

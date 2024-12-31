@@ -12,7 +12,7 @@ abstract class _MalKabulSevkiyatKalemRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_CariDovizBakiye",
     standart: true,
-    dicParams: DicParams(),
+    dicParams: DicParams(belgeNo: ""),
   );
 
   //* Future

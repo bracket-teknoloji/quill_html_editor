@@ -254,7 +254,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 CustomTextField(
                   labelText: "Gen. İsk 1",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk1AktifMi,
+                  enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
                   controller: genelIskonto1Controller,
                   isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -280,7 +280,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 CustomTextField(
                   labelText: "İsk.Tipi 1",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk1AktifMi,
+                  enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
                   readOnly: true,
                   suffixMore: true,
                   controller: iskontoTipi1Controller,
@@ -306,7 +306,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 CustomTextField(
                   labelText: "Gen. İsk 2",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk2AktifMi,
+                  enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
                   controller: genelIskonto2Controller,
                   isFormattedString: true,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -332,7 +332,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 CustomTextField(
                   labelText: "İsk.Tipi 2",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk2AktifMi,
+                  enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
                   readOnly: true,
                   isFormattedString: true,
                   suffixMore: true,
@@ -358,7 +358,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 CustomTextField(
                   labelText: "Gen. İsk 3",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk3AktifMi,
+                  enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
                   isFormattedString: true,
                   controller: genelIskonto3Controller,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
@@ -384,7 +384,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 CustomTextField(
                   labelText: "İsk.Tipi 3",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk3AktifMi,
+                  enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
                   suffixMore: true,
                   readOnly: true,
                   controller: iskontoTipi3Controller,
@@ -419,7 +419,7 @@ class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView>
                 ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
                 Expanded(
                   child: CustomTextField(
-                    labelText: yetkiController.siparisSatisEkMaliyet2Adi ?? "Tevkifat",
+                    labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
                     enabled: enable,
                     keyboardType: const TextInputType.numberWithOptions(
                       decimal: true,

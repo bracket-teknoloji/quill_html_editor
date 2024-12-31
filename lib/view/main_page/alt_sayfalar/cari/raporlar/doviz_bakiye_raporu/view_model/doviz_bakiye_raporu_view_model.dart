@@ -52,7 +52,7 @@ abstract class _DovizBakiyeRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_CariDovizBakiye",
     standart: true,
-    dicParams: DicParams()..sirala = "ADI",
+    dicParams: DicParams(belgeNo: "")..sirala = "ADI",
   );
 
   //* Future

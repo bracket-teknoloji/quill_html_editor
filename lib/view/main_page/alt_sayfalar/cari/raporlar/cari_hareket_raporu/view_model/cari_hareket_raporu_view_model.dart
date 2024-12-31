@@ -32,7 +32,7 @@ abstract class _CariHareketRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_CariHareket",
     standart: true,
-    dicParams: DicParams()..sirala = "ADI",
+    dicParams: DicParams(belgeNo: "")..sirala = "ADI",
   );
 
   //* Future

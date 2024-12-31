@@ -142,7 +142,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     final PrintModel printModel = PrintModel(
                       raporOzelKod: widget.editTipiEnum.getPrintValue,
                       etiketSayisi: 1,
-                      dicParams: DicParams(belgeNo: model.belgeNo, belgeTipi: model.getEditTipiEnum?.rawValue, cariKodu: model.cariKodu),
+                      dicParams: DicParams(belgeNo: model.belgeNo ?? "", belgeTipi: model.getEditTipiEnum?.rawValue, cariKodu: model.cariKodu),
                     );
                     await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
                   },

@@ -75,7 +75,7 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
                           etiketSayisi: 1,
                           raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
                           dicParams: DicParams(
-                            belgeNo: widget.model.fisno,
+                            belgeNo: widget.model.fisno ?? "",
                           ),
                         );
                         final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(

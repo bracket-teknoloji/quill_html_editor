@@ -18,7 +18,7 @@ abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_CariBorcAlacakDokumu",
     standart: true,
-    dicParams: DicParams()..sirala = "BAKIYE",
+    dicParams: DicParams(belgeNo: "")..sirala = "BAKIYE",
   );
 
   @observable

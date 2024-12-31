@@ -274,7 +274,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   },
                 ),
                 CustomTextField(
-                  enabled: enable && yetkiController.siparisFarkliTeslimCariAktif,
+                  enabled: enable && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum),
                   labelText: "Teslim Cari",
                   readOnly: true,
                   suffixMore: true,
@@ -311,7 +311,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       ..teslimCariAdi = null;
                     _teslimCariController.clear();
                   },
-                  onTap: !yetkiController.siparisFarkliTeslimCariAktif
+                  onTap: !yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)
                       ? null
                       : () async {
                           if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {

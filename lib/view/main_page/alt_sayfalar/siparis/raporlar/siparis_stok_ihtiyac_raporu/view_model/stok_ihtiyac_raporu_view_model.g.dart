@@ -109,7 +109,7 @@ mixin _$StokIhtiyacRaporuViewModel on _StokIhtiyacRaporuViewModelBase, Store {
   }
 
   @override
-  void setBelgeNo(String? value) {
+  void setBelgeNo(String value) {
     final _$actionInfo = _$_StokIhtiyacRaporuViewModelBaseActionController
         .startAction(name: '_StokIhtiyacRaporuViewModelBase.setBelgeNo');
     try {

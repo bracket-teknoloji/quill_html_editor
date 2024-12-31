@@ -164,6 +164,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 }
               }
               if (formKey.currentState?.validate() ?? false) {
+                viewModel.kalemModel.otvHesapla();
                 if (!yetkiController.lokalDepoUygulamasiAcikMi) {
                   viewModel.kalemModel.depoKodu = 0;
                 }
@@ -640,7 +641,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         ),
                       ),
                     ).yetkiVarMi(
-                      yetkiController.siparisSatirdaTeslimTarihiSor && !transferMi,
+                      yetkiController.siparisSatirdaTeslimTarihiSor(editTipi) && !transferMi,
                     ),
                     Expanded(
                       child: CustomTextField(
@@ -664,7 +665,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         },
                       ),
                     ).yetkiVarMi(
-                      yetkiController.siparisKosulSatirdaSor && !transferMi,
+                      yetkiController.siparisKosulSatirdaSor(editTipi) && !transferMi,
                     ),
                   ],
                 ),
@@ -944,7 +945,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   children: [
                     Expanded(
                       child: CustomTextField(
-                        enabled: yetkiController.siparisSatirdaKDVSor,
+                        enabled: yetkiController.siparisSatirdaKDVSor(editTipi),
                         labelText: "KDV Oranı",
                         controller: kdvOraniController,
                         isMust: true,
@@ -1451,7 +1452,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.belgeTipi = editTipi?.rawValue;
     viewModel.kalemModel.stokKodu = viewModel.kalemModel.stokKodu ?? viewModel.model?.stokKodu ?? "";
     viewModel.kalemModel.kosulKodu = model.kosulKodu;
-    viewModel.kalemModel.teslimTarihi = (editTipi?.siparisMi == true) && yetkiController.siparisSatirdaTeslimTarihiSor ? model.teslimTarihi : null;
+    viewModel.kalemModel.teslimTarihi = (editTipi?.siparisMi == true) && yetkiController.siparisSatirdaTeslimTarihiSor(editTipi) ? model.teslimTarihi : null;
     // viewModel.setShowDovizBilgileri(viewModel.dovizliMi);
     // viewModel.setOlcuBirimi(MapEntry<Olculer, int>((adi: widget.stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", pay: 0.0, payda: 0.0), 1));
     if (widget.kalemModel == null) {

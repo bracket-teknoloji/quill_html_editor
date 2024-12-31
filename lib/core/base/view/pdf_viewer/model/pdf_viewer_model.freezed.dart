@@ -293,6 +293,8 @@ DicParams _$DicParamsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DicParams {
+  String get belgeNo => throw _privateConstructorUsedError;
+  set belgeNo(String value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
   set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get teslimCariKodu => throw _privateConstructorUsedError;
@@ -353,8 +355,6 @@ mixin _$DicParams {
   set caharInckey(String? value) => throw _privateConstructorUsedError;
   String? get belgeTipi => throw _privateConstructorUsedError;
   set belgeTipi(String? value) => throw _privateConstructorUsedError;
-  String? get belgeNo => throw _privateConstructorUsedError;
-  set belgeNo(String? value) => throw _privateConstructorUsedError;
   String? get isemriNo => throw _privateConstructorUsedError;
   set isemriNo(String? value) => throw _privateConstructorUsedError;
   String? get dinamikParam => throw _privateConstructorUsedError;
@@ -407,7 +407,8 @@ abstract class $DicParamsCopyWith<$Res> {
       _$DicParamsCopyWithImpl<$Res, DicParams>;
   @useResult
   $Res call(
-      {String? cariKodu,
+      {String belgeNo,
+      String? cariKodu,
       String? teslimCariKodu,
       String? stokKodu,
       String? sifirHaric,
@@ -437,7 +438,6 @@ abstract class $DicParamsCopyWith<$Res> {
       String? bakiyeDurumu,
       String? caharInckey,
       String? belgeTipi,
-      String? belgeNo,
       String? isemriNo,
       String? dinamikParam,
       String? kasaharInckey,
@@ -472,6 +472,7 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? belgeNo = null,
     Object? cariKodu = freezed,
     Object? teslimCariKodu = freezed,
     Object? stokKodu = freezed,
@@ -502,7 +503,6 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
     Object? bakiyeDurumu = freezed,
     Object? caharInckey = freezed,
     Object? belgeTipi = freezed,
-    Object? belgeNo = freezed,
     Object? isemriNo = freezed,
     Object? dinamikParam = freezed,
     Object? kasaharInckey = freezed,
@@ -522,6 +522,10 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
     Object? tempBelgeId = freezed,
   }) {
     return _then(_value.copyWith(
+      belgeNo: null == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String,
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
@@ -641,10 +645,6 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
       belgeTipi: freezed == belgeTipi
           ? _value.belgeTipi
           : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
               as String?,
       isemriNo: freezed == isemriNo
           ? _value.isemriNo
@@ -727,7 +727,8 @@ abstract class _$$DicParamsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? cariKodu,
+      {String belgeNo,
+      String? cariKodu,
       String? teslimCariKodu,
       String? stokKodu,
       String? sifirHaric,
@@ -757,7 +758,6 @@ abstract class _$$DicParamsImplCopyWith<$Res>
       String? bakiyeDurumu,
       String? caharInckey,
       String? belgeTipi,
-      String? belgeNo,
       String? isemriNo,
       String? dinamikParam,
       String? kasaharInckey,
@@ -790,6 +790,7 @@ class __$$DicParamsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? belgeNo = null,
     Object? cariKodu = freezed,
     Object? teslimCariKodu = freezed,
     Object? stokKodu = freezed,
@@ -820,7 +821,6 @@ class __$$DicParamsImplCopyWithImpl<$Res>
     Object? bakiyeDurumu = freezed,
     Object? caharInckey = freezed,
     Object? belgeTipi = freezed,
-    Object? belgeNo = freezed,
     Object? isemriNo = freezed,
     Object? dinamikParam = freezed,
     Object? kasaharInckey = freezed,
@@ -840,6 +840,10 @@ class __$$DicParamsImplCopyWithImpl<$Res>
     Object? tempBelgeId = freezed,
   }) {
     return _then(_$DicParamsImpl(
+      belgeNo: null == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String,
       cariKodu: freezed == cariKodu
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
@@ -960,10 +964,6 @@ class __$$DicParamsImplCopyWithImpl<$Res>
           ? _value.belgeTipi
           : belgeTipi // ignore: cast_nullable_to_non_nullable
               as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
       isemriNo: freezed == isemriNo
           ? _value.isemriNo
           : isemriNo // ignore: cast_nullable_to_non_nullable
@@ -1040,7 +1040,8 @@ class __$$DicParamsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DicParamsImpl implements _DicParams {
   _$DicParamsImpl(
-      {this.cariKodu,
+      {required this.belgeNo,
+      this.cariKodu,
       this.teslimCariKodu,
       this.stokKodu,
       this.sifirHaric,
@@ -1070,7 +1071,6 @@ class _$DicParamsImpl implements _DicParams {
       this.bakiyeDurumu,
       this.caharInckey,
       this.belgeTipi,
-      this.belgeNo,
       this.isemriNo,
       this.dinamikParam,
       this.kasaharInckey,
@@ -1092,6 +1092,8 @@ class _$DicParamsImpl implements _DicParams {
   factory _$DicParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$DicParamsImplFromJson(json);
 
+  @override
+  String belgeNo;
   @override
   String? cariKodu;
   @override
@@ -1153,8 +1155,6 @@ class _$DicParamsImpl implements _DicParams {
   @override
   String? belgeTipi;
   @override
-  String? belgeNo;
-  @override
   String? isemriNo;
   @override
   String? dinamikParam;
@@ -1191,7 +1191,7 @@ class _$DicParamsImpl implements _DicParams {
 
   @override
   String toString() {
-    return 'DicParams(cariKodu: $cariKodu, teslimCariKodu: $teslimCariKodu, stokKodu: $stokKodu, sifirHaric: $sifirHaric, maliyetTipi: $maliyetTipi, tlHarDokulsun: $tlHarDokulsun, depoKodlari: $depoKodlari, haricStokKodlari: $haricStokKodlari, haricStokGrupKodlari: $haricStokGrupKodlari, dovizTipi: $dovizTipi, bastar: $bastar, bittar: $bittar, grupKodu: $grupKodu, borcAlacak: $borcAlacak, refTarih: $refTarih, tarihTipi: $tarihTipi, kod1: $kod1, kod2: $kod2, kod3: $kod3, kod4: $kod4, kod5: $kod5, kapali: $kapali, durum: $durum, vergiNo: $vergiNo, plasiyerKodu: $plasiyerKodu, aralikTipi: $aralikTipi, sirala: $sirala, bakiyeDurumu: $bakiyeDurumu, caharInckey: $caharInckey, belgeTipi: $belgeTipi, belgeNo: $belgeNo, isemriNo: $isemriNo, dinamikParam: $dinamikParam, kasaharInckey: $kasaharInckey, uretimFiyatiDahil: $uretimFiyatiDahil, fiyatTipi: $fiyatTipi, tblnfStokfiyatgecmisiId: $tblnfStokfiyatgecmisiId, gorunecekAlanlar: $gorunecekAlanlar, miktar: $miktar, yapkod: $yapkod, opkodu: $opkodu, kasaKodu: $kasaKodu, muhasebeKodu: $muhasebeKodu, filtre: $filtre, depoKodu: $depoKodu, hucreKodu: $hucreKodu, kalemId: $kalemId, tempBelgeId: $tempBelgeId)';
+    return 'DicParams(belgeNo: $belgeNo, cariKodu: $cariKodu, teslimCariKodu: $teslimCariKodu, stokKodu: $stokKodu, sifirHaric: $sifirHaric, maliyetTipi: $maliyetTipi, tlHarDokulsun: $tlHarDokulsun, depoKodlari: $depoKodlari, haricStokKodlari: $haricStokKodlari, haricStokGrupKodlari: $haricStokGrupKodlari, dovizTipi: $dovizTipi, bastar: $bastar, bittar: $bittar, grupKodu: $grupKodu, borcAlacak: $borcAlacak, refTarih: $refTarih, tarihTipi: $tarihTipi, kod1: $kod1, kod2: $kod2, kod3: $kod3, kod4: $kod4, kod5: $kod5, kapali: $kapali, durum: $durum, vergiNo: $vergiNo, plasiyerKodu: $plasiyerKodu, aralikTipi: $aralikTipi, sirala: $sirala, bakiyeDurumu: $bakiyeDurumu, caharInckey: $caharInckey, belgeTipi: $belgeTipi, isemriNo: $isemriNo, dinamikParam: $dinamikParam, kasaharInckey: $kasaharInckey, uretimFiyatiDahil: $uretimFiyatiDahil, fiyatTipi: $fiyatTipi, tblnfStokfiyatgecmisiId: $tblnfStokfiyatgecmisiId, gorunecekAlanlar: $gorunecekAlanlar, miktar: $miktar, yapkod: $yapkod, opkodu: $opkodu, kasaKodu: $kasaKodu, muhasebeKodu: $muhasebeKodu, filtre: $filtre, depoKodu: $depoKodu, hucreKodu: $hucreKodu, kalemId: $kalemId, tempBelgeId: $tempBelgeId)';
   }
 
   /// Create a copy of DicParams
@@ -1212,7 +1212,8 @@ class _$DicParamsImpl implements _DicParams {
 
 abstract class _DicParams implements DicParams {
   factory _DicParams(
-      {String? cariKodu,
+      {required String belgeNo,
+      String? cariKodu,
       String? teslimCariKodu,
       String? stokKodu,
       String? sifirHaric,
@@ -1242,7 +1243,6 @@ abstract class _DicParams implements DicParams {
       String? bakiyeDurumu,
       String? caharInckey,
       String? belgeTipi,
-      String? belgeNo,
       String? isemriNo,
       String? dinamikParam,
       String? kasaharInckey,
@@ -1264,6 +1264,9 @@ abstract class _DicParams implements DicParams {
   factory _DicParams.fromJson(Map<String, dynamic> json) =
       _$DicParamsImpl.fromJson;
 
+  @override
+  String get belgeNo;
+  set belgeNo(String value);
   @override
   String? get cariKodu;
   set cariKodu(String? value);
@@ -1354,9 +1357,6 @@ abstract class _DicParams implements DicParams {
   @override
   String? get belgeTipi;
   set belgeTipi(String? value);
-  @override
-  String? get belgeNo;
-  set belgeNo(String? value);
   @override
   String? get isemriNo;
   set isemriNo(String? value);

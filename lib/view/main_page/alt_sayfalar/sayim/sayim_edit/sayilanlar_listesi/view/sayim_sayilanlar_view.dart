@@ -129,6 +129,7 @@ class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
               PrintModel(
                 raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
                 dicParams: DicParams(
+                  belgeNo: model.belgeNo ?? "",
                   stokKodu: model.stokKodu,
                   kalemId: model.id.toStringIfNotNull,
                   belgeTipi: "SAYI,",

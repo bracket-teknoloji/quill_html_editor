@@ -28,7 +28,7 @@ abstract class _CariDovizliEkstreViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_CariDovizEkstre",
     standart: true,
-    dicParams: DicParams(),
+    dicParams: DicParams(belgeNo: ""),
   );
 
   //* Cari Kodu

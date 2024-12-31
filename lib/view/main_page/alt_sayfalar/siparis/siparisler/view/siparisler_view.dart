@@ -563,7 +563,7 @@ class _SiparislerViewState extends BaseState<SiparislerView> {
 
   Observer fab() => Observer(
         builder: (_) => Visibility(
-          visible: viewModel.musteriSiparisleriList != null && yetkiController.siparisKaydet,
+          visible: viewModel.musteriSiparisleriList != null && yetkiController.siparisKaydet(widget.widgetModel.editTipiEnum),
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
             onPressed: () async {

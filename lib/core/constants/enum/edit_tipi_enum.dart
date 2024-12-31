@@ -1,5 +1,6 @@
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -375,7 +376,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFatFiyatDegistirilmesin,
         EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatFiyatDegistirilmesin,
         EditTipiEnum.alisFatura || EditTipiEnum.alisIrsaliye => yetkiController.malKabulFiyatDegistirilmesin,
-        EditTipiEnum.musteri || EditTipiEnum.satici => yetkiController.siparisFiyatDegistirilmesin,
+        EditTipiEnum.musteri || EditTipiEnum.satici => yetkiController.siparisFiyatDegistirilmesin(this),
         EditTipiEnum.satisTalebi => yetkiController.satisTalebiFiyatDegistirilmesin,
         EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiFiyatDegistirilmesin,
         _ => false,
@@ -533,10 +534,13 @@ extension EditTipiEnumExtension on EditTipiEnum {
 
   int? get varsayilanBelgeTipi {
     final profilYetki = CacheManager.getAnaVeri?.userModel?.profilYetki;
+    if (AccountModel.instance.adminMi) {
+      return 2;
+    }
     return switch (this) {
       EditTipiEnum.satisFatura => profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi,
       EditTipiEnum.satisIrsaliye => profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi,
-      _ => null,
+      _ => 2,
     };
   }
 

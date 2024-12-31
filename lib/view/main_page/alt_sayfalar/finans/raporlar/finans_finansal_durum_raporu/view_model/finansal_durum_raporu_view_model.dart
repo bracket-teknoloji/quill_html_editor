@@ -21,7 +21,7 @@ abstract class _FinansalDurumRaporuViewModelBase with Store {
   //* Model
   //*
   @observable
-  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_FinansalDurum", standart: true, dicParams: DicParams());
+  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_FinansalDurum", standart: true, dicParams: DicParams(belgeNo: ""));
 
   //* Future
   //*

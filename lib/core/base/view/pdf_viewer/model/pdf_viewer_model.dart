@@ -113,6 +113,7 @@ abstract class PdfModel with _$PdfModel, NetworkManagerMixin {
 @unfreezed
 class DicParams with _$DicParams {
   factory DicParams({
+    required String belgeNo,
     String? cariKodu,
     String? teslimCariKodu,
     String? stokKodu,
@@ -143,7 +144,6 @@ class DicParams with _$DicParams {
     String? bakiyeDurumu,
     String? caharInckey,
     String? belgeTipi,
-    String? belgeNo,
     String? isemriNo,
     String? dinamikParam,
     String? kasaharInckey,

@@ -120,7 +120,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                             widget.onUpdated?.call(result ?? false);
                           }
                         },
-                      ).yetkiKontrol(yetkiController.siparisDuzelt && (widget.model.tipi != 1 || widget.model.isNew == true)),
+                      ).yetkiKontrol(yetkiController.siparisDuzelt(widget.model.getEditTipiEnum) && (widget.model.tipi != 1 || widget.model.isNew == true)),
                       BottomSheetModel(
                         title: loc.generalStrings.delete,
                         iconWidget: Icons.delete_outline_outlined,
@@ -165,7 +165,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                           final PrintModel printModel = PrintModel(
                             raporOzelKod: widget.talepTeklifEnum.getPrintValue,
                             etiketSayisi: 1,
-                            dicParams: DicParams(belgeNo: widget.model.belgeNo, belgeTipi: widget.model.getEditTipiEnum?.rawValue, cariKodu: widget.model.cariKodu),
+                            dicParams: DicParams(belgeNo: widget.model.belgeNo ?? "", belgeTipi: widget.model.getEditTipiEnum?.rawValue, cariKodu: widget.model.cariKodu),
                           );
                           await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
                         },
@@ -179,7 +179,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         },
                       ).yetkiKontrol(model.remoteTempBelgeEtiketi == null),
                       BottomSheetModel(title: "Kontrol Edildi", iconWidget: Icons.check_box_outlined)
-                          .yetkiKontrol(model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi && false),
+                          .yetkiKontrol(model.remoteTempBelgeEtiketi == null && yetkiController.siparisKontrolAciklamasiAktifMi(widget.model.getEditTipiEnum) && false),
                       BottomSheetModel(
                         title: "Cari İşlemleri",
                         iconWidget: Icons.person_outline_outlined,

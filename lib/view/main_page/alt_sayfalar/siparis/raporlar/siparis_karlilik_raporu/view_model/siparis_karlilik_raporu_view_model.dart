@@ -24,7 +24,7 @@ abstract class _SiparisKarlilikRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_SiparisKarlilik",
     standart: true,
-    dicParams: DicParams(),
+    dicParams: DicParams(belgeNo: ""),
   );
   @observable
   bool uretimFiyatiDahilMi = false;
@@ -34,7 +34,7 @@ abstract class _SiparisKarlilikRaporuViewModelBase with Store {
   @action
   void setTeslimCariKodu(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(teslimCariKodu: value);
   @action
-  void setBelgeNo(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
+  void setBelgeNo(String value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(belgeNo: value);
   @action
   void setPlasiyer(String? value) => pdfModel.dicParams = pdfModel.dicParams?.copyWith(plasiyerKodu: value);
   @action

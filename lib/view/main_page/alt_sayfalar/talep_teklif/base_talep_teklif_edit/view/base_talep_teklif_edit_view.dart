@@ -245,7 +245,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                               final PdfModel pdfModel = PdfModel(
                                 raporOzelKod: BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue ?? "",
                                 dicParams: DicParams(
-                                  belgeNo: BaseSiparisEditModel.instance.belgeNo,
+                                  belgeNo: BaseSiparisEditModel.instance.belgeNo ?? "",
                                   cariKodu: BaseSiparisEditModel.instance.cariKodu,
                                   belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
                                 ),
@@ -339,7 +339,7 @@ class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingV
                           raporOzelKod: result.ozelKod,
                           etiketSayisi: result.kopyaSayisi,
                           dicParams: DicParams(
-                            belgeNo: BaseSiparisEditModel.instance.belgeNo,
+                            belgeNo: BaseSiparisEditModel.instance.belgeNo ?? "",
                             cariKodu: BaseSiparisEditModel.instance.cariKodu,
                             belgeTipi: widget.model.editTipiEnum?.rawValue,
                           ),

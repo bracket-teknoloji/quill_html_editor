@@ -117,7 +117,7 @@ mixin _$SiparisTeslimRaporuViewModel
   }
 
   @override
-  void setBelgeNo(String? value) {
+  void setBelgeNo(String value) {
     final _$actionInfo = _$_SiparisTeslimRaporuViewModelBaseActionController
         .startAction(name: '_SiparisTeslimRaporuViewModelBase.setBelgeNo');
     try {

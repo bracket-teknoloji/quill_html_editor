@@ -87,7 +87,7 @@ class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevkiyatKa
               onTap: () async {
                 final result = await Get.toNamed(widget.editTipiEnum.getListRoute, arguments: true);
                 if (result is BaseSiparisEditModel) {
-                  viewModel.pdfModel.dicParams?.belgeNo = result.belgeNo;
+                  viewModel.pdfModel.dicParams?.belgeNo = result.belgeNo ?? "";
                   belgeNoController.text = result.belgeNo ?? "";
                 }
               },

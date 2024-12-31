@@ -90,7 +90,7 @@ mixin _$SiparisKarlilikRaporuViewModel
   }
 
   @override
-  void setBelgeNo(String? value) {
+  void setBelgeNo(String value) {
     final _$actionInfo = _$_SiparisKarlilikRaporuViewModelBaseActionController
         .startAction(name: '_SiparisKarlilikRaporuViewModelBase.setBelgeNo');
     try {

@@ -20,7 +20,7 @@ abstract class _HareketDetayliYaslandirmaRaporuViewModelBase with Store {
   PdfModel pdfModel = PdfModel(
     raporOzelKod: "Rapor_CariDetayliYaslandirma",
     standart: true,
-    dicParams: DicParams()..sirala = "ADI",
+    dicParams: DicParams(belgeNo: "")..sirala = "ADI",
   );
 
   //* Future
