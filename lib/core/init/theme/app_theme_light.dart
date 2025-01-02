@@ -12,7 +12,7 @@ class AppThemeLight extends AppTheme {
   static AppThemeLight? _instance;
   static AppThemeLight? get instance => _instance ??= AppThemeLight._init();
 
-  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withValues(alpha: 0.2));
+  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withOpacity(0.2));
   @override
   ThemeData get theme => ThemeData(
         cupertinoOverrideTheme: const CupertinoThemeData(
@@ -22,7 +22,7 @@ class AppThemeLight extends AppTheme {
         // scaffoldBackgroundColor: colorManager.onInverseSurface,
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
         datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
-        radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1))),
+        radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
         useMaterial3: true,
         colorSchemeSeed: UIHelper.primaryColor,
         actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
@@ -38,7 +38,7 @@ class AppThemeLight extends AppTheme {
             textStyle: WidgetStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
             backgroundColor: WidgetStateProperty.all(Colors.transparent),
             foregroundColor: WidgetStateProperty.all(UIHelper.primaryColor),
-            overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1)),
+            overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
             shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
           ),
         ),
@@ -68,7 +68,7 @@ class AppThemeLight extends AppTheme {
           }),
           // trackOutlineColor: WidgetStatePropertyAll(colorManager.onPrimaryFixedVariant),
         ),
-        dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withValues(alpha: 0.2), endIndent: UIHelper.midSize, indent: UIHelper.midSize),
+        dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.midSize, indent: UIHelper.midSize),
         progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
         dropdownMenuTheme: DropdownMenuThemeData(
           inputDecorationTheme: InputDecorationTheme(
@@ -178,7 +178,7 @@ class AppThemeLight extends AppTheme {
           isCollapsed: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: UIHelper.midBorderRadius,
-            borderSide: BorderSide(color: colorManager.primary.withValues(alpha: 0.2)),
+            borderSide: BorderSide(color: colorManager.primary.withOpacity(0.2)),
           ),
           border: OutlineInputBorder(
             borderRadius: UIHelper.midBorderRadius,
@@ -189,7 +189,7 @@ class AppThemeLight extends AppTheme {
           ),
         ),
 
-        // scaffoldBackgroundColor: colorManager.surfaceVariant.withValues(alpha: 0.3),
+        // scaffoldBackgroundColor: colorManager.surfaceVariant.withOpacity(0.3),
         appBarTheme: AppBarTheme(
           titleSpacing: UIHelper.midSize,
           surfaceTintColor: Colors.transparent,

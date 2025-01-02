@@ -106,7 +106,7 @@ class DialogManager {
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8), fontSize: 12), textAlign: TextAlign.center),
+              child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.8), fontSize: 12), textAlign: TextAlign.center),
             ).paddingOnly(top: UIHelper.highSize),
           ],
         ),
@@ -135,7 +135,7 @@ class DialogManager {
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8)), textAlign: TextAlign.center),
+              child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.8)), textAlign: TextAlign.center),
             ).paddingOnly(top: UIHelper.highSize),
           ],
         ),
@@ -421,7 +421,7 @@ class DialogManager {
       ),
       actions: [
         Divider(
-          color: UIHelper.primaryColor.withValues(alpha: 0.3),
+          color: UIHelper.primaryColor.withOpacity(0.3),
           thickness: 1,
         ),
         Padding(
@@ -566,7 +566,7 @@ class DialogManager {
                 : null,
         customHeader: customHeader,
         onDismissCallback: (type) {},
-        barrierColor: Colors.black.withValues(alpha: 0.6),
+        barrierColor: Colors.black.withOpacity(0.6),
         dialogBorderRadius: UIHelper.highBorderRadius,
         headerAnimationLoop: false,
         padding: UIHelper.midPaddingVertical,

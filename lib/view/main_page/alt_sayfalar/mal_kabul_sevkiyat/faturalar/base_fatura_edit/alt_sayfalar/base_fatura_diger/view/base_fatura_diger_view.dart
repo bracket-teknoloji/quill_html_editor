@@ -41,7 +41,7 @@ class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
               elevation: UIHelper.highSize,
               child: QuillHtmlEditor(
                 hintText: "Buraya notlarınızı yazabilirsiniz...",
-                hintTextStyle: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5), fontSize: 16),
+                hintTextStyle: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.5), fontSize: 16),
                 text: model.ekAciklama ?? "",
                 controller: controller,
                 isEnabled: enable,

@@ -25,7 +25,7 @@ class TextStyleHelper {
   static final TextStyle subtitleBlack = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.w400,
-    color: Colors.black.withValues(alpha: 0.8),
+    color: Colors.black.withOpacity(0.8),
   );
   static TextStyle subtitleWhite = TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: theme.colorScheme.onSurface);
 

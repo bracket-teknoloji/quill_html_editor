@@ -22,11 +22,11 @@ final class _ListViewShimmerState extends BaseState<ListViewShimmer> {
         children: List.generate(
           10,
           (index) => Shimmer.fromColors(
-            baseColor: ColorPalette.slateGray.withValues(alpha: 0.1),
-            highlightColor: ColorPalette.slateGray.withValues(alpha: 0.2),
+            baseColor: ColorPalette.slateGray.withOpacity(0.1),
+            highlightColor: ColorPalette.slateGray.withOpacity(0.2),
             child: Card(
               elevation: 0,
-              color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
+              color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
               child: ListTile(
                 leading: const CircleAvatar(),
                 title: Container(

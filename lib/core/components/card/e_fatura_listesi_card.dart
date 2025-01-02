@@ -331,7 +331,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   ],
                 ).paddingSymmetric(horizontal: UIHelper.lowSize),
                 ElevatedButton(
-                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
+                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                   onPressed: () async {
                     Get.back();
                   },

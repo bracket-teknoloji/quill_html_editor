@@ -166,7 +166,7 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
               errorStyle: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
               errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: UIHelper.primaryColor.withValues(alpha: 0.7),
+                  color: UIHelper.primaryColor.withOpacity(0.7),
                   width: 2,
                 ),
                 borderRadius: UIHelper.midBorderRadius,
@@ -250,9 +250,9 @@ class _CustomTextFieldState extends BaseState<CustomTextField> {
                           text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
                           style: (widget.enabled != false ? (widget.isMust ?? false) : false)
                               ? const TextStyle(color: UIHelper.primaryColor)
-                              : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.6)) : TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8))),
+                              : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withOpacity(0.6)) : TextStyle(color: ColorPalette.slateGray.withOpacity(0.8))),
                         ),
-                        TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.3), fontSize: 12)).yetkiVarMi(widget.valueText != null),
+                        TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.3), fontSize: 12)).yetkiVarMi(widget.valueText != null),
                         widget.descriptionWidget,
                       ].nullCheckWithGeneric,
                     ),

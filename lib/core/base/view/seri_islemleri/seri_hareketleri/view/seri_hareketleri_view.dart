@@ -237,7 +237,7 @@ class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                     itemBuilder: (context, index) {
                       final SeriHareketleriModel item = viewModel.filteredList![index];
                       return Card(
-                        color: (item.gckod == "G" ? ColorPalette.mantis : ColorPalette.persianRed).withValues(alpha: 0.5),
+                        color: (item.gckod == "G" ? ColorPalette.mantis : ColorPalette.persianRed).withOpacity(0.5),
                         child: ListTile(
                           title: Text(item.seriNo ?? ""),
                           subtitle: CustomLayoutBuilder(

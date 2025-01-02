@@ -383,7 +383,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             ].where((element) => element is! SizedBox).toList(),
                           ),
                           Card(
-                            color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                            color: theme.colorScheme.primary.withOpacity(0.1),
                             child: Center(
                               child: Text.rich(
                                 TextSpan(

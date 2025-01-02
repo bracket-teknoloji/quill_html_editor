@@ -54,7 +54,7 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
         floatingActionButton: Text.rich(
           TextSpan(
             children: [
-              TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withValues(alpha: 0.8))),
+              TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withOpacity(0.8))),
               const TextSpan(text: "Bracket Teknoloji", style: TextStyle(fontWeight: FontWeight.bold)),
             ],
           ),

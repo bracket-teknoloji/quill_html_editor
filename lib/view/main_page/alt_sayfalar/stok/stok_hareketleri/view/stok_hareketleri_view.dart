@@ -212,7 +212,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   ..setCariListesiModel(null)
                                   ..setFuture(getData());
                               },
-                              style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
+                              style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
                               child: const Text("Temizle"),
                             ),
                           ),
@@ -456,7 +456,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                       text: "${model.belgeTipiAciklama ?? model.hareketTuruAciklama}  ",
                       style: TextStyle(color: (model.cikisIslemi ?? false) ? ColorPalette.persianRed : ColorPalette.mantis),
                     ),
-                    TextSpan(text: "(${model.hareketTuruAciklama})", style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.3))),
+                    TextSpan(text: "(${model.hareketTuruAciklama})", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.3))),
                   ],
                 ),
               ),

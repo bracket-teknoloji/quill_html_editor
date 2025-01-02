@@ -99,8 +99,7 @@ class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFiltreDate
             itemBuilder: (context, listTileIndex) => RadioMenuButton(
               style: ButtonStyle(
                 // padding: MaterialStateProperty.all(EdgeInsets.zero),
-                shape:
-                    WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIHelper.midSize), side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)))),
+                shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIHelper.midSize), side: BorderSide(color: theme.colorScheme.primary.withOpacity(0.2)))),
               ),
               value: listTileIndex,
               groupValue: viewModel.groupValue,
