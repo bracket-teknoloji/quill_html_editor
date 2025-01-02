@@ -31,7 +31,7 @@ class GridItemModel {
     menuTipi = "IS";
     isEnabled ??= true;
     if (isEnabled != true) {
-      color = Colors.grey.withOpacity(0.5);
+      color = Colors.grey.withValues(alpha: 0.5);
       onTap = null;
     } else {
       onTap ??= () async => DialogManager().showErrorSnackBar("Yapım Aşamasında");

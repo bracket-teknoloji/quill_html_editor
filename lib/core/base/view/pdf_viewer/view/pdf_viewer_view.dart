@@ -132,13 +132,6 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
                 }
               },
             ),
-            // AppBarButton(
-            //     icon: Icons.mail_outline_outlined,
-            //     child: const Text("Mail Gönder"),
-            //     onPressed: () async {
-            //       //! EKLENECEK
-            //       await fileChecker();
-            //     }),
           ],
         ),
       );

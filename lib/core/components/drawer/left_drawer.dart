@@ -79,9 +79,9 @@ class _LeftDrawerState extends BaseState<LeftDrawer> {
                           Icon(
                             Icons.star_border_outlined,
                             size: UIHelper.highSize * 5,
-                            color: theme.colorScheme.onSurface.withOpacity(0.5),
+                            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                           ).marginSymmetric(vertical: 20),
-                          // IconHelper.bigIcon("Yildiz", color: theme.colorScheme.onSurface.withOpacity(0.5)).marginSymmetric(vertical: 20),
+                          // IconHelper.bigIcon("Yildiz", color: theme.colorScheme.onSurface.withValues(alpha: 0.5)).marginSymmetric(vertical: 20),
                           Text("Favori menü yok.", style: theme.textTheme.bodyMedium),
                           Padding(
                             padding: UIHelper.midPadding,

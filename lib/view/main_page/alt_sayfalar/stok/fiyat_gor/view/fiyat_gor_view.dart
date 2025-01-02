@@ -146,7 +146,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           TextSpan(
                                             children: [
                                               const TextSpan(text: "Satış  KDV"),
-                                              TextSpan(text: "  %${viewModel.modelList?.first?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
+                                              TextSpan(text: "  %${viewModel.modelList?.first?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withValues(alpha: 0.7))),
                                             ],
                                           ),
                                         ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),
@@ -195,7 +195,7 @@ class _FiyatGorViewState extends BaseState<FiyatGorView> {
                                           TextSpan(
                                             children: [
                                               const TextSpan(text: "Alış KDV"),
-                                              TextSpan(text: " %${viewModel.modelList?.last?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withOpacity(0.7))),
+                                              TextSpan(text: " %${viewModel.modelList?.last?.kdvOrani ?? 0}", style: TextStyle(color: theme.textTheme.titleLarge?.color?.withValues(alpha: 0.7))),
                                             ],
                                           ),
                                         ).paddingOnly(top: UIHelper.lowSize, left: UIHelper.midSize),

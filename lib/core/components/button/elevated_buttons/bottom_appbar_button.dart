@@ -18,7 +18,7 @@ class AppBarButton extends StatelessWidget {
           alignment: Alignment.center,
           padding: UIHelper.zeroPadding,
           textStyle: const TextStyle(fontSize: 12),
-          backgroundColor: UIHelper.primaryColor.withOpacity(0.1),
+          backgroundColor: UIHelper.primaryColor.withValues(alpha: 0.1),
           foregroundColor: context.isDarkMode ? null : UIHelper.primaryColor,
           shadowColor: Colors.transparent,
           // elevation: 0,

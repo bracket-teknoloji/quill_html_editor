@@ -41,7 +41,7 @@ class TransferlerCard extends StatefulWidget {
 class TransferlerCardState extends BaseState<TransferlerCard> {
   ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
-  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
+  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6));
 
   List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
 
@@ -180,7 +180,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                 TextSpan(
                   children: <InlineSpan>[
                     TextSpan(text: model.tarih.toDateString),
-                    TextSpan(text: "   ${model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
+                    TextSpan(text: "   ${model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontSize: UIHelper.midSize)),
                   ],
                 ),
               ),

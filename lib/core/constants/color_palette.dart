@@ -20,6 +20,6 @@ class ColorPalette {
   static const Color surfGreen = Color.fromRGBO(2, 181, 159, 1);
 
   // With Opacity
-  static Color persianRedWithOpacity = persianRed.withOpacity(0.5);
-  static Color get mantisWithOpacity => mantis.withOpacity(0.5);
+  static Color persianRedWithOpacity = persianRed.withValues(alpha: 0.5);
+  static Color get mantisWithOpacity => mantis.withValues(alpha: 0.5);
 }

@@ -36,7 +36,7 @@ class UIHelper {
 
   //* color
   static const Color primaryColor = Color.fromRGBO(189, 61, 23, 1);
-  static Color get secondaryColor => _theme.colorScheme.onSurface.withOpacity(0.1);
+  static Color get secondaryColor => _theme.colorScheme.onSurface.withValues(alpha: 0.1);
   static Color getColorWithValue(double bakiye) {
     if (bakiye > 0.0) {
       return ColorPalette.mantis;
