@@ -606,9 +606,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       }
     }
     if (widget.model.baseEditEnum.siparistenKopyalaMi) {
-      instance
-        ..kalemList = instance.kalemList?.map((e) => e.copyWith()).toList()
-        ..tarih = DateTime.now().dateTimeWithoutTime;
+      instance.kalemList = instance.kalemList?.map((e) => e.copyWith()).toList();
     }
     if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
       instance.kalemList = instance.kalemList
