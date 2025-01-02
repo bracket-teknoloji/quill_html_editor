@@ -76,24 +76,25 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
             subtitle: "ID ${widget.model.model!.id.toStringIfNotNull}",
           ),
           actions: [
-            IconButton(
-              onPressed: () async {
-                if (formKey.currentState!.validate()) {
-                  if (viewModel.ekleModel.olcumler
-                          ?.every((element) => ((element.deger ?? 0) >= (widget.model.model!.altSinir ?? 0)) && ((element.deger ?? 0) <= (widget.model.model!.ustSinir ?? 0))) ??
-                      false) {
-                    Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
-                    dialogManager.showSuccessSnackBar("Başarılı");
-                  } else {
-                    final result = await showOlcumSonucBilgileri();
-                    if (result != null) {
-                      Get.back(result: result);
+            if (widget.model.model!.olculecekMi && !(widget.model.baseEditEnum?.goruntuleMi ?? false))
+              IconButton(
+                onPressed: () async {
+                  if (formKey.currentState!.validate()) {
+                    if (viewModel.ekleModel.olcumler
+                            ?.every((element) => ((element.deger ?? 0) >= (widget.model.model!.altSinir ?? 0)) && ((element.deger ?? 0) <= (widget.model.model!.ustSinir ?? 0))) ??
+                        false) {
+                      Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
+                      dialogManager.showSuccessSnackBar("Başarılı");
+                    } else {
+                      final result = await showOlcumSonucBilgileri();
+                      if (result != null) {
+                        Get.back(result: result);
+                      }
                     }
                   }
-                }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi(widget.model.model!.olculecekMi && !(widget.model.baseEditEnum?.goruntuleMi ?? false)),
+                },
+                icon: const Icon(Icons.save_outlined),
+              ),
           ],
         ),
         body: SingleChildScrollView(
@@ -108,12 +109,12 @@ class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                       subtitle: CustomLayoutBuilder(
                         splitCount: 2,
                         children: [
-                          Text("Kriter: ${widget.model.model!.kriter}").yetkiVarMi(widget.model.model!.kriter != null),
-                          Text("Tolerans: ${widget.model.model!.tolerans}").yetkiVarMi(widget.model.model!.tolerans != null),
-                          Text("Tür: ${widget.model.model!.tur}").yetkiVarMi(widget.model.model!.tur != null),
-                          Text("Ekipman: ${widget.model.model!.ekipman}").yetkiVarMi(widget.model.model!.ekipman != null),
-                          Text("Alt Sınır: ${widget.model.model!.altSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(widget.model.model!.altSinir != null),
-                          Text("Üst Sınır: ${widget.model.model!.ustSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(widget.model.model!.ustSinir != null),
+                          if (widget.model.model!.kriter != null) Text("Kriter: ${widget.model.model!.kriter}"),
+                          if (widget.model.model!.tolerans != null) Text("Tolerans: ${widget.model.model!.tolerans}"),
+                          if (widget.model.model!.tur != null) Text("Tür: ${widget.model.model!.tur}"),
+                          if (widget.model.model!.ekipman != null) Text("Ekipman: ${widget.model.model!.ekipman}"),
+                          if (widget.model.model!.altSinir != null) Text("Alt Sınır: ${widget.model.model!.altSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                          if (widget.model.model!.ustSinir != null) Text("Üst Sınır: ${widget.model.model!.ustSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                         ],
                       ),
                     ),

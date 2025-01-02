@@ -30,19 +30,23 @@ abstract class _FiyatGorViewModelBase with Store {
 
   @action
   double? getBilgi(int index, {bool isSatis = false}) {
-    switch (index) {
-      case 0:
-        return (isSatis ? modelList?.last?.dovizTipi : modelList?.first?.dovizTipi)?.toDouble();
-      case 1:
-        return (isSatis ? modelList?.last?.fiyat1 : modelList?.first?.fiyat1);
-      case 2:
-        return (isSatis ? modelList?.last?.fiyat2 : modelList?.first?.fiyat2);
-      case 3:
-        return (isSatis ? modelList?.last?.fiyat3 : modelList?.first?.fiyat3);
-      case 4:
-        return (isSatis ? modelList?.last?.fiyat4 : modelList?.first?.fiyat4);
-      default:
-        return null;
+    if (isSatis) {
+      return switch (index) {
+        0 => modelList?.last?.dovizTipi?.toDouble(),
+        1  => modelList?.last?.fiyat1,
+        2 => modelList?.last?.fiyat2,
+        3 => modelList?.last?.fiyat3,
+        4 => modelList?.last?.fiyat4,
+        _ => null,
+      };
     }
+    return switch (index) {
+      0 => modelList?.first?.dovizTipi?.toDouble(),
+      1 => modelList?.first?.fiyat1,
+      2 => modelList?.first?.fiyat2,
+      3 => modelList?.first?.fiyat3,
+      4 => modelList?.first?.fiyat4,
+      _ => null,
+    };
   }
 }

@@ -9,7 +9,6 @@ import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -44,23 +43,23 @@ class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
                 children: [
                   if (model.olcumAdedi case (!= null && != 0 && != 0.0))
                     ColorfulBadge(
-                      label: Text("Ölçüm Miktarı: ${model.olcumAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.olcumAdedi != null),
+                      label: Text("Ölçüm Miktarı: ${model.olcumAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                       badgeColorEnum: BadgeColorEnum.esYap,
                     ),
                 ],
               ),
-              Text("${model.cariAdi ?? ""} - ${model.cariKodu ?? ""}").yetkiVarMi(model.cariKodu != null),
-              Text("${model.stokAdi ?? model.yapacik ?? ""} - ${model.stokKodu ?? ""}").yetkiVarMi(model.stokKodu != null),
+              if (model.cariKodu != null) Text("${model.cariAdi ?? ""} - ${model.cariKodu ?? ""}"),
+              if (model.stokKodu != null) Text("${model.stokAdi ?? model.yapacik ?? ""} - ${model.stokKodu ?? ""}"),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
-                  Text("Sıra: ${model.belgeSira.toStringIfNotNull ?? ""}").yetkiVarMi(model.belgeSira != null),
-                  Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
-                  Text("Kabul Miktarı: ${model.kabulAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.kabulAdet != null),
-                  Text("Kalem Miktarı: ${model.kalemAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.kalemAdedi != null),
-                  Text("Ret Miktarı: ${model.retAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.retAdet != null),
-                  Text("Şartlı Miktar: ${model.sartliAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.sartliAdet != null),
-                  Text("Yapılandırma Kodu: ${model.yapkod}").yetkiVarMi(model.yapkod != null),
+                  if (model.belgeSira != null) Text("Sıra: ${model.belgeSira.toStringIfNotNull ?? ""}"),
+                  if (model.miktar != null) Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  if (model.kabulAdet != null) Text("Kabul Miktarı: ${model.kabulAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  if (model.kalemAdedi != null) Text("Kalem Miktarı: ${model.kalemAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  if (model.retAdet != null) Text("Ret Miktarı: ${model.retAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  if (model.sartliAdet != null) Text("Şartlı Miktar: ${model.sartliAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  if (model.yapkod != null) Text("Yapılandırma Kodu: ${model.yapkod}"),
                 ],
               ),
             ],

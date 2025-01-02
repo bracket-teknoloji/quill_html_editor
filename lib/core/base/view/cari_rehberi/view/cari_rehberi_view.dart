@@ -138,7 +138,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
           children: [
             filtreleButton,
             siralaButton,
-            digerButton.yetkiVarMi(BaseSiparisEditModel.instance.getEditTipiEnum?.talepTeklifMi ?? false),
+            if (BaseSiparisEditModel.instance.getEditTipiEnum?.talepTeklifMi ?? false) digerButton,
           ].whereType<AppBarButton>().toList(),
         ),
       );
@@ -345,7 +345,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           },
                         ),
                       ),
-                      Expanded(
+                      if (viewModel.grupKodlari1.ext.isNotNullOrEmpty) Expanded(
                         child: CustomTextField(
                           labelText: "Kod 1",
                           readOnly: true,
@@ -374,12 +374,12 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi(viewModel.grupKodlari1.ext.isNotNullOrEmpty),
+                      ),
                     ],
                   ),
                   Row(
                     children: [
-                      Expanded(
+                      if (viewModel.grupKodlari2.ext.isNotNullOrEmpty) Expanded(
                         child: CustomTextField(
                           labelText: "Kod 2",
                           readOnly: true,
@@ -408,8 +408,8 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi(viewModel.grupKodlari2.ext.isNotNullOrEmpty),
-                      Expanded(
+                      ),
+                      if(viewModel.grupKodlari3.ext.isNotNullOrEmpty) Expanded(
                         child: CustomTextField(
                           labelText: "Kod 3",
                           readOnly: true,
@@ -438,7 +438,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                             }
                           },
                         ),
-                      ).yetkiVarMi(viewModel.grupKodlari3.ext.isNotNullOrEmpty),
+                      ),
                     ],
                   ),
                   Row(

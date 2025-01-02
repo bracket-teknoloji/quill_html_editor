@@ -214,27 +214,27 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(model.irsaliyelesti == "E"),
-                  const ColorfulBadge(label: Text("Faturalaşmış"), badgeColorEnum: BadgeColorEnum.taslak).yetkiVarMi(model.faturalasmisAIrsMi || model.faturalasmisSIrsMi),
-                  const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.efaturaMi == "E"),
-                  const ColorfulBadge(label: Text("E-İrsaliye"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.eirsaliyeMi == "E"),
-                  const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura).yetkiVarMi(model.earsivMi == "E"),
-                  dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)).yetkiVarMi(model.hataliMi),
-                  dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)).yetkiVarMi(model.taslakMi),
-                  dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)).yetkiVarMi(model.uyariMi),
-                  dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)).yetkiVarMi(model.basariliMi),
-                  const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata).yetkiVarMi(model.efatOnayDurumKodu == "1"),
-                  ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(model.remoteTempBelgeEtiketi != null),
-                  const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(model.isNew == true),
-                  ColorfulBadge(label: Text("Fatura (${model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.faturalasanSayi != null),
-                  const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(model.tipi == 1),
-                  const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(model.tipi == 3),
-                  ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizAdi != null),
+                  if (model.irsaliyelesti == "E") ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye),
+                  if (model.faturalasmisAIrsMi || model.faturalasmisSIrsMi) const ColorfulBadge(label: Text("Faturalaşmış"), badgeColorEnum: BadgeColorEnum.taslak),
+                  if (model.efaturaMi == "E") const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura),
+                  if (model.eirsaliyeMi == "E") const ColorfulBadge(label: Text("E-İrsaliye"), badgeColorEnum: BadgeColorEnum.eFatura),
+                  if (model.earsivMi == "E") const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura),
+                  if (model.hataliMi) dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)),
+                  if (model.taslakMi) dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)),
+                  if (model.uyariMi) dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)),
+                  if (model.basariliMi) dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)),
+                  if (model.efatOnayDurumKodu == "1") const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata),
+                  if (model.remoteTempBelgeEtiketi != null) ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri),
+                  if (model.isNew == true) const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis),
+                  if (model.faturalasanSayi != null) ColorfulBadge(label: Text("Fatura (${model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura),
+                  if (model.tipi == 1) const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
+                  if (model.tipi == 3) const ColorfulBadge(label: Text("Onayda")),
+                  if (model.dovizAdi != null) ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
                 ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
               ),
               Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
               Text("Cari Kodu: ${model.cariKodu ?? ""}"),
-              Text("Teslim Cari: ${model.teslimCari}").yetkiVarMi(model.teslimCari != null),
+              if (model.teslimCari != null) Text("Teslim Cari: ${model.teslimCari}"),
               CustomLayoutBuilder.divideInHalf(
                 children: [
                   Text("Tipi: ${model.tipiName}", style: TextStyle(color: model.tipi != 2 ? UIHelper.primaryColor : null)),
@@ -252,22 +252,24 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                   ],
                 ],
               ),
-
-              const Divider(
-                indent: 0,
-                endIndent: 0,
-              ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showMiktar == true),
-              // Text("Miktar: ${model.miktar.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Text>[
-                  Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
-              ).yetkiVarMi(widget.showMiktar == true),
-              const Divider(
-                indent: 0,
-                endIndent: 0,
-              ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty),
+              if (widget.showMiktar == true) ...[
+                const Divider(
+                  indent: 0,
+                  endIndent: 0,
+                ).paddingSymmetric(vertical: UIHelper.midSize),
+                // Text("Miktar: ${model.miktar.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Text>[
+                    Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
+                ),
+              ],
+              if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)
+                const Divider(
+                  indent: 0,
+                  endIndent: 0,
+                ).paddingSymmetric(vertical: UIHelper.midSize),
               ...aciklamaList(),
             ],
           ),

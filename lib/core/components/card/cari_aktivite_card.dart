@@ -10,7 +10,6 @@ import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/model_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -44,13 +43,13 @@ class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                   ),
                 ],
               ),
-              Text("Başlama Tarihi: ${model.bastar?.toDateTimeString()}").yetkiVarMi(model.bastar != null),
-              Text("Bitiş Tarihi: ${model.bittar.toDateString}").yetkiVarMi(model.bittiMi),
-              Text("Cari: ${model.cariAdi}").yetkiVarMi(model.cariAdi != null),
-              Text("İlgili Kişi: ${model.ilgiliKisi}").yetkiVarMi(model.ilgiliKisi != null),
-              Text("Aktivite: ${model.aktiviteAdi}").yetkiVarMi(model.aktiviteAdi != null),
-              Text("Kaydeden: ${model.kayityapankul}").yetkiVarMi(model.kayityapankul != null),
-              Text("Açıklama: ${model.aciklama}").yetkiVarMi(model.aciklama != null),
+              if (model.bastar != null) Text("Başlama Tarihi: ${model.bastar?.toDateTimeString()}"),
+              if (model.bittiMi) Text("Bitiş Tarihi: ${model.bittar.toDateString}"),
+              if (model.cariAdi != null) Text("Cari: ${model.cariAdi}"),
+              if (model.ilgiliKisi != null) Text("İlgili Kişi: ${model.ilgiliKisi}"),
+              if (model.aktiviteAdi != null) Text("Aktivite: ${model.aktiviteAdi}"),
+              if (model.kayityapankul != null) Text("Kaydeden: ${model.kayityapankul}"),
+              if (model.aciklama != null) Text("Açıklama: ${model.aciklama}"),
             ],
           ),
           onTap: () async {
