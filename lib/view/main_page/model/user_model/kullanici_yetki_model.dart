@@ -9,7 +9,7 @@ part "kullanici_yetki_model.g.dart";
 class KullaniciYetkiModel with _$KullaniciYetkiModel {
   @JsonSerializable(createFactory: true)
   factory KullaniciYetkiModel({
-    @JsonKey(name: "bagliPlasiyerler") List? bagliPlasiyerler,
+    @JsonKey(name: "bagliPlasiyerler") List<String?>? bagliPlasiyerler,
     @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
     @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
     @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
@@ -38,6 +38,12 @@ class KullaniciYetkiModel with _$KullaniciYetkiModel {
     @JsonKey(name: "plasiyerKodu") String? plasiyerKodu,
     @JsonKey(name: "varsayilan_PlasiyerKodu") String? varsayilanPlasiyerKodu,
     @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi,
+    @JsonKey(name: "satIrsOnEki") String? satIrsOnEki,
+    @JsonKey(name: "varsayilanNakitKasa") String? varsayilanNakitKasa,
+    @JsonKey(name: "sirket_Depo_YetkiTuru") String? sirketDepoYetkiTuru,
+    @JsonKey(name: "varsayilan_ProjeTanimi") String? varsayilanProjeTanimi,
+    @JsonKey(name: "varsayilan_ProjeKodu") String? varsayilanProjeKodu,
+    @JsonKey(name: "varsayilanKrediKartiKasa") String? varsayilanKrediKartiKasa,
   }) = _KullaniciYetkiModel;
 
   factory KullaniciYetkiModel.fromJson(String? json) => _$KullaniciYetkiModelFromJson(jsonDecode(json ?? "{}"));

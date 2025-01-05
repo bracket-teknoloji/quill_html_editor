@@ -248,15 +248,15 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         viewModel.setLoading(true);
         BaseSiparisEditModel.resetInstance();
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
+        BaseSiparisEditModel.instance
+          ..plasiyerKodu = yetkiController.varsayilanPlasiyer?.plasiyerKodu
+          ..plasiyerAciklama = yetkiController.varsayilanPlasiyer?.plasiyerAciklama;
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         if (widget.model.editTipiEnum?.siparisBaglantisiVarMi ?? false) {
           final result = await getSiparisBaglantisi();
           if (model.editTipiEnum.irsaliyeMi) {
             BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
           }
-          BaseSiparisEditModel.instance
-            ..belgeTuru = widget.model.editTipiEnum?.rawValue
-            ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
           if (result != true) {
             BaseSiparisEditModel.resetInstance();
           } else {
@@ -272,23 +272,46 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
                         : null
                 ..efaturaTipi = cariModel.efaturaTipi
                 ..vadeGunu = cariModel.vadeGunu
-                ..plasiyerAciklama = cariModel.plasiyerAciklama
-                ..plasiyerKodu = cariModel.plasiyerKodu
                 ..cariAdi = cariModel.cariAdi
                 ..cariKodu = cariModel.cariKodu
-                ..belgeTipi = widget.model.editTipiEnum?.varsayilanBelgeTipi
                 ..tipi = BaseSiparisEditModel.instance.belgeTipi
                 ..kosulKodu = cariModel.kosulKodu;
+              if (cariModel.plasiyerKodu != null) {
+                BaseSiparisEditModel.instance
+                  ..plasiyerKodu = cariModel.plasiyerKodu
+                  ..plasiyerAciklama = cariModel.plasiyerAciklama;
+              }
             }
           }
-          BaseSiparisEditModel.instance
-            ..tarih = DateTime.now().dateTimeWithoutTime
-            ..tag = "FaturaModel"
-            ..siparisTipi = model.editTipiEnum
-            ..isNew = true;
+        }
+        if (BaseSiparisEditModel.instance.cariKodu == null) {
+          final result = await Get.toNamed("/mainPage/cariListesiOzel");
+          if (result != null) {
+            if (result is CariListesiModel) {
+              BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
+              BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
+              if (result.plasiyerKodu != null) {
+                BaseSiparisEditModel.instance
+                  ..plasiyerKodu = result.plasiyerKodu
+                  ..plasiyerAciklama = result.plasiyerAciklama;
+              }
+            }
+          }
         }
 
-        BaseSiparisEditModel.instance.ebelgeCheckbox = CacheManager.getProfilParametre.eIrsaliyeSeciliGelsin ? "E" : null;
+        BaseSiparisEditModel.instance
+          ..tarih = DateTime.now().dateTimeWithoutTime
+          ..tag = "FaturaModel"
+          ..belgeTipi = widget.model.editTipiEnum?.varsayilanBelgeTipi
+          ..siparisTipi = model.editTipiEnum
+          ..isNew = true
+          ..belgeTuru = widget.model.editTipiEnum?.rawValue
+          ..projeAciklama = yetkiController.varsayilanProje?.projeAciklama
+          ..projeKodu = yetkiController.varsayilanProje?.projeKodu
+          ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue
+          ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
+          ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
+          ..ebelgeCheckbox = CacheManager.getProfilParametre.eIrsaliyeSeciliGelsin ? "E" : null;
       }
 
       if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
@@ -303,7 +326,13 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       }
       BaseSiparisEditModel.instance
         ..belgeTuru = widget.model.editTipiEnum?.rawValue
+        ..islemeBaslamaTarihi = DateTime.now().copyWith(second: 0, microsecond: 0, millisecond: 0)
         ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
+      if (yetkiController.kontrolluBelgeAktarimAktif) {
+        BaseSiparisEditModel.instance
+          ..remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue) ? true : null
+          ..belgeNo = null;
+      }
       viewModel.setLoading(false);
     });
     log("resmi belge no: ${widget.model.model?.belgeNo}");
@@ -624,6 +653,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
       islemId: uuid.v4(),
       otvTutari: instance.getOTVToplam,
       belgeTuru: widget.model.editTipiEnum?.rawValue,
+      kayittarihi: DateTime.now().dateTimeWithoutTime,
       kalemler: instance.kalemList?.map((e) => e..siparisSira = e.sira).toList(),
     );
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {

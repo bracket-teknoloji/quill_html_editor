@@ -68,6 +68,7 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       viewModel
         ..setTahsilatmi(widget.tahsilatMi == true)
         ..setDovizTutari(widget.cariListesiModel?.dovBakiye?.abs())
+        ..setPlasiyerKodu(yetkiController.varsayilanPlasiyer)
         ..setTutar(widget.cariListesiModel?.bakiye?.abs());
       if (widget.cariListesiModel != null) {
         viewModel
@@ -76,6 +77,10 @@ class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       } else {
         await getCari();
         if (viewModel.model.hesapKodu == null) return;
+      }
+      if (yetkiController.varsayilanPlasiyer != null && yetkiController.plasiyerUygulamasiAcikMi) {
+        viewModel.setPlasiyerKodu(yetkiController.varsayilanPlasiyer);
+        _plasiyerController.text = yetkiController.varsayilanPlasiyer?.plasiyerAciklama ?? "";
       }
       await getKasa();
       if (viewModel.model.kasaKodu == null) return;

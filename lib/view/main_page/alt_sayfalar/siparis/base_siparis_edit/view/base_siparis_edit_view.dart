@@ -127,8 +127,16 @@ class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> wit
         viewModel.setLoading(true);
         BaseSiparisEditModel.resetInstance();
 
-        BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
+        BaseSiparisEditModel.instance
+          ..belgeTuru ??= widget.model.editTipiEnum?.rawValue
+          ..pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue
+          ..plasiyerKodu = yetkiController.varsayilanPlasiyer?.plasiyerKodu
+          ..plasiyerAciklama = yetkiController.varsayilanPlasiyer?.plasiyerAciklama
+          ..projeAciklama = yetkiController.varsayilanProje?.projeAciklama
+          ..projeKodu = yetkiController.varsayilanProje?.projeKodu
+          ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue
+          ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
+          ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2;
         if (widget.model.editTipiEnum?.satisMi ?? false) {
           BaseSiparisEditModel.instance.kdvDahil = yetkiController.siparisKdvDahilMi ? "E" : "H";
           BaseSiparisEditModel.instance.kdvDahilMi = yetkiController.siparisKdvDahilMi;

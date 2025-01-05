@@ -57,12 +57,10 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (CacheManager.getAnaVeri!.userModel!.admin == "E") const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize),
+                      if (userModel.admin) const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize),
                       Text(
                         CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc.rightDrawer.executiveUser,
-                        style: CacheManager.getAnaVeri!.userModel?.admin == "E"
-                            ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)
-                            : theme.textTheme.bodySmall,
+                        style: userModel.admin ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold) : theme.textTheme.bodySmall,
                       ),
                     ],
                   ).marginOnly(bottom: UIHelper.midSize),
@@ -127,18 +125,20 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                           children: [
                             // Icon(Icons.rule_s)
                             IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                            Text(
-                              loc.rightDrawer.changeCompany,
-                              style: theme.textTheme.bodySmall,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                            Expanded(
+                              child: Text(
+                                loc.rightDrawer.changeCompany,
+                                style: theme.textTheme.bodySmall,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
                           ],
                         ).paddingOnly(bottom: UIHelper.lowSize),
                       ),
                     ),
                   ),
-                  Expanded(
+                  Flexible(
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1), left: BorderSide(color: theme.dividerColor, width: 0.1)),
@@ -158,7 +158,7 @@ class _EndDrawerState extends BaseState<EndDrawer> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                            Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall),
+                            Expanded(child: Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall)),
                           ],
                         ).paddingOnly(bottom: UIHelper.lowSize),
                       ),

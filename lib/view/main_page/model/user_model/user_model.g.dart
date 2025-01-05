@@ -26,12 +26,12 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..erpParola = fields[6] as String?
       ..profilKodu = fields[7] as int?
       ..profilAdi = fields[8] as String?
-      ..pickerYetkili = fields[11] as String?
+      .._pickerYetkili = fields[11] as String?
       ..yetkiliSubelerJson = fields[12] as String?
       ..konumEnlem = fields[13] as double?
       ..konumBoylam = fields[14] as double?
       ..adSoyad = fields[16] as String?
-      ..admin = fields[17] as String?
+      .._admin = fields[17] as String?
       ..adminMi = fields[18] as bool?
       ..plasiyerTanimi = fields[19] as String?
       ..plasiyerKodu = fields[20] as String?;
@@ -60,7 +60,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(8)
       ..write(obj.profilAdi)
       ..writeByte(11)
-      ..write(obj.pickerYetkili)
+      ..write(obj._pickerYetkili)
       ..writeByte(12)
       ..write(obj.yetkiliSubelerJson)
       ..writeByte(13)
@@ -70,7 +70,7 @@ class UserModelAdapter extends TypeAdapter<UserModel> {
       ..writeByte(16)
       ..write(obj.adSoyad)
       ..writeByte(17)
-      ..write(obj.admin)
+      ..write(obj._admin)
       ..writeByte(18)
       ..write(obj.adminMi)
       ..writeByte(19)
@@ -109,12 +109,12 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) => UserModel()
       : ProfilYetkiModel.fromJson(json['PROFIL_YETKI'] as String)
   ..kullaniciYetki =
       KullaniciYetkiModel.fromJson(json['KULLANICI_YETKI'] as String?)
-  ..pickerYetkili = json['PICKER_YETKILI'] as String?
+  .._pickerYetkili = json['PICKER_YETKILI'] as String?
   ..yetkiliSubelerJson = json['YETKILI_SUBELER_JSON'] as String?
   ..konumEnlem = (json['KONUM_ENLEM'] as num?)?.toDouble()
   ..konumBoylam = (json['KONUM_BOYLAM'] as num?)?.toDouble()
   ..adSoyad = json['AD_SOYAD'] as String?
-  ..admin = json['ADMIN'] as String?
+  .._admin = json['ADMIN'] as String?
   ..adminMi = json['ADMIN_MI'] as bool?
   ..plasiyerTanimi = json['PLASIYER_TANIMI'] as String?
   ..plasiyerKodu = json['PLASIYER_KODU'] as String?
@@ -136,13 +136,13 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
         'PROFIL_YETKI': value,
       if (instance.kullaniciYetki?.toJson() case final value?)
         'KULLANICI_YETKI': value,
-      if (instance.pickerYetkili case final value?) 'PICKER_YETKILI': value,
+      if (instance._pickerYetkili case final value?) 'PICKER_YETKILI': value,
       if (instance.yetkiliSubelerJson case final value?)
         'YETKILI_SUBELER_JSON': value,
       if (instance.konumEnlem case final value?) 'KONUM_ENLEM': value,
       if (instance.konumBoylam case final value?) 'KONUM_BOYLAM': value,
       if (instance.adSoyad case final value?) 'AD_SOYAD': value,
-      if (instance.admin case final value?) 'ADMIN': value,
+      if (instance._admin case final value?) 'ADMIN': value,
       if (instance.adminMi case final value?) 'ADMIN_MI': value,
       if (instance.plasiyerTanimi case final value?) 'PLASIYER_TANIMI': value,
       if (instance.plasiyerKodu case final value?) 'PLASIYER_KODU': value,

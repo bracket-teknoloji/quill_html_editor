@@ -21,9 +21,9 @@ KullaniciYetkiModel _$KullaniciYetkiModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$KullaniciYetkiModel {
   @JsonKey(name: "bagliPlasiyerler")
-  List<dynamic>? get bagliPlasiyerler => throw _privateConstructorUsedError;
+  List<String?>? get bagliPlasiyerler => throw _privateConstructorUsedError;
   @JsonKey(name: "bagliPlasiyerler")
-  set bagliPlasiyerler(List<dynamic>? value) =>
+  set bagliPlasiyerler(List<String?>? value) =>
       throw _privateConstructorUsedError;
   @JsonKey(name: "eIrsOnEki")
   String? get eIrsOnEki => throw _privateConstructorUsedError;
@@ -159,6 +159,32 @@ mixin _$KullaniciYetkiModel {
   @JsonKey(name: "kkartiTahsilatYontemi")
   set kkartiTahsilatYontemi(String? value) =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: "satIrsOnEki")
+  String? get satIrsOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "satIrsOnEki")
+  set satIrsOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilanNakitKasa")
+  String? get varsayilanNakitKasa => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilanNakitKasa")
+  set varsayilanNakitKasa(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "sirket_Depo_YetkiTuru")
+  String? get sirketDepoYetkiTuru => throw _privateConstructorUsedError;
+  @JsonKey(name: "sirket_Depo_YetkiTuru")
+  set sirketDepoYetkiTuru(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_ProjeTanimi")
+  String? get varsayilanProjeTanimi => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_ProjeTanimi")
+  set varsayilanProjeTanimi(String? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_ProjeKodu")
+  String? get varsayilanProjeKodu => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_ProjeKodu")
+  set varsayilanProjeKodu(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilanKrediKartiKasa")
+  String? get varsayilanKrediKartiKasa => throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilanKrediKartiKasa")
+  set varsayilanKrediKartiKasa(String? value) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this KullaniciYetkiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -177,7 +203,7 @@ abstract class $KullaniciYetkiModelCopyWith<$Res> {
       _$KullaniciYetkiModelCopyWithImpl<$Res, KullaniciYetkiModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: "bagliPlasiyerler") List<dynamic>? bagliPlasiyerler,
+      {@JsonKey(name: "bagliPlasiyerler") List<String?>? bagliPlasiyerler,
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
       @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
@@ -216,7 +242,14 @@ abstract class $KullaniciYetkiModelCopyWith<$Res> {
       bool? sevkiyatSatisFatBakiyesizStokSecilmesin,
       @JsonKey(name: "plasiyerKodu") String? plasiyerKodu,
       @JsonKey(name: "varsayilan_PlasiyerKodu") String? varsayilanPlasiyerKodu,
-      @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi});
+      @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi,
+      @JsonKey(name: "satIrsOnEki") String? satIrsOnEki,
+      @JsonKey(name: "varsayilanNakitKasa") String? varsayilanNakitKasa,
+      @JsonKey(name: "sirket_Depo_YetkiTuru") String? sirketDepoYetkiTuru,
+      @JsonKey(name: "varsayilan_ProjeTanimi") String? varsayilanProjeTanimi,
+      @JsonKey(name: "varsayilan_ProjeKodu") String? varsayilanProjeKodu,
+      @JsonKey(name: "varsayilanKrediKartiKasa")
+      String? varsayilanKrediKartiKasa});
 }
 
 /// @nodoc
@@ -263,12 +296,18 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
     Object? plasiyerKodu = freezed,
     Object? varsayilanPlasiyerKodu = freezed,
     Object? kkartiTahsilatYontemi = freezed,
+    Object? satIrsOnEki = freezed,
+    Object? varsayilanNakitKasa = freezed,
+    Object? sirketDepoYetkiTuru = freezed,
+    Object? varsayilanProjeTanimi = freezed,
+    Object? varsayilanProjeKodu = freezed,
+    Object? varsayilanKrediKartiKasa = freezed,
   }) {
     return _then(_value.copyWith(
       bagliPlasiyerler: freezed == bagliPlasiyerler
           ? _value.bagliPlasiyerler
           : bagliPlasiyerler // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String?>?,
       eIrsOnEki: freezed == eIrsOnEki
           ? _value.eIrsOnEki
           : eIrsOnEki // ignore: cast_nullable_to_non_nullable
@@ -385,6 +424,30 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
           ? _value.kkartiTahsilatYontemi
           : kkartiTahsilatYontemi // ignore: cast_nullable_to_non_nullable
               as String?,
+      satIrsOnEki: freezed == satIrsOnEki
+          ? _value.satIrsOnEki
+          : satIrsOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanNakitKasa: freezed == varsayilanNakitKasa
+          ? _value.varsayilanNakitKasa
+          : varsayilanNakitKasa // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sirketDepoYetkiTuru: freezed == sirketDepoYetkiTuru
+          ? _value.sirketDepoYetkiTuru
+          : sirketDepoYetkiTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanProjeTanimi: freezed == varsayilanProjeTanimi
+          ? _value.varsayilanProjeTanimi
+          : varsayilanProjeTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanProjeKodu: freezed == varsayilanProjeKodu
+          ? _value.varsayilanProjeKodu
+          : varsayilanProjeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanKrediKartiKasa: freezed == varsayilanKrediKartiKasa
+          ? _value.varsayilanKrediKartiKasa
+          : varsayilanKrediKartiKasa // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -398,7 +461,7 @@ abstract class _$$KullaniciYetkiModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "bagliPlasiyerler") List<dynamic>? bagliPlasiyerler,
+      {@JsonKey(name: "bagliPlasiyerler") List<String?>? bagliPlasiyerler,
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
       @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
@@ -437,7 +500,14 @@ abstract class _$$KullaniciYetkiModelImplCopyWith<$Res>
       bool? sevkiyatSatisFatBakiyesizStokSecilmesin,
       @JsonKey(name: "plasiyerKodu") String? plasiyerKodu,
       @JsonKey(name: "varsayilan_PlasiyerKodu") String? varsayilanPlasiyerKodu,
-      @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi});
+      @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi,
+      @JsonKey(name: "satIrsOnEki") String? satIrsOnEki,
+      @JsonKey(name: "varsayilanNakitKasa") String? varsayilanNakitKasa,
+      @JsonKey(name: "sirket_Depo_YetkiTuru") String? sirketDepoYetkiTuru,
+      @JsonKey(name: "varsayilan_ProjeTanimi") String? varsayilanProjeTanimi,
+      @JsonKey(name: "varsayilan_ProjeKodu") String? varsayilanProjeKodu,
+      @JsonKey(name: "varsayilanKrediKartiKasa")
+      String? varsayilanKrediKartiKasa});
 }
 
 /// @nodoc
@@ -482,12 +552,18 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
     Object? plasiyerKodu = freezed,
     Object? varsayilanPlasiyerKodu = freezed,
     Object? kkartiTahsilatYontemi = freezed,
+    Object? satIrsOnEki = freezed,
+    Object? varsayilanNakitKasa = freezed,
+    Object? sirketDepoYetkiTuru = freezed,
+    Object? varsayilanProjeTanimi = freezed,
+    Object? varsayilanProjeKodu = freezed,
+    Object? varsayilanKrediKartiKasa = freezed,
   }) {
     return _then(_$KullaniciYetkiModelImpl(
       bagliPlasiyerler: freezed == bagliPlasiyerler
           ? _value.bagliPlasiyerler
           : bagliPlasiyerler // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String?>?,
       eIrsOnEki: freezed == eIrsOnEki
           ? _value.eIrsOnEki
           : eIrsOnEki // ignore: cast_nullable_to_non_nullable
@@ -603,6 +679,30 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
       kkartiTahsilatYontemi: freezed == kkartiTahsilatYontemi
           ? _value.kkartiTahsilatYontemi
           : kkartiTahsilatYontemi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satIrsOnEki: freezed == satIrsOnEki
+          ? _value.satIrsOnEki
+          : satIrsOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanNakitKasa: freezed == varsayilanNakitKasa
+          ? _value.varsayilanNakitKasa
+          : varsayilanNakitKasa // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sirketDepoYetkiTuru: freezed == sirketDepoYetkiTuru
+          ? _value.sirketDepoYetkiTuru
+          : sirketDepoYetkiTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanProjeTanimi: freezed == varsayilanProjeTanimi
+          ? _value.varsayilanProjeTanimi
+          : varsayilanProjeTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanProjeKodu: freezed == varsayilanProjeKodu
+          ? _value.varsayilanProjeKodu
+          : varsayilanProjeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanKrediKartiKasa: freezed == varsayilanKrediKartiKasa
+          ? _value.varsayilanKrediKartiKasa
+          : varsayilanKrediKartiKasa // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -650,14 +750,21 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
       this.sevkiyatSatisFatBakiyesizStokSecilmesin,
       @JsonKey(name: "plasiyerKodu") this.plasiyerKodu,
       @JsonKey(name: "varsayilan_PlasiyerKodu") this.varsayilanPlasiyerKodu,
-      @JsonKey(name: "kkartiTahsilatYontemi") this.kkartiTahsilatYontemi});
+      @JsonKey(name: "kkartiTahsilatYontemi") this.kkartiTahsilatYontemi,
+      @JsonKey(name: "satIrsOnEki") this.satIrsOnEki,
+      @JsonKey(name: "varsayilanNakitKasa") this.varsayilanNakitKasa,
+      @JsonKey(name: "sirket_Depo_YetkiTuru") this.sirketDepoYetkiTuru,
+      @JsonKey(name: "varsayilan_ProjeTanimi") this.varsayilanProjeTanimi,
+      @JsonKey(name: "varsayilan_ProjeKodu") this.varsayilanProjeKodu,
+      @JsonKey(name: "varsayilanKrediKartiKasa")
+      this.varsayilanKrediKartiKasa});
 
   factory _$KullaniciYetkiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$KullaniciYetkiModelImplFromJson(json);
 
   @override
   @JsonKey(name: "bagliPlasiyerler")
-  List<dynamic>? bagliPlasiyerler;
+  List<String?>? bagliPlasiyerler;
   @override
   @JsonKey(name: "eIrsOnEki")
   String? eIrsOnEki;
@@ -742,10 +849,28 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
   @override
   @JsonKey(name: "kkartiTahsilatYontemi")
   String? kkartiTahsilatYontemi;
+  @override
+  @JsonKey(name: "satIrsOnEki")
+  String? satIrsOnEki;
+  @override
+  @JsonKey(name: "varsayilanNakitKasa")
+  String? varsayilanNakitKasa;
+  @override
+  @JsonKey(name: "sirket_Depo_YetkiTuru")
+  String? sirketDepoYetkiTuru;
+  @override
+  @JsonKey(name: "varsayilan_ProjeTanimi")
+  String? varsayilanProjeTanimi;
+  @override
+  @JsonKey(name: "varsayilan_ProjeKodu")
+  String? varsayilanProjeKodu;
+  @override
+  @JsonKey(name: "varsayilanKrediKartiKasa")
+  String? varsayilanKrediKartiKasa;
 
   @override
   String toString() {
-    return 'KullaniciYetkiModel(bagliPlasiyerler: $bagliPlasiyerler, eIrsOnEki: $eIrsOnEki, eIrsAmbarOnEki: $eIrsAmbarOnEki, yetkiliKasalar: $yetkiliKasalar, kkartiHesaplar: $kkartiHesaplar, kkartiKasalar: $kkartiKasalar, acikHesapLimiti: $acikHesapLimiti, acikHesapTolerans: $acikHesapTolerans, acikHesapLimitiBelgeTipleri: $acikHesapLimitiBelgeTipleri, stokFiltreSQLTipi: $stokFiltreSQLTipi, cariFiltreSQLTipi: $cariFiltreSQLTipi, hizliTahsilatSozlesmeKodlari: $hizliTahsilatSozlesmeKodlari, siparisMusSipEkstraAlanlar: $siparisMusSipEkstraAlanlar, sirketAlisDepo: $sirketAlisDepo, sirketSatisDepo: $sirketSatisDepo, transferDATVarsayilanCikisDepo: $transferDATVarsayilanCikisDepo, transferDATVarsayilanGirisDepo: $transferDATVarsayilanGirisDepo, cariRehPlaEslesmesinBelgeTipleri: $cariRehPlaEslesmesinBelgeTipleri, profilKodu: $profilKodu, sirketAktifDepolar: $sirketAktifDepolar, sirketDatYetkiliDepolar: $sirketDatYetkiliDepolar, adminMi: $adminMi, varsayilanPlasiyerTanimi: $varsayilanPlasiyerTanimi, siparisMusSipBakiyesizStokSecilmesin: $siparisMusSipBakiyesizStokSecilmesin, sevkiyatSatisIrsBakiyesizStokSecilmesin: $sevkiyatSatisIrsBakiyesizStokSecilmesin, sevkiyatSatisFatBakiyesizStokSecilmesin: $sevkiyatSatisFatBakiyesizStokSecilmesin, plasiyerKodu: $plasiyerKodu, varsayilanPlasiyerKodu: $varsayilanPlasiyerKodu, kkartiTahsilatYontemi: $kkartiTahsilatYontemi)';
+    return 'KullaniciYetkiModel(bagliPlasiyerler: $bagliPlasiyerler, eIrsOnEki: $eIrsOnEki, eIrsAmbarOnEki: $eIrsAmbarOnEki, yetkiliKasalar: $yetkiliKasalar, kkartiHesaplar: $kkartiHesaplar, kkartiKasalar: $kkartiKasalar, acikHesapLimiti: $acikHesapLimiti, acikHesapTolerans: $acikHesapTolerans, acikHesapLimitiBelgeTipleri: $acikHesapLimitiBelgeTipleri, stokFiltreSQLTipi: $stokFiltreSQLTipi, cariFiltreSQLTipi: $cariFiltreSQLTipi, hizliTahsilatSozlesmeKodlari: $hizliTahsilatSozlesmeKodlari, siparisMusSipEkstraAlanlar: $siparisMusSipEkstraAlanlar, sirketAlisDepo: $sirketAlisDepo, sirketSatisDepo: $sirketSatisDepo, transferDATVarsayilanCikisDepo: $transferDATVarsayilanCikisDepo, transferDATVarsayilanGirisDepo: $transferDATVarsayilanGirisDepo, cariRehPlaEslesmesinBelgeTipleri: $cariRehPlaEslesmesinBelgeTipleri, profilKodu: $profilKodu, sirketAktifDepolar: $sirketAktifDepolar, sirketDatYetkiliDepolar: $sirketDatYetkiliDepolar, adminMi: $adminMi, varsayilanPlasiyerTanimi: $varsayilanPlasiyerTanimi, siparisMusSipBakiyesizStokSecilmesin: $siparisMusSipBakiyesizStokSecilmesin, sevkiyatSatisIrsBakiyesizStokSecilmesin: $sevkiyatSatisIrsBakiyesizStokSecilmesin, sevkiyatSatisFatBakiyesizStokSecilmesin: $sevkiyatSatisFatBakiyesizStokSecilmesin, plasiyerKodu: $plasiyerKodu, varsayilanPlasiyerKodu: $varsayilanPlasiyerKodu, kkartiTahsilatYontemi: $kkartiTahsilatYontemi, satIrsOnEki: $satIrsOnEki, varsayilanNakitKasa: $varsayilanNakitKasa, sirketDepoYetkiTuru: $sirketDepoYetkiTuru, varsayilanProjeTanimi: $varsayilanProjeTanimi, varsayilanProjeKodu: $varsayilanProjeKodu, varsayilanKrediKartiKasa: $varsayilanKrediKartiKasa)';
   }
 
   /// Create a copy of KullaniciYetkiModel
@@ -767,7 +892,7 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
 
 abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
   factory _KullaniciYetkiModel(
-      {@JsonKey(name: "bagliPlasiyerler") List<dynamic>? bagliPlasiyerler,
+      {@JsonKey(name: "bagliPlasiyerler") List<String?>? bagliPlasiyerler,
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
       @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
@@ -806,17 +931,23 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
       bool? sevkiyatSatisFatBakiyesizStokSecilmesin,
       @JsonKey(name: "plasiyerKodu") String? plasiyerKodu,
       @JsonKey(name: "varsayilan_PlasiyerKodu") String? varsayilanPlasiyerKodu,
-      @JsonKey(name: "kkartiTahsilatYontemi")
-      String? kkartiTahsilatYontemi}) = _$KullaniciYetkiModelImpl;
+      @JsonKey(name: "kkartiTahsilatYontemi") String? kkartiTahsilatYontemi,
+      @JsonKey(name: "satIrsOnEki") String? satIrsOnEki,
+      @JsonKey(name: "varsayilanNakitKasa") String? varsayilanNakitKasa,
+      @JsonKey(name: "sirket_Depo_YetkiTuru") String? sirketDepoYetkiTuru,
+      @JsonKey(name: "varsayilan_ProjeTanimi") String? varsayilanProjeTanimi,
+      @JsonKey(name: "varsayilan_ProjeKodu") String? varsayilanProjeKodu,
+      @JsonKey(name: "varsayilanKrediKartiKasa")
+      String? varsayilanKrediKartiKasa}) = _$KullaniciYetkiModelImpl;
 
   factory _KullaniciYetkiModel.fromJson(Map<String, dynamic> json) =
       _$KullaniciYetkiModelImpl.fromJson;
 
   @override
   @JsonKey(name: "bagliPlasiyerler")
-  List<dynamic>? get bagliPlasiyerler;
+  List<String?>? get bagliPlasiyerler;
   @JsonKey(name: "bagliPlasiyerler")
-  set bagliPlasiyerler(List<dynamic>? value);
+  set bagliPlasiyerler(List<String?>? value);
   @override
   @JsonKey(name: "eIrsOnEki")
   String? get eIrsOnEki;
@@ -957,6 +1088,36 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
   String? get kkartiTahsilatYontemi;
   @JsonKey(name: "kkartiTahsilatYontemi")
   set kkartiTahsilatYontemi(String? value);
+  @override
+  @JsonKey(name: "satIrsOnEki")
+  String? get satIrsOnEki;
+  @JsonKey(name: "satIrsOnEki")
+  set satIrsOnEki(String? value);
+  @override
+  @JsonKey(name: "varsayilanNakitKasa")
+  String? get varsayilanNakitKasa;
+  @JsonKey(name: "varsayilanNakitKasa")
+  set varsayilanNakitKasa(String? value);
+  @override
+  @JsonKey(name: "sirket_Depo_YetkiTuru")
+  String? get sirketDepoYetkiTuru;
+  @JsonKey(name: "sirket_Depo_YetkiTuru")
+  set sirketDepoYetkiTuru(String? value);
+  @override
+  @JsonKey(name: "varsayilan_ProjeTanimi")
+  String? get varsayilanProjeTanimi;
+  @JsonKey(name: "varsayilan_ProjeTanimi")
+  set varsayilanProjeTanimi(String? value);
+  @override
+  @JsonKey(name: "varsayilan_ProjeKodu")
+  String? get varsayilanProjeKodu;
+  @JsonKey(name: "varsayilan_ProjeKodu")
+  set varsayilanProjeKodu(String? value);
+  @override
+  @JsonKey(name: "varsayilanKrediKartiKasa")
+  String? get varsayilanKrediKartiKasa;
+  @JsonKey(name: "varsayilanKrediKartiKasa")
+  set varsayilanKrediKartiKasa(String? value);
 
   /// Create a copy of KullaniciYetkiModel
   /// with the given fields replaced by the non-null parameter values.

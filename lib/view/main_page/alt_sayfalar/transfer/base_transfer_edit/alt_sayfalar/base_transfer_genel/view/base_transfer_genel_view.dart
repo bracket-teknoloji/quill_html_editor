@@ -145,7 +145,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
         // BaseSiparisEditModel.instance.belgeNo= await networkManager.getSiradakiBelgeNo(SiradakiBelgeNoModel(belgeNo: model.belgeNo, belgeTuru: model.belgeTuru, sirketKodu: model.sirketKodu));
       }
       if (yetkiController.projeUygulamasiAcikMi && viewModel.model.projeKodu == null) {
-        viewModel.setProje(await yetkiController.varsayilanProje);
+        viewModel.setProje(yetkiController.varsayilanProje);
         _projeController.text = viewModel.model.projeAciklama ?? viewModel.model.projeKodu ?? "";
       }
     });

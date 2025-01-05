@@ -176,6 +176,29 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.belgesizIslem => "Belgesiz İşlem"
       };
 
+
+      String? get ozelKod1 => switch (this) {
+        EditTipiEnum.musteri => yetkiController.siparisMSOzelKod1Degeri,
+        EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod1Degeri,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeOzelKod1Degeri,
+        EditTipiEnum.satisTalebi => yetkiController.satisTalebiOzelKod1Degeri,
+        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifOzelKod1Degeri,
+        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOzelKod1Degeri,
+        EditTipiEnum.ambarCikisi => yetkiController.transferACOzelKod1Degeri,
+        _ => null,
+      };
+
+      String? get ozelKod2 => switch (this) {
+        EditTipiEnum.musteri => yetkiController.siparisMSOzelKod2Degeri,
+        EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod2Degeri,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeOzelKod2Degeri,
+        EditTipiEnum.satisTalebi => yetkiController.satisTalebiOzelKod2Degeri,
+        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifOzelKod2Degeri,
+        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOzelKod2Degeri,
+        EditTipiEnum.ambarCikisi => yetkiController.transferACOzelKod2Degeri,
+        _ => null,
+      };
+
   bool get birim1denGelsin => switch (this) {
         EditTipiEnum.musteri => yetkiController.siparisMSBirim1denKaydet,
         EditTipiEnum.satici => yetkiController.siparisSSBirim1denKaydet,
@@ -537,9 +560,10 @@ extension EditTipiEnumExtension on EditTipiEnum {
     if (AccountModel.instance.adminMi) {
       return 2;
     }
+    const exceptionList = [0, null];
     return switch (this) {
-      EditTipiEnum.satisFatura => profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi,
-      EditTipiEnum.satisIrsaliye => profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi,
+      EditTipiEnum.satisFatura => exceptionList.contains(profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi) ? 2 : profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi,
+      EditTipiEnum.satisIrsaliye => exceptionList.contains(profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi) ? 2 : profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi,
       _ => 2,
     };
   }

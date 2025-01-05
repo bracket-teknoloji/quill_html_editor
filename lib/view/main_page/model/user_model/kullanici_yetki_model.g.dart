@@ -9,7 +9,9 @@ part of 'kullanici_yetki_model.dart';
 _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
         Map<String, dynamic> json) =>
     _$KullaniciYetkiModelImpl(
-      bagliPlasiyerler: json['bagliPlasiyerler'] as List<dynamic>?,
+      bagliPlasiyerler: (json['bagliPlasiyerler'] as List<dynamic>?)
+          ?.map((e) => e as String?)
+          .toList(),
       eIrsOnEki: json['eIrsOnEki'] as String?,
       eIrsAmbarOnEki: json['eIrsAmbarOnEki'] as String?,
       yetkiliKasalar: (json['yetkiliKasalar'] as List<dynamic>?)
@@ -54,6 +56,12 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
       plasiyerKodu: json['plasiyerKodu'] as String?,
       varsayilanPlasiyerKodu: json['varsayilan_PlasiyerKodu'] as String?,
       kkartiTahsilatYontemi: json['kkartiTahsilatYontemi'] as String?,
+      satIrsOnEki: json['satIrsOnEki'] as String?,
+      varsayilanNakitKasa: json['varsayilanNakitKasa'] as String?,
+      sirketDepoYetkiTuru: json['sirket_Depo_YetkiTuru'] as String?,
+      varsayilanProjeTanimi: json['varsayilan_ProjeTanimi'] as String?,
+      varsayilanProjeKodu: json['varsayilan_ProjeKodu'] as String?,
+      varsayilanKrediKartiKasa: json['varsayilanKrediKartiKasa'] as String?,
     );
 
 Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
@@ -106,4 +114,15 @@ Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
         'varsayilan_PlasiyerKodu': value,
       if (instance.kkartiTahsilatYontemi case final value?)
         'kkartiTahsilatYontemi': value,
+      if (instance.satIrsOnEki case final value?) 'satIrsOnEki': value,
+      if (instance.varsayilanNakitKasa case final value?)
+        'varsayilanNakitKasa': value,
+      if (instance.sirketDepoYetkiTuru case final value?)
+        'sirket_Depo_YetkiTuru': value,
+      if (instance.varsayilanProjeTanimi case final value?)
+        'varsayilan_ProjeTanimi': value,
+      if (instance.varsayilanProjeKodu case final value?)
+        'varsayilan_ProjeKodu': value,
+      if (instance.varsayilanKrediKartiKasa case final value?)
+        'varsayilanKrediKartiKasa': value,
     };

@@ -1787,7 +1787,147 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..finansKasaNakitOdemeKasaBakGizle =
           json['finans_Kasa_NakitOdeme_KasaBakGizle'] as bool?
       ..finansKasaKacGunlukKayitlarListelensin =
-          (json['finans_Kasa_KacGunlukKayitlarListelensin'] as num?)?.toInt();
+          (json['finans_Kasa_KacGunlukKayitlarListelensin'] as num?)?.toInt()
+      ..yazdirmaMustahsilYazicilari =
+          json['yazdirma_Mustahsil_Yazicilari'] as List<dynamic>?
+      ..yazdirmaDizaynMustahsil =
+          (json['yazdirma_Dizayn_Mustahsil'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
+      ..yazdirmaSaticiSipYazicilari =
+          json['yazdirma_SaticiSip_Yazicilari'] as List<dynamic>?
+      ..yazdirmaSatisTeklifiYazicilari =
+          json['yazdirma_SatisTeklifi_Yazicilari'] as List<dynamic>?
+      ..yazdirmaTahsilatMakbuzuYazicilari =
+          json['yazdirma_TahsilatMakbuzu_Yazicilari'] as List<dynamic>?
+      ..sirketDepoYetkiTuru = json['sirket_Depo_YetkiTuru'] as String?
+      ..siparisMusSipOzelKod1Degeri =
+          json['siparis_MusSip_OzelKod1Degeri'] as String?
+      ..siparisSaticiSiparisiSatirAciklamaAlanlari =
+          (json['siparis_SaticiSiparisi_SatirAciklamaAlanlari']
+                  as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
+      ..transferAgOtoPdfGor = json['transfer_AG_OtoPdfGor'] as bool?
+      ..transferAgBildirim = json['transfer_AG_Bildirim'] as bool?
+      ..transferAgEMailGonder = json['transfer_AG_EMailGonder'] as bool?
+      ..transferAgEMailGonderBaslik =
+          json['transfer_AG_EMailGonder_Baslik'] as String?
+      ..transferAgEMailGonderDizayn =
+          (json['transfer_AG_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..transferAcOtoPdfGor = json['transfer_AC_OtoPdfGor'] as bool?
+      ..transferAcBildirim = json['transfer_AC_Bildirim'] as bool?
+      ..transferAcEMailGonder = json['transfer_AC_EMailGonder'] as bool?
+      ..transferAcEMailGonderBaslik =
+          json['transfer_AC_EMailGonder_Baslik'] as String?
+      ..transferAcEMailGonderDizayn =
+          (json['transfer_AC_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..malKabulAlisIrsOtoPdfGor = json['malKabul_AlisIrs_OtoPdfGor'] as bool?
+      ..malKabulAlisIrsBildirim = json['malKabul_AlisIrs_Bildirim'] as bool?
+      ..malKabulAlisIrsEMailGonder =
+          json['malKabul_AlisIrs_EMailGonder'] as bool?
+      ..malKabulAlisIrsEMailGonderBaslik =
+          json['malKabul_AlisIrs_EMailGonder_Baslik'] as String?
+      ..malKabulAlisIrsEMailGonderDizayn =
+          (json['malKabul_AlisIrs_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..malKabulAlisFatBildirim = json['malKabul_AlisFat_Bildirim'] as bool?
+      ..malKabulAlisFatEMailGonder =
+          json['malKabul_AlisFat_EMailGonder'] as bool?
+      ..malKabulAlisFatEMailGonderBaslik =
+          json['malKabul_AlisFat_EMailGonder_Baslik'] as String?
+      ..malKabulAlisFatEMailGonderDizayn =
+          (json['malKabul_AlisFat_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..transferDatOtoPdfGor = json['transfer_DAT_OtoPdfGor'] as bool?
+      ..transferDatBildirim = json['transfer_DAT_Bildirim'] as bool?
+      ..transferDatEMailGonder = json['transfer_DAT_EMailGonder'] as bool?
+      ..transferDatEMailGonderBaslik =
+          json['transfer_DAT_EMailGonder_Baslik'] as String?
+      ..transferDatEMailGonderDizayn =
+          (json['transfer_DAT_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..sevkiyatSatisIrsOtoPdfGor = json['sevkiyat_SatisIrs_OtoPdfGor'] as bool?
+      ..sevkiyatSatisIrsBildirim = json['sevkiyat_SatisIrs_Bildirim'] as bool?
+      ..sevkiyatSatisIrsEMailGonder =
+          json['sevkiyat_SatisIrs_EMailGonder'] as bool?
+      ..sevkiyatSatisIrsEMailGonderBaslik =
+          json['sevkiyat_SatisIrs_EMailGonder_Baslik'] as String?
+      ..sevkiyatSatisIrsEMailGonderDizayn =
+          (json['sevkiyat_SatisIrs_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..sevkiyatSatisFatOtoPdfGor = json['sevkiyat_SatisFat_OtoPdfGor'] as bool?
+      ..sevkiyatSatisFatOzelKod1Degeri =
+          json['sevkiyat_SatisFat_OzelKod1Degeri'] as String?
+      ..sevkiyatSatisFatOzelKod2Degeri =
+          json['sevkiyat_SatisFat_OzelKod2Degeri'] as String?
+      ..sevkiyatSatisFatBildirim = json['sevkiyat_SatisFat_Bildirim'] as bool?
+      ..sevkiyatSatisFatEMailGonder =
+          json['sevkiyat_SatisFat_EMailGonder'] as bool?
+      ..sevkiyatSatisFatEMailGonderBaslik =
+          json['sevkiyat_SatisFat_EMailGonder_Baslik'] as String?
+      ..sevkiyatSatisFatEMailGonderDizayn =
+          (json['sevkiyat_SatisFat_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..sayimEkAlan1 = json['sayim_EkAlan1'] as bool?
+      ..sayimEkAlan1Zorunlu = json['sayim_EkAlan1_Zorunlu'] as bool?
+      ..sayimEkAlan2 = json['sayim_EkAlan2'] as bool?
+      ..sayimEkAlan2Zorunlu = json['sayim_EkAlan2_Zorunlu'] as bool?
+      ..sayimEkAlan3 = json['sayim_EkAlan3'] as bool?
+      ..sayimEkAlan3Zorunlu = json['sayim_EkAlan3_Zorunlu'] as bool?
+      ..sayimEkAlan4 = json['sayim_EkAlan4'] as bool?
+      ..sayimEkAlan4Zorunlu = json['sayim_EkAlan4_Zorunlu'] as bool?
+      ..sayimEkAlan5 = json['sayim_EkAlan5'] as bool?
+      ..sayimEkAlan5Zorunlu = json['sayim_EkAlan5_Zorunlu'] as bool?
+      ..siparisMusSipEMailGonder = json['siparis_MusSip_EMailGonder'] as bool?
+      ..siparisMusSipEMailGonderBaslik =
+          json['siparis_MusSip_EMailGonder_Baslik'] as String?
+      ..siparisMusSipEMailGonderDizayn =
+          (json['siparis_MusSip_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..siparisSaticiSipOtoPdfGor = json['siparis_SaticiSip_OtoPdfGor'] as bool?
+      ..siparisSatSipEMailGonder = json['siparis_SatSip_EMailGonder'] as bool?
+      ..siparisSatSipEMailGonderBaslik =
+          json['siparis_SatSip_EMailGonder_Baslik'] as String?
+      ..siparisSatSipEMailGonderDizayn =
+          (json['siparis_SatSip_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..taltekStekBildirim = json['taltek_STEK_Bildirim'] as bool?
+      ..taltekStekEMailGonder = json['taltek_STEK_EMailGonder'] as bool?
+      ..taltekStekEMailGonderBaslik =
+          json['taltek_STEK_EMailGonder_Baslik'] as String?
+      ..taltekStekEMailGonderDizayn =
+          (json['taltek_STEK_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..taltekAtalBildirim = json['taltek_ATAL_Bildirim'] as bool?
+      ..taltekAtalEMailGonder = json['taltek_ATAL_EMailGonder'] as bool?
+      ..taltekAtalEMailGonderBaslik =
+          json['taltek_ATAL_EMailGonder_Baslik'] as String?
+      ..taltekAtalEMailGonderDizayn =
+          (json['taltek_ATAL_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..taltekStalBildirim = json['taltek_STAL_Bildirim'] as bool?
+      ..taltekStalEMailGonder = json['taltek_STAL_EMailGonder'] as bool?
+      ..taltekStalEMailGonderBaslik =
+          json['taltek_STAL_EMailGonder_Baslik'] as String?
+      ..taltekStalEMailGonderDizayn =
+          (json['taltek_STAL_EMailGonder_Dizayn'] as num?)?.toInt()
+      ..ebelgeEFatSatirdaIskDikkateAlma =
+          json['ebelge_EFat_SatirdaIskDikkateAlma'] as String?
+      ..ebelgeEArsivSatirdaIskDikkateAlma =
+          json['ebelge_EArsiv_SatirdaIskDikkateAlma'] as String?
+      ..transferAgOzelKod1Degeri = json['transfer_AG_OzelKod1Degeri'] as String?
+      ..transferAgOzelKod2Degeri = json['transfer_AG_OzelKod2Degeri'] as String?
+      ..transferAgVarsayilanMasrafKodu =
+          json['transfer_AG_VarsayilanMasrafKodu'] as String?
+      ..transferAcOzelKod1Degeri = json['transfer_AC_OzelKod1Degeri'] as String?
+      ..transferAcOzelKod2Degeri = json['transfer_AC_OzelKod2Degeri'] as String?
+      ..malKabulAlisIrsOzelKod1Degeri =
+          json['malKabul_AlisIrs_OzelKod1Degeri'] as String?
+      ..malKabulAlisIrsOzelKod2Degeri =
+          json['malKabul_AlisIrs_OzelKod2Degeri'] as String?
+      ..sevkiyatSatisIrsOzelKod1Degeri =
+          json['sevkiyat_SatisIrs_OzelKod1Degeri'] as String?
+      ..sevkiyatSatisIrsOzelKod2Degeri =
+          json['sevkiyat_SatisIrs_OzelKod2Degeri'] as String?
+      ..siparisMusSipOzelKod2Degeri =
+          json['siparis_MusSip_OzelKod2Degeri'] as String?
+      ..taltekStekOzelKod1Degeri = json['taltek_STEK_OzelKod1Degeri'] as String?
+      ..taltekStekOzelKod2Degeri = json['taltek_STEK_OzelKod2Degeri'] as String?
+      ..taltekStalOzelKod1Degeri = json['taltek_STAL_OzelKod1Degeri'] as String?
+      ..taltekStalOzelKod2Degeri =
+          json['taltek_STAL_OzelKod2Degeri'] as String?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
     <String, dynamic>{
@@ -3703,6 +3843,179 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
         'finans_Kasa_NakitOdeme_KasaBakGizle': value,
       if (instance.finansKasaKacGunlukKayitlarListelensin case final value?)
         'finans_Kasa_KacGunlukKayitlarListelensin': value,
+      if (instance.yazdirmaMustahsilYazicilari case final value?)
+        'yazdirma_Mustahsil_Yazicilari': value,
+      if (instance.yazdirmaDizaynMustahsil case final value?)
+        'yazdirma_Dizayn_Mustahsil': value,
+      if (instance.yazdirmaSaticiSipYazicilari case final value?)
+        'yazdirma_SaticiSip_Yazicilari': value,
+      if (instance.yazdirmaSatisTeklifiYazicilari case final value?)
+        'yazdirma_SatisTeklifi_Yazicilari': value,
+      if (instance.yazdirmaTahsilatMakbuzuYazicilari case final value?)
+        'yazdirma_TahsilatMakbuzu_Yazicilari': value,
+      if (instance.sirketDepoYetkiTuru case final value?)
+        'sirket_Depo_YetkiTuru': value,
+      if (instance.siparisMusSipOzelKod1Degeri case final value?)
+        'siparis_MusSip_OzelKod1Degeri': value,
+      if (instance.siparisSaticiSiparisiSatirAciklamaAlanlari case final value?)
+        'siparis_SaticiSiparisi_SatirAciklamaAlanlari': value,
+      if (instance.transferAgOtoPdfGor case final value?)
+        'transfer_AG_OtoPdfGor': value,
+      if (instance.transferAgBildirim case final value?)
+        'transfer_AG_Bildirim': value,
+      if (instance.transferAgEMailGonder case final value?)
+        'transfer_AG_EMailGonder': value,
+      if (instance.transferAgEMailGonderBaslik case final value?)
+        'transfer_AG_EMailGonder_Baslik': value,
+      if (instance.transferAgEMailGonderDizayn case final value?)
+        'transfer_AG_EMailGonder_Dizayn': value,
+      if (instance.transferAcOtoPdfGor case final value?)
+        'transfer_AC_OtoPdfGor': value,
+      if (instance.transferAcBildirim case final value?)
+        'transfer_AC_Bildirim': value,
+      if (instance.transferAcEMailGonder case final value?)
+        'transfer_AC_EMailGonder': value,
+      if (instance.transferAcEMailGonderBaslik case final value?)
+        'transfer_AC_EMailGonder_Baslik': value,
+      if (instance.transferAcEMailGonderDizayn case final value?)
+        'transfer_AC_EMailGonder_Dizayn': value,
+      if (instance.malKabulAlisIrsOtoPdfGor case final value?)
+        'malKabul_AlisIrs_OtoPdfGor': value,
+      if (instance.malKabulAlisIrsBildirim case final value?)
+        'malKabul_AlisIrs_Bildirim': value,
+      if (instance.malKabulAlisIrsEMailGonder case final value?)
+        'malKabul_AlisIrs_EMailGonder': value,
+      if (instance.malKabulAlisIrsEMailGonderBaslik case final value?)
+        'malKabul_AlisIrs_EMailGonder_Baslik': value,
+      if (instance.malKabulAlisIrsEMailGonderDizayn case final value?)
+        'malKabul_AlisIrs_EMailGonder_Dizayn': value,
+      if (instance.malKabulAlisFatBildirim case final value?)
+        'malKabul_AlisFat_Bildirim': value,
+      if (instance.malKabulAlisFatEMailGonder case final value?)
+        'malKabul_AlisFat_EMailGonder': value,
+      if (instance.malKabulAlisFatEMailGonderBaslik case final value?)
+        'malKabul_AlisFat_EMailGonder_Baslik': value,
+      if (instance.malKabulAlisFatEMailGonderDizayn case final value?)
+        'malKabul_AlisFat_EMailGonder_Dizayn': value,
+      if (instance.transferDatOtoPdfGor case final value?)
+        'transfer_DAT_OtoPdfGor': value,
+      if (instance.transferDatBildirim case final value?)
+        'transfer_DAT_Bildirim': value,
+      if (instance.transferDatEMailGonder case final value?)
+        'transfer_DAT_EMailGonder': value,
+      if (instance.transferDatEMailGonderBaslik case final value?)
+        'transfer_DAT_EMailGonder_Baslik': value,
+      if (instance.transferDatEMailGonderDizayn case final value?)
+        'transfer_DAT_EMailGonder_Dizayn': value,
+      if (instance.sevkiyatSatisIrsOtoPdfGor case final value?)
+        'sevkiyat_SatisIrs_OtoPdfGor': value,
+      if (instance.sevkiyatSatisIrsBildirim case final value?)
+        'sevkiyat_SatisIrs_Bildirim': value,
+      if (instance.sevkiyatSatisIrsEMailGonder case final value?)
+        'sevkiyat_SatisIrs_EMailGonder': value,
+      if (instance.sevkiyatSatisIrsEMailGonderBaslik case final value?)
+        'sevkiyat_SatisIrs_EMailGonder_Baslik': value,
+      if (instance.sevkiyatSatisIrsEMailGonderDizayn case final value?)
+        'sevkiyat_SatisIrs_EMailGonder_Dizayn': value,
+      if (instance.sevkiyatSatisFatOtoPdfGor case final value?)
+        'sevkiyat_SatisFat_OtoPdfGor': value,
+      if (instance.sevkiyatSatisFatOzelKod1Degeri case final value?)
+        'sevkiyat_SatisFat_OzelKod1Degeri': value,
+      if (instance.sevkiyatSatisFatOzelKod2Degeri case final value?)
+        'sevkiyat_SatisFat_OzelKod2Degeri': value,
+      if (instance.sevkiyatSatisFatBildirim case final value?)
+        'sevkiyat_SatisFat_Bildirim': value,
+      if (instance.sevkiyatSatisFatEMailGonder case final value?)
+        'sevkiyat_SatisFat_EMailGonder': value,
+      if (instance.sevkiyatSatisFatEMailGonderBaslik case final value?)
+        'sevkiyat_SatisFat_EMailGonder_Baslik': value,
+      if (instance.sevkiyatSatisFatEMailGonderDizayn case final value?)
+        'sevkiyat_SatisFat_EMailGonder_Dizayn': value,
+      if (instance.sayimEkAlan1 case final value?) 'sayim_EkAlan1': value,
+      if (instance.sayimEkAlan1Zorunlu case final value?)
+        'sayim_EkAlan1_Zorunlu': value,
+      if (instance.sayimEkAlan2 case final value?) 'sayim_EkAlan2': value,
+      if (instance.sayimEkAlan2Zorunlu case final value?)
+        'sayim_EkAlan2_Zorunlu': value,
+      if (instance.sayimEkAlan3 case final value?) 'sayim_EkAlan3': value,
+      if (instance.sayimEkAlan3Zorunlu case final value?)
+        'sayim_EkAlan3_Zorunlu': value,
+      if (instance.sayimEkAlan4 case final value?) 'sayim_EkAlan4': value,
+      if (instance.sayimEkAlan4Zorunlu case final value?)
+        'sayim_EkAlan4_Zorunlu': value,
+      if (instance.sayimEkAlan5 case final value?) 'sayim_EkAlan5': value,
+      if (instance.sayimEkAlan5Zorunlu case final value?)
+        'sayim_EkAlan5_Zorunlu': value,
+      if (instance.siparisMusSipEMailGonder case final value?)
+        'siparis_MusSip_EMailGonder': value,
+      if (instance.siparisMusSipEMailGonderBaslik case final value?)
+        'siparis_MusSip_EMailGonder_Baslik': value,
+      if (instance.siparisMusSipEMailGonderDizayn case final value?)
+        'siparis_MusSip_EMailGonder_Dizayn': value,
+      if (instance.siparisSaticiSipOtoPdfGor case final value?)
+        'siparis_SaticiSip_OtoPdfGor': value,
+      if (instance.siparisSatSipEMailGonder case final value?)
+        'siparis_SatSip_EMailGonder': value,
+      if (instance.siparisSatSipEMailGonderBaslik case final value?)
+        'siparis_SatSip_EMailGonder_Baslik': value,
+      if (instance.siparisSatSipEMailGonderDizayn case final value?)
+        'siparis_SatSip_EMailGonder_Dizayn': value,
+      if (instance.taltekStekBildirim case final value?)
+        'taltek_STEK_Bildirim': value,
+      if (instance.taltekStekEMailGonder case final value?)
+        'taltek_STEK_EMailGonder': value,
+      if (instance.taltekStekEMailGonderBaslik case final value?)
+        'taltek_STEK_EMailGonder_Baslik': value,
+      if (instance.taltekStekEMailGonderDizayn case final value?)
+        'taltek_STEK_EMailGonder_Dizayn': value,
+      if (instance.taltekAtalBildirim case final value?)
+        'taltek_ATAL_Bildirim': value,
+      if (instance.taltekAtalEMailGonder case final value?)
+        'taltek_ATAL_EMailGonder': value,
+      if (instance.taltekAtalEMailGonderBaslik case final value?)
+        'taltek_ATAL_EMailGonder_Baslik': value,
+      if (instance.taltekAtalEMailGonderDizayn case final value?)
+        'taltek_ATAL_EMailGonder_Dizayn': value,
+      if (instance.taltekStalBildirim case final value?)
+        'taltek_STAL_Bildirim': value,
+      if (instance.taltekStalEMailGonder case final value?)
+        'taltek_STAL_EMailGonder': value,
+      if (instance.taltekStalEMailGonderBaslik case final value?)
+        'taltek_STAL_EMailGonder_Baslik': value,
+      if (instance.taltekStalEMailGonderDizayn case final value?)
+        'taltek_STAL_EMailGonder_Dizayn': value,
+      if (instance.ebelgeEFatSatirdaIskDikkateAlma case final value?)
+        'ebelge_EFat_SatirdaIskDikkateAlma': value,
+      if (instance.ebelgeEArsivSatirdaIskDikkateAlma case final value?)
+        'ebelge_EArsiv_SatirdaIskDikkateAlma': value,
+      if (instance.transferAgOzelKod1Degeri case final value?)
+        'transfer_AG_OzelKod1Degeri': value,
+      if (instance.transferAgOzelKod2Degeri case final value?)
+        'transfer_AG_OzelKod2Degeri': value,
+      if (instance.transferAgVarsayilanMasrafKodu case final value?)
+        'transfer_AG_VarsayilanMasrafKodu': value,
+      if (instance.transferAcOzelKod1Degeri case final value?)
+        'transfer_AC_OzelKod1Degeri': value,
+      if (instance.transferAcOzelKod2Degeri case final value?)
+        'transfer_AC_OzelKod2Degeri': value,
+      if (instance.malKabulAlisIrsOzelKod1Degeri case final value?)
+        'malKabul_AlisIrs_OzelKod1Degeri': value,
+      if (instance.malKabulAlisIrsOzelKod2Degeri case final value?)
+        'malKabul_AlisIrs_OzelKod2Degeri': value,
+      if (instance.sevkiyatSatisIrsOzelKod1Degeri case final value?)
+        'sevkiyat_SatisIrs_OzelKod1Degeri': value,
+      if (instance.sevkiyatSatisIrsOzelKod2Degeri case final value?)
+        'sevkiyat_SatisIrs_OzelKod2Degeri': value,
+      if (instance.siparisMusSipOzelKod2Degeri case final value?)
+        'siparis_MusSip_OzelKod2Degeri': value,
+      if (instance.taltekStekOzelKod1Degeri case final value?)
+        'taltek_STEK_OzelKod1Degeri': value,
+      if (instance.taltekStekOzelKod2Degeri case final value?)
+        'taltek_STEK_OzelKod2Degeri': value,
+      if (instance.taltekStalOzelKod1Degeri case final value?)
+        'taltek_STAL_OzelKod1Degeri': value,
+      if (instance.taltekStalOzelKod2Degeri case final value?)
+        'taltek_STAL_OzelKod2Degeri': value,
     };
 
 SevkemriMalKontrolTipi _$SevkemriMalKontrolTipiFromJson(

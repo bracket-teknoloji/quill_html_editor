@@ -194,26 +194,17 @@ class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       }
     } else if (model.plasiyerKoduMu) {
       final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
-      // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? [];
-      // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-      //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.plasiyerKodu ?? "", controllerValue: result.plasiyerAciklama);
       }
     } else if (model.secmeliPlasiyerMi) {
       if (viewModel.dicParams[model.adi] == null) viewModel.changeDicParams(model.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
       final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: (viewModel.dicParams[model.adi] as String?)?.split("; "));
-      // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? [];
-      // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-      //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.map((e) => e?.plasiyerKodu).join("; "));
       }
     } else if (model.projeKoduMu) {
       final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.dicParams[model.adi ?? ""]);
-      // List<PlasiyerList> plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList ?? [];
-      // var result = await bottomSheetDialogManager.showBottomSheetDialog(context,
-      //     title: "Plasiyer Seçiniz", children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", onTap: () => Get.back(result: e))).toList());
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.projeKodu ?? "", controllerValue: result.projeAciklama);
       }

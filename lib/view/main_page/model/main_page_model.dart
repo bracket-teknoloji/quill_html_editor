@@ -1,3 +1,6 @@
+import "dart:convert";
+import "dart:developer";
+
 import "package:hive_flutter/hive_flutter.dart";
 import "package:json_annotation/json_annotation.dart";
 
@@ -33,7 +36,10 @@ class MainPageModel with NetworkManagerMixin {
   ParamModel? paramModel;
 
   @override
-  MainPageModel fromJson(Map<String, dynamic> json) => _$MainPageModelFromJson(json);
+  MainPageModel fromJson(Map<String, dynamic> json) {
+    log(jsonEncode(json));
+    return _$MainPageModelFromJson(json);
+  }
 
   @override
   Map<String, dynamic> toJson() => _$MainPageModelToJson(this);

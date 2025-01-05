@@ -32,6 +32,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/icon_helper.dart";
+import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
@@ -42,6 +43,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/mo
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/model/olcum_operator_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/kalem_list_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
+import "package:picker/view/main_page/model/user_model/kullanici_yetki_model.dart";
 
 import "../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_kosullar_model.dart";
 import "../../../../view/main_page/alt_sayfalar/cari/cari_network_manager.dart";
@@ -59,7 +61,9 @@ import "view_model/bottom_sheet_state_manager.dart";
 class BottomSheetDialogManager {
   BottomSheetStateManager viewModel = BottomSheetStateManager();
   final NetworkManager _networkManager = NetworkManager();
+  final YetkiController _yetkiController = YetkiController();
   ParamModel? get _paramModel => CacheManager.getAnaVeri?.paramModel;
+  KullaniciYetkiModel? get _kullaniciYetkiModel => CacheManager.getAnaVeri?.userModel?.kullaniciYetki;
 
   Future<List<T>?> _generalBottomSheet<T>(
     BuildContext context, {
@@ -451,7 +455,16 @@ class BottomSheetDialogManager {
 
   /// `GroupValues must be a list of String`
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List? groupValues}) async {
-    final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
+    final List<PlasiyerList> plasiyerList =
+        (_paramModel?.plasiyerList ?? <PlasiyerList>[]).where((element) => _kullaniciYetkiModel?.bagliPlasiyerler?.contains(element.plasiyerKodu) == true || AccountModel.instance.adminMi).toList();
+    if (plasiyerList.isEmpty && _kullaniciYetkiModel?.bagliPlasiyerler?.first == null && _kullaniciYetkiModel?.bagliPlasiyerler?.length == 1) {
+      plasiyerList.addAll(_paramModel?.plasiyerList ?? <PlasiyerList>[]);
+    }
+    if (plasiyerList.isEmpty) {
+      if (_yetkiController.varsayilanPlasiyer != null) {
+        plasiyerList.add(_yetkiController.varsayilanPlasiyer!);
+      }
+    }
     final result = await showCheckBoxBottomSheetDialog<PlasiyerList>(
       context,
       title: "Plasiyer Seçiniz",
@@ -598,7 +611,10 @@ class BottomSheetDialogManager {
   }
 
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
+    // final ;
+    final List<PlasiyerList> plasiyerList =
+        (_paramModel?.plasiyerList ?? <PlasiyerList>[]).where((element) => _kullaniciYetkiModel?.bagliPlasiyerler?.contains(element.plasiyerKodu) == true || AccountModel.instance.adminMi).toList();
+    // final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Plasiyer Seçiniz",
@@ -660,6 +676,7 @@ class BottomSheetDialogManager {
 
   Future<BaseProjeModel?> showProjeBottomSheetDialog(BuildContext context, dynamic groupValue) async {
     final List<BaseProjeModel>? projeList = await _networkManager.getProjeData();
+    projeList?.where((element) => _yetkiController.projeYetkisiVarMi(element.projeKodu)).toList();
     if (projeList.ext.isNullOrEmpty) return null;
     final BaseProjeModel? proje = await showRadioBottomSheetDialog(
       context,
@@ -1133,16 +1150,13 @@ class BottomSheetDialogManager {
   }
 
   Future<KasaList?> showKasaBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<KasaList> list = _paramModel?.kasaList ?? <KasaList>[];
+    final List<KasaList> list =
+        (_paramModel?.kasaList ?? <KasaList>[]).where((element) => _kullaniciYetkiModel?.yetkiliKasalar?.contains(element.kasaKodu) == true || AccountModel.instance.adminMi).toList();
     return await showRadioBottomSheetDialog(
       context,
       title: "Kasa Seçiniz",
       groupValue: groupValue,
-      children: list
-          .map(
-            (e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu),
-          )
-          .toList(),
+      children: list.map((e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu)).toList(),
     );
   }
 

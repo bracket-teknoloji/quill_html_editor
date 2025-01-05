@@ -285,12 +285,7 @@ class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             suffixMore: true,
             valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.plasiyerKodu ?? "")),
             onTap: () async {
-              final List<PlasiyerList>? plasiyerList = parametreModel.plasiyerList;
-              final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                context,
-                title: "Plasiyer Seçiniz",
-                children: List.generate(plasiyerList?.length ?? 0, (index) => BottomSheetModel(title: plasiyerList?[index].plasiyerAciklama ?? "", value: plasiyerList?[index])),
-              );
+              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.kasaIslemleriRequestModel.plasiyerKodu);
               if (result is PlasiyerList) {
                 viewModel.setPlasiyerKodu(result);
                 plasiyerController.text = result.plasiyerAciklama ?? "";

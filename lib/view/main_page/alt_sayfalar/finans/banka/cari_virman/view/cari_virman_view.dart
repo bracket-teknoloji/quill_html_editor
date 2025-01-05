@@ -273,7 +273,7 @@ class _CariVirmanViewState extends BaseState<CariVirmanView> {
   }
 
   Future<void> odemeSekliBottomSheet() async {
-    final projeModel = await yetkiController.varsayilanProje;
+    final projeModel = yetkiController.varsayilanProje;
     _projeController.text = projeModel?.projeAciklama ?? "";
     viewModel.setProjeKodu(projeModel?.projeKodu);
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(

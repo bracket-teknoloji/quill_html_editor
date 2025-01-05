@@ -7,7 +7,7 @@ import "profil_yetki_model.dart";
 
 part "user_model.g.dart";
 
-@JsonSerializable(createFactory: true)
+@JsonSerializable()
 @HiveType(typeId: 101)
 class UserModel {
   UserModel();
@@ -37,7 +37,8 @@ class UserModel {
   @JsonKey(name: "KULLANICI_YETKI", fromJson: KullaniciYetkiModel.fromJson)
   KullaniciYetkiModel? kullaniciYetki;
   @HiveField(11)
-  String? pickerYetkili;
+  @JsonKey(name: "PICKER_YETKILI", includeFromJson: true, includeToJson: true)
+  String? _pickerYetkili;
   @HiveField(12)
   String? yetkiliSubelerJson;
   @HiveField(13)
@@ -50,7 +51,8 @@ class UserModel {
   @HiveField(16)
   String? adSoyad;
   @HiveField(17)
-  String? admin;
+  @JsonKey(name: "ADMIN", includeFromJson: true, includeToJson: true)
+  String? _admin;
   @HiveField(18)
   bool? adminMi;
   @HiveField(19)
@@ -62,6 +64,10 @@ class UserModel {
   Map<String, dynamic> toJson() => _$UserModelToJson(this);
 
   String get adiSoyadi => "$adi $soyadi";
+
+  bool get pickerYetkili => _pickerYetkili == "E";
+
+  bool get admin => _admin == "E";
 
   @override
   String toString() => toJson().toString();
