@@ -1076,6 +1076,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ),
                 CustomTextField(
                   labelText: getAciklamaLabel(1),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK1") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK1") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK1"),
@@ -1092,6 +1093,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(2),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK2") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK2") != null,
                   onClear: () => viewModel.setAciklama2(null),
@@ -1108,6 +1110,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(3),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK3") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK3") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK3"),
@@ -1124,6 +1127,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(4),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK4") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK4") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK4"),
@@ -1140,6 +1144,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(5),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK5") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK5") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK5"),
@@ -1156,6 +1161,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(6),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK6") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK6") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK6"),
@@ -1172,6 +1178,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(7),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK7") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK7") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK7"),
@@ -1188,6 +1195,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(8),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK8") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK8") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK8"),
@@ -1204,6 +1212,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(9),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK9") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK9") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK9"),
@@ -1220,6 +1229,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 ),
                 CustomTextField(
                   labelText: getAciklamaLabel(10),
+                  maxLength: 35,
                   readOnly: getEkRehberModel("SATIR_ACIK10") != null,
                   suffixMore: getEkRehberModel("SATIR_ACIK10") != null,
                   onTap: () async => getGenelRehberModel("SATIR_ACIK10"),
