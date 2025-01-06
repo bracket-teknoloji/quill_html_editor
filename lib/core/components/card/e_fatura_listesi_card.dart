@@ -171,7 +171,7 @@ class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
                   Text(
                     "Kontrol: ${model.kontrolEdildi == "E" ? model.kontrolAciklama : "Hayır"}",
                     style: TextStyle(color: model.kontrolEdildi == "E" ? ColorPalette.mantis : null),
-                  ).paddingSymmetric(vertical: UIHelper.lowSize),
+                  ).paddingSymmetric(vertical: UIHelper.lowSize).paddingOnly(right: UIHelper.lowSize),
                   if (model.kontrolEdildi == "E") const Icon(Icons.check_circle_outline_outlined, size: UIHelper.midSize * 2, color: ColorPalette.mantis).paddingOnly(right: UIHelper.lowSize),
                 ],
               ),
