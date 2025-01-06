@@ -19,7 +19,7 @@ import "../../../state/base_state.dart";
 import "../view_model/kalem_rehberi_view_model.dart";
 
 /// KalemModel Listesi dönüyor
-class KalemRehberiView extends StatefulWidget {
+final class KalemRehberiView extends StatefulWidget {
   const KalemRehberiView({required this.model, super.key});
   final SiparislerRequestModel model;
 
@@ -27,8 +27,9 @@ class KalemRehberiView extends StatefulWidget {
   State<KalemRehberiView> createState() => _KalemRehberiViewState();
 }
 
-class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
+final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
   final KalemRehberiViewModel viewModel = KalemRehberiViewModel();
+
 
   @override
   void initState() {

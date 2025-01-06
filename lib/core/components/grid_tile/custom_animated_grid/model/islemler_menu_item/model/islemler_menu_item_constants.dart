@@ -230,7 +230,11 @@ class IslemlerMenuItemConstants<T> {
     } else if (islemTipi == IslemTipiEnum.depoTransferi) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList
-        ..addIfConditionTrue(_yetkiController.transferDatOnay && siparisModel.datOnayda == "E", transferOnayla)
+        ..addIfConditionTrue(
+          siparisModel.datOnayda == "E" &&
+              (AccountModel.instance.adminMi || (_yetkiController.transferDatOnay && (_userModel!.transferDatOnayIslemleriDepolar?.contains(siparisModel.topluDepo ?? -1) ?? false))),
+          transferOnayla,
+        )
         ..add(siparisPDFGoruntule)
         ..add(siparisCariKoduDegistir)
         ..add(faturaBelgeNoDegistir)

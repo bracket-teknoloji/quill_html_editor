@@ -176,8 +176,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.belgesizIslem => "Belgesiz İşlem"
       };
 
-
-      String? get ozelKod1 => switch (this) {
+  String? get ozelKod1 => switch (this) {
         EditTipiEnum.musteri => yetkiController.siparisMSOzelKod1Degeri,
         EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod1Degeri,
         EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeOzelKod1Degeri,
@@ -188,7 +187,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         _ => null,
       };
 
-      String? get ozelKod2 => switch (this) {
+  String? get ozelKod2 => switch (this) {
         EditTipiEnum.musteri => yetkiController.siparisMSOzelKod2Degeri,
         EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod2Degeri,
         EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeOzelKod2Degeri,
@@ -331,6 +330,10 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatAciklamaDuzenle,
         EditTipiEnum.ambarGirisi => yetkiController.transferAgAciklamaDuzenle,
         EditTipiEnum.ambarCikisi => yetkiController.transferAcAciklamaDuzenle,
+        EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFaturaAciklamaDuzenle,
+        EditTipiEnum.alisFatura => yetkiController.malKabulAlisFaturaAciklamaDuzenle,
+        EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsaliyesiAciklamaDuzenle,
+        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsaliyesiAciklamaDuzenle,
         _ => false
       };
 
@@ -663,6 +666,8 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.alisTalebi => "/mainPage/talTekAlisTalepAciklamaDuzenle",
         EditTipiEnum.satisTalebi => "/mainPage/talTekSatisTalepAciklamaDuzenle",
         EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "/mainPage/transferDepoAciklamaDuzenle",
+        EditTipiEnum.ambarGirisi => "/mainPage/transferAmbarGirisiAciklamaDuzenle",
+        EditTipiEnum.ambarCikisi => "/mainPage/transferAmbarCikisiAciklamaDuzenle",
         _ => throw Exception("Açıklama düzenleme route bulunamadı"),
       };
 
