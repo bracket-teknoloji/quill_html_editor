@@ -41,6 +41,7 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
     @Default("") String? belgeNo,
     String? siparisDurumu,
     String? referansStokKodu,
+    String? fiyatGrubu,
     String? menuKodu,
     bool? siparisSevkEdilenGoster,
     String? refBelgeTuru,

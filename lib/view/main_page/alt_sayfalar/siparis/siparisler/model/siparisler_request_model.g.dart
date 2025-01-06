@@ -41,6 +41,7 @@ _$SiparislerRequestModelImpl _$$SiparislerRequestModelImplFromJson(
       belgeNo: json['BelgeNo'] as String? ?? "",
       siparisDurumu: json['SiparisDurumu'] as String?,
       referansStokKodu: json['ReferansStokKodu'] as String?,
+      fiyatGrubu: json['FiyatGrubu'] as String?,
       menuKodu: json['MenuKodu'] as String?,
       siparisSevkEdilenGoster: json['SiparisSevkEdilenGoster'] as bool?,
       refBelgeTuru: json['RefBelgeTuru'] as String?,
@@ -91,6 +92,7 @@ Map<String, dynamic> _$$SiparislerRequestModelImplToJson(
       if (instance.siparisDurumu case final value?) 'SiparisDurumu': value,
       if (instance.referansStokKodu case final value?)
         'ReferansStokKodu': value,
+      if (instance.fiyatGrubu case final value?) 'FiyatGrubu': value,
       if (instance.menuKodu case final value?) 'MenuKodu': value,
       if (instance.siparisSevkEdilenGoster case final value?)
         'SiparisSevkEdilenGoster': value,

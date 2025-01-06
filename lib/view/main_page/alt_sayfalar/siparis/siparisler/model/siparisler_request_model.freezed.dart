@@ -89,6 +89,8 @@ mixin _$SiparislerRequestModel {
   set siparisDurumu(String? value) => throw _privateConstructorUsedError;
   String? get referansStokKodu => throw _privateConstructorUsedError;
   set referansStokKodu(String? value) => throw _privateConstructorUsedError;
+  String? get fiyatGrubu => throw _privateConstructorUsedError;
+  set fiyatGrubu(String? value) => throw _privateConstructorUsedError;
   String? get menuKodu => throw _privateConstructorUsedError;
   set menuKodu(String? value) => throw _privateConstructorUsedError;
   bool? get siparisSevkEdilenGoster => throw _privateConstructorUsedError;
@@ -157,6 +159,7 @@ abstract class $SiparislerRequestModelCopyWith<$Res> {
       String? belgeNo,
       String? siparisDurumu,
       String? referansStokKodu,
+      String? fiyatGrubu,
       String? menuKodu,
       bool? siparisSevkEdilenGoster,
       String? refBelgeTuru,
@@ -215,6 +218,7 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
     Object? belgeNo = freezed,
     Object? siparisDurumu = freezed,
     Object? referansStokKodu = freezed,
+    Object? fiyatGrubu = freezed,
     Object? menuKodu = freezed,
     Object? siparisSevkEdilenGoster = freezed,
     Object? refBelgeTuru = freezed,
@@ -353,6 +357,10 @@ class _$SiparislerRequestModelCopyWithImpl<$Res,
           ? _value.referansStokKodu
           : referansStokKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      fiyatGrubu: freezed == fiyatGrubu
+          ? _value.fiyatGrubu
+          : fiyatGrubu // ignore: cast_nullable_to_non_nullable
+              as String?,
       menuKodu: freezed == menuKodu
           ? _value.menuKodu
           : menuKodu // ignore: cast_nullable_to_non_nullable
@@ -431,6 +439,7 @@ abstract class _$$SiparislerRequestModelImplCopyWith<$Res>
       String? belgeNo,
       String? siparisDurumu,
       String? referansStokKodu,
+      String? fiyatGrubu,
       String? menuKodu,
       bool? siparisSevkEdilenGoster,
       String? refBelgeTuru,
@@ -488,6 +497,7 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
     Object? belgeNo = freezed,
     Object? siparisDurumu = freezed,
     Object? referansStokKodu = freezed,
+    Object? fiyatGrubu = freezed,
     Object? menuKodu = freezed,
     Object? siparisSevkEdilenGoster = freezed,
     Object? refBelgeTuru = freezed,
@@ -626,6 +636,10 @@ class __$$SiparislerRequestModelImplCopyWithImpl<$Res>
           ? _value.referansStokKodu
           : referansStokKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      fiyatGrubu: freezed == fiyatGrubu
+          ? _value.fiyatGrubu
+          : fiyatGrubu // ignore: cast_nullable_to_non_nullable
+              as String?,
       menuKodu: freezed == menuKodu
           ? _value.menuKodu
           : menuKodu // ignore: cast_nullable_to_non_nullable
@@ -699,6 +713,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
       this.belgeNo = "",
       this.siparisDurumu,
       this.referansStokKodu,
+      this.fiyatGrubu,
       this.menuKodu,
       this.siparisSevkEdilenGoster,
       this.refBelgeTuru,
@@ -780,6 +795,8 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   @override
   String? referansStokKodu;
   @override
+  String? fiyatGrubu;
+  @override
   String? menuKodu;
   @override
   bool? siparisSevkEdilenGoster;
@@ -798,7 +815,7 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
 
   @override
   String toString() {
-    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, teslimCariKodu: $teslimCariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT, faturalanmisIrsaliyelerGelsin: $faturalanmisIrsaliyelerGelsin)';
+    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, teslimCariKodu: $teslimCariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, fiyatGrubu: $fiyatGrubu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT, faturalanmisIrsaliyelerGelsin: $faturalanmisIrsaliyelerGelsin)';
   }
 
   /// Create a copy of SiparislerRequestModel
@@ -852,6 +869,7 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
       String? belgeNo,
       String? siparisDurumu,
       String? referansStokKodu,
+      String? fiyatGrubu,
       String? menuKodu,
       bool? siparisSevkEdilenGoster,
       String? refBelgeTuru,
@@ -962,6 +980,9 @@ abstract class _SiparislerRequestModel implements SiparislerRequestModel {
   @override
   String? get referansStokKodu;
   set referansStokKodu(String? value);
+  @override
+  String? get fiyatGrubu;
+  set fiyatGrubu(String? value);
   @override
   String? get menuKodu;
   set menuKodu(String? value);
