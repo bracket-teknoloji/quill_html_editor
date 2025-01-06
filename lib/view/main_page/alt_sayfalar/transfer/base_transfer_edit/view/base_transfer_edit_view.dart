@@ -118,18 +118,20 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
           BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
-            BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-            BaseSiparisEditModel.instance.belgeNo = widget.model.model?.belgeNo;
-            BaseSiparisEditModel.instance.isNew = true;
-            BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
-            BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
+            BaseSiparisEditModel.instance
+              ..tarih = DateTime.now().dateTimeWithoutTime
+              ..belgeNo = widget.model.model?.belgeNo
+              ..isNew = true
+              ..vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu
+              ..vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
           } else if (widget.model.baseEditEnum == BaseEditEnum.revize) {
-            BaseSiparisEditModel.instance.isNew = true;
-            BaseSiparisEditModel.instance.yeniKayit = true;
-            BaseSiparisEditModel.instance.belgeNo = null;
-            BaseSiparisEditModel.instance.teklifRevizeIslemi = true;
-            BaseSiparisEditModel.instance.vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu;
-            BaseSiparisEditModel.instance.vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
+            BaseSiparisEditModel.instance
+              ..isNew = true
+              ..yeniKayit = true
+              ..belgeNo = null
+              ..teklifRevizeIslemi = true
+              ..vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu
+              ..vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
           }
         }
       } else if (widget.model.baseEditEnum == BaseEditEnum.ekle) {
@@ -148,31 +150,38 @@ class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> w
             }
           }
         }
-        BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
-        BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-        BaseSiparisEditModel.instance.isNew = true;
-        BaseSiparisEditModel.instance.cariAdi = widget.model.model?.cariAdi;
-        BaseSiparisEditModel.instance.hareketTuru = widget.model.model?.hareketTuru;
-        BaseSiparisEditModel.instance.cariKodu = widget.model.model?.cariKodu;
-        BaseSiparisEditModel.instance.projeKodu = widget.model.model?.projeKodu;
-        BaseSiparisEditModel.instance.girisDepoKodu = widget.model.model?.girisDepoKodu;
-        BaseSiparisEditModel.instance.cikisDepoKodu = widget.model.model?.cikisDepoKodu;
-        BaseSiparisEditModel.instance.topluGirisDepoTanimi = widget.model.model?.topluGirisDepoTanimi;
-        BaseSiparisEditModel.instance.topluCikisDepoTanimi = widget.model.model?.topluCikisDepoTanimi;
-        BaseSiparisEditModel.instance.isNew = true;
+        BaseSiparisEditModel.instance
+          ..belgeTuru ??= widget.model.editTipiEnum?.rawValue
+          ..pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue
+          ..tarih = DateTime.now().dateTimeWithoutTime
+          ..isNew = true
+          ..cariAdi ??= widget.model.model?.cariAdi
+          ..cariKodu ??= widget.model.model?.cariKodu
+          ..hareketTuru = widget.model.model?.hareketTuru
+          ..projeAciklama = yetkiController.varsayilanProje?.projeAciklama
+          ..projeKodu = yetkiController.varsayilanProje?.projeKodu
+          ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue
+          ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
+          ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
+          ..girisDepoKodu = widget.model.model?.girisDepoKodu
+          ..cikisDepoKodu = widget.model.model?.cikisDepoKodu
+          ..topluGirisDepoTanimi = widget.model.model?.topluGirisDepoTanimi
+          ..topluCikisDepoTanimi = widget.model.model?.topluCikisDepoTanimi
+          ..isNew = true;
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiGoster ?? false) {
-          BaseSiparisEditModel.instance.belgeTipi = 2;
-          BaseSiparisEditModel.instance.tipi = 2;
-          BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
-          BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.isNew = true;
+          BaseSiparisEditModel.instance
+            ..belgeTipi = 2
+            ..tipi = 2
+            ..tarih = DateTime.now().dateTimeWithoutTime
+            ..tag = "FaturaModel"
+            ..siparisTipi = model.editTipiEnum
+            ..isNew = true;
         }
-        BaseSiparisEditModel.instance.cikisDepoKodu ??= yetkiController.transferLokalDatCikisDepo?.depoKodu;
-        BaseSiparisEditModel.instance.girisDepoKodu ??= yetkiController.transferLokalDatGirisDepo?.depoKodu;
-        BaseSiparisEditModel.instance.topluCikisDepoTanimi ??= yetkiController.transferLokalDatCikisDepo?.depoTanimi;
-        BaseSiparisEditModel.instance.topluGirisDepoTanimi ??= yetkiController.transferLokalDatGirisDepo?.depoTanimi;
+        BaseSiparisEditModel.instance
+          ..cikisDepoKodu ??= yetkiController.transferLokalDatCikisDepo?.depoKodu
+          ..girisDepoKodu ??= yetkiController.transferLokalDatGirisDepo?.depoKodu
+          ..topluCikisDepoTanimi ??= yetkiController.transferLokalDatCikisDepo?.depoTanimi
+          ..topluGirisDepoTanimi ??= yetkiController.transferLokalDatGirisDepo?.depoTanimi;
         if (yetkiController.transferDatLokalDATSeciliGelmesin) {
           BaseSiparisEditModel.instance.lokalDat = "H";
         } else {

@@ -300,28 +300,30 @@ class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView>
       context,
       title: viewModel.kalemList?[index].stokAdi ?? viewModel.kalemList?[index].kalemAdi ?? "",
       children: <BottomSheetModel?>[
-        BottomSheetModel(
-          title: loc.generalStrings.edit,
-          iconWidget: Icons.edit_outlined,
-          onTap: () async {
-            Get.back();
-            final result = await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
-            if (result is KalemModel) {
-              BaseSiparisEditModel.instance.kalemList?[index] = result;
-            }
-            viewModel.updateKalemList();
-          },
-        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
-        BottomSheetModel(
-          title: loc.generalStrings.delete,
-          iconWidget: Icons.delete_outline_outlined,
-          onTap: () {
-            Get.back();
-            return dialogManager.showAreYouSureDialog(() {
-              viewModel.removeAtKalemList(index);
-            });
-          },
-        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null && !(widget.model.editTipiEnum?.olcumdenDepoTransferiMi ?? false)),
+        if (!widget.model.isGoruntule && ((model?.siparisNo == null || model?.siparisNo == "") || model?.siparisNo == ""))
+          BottomSheetModel(
+            title: loc.generalStrings.edit,
+            iconWidget: Icons.edit_outlined,
+            onTap: () async {
+              Get.back();
+              final result = await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
+              if (result is KalemModel) {
+                BaseSiparisEditModel.instance.kalemList?[index] = result;
+              }
+              viewModel.updateKalemList();
+            },
+          ),
+        if (!widget.model.isGoruntule && (model?.siparisNo == null || model?.siparisNo == "") && !(widget.model.editTipiEnum?.olcumdenDepoTransferiMi ?? false))
+          BottomSheetModel(
+            title: loc.generalStrings.delete,
+            iconWidget: Icons.delete_outline_outlined,
+            onTap: () {
+              Get.back();
+              return dialogManager.showAreYouSureDialog(() {
+                viewModel.removeAtKalemList(index);
+              });
+            },
+          ),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,

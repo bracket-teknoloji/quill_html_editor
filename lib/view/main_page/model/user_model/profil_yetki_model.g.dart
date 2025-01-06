@@ -1926,8 +1926,9 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..taltekStekOzelKod1Degeri = json['taltek_STEK_OzelKod1Degeri'] as String?
       ..taltekStekOzelKod2Degeri = json['taltek_STEK_OzelKod2Degeri'] as String?
       ..taltekStalOzelKod1Degeri = json['taltek_STAL_OzelKod1Degeri'] as String?
-      ..taltekStalOzelKod2Degeri =
-          json['taltek_STAL_OzelKod2Degeri'] as String?;
+      ..taltekStalOzelKod2Degeri = json['taltek_STAL_OzelKod2Degeri'] as String?
+      ..sevkiyatSatisFatAciklamalarYetkiTuru =
+          json['sevkiyat_SatisFat_Aciklamalar_YetkiTuru'] as String?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
     <String, dynamic>{
@@ -4016,6 +4017,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
         'taltek_STAL_OzelKod1Degeri': value,
       if (instance.taltekStalOzelKod2Degeri case final value?)
         'taltek_STAL_OzelKod2Degeri': value,
+      if (instance.sevkiyatSatisFatAciklamalarYetkiTuru case final value?)
+        'sevkiyat_SatisFat_Aciklamalar_YetkiTuru': value,
     };
 
 SevkemriMalKontrolTipi _$SevkemriMalKontrolTipiFromJson(

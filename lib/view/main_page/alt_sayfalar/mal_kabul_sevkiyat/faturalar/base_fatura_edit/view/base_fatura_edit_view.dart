@@ -181,6 +181,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             }
             if (widget.model.baseEditEnum.kopyalaMi) {
               BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+              if (yetkiController.kontrolluBelgeAktarimAktif) {
+                BaseSiparisEditModel.instance
+                  ..remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue) ? true : null
+                  ..belgeNo = null;
+              }
             }
             BaseSiparisEditModel.instance
               ..belgeKodu = null
@@ -251,6 +256,11 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         BaseSiparisEditModel.instance
           ..plasiyerKodu = yetkiController.varsayilanPlasiyer?.plasiyerKodu
           ..plasiyerAciklama = yetkiController.varsayilanPlasiyer?.plasiyerAciklama;
+        if (yetkiController.kontrolluBelgeAktarimAktif) {
+          BaseSiparisEditModel.instance
+            ..remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue) ? true : null
+            ..belgeNo = null;
+        }
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         if (widget.model.editTipiEnum?.siparisBaglantisiVarMi ?? false) {
           final result = await getSiparisBaglantisi();
@@ -258,7 +268,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             BaseSiparisEditModel.instance.ebelgeCheckbox = "E";
           }
           if (result != true) {
-            BaseSiparisEditModel.resetInstance();
+            // BaseSiparisEditModel.resetInstance();
           } else {
             final cariModel = await getCari();
 
@@ -328,11 +338,7 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
         ..belgeTuru = widget.model.editTipiEnum?.rawValue
         ..islemeBaslamaTarihi = DateTime.now().copyWith(second: 0, microsecond: 0, millisecond: 0)
         ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue;
-      if (yetkiController.kontrolluBelgeAktarimAktif) {
-        BaseSiparisEditModel.instance
-          ..remoteTempBelge = yetkiController.kontrolluAktarBelgeTipleri(BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue) ? true : null
-          ..belgeNo = null;
-      }
+
       viewModel.setLoading(false);
     });
     log("resmi belge no: ${widget.model.model?.belgeNo}");
@@ -671,6 +677,9 @@ class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with Ticker
             )
             .toList(),
       );
+    }
+    if (newInstance.getEditTipiEnum?.alisIrsaliyesiMi == false && newInstance.getEditTipiEnum?.alisFaturasiMi == false) {
+      newInstance = newInstance..resmiBelgeNo = null;
     }
     final GenericResponseModel<NetworkManagerMixin> result = await networkManager.dioPost<BaseSiparisEditModel>(
       path: ApiUrls.saveFatura,

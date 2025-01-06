@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -356,18 +357,21 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                           controller: _gidecegiSubeController,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisSubeKodu.toIntIfDouble.toStringIfNotNull ?? "")),
                           onTap: () async {
+                            final subeList = parametreModel.subeList?.where((element) => (element.subeKodu ?? 0).toStringIfNotNull != CacheManager.getVeriTabani["Şube"].toString()).toList();
                             final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                               context,
                               title: "Gideceği Şube",
                               groupValue: viewModel.model.cikisSubeKodu,
-                              children: List.generate(parametreModel.subeList?.length ?? 0, (index) {
-                                final SubeList? item = parametreModel.subeList?[index];
+                              children: List.generate(subeList?.length ?? 0, (index) {
+                                final SubeList? item = subeList?[index];
                                 return BottomSheetModel(title: item?.subeAdi ?? "", value: item, groupValue: item?.subeKodu ?? 0, description: (item?.subeKodu ?? 0).toStringIfNotNull);
                               }),
                             );
-                            if (result is SubeList) {
+                            if (result is SubeList && result.subeKodu != viewModel.model.cikisSubeKodu) {
                               viewModel.setCikisSube(result.subeKodu);
                               _gidecegiSubeController.text = result.subeAdi ?? "";
+                              viewModel.setTopluGirisDepoKodu(null);
+                              _topluGirisDepoController.text = "";
                             }
                           },
                         ),
@@ -557,7 +561,7 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                         enabled: enable,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.girisDepoKodu.toStringIfNotNull ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.girisDepoKodu);
+                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.girisDepoKodu, subeKodu: model.cikisSubeKodu);
                           if (result != null) {
                             _topluGirisDepoController.text = result.depoTanimi ?? "";
                             viewModel.setTopluGirisDepoKodu(result);
@@ -684,125 +688,126 @@ class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
                   onChanged: (value) => viewModel.model.aciklama = value,
                 ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false) && (viewModel.model.getEditTipiEnum?.aciklamaDuzenlensinMi ?? false)),
 
-                CustomWidgetWithLabel(
-                  text: "Ek Açıklamalar",
-                  child: Column(
-                    children: <Widget>[
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A1") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
-                        onChanged: (value) => viewModel.setAciklama(1, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
-                        controller: _aciklama1Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(1) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A1") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A2") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A2"),
-                        onChanged: (value) => viewModel.setAciklama(2, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
-                        controller: _aciklama2Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(2) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A2") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A3") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A3"),
-                        onChanged: (value) => viewModel.setAciklama(3, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
-                        controller: _aciklama3Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(3) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A3") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A4") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A4"),
-                        onChanged: (value) => viewModel.setAciklama(4, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
-                        controller: _aciklama4Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(4) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A4") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A5") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A5"),
-                        onChanged: (value) => viewModel.setAciklama(5, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
-                        controller: _aciklama5Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(5) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A5") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A6") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A6"),
-                        onChanged: (value) => viewModel.setAciklama(6, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
-                        controller: _aciklama6Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(6) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A6") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A7") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A7"),
-                        onChanged: (value) => viewModel.setAciklama(7, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
-                        controller: _aciklama7Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(7) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A7") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A8") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A8"),
-                        onChanged: (value) => viewModel.setAciklama(8, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
-                        controller: _aciklama8Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(8) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A8") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A9") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A9"),
-                        onChanged: (value) => viewModel.setAciklama(9, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
-                        controller: _aciklama9Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(9) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A9") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A10") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A10"),
-                        onChanged: (value) => viewModel.setAciklama(10, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
-                        controller: _aciklama10Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(10) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A10") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A11") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A11"),
-                        onChanged: (value) => viewModel.setAciklama(11, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
-                        controller: _aciklama11Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(11) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A11") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A12") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A12"),
-                        onChanged: (value) => viewModel.setAciklama(12, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
-                        controller: _aciklama12Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(12) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A12") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A13") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A13"),
-                        onChanged: (value) => viewModel.setAciklama(13, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
-                        controller: _aciklama13Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(13) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A13") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A14") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A14"),
-                        onChanged: (value) => viewModel.setAciklama(14, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
-                        controller: _aciklama14Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(14) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A14") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A15") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A15"),
-                        onChanged: (value) => viewModel.setAciklama(15, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
-                        controller: _aciklama15Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(15) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A15") ?? false)),
-                      CustomTextField(
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A16") ?? false),
-                        isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A16"),
-                        onChanged: (value) => viewModel.setAciklama(16, value),
-                        labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
-                        controller: _aciklama16Controller,
-                      ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(16) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A16") ?? false)),
-                    ],
+                if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))
+                  CustomWidgetWithLabel(
+                    text: "Ek Açıklamalar",
+                    child: Column(
+                      children: <Widget>[
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A1") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
+                          onChanged: (value) => viewModel.setAciklama(1, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
+                          controller: _aciklama1Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(1) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A1") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A2") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A2"),
+                          onChanged: (value) => viewModel.setAciklama(2, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
+                          controller: _aciklama2Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(2) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A2") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A3") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A3"),
+                          onChanged: (value) => viewModel.setAciklama(3, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
+                          controller: _aciklama3Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(3) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A3") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A4") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A4"),
+                          onChanged: (value) => viewModel.setAciklama(4, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
+                          controller: _aciklama4Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(4) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A4") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A5") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A5"),
+                          onChanged: (value) => viewModel.setAciklama(5, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
+                          controller: _aciklama5Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(5) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A5") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A6") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A6"),
+                          onChanged: (value) => viewModel.setAciklama(6, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
+                          controller: _aciklama6Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(6) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A6") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A7") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A7"),
+                          onChanged: (value) => viewModel.setAciklama(7, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
+                          controller: _aciklama7Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(7) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A7") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A8") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A8"),
+                          onChanged: (value) => viewModel.setAciklama(8, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
+                          controller: _aciklama8Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(8) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A8") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A9") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A9"),
+                          onChanged: (value) => viewModel.setAciklama(9, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
+                          controller: _aciklama9Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(9) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A9") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A10") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A10"),
+                          onChanged: (value) => viewModel.setAciklama(10, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
+                          controller: _aciklama10Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(10) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A10") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A11") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A11"),
+                          onChanged: (value) => viewModel.setAciklama(11, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
+                          controller: _aciklama11Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(11) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A11") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A12") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A12"),
+                          onChanged: (value) => viewModel.setAciklama(12, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
+                          controller: _aciklama12Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(12) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A12") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A13") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A13"),
+                          onChanged: (value) => viewModel.setAciklama(13, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
+                          controller: _aciklama13Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(13) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A13") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A14") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A14"),
+                          onChanged: (value) => viewModel.setAciklama(14, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
+                          controller: _aciklama14Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(14) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A14") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A15") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A15"),
+                          onChanged: (value) => viewModel.setAciklama(15, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
+                          controller: _aciklama15Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(15) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A15") ?? false)),
+                        CustomTextField(
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A16") ?? false),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A16"),
+                          onChanged: (value) => viewModel.setAciklama(16, value),
+                          labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
+                          controller: _aciklama16Controller,
+                        ).yetkiVarMi((model.getEditTipiEnum?.aciklamalarGorunecekMi(16) ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("A16") ?? false)),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
           ),

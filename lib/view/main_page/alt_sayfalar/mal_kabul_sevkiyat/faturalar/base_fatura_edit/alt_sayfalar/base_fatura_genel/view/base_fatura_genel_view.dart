@@ -539,7 +539,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     child: Column(
                       children: <Widget>[
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(1) != null,
                           suffixMore: getEkRehberById(1) != null,
                           onTap: () async => await getGenelRehber(1),
@@ -552,7 +552,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama1Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(2) != null,
                           onClear: () => viewModel.setAciklama(2, null),
                           suffixMore: getEkRehberById(2) != null,
@@ -565,7 +565,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama2Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(3) != null,
                           suffixMore: getEkRehberById(3) != null,
                           onClear: () => viewModel.setAciklama(3, null),
@@ -577,7 +577,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama3Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(4) != null,
                           suffixMore: getEkRehberById(4) != null,
                           onClear: () => viewModel.setAciklama(4, null),
@@ -590,7 +590,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama4Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(5) != null,
                           suffixMore: getEkRehberById(5) != null,
                           onTap: () async => await getGenelRehber(5),
@@ -603,7 +603,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama5Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(6) != null,
                           suffixMore: getEkRehberById(6) != null,
                           onTap: () async => await getGenelRehber(6),
@@ -616,7 +616,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama6Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(7) != null,
                           suffixMore: getEkRehberById(7) != null,
                           onTap: () async => await getGenelRehber(7),
@@ -629,7 +629,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama7Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(8) != null,
                           suffixMore: getEkRehberById(8) != null,
                           onClear: () => viewModel.setAciklama(8, null),
@@ -642,7 +642,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama8Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(9) != null,
                           suffixMore: getEkRehberById(9) != null,
                           onTap: () async => await getGenelRehber(9),
@@ -655,7 +655,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama9Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(10) != null,
                           suffixMore: getEkRehberById(10) != null,
                           onTap: () async => await getGenelRehber(10),
@@ -668,7 +668,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama10Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(11) != null,
                           suffixMore: getEkRehberById(11) != null,
                           onTap: () async => await getGenelRehber(11),
@@ -681,7 +681,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama11Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(12) != null,
                           suffixMore: getEkRehberById(12) != null,
                           onTap: () async => await getGenelRehber(12),
@@ -694,7 +694,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama12Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(13) != null,
                           suffixMore: getEkRehberById(13) != null,
                           onTap: () async => await getGenelRehber(13),
@@ -707,7 +707,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama13Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(14) != null,
                           suffixMore: getEkRehberById(14) != null,
                           onTap: () async => await getGenelRehber(14),
@@ -720,7 +720,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama14Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(15) != null,
                           suffixMore: getEkRehberById(15) != null,
                           onTap: () async => await getGenelRehber(15),
@@ -733,7 +733,7 @@ class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           controller: _aciklama15Controller,
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15)),
                         CustomTextField(
-                          enabled: enable && model.getEditTipiEnum?.aciklamaDuzenlensinMi == true,
+                          enabled: enable,
                           readOnly: getEkRehberById(16) != null,
                           suffixMore: getEkRehberById(16) != null,
                           onTap: () async => await getGenelRehber(16),
