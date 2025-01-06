@@ -400,12 +400,9 @@ class BottomSheetDialogManager {
             .toList(),
       );
 
-  Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue, {String? filter}) async {
-    final List<int>? onayList = CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.sirketAktifDepolar;
+  Future<DepoList?> showTopluDepoBottomSheetDialog(BuildContext context, dynamic groupValue, {String? filter, int? subeKodu}) async {
     final List<DepoList> depoList = _paramModel?.depoList ?? <DepoList>[];
-    final List<DepoList> filteredDepoList = depoList
-        .where((element) => onayList?.contains(element.depoKodu) ?? true && (element.subeKodu == null || (element.subeKodu != null && element.subeKodu == CacheManager.getVeriTabani["Şube"])))
-        .toList();
+    final List<DepoList> filteredDepoList = depoList.where((element) => element.subeKodu == subeKodu).toList();
     return await showRadioBottomSheetDialog(
       context,
       title: "Depo seç",
@@ -455,20 +452,11 @@ class BottomSheetDialogManager {
 
   /// `GroupValues must be a list of String`
   Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List? groupValues}) async {
-    final List<PlasiyerList> plasiyerList =
-        (_paramModel?.plasiyerList ?? <PlasiyerList>[]).where((element) => _kullaniciYetkiModel?.bagliPlasiyerler?.contains(element.plasiyerKodu) == true || AccountModel.instance.adminMi).toList();
-    if (plasiyerList.isEmpty && _kullaniciYetkiModel?.bagliPlasiyerler?.first == null && _kullaniciYetkiModel?.bagliPlasiyerler?.length == 1) {
-      plasiyerList.addAll(_paramModel?.plasiyerList ?? <PlasiyerList>[]);
-    }
-    if (plasiyerList.isEmpty) {
-      if (_yetkiController.varsayilanPlasiyer != null) {
-        plasiyerList.add(_yetkiController.varsayilanPlasiyer!);
-      }
-    }
+    final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
     final result = await showCheckBoxBottomSheetDialog<PlasiyerList>(
       context,
       title: "Plasiyer Seçiniz",
-      groupValues: groupValues,
+      groupValues: groupValues ?? [],
       children: plasiyerList
           .map(
             (e) => BottomSheetModel(
@@ -611,10 +599,7 @@ class BottomSheetDialogManager {
   }
 
   Future<PlasiyerList?> showPlasiyerBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    // final ;
-    final List<PlasiyerList> plasiyerList =
-        (_paramModel?.plasiyerList ?? <PlasiyerList>[]).where((element) => _kullaniciYetkiModel?.bagliPlasiyerler?.contains(element.plasiyerKodu) == true || AccountModel.instance.adminMi).toList();
-    // final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
+    final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
     return await showRadioBottomSheetDialog(
       context,
       title: "Plasiyer Seçiniz",
