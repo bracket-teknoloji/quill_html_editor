@@ -337,7 +337,7 @@ class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
             Get.back();
             final result = await Get.toNamed(
               "/mainPage/stokEdit",
-              arguments: BaseEditModel<StokListesiModel>(model: StokListesiModel.fromKalemModel(model.copyWith()), baseEditEnum: BaseEditEnum.ekle),
+              arguments: BaseEditModel<StokListesiModel>(model: StokListesiModel.fromKalemModel(model..stokKodu = null), baseEditEnum: BaseEditEnum.ekle),
             );
             if (result is SaveStokModel) {
               BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList![index].copyWith(
