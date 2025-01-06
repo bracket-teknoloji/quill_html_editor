@@ -310,6 +310,8 @@ class PickerMaterialApp extends StatelessWidget {
 
               //* * Transfer Açıklama Düzenleme
               GetPage(name: "/transferDepoAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.depoTransferi)),
+              GetPage(name: "/transferAmbarGirisiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.ambarGirisi)),
+              GetPage(name: "/transferAmbarCikisiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.ambarCikisi)),
 
               //* * Transfer Edit
               GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
