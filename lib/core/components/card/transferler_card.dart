@@ -97,6 +97,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                         CacheManager.removeTransferEditList(model.belgeNo ?? "");
                         dialogManager.showSuccessSnackBar("Silindi");
                         widget.onDeleted?.call();
+                        return;
                       } catch (e) {
                         dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                       }
@@ -110,7 +111,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   });
                 },
               ).yetkiKontrol((widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi) || model.efatOnayDurumKodu == "1"),
-              BottomSheetModel(
+              if (widget.editTipiEnum.aciklamaDuzenlensinMi)BottomSheetModel(
                 title: "Açıklama Düzenle",
                 iconWidget: Icons.edit_note_outlined,
                 onTap: () async {
@@ -123,7 +124,7 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                     widget.onUpdated?.call(result);
                   }
                 },
-              ).yetkiKontrol(widget.editTipiEnum.aciklamaDuzenlensinMi),
+              ),
               BottomSheetModel(
                 title: loc.generalStrings.print,
                 iconWidget: Icons.print_outlined,

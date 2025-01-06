@@ -212,7 +212,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
             builder: (_) => TalepTeklifCard(
               model: item,
               talepTeklifEnum: widget.talepTeklifEnum,
-              editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+              editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
               showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
               showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
               showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
@@ -250,7 +250,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                     builder: (_) => TalepTeklifCard(
                       model: item,
                       talepTeklifEnum: widget.talepTeklifEnum,
-                      editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                      editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
                       showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
                       showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                       showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,

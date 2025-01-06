@@ -135,6 +135,7 @@ class _SiparislerCardState extends BaseState<SiparislerCard> {
                                 CacheManager.removeSiparisEditList(widget.model.belgeNo ?? "");
                                 dialogManager.showSuccessSnackBar("Silindi");
                                 widget.onDeleted?.call();
+                                return;
                               } catch (e) {
                                 await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                               }

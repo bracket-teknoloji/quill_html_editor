@@ -107,6 +107,7 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                           CacheManager.removeFaturaEditList(model.belgeNo ?? "");
                           dialogManager.showSuccessSnackBar("Silindi");
                           widget.onDeleted?.call();
+                          return;
                         } catch (e) {
                           dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                         }
@@ -120,20 +121,21 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
                     });
                   },
                 ).yetkiKontrol((widget.editTipiEnum.silinsinMi && model.silinebilirMi) || model.efatOnayDurumKodu == "1"),
-                BottomSheetModel(
-                  title: "Açıklama Düzenle",
-                  iconWidget: Icons.edit_note_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await Get.toNamed(
-                      widget.editTipiEnum.aciklamaDuzenleRoute,
-                      arguments: model,
-                    );
-                    if (result != null) {
-                      widget.onUpdated?.call(result);
-                    }
-                  },
-                ),
+                if (widget.editTipiEnum.aciklamaDuzenlensinMi)
+                  BottomSheetModel(
+                    title: "Açıklama Düzenle",
+                    iconWidget: Icons.edit_note_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await Get.toNamed(
+                        widget.editTipiEnum.aciklamaDuzenleRoute,
+                        arguments: model,
+                      );
+                      if (result != null) {
+                        widget.onUpdated?.call(result);
+                      }
+                    },
+                  ),
                 BottomSheetModel(
                   title: loc.generalStrings.print,
                   iconWidget: Icons.print_outlined,

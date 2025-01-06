@@ -32,6 +32,7 @@ class TalepTeklifCard extends StatefulWidget {
   const TalepTeklifCard({
     required this.model,
     required this.talepTeklifEnum,
+    required this.editTipiEnum,
     super.key,
     this.onDeleted,
     this.index,
@@ -40,7 +41,6 @@ class TalepTeklifCard extends StatefulWidget {
     this.showMiktar,
     this.showVade,
     this.onUpdated,
-    this.editTipiEnum,
   });
 
   ///Eğer Bu widget Cache'den çağırılıyorsa index verilmelidir.
@@ -53,7 +53,7 @@ class TalepTeklifCard extends StatefulWidget {
   final bool? showMiktar;
   final bool? showVade;
   final TalepTeklifEnum talepTeklifEnum;
-  final EditTipiEnum? editTipiEnum;
+  final EditTipiEnum editTipiEnum;
 
   @override
   State<TalepTeklifCard> createState() => _TalepTeklifCardState();
@@ -132,6 +132,7 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                                 CacheManager.removeTaltekEditList(model.belgeNo ?? "");
                                 dialogManager.showSuccessSnackBar("Silindi");
                                 widget.onDeleted?.call();
+                                return;
                               } catch (e) {
                                 await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                               }
@@ -145,18 +146,19 @@ class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                           });
                         },
                       ).yetkiKontrol((widget.talepTeklifEnum.silinebilirMi && widget.model.tipi != 1) || widget.model.isNew == true),
-                      BottomSheetModel(
-                        title: "Açıklama Düzenle",
-                        iconWidget: Icons.edit_note_outlined,
-                        onTap: () async {
-                          Get.back();
-                          await Get.toNamed(
-                            widget.talepTeklifEnum.aciklamaDuzenleRoute,
-                            arguments: widget.model,
-                          );
-                          widget.onUpdated?.call(true);
-                        },
-                      ),
+                      if (widget.editTipiEnum.aciklamaDuzenlensinMi)
+                        BottomSheetModel(
+                          title: "Açıklama Düzenle",
+                          iconWidget: Icons.edit_note_outlined,
+                          onTap: () async {
+                            Get.back();
+                            await Get.toNamed(
+                              widget.talepTeklifEnum.aciklamaDuzenleRoute,
+                              arguments: widget.model,
+                            );
+                            widget.onUpdated?.call(true);
+                          },
+                        ),
                       BottomSheetModel(
                         title: loc.generalStrings.print,
                         iconWidget: Icons.print_outlined,

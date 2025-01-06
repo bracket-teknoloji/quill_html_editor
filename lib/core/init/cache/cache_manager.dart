@@ -173,8 +173,13 @@ class CacheManager {
   static BaseSiparisEditModel? getTransferEdit(String key) => transferEditBox.get(key);
   static List<BaseSiparisEditModel?> getTransferEditList(EditTipiEnum siparisTipi) =>
       transferEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel?>();
-  static List<BaseSiparisEditModel>? getTransferEditLists(EditTipiEnum siparisTipi) =>
-      transferEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
+  static List<BaseSiparisEditModel>? getTransferEditLists(EditTipiEnum siparisTipi) {
+    final result = transferEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList().cast<BaseSiparisEditModel>();
+    if (result == null) {
+      return [];
+    }
+    return result;
+  }
 
   static BaseSiparisEditModel? getTaltekEdit(String key) => talepTeklifEditBox.get(key);
   static List<BaseSiparisEditModel?> getTaltekEditList(EditTipiEnum siparisTipi) =>
