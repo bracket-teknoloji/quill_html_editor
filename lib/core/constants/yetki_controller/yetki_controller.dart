@@ -43,14 +43,22 @@ final class YetkiController {
   //! GENEL
 
   bool get adminMi => _userModel?.adminMi ?? false;
-  List<DepoList>? get yetkiliDepoList =>
-      _paramModel?.depoList?.where((element) => _isTrue(_yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? _kullaniciYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu))).toList();
+  List<DepoList>? get yetkiliDepoList => _paramModel?.depoList
+      ?.where(
+        (element) => _isTrue(
+          _kullaniciYetkiModel?.sirketDepoYetkiTuru == null
+              ? (_kullaniciYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu))
+              : _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu),
+        ),
+      )
+      .toList();
   // Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   PlasiyerList? get varsayilanPlasiyer =>
       _kullaniciYetkiModel?.varsayilanPlasiyerKodu != null && _paramModel?.plasiyerList?.any((element) => element.plasiyerKodu == _kullaniciYetkiModel?.varsayilanPlasiyerKodu) == true
           ? PlasiyerList(plasiyerKodu: _kullaniciYetkiModel?.varsayilanPlasiyerKodu, plasiyerAciklama: _kullaniciYetkiModel?.varsayilanPlasiyerTanimi)
           : null;
-  BaseProjeModel? get varsayilanProje => BaseProjeModel(projeKodu: _kullaniciYetkiModel?.varsayilanProjeKodu, projeAciklama: _kullaniciYetkiModel?.varsayilanProjeTanimi);
+  BaseProjeModel? get varsayilanProje =>
+      _kullaniciYetkiModel?.varsayilanProjeKodu != null ? BaseProjeModel(projeKodu: _kullaniciYetkiModel?.varsayilanProjeKodu, projeAciklama: _kullaniciYetkiModel?.varsayilanProjeTanimi) : null;
   bool projeYetkisiVarMi(String? projeKodu) => _isTrue(_yetkiModel?.sirketAktifProjeler == null || (_yetkiModel?.sirketAktifProjeler?.contains(projeKodu) ?? true));
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
   bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
@@ -134,6 +142,9 @@ final class YetkiController {
 
   bool get stokListesi => _isTrue(_yetkiModel?.stokStokListesi);
   bool get stokFiyatGorEkrani => _isTrue(_yetkiModel?.stokFiyatGorEkrani);
+  bool get stokFiyatGoster => _isTrue(!_isTrue(_yetkiModel?.stokStokKartiFiyatlariGizle));
+  bool get stokAlisFiyatGoster => _isTrue(!_isTrue(_yetkiModel?.stokStokKartiAlisFiyatiGizle));
+  bool get stokSatisFiyatGoster => _isTrue(!_isTrue(_yetkiModel?.stokStokKartiSatisFiyatiGizle));
   bool get stokFiyatOzeti => _isTrue(_yetkiModel?.stokFiyatOzeti);
 
   //* Seri İşlemleri

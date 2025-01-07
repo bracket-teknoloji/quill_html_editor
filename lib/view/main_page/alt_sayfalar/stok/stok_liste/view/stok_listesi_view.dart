@@ -762,7 +762,30 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                             Text("Bakiye:  ${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}"),
                             Text("Yap.Açık:  ${item.yapacik ?? ""}").yetkiVarMi(item.yapacik != null),
                             Text("YapKod:  ${item.yapkod ?? ""}").yetkiVarMi(item.yapkod != null),
-                            Text("${viewModel.gorunecekAlanlar?["1S"]}:  ${item.kull1s}").yetkiVarMi(item.kull1s != null),
+                            Text("${viewModel.gorunecekAlanlar?["1S"]}:  ${item.kull1s}").yetkiVarMi(item.kull1s != null && viewModel.gorunecekAlanlar?["1S"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["2S"]}:  ${item.kull2s}").yetkiVarMi(item.kull2s != null && viewModel.gorunecekAlanlar?["2S"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["3S"]}:  ${item.kull3s}").yetkiVarMi(item.kull3s != null && viewModel.gorunecekAlanlar?["3S"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["4S"]}:  ${item.kull4s}").yetkiVarMi(item.kull4s != null && viewModel.gorunecekAlanlar?["4S"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["5S"]}:  ${item.kull5s}").yetkiVarMi(item.kull5s != null && viewModel.gorunecekAlanlar?["5S"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["6S"]}:  ${item.kull6s}").yetkiVarMi(item.kull6s != null && viewModel.gorunecekAlanlar?["6S"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["7S"]}:  ${item.kull7s}").yetkiVarMi(item.kull7s != null && viewModel.gorunecekAlanlar?["7S"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["8S"]}:  ${item.kull8s}").yetkiVarMi(item.kull8s != null && viewModel.gorunecekAlanlar?["8S"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["1N"]}:  ${item.kull1n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                .yetkiVarMi(item.kull1n != null && viewModel.gorunecekAlanlar?["1N"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["2N"]}:  ${item.kull2n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                .yetkiVarMi(item.kull2n != null && viewModel.gorunecekAlanlar?["2N"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["3N"]}:  ${item.kull3n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                .yetkiVarMi(item.kull3n != null && viewModel.gorunecekAlanlar?["3N"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["4N"]}:  ${item.kull4n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                .yetkiVarMi(item.kull4n != null && viewModel.gorunecekAlanlar?["4N"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["5N"]}:  ${item.kull5n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                .yetkiVarMi(item.kull5n != null && viewModel.gorunecekAlanlar?["5N"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["6N"]}:  ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                .yetkiVarMi(item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["7N"]}:  ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                .yetkiVarMi(item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null),
+                            Text("${viewModel.gorunecekAlanlar?["8N"]}:  ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                .yetkiVarMi(item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null),
                           ],
                         ),
                       ],

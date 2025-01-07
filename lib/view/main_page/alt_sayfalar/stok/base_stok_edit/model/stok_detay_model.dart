@@ -16,7 +16,7 @@ class StokDetayModel with NetworkManagerMixin {
   static StokDetayModel get instance => _instance ??= StokDetayModel()..stokList = [StokList()];
 
   //setter for singleton
-  static void setInstance(StokDetayModel value) => _instance = value;
+  static void setInstance(StokDetayModel? value) => _instance = value;
   String? stokKodu;
   String? stokAdi;
   @JsonKey(name: "SeriList")

@@ -447,18 +447,20 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             return;
                           }
                         }
-
                         stokModel = await getSelectedData(item);
+                        if (stokModel == null) {
+                          return;
+                        }
                         if (item.yapilandirmaAktif == true && parametreModel.esnekYapilandir == true) {
                           final result = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: item);
                           if (result is YapilandirmaRehberiModel) {
-                            stokModel?.yapkod = result.yapkod;
+                            stokModel.yapkod = result.yapkod;
                           } else {
                             return;
                           }
-                          stokModel?.yapkodAciklama = result.yapacik;
+                          stokModel.yapkodAciklama = result.yapacik;
                         }
-                        await Get.toNamed((widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle", arguments: stokModel ?? item);
+                        await Get.toNamed((widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle", arguments: stokModel);
                         viewModel.setSelectedStokModel(null);
                       },
                       leading: SizedBox(

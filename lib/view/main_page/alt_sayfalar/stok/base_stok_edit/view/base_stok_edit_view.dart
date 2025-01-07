@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/view/base_stok_edit_ek_bilgiler/view/base_stok_edit_ek_bilgiler_view.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -33,7 +34,7 @@ final class BaseStokEditingView extends StatefulWidget {
 final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> with TickerProviderStateMixin {
   final BaseStokEditingViewModel viewModel = BaseStokEditingViewModel();
   late final TabController _tabController;
-  int get tabLength => (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) ? 4 : 3;
+  int get tabLength => tabPages.length;
 
   @override
   void initState() {
@@ -67,9 +68,9 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
   @override
   void dispose() {
     _tabController.dispose();
-    StokListesiModel.setInstance(StokListesiModel());
-    SaveStokModel.setInstance(SaveStokModel());
-    StokDetayModel.setInstance(StokDetayModel());
+    StokListesiModel.setInstance(null);
+    SaveStokModel.setInstance(null);
+    StokDetayModel.setInstance(null);
     super.dispose();
   }
 
@@ -111,34 +112,54 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
               ],
               bottom: TabBar(
                 controller: _tabController,
-                tabs: [
-                  Tab(child: Text(loc.generalStrings.general)),
-                  if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) const Tab(child: Text("Fiyat Listesi")),
-                  const Tab(child: Text("Fiyat")),
-                  const Tab(child: Text("Seriler")),
-                ],
+                tabs: tabs,
               ),
             ),
             body: TabBarView(
               controller: _tabController,
-              children: [
-                Observer(
-                  builder: (_) {
-                    if (viewModel.isSuccess) {
-                      return BaseStokEditGenelView(model: widget.model?.baseEditEnum);
-                    } else {
-                      return const Center(child: CircularProgressIndicator.adaptive());
-                    }
-                  },
-                ),
-                if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) const BaseStokEditFiyatListesiView(),
-                BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
-                BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
-              ],
+              children: tabPages,
             ),
           ),
         ),
       );
+
+  List<Widget> get tabPages => [
+        Observer(
+          builder: (_) {
+            if (viewModel.isSuccess) {
+              return BaseStokEditGenelView(model: widget.model?.baseEditEnum);
+            } else {
+              return const Center(child: CircularProgressIndicator.adaptive());
+            }
+          },
+        ),
+        if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) const BaseStokEditFiyatListesiView(),
+        if (yetkiController.stokFiyatGoster) BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
+        if (parametreModel.mapStokKullSahalar != null) BaseStokEditEkBilgilerView(model: widget.model?.baseEditEnum),
+        BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
+      ];
+
+  List<Widget> get tabs => [
+        Tab(child: Text(loc.generalStrings.general)),
+        if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala)
+          const Tab(
+            child: Text(
+              "Fiyat Listesi",
+              maxLines: 2,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        if (yetkiController.stokFiyatGoster) const Tab(child: Text("Fiyat")),
+        if (parametreModel.mapStokKullSahalar != null)
+          const Tab(
+            child: Text(
+              "Ek Bilgiler",
+              maxLines: 2,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        const Tab(child: Text("Seriler")),
+      ];
 
   Future<void> postData() async {
     final StokListesiModel model = StokListesiModel.instance;

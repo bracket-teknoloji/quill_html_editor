@@ -27,8 +27,6 @@ import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../../../../auth/model/isletme_model.dart";
-import "../../../../../../model/main_page_model.dart";
-import "../../../../../../model/param_model.dart";
 import "../../../../stok_liste/model/stok_listesi_model.dart";
 import "../../../model/stok_muhasebe_kodu_model.dart";
 import "../../../model/stok_olcu_birimleri_model.dart";
@@ -257,13 +255,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                 ),
                 onClear: () => viewModel.setDepoKodu(null),
                 onTap: () async {
-                  final MainPageModel? mainPageModel = CacheManager.getAnaVeri;
-                  final List<DepoList>? list = mainPageModel?.paramModel?.depoList;
-                  final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                    context,
-                    title: "Depo",
-                    children: list?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e)).toList(),
-                  );
+                  final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, 4);
                   if (result != null) {
                     depoController.text = result.depoTanimi ?? "";
                     viewModel.setDepoKodu(result.depoKodu);
@@ -759,7 +751,6 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
             (e) => BottomSheetModel(
               title: e.olcuBirimi ?? "",
               groupValue: e.olcuBirimi,
-              description: e.birimNo.toStringIfNotNull,
               onTap: () => Get.back(result: e.olcuBirimi),
             ),
           )

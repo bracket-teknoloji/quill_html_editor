@@ -167,6 +167,38 @@ abstract class _$StokListesiModelCWProxy {
 
   StokListesiModel bulunanDovizTipi(int bulunanDovizTipi);
 
+  StokListesiModel kull1n(double? kull1n);
+
+  StokListesiModel kull2n(double? kull2n);
+
+  StokListesiModel kull3n(double? kull3n);
+
+  StokListesiModel kull4n(double? kull4n);
+
+  StokListesiModel kull5n(double? kull5n);
+
+  StokListesiModel kull6n(double? kull6n);
+
+  StokListesiModel kull7n(double? kull7n);
+
+  StokListesiModel kull8n(double? kull8n);
+
+  StokListesiModel kull1s(String? kull1s);
+
+  StokListesiModel kull2s(String? kull2s);
+
+  StokListesiModel kull3s(String? kull3s);
+
+  StokListesiModel kull4s(String? kull4s);
+
+  StokListesiModel kull5s(String? kull5s);
+
+  StokListesiModel kull6s(String? kull6s);
+
+  StokListesiModel kull7s(String? kull7s);
+
+  StokListesiModel kull8s(String? kull8s);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -254,6 +286,22 @@ abstract class _$StokListesiModelCWProxy {
     DateTime? satisKurTarihi,
     double? bulunanDovizFiyati,
     int bulunanDovizTipi,
+    double? kull1n,
+    double? kull2n,
+    double? kull3n,
+    double? kull4n,
+    double? kull5n,
+    double? kull6n,
+    double? kull7n,
+    double? kull8n,
+    String? kull1s,
+    String? kull2s,
+    String? kull3s,
+    String? kull4s,
+    String? kull5s,
+    String? kull6s,
+    String? kull7s,
+    String? kull8s,
   });
 }
 
@@ -554,6 +602,54 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
       this(bulunanDovizTipi: bulunanDovizTipi);
 
   @override
+  StokListesiModel kull1n(double? kull1n) => this(kull1n: kull1n);
+
+  @override
+  StokListesiModel kull2n(double? kull2n) => this(kull2n: kull2n);
+
+  @override
+  StokListesiModel kull3n(double? kull3n) => this(kull3n: kull3n);
+
+  @override
+  StokListesiModel kull4n(double? kull4n) => this(kull4n: kull4n);
+
+  @override
+  StokListesiModel kull5n(double? kull5n) => this(kull5n: kull5n);
+
+  @override
+  StokListesiModel kull6n(double? kull6n) => this(kull6n: kull6n);
+
+  @override
+  StokListesiModel kull7n(double? kull7n) => this(kull7n: kull7n);
+
+  @override
+  StokListesiModel kull8n(double? kull8n) => this(kull8n: kull8n);
+
+  @override
+  StokListesiModel kull1s(String? kull1s) => this(kull1s: kull1s);
+
+  @override
+  StokListesiModel kull2s(String? kull2s) => this(kull2s: kull2s);
+
+  @override
+  StokListesiModel kull3s(String? kull3s) => this(kull3s: kull3s);
+
+  @override
+  StokListesiModel kull4s(String? kull4s) => this(kull4s: kull4s);
+
+  @override
+  StokListesiModel kull5s(String? kull5s) => this(kull5s: kull5s);
+
+  @override
+  StokListesiModel kull6s(String? kull6s) => this(kull6s: kull6s);
+
+  @override
+  StokListesiModel kull7s(String? kull7s) => this(kull7s: kull7s);
+
+  @override
+  StokListesiModel kull8s(String? kull8s) => this(kull8s: kull8s);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `StokListesiModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -642,6 +738,22 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
     Object? satisKurTarihi = const $CopyWithPlaceholder(),
     Object? bulunanDovizFiyati = const $CopyWithPlaceholder(),
     Object? bulunanDovizTipi = const $CopyWithPlaceholder(),
+    Object? kull1n = const $CopyWithPlaceholder(),
+    Object? kull2n = const $CopyWithPlaceholder(),
+    Object? kull3n = const $CopyWithPlaceholder(),
+    Object? kull4n = const $CopyWithPlaceholder(),
+    Object? kull5n = const $CopyWithPlaceholder(),
+    Object? kull6n = const $CopyWithPlaceholder(),
+    Object? kull7n = const $CopyWithPlaceholder(),
+    Object? kull8n = const $CopyWithPlaceholder(),
+    Object? kull1s = const $CopyWithPlaceholder(),
+    Object? kull2s = const $CopyWithPlaceholder(),
+    Object? kull3s = const $CopyWithPlaceholder(),
+    Object? kull4s = const $CopyWithPlaceholder(),
+    Object? kull5s = const $CopyWithPlaceholder(),
+    Object? kull6s = const $CopyWithPlaceholder(),
+    Object? kull7s = const $CopyWithPlaceholder(),
+    Object? kull8s = const $CopyWithPlaceholder(),
   }) {
     return StokListesiModel(
       seriBakiyeKontrolu: seriBakiyeKontrolu == const $CopyWithPlaceholder()
@@ -966,6 +1078,70 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
           ? _value.bulunanDovizTipi
           // ignore: cast_nullable_to_non_nullable
           : bulunanDovizTipi as int,
+      kull1n: kull1n == const $CopyWithPlaceholder()
+          ? _value.kull1n
+          // ignore: cast_nullable_to_non_nullable
+          : kull1n as double?,
+      kull2n: kull2n == const $CopyWithPlaceholder()
+          ? _value.kull2n
+          // ignore: cast_nullable_to_non_nullable
+          : kull2n as double?,
+      kull3n: kull3n == const $CopyWithPlaceholder()
+          ? _value.kull3n
+          // ignore: cast_nullable_to_non_nullable
+          : kull3n as double?,
+      kull4n: kull4n == const $CopyWithPlaceholder()
+          ? _value.kull4n
+          // ignore: cast_nullable_to_non_nullable
+          : kull4n as double?,
+      kull5n: kull5n == const $CopyWithPlaceholder()
+          ? _value.kull5n
+          // ignore: cast_nullable_to_non_nullable
+          : kull5n as double?,
+      kull6n: kull6n == const $CopyWithPlaceholder()
+          ? _value.kull6n
+          // ignore: cast_nullable_to_non_nullable
+          : kull6n as double?,
+      kull7n: kull7n == const $CopyWithPlaceholder()
+          ? _value.kull7n
+          // ignore: cast_nullable_to_non_nullable
+          : kull7n as double?,
+      kull8n: kull8n == const $CopyWithPlaceholder()
+          ? _value.kull8n
+          // ignore: cast_nullable_to_non_nullable
+          : kull8n as double?,
+      kull1s: kull1s == const $CopyWithPlaceholder()
+          ? _value.kull1s
+          // ignore: cast_nullable_to_non_nullable
+          : kull1s as String?,
+      kull2s: kull2s == const $CopyWithPlaceholder()
+          ? _value.kull2s
+          // ignore: cast_nullable_to_non_nullable
+          : kull2s as String?,
+      kull3s: kull3s == const $CopyWithPlaceholder()
+          ? _value.kull3s
+          // ignore: cast_nullable_to_non_nullable
+          : kull3s as String?,
+      kull4s: kull4s == const $CopyWithPlaceholder()
+          ? _value.kull4s
+          // ignore: cast_nullable_to_non_nullable
+          : kull4s as String?,
+      kull5s: kull5s == const $CopyWithPlaceholder()
+          ? _value.kull5s
+          // ignore: cast_nullable_to_non_nullable
+          : kull5s as String?,
+      kull6s: kull6s == const $CopyWithPlaceholder()
+          ? _value.kull6s
+          // ignore: cast_nullable_to_non_nullable
+          : kull6s as String?,
+      kull7s: kull7s == const $CopyWithPlaceholder()
+          ? _value.kull7s
+          // ignore: cast_nullable_to_non_nullable
+          : kull7s as String?,
+      kull8s: kull8s == const $CopyWithPlaceholder()
+          ? _value.kull8s
+          // ignore: cast_nullable_to_non_nullable
+          : kull8s as String?,
     );
   }
 }
@@ -1318,6 +1494,22 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
           : DateTime.parse(json['SATIS_KUR_TARIHI'] as String),
       bulunanDovizFiyati: (json['BULUNAN_DOVIZ_FIYATI'] as num?)?.toDouble(),
       bulunanDovizTipi: (json['BULUNAN_DOVIZ_TIPI'] as num?)?.toInt() ?? 0,
+      kull1n: (json['KULL1N'] as num?)?.toDouble(),
+      kull2n: (json['KULL2N'] as num?)?.toDouble(),
+      kull3n: (json['KULL3N'] as num?)?.toDouble(),
+      kull4n: (json['KULL4N'] as num?)?.toDouble(),
+      kull5n: (json['KULL5N'] as num?)?.toDouble(),
+      kull6n: (json['KULL6N'] as num?)?.toDouble(),
+      kull7n: (json['KULL7N'] as num?)?.toDouble(),
+      kull8n: (json['KULL8N'] as num?)?.toDouble(),
+      kull1s: json['KULL1S'] as String?,
+      kull2s: json['KULL2S'] as String?,
+      kull3s: json['KULL3S'] as String?,
+      kull4s: json['KULL4S'] as String?,
+      kull5s: json['KULL5S'] as String?,
+      kull6s: json['KULL6S'] as String?,
+      kull7s: json['KULL7S'] as String?,
+      kull8s: json['KULL8S'] as String?,
     )
       ..miktar = (json['MIKTAR'] as num?)?.toDouble()
       ..yapacik = json['YAPACIK'] as String?
@@ -1334,23 +1526,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..otvAralik = (json['OTV_ARALIK'] as List<dynamic>?)
           ?.map((e) => OtvAralikModel.fromJson(e as Map<String, dynamic>))
           .toList()
-      ..otvDeger = (json['OTV_DEGER'] as num?)?.toDouble()
-      ..kull1s = json['KULL1S'] as String?
-      ..kull2s = json['KULL2S'] as String?
-      ..kull3s = json['KULL3S'] as String?
-      ..kull4s = json['KULL4S'] as String?
-      ..kull5s = json['KULL5S'] as String?
-      ..kull6s = json['KULL6S'] as String?
-      ..kull7s = json['KULL7S'] as String?
-      ..kull8s = json['KULL8S'] as String?
-      ..kull1n = (json['KULL1N'] as num?)?.toDouble()
-      ..kull2n = (json['KULL2N'] as num?)?.toDouble()
-      ..kull3n = (json['KULL3N'] as num?)?.toDouble()
-      ..kull4n = (json['KULL4N'] as num?)?.toDouble()
-      ..kull5n = (json['KULL5N'] as num?)?.toDouble()
-      ..kull6n = (json['KULL6N'] as num?)?.toDouble()
-      ..kull7n = (json['KULL7N'] as num?)?.toDouble()
-      ..kull8n = (json['KULL8N'] as num?)?.toDouble();
+      ..otvDeger = (json['OTV_DEGER'] as num?)?.toDouble();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
     <String, dynamic>{

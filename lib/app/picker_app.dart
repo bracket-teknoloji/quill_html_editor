@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:picker/core/base/view/genel_rehber/view/genel_rehber_view.dart";
+import "package:syncfusion_localizations/syncfusion_localizations.dart";
 
 import "../core/base/view/base_scaffold.dart";
 import "picker_app_imports.dart";
@@ -42,6 +43,7 @@ class PickerMaterialApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
+          SfGlobalLocalizations.delegate,
           LocDelegate(),
         ],
         scrollBehavior: const MaterialScrollBehavior()

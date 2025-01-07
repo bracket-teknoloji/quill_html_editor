@@ -57,7 +57,23 @@ SaveStokModel _$SaveStokModelFromJson(Map<String, dynamic> json) =>
       ..stokBarkodModel = json['StokBarkodModel'] == null
           ? null
           : BarkodTanimlaKayitlariModel.fromJson(
-              json['StokBarkodModel'] as Map<String, dynamic>);
+              json['StokBarkodModel'] as Map<String, dynamic>)
+      ..kull1s = json['KULL1S'] as String?
+      ..kull2s = json['KULL2S'] as String?
+      ..kull3s = json['KULL3S'] as String?
+      ..kull4s = json['KULL4S'] as String?
+      ..kull5s = json['KULL5S'] as String?
+      ..kull6s = json['KULL6S'] as String?
+      ..kull7s = json['KULL7S'] as String?
+      ..kull8s = json['KULL8S'] as String?
+      ..kull1n = (json['KULL1N'] as num?)?.toDouble()
+      ..kull2n = (json['KULL2N'] as num?)?.toDouble()
+      ..kull3n = (json['KULL3N'] as num?)?.toDouble()
+      ..kull4n = (json['KULL4N'] as num?)?.toDouble()
+      ..kull5n = (json['KULL5N'] as num?)?.toDouble()
+      ..kull6n = (json['KULL6N'] as num?)?.toDouble()
+      ..kull7n = (json['KULL7N'] as num?)?.toDouble()
+      ..kull8n = (json['KULL8N'] as num?)?.toDouble();
 
 Map<String, dynamic> _$SaveStokModelToJson(SaveStokModel instance) =>
     <String, dynamic>{
@@ -119,4 +135,20 @@ Map<String, dynamic> _$SaveStokModelToJson(SaveStokModel instance) =>
       if (instance.yeniKayit case final value?) '_YeniKayit': value,
       if (instance.stokBarkodModel?.toJson() case final value?)
         'StokBarkodModel': value,
+      if (instance.kull1s case final value?) 'KULL1S': value,
+      if (instance.kull2s case final value?) 'KULL2S': value,
+      if (instance.kull3s case final value?) 'KULL3S': value,
+      if (instance.kull4s case final value?) 'KULL4S': value,
+      if (instance.kull5s case final value?) 'KULL5S': value,
+      if (instance.kull6s case final value?) 'KULL6S': value,
+      if (instance.kull7s case final value?) 'KULL7S': value,
+      if (instance.kull8s case final value?) 'KULL8S': value,
+      if (instance.kull1n case final value?) 'KULL1N': value,
+      if (instance.kull2n case final value?) 'KULL2N': value,
+      if (instance.kull3n case final value?) 'KULL3N': value,
+      if (instance.kull4n case final value?) 'KULL4N': value,
+      if (instance.kull5n case final value?) 'KULL5N': value,
+      if (instance.kull6n case final value?) 'KULL6N': value,
+      if (instance.kull7n case final value?) 'KULL7N': value,
+      if (instance.kull8n case final value?) 'KULL8N': value,
     };

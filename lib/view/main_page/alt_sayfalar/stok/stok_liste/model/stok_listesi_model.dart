@@ -96,6 +96,22 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     this.satisKurTarihi,
     this.bulunanDovizFiyati,
     this.bulunanDovizTipi = 0,
+    this.kull1n,
+    this.kull2n,
+    this.kull3n,
+    this.kull4n,
+    this.kull5n,
+    this.kull6n,
+    this.kull7n,
+    this.kull8n,
+    this.kull1s,
+    this.kull2s,
+    this.kull3s,
+    this.kull4s,
+    this.kull5s,
+    this.kull6s,
+    this.kull7s,
+    this.kull8s,
   });
 
   factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);

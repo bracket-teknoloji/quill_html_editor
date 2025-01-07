@@ -377,7 +377,7 @@ class BottomSheetDialogManager {
         context,
         title: "Depo seç",
         groupValue: groupValue,
-        children: _paramModel?.depoList
+        children: _yetkiController.yetkiliDepoList
             ?.where((element) => (element.subeKodu ?? 0) == CacheManager.getVeriTabani["Şube"])
             .map(
               (e) => BottomSheetModel(

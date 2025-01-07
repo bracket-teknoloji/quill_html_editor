@@ -10,8 +10,6 @@ part "save_stok_model.g.dart";
 class SaveStokModel with NetworkManagerMixin {
   SaveStokModel();
 
-  SaveStokModel._init();
-
   factory SaveStokModel.forDeleteBarkodModel(BarkodTanimlaKayitlariModel model) => SaveStokModel()
     ..stokBarkodModel = model
     ..islemKodu = 6
@@ -50,6 +48,7 @@ class SaveStokModel with NetworkManagerMixin {
     ..alisFiyati3 = model.alisFiat3
     ..alisFiyati4 = model.alisFiat4
     ..satisKdvOrani = model.satisKdv
+    ..requestVersion = 2
     ..alisKdvOrani = model.alisKdv
     ..satisDovizFiyati = model.dovSatisFiat
     ..alisDovizFiyati = model.dovAlisFiat
@@ -109,7 +108,26 @@ class SaveStokModel with NetworkManagerMixin {
     ..seriGiristeAktif = model.seriGirislerdeAcik
     ..seriMiktarKadar = model.seriMiktarKadarSor
     ..subeKodu = model.subeKodu
+    ..kull1s = model.kull1s
+    ..kull2s = model.kull2s
+    ..kull3s = model.kull3s
+    ..kull4s = model.kull4s
+    ..kull5s = model.kull5s
+    ..kull6s = model.kull6s
+    ..kull7s = model.kull7s
+    ..kull8s = model.kull8s
+    ..kull1n = model.kull1n
+    ..kull2n = model.kull2n
+    ..kull3n = model.kull3n
+    ..kull4n = model.kull4n
+    ..kull5n = model.kull5n
+    ..kull6n = model.kull6n
+    ..kull7n = model.kull7n
+    ..kull8n = model.kull8n
     ..ureticiKodu = model.ureticiKodu;
+
+  SaveStokModel._init();
+
   static SaveStokModel? _instance;
   static SaveStokModel get instance {
     _instance ??= SaveStokModel._init();
@@ -118,6 +136,7 @@ class SaveStokModel with NetworkManagerMixin {
 
   //setter for singleton
   static void setInstance(SaveStokModel? instance) => _instance = instance;
+
   String? adi;
   double? alisDovizFiyati;
   int? alisDovizTipi;
@@ -167,6 +186,22 @@ class SaveStokModel with NetworkManagerMixin {
   bool? yeniKayit;
   @JsonKey(name: "StokBarkodModel")
   BarkodTanimlaKayitlariModel? stokBarkodModel;
+  String? kull1s;
+  String? kull2s;
+  String? kull3s;
+  String? kull4s;
+  String? kull5s;
+  String? kull6s;
+  String? kull7s;
+  String? kull8s;
+  double? kull1n;
+  double? kull2n;
+  double? kull3n;
+  double? kull4n;
+  double? kull5n;
+  double? kull6n;
+  double? kull7n;
+  double? kull8n;
   @override
   SaveStokModel fromJson(Map<String, dynamic> json) => _$SaveStokModelFromJson(json);
 
