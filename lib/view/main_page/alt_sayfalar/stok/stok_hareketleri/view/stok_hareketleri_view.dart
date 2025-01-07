@@ -282,7 +282,7 @@ class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                   ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
                   : RefreshIndicator.adaptive(
                       onRefresh: () async {
-                        viewModel.setStokHareketleri(await getData()!);
+                        viewModel.setStokHareketleri((await getData()) ?? []);
                       },
                       child: SlidableAutoCloseBehavior(
                         child: ListView.builder(
