@@ -190,7 +190,10 @@ class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderSt
       dialogManager.showErrorSnackBar("Gerekli alanları doldurunuz.");
       return;
     }
-
+    if (model.depoKodu == null) {
+      dialogManager.showErrorSnackBar("Depo bilgisi eksik.");
+      return;
+    }
     final result = await viewModel.sendData(model.depoKodu!);
     if (!result.isSuccess) return;
     dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
