@@ -741,6 +741,15 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           keyboardType: const TextInputType.numberWithOptions(
                             decimal: true,
                           ),
+                          validator: (value) {
+                            if (value case ("" || null)) {
+                              return "Miktar boş bırakılamaz";
+                            }
+                            if ((int.tryParse(value) ?? 0) <= 0) {
+                              return "Miktar sıfırdan büyük olmalı";
+                            }
+                            return null;
+                          },
                           onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
                           suffix: Wrap(
                             children: [
@@ -1260,7 +1269,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   String? miktar2Validator(String? p0) {
     if (viewModel.model?.koliMi == true) {
-      if (p0 == "" || p0 == null) {
+      if (p0 case ("" || null)) {
         return "Lütfen miktar giriniz";
       } else if (p0 == "0") {
         return "Miktar Sıfır olamaz";
