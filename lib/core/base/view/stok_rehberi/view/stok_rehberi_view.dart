@@ -52,16 +52,26 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
   late final TextEditingController kod4Controller;
   late final TextEditingController kod5Controller;
   final StokRehberiViewModel viewModel = StokRehberiViewModel();
+  final BaseSiparisEditModel instance = BaseSiparisEditModel.instance;
   @override
   void initState() {
     focusNode = FocusNode();
     controllerInitializer();
+    viewModel
+      ..setOzelKod1(instance.ozelKod1)
+      ..setOzelKod2(instance.ozelKod2);
+    if (parametreModel.satisFiyatGrubuSorulacakAlan != null &&
+        instance.getEditTipiEnum?.fiyatGrubuGorunsunMu == true &&
+        parametreModel.satisFiyatGrubuSorulacakAlan! == instance.findFiyatGrubu(int.tryParse(parametreModel.satisFiyatGrubuSorulacakAlan ?? "") ?? 0)) {
+      viewModel.setFiyatGrubu(instance.findFiyatGrubu(int.tryParse(parametreModel.satisFiyatGrubuSorulacakAlan ?? "") ?? 0));
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (widget.searchText != null) {
         viewModel.setSearchText(widget.searchText);
         _searchTextController.text = widget.searchText!;
       }
-      FocusScope.of(context).requestFocus(focusNode);
+      // if (parametreModel.satisFiyatGrubuSorulacakAlan != null && instance.getEditTipiEnum?.satisMi == true &&)
+      focusNode.requestFocus();
       await viewModel.getGrupKodlari();
       await viewModel.getData();
       _scrollController.addListener(() async {
@@ -431,7 +441,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                       },
                       onTap: () async {
                         StokListesiModel? stokModel;
-                        if (BaseSiparisEditModel.instance.kalemEkliMi(item)) {
+                        if (instance.kalemEkliMi(item)) {
                           final result = await dialogManager.showStokKayitliDialog(item);
                           if (result != true) {
                             return;
@@ -472,9 +482,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             children: [
                               const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
                               ColorfulBadge(
-                                label: Text("Dövizli ${(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true) ? item.satisDovizAdi : item.alisDovizAdi}"),
+                                label: Text("Dövizli ${(instance.getEditTipiEnum?.satisMi == true) ? item.satisDovizAdi : item.alisDovizAdi}"),
                                 badgeColorEnum: BadgeColorEnum.dovizli,
-                              ).yetkiVarMi((BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true) ? item.satDovTip != null : item.alisDovTip != null),
+                              ).yetkiVarMi((instance.getEditTipiEnum?.satisMi == true) ? item.satDovTip != null : item.alisDovTip != null),
                               const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
                               const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(item.kilitGenel == "E"),
                             ].whereType<ColorfulBadge>().toList(),
@@ -629,19 +639,6 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
           (viewModel.stokBottomSheetModel.arrKod4?.firstOrNull?.kod4 == null ? true : e.kod4 == viewModel.stokBottomSheetModel.arrKod4?.firstOrNull?.kod4) &&
           (viewModel.stokBottomSheetModel.arrKod5?.firstOrNull?.kod5 == null ? true : e.kod5 == viewModel.stokBottomSheetModel.arrKod5?.firstOrNull?.kod5),
     );
-    // if (filteredList?.every((element) => element.grupKodu == viewModel.stokBottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu) ?? false) viewModel.changeArrGrupKodu(null);
-    // if (filteredList?.every((element) => element.kod1 == viewModel.stokBottomSheetModel.arrKod1?.firstOrNull?.kod1) ?? false) viewModel.changeArrKod1(null);
-    // if (filteredList?.every((element) => element.kod2 == viewModel.stokBottomSheetModel.arrKod2?.firstOrNull?.kod2) ?? false) viewModel.changeArrKod2(null);
-    // if (filteredList?.every((element) => element.kod3 == viewModel.stokBottomSheetModel.arrKod3?.firstOrNull?.kod3) ?? false) viewModel.changeArrKod3(null);
-    // if (filteredList?.every((element) => element.kod4 == viewModel.stokBottomSheetModel.arrKod4?.firstOrNull?.kod4) ?? false) viewModel.changeArrKod4(null);
-    // if (filteredList?.every((element) => element.kod5 == viewModel.stokBottomSheetModel.arrKod5?.firstOrNull?.kod5) ?? false) viewModel.changeArrKod5(null);
-
-    // if (filteredList?.every((element) => element.grupKodu == null) ?? false) viewModel.changeArrGrupKodu(null);
-    // if (filteredList?.every((element) => element.kod1 == null) ?? false) viewModel.changeArrKod1(null);
-    // if (filteredList?.every((element) => element.kod2 == null) ?? false) viewModel.changeArrKod2(null);
-    // if (filteredList?.every((element) => element.kod3 == null) ?? false) viewModel.changeArrKod3(null);
-    // if (filteredList?.every((element) => element.kod4 == null) ?? false) viewModel.changeArrKod4(null);
-    // if (filteredList?.every((element) => element.kod5 == null) ?? false) viewModel.changeArrKod5(null);
     return switch (index) {
       0 => filteredList?.where((e) => e.grupKodu != null).toList(),
       1 => filteredList?.where((e) => e.kod1 != null).toList(),

@@ -54,6 +54,12 @@ mixin _$StokBottomSheetModel {
   set okutuldu(bool? value) => throw _privateConstructorUsedError;
   String? get seriTakibiVar => throw _privateConstructorUsedError;
   set seriTakibiVar(String? value) => throw _privateConstructorUsedError;
+  String? get fiyatGrubu => throw _privateConstructorUsedError;
+  set fiyatGrubu(String? value) => throw _privateConstructorUsedError;
+  String? get ozelKod1 => throw _privateConstructorUsedError;
+  set ozelKod1(String? value) => throw _privateConstructorUsedError;
+  String? get ozelKod2 => throw _privateConstructorUsedError;
+  set ozelKod2(String? value) => throw _privateConstructorUsedError;
   List<StokDetayliAramaAlanlar>? get searchList =>
       throw _privateConstructorUsedError;
   set searchList(List<StokDetayliAramaAlanlar>? value) =>
@@ -114,6 +120,9 @@ abstract class $StokBottomSheetModelCopyWith<$Res> {
       String? stokKodu,
       bool? okutuldu,
       String? seriTakibiVar,
+      String? fiyatGrubu,
+      String? ozelKod1,
+      String? ozelKod2,
       List<StokDetayliAramaAlanlar>? searchList,
       List<BaseGrupKoduModel>? arrGrupKodu,
       List<BaseGrupKoduModel>? arrKod1,
@@ -157,6 +166,9 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
     Object? stokKodu = freezed,
     Object? okutuldu = freezed,
     Object? seriTakibiVar = freezed,
+    Object? fiyatGrubu = freezed,
+    Object? ozelKod1 = freezed,
+    Object? ozelKod2 = freezed,
     Object? searchList = freezed,
     Object? arrGrupKodu = freezed,
     Object? arrKod1 = freezed,
@@ -235,6 +247,18 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
           ? _value.seriTakibiVar
           : seriTakibiVar // ignore: cast_nullable_to_non_nullable
               as String?,
+      fiyatGrubu: freezed == fiyatGrubu
+          ? _value.fiyatGrubu
+          : fiyatGrubu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozelKod1: freezed == ozelKod1
+          ? _value.ozelKod1
+          : ozelKod1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozelKod2: freezed == ozelKod2
+          ? _value.ozelKod2
+          : ozelKod2 // ignore: cast_nullable_to_non_nullable
+              as String?,
       searchList: freezed == searchList
           ? _value.searchList
           : searchList // ignore: cast_nullable_to_non_nullable
@@ -297,6 +321,9 @@ abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
       String? stokKodu,
       bool? okutuldu,
       String? seriTakibiVar,
+      String? fiyatGrubu,
+      String? ozelKod1,
+      String? ozelKod2,
       List<StokDetayliAramaAlanlar>? searchList,
       List<BaseGrupKoduModel>? arrGrupKodu,
       List<BaseGrupKoduModel>? arrKod1,
@@ -337,6 +364,9 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? okutuldu = freezed,
     Object? seriTakibiVar = freezed,
+    Object? fiyatGrubu = freezed,
+    Object? ozelKod1 = freezed,
+    Object? ozelKod2 = freezed,
     Object? searchList = freezed,
     Object? arrGrupKodu = freezed,
     Object? arrKod1 = freezed,
@@ -415,6 +445,18 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
           ? _value.seriTakibiVar
           : seriTakibiVar // ignore: cast_nullable_to_non_nullable
               as String?,
+      fiyatGrubu: freezed == fiyatGrubu
+          ? _value.fiyatGrubu
+          : fiyatGrubu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozelKod1: freezed == ozelKod1
+          ? _value.ozelKod1
+          : ozelKod1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozelKod2: freezed == ozelKod2
+          ? _value.ozelKod2
+          : ozelKod2 // ignore: cast_nullable_to_non_nullable
+              as String?,
       searchList: freezed == searchList
           ? _value.searchList
           : searchList // ignore: cast_nullable_to_non_nullable
@@ -473,6 +515,9 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
       this.stokKodu,
       this.okutuldu,
       this.seriTakibiVar,
+      this.fiyatGrubu,
+      this.ozelKod1,
+      this.ozelKod2,
       this.searchList,
       this.arrGrupKodu = const [],
       this.arrKod1 = const [],
@@ -522,6 +567,12 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   bool? okutuldu;
   @override
   String? seriTakibiVar;
+  @override
+  String? fiyatGrubu;
+  @override
+  String? ozelKod1;
+  @override
+  String? ozelKod2;
   @override
   List<StokDetayliAramaAlanlar>? searchList;
   @override
@@ -582,6 +633,9 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
       String? stokKodu,
       bool? okutuldu,
       String? seriTakibiVar,
+      String? fiyatGrubu,
+      String? ozelKod1,
+      String? ozelKod2,
       List<StokDetayliAramaAlanlar>? searchList,
       List<BaseGrupKoduModel>? arrGrupKodu,
       List<BaseGrupKoduModel>? arrKod1,
@@ -646,6 +700,15 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   @override
   String? get seriTakibiVar;
   set seriTakibiVar(String? value);
+  @override
+  String? get fiyatGrubu;
+  set fiyatGrubu(String? value);
+  @override
+  String? get ozelKod1;
+  set ozelKod1(String? value);
+  @override
+  String? get ozelKod2;
+  set ozelKod2(String? value);
   @override
   List<StokDetayliAramaAlanlar>? get searchList;
   set searchList(List<StokDetayliAramaAlanlar>? value);

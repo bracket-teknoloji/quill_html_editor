@@ -26,6 +26,9 @@ _$StokBottomSheetModelImpl _$$StokBottomSheetModelImplFromJson(
       stokKodu: json['StokKodu'] as String?,
       okutuldu: json['Okutuldu'] as bool?,
       seriTakibiVar: json['SeriTakibiVar'] as String?,
+      fiyatGrubu: json['FiyatGrubu'] as String?,
+      ozelKod1: json['OzelKod1'] as String?,
+      ozelKod2: json['OzelKod2'] as String?,
       searchList: (json['SearchList'] as List<dynamic>?)
           ?.map((e) =>
               StokDetayliAramaAlanlar.fromJson(e as Map<String, dynamic>))
@@ -83,6 +86,9 @@ Map<String, dynamic> _$$StokBottomSheetModelImplToJson(
       if (instance.stokKodu case final value?) 'StokKodu': value,
       if (instance.okutuldu case final value?) 'Okutuldu': value,
       if (instance.seriTakibiVar case final value?) 'SeriTakibiVar': value,
+      if (instance.fiyatGrubu case final value?) 'FiyatGrubu': value,
+      if (instance.ozelKod1 case final value?) 'OzelKod1': value,
+      if (instance.ozelKod2 case final value?) 'OzelKod2': value,
       if (instance.searchList?.map((e) => e.toJson()).toList()
           case final value?)
         'SearchList': value,

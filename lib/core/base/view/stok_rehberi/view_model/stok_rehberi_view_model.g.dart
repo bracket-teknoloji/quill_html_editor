@@ -318,6 +318,39 @@ mixin _$StokRehberiViewModel on _StokRehberiViewModelBase, Store {
   }
 
   @override
+  void setFiyatGrubu(String? value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setFiyatGrubu');
+    try {
+      return super.setFiyatGrubu(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOzelKod1(String? value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setOzelKod1');
+    try {
+      return super.setOzelKod1(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setOzelKod2(String? value) {
+    final _$actionInfo = _$_StokRehberiViewModelBaseActionController
+        .startAction(name: '_StokRehberiViewModelBase.setOzelKod2');
+    try {
+      return super.setOzelKod2(value);
+    } finally {
+      _$_StokRehberiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSelectedStokModel(String? value) {
     final _$actionInfo = _$_StokRehberiViewModelBaseActionController
         .startAction(name: '_StokRehberiViewModelBase.setSelectedStokModel');

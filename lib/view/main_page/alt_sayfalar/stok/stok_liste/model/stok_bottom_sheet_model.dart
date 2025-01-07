@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:kartal/kartal.dart";
 
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -29,6 +30,9 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
     String? stokKodu,
     bool? okutuldu,
     String? seriTakibiVar,
+    String? fiyatGrubu,
+    String? ozelKod1,
+    String? ozelKod2,
     List<StokDetayliAramaAlanlar>? searchList,
     @Default([]) List<BaseGrupKoduModel>? arrGrupKodu,
     @Default([]) List<BaseGrupKoduModel>? arrKod1,
@@ -56,12 +60,12 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
 
   Map<String, dynamic> toJsonWithList() {
     final data = toJson();
-    data["ArrGrupKodu"] = arrGrupKodu?.map((e) => e.grupKodu).toList();
-    data["ArrKod1"] = arrKod1?.map((e) => e.kod1 ?? e.grupKodu).toList();
-    data["ArrKod2"] = arrKod2?.map((e) => e.kod2 ?? e.grupKodu).toList();
-    data["ArrKod3"] = arrKod3?.map((e) => e.kod3 ?? e.grupKodu).toList();
-    data["ArrKod4"] = arrKod4?.map((e) => e.kod4 ?? e.grupKodu).toList();
-    data["ArrKod5"] = arrKod5?.map((e) => e.kod5 ?? e.grupKodu).toList();
+    data["ArrGrupKodu"] = (arrGrupKodu?.map((e) => e.grupKodu).toList().ext.isNullOrEmpty ?? false) ? null : arrGrupKodu?.map((e) => e.grupKodu).toList();
+    data["ArrKod1"] = (arrKod1?.map((e) => e.kod1 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false) ? null : arrKod1?.map((e) => e.kod1 ?? e.grupKodu).toList();
+    data["ArrKod2"] = (arrKod2?.map((e) => e.kod2 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false) ? null : arrKod2?.map((e) => e.kod2 ?? e.grupKodu).toList();
+    data["ArrKod3"] = (arrKod3?.map((e) => e.kod3 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false) ? null : arrKod3?.map((e) => e.kod3 ?? e.grupKodu).toList();
+    data["ArrKod4"] = (arrKod4?.map((e) => e.kod4 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false) ? null : arrKod4?.map((e) => e.kod4 ?? e.grupKodu).toList();
+    data["ArrKod5"] = (arrKod5?.map((e) => e.kod5 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false) ? null : arrKod5?.map((e) => e.kod5 ?? e.grupKodu).toList();
     return data;
   }
 }

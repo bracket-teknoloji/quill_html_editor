@@ -357,6 +357,26 @@ class BaseSiparisEditModel with NetworkManagerMixin {
     }
   }
 
+  String? findFiyatGrubu(int index) => switch (index) {
+        1 => acik1,
+        2 => acik2,
+        3 => acik3,
+        4 => acik4,
+        5 => acik5,
+        6 => acik6,
+        7 => acik7,
+        8 => acik8,
+        9 => acik9,
+        10 => acik10,
+        11 => acik11,
+        12 => acik12,
+        13 => acik13,
+        14 => acik14,
+        15 => acik15,
+        16 => acik16,
+        _ => null,
+      };
+
   @HiveField(0)
   DateTime? duzeltmetarihi;
   @HiveField(1)

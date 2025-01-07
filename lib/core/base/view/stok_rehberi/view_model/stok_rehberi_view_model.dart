@@ -108,6 +108,15 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   void setGrupKodu(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrGrupKodu: value);
 
   @action
+  void setFiyatGrubu(String? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(fiyatGrubu: value);
+
+  @action
+  void setOzelKod1(String? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(ozelKod1: value);
+
+  @action
+  void setOzelKod2(String? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(ozelKod2: value);
+
+  @action
   void setSelectedStokModel(String? value) {
     stokBottomSheetModel = stokBottomSheetModel.copyWith(stokKodu: value, kisitYok: value != null);
   }

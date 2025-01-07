@@ -364,6 +364,12 @@ extension EditTipiEnumExtension on EditTipiEnum {
 
   bool get belgeKapatabilirMi => switch (this) { EditTipiEnum.musteri => yetkiController.belgeKapatMusSip, EditTipiEnum.satici => yetkiController.belgeKapatSaticiSip, _ => false };
 
+  bool get fiyatGrubuGorunsunMu => switch (this) {
+        EditTipiEnum.musteri => true,
+        EditTipiEnum.satisFatura => true,
+        EditTipiEnum.satisIrsaliye => true,
+        _ => false,
+      };
   bool get satisMi => switch (this) {
         EditTipiEnum.musteri ||
         EditTipiEnum.satisFatura ||
