@@ -345,100 +345,103 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                           },
                         ),
                       ),
-                      if (viewModel.grupKodlari1.ext.isNotNullOrEmpty) Expanded(
-                        child: CustomTextField(
-                          labelText: "Kod 1",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: kod1Controller,
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
-                              context,
-                              title: "Kod 1 Seçiniz",
-                              groupValues: viewModel.cariListesiRequestModel?.arrKod1,
-                              children: List.generate(
-                                viewModel.grupKodlari1?.length ?? 0,
-                                (index) => BottomSheetModel(
-                                  title: viewModel.grupKodlari1?[index].grupAdi ?? "",
-                                  value: viewModel.grupKodlari1?[index].grupKodu,
-                                  groupValue: viewModel.grupKodlari1?[index].grupKodu,
+                      if (viewModel.grupKodlari1.ext.isNotNullOrEmpty)
+                        Expanded(
+                          child: CustomTextField(
+                            labelText: "Kod 1",
+                            readOnly: true,
+                            suffixMore: true,
+                            controller: kod1Controller,
+                            onTap: () async {
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
+                                context,
+                                title: "Kod 1 Seçiniz",
+                                groupValues: viewModel.cariListesiRequestModel?.arrKod1,
+                                children: List.generate(
+                                  viewModel.grupKodlari1?.length ?? 0,
+                                  (index) => BottomSheetModel(
+                                    title: viewModel.grupKodlari1?[index].grupAdi ?? "",
+                                    value: viewModel.grupKodlari1?[index].grupKodu,
+                                    groupValue: viewModel.grupKodlari1?[index].grupKodu,
+                                  ),
                                 ),
-                              ),
-                            );
-                            if (result != null) {
-                              viewModel.changeKod1(result.toList());
-                              kod1Controller.text = result.join(", ");
-                            } else {
-                              viewModel.changeKod1(null);
-                              kod1Controller.clear();
-                            }
-                          },
+                              );
+                              if (result != null) {
+                                viewModel.changeKod1(result.toList());
+                                kod1Controller.text = result.join(", ");
+                              } else {
+                                viewModel.changeKod1(null);
+                                kod1Controller.clear();
+                              }
+                            },
+                          ),
                         ),
-                      ),
                     ],
                   ),
                   Row(
                     children: [
-                      if (viewModel.grupKodlari2.ext.isNotNullOrEmpty) Expanded(
-                        child: CustomTextField(
-                          labelText: "Kod 2",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: kod2Controller,
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
-                              context,
-                              title: "Kod 2 Seçiniz",
-                              groupValues: viewModel.cariListesiRequestModel?.arrKod2,
-                              children: List.generate(
-                                viewModel.grupKodlari2?.length ?? 0,
-                                (index) => BottomSheetModel(
-                                  title: viewModel.grupKodlari2?[index].grupAdi ?? "",
-                                  value: viewModel.grupKodlari2?[index].grupKodu,
-                                  groupValue: viewModel.grupKodlari2?[index].grupKodu,
+                      if (viewModel.grupKodlari2.ext.isNotNullOrEmpty)
+                        Expanded(
+                          child: CustomTextField(
+                            labelText: "Kod 2",
+                            readOnly: true,
+                            suffixMore: true,
+                            controller: kod2Controller,
+                            onTap: () async {
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
+                                context,
+                                title: "Kod 2 Seçiniz",
+                                groupValues: viewModel.cariListesiRequestModel?.arrKod2,
+                                children: List.generate(
+                                  viewModel.grupKodlari2?.length ?? 0,
+                                  (index) => BottomSheetModel(
+                                    title: viewModel.grupKodlari2?[index].grupAdi ?? "",
+                                    value: viewModel.grupKodlari2?[index].grupKodu,
+                                    groupValue: viewModel.grupKodlari2?[index].grupKodu,
+                                  ),
                                 ),
-                              ),
-                            );
-                            if (result != null) {
-                              viewModel.changeKod2(result.whereType<String>().toList());
-                              kod2Controller.text = result.join(", ");
-                            } else {
-                              viewModel.changeKod2(null);
-                              kod2Controller.clear();
-                            }
-                          },
+                              );
+                              if (result != null) {
+                                viewModel.changeKod2(result.whereType<String>().toList());
+                                kod2Controller.text = result.join(", ");
+                              } else {
+                                viewModel.changeKod2(null);
+                                kod2Controller.clear();
+                              }
+                            },
+                          ),
                         ),
-                      ),
-                      if(viewModel.grupKodlari3.ext.isNotNullOrEmpty) Expanded(
-                        child: CustomTextField(
-                          labelText: "Kod 3",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: kod3Controller,
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
-                              context,
-                              title: "Kod 3 Seçiniz",
-                              groupValues: viewModel.cariListesiRequestModel?.arrKod3,
-                              children: List.generate(
-                                viewModel.grupKodlari3?.length ?? 0,
-                                (index) => BottomSheetModel(
-                                  title: viewModel.grupKodlari3?[index].grupAdi ?? "",
-                                  value: viewModel.grupKodlari3?[index].grupKodu,
-                                  groupValue: viewModel.grupKodlari3?[index].grupKodu,
+                      if (viewModel.grupKodlari3.ext.isNotNullOrEmpty)
+                        Expanded(
+                          child: CustomTextField(
+                            labelText: "Kod 3",
+                            readOnly: true,
+                            suffixMore: true,
+                            controller: kod3Controller,
+                            onTap: () async {
+                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
+                                context,
+                                title: "Kod 3 Seçiniz",
+                                groupValues: viewModel.cariListesiRequestModel?.arrKod3,
+                                children: List.generate(
+                                  viewModel.grupKodlari3?.length ?? 0,
+                                  (index) => BottomSheetModel(
+                                    title: viewModel.grupKodlari3?[index].grupAdi ?? "",
+                                    value: viewModel.grupKodlari3?[index].grupKodu,
+                                    groupValue: viewModel.grupKodlari3?[index].grupKodu,
+                                  ),
                                 ),
-                              ),
-                            );
-                            if (result != null) {
-                              viewModel.changeKod3(result.whereType<String>().toList());
-                              kod3Controller.text = result.join(", ");
-                            } else {
-                              viewModel.changeKod3(null);
-                              kod3Controller.clear();
-                            }
-                          },
+                              );
+                              if (result != null) {
+                                viewModel.changeKod3(result.whereType<String>().toList());
+                                kod3Controller.text = result.join(", ");
+                              } else {
+                                viewModel.changeKod3(null);
+                                kod3Controller.clear();
+                              }
+                            },
+                          ),
                         ),
-                      ),
                     ],
                   ),
                   Row(

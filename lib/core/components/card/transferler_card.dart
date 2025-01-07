@@ -111,20 +111,21 @@ class TransferlerCardState extends BaseState<TransferlerCard> {
                   });
                 },
               ).yetkiKontrol((widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi) || model.efatOnayDurumKodu == "1"),
-              if (widget.editTipiEnum.aciklamaDuzenlensinMi)BottomSheetModel(
-                title: "Açıklama Düzenle",
-                iconWidget: Icons.edit_note_outlined,
-                onTap: () async {
-                  Get.back();
-                  final result = await Get.toNamed(
-                    widget.editTipiEnum.aciklamaDuzenleRoute,
-                    arguments: widget.model,
-                  );
-                  if (result != null) {
-                    widget.onUpdated?.call(result);
-                  }
-                },
-              ),
+              if (widget.editTipiEnum.aciklamaDuzenlensinMi)
+                BottomSheetModel(
+                  title: "Açıklama Düzenle",
+                  iconWidget: Icons.edit_note_outlined,
+                  onTap: () async {
+                    Get.back();
+                    final result = await Get.toNamed(
+                      widget.editTipiEnum.aciklamaDuzenleRoute,
+                      arguments: widget.model,
+                    );
+                    if (result != null) {
+                      widget.onUpdated?.call(result);
+                    }
+                  },
+                ),
               BottomSheetModel(
                 title: loc.generalStrings.print,
                 iconWidget: Icons.print_outlined,

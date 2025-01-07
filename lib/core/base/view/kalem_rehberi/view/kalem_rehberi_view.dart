@@ -30,7 +30,6 @@ final class KalemRehberiView extends StatefulWidget {
 final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
   final KalemRehberiViewModel viewModel = KalemRehberiViewModel();
 
-
   @override
   void initState() {
     viewModel.setRequestModel(widget.model);

@@ -2143,8 +2143,8 @@ class ProfilYetkiModel {
   String? taltekStalOzelKod1Degeri;
   @JsonKey(name: "taltek_STAL_OzelKod2Degeri")
   String? taltekStalOzelKod2Degeri;
-    @JsonKey(name: "sevkiyat_SatisFat_Aciklamalar_YetkiTuru")
-    String? sevkiyatSatisFatAciklamalarYetkiTuru;
+  @JsonKey(name: "sevkiyat_SatisFat_Aciklamalar_YetkiTuru")
+  String? sevkiyatSatisFatAciklamalarYetkiTuru;
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 

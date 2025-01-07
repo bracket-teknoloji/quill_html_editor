@@ -33,7 +33,7 @@ abstract class _FiyatGorViewModelBase with Store {
     if (isSatis) {
       return switch (index) {
         0 => modelList?.last?.dovizTipi?.toDouble(),
-        1  => modelList?.last?.fiyat1,
+        1 => modelList?.last?.fiyat1,
         2 => modelList?.last?.fiyat2,
         3 => modelList?.last?.fiyat3,
         4 => modelList?.last?.fiyat4,
