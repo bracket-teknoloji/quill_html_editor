@@ -115,7 +115,7 @@ class DialogManager {
       ).show();
 
   String get getAppData =>
-      "\nVersion: ${AppInfoModel.instance.version}\nKullanıcı: ${CacheManager.getHesapBilgileri?.kullaniciAdi}\nTarih: ${DateTime.now().toDateTimeString()}\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
+      "\nVersion: ${AppInfoModel.instance.version}+${AppInfoModel.instance.buildNumber}\nKullanıcı: ${CacheManager.getHesapBilgileri?.kullaniciAdi}\nTarih: ${DateTime.now().toDateTimeString()}\nŞirket: ${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
 
   Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) =>
       _baseDialog(dialogType: DialogType.error, title: "Eksik var", btnOkText: "Tamam", desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ", onOk: onOk ?? () {}).show();
