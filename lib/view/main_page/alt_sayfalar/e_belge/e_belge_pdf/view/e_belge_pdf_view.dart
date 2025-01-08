@@ -22,7 +22,7 @@ import "../../e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../model/e_belge_pdf_request_model.dart";
 import "../view_model/e_belge_pdf_view_model.dart";
 
-class EBelgePdfView extends StatefulWidget {
+final class EBelgePdfView extends StatefulWidget {
   const EBelgePdfView({required this.model, super.key});
   final EBelgeListesiModel model;
 
@@ -30,7 +30,7 @@ class EBelgePdfView extends StatefulWidget {
   State<EBelgePdfView> createState() => _EBelgePdfViewState();
 }
 
-class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
+final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   late final EBelgePdfViewModel viewModel;
   late PdfViewerController pdfViewerController;
   OverlayEntry? overlayEntry;

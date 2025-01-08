@@ -16,7 +16,7 @@ import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart
 
 part "nakit_odeme_view_model.g.dart";
 
-class NakitOdemeViewModel = _NakitOdemeViewModelBase with _$NakitOdemeViewModel;
+final class NakitOdemeViewModel = _NakitOdemeViewModelBase with _$NakitOdemeViewModel;
 
 abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   @observable

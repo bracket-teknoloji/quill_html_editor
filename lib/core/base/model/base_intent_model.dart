@@ -1,3 +1,3 @@
 import "package:flutter/material.dart";
 
-class BaseIntentModel extends Intent {}
+final class BaseIntentModel extends Intent {}

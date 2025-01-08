@@ -28,7 +28,7 @@ import "../../../uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/model/u
 part "base_siparis_edit_model.g.dart";
 
 @HiveType(typeId: 151)
-class ListSiparisEditModel {
+final class ListSiparisEditModel {
   ListSiparisEditModel({this.list});
   @HiveField(0)
   List<BaseSiparisEditModel>? list;
@@ -48,7 +48,7 @@ class ListSiparisEditModel {
 @CopyWith()
 @HiveType(typeId: 152)
 @JsonSerializable(createFactory: true)
-class BaseSiparisEditModel with NetworkManagerMixin {
+final class BaseSiparisEditModel with NetworkManagerMixin {
   BaseSiparisEditModel({
     this.duzeltmetarihi,
     this.kalemAdedi,
@@ -1251,7 +1251,7 @@ class BaseSiparisEditModel with NetworkManagerMixin {
 @CopyWith()
 @HiveType(typeId: 17)
 @JsonSerializable(createFactory: true)
-class KalemModel with NetworkManagerMixin {
+final class KalemModel with NetworkManagerMixin {
   KalemModel({
     this.iskonto1OranMi,
     this.tarih,

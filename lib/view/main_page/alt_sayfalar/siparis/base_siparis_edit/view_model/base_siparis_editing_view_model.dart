@@ -6,7 +6,7 @@ import "../model/base_siparis_edit_model.dart";
 
 part "base_siparis_editing_view_model.g.dart";
 
-class BaseSiparisEditingViewModel = _BaseSiparisEditingViewModelBase with _$BaseSiparisEditingViewModel;
+final class BaseSiparisEditingViewModel = _BaseSiparisEditingViewModelBase with _$BaseSiparisEditingViewModel;
 
 abstract class _BaseSiparisEditingViewModelBase with Store {
   @computed

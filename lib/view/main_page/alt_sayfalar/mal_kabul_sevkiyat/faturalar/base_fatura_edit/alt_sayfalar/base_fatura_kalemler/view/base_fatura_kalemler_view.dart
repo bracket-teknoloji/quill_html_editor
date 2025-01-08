@@ -27,7 +27,7 @@ import "../../../../../../stok/base_stok_edit/model/save_stok_model.dart";
 import "../../../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/base_fatura_kalemler_view_model.dart";
 
-class BaseFaturaKalemlerView extends StatefulWidget {
+final class BaseFaturaKalemlerView extends StatefulWidget {
   const BaseFaturaKalemlerView({required this.model, super.key, this.updater});
   final BaseEditModel<SiparisEditRequestModel> model;
   final bool? updater;
@@ -36,7 +36,7 @@ class BaseFaturaKalemlerView extends StatefulWidget {
   State<BaseFaturaKalemlerView> createState() => _BaseFaturaKalemlerViewState();
 }
 
-class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
+final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   BaseFaturaKalemlerViewModel viewModel = BaseFaturaKalemlerViewModel();
   late final TextEditingController _searchTextController;

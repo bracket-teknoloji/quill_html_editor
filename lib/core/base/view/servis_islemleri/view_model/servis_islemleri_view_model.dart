@@ -7,7 +7,7 @@ import "../model/servis_info_model.dart";
 
 part "servis_islemleri_view_model.g.dart";
 
-class ServisIslemleriViewModel = _ServisIslemleriViewModelBase with _$ServisIslemleriViewModel;
+final class ServisIslemleriViewModel = _ServisIslemleriViewModelBase with _$ServisIslemleriViewModel;
 
 abstract class _ServisIslemleriViewModelBase with Store, MobxNetworkMixin {
   @action

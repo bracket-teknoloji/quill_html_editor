@@ -18,7 +18,7 @@ import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/dekont_edit_kalemler_view_model.dart";
 
-class DekontEditKalemlerView extends StatefulWidget {
+final class DekontEditKalemlerView extends StatefulWidget {
   const DekontEditKalemlerView({required this.onChanged, required this.baseEditEnum, super.key});
   final ValueChanged<int> onChanged;
   final BaseEditEnum baseEditEnum;
@@ -27,7 +27,7 @@ class DekontEditKalemlerView extends StatefulWidget {
   State<DekontEditKalemlerView> createState() => _DekontEditKalemlerViewState();
 }
 
-class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
+final class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerView> {
   DekontEditKalemlerViewModel viewModel = DekontEditKalemlerViewModel();
   @override
   Widget build(BuildContext context) => BaseScaffold(

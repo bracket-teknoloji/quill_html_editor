@@ -8,7 +8,8 @@ import "base_network_mixin.dart";
 part "edit_fatura_model.freezed.dart";
 part "edit_fatura_model.g.dart";
 
-@unfreezed
+@freezed
+@immutable
 class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
   factory EditFaturaModel({
     @JsonKey(name: "BelgeTipi") int? belgeTipi,

@@ -10,7 +10,7 @@ import "../../../../../../../../../core/constants/extensions/widget_extensions.d
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/dekont_edit_genel_view_model.dart";
 
-class DekontEditGenelView extends StatefulWidget {
+final class DekontEditGenelView extends StatefulWidget {
   const DekontEditGenelView({required this.baseEditEnum, super.key, this.onChanged});
   final ValueChanged<bool>? onChanged;
   final BaseEditEnum baseEditEnum;
@@ -19,7 +19,7 @@ class DekontEditGenelView extends StatefulWidget {
   State<DekontEditGenelView> createState() => _DekontEditGenelViewState();
 }
 
-class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
+final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
   final DekontEditGenelViewModel viewModel = DekontEditGenelViewModel();
   late final TextEditingController _tarihController;
   late final TextEditingController _seriController;

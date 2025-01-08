@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 import "ui_helper/ui_helper.dart";
 
-class LoginConstants {
+final class LoginConstants {
   static GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   static LinearGradient linearGradient = const LinearGradient(
     begin: Alignment.topCenter,

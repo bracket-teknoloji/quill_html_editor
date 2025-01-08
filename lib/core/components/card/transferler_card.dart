@@ -23,7 +23,7 @@ import "../../init/cache/cache_manager.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class TransferlerCard extends StatefulWidget {
+final class TransferlerCard extends StatefulWidget {
   const TransferlerCard({required this.model, required this.editTipiEnum, super.key, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.onDeleted, this.index});
   final BaseSiparisEditModel model;
   final ValueChanged<bool>? onUpdated;
@@ -38,7 +38,7 @@ class TransferlerCard extends StatefulWidget {
   State<TransferlerCard> createState() => TransferlerCardState();
 }
 
-class TransferlerCardState extends BaseState<TransferlerCard> {
+final class TransferlerCardState extends BaseState<TransferlerCard> {
   ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));

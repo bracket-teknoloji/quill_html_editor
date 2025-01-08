@@ -19,7 +19,7 @@ import "../../../../../cari_listesi/model/cari_request_model.dart";
 import "../../../../model/cari_aktivite_listesi_model.dart";
 import "../view_model/cari_aktivite_genel_view_model.dart";
 
-class CariAktiviteGenelView extends StatefulWidget {
+final class CariAktiviteGenelView extends StatefulWidget {
   const CariAktiviteGenelView({required this.model, required this.onSave, super.key});
   final BaseEditModel<CariAktiviteListesiModel> model;
   final Function(GlobalKey<FormState> value) onSave;
@@ -28,7 +28,7 @@ class CariAktiviteGenelView extends StatefulWidget {
   State<CariAktiviteGenelView> createState() => _CariAktiviteGenelViewState();
 }
 
-class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
+final class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView> {
   final CariAktiviteGenelViewModel viewModel = CariAktiviteGenelViewModel();
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController saatController;

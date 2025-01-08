@@ -17,7 +17,7 @@ import "../model/stok_listesi_model.dart";
 
 part "stok_listesi_view_model.g.dart";
 
-class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
+final class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
 
 abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<StokListesiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   final List<String> selectedList = ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"];

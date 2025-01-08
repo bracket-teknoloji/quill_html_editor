@@ -15,7 +15,7 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../model/param_model.dart";
 
-class MalKabulSevkiyatKalemRaporuView extends StatefulWidget {
+final class MalKabulSevkiyatKalemRaporuView extends StatefulWidget {
   const MalKabulSevkiyatKalemRaporuView({required this.editTipiEnum, super.key});
   final EditTipiEnum editTipiEnum;
 
@@ -23,7 +23,7 @@ class MalKabulSevkiyatKalemRaporuView extends StatefulWidget {
   State<MalKabulSevkiyatKalemRaporuView> createState() => _MalKabulSevkiyatKalemRaporuViewState();
 }
 
-class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevkiyatKalemRaporuView> {
+final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevkiyatKalemRaporuView> {
   MalKabulSevkiyatKalemRaporuViewModel viewModel = MalKabulSevkiyatKalemRaporuViewModel();
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;

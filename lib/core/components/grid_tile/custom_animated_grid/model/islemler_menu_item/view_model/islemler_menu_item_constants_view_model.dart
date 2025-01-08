@@ -2,7 +2,7 @@ import "package:mobx/mobx.dart";
 
 part "islemler_menu_item_constants_view_model.g.dart";
 
-class IslemlerMenuItemConstantsViewModel = _IslemlerMenuItemConstantsViewModelBase with _$IslemlerMenuItemConstantsViewModel;
+final class IslemlerMenuItemConstantsViewModel = _IslemlerMenuItemConstantsViewModelBase with _$IslemlerMenuItemConstantsViewModel;
 
 abstract class _IslemlerMenuItemConstantsViewModelBase with Store {
   @observable

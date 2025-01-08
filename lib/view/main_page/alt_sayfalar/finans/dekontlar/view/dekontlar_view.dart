@@ -11,14 +11,14 @@ import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../model/dekont_listesi_model.dart";
 import "../view_model/dekontlar_view_model.dart";
 
-class DekontlarView extends StatefulWidget {
+final class DekontlarView extends StatefulWidget {
   const DekontlarView({super.key});
 
   @override
   State<DekontlarView> createState() => _DekontlarViewState();
 }
 
-class _DekontlarViewState extends BaseState<DekontlarView> {
+final class _DekontlarViewState extends BaseState<DekontlarView> {
   DekontlarViewModel viewModel = DekontlarViewModel();
   late final ScrollController _scrollController;
 

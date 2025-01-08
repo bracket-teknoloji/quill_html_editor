@@ -24,7 +24,7 @@ import "../../constants/enum/edit_tipi_enum.dart";
 import "../../constants/static_variables/static_variables.dart";
 import "favorites_model.dart";
 
-class CacheManager {
+final class CacheManager {
   CacheManager._init() {
     WidgetsFlutterBinding.ensureInitialized();
     Hive
@@ -111,7 +111,7 @@ class CacheManager {
     if (profilParametreBox.isEmpty) {
       await profilParametreBox.put(
         "value",
-        BaseProfilParametreModel().toJson(),
+        const BaseProfilParametreModel().toJson(),
       );
     }
     if (kIsWeb && webCihazKimligiBox.isEmpty) {

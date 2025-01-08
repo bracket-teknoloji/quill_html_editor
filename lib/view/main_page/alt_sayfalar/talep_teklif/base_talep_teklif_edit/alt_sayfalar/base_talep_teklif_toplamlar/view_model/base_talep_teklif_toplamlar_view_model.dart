@@ -9,7 +9,7 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 
 part "base_talep_teklif_toplamlar_view_model.g.dart";
 
-class BaseTalepTeklifToplamlarViewModel = _BaseTalepTeklifToplamlarViewModelBase with _$BaseTalepTeklifToplamlarViewModel;
+final class BaseTalepTeklifToplamlarViewModel = _BaseTalepTeklifToplamlarViewModelBase with _$BaseTalepTeklifToplamlarViewModel;
 
 abstract class _BaseTalepTeklifToplamlarViewModelBase with Store {
   static ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;

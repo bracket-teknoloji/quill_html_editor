@@ -4,7 +4,7 @@ import "package:get/get.dart";
 import "../../../constants/extensions/list_extensions.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
 
-class AppBarButton extends StatelessWidget {
+final class AppBarButton extends StatelessWidget {
   const AppBarButton({super.key, this.child, this.onPressed, this.icon, this.hasFilter, this.iconWidget});
   final Widget? child;
   final Function()? onPressed;

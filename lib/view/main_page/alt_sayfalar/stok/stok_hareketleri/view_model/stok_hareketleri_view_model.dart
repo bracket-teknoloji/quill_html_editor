@@ -5,7 +5,7 @@ import "../model/stok_hareketleri_model.dart";
 
 part "stok_hareketleri_view_model.g.dart";
 
-class StokHareketleriViewModel = _StokHareketleriViewModelBase with _$StokHareketleriViewModel;
+final class StokHareketleriViewModel = _StokHareketleriViewModelBase with _$StokHareketleriViewModel;
 
 abstract class _StokHareketleriViewModelBase with Store {
   @observable

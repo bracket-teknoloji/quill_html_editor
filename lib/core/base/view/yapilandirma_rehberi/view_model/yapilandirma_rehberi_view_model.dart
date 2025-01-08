@@ -11,7 +11,7 @@ import "../model/yapilandirma_rehberi_model.dart";
 
 part "yapilandirma_rehberi_view_model.g.dart";
 
-class YapilandirmaRehberiViewModel = _YapilandirmaRehberiViewModelBase with _$YapilandirmaRehberiViewModel;
+final class YapilandirmaRehberiViewModel = _YapilandirmaRehberiViewModelBase with _$YapilandirmaRehberiViewModel;
 
 abstract class _YapilandirmaRehberiViewModelBase with Store, MobxNetworkMixin {
   final List<Color> colors = <Color>[

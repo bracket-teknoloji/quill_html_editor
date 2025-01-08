@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-class CustomAppBarTextField extends StatefulWidget {
+final class CustomAppBarTextField extends StatefulWidget {
   const CustomAppBarTextField({
     super.key,
     this.onFieldSubmitted,
@@ -16,7 +16,7 @@ class CustomAppBarTextField extends StatefulWidget {
   State<CustomAppBarTextField> createState() => _CustomAppBarTextFieldState();
 }
 
-class _CustomAppBarTextFieldState extends State<CustomAppBarTextField> {
+final class _CustomAppBarTextFieldState extends State<CustomAppBarTextField> {
   @override
   Widget build(BuildContext context) => SizedBox(
         height: kToolbarHeight * 0.9,

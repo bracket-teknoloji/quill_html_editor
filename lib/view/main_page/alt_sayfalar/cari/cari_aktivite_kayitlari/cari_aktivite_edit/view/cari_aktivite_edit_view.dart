@@ -13,7 +13,7 @@ import "../alt_sayfalar/cari_aktivite_detay/view/cari_aktivite_detay_view.dart";
 import "../alt_sayfalar/cari_aktivite_genel/view/cari_aktivite_genel_view.dart";
 import "../view_model/cari_aktivite_edit_view_model.dart";
 
-class CariAktiviteEditView extends StatefulWidget {
+final class CariAktiviteEditView extends StatefulWidget {
   const CariAktiviteEditView({required this.model, super.key});
   final BaseEditModel<CariAktiviteListesiModel> model;
 
@@ -21,7 +21,7 @@ class CariAktiviteEditView extends StatefulWidget {
   State<CariAktiviteEditView> createState() => _CariAktiviteEditViewState();
 }
 
-class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> with TickerProviderStateMixin {
+final class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> with TickerProviderStateMixin {
   final CariAktiviteEditViewModel viewModel = CariAktiviteEditViewModel();
   late final TabController tabController;
   GlobalKey<FormState>? formKey;

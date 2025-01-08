@@ -18,7 +18,7 @@ import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../../cari/cari_listesi/model/cari_request_model.dart";
 import "../view_model/cari_virman_view_model.dart";
 
-class CariVirmanView extends StatefulWidget {
+final class CariVirmanView extends StatefulWidget {
   const CariVirmanView({super.key, this.model});
   final CariListesiModel? model;
 
@@ -26,7 +26,7 @@ class CariVirmanView extends StatefulWidget {
   State<CariVirmanView> createState() => _CariVirmanViewState();
 }
 
-class _CariVirmanViewState extends BaseState<CariVirmanView> {
+final class _CariVirmanViewState extends BaseState<CariVirmanView> {
   final CariVirmanViewModel viewModel = CariVirmanViewModel();
   late final TextEditingController _tarihController;
   late final TextEditingController _seriController;

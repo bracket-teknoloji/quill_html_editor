@@ -14,7 +14,7 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../badge/colorful_badge.dart";
 import "../layout/custom_layout_builder.dart";
 
-class StokFiyatGecmisiCard extends StatefulWidget {
+final class StokFiyatGecmisiCard extends StatefulWidget {
   const StokFiyatGecmisiCard({super.key, this.model, this.onTap, this.onLongPress, this.onPrint});
   final FiyatGecmisiResponseModel? model;
   final void Function()? onTap;
@@ -25,7 +25,7 @@ class StokFiyatGecmisiCard extends StatefulWidget {
   State<StokFiyatGecmisiCard> createState() => StokFiyatGecmisiCardState();
 }
 
-class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
+final class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
   @override
   Widget build(BuildContext context) => Card(
         color: widget.model?.yazdirildi == "E" ? ColorPalette.mantisWithOpacity : null,

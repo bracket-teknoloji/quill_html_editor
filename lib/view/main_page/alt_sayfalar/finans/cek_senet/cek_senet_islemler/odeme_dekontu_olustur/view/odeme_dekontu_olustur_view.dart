@@ -22,7 +22,7 @@ import "../../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "../../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "../view_model/odeme_dekontu_olustur_view_model.dart";
 
-class OdemeDekontuOlusturView extends StatefulWidget {
+final class OdemeDekontuOlusturView extends StatefulWidget {
   const OdemeDekontuOlusturView({required this.model, super.key});
   final CekSenetListesiModel model;
 
@@ -30,7 +30,7 @@ class OdemeDekontuOlusturView extends StatefulWidget {
   State<OdemeDekontuOlusturView> createState() => _OdemeDekontuOlusturViewState();
 }
 
-class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
+final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturView> {
   late final OdemeDekontuOlusturViewModel viewModel;
   CekSenetListesiModel get model => widget.model;
   late final TextEditingController _kayitTarihiController;

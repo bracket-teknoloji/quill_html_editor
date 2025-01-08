@@ -5,7 +5,7 @@ import "../../olcum_ekle/model/olcum_operator_model.dart";
 
 part "operator_ekle_view_model.g.dart";
 
-class OperatorEkleViewModel = _OperatorEkleViewModelBase with _$OperatorEkleViewModel;
+final class OperatorEkleViewModel = _OperatorEkleViewModelBase with _$OperatorEkleViewModel;
 
 abstract class _OperatorEkleViewModelBase with Store {
   @observable

@@ -19,7 +19,7 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../banka_listesi/model/banka_listesi_model.dart";
 import "../view_model/hesaplar_arasi_islem_view_model.dart";
 
-class HesaplarArasiIslemView extends StatefulWidget {
+final class HesaplarArasiIslemView extends StatefulWidget {
   const HesaplarArasiIslemView({required this.hesaplarArasiEnum, super.key});
   final HesaplarArasiEnum hesaplarArasiEnum;
 
@@ -27,7 +27,7 @@ class HesaplarArasiIslemView extends StatefulWidget {
   State<HesaplarArasiIslemView> createState() => _HesaplarArasiIslemViewState();
 }
 
-class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
+final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemView> {
   late final HesaplarArasiIslemViewModel viewModel;
   late final TextEditingController _tarihController;
   late final TextEditingController _dekontNoController;

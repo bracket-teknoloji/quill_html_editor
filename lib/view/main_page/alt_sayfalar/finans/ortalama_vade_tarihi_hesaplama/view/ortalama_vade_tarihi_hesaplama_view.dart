@@ -16,14 +16,14 @@ import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../model/ortalama_vade_tarihi_model.dart";
 import "../view_model/ortalama_vade_tarihi_hesaplama_view_model.dart";
 
-class OrtalamaVadeTarihiHesaplamaView extends StatefulWidget {
+final class OrtalamaVadeTarihiHesaplamaView extends StatefulWidget {
   const OrtalamaVadeTarihiHesaplamaView({super.key});
 
   @override
   State<OrtalamaVadeTarihiHesaplamaView> createState() => _OrtalamaVadeTarihiHesaplamaViewState();
 }
 
-class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihiHesaplamaView> {
+final class _OrtalamaVadeTarihiHesaplamaViewState extends BaseState<OrtalamaVadeTarihiHesaplamaView> {
   final OrtalamaVadeTarihiHesaplamaViewModel viewModel = OrtalamaVadeTarihiHesaplamaViewModel();
   late final TextEditingController _vadeTarihiController;
   late final TextEditingController _tutarController;

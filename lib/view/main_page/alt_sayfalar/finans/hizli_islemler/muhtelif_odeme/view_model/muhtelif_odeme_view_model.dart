@@ -20,7 +20,7 @@ import "../../../banka/banka_listesi/model/banka_listesi_model.dart";
 
 part "muhtelif_odeme_view_model.g.dart";
 
-class MuhtelifOdemeViewModel = _MuhtelifOdemeViewModelBase with _$MuhtelifOdemeViewModel;
+final class MuhtelifOdemeViewModel = _MuhtelifOdemeViewModelBase with _$MuhtelifOdemeViewModel;
 
 abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   @observable

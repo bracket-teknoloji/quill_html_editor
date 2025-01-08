@@ -6,7 +6,7 @@ import "kalem_list_model.dart";
 part "siparisler_model.g.dart";
 
 @JsonSerializable(includeIfNull: true)
-class SiparislerModel with NetworkManagerMixin {
+final class SiparislerModel with NetworkManagerMixin {
   String? islemId;
   int? tempKayitTipi;
   int? tempBelgeId;

@@ -4,7 +4,7 @@ import "../../../../../view/main_page/model/grid_item_model.dart";
 
 part "custom_animated_grid_view_model.g.dart";
 
-class CustomAnimatedGridViewModel = _CustomAnimatedGridViewModelBase with _$CustomAnimatedGridViewModel;
+final class CustomAnimatedGridViewModel = _CustomAnimatedGridViewModelBase with _$CustomAnimatedGridViewModel;
 
 abstract class _CustomAnimatedGridViewModelBase with Store {
   @observable

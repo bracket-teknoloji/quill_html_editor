@@ -7,7 +7,7 @@ import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 part "olcum_kalem_sec_view_model.g.dart";
 
-class OlcumKalemSecViewModel = _OlcumKalemSecViewModelBase with _$OlcumKalemSecViewModel;
+final class OlcumKalemSecViewModel = _OlcumKalemSecViewModelBase with _$OlcumKalemSecViewModel;
 
 abstract class _OlcumKalemSecViewModelBase with Store, MobxNetworkMixin {
   @observable

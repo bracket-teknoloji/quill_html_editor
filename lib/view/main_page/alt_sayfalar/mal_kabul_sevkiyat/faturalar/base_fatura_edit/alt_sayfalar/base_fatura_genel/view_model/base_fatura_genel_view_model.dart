@@ -10,7 +10,7 @@ import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_mode
 
 part "base_fatura_genel_view_model.g.dart";
 
-class BaseFaturaGenelViewModel = _BaseFaturaGenelViewModelBase with _$BaseFaturaGenelViewModel;
+final class BaseFaturaGenelViewModel = _BaseFaturaGenelViewModelBase with _$BaseFaturaGenelViewModel;
 
 abstract class _BaseFaturaGenelViewModelBase with Store {
   final Map<String, int> _belgeTipi = <String, int>{

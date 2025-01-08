@@ -22,7 +22,7 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/base_transfer_toplamlar_view_model.dart";
 
-class BaseTransferToplamlarView extends StatefulWidget {
+final class BaseTransferToplamlarView extends StatefulWidget {
   const BaseTransferToplamlarView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -30,7 +30,7 @@ class BaseTransferToplamlarView extends StatefulWidget {
   State<BaseTransferToplamlarView> createState() => _BaseTransferToplamlarViewState();
 }
 
-class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarView> {
+final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   BaseTransferToplamlarViewModel viewModel = BaseTransferToplamlarViewModel();
   bool get enable => widget.model.enable;

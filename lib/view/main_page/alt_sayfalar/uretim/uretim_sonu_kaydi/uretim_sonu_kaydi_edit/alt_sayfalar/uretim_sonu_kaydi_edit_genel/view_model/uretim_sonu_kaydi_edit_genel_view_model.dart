@@ -16,7 +16,7 @@ part "uretim_sonu_kaydi_edit_genel_view_model.g.dart";
 
 typedef DepoOnceligiRecord = ({String name, String value});
 
-class UretimSonuKaydiEditGenelViewModel = _UretimSonuKaydiEditViewModelBase with _$UretimSonuKaydiEditGenelViewModel;
+final class UretimSonuKaydiEditGenelViewModel = _UretimSonuKaydiEditViewModelBase with _$UretimSonuKaydiEditGenelViewModel;
 
 abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   bool kalemliMi = false;

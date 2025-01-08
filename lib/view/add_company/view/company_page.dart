@@ -10,14 +10,14 @@ import "../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../core/init/cache/cache_manager.dart";
 import "../model/account_response_model.dart";
 
-class AccountsView extends StatefulWidget {
+final class AccountsView extends StatefulWidget {
   const AccountsView({super.key});
 
   @override
   State<AccountsView> createState() => _AccountsViewState();
 }
 
-class _AccountsViewState extends BaseState<AccountsView> {
+final class _AccountsViewState extends BaseState<AccountsView> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   int get getListLength => CacheManager.accountsBox.length;
 

@@ -21,7 +21,7 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../badge/colorful_badge.dart";
 import "../helper_widgets/custom_label_widget.dart";
 
-class CariHareketlerCard extends StatefulWidget {
+final class CariHareketlerCard extends StatefulWidget {
   const CariHareketlerCard({required this.cariHareketleriModel, super.key, this.onTap, this.dovizTipi});
   final String? dovizTipi;
   final CariHareketleriModel cariHareketleriModel;
@@ -31,7 +31,7 @@ class CariHareketlerCard extends StatefulWidget {
   State<CariHareketlerCard> createState() => _CariHareketlerCardState();
 }
 
-class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
+final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
   bool get dovizliMi => widget.cariHareketleriModel.dovizliMi || widget.dovizTipi != null;
   CariHareketleriModel get model => widget.cariHareketleriModel;
   @override

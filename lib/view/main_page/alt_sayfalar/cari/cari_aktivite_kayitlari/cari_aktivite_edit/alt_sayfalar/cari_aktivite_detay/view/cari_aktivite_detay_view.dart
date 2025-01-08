@@ -14,7 +14,7 @@ import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../model/cari_aktivite_listesi_model.dart";
 import "../view_model/cari_aktivite_detay_view_model.dart";
 
-class CariAktiviteDetayView extends StatefulWidget {
+final class CariAktiviteDetayView extends StatefulWidget {
   const CariAktiviteDetayView({required this.baseEditEnum, super.key});
   final BaseEditEnum baseEditEnum;
 
@@ -22,7 +22,7 @@ class CariAktiviteDetayView extends StatefulWidget {
   State<CariAktiviteDetayView> createState() => _CariAktiviteDetayViewState();
 }
 
-class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
+final class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
   final CariAktiviteDetayViewModel viewModel = CariAktiviteDetayViewModel();
 
   @override

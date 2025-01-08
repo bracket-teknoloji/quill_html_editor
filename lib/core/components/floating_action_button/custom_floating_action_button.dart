@@ -4,7 +4,7 @@ import "package:get/get.dart";
 
 import "../../constants/ui_helper/duration_helper.dart";
 
-class CustomFloatingActionButton extends StatelessWidget {
+final class CustomFloatingActionButton extends StatelessWidget {
   const CustomFloatingActionButton({
     required this.isScrolledDown,
     super.key,

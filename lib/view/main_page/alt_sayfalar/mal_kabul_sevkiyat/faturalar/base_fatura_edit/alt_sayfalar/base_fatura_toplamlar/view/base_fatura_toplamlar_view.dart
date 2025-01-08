@@ -25,7 +25,7 @@ import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_mode
 import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/base_fatura_toplamlar_view_model.dart";
 
-class BaseFaturaToplamlarView extends StatefulWidget {
+final class BaseFaturaToplamlarView extends StatefulWidget {
   const BaseFaturaToplamlarView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -33,7 +33,7 @@ class BaseFaturaToplamlarView extends StatefulWidget {
   State<BaseFaturaToplamlarView> createState() => _BaseFaturaToplamlarViewState();
 }
 
-class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
+final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   BaseFaturaToplamlarViewModel viewModel = BaseFaturaToplamlarViewModel();
   bool get enable => widget.model.enable;

@@ -6,7 +6,7 @@ import "../../../constants/ui_helper/ui_helper.dart";
 import "../../helper_widgets/custom_label_widget.dart";
 
 /// merhaba ben volkan konak
-class SlideControllerWidget extends StatefulWidget {
+final class SlideControllerWidget extends StatefulWidget {
   const SlideControllerWidget({
     required this.childrenTitleList,
     required this.filterOnChanged,
@@ -27,7 +27,7 @@ class SlideControllerWidget extends StatefulWidget {
   State<SlideControllerWidget> createState() => _SlideControllerWidgetState();
 }
 
-class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
+final class _SlideControllerWidgetState extends BaseState<SlideControllerWidget> {
   late final ScrollController scrollController;
 
   @override

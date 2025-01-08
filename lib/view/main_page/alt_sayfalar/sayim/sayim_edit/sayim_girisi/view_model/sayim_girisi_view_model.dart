@@ -13,7 +13,7 @@ import "../../../sayim_listesi/model/sayim_listesi_model.dart";
 
 part "sayim_girisi_view_model.g.dart";
 
-class SayimGirisiViewModel = _SayimGirisiViewModelBase with _$SayimGirisiViewModel;
+final class SayimGirisiViewModel = _SayimGirisiViewModelBase with _$SayimGirisiViewModel;
 
 abstract class _SayimGirisiViewModelBase with Store, MobxNetworkMixin {
   @observable

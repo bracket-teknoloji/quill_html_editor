@@ -5,7 +5,7 @@ import "../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 
 part "siparis_teslim_raporu_view_model.g.dart";
 
-class SiparisTeslimRaporuViewModel = _SiparisTeslimRaporuViewModelBase with _$SiparisTeslimRaporuViewModel;
+final class SiparisTeslimRaporuViewModel = _SiparisTeslimRaporuViewModelBase with _$SiparisTeslimRaporuViewModel;
 
 abstract class _SiparisTeslimRaporuViewModelBase with Store {
   _SiparisTeslimRaporuViewModelBase(EditTipiEnum siparisTipi) {

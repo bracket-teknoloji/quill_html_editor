@@ -24,7 +24,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/mo
 import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/kredi_karti_tahsilati/view_model/kredi_karti_tahsilati_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-class KrediKartiTahsilatiView extends StatefulWidget {
+final class KrediKartiTahsilatiView extends StatefulWidget {
   const KrediKartiTahsilatiView({super.key, this.cariListesiModel});
   final CariListesiModel? cariListesiModel;
 
@@ -32,7 +32,7 @@ class KrediKartiTahsilatiView extends StatefulWidget {
   State<KrediKartiTahsilatiView> createState() => _KrediKartiTahsilatiViewState();
 }
 
-class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
+final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiView> {
   KrediKartiTahsilatiViewModel viewModel = KrediKartiTahsilatiViewModel();
   late final TextEditingController _belgeNoController;
   late final TextEditingController _tarihController;

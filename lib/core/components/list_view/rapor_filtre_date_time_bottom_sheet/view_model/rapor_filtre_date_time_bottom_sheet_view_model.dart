@@ -2,7 +2,7 @@ import "package:mobx/mobx.dart";
 
 part "rapor_filtre_date_time_bottom_sheet_view_model.g.dart";
 
-class RaporFiltreDateTimeBottomSheetViewModel = _RaporFiltreDateTimeBottomSheetViewModelBase with _$RaporFiltreDateTimeBottomSheetViewModel;
+final class RaporFiltreDateTimeBottomSheetViewModel = _RaporFiltreDateTimeBottomSheetViewModelBase with _$RaporFiltreDateTimeBottomSheetViewModel;
 
 abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
   static int getGroupValue = 0;

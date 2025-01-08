@@ -28,7 +28,7 @@ import "../../../../cari_listesi/model/cari_kosullar_model.dart";
 import "../../../../cari_listesi/model/cari_listesi_model.dart";
 import "../../../../cari_network_manager.dart";
 
-class CariEditDigerView extends StatefulWidget {
+final class CariEditDigerView extends StatefulWidget {
   const CariEditDigerView({super.key, this.model});
   final BaseEditModel? model;
 
@@ -36,7 +36,7 @@ class CariEditDigerView extends StatefulWidget {
   State<CariEditDigerView> createState() => _CariEditDigerViewState();
 }
 
-class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
+final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
   Map veriTabani = CacheManager.getVeriTabani;
   final GlobalKey<FormState> cariKartiDigerFormKey = GlobalKey<FormState>();
   BaseEditCariDigerViewModel viewModel = BaseEditCariDigerViewModel();

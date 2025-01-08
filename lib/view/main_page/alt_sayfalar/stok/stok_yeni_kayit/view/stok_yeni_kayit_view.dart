@@ -20,7 +20,7 @@ import "../../stok_hareketleri/model/stok_hareketleri_model.dart";
 import "../model/stok_yeni_kayit_model.dart";
 import "../view_model/stok_yeni_kayit_view_model.dart";
 
-class StokYeniKayitView extends StatefulWidget {
+final class StokYeniKayitView extends StatefulWidget {
   const StokYeniKayitView({super.key, this.model});
   final StokHareketleriModel? model;
 
@@ -28,7 +28,7 @@ class StokYeniKayitView extends StatefulWidget {
   State<StokYeniKayitView> createState() => _StokYeniKayitViewState();
 }
 
-class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
+final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   late StokYeniKayitViewModel viewModel = StokYeniKayitViewModel()..isSelected = (widget.model?.cikisIslemi ?? false) ? [false, true].asObservable() : ([true, false]).asObservable();
   late final TextEditingController stokKoduController = TextEditingController(text: widget.model?.stokKodu ?? "");
   late final TextEditingController tarihController = TextEditingController(text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString);

@@ -6,14 +6,14 @@ import "../../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari_listesi/model/cari_detay_model.dart";
 
-class BaseCariEditIletisimView extends StatefulWidget {
+final class BaseCariEditIletisimView extends StatefulWidget {
   const BaseCariEditIletisimView({super.key});
 
   @override
   State<BaseCariEditIletisimView> createState() => _BaseCariEditIletisimViewState();
 }
 
-class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
+final class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimView> {
   final CariDetayModel _cariDetayModel = CariDetayModel.instance;
   @override
   Widget build(BuildContext context) {

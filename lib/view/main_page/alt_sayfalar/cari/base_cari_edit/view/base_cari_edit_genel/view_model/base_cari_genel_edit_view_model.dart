@@ -11,7 +11,7 @@ import "../model/ulke_model.dart";
 
 part "base_cari_genel_edit_view_model.g.dart";
 
-class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase with _$BaseCariGenelEditViewModel;
+final class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase with _$BaseCariGenelEditViewModel;
 
 abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String> cariTipiMap = <String, String>{"Alıcı": "A", "Satıcı": "S", "Toptancı": "T", "Kefil": "K", "Müstahsil": "M", "Diğer": "D", "Komisyoncu": "I"};

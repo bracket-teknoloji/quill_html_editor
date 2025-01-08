@@ -7,7 +7,7 @@ import "../model/hucre_ara_request_model.dart";
 
 part "hucre_ara_view_model.g.dart";
 
-class HucreAraViewModel = _HucreAraViewModelBase with _$HucreAraViewModel;
+final class HucreAraViewModel = _HucreAraViewModelBase with _$HucreAraViewModel;
 
 abstract class _HucreAraViewModelBase with Store, MobxNetworkMixin {
   //* observable olmasına gerek yok çünkü view ile alakası yok

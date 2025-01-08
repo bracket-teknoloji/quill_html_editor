@@ -8,7 +8,7 @@ import "../../cari_listesi/model/cari_listesi_model.dart";
 
 part "cari_haritasi_view_model.g.dart";
 
-class CariHaritasiViewModel = _CariHaritasiViewModelBase with _$CariHaritasiViewModel;
+final class CariHaritasiViewModel = _CariHaritasiViewModelBase with _$CariHaritasiViewModel;
 
 abstract class _CariHaritasiViewModelBase with Store, MobxNetworkMixin {
   @observable

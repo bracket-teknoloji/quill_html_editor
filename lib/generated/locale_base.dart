@@ -2,7 +2,7 @@ import "dart:convert";
 
 import "package:flutter/services.dart" show rootBundle;
 
-class LocaleBase {
+final class LocaleBase {
   late Map<String, dynamic> _data;
   late String _path;
   Future<void> load(String path) async {
@@ -30,7 +30,7 @@ class LocaleBase {
   }
 }
 
-class LocalerightDrawer {
+final class LocalerightDrawer {
   LocalerightDrawer(this._data);
   late final Map<String, String> _data;
 
@@ -49,7 +49,7 @@ class LocalerightDrawer {
   String get darkMode => _data["darkMode"]!;
 }
 
-class LocaleserviceOperations {
+final class LocaleserviceOperations {
   LocaleserviceOperations(this._data);
   late final Map<String, String> _data;
 
@@ -72,7 +72,7 @@ class LocaleserviceOperations {
   String get netfectWinServiceRestartSubTitle => _data["netfectWinServiceRestartSubTitle"]!;
 }
 
-class LocalegeneralStrings {
+final class LocalegeneralStrings {
   LocalegeneralStrings(this._data);
   late final Map<String, String> _data;
 

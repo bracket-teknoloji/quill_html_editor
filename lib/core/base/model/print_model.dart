@@ -7,6 +7,7 @@ part "print_model.freezed.dart";
 part "print_model.g.dart";
 
 @freezed
+@immutable
 class PrintModel with _$PrintModel, NetworkManagerMixin {
   factory PrintModel({
     required String raporOzelKod,

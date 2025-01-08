@@ -18,7 +18,7 @@ import "../../../../../model/param_model.dart";
 import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/yaslandirma_raporu_view_model.dart";
 
-class YaslandirmaRaporuView extends StatefulWidget {
+final class YaslandirmaRaporuView extends StatefulWidget {
   const YaslandirmaRaporuView({super.key, this.model});
   final CariListesiModel? model;
 
@@ -26,7 +26,7 @@ class YaslandirmaRaporuView extends StatefulWidget {
   State<YaslandirmaRaporuView> createState() => _YaslandirmaRaporuViewState();
 }
 
-class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
+final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView> {
   YaslandirmaRaporuViewModel viewModel = YaslandirmaRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
   late final TextEditingController cariController;

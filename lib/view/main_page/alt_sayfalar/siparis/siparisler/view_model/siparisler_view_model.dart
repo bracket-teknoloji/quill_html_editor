@@ -9,7 +9,7 @@ import "../model/siparisler_request_model.dart";
 
 part "siparisler_view_model.g.dart";
 
-class SiparislerViewModel = _SiparislerViewModelBase with _$SiparislerViewModel;
+final class SiparislerViewModel = _SiparislerViewModelBase with _$SiparislerViewModel;
 
 abstract class _SiparislerViewModelBase with Store {
   _SiparislerViewModelBase({required this.pickerBelgeTuru});

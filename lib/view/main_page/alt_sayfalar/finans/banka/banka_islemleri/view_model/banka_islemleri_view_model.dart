@@ -11,7 +11,7 @@ import "../model/banka_islemleri_request_model.dart";
 
 part "banka_islemleri_view_model.g.dart";
 
-class BankaIslemleriViewModel = _BankaIslemleriViewModelBase with _$BankaIslemleriViewModel;
+final class BankaIslemleriViewModel = _BankaIslemleriViewModelBase with _$BankaIslemleriViewModel;
 
 abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   final List<String> hesapTipiList = [

@@ -12,7 +12,7 @@ import "../../../../model/cari_aktivite_listesi_model.dart";
 
 part "cari_aktivite_detayi_view_model.g.dart";
 
-class CariAktiviteDetayiViewModel = _CariAktiviteDetayiViewModelBase with _$CariAktiviteDetayiViewModel;
+final class CariAktiviteDetayiViewModel = _CariAktiviteDetayiViewModelBase with _$CariAktiviteDetayiViewModel;
 
 abstract class _CariAktiviteDetayiViewModelBase with Store, MobxNetworkMixin {
   @observable

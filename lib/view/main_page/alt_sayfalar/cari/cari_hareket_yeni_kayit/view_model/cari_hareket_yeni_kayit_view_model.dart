@@ -5,7 +5,7 @@ import "../model/cari_hareket_yeni_kayit_model.dart";
 
 part "cari_hareket_yeni_kayit_view_model.g.dart";
 
-class CariHareketYeniKayitViewModel = _CariHareketYeniKayitViewModelBase with _$CariHareketYeniKayitViewModel;
+final class CariHareketYeniKayitViewModel = _CariHareketYeniKayitViewModelBase with _$CariHareketYeniKayitViewModel;
 
 abstract class _CariHareketYeniKayitViewModelBase with Store {
   @observable

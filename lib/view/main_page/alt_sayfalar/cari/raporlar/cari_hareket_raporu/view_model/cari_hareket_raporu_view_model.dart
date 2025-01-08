@@ -5,7 +5,7 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 
 part "cari_hareket_raporu_view_model.g.dart";
 
-class CariHareketRaporuViewModel = _CariHareketRaporuViewModelBase with _$CariHareketRaporuViewModel;
+final class CariHareketRaporuViewModel = _CariHareketRaporuViewModelBase with _$CariHareketRaporuViewModel;
 
 abstract class _CariHareketRaporuViewModelBase with Store {
   final List<BottomSheetModel<String>> siralaBottomSheetList = [

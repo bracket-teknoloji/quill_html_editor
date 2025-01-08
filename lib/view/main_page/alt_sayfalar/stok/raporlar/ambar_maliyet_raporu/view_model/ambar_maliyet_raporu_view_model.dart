@@ -6,7 +6,7 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 
 part "ambar_maliyet_raporu_view_model.g.dart";
 
-class AmbarMaliyetRaporuViewModel = _AmbarMaliyetRaporuViewModelBase with _$AmbarMaliyetRaporuViewModel;
+final class AmbarMaliyetRaporuViewModel = _AmbarMaliyetRaporuViewModelBase with _$AmbarMaliyetRaporuViewModel;
 
 abstract class _AmbarMaliyetRaporuViewModelBase with Store {
   @observable

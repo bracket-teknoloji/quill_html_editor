@@ -9,7 +9,7 @@ part "cari_save_request_model.g.dart";
 
 @CopyWith()
 @JsonSerializable()
-class CariSaveRequestModel with NetworkManagerMixin {
+final class CariSaveRequestModel with NetworkManagerMixin {
   CariSaveRequestModel({
     this.requestVersion,
     this.islemKodu,

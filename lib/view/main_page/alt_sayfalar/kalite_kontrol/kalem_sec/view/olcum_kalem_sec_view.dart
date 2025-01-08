@@ -16,7 +16,7 @@ import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "../view_model/olcum_kalem_sec_view_model.dart";
 
-class OlcumKalemSecView extends StatefulWidget {
+final class OlcumKalemSecView extends StatefulWidget {
   const OlcumKalemSecView({required this.model, super.key});
   final OlcumBelgeModel model;
 
@@ -24,7 +24,7 @@ class OlcumKalemSecView extends StatefulWidget {
   State<OlcumKalemSecView> createState() => _OlcumKalemSecViewState();
 }
 
-class _OlcumKalemSecViewState extends BaseState<OlcumKalemSecView> {
+final class _OlcumKalemSecViewState extends BaseState<OlcumKalemSecView> {
   OlcumKalemSecViewModel viewModel = OlcumKalemSecViewModel();
   late final ScrollController _scrollController;
 

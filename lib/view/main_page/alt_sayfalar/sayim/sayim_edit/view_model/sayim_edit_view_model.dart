@@ -12,7 +12,7 @@ import "../../sayim_listesi/model/sayim_listesi_model.dart";
 
 part "sayim_edit_view_model.g.dart";
 
-class SayimEditViewModel = _SayimEditViewModelBase with _$SayimEditViewModel;
+final class SayimEditViewModel = _SayimEditViewModelBase with _$SayimEditViewModel;
 
 abstract class _SayimEditViewModelBase with Store, MobxNetworkMixin {
   @observable

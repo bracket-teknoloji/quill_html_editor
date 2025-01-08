@@ -8,7 +8,7 @@ import "../model/cek_senet_listesi_request_model.dart";
 
 part "cek_senet_listesi_view_model.g.dart";
 
-class CekSenetListesiViewModel = _CekSenetListesiViewModelBase with _$CekSenetListesiViewModel;
+final class CekSenetListesiViewModel = _CekSenetListesiViewModelBase with _$CekSenetListesiViewModel;
 
 abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String> siralaMap = {

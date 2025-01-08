@@ -14,7 +14,7 @@ import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 
-class CariAktiviteCard extends StatefulWidget {
+final class CariAktiviteCard extends StatefulWidget {
   const CariAktiviteCard({required this.model, required this.onRefresh, required this.updatedModel, super.key});
   final CariAktiviteListesiModel model;
   final void Function(bool) onRefresh;
@@ -24,7 +24,7 @@ class CariAktiviteCard extends StatefulWidget {
   State<CariAktiviteCard> createState() => _CariAktiviteCardState();
 }
 
-class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
+final class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
   CariAktiviteListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(

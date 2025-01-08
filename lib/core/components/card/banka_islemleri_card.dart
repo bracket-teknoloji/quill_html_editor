@@ -12,7 +12,7 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/network/login/api_urls.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class BankaIslemleriCard extends StatefulWidget {
+final class BankaIslemleriCard extends StatefulWidget {
   const BankaIslemleriCard({super.key, this.bankaHareketleriModel, this.onDeleted});
   final BankaHareketleriModel? bankaHareketleriModel;
   final ValueChanged? onDeleted;
@@ -21,7 +21,7 @@ class BankaIslemleriCard extends StatefulWidget {
   State<BankaIslemleriCard> createState() => _BankaIslemleriCardState();
 }
 
-class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
+final class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
   BankaHareketleriModel? get model => widget.bankaHareketleriModel;
   @override
   Widget build(BuildContext context) => InkWell(

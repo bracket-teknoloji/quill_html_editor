@@ -23,14 +23,14 @@ import "../../../../../core/init/network/login/api_urls.dart";
 import "../model/temsilci_profil_model.dart";
 import "../view_model/temsilci_profil_view_model.dart";
 
-class TemsilciProfilView extends StatefulWidget {
+final class TemsilciProfilView extends StatefulWidget {
   const TemsilciProfilView({super.key});
 
   @override
   State<TemsilciProfilView> createState() => _TemsilciProfilViewState();
 }
 
-class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
+final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
   TemsilciProfilViewModel viewModel = TemsilciProfilViewModel();
   late final TextEditingController plasiyerController;
   late final TextEditingController cariController;

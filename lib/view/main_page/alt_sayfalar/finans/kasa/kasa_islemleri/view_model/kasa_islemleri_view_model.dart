@@ -12,7 +12,7 @@ import "../model/kasa_islemleri_request_model.dart";
 
 part "kasa_islemleri_view_model.g.dart";
 
-class KasaIslemleriViewModel = _KasaIslemleriViewModelBase with _$KasaIslemleriViewModel;
+final class KasaIslemleriViewModel = _KasaIslemleriViewModelBase with _$KasaIslemleriViewModel;
 
 abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   Map<String, dynamic> hesapTipiMap = {

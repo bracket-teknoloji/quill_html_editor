@@ -15,7 +15,7 @@ import "../../banka_listesi/model/banka_listesi_request_model.dart";
 
 part "banka_kasa_transferi_view_model.g.dart";
 
-class BankaKasaTransferiViewModel = _BankaKasaTransferiViewModelBase with _$BankaKasaTransferiViewModel;
+final class BankaKasaTransferiViewModel = _BankaKasaTransferiViewModelBase with _$BankaKasaTransferiViewModel;
 
 abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable

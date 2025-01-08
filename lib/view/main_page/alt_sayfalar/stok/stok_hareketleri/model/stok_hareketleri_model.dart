@@ -5,7 +5,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 part "stok_hareketleri_model.g.dart";
 
 @JsonSerializable()
-class StokHareketleriModel with NetworkManagerMixin {
+final class StokHareketleriModel with NetworkManagerMixin {
   int? inckeyno;
   bool? cikisIslemi;
   String? stokAdi;

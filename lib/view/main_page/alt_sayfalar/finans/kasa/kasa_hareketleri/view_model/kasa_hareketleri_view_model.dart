@@ -15,7 +15,7 @@ import "../../kasa_islemleri/model/kasa_islemleri_request_model.dart";
 
 part "kasa_hareketleri_view_model.g.dart";
 
-class KasaHareketleriViewModel = _KasaHareketleriViewModelBase with _$KasaHareketleriViewModel;
+final class KasaHareketleriViewModel = _KasaHareketleriViewModelBase with _$KasaHareketleriViewModel;
 
 abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin, ListableMixin<KasaIslemleriModel>, ScrollControllableMixin, PageableMixin {
   //* Observables

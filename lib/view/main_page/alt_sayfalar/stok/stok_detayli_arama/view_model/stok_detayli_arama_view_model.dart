@@ -6,7 +6,7 @@ part "stok_detayli_arama_view_model.g.dart";
 
 typedef DetaySekliRecord = ({String adi, String kodu});
 
-class StokDetayliAramaViewModel = _StokDetayliAramaViewModelBase with _$StokDetayliAramaViewModel;
+final class StokDetayliAramaViewModel = _StokDetayliAramaViewModelBase with _$StokDetayliAramaViewModel;
 
 abstract class _StokDetayliAramaViewModelBase with Store {
   final List<DetaySekliRecord> detaySekliList = [

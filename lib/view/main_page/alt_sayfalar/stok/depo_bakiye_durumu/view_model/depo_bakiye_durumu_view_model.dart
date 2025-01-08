@@ -8,7 +8,7 @@ import "../model/depo_bakiye_durumu_model.dart";
 
 part "depo_bakiye_durumu_view_model.g.dart";
 
-class DepoBakiyeDurumuViewModel = _DepoBakiyeDurumuViewModelBase with _$DepoBakiyeDurumuViewModel;
+final class DepoBakiyeDurumuViewModel = _DepoBakiyeDurumuViewModelBase with _$DepoBakiyeDurumuViewModel;
 
 abstract class _DepoBakiyeDurumuViewModelBase with Store, MobxNetworkMixin {
   @observable

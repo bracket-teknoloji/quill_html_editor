@@ -7,7 +7,7 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 
 part "base_talep_teklif_genel_view_model.g.dart";
 
-class BaseTalepTeklifGenelViewModel = _BaseTalepTeklifGenelViewModelBase with _$BaseTalepTeklifGenelViewModel;
+final class BaseTalepTeklifGenelViewModel = _BaseTalepTeklifGenelViewModelBase with _$BaseTalepTeklifGenelViewModel;
 
 abstract class _BaseTalepTeklifGenelViewModelBase with Store {
   final Map<String, int> belgeTipi = <String, int>{

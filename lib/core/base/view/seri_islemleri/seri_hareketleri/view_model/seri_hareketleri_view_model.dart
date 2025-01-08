@@ -9,7 +9,7 @@ import "../model/seri_hareketleri_request_model.dart";
 
 part "seri_hareketleri_view_model.g.dart";
 
-class SeriHareketleriViewModel = _SeriHareketleriViewModelBase with _$SeriHareketleriViewModel;
+final class SeriHareketleriViewModel = _SeriHareketleriViewModelBase with _$SeriHareketleriViewModel;
 
 abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String> siralaMap = {

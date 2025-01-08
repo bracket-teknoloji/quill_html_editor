@@ -9,14 +9,14 @@ import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../view_model/finansal_durum_raporu_view_model.dart";
 
-class FinansalDurumRaporuView extends StatefulWidget {
+final class FinansalDurumRaporuView extends StatefulWidget {
   const FinansalDurumRaporuView({super.key});
 
   @override
   State<FinansalDurumRaporuView> createState() => _FinansalDurumRaporuViewState();
 }
 
-class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
+final class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuView> {
   FinansalDurumRaporuViewModel viewModel = FinansalDurumRaporuViewModel();
   late final TextEditingController gorunecekAlanlarController;
   @override

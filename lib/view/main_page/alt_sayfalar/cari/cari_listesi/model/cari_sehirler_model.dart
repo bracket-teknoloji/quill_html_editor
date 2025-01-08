@@ -7,7 +7,7 @@ part "cari_sehirler_model.g.dart";
 
 @HiveType(typeId: 7)
 @JsonSerializable()
-class CariSehirlerModel with NetworkManagerMixin {
+final class CariSehirlerModel with NetworkManagerMixin {
   @HiveField(0)
   String? sehirAdi;
   @override

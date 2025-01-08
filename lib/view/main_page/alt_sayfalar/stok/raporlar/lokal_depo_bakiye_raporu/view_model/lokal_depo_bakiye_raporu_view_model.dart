@@ -8,7 +8,7 @@ import "../../../../../../../core/init/cache/cache_manager.dart";
 
 part "lokal_depo_bakiye_raporu_view_model.g.dart";
 
-class LokalDepoBakiyeRaporuViewModel = _LokalDepoBakiyeRaporuViewModelBase with _$LokalDepoBakiyeRaporuViewModel;
+final class LokalDepoBakiyeRaporuViewModel = _LokalDepoBakiyeRaporuViewModelBase with _$LokalDepoBakiyeRaporuViewModel;
 
 abstract class _LokalDepoBakiyeRaporuViewModelBase with Store {
   @observable

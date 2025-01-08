@@ -14,7 +14,7 @@ import "../../stok_liste/model/stok_listesi_model.dart";
 import "../model/fiyat_gor_model.dart";
 import "../view_model/fiyat_gor_view_model.dart";
 
-class FiyatGorView extends StatefulWidget {
+final class FiyatGorView extends StatefulWidget {
   const FiyatGorView({super.key, this.model});
   final StokListesiModel? model;
 
@@ -22,7 +22,7 @@ class FiyatGorView extends StatefulWidget {
   State<FiyatGorView> createState() => _FiyatGorViewState();
 }
 
-class _FiyatGorViewState extends BaseState<FiyatGorView> {
+final class _FiyatGorViewState extends BaseState<FiyatGorView> {
   FiyatGorViewModel viewModel = FiyatGorViewModel();
   late final TextEditingController barkodKontroller;
   late final TextEditingController stokController;

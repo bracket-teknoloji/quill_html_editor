@@ -15,7 +15,7 @@ import "../model/cari_listesi_request_model.dart";
 
 part "cari_rehberi_view_model.g.dart";
 
-class CariRehberiViewModel = _CariRehberiViewModelBase with _$CariRehberiViewModel;
+final class CariRehberiViewModel = _CariRehberiViewModelBase with _$CariRehberiViewModel;
 
 abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<CariListesiModel>, ScrollControllableMixin, PageableMixin, SearchableMixin {
   final Map<String, String> siralaMap = {

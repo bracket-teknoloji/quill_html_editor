@@ -18,7 +18,7 @@ import "../../../siparis/siparisler/model/siparisler_request_model.dart";
 
 part "talep_teklif_listesi_view_model.g.dart";
 
-class TalepTeklifListesiViewModel = _TalepTeklifListesiViewModelBase with _$TalepTeklifListesiViewModel;
+final class TalepTeklifListesiViewModel = _TalepTeklifListesiViewModelBase with _$TalepTeklifListesiViewModel;
 
 abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   final Map<String, String> siralaMap = {

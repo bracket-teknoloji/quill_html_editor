@@ -8,7 +8,7 @@ part "cari_detay_model.g.dart";
 
 @CopyWith()
 @JsonSerializable()
-class CariDetayModel with NetworkManagerMixin {
+final class CariDetayModel with NetworkManagerMixin {
   CariDetayModel({
     this.cariKodu,
     this.cariAdi,
@@ -101,7 +101,7 @@ class CariDetayModel with NetworkManagerMixin {
 }
 
 @JsonSerializable(createFactory: true)
-class BakiyeList {
+final class BakiyeList {
   BakiyeList();
 
   factory BakiyeList.fromJson(Map<String, dynamic> json) => _$BakiyeListFromJson(json);
@@ -115,7 +115,7 @@ class BakiyeList {
 }
 
 @JsonSerializable(createFactory: true)
-class BankaList {
+final class BankaList {
   BankaList();
 
   factory BankaList.fromJson(Map<String, dynamic> json) => _$BankaListFromJson(json);
@@ -216,7 +216,7 @@ class BankaList {
 // }
 
 @JsonSerializable(createFactory: true)
-class IrtibatList {
+final class IrtibatList {
   IrtibatList();
 
   factory IrtibatList.fromJson(Map<String, dynamic> json) => _$IrtibatListFromJson(json);

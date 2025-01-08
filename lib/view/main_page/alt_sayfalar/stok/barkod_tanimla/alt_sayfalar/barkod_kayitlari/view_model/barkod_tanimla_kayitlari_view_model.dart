@@ -8,7 +8,7 @@ import "../../../../../../../../core/init/network/login/api_urls.dart";
 
 part "barkod_tanimla_kayitlari_view_model.g.dart";
 
-class BarkodTanimlaKayitlariViewModel = _BarkodTanimlaKayitlariViewModelBase with _$BarkodTanimlaKayitlariViewModel;
+final class BarkodTanimlaKayitlariViewModel = _BarkodTanimlaKayitlariViewModelBase with _$BarkodTanimlaKayitlariViewModel;
 
 abstract class _BarkodTanimlaKayitlariViewModelBase with Store, MobxNetworkMixin {
   @observable

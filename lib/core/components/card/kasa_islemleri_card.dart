@@ -21,7 +21,7 @@ import "../../init/network/login/api_urls.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class KasaIslemleriCard extends StatefulWidget {
+final class KasaIslemleriCard extends StatefulWidget {
   const KasaIslemleriCard({required this.kasaIslemleriModel, super.key, this.onDeleted});
   final KasaIslemleriModel kasaIslemleriModel;
   final ValueChanged? onDeleted;
@@ -30,7 +30,7 @@ class KasaIslemleriCard extends StatefulWidget {
   State<KasaIslemleriCard> createState() => _KasaIslemleriCardState();
 }
 
-class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
+final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
   KasaIslemleriModel get model => widget.kasaIslemleriModel;
   bool get isCari => model.tip == "C";
   bool get isTahsilat => isCari && model.gc == "G";

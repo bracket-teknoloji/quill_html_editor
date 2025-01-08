@@ -31,7 +31,7 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../textfield/custom_text_field.dart";
 
-class EFaturaListesiCard extends StatefulWidget {
+final class EFaturaListesiCard extends StatefulWidget {
   const EFaturaListesiCard({required this.eBelgeListesiModel, required this.eBelgeEnum, required this.onRefresh, super.key});
   final EBelgeListesiModel eBelgeListesiModel;
   final ValueChanged<bool> onRefresh;
@@ -41,7 +41,7 @@ class EFaturaListesiCard extends StatefulWidget {
   State<EFaturaListesiCard> createState() => _EFaturaListesiCardState();
 }
 
-class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
+final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
   EBelgeListesiModel get model => widget.eBelgeListesiModel;
 
   @override

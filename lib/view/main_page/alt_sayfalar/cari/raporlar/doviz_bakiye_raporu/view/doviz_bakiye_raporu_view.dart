@@ -17,7 +17,7 @@ import "../../../../../model/param_model.dart";
 import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/doviz_bakiye_raporu_view_model.dart";
 
-class DovizBakiyeRaporuView extends StatefulWidget {
+final class DovizBakiyeRaporuView extends StatefulWidget {
   const DovizBakiyeRaporuView({super.key, this.model});
   final CariListesiModel? model;
 
@@ -25,7 +25,7 @@ class DovizBakiyeRaporuView extends StatefulWidget {
   State<DovizBakiyeRaporuView> createState() => _DovizBakiyeRaporuViewState();
 }
 
-class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
+final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView> {
   DovizBakiyeRaporuViewModel viewModel = DovizBakiyeRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
   late final TextEditingController cariController;

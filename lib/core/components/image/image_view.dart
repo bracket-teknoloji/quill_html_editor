@@ -5,7 +5,7 @@ import "../../base/state/base_state.dart";
 import "../wrap/appbar_title.dart";
 import "image_widget.dart";
 
-class ImageView extends StatefulWidget {
+final class ImageView extends StatefulWidget {
   const ImageView({required this.path, required this.title, super.key});
   final String path;
   final String title;
@@ -14,7 +14,7 @@ class ImageView extends StatefulWidget {
   State<ImageView> createState() => _ImageViewState();
 }
 
-class _ImageViewState extends BaseState<ImageView> {
+final class _ImageViewState extends BaseState<ImageView> {
   XFile? xfile;
   @override
   Widget build(BuildContext context) => BaseScaffold(

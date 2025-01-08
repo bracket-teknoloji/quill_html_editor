@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-class DrawerModel {
+final class DrawerModel {
   DrawerModel({required this.title, this.icon, this.onTap, this.iconWidget}) {
     if (onTap != null) trailingIcon = Icons.keyboard_arrow_right;
   }

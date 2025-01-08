@@ -6,14 +6,14 @@ import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari_listesi/model/cari_detay_model.dart";
 
-class BaseCariEditBankaView extends StatefulWidget {
+final class BaseCariEditBankaView extends StatefulWidget {
   const BaseCariEditBankaView({super.key});
 
   @override
   State<BaseCariEditBankaView> createState() => _BaseCariEditBankaViewState();
 }
 
-class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
+final class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
   CariDetayModel cariDetayModel = CariDetayModel.instance;
   @override
   Widget build(BuildContext context) => cariDetayModel.bankaList == null || cariDetayModel.bankaList!.isEmpty

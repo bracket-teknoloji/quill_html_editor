@@ -7,7 +7,7 @@ import "../model/cek_senet_hareketleri_model.dart";
 
 part "cek_senet_hareketleri_view_model.g.dart";
 
-class CekSenetHareketleriViewModel = _CekSenetHareketleriViewModelBase with _$CekSenetHareketleriViewModel;
+final class CekSenetHareketleriViewModel = _CekSenetHareketleriViewModelBase with _$CekSenetHareketleriViewModel;
 
 abstract class _CekSenetHareketleriViewModelBase with Store, MobxNetworkMixin {
   @observable

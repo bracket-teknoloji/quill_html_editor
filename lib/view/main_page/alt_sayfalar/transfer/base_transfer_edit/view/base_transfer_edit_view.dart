@@ -39,7 +39,7 @@ import "../../../cari/cari_listesi/model/cari_request_model.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 
-class BaseTransferEditingView extends StatefulWidget {
+final class BaseTransferEditingView extends StatefulWidget {
   const BaseTransferEditingView({required this.model, super.key, this.appBarTitle, this.isSubTitleSmall});
   final String? appBarTitle;
   final bool? isSubTitleSmall;
@@ -50,7 +50,7 @@ class BaseTransferEditingView extends StatefulWidget {
   State<BaseTransferEditingView> createState() => _BaseTransferEditingViewState();
 }
 
-class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> with TickerProviderStateMixin {
+final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingView> with TickerProviderStateMixin {
   BaseTransferEditingViewModel viewModel = BaseTransferEditingViewModel();
   late final TabController tabController;
   late BaseEditModel<SiparisEditRequestModel> model;

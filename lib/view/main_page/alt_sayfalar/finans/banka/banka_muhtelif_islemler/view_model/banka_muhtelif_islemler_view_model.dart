@@ -14,7 +14,7 @@ import "../../banka_listesi/model/banka_listesi_request_model.dart";
 
 part "banka_muhtelif_islemler_view_model.g.dart";
 
-class BankaMuhtelifIslemlerViewModel = _BankaMuhtelifIslemlerViewModelBase with _$BankaMuhtelifIslemlerViewModel;
+final class BankaMuhtelifIslemlerViewModel = _BankaMuhtelifIslemlerViewModelBase with _$BankaMuhtelifIslemlerViewModel;
 
 abstract class _BankaMuhtelifIslemlerViewModelBase with Store, MobxNetworkMixin {
   @observable

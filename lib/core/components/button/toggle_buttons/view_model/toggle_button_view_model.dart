@@ -4,7 +4,7 @@ import "../view/toggle_button.dart";
 
 part "toggle_button_view_model.g.dart";
 
-class ToggleButtonViewModel = _ToggleButtonViewModelBase with _$ToggleButtonViewModel;
+final class ToggleButtonViewModel = _ToggleButtonViewModelBase with _$ToggleButtonViewModel;
 
 abstract class _ToggleButtonViewModelBase with Store {
   final List<String> title = [

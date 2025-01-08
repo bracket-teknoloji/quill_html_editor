@@ -1,14 +1,14 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-class CustomToggleButton extends StatefulWidget {
+final class CustomToggleButton extends StatefulWidget {
   const CustomToggleButton({super.key});
 
   @override
   State<CustomToggleButton> createState() => _CustomToggleButtonState();
 }
 
-class _CustomToggleButtonState extends State<CustomToggleButton> {
+final class _CustomToggleButtonState extends State<CustomToggleButton> {
   @override
   Widget build(BuildContext context) => LayoutBuilder(
         builder: (context, constraints) => ToggleButtons(

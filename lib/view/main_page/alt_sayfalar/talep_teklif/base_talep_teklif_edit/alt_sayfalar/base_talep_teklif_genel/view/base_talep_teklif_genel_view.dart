@@ -29,7 +29,7 @@ import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart"
 // import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/base_talep_teklif_genel_view_model.dart";
 
-class BaseTalepTeklifGenelView extends StatefulWidget {
+final class BaseTalepTeklifGenelView extends StatefulWidget {
   const BaseTalepTeklifGenelView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -37,7 +37,7 @@ class BaseTalepTeklifGenelView extends StatefulWidget {
   State<BaseTalepTeklifGenelView> createState() => BaseTalepTeklifGenelViewState();
 }
 
-class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> {
+final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenelView> {
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
   BaseTalepTeklifGenelViewModel viewModel = BaseTalepTeklifGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;

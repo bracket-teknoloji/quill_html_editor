@@ -7,7 +7,7 @@ import "package:picker/view/main_page/model/param_model.dart";
 
 part "base_hucre_genel_view_model.g.dart";
 
-class BaseHucreGenelViewModel = _BaseHucreGenelViewModelBase with _$BaseHucreGenelViewModel;
+final class BaseHucreGenelViewModel = _BaseHucreGenelViewModelBase with _$BaseHucreGenelViewModel;
 
 abstract class _BaseHucreGenelViewModelBase with Store {
   @observable

@@ -9,7 +9,7 @@ import "../../sayim_listesi/model/sayim_listesi_model.dart";
 
 part "depo_fark_raporu_view_model.g.dart";
 
-class DepoFarkRaporuViewModel = _DepoFarkRaporuViewModelBase with _$DepoFarkRaporuViewModel;
+final class DepoFarkRaporuViewModel = _DepoFarkRaporuViewModelBase with _$DepoFarkRaporuViewModel;
 
 abstract class _DepoFarkRaporuViewModelBase with Store, MobxNetworkMixin {
   @observable

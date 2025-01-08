@@ -1,7 +1,7 @@
 import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";
 
-class MouseRightClickListener extends StatelessWidget {
+final class MouseRightClickListener extends StatelessWidget {
   const MouseRightClickListener({required this.child, required this.onRightClick, super.key});
 
   final Widget child;

@@ -13,7 +13,7 @@ import "../../../../cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../kasa_islemleri/model/kasa_islemleri_request_model.dart";
 import "../view_model/kasa_hareket_detay_view_model.dart";
 
-class KasaHareketDetayiView extends StatefulWidget {
+final class KasaHareketDetayiView extends StatefulWidget {
   const KasaHareketDetayiView({required this.cariListesiModel, super.key});
   final CariHareketleriModel cariListesiModel;
 
@@ -21,7 +21,7 @@ class KasaHareketDetayiView extends StatefulWidget {
   State<KasaHareketDetayiView> createState() => _KasaHareketDetayiViewState();
 }
 
-class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView> {
+final class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView> {
   late final KasaHareketDetayViewModel viewModel;
   CariHareketleriModel get model => widget.cariListesiModel;
   late final TextEditingController _tarihController;

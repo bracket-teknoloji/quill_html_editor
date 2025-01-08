@@ -33,7 +33,7 @@ import "../../../banka/banka_listesi/model/banka_listesi_model.dart";
 import "../../../banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "../view_model/cek_senet_listesi_view_model.dart";
 
-class CekSenetListesiView extends StatefulWidget {
+final class CekSenetListesiView extends StatefulWidget {
   const CekSenetListesiView({required this.cekSenetListesiEnum, super.key});
   final CekSenetListesiEnum cekSenetListesiEnum;
 
@@ -41,7 +41,7 @@ class CekSenetListesiView extends StatefulWidget {
   State<CekSenetListesiView> createState() => _CekSenetListesiViewState();
 }
 
-class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
+final class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
   CekSenetListesiViewModel viewModel = CekSenetListesiViewModel();
   late final TextEditingController _searchController;
   late final TextEditingController _verenCariController;

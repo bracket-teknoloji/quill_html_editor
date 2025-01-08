@@ -9,7 +9,7 @@ import "../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
 
 part "cek_senet_tahsilat_ekle_view_model.g.dart";
 
-class CekSenetTahsilatEkleViewModel = _CekSenetTahsilatEkleViewModelBase with _$CekSenetTahsilatEkleViewModel;
+final class CekSenetTahsilatEkleViewModel = _CekSenetTahsilatEkleViewModelBase with _$CekSenetTahsilatEkleViewModel;
 
 abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   @observable

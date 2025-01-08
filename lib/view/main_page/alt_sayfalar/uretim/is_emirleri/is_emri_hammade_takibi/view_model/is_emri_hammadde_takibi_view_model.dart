@@ -8,7 +8,7 @@ import "../model/is_emri_hammadde_takibi_listesi_model.dart";
 
 part "is_emri_hammadde_takibi_view_model.g.dart";
 
-class IsEmriHammaddeTakibiViewModel = _IsEmriHammaddeTakibiViewModelBase with _$IsEmriHammaddeTakibiViewModel;
+final class IsEmriHammaddeTakibiViewModel = _IsEmriHammaddeTakibiViewModelBase with _$IsEmriHammaddeTakibiViewModel;
 
 abstract class _IsEmriHammaddeTakibiViewModelBase with Store, MobxNetworkMixin, ListableMixin<IsEmriHammaddeTakibiListesiModel>, SearchableMixin {
   @override

@@ -58,7 +58,7 @@ import "../dialog_manager.dart";
 import "model/bottom_sheet_model.dart";
 import "view_model/bottom_sheet_state_manager.dart";
 
-class BottomSheetDialogManager {
+final class BottomSheetDialogManager {
   BottomSheetStateManager viewModel = BottomSheetStateManager();
   final NetworkManager _networkManager = NetworkManager();
   final YetkiController _yetkiController = YetkiController();
@@ -1410,7 +1410,7 @@ class BottomSheetDialogManager {
   }
 }
 
-class SearchField extends StatefulWidget {
+final class SearchField extends StatefulWidget {
   const SearchField({
     required this.viewModel,
     super.key,
@@ -1424,7 +1424,7 @@ class SearchField extends StatefulWidget {
   State<SearchField> createState() => _SearchFieldState();
 }
 
-class _SearchFieldState extends State<SearchField> {
+final class _SearchFieldState extends State<SearchField> {
   late final FocusNode focusNode;
   @override
   void initState() {

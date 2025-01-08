@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 import "../../../../core/components/grid_tile/grid_tile.dart";
 
-class MenuItemModel {
+final class MenuItemModel {
   MenuItemModel({this.title, this.icon, this.route});
   String? title;
   String? icon;

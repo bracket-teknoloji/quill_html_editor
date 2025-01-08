@@ -5,7 +5,7 @@ import "../../../../../../../../core/base/model/base_network_mixin.dart";
 part "ulke_model.g.dart";
 
 @JsonSerializable()
-class UlkeModel with NetworkManagerMixin {
+final class UlkeModel with NetworkManagerMixin {
   String? ulkeKodu;
   String? ulkeAdi;
 

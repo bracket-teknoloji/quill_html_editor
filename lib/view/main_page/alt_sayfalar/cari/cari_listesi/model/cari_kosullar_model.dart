@@ -5,7 +5,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 part "cari_kosullar_model.g.dart";
 
 @JsonSerializable()
-class CariKosullarModel with NetworkManagerMixin {
+final class CariKosullarModel with NetworkManagerMixin {
   String? kosulSabitAdi;
   String? kosulKodu;
   int? genisk1O;

@@ -1,7 +1,7 @@
 import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 
-class BaseEditModel<T> {
+final class BaseEditModel<T> {
   BaseEditModel({
     this.model,
     this.baseEditEnum,

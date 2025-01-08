@@ -8,7 +8,7 @@ import "../../../model/dekont_islemler_request_model.dart";
 
 part "dekont_edit_genel_view_model.g.dart";
 
-class DekontEditGenelViewModel = _DekontEditGenelViewModelBase with _$DekontEditGenelViewModel;
+final class DekontEditGenelViewModel = _DekontEditGenelViewModelBase with _$DekontEditGenelViewModel;
 
 abstract class _DekontEditGenelViewModelBase with Store {
   @observable

@@ -14,7 +14,7 @@ import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 
 part "olcum_belge_edit_view_model.g.dart";
 
-class OlcumBelgeEditViewModel = _OlcumBelgeEditViewModelBase with _$OlcumBelgeEditViewModel;
+final class OlcumBelgeEditViewModel = _OlcumBelgeEditViewModelBase with _$OlcumBelgeEditViewModel;
 
 abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   @observable

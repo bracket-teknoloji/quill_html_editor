@@ -25,7 +25,7 @@ import "base_cari_edit_genel/view/base_edit_cari_genel_view.dart";
 import "base_cari_edit_iletisim/view/base_edit_cari_iletisim_view.dart";
 import "base_cari_edit_ozel/view/base_edit_cari_ozet_view.dart";
 
-class BaseCariEditingView extends StatefulWidget {
+final class BaseCariEditingView extends StatefulWidget {
   const BaseCariEditingView({super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall, this.model});
   final String? appBarTitle;
   final String? appBarSubtitle;
@@ -37,7 +37,7 @@ class BaseCariEditingView extends StatefulWidget {
   State<BaseCariEditingView> createState() => _BasCariEditingViewState();
 }
 
-class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with TickerProviderStateMixin {
+final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with TickerProviderStateMixin {
   bool get goruntulenecekMi => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala;
   BaseCariEditViewModel viewModel = BaseCariEditViewModel();
   late final TabController tabController;

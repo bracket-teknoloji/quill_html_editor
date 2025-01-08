@@ -16,7 +16,7 @@ import "../model/model/dizayn_request_model.dart";
 
 part "e_belge_gonder_view_model.g.dart";
 
-class EBelgeGonderViewModel = _EBelgeGonderViewModelBase with _$EBelgeGonderViewModel;
+final class EBelgeGonderViewModel = _EBelgeGonderViewModelBase with _$EBelgeGonderViewModel;
 
 abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   _EBelgeGonderViewModelBase({required this.model, required this.siparisEditModel});

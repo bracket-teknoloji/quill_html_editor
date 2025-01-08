@@ -8,7 +8,7 @@ import "../model/hucredeki_stoklar_model.dart";
 
 part "hucredeki_stoklar_view_model.g.dart";
 
-class HucredekiStoklarViewModel = _HucredekiStoklarViewModelBase with _$HucredekiStoklarViewModel;
+final class HucredekiStoklarViewModel = _HucredekiStoklarViewModelBase with _$HucredekiStoklarViewModel;
 
 abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin, ListableMixin<HucredekiStoklarModel> {
   @override

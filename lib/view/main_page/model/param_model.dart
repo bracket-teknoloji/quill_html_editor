@@ -6,7 +6,7 @@ import "../../../core/base/model/base_network_mixin.dart";
 part "param_model.g.dart";
 
 @JsonSerializable(createFactory: true)
-class ParamModel {
+final class ParamModel {
   ParamModel();
   factory ParamModel.fromJson(Map<String, dynamic> json) => _$ParamModelFromJson(json);
   @JsonKey(name: "ParamYuklendi")
@@ -499,7 +499,7 @@ class ParamModel {
 }
 
 @JsonSerializable(createFactory: true)
-class CariAktiviteTipleri {
+final class CariAktiviteTipleri {
   CariAktiviteTipleri();
   factory CariAktiviteTipleri.fromJson(Map<String, dynamic> json) => _$CariAktiviteTipleriFromJson(json);
   @JsonKey(name: "AKTIVITE_TIPI")
@@ -510,7 +510,7 @@ class CariAktiviteTipleri {
 }
 
 @JsonSerializable(createFactory: true)
-class CekSenParam {
+final class CekSenParam {
   CekSenParam();
 
   factory CekSenParam.fromJson(Map<String, dynamic> json) => _$CekSenParamFromJson(json);
@@ -528,7 +528,7 @@ class CekSenParam {
 }
 
 @JsonSerializable(createFactory: true)
-class DepoList {
+final class DepoList {
   DepoList();
 
   factory DepoList.fromJson(Map<String, dynamic> json) => _$DepoListFromJson(json);
@@ -546,7 +546,7 @@ class DepoList {
 }
 
 @JsonSerializable(createFactory: true)
-class DovizList {
+final class DovizList {
   DovizList({
     this.dovizKodu,
     this.dovizTipi,
@@ -577,7 +577,7 @@ class DovizList {
 }
 
 @JsonSerializable(createFactory: true)
-class KasaList with NetworkManagerMixin {
+final class KasaList with NetworkManagerMixin {
   KasaList();
 
   factory KasaList.fromJson(Map<String, dynamic> json) => _$KasaListFromJson(json);
@@ -625,7 +625,7 @@ class KasaList with NetworkManagerMixin {
 }
 
 @JsonSerializable(createFactory: true)
-class ListCariOdemeKodu {
+final class ListCariOdemeKodu {
   ListCariOdemeKodu();
 
   factory ListCariOdemeKodu.fromJson(Map<String, dynamic> json) => _$ListCariOdemeKoduFromJson(json);
@@ -636,7 +636,7 @@ class ListCariOdemeKodu {
 }
 
 @JsonSerializable(createFactory: true)
-class ListFatuEkMaliyet {
+final class ListFatuEkMaliyet {
   ListFatuEkMaliyet();
 
   factory ListFatuEkMaliyet.fromJson(Map<String, dynamic> json) => _$ListFatuEkMaliyetFromJson(json);
@@ -648,7 +648,7 @@ class ListFatuEkMaliyet {
 }
 
 @JsonSerializable(createFactory: true)
-class ListIskTip {
+final class ListIskTip {
   ListIskTip();
 
   factory ListIskTip.fromJson(Map<String, dynamic> json) => _$ListIskTipFromJson(json);
@@ -659,7 +659,7 @@ class ListIskTip {
 }
 
 @JsonSerializable(createFactory: true)
-class ListOzelKodTum {
+final class ListOzelKodTum {
   ListOzelKodTum();
 
   factory ListOzelKodTum.fromJson(Map<String, dynamic> json) => _$ListOzelKodTumFromJson(json);
@@ -673,7 +673,7 @@ class ListOzelKodTum {
 }
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.none)
-class MapEkAlanlar {
+final class MapEkAlanlar {
   MapEkAlanlar();
 
   factory MapEkAlanlar.fromJson(Map<String, dynamic> json) => _$MapEkAlanlarFromJson(json);
@@ -686,7 +686,7 @@ class MapEkAlanlar {
 }
 
 @JsonSerializable()
-class MapCariKullSahalar {
+final class MapCariKullSahalar {
   MapCariKullSahalar();
 
   factory MapCariKullSahalar.fromJson(Map<String, dynamic> json) => _$MapCariKullSahalarFromJson(json);
@@ -727,7 +727,7 @@ class MapCariKullSahalar {
 }
 
 @JsonSerializable(createFactory: true)
-class MapKdvSifirBelgeTipiOzelKod2 {
+final class MapKdvSifirBelgeTipiOzelKod2 {
   MapKdvSifirBelgeTipiOzelKod2();
 
   factory MapKdvSifirBelgeTipiOzelKod2.fromJson(Map<String, dynamic> json) => _$MapKdvSifirBelgeTipiOzelKod2FromJson(json);
@@ -742,7 +742,7 @@ class MapKdvSifirBelgeTipiOzelKod2 {
 }
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.pascal)
-class MapStokGrupAdlari {
+final class MapStokGrupAdlari {
   MapStokGrupAdlari();
 
   factory MapStokGrupAdlari.fromJson(Map<String, dynamic> json) => _$MapStokGrupAdlariFromJson(json);
@@ -757,7 +757,7 @@ class MapStokGrupAdlari {
 }
 
 @JsonSerializable(createFactory: true)
-class MapStokKullSahalar {
+final class MapStokKullSahalar {
   MapStokKullSahalar();
 
   factory MapStokKullSahalar.fromJson(Map<String, dynamic> json) => _$MapStokKullSahalarFromJson(json);
@@ -798,7 +798,7 @@ class MapStokKullSahalar {
 }
 
 @JsonSerializable(createFactory: true)
-class MustahsilParam {
+final class MustahsilParam {
   MustahsilParam();
 
   factory MustahsilParam.fromJson(Map<String, dynamic> json) => _$MustahsilParamFromJson(json);
@@ -815,7 +815,7 @@ class MustahsilParam {
 
 @JsonSerializable(createFactory: true)
 @HiveType(typeId: 47)
-class NetFectDizaynList {
+final class NetFectDizaynList {
   NetFectDizaynList();
 
   factory NetFectDizaynList.fromJson(Map<dynamic, dynamic> json) => _$NetFectDizaynListFromJson(json as Map<String, dynamic>);
@@ -850,7 +850,7 @@ class NetFectDizaynList {
 }
 
 @JsonSerializable(createFactory: true)
-class NetsisOndalikResponseModel {
+final class NetsisOndalikResponseModel {
   NetsisOndalikResponseModel();
 
   factory NetsisOndalikResponseModel.fromJson(Map<String, dynamic> json) => _$NetsisOndalikResponseModelFromJson(json);
@@ -867,7 +867,7 @@ class NetsisOndalikResponseModel {
 }
 
 @JsonSerializable(createFactory: true)
-class PlasiyerList {
+final class PlasiyerList {
   PlasiyerList({
     this.plasiyerKodu,
     this.plasiyerAciklama,
@@ -881,7 +881,7 @@ class PlasiyerList {
 }
 
 @JsonSerializable(createFactory: true)
-class SatirAcikBaslikList {
+final class SatirAcikBaslikList {
   SatirAcikBaslikList();
 
   factory SatirAcikBaslikList.fromJson(Map<String, dynamic> json) => _$SatirAcikBaslikListFromJson(json);
@@ -901,7 +901,7 @@ class SatirAcikBaslikList {
 }
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.pascal)
-class StokDetayliAramaAlanlar {
+final class StokDetayliAramaAlanlar {
   StokDetayliAramaAlanlar({this.searchField, this.name, this.searchCriter, this.searchText});
 
   factory StokDetayliAramaAlanlar.fromJson(Map<String, dynamic> json) => _$StokDetayliAramaAlanlarFromJson(json);
@@ -913,7 +913,7 @@ class StokDetayliAramaAlanlar {
 }
 
 @JsonSerializable(createFactory: true)
-class SubeList {
+final class SubeList {
   SubeList();
 
   factory SubeList.fromJson(Map<String, dynamic> json) => _$SubeListFromJson(json);
@@ -941,7 +941,7 @@ class SubeList {
 }
 
 @JsonSerializable(createFactory: true)
-class TalTekParam {
+final class TalTekParam {
   TalTekParam();
 
   factory TalTekParam.fromJson(Map<String, dynamic> json) => _$TalTekParamFromJson(json);
@@ -1017,7 +1017,7 @@ class TalTekParam {
 
 @HiveType(typeId: 48)
 @JsonSerializable(createFactory: true)
-class YaziciList {
+final class YaziciList {
   YaziciList();
 
   factory YaziciList.fromJson(Map<dynamic, dynamic> json) => _$YaziciListFromJson(json as Map<String, dynamic>);

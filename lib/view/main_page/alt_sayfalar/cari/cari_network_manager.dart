@@ -12,7 +12,7 @@ import "../../../../core/init/network/network_manager.dart";
 import "cari_listesi/model/cari_kosullar_model.dart";
 import "cari_listesi/model/cari_sehirler_model.dart";
 
-class CariNetworkManager {
+final class CariNetworkManager {
   static NetworkManager networkManager = NetworkManager();
   static Future<GenericResponseModel<BaseGrupKoduModel>> getKod({GrupKoduEnum? name}) async {
     final GenericResponseModel<BaseGrupKoduModel> responseKod = await networkManager.dioGet<BaseGrupKoduModel>(

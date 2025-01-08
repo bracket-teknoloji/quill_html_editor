@@ -5,7 +5,7 @@ import "../../../../../core/base/model/base_network_mixin.dart";
 part "serbest_raporlar_parametre_model.g.dart";
 
 @JsonSerializable(createFactory: true, explicitToJson: true)
-class SerbestRaporParametreModel with NetworkManagerMixin {
+final class SerbestRaporParametreModel with NetworkManagerMixin {
   String? parametreAdi;
   String? parametreTanimi;
   bool? degerTemizlenmesin;

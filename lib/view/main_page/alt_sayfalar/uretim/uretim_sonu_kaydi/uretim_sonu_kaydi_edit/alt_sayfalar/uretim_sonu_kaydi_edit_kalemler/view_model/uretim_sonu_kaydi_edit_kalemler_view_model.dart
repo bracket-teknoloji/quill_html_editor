@@ -8,7 +8,7 @@ import "../../../../../../../../../core/base/view_model/mobx_network_mixin.dart"
 
 part "uretim_sonu_kaydi_edit_kalemler_view_model.g.dart";
 
-class UretimSonuKaydiEditKalemlerViewModel = _UretimSonuKaydiEditKalemlerViewModelBase with _$UretimSonuKaydiEditKalemlerViewModel;
+final class UretimSonuKaydiEditKalemlerViewModel = _UretimSonuKaydiEditKalemlerViewModelBase with _$UretimSonuKaydiEditKalemlerViewModel;
 
 abstract class _UretimSonuKaydiEditKalemlerViewModelBase with Store, MobxNetworkMixin, ListableMixin<KalemModel>, SearchableMixin {
   @observable

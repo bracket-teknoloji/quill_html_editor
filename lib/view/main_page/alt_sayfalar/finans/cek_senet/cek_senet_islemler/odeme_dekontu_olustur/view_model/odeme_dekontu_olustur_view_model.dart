@@ -9,7 +9,7 @@ import "../../../../../../../../core/init/network/login/api_urls.dart";
 
 part "odeme_dekontu_olustur_view_model.g.dart";
 
-class OdemeDekontuOlusturViewModel = _OdemeDekontuOlusturViewModelBase with _$OdemeDekontuOlusturViewModel;
+final class OdemeDekontuOlusturViewModel = _OdemeDekontuOlusturViewModelBase with _$OdemeDekontuOlusturViewModel;
 
 abstract class _OdemeDekontuOlusturViewModelBase with Store, MobxNetworkMixin {
   _OdemeDekontuOlusturViewModelBase({required this.model});

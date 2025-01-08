@@ -21,7 +21,7 @@ import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/nakit_odeme/view_model/nakit_odeme_view_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-class NakitOdemeView extends StatefulWidget {
+final class NakitOdemeView extends StatefulWidget {
   const NakitOdemeView({super.key, this.tahsilatMi, this.cariListesiModel});
   final bool? tahsilatMi;
   final CariListesiModel? cariListesiModel;
@@ -30,7 +30,7 @@ class NakitOdemeView extends StatefulWidget {
   State<NakitOdemeView> createState() => _NakitOdemeViewState();
 }
 
-class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
+final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
   NakitOdemeViewModel viewModel = NakitOdemeViewModel();
   late final TextEditingController _belgeNoController;
   late final TextEditingController _tarihController;

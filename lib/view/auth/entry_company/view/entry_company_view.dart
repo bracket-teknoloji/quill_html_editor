@@ -25,7 +25,7 @@ import "package:picker/view/auth/model/company_model.dart";
 import "package:picker/view/auth/model/isletme_model.dart";
 import "package:picker/view/main_page/model/main_page_model.dart";
 
-class EntryCompanyView extends StatefulWidget {
+final class EntryCompanyView extends StatefulWidget {
   const EntryCompanyView({super.key, this.isSplash, this.onMenu});
 
   final bool? isSplash;
@@ -35,7 +35,7 @@ class EntryCompanyView extends StatefulWidget {
   State<EntryCompanyView> createState() => _EntryCompanyViewState();
 }
 
-class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
+final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
   bool first = true;
   List<IsletmeModel>? isletme;
   late final TextEditingController isletmeController;

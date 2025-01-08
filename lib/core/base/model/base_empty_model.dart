@@ -1,6 +1,6 @@
 import "base_network_mixin.dart";
 
-class BaseEmptyModel with NetworkManagerMixin {
+final class BaseEmptyModel with NetworkManagerMixin {
   @override
   BaseEmptyModel? fromJson(Map<String, dynamic> json) => null;
 

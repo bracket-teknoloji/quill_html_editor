@@ -27,14 +27,14 @@ import "../../banka_listesi/model/banka_listesi_model.dart";
 import "../../banka_listesi/model/banka_listesi_request_model.dart";
 import "../view_model/banka_islemleri_view_model.dart";
 
-class BankaIslemleriView extends StatefulWidget {
+final class BankaIslemleriView extends StatefulWidget {
   const BankaIslemleriView({super.key});
 
   @override
   State<BankaIslemleriView> createState() => _BankaIslemleriViewState();
 }
 
-class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
+final class _BankaIslemleriViewState extends BaseState<BankaIslemleriView> {
   BankaIslemleriViewModel viewModel = BankaIslemleriViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController hesapController;

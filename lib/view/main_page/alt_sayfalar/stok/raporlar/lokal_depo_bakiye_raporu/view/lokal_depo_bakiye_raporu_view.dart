@@ -14,7 +14,7 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../stok_liste/model/stok_listesi_model.dart";
 import "../view_model/lokal_depo_bakiye_raporu_view_model.dart";
 
-class LokalDepoBakiyeRaporuView extends StatefulWidget {
+final class LokalDepoBakiyeRaporuView extends StatefulWidget {
   const LokalDepoBakiyeRaporuView({super.key, this.model});
   final StokListesiModel? model;
 
@@ -22,7 +22,7 @@ class LokalDepoBakiyeRaporuView extends StatefulWidget {
   State<LokalDepoBakiyeRaporuView> createState() => _LokalDepoBakiyeRaporuViewState();
 }
 
-class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuView> {
+final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRaporuView> {
   LokalDepoBakiyeRaporuViewModel viewModel = LokalDepoBakiyeRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
   late final TextEditingController stokController;

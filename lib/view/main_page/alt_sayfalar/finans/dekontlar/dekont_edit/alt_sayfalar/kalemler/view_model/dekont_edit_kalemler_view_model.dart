@@ -7,7 +7,7 @@ import "../../../model/dekont_islemler_request_model.dart";
 
 part "dekont_edit_kalemler_view_model.g.dart";
 
-class DekontEditKalemlerViewModel = _DekontEditKalemlerViewModelBase with _$DekontEditKalemlerViewModel;
+final class DekontEditKalemlerViewModel = _DekontEditKalemlerViewModelBase with _$DekontEditKalemlerViewModel;
 
 abstract class _DekontEditKalemlerViewModelBase with Store {
   @observable

@@ -14,7 +14,7 @@ import "../model/uretim_sonu_kaydi_listesi_request_model.dart";
 
 part "uretim_sonu_kaydi_listesi_view_model.g.dart";
 
-class UretimSonuKaydiListesiViewModel = _UretimSonuKaydiListesiViewModelBase with _$UretimSonuKaydiListesiViewModel;
+final class UretimSonuKaydiListesiViewModel = _UretimSonuKaydiListesiViewModelBase with _$UretimSonuKaydiListesiViewModel;
 
 abstract class _UretimSonuKaydiListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<KalemModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   /// İsteği atarken data'ları güncel olarak alsın diye getter fonksiyon olarak ayarlandı.

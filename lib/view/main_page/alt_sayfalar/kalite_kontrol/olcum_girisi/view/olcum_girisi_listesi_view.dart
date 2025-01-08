@@ -18,14 +18,14 @@ import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/view_model/olcum_girisi_listesi_view_model.dart";
 
-class OlcumGirisiListesiView extends StatefulWidget {
+final class OlcumGirisiListesiView extends StatefulWidget {
   const OlcumGirisiListesiView({super.key});
 
   @override
   State<OlcumGirisiListesiView> createState() => _OlcumGirisiListesiViewState();
 }
 
-class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
+final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiView> {
   final OlcumGirisiViewModel viewModel = OlcumGirisiViewModel();
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;

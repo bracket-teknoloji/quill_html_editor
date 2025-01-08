@@ -8,7 +8,7 @@ import "package:picker/core/init/network/login/api_urls.dart";
 
 part "genel_rehber_view_model.g.dart";
 
-class GenelRehberViewModel = _GenelRehberViewModelBase with _$GenelRehberViewModel;
+final class GenelRehberViewModel = _GenelRehberViewModelBase with _$GenelRehberViewModel;
 
 abstract class _GenelRehberViewModelBase with Store, MobxNetworkMixin, ListableMixin<GenelRehberModel>, SearchableMixin {
   _GenelRehberViewModelBase(this.requestModel);

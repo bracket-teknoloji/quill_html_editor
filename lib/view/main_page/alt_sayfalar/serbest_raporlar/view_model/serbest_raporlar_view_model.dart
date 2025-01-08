@@ -7,7 +7,7 @@ import "../model/serbest_rapor_response_model.dart";
 
 part "serbest_raporlar_view_model.g.dart";
 
-class SerbestRaporlarViewModel = _SerbestRaporlarViewModelBase with _$SerbestRaporlarViewModel;
+final class SerbestRaporlarViewModel = _SerbestRaporlarViewModelBase with _$SerbestRaporlarViewModel;
 
 abstract class _SerbestRaporlarViewModelBase with Store {
   @observable

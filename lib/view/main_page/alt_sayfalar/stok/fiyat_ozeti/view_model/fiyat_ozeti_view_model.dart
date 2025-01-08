@@ -7,7 +7,7 @@ import "../model/stok_fiyat_ozeti_request_model.dart";
 
 part "fiyat_ozeti_view_model.g.dart";
 
-class FiyatOzetiViewModel = _FiyatOzetiViewModelBase with _$FiyatOzetiViewModel;
+final class FiyatOzetiViewModel = _FiyatOzetiViewModelBase with _$FiyatOzetiViewModel;
 
 abstract class _FiyatOzetiViewModelBase with Store, MobxNetworkMixin {
   @observable

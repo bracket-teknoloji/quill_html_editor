@@ -9,7 +9,7 @@ import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 
-class GenelRehberView extends StatefulWidget {
+final class GenelRehberView extends StatefulWidget {
   const GenelRehberView({required this.model, super.key});
 
   final EkRehberRequestModel model;
@@ -18,7 +18,7 @@ class GenelRehberView extends StatefulWidget {
   State<GenelRehberView> createState() => _GenelRehberViewState();
 }
 
-class _GenelRehberViewState extends State<GenelRehberView> {
+final class _GenelRehberViewState extends State<GenelRehberView> {
   late final GenelRehberViewModel _viewModel;
 
   @override

@@ -4,7 +4,7 @@ import "package:get/get.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
-class CustomWidgetWithLabel extends StatelessWidget {
+final class CustomWidgetWithLabel extends StatelessWidget {
   const CustomWidgetWithLabel({required this.child, super.key, this.text, this.isVertical, this.isTitleSmall, this.isMust, this.width, this.addPadding = true});
   final String? text;
   final Widget child;

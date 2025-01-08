@@ -10,7 +10,7 @@ import "../model/uretim_sonu_raporu_request_model.dart";
 
 part "uretim_sonu_raporu_view_model.g.dart";
 
-class UretimSonuRaporuViewModel = _UretimSonuRaporuViewModelBase with _$UretimSonuRaporuViewModel;
+final class UretimSonuRaporuViewModel = _UretimSonuRaporuViewModelBase with _$UretimSonuRaporuViewModel;
 
 abstract class _UretimSonuRaporuViewModelBase with Store, MobxNetworkMixin, ListableMixin<StokHareketleriModel> {
   UretimSonuRaporuRequestModel requestModel = UretimSonuRaporuRequestModel(filtreKodu: 1);

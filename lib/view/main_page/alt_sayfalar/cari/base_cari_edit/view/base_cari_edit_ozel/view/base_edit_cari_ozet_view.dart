@@ -11,14 +11,14 @@ import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari_listesi/model/cari_detay_model.dart";
 
-class BaseEditCariOzetView extends StatefulWidget {
+final class BaseEditCariOzetView extends StatefulWidget {
   const BaseEditCariOzetView({super.key});
 
   @override
   State<BaseEditCariOzetView> createState() => _BaseEditCariOzetViewState();
 }
 
-class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
+final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
   CariDetayModel? cariDetayModel = CariDetayModel.instance;
   List<BakiyeList>? bakiyeList = CariDetayModel.instance.bakiyeList ?? <BakiyeList>[];
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();

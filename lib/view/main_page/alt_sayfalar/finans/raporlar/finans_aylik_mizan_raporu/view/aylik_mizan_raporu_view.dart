@@ -9,14 +9,14 @@ import "../../../../../../../core/constants/enum/muhasebe_kodu_belge_tipi_enum.d
 import "../../../../stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "../view_model/aylik_mizan_raporu_view_model.dart";
 
-class AylikMizanRaporuView extends StatefulWidget {
+final class AylikMizanRaporuView extends StatefulWidget {
   const AylikMizanRaporuView({super.key});
 
   @override
   State<AylikMizanRaporuView> createState() => _AylikMizanRaporuViewState();
 }
 
-class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
+final class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
   AylikMizanRaporuViewModel viewModel = AylikMizanRaporuViewModel();
   late final TextEditingController muhasebeKoduController;
   final formKey = GlobalKey<FormState>();

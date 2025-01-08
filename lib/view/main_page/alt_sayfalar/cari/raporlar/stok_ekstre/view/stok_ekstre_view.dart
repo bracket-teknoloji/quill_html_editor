@@ -10,7 +10,7 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/stok_ekstre_view_model.dart";
 
-class StokEkstreView extends StatefulWidget {
+final class StokEkstreView extends StatefulWidget {
   const StokEkstreView({super.key, this.model});
   final CariListesiModel? model;
 
@@ -18,7 +18,7 @@ class StokEkstreView extends StatefulWidget {
   State<StokEkstreView> createState() => _StokEkstreViewState();
 }
 
-class _StokEkstreViewState extends BaseState<StokEkstreView> {
+final class _StokEkstreViewState extends BaseState<StokEkstreView> {
   StokEkstreViewModel viewModel = StokEkstreViewModel();
   TextEditingController? cariController;
   late final TextEditingController baslangicTarihiController;

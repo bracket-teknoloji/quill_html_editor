@@ -12,7 +12,7 @@ import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 import "../view_model/siparis_rehberi_view_model.dart";
 
-class SiparisRehberiView extends StatefulWidget {
+final class SiparisRehberiView extends StatefulWidget {
   const SiparisRehberiView({required this.model, super.key});
   final BaseSiparisEditModel model;
 
@@ -20,7 +20,7 @@ class SiparisRehberiView extends StatefulWidget {
   State<SiparisRehberiView> createState() => _SiparisRehberiViewState();
 }
 
-class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
+final class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
   final SiparisRehberiViewModel viewModel = SiparisRehberiViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController _baslangicTarihiController;

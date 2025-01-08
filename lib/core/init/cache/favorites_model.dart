@@ -6,7 +6,7 @@ import "cache_manager.dart";
 part "favorites_model.g.dart";
 
 @HiveType(typeId: 24)
-class FavoritesModel {
+final class FavoritesModel {
   FavoritesModel({
     this.name,
     this.title,

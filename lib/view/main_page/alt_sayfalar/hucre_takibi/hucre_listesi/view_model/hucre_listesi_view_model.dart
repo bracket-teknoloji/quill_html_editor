@@ -8,7 +8,7 @@ import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/mo
 
 part "hucre_listesi_view_model.g.dart";
 
-class HucreListesiViewModel = _HucreListesiViewModelBase with _$HucreListesiViewModel;
+final class HucreListesiViewModel = _HucreListesiViewModelBase with _$HucreListesiViewModel;
 
 abstract class _HucreListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<HucreListesiModel>, SearchableMixin {
   @observable

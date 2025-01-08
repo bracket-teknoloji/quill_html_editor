@@ -10,7 +10,7 @@ part "base_profil_parametre_model.g.dart";
 
 @freezed
 abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, NetworkManagerMixin {
-  factory BaseProfilParametreModel({
+  const factory BaseProfilParametreModel({
     @Default(false) bool siparisYeniKaydaHazirla,
     @Default(false) bool faturaYeniKaydaHazirla,
     @Default(false) bool talepTeklifYeniKaydaHazirla,
@@ -47,7 +47,7 @@ abstract class BaseProfilParametreModel with _$BaseProfilParametreModel, Network
   }) = _BaseProfilParametreModel;
   factory BaseProfilParametreModel.fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
   //Empty constructor
-  BaseProfilParametreModel._();
+  const BaseProfilParametreModel._();
   @override
   BaseProfilParametreModel fromJson(Map<String, dynamic> json) => _$BaseProfilParametreModelFromJson(json);
 }

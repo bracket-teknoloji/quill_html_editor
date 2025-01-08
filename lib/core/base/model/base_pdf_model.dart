@@ -5,7 +5,7 @@ import "base_network_mixin.dart";
 part "base_pdf_model.g.dart";
 
 @JsonSerializable()
-class BasePdfModel with NetworkManagerMixin {
+final class BasePdfModel with NetworkManagerMixin {
   String? byteData;
   String? uzanti;
   double? reportWidth;

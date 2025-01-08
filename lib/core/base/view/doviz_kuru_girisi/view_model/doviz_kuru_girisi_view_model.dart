@@ -4,7 +4,7 @@ import "../../../model/doviz_kurlari_model.dart";
 
 part "doviz_kuru_girisi_view_model.g.dart";
 
-class DovizKuruGirisiViewModel = _DovizKuruGirisiViewModelBase with _$DovizKuruGirisiViewModel;
+final class DovizKuruGirisiViewModel = _DovizKuruGirisiViewModelBase with _$DovizKuruGirisiViewModel;
 
 abstract class _DovizKuruGirisiViewModelBase with Store {
   @observable

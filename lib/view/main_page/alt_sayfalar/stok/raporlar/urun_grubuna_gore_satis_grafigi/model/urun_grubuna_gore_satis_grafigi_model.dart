@@ -5,7 +5,7 @@ import "../../../../../../../core/base/model/base_network_mixin.dart";
 part "urun_grubuna_gore_satis_grafigi_model.g.dart";
 
 @JsonSerializable(explicitToJson: true)
-class UrunGrubunaGoreSatisGrafigiModel with NetworkManagerMixin {
+final class UrunGrubunaGoreSatisGrafigiModel with NetworkManagerMixin {
   String? grupKodu;
   String? grupAdi;
   double? netTutar;

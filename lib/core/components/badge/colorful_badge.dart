@@ -5,7 +5,7 @@ import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
-class ColorfulBadge extends StatefulWidget {
+final class ColorfulBadge extends StatefulWidget {
   const ColorfulBadge({super.key, this.badgeColorEnum, this.label, this.onTap});
   final Widget? label;
   final BadgeColorEnum? badgeColorEnum;
@@ -15,7 +15,7 @@ class ColorfulBadge extends StatefulWidget {
   State<ColorfulBadge> createState() => _ColorfulBadgeState();
 }
 
-class _ColorfulBadgeState extends BaseState<ColorfulBadge> {
+final class _ColorfulBadgeState extends BaseState<ColorfulBadge> {
   @override
   Widget build(BuildContext context) => Badge(
         textStyle: const TextStyle(fontSize: UIHelper.midSize),

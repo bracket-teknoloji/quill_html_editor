@@ -18,7 +18,7 @@ import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../banka_listesi/model/banka_listesi_model.dart";
 import "../../view_model/banka_muhtelif_islemler_view_model.dart";
 
-class BankaMuhtelifIslemlerView extends StatefulWidget {
+final class BankaMuhtelifIslemlerView extends StatefulWidget {
   const BankaMuhtelifIslemlerView({required this.bankaMuhtelifIslemlerEnum, super.key});
   final BankaMuhtelifIslemlerEnum bankaMuhtelifIslemlerEnum;
 
@@ -26,7 +26,7 @@ class BankaMuhtelifIslemlerView extends StatefulWidget {
   State<BankaMuhtelifIslemlerView> createState() => _BankaMuhtelifIslemlerViewState();
 }
 
-class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerView> {
+final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslemlerView> {
   final BankaMuhtelifIslemlerViewModel viewModel = BankaMuhtelifIslemlerViewModel();
   late final TextEditingController _tarihController;
   late final TextEditingController _seriController;

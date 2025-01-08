@@ -15,7 +15,7 @@ import "../model/urun_grubuna_gore_satis_grafigi_request_model.dart";
 
 part "urun_grubuna_gore_satis_grafigi_view_model.g.dart";
 
-class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase with _$UrunGrubunaGoreSatisGrafigiViewModel;
+final class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase with _$UrunGrubunaGoreSatisGrafigiViewModel;
 
 abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetworkMixin {
   final List<String> donemTipiList = [

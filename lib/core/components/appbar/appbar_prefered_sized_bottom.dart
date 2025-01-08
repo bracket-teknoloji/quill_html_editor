@@ -6,7 +6,7 @@ import "../../constants/extensions/list_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../button/elevated_buttons/bottom_appbar_button.dart";
 
-class AppBarPreferedSizedBottom extends StatefulWidget implements PreferredSizeWidget {
+final class AppBarPreferedSizedBottom extends StatefulWidget implements PreferredSizeWidget {
   const AppBarPreferedSizedBottom({required this.children, super.key}) : filter = null;
   const AppBarPreferedSizedBottom.forStokFilter({required this.children, required this.filter, super.key});
   final List<AppBarButton?> children;
@@ -21,7 +21,7 @@ class AppBarPreferedSizedBottom extends StatefulWidget implements PreferredSizeW
   double get toolbarHeight => kToolbarHeight * (filter is! SizedBox && filter != null ? 3 : 1);
 }
 
-class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBottom> {
+final class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBottom> {
   @override
   Widget build(BuildContext context) => SizedBox(
         height: widget.toolbarHeight,

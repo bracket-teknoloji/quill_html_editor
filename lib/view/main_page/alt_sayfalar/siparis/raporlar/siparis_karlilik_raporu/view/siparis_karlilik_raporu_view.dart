@@ -16,7 +16,7 @@ import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/siparis_karlilik_raporu_view_model.dart";
 
-class SiparisKarlilikRaporuView extends StatefulWidget {
+final class SiparisKarlilikRaporuView extends StatefulWidget {
   const SiparisKarlilikRaporuView({super.key, this.model});
   final BaseSiparisEditModel? model;
 
@@ -24,7 +24,7 @@ class SiparisKarlilikRaporuView extends StatefulWidget {
   State<SiparisKarlilikRaporuView> createState() => _YaslandirmaRaporuViewState();
 }
 
-class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
+final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuView> {
   late final SiparisKarlilikRaporuViewModel viewModel;
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;

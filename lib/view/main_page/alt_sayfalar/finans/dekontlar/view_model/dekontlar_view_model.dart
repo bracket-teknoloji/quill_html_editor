@@ -7,7 +7,7 @@ import "../model/dekont_request_model.dart";
 
 part "dekontlar_view_model.g.dart";
 
-class DekontlarViewModel = _DekontlarViewModelBase with _$DekontlarViewModel;
+final class DekontlarViewModel = _DekontlarViewModelBase with _$DekontlarViewModel;
 
 abstract class _DekontlarViewModelBase with Store, MobxNetworkMixin {
   @observable

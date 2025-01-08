@@ -6,7 +6,7 @@ import "../model/ortalama_vade_tarihi_model.dart";
 
 part "ortalama_vade_tarihi_hesaplama_view_model.g.dart";
 
-class OrtalamaVadeTarihiHesaplamaViewModel = _OrtalamaVadeTarihiHesaplamaViewModelBase with _$OrtalamaVadeTarihiHesaplamaViewModel;
+final class OrtalamaVadeTarihiHesaplamaViewModel = _OrtalamaVadeTarihiHesaplamaViewModelBase with _$OrtalamaVadeTarihiHesaplamaViewModel;
 
 abstract class _OrtalamaVadeTarihiHesaplamaViewModelBase with Store {
   @observable

@@ -10,7 +10,7 @@ import "../model/finans_ozet_rapor_request_model.dart";
 
 part "finans_ozet_rapor_view_model.g.dart";
 
-class FinansOzetRaporViewModel = _FinansOzetRaporViewModelBase with _$FinansOzetRaporViewModel;
+final class FinansOzetRaporViewModel = _FinansOzetRaporViewModelBase with _$FinansOzetRaporViewModel;
 
 abstract class _FinansOzetRaporViewModelBase with Store, MobxNetworkMixin {
   final List<String> raporlarList = [

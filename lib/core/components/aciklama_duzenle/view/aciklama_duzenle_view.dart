@@ -10,7 +10,7 @@ import "../../textfield/custom_text_field.dart";
 import "../../wrap/appbar_title.dart";
 import "../view_model/aciklama_duzenle_view_model.dart";
 
-class AciklamaDuzenleView extends StatefulWidget {
+final class AciklamaDuzenleView extends StatefulWidget {
   const AciklamaDuzenleView({required this.editEnum, required this.model, super.key});
   final EditTipiEnum editEnum;
   final BaseSiparisEditModel model;
@@ -19,7 +19,7 @@ class AciklamaDuzenleView extends StatefulWidget {
   State<AciklamaDuzenleView> createState() => _AciklamaDuzenleViewState();
 }
 
-class _AciklamaDuzenleViewState extends BaseState<AciklamaDuzenleView> {
+final class _AciklamaDuzenleViewState extends BaseState<AciklamaDuzenleView> {
   AciklamaDuzenleViewModel viewModel = AciklamaDuzenleViewModel();
   final int maxLength = 100;
   late final TextEditingController _belgeNoController;

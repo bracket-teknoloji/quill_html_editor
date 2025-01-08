@@ -7,7 +7,7 @@ import "../model/stok_detay_model.dart";
 
 part "base_stok_edit_view_model.g.dart";
 
-class BaseStokEditingViewModel = _BaseStokEditingViewModelBase with _$BaseStokEditingViewModel;
+final class BaseStokEditingViewModel = _BaseStokEditingViewModelBase with _$BaseStokEditingViewModel;
 
 abstract class _BaseStokEditingViewModelBase with Store, MobxNetworkMixin {
   @observable

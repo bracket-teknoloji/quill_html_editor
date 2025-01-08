@@ -11,7 +11,7 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/hareket_detayli_yapilandirma_raporu_view_model.dart";
 
-class HareketDetayliYaslandirmaRaporuView extends StatefulWidget {
+final class HareketDetayliYaslandirmaRaporuView extends StatefulWidget {
   const HareketDetayliYaslandirmaRaporuView({super.key, this.model});
   final CariListesiModel? model;
 
@@ -19,7 +19,7 @@ class HareketDetayliYaslandirmaRaporuView extends StatefulWidget {
   State<HareketDetayliYaslandirmaRaporuView> createState() => _HareketDetayliYaslandirmaRaporuViewState();
 }
 
-class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayliYaslandirmaRaporuView> {
+final class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketDetayliYaslandirmaRaporuView> {
   HareketDetayliYaslandirmaRaporuViewModel viewModel = HareketDetayliYaslandirmaRaporuViewModel();
   late final TextEditingController cariController;
   late final TextEditingController referansTarihController;

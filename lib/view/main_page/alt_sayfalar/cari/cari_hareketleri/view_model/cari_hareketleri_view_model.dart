@@ -12,7 +12,7 @@ import "../model/cari_hareketleri_request_model.dart";
 
 part "cari_hareketleri_view_model.g.dart";
 
-class CariHareketleriViewModel = _CariHareketleriViewModelBase with _$CariHareketleriViewModel;
+final class CariHareketleriViewModel = _CariHareketleriViewModelBase with _$CariHareketleriViewModel;
 
 abstract class _CariHareketleriViewModelBase with Store, MobxNetworkMixin, ListableMixin<CariHareketleriModel>, SearchableMixin {
   @observable

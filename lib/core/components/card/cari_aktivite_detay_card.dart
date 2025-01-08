@@ -8,7 +8,7 @@ import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class CariAktiviteDetayCard extends StatefulWidget {
+final class CariAktiviteDetayCard extends StatefulWidget {
   const CariAktiviteDetayCard({required this.model, required this.baseEditEnum, required this.onAktiviteSil, required this.onAktiviteDuzenle, super.key});
   final CariAktiviteListesiModel model;
   final BaseEditEnum baseEditEnum;
@@ -19,7 +19,7 @@ class CariAktiviteDetayCard extends StatefulWidget {
   State<CariAktiviteDetayCard> createState() => _CariAktiviteDetayCardState();
 }
 
-class _CariAktiviteDetayCardState extends BaseState<CariAktiviteDetayCard> {
+final class _CariAktiviteDetayCardState extends BaseState<CariAktiviteDetayCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(

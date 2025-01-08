@@ -12,7 +12,7 @@ import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../badge/colorful_badge.dart";
 
-class CariRehberiCard extends StatefulWidget {
+final class CariRehberiCard extends StatefulWidget {
   const CariRehberiCard({required this.model, required this.teslimCariMi, super.key, this.onPressed});
   final CariListesiModel model;
   final bool teslimCariMi;
@@ -22,12 +22,12 @@ class CariRehberiCard extends StatefulWidget {
   State<CariRehberiCard> createState() => _CariRehberiCardState();
 }
 
-class _CariRehberiCardState extends BaseState<CariRehberiCard> {
+final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
   CariListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => MouseRightClickListener(
         onRightClick: onLongPress,
-    child: Card(
+        child: Card(
           child: ListTile(
             onTap: () => widget.onPressed != null ? widget.onPressed!(model) : Get.back(result: widget.model),
             onLongPress: onLongPress,
@@ -73,7 +73,7 @@ class _CariRehberiCardState extends BaseState<CariRehberiCard> {
             ).yetkiVarMi(bakiyeGorunsunMu(model)),
           ),
         ),
-  );
+      );
 
   void onLongPress() => dialogManager.showCariGridViewDialog(model);
 

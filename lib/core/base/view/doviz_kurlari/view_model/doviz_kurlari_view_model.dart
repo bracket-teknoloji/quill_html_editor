@@ -9,7 +9,7 @@ import "../../../view_model/mobx_network_mixin.dart";
 
 part "doviz_kurlari_view_model.g.dart";
 
-class DovizKurlariViewModel = _DovizKurlariViewModelBase with _$DovizKurlariViewModel;
+final class DovizKurlariViewModel = _DovizKurlariViewModelBase with _$DovizKurlariViewModel;
 
 abstract class _DovizKurlariViewModelBase with Store, MobxNetworkMixin, ListableMixin<DovizKurlariModel> {
   @override

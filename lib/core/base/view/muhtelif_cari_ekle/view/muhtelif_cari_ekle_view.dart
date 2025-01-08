@@ -8,14 +8,14 @@ import "../../../../components/wrap/appbar_title.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 
-class MuhtelifCariEkleView extends StatefulWidget {
+final class MuhtelifCariEkleView extends StatefulWidget {
   const MuhtelifCariEkleView({super.key});
 
   @override
   State<MuhtelifCariEkleView> createState() => _MuhtelifCariEkleViewState();
 }
 
-class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
+final class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
   CariListesiModel cariModel = CariListesiModel(kodu: "0" * 15, requestVersion: 6, islemKodu: 4, cariKodu: "0" * 15);
   @override
   Widget build(BuildContext context) => BaseScaffold(

@@ -12,7 +12,7 @@ import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
-class EIrsaliyeEkBilgilerView extends StatefulWidget {
+final class EIrsaliyeEkBilgilerView extends StatefulWidget {
   const EIrsaliyeEkBilgilerView({super.key, this.model});
   final EIrsaliyeBilgiModel? model;
 
@@ -20,7 +20,7 @@ class EIrsaliyeEkBilgilerView extends StatefulWidget {
   State<EIrsaliyeEkBilgilerView> createState() => _EIrsaliyeEkBilgilerViewState();
 }
 
-class _EIrsaliyeEkBilgilerViewState extends BaseState<EIrsaliyeEkBilgilerView> {
+final class _EIrsaliyeEkBilgilerViewState extends BaseState<EIrsaliyeEkBilgilerView> {
   final EIrsaliyeEkBilgilerViewModel viewModel = EIrsaliyeEkBilgilerViewModel();
   late final TextEditingController _plakaController;
   late final TextEditingController _sevkTarihiController;

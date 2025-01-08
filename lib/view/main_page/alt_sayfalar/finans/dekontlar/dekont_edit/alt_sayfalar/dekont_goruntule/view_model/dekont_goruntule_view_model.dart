@@ -11,7 +11,7 @@ import "../../../model/dekont_duzenle_request_model.dart";
 
 part "dekont_goruntule_view_model.g.dart";
 
-class DekontGoruntuleViewModel = _DekontGoruntuleViewModelBase with _$DekontGoruntuleViewModel;
+final class DekontGoruntuleViewModel = _DekontGoruntuleViewModelBase with _$DekontGoruntuleViewModel;
 
 abstract class _DekontGoruntuleViewModelBase with Store, MobxNetworkMixin {
   final List<String> titleList = [

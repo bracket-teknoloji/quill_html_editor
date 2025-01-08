@@ -9,7 +9,7 @@ import "../model/banka_hareketleri_model.dart";
 
 part "banka_hareketleri_view_model.g.dart";
 
-class BankaHareketleriViewModel = _BankaHareketleriViewModelBase with _$BankaHareketleriViewModel;
+final class BankaHareketleriViewModel = _BankaHareketleriViewModelBase with _$BankaHareketleriViewModel;
 
 abstract class _BankaHareketleriViewModelBase with Store, MobxNetworkMixin {
   @observable

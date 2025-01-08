@@ -13,7 +13,7 @@ import "../../../../../../../core/base/model/generic_response_model.dart";
 
 part "paket_icerigi_view_model.g.dart";
 
-class PaketIcerigiViewModel = _PaketIcerigiViewModelBase with _$PaketIcerigiViewModel;
+final class PaketIcerigiViewModel = _PaketIcerigiViewModelBase with _$PaketIcerigiViewModel;
 
 abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin, ListableMixin<PaketIcerigiModel> {
   @override

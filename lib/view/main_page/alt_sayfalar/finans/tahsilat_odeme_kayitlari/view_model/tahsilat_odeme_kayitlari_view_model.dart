@@ -11,7 +11,7 @@ import "../../../cari/cari_hareketleri/model/cari_hareketleri_request_model.dart
 
 part "tahsilat_odeme_kayitlari_view_model.g.dart";
 
-class TahsilatOdemeKayitlariViewModel = _TahsilatOdemeKayitlariViewModelBase with _$TahsilatOdemeKayitlariViewModel;
+final class TahsilatOdemeKayitlariViewModel = _TahsilatOdemeKayitlariViewModelBase with _$TahsilatOdemeKayitlariViewModel;
 
 abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin {
   final Map<String, dynamic> hesapTipiMap = {

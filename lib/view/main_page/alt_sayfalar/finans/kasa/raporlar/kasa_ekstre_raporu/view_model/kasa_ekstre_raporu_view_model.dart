@@ -4,7 +4,7 @@ import "../../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model
 
 part "kasa_ekstre_raporu_view_model.g.dart";
 
-class KasaEkstreRaporuViewModel = _KasaEkstreRaporuViewModelBase with _$KasaEkstreRaporuViewModel;
+final class KasaEkstreRaporuViewModel = _KasaEkstreRaporuViewModelBase with _$KasaEkstreRaporuViewModel;
 
 abstract class _KasaEkstreRaporuViewModelBase with Store {
   //* Model

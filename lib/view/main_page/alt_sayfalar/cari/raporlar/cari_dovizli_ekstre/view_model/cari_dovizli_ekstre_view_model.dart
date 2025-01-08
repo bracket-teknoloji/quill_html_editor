@@ -5,7 +5,7 @@ import "../../../../../../../core/constants/extensions/number_extensions.dart";
 
 part "cari_dovizli_ekstre_view_model.g.dart";
 
-class CariDovizliEkstreViewModel = _CariDovizliEkstreViewModelBase with _$CariDovizliEkstreViewModel;
+final class CariDovizliEkstreViewModel = _CariDovizliEkstreViewModelBase with _$CariDovizliEkstreViewModel;
 
 abstract class _CariDovizliEkstreViewModelBase with Store {
   @observable

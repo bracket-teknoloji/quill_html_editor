@@ -7,7 +7,7 @@ import "../../../../view_model/mobx_network_mixin.dart";
 
 part "seri_bakiyeleri_view_model.g.dart";
 
-class SeriBakiyeleriViewModel = _SeriBakiyeleriViewModelBase with _$SeriBakiyeleriViewModel;
+final class SeriBakiyeleriViewModel = _SeriBakiyeleriViewModelBase with _$SeriBakiyeleriViewModel;
 
 abstract class _SeriBakiyeleriViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String?> bakiyeDurumuMap = {

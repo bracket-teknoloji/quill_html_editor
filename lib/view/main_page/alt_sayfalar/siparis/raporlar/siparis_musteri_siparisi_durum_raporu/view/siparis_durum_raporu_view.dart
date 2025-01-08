@@ -27,7 +27,7 @@ import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/siparis_durum_raporu_view_model.dart";
 
-class SiparisDurumRaporuView extends StatefulWidget {
+final class SiparisDurumRaporuView extends StatefulWidget {
   const SiparisDurumRaporuView({required this.editTipiEnum, super.key});
   final EditTipiEnum editTipiEnum;
 
@@ -35,7 +35,7 @@ class SiparisDurumRaporuView extends StatefulWidget {
   State<SiparisDurumRaporuView> createState() => _YaslandirmaRaporuViewState();
 }
 
-class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
+final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView> {
   late final SiparisDurumRaporuViewModel viewModel;
   late final ScrollController scrollController;
   late final TextEditingController belgeNoController;

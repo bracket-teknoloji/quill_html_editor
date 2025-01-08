@@ -15,7 +15,7 @@ part "kalem_ekle_view_model.g.dart";
 
 typedef Olculer = ({String? adi, double? pay, double? payda});
 
-class KalemEkleViewModel = _KalemEkleViewModelBase with _$KalemEkleViewModel;
+final class KalemEkleViewModel = _KalemEkleViewModelBase with _$KalemEkleViewModel;
 
 abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   @observable

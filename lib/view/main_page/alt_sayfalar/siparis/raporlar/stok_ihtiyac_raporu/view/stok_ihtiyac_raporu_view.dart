@@ -6,7 +6,7 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../siparis_stok_ihtiyac_raporu/view_model/stok_ihtiyac_raporu_view_model.dart";
 
-class StokIhtiyacRaporu extends StatefulWidget {
+final class StokIhtiyacRaporu extends StatefulWidget {
   const StokIhtiyacRaporu({super.key, this.model});
   final BaseSiparisEditModel? model;
 
@@ -14,7 +14,7 @@ class StokIhtiyacRaporu extends StatefulWidget {
   State<StokIhtiyacRaporu> createState() => _StokIhtiyacRaporuViewState();
 }
 
-class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
+final class _StokIhtiyacRaporuViewState extends BaseState<StokIhtiyacRaporu> {
   late final StokIhtiyacRaporuViewModel viewModel;
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;

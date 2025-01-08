@@ -10,7 +10,7 @@ import "../model/sayilan_kalemler_request_model.dart";
 
 part "sayim_sayilanlar_view_model.g.dart";
 
-class SayimSayilanlarViewModel = _SayimSayilanlarViewModelBase with _$SayimSayilanlarViewModel;
+final class SayimSayilanlarViewModel = _SayimSayilanlarViewModelBase with _$SayimSayilanlarViewModel;
 
 abstract class _SayimSayilanlarViewModelBase with Store, MobxNetworkMixin {
   @observable

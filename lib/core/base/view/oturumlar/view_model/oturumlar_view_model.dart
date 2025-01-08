@@ -8,7 +8,7 @@ import "../../../view_model/searchable_mixin.dart";
 
 part "oturumlar_view_model.g.dart";
 
-class OturumlarViewModel = _OturumlarViewModelBase with _$OturumlarViewModel;
+final class OturumlarViewModel = _OturumlarViewModelBase with _$OturumlarViewModel;
 
 abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin, ListableMixin<AccountModel>, SearchableMixin {
   @override

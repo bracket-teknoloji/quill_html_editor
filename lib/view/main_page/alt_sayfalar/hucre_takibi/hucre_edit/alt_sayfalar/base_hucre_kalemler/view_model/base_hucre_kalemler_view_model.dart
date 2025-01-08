@@ -10,7 +10,7 @@ import "../../../../hucre_transferi/model/hucre_transferi_model.dart";
 
 part "base_hucre_kalemler_view_model.g.dart";
 
-class BaseHucreKalemlerViewModel = _BaseHucreKalemlerViewModelBase with _$BaseHucreKalemlerViewModel;
+final class BaseHucreKalemlerViewModel = _BaseHucreKalemlerViewModelBase with _$BaseHucreKalemlerViewModel;
 
 abstract class _BaseHucreKalemlerViewModelBase with Store, MobxNetworkMixin {
   @observable

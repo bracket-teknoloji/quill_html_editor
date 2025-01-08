@@ -8,7 +8,7 @@ import "../../../init/network/login/api_urls.dart";
 
 part "aciklama_duzenle_view_model.g.dart";
 
-class AciklamaDuzenleViewModel = AciklamaDuzenleViewModelBase with _$AciklamaDuzenleViewModel;
+final class AciklamaDuzenleViewModel = AciklamaDuzenleViewModelBase with _$AciklamaDuzenleViewModel;
 
 abstract class AciklamaDuzenleViewModelBase with Store, MobxNetworkMixin {
   @observable

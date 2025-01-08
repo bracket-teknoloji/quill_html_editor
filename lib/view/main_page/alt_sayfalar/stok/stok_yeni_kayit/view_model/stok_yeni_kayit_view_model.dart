@@ -7,7 +7,7 @@ import "../model/stok_yeni_kayit_model.dart";
 
 part "stok_yeni_kayit_view_model.g.dart";
 
-class StokYeniKayitViewModel = _StokYeniKayitViewModelBase with _$StokYeniKayitViewModel;
+final class StokYeniKayitViewModel = _StokYeniKayitViewModelBase with _$StokYeniKayitViewModel;
 
 abstract class _StokYeniKayitViewModelBase with Store {
   @observable

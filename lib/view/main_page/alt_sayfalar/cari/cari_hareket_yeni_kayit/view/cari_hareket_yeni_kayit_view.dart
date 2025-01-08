@@ -22,7 +22,7 @@ import "../../cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../model/cari_hareket_yeni_kayit_model.dart";
 import "../view_model/cari_hareket_yeni_kayit_view_model.dart";
 
-class CariYeniKayitView extends StatefulWidget {
+final class CariYeniKayitView extends StatefulWidget {
   const CariYeniKayitView({super.key, this.model});
   final BaseEditModel<CariHareketleriModel>? model;
 
@@ -30,7 +30,7 @@ class CariYeniKayitView extends StatefulWidget {
   State<CariYeniKayitView> createState() => _CariYeniKayitViewState();
 }
 
-class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
+final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   CariHareketYeniKayitViewModel viewModel = CariHareketYeniKayitViewModel();
   CariHareketleriModel? get model => widget.model?.model ?? CariHareketleriModel();
   bool get enable => widget.model?.baseEditEnum != BaseEditEnum.goruntule;

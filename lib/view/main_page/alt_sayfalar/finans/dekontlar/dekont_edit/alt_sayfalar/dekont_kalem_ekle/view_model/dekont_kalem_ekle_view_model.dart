@@ -9,7 +9,7 @@ import "../../../../../../../model/param_model.dart";
 
 part "dekont_kalem_ekle_view_model.g.dart";
 
-class DekontKalemEkleViewModel = _DekontKalemEkleViewModelBase with _$DekontKalemEkleViewModel;
+final class DekontKalemEkleViewModel = _DekontKalemEkleViewModelBase with _$DekontKalemEkleViewModel;
 
 abstract class _DekontKalemEkleViewModelBase with Store, MobxNetworkMixin {
   _DekontKalemEkleViewModelBase({required this.model});

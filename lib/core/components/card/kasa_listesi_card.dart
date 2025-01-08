@@ -7,7 +7,7 @@ import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 
-class KasaListesiCard extends StatefulWidget {
+final class KasaListesiCard extends StatefulWidget {
   const KasaListesiCard({
     required this.item,
     super.key,
@@ -21,7 +21,7 @@ class KasaListesiCard extends StatefulWidget {
   State<KasaListesiCard> createState() => _KasaListesiCardState();
 }
 
-class _KasaListesiCardState extends BaseState<KasaListesiCard> {
+final class _KasaListesiCardState extends BaseState<KasaListesiCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(

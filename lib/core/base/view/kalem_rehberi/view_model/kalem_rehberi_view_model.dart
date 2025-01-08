@@ -8,7 +8,7 @@ import "../../../view_model/mobx_network_mixin.dart";
 
 part "kalem_rehberi_view_model.g.dart";
 
-class KalemRehberiViewModel = _KalemRehberiViewModelBase with _$KalemRehberiViewModel;
+final class KalemRehberiViewModel = _KalemRehberiViewModelBase with _$KalemRehberiViewModel;
 
 abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String> _siralaMap = {

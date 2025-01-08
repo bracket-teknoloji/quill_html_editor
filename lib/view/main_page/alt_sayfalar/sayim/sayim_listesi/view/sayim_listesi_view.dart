@@ -14,14 +14,14 @@ import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view_mode
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
 
-class SayimListesiView extends StatefulWidget {
+final class SayimListesiView extends StatefulWidget {
   const SayimListesiView({super.key});
 
   @override
   State<SayimListesiView> createState() => _SayimListesiViewState();
 }
 
-class _SayimListesiViewState extends BaseState<SayimListesiView> {
+final class _SayimListesiViewState extends BaseState<SayimListesiView> {
   late final TextEditingController depoKoduController;
   late final TextEditingController grupKoduController;
   late final TextEditingController kod1Controller;

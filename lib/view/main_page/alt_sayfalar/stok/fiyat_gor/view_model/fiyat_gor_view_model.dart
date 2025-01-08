@@ -5,7 +5,7 @@ import "../model/fiyat_gor_model.dart";
 
 part "fiyat_gor_view_model.g.dart";
 
-class FiyatGorViewModel = _FiyatGorViewModelBase with _$FiyatGorViewModel;
+final class FiyatGorViewModel = _FiyatGorViewModelBase with _$FiyatGorViewModel;
 
 abstract class _FiyatGorViewModelBase with Store {
   @observable

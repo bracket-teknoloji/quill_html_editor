@@ -28,7 +28,7 @@ import "../../init/cache/cache_manager.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class SiparislerCard extends StatefulWidget {
+final class SiparislerCard extends StatefulWidget {
   const SiparislerCard({
     required this.model,
     required this.editTipiEnum,
@@ -57,7 +57,7 @@ class SiparislerCard extends StatefulWidget {
   State<SiparislerCard> createState() => _SiparislerCardState();
 }
 
-class _SiparislerCardState extends BaseState<SiparislerCard> {
+final class _SiparislerCardState extends BaseState<SiparislerCard> {
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
 
   List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();

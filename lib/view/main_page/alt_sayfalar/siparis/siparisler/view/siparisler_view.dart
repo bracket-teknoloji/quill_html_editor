@@ -37,7 +37,7 @@ import "../model/siparis_edit_request_model.dart";
 import "../model/siparisler_widget_model.dart";
 import "../view_model/siparisler_view_model.dart";
 
-class SiparislerView extends StatefulWidget {
+final class SiparislerView extends StatefulWidget {
   const SiparislerView({required this.widgetModel, super.key});
   final SiparislerWidgetModel widgetModel;
 
@@ -45,7 +45,7 @@ class SiparislerView extends StatefulWidget {
   State<SiparislerView> createState() => _SiparislerViewState();
 }
 
-class _SiparislerViewState extends BaseState<SiparislerView> {
+final class _SiparislerViewState extends BaseState<SiparislerView> {
   late final ScrollController scrollController;
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;

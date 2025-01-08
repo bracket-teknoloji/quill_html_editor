@@ -12,7 +12,7 @@ import "../../../model/doviz_kurlari_model.dart";
 import "../../../state/base_state.dart";
 import "../view_model/doviz_kuru_girisi_view_model.dart";
 
-class DovizKuruGirisiView extends StatefulWidget {
+final class DovizKuruGirisiView extends StatefulWidget {
   const DovizKuruGirisiView({super.key, this.dovizKurlariModel});
   final DovizKurlariModel? dovizKurlariModel;
 
@@ -20,7 +20,7 @@ class DovizKuruGirisiView extends StatefulWidget {
   State<DovizKuruGirisiView> createState() => _DovizKuruGirisiViewState();
 }
 
-class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
+final class _DovizKuruGirisiViewState extends BaseState<DovizKuruGirisiView> {
   DovizKuruGirisiViewModel viewModel = DovizKuruGirisiViewModel();
   late final TextEditingController tarihController;
   late final TextEditingController dovizTipiController;

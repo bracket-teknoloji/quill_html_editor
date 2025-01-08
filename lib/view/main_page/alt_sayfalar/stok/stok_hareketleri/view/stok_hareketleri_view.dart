@@ -36,7 +36,7 @@ import "../../stok_liste/model/stok_listesi_model.dart";
 import "../model/stok_hareketleri_model.dart";
 import "../view_model/stok_hareketleri_view_model.dart";
 
-class StokHareketleriView extends StatefulWidget {
+final class StokHareketleriView extends StatefulWidget {
   const StokHareketleriView({super.key, this.model, this.stokKodu, this.cariModel});
   final StokListesiModel? model;
   final String? stokKodu;
@@ -46,7 +46,7 @@ class StokHareketleriView extends StatefulWidget {
   State<StokHareketleriView> createState() => _StokHareketleriViewState();
 }
 
-class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
+final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   StokHareketleriViewModel viewModel = StokHareketleriViewModel();
   late final TextEditingController _hareketTuruController;
   late final TextEditingController _cariController;

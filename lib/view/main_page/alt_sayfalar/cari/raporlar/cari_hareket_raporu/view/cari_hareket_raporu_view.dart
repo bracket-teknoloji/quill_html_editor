@@ -17,7 +17,7 @@ import "../../../../../model/param_model.dart";
 import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_hareket_raporu_view_model.dart";
 
-class CariHareketRaporuView extends StatefulWidget {
+final class CariHareketRaporuView extends StatefulWidget {
   const CariHareketRaporuView({super.key, this.model});
   final CariListesiModel? model;
 
@@ -25,7 +25,7 @@ class CariHareketRaporuView extends StatefulWidget {
   State<CariHareketRaporuView> createState() => _CariHareketRaporuViewState();
 }
 
-class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
+final class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView> {
   CariHareketRaporuViewModel viewModel = CariHareketRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
   late final TextEditingController baslangicTarihiController;

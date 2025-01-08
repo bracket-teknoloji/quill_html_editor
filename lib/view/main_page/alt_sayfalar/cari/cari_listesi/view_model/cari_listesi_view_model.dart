@@ -17,7 +17,7 @@ import "../model/cari_sehirler_model.dart";
 
 part "cari_listesi_view_model.g.dart";
 
-class CariListesiViewModel = _CariListesiViewModelBase with _$CariListesiViewModel;
+final class CariListesiViewModel = _CariListesiViewModelBase with _$CariListesiViewModel;
 
 abstract class _CariListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<CariListesiModel>, ScrollControllableMixin, PageableMixin {
   final Map<String, String> bakiyeMap = {"Tümü": "", "Tahsil Edilecek": "T", "Ödenecek": "Ö", "Sıfır Bakiye": "S", "Bakiyeli": "B"};

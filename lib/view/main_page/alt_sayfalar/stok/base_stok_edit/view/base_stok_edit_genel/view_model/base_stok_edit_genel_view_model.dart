@@ -10,7 +10,7 @@ import "../../../model/stok_muhasebe_kodu_model.dart";
 
 part "base_stok_edit_genel_view_model.g.dart";
 
-class BaseStokEditGenelViewModel = _BaseStokEditGenelViewModelBase with _$BaseStokEditGenelViewModel;
+final class BaseStokEditGenelViewModel = _BaseStokEditGenelViewModelBase with _$BaseStokEditGenelViewModel;
 
 abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
   @observable

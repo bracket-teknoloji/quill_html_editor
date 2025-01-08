@@ -7,7 +7,7 @@ import "../../stok_liste/model/stok_listesi_model.dart";
 
 part "stok_yazdir_view_model.g.dart";
 
-class StokYazdirViewModel = _StokYazdirViewModelBase with _$StokYazdirViewModel;
+final class StokYazdirViewModel = _StokYazdirViewModelBase with _$StokYazdirViewModel;
 
 abstract class _StokYazdirViewModelBase with Store {
   @action

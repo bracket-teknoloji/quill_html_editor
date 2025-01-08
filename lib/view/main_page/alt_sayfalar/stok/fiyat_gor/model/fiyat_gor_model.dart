@@ -5,7 +5,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 part "fiyat_gor_model.g.dart";
 
 @JsonSerializable()
-class FiyatGorModel with NetworkManagerMixin {
+final class FiyatGorModel with NetworkManagerMixin {
   String? stokKodu;
   String? aS;
   int? dovizTipi;

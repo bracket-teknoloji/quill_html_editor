@@ -21,7 +21,7 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_bottom_sheet_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
-class SeriHareketleriView extends StatefulWidget {
+final class SeriHareketleriView extends StatefulWidget {
   const SeriHareketleriView({required this.model, super.key});
   final StokListesiModel? model;
 
@@ -29,7 +29,7 @@ class SeriHareketleriView extends StatefulWidget {
   State<SeriHareketleriView> createState() => _SeriHareketleriViewState();
 }
 
-class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
+final class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
   late final TextEditingController _stokKoduController;
   SeriHareketleriViewModel viewModel = SeriHareketleriViewModel();
 

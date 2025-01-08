@@ -12,7 +12,7 @@ import "../model/masraf_kodu_rehberi_model.dart";
 
 part "masraf_kodu_rehberi_view_model.g.dart";
 
-class MasrafKoduRehberiViewModel = _MasrafKoduRehberiViewModelBase with _$MasrafKoduRehberiViewModel;
+final class MasrafKoduRehberiViewModel = _MasrafKoduRehberiViewModelBase with _$MasrafKoduRehberiViewModel;
 
 abstract class _MasrafKoduRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<MasrafKoduRehberiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   @override

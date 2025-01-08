@@ -15,7 +15,7 @@ import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "../model/cek_senet_evrak_ekle_model.dart";
 import "../view_model/cek_senet_evrak_ekle_view_model.dart";
 
-class CekSenetEvrakEkleView extends StatefulWidget {
+final class CekSenetEvrakEkleView extends StatefulWidget {
   const CekSenetEvrakEkleView({required this.model, super.key});
   final CekSenetListesiModel model;
 
@@ -23,7 +23,7 @@ class CekSenetEvrakEkleView extends StatefulWidget {
   State<CekSenetEvrakEkleView> createState() => _CekSenetEvrakEkleViewState();
 }
 
-class _CekSenetEvrakEkleViewState extends BaseState<CekSenetEvrakEkleView> {
+final class _CekSenetEvrakEkleViewState extends BaseState<CekSenetEvrakEkleView> {
   late final CekSenetEvrakEkleViewModel viewModel;
   late final TextEditingController _aciklamaController;
 

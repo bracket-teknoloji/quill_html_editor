@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 
-class ResponsiveBox extends StatelessWidget {
+final class ResponsiveBox extends StatelessWidget {
   const ResponsiveBox({super.key});
 
   @override

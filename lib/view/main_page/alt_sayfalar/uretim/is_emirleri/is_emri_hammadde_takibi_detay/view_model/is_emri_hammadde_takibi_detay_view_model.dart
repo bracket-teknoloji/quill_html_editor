@@ -11,7 +11,7 @@ import "../model/is_emri_hammadde_takibi_detay_request_model.dart";
 
 part "is_emri_hammadde_takibi_detay_view_model.g.dart";
 
-class IsEmriHammaddeTakibiDetayViewModel = _IsEmriHammaddeTakibiDetayViewModelBase with _$IsEmriHammaddeTakibiDetayViewModel;
+final class IsEmriHammaddeTakibiDetayViewModel = _IsEmriHammaddeTakibiDetayViewModelBase with _$IsEmriHammaddeTakibiDetayViewModel;
 
 abstract class _IsEmriHammaddeTakibiDetayViewModelBase with Store, MobxNetworkMixin, ListableMixin<IsEmriHammaddeTakibiDetayModel> {
   _IsEmriHammaddeTakibiDetayViewModelBase({required this.model}) {

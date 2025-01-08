@@ -13,7 +13,7 @@ import "../../constants/ui_helper/text_field_formatter_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "custom_text_field_view_model.dart";
 
-class CustomTextField extends StatefulWidget {
+final class CustomTextField extends StatefulWidget {
   const CustomTextField({
     super.key,
     this.controller,
@@ -98,7 +98,7 @@ class CustomTextField extends StatefulWidget {
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
-class _CustomTextFieldState extends BaseState<CustomTextField> {
+final class _CustomTextFieldState extends BaseState<CustomTextField> {
   CustomTextFieldViewModel viewModel = CustomTextFieldViewModel();
   TextEditingController get controller => widget.controller ?? TextEditingController(text: widget.controllerText);
   @override

@@ -8,7 +8,7 @@ import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../textfield/custom_text_field.dart";
 import "../view_model/rapor_filtre_date_time_bottom_sheet_view_model.dart";
 
-class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
+final class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   const RaporFiltreDateTimeBottomSheetView({
     required this.filterOnChanged,
     required this.baslangicTarihiController,
@@ -31,7 +31,7 @@ class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();
 }
 
-class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFiltreDateTimeBottomSheetView> {
+final class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFiltreDateTimeBottomSheetView> {
   late final ScrollController scrollController;
   RaporFiltreDateTimeBottomSheetViewModel viewModel = RaporFiltreDateTimeBottomSheetViewModel();
 

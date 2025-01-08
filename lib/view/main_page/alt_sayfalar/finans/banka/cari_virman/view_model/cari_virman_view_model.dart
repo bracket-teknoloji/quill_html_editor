@@ -8,7 +8,7 @@ import "../../../../../../../core/init/network/login/api_urls.dart";
 
 part "cari_virman_view_model.g.dart";
 
-class CariVirmanViewModel = _CariVirmanViewModelBase with _$CariVirmanViewModel;
+final class CariVirmanViewModel = _CariVirmanViewModelBase with _$CariVirmanViewModel;
 
 abstract class _CariVirmanViewModelBase with Store, MobxNetworkMixin {
   @observable

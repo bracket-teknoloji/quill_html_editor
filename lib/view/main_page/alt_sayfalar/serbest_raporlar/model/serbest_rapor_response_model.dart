@@ -5,7 +5,7 @@ import "../../../../../core/base/model/base_network_mixin.dart";
 part "serbest_rapor_response_model.g.dart";
 
 @JsonSerializable(explicitToJson: true)
-class SerbestRaporResponseModel with NetworkManagerMixin {
+final class SerbestRaporResponseModel with NetworkManagerMixin {
   String? adi;
   bool? bosGecilebilir;
   String? tipi;

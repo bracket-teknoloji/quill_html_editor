@@ -13,7 +13,7 @@ import "../../../../model/cari_aktivite_listesi_model.dart";
 
 part "cari_aktivite_genel_view_model.g.dart";
 
-class CariAktiviteGenelViewModel = CariAktiviteGenelViewModelBase with _$CariAktiviteGenelViewModel;
+final class CariAktiviteGenelViewModel = CariAktiviteGenelViewModelBase with _$CariAktiviteGenelViewModel;
 
 abstract class CariAktiviteGenelViewModelBase with Store, MobxNetworkMixin {
   @observable

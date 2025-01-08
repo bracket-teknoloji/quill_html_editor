@@ -9,7 +9,7 @@ import "../model/kasa_listesi_model.dart";
 
 part "kasa_listesi_view_model.g.dart";
 
-class KasaListesiViewModel = _KasaListesiViewModelBase with _$KasaListesiViewModel;
+final class KasaListesiViewModel = _KasaListesiViewModelBase with _$KasaListesiViewModel;
 
 abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<KasaListesiModel>, SearchableMixin {
   final Map<String, String> siralaMap = {

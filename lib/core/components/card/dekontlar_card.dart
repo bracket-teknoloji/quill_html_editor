@@ -9,7 +9,7 @@ import "../../constants/ondalik_utils.dart";
 import "../../init/network/login/api_urls.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class DekontlarCard extends StatefulWidget {
+final class DekontlarCard extends StatefulWidget {
   const DekontlarCard({required this.model, required this.onSelected, super.key});
   final DekontListesiModel model;
   final ValueChanged<bool> onSelected;
@@ -18,7 +18,7 @@ class DekontlarCard extends StatefulWidget {
   State<DekontlarCard> createState() => _DekontlarCardState();
 }
 
-class _DekontlarCardState extends BaseState<DekontlarCard> {
+final class _DekontlarCardState extends BaseState<DekontlarCard> {
   DekontListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(

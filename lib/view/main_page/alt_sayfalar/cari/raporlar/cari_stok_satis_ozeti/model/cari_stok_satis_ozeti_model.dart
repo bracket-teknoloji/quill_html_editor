@@ -5,7 +5,7 @@ import "../../../../../../../core/base/model/base_network_mixin.dart";
 part "cari_stok_satis_ozeti_model.g.dart";
 
 @JsonSerializable(explicitToJson: true)
-class CariStokSatisOzetiModel with NetworkManagerMixin {
+final class CariStokSatisOzetiModel with NetworkManagerMixin {
   String? stokKodu;
   double? miktar;
   DateTime? tarih;

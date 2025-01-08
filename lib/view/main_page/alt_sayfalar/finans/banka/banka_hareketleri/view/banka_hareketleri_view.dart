@@ -16,7 +16,7 @@ import "../../banka_listesi/model/banka_listesi_model.dart";
 import "../model/banka_hareketleri_model.dart";
 import "../view_model/banka_hareketleri_view_model.dart";
 
-class BankaHareketleriView extends StatefulWidget {
+final class BankaHareketleriView extends StatefulWidget {
   const BankaHareketleriView({required this.model, super.key});
   final BankaListesiModel model;
 
@@ -24,7 +24,7 @@ class BankaHareketleriView extends StatefulWidget {
   State<BankaHareketleriView> createState() => _BankaHareketleriViewState();
 }
 
-class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
+final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
   BankaHareketleriViewModel viewModel = BankaHareketleriViewModel();
 
   @override

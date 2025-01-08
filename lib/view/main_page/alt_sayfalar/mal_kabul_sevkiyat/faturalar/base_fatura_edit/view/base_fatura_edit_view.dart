@@ -41,7 +41,7 @@ import "../alt_sayfalar/base_fatura_kalemler/view/base_fatura_kalemler_view.dart
 import "../alt_sayfalar/base_fatura_toplamlar/view/base_fatura_toplamlar_view.dart";
 import "../view_model/base_fatura_edit_view_model.dart";
 
-class BaseFaturaEditView extends StatefulWidget {
+final class BaseFaturaEditView extends StatefulWidget {
   const BaseFaturaEditView({required this.model, super.key, this.isSubTitleSmall});
   final bool? isSubTitleSmall;
   // final List<Widget>? actions;
@@ -51,7 +51,7 @@ class BaseFaturaEditView extends StatefulWidget {
   State<BaseFaturaEditView> createState() => _BaseFaturaEditViewState();
 }
 
-class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with TickerProviderStateMixin {
+final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with TickerProviderStateMixin {
   BaseFaturaEditViewModel viewModel = BaseFaturaEditViewModel();
   late final TabController tabController;
   late BaseEditModel<SiparisEditRequestModel> model;

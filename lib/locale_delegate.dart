@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 import "generated/locale_base.dart";
 
-class LocDelegate extends LocalizationsDelegate<LocaleBase> {
+final class LocDelegate extends LocalizationsDelegate<LocaleBase> {
   const LocDelegate();
   final idMap = const {"en": "locales/EN_US.json", "tr": "locales/TR.json"};
 

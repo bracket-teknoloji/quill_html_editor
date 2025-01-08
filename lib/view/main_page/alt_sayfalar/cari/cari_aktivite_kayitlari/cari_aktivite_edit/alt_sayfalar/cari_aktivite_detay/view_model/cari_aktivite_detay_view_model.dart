@@ -9,7 +9,7 @@ import "../../../../model/cari_aktivite_listesi_model.dart";
 
 part "cari_aktivite_detay_view_model.g.dart";
 
-class CariAktiviteDetayViewModel = _CariAktiviteDetayViewModelBase with _$CariAktiviteDetayViewModel;
+final class CariAktiviteDetayViewModel = _CariAktiviteDetayViewModelBase with _$CariAktiviteDetayViewModel;
 
 abstract class _CariAktiviteDetayViewModelBase with Store, MobxNetworkMixin {
   @observable

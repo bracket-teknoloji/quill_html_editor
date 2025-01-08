@@ -8,7 +8,7 @@ import "../model/hucre_hareketleri_request_model.dart";
 
 part "hucre_hareketleri_view_model.g.dart";
 
-class HucreHareketleriViewModel = _HucreHareketleriViewModelBase with _$HucreHareketleriViewModel;
+final class HucreHareketleriViewModel = _HucreHareketleriViewModelBase with _$HucreHareketleriViewModel;
 
 abstract class _HucreHareketleriViewModelBase with Store, MobxNetworkMixin {
   @observable

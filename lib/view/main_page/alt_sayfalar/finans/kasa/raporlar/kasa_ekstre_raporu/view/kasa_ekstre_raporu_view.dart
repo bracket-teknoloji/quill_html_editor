@@ -10,14 +10,14 @@ import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../model/param_model.dart";
 import "../view_model/kasa_ekstre_raporu_view_model.dart";
 
-class KasaEkstreRaporuView extends StatefulWidget {
+final class KasaEkstreRaporuView extends StatefulWidget {
   const KasaEkstreRaporuView({super.key});
 
   @override
   State<KasaEkstreRaporuView> createState() => _KasaEkstreRaporuViewState();
 }
 
-class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
+final class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
   KasaEkstreRaporuViewModel viewModel = KasaEkstreRaporuViewModel();
   late final TextEditingController baslangicController;
   late final TextEditingController bitisController;

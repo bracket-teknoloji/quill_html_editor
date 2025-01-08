@@ -15,7 +15,7 @@ import "../../banka_listesi/model/banka_listesi_request_model.dart";
 
 part "cari_havale_eft_view_model.g.dart";
 
-class CariHavaleEftViewModel = _CariHavaleEftViewModelBase with _$CariHavaleEftViewModel;
+final class CariHavaleEftViewModel = _CariHavaleEftViewModelBase with _$CariHavaleEftViewModel;
 
 abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   @observable

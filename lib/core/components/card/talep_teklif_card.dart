@@ -28,7 +28,7 @@ import "../../init/network/login/api_urls.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class TalepTeklifCard extends StatefulWidget {
+final class TalepTeklifCard extends StatefulWidget {
   const TalepTeklifCard({
     required this.model,
     required this.talepTeklifEnum,
@@ -59,7 +59,7 @@ class TalepTeklifCard extends StatefulWidget {
   State<TalepTeklifCard> createState() => _TalepTeklifCardState();
 }
 
-class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
+final class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
 
   BaseSiparisEditModel get model => widget.model;

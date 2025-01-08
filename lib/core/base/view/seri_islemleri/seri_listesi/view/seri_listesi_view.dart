@@ -19,7 +19,7 @@ import "../../../../state/base_state.dart";
 import "../model/seri_detayi_model.dart";
 import "../view_model/seri_listesi_view_model.dart";
 
-class SeriListesiView extends StatefulWidget {
+final class SeriListesiView extends StatefulWidget {
   const SeriListesiView({required this.kalemModel, super.key});
   final KalemModel kalemModel;
 
@@ -27,7 +27,7 @@ class SeriListesiView extends StatefulWidget {
   State<SeriListesiView> createState() => _SeriListesiViewState();
 }
 
-class _SeriListesiViewState extends BaseState<SeriListesiView> {
+final class _SeriListesiViewState extends BaseState<SeriListesiView> {
   late final SeriListesiViewModel viewModel;
   @override
   void initState() {

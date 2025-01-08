@@ -25,7 +25,7 @@ import "../../../../../core/init/network/login/api_urls.dart";
 import "../model/serbest_rapor_response_model.dart";
 import "../view_model/serbest_raporlar_view_model.dart";
 
-class SerbestRaporlarView extends StatefulWidget {
+final class SerbestRaporlarView extends StatefulWidget {
   const SerbestRaporlarView({
     super.key,
     this.dizaynList,
@@ -40,7 +40,7 @@ class SerbestRaporlarView extends StatefulWidget {
   State<SerbestRaporlarView> createState() => _SerbestRaporlarViewState();
 }
 
-class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
+final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   SerbestRaporlarViewModel viewModel = SerbestRaporlarViewModel();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override

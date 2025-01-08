@@ -14,7 +14,7 @@ import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../model/stok_detay_model.dart";
 import "../view_model/base_stok_edit_seriler_view_model.dart";
 
-class BaseStokEditSerilerView extends StatefulWidget {
+final class BaseStokEditSerilerView extends StatefulWidget {
   const BaseStokEditSerilerView({super.key, this.model});
   final BaseEditEnum? model;
 
@@ -22,7 +22,7 @@ class BaseStokEditSerilerView extends StatefulWidget {
   State<BaseStokEditSerilerView> createState() => _BaseStokEditSerilerViewState();
 }
 
-class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerView> {
+final class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerView> {
   BaseStokEditSerilerViewModel viewModel = BaseStokEditSerilerViewModel();
   StokDetayModel get stokModel => StokDetayModel.instance;
   @override

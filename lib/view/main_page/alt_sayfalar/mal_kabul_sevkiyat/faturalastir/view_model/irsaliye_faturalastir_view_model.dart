@@ -11,7 +11,7 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "irsaliye_faturalastir_view_model.g.dart";
 
-class IrsaliyeFaturalastirViewModel = _IrsaliyeFaturalastirViewModelBase with _$IrsaliyeFaturalastirViewModel;
+final class IrsaliyeFaturalastirViewModel = _IrsaliyeFaturalastirViewModelBase with _$IrsaliyeFaturalastirViewModel;
 
 abstract class _IrsaliyeFaturalastirViewModelBase with Store, MobxNetworkMixin {
   @observable

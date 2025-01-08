@@ -8,7 +8,7 @@ import "../model/surum_yenilikleri_model.dart";
 
 part "surum_yenilikleri_view_model.g.dart";
 
-class SurumYenilikleriViewModel = _SurumYenilikleriViewModelBase with _$SurumYenilikleriViewModel;
+final class SurumYenilikleriViewModel = _SurumYenilikleriViewModelBase with _$SurumYenilikleriViewModel;
 
 abstract class _SurumYenilikleriViewModelBase with Store, MobxNetworkMixin, ListableMixin<SurumYenilikleriModel> {
   @observable

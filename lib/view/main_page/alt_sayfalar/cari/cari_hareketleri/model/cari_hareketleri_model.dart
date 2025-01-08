@@ -5,7 +5,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 part "cari_hareketleri_model.g.dart";
 
 @JsonSerializable()
-class CariHareketleriModel with NetworkManagerMixin {
+final class CariHareketleriModel with NetworkManagerMixin {
   int? inckeyno;
   String? cariKodu;
   String? cariAdi;

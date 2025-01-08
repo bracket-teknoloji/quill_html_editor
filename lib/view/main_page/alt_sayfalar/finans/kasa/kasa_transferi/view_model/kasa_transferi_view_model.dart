@@ -13,7 +13,7 @@ import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart
 
 part "kasa_transferi_view_model.g.dart";
 
-class KasaTransferiViewModel = _KasaTransferiViewModelBase with _$KasaTransferiViewModel;
+final class KasaTransferiViewModel = _KasaTransferiViewModelBase with _$KasaTransferiViewModel;
 
 abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable

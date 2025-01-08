@@ -22,14 +22,14 @@ import "../model/fiyat_gecmisi_model.dart";
 import "../model/fiyat_gecmisi_response_model.dart";
 import "../view_model/fiyat_gecmisi_view_model.dart";
 
-class FiyatGecmisiView extends StatefulWidget {
+final class FiyatGecmisiView extends StatefulWidget {
   const FiyatGecmisiView({super.key});
 
   @override
   State<FiyatGecmisiView> createState() => _FiyatGecmisiViewState();
 }
 
-class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
+final class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
   FiyatGecmisiViewModel viewModel = FiyatGecmisiViewModel();
   late final TextEditingController searchBarController;
   late final TextEditingController dizaynController;

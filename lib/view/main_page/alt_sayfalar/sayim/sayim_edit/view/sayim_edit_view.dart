@@ -28,7 +28,7 @@ import "../sayilanlar_listesi/view/sayim_sayilanlar_view.dart";
 import "../sayim_girisi/view/sayim_girisi_view.dart";
 import "../view_model/sayim_edit_view_model.dart";
 
-class SayimEditView extends StatefulWidget {
+final class SayimEditView extends StatefulWidget {
   const SayimEditView({required this.model, super.key});
   final SayimListesiModel model;
 
@@ -36,7 +36,7 @@ class SayimEditView extends StatefulWidget {
   State<SayimEditView> createState() => _SayimEditViewState();
 }
 
-class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderStateMixin {
+final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderStateMixin {
   late final TabController controller;
   SayimListesiModel get model => widget.model;
   final SayimEditViewModel viewModel = SayimEditViewModel();

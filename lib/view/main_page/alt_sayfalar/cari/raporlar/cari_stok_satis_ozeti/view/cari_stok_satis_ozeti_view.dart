@@ -25,7 +25,7 @@ import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../model/cari_stok_satis_ozeti_model.dart";
 import "../view_model/cari_stok_satis_ozeti_view_model.dart";
 
-class CariStokSatisOzetiView extends StatefulWidget {
+final class CariStokSatisOzetiView extends StatefulWidget {
   const CariStokSatisOzetiView({super.key, this.model});
   final CariListesiModel? model;
 
@@ -33,7 +33,7 @@ class CariStokSatisOzetiView extends StatefulWidget {
   State<CariStokSatisOzetiView> createState() => _CariStokSatisOzetiViewState();
 }
 
-class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
+final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiView> {
   CariStokSatisOzetiViewModel viewModel = CariStokSatisOzetiViewModel();
 
   List<BaseGrupKoduModel> grupKodList = [];

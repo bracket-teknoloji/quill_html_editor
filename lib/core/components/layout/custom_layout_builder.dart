@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 import "../../base/state/base_state.dart";
 
-class CustomLayoutBuilder extends StatefulWidget {
+final class CustomLayoutBuilder extends StatefulWidget {
   const CustomLayoutBuilder({required this.splitCount, required this.children, super.key, this.lastItemExpanded, this.doNotExpand = false});
   const CustomLayoutBuilder.divideInHalf({required this.children, super.key, this.lastItemExpanded, this.doNotExpand = false}) : splitCount = 2;
   final List<Widget> children;
@@ -14,7 +14,7 @@ class CustomLayoutBuilder extends StatefulWidget {
   State<CustomLayoutBuilder> createState() => _CustomLayoutBuilderState();
 }
 
-class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
+final class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
   List<Widget> get children => widget.children.where((element) => element is! SizedBox).toList().cast<Widget>();
 
   @override

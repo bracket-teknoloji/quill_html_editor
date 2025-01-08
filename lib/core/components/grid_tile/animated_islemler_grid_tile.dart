@@ -6,7 +6,7 @@ import "../../base/state/base_state.dart";
 import "../../constants/ui_helper/icon_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
-class AnimatedIslemlerGridTile extends StatefulWidget {
+final class AnimatedIslemlerGridTile extends StatefulWidget {
   const AnimatedIslemlerGridTile({
     super.key,
     this.item,
@@ -19,7 +19,7 @@ class AnimatedIslemlerGridTile extends StatefulWidget {
   AnimatedIslemlerGridTileState createState() => AnimatedIslemlerGridTileState();
 }
 
-class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> {
+final class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGridTile> {
   @override
   Widget build(BuildContext context) => DecoratedBox(
         decoration: BoxDecoration(

@@ -5,7 +5,7 @@ import "../../../../../../../core/constants/extensions/number_extensions.dart";
 
 part "stok_ekstre_view_model.g.dart";
 
-class StokEkstreViewModel = _StokEkstreViewModelBase with _$StokEkstreViewModel;
+final class StokEkstreViewModel = _StokEkstreViewModelBase with _$StokEkstreViewModel;
 
 abstract class _StokEkstreViewModelBase with Store {
   @observable

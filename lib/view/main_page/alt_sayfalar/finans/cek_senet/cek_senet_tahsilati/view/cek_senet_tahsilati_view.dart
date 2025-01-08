@@ -23,7 +23,7 @@ import "../../../../cari/cari_listesi/model/cari_request_model.dart";
 import "../model/save_cek_senet_model.dart";
 import "../view_model/cek_senet_tahsilati_view_model.dart";
 
-class CekSenetTahsilatiView extends StatefulWidget {
+final class CekSenetTahsilatiView extends StatefulWidget {
   const CekSenetTahsilatiView({required this.cekSenetListesiEnum, super.key, this.cariListesiModel});
   final CekSenetListesiEnum cekSenetListesiEnum;
   final CariListesiModel? cariListesiModel;
@@ -32,7 +32,7 @@ class CekSenetTahsilatiView extends StatefulWidget {
   State<CekSenetTahsilatiView> createState() => _CekSenetTahsilatiViewState();
 }
 
-class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
+final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView> {
   CekSenetTahsilatiViewModel viewModel = CekSenetTahsilatiViewModel();
   late final TextEditingController _girisTarihiController;
   late final TextEditingController _cariController;

@@ -13,7 +13,7 @@ import "../model/paketleme_listesi_request_model.dart";
 
 part "paketleme_listesi_view_model.g.dart";
 
-class PaketlemeListesiViewModel = _PaketlemeListesiViewModelBase with _$PaketlemeListesiViewModel;
+final class PaketlemeListesiViewModel = _PaketlemeListesiViewModelBase with _$PaketlemeListesiViewModel;
 
 abstract class _PaketlemeListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<PaketlemeListesiModel>, SearchableMixin {
   @override

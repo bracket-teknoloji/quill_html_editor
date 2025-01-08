@@ -26,7 +26,7 @@ import "../../../../cari_network_manager.dart";
 import "../model/ulke_model.dart";
 import "../view_model/base_cari_genel_edit_view_model.dart";
 
-class BaseEditCariGenelView extends StatefulWidget {
+final class BaseEditCariGenelView extends StatefulWidget {
   const BaseEditCariGenelView({super.key, this.model});
   final BaseEditModel? model;
 
@@ -34,7 +34,7 @@ class BaseEditCariGenelView extends StatefulWidget {
   State<BaseEditCariGenelView> createState() => BaseEditCariGenelViewState();
 }
 
-class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
+final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> {
   BaseCariGenelEditViewModel viewModel = BaseCariGenelEditViewModel();
   MainPageModel? anaVeri = CacheManager.getAnaVeri;
   List<UlkeModel>? ulkeler;

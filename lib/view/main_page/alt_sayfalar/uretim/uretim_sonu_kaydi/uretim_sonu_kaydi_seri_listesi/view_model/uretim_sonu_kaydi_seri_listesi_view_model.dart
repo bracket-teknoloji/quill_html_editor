@@ -9,7 +9,7 @@ import "../model/uretim_sonu_kaydi_recete_model.dart";
 
 part "uretim_sonu_kaydi_seri_listesi_view_model.g.dart";
 
-class UretimSonuKaydiSeriListesiViewModel = _UretimSonuKaydiSeriListesiViewModelBase with _$UretimSonuKaydiSeriListesiViewModel;
+final class UretimSonuKaydiSeriListesiViewModel = _UretimSonuKaydiSeriListesiViewModelBase with _$UretimSonuKaydiSeriListesiViewModel;
 
 abstract class _UretimSonuKaydiSeriListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<UskReceteModel> {
   @observable

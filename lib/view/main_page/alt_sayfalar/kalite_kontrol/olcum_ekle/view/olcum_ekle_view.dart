@@ -24,7 +24,7 @@ import "../../olcum_belge_edit/model/olcum_pdf_model.dart";
 import "../model/olcum_ekle_model.dart";
 import "../view_model/olcum_ekle_view_model.dart";
 
-class OlcumEkleView extends StatefulWidget {
+final class OlcumEkleView extends StatefulWidget {
   const OlcumEkleView({required this.model, required this.baseEditEnum, super.key});
   final OlcumBelgeEditModel model;
   final BaseEditEnum baseEditEnum;
@@ -33,7 +33,7 @@ class OlcumEkleView extends StatefulWidget {
   State<OlcumEkleView> createState() => _OlcumEkleViewState();
 }
 
-class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
+final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
   final OlcumEkleViewModel viewModel = OlcumEkleViewModel();
   late final TextEditingController kayitOperatorController;
   late final TextEditingController seriNumarasiController;

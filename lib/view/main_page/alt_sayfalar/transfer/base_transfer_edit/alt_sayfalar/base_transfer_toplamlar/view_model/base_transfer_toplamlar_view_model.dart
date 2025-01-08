@@ -9,7 +9,7 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 
 part "base_transfer_toplamlar_view_model.g.dart";
 
-class BaseTransferToplamlarViewModel = _BaseTransferToplamlarViewModelBase with _$BaseTransferToplamlarViewModel;
+final class BaseTransferToplamlarViewModel = _BaseTransferToplamlarViewModelBase with _$BaseTransferToplamlarViewModel;
 
 abstract class _BaseTransferToplamlarViewModelBase with Store {
   static ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;

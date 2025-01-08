@@ -3,7 +3,7 @@ import "package:get/get.dart";
 
 import "../color_palette.dart";
 
-class UIHelper {
+final class UIHelper {
   static ThemeData get _theme => Get.theme;
   //* Radius
   static BorderRadius get highBorderRadius => BorderRadius.circular(12);

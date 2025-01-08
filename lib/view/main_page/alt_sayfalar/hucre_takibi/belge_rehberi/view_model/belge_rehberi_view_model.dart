@@ -7,7 +7,7 @@ import "../model/belge_rehberi_request_model.dart";
 
 part "belge_rehberi_view_model.g.dart";
 
-class BelgeRehberiViewModel = _BelgeRehberiViewModelBase with _$BelgeRehberiViewModel;
+final class BelgeRehberiViewModel = _BelgeRehberiViewModelBase with _$BelgeRehberiViewModel;
 
 abstract class _BelgeRehberiViewModelBase with Store, MobxNetworkMixin {
   @observable

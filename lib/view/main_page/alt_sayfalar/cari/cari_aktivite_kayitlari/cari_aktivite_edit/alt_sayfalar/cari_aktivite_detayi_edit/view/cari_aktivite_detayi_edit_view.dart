@@ -14,7 +14,7 @@ import "../../../../../../../../../core/constants/extensions/number_extensions.d
 import "../../../../model/cari_aktivite_listesi_model.dart";
 import "../view_model/cari_aktivite_detayi_view_model.dart";
 
-class CariAktiviteDetayiEditView extends StatefulWidget {
+final class CariAktiviteDetayiEditView extends StatefulWidget {
   const CariAktiviteDetayiEditView({super.key, this.model});
   final BaseEditModel<CariAktiviteListesiModel>? model;
 
@@ -22,7 +22,7 @@ class CariAktiviteDetayiEditView extends StatefulWidget {
   State<CariAktiviteDetayiEditView> createState() => CariAktiviteDetayiEditViewState();
 }
 
-class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayiEditView> {
+final class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayiEditView> {
   CariAktiviteDetayiViewModel viewModel = CariAktiviteDetayiViewModel();
   late final TextEditingController tarihController;
   late final TextEditingController aktiviteTipiController;

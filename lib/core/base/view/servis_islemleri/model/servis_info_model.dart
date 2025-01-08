@@ -6,7 +6,7 @@ import "../../../model/base_network_mixin.dart";
 part "servis_info_model.g.dart";
 
 @JsonSerializable()
-class ServisInfoModel with NetworkManagerMixin {
+final class ServisInfoModel with NetworkManagerMixin {
   ServisInfoModel({
     this.version,
     this.updateDate,

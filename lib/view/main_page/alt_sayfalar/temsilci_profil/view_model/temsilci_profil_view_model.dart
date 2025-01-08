@@ -9,7 +9,7 @@ import "../model/temsilci_profil_request_model.dart";
 
 part "temsilci_profil_view_model.g.dart";
 
-class TemsilciProfilViewModel = _TemsilciProfilViewModelBase with _$TemsilciProfilViewModel;
+final class TemsilciProfilViewModel = _TemsilciProfilViewModelBase with _$TemsilciProfilViewModel;
 
 abstract class _TemsilciProfilViewModelBase with Store {
   @observable

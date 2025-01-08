@@ -18,7 +18,7 @@ import "../../../siparis/siparisler/model/siparisler_request_model.dart";
 
 part "faturalar_view_model.g.dart";
 
-class FaturalarViewModel = _FaturalarViewModelBase with _$FaturalarViewModel;
+final class FaturalarViewModel = _FaturalarViewModelBase with _$FaturalarViewModel;
 
 abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, ScrollControllableMixin, PageableMixin {
   _FaturalarViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {

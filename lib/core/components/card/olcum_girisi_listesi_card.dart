@@ -14,7 +14,7 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../layout/custom_layout_builder.dart";
 
-class OlcumGirisiListesiCard extends StatefulWidget {
+final class OlcumGirisiListesiCard extends StatefulWidget {
   const OlcumGirisiListesiCard({required this.model, required this.onTapped, super.key});
   final OlcumBelgeModel model;
   final Future Function(bool) onTapped;
@@ -23,7 +23,7 @@ class OlcumGirisiListesiCard extends StatefulWidget {
   State<OlcumGirisiListesiCard> createState() => _OlcumGirisiListesiCardState();
 }
 
-class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
+final class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCard> {
   OlcumBelgeModel get model => widget.model;
 
   @override

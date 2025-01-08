@@ -1,6 +1,6 @@
 import "package:flutter_web_plugins/flutter_web_plugins.dart";
 
-class XDPathUrlStrategy extends HashUrlStrategy {
+final class XDPathUrlStrategy extends HashUrlStrategy {
   /// Creates an instance of [PathUrlStrategy].
   ///
   /// The [PlatformLocation] parameter is useful for testing to mock out browser

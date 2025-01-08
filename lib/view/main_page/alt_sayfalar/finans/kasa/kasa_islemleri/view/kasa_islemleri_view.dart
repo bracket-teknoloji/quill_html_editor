@@ -26,14 +26,14 @@ import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../model/kasa_islemleri_model.dart";
 import "../view_model/kasa_islemleri_view_model.dart";
 
-class KasaIslemleriView extends StatefulWidget {
+final class KasaIslemleriView extends StatefulWidget {
   const KasaIslemleriView({super.key});
 
   @override
   State<KasaIslemleriView> createState() => _KasaIslemleriViewState();
 }
 
-class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
+final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
   KasaIslemleriViewModel viewModel = KasaIslemleriViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController baslangicTarihiController;

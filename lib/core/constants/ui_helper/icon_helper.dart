@@ -3,7 +3,7 @@ import "package:flutter_svg/flutter_svg.dart";
 
 import "ui_helper.dart";
 
-class IconHelper {
+final class IconHelper {
   //* Menu Items
   //*
   static Widget bigMenuIcon(String path, {Color? color, IconData? iconData}) => iconData == null

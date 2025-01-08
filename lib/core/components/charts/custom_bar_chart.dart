@@ -3,14 +3,14 @@ import "package:flutter/material.dart";
 
 import "../../base/state/base_state.dart";
 
-class CustomBarWidget extends StatefulWidget {
+final class CustomBarWidget extends StatefulWidget {
   const CustomBarWidget({super.key});
 
   @override
   State<CustomBarWidget> createState() => _CustomBarWidgetState();
 }
 
-class _CustomBarWidgetState extends BaseState<CustomBarWidget> {
+final class _CustomBarWidgetState extends BaseState<CustomBarWidget> {
   @override
   Widget build(BuildContext context) => BarChart(BarChartData(barGroups: []));
 }

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-class FooterButton extends StatelessWidget {
+final class FooterButton extends StatelessWidget {
   const FooterButton({required this.children, super.key, this.color, this.onPressed});
   final Color? color;
   final List<Widget> children;

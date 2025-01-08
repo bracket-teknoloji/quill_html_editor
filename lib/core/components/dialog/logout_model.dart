@@ -5,7 +5,7 @@ import "../../base/model/base_network_mixin.dart";
 part "logout_model.g.dart";
 
 @JsonSerializable()
-class LogoutModel with NetworkManagerMixin {
+final class LogoutModel with NetworkManagerMixin {
   LogoutModel();
   @JsonKey(name: "Success")
   String? succes;

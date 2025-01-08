@@ -5,7 +5,7 @@ import "../../../view/add_company/model/account_response_model.dart";
 part "login_dialog_model.g.dart";
 
 @HiveType(typeId: 68)
-class LoginDialogModel {
+final class LoginDialogModel {
   LoginDialogModel({
     required this.account,
     required this.username,

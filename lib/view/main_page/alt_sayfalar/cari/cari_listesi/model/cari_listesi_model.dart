@@ -13,7 +13,7 @@ part "cari_listesi_model.g.dart";
 @CopyWith()
 @HiveType(typeId: 195)
 @JsonSerializable(explicitToJson: true)
-class CariListesiModel with NetworkManagerMixin {
+final class CariListesiModel with NetworkManagerMixin {
   CariListesiModel({
     this.cariKodu,
     this.cariAdi,
@@ -511,7 +511,7 @@ class CariListesiModel with NetworkManagerMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class BakiyeModel {
+final class BakiyeModel {
   String? cariKodu;
   int? dovizTipi;
   double? borcToplami;

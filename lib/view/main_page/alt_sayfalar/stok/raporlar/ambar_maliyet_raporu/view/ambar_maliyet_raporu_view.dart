@@ -14,7 +14,7 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../stok_liste/model/stok_listesi_model.dart";
 import "../view_model/ambar_maliyet_raporu_view_model.dart";
 
-class AmbarMaliyetRaporuView extends StatefulWidget {
+final class AmbarMaliyetRaporuView extends StatefulWidget {
   const AmbarMaliyetRaporuView({super.key, this.model});
   final StokListesiModel? model;
 
@@ -22,7 +22,7 @@ class AmbarMaliyetRaporuView extends StatefulWidget {
   State<AmbarMaliyetRaporuView> createState() => _AmbarMaliyetRaporuViewState();
 }
 
-class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
+final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuView> {
   AmbarMaliyetRaporuViewModel viewModel = AmbarMaliyetRaporuViewModel();
   List<BaseGrupKoduModel> grupKodList = [];
   late final TextEditingController stokController;

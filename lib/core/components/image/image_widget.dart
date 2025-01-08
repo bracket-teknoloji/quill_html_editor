@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
-class ImageWidget extends StatefulWidget {
+final class ImageWidget extends StatefulWidget {
   const ImageWidget({required this.path, super.key, this.onTap, this.fit = true});
   final String? path;
   final void Function()? onTap;
@@ -13,7 +13,7 @@ class ImageWidget extends StatefulWidget {
   State<ImageWidget> createState() => _ImageWidgetState();
 }
 
-class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepAliveClientMixin {
+final class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);

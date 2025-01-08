@@ -5,7 +5,7 @@ import "../../../../../../../core/constants/extensions/number_extensions.dart";
 
 part "cari_ekstre_view_model.g.dart";
 
-class CariEkstreViewModel = _CariEkstreViewModelBase with _$CariEkstreViewModel;
+final class CariEkstreViewModel = _CariEkstreViewModelBase with _$CariEkstreViewModel;
 
 abstract class _CariEkstreViewModelBase with Store {
   //* Doviz Tipi

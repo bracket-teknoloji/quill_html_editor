@@ -3,7 +3,7 @@ import "package:picker/view/add_company/model/account_response_model.dart";
 
 part "splash_auth_view_model.g.dart";
 
-class SplashAuthViewModel = _SplashAuthViewModelBase with _$SplashAuthViewModel;
+final class SplashAuthViewModel = _SplashAuthViewModelBase with _$SplashAuthViewModel;
 
 abstract class _SplashAuthViewModelBase with Store {
   @observable

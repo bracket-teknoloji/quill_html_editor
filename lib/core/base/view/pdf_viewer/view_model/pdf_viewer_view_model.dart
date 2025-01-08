@@ -5,7 +5,7 @@ import "package:picker/core/base/model/base_pdf_model.dart";
 
 part "pdf_viewer_view_model.g.dart";
 
-class PdfViewerViewModel = _PdfViewerViewModelBase with _$PdfViewerViewModel;
+final class PdfViewerViewModel = _PdfViewerViewModelBase with _$PdfViewerViewModel;
 
 abstract class _PdfViewerViewModelBase with Store {
   @observable

@@ -8,14 +8,14 @@ import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 import "../view_model/servis_islemleri_view_model.dart";
 
-class ServisIslemleriView extends StatefulWidget {
+final class ServisIslemleriView extends StatefulWidget {
   const ServisIslemleriView({super.key});
 
   @override
   State<ServisIslemleriView> createState() => _ServisIslemleriViewState();
 }
 
-class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
+final class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
   ServisIslemleriViewModel viewModel = ServisIslemleriViewModel();
 
   @override

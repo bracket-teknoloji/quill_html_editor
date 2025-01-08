@@ -7,7 +7,7 @@ import "../../../stok/paketleme/paketleme_listesi/model/paketleme_listesi_model.
 
 part "hucre_edit_view_model.g.dart";
 
-class HucreEditViewModel = _HucreEditViewModelBase with _$HucreEditViewModel;
+final class HucreEditViewModel = _HucreEditViewModelBase with _$HucreEditViewModel;
 
 abstract class _HucreEditViewModelBase with Store, MobxNetworkMixin {
   @action

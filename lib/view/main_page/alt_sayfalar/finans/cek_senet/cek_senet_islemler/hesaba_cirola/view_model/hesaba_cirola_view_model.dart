@@ -10,7 +10,7 @@ import "../../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
 
 part "hesaba_cirola_view_model.g.dart";
 
-class HesabaCirolaViewModel = _HesabaCirolaViewModelBase with _$HesabaCirolaViewModel;
+final class HesabaCirolaViewModel = _HesabaCirolaViewModelBase with _$HesabaCirolaViewModel;
 
 abstract class _HesabaCirolaViewModelBase with Store, MobxNetworkMixin {
   @observable

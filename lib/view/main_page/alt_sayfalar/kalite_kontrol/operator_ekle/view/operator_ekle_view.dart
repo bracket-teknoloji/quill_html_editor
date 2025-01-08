@@ -6,14 +6,14 @@ import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/operator_ekle_view_model.dart";
 
-class OperatorEkleView extends StatefulWidget {
+final class OperatorEkleView extends StatefulWidget {
   const OperatorEkleView({super.key});
 
   @override
   State<OperatorEkleView> createState() => _OperatorEkleViewState();
 }
 
-class _OperatorEkleViewState extends BaseState<OperatorEkleView> {
+final class _OperatorEkleViewState extends BaseState<OperatorEkleView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final OperatorEkleViewModel viewModel = OperatorEkleViewModel();
   @override

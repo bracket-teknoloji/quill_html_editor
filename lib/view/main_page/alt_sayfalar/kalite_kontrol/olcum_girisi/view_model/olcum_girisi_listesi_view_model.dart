@@ -10,7 +10,7 @@ import "../model/olcum_girisi_request_model.dart";
 
 part "olcum_girisi_listesi_view_model.g.dart";
 
-class OlcumGirisiViewModel = _OlcumGirisiViewModelBase with _$OlcumGirisiViewModel;
+final class OlcumGirisiViewModel = _OlcumGirisiViewModelBase with _$OlcumGirisiViewModel;
 
 abstract class _OlcumGirisiViewModelBase with Store, MobxNetworkMixin {
   final List<EditTipiEnum> belgeTipiList = [

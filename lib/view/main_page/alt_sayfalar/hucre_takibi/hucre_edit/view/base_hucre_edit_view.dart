@@ -9,7 +9,7 @@ import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_transferi/
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 
-class BaseHucreEditView extends StatefulWidget {
+final class BaseHucreEditView extends StatefulWidget {
   const BaseHucreEditView({required this.islemTuru, super.key});
   final HucreTakibiIslemTuruEnum islemTuru;
 
@@ -17,7 +17,7 @@ class BaseHucreEditView extends StatefulWidget {
   State<BaseHucreEditView> createState() => _BaseHucreEditViewState();
 }
 
-class _BaseHucreEditViewState extends BaseState<BaseHucreEditView> with TickerProviderStateMixin {
+final class _BaseHucreEditViewState extends BaseState<BaseHucreEditView> with TickerProviderStateMixin {
   final HucreEditViewModel viewModel = HucreEditViewModel();
   late final TabController tabController;
   @override

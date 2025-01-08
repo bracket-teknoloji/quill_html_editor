@@ -11,7 +11,7 @@ import "../../barkod_kayitlari/model/barkod_tanimla_kayitlari_model.dart";
 
 part "barkod_tanimla_edit_view_model.g.dart";
 
-class BarkodTanimlaEditViewModel = _BarkodTanimlaEditViewModelBase with _$BarkodTanimlaEditViewModel;
+final class BarkodTanimlaEditViewModel = _BarkodTanimlaEditViewModelBase with _$BarkodTanimlaEditViewModel;
 
 abstract class _BarkodTanimlaEditViewModelBase with Store, MobxNetworkMixin {
   @observable

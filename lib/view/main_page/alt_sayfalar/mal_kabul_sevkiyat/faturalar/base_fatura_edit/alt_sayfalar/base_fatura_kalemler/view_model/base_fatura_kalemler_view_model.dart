@@ -6,7 +6,7 @@ import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_mode
 
 part "base_fatura_kalemler_view_model.g.dart";
 
-class BaseFaturaKalemlerViewModel = BaseFaturaKalemlerViewModelBase with _$BaseFaturaKalemlerViewModel;
+final class BaseFaturaKalemlerViewModel = BaseFaturaKalemlerViewModelBase with _$BaseFaturaKalemlerViewModel;
 
 abstract class BaseFaturaKalemlerViewModelBase with Store {
   @observable

@@ -5,13 +5,13 @@ import "base_network_mixin.dart";
 part "kullanicilar_model.freezed.dart";
 part "kullanicilar_model.g.dart";
 
-@unfreezed
+@freezed
 class KullanicilarModel with _$KullanicilarModel, NetworkManagerMixin {
-  factory KullanicilarModel({
+  const factory KullanicilarModel({
     String? kodu,
     String? adi,
   }) = _KullanicilarModel;
-  KullanicilarModel._();
+  const KullanicilarModel._();
 
   factory KullanicilarModel.fromJson(Map<String, dynamic> json) => _$KullanicilarModelFromJson(json);
 

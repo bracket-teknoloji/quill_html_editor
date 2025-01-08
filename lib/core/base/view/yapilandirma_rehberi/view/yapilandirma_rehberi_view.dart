@@ -11,7 +11,7 @@ import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../state/base_state.dart";
 import "../view_model/yapilandirma_rehberi_view_model.dart";
 
-class YapilandirmaRehberiView extends StatefulWidget {
+final class YapilandirmaRehberiView extends StatefulWidget {
   const YapilandirmaRehberiView({required this.model, super.key});
   final StokListesiModel model;
 
@@ -19,7 +19,7 @@ class YapilandirmaRehberiView extends StatefulWidget {
   State<YapilandirmaRehberiView> createState() => _YapilandirmaRehberiViewState();
 }
 
-class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
+final class _YapilandirmaRehberiViewState extends BaseState<YapilandirmaRehberiView> {
   YapilandirmaRehberiViewModel viewModel = YapilandirmaRehberiViewModel();
 
   @override

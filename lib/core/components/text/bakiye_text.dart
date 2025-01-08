@@ -5,7 +5,7 @@ import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
-class BakiyeText extends StatelessWidget {
+final class BakiyeText extends StatelessWidget {
   const BakiyeText({super.key, this.value});
   final double? value;
 

@@ -25,7 +25,7 @@ import "../../init/network/login/api_urls.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class CekSenetListesiCard extends StatefulWidget {
+final class CekSenetListesiCard extends StatefulWidget {
   const CekSenetListesiCard({required this.model, required this.cekSenetListesiEnum, super.key, this.onUpdate});
   final CekSenetListesiModel model;
   final CekSenetListesiEnum cekSenetListesiEnum;
@@ -35,7 +35,7 @@ class CekSenetListesiCard extends StatefulWidget {
   State<CekSenetListesiCard> createState() => _CekSenetListesiCardState();
 }
 
-class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
+final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
   CekSenetListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(

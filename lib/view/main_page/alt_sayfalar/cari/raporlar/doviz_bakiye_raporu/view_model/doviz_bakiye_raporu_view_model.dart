@@ -5,7 +5,7 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 
 part "doviz_bakiye_raporu_view_model.g.dart";
 
-class DovizBakiyeRaporuViewModel = _DovizBakiyeRaporuViewModelBase with _$DovizBakiyeRaporuViewModel;
+final class DovizBakiyeRaporuViewModel = _DovizBakiyeRaporuViewModelBase with _$DovizBakiyeRaporuViewModel;
 
 abstract class _DovizBakiyeRaporuViewModelBase with Store {
   final List<String> bakiyeDurumuTitleList = [

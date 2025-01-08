@@ -11,7 +11,7 @@ import "../model/e_belge_pdf_request_model.dart";
 
 part "e_belge_pdf_view_model.g.dart";
 
-class EBelgePdfViewModel = _EBelgePdfViewModelBase with _$EBelgePdfViewModel;
+final class EBelgePdfViewModel = _EBelgePdfViewModelBase with _$EBelgePdfViewModel;
 
 abstract class _EBelgePdfViewModelBase with Store, MobxNetworkMixin {
   _EBelgePdfViewModelBase({required this.model});

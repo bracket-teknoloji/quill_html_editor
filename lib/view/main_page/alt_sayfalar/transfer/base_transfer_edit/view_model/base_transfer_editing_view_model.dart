@@ -9,7 +9,7 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_transfer_editing_view_model.g.dart";
 
-class BaseTransferEditingViewModel = _BaseTransferEditingViewModelBase with _$BaseTransferEditingViewModel;
+final class BaseTransferEditingViewModel = _BaseTransferEditingViewModelBase with _$BaseTransferEditingViewModel;
 
 abstract class _BaseTransferEditingViewModelBase with Store {
   @computed

@@ -7,7 +7,7 @@ import "../../../view_model/mobx_network_mixin.dart";
 
 part "siparis_rehberi_view_model.g.dart";
 
-class SiparisRehberiViewModel = _SiparisRehberiViewModelBase with _$SiparisRehberiViewModel;
+final class SiparisRehberiViewModel = _SiparisRehberiViewModelBase with _$SiparisRehberiViewModel;
 
 abstract class _SiparisRehberiViewModelBase with Store, MobxNetworkMixin {
   @observable

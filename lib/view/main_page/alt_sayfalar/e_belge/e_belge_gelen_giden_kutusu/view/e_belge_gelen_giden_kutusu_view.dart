@@ -25,7 +25,7 @@ import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/e_belge_gelen_giden_kutusu_view_model.dart";
 
-class EBelgeGelenGidenKutusuView extends StatefulWidget {
+final class EBelgeGelenGidenKutusuView extends StatefulWidget {
   const EBelgeGelenGidenKutusuView({required this.eBelgeEnum, super.key});
   final EBelgeEnum eBelgeEnum;
 

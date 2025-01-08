@@ -3,7 +3,7 @@ import "package:get/get.dart";
 
 import "../../components/dialog/dialog_manager.dart";
 
-class NetworkController extends GetxController {
+final class NetworkController extends GetxController {
   final Connectivity _connectivity = Connectivity();
   static ConnectivityResult? connectivityResult;
   bool isOffline = false;

@@ -12,7 +12,7 @@ import "../model/uretim_sonu_kaydi_edit_model.dart";
 
 part "uretim_sonu_kaydi_edit_view_model.g.dart";
 
-class UretimSonuKaydiEditViewModel = _UretimSonuKaydiEditViewModelBase with _$UretimSonuKaydiEditViewModel;
+final class UretimSonuKaydiEditViewModel = _UretimSonuKaydiEditViewModelBase with _$UretimSonuKaydiEditViewModel;
 
 abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   @observable

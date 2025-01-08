@@ -11,7 +11,7 @@ import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
 import "../../init/cache/favorites_model.dart";
 
-class CustomGridTile extends StatefulWidget {
+final class CustomGridTile extends StatefulWidget {
   const CustomGridTile({super.key, this.onTap, this.model});
   final Function()? onTap;
   // final String? menuTipi;
@@ -21,7 +21,7 @@ class CustomGridTile extends StatefulWidget {
   CustomGridTileState createState() => CustomGridTileState();
 }
 
-class CustomGridTileState extends BaseState<CustomGridTile> {
+final class CustomGridTileState extends BaseState<CustomGridTile> {
   @override
   Widget build(BuildContext context) => InkWell(
         borderRadius: UIHelper.midBorderRadius,

@@ -26,7 +26,7 @@ import "../model/banka_listesi_model.dart";
 import "../model/banka_listesi_request_model.dart";
 import "../view_model/banka_listesi_view_model.dart";
 
-class BankaListesiView extends StatefulWidget {
+final class BankaListesiView extends StatefulWidget {
   const BankaListesiView({super.key, this.isGetData, this.requestModel});
   final bool? isGetData;
   final BankaListesiRequestModel? requestModel;
@@ -35,7 +35,7 @@ class BankaListesiView extends StatefulWidget {
   State<BankaListesiView> createState() => _BankaListesiViewState();
 }
 
-class _BankaListesiViewState extends BaseState<BankaListesiView> {
+final class _BankaListesiViewState extends BaseState<BankaListesiView> {
   final BankaListesiViewModel viewModel = BankaListesiViewModel();
   late final TextEditingController _searchController;
   late final TextEditingController _hesapTipiController;

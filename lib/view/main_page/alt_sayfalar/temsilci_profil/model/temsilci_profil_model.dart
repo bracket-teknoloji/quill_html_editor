@@ -5,7 +5,7 @@ import "../../../../../core/base/model/base_network_mixin.dart";
 part "temsilci_profil_model.g.dart";
 
 @JsonSerializable()
-class TemsilciProfilModel with NetworkManagerMixin {
+final class TemsilciProfilModel with NetworkManagerMixin {
   String? tabloTipi;
   String? kayitTipi;
   int? ayKodu;

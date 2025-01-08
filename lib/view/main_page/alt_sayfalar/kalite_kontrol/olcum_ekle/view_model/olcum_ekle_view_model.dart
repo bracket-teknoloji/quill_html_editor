@@ -10,7 +10,7 @@ import "../model/olcum_ekle_model.dart";
 
 part "olcum_ekle_view_model.g.dart";
 
-class OlcumEkleViewModel = _OlcumEkleViewModelBase with _$OlcumEkleViewModel;
+final class OlcumEkleViewModel = _OlcumEkleViewModelBase with _$OlcumEkleViewModel;
 
 abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
   @observable

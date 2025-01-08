@@ -21,7 +21,7 @@ import "../../init/network/login/api_urls.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
-class TahsilatOdemeKayitlariCard extends StatefulWidget {
+final class TahsilatOdemeKayitlariCard extends StatefulWidget {
   const TahsilatOdemeKayitlariCard({required this.cariHareketleriModel, required this.update, super.key});
   final CariHareketleriModel cariHareketleriModel;
   final ValueChanged update;
@@ -30,7 +30,7 @@ class TahsilatOdemeKayitlariCard extends StatefulWidget {
   State<TahsilatOdemeKayitlariCard> createState() => _TahsilatOdemeKayitlariCardState();
 }
 
-class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariCard> {
+final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariCard> {
   @override
   Widget build(BuildContext context) => Card(
         child: ListTile(

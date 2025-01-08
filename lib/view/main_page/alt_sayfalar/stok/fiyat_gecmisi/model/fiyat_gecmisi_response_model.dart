@@ -5,7 +5,7 @@ import "../../../../../../core/base/model/base_network_mixin.dart";
 part "fiyat_gecmisi_response_model.g.dart";
 
 @JsonSerializable()
-class FiyatGecmisiResponseModel with NetworkManagerMixin {
+final class FiyatGecmisiResponseModel with NetworkManagerMixin {
   int? id;
   int? subeKodu;
   String? stokKodu;

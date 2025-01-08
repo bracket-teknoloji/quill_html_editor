@@ -28,7 +28,7 @@ final class PickerApp extends StatelessWidget {
       );
 }
 
-class PickerMaterialApp extends StatelessWidget {
+final class PickerMaterialApp extends StatelessWidget {
   const PickerMaterialApp({super.key});
 
   @override

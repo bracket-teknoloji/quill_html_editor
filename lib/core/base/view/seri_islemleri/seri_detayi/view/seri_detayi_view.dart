@@ -15,7 +15,7 @@ import "../../../../state/base_state.dart";
 import "../../seri_listesi/model/seri_detayi_model.dart";
 import "../view_model/seri_detayi_view_model.dart";
 
-class SeriDetayiView extends StatefulWidget {
+final class SeriDetayiView extends StatefulWidget {
   const SeriDetayiView({required this.seriDetayiModel, super.key});
 
   /// İlki Hareket Miktarı, İkincisi Kalan Miktar
@@ -25,7 +25,7 @@ class SeriDetayiView extends StatefulWidget {
   State<SeriDetayiView> createState() => _SeriDetayiViewState();
 }
 
-class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
+final class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
   final SeriDetayiViewModel viewModel = SeriDetayiViewModel();
   late final GlobalKey<FormState> formKey;
   late final TextEditingController seri1Controller;

@@ -10,7 +10,7 @@ import "../../evraklar/model/evrak_edit_model.dart";
 
 part "image_picker_view_model.g.dart";
 
-class ImagePickerViewModel = _ImagePickerViewModelBase with _$ImagePickerViewModel;
+final class ImagePickerViewModel = _ImagePickerViewModelBase with _$ImagePickerViewModel;
 
 abstract class _ImagePickerViewModelBase with Store, MobxNetworkMixin {
   @observable

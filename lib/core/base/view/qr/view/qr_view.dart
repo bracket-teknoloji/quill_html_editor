@@ -170,7 +170,7 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
       );
 }
 
-class BorderPainter extends CustomPainter {
+final class BorderPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     const width = UIHelper.lowSize;

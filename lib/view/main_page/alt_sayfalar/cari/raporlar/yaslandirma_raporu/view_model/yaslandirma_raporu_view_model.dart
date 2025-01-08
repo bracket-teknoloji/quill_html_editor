@@ -4,7 +4,7 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "yaslandirma_raporu_view_model.g.dart";
 
-class YaslandirmaRaporuViewModel = _YaslandirmaRaporuViewModelBase with _$YaslandirmaRaporuViewModel;
+final class YaslandirmaRaporuViewModel = _YaslandirmaRaporuViewModelBase with _$YaslandirmaRaporuViewModel;
 
 abstract class _YaslandirmaRaporuViewModelBase with Store {
   //* Süre Aralığı

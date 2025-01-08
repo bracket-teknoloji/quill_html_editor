@@ -5,7 +5,7 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 
 part "base_transfer_kalemler_view_model.g.dart";
 
-class BaseTransferKalemlerViewModel = BaseTransferKalemlerViewModelBase with _$BaseTransferKalemlerViewModel;
+final class BaseTransferKalemlerViewModel = BaseTransferKalemlerViewModelBase with _$BaseTransferKalemlerViewModel;
 
 abstract class BaseTransferKalemlerViewModelBase with Store {
   @observable

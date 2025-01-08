@@ -14,7 +14,7 @@ import "../../../siparis/siparisler/model/siparisler_request_model.dart";
 
 part "transferler_view_model.g.dart";
 
-class TransferlerViewModel = _TransferlerViewModelBase with _$TransferlerViewModel;
+final class TransferlerViewModel = _TransferlerViewModelBase with _$TransferlerViewModel;
 
 abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   _TransferlerViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {

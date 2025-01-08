@@ -10,7 +10,7 @@ import "../model/fiyat_gecmisi_response_model.dart";
 
 part "fiyat_gecmisi_view_model.g.dart";
 
-class FiyatGecmisiViewModel = _FiyatGecmisiViewModelBase with _$FiyatGecmisiViewModel;
+final class FiyatGecmisiViewModel = _FiyatGecmisiViewModelBase with _$FiyatGecmisiViewModel;
 
 abstract class _FiyatGecmisiViewModelBase with Store {
   @observable

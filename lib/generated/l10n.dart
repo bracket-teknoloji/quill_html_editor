@@ -13,7 +13,7 @@ import "intl/messages_all.dart";
 // ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
 // ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
 
-class S {
+final class S {
   S();
 
   static S? _current;
@@ -52,7 +52,7 @@ class S {
   static S? maybeOf(BuildContext context) => Localizations.of<S>(context, S);
 }
 
-class AppLocalizationDelegate extends LocalizationsDelegate<S> {
+final class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
   List<Locale> get supportedLocales => const <Locale>[

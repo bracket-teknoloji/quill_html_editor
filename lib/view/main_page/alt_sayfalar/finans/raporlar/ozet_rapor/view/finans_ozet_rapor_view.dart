@@ -10,14 +10,14 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../view_model/finans_ozet_rapor_view_model.dart";
 
-class FinansOzetRaporView extends StatefulWidget {
+final class FinansOzetRaporView extends StatefulWidget {
   const FinansOzetRaporView({super.key});
 
   @override
   State<FinansOzetRaporView> createState() => _FinansOzetRaporViewState();
 }
 
-class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
+final class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
   final FinansOzetRaporViewModel viewModel = FinansOzetRaporViewModel();
   late final TextEditingController baslangicTarihiController;
   late final TextEditingController bitisTarihiController;

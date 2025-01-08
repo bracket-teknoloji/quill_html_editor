@@ -34,7 +34,7 @@ import "../alt_sayfalar/base_talep_teklif_genel/view/base_talep_teklif_genel_vie
 import "../alt_sayfalar/base_talep_teklif_toplamlar/view/base_talep_teklif_toplamlar_view.dart";
 import "../view_model/base_talep_teklif_editing_view_model.dart";
 
-class BaseTalepTeklifEditingView extends StatefulWidget {
+final class BaseTalepTeklifEditingView extends StatefulWidget {
   const BaseTalepTeklifEditingView({required this.model, super.key, this.appBarTitle, this.isSubTitleSmall});
   final String? appBarTitle;
   final bool? isSubTitleSmall;
@@ -45,7 +45,7 @@ class BaseTalepTeklifEditingView extends StatefulWidget {
   State<BaseTalepTeklifEditingView> createState() => _BaseTalepTeklifEditingViewState();
 }
 
-class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingView> with TickerProviderStateMixin {
+final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingView> with TickerProviderStateMixin {
   BaseTalepTeklifEditingViewModel viewModel = BaseTalepTeklifEditingViewModel();
   late final TabController tabController;
   late BaseEditModel<SiparisEditRequestModel> model;

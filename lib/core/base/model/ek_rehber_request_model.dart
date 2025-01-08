@@ -4,6 +4,7 @@ part "ek_rehber_request_model.freezed.dart";
 part "ek_rehber_request_model.g.dart";
 
 @freezed
+@immutable
 class EkRehberRequestModel with _$EkRehberRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
   const factory EkRehberRequestModel({

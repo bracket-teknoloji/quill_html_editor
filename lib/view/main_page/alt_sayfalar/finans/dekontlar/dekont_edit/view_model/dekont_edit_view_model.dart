@@ -12,7 +12,7 @@ import "../model/dekont_islemler_request_model.dart";
 
 part "dekont_edit_view_model.g.dart";
 
-class DekontEditViewModel = _DekontEditViewModelBase with _$DekontEditViewModel;
+final class DekontEditViewModel = _DekontEditViewModelBase with _$DekontEditViewModel;
 
 abstract class _DekontEditViewModelBase with Store, MobxNetworkMixin {
   @observable

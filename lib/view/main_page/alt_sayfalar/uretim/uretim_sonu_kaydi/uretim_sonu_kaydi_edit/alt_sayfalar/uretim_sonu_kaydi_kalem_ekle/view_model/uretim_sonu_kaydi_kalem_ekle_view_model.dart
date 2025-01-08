@@ -4,7 +4,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 
 part "uretim_sonu_kaydi_kalem_ekle_view_model.g.dart";
 
-class UretimSonuKaydiKalemEkleViewModel = _UretimSonuKaydiKalemEkleViewModelBase with _$UretimSonuKaydiKalemEkleViewModel;
+final class UretimSonuKaydiKalemEkleViewModel = _UretimSonuKaydiKalemEkleViewModelBase with _$UretimSonuKaydiKalemEkleViewModel;
 
 abstract class _UretimSonuKaydiKalemEkleViewModelBase with Store {
   @observable

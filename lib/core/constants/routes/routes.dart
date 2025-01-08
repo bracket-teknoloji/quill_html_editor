@@ -1,5 +1,5 @@
 // how to make a getx route manager
-class RouteManager {
+final class RouteManager {
   RouteManager._init();
   static RouteManager? _instance;
   static RouteManager get instance {

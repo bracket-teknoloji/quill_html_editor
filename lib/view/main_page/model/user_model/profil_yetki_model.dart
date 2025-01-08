@@ -5,7 +5,7 @@ import "package:json_annotation/json_annotation.dart";
 part "profil_yetki_model.g.dart";
 
 @JsonSerializable(createFactory: true)
-class ProfilYetkiModel {
+final class ProfilYetkiModel {
   ProfilYetkiModel();
 
   factory ProfilYetkiModel.fromJson(String json) => _$ProfilYetkiModelFromJson(jsonDecode(json));
@@ -2153,7 +2153,7 @@ class ProfilYetkiModel {
 }
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
-class SevkemriMalKontrolTipi {
+final class SevkemriMalKontrolTipi {
   SevkemriMalKontrolTipi();
 
   factory SevkemriMalKontrolTipi.fromJson(Map<String, dynamic> json) => _$SevkemriMalKontrolTipiFromJson(json);

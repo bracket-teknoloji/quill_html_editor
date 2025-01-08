@@ -10,7 +10,7 @@ import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "../model/cek_senet_hareketleri_model.dart";
 import "../view_model/cek_senet_hareketleri_view_model.dart";
 
-class CekSenetHareketleriView extends StatefulWidget {
+final class CekSenetHareketleriView extends StatefulWidget {
   const CekSenetHareketleriView({required this.model, super.key});
   final CekSenetListesiModel model;
 
@@ -18,7 +18,7 @@ class CekSenetHareketleriView extends StatefulWidget {
   State<CekSenetHareketleriView> createState() => _CekSenetHareketleriViewState();
 }
 
-class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView> {
+final class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView> {
   CekSenetHareketleriViewModel viewModel = CekSenetHareketleriViewModel();
 
   @override

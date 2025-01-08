@@ -14,7 +14,7 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
-class SeriRehberiView extends StatefulWidget {
+final class SeriRehberiView extends StatefulWidget {
   const SeriRehberiView({required this.stokModel, super.key}) : uskMi = false;
   const SeriRehberiView.usk({required this.stokModel, super.key}) : uskMi = true;
   final StokListesiModel stokModel;
@@ -24,7 +24,7 @@ class SeriRehberiView extends StatefulWidget {
   State<SeriRehberiView> createState() => _SeriRehberiViewState();
 }
 
-class _SeriRehberiViewState extends State<SeriRehberiView> {
+final class _SeriRehberiViewState extends State<SeriRehberiView> {
   SeriRehberiViewModel viewModel = SeriRehberiViewModel();
 
   @override

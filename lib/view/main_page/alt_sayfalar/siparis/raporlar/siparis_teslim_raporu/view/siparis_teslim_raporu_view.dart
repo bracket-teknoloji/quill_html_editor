@@ -15,7 +15,7 @@ import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/siparis_teslim_raporu_view_model.dart";
 
-class SiparisTeslimRaporuView extends StatefulWidget {
+final class SiparisTeslimRaporuView extends StatefulWidget {
   const SiparisTeslimRaporuView({
     required this.editTipiEnum,
     super.key,
@@ -28,7 +28,7 @@ class SiparisTeslimRaporuView extends StatefulWidget {
   State<SiparisTeslimRaporuView> createState() => _YaslandirmaRaporuViewState();
 }
 
-class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
+final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuView> {
   EditTipiEnum get editTipiEnum => widget.editTipiEnum;
   late final SiparisTeslimRaporuViewModel viewModel;
   late final TextEditingController belgeNoController;

@@ -8,7 +8,7 @@ import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 
-class BaseTalepTeklifDigerView extends StatefulWidget {
+final class BaseTalepTeklifDigerView extends StatefulWidget {
   const BaseTalepTeklifDigerView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -16,7 +16,7 @@ class BaseTalepTeklifDigerView extends StatefulWidget {
   State<BaseTalepTeklifDigerView> createState() => _BaseTalepTeklifDigerViewState();
 }
 
-class _BaseTalepTeklifDigerViewState extends BaseState<BaseTalepTeklifDigerView> {
+final class _BaseTalepTeklifDigerViewState extends BaseState<BaseTalepTeklifDigerView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   bool get enable => widget.model.enable;
   late final QuillEditorController controller;

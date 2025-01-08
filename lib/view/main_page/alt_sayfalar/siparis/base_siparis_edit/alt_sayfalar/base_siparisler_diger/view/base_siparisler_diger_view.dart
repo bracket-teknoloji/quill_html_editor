@@ -12,7 +12,7 @@ import "../../../../siparisler/model/siparis_edit_request_model.dart";
 import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparisler_diger_view_model.dart";
 
-class BaseSiparislerDigerView extends StatefulWidget {
+final class BaseSiparislerDigerView extends StatefulWidget {
   const BaseSiparislerDigerView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -20,7 +20,7 @@ class BaseSiparislerDigerView extends StatefulWidget {
   State<BaseSiparislerDigerView> createState() => _BaseSiparislerDigerViewState();
 }
 
-class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
+final class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerView> {
   // late final HtmlEditorController _htmlController;
   BaseSiparislerDigerViewModel viewModel = BaseSiparislerDigerViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;

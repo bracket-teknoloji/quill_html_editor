@@ -14,7 +14,7 @@ import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/stok_ihtiyac_raporu_view_model.dart";
 
-class StokIhtiyacRaporuView extends StatefulWidget {
+final class StokIhtiyacRaporuView extends StatefulWidget {
   const StokIhtiyacRaporuView({super.key, this.model});
   final BaseSiparisEditModel? model;
 
@@ -22,7 +22,7 @@ class StokIhtiyacRaporuView extends StatefulWidget {
   State<StokIhtiyacRaporuView> createState() => _StokIhtiyacRaporuViewViewState();
 }
 
-class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
+final class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuView> {
   StokIhtiyacRaporuViewModel viewModel = StokIhtiyacRaporuViewModel();
   late final TextEditingController stokController;
   late final TextEditingController plasiyerController;

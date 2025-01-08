@@ -7,7 +7,7 @@ import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../layout/custom_layout_builder.dart";
 
-class HucreAraCard extends StatefulWidget {
+final class HucreAraCard extends StatefulWidget {
   const HucreAraCard({required this.model, super.key});
   final HucreTakibiStoklarModel model;
 
@@ -15,7 +15,7 @@ class HucreAraCard extends StatefulWidget {
   State<HucreAraCard> createState() => _HucreAraCardState();
 }
 
-class _HucreAraCardState extends BaseState<HucreAraCard> {
+final class _HucreAraCardState extends BaseState<HucreAraCard> {
   HucreTakibiStoklarModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(

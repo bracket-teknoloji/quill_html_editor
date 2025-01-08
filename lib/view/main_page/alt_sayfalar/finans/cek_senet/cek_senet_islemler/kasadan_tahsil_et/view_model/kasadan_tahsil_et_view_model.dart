@@ -10,7 +10,7 @@ import "../../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
 
 part "kasadan_tahsil_et_view_model.g.dart";
 
-class KasadanTahsilEtViewModel = _KasadanTahsilEtViewModelBase with _$KasadanTahsilEtViewModel;
+final class KasadanTahsilEtViewModel = _KasadanTahsilEtViewModelBase with _$KasadanTahsilEtViewModel;
 
 abstract class _KasadanTahsilEtViewModelBase with Store, MobxNetworkMixin {
   _KasadanTahsilEtViewModelBase({required this.model});

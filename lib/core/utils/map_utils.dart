@@ -2,7 +2,7 @@ import "dart:io";
 
 import "package:url_launcher/url_launcher.dart";
 
-class MapUtils {
+final class MapUtils {
   MapUtils._();
 
   static Future<void> openMap(double latitude, double longitude) async {

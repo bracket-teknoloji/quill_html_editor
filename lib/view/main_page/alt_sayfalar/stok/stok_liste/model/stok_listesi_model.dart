@@ -14,7 +14,7 @@ typedef OlcuBirimiRecord = ({String? adi, int? kodu});
 
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
-class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
+final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   StokListesiModel({
     this.seriBakiyeKontrolu,
     this.seriCikislardaAcik,
@@ -309,7 +309,7 @@ class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
 @HiveType(typeId: 2)
 @JsonSerializable(createFactory: true)
-class StokList with BaseStokMixin {
+final class StokList with BaseStokMixin {
   StokList({
     this.stokKodu,
     this.stokAdi,
@@ -481,7 +481,7 @@ class StokList with BaseStokMixin {
 }
 
 @JsonSerializable()
-class DepoBakiyeListe {
+final class DepoBakiyeListe {
   DepoBakiyeListe({
     this.depoKodu,
     this.giris,
@@ -499,7 +499,7 @@ class DepoBakiyeListe {
 }
 
 @JsonSerializable()
-class OtvAralikModel {
+final class OtvAralikModel {
   OtvAralikModel(
     this.alt,
     this.ust,

@@ -19,7 +19,7 @@ import "../../../../siparisler/model/siparis_edit_request_model.dart";
 import "../../../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_toplamlar_view_model.dart";
 
-class BaseSiparisToplamlarView extends StatefulWidget {
+final class BaseSiparisToplamlarView extends StatefulWidget {
   const BaseSiparisToplamlarView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -27,7 +27,7 @@ class BaseSiparisToplamlarView extends StatefulWidget {
   State<BaseSiparisToplamlarView> createState() => _BaseSiparisToplamlarViewState();
 }
 
-class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView> {
+final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamlarView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   BaseSiparisToplamlarViewModel viewModel = BaseSiparisToplamlarViewModel();
   bool get enable => widget.model.enable;

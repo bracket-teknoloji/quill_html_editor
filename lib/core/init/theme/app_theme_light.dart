@@ -7,7 +7,7 @@ import "package:google_fonts/google_fonts.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "app_theme.dart";
 
-class AppThemeLight extends AppTheme {
+final class AppThemeLight extends AppTheme {
   AppThemeLight._init();
   static AppThemeLight? _instance;
   static AppThemeLight? get instance => _instance ??= AppThemeLight._init();

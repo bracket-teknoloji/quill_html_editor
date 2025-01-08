@@ -7,7 +7,7 @@ part "isletme_model.g.dart";
 
 @JsonSerializable()
 @HiveType(typeId: 107)
-class IsletmeModel with NetworkManagerMixin {
+final class IsletmeModel with NetworkManagerMixin {
   IsletmeModel({
     this.sirket,
     this.isletmeKodu,

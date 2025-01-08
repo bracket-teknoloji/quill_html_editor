@@ -4,7 +4,7 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "cari_borc_alacak_dokumu_raporu_view_model.g.dart";
 
-class CariBorcAlacakDokumuRaporuViewModel = _CariBorcAlacakDokumuRaporuViewModelBase with _$CariBorcAlacakDokumuRaporuViewModel;
+final class CariBorcAlacakDokumuRaporuViewModel = _CariBorcAlacakDokumuRaporuViewModelBase with _$CariBorcAlacakDokumuRaporuViewModel;
 
 abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
   final Map<String, String> siralaMap = {

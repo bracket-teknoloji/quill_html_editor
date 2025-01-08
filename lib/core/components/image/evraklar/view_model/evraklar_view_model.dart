@@ -10,7 +10,7 @@ import "../../../../init/network/login/api_urls.dart";
 
 part "evraklar_view_model.g.dart";
 
-class EvraklarViewModel = _EvraklarViewModelBase with _$EvraklarViewModel;
+final class EvraklarViewModel = _EvraklarViewModelBase with _$EvraklarViewModel;
 
 abstract class _EvraklarViewModelBase with Store, MobxNetworkMixin, ListableMixin<EvraklarModel> {
   @override

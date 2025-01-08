@@ -18,7 +18,7 @@ import "../../../view_model/searchable_mixin.dart";
 
 part "stok_rehberi_view_model.g.dart";
 
-class StokRehberiViewModel = _StokRehberiViewModelBase with _$StokRehberiViewModel;
+final class StokRehberiViewModel = _StokRehberiViewModelBase with _$StokRehberiViewModel;
 
 abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<StokListesiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   @override

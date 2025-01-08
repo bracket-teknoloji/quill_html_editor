@@ -13,7 +13,7 @@ import "package:flutter/foundation.dart" show defaultTargetPlatform, kIsWeb, Tar
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
-class DefaultFirebaseOptions {
+final class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       return web;

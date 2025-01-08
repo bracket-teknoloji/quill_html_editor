@@ -15,7 +15,7 @@ import "../../banka_listesi/model/banka_listesi_request_model.dart";
 
 part "hesaplar_arasi_islem_view_model.g.dart";
 
-class HesaplarArasiIslemViewModel = _HesaplarArasiIslemViewModelBase with _$HesaplarArasiIslemViewModel;
+final class HesaplarArasiIslemViewModel = _HesaplarArasiIslemViewModelBase with _$HesaplarArasiIslemViewModel;
 
 abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
   @observable

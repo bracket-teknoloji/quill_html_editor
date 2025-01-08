@@ -5,7 +5,7 @@ part "sirket_model.g.dart";
 
 @JsonSerializable(createFactory: true)
 @HiveType(typeId: 102)
-class SirketModel {
+final class SirketModel {
   SirketModel();
 
   factory SirketModel.fromJson(Map<String, dynamic> json) => _$SirketModelFromJson(json);

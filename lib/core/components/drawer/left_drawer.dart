@@ -12,7 +12,7 @@ import "../../init/cache/cache_manager.dart";
 import "../../init/cache/favorites_model.dart";
 import "../wave/login_wave_widget.dart";
 
-class LeftDrawer extends StatefulWidget {
+final class LeftDrawer extends StatefulWidget {
   const LeftDrawer({required this.scaffoldKey, super.key});
   final GlobalKey<ScaffoldState> scaffoldKey;
 
@@ -20,7 +20,7 @@ class LeftDrawer extends StatefulWidget {
   State<LeftDrawer> createState() => _LeftDrawerState();
 }
 
-class _LeftDrawerState extends BaseState<LeftDrawer> {
+final class _LeftDrawerState extends BaseState<LeftDrawer> {
   bool isEditing = false;
   List<FavoritesModel> list =
       CacheManager.getFavoriler.values.toList().where((element) => (CacheManager.getAnaVeri?.userModel?.profilYetki?.toJson()[element.name ?? ""] == true) || AccountModel.instance.adminMi).toList();

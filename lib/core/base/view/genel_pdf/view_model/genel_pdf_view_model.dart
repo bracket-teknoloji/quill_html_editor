@@ -4,7 +4,7 @@ import "package:mobx/mobx.dart";
 
 part "genel_pdf_view_model.g.dart";
 
-class GenelPdfViewModel = _GenelPdfViewModelBase with _$GenelPdfViewModel;
+final class GenelPdfViewModel = _GenelPdfViewModelBase with _$GenelPdfViewModel;
 
 abstract class _GenelPdfViewModelBase with Store {
   @observable

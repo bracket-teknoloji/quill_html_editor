@@ -5,7 +5,7 @@ import "../../../core/base/model/base_network_mixin.dart";
 part "company_model.g.dart";
 
 @JsonSerializable()
-class CompanyModel with NetworkManagerMixin {
+final class CompanyModel with NetworkManagerMixin {
   CompanyModel();
   @JsonKey(name: "SIRKET")
   String? company;

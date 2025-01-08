@@ -37,7 +37,7 @@ import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_mode
 import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/base_fatura_genel_view_model.dart";
 
-class BaseFaturaGenelView extends StatefulWidget {
+final class BaseFaturaGenelView extends StatefulWidget {
   const BaseFaturaGenelView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -45,7 +45,7 @@ class BaseFaturaGenelView extends StatefulWidget {
   State<BaseFaturaGenelView> createState() => BaseFaturaGenelViewState();
 }
 
-class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
+final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
   BaseFaturaGenelViewModel viewModel = BaseFaturaGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;

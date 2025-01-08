@@ -1,7 +1,7 @@
 import "package:awesome_dialog/awesome_dialog.dart";
 import "package:flutter/material.dart";
 
-class BaseDialog {
+final class BaseDialog {
   late BuildContext context;
   String? title;
   String? desc;

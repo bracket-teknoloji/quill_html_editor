@@ -4,7 +4,7 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "aylik_mizan_raporu_view_model.g.dart";
 
-class AylikMizanRaporuViewModel = _AylikMizanRaporuViewModelBase with _$AylikMizanRaporuViewModel;
+final class AylikMizanRaporuViewModel = _AylikMizanRaporuViewModelBase with _$AylikMizanRaporuViewModel;
 
 abstract class _AylikMizanRaporuViewModelBase with Store {
   //* Model

@@ -487,7 +487,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
-  _$BaseProfilParametreModelImpl(
+  const _$BaseProfilParametreModelImpl(
       {this.siparisYeniKaydaHazirla = false,
       this.faturaYeniKaydaHazirla = false,
       this.talepTeklifYeniKaydaHazirla = false,
@@ -640,7 +640,7 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
 }
 
 abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
-  factory _BaseProfilParametreModel(
+  const factory _BaseProfilParametreModel(
       {final bool siparisYeniKaydaHazirla,
       final bool faturaYeniKaydaHazirla,
       final bool talepTeklifYeniKaydaHazirla,
@@ -670,7 +670,7 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final String stokListesiSirala,
       final bool irsFaturalasanIrsaliyelerGelsin,
       final bool eIrsaliyeSeciliGelsin}) = _$BaseProfilParametreModelImpl;
-  _BaseProfilParametreModel._() : super._();
+  const _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
       _$BaseProfilParametreModelImpl.fromJson;

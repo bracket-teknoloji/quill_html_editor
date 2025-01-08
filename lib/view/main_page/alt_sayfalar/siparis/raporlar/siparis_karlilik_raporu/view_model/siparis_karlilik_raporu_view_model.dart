@@ -4,7 +4,7 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "siparis_karlilik_raporu_view_model.g.dart";
 
-class SiparisKarlilikRaporuViewModel = _SiparisKarlilikRaporuViewModelBase with _$SiparisKarlilikRaporuViewModel;
+final class SiparisKarlilikRaporuViewModel = _SiparisKarlilikRaporuViewModelBase with _$SiparisKarlilikRaporuViewModel;
 
 abstract class _SiparisKarlilikRaporuViewModelBase with Store {
   final Map<String, String> maliyetTipiList = {

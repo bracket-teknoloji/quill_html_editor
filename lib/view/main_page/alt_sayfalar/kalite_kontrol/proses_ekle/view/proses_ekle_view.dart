@@ -17,7 +17,7 @@ import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 import "../view_model/proses_ekle_view_model.dart";
 
-class ProsesEkleView extends StatefulWidget {
+final class ProsesEkleView extends StatefulWidget {
   const ProsesEkleView({required this.model, super.key});
   final BaseEditModel<OlcumProsesModel> model;
 
@@ -25,7 +25,7 @@ class ProsesEkleView extends StatefulWidget {
   State<ProsesEkleView> createState() => _ProsesEkleViewState();
 }
 
-class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
+final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
   final ProsesEkleViewModel viewModel = ProsesEkleViewModel();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> olcumSonucFormKey = GlobalKey<FormState>();

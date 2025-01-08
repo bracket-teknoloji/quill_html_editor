@@ -23,7 +23,7 @@ import "../../../../../siparis/siparisler/model/siparis_edit_request_model.dart"
 import "../../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/base_transfer_kalemler_view_model.dart";
 
-class BaseTransferKalemlerView extends StatefulWidget {
+final class BaseTransferKalemlerView extends StatefulWidget {
   const BaseTransferKalemlerView({required this.model, super.key, this.updater});
   final BaseEditModel<SiparisEditRequestModel> model;
   final bool? updater;
@@ -32,7 +32,7 @@ class BaseTransferKalemlerView extends StatefulWidget {
   State<BaseTransferKalemlerView> createState() => _BaseTransferKalemlerViewState();
 }
 
-class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView> {
+final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemlerView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   BaseTransferKalemlerViewModel viewModel = BaseTransferKalemlerViewModel();
   late final TextEditingController _searchTextController;

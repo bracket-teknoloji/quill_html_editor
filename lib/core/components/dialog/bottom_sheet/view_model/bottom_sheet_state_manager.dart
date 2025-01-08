@@ -6,7 +6,7 @@ import "../model/bottom_sheet_model.dart";
 
 part "bottom_sheet_state_manager.g.dart";
 
-class BottomSheetStateManager = _BottomSheetStateManagerBase with _$BottomSheetStateManager;
+final class BottomSheetStateManager = _BottomSheetStateManagerBase with _$BottomSheetStateManager;
 
 abstract class _BottomSheetStateManagerBase with Store {
   @observable

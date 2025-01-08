@@ -6,7 +6,7 @@ import "../../seri_hareketleri/model/seri_hareketleri_model.dart";
 
 part "seri_girisi_view_model.g.dart";
 
-class SeriGirisiViewModel = _SeriGirisiViewModelBase with _$SeriGirisiViewModel;
+final class SeriGirisiViewModel = _SeriGirisiViewModelBase with _$SeriGirisiViewModel;
 
 abstract class _SeriGirisiViewModelBase with Store, MobxNetworkMixin {
   @observable

@@ -13,7 +13,7 @@ import "../../../../../model/param_model.dart";
 import "../../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_ekstre_view_model.dart";
 
-class CariEkstreView extends StatefulWidget {
+final class CariEkstreView extends StatefulWidget {
   const CariEkstreView({super.key, this.model});
   final CariListesiModel? model;
 
@@ -21,7 +21,7 @@ class CariEkstreView extends StatefulWidget {
   State<CariEkstreView> createState() => _CariEkstreViewState();
 }
 
-class _CariEkstreViewState extends BaseState<CariEkstreView> {
+final class _CariEkstreViewState extends BaseState<CariEkstreView> {
   CariEkstreViewModel viewModel = CariEkstreViewModel();
   TextEditingController? cariController;
   TextEditingController? dovizController;

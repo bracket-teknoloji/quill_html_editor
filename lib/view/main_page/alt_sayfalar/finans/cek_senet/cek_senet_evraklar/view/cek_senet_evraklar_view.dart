@@ -14,7 +14,7 @@ import "../model/evraklar_model.dart";
 import "../model/evraklar_request_model.dart";
 import "../view_model/cek_senet_evraklar_view_model.dart";
 
-class CekSenetEvraklarView extends StatefulWidget {
+final class CekSenetEvraklarView extends StatefulWidget {
   const CekSenetEvraklarView({required this.model, super.key});
   final CekSenetListesiModel model;
 
@@ -22,7 +22,7 @@ class CekSenetEvraklarView extends StatefulWidget {
   State<CekSenetEvraklarView> createState() => _CekSenetEvraklarViewState();
 }
 
-class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
+final class _CekSenetEvraklarViewState extends BaseState<CekSenetEvraklarView> {
   late final CekSenetEvraklarViewModel viewModel;
 
   @override

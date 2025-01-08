@@ -52,7 +52,7 @@ extension DekontIslemleriExtensions on DekontIslemlerRequestModel {
   bool get ilkSayfaTamamMi => dekontSeri != null && tarih != null && plasiyerKodu != null;
 }
 
-class SingletonDekontIslemlerRequestModel {
+final class SingletonDekontIslemlerRequestModel {
   //create a singleton of DekontIslemlerRequestModel
   static final DekontIslemlerRequestModel _instance = DekontIslemlerRequestModel();
 

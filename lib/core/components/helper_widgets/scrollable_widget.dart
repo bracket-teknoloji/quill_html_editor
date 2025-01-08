@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 
 import "../../constants/ui_helper/duration_helper.dart";
 
-class ScrollableWidget extends StatefulWidget {
+final class ScrollableWidget extends StatefulWidget {
   const ScrollableWidget({
     required this.child,
     required this.isScrolledDown,
@@ -15,7 +15,7 @@ class ScrollableWidget extends StatefulWidget {
   State<ScrollableWidget> createState() => _ScrollableWidgetState();
 }
 
-class _ScrollableWidgetState extends State<ScrollableWidget> {
+final class _ScrollableWidgetState extends State<ScrollableWidget> {
   @override
   Widget build(BuildContext context) => AnimatedSlide(
         duration: DurationHelper.durationLow,

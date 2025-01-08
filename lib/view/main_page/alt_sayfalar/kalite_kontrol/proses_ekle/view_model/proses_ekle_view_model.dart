@@ -5,7 +5,7 @@ import "../../olcum_belge_edit/model/olcum_belge_edit_model.dart";
 
 part "proses_ekle_view_model.g.dart";
 
-class ProsesEkleViewModel = _ProsesEkleViewModelBase with _$ProsesEkleViewModel;
+final class ProsesEkleViewModel = _ProsesEkleViewModelBase with _$ProsesEkleViewModel;
 
 abstract class _ProsesEkleViewModelBase with Store {
   final List<String> sonucTuruTitleList = [

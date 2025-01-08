@@ -7,7 +7,7 @@ import "../model/menu_item/menu_item_constants.dart";
 
 part "main_page_view_model.g.dart";
 
-class MainPageViewModel = _MainPageViewModelBase with _$MainPageViewModel;
+final class MainPageViewModel = _MainPageViewModelBase with _$MainPageViewModel;
 
 abstract class _MainPageViewModelBase with Store {
   @observable

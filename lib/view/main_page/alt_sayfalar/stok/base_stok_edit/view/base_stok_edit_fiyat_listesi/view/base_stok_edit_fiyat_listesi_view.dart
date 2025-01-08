@@ -8,14 +8,14 @@ import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../model/stok_detay_model.dart";
 
-class BaseStokEditFiyatListesiView extends StatefulWidget {
+final class BaseStokEditFiyatListesiView extends StatefulWidget {
   const BaseStokEditFiyatListesiView({super.key});
 
   @override
   State<BaseStokEditFiyatListesiView> createState() => _BaseStokEditFiyatListesiViewState();
 }
 
-class _BaseStokEditFiyatListesiViewState extends State<BaseStokEditFiyatListesiView> {
+final class _BaseStokEditFiyatListesiViewState extends State<BaseStokEditFiyatListesiView> {
   StokDetayModel model = StokDetayModel.instance;
   @override
   Widget build(BuildContext context) => model.fiyatList.ext.isNotNullOrEmpty

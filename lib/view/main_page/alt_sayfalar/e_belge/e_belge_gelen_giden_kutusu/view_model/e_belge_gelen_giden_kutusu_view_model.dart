@@ -12,7 +12,7 @@ import "../model/e_belge_request_model.dart";
 
 part "e_belge_gelen_giden_kutusu_view_model.g.dart";
 
-class EBelgeGelenGidenKutusuViewModel = _EBelgeGelenGidenKutusuViewModelBase with _$EBelgeGelenGidenKutusuViewModel;
+final class EBelgeGelenGidenKutusuViewModel = _EBelgeGelenGidenKutusuViewModelBase with _$EBelgeGelenGidenKutusuViewModel;
 
 abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin {
   //create constructor

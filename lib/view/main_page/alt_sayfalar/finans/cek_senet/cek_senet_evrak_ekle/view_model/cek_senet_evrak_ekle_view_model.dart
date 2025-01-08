@@ -9,7 +9,7 @@ import "../model/cek_senet_evrak_ekle_model.dart";
 
 part "cek_senet_evrak_ekle_view_model.g.dart";
 
-class CekSenetEvrakEkleViewModel = _CekSenetEvrakEkleViewModelBase with _$CekSenetEvrakEkleViewModel;
+final class CekSenetEvrakEkleViewModel = _CekSenetEvrakEkleViewModelBase with _$CekSenetEvrakEkleViewModel;
 
 abstract class _CekSenetEvrakEkleViewModelBase with Store, MobxNetworkMixin {
   _CekSenetEvrakEkleViewModelBase({required this.model}) {

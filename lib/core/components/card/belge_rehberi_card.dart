@@ -6,7 +6,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/belge_rehberi/model/belge_rehberi_model.dart";
 
-class BelgeRehberiCard extends StatelessWidget {
+final class BelgeRehberiCard extends StatelessWidget {
   const BelgeRehberiCard({required this.model, super.key});
   final BelgeRehberiModel model;
 

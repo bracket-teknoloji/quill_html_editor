@@ -21,9 +21,7 @@ KullanicilarModel _$KullanicilarModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$KullanicilarModel {
   String? get kodu => throw _privateConstructorUsedError;
-  set kodu(String? value) => throw _privateConstructorUsedError;
   String? get adi => throw _privateConstructorUsedError;
-  set adi(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this KullanicilarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -118,15 +116,15 @@ class __$$KullanicilarModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$KullanicilarModelImpl extends _KullanicilarModel {
-  _$KullanicilarModelImpl({this.kodu, this.adi}) : super._();
+  const _$KullanicilarModelImpl({this.kodu, this.adi}) : super._();
 
   factory _$KullanicilarModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$KullanicilarModelImplFromJson(json);
 
   @override
-  String? kodu;
+  final String? kodu;
   @override
-  String? adi;
+  final String? adi;
 
   /// Create a copy of KullanicilarModel
   /// with the given fields replaced by the non-null parameter values.
@@ -146,19 +144,17 @@ class _$KullanicilarModelImpl extends _KullanicilarModel {
 }
 
 abstract class _KullanicilarModel extends KullanicilarModel {
-  factory _KullanicilarModel({String? kodu, String? adi}) =
+  const factory _KullanicilarModel({final String? kodu, final String? adi}) =
       _$KullanicilarModelImpl;
-  _KullanicilarModel._() : super._();
+  const _KullanicilarModel._() : super._();
 
   factory _KullanicilarModel.fromJson(Map<String, dynamic> json) =
       _$KullanicilarModelImpl.fromJson;
 
   @override
   String? get kodu;
-  set kodu(String? value);
   @override
   String? get adi;
-  set adi(String? value);
 
   /// Create a copy of KullanicilarModel
   /// with the given fields replaced by the non-null parameter values.

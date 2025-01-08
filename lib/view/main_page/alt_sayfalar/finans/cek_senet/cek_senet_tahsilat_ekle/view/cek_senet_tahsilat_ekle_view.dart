@@ -29,7 +29,7 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/cek_senet_tahsilat_ekle_view_model.dart";
 
-class CekSenetTahsilatEkleView extends StatefulWidget {
+final class CekSenetTahsilatEkleView extends StatefulWidget {
   const CekSenetTahsilatEkleView({required this.cekSenetListesiEnum, super.key, this.model});
   final CekSenetKalemlerModel? model;
   final CekSenetListesiEnum cekSenetListesiEnum;
@@ -38,7 +38,7 @@ class CekSenetTahsilatEkleView extends StatefulWidget {
   State<CekSenetTahsilatEkleView> createState() => _CekSenetTahsilatEkleViewState();
 }
 
-class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView> {
+final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkleView> {
   final CekSenetTahsilatEkleViewModel viewModel = CekSenetTahsilatEkleViewModel();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late final TextEditingController _bankaHesapKoduController;

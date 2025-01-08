@@ -4,7 +4,7 @@ import "../../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/
 
 part "seri_detayi_view_model.g.dart";
 
-class SeriDetayiViewModel = _SeriDetayiViewModelBase with _$SeriDetayiViewModel;
+final class SeriDetayiViewModel = _SeriDetayiViewModelBase with _$SeriDetayiViewModel;
 
 abstract class _SeriDetayiViewModelBase with Store {
   @observable

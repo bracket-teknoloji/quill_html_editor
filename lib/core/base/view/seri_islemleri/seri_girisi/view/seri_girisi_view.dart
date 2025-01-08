@@ -12,7 +12,7 @@ import "../../../../state/base_state.dart";
 import "../../seri_hareketleri/model/seri_hareketleri_model.dart";
 import "../view_model/seri_girisi_view_model.dart";
 
-class SeriGirisiView extends StatefulWidget {
+final class SeriGirisiView extends StatefulWidget {
   const SeriGirisiView({super.key, this.seriHareketleriModel});
   final SeriHareketleriModel? seriHareketleriModel;
 
@@ -20,7 +20,7 @@ class SeriGirisiView extends StatefulWidget {
   State<SeriGirisiView> createState() => _SeriGirisiViewState();
 }
 
-class _SeriGirisiViewState extends BaseState<SeriGirisiView> {
+final class _SeriGirisiViewState extends BaseState<SeriGirisiView> {
   SeriGirisiViewModel viewModel = SeriGirisiViewModel();
   late final TextEditingController _stokController;
   late final TextEditingController _depoController;

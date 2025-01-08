@@ -6,7 +6,7 @@ import "package:json_annotation/json_annotation.dart";
 part "user_json_model.g.dart";
 
 @JsonSerializable()
-class UserJson {
+final class UserJson {
   UserJson();
 
   factory UserJson.fromJson(String? json) {
@@ -54,7 +54,7 @@ class UserJson {
 }
 
 @JsonSerializable()
-class ProfilModel {
+final class ProfilModel {
   ProfilModel();
 
   factory ProfilModel.fromJson(Map<String, dynamic> json) => _$ProfilModelFromJson(json);

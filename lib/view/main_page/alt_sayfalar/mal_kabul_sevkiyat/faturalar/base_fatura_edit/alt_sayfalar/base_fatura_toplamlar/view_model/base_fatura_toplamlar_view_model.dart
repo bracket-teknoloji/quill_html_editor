@@ -9,7 +9,7 @@ import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_mode
 
 part "base_fatura_toplamlar_view_model.g.dart";
 
-class BaseFaturaToplamlarViewModel = _BaseFaturaToplamlarViewModelBase with _$BaseFaturaToplamlarViewModel;
+final class BaseFaturaToplamlarViewModel = _BaseFaturaToplamlarViewModelBase with _$BaseFaturaToplamlarViewModel;
 
 abstract class _BaseFaturaToplamlarViewModelBase with Store {
   static ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;

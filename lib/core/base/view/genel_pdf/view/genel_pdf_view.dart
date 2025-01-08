@@ -14,7 +14,7 @@ import "../../../model/base_pdf_model.dart";
 import "../../../state/base_state.dart";
 import "../view_model/genel_pdf_view_model.dart";
 
-class GenelPdfView extends StatefulWidget {
+final class GenelPdfView extends StatefulWidget {
   const GenelPdfView({super.key, this.model});
   final BasePdfModel? model;
 
@@ -22,7 +22,7 @@ class GenelPdfView extends StatefulWidget {
   State<GenelPdfView> createState() => _GenelPdfViewState();
 }
 
-class _GenelPdfViewState extends BaseState<GenelPdfView> {
+final class _GenelPdfViewState extends BaseState<GenelPdfView> {
   GenelPdfViewModel viewModel = GenelPdfViewModel();
   BasePdfModel? pdfFile;
   late PdfViewerController pdfViewerController;

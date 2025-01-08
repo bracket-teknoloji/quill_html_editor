@@ -3,7 +3,7 @@ import "package:json_annotation/json_annotation.dart";
 part "lang_model.g.dart";
 
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.none)
-class LangModel {
+final class LangModel {
   LangModel();
 
   factory LangModel.fromJson(Map<String, dynamic>? json) => json != null ? _$LangModelFromJson(json) : LangModel();

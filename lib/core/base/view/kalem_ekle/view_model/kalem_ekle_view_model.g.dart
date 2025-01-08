@@ -39,6 +39,13 @@ mixin _$KalemEkleViewModel on _KalemEkleViewModelBase, Store {
   bool get koliMi => (_$koliMiComputed ??= Computed<bool>(() => super.koliMi,
           name: '_KalemEkleViewModelBase.koliMi'))
       .value;
+  Computed<double?>? _$birimAgirlikComputed;
+
+  @override
+  double? get birimAgirlik =>
+      (_$birimAgirlikComputed ??= Computed<double?>(() => super.birimAgirlik,
+              name: '_KalemEkleViewModelBase.birimAgirlik'))
+          .value;
 
   late final _$showDovizBilgileriAtom = Atom(
       name: '_KalemEkleViewModelBase.showDovizBilgileri', context: context);
@@ -640,7 +647,8 @@ kalemModel: ${kalemModel},
 dovizliMi: ${dovizliMi},
 dovizAdi: ${dovizAdi},
 olcuBirimiMap: ${olcuBirimiMap},
-koliMi: ${koliMi}
+koliMi: ${koliMi},
+birimAgirlik: ${birimAgirlik}
     ''';
   }
 }

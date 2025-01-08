@@ -13,7 +13,7 @@ part "main_page_model.g.dart";
 
 @JsonSerializable()
 @HiveType(typeId: 100)
-class MainPageModel with NetworkManagerMixin {
+final class MainPageModel with NetworkManagerMixin {
   MainPageModel();
   @JsonKey(name: "UserModel")
   @HiveField(0)

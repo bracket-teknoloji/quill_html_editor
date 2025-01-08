@@ -4,7 +4,7 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "finansal_durum_raporu_view_model.g.dart";
 
-class FinansalDurumRaporuViewModel = _FinansalDurumRaporuViewModelBase with _$FinansalDurumRaporuViewModel;
+final class FinansalDurumRaporuViewModel = _FinansalDurumRaporuViewModelBase with _$FinansalDurumRaporuViewModel;
 
 abstract class _FinansalDurumRaporuViewModelBase with Store {
   final Map<String, String> gorunecekAlanlarMap = {

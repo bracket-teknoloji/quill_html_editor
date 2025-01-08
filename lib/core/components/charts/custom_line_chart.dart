@@ -8,7 +8,7 @@ import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/duration_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
-class CustomLineChart extends StatefulWidget {
+final class CustomLineChart extends StatefulWidget {
   const CustomLineChart({super.key, this.lineChartValue});
   final List<double>? lineChartValue;
 
@@ -16,7 +16,7 @@ class CustomLineChart extends StatefulWidget {
   State<CustomLineChart> createState() => _CustomLineChartState();
 }
 
-class _CustomLineChartState extends BaseState<CustomLineChart> {
+final class _CustomLineChartState extends BaseState<CustomLineChart> {
   final List<String> months = [
     "Ocak",
     "Şubat",

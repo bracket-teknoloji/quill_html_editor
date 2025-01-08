@@ -6,7 +6,7 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "base_talep_teklif_editing_view_model.g.dart";
 
-class BaseTalepTeklifEditingViewModel = _BaseTalepTeklifEditingViewModelBase with _$BaseTalepTeklifEditingViewModel;
+final class BaseTalepTeklifEditingViewModel = _BaseTalepTeklifEditingViewModelBase with _$BaseTalepTeklifEditingViewModel;
 
 abstract class _BaseTalepTeklifEditingViewModelBase with Store {
   @computed

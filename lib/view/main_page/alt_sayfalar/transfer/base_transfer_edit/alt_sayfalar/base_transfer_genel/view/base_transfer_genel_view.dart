@@ -32,7 +32,7 @@ import "../../../../../uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_mode
 // import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 import "../view_model/base_transfer_genel_view_model.dart";
 
-class BaseTransferGenelView extends StatefulWidget {
+final class BaseTransferGenelView extends StatefulWidget {
   const BaseTransferGenelView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -40,7 +40,7 @@ class BaseTransferGenelView extends StatefulWidget {
   State<BaseTransferGenelView> createState() => BaseTransferGenelViewState();
 }
 
-class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
+final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
   BaseTransferGenelViewModel viewModel = BaseTransferGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;

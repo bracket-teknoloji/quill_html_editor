@@ -12,7 +12,7 @@ import "../model/is_emirleri_model.dart";
 
 part "is_emri_rehberi_view_model.g.dart";
 
-class IsEmriRehberiViewModel = _IsEmriRehberiViewModelBase with _$IsEmriRehberiViewModel;
+final class IsEmriRehberiViewModel = _IsEmriRehberiViewModelBase with _$IsEmriRehberiViewModel;
 
 abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<IsEmirleriModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   SiparislerRequestModel get requestModel => SiparislerRequestModel(

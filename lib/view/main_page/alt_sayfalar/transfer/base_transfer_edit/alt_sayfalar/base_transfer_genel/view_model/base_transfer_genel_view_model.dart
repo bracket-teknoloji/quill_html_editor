@@ -9,7 +9,7 @@ import "../../../../../uretim/is_emirleri/is_emri_rehberi/model/is_emirleri_mode
 
 part "base_transfer_genel_view_model.g.dart";
 
-class BaseTransferGenelViewModel = _BaseTransferGenelViewModelBase with _$BaseTransferGenelViewModel;
+final class BaseTransferGenelViewModel = _BaseTransferGenelViewModelBase with _$BaseTransferGenelViewModel;
 
 abstract class _BaseTransferGenelViewModelBase with Store {
   final Map<String, String> hareketTuruMap = <String, String>{

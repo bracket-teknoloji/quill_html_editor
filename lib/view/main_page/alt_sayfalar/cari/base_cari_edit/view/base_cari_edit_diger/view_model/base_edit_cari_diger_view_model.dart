@@ -13,7 +13,7 @@ import "../../../../cari_listesi/model/cari_save_request_model.dart";
 
 part "base_edit_cari_diger_view_model.g.dart";
 
-class BaseEditCariDigerViewModel = _BaseEditCariDigerViewModelBase with _$BaseEditCariDigerViewModel;
+final class BaseEditCariDigerViewModel = _BaseEditCariDigerViewModelBase with _$BaseEditCariDigerViewModel;
 
 abstract class _BaseEditCariDigerViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String> kilitMap = <String, String>{"Kilitli Değil": "H", "Kilitli (Fatura)": "F", "Kilitli (Tüm İşlemler)": "T"};

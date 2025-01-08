@@ -5,7 +5,7 @@ import "../../base/model/print_model.dart";
 import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../enum/dizayn_ozel_kod_enum.dart";
 
-class SingletonModels {
+final class SingletonModels {
   static SayimListesiModel? _sayimListesi;
 
   static SayimListesiModel? get sayimListesi => _sayimListesi;

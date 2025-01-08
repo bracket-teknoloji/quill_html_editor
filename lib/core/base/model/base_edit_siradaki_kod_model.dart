@@ -5,7 +5,7 @@ import "base_network_mixin.dart";
 part "base_edit_siradaki_kod_model.g.dart";
 
 @JsonSerializable()
-class BaseEditSiradakiKodModel with NetworkManagerMixin {
+final class BaseEditSiradakiKodModel with NetworkManagerMixin {
   BaseEditSiradakiKodModel();
   String? siradakiKod;
 

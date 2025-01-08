@@ -19,7 +19,7 @@ import "../../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "../../../cek_senet_tahsilati/model/save_cek_senet_model.dart";
 import "../view_model/kasadan_tahsil_et_view_model.dart";
 
-class KasadanTahsilEtView extends StatefulWidget {
+final class KasadanTahsilEtView extends StatefulWidget {
   const KasadanTahsilEtView({required this.model, super.key});
   final CekSenetListesiModel model;
 
@@ -27,7 +27,7 @@ class KasadanTahsilEtView extends StatefulWidget {
   State<KasadanTahsilEtView> createState() => _KasadanTahsilEtViewState();
 }
 
-class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
+final class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
   late final KasadanTahsilEtViewModel viewModel;
   CekSenetListesiModel get model => widget.model;
   CekSenetListesiEnum get cekSenetEnum => widget.model.cekSenetListesiEnum;

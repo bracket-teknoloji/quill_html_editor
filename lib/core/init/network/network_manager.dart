@@ -54,7 +54,7 @@ import "../../components/dialog/dialog_manager.dart";
 import "../../constants/enum/dio_enum.dart";
 import "login/api_urls.dart";
 
-class NetworkManager {
+final class NetworkManager {
   factory NetworkManager() => _singleton;
 
   NetworkManager._internal() {
@@ -512,7 +512,7 @@ class NetworkManager {
   Future<List<KullanicilarModel>?> getKullanicilar() async {
     final result = await dioPost<KullanicilarModel>(
       path: ApiUrls.getGenelRehber,
-      bodyModel: KullanicilarModel(),
+      bodyModel: const KullanicilarModel(),
       showLoading: true,
       data: {"RehberKodu": 3},
     );
@@ -549,7 +549,7 @@ class NetworkManager {
   Future<List<KullanicilarModel>?> getCariAktiviteBolumler() async {
     final result = await dioPost<KullanicilarModel>(
       path: ApiUrls.getGenelRehber,
-      bodyModel: KullanicilarModel(),
+      bodyModel: const KullanicilarModel(),
       showLoading: true,
       data: {"RehberKodu": 4},
     );
@@ -562,7 +562,7 @@ class NetworkManager {
   Future<List<KullanicilarModel>?> getIlgiliKisiler() async {
     final result = await dioPost<KullanicilarModel>(
       path: ApiUrls.getGenelRehber,
-      bodyModel: KullanicilarModel(),
+      bodyModel: const KullanicilarModel(),
       showLoading: true,
       data: {"RehberKodu": 5},
     );
@@ -575,7 +575,7 @@ class NetworkManager {
   Future<List<KullanicilarModel>?> getCariAktiviteAciklamalar() async {
     final result = await dioPost<KullanicilarModel>(
       path: ApiUrls.getGenelRehber,
-      bodyModel: KullanicilarModel(),
+      bodyModel: const KullanicilarModel(),
       showLoading: true,
       data: {"RehberKodu": 6},
     );
@@ -588,7 +588,7 @@ class NetworkManager {
   Future<List<KullanicilarModel>?> getCariAktiviteSonucAciklamalar() async {
     final result = await dioPost<KullanicilarModel>(
       path: ApiUrls.getGenelRehber,
-      bodyModel: KullanicilarModel(),
+      bodyModel: const KullanicilarModel(),
       showLoading: true,
       data: {"RehberKodu": 7},
     );

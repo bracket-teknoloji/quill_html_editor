@@ -6,7 +6,7 @@ import "../model/cari_stok_satis_ozeti_model.dart";
 
 part "cari_stok_satis_ozeti_view_model.g.dart";
 
-class CariStokSatisOzetiViewModel = _CariStokSatisOzetiViewModelBase with _$CariStokSatisOzetiViewModel;
+final class CariStokSatisOzetiViewModel = _CariStokSatisOzetiViewModelBase with _$CariStokSatisOzetiViewModel;
 
 abstract class _CariStokSatisOzetiViewModelBase with Store {
   final List<BottomSheetModel<String>> bottomSheetModelList = <BottomSheetModel<String>>[

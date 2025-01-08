@@ -10,7 +10,7 @@ import "../../../stok_rehberi/model/stok_rehberi_request_model.dart";
 
 part "seri_rehberi_view_model.g.dart";
 
-class SeriRehberiViewModel = _SeriRehberiViewModelBase with _$SeriRehberiViewModel;
+final class SeriRehberiViewModel = _SeriRehberiViewModelBase with _$SeriRehberiViewModel;
 
 abstract class _SeriRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<SeriList>, SearchableMixin {
   @override

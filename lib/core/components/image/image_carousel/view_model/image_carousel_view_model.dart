@@ -7,7 +7,7 @@ import "../../../../init/network/login/api_urls.dart";
 
 part "image_carousel_view_model.g.dart";
 
-class ImageCarouselViewModel = _ImageCarouselViewModelBase with _$ImageCarouselViewModel;
+final class ImageCarouselViewModel = _ImageCarouselViewModelBase with _$ImageCarouselViewModel;
 
 abstract class _ImageCarouselViewModelBase with Store, MobxNetworkMixin {
   @observable

@@ -9,7 +9,7 @@ part "user_model.g.dart";
 
 @JsonSerializable()
 @HiveType(typeId: 101)
-class UserModel {
+final class UserModel {
   UserModel();
 
   factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);

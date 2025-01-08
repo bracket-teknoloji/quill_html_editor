@@ -6,7 +6,7 @@ import "../../base/state/base_state.dart";
 import "../button/elevated_buttons/footer_button.dart";
 import "../helper_widgets/scrollable_widget.dart";
 
-class BottomBarWidget extends StatefulWidget {
+final class BottomBarWidget extends StatefulWidget {
   const BottomBarWidget({required this.isScrolledDown, required this.children, super.key, this.visible = true});
   final bool isScrolledDown;
   final bool visible;
@@ -16,7 +16,7 @@ class BottomBarWidget extends StatefulWidget {
   State<BottomBarWidget> createState() => _BottomBarWidgetState();
 }
 
-class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
+final class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
   List<Widget> list = [];
 
   @override

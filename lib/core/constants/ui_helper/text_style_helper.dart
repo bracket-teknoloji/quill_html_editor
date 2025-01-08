@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "../../init/theme/app_theme_dark.dart";
 import "ui_helper.dart";
 
-class TextStyleHelper {
+final class TextStyleHelper {
   static ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
   //* Title
   //*

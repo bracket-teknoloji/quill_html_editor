@@ -10,7 +10,7 @@ import "../model/sayim_listesi_model.dart";
 
 part "sayim_listesi_view_model.g.dart";
 
-class SayimListesiViewModel = _SayimListesiViewModelBase with _$SayimListesiViewModel;
+final class SayimListesiViewModel = _SayimListesiViewModelBase with _$SayimListesiViewModel;
 
 abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
   @observable

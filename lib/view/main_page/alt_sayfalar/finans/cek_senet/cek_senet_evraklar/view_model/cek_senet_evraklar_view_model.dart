@@ -9,7 +9,7 @@ import "../model/evraklar_request_model.dart";
 
 part "cek_senet_evraklar_view_model.g.dart";
 
-class CekSenetEvraklarViewModel = _CekSenetEvraklarViewModelBase with _$CekSenetEvraklarViewModel;
+final class CekSenetEvraklarViewModel = _CekSenetEvraklarViewModelBase with _$CekSenetEvraklarViewModel;
 
 abstract class _CekSenetEvraklarViewModelBase with Store, MobxNetworkMixin {
   //create a constructor

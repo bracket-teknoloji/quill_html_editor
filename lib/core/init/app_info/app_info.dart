@@ -1,6 +1,6 @@
 import "package:package_info_plus/package_info_plus.dart";
 
-class AppInfoModel {
+final class AppInfoModel {
   AppInfoModel._init();
   String? appName;
   String? packageName;

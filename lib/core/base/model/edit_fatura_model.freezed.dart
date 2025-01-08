@@ -22,47 +22,25 @@ EditFaturaModel _$EditFaturaModelFromJson(Map<String, dynamic> json) {
 mixin _$EditFaturaModel {
   @JsonKey(name: "BelgeTipi")
   int? get belgeTipi => throw _privateConstructorUsedError;
-  @JsonKey(name: "BelgeTipi")
-  set belgeTipi(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "PickerBelgeTuru")
   String? get pickerBelgeTuru => throw _privateConstructorUsedError;
-  @JsonKey(name: "PickerBelgeTuru")
-  set pickerBelgeTuru(String? value) => throw _privateConstructorUsedError;
   bool? get remoteTempBelge => throw _privateConstructorUsedError;
-  set remoteTempBelge(bool? value) => throw _privateConstructorUsedError;
   int? get tempBelgeId => throw _privateConstructorUsedError;
-  set tempBelgeId(int? value) => throw _privateConstructorUsedError;
   int? get tipi => throw _privateConstructorUsedError;
-  set tipi(int? value) => throw _privateConstructorUsedError;
   String? get belgeNo => throw _privateConstructorUsedError;
-  set belgeNo(String? value) => throw _privateConstructorUsedError;
   String? get belgeTuru => throw _privateConstructorUsedError;
-  set belgeTuru(String? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
-  set cariKodu(String? value) => throw _privateConstructorUsedError;
   String? get islemId => throw _privateConstructorUsedError;
-  set islemId(String? value) => throw _privateConstructorUsedError;
   String? get mevcutBelgeNo => throw _privateConstructorUsedError;
-  set mevcutBelgeNo(String? value) => throw _privateConstructorUsedError;
   String? get yeniBelgeNo => throw _privateConstructorUsedError;
-  set yeniBelgeNo(String? value) => throw _privateConstructorUsedError;
   String? get mevcutCariKodu => throw _privateConstructorUsedError;
-  set mevcutCariKodu(String? value) => throw _privateConstructorUsedError;
   Map<dynamic, dynamic>? get paramMap => throw _privateConstructorUsedError;
-  set paramMap(Map<dynamic, dynamic>? value) =>
-      throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
-  set tag(String? value) => throw _privateConstructorUsedError;
   int? get islemKodu => throw _privateConstructorUsedError;
-  set islemKodu(int? value) => throw _privateConstructorUsedError;
   List<KalemModel>? get kalemler => throw _privateConstructorUsedError;
-  set kalemler(List<KalemModel>? value) => throw _privateConstructorUsedError;
   bool? get irsaliyedenFatura => throw _privateConstructorUsedError;
-  set irsaliyedenFatura(bool? value) => throw _privateConstructorUsedError;
   String? get resmiBelgeNo => throw _privateConstructorUsedError;
-  set resmiBelgeNo(String? value) => throw _privateConstructorUsedError;
   DateTime? get tarih => throw _privateConstructorUsedError;
-  set tarih(DateTime? value) => throw _privateConstructorUsedError;
 
   /// Serializes this EditFaturaModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -331,7 +309,7 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
           : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       paramMap: freezed == paramMap
-          ? _value.paramMap
+          ? _value._paramMap
           : paramMap // ignore: cast_nullable_to_non_nullable
               as Map<dynamic, dynamic>?,
       tag: freezed == tag
@@ -343,7 +321,7 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
           : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
       kalemler: freezed == kalemler
-          ? _value.kalemler
+          ? _value._kalemler
           : kalemler // ignore: cast_nullable_to_non_nullable
               as List<KalemModel>?,
       irsaliyedenFatura: freezed == irsaliyedenFatura
@@ -378,60 +356,78 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
       this.mevcutBelgeNo,
       this.yeniBelgeNo,
       this.mevcutCariKodu,
-      this.paramMap = const {},
+      final Map<dynamic, dynamic>? paramMap = const {},
       this.tag = "FaturaModel",
       this.islemKodu,
-      this.kalemler,
+      final List<KalemModel>? kalemler,
       this.irsaliyedenFatura,
       this.resmiBelgeNo,
       this.tarih})
-      : super._();
+      : _paramMap = paramMap,
+        _kalemler = kalemler,
+        super._();
 
   factory _$EditFaturaModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EditFaturaModelImplFromJson(json);
 
   @override
   @JsonKey(name: "BelgeTipi")
-  int? belgeTipi;
+  final int? belgeTipi;
   @override
   @JsonKey(name: "PickerBelgeTuru")
-  String? pickerBelgeTuru;
+  final String? pickerBelgeTuru;
   @override
-  bool? remoteTempBelge;
+  final bool? remoteTempBelge;
   @override
-  int? tempBelgeId;
+  final int? tempBelgeId;
   @override
-  int? tipi;
+  final int? tipi;
   @override
-  String? belgeNo;
+  final String? belgeNo;
   @override
-  String? belgeTuru;
+  final String? belgeTuru;
   @override
-  String? cariKodu;
+  final String? cariKodu;
   @override
-  String? islemId;
+  final String? islemId;
   @override
-  String? mevcutBelgeNo;
+  final String? mevcutBelgeNo;
   @override
-  String? yeniBelgeNo;
+  final String? yeniBelgeNo;
   @override
-  String? mevcutCariKodu;
-  @override
-  @JsonKey()
-  Map<dynamic, dynamic>? paramMap;
+  final String? mevcutCariKodu;
+  final Map<dynamic, dynamic>? _paramMap;
   @override
   @JsonKey()
-  String? tag;
+  Map<dynamic, dynamic>? get paramMap {
+    final value = _paramMap;
+    if (value == null) return null;
+    if (_paramMap is EqualUnmodifiableMapView) return _paramMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
-  int? islemKodu;
+  @JsonKey()
+  final String? tag;
   @override
-  List<KalemModel>? kalemler;
+  final int? islemKodu;
+  final List<KalemModel>? _kalemler;
   @override
-  bool? irsaliyedenFatura;
+  List<KalemModel>? get kalemler {
+    final value = _kalemler;
+    if (value == null) return null;
+    if (_kalemler is EqualUnmodifiableListView) return _kalemler;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
-  String? resmiBelgeNo;
+  final bool? irsaliyedenFatura;
   @override
-  DateTime? tarih;
+  final String? resmiBelgeNo;
+  @override
+  final DateTime? tarih;
 
   /// Create a copy of EditFaturaModel
   /// with the given fields replaced by the non-null parameter values.
@@ -452,25 +448,25 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
 
 abstract class _EditFaturaModel extends EditFaturaModel {
   factory _EditFaturaModel(
-      {@JsonKey(name: "BelgeTipi") int? belgeTipi,
-      @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
-      bool? remoteTempBelge,
-      int? tempBelgeId,
-      int? tipi,
-      String? belgeNo,
-      String? belgeTuru,
-      String? cariKodu,
-      String? islemId,
-      String? mevcutBelgeNo,
-      String? yeniBelgeNo,
-      String? mevcutCariKodu,
-      Map<dynamic, dynamic>? paramMap,
-      String? tag,
-      int? islemKodu,
-      List<KalemModel>? kalemler,
-      bool? irsaliyedenFatura,
-      String? resmiBelgeNo,
-      DateTime? tarih}) = _$EditFaturaModelImpl;
+      {@JsonKey(name: "BelgeTipi") final int? belgeTipi,
+      @JsonKey(name: "PickerBelgeTuru") final String? pickerBelgeTuru,
+      final bool? remoteTempBelge,
+      final int? tempBelgeId,
+      final int? tipi,
+      final String? belgeNo,
+      final String? belgeTuru,
+      final String? cariKodu,
+      final String? islemId,
+      final String? mevcutBelgeNo,
+      final String? yeniBelgeNo,
+      final String? mevcutCariKodu,
+      final Map<dynamic, dynamic>? paramMap,
+      final String? tag,
+      final int? islemKodu,
+      final List<KalemModel>? kalemler,
+      final bool? irsaliyedenFatura,
+      final String? resmiBelgeNo,
+      final DateTime? tarih}) = _$EditFaturaModelImpl;
   _EditFaturaModel._() : super._();
 
   factory _EditFaturaModel.fromJson(Map<String, dynamic> json) =
@@ -479,64 +475,43 @@ abstract class _EditFaturaModel extends EditFaturaModel {
   @override
   @JsonKey(name: "BelgeTipi")
   int? get belgeTipi;
-  @JsonKey(name: "BelgeTipi")
-  set belgeTipi(int? value);
   @override
   @JsonKey(name: "PickerBelgeTuru")
   String? get pickerBelgeTuru;
-  @JsonKey(name: "PickerBelgeTuru")
-  set pickerBelgeTuru(String? value);
   @override
   bool? get remoteTempBelge;
-  set remoteTempBelge(bool? value);
   @override
   int? get tempBelgeId;
-  set tempBelgeId(int? value);
   @override
   int? get tipi;
-  set tipi(int? value);
   @override
   String? get belgeNo;
-  set belgeNo(String? value);
   @override
   String? get belgeTuru;
-  set belgeTuru(String? value);
   @override
   String? get cariKodu;
-  set cariKodu(String? value);
   @override
   String? get islemId;
-  set islemId(String? value);
   @override
   String? get mevcutBelgeNo;
-  set mevcutBelgeNo(String? value);
   @override
   String? get yeniBelgeNo;
-  set yeniBelgeNo(String? value);
   @override
   String? get mevcutCariKodu;
-  set mevcutCariKodu(String? value);
   @override
   Map<dynamic, dynamic>? get paramMap;
-  set paramMap(Map<dynamic, dynamic>? value);
   @override
   String? get tag;
-  set tag(String? value);
   @override
   int? get islemKodu;
-  set islemKodu(int? value);
   @override
   List<KalemModel>? get kalemler;
-  set kalemler(List<KalemModel>? value);
   @override
   bool? get irsaliyedenFatura;
-  set irsaliyedenFatura(bool? value);
   @override
   String? get resmiBelgeNo;
-  set resmiBelgeNo(String? value);
   @override
   DateTime? get tarih;
-  set tarih(DateTime? value);
 
   /// Create a copy of EditFaturaModel
   /// with the given fields replaced by the non-null parameter values.

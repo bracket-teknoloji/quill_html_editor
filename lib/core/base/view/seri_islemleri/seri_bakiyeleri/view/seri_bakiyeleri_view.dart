@@ -19,7 +19,7 @@ import "../../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../state/base_state.dart";
 import "../view_model/seri_bakiyeleri_view_model.dart";
 
-class SeriBakiyeleriView extends StatefulWidget {
+final class SeriBakiyeleriView extends StatefulWidget {
   const SeriBakiyeleriView({required this.stokModel, super.key});
   final StokListesiModel stokModel;
 
@@ -27,7 +27,7 @@ class SeriBakiyeleriView extends StatefulWidget {
   State<SeriBakiyeleriView> createState() => _SeriBakiyeleriViewState();
 }
 
-class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
+final class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
   final SeriBakiyeleriViewModel viewModel = SeriBakiyeleriViewModel();
   late final TextEditingController stokKoduController;
 

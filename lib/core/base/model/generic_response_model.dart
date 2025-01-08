@@ -1,6 +1,6 @@
 import "base_network_mixin.dart";
 
-class GenericResponseModel<T extends NetworkManagerMixin> {
+final class GenericResponseModel<T extends NetworkManagerMixin> {
   GenericResponseModel({
     this.message,
     this.messageDetail,

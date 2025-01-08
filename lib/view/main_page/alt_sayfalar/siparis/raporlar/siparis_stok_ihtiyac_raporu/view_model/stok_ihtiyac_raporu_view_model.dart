@@ -4,7 +4,7 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "stok_ihtiyac_raporu_view_model.g.dart";
 
-class StokIhtiyacRaporuViewModel = _StokIhtiyacRaporuViewModelBase with _$StokIhtiyacRaporuViewModel;
+final class StokIhtiyacRaporuViewModel = _StokIhtiyacRaporuViewModelBase with _$StokIhtiyacRaporuViewModel;
 
 abstract class _StokIhtiyacRaporuViewModelBase with Store {
   final Map<String, String> siralaMap = {

@@ -5,7 +5,7 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 
 part "base_talep_teklif_kalemler_view_model.g.dart";
 
-class BaseTalepTeklifKalemlerViewModel = BaseTalepTeklifKalemlerViewModelBase with _$BaseTalepTeklifKalemlerViewModel;
+final class BaseTalepTeklifKalemlerViewModel = BaseTalepTeklifKalemlerViewModelBase with _$BaseTalepTeklifKalemlerViewModel;
 
 abstract class BaseTalepTeklifKalemlerViewModelBase with Store {
   @observable

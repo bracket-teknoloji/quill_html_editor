@@ -18,7 +18,7 @@ import "../grid_item_model.dart";
 import "../main_page_model.dart";
 import "../param_model.dart";
 
-class MenuItemConstants {
+final class MenuItemConstants {
   MenuItemConstants(this.context);
 
   final BuildContext context;

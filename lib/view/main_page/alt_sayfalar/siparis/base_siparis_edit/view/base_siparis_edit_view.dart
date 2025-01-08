@@ -32,7 +32,7 @@ import "../alt_sayfalar/base_siparisler_toplamlar/view/base_siparis_toplamlar_vi
 import "../model/base_siparis_edit_model.dart";
 import "../view_model/base_siparis_editing_view_model.dart";
 
-class BaseSiparisEditingView extends StatefulWidget {
+final class BaseSiparisEditingView extends StatefulWidget {
   const BaseSiparisEditingView({required this.model, super.key, this.appBarTitle, this.appBarSubtitle, this.isSubTitleSmall});
   final String? appBarTitle;
   final String? appBarSubtitle;
@@ -44,7 +44,7 @@ class BaseSiparisEditingView extends StatefulWidget {
   State<BaseSiparisEditingView> createState() => _BaseSiparisEditingViewState();
 }
 
-class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> with TickerProviderStateMixin {
+final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingView> with TickerProviderStateMixin {
   BaseSiparisEditingViewModel viewModel = BaseSiparisEditingViewModel();
   late final TabController tabController;
   late BaseEditModel<SiparisEditRequestModel> model;

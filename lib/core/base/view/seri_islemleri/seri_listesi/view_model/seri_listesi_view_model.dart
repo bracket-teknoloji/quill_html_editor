@@ -11,7 +11,7 @@ import "../model/seri_uret_model.dart";
 
 part "seri_listesi_view_model.g.dart";
 
-class SeriListesiViewModel = _SeriListesiViewModelBase with _$SeriListesiViewModel;
+final class SeriListesiViewModel = _SeriListesiViewModelBase with _$SeriListesiViewModel;
 
 abstract class _SeriListesiViewModelBase with Store, MobxNetworkMixin {
   _SeriListesiViewModelBase(this.kalemModel);

@@ -36,7 +36,7 @@ import "../../init/network/network_manager.dart";
 import "../grid_tile/custom_animated_grid/view/custom_animated_grid_view.dart";
 import "logout_model.dart";
 
-class DialogManager {
+final class DialogManager {
   DialogManager();
   BuildContext get context => Get.context!;
 

@@ -9,7 +9,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/hizli_tahsilat_kayitla
 
 part "hizli_tahsilat_kayitlari_view_model.g.dart";
 
-class HizliTahsilatKayitlariViewModel = _HizliTahsilatKayitlariViewModelBase with _$HizliTahsilatKayitlariViewModel;
+final class HizliTahsilatKayitlariViewModel = _HizliTahsilatKayitlariViewModelBase with _$HizliTahsilatKayitlariViewModel;
 
 abstract class _HizliTahsilatKayitlariViewModelBase with Store, MobxNetworkMixin, ListableMixin<BankaHareketleriModel>, SearchableMixin {
   @override

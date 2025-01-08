@@ -20,7 +20,7 @@ import "../../../hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
 import "../view_model/stok_yazdir_view_model.dart";
 
-class StokYazdirView extends StatefulWidget {
+final class StokYazdirView extends StatefulWidget {
   const StokYazdirView({super.key, this.model, this.hucreModel});
   final StokListesiModel? model;
   final HucreListesiModel? hucreModel;
@@ -29,7 +29,7 @@ class StokYazdirView extends StatefulWidget {
   State<StokYazdirView> createState() => _StokYazdirViewState();
 }
 
-class _StokYazdirViewState extends BaseState<StokYazdirView> {
+final class _StokYazdirViewState extends BaseState<StokYazdirView> {
   StokYazdirViewModel viewModel = StokYazdirViewModel();
   late final TextEditingController stokController;
   late final TextEditingController yapilandirmaKoduController;

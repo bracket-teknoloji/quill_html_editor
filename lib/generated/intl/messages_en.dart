@@ -17,7 +17,7 @@ final messages = new MessageLookup();
 
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
-class MessageLookup extends MessageLookupByLibrary {
+final class MessageLookup extends MessageLookupByLibrary {
   String get localeName => "en";
 
   final messages = _notInlinedMessages(_notInlinedMessages);

@@ -8,7 +8,7 @@ import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../../siparis/siparisler/model/siparis_edit_request_model.dart";
 
-class BaseFaturaDigerView extends StatefulWidget {
+final class BaseFaturaDigerView extends StatefulWidget {
   const BaseFaturaDigerView({required this.model, super.key});
   final BaseEditModel<SiparisEditRequestModel> model;
 
@@ -16,7 +16,7 @@ class BaseFaturaDigerView extends StatefulWidget {
   State<BaseFaturaDigerView> createState() => _BaseFaturaDigerViewState();
 }
 
-class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
+final class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   bool get enable => widget.model.enable;
   late final QuillEditorController controller;

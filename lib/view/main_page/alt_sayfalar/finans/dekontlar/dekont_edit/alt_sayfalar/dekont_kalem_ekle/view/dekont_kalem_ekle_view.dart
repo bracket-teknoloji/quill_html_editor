@@ -21,7 +21,7 @@ import "../../../../../banka/banka_listesi/model/banka_listesi_request_model.dar
 import "../../../model/dekont_islemler_request_model.dart";
 import "../view_model/dekont_kalem_ekle_view_model.dart";
 
-class DekontKalemEkleView extends StatefulWidget {
+final class DekontKalemEkleView extends StatefulWidget {
   const DekontKalemEkleView({required this.baseEditEnum, super.key, this.model});
   final DekontKalemler? model;
   final BaseEditEnum baseEditEnum;
@@ -30,7 +30,7 @@ class DekontKalemEkleView extends StatefulWidget {
   State<DekontKalemEkleView> createState() => _DekontKalemEkleViewState();
 }
 
-class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
+final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
   late final DekontKalemEkleViewModel viewModel;
   late final TextEditingController _belgeNoController;
   late final TextEditingController _hesapController;

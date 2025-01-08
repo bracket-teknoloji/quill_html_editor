@@ -10,7 +10,7 @@ import "../model/banka_listesi_request_model.dart";
 
 part "banka_listesi_view_model.g.dart";
 
-class BankaListesiViewModel = _BankaListesiViewModelBase with _$BankaListesiViewModel;
+final class BankaListesiViewModel = _BankaListesiViewModelBase with _$BankaListesiViewModel;
 
 abstract class _BankaListesiViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String> siralaMap = {

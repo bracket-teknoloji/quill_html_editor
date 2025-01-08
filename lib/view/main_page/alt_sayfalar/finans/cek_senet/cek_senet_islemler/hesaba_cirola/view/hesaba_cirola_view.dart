@@ -18,7 +18,7 @@ import "../../../../banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "../../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 import "../view_model/hesaba_cirola_view_model.dart";
 
-class HesabaCirolaView extends StatefulWidget {
+final class HesabaCirolaView extends StatefulWidget {
   const HesabaCirolaView({required this.model, required this.cirolaEnum, super.key});
   final CekSenetListesiModel model;
   final CirolaEnum cirolaEnum;
@@ -27,7 +27,7 @@ class HesabaCirolaView extends StatefulWidget {
   State<HesabaCirolaView> createState() => _HesabaCirolaViewState();
 }
 
-class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
+final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
   HesabaCirolaViewModel viewModel = HesabaCirolaViewModel();
   CekSenetListesiModel get model => widget.model;
   late final TextEditingController _belgeNoController;

@@ -17,14 +17,14 @@ import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
 import "../view_model/kasa_transferi_view_model.dart";
 
-class KasaTransferiView extends StatefulWidget {
+final class KasaTransferiView extends StatefulWidget {
   const KasaTransferiView({super.key});
 
   @override
   State<KasaTransferiView> createState() => _KasaTransferiViewState();
 }
 
-class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
+final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
   KasaTransferiViewModel viewModel = KasaTransferiViewModel();
   late final TextEditingController belgeNoController;
   late final TextEditingController tarihController;

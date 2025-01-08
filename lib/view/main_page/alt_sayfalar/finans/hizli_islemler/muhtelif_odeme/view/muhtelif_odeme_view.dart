@@ -20,7 +20,7 @@ import "package:picker/view/main_page/alt_sayfalar/finans/hizli_islemler/muhteli
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-class MuhtelifOdemeView extends StatefulWidget {
+final class MuhtelifOdemeView extends StatefulWidget {
   const MuhtelifOdemeView({super.key, this.tahsilatMi});
   final bool? tahsilatMi;
 
@@ -28,7 +28,7 @@ class MuhtelifOdemeView extends StatefulWidget {
   State<MuhtelifOdemeView> createState() => _MuhtelifOdemeViewState();
 }
 
-class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
+final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   MuhtelifOdemeViewModel viewModel = MuhtelifOdemeViewModel();
   late final TextEditingController _belgeNoController;
   late final TextEditingController _tarihController;

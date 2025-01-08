@@ -14,7 +14,7 @@ import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 
-class IrsaliyeFaturalastirView extends StatefulWidget {
+final class IrsaliyeFaturalastirView extends StatefulWidget {
   const IrsaliyeFaturalastirView({required this.model, super.key});
   final BaseEditModel<BaseSiparisEditModel> model;
 
@@ -22,7 +22,7 @@ class IrsaliyeFaturalastirView extends StatefulWidget {
   State<IrsaliyeFaturalastirView> createState() => _IrsaliyeFaturalastirViewState();
 }
 
-class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView> {
+final class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalastirView> {
   final IrsaliyeFaturalastirViewModel viewModel = IrsaliyeFaturalastirViewModel();
   late final TextEditingController cariController;
   late final TextEditingController irsaliyeNoController;

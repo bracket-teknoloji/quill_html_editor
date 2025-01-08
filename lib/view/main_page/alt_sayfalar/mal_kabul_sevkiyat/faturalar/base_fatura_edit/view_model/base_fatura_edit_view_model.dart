@@ -9,7 +9,7 @@ import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart
 
 part "base_fatura_edit_view_model.g.dart";
 
-class BaseFaturaEditViewModel = _BaseFaturaEditViewModelBase with _$BaseFaturaEditViewModel;
+final class BaseFaturaEditViewModel = _BaseFaturaEditViewModelBase with _$BaseFaturaEditViewModel;
 
 abstract class _BaseFaturaEditViewModelBase with Store {
   @observable

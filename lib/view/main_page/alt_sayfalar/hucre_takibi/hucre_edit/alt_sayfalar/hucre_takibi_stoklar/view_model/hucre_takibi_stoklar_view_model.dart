@@ -8,7 +8,7 @@ import "../model/hucre_takibi_stoklar_request_model.dart";
 
 part "hucre_takibi_stoklar_view_model.g.dart";
 
-class HucreTakibiStoklarViewModel = _HucreTakibiStoklarViewModelBase with _$HucreTakibiStoklarViewModel;
+final class HucreTakibiStoklarViewModel = _HucreTakibiStoklarViewModelBase with _$HucreTakibiStoklarViewModel;
 
 abstract class _HucreTakibiStoklarViewModelBase with Store, MobxNetworkMixin {
   @observable

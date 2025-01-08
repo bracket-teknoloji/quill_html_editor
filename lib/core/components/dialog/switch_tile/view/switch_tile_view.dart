@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 import "../../../../base/state/base_state.dart";
 import "../view_model/switch_tile_view_model.dart";
 
-class DialogSwitchTile extends StatefulWidget {
+final class DialogSwitchTile extends StatefulWidget {
   const DialogSwitchTile({required this.value, super.key, this.title});
   final String? title;
   final bool? value;
@@ -12,7 +12,7 @@ class DialogSwitchTile extends StatefulWidget {
   State<DialogSwitchTile> createState() => _DialogSwitchTileState();
 }
 
-class _DialogSwitchTileState extends BaseState<DialogSwitchTile> {
+final class _DialogSwitchTileState extends BaseState<DialogSwitchTile> {
   DialogSwitchTileViewModel viewModel = DialogSwitchTileViewModel();
 
   @override

@@ -28,14 +28,14 @@ import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 
-class TahsilatOdemeKayitlariView extends StatefulWidget {
+final class TahsilatOdemeKayitlariView extends StatefulWidget {
   const TahsilatOdemeKayitlariView({super.key});
 
   @override
   State<TahsilatOdemeKayitlariView> createState() => _TahsilatOdemeKayitlariViewState();
 }
 
-class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariView> {
+final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayitlariView> {
   TahsilatOdemeKayitlariViewModel viewModel = TahsilatOdemeKayitlariViewModel();
   late final ScrollController _scrollController;
   late final TextEditingController baslangicTarihiController;

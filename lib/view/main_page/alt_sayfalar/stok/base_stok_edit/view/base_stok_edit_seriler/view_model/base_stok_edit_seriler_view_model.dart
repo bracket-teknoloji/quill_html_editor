@@ -6,7 +6,7 @@ import "../../../model/stok_detay_model.dart";
 
 part "base_stok_edit_seriler_view_model.g.dart";
 
-class BaseStokEditSerilerViewModel = _BaseStokEditSerilerViewModelBase with _$BaseStokEditSerilerViewModel;
+final class BaseStokEditSerilerViewModel = _BaseStokEditSerilerViewModelBase with _$BaseStokEditSerilerViewModel;
 
 abstract class _BaseStokEditSerilerViewModelBase with Store {
   final List<String> labelList = [

@@ -5,7 +5,7 @@ import "../../../../base/model/base_network_mixin.dart";
 part "kod_degistir_model.g.dart";
 
 @JsonSerializable(includeIfNull: true)
-class KodDegistirModel with NetworkManagerMixin {
+final class KodDegistirModel with NetworkManagerMixin {
   String? kaynakSil;
   String? kaynakCari;
   String? hedefCari;

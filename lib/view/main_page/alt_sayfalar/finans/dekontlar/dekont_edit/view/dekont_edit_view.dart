@@ -19,7 +19,7 @@ import "../alt_sayfalar/kalemler/view/dekont_edit_kalemler_view.dart";
 import "../model/dekont_islemler_request_model.dart";
 import "../view_model/dekont_edit_view_model.dart";
 
-class DekontEditView extends StatefulWidget {
+final class DekontEditView extends StatefulWidget {
   const DekontEditView({required this.baseEditEnum, super.key, this.model, this.eBelgeModel});
   final BaseEditEnum baseEditEnum;
   final DekontListesiModel? model;
@@ -29,7 +29,7 @@ class DekontEditView extends StatefulWidget {
   State<DekontEditView> createState() => _DekontEditViewState();
 }
 
-class _DekontEditViewState extends BaseState<DekontEditView> with TickerProviderStateMixin {
+final class _DekontEditViewState extends BaseState<DekontEditView> with TickerProviderStateMixin {
   final DekontEditViewModel viewModel = DekontEditViewModel();
   late final TabController _tabController;
 

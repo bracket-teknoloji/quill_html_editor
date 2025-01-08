@@ -10,7 +10,7 @@ import "../../../../../../../core/base/model/generic_response_model.dart";
 
 part "cari_aktivite_edit_view_model.g.dart";
 
-class CariAktiviteEditViewModel = _CariAktiviteEditViewModelBase with _$CariAktiviteEditViewModel;
+final class CariAktiviteEditViewModel = _CariAktiviteEditViewModelBase with _$CariAktiviteEditViewModel;
 
 abstract class _CariAktiviteEditViewModelBase with Store, MobxNetworkMixin {
   @observable

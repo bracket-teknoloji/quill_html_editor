@@ -25,7 +25,7 @@ import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_k
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
-class EBelgeGonderView extends StatefulWidget {
+final class EBelgeGonderView extends StatefulWidget {
   const EBelgeGonderView({required this.model, super.key});
   final BaseSiparisEditModel model;
 
@@ -33,7 +33,7 @@ class EBelgeGonderView extends StatefulWidget {
   State<EBelgeGonderView> createState() => _EBelgeGonderViewState();
 }
 
-class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
+final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   late final EBelgeGonderViewModel viewModel;
   late final TextEditingController _cariController;
   late final TextEditingController _belgeNoController;

@@ -19,7 +19,7 @@ import "../../../banka/banka_listesi/model/banka_listesi_model.dart";
 
 part "kredi_karti_tahsilati_view_model.g.dart";
 
-class KrediKartiTahsilatiViewModel = _KrediKartiTahsilatiViewModelBase with _$KrediKartiTahsilatiViewModel;
+final class KrediKartiTahsilatiViewModel = _KrediKartiTahsilatiViewModelBase with _$KrediKartiTahsilatiViewModel;
 
 abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   @observable

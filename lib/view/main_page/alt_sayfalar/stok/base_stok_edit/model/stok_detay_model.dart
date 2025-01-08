@@ -9,7 +9,7 @@ part "stok_detay_model.freezed.dart";
 part "stok_detay_model.g.dart";
 
 @JsonSerializable()
-class StokDetayModel with NetworkManagerMixin {
+final class StokDetayModel with NetworkManagerMixin {
   StokDetayModel();
   //singleton
   static StokDetayModel? _instance;
@@ -35,7 +35,7 @@ class StokDetayModel with NetworkManagerMixin {
 }
 
 @JsonSerializable(explicitToJson: true)
-class FiyatList {
+final class FiyatList {
   FiyatList();
 
   factory FiyatList.fromJson(Map<String, dynamic> json) => _$FiyatListFromJson(json);

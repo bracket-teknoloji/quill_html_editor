@@ -11,7 +11,7 @@ import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
 
-class CekSenetGoruntuleView extends StatefulWidget {
+final class CekSenetGoruntuleView extends StatefulWidget {
   const CekSenetGoruntuleView({required this.model, super.key});
   final CekSenetListesiModel model;
 
@@ -19,7 +19,7 @@ class CekSenetGoruntuleView extends StatefulWidget {
   State<CekSenetGoruntuleView> createState() => _CekSenetGoruntuleViewState();
 }
 
-class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView> {
+final class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView> {
   CekSenetListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => BaseScaffold(

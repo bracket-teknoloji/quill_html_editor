@@ -12,7 +12,7 @@ import "../../is_emri_rehberi/model/is_emirleri_model.dart";
 
 part "is_emri_edit_view_model.g.dart";
 
-class IsEmriEditViewModel = _IsEmriEditViewModelBase with _$IsEmriEditViewModel;
+final class IsEmriEditViewModel = _IsEmriEditViewModelBase with _$IsEmriEditViewModel;
 
 abstract class _IsEmriEditViewModelBase with Store, MobxNetworkMixin {
   @observable

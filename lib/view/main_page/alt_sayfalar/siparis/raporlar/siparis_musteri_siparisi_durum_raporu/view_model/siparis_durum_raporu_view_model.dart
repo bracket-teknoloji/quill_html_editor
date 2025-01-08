@@ -7,7 +7,7 @@ import "../../../siparisler/model/siparisler_request_model.dart";
 
 part "siparis_durum_raporu_view_model.g.dart";
 
-class SiparisDurumRaporuViewModel = _SiparisDurumRaporuViewModelBase with _$SiparisDurumRaporuViewModel;
+final class SiparisDurumRaporuViewModel = _SiparisDurumRaporuViewModelBase with _$SiparisDurumRaporuViewModel;
 
 abstract class _SiparisDurumRaporuViewModelBase with Store {
   _SiparisDurumRaporuViewModelBase(this.editTipiEnum) {
