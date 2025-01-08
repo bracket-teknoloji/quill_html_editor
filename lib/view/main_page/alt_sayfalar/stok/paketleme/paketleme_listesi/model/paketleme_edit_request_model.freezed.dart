@@ -146,11 +146,6 @@ class _$PaketlemeEditRequestModelImpl implements _PaketlemeEditRequestModel {
   final int? kalemId;
 
   @override
-  String toString() {
-    return 'PaketlemeEditRequestModel(islemKodu: $islemKodu, paketId: $paketId, kalemId: $kalemId)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

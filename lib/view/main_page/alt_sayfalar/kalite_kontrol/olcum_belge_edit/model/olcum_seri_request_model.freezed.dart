@@ -209,11 +209,6 @@ class _$OlcumSeriRequestModelImpl implements _OlcumSeriRequestModel {
   }
 
   @override
-  String toString() {
-    return 'OlcumSeriRequestModel(stokKodu: $stokKodu, girisDepo: $girisDepo, cikisDepo: $cikisDepo, redGirisDepo: $redGirisDepo, kabulGirisDepo: $kabulGirisDepo, seriListe: $seriListe)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

@@ -366,11 +366,6 @@ class _$HucreTransferiModelImpl implements _HucreTransferiModel {
   @override
   String? cariKodu;
 
-  @override
-  String toString() {
-    return 'HucreTransferiModel(depoKodu: $depoKodu, depoTanimi: $depoTanimi, belgeModel: $belgeModel, hedefHucre: $hedefHucre, hucreKodu: $hucreKodu, islemTuru: $islemTuru, pickerBelgeTuru: $pickerBelgeTuru, miktar: $miktar, stokKodu: $stokKodu, stokAdi: $stokAdi, paketKodu: $paketKodu, belgeTuru: $belgeTuru, belgeNo: $belgeNo, cariKodu: $cariKodu)';
-  }
-
   /// Create a copy of HucreTransferiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

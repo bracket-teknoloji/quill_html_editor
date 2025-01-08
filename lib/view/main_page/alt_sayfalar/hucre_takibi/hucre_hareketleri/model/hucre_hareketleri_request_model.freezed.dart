@@ -151,11 +151,6 @@ class _$HucreHareketleriRequestModelImpl
   final String? stokKodu;
 
   @override
-  String toString() {
-    return 'HucreHareketleriRequestModel(ekranTipi: $ekranTipi, filtreKodu: $filtreKodu, stokKodu: $stokKodu)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

@@ -314,11 +314,6 @@ class _$CekSenetListesiRequestModelImpl
   @override
   String? bitisTarihi;
 
-  @override
-  String toString() {
-    return 'CekSenetListesiRequestModel(verenKodu: $verenKodu, sirala: $sirala, ekranTipi: $ekranTipi, yer: $yer, donemTipi: $donemTipi, tarihTipi: $tarihTipi, tipi: $tipi, verilenKodu: $verilenKodu, durum: $durum, searchText: $searchText, baslangicTarihi: $baslangicTarihi, bitisTarihi: $bitisTarihi)';
-  }
-
   /// Create a copy of CekSenetListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

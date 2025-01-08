@@ -247,11 +247,6 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
   @JsonKey(name: "Sayfa")
   int? sayfa;
 
-  @override
-  String toString() {
-    return 'OlcumGirisiRequestModel(durum: $durum, belgeTipi: $belgeTipi, bastar: $bastar, bittar: $bittar, siralama: $siralama, qrstring: $qrstring, searchText: $searchText, sayfa: $sayfa)';
-  }
-
   /// Create a copy of OlcumGirisiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

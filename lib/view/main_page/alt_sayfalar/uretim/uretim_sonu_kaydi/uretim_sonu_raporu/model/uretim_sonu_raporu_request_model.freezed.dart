@@ -153,11 +153,6 @@ class _$UretimSonuRaporuRequestModelImpl
   @override
   String? stokKodu;
 
-  @override
-  String toString() {
-    return 'UretimSonuRaporuRequestModel(belgeNo: $belgeNo, filtreKodu: $filtreKodu, stokKodu: $stokKodu)';
-  }
-
   /// Create a copy of UretimSonuRaporuRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

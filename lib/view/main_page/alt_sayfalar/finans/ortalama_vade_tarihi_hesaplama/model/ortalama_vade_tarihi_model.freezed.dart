@@ -133,11 +133,6 @@ class _$OrtalamaVadeTarihiModelImpl implements _OrtalamaVadeTarihiModel {
   @override
   double? tutar;
 
-  @override
-  String toString() {
-    return 'OrtalamaVadeTarihiModel(vadeTarihi: $vadeTarihi, tutar: $tutar)';
-  }
-
   /// Create a copy of OrtalamaVadeTarihiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

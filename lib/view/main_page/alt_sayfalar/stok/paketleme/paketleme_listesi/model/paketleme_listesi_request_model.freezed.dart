@@ -275,11 +275,6 @@ class _$PaketlemeListesiRequestModelImpl
   final int? paketId;
 
   @override
-  String toString() {
-    return 'PaketlemeListesiRequestModel(id: $id, stokKodu: $stokKodu, belgeNo: $belgeNo, menuKodu: $menuKodu, depoKodu: $depoKodu, paketKodu: $paketKodu, islemKodu: $islemKodu, kisitYok: $kisitYok, ekranTipi: $ekranTipi, paketId: $paketId)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

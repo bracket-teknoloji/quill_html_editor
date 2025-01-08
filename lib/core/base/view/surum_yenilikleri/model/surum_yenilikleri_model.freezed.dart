@@ -410,11 +410,6 @@ class _$ValueListImpl implements _ValueList {
   final bool? talepEden;
 
   @override
-  String toString() {
-    return 'ValueList(id: $id, aciklama: $aciklama, talepEden: $talepEden)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

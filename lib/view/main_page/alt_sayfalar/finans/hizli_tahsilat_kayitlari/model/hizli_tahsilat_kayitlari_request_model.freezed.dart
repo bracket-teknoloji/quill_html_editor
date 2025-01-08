@@ -177,11 +177,6 @@ class _$HizliTahsilatKayitlariRequestModelImpl
   @JsonKey()
   int? sayfa;
 
-  @override
-  String toString() {
-    return 'HizliTahsilatKayitlariRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, ekranTipi: $ekranTipi, sayfa: $sayfa)';
-  }
-
   /// Create a copy of HizliTahsilatKayitlariRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

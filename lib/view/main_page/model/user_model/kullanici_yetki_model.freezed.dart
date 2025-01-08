@@ -868,11 +868,6 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
   @JsonKey(name: "varsayilanKrediKartiKasa")
   String? varsayilanKrediKartiKasa;
 
-  @override
-  String toString() {
-    return 'KullaniciYetkiModel(bagliPlasiyerler: $bagliPlasiyerler, eIrsOnEki: $eIrsOnEki, eIrsAmbarOnEki: $eIrsAmbarOnEki, yetkiliKasalar: $yetkiliKasalar, kkartiHesaplar: $kkartiHesaplar, kkartiKasalar: $kkartiKasalar, acikHesapLimiti: $acikHesapLimiti, acikHesapTolerans: $acikHesapTolerans, acikHesapLimitiBelgeTipleri: $acikHesapLimitiBelgeTipleri, stokFiltreSQLTipi: $stokFiltreSQLTipi, cariFiltreSQLTipi: $cariFiltreSQLTipi, hizliTahsilatSozlesmeKodlari: $hizliTahsilatSozlesmeKodlari, siparisMusSipEkstraAlanlar: $siparisMusSipEkstraAlanlar, sirketAlisDepo: $sirketAlisDepo, sirketSatisDepo: $sirketSatisDepo, transferDATVarsayilanCikisDepo: $transferDATVarsayilanCikisDepo, transferDATVarsayilanGirisDepo: $transferDATVarsayilanGirisDepo, cariRehPlaEslesmesinBelgeTipleri: $cariRehPlaEslesmesinBelgeTipleri, profilKodu: $profilKodu, sirketAktifDepolar: $sirketAktifDepolar, sirketDatYetkiliDepolar: $sirketDatYetkiliDepolar, adminMi: $adminMi, varsayilanPlasiyerTanimi: $varsayilanPlasiyerTanimi, siparisMusSipBakiyesizStokSecilmesin: $siparisMusSipBakiyesizStokSecilmesin, sevkiyatSatisIrsBakiyesizStokSecilmesin: $sevkiyatSatisIrsBakiyesizStokSecilmesin, sevkiyatSatisFatBakiyesizStokSecilmesin: $sevkiyatSatisFatBakiyesizStokSecilmesin, plasiyerKodu: $plasiyerKodu, varsayilanPlasiyerKodu: $varsayilanPlasiyerKodu, kkartiTahsilatYontemi: $kkartiTahsilatYontemi, satIrsOnEki: $satIrsOnEki, varsayilanNakitKasa: $varsayilanNakitKasa, sirketDepoYetkiTuru: $sirketDepoYetkiTuru, varsayilanProjeTanimi: $varsayilanProjeTanimi, varsayilanProjeKodu: $varsayilanProjeKodu, varsayilanKrediKartiKasa: $varsayilanKrediKartiKasa)';
-  }
-
   /// Create a copy of KullaniciYetkiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

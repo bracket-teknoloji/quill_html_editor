@@ -492,11 +492,6 @@ class _$HucreListesiRequestModelImpl implements _HucreListesiRequestModel {
   final String? cariKodu;
 
   @override
-  String toString() {
-    return 'HucreListesiRequestModel(depoKodu: $depoKodu, hucreKodu: $hucreKodu, filterText: $filterText, tempBarkod: $tempBarkod, inckeyno: $inckeyno, depoTanimi: $depoTanimi, hareketId: $hareketId, kayitTipi: $kayitTipi, kayitTipiAdi: $kayitTipiAdi, belgeNo: $belgeNo, belgeTipi: $belgeTipi, belgeTipiAdi: $belgeTipiAdi, haracik: $haracik, gckod: $gckod, subeKodu: $subeKodu, tarih: $tarih, stharInc: $stharInc, yedek4: $yedek4, yedek4Str: $yedek4Str, yedek8: $yedek8, seriSayisi: $seriSayisi, paketKodu: $paketKodu, cariKodu: $cariKodu)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

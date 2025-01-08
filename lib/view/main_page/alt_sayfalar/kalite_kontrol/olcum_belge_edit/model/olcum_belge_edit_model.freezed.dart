@@ -2514,11 +2514,6 @@ class _$OlcumEkleDetayModelImpl implements _OlcumEkleDetayModel {
   @override
   DateTime? zaman;
 
-  @override
-  String toString() {
-    return 'OlcumEkleDetayModel(deger: $deger, detayId: $detayId, zaman: $zaman)';
-  }
-
   /// Create a copy of OlcumEkleDetayModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

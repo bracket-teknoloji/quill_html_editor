@@ -169,11 +169,6 @@ class _$SeriHareketleriRequestModelImpl
   @JsonKey(name: "Sirala")
   String? sirala;
 
-  @override
-  String toString() {
-    return 'SeriHareketleriRequestModel(stokKodu: $stokKodu, seriNo: $seriNo, sirala: $sirala)';
-  }
-
   /// Create a copy of SeriHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

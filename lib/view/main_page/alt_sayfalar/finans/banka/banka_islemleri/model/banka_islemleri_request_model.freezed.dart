@@ -193,11 +193,6 @@ class _$BankaIslemleriRequestModelImpl implements _BankaIslemleriRequestModel {
   @override
   String? hesapKodu;
 
-  @override
-  String toString() {
-    return 'BankaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu)';
-  }
-
   /// Create a copy of BankaIslemleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

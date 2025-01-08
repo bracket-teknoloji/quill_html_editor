@@ -416,11 +416,6 @@ class _$ReferanslarImpl implements _Referanslar {
   @override
   String? referansStokAdi;
 
-  @override
-  String toString() {
-    return 'Referanslar(id: $id, hammaddeNo: $hammaddeNo, stokKodu: $stokKodu, stokAdi: $stokAdi, referansStokKodu: $referansStokKodu, referansStokAdi: $referansStokAdi)';
-  }
-
   /// Create a copy of Referanslar
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

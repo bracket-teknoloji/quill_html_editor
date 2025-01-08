@@ -137,11 +137,6 @@ class _$DizaynRequestModelImpl implements _DizaynRequestModel {
   final bool? erpDizaynlari;
 
   @override
-  String toString() {
-    return 'DizaynRequestModel(modulId: $modulId, erpDizaynlari: $erpDizaynlari)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

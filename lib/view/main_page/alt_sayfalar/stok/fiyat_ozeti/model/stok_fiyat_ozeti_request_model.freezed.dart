@@ -150,11 +150,6 @@ class _$StokFiyatOzetiRequestModelImpl implements _StokFiyatOzetiRequestModel {
   @override
   String? stokKodu;
 
-  @override
-  String toString() {
-    return 'StokFiyatOzetiRequestModel(yapKod: $yapKod, cariKodu: $cariKodu, stokKodu: $stokKodu)';
-  }
-
   /// Create a copy of StokFiyatOzetiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

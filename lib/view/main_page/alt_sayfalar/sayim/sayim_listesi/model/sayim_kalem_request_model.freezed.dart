@@ -145,11 +145,6 @@ class _$SayimKalemRequestModelImpl implements _SayimKalemRequestModel {
   final String? belgeNo;
 
   @override
-  String toString() {
-    return 'SayimKalemRequestModel(id: $id, depoKodu: $depoKodu, belgeNo: $belgeNo)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

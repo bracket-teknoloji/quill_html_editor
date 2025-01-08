@@ -666,11 +666,6 @@ class _$EkAlanlarImpl extends _EkAlanlar {
   @override
   String? ktAlan4;
 
-  @override
-  String toString() {
-    return 'EkAlanlar(ktAlan1: $ktAlan1, ktAlan3: $ktAlan3, ktAlan4: $ktAlan4)';
-  }
-
   /// Create a copy of EkAlanlar
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

@@ -813,11 +813,6 @@ class _$SiparislerRequestModelImpl implements _SiparislerRequestModel {
   @override
   bool? faturalanmisIrsaliyelerGelsin;
 
-  @override
-  String toString() {
-    return 'SiparislerRequestModel(pickerBelgeTuru: $pickerBelgeTuru, iadeMi: $iadeMi, cariKodu: $cariKodu, teslimCariKodu: $teslimCariKodu, ozelKod2: $ozelKod2, cariTipi: $cariTipi, miktarGetir: $miktarGetir, siralama: $siralama, siparisKarsilanmaDurumu: $siparisKarsilanmaDurumu, ozelKod1: $ozelKod1, stokKodu: $stokKodu, kapaliBelgelerListelenmesin: $kapaliBelgelerListelenmesin, projeKodu: $projeKodu, faturalasmaGoster: $faturalasmaGoster, arrKod5: $arrKod5, arrGrupKodu: $arrGrupKodu, arrKod4: $arrKod4, arrKod3: $arrKod3, arrKod2: $arrKod2, arrPlasiyerKodu: $arrPlasiyerKodu, arrKod1: $arrKod1, ekranTipi: $ekranTipi, sayfa: $sayfa, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, searchText: $searchText, filtreKodu: $filtreKodu, depoKodu: $depoKodu, hedefDepoKodu: $hedefDepoKodu, belgeNo: $belgeNo, siparisDurumu: $siparisDurumu, referansStokKodu: $referansStokKodu, fiyatGrubu: $fiyatGrubu, menuKodu: $menuKodu, siparisSevkEdilenGoster: $siparisSevkEdilenGoster, refBelgeTuru: $refBelgeTuru, kisitYok: $kisitYok, arrBelgeTipi: $arrBelgeTipi, arrBelgeNo: $arrBelgeNo, lokalDAT: $lokalDAT, faturalanmisIrsaliyelerGelsin: $faturalanmisIrsaliyelerGelsin)';
-  }
-
   /// Create a copy of SiparislerRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

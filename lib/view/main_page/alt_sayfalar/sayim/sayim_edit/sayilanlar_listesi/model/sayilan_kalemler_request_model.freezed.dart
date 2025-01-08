@@ -249,11 +249,6 @@ class _$SayilanKalemlerRequestModelImpl
   @JsonKey(name: "ID")
   int? id;
 
-  @override
-  String toString() {
-    return 'SayilanKalemlerRequestModel(filtreKodu: $filtreKodu, depoKodu: $depoKodu, kullaniciAdi: $kullaniciAdi, ekranTipi: $ekranTipi, belgeNo: $belgeNo, seriBazinda: $seriBazinda, id: $id)';
-  }
-
   /// Create a copy of SayilanKalemlerRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

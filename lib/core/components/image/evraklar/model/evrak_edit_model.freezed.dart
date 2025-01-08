@@ -203,11 +203,6 @@ class _$EvrakEditModelImpl extends _EvrakEditModel {
   @override
   int? islemKodu;
 
-  @override
-  String toString() {
-    return 'EvrakEditModel(aciklama: $aciklama, base64Data: $base64Data, belgeNo: $belgeNo, belgeTipi: $belgeTipi, boyutByte: $boyutByte, islemKodu: $islemKodu)';
-  }
-
   /// Create a copy of EvrakEditModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

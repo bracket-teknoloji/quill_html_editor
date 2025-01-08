@@ -168,11 +168,6 @@ class _$BelgeRehberiRequestModelImpl implements _BelgeRehberiRequestModel {
   final String? searchText;
 
   @override
-  String toString() {
-    return 'BelgeRehberiRequestModel(depoKodu: $depoKodu, islemTuru: $islemTuru, pickerBelgeTuru: $pickerBelgeTuru, searchText: $searchText)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

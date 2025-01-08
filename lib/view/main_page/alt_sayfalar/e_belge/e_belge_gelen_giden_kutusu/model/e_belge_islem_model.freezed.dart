@@ -424,11 +424,6 @@ class _$EBelgeIslemModelImpl extends _EBelgeIslemModel {
   @override
   String? kabul;
 
-  @override
-  String toString() {
-    return 'EBelgeIslemModel(aciklama: $aciklama, belgeTuru: $belgeTuru, ebelgeTuru: $ebelgeTuru, kutuTuru: $kutuTuru, inckeyno: $inckeyno, islemKodu: $islemKodu, resmiBelgeNo: $resmiBelgeNo, senaryoTipi: $senaryoTipi, zarfid: $zarfid, belgeNo: $belgeNo, cariKodu: $cariKodu, iptalTarihi: $iptalTarihi, kopyaSayisi: $kopyaSayisi, yaziciAdi: $yaziciAdi, dizaynNo: $dizaynNo, dovizliOlustur: $dovizliOlustur, gonderimSekliEposta: $gonderimSekliEposta, internetFaturasi: $internetFaturasi, kabul: $kabul)';
-  }
-
   /// Create a copy of EBelgeIslemModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

@@ -1290,11 +1290,6 @@ class _$CekSenetKalemlerModelImpl implements _CekSenetKalemlerModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   bool? refKodSorulsunMu;
 
-  @override
-  String toString() {
-    return 'CekSenetKalemlerModel(cariRaporKodu: $cariRaporKodu, cekBanka: $cekBanka, seriNo: $seriNo, cekSube: $cekSube, ciroTipi: $ciroTipi, gorsel1: $gorsel1, gorsel2: $gorsel2, hesapNo: $hesapNo, ilce: $ilce, plasiyerAdi: $plasiyerAdi, plasiyerKodu: $plasiyerKodu, raporKodu: $raporKodu, sehir: $sehir, sira: $sira, dovizTipi: $dovizTipi, tag: $tag, tarih: $tarih, tutar: $tutar, vadeTarihi: $vadeTarihi, dovizKuru: $dovizKuru, dovizTutari: $dovizTutari, asilCari: $asilCari, refKod: $refKod, refTanimi: $refTanimi, aciklama1: $aciklama1, aciklama2: $aciklama2, aciklama3: $aciklama3, projeAdi: $projeAdi, projeKodu: $projeKodu, verenKodu: $verenKodu, ibanNo: $ibanNo, duzenlendigiYer: $duzenlendigiYer, dovizAdi: $dovizAdi, refKodSorulsunMu: $refKodSorulsunMu)';
-  }
-
   /// Create a copy of CekSenetKalemlerModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

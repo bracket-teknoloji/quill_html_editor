@@ -138,11 +138,6 @@ class _$BarkodTanimlaKayitlariRequestModelImpl
   final String? kayitTipi;
 
   @override
-  String toString() {
-    return 'BarkodTanimlaKayitlariRequestModel(stokKodu: $stokKodu, kayitTipi: $kayitTipi)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

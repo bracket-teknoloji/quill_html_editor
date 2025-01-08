@@ -311,11 +311,6 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
   @override
   int? depoKodu;
 
-  @override
-  String toString() {
-    return 'StokRehberiRequestModel(belgeNo: $belgeNo, belgeTarihi: $belgeTarihi, belgeTipi: $belgeTipi, cariKodu: $cariKodu, ekranTipi: $ekranTipi, faturaTipi: $faturaTipi, kisitYok: $kisitYok, menuKodu: $menuKodu, resimGoster: $resimGoster, stokKodu: $stokKodu, seriTakibiVar: $seriTakibiVar, depoKodu: $depoKodu)';
-  }
-
   /// Create a copy of StokRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

@@ -183,11 +183,6 @@ class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
   final String? tag;
 
   @override
-  String toString() {
-    return 'DeleteCekSenetModel(belgeNo: $belgeNo, belgeTipi: $belgeTipi, islemKodu: $islemKodu, pickerTahsilatTuru: $pickerTahsilatTuru, tag: $tag)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

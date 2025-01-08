@@ -249,11 +249,6 @@ class _$FinansOzetRaporRequestModelImpl
   @override
   String? iadeDurumu;
 
-  @override
-  String toString() {
-    return 'FinansOzetRaporRequestModel(plasiyerKodu: $plasiyerKodu, cariKodu: $cariKodu, tarihTipi: $tarihTipi, cariKoduIleBaslar: $cariKoduIleBaslar, kdvDahil: $kdvDahil, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, iadeDurumu: $iadeDurumu)';
-  }
-
   /// Create a copy of FinansOzetRaporRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

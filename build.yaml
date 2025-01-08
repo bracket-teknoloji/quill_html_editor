@@ -9,11 +9,9 @@ targets:
           field_rename: screamingSnake
       freezed:
         options:
-
-          dsdlkf: true
           immutable: true
-          toString: false
           union_key: type
+          to_string_override: false
           union_value_case: screaming_snake
           maybe_map: true
           maybe_when: true

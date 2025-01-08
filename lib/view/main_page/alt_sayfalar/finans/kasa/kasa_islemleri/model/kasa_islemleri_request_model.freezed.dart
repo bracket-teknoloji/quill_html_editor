@@ -293,11 +293,6 @@ class _$KasaIslemleriRequestModelImpl implements _KasaIslemleriRequestModel {
   @override
   String? refKey;
 
-  @override
-  String toString() {
-    return 'KasaIslemleriRequestModel(baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, menuKodu: $menuKodu, sayfa: $sayfa, plasiyerKodu: $plasiyerKodu, hesapTipi: $hesapTipi, hesapKodu: $hesapKodu, kasaKodu: $kasaKodu, gc: $gc, kisitYok: $kisitYok, refKey: $refKey)';
-  }
-
   /// Create a copy of KasaIslemleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

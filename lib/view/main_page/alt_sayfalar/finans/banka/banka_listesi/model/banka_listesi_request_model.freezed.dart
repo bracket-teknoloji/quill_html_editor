@@ -260,11 +260,6 @@ class _$BankaListesiRequestModelImpl implements _BankaListesiRequestModel {
   @override
   String? islemModulu;
 
-  @override
-  String toString() {
-    return 'BankaListesiRequestModel(bakiye: $bakiye, arrHesapTipi: $arrHesapTipi, haricHesaplarArray: $haricHesaplarArray, sirala: $sirala, ekranTipi: $ekranTipi, menuKodu: $menuKodu, belgeTipi: $belgeTipi, bankaKodu: $bankaKodu, islemModulu: $islemModulu)';
-  }
-
   /// Create a copy of BankaListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

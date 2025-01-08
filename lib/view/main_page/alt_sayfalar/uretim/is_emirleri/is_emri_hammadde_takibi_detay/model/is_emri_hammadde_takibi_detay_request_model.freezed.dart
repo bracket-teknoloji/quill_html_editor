@@ -195,11 +195,6 @@ class _$IsEmriHammaddeTakibiDetayRequestModelImpl
   @override
   String? referansStokKodu;
 
-  @override
-  String toString() {
-    return 'IsEmriHammaddeTakibiDetayRequestModel(takipno: $takipno, tip: $tip, barcode: $barcode, islemKodu: $islemKodu, referansStokKodu: $referansStokKodu)';
-  }
-
   /// Create a copy of IsEmriHammaddeTakibiDetayRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

@@ -267,11 +267,6 @@ class _$CariHareketleriRequestModelImpl
   @override
   String? ba;
 
-  @override
-  String toString() {
-    return 'CariHareketleriRequestModel(siralama: $siralama, sadeceTahsilatlarOdemeler: $sadeceTahsilatlarOdemeler, cariKodu: $cariKodu, ekranTipi: $ekranTipi, arrPlasiyerKodu: $arrPlasiyerKodu, arrHareketTuru: $arrHareketTuru, baslamaTarihi: $baslamaTarihi, bitisTarihi: $bitisTarihi, ba: $ba)';
-  }
-
   /// Create a copy of CariHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

@@ -207,11 +207,6 @@ class _$CekSenetEvrakEkleModelImpl implements _CekSenetEvrakEkleModel {
   @override
   int? islemKodu;
 
-  @override
-  String toString() {
-    return 'CekSenetEvrakEkleModel(aciklama: $aciklama, base64Data: $base64Data, belgeNo: $belgeNo, belgeTipi: $belgeTipi, boyutByte: $boyutByte, islemKodu: $islemKodu)';
-  }
-
   /// Create a copy of CekSenetEvrakEkleModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

@@ -170,11 +170,6 @@ class _$UretimSonuKaydiListesiRequestModelImpl
   @override
   String? searchText;
 
-  @override
-  String toString() {
-    return 'UretimSonuKaydiListesiRequestModel(sayfa: $sayfa, ekranTipi: $ekranTipi, belgeNo: $belgeNo, searchText: $searchText)';
-  }
-
   /// Create a copy of UretimSonuKaydiListesiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

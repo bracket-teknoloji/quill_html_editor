@@ -342,11 +342,6 @@ class _$FileModelImpl implements _FileModel {
   final String? dosyaAdi;
 
   @override
-  String toString() {
-    return 'FileModel(byteData: $byteData, uzanti: $uzanti, dosyaTarihi: $dosyaTarihi, dosyaAdi: $dosyaAdi)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&

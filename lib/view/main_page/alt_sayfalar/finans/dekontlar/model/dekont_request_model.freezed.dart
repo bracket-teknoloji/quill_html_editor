@@ -144,11 +144,6 @@ class _$DekontRequestModelImpl implements _DekontRequestModel {
   @override
   String? searchText;
 
-  @override
-  String toString() {
-    return 'DekontRequestModel(sayfa: $sayfa, ekranTipi: $ekranTipi, searchText: $searchText)';
-  }
-
   /// Create a copy of DekontRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)

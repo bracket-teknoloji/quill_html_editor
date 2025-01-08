@@ -154,11 +154,6 @@ class _$EkRehberlerModelImpl implements _EkRehberlerModel {
   final String? alan;
 
   @override
-  String toString() {
-    return 'EkRehberlerModel(id: $id, baslik: $baslik, ekran: $ekran, alan: $alan)';
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
