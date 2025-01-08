@@ -20,11 +20,9 @@ class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepAliveCl
     return FutureBuilder<MemoryImage?>(
       future: networkManager.getImage(widget.path),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator.adaptive());
-        }
+        Widget? child;
         if (snapshot.hasData) {
-          return InkWell(
+          child = InkWell(
             borderRadius: UIHelper.lowBorderRadius,
             onTap: widget.onTap,
             child: ClipRRect(
@@ -40,11 +38,15 @@ class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepAliveCl
             ),
           );
         } else {
-          return const Card(
+          child = const Card(
             elevation: 0,
             child: Icon(Icons.camera_alt_outlined),
           );
         }
+        return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          child: child,
+        );
       },
     );
   }

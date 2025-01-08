@@ -34,6 +34,10 @@ class AppThemeDark extends AppTheme {
           labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
           unselectedLabelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
         ),
+        scrollbarTheme: ScrollbarThemeData(
+          interactive: true,
+          trackColor: WidgetStateProperty.all(Colors.transparent),
+        ),
         segmentedButtonTheme: SegmentedButtonThemeData(
           style: ButtonStyle(
             textStyle: WidgetStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),

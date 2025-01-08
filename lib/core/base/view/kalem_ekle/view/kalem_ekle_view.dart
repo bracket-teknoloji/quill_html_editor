@@ -1415,6 +1415,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         viewModel.setMiktar(1);
       }
 
+      viewModel.kalemModel.stokBirimAgirlik = widget.stokListesiModel?.birimAgirlik;
       viewModel.kalemModel.stokAlisDovTip ??= widget.stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip;
       viewModel.kalemModel.dovizTipi ??= (editTipi?.satisMi == true ? widget.stokListesiModel?.satDovTip : viewModel.model?.alisDovTip);
       viewModel.kalemModel.dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;

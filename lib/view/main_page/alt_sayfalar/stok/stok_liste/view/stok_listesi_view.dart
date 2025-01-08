@@ -1,7 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import "dart:ui";
-
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -12,6 +10,7 @@ import "package:picker/core/components/image/image_carousel/view/image_carousel_
 import "package:picker/core/components/image/image_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
+import "package:picker/core/components/listener/mouse_right_click_listener.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/model/menu_item/menu_item_constants.dart";
@@ -708,92 +707,95 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
         ],
       );
 
-  Card stokListesiGridTile(StokListesiModel item, int? crossAxisCount) => Card(
-        child: InkWell(
-          onLongPress: () => showStokIslemlerDialog(item),
-          onTap: () => stokOnTap(item),
-          child: GridTile(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: ImageWidget(
-                    path: item.resimUrl,
-                    onTap: () {
-                      if (item.resimUrl != null) {
-                        Get.to(() => ImageCarouselView(model: item));
-                      }
-                    },
-                  ),
-                ),
-                Flexible(
-                  child: SingleChildScrollView(
-                    primary: false,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          item.stokAdi ?? "",
-                          style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                          maxLines: 2,
-                        ).yetkiVarMi(item.stokAdi != null),
-                        Wrap(
-                          children: [
-                            const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
-                            const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.alisDovTip != null || item.satDovTip != null),
-                            const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
-                          ]
-                              .map(
-                                (e) => e is! SizedBox? ? e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize) : null,
-                              )
-                              .toList()
-                              .nullCheckWithGeneric,
-                        ),
-                        CustomLayoutBuilder(
-                          splitCount: crossAxisCount == 1
-                              ? 3
-                              : crossAxisCount == 2
-                                  ? 2
-                                  : 1,
-                          children: [
-                            Text("Stok Kodu:  ${item.stokKodu}"),
-                            Text("Bakiye:  ${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}"),
-                            Text("Yap.Açık:  ${item.yapacik ?? ""}").yetkiVarMi(item.yapacik != null),
-                            Text("YapKod:  ${item.yapkod ?? ""}").yetkiVarMi(item.yapkod != null),
-                            Text("${viewModel.gorunecekAlanlar?["1S"]}:  ${item.kull1s}").yetkiVarMi(item.kull1s != null && viewModel.gorunecekAlanlar?["1S"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["2S"]}:  ${item.kull2s}").yetkiVarMi(item.kull2s != null && viewModel.gorunecekAlanlar?["2S"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["3S"]}:  ${item.kull3s}").yetkiVarMi(item.kull3s != null && viewModel.gorunecekAlanlar?["3S"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["4S"]}:  ${item.kull4s}").yetkiVarMi(item.kull4s != null && viewModel.gorunecekAlanlar?["4S"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["5S"]}:  ${item.kull5s}").yetkiVarMi(item.kull5s != null && viewModel.gorunecekAlanlar?["5S"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["6S"]}:  ${item.kull6s}").yetkiVarMi(item.kull6s != null && viewModel.gorunecekAlanlar?["6S"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["7S"]}:  ${item.kull7s}").yetkiVarMi(item.kull7s != null && viewModel.gorunecekAlanlar?["7S"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["8S"]}:  ${item.kull8s}").yetkiVarMi(item.kull8s != null && viewModel.gorunecekAlanlar?["8S"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["1N"]}:  ${item.kull1n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
-                                .yetkiVarMi(item.kull1n != null && viewModel.gorunecekAlanlar?["1N"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["2N"]}:  ${item.kull2n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
-                                .yetkiVarMi(item.kull2n != null && viewModel.gorunecekAlanlar?["2N"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["3N"]}:  ${item.kull3n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
-                                .yetkiVarMi(item.kull3n != null && viewModel.gorunecekAlanlar?["3N"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["4N"]}:  ${item.kull4n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
-                                .yetkiVarMi(item.kull4n != null && viewModel.gorunecekAlanlar?["4N"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["5N"]}:  ${item.kull5n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
-                                .yetkiVarMi(item.kull5n != null && viewModel.gorunecekAlanlar?["5N"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["6N"]}:  ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
-                                .yetkiVarMi(item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["7N"]}:  ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
-                                .yetkiVarMi(item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null),
-                            Text("${viewModel.gorunecekAlanlar?["8N"]}:  ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
-                                .yetkiVarMi(item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null),
-                          ],
-                        ),
-                      ],
+  Widget stokListesiGridTile(StokListesiModel item, int? crossAxisCount) => MouseRightClickListener(
+        onRightClick: () => showStokIslemlerDialog(item),
+        child: Card(
+          child: InkWell(
+            onLongPress: () => showStokIslemlerDialog(item),
+            onTap: () => stokOnTap(item),
+            child: GridTile(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: ImageWidget(
+                      path: item.resimUrl,
+                      onTap: () {
+                        if (item.resimUrl != null) {
+                          Get.to(() => ImageCarouselView(model: item));
+                        }
+                      },
                     ),
                   ),
-                ),
-              ],
-            ).paddingAll(UIHelper.lowSize),
+                  Flexible(
+                    child: SingleChildScrollView(
+                      primary: false,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            item.stokAdi ?? "",
+                            style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                            maxLines: 2,
+                          ).yetkiVarMi(item.stokAdi != null),
+                          Wrap(
+                            children: [
+                              const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
+                              const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.alisDovTip != null || item.satDovTip != null),
+                              const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
+                            ]
+                                .map(
+                                  (e) => e is! SizedBox? ? e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize) : null,
+                                )
+                                .toList()
+                                .nullCheckWithGeneric,
+                          ),
+                          CustomLayoutBuilder(
+                            splitCount: crossAxisCount == 1
+                                ? 3
+                                : crossAxisCount == 2
+                                    ? 2
+                                    : 1,
+                            children: [
+                              Text("Stok Kodu:  ${item.stokKodu}"),
+                              Text("Bakiye:  ${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}"),
+                              Text("Yap.Açık:  ${item.yapacik ?? ""}").yetkiVarMi(item.yapacik != null),
+                              Text("YapKod:  ${item.yapkod ?? ""}").yetkiVarMi(item.yapkod != null),
+                              Text("${viewModel.gorunecekAlanlar?["1S"]}:  ${item.kull1s}").yetkiVarMi(item.kull1s != null && viewModel.gorunecekAlanlar?["1S"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["2S"]}:  ${item.kull2s}").yetkiVarMi(item.kull2s != null && viewModel.gorunecekAlanlar?["2S"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["3S"]}:  ${item.kull3s}").yetkiVarMi(item.kull3s != null && viewModel.gorunecekAlanlar?["3S"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["4S"]}:  ${item.kull4s}").yetkiVarMi(item.kull4s != null && viewModel.gorunecekAlanlar?["4S"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["5S"]}:  ${item.kull5s}").yetkiVarMi(item.kull5s != null && viewModel.gorunecekAlanlar?["5S"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["6S"]}:  ${item.kull6s}").yetkiVarMi(item.kull6s != null && viewModel.gorunecekAlanlar?["6S"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["7S"]}:  ${item.kull7s}").yetkiVarMi(item.kull7s != null && viewModel.gorunecekAlanlar?["7S"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["8S"]}:  ${item.kull8s}").yetkiVarMi(item.kull8s != null && viewModel.gorunecekAlanlar?["8S"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["1N"]}:  ${item.kull1n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                  .yetkiVarMi(item.kull1n != null && viewModel.gorunecekAlanlar?["1N"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["2N"]}:  ${item.kull2n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                  .yetkiVarMi(item.kull2n != null && viewModel.gorunecekAlanlar?["2N"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["3N"]}:  ${item.kull3n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                  .yetkiVarMi(item.kull3n != null && viewModel.gorunecekAlanlar?["3N"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["4N"]}:  ${item.kull4n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                  .yetkiVarMi(item.kull4n != null && viewModel.gorunecekAlanlar?["4N"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["5N"]}:  ${item.kull5n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                  .yetkiVarMi(item.kull5n != null && viewModel.gorunecekAlanlar?["5N"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["6N"]}:  ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                  .yetkiVarMi(item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["7N"]}:  ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                  .yetkiVarMi(item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null),
+                              Text("${viewModel.gorunecekAlanlar?["8N"]}:  ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")
+                                  .yetkiVarMi(item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ).paddingAll(UIHelper.lowSize),
+            ),
           ),
         ),
       );
@@ -810,17 +812,11 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
     );
   }
 
-  Card stokListesiCard(StokListesiModel item) => Card(
-        child: Listener(
-          onPointerDown: (event) {
-            if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-              showStokIslemlerDialog(item);
-            }
-          },
+  Widget stokListesiCard(StokListesiModel item) => MouseRightClickListener(
+        onRightClick: () => showStokIslemlerDialog(item),
+        child: Card(
           child: ListTile(
-            onLongPress: () {
-              showStokIslemlerDialog(item);
-            },
+            onLongPress: () => showStokIslemlerDialog(item),
             // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
             leading: CircleAvatar(
               backgroundColor: theme.scaffoldBackgroundColor,

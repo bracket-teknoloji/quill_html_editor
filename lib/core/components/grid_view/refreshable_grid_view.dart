@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
@@ -70,6 +71,22 @@ class RefreshableGridView<T extends NetworkManagerMixin> extends StatelessWidget
   Widget body() {
     if (items == null) return GridViewShimmer(gridDelegate: gridDelegate());
     if (items!.isEmpty) return const Center(child: Text("Liste bulunamadı."));
+    if (kIsWeb) {
+      const scrollbarThickness = 8.0;
+      return RawScrollbar(
+        interactive: true,
+        thumbVisibility: true,
+        minThumbLength: 50,
+        controller: scrollController,
+        radius: const Radius.circular(10),
+        thickness: scrollbarThickness,
+        child: _gridView().paddingOnly(right: scrollbarThickness * 1.3),
+      );
+    }
+    return _gridView();
+  }
+
+  GridView _gridView() {
     if (_isPageable) {
       return GridView.builder(
         controller: scrollController, primary: false,

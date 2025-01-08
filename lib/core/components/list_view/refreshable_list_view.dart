@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
@@ -93,6 +94,22 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
 
   Widget body(BuildContext context) {
     if (items == null) return const ListViewShimmer();
+    if (kIsWeb) {
+      const scrollbarThickness = 8.0;
+      return RawScrollbar(
+        interactive: true,
+        thumbVisibility: true,
+        minThumbLength: 50,
+        controller: scrollController,
+        radius: const Radius.circular(10),
+        thickness: scrollbarThickness,
+        child: listView(context).paddingOnly(right: scrollbarThickness * 1.3),
+      );
+    }
+    return listView(context);
+  }
+
+  Widget listView(BuildContext context) {
     if (items!.isEmpty) {
       return SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),

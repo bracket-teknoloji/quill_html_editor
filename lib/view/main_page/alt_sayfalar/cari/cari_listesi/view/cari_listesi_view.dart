@@ -1,9 +1,8 @@
-import "dart:ui";
-
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/listener/mouse_right_click_listener.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/view/main_page/model/menu_item/menu_item_constants.dart";
 
@@ -93,9 +92,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       _scrollController.addListener(() async {
         viewModel.changeScrollStatus(_scrollController.position);
       });
-      if (widget.isGetData) {
-        viewModel.changeSearchBar();
-      }
+      if (widget.isGetData) viewModel.changeSearchBar();
       BottomSheetResponseModel.instance.clear();
       BottomSheetStateManager().deleteIsSelectedListMap();
       viewModel.changeSiralama(CacheManager.getProfilParametre.cariListesiSirala);
@@ -281,17 +278,11 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
         ),
       );
 
-  Card cariListesiCard(CariListesiModel item) => Card(
-        child: Listener(
-          onPointerDown: (event) {
-            if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-              showCariGrid(item);
-            }
-          },
+  Widget cariListesiCard(CariListesiModel item) => MouseRightClickListener(
+        onRightClick: () => showCariGrid(item),
+        child: Card(
           child: ListTile(
-            onLongPress: () {
-              showCariGrid(item);
-            },
+            onLongPress: () => showCariGrid(item),
             onTap: () {
               if (widget.isGetData) {
                 Get.back(result: item);

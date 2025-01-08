@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/listener/mouse_right_click_listener.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparis_edit_request_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -27,7 +28,7 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../layout/custom_layout_builder.dart";
 
-class FaturalarCard extends StatefulWidget {
+final class FaturalarCard extends StatefulWidget {
   const FaturalarCard({required this.model, required this.editTipiEnum, super.key, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.onDeleted, this.index, this.isGetData});
   final BaseSiparisEditModel model;
   final ValueChanged<bool>? onUpdated;
@@ -43,7 +44,7 @@ class FaturalarCard extends StatefulWidget {
   State<FaturalarCard> createState() => _FaturalarCardState();
 }
 
-class _FaturalarCardState extends BaseState<FaturalarCard> {
+final class _FaturalarCardState extends BaseState<FaturalarCard> {
   ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
@@ -55,236 +56,236 @@ class _FaturalarCardState extends BaseState<FaturalarCard> {
 
   BaseSiparisEditModel get model => widget.model;
   @override
-  Widget build(BuildContext context) => Card(
-        child: ListTile(
-          onLongPress: () async {
-            await dialogManager.showFaturaGridViewDialog(
-              model: model,
-              onSelected: (value) {
-                widget.onUpdated?.call(value);
-              },
-            );
-          },
-          onTap: () async {
-            if (widget.isGetData == true) {
-              Get.back(result: model);
-              return;
-            }
-            return await bottomSheetDialogManager.showBottomSheetDialog(
-              context,
-              title: model.cariAdi ?? "",
-              children: <BottomSheetModel?>[
-                BottomSheetModel(
-                  title: loc.generalStrings.view,
-                  iconWidget: Icons.preview_outlined,
-                  onTap: () async {
-                    Get.back();
-                    await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum));
-                  },
-                ),
-                BottomSheetModel(
-                  title: loc.generalStrings.edit,
-                  iconWidget: Icons.edit_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
-                    if (result == true) {
-                      if (model.isNew == true) {
-                        CacheManager.removeFaturaEditList(model.belgeNo ?? "");
-                      }
-                      widget.onUpdated?.call(result);
-                    }
-                  },
-                ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.basariliMi && !model.taslakMi) && !model.eBelgeMi),
-                BottomSheetModel(
-                  title: loc.generalStrings.delete,
-                  iconWidget: Icons.delete_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    return dialogManager.showAreYouSureDialog(() async {
-                      if (model.isNew == true) {
-                        try {
-                          CacheManager.removeFaturaEditList(model.belgeNo ?? "");
-                          dialogManager.showSuccessSnackBar("Silindi");
-                          widget.onDeleted?.call();
-                          return;
-                        } catch (e) {
-                          dialogManager.showAlertDialog("Hata Oluştu.\n$e");
-                        }
-                        return;
-                      }
-                      final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(model.toJson()));
-                      if (result.isSuccess) {
-                        dialogManager.showSuccessSnackBar("Silindi");
-                        widget.onDeleted?.call();
-                      }
-                    });
-                  },
-                ).yetkiKontrol((widget.editTipiEnum.silinsinMi && model.silinebilirMi) || model.efatOnayDurumKodu == "1"),
-                if (widget.editTipiEnum.aciklamaDuzenlensinMi)
+  Widget build(BuildContext context) => MouseRightClickListener(
+        onRightClick: onLongPress,
+        child: Card(
+          child: ListTile(
+            onLongPress: onLongPress,
+            onTap: () async {
+              if (widget.isGetData == true) {
+                Get.back(result: model);
+                return;
+              }
+              return await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: model.cariAdi ?? "",
+                children: <BottomSheetModel?>[
                   BottomSheetModel(
-                    title: "Açıklama Düzenle",
-                    iconWidget: Icons.edit_note_outlined,
+                    title: loc.generalStrings.view,
+                    iconWidget: Icons.preview_outlined,
                     onTap: () async {
                       Get.back();
-                      final result = await Get.toNamed(
-                        widget.editTipiEnum.aciklamaDuzenleRoute,
-                        arguments: model,
-                      );
-                      if (result != null) {
+                      await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum));
+                    },
+                  ),
+                  BottomSheetModel(
+                    title: loc.generalStrings.edit,
+                    iconWidget: Icons.edit_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
+                      if (result == true) {
+                        if (model.isNew == true) {
+                          CacheManager.removeFaturaEditList(model.belgeNo ?? "");
+                        }
                         widget.onUpdated?.call(result);
                       }
                     },
+                  ).yetkiKontrol((widget.editTipiEnum.duzenlensinMi && !model.basariliMi && !model.taslakMi) && !model.eBelgeMi),
+                  BottomSheetModel(
+                    title: loc.generalStrings.delete,
+                    iconWidget: Icons.delete_outline_outlined,
+                    onTap: () async {
+                      Get.back();
+                      return dialogManager.showAreYouSureDialog(() async {
+                        if (model.isNew == true) {
+                          try {
+                            CacheManager.removeFaturaEditList(model.belgeNo ?? "");
+                            dialogManager.showSuccessSnackBar("Silindi");
+                            widget.onDeleted?.call();
+                            return;
+                          } catch (e) {
+                            dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                          }
+                          return;
+                        }
+                        final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(model.toJson()));
+                        if (result.isSuccess) {
+                          dialogManager.showSuccessSnackBar("Silindi");
+                          widget.onDeleted?.call();
+                        }
+                      });
+                    },
+                  ).yetkiKontrol((widget.editTipiEnum.silinsinMi && model.silinebilirMi) || model.efatOnayDurumKodu == "1"),
+                  if (widget.editTipiEnum.aciklamaDuzenlensinMi)
+                    BottomSheetModel(
+                      title: "Açıklama Düzenle",
+                      iconWidget: Icons.edit_note_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final result = await Get.toNamed(
+                          widget.editTipiEnum.aciklamaDuzenleRoute,
+                          arguments: model,
+                        );
+                        if (result != null) {
+                          widget.onUpdated?.call(result);
+                        }
+                      },
+                    ),
+                  BottomSheetModel(
+                    title: loc.generalStrings.print,
+                    iconWidget: Icons.print_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final PrintModel printModel = PrintModel(
+                        raporOzelKod: widget.editTipiEnum.getPrintValue,
+                        etiketSayisi: 1,
+                        dicParams: DicParams(belgeNo: model.belgeNo ?? "", belgeTipi: model.getEditTipiEnum?.rawValue, cariKodu: model.cariKodu),
+                      );
+                      await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
+                    },
+                  ).yetkiKontrol(model.remoteTempBelgeEtiketi == null),
+                  BottomSheetModel(
+                    title: loc.generalStrings.actions,
+                    iconWidget: Icons.list_alt_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(model));
+                      await dialogManager.showFaturaGridViewDialog(
+                        model: result,
+                        onSelected: (value) {
+                          widget.onUpdated?.call(value);
+                        },
+                      );
+                    },
+                  ).yetkiKontrol(model.remoteTempBelgeEtiketi == null),
+                  BottomSheetModel(
+                    title: "E-Belge İşlemleri",
+                    iconWidget: Icons.receipt_long_outlined,
+                    onTap: () async {
+                      Get.back();
+                      // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
+                      // final BaseSiparisEditModel newModel = model.copyWith(
+                      //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
+                      // );
+                      final result = await dialogManager.showEBelgeGridViewDialog(
+                        model: model,
+                        onSelected: (value) {
+                          widget.onUpdated?.call(value);
+                        },
+                      );
+                      if (result == true) {
+                        widget.onUpdated?.call(true);
+                      }
+                    },
+                  ).yetkiKontrol(model.eBelgeIslemlerGorunsunMu),
+                  BottomSheetModel(
+                    title: "Cari İşlemleri",
+                    iconWidget: Icons.person_outline_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final CariListesiModel? cariListesiModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
+                      dialogManager.showCariIslemleriGridViewDialog(
+                        cariListesiModel,
+                      );
+                    },
                   ),
-                BottomSheetModel(
-                  title: loc.generalStrings.print,
-                  iconWidget: Icons.print_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final PrintModel printModel = PrintModel(
-                      raporOzelKod: widget.editTipiEnum.getPrintValue,
-                      etiketSayisi: 1,
-                      dicParams: DicParams(belgeNo: model.belgeNo ?? "", belgeTipi: model.getEditTipiEnum?.rawValue, cariKodu: model.cariKodu),
-                    );
-                    await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
-                  },
-                ).yetkiKontrol(model.remoteTempBelgeEtiketi == null),
-                BottomSheetModel(
-                  title: loc.generalStrings.actions,
-                  iconWidget: Icons.list_alt_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(model));
-                    await dialogManager.showFaturaGridViewDialog(
-                      model: result,
-                      onSelected: (value) {
-                        widget.onUpdated?.call(value);
-                      },
-                    );
-                  },
-                ).yetkiKontrol(model.remoteTempBelgeEtiketi == null),
-                BottomSheetModel(
-                  title: "E-Belge İşlemleri",
-                  iconWidget: Icons.receipt_long_outlined,
-                  onTap: () async {
-                    Get.back();
-                    // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-                    // final BaseSiparisEditModel newModel = model.copyWith(
-                    //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
-                    // );
-                    final result = await dialogManager.showEBelgeGridViewDialog(
-                      model: model,
-                      onSelected: (value) {
-                        widget.onUpdated?.call(value);
-                      },
-                    );
-                    if (result == true) {
-                      widget.onUpdated?.call(true);
-                    }
-                  },
-                ).yetkiKontrol(model.eBelgeIslemlerGorunsunMu),
-                BottomSheetModel(
-                  title: "Cari İşlemleri",
-                  iconWidget: Icons.person_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final CariListesiModel? cariListesiModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-                    dialogManager.showCariIslemleriGridViewDialog(
-                      cariListesiModel,
-                    );
-                  },
-                ),
-              ].nullCheckWithGeneric,
-            );
-          },
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(model.belgeNo ?? ""),
-              Text.rich(
-                TextSpan(
-                  children: <InlineSpan>[
-                    TextSpan(text: model.tarih.toDateString),
-                    TextSpan(text: "   ${model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  if (model.irsaliyelesti == "E") ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye),
-                  if (model.faturalasmisAIrsMi || model.faturalasmisSIrsMi) const ColorfulBadge(label: Text("Faturalaşmış"), badgeColorEnum: BadgeColorEnum.taslak),
-                  if (model.efaturaMi == "E") const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura),
-                  if (model.eirsaliyeMi == "E") const ColorfulBadge(label: Text("E-İrsaliye"), badgeColorEnum: BadgeColorEnum.eFatura),
-                  if (model.earsivMi == "E") const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura),
-                  if (model.hataliMi) dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)),
-                  if (model.taslakMi) dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)),
-                  if (model.uyariMi) dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)),
-                  if (model.basariliMi) dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)),
-                  if (model.efatOnayDurumKodu == "1") const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata),
-                  if (model.remoteTempBelgeEtiketi != null) ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri),
-                  if (model.isNew == true) const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis),
-                  if (model.faturalasanSayi != null) ColorfulBadge(label: Text("Fatura (${model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura),
-                  if (model.tipi == 1) const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
-                  if (model.tipi == 3) const ColorfulBadge(label: Text("Onayda")),
-                  if (model.dovizAdi != null) ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
-                ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
-              ),
-              Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-              Text("Cari Kodu: ${model.cariKodu ?? ""}"),
-              if (model.teslimCari != null) Text("Teslim Cari: ${model.teslimCari}"),
-              CustomLayoutBuilder.divideInHalf(
-                children: [
-                  Text("Tipi: ${model.tipiName}", style: TextStyle(color: model.tipi != 2 ? UIHelper.primaryColor : null)),
-                  Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
-                  if (model.kosulKodu != null) Text("Koşul: ${model.kosulKodu ?? ""}"),
-                  Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
-                  if (widget.showVade == true) Text("Vade Günü: ${model.vadeGunu ?? "0"}"),
-                  if (model.getEditTipiEnum?.fiyatGor == true) ...[
-                    if (model.dovizTutari != null && model.dovizAdi != null) Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}"),
-                    if (model.dovizTutari != null && model.dovizAdi != null) Text("Kur: ${model.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    if (model.otvTutari != null) Text("ÖTV Tutarı: ${model.otvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                  ],
-                ],
-              ),
-              if (widget.showMiktar == true) ...[
-                const Divider(
-                  indent: 0,
-                  endIndent: 0,
-                ).paddingSymmetric(vertical: UIHelper.midSize),
-                // Text("Miktar: ${model.miktar.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Text>[
-                    Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
+                ].nullCheckWithGeneric,
+              );
+            },
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(model.belgeNo ?? ""),
+                Text.rich(
+                  TextSpan(
+                    children: <InlineSpan>[
+                      TextSpan(text: model.tarih.toDateString),
+                      TextSpan(text: "   ${model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
+                    ],
+                  ),
                 ),
               ],
-              if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)
-                const Divider(
-                  indent: 0,
-                  endIndent: 0,
-                ).paddingSymmetric(vertical: UIHelper.midSize),
-              ...aciklamaList(),
-            ],
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    if (model.irsaliyelesti == "E") ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye),
+                    if (model.faturalasmisAIrsMi || model.faturalasmisSIrsMi) const ColorfulBadge(label: Text("Faturalaşmış"), badgeColorEnum: BadgeColorEnum.taslak),
+                    if (model.efaturaMi == "E") const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura),
+                    if (model.eirsaliyeMi == "E") const ColorfulBadge(label: Text("E-İrsaliye"), badgeColorEnum: BadgeColorEnum.eFatura),
+                    if (model.earsivMi == "E") const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura),
+                    if (model.hataliMi) dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)),
+                    if (model.taslakMi) dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)),
+                    if (model.uyariMi) dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)),
+                    if (model.basariliMi) dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)),
+                    if (model.efatOnayDurumKodu == "1") const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata),
+                    if (model.remoteTempBelgeEtiketi != null) ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri),
+                    if (model.isNew == true) const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis),
+                    if (model.faturalasanSayi != null) ColorfulBadge(label: Text("Fatura (${model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura),
+                    if (model.tipi == 1) const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
+                    if (model.tipi == 3) const ColorfulBadge(label: Text("Onayda")),
+                    if (model.dovizAdi != null) ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
+                  ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+                ),
+                Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+                Text("Cari Kodu: ${model.cariKodu ?? ""}"),
+                if (model.teslimCari != null) Text("Teslim Cari: ${model.teslimCari}"),
+                CustomLayoutBuilder.divideInHalf(
+                  children: [
+                    Text("Tipi: ${model.tipiName}", style: TextStyle(color: model.tipi != 2 ? UIHelper.primaryColor : null)),
+                    Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
+                    if (model.kosulKodu != null) Text("Koşul: ${model.kosulKodu ?? ""}"),
+                    Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
+                    if (widget.showVade == true) Text("Vade Günü: ${model.vadeGunu ?? "0"}"),
+                    if (model.getEditTipiEnum?.fiyatGor == true) ...[
+                      if (model.dovizTutari != null && model.dovizAdi != null) Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}"),
+                      if (model.dovizTutari != null && model.dovizAdi != null) Text("Kur: ${model.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                      Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                      Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                      if (model.otvTutari != null) Text("ÖTV Tutarı: ${model.otvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                      Text("Genel Toplam: ${model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                    ],
+                  ],
+                ),
+                if (widget.showMiktar == true) ...[
+                  const Divider(
+                    indent: 0,
+                    endIndent: 0,
+                  ).paddingSymmetric(vertical: UIHelper.midSize),
+                  // Text("Miktar: ${model.miktar.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Text>[
+                      Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                    ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
+                  ),
+                ],
+                if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)
+                  const Divider(
+                    indent: 0,
+                    endIndent: 0,
+                  ).paddingSymmetric(vertical: UIHelper.midSize),
+                ...aciklamaList(),
+              ],
+            ),
           ),
         ),
       );
 
+  Future<void> onLongPress() async {
+    await dialogManager.showFaturaGridViewDialog(
+      model: model,
+      onSelected: (value) {
+        widget.onUpdated?.call(value);
+      },
+    );
+  }
+
   InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
-        onTap: () {
-          dialogManager.showColorfulSnackBar(
-            model.gibDurumKodu,
-            badge.badgeColorEnum.getColor,
-          );
-        },
+        onTap: () => dialogManager.showColorfulSnackBar(model.gibDurumKodu, badge.badgeColorEnum.getColor),
         child: badge,
       );
 }

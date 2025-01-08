@@ -73,6 +73,9 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   @computed
   bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false) || (kalemModel.kalemList?.isNotEmpty ?? false);
 
+  @computed
+  double? get birimAgirlik => (model?.birimAgirlik ?? 0) * (kalemModel.miktar ?? 0);
+
   @action
   void setMuhasebeKodu(String? value) => kalemModel = kalemModel.copyWith(muhasebeKodu: value);
 
