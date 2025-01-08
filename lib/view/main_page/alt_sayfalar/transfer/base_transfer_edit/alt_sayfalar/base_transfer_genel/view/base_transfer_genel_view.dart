@@ -526,6 +526,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       child: CustomTextField(
                         labelText: "Toplu Çıkış Depo",
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo"),
+                        maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: true,
                         suffixMore: true,
                         controller: _topluCikisDepoController,
@@ -684,6 +685,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                   labelText: "Açıklama",
                   enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
                   isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A"),
+                  maxLength: StaticVariables.maxAciklamaLength,
                   controllerText: viewModel.model.aciklama,
                   onChanged: (value) => viewModel.model.aciklama = value,
                 ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false) && (viewModel.model.getEditTipiEnum?.aciklamaDuzenlensinMi ?? false)),
@@ -696,6 +698,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A1") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(1, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
                           controller: _aciklama1Controller,
@@ -703,6 +706,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A2") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A2"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(2, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
                           controller: _aciklama2Controller,
@@ -710,6 +714,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A3") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A3"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(3, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
                           controller: _aciklama3Controller,
@@ -717,6 +722,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A4") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A4"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(4, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
                           controller: _aciklama4Controller,
@@ -724,6 +730,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A5") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A5"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(5, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
                           controller: _aciklama5Controller,
@@ -731,6 +738,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A6") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A6"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(6, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
                           controller: _aciklama6Controller,
@@ -738,6 +746,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A7") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A7"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(7, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
                           controller: _aciklama7Controller,
@@ -745,6 +754,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A8") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A8"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(8, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
                           controller: _aciklama8Controller,
@@ -752,6 +762,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A9") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A9"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(9, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
                           controller: _aciklama9Controller,
@@ -759,6 +770,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A10") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A10"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(10, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
                           controller: _aciklama10Controller,
@@ -766,6 +778,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A11") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A11"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(11, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
                           controller: _aciklama11Controller,
@@ -773,6 +786,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A12") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A12"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(12, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
                           controller: _aciklama12Controller,
@@ -780,6 +794,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A13") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A13"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(13, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
                           controller: _aciklama13Controller,
@@ -787,6 +802,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A14") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A14"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(14, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
                           controller: _aciklama14Controller,
@@ -794,6 +810,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A15") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A15"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(15, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
                           controller: _aciklama15Controller,
@@ -801,6 +818,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         CustomTextField(
                           enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A16") ?? false),
                           isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A16"),
+                          maxLength: StaticVariables.maxAciklamaLength,
                           onChanged: (value) => viewModel.setAciklama(16, value),
                           labelText: (model.getEditTipiEnum?.satisMi ?? false ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
                           controller: _aciklama16Controller,

@@ -450,6 +450,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       children: <Widget>[
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(1) != null,
                           suffixMore: getEkRehberById(1) != null,
                           onTap: () async => await getGenelRehber(1),
@@ -463,6 +464,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(2) != null,
                           onClear: () => viewModel.setAciklama(2, null),
                           suffixMore: getEkRehberById(2) != null,
@@ -476,6 +478,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(3) != null,
                           suffixMore: getEkRehberById(3) != null,
                           onClear: () => viewModel.setAciklama(3, null),
@@ -488,6 +491,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(4) != null,
                           suffixMore: getEkRehberById(4) != null,
                           onClear: () => viewModel.setAciklama(4, null),
@@ -501,6 +505,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(5) != null,
                           suffixMore: getEkRehberById(5) != null,
                           onTap: () async => await getGenelRehber(5),
@@ -514,6 +519,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(6) != null,
                           suffixMore: getEkRehberById(6) != null,
                           onTap: () async => await getGenelRehber(6),
@@ -527,6 +533,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(7) != null,
                           suffixMore: getEkRehberById(7) != null,
                           onTap: () async => await getGenelRehber(7),
@@ -540,6 +547,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(8) != null,
                           suffixMore: getEkRehberById(8) != null,
                           onClear: () => viewModel.setAciklama(8, null),
@@ -553,6 +561,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(9) != null,
                           suffixMore: getEkRehberById(9) != null,
                           onTap: () async => await getGenelRehber(9),
@@ -566,6 +575,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(10) != null,
                           suffixMore: getEkRehberById(10) != null,
                           onTap: () async => await getGenelRehber(10),
@@ -579,6 +589,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(11) != null,
                           suffixMore: getEkRehberById(11) != null,
                           onTap: () async => await getGenelRehber(11),
@@ -592,6 +603,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(12) != null,
                           suffixMore: getEkRehberById(12) != null,
                           onTap: () async => await getGenelRehber(12),
@@ -605,6 +617,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(13) != null,
                           suffixMore: getEkRehberById(13) != null,
                           onTap: () async => await getGenelRehber(13),
@@ -618,6 +631,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(14) != null,
                           suffixMore: getEkRehberById(14) != null,
                           onTap: () async => await getGenelRehber(14),
@@ -631,6 +645,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(15) != null,
                           suffixMore: getEkRehberById(15) != null,
                           onTap: () async => await getGenelRehber(15),
@@ -644,6 +659,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15)),
                         CustomTextField(
                           enabled: enable,
+                          maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(16) != null,
                           suffixMore: getEkRehberById(16) != null,
                           onTap: () async => await getGenelRehber(16),

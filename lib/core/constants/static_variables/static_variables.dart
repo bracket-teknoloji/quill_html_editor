@@ -52,4 +52,6 @@ final class StaticVariables {
   GlobalKey<FormState> uretimSonuGenelFormKey = GlobalKey<FormState>();
 
   Map<String, dynamic> serbestDicParams = {};
+
+  static const int maxAciklamaLength = 100;
 }
