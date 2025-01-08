@@ -91,7 +91,6 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
       return GridView.builder(
         controller: scrollController, primary: false,
         gridDelegate: gridDelegate(),
-        shrinkWrap: true,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
 
         // DahaVarMi [true] ise [CircularProgressIndicator] görünür.
