@@ -64,7 +64,6 @@ dependencies:
 
   #Json Serialization Dependencies
   json_annotation: ^4.9.0
-  json_serializable: ^6.8.0
 
   #QR
   # qr_code_scanner: ^1.0.1
@@ -108,6 +107,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  json_serializable: ^6.8.0
   build_runner: ^2.4.12
   copy_with_extension_gen: ^6.0.0
   flutter_launcher_icons: ^0.14.1
