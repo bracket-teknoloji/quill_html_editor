@@ -6,7 +6,7 @@ final class AddAccountViewModel = _AddAccountViewModelBase with _$AddAccountView
 
 abstract class _AddAccountViewModelBase with Store {
   @observable
-  bool obscurePassword = false;
+  bool obscurePassword = true;
 
   @action
   Future<void> togglePassword() async => obscurePassword = !obscurePassword;

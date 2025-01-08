@@ -2,6 +2,7 @@ import "dart:convert";
 
 import "package:crypto/crypto.dart";
 import "package:flutter/material.dart";
+import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 
@@ -56,6 +57,7 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
           child: Padding(
             padding: UIHelper.lowPadding,
             child: AutofillGroup(
+              onDisposeAction: AutofillContextAction.cancel,
               child: Form(
                 key: formKey,
                 child: Column(
@@ -71,14 +73,15 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
                         text: "Şifre",
                         child: Observer(
                           builder: (_) => CustomTextField(
-                            keyboardType: viewModel.obscurePassword ? TextInputType.text : TextInputType.visiblePassword,
+                            keyboardType: TextInputType.visiblePassword,
+                            obscureText: viewModel.obscurePassword,
                             controller: passwordController,
                             isMust: true,
                             onSubmitted: (value) => loginMethod(),
                             suffix: IconButton(
                               onPressed: viewModel.togglePassword,
                               icon: Observer(
-                                builder: (_) => Icon(viewModel.obscurePassword ? Icons.visibility_off : Icons.visibility),
+                                builder: (_) => Icon(viewModel.obscurePassword ? Icons.visibility : Icons.visibility_off),
                               ),
                             ),
                           ),
@@ -116,6 +119,7 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
           if (!CacheManager.accountsBox.containsKey(item.email)) {
             CacheManager.setHesapBilgileri(AccountModel.instance);
             CacheManager.setAccounts(item..parola = encodedPassword);
+            TextInput.finishAutofillContext();
             Get.back(result: true);
             dialogManager.showSuccessSnackBar("Başarılı");
           } else {

@@ -126,10 +126,19 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
         child: MouseRegion(
           // onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
           child: TextFormField(
-            autofillHints: widget.keyboardType == TextInputType.emailAddress ? <String>[AutofillHints.email] : null,
+            maxLengthEnforcement: widget.maxLength != null ? MaxLengthEnforcement.truncateAfterCompositionEnds : null,
+            autofillHints: [
+              if (widget.keyboardType == TextInputType.emailAddress) AutofillHints.email,
+              if (widget.keyboardType == TextInputType.name) AutofillHints.name,
+              if (widget.keyboardType == TextInputType.visiblePassword) AutofillHints.password,
+              if (widget.keyboardType == TextInputType.phone) AutofillHints.telephoneNumber,
+              if (widget.keyboardType == TextInputType.streetAddress) AutofillHints.streetAddressLine1,
+              if (widget.keyboardType == TextInputType.url) AutofillHints.url,
+            ],
             textInputAction: TextInputAction.next,
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
+            autovalidateMode: AutovalidateMode.onUnfocus,
             onTap: () async {
               if (widget.onDateChange != null) {
                 widget.onDateChange!.call(await dialogManager.showDateTimePicker(initialDate: widget.controller?.text.toDateTimeDDMMYYYY()));
@@ -158,7 +167,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
             maxLength: widget.maxLength,
             validator: widget.validator ?? ((widget.enabled != false ? (widget.isMust ?? false) : false) ? validator : null),
             controller: controller,
-            obscureText: widget.keyboardType == TextInputType.visiblePassword,
+            obscureText: widget.obscureText,
             readOnly: widget.readOnly ?? false,
             decoration: InputDecoration(
               enabled: widget.enabled ?? true,
