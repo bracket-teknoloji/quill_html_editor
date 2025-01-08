@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/static_variables/static_variables.dart";
 
 import "../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../base/state/base_state.dart";
@@ -21,7 +22,7 @@ final class AciklamaDuzenleView extends StatefulWidget {
 
 final class _AciklamaDuzenleViewState extends BaseState<AciklamaDuzenleView> {
   AciklamaDuzenleViewModel viewModel = AciklamaDuzenleViewModel();
-  final int maxLength = 100;
+  final int maxLength = StaticVariables.maxAciklamaLength;
   late final TextEditingController _belgeNoController;
   late final TextEditingController _cariController;
   late final TextEditingController _tarihController;
