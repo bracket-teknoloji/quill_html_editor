@@ -256,7 +256,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
     searchBar = !searchBar;
     if (!searchBar) {
       setSearchText(null);
-      resetPage();
+      await resetList();
     }
   }
 

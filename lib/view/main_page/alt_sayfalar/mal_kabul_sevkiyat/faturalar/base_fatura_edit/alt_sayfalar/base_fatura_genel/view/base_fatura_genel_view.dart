@@ -892,13 +892,13 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
         case 16:
           _aciklama16Controller.text = result.kodu ?? "";
           viewModel.setAciklama(16, result);
-
         default:
       }
     }
   }
 
   String? getAciklama(int? id) {
+    // final String deneme = "NQR01|01NFFORC02|02deneme2|03deneme3|04165.3|054|06deneme6|07deneme7|08deneme8|09deneme9|1015.01.2022|11deneme11|12deneme12|13deneme13|14deneme14|15deneme15|16deneme16|17deneme17|18deneme18|19deneme19|20deneme20|21deneme21|22deneme22|23deneme23|24deneme24|25deneme25|26deneme26|27deneme27|28deneme28|29deneme29|30deneme30|31deneme31|32deneme32|33deneme33|34deneme34|50163.43";
     // TODO: Bu eklenebilir ama şu anlık işlevsiz. GetGenelRehber isteği atılması lazım.
     if (getEkRehberById(id) == null) return null;
     return getEkRehberById(id)!.baslik;

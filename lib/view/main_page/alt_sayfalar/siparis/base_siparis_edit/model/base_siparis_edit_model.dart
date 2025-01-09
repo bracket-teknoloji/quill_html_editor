@@ -1727,6 +1727,9 @@ final class KalemModel with NetworkManagerMixin {
   DateTime? vadeTarihi;
   @HiveField(138)
   double? gercekMiktar;
+  @HiveField(139)
+  List<BarkodList>? barkodList;
+
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().sum ?? 0;
     if (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) {
@@ -1902,4 +1905,24 @@ final class KalemModel with NetworkManagerMixin {
 
   @override
   KalemModel fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
+}
+
+@JsonSerializable()
+@HiveType(typeId: 18)
+class BarkodList {
+  BarkodList({
+    this.barkod,
+    this.miktar,
+    this.miktar2,
+  });
+
+  factory BarkodList.fromJson(Map<String, dynamic> json) => _$BarkodListFromJson(json);
+  @HiveField(0)
+  String? barkod;
+  @HiveField(1)
+  int? miktar;
+  @HiveField(2)
+  double? miktar2;
+
+  Map<String, dynamic> toJson() => _$BarkodListToJson(this);
 }

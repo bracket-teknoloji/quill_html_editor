@@ -198,6 +198,22 @@ extension EditTipiEnumExtension on EditTipiEnum {
         _ => null,
       };
 
+  bool get rehberdenStokSecilmesin => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.satisFatRehberdenStokSecilmesin,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsRehberdenStokSecilmesin,
+        EditTipiEnum.alisFatura => yetkiController.alisFatRehberdenStokSecilmesin,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsRehberdenStokSecilmesin,
+        _ => false
+      };
+
+      bool get kalemlerKlavyeAcilmasin => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.satisFatKalemKlavyeAcilmasin,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsKalemKlavyeAcilmasin,
+        EditTipiEnum.alisFatura => yetkiController.alisFatKalemKlavyeAcilmasin,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsKalemKlavyeAcilmasin,
+        _ => false
+      };
+
   bool get birim1denGelsin => switch (this) {
         EditTipiEnum.musteri => yetkiController.siparisMSBirim1denKaydet,
         EditTipiEnum.satici => yetkiController.siparisSSBirim1denKaydet,

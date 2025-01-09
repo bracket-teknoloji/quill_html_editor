@@ -58,7 +58,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
   Widget build(BuildContext context) => BaseScaffold(floatingActionButton: fab(), body: body());
 
   Visibility fab() => Visibility(
-        visible: !widget.model.isGoruntule,
+        visible: !widget.model.isGoruntule && BaseSiparisEditModel.instance.getEditTipiEnum?.rehberdenStokSecilmesin == false,
         child: FloatingActionButton(
           onPressed: () async {
             // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
@@ -77,6 +77,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
               visible: !widget.model.isGoruntule,
               child: CustomTextField(
                 labelText: "Stok Kodu / Barkod Giriniz",
+                readOnly: BaseSiparisEditModel.instance.getEditTipiEnum?.kalemlerKlavyeAcilmasin,
                 controller: _searchTextController,
                 onSubmitted: (p0) async {
                   if (p0.ext.isNotNullOrNoEmpty) {

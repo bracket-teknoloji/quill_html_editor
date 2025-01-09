@@ -598,6 +598,23 @@ final class YetkiController {
 
   // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
 
+  //! Rehberden Stok Secilmesin
+  bool get satisFatRehberdenStokSecilmesin => _isTrue(_yetkiModel?.sevkiyatSatisFatStokRehberiAcilmasin);
+  bool get satisIrsRehberdenStokSecilmesin => _isTrue(_yetkiModel?.sevkiyatSatisIrsStokRehberiAcilmasin);
+  bool get alisFatRehberdenStokSecilmesin => _isTrue(_yetkiModel?.malKabulAlisFatStokRehberiAcilmasin);
+  bool get alisIrsRehberdenStokSecilmesin => _isTrue(_yetkiModel?.malKabulAlisIrsStokRehberiAcilmasin);
+
+
+  //! Kalem Klavye Açılmasın
+  bool get satisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisFatKlavyeEngelle);
+  bool get satisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisIrsKlavyeEngelle);
+  bool get alisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisFatKlavyeEngelle);
+  bool get alisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisIrsKlavyeEngelle);
+
+  //! Barkod Ürün Girişi
+  // bool get satisFatBarkodUrunGirisi => _isTrue(_yetkiModel?.urun);
+
+
   //! FATURA
   String? get satisFaturaOzelKod1Degeri => _yetkiModel?.sevkiyatSatisFatOzelKod1Degeri;
   String? get satisFaturaOzelKod2Degeri => _yetkiModel?.sevkiyatSatisFatOzelKod2Degeri;

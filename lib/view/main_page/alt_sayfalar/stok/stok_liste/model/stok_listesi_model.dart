@@ -112,6 +112,26 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     this.kull6s,
     this.kull7s,
     this.kull8s,
+    this.belgeTarihi,
+    this.otvUygula,
+    this.otvOranmi,
+    this.otvKodu,
+    this.otvAralik,
+    this.otvDeger,
+    this.varsayilanMiktar,
+    this.miktar2,
+    this.bulunanSerilot,
+    this.bulunanSerilot2,
+    this.bulunanSerilot3,
+    this.bulunanSerilot4,
+    this.bulunanSeriAcik1,
+    this.bulunanSeriAcik2,
+    this.okutulanBarkod,
+    this.bulunanSeriSkt,
+    this.depoBakiyeListe,
+    this.netMiktar,
+    this.miktar,
+    this.yapacik,
   });
 
   factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
@@ -249,6 +269,20 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? kull6n;
   double? kull7n;
   double? kull8n;
+  double? varsayilanMiktar;
+  double? miktar2;
+  String? bulunanSerilot;
+  String? bulunanSerilot2;
+  String? bulunanSerilot3;
+  String? bulunanSerilot4;
+  String? bulunanSerilot5;
+  String? bulunanSeriAcik1;
+  String? bulunanSeriAcik2;
+  String? bulunanSeriAcik3;
+  String? bulunanSeriAcik4;
+  String? okutulanBarkod;
+  double? bulunanMiktar;
+  DateTime? bulunanSeriSkt;
 
   static StokListesiModel? _instance;
 

@@ -7,6 +7,10 @@ targets:
           include_if_null: false
           create_to_json: true
           field_rename: screamingSnake
+      json_serializable|json_enum:
+        options:
+          always_create: true
+          field_rename: screamingSnake
       freezed:
         options:
           immutable: true

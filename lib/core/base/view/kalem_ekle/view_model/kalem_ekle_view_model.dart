@@ -86,7 +86,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
 
   @action
-  void addSeriList(SeriList seriList) => kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList!, seriList]);
+  void addSeriList(SeriList seriList) => kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList?? [], seriList]);
 
   @action
   void setDovizAdi(String? value) => kalemModel = kalemModel.copyWith(dovizAdi: value);

@@ -4845,13 +4845,13 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       otvDegeri: fields[136] as double?,
       vadeTarihi: fields[137] as DateTime?,
       gercekMiktar: fields[138] as double?,
-    );
+    )..barkodList = (fields[139] as List?)?.cast<BarkodList>();
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(139)
+      ..writeByte(140)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -5129,7 +5129,9 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(137)
       ..write(obj.vadeTarihi)
       ..writeByte(138)
-      ..write(obj.gercekMiktar);
+      ..write(obj.gercekMiktar)
+      ..writeByte(139)
+      ..write(obj.barkodList);
   }
 
   @override
@@ -5139,6 +5141,46 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is KalemModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class BarkodListAdapter extends TypeAdapter<BarkodList> {
+  @override
+  final int typeId = 18;
+
+  @override
+  BarkodList read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return BarkodList(
+      barkod: fields[0] as String?,
+      miktar: fields[1] as int?,
+      miktar2: fields[2] as double?,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, BarkodList obj) {
+    writer
+      ..writeByte(3)
+      ..writeByte(0)
+      ..write(obj.barkod)
+      ..writeByte(1)
+      ..write(obj.miktar)
+      ..writeByte(2)
+      ..write(obj.miktar2);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is BarkodListAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -5758,7 +5800,9 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
           ? null
           : DateTime.parse(json['VADE_TARIHI'] as String),
       gercekMiktar: (json['GERCEK_MIKTAR'] as num?)?.toDouble(),
-    );
+    )..barkodList = (json['BARKOD_LIST'] as List<dynamic>?)
+        ?.map((e) => BarkodList.fromJson(e as Map<String, dynamic>))
+        .toList();
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
     <String, dynamic>{
@@ -5926,4 +5970,20 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
       if (instance.vadeTarihi?.toIso8601String() case final value?)
         'VADE_TARIHI': value,
       if (instance.gercekMiktar case final value?) 'GERCEK_MIKTAR': value,
+      if (instance.barkodList?.map((e) => e.toJson()).toList()
+          case final value?)
+        'BARKOD_LIST': value,
+    };
+
+BarkodList _$BarkodListFromJson(Map<String, dynamic> json) => BarkodList(
+      barkod: json['BARKOD'] as String?,
+      miktar: (json['MIKTAR'] as num?)?.toInt(),
+      miktar2: (json['MIKTAR2'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$BarkodListToJson(BarkodList instance) =>
+    <String, dynamic>{
+      if (instance.barkod case final value?) 'BARKOD': value,
+      if (instance.miktar case final value?) 'MIKTAR': value,
+      if (instance.miktar2 case final value?) 'MIKTAR2': value,
     };

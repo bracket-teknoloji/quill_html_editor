@@ -11,10 +11,10 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   enable-experiment:
     - macros
+    - null-aware-elements
   exclude:
     - "**/*.g.dart"
   errors:
-    prefer_mixin: true
     invalid_annotation_target: false
 linter:
   # The lint rules applied to this project can be customized in the

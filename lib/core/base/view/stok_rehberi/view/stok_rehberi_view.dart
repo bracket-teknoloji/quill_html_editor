@@ -74,6 +74,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
       focusNode.requestFocus();
       await viewModel.getGrupKodlari();
       await viewModel.getData();
+      if (viewModel.observableList?.length == 1 && viewModel.observableList?.first.okutulanBarkod?.startsWith("NQR") == true) {
+        await Get.toNamed((widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle", arguments: viewModel.observableList?.first);
+      }
       _scrollController.addListener(() async {
         viewModel.changeScrollStatus(_scrollController.position);
         // if (_scrollController.position.userScrollDirection == ScrollDirection.reverse) {

@@ -794,7 +794,7 @@ final class ProfilYetkiModel {
   @JsonKey(name: "sevkiyat_SatisFat_DipFiyatEylem")
   String? sevkiyatSatisFatDipFiyatEylem;
   @JsonKey(name: "sevkiyat_SatisFat_DipFiyatKDVDurumu")
-  String? sevkiyatSatisFatDipFiyatKDVDurumu;
+  String? sevkiyatSatisFatDipFiyatKdvDurumu;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesiSiparissiz")
   bool? sevkiyatSatisIrsaliyesiSiparissiz;
   @JsonKey(name: "sevkiyat_SatisIrsaliyesiSiparissizFiyatGor")
@@ -1616,7 +1616,7 @@ final class ProfilYetkiModel {
   @JsonKey(name: "uretim_IsEmri")
   bool? uretimIsEmri;
   @JsonKey(name: "uretim_Isemri_HammaddeTakip")
-  bool? uretimIsEmriHammaddeTakip;
+  bool? uretimIsemriHammaddeTakip;
   @JsonKey(name: "uretim_IsEmri_Ekle")
   bool? uretimIsEmriEkle;
   @JsonKey(name: "uretim_IsEmri_Duzelt")
@@ -2145,6 +2145,22 @@ final class ProfilYetkiModel {
   String? taltekStalOzelKod2Degeri;
   @JsonKey(name: "sevkiyat_SatisFat_Aciklamalar_YetkiTuru")
   String? sevkiyatSatisFatAciklamalarYetkiTuru;
+  @JsonKey(name: "taltek_STAL_Aciklamalar_YetkiTuru")
+  String? taltekStalAciklamalarYetkiTuru;
+  @JsonKey(name: "taltek_STAL_AciklamaAlanlari")
+  List<int>? taltekStalAciklamaAlanlari;
+  @JsonKey(name: "uretim_USK_BarkodSayisiSaklanacakAlan")
+  BarkodSayisiSaklanacakAlan? uretimUskBarkodSayisiSaklanacakAlan;
+  @JsonKey(name: "malKabul_AlisIrs_BarkodSayisiSaklanacakAlan")
+  BarkodSayisiSaklanacakAlan? malKabulAlisIrsBarkodSayisiSaklanacakAlan;
+  @JsonKey(name: "malKabul_AlisFat_BarkodSayisiSaklanacakAlan")
+  BarkodSayisiSaklanacakAlan? malKabulAlisFatBarkodSayisiSaklanacakAlan;
+  @JsonKey(name: "transfer_DAT_BarkodSayisiSaklanacakAlan")
+  BarkodSayisiSaklanacakAlan? transferDatBarkodSayisiSaklanacakAlan;
+  @JsonKey(name: "sevkiyat_SatisIrs_BarkodSayisiSaklanacakAlan")
+  BarkodSayisiSaklanacakAlan? sevkiyatSatisIrsBarkodSayisiSaklanacakAlan;
+  @JsonKey(name: "sevkiyat_SatisFat_SipBag_SipOkutulsun_KalanMiktarGelsin")
+  String? sevkiyatSatisFatSipBagSipOkutulsunKalanMiktarGelsin;
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 
@@ -2161,4 +2177,39 @@ final class SevkemriMalKontrolTipi {
   String? tanim;
 
   Map<String, dynamic> toJson() => _$SevkemriMalKontrolTipiToJson(this);
+}
+
+@JsonEnum(alwaysCreate: true)
+enum BarkodSayisiSaklanacakAlan {
+  @JsonValue("K1")
+  k1,
+  @JsonValue("K2")
+  k2,
+  @JsonValue("K3")
+  k3,
+  @JsonValue("K4")
+  k4,
+  @JsonValue("K5")
+  k5,
+  @JsonValue("K6")
+  k6,
+  @JsonValue("K7")
+  k7,
+  @JsonValue("K8")
+  k8,
+  @JsonValue("K9")
+  k9,
+  @JsonValue("K10")
+  k10,
+  @JsonValue("miktar2")
+  miktar2,
+  @JsonValue("E1")
+  e1,
+  @JsonValue("E2")
+  e2,
+  ;
+
+  factory BarkodSayisiSaklanacakAlan.fromJson(String json) => _$BarkodSayisiSaklanacakAlanEnumMap.map((key, value) => MapEntry(value, key))[json]!;
+
+  String get value => _$BarkodSayisiSaklanacakAlanEnumMap[this]!;
 }
