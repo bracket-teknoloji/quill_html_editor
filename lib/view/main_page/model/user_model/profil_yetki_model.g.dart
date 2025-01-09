@@ -790,7 +790,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['sevkiyat_SatisFat_DipFiyatSaha'] as String?
       ..sevkiyatSatisFatDipFiyatEylem =
           json['sevkiyat_SatisFat_DipFiyatEylem'] as String?
-      ..sevkiyatSatisFatDipFiyatKDVDurumu =
+      ..sevkiyatSatisFatDipFiyatKdvDurumu =
           json['sevkiyat_SatisFat_DipFiyatKDVDurumu'] as String?
       ..sevkiyatSatisIrsaliyesiSiparissiz =
           json['sevkiyat_SatisIrsaliyesiSiparissiz'] as bool?
@@ -1488,7 +1488,7 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..uretimMalToplamaReceteFiltresiSQL =
           json['uretim_MalToplama_ReceteFiltresiSQL'] as String?
       ..uretimIsEmri = json['uretim_IsEmri'] as bool?
-      ..uretimIsEmriHammaddeTakip = json['uretim_Isemri_HammaddeTakip'] as bool?
+      ..uretimIsemriHammaddeTakip = json['uretim_Isemri_HammaddeTakip'] as bool?
       ..uretimIsEmriEkle = json['uretim_IsEmri_Ekle'] as bool?
       ..uretimIsEmriDuzelt = json['uretim_IsEmri_Duzelt'] as bool?
       ..uretimIsEmriSil = json['uretim_IsEmri_Sil'] as bool?
@@ -1928,7 +1928,42 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..taltekStalOzelKod1Degeri = json['taltek_STAL_OzelKod1Degeri'] as String?
       ..taltekStalOzelKod2Degeri = json['taltek_STAL_OzelKod2Degeri'] as String?
       ..sevkiyatSatisFatAciklamalarYetkiTuru =
-          json['sevkiyat_SatisFat_Aciklamalar_YetkiTuru'] as String?;
+          json['sevkiyat_SatisFat_Aciklamalar_YetkiTuru'] as String?
+      ..taltekStalAciklamalarYetkiTuru =
+          json['taltek_STAL_Aciklamalar_YetkiTuru'] as String?
+      ..taltekStalAciklamaAlanlari =
+          (json['taltek_STAL_AciklamaAlanlari'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList()
+      ..uretimUskBarkodSayisiSaklanacakAlan =
+          json['uretim_USK_BarkodSayisiSaklanacakAlan'] == null
+              ? null
+              : BarkodSayisiSaklanacakAlan.fromJson(
+                  json['uretim_USK_BarkodSayisiSaklanacakAlan'] as String)
+      ..malKabulAlisIrsBarkodSayisiSaklanacakAlan =
+          json['malKabul_AlisIrs_BarkodSayisiSaklanacakAlan'] == null
+              ? null
+              : BarkodSayisiSaklanacakAlan.fromJson(
+                  json['malKabul_AlisIrs_BarkodSayisiSaklanacakAlan'] as String)
+      ..malKabulAlisFatBarkodSayisiSaklanacakAlan =
+          json['malKabul_AlisFat_BarkodSayisiSaklanacakAlan'] == null
+              ? null
+              : BarkodSayisiSaklanacakAlan.fromJson(
+                  json['malKabul_AlisFat_BarkodSayisiSaklanacakAlan'] as String)
+      ..transferDatBarkodSayisiSaklanacakAlan =
+          json['transfer_DAT_BarkodSayisiSaklanacakAlan'] == null
+              ? null
+              : BarkodSayisiSaklanacakAlan.fromJson(
+                  json['transfer_DAT_BarkodSayisiSaklanacakAlan'] as String)
+      ..sevkiyatSatisIrsBarkodSayisiSaklanacakAlan =
+          json['sevkiyat_SatisIrs_BarkodSayisiSaklanacakAlan'] == null
+              ? null
+              : BarkodSayisiSaklanacakAlan.fromJson(
+                  json['sevkiyat_SatisIrs_BarkodSayisiSaklanacakAlan']
+                      as String)
+      ..sevkiyatSatisFatSipBagSipOkutulsunKalanMiktarGelsin =
+          json['sevkiyat_SatisFat_SipBag_SipOkutulsun_KalanMiktarGelsin']
+              as String?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
     <String, dynamic>{
@@ -2717,7 +2752,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
         'sevkiyat_SatisFat_DipFiyatSaha': value,
       if (instance.sevkiyatSatisFatDipFiyatEylem case final value?)
         'sevkiyat_SatisFat_DipFiyatEylem': value,
-      if (instance.sevkiyatSatisFatDipFiyatKDVDurumu case final value?)
+      if (instance.sevkiyatSatisFatDipFiyatKdvDurumu case final value?)
         'sevkiyat_SatisFat_DipFiyatKDVDurumu': value,
       if (instance.sevkiyatSatisIrsaliyesiSiparissiz case final value?)
         'sevkiyat_SatisIrsaliyesiSiparissiz': value,
@@ -3502,7 +3537,7 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
       if (instance.uretimMalToplamaReceteFiltresiSQL case final value?)
         'uretim_MalToplama_ReceteFiltresiSQL': value,
       if (instance.uretimIsEmri case final value?) 'uretim_IsEmri': value,
-      if (instance.uretimIsEmriHammaddeTakip case final value?)
+      if (instance.uretimIsemriHammaddeTakip case final value?)
         'uretim_Isemri_HammaddeTakip': value,
       if (instance.uretimIsEmriEkle case final value?)
         'uretim_IsEmri_Ekle': value,
@@ -4019,7 +4054,50 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
         'taltek_STAL_OzelKod2Degeri': value,
       if (instance.sevkiyatSatisFatAciklamalarYetkiTuru case final value?)
         'sevkiyat_SatisFat_Aciklamalar_YetkiTuru': value,
+      if (instance.taltekStalAciklamalarYetkiTuru case final value?)
+        'taltek_STAL_Aciklamalar_YetkiTuru': value,
+      if (instance.taltekStalAciklamaAlanlari case final value?)
+        'taltek_STAL_AciklamaAlanlari': value,
+      if (_$BarkodSayisiSaklanacakAlanEnumMap[
+              instance.uretimUskBarkodSayisiSaklanacakAlan]
+          case final value?)
+        'uretim_USK_BarkodSayisiSaklanacakAlan': value,
+      if (_$BarkodSayisiSaklanacakAlanEnumMap[
+              instance.malKabulAlisIrsBarkodSayisiSaklanacakAlan]
+          case final value?)
+        'malKabul_AlisIrs_BarkodSayisiSaklanacakAlan': value,
+      if (_$BarkodSayisiSaklanacakAlanEnumMap[
+              instance.malKabulAlisFatBarkodSayisiSaklanacakAlan]
+          case final value?)
+        'malKabul_AlisFat_BarkodSayisiSaklanacakAlan': value,
+      if (_$BarkodSayisiSaklanacakAlanEnumMap[
+              instance.transferDatBarkodSayisiSaklanacakAlan]
+          case final value?)
+        'transfer_DAT_BarkodSayisiSaklanacakAlan': value,
+      if (_$BarkodSayisiSaklanacakAlanEnumMap[
+              instance.sevkiyatSatisIrsBarkodSayisiSaklanacakAlan]
+          case final value?)
+        'sevkiyat_SatisIrs_BarkodSayisiSaklanacakAlan': value,
+      if (instance.sevkiyatSatisFatSipBagSipOkutulsunKalanMiktarGelsin
+          case final value?)
+        'sevkiyat_SatisFat_SipBag_SipOkutulsun_KalanMiktarGelsin': value,
     };
+
+const _$BarkodSayisiSaklanacakAlanEnumMap = {
+  BarkodSayisiSaklanacakAlan.k1: 'K1',
+  BarkodSayisiSaklanacakAlan.k2: 'K2',
+  BarkodSayisiSaklanacakAlan.k3: 'K3',
+  BarkodSayisiSaklanacakAlan.k4: 'K4',
+  BarkodSayisiSaklanacakAlan.k5: 'K5',
+  BarkodSayisiSaklanacakAlan.k6: 'K6',
+  BarkodSayisiSaklanacakAlan.k7: 'K7',
+  BarkodSayisiSaklanacakAlan.k8: 'K8',
+  BarkodSayisiSaklanacakAlan.k9: 'K9',
+  BarkodSayisiSaklanacakAlan.k10: 'K10',
+  BarkodSayisiSaklanacakAlan.miktar2: 'miktar2',
+  BarkodSayisiSaklanacakAlan.e1: 'E1',
+  BarkodSayisiSaklanacakAlan.e2: 'E2',
+};
 
 SevkemriMalKontrolTipi _$SevkemriMalKontrolTipiFromJson(
         Map<String, dynamic> json) =>
