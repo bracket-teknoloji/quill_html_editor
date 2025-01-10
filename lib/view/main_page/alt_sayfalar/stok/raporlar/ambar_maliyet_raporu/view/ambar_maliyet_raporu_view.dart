@@ -115,9 +115,10 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
                   isMust: true,
                   readOnly: true,
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                       context,
                       title: "Maliyet Tipi",
+                      groupValue: viewModel.pdfModel.dicParams?.maliyetTipi,
                       children: viewModel.maliyetTipiList,
                     );
                     if (result != null) {

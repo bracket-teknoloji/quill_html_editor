@@ -237,14 +237,15 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
               icon: Icons.sort_by_alpha_outlined,
               child: Text(loc.generalStrings.sort),
               onPressed: () async {
-                final String? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
+                  groupValue: viewModel.siralama,
                   title: loc.generalStrings.sort,
                   children: [
-                    BottomSheetModel(title: "Tarih (Artan)", onTap: () => Get.back(result: "TARIH_AZ")),
-                    BottomSheetModel(title: "Tarih (Azalan)", onTap: () => Get.back(result: "TARIH_ZA")),
-                    BottomSheetModel(title: "Stok Kodu (A-Z)", onTap: () => Get.back(result: "KOD_AZ")),
-                    BottomSheetModel(title: "Stok Kodu (Z-A)", onTap: () => Get.back(result: "KOZ_ZA")),
+                    BottomSheetModel(title: "Tarih (Artan)", value: "TARIH_AZ", groupValue: "TARIH_AZ"),
+                    BottomSheetModel(title: "Tarih (Azalan)", value: "TARIH_ZA", groupValue: "TARIH_ZA"),
+                    BottomSheetModel(title: "Stok Kodu (A-Z)", value: "KOD_AZ", groupValue: "KOD_AZ"),
+                    BottomSheetModel(title: "Stok Kodu (Z-A)", value: "KOZ_ZA", groupValue: "KOZ_ZA"),
                   ],
                 );
                 if (result != null) {

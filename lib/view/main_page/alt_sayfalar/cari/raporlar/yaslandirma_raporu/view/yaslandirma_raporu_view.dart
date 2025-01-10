@@ -171,8 +171,8 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                       context,
                       title: "Tarih Tipi",
                       children: [
-                        BottomSheetModel(title: "Vade Tarihi", onTap: () => Get.back(result: "Vade Tarihi")),
-                        BottomSheetModel(title: "Kayıt Tarihi", onTap: () => Get.back(result: "Kayıt Tarihi")),
+                        BottomSheetModel(title: "Vade Tarihi", value: "Vade Tarihi"),
+                        BottomSheetModel(title: "Kayıt Tarihi", value: "Kayıt Tarihi"),
                       ],
                     );
                     if (result != null) {

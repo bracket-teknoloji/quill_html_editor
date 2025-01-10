@@ -1,4 +1,3 @@
-import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -25,42 +24,15 @@ abstract class _AmbarMaliyetRaporuViewModelBase with Store {
   }
 
   List<BottomSheetModel> maliyetTipiList = [
-    BottomSheetModel(
-      title: "Son Giriş Net Fiyat",
-      onTap: () => Get.back(result: "SGF"),
-    ),
-    BottomSheetModel(
-      title: "Alış Fiyatı 1",
-      onTap: () => Get.back(result: "AF1"),
-    ),
-    BottomSheetModel(
-      title: "Alış Fiyatı 2",
-      onTap: () => Get.back(result: "AF2"),
-    ),
-    BottomSheetModel(
-      title: "Alış Fiyatı 3",
-      onTap: () => Get.back(result: "AF3"),
-    ),
-    BottomSheetModel(
-      title: "Alış Fiyatı 4",
-      onTap: () => Get.back(result: "AF4"),
-    ),
-    BottomSheetModel(
-      title: "Satış Fiyatı 1",
-      onTap: () => Get.back(result: "SF1"),
-    ),
-    BottomSheetModel(
-      title: "Satış Fiyatı 2",
-      onTap: () => Get.back(result: "SF2"),
-    ),
-    BottomSheetModel(
-      title: "Satış Fiyatı 3",
-      onTap: () => Get.back(result: "SF3"),
-    ),
-    BottomSheetModel(
-      title: "Satış Fiyatı 4",
-      onTap: () => Get.back(result: "SF4"),
-    ),
+    BottomSheetModel(title: "Son Giriş Net Fiyat", value: "SGF", groupValue: "SGF"),
+    BottomSheetModel(title: "Alış Fiyatı 1", value: "AF1", groupValue: "AF1"),
+    BottomSheetModel(title: "Alış Fiyatı 2", value: "AF2", groupValue: "AF2"),
+    BottomSheetModel(title: "Alış Fiyatı 3", value: "AF3", groupValue: "AF3"),
+    BottomSheetModel(title: "Alış Fiyatı 4", value: "AF4", groupValue: "AF4"),
+    BottomSheetModel(title: "Satış Fiyatı 1", value: "SF1", groupValue: "SF1"),
+    BottomSheetModel(title: "Satış Fiyatı 2", value: "SF2", groupValue: "SF2"),
+    BottomSheetModel(title: "Satış Fiyatı 3", value: "SF3", groupValue: "SF3"),
+    BottomSheetModel(title: "Satış Fiyatı 4", value: "SF4", groupValue: "SF4"),
   ];
 
   //* Future
