@@ -191,7 +191,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     trailing: const Icon(Icons.open_in_new_outlined),
                   ),
                 ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E" && model.resmiBelgeNo != null),
-                if (!model.isTempBelge)
+                if (!yetkiController.kontrolluAktarBelgeTipleri(model.getEditTipiEnum?.rawValue))
                   CustomTextField(
                     enabled: enable,
                     labelText: "Belge No",
@@ -204,6 +204,11 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       },
                       icon: const Icon(Icons.format_list_numbered_rtl_outlined),
                     ),
+                    validator: (value) {
+                      if (value case (null || "")) return "Belge No Boş Olamaz";
+                      if (model.ebelgeCheckbox == "E" && !value.startsWith("EIR")) return "E-Fatura Belge No EIR ile başlamalıdır";
+                      return null;
+                    },
                     onChanged: (value) {
                       model.belgeNo = value;
                     },

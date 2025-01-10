@@ -1445,6 +1445,36 @@ final class KalemModel with NetworkManagerMixin {
         seriCikislardaAcik: model.seriCikislardaAcik,
         seriMiktarKadarSor: model.seriMiktarKadarSor,
       );
+  factory KalemModel.fromBarkodModel(StokListesiModel model) {
+    final BarkodList newBarkod = BarkodList(barkod: model.okutulanBarkod, miktar: model.varsayilanMiktar, miktar2: model.miktar2);
+    final KalemModel kalemModel = KalemModel.fromStokListesiModel(model)
+      ..barkodList = [newBarkod]
+      ..miktar = model.varsayilanMiktar
+      ..barkod = model.okutulanBarkod;
+    final SeriList newSeri = SeriList(
+      miktar: model.varsayilanMiktar,
+      sonKullanmaTarihi: model.bulunanSeriSkt,
+      stokAdi: model.stokAdi,
+      stokKodu: model.stokKodu,
+      
+    );
+    if (model.okutulanBarkod != null) {
+      kalemModel.brutFiyat = model.bulunanFiyat;
+      if (model.bulunanSeriAcik1 case final value?) newSeri.acik1 = value;
+      if (model.bulunanSeriAcik2 case final value?) newSeri.acik2 = value;
+      if (model.bulunanSeriAcik3 case final value?) newSeri.acik3 = value;
+      if (model.bulunanSeriAcik4 case final value?) newSeri.acik4 = value;
+      if (model.bulunanSerilot case final value?) {
+        newSeri
+          ..seri1 = value
+          ..seriNo = value;
+      }
+      if (model.bulunanSerilot2 case final value?) newSeri.seri2 = value;
+      if (model.bulunanSerilot3 case final value?) newSeri.seri3 = value;
+      if (model.bulunanSerilot4 case final value?) newSeri.seri4 = value;
+    }
+    return kalemModel..seriList = [newSeri];
+  }
   @HiveField(0)
   @JsonKey(defaultValue: false, name: "ISKONTO_1_ORAN_MI")
   bool? iskonto1OranMi;
@@ -1920,7 +1950,7 @@ class BarkodList {
   @HiveField(0)
   String? barkod;
   @HiveField(1)
-  int? miktar;
+  double? miktar;
   @HiveField(2)
   double? miktar2;
 

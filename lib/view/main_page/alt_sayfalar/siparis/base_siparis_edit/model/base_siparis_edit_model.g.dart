@@ -5157,7 +5157,7 @@ class BarkodListAdapter extends TypeAdapter<BarkodList> {
     };
     return BarkodList(
       barkod: fields[0] as String?,
-      miktar: fields[1] as int?,
+      miktar: fields[1] as double?,
       miktar2: fields[2] as double?,
     );
   }
@@ -5977,7 +5977,7 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
 
 BarkodList _$BarkodListFromJson(Map<String, dynamic> json) => BarkodList(
       barkod: json['BARKOD'] as String?,
-      miktar: (json['MIKTAR'] as num?)?.toInt(),
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
       miktar2: (json['MIKTAR2'] as num?)?.toDouble(),
     );
 

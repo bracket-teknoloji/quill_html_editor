@@ -138,7 +138,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
             textInputAction: TextInputAction.next,
             keyboardType: widget.keyboardType,
             focusNode: widget.focusNode,
-            autovalidateMode: AutovalidateMode.onUnfocus,
+            // autovalidateMode: AutovalidateMode.onUnfocus,
             onTap: () async {
               if (widget.onDateChange != null) {
                 widget.onDateChange!.call(await dialogManager.showDateTimePicker(initialDate: widget.controller?.text.toDateTimeDDMMYYYY()));

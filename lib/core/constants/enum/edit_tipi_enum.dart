@@ -198,19 +198,64 @@ extension EditTipiEnumExtension on EditTipiEnum {
         _ => null,
       };
 
-  bool get rehberdenStokSecilmesin => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.satisFatRehberdenStokSecilmesin,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsRehberdenStokSecilmesin,
-        EditTipiEnum.alisFatura => yetkiController.alisFatRehberdenStokSecilmesin,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsRehberdenStokSecilmesin,
-        _ => false
-      };
+  bool get rehberdenStokSecilsin {
+    if (!barkodluUrunGirisi) return true;
+    return switch (this) {
+      EditTipiEnum.satisFatura => yetkiController.satisFatRehberdenStokSecilsin,
+      EditTipiEnum.satisIrsaliye => yetkiController.satisIrsRehberdenStokSecilsin,
+      EditTipiEnum.alisFatura => yetkiController.alisFatRehberdenStokSecilsin,
+      EditTipiEnum.alisIrsaliye => yetkiController.alisIrsRehberdenStokSecilsin,
+      _ => false
+    };
+  }
 
-      bool get kalemlerKlavyeAcilmasin => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.satisFatKalemKlavyeAcilmasin,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsKalemKlavyeAcilmasin,
-        EditTipiEnum.alisFatura => yetkiController.alisFatKalemKlavyeAcilmasin,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsKalemKlavyeAcilmasin,
+  bool get kalemlerKlavyeAcilmasin {
+    if (!barkodluUrunGirisi) return true;
+    return switch (this) {
+      EditTipiEnum.satisFatura => yetkiController.satisFatKalemKlavyeAcilmasin,
+      EditTipiEnum.satisIrsaliye => yetkiController.satisIrsKalemKlavyeAcilmasin,
+      EditTipiEnum.alisFatura => yetkiController.alisFatKalemKlavyeAcilmasin,
+      EditTipiEnum.alisIrsaliye => yetkiController.alisIrsKalemKlavyeAcilmasin,
+      _ => false
+    };
+  }
+
+  bool get urunOtomatikEklensin {
+    if (!barkodluUrunGirisi) return true;
+    return switch (this) {
+      EditTipiEnum.satisFatura => yetkiController.satisFatBarkodUrunOtomatikEkle,
+      EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBarkodUrunOtomatikEkle,
+      EditTipiEnum.alisFatura => yetkiController.alisFatBarkodUrunOtomatikEkle,
+      EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBarkodUrunOtomatikEkle,
+      EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBarkodUrunOtomatikEkle,
+      EditTipiEnum.ambarGirisi => yetkiController.transferAGBarkodUrunOtomatikEkle,
+      EditTipiEnum.ambarCikisi => yetkiController.transferACBarkodUrunOtomatikEkle,
+      _ => false
+    };
+  }
+
+  bool get kalemDuzeltilsin {
+    if (!barkodluUrunGirisi) return true;
+    return switch (this) {
+      EditTipiEnum.satisFatura => yetkiController.satisFatKalemDuzeltilsin,
+      EditTipiEnum.satisIrsaliye => yetkiController.satisIrsKalemDuzeltilsin,
+      EditTipiEnum.alisFatura => yetkiController.alisFatKalemDuzeltilsin,
+      EditTipiEnum.alisIrsaliye => yetkiController.alisIrsKalemDuzeltilsin,
+      EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatKalemDuzeltilsin,
+      EditTipiEnum.ambarGirisi => yetkiController.transferAGKalemDuzeltilsin,
+      EditTipiEnum.ambarCikisi => yetkiController.transferACKalemDuzeltilsin,
+      _ => false
+    };
+  }
+
+  bool get barkodluUrunGirisi => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.satisFatBarkodUrunGirisi,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBarkodUrunGirisi,
+        EditTipiEnum.alisFatura => yetkiController.alisFatBarkodUrunGirisi,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBarkodUrunGirisi,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBarkodUrunGirisi,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAGBarkodUrunGirisi,
+        EditTipiEnum.ambarCikisi => yetkiController.transferACBarkodUrunGirisi,
         _ => false
       };
 

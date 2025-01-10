@@ -36,6 +36,7 @@ final class BaseFaturaKalemlerView extends StatefulWidget {
   State<BaseFaturaKalemlerView> createState() => _BaseFaturaKalemlerViewState();
 }
 
+//#region Test
 final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   BaseFaturaKalemlerViewModel viewModel = BaseFaturaKalemlerViewModel();
@@ -58,7 +59,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
   Widget build(BuildContext context) => BaseScaffold(floatingActionButton: fab(), body: body());
 
   Visibility fab() => Visibility(
-        visible: !widget.model.isGoruntule && BaseSiparisEditModel.instance.getEditTipiEnum?.rehberdenStokSecilmesin == false,
+        visible: !widget.model.isGoruntule && (BaseSiparisEditModel.instance.getEditTipiEnum?.rehberdenStokSecilsin ?? false),
         child: FloatingActionButton(
           onPressed: () async {
             // bottomSheetDialogManager.showPrintDialog(context, DicParams(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi.toStringIfNotNull, cariKodu: model.cariKodu));
@@ -73,9 +74,8 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         padding: UIHelper.lowPadding,
         child: Column(
           children: <Widget>[
-            Visibility(
-              visible: !widget.model.isGoruntule,
-              child: CustomTextField(
+            if (!widget.model.isGoruntule)
+              CustomTextField(
                 labelText: "Stok Kodu / Barkod Giriniz",
                 readOnly: BaseSiparisEditModel.instance.getEditTipiEnum?.kalemlerKlavyeAcilmasin,
                 controller: _searchTextController,
@@ -86,18 +86,10 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
                   }
                 },
                 suffix: IconButton(
-                  onPressed: () async {
-                    final result = await Get.toNamed("/qr");
-                    if (result != null) {
-                      _searchTextController.text = result;
-                      await Get.toNamed("/mainPage/stokRehberi", arguments: result);
-                      viewModel.updateKalemList();
-                    }
-                  },
+                  onPressed: getBarkodStok,
                   icon: const Icon(Icons.qr_code_scanner),
                 ),
               ).paddingOnly(top: UIHelper.lowSize),
-            ),
             Expanded(
               child: Observer(
                 builder: (_) => viewModel.kalemList.ext.isNullOrEmpty
@@ -169,8 +161,8 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel.dovizliMi),
-            const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel.paketMi == "K"),
+            if (kalemModel.dovizliMi) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+            if (kalemModel.paketMi == "K") const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli),
             Text(
               kalemModel.stokKodu ?? "",
               style: TextStyle(
@@ -181,16 +173,19 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
                     : null,
               ),
             ),
-            Text("${kalemModel.depoKodu ?? ""} - ${kalemModel.depoTanimi ?? ""}").yetkiVarMi(kalemModel.depoKodu != null && kalemModel.depoTanimi != null),
-            Text(kalemModel.faturaKalemAciklama, style: const TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel.faturaKalemAciklama != ""),
+            if (kalemModel.depoKodu != null && kalemModel.depoTanimi != null) Text("${kalemModel.depoKodu ?? ""} - ${kalemModel.depoTanimi ?? ""}"),
+            if (kalemModel.faturaKalemAciklama != "") Text(kalemModel.faturaKalemAciklama, style: const TextStyle(color: UIHelper.primaryColor)),
+            if (kalemModel.barkodList != null) Text("Barkod Sayısı: ${kalemModel.barkodList?.length ?? 0}", style: const TextStyle(color: UIHelper.primaryColor)),
             LayoutBuilder(
               builder: (context, constrains) => Wrap(
                 children: <Widget>[
-                  Text("Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}  ${kalemModel.olcuBirimCarpani != null ? "(${kalemModel.gercekMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${kalemModel.stokOlcuBirimi})" : ""}")
-                      .yetkiVarMi(!(kalemModel.miktar == null || kalemModel.miktar == 0.0)),
-                  Text("Miktar2: ${kalemModel.miktar2.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.miktar2 != null),
-                  Text("KDV: %${kalemModel.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel.kdvOrani != null),
-                  Text("Mal Fazlası Miktar: ${kalemModel.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.malFazlasiMiktar != null),
+                  if (!(kalemModel.miktar == null || kalemModel.miktar == 0.0))
+                    Text(
+                      "Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}  ${kalemModel.olcuBirimCarpani != null ? "(${kalemModel.gercekMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${kalemModel.stokOlcuBirimi})" : ""}",
+                    ),
+                  if (kalemModel.miktar2 != null) Text("Miktar2: ${kalemModel.miktar2.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}"),
+                  if (kalemModel.kdvOrani != null) Text("KDV: %${kalemModel.kdvOrani.toIntIfDouble ?? ""}"),
+                  if (kalemModel.malFazlasiMiktar != null) Text("Mal Fazlası Miktar: ${kalemModel.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}"),
                   Text.rich(
                     TextSpan(
                       children: <TextSpan?>[
@@ -309,18 +304,19 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
       context,
       title: kalemList2?.kalemAdi ?? kalemList2?.stokAdi ?? "",
       children: <BottomSheetModel?>[
-        BottomSheetModel(
-          title: loc.generalStrings.edit,
-          iconWidget: Icons.edit_outlined,
-          onTap: () async {
-            Get.back();
-            final result = await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
-            if (result is KalemModel) {
-              BaseSiparisEditModel.instance.kalemList?[index] = result;
-            }
-            viewModel.updateKalemList();
-          },
-        ).yetkiKontrol(!widget.model.isGoruntule),
+        if (BaseSiparisEditModel.instance.getEditTipiEnum?.kalemDuzeltilsin ?? false)
+          BottomSheetModel(
+            title: loc.generalStrings.edit,
+            iconWidget: Icons.edit_outlined,
+            onTap: () async {
+              Get.back();
+              final result = await Get.toNamed("/kalemEkle", arguments: viewModel.kalemList?[index]);
+              if (result is KalemModel) {
+                BaseSiparisEditModel.instance.kalemList?[index] = result;
+              }
+              viewModel.updateKalemList();
+            },
+          ).yetkiKontrol(!widget.model.isGoruntule),
         BottomSheetModel(
           title: loc.generalStrings.delete,
           iconWidget: Icons.delete_outline_outlined,
@@ -393,5 +389,42 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         ).yetkiKontrol(!model.kalemEBelgedenMi),
       ].nullCheckWithGeneric,
     );
+  }
+
+  Future<void> getBarkodStok() async {
+    final result = await Get.toNamed("/qr");
+    if (result == null) return;
+    _searchTextController.text = result;
+    final stokModel = await networkManager.getStokModel(
+      StokRehberiRequestModel(
+        oto: model.getEditTipiEnum?.urunOtomatikEklensin ?? false ? "E" : null,
+        stokKodu: result,
+        menuKodu: "COMM_FADE",
+        ozelKod1: model.ozelKod1,
+        belgeTarihi: model.tarih.toDateString,
+        okutuldu: true,
+        cariKodu: model.cariKodu,
+        belgeTipi: model.getEditTipiEnum?.rawValue,
+        faturaTipi: 2,
+      ),
+    );
+    if (stokModel == null) {
+      if (!(model.getEditTipiEnum?.urunOtomatikEklensin ?? false)) {
+        await Get.toNamed("/mainPage/stokRehberi", arguments: result);
+      } else {
+        dialogManager.showAlertDialog("Barkod bulunamadı.\nSadece Barkodlu Stoklar Eklenebilir.\nOkutulan barkod: $result");
+      }
+    } else {
+      final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel);
+      if (model.getEditTipiEnum?.urunOtomatikEklensin ?? false) {
+        BaseSiparisEditModel.instance.kalemList ??= [];
+        BaseSiparisEditModel.instance.kalemList?.add(kalemModel);
+      } else {
+        final stok = await Get.toNamed("/kalemEkle", arguments: kalemModel);
+        if (stok is! KalemModel) return;
+      }
+    }
+    _searchTextController.clear();
+    viewModel.updateKalemList();
   }
 }

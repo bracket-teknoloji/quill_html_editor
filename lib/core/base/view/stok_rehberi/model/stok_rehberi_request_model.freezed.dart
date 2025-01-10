@@ -45,6 +45,14 @@ mixin _$StokRehberiRequestModel {
   set seriTakibiVar(String? value) => throw _privateConstructorUsedError;
   int? get depoKodu => throw _privateConstructorUsedError;
   set depoKodu(int? value) => throw _privateConstructorUsedError;
+  bool? get okutuldu => throw _privateConstructorUsedError;
+  set okutuldu(bool? value) => throw _privateConstructorUsedError;
+  String? get oto => throw _privateConstructorUsedError;
+  set oto(String? value) => throw _privateConstructorUsedError;
+  String? get ozelKod1 => throw _privateConstructorUsedError;
+  set ozelKod1(String? value) => throw _privateConstructorUsedError;
+  String? get ozelKod2 => throw _privateConstructorUsedError;
+  set ozelKod2(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this StokRehberiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -74,7 +82,11 @@ abstract class $StokRehberiRequestModelCopyWith<$Res> {
       String? resimGoster,
       String? stokKodu,
       String? seriTakibiVar,
-      int? depoKodu});
+      int? depoKodu,
+      bool? okutuldu,
+      String? oto,
+      String? ozelKod1,
+      String? ozelKod2});
 }
 
 /// @nodoc
@@ -105,6 +117,10 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
     Object? stokKodu = freezed,
     Object? seriTakibiVar = freezed,
     Object? depoKodu = freezed,
+    Object? okutuldu = freezed,
+    Object? oto = freezed,
+    Object? ozelKod1 = freezed,
+    Object? ozelKod2 = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -155,6 +171,22 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      okutuldu: freezed == okutuldu
+          ? _value.okutuldu
+          : okutuldu // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      oto: freezed == oto
+          ? _value.oto
+          : oto // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozelKod1: freezed == ozelKod1
+          ? _value.ozelKod1
+          : ozelKod1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozelKod2: freezed == ozelKod2
+          ? _value.ozelKod2
+          : ozelKod2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -180,7 +212,11 @@ abstract class _$$StokRehberiRequestModelImplCopyWith<$Res>
       String? resimGoster,
       String? stokKodu,
       String? seriTakibiVar,
-      int? depoKodu});
+      int? depoKodu,
+      bool? okutuldu,
+      String? oto,
+      String? ozelKod1,
+      String? ozelKod2});
 }
 
 /// @nodoc
@@ -210,6 +246,10 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? seriTakibiVar = freezed,
     Object? depoKodu = freezed,
+    Object? okutuldu = freezed,
+    Object? oto = freezed,
+    Object? ozelKod1 = freezed,
+    Object? ozelKod2 = freezed,
   }) {
     return _then(_$StokRehberiRequestModelImpl(
       belgeNo: freezed == belgeNo
@@ -260,6 +300,22 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
           ? _value.depoKodu
           : depoKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      okutuldu: freezed == okutuldu
+          ? _value.okutuldu
+          : okutuldu // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      oto: freezed == oto
+          ? _value.oto
+          : oto // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozelKod1: freezed == ozelKod1
+          ? _value.ozelKod1
+          : ozelKod1 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozelKod2: freezed == ozelKod2
+          ? _value.ozelKod2
+          : ozelKod2 // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -280,7 +336,11 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
       this.resimGoster,
       this.stokKodu,
       this.seriTakibiVar,
-      this.depoKodu});
+      this.depoKodu,
+      this.okutuldu,
+      this.oto,
+      this.ozelKod1,
+      this.ozelKod2});
 
   factory _$StokRehberiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$StokRehberiRequestModelImplFromJson(json);
@@ -310,6 +370,14 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
   String? seriTakibiVar;
   @override
   int? depoKodu;
+  @override
+  bool? okutuldu;
+  @override
+  String? oto;
+  @override
+  String? ozelKod1;
+  @override
+  String? ozelKod2;
 
   /// Create a copy of StokRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -341,7 +409,11 @@ abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
       String? resimGoster,
       String? stokKodu,
       String? seriTakibiVar,
-      int? depoKodu}) = _$StokRehberiRequestModelImpl;
+      int? depoKodu,
+      bool? okutuldu,
+      String? oto,
+      String? ozelKod1,
+      String? ozelKod2}) = _$StokRehberiRequestModelImpl;
 
   factory _StokRehberiRequestModel.fromJson(Map<String, dynamic> json) =
       _$StokRehberiRequestModelImpl.fromJson;
@@ -382,6 +454,18 @@ abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
   @override
   int? get depoKodu;
   set depoKodu(int? value);
+  @override
+  bool? get okutuldu;
+  set okutuldu(bool? value);
+  @override
+  String? get oto;
+  set oto(String? value);
+  @override
+  String? get ozelKod1;
+  set ozelKod1(String? value);
+  @override
+  String? get ozelKod2;
+  set ozelKod2(String? value);
 
   /// Create a copy of StokRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.

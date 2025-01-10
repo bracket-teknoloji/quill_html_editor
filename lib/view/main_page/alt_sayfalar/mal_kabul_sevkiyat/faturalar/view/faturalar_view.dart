@@ -299,6 +299,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
         body: Column(
           children: <Widget>[
             RaporFiltreDateTimeBottomSheetView(
+              canChangeFuture: true,
               filterOnChanged: (index) async {
                 viewModel
                   ..setBaslamaTarihi(_baslangicTarihiController.text)

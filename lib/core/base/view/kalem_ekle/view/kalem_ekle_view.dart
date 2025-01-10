@@ -486,7 +486,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           builder: (_) => Text(viewModel.kalemModel.ekalan1 ?? ""),
                         ),
                 ).yetkiVarMi(
-                  (editTipi?.ekAlan1GorunsunMu ?? false) && model.getEditTipiEnum?.ambarFisiMi == false,
+                  (editTipi?.ekAlan1GorunsunMu ?? false) && (editTipi?.gizlenecekAlanlar("ekalan1") ?? false) && model.getEditTipiEnum?.ambarFisiMi == false,
                 ),
                 CustomTextField(
                   labelText: "Ek Alan 2",
@@ -500,7 +500,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       : Observer(
                           builder: (_) => Text(viewModel.kalemModel.ekalan2 ?? ""),
                         ),
-                ).yetkiVarMi(editTipi?.ekAlan2GorunsunMu ?? false),
+                ).yetkiVarMi((editTipi?.ekAlan2GorunsunMu ?? false) && (editTipi?.gizlenecekAlanlar("ekalan2") ?? false)),
                 CustomTextField(
                   labelText: "İş Emri",
                   controller: isEmriController,
@@ -1027,56 +1027,59 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     },
                   ).yetkiVarMi(seriliMi),
                 ),
-                ...List.generate(
-                  editTipi.kademeliIskontoSayisi > 6 ? 6 : editTipi.kademeliIskontoSayisi,
-                  (index) => Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "İsk.${index + 1}${index != 0 ? " %" : ""}",
-                          controller: iskontoController(index + 1),
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true,
-                          ),
-                          isFormattedString: true,
-                          suffix: yetkiController.siparisMSISk1YuzdeSor(editTipi) && index == 0
-                              ? Observer(
-                                  builder: (_) => IconButton(
-                                    onPressed: viewModel.changeIskonto1OranMi,
-                                    icon: Icon(
-                                      (viewModel.kalemModel.iskonto1OranMi ?? false) ? Icons.percent_outlined : Icons.payments_outlined,
-                                    ),
+                if (editTipi?.gizlenecekAlanlar("satir_iskontolari") ?? false)
+                  ...List.generate(
+                    editTipi.kademeliIskontoSayisi > 6 ? 6 : editTipi.kademeliIskontoSayisi,
+                    (index) => editTipi?.gizlenecekAlanlar("sat_isk$index") ?? false
+                        ? Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: CustomTextField(
+                                  labelText: "İsk.${index + 1}${index != 0 ? " %" : ""}",
+                                  controller: iskontoController(index + 1),
+                                  keyboardType: const TextInputType.numberWithOptions(
+                                    decimal: true,
                                   ),
-                                )
-                              : null,
-                          onChanged: (p0) => setIskonto(index + 1, p0),
-                        ),
-                      ),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "İsk.Tipi ${index + 1}",
-                          readOnly: true,
-                          suffixMore: true,
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true,
-                          ),
-                          controller: iskontoTipiController(index + 1),
-                          onClear: () => iskontoFiller(index + 1, null),
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
-                              context,
-                              getIskontoWithIndex(index + 1),
-                            );
-                            if (result != null) {
-                              iskontoFiller(index + 1, result);
-                            }
-                          },
-                        ),
-                      ),
-                    ],
-                  ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi),
-                ),
+                                  isFormattedString: true,
+                                  suffix: yetkiController.siparisMSISk1YuzdeSor(editTipi) && index == 0
+                                      ? Observer(
+                                          builder: (_) => IconButton(
+                                            onPressed: viewModel.changeIskonto1OranMi,
+                                            icon: Icon(
+                                              (viewModel.kalemModel.iskonto1OranMi ?? false) ? Icons.percent_outlined : Icons.payments_outlined,
+                                            ),
+                                          ),
+                                        )
+                                      : null,
+                                  onChanged: (p0) => setIskonto(index + 1, p0),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextField(
+                                  labelText: "İsk.Tipi ${index + 1}",
+                                  readOnly: true,
+                                  suffixMore: true,
+                                  keyboardType: const TextInputType.numberWithOptions(
+                                    decimal: true,
+                                  ),
+                                  controller: iskontoTipiController(index + 1),
+                                  onClear: () => iskontoFiller(index + 1, null),
+                                  onTap: () async {
+                                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
+                                      context,
+                                      getIskontoWithIndex(index + 1),
+                                    );
+                                    if (result != null) {
+                                      iskontoFiller(index + 1, result);
+                                    }
+                                  },
+                                ),
+                              ),
+                            ],
+                          ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi)
+                        : const SizedBox.shrink(),
+                  ),
                 // TODO Açıklama parametrelerini düzenle
                 const Text(
                   "Açıklamalar",
@@ -1421,8 +1424,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       viewModel.kalemModel.dovizTipi ??= (editTipi?.satisMi == true ? stokListesiModel?.satDovTip : viewModel.model?.alisDovTip);
       viewModel.kalemModel.dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
       if (stokListesiModel?.okutulanBarkod != null) {
-        viewModel.setMiktar(stokListesiModel?.bulunanMiktar);
-        final SeriList newSeri = SeriList(miktar: stokListesiModel?.bulunanMiktar, sonKullanmaTarihi: stokListesiModel?.bulunanSeriSkt);
+        viewModel.setMiktar(stokListesiModel?.varsayilanMiktar);
+        final SeriList newSeri = SeriList(miktar: stokListesiModel?.varsayilanMiktar, sonKullanmaTarihi: stokListesiModel?.bulunanSeriSkt);
         viewModel.kalemModel.brutFiyat = stokListesiModel?.bulunanFiyat;
         if (stokListesiModel?.bulunanSeriAcik1 case final value?) newSeri.acik1 = value;
         if (stokListesiModel?.bulunanSeriAcik2 case final value?) newSeri.acik2 = value;

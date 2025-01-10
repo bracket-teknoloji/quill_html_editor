@@ -18,6 +18,7 @@ final class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
     this.bitisOnTap,
     this.showBugunFirst,
     this.isChanged,
+    this.canChangeFuture = false,
   });
   final TextEditingController baslangicTarihiController;
   final TextEditingController bitisTarihiController;
@@ -26,6 +27,7 @@ final class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   final bool? isChanged;
   final dynamic Function()? bitisOnTap;
   final bool? showBugunFirst;
+  final bool canChangeFuture;
 
   @override
   State<RaporFiltreDateTimeBottomSheetView> createState() => _RaporFiltreDateTimeBottomSheetViewState();
@@ -129,7 +131,6 @@ final class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFilt
           : (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() : DateTime.now()),
       firstDate: (isBaslangic ? DateTime(2000) : (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() ?? DateTime.now() : DateTime.now())),
       lastDate: (isBaslangic ? (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() ?? DateTime.now() : DateTime.now()) : DateTime.now()),
-      // currentDate: DateFormat("dd.MM.yyyy").parse(baslangicTarihiController?.text ?? DateTime.now().toDateString),
     );
     if (result is DateTime) {
       isBaslangic ? widget.baslangicTarihiController.text = result.toDateString : widget.bitisTarihiController.text = result.toDateString;
@@ -137,4 +138,25 @@ final class _RaporFiltreDateTimeBottomSheetViewState extends BaseState<RaporFilt
     }
     return isBaslangic ? widget.baslangicOnTap?.call() : widget.bitisOnTap?.call();
   }
+//   Future<void> getDate(bool isBaslangic) async {
+//     final dateTime = isBaslangic
+//         ? (widget.bitisTarihiController.text != ""
+//             ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() ?? (DateTime.now().add(widget.canChangeFuture ? const Duration(days: 365) : Duration.zero))
+//             : DateTime.now().add(widget.canChangeFuture ? const Duration(days: 365) : Duration.zero))
+//         : DateTime.now().add(widget.canChangeFuture ? const Duration(days: 365) : Duration.zero);
+//     final result = await showDatePicker(
+//       context: context,
+//       initialDate: isBaslangic
+//           ? (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() : dateTime)
+//           : (widget.bitisTarihiController.text != "" ? widget.bitisTarihiController.text.toDateTimeDDMMYYYY() : dateTime),
+//       firstDate: (isBaslangic ? DateTime(2000) : (widget.baslangicTarihiController.text != "" ? widget.baslangicTarihiController.text.toDateTimeDDMMYYYY() ?? dateTime : dateTime)),
+//       lastDate: dateTime,
+//       // currentDate: DateFormat("dd.MM.yyyy").parse(baslangicTarihiController?.text ?? DateTime.now().toDateString),
+//     );
+//     if (result is DateTime) {
+//       isBaslangic ? widget.baslangicTarihiController.text = result.toDateString : widget.bitisTarihiController.text = result.toDateString;
+//       viewModel.resetGroupValue();
+//     }
+//     return isBaslangic ? widget.baslangicOnTap?.call() : widget.bitisOnTap?.call();
+//   }
 }
