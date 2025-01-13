@@ -32,7 +32,7 @@ final class BaseTransferToplamlarView extends StatefulWidget {
 
 final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplamlarView> {
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
-  BaseTransferToplamlarViewModel viewModel = BaseTransferToplamlarViewModel();
+  final BaseTransferToplamlarViewModel viewModel = BaseTransferToplamlarViewModel();
   bool get enable => widget.model.enable;
   String get tevkifat => yetkiController.talepTeklifEkAciklamaAdi(!model.atalMi) ?? "Tevkifat";
   late final TextEditingController genelIskonto1Controller;

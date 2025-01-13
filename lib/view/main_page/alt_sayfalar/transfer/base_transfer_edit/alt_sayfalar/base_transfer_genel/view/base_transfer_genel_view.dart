@@ -94,18 +94,18 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
         ..setCariKodu(BaseSiparisEditModel.instance.cariModel?.cariKodu)
         ..setTopluCikisDepoKodu(
           DepoList()
-            ..depoKodu = BaseSiparisEditModel.instance.cikisSubeKodu
-            ..depoTanimi = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.cikisSubeKodu)?.depoTanimi,
+            ..depoKodu = BaseSiparisEditModel.instance.cikisDepoKodu
+            ..depoTanimi = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.cikisDepoKodu)?.depoTanimi,
         )
         ..setTopluGirisDepoKodu(
           DepoList()
-            ..depoKodu = BaseSiparisEditModel.instance.girisSubeKodu
-            ..depoTanimi = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.girisSubeKodu)?.depoTanimi,
+            ..depoKodu = BaseSiparisEditModel.instance.girisDepoKodu
+            ..depoTanimi = parametreModel.depoList?.firstWhereOrNull((element) => element.depoKodu == BaseSiparisEditModel.instance.girisDepoKodu)?.depoTanimi,
         );
     }
     _belgeNoController = TextEditingController(text: model.belgeNo);
     _cariController = TextEditingController(text: viewModel.model.cariAdi);
-    _gidecegiSubeController = TextEditingController(text: model.teslimCariAdi);
+    _gidecegiSubeController = TextEditingController(text: model.girisSubeAciklama);
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _hareketTuruController = TextEditingController(text: viewModel.hareketTuruMap.entries.firstWhereOrNull((element) => element.value == viewModel.model.hareketTuru)?.key);
     _tarihController = TextEditingController(text: model.tarih.toDateString);
@@ -355,23 +355,23 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                           suffixMore: true,
                           enabled: enable,
                           controller: _gidecegiSubeController,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisSubeKodu.toIntIfDouble.toStringIfNotNull ?? "")),
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.girisSubeKodu.toIntIfDouble.toStringIfNotNull ?? "")),
                           onTap: () async {
                             final subeList = parametreModel.subeList?.where((element) => (element.subeKodu ?? 0).toStringIfNotNull != CacheManager.getVeriTabani["Şube"].toString()).toList();
                             final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                               context,
                               title: "Gideceği Şube",
-                              groupValue: viewModel.model.cikisSubeKodu,
+                              groupValue: viewModel.model.girisSubeKodu,
                               children: List.generate(subeList?.length ?? 0, (index) {
                                 final SubeList? item = subeList?[index];
                                 return BottomSheetModel(title: item?.subeAdi ?? "", value: item, groupValue: item?.subeKodu ?? 0, description: (item?.subeKodu ?? 0).toStringIfNotNull);
                               }),
                             );
-                            if (result is SubeList && result.subeKodu != viewModel.model.cikisSubeKodu) {
-                              viewModel.setCikisSube(result.subeKodu);
+                            if (result is SubeList && result.subeKodu != viewModel.model.girisSubeKodu) {
+                              viewModel.setGirisSube(result);
                               _gidecegiSubeController.text = result.subeAdi ?? "";
                               viewModel.setTopluGirisDepoKodu(null);
-                              _topluGirisDepoController.text = "";
+                              _topluGirisDepoController.clear();
                             }
                           },
                         ),
@@ -526,7 +526,6 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       child: CustomTextField(
                         labelText: "Toplu Çıkış Depo",
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo"),
-                        maxLength: StaticVariables.maxAciklamaLength,
                         readOnly: true,
                         suffixMore: true,
                         controller: _topluCikisDepoController,

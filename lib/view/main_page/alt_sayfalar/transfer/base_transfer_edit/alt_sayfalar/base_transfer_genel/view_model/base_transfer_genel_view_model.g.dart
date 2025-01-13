@@ -167,11 +167,22 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   @override
-  void setCikisSube(int? value) {
+  void setCikisSube(SubeList? value) {
     final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
         .startAction(name: '_BaseTransferGenelViewModelBase.setCikisSube');
     try {
       return super.setCikisSube(value);
+    } finally {
+      _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setGirisSube(SubeList? value) {
+    final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
+        .startAction(name: '_BaseTransferGenelViewModelBase.setGirisSube');
+    try {
+      return super.setGirisSube(value);
     } finally {
       _$_BaseTransferGenelViewModelBaseActionController.endAction(_$actionInfo);
     }
