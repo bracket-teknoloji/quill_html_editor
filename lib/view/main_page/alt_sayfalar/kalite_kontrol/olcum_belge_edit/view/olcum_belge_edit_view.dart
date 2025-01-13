@@ -423,7 +423,7 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   Future<void> karisikDepoButtonOnTap(bool kabulMu) async {
     if (_formKey.currentState?.validate() == false) return;
     Get.back(result: true);
-    girisDepoController.text = "";
+    girisDepoController.clear();
   }
 
   Observer fab() => Observer(

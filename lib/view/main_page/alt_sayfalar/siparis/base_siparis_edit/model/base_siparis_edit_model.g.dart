@@ -417,6 +417,10 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel aciklama16Adi(String? aciklama16Adi);
 
+  BaseSiparisEditModel cikisSubeAciklama(String? cikisSubeAciklama);
+
+  BaseSiparisEditModel girisSubeAciklama(String? girisSubeAciklama);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -629,6 +633,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? aciklama14Adi,
     String? aciklama15Adi,
     String? aciklama16Adi,
+    String? cikisSubeAciklama,
+    String? girisSubeAciklama,
   });
 }
 
@@ -1388,6 +1394,14 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(aciklama16Adi: aciklama16Adi);
 
   @override
+  BaseSiparisEditModel cikisSubeAciklama(String? cikisSubeAciklama) =>
+      this(cikisSubeAciklama: cikisSubeAciklama);
+
+  @override
+  BaseSiparisEditModel girisSubeAciklama(String? girisSubeAciklama) =>
+      this(girisSubeAciklama: girisSubeAciklama);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1601,6 +1615,8 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? aciklama14Adi = const $CopyWithPlaceholder(),
     Object? aciklama15Adi = const $CopyWithPlaceholder(),
     Object? aciklama16Adi = const $CopyWithPlaceholder(),
+    Object? cikisSubeAciklama = const $CopyWithPlaceholder(),
+    Object? girisSubeAciklama = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2427,6 +2443,14 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.aciklama16Adi
           // ignore: cast_nullable_to_non_nullable
           : aciklama16Adi as String?,
+      cikisSubeAciklama: cikisSubeAciklama == const $CopyWithPlaceholder()
+          ? _value.cikisSubeAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : cikisSubeAciklama as String?,
+      girisSubeAciklama: girisSubeAciklama == const $CopyWithPlaceholder()
+          ? _value.girisSubeAciklama
+          // ignore: cast_nullable_to_non_nullable
+          : girisSubeAciklama as String?,
     );
   }
 }

@@ -25,6 +25,9 @@ _$StokRehberiRequestModelImpl _$$StokRehberiRequestModelImplFromJson(
       oto: json['Oto'] as String?,
       ozelKod1: json['OzelKod1'] as String?,
       ozelKod2: json['OzelKod2'] as String?,
+      barkod2: json['Barkod2'] as String?,
+      faturaDepoKodu: (json['FaturaDepoKodu'] as num?)?.toInt(),
+      faturaHedefDepo: (json['FaturaHedefDepo'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$StokRehberiRequestModelImplToJson(
@@ -46,4 +49,7 @@ Map<String, dynamic> _$$StokRehberiRequestModelImplToJson(
       if (instance.oto case final value?) 'Oto': value,
       if (instance.ozelKod1 case final value?) 'OzelKod1': value,
       if (instance.ozelKod2 case final value?) 'OzelKod2': value,
+      if (instance.barkod2 case final value?) 'Barkod2': value,
+      if (instance.faturaDepoKodu case final value?) 'FaturaDepoKodu': value,
+      if (instance.faturaHedefDepo case final value?) 'FaturaHedefDepo': value,
     };

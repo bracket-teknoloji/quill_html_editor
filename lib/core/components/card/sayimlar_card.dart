@@ -11,7 +11,6 @@ import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "package:picker/core/constants/enum/dizayn_ozel_kod_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -45,7 +44,7 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
                 children: [
                   if (model.serbestMi) const ColorfulBadge(label: Text("Serbest"), badgeColorEnum: BadgeColorEnum.kapali),
                   if (model.filtreliMi) const ColorfulBadge(label: Text("Filtre"), badgeColorEnum: BadgeColorEnum.kapali),
-                ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+                ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
               ),
             ],
           ),

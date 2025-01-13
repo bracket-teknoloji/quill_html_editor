@@ -255,6 +255,8 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     this.aciklama14Adi,
     this.aciklama15Adi,
     this.aciklama16Adi,
+    this.cikisSubeAciklama,
+    this.girisSubeAciklama,
   });
 
   BaseSiparisEditModel._init();
@@ -815,6 +817,10 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   String? aciklama15Adi;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? aciklama16Adi;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? cikisSubeAciklama;
+  @JsonKey(includeToJson: false, includeFromJson: false)
+  String? girisSubeAciklama;
 
   void kalemlerOTVHesapla() {
     for (final element in kalemList ?? <KalemModel>[]) {

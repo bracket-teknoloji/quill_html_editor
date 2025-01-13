@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 import "../../../view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/hucre_takibi_stoklar/model/hucre_takibi_stoklar_model.dart";
 import "../../base/state/base_state.dart";
 import "../../base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../layout/custom_layout_builder.dart";
 
@@ -27,7 +26,7 @@ final class _HucreAraCardState extends BaseState<HucreAraCard> {
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text("Eksiye Düşebilen Hücre", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(model.eksiyeDusebilir == true),
+              if (model.eksiyeDusebilir == true) const Text("Eksiye Düşebilen Hücre", style: TextStyle(color: UIHelper.primaryColor)),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [

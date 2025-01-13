@@ -402,11 +402,15 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         stokKodu: result,
         menuKodu: "COMM_FADE",
         ozelKod1: model.ozelKod1,
+        ozelKod2: model.ozelKod2,
         belgeTarihi: model.tarih.toDateString,
         okutuldu: true,
         cariKodu: model.cariKodu,
         belgeTipi: model.getEditTipiEnum?.rawValue,
         faturaTipi: 2,
+        faturaHedefDepo: model.hedefDepo,
+        faturaDepoKodu: model.girisDepoKodu,
+        belgeNo: model.belgeNo,
       ),
     );
     if (stokModel == null) {

@@ -6,7 +6,6 @@ import "../../base/state/base_state.dart";
 import "../../constants/color_palette.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/network/login/api_urls.dart";
@@ -46,7 +45,7 @@ final class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(model?.hesapAdi ?? "").yetkiVarMi(model?.hesapAdi != null),
+                    if (model?.hesapAdi != null) Text(model?.hesapAdi ?? ""),
                     Text(model?.tarih.toDateString ?? ""),
                   ],
                 ),

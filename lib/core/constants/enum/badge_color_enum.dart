@@ -23,9 +23,6 @@ enum BadgeColorEnum {
   hata,
   muhtelif,
   rework;
-}
-
-extension BadgeColorExtensions on BadgeColorEnum? {
   Color get getColor => switch (this) {
         BadgeColorEnum.eFatura || BadgeColorEnum.merkezeGonderildi => ColorPalette.mountbattenPink,
         BadgeColorEnum.dovizli => ColorPalette.skyBlue,
@@ -36,6 +33,5 @@ extension BadgeColorExtensions on BadgeColorEnum? {
         BadgeColorEnum.esYap || BadgeColorEnum.muhtelif => ColorPalette.asparagus,
         BadgeColorEnum.karmaKoli => ColorPalette.mulberry,
         BadgeColorEnum.rework => ColorPalette.outerSpace,
-        _ => ColorPalette.gamboge,
       };
 }

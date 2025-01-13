@@ -27,8 +27,6 @@ final class MainPageModel with NetworkManagerMixin {
   @JsonKey(name: "SirketModel", fromJson: SirketModel.fromJson)
   @HiveField(3)
   SirketModel? sirketModel;
-  // @JsonKey(name: "LangModel", fromJson: LangModel.fromJson)
-  // LangModel? langModel;
   @JsonKey(name: "MenuList")
   @HiveField(5)
   List<String>? menuList;

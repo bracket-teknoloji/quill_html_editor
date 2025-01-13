@@ -231,7 +231,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                     if (model.tipi == 1) const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
                     if (model.tipi == 3) const ColorfulBadge(label: Text("Onayda")),
                     if (model.dovizAdi != null) ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
-                  ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+                  ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
                 ),
                 Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
                 Text("Cari Kodu: ${model.cariKodu ?? ""}"),
@@ -288,7 +288,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
   }
 
   InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
-        onTap: () => dialogManager.showColorfulSnackBar(model.gibDurumKodu, badge.badgeColorEnum.getColor),
+        onTap: () => dialogManager.showColorfulSnackBar(model.gibDurumKodu, badge.badgeColorEnum?.getColor ?? UIHelper.primaryColor),
         child: badge,
       );
 }

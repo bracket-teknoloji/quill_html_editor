@@ -6,7 +6,6 @@ import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listes
 import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../badge/colorful_badge.dart";
@@ -52,17 +51,19 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
                 ),
               ],
             ),
-            trailing: Wrap(
-              children: [
-                Text(
-                  (model.bakiye == null
-                      ? "0.00 $mainCurrency"
-                      : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
-                          "\n"),
-                  style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
-                ),
-              ],
-            ).yetkiVarMi(bakiyeGorunsunMu(model)),
+            trailing: bakiyeGorunsunMu(model)
+                ? Wrap(
+                    children: [
+                      Text(
+                        (model.bakiye == null
+                            ? "0.00 $mainCurrency"
+                            : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
+                                "\n"),
+                        style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
+                      ),
+                    ],
+                  )
+                : null,
           ),
         ),
       );

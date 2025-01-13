@@ -13,9 +13,7 @@ import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../badge/colorful_badge.dart";
@@ -37,28 +35,29 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
   @override
   Widget build(BuildContext context) {
     final List<SlidableAction> slidableList = [
-      if (widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun) SlidableAction(
-        onPressed: (context) async {
-          if (model.faturaMi) {
-            await Get.toNamed(
-              "/mainPage/faturaEdit",
-              arguments: BaseEditModel(
-                baseEditEnum: BaseEditEnum.goruntule,
-                editTipiEnum: EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(model.belgeTipi),
-                model: SiparisEditRequestModel.fromCariHareketleriModel(model),
-              ),
-            );
-          } else if (model.kasaMi) {
-            await Get.toNamed("/mainPage/kasaHareketDetayi", arguments: model);
-          } else {
-            await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: model));
-          }
-        },
-        icon: Icons.route_outlined,
-        backgroundColor: theme.colorScheme.onPrimary,
-        foregroundColor: theme.colorScheme.primary,
-        label: "Belgeye Git",
-      ),
+      if (widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun)
+        SlidableAction(
+          onPressed: (context) async {
+            if (model.faturaMi) {
+              await Get.toNamed(
+                "/mainPage/faturaEdit",
+                arguments: BaseEditModel(
+                  baseEditEnum: BaseEditEnum.goruntule,
+                  editTipiEnum: EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(model.belgeTipi),
+                  model: SiparisEditRequestModel.fromCariHareketleriModel(model),
+                ),
+              );
+            } else if (model.kasaMi) {
+              await Get.toNamed("/mainPage/kasaHareketDetayi", arguments: model);
+            } else {
+              await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: model));
+            }
+          },
+          icon: Icons.route_outlined,
+          backgroundColor: theme.colorScheme.onPrimary,
+          foregroundColor: theme.colorScheme.primary,
+          label: "Belgeye Git",
+        ),
     ];
     return InkWell(
       onTap: widget.onTap ?? () {},
@@ -83,12 +82,13 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 listTile(),
-                Container(
-                  width: UIHelper.lowSize,
-                  decoration: const BoxDecoration(
-                    color: UIHelper.primaryColor,
+                if (slidableList.ext.isNotNullOrEmpty && yetkiController.cariHareketleriHarDetayGorsun)
+                  Container(
+                    width: UIHelper.lowSize,
+                    decoration: const BoxDecoration(
+                      color: UIHelper.primaryColor,
+                    ),
                   ),
-                ).yetkiVarMi(slidableList.ext.isNotNullOrEmpty && yetkiController.cariHareketleriHarDetayGorsun),
               ],
             ),
           ),
@@ -115,7 +115,7 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                       if (!widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata),
                       if (widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null)
                         const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
-                    ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+                    ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
                   ),
                 ],
               ),
@@ -127,10 +127,11 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                     "${widget.cariHareketleriModel.alacak?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? widget.cariHareketleriModel.borc?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                     style: theme.textTheme.bodySmall?.copyWith(fontSize: 12),
                   ),
-                  Text(
-                    "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
-                    style: theme.textTheme.bodySmall?.copyWith(fontSize: UIHelper.midSize),
-                  ).yetkiVarMi(widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null),
+                  if (widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null)
+                    Text(
+                      "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.cariHareketleriModel.dovizAdi ?? mainCurrency}",
+                      style: theme.textTheme.bodySmall?.copyWith(fontSize: UIHelper.midSize),
+                    ),
                 ],
               ),
             ],
@@ -161,14 +162,15 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               ),
               Row(
                 children: [
-                  if (yetkiController.plasiyerUygulamasiAcikMi) Expanded(
-                    child: CustomWidgetWithLabel(
-                      addPadding: false,
-                      isVertical: true,
-                      text: "Plasiyer",
-                      child: SizedBox(child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
+                  if (yetkiController.plasiyerUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomWidgetWithLabel(
+                        addPadding: false,
+                        isVertical: true,
+                        text: "Plasiyer",
+                        child: SizedBox(child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
+                      ),
                     ),
-                  ),
                   Expanded(
                     child: CustomWidgetWithLabel(
                       addPadding: false,

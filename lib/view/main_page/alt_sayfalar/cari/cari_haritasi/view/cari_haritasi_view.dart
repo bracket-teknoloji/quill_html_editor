@@ -117,6 +117,7 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                       ),
                     },
                     initialCameraPosition: myLocation,
+                    webGestureHandling: WebGestureHandling.greedy,
                     onMapCreated: (controller) async {
                       _controller = controller;
                       if (widget.konum != null) {
@@ -201,11 +202,15 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
       ).toBitmapDescriptor(logicalSize: Size(width * 1.9, height * 1.5));
 
   Future<void> setCameraPosition() async {
-    final location = await _locationTracker.getLocation();
-    myLocation = CameraPosition(
-      target: LatLng(location.latitude ?? 0, location.longitude ?? 0),
-      zoom: 15.5,
-    );
-    _controller?.animateCamera(CameraUpdate.newCameraPosition(myLocation));
+    try {
+      final location = await _locationTracker.getLocation();
+      myLocation = CameraPosition(
+        target: LatLng(location.latitude ?? 0, location.longitude ?? 0),
+        zoom: 15.5,
+      );
+      _controller?.animateCamera(CameraUpdate.newCameraPosition(myLocation));
+    } catch (e) {
+      dialogManager.showAlertDialog(e.toString());
+    }
   }
 }

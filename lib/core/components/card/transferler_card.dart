@@ -263,7 +263,7 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
             model.eFaturaMi
                 ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
                 : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama}' : ""}",
-            badge.badgeColorEnum.getColor,
+            badge.badgeColorEnum?.getColor ?? UIHelper.primaryColor,
           );
         },
         child: badge,

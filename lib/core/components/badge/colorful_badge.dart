@@ -1,13 +1,11 @@
 import "package:flutter/material.dart";
 
-import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 final class ColorfulBadge extends StatefulWidget {
-  const ColorfulBadge({super.key, this.badgeColorEnum, this.label, this.onTap});
-  final Widget? label;
+  const ColorfulBadge({required this.label, super.key, this.badgeColorEnum, this.onTap});
+  final Widget label;
   final BadgeColorEnum? badgeColorEnum;
   final void Function()? onTap;
 
@@ -15,15 +13,23 @@ final class ColorfulBadge extends StatefulWidget {
   State<ColorfulBadge> createState() => _ColorfulBadgeState();
 }
 
-final class _ColorfulBadgeState extends BaseState<ColorfulBadge> {
+final class _ColorfulBadgeState extends State<ColorfulBadge> {
   @override
   Widget build(BuildContext context) => Badge(
         textStyle: const TextStyle(fontSize: UIHelper.midSize),
-        label: InkWell(
-          onTap: widget.onTap,
-          child: widget.label,
-        ),
-        textColor: (widget.badgeColorEnum.getColor.computeLuminance()) > 0.3 ? Colors.black : Colors.white,
-        backgroundColor: widget.badgeColorEnum.getColor,
-      ).yetkiVarMi(widget.label != null);
+        label: _child(),
+        textColor: (widget.badgeColorEnum?.getColor.computeLuminance() ?? 0) > 0.3 ? Colors.black : Colors.white,
+        backgroundColor: widget.badgeColorEnum?.getColor,
+      );
+
+  Widget _child() {
+    if (widget.onTap != null) {
+      return InkWell(
+        onTap: widget.onTap,
+        child: widget.label,
+      );
+    } else {
+      return widget.label;
+    }
+  }
 }

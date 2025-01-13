@@ -53,6 +53,12 @@ mixin _$StokRehberiRequestModel {
   set ozelKod1(String? value) => throw _privateConstructorUsedError;
   String? get ozelKod2 => throw _privateConstructorUsedError;
   set ozelKod2(String? value) => throw _privateConstructorUsedError;
+  String? get barkod2 => throw _privateConstructorUsedError;
+  set barkod2(String? value) => throw _privateConstructorUsedError;
+  int? get faturaDepoKodu => throw _privateConstructorUsedError;
+  set faturaDepoKodu(int? value) => throw _privateConstructorUsedError;
+  int? get faturaHedefDepo => throw _privateConstructorUsedError;
+  set faturaHedefDepo(int? value) => throw _privateConstructorUsedError;
 
   /// Serializes this StokRehberiRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -86,7 +92,10 @@ abstract class $StokRehberiRequestModelCopyWith<$Res> {
       bool? okutuldu,
       String? oto,
       String? ozelKod1,
-      String? ozelKod2});
+      String? ozelKod2,
+      String? barkod2,
+      int? faturaDepoKodu,
+      int? faturaHedefDepo});
 }
 
 /// @nodoc
@@ -121,6 +130,9 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
     Object? oto = freezed,
     Object? ozelKod1 = freezed,
     Object? ozelKod2 = freezed,
+    Object? barkod2 = freezed,
+    Object? faturaDepoKodu = freezed,
+    Object? faturaHedefDepo = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: freezed == belgeNo
@@ -187,6 +199,18 @@ class _$StokRehberiRequestModelCopyWithImpl<$Res,
           ? _value.ozelKod2
           : ozelKod2 // ignore: cast_nullable_to_non_nullable
               as String?,
+      barkod2: freezed == barkod2
+          ? _value.barkod2
+          : barkod2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      faturaDepoKodu: freezed == faturaDepoKodu
+          ? _value.faturaDepoKodu
+          : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      faturaHedefDepo: freezed == faturaHedefDepo
+          ? _value.faturaHedefDepo
+          : faturaHedefDepo // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -216,7 +240,10 @@ abstract class _$$StokRehberiRequestModelImplCopyWith<$Res>
       bool? okutuldu,
       String? oto,
       String? ozelKod1,
-      String? ozelKod2});
+      String? ozelKod2,
+      String? barkod2,
+      int? faturaDepoKodu,
+      int? faturaHedefDepo});
 }
 
 /// @nodoc
@@ -250,6 +277,9 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
     Object? oto = freezed,
     Object? ozelKod1 = freezed,
     Object? ozelKod2 = freezed,
+    Object? barkod2 = freezed,
+    Object? faturaDepoKodu = freezed,
+    Object? faturaHedefDepo = freezed,
   }) {
     return _then(_$StokRehberiRequestModelImpl(
       belgeNo: freezed == belgeNo
@@ -316,6 +346,18 @@ class __$$StokRehberiRequestModelImplCopyWithImpl<$Res>
           ? _value.ozelKod2
           : ozelKod2 // ignore: cast_nullable_to_non_nullable
               as String?,
+      barkod2: freezed == barkod2
+          ? _value.barkod2
+          : barkod2 // ignore: cast_nullable_to_non_nullable
+              as String?,
+      faturaDepoKodu: freezed == faturaDepoKodu
+          ? _value.faturaDepoKodu
+          : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      faturaHedefDepo: freezed == faturaHedefDepo
+          ? _value.faturaHedefDepo
+          : faturaHedefDepo // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -340,7 +382,10 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
       this.okutuldu,
       this.oto,
       this.ozelKod1,
-      this.ozelKod2});
+      this.ozelKod2,
+      this.barkod2,
+      this.faturaDepoKodu,
+      this.faturaHedefDepo});
 
   factory _$StokRehberiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$StokRehberiRequestModelImplFromJson(json);
@@ -378,6 +423,12 @@ class _$StokRehberiRequestModelImpl implements _StokRehberiRequestModel {
   String? ozelKod1;
   @override
   String? ozelKod2;
+  @override
+  String? barkod2;
+  @override
+  int? faturaDepoKodu;
+  @override
+  int? faturaHedefDepo;
 
   /// Create a copy of StokRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -413,7 +464,10 @@ abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
       bool? okutuldu,
       String? oto,
       String? ozelKod1,
-      String? ozelKod2}) = _$StokRehberiRequestModelImpl;
+      String? ozelKod2,
+      String? barkod2,
+      int? faturaDepoKodu,
+      int? faturaHedefDepo}) = _$StokRehberiRequestModelImpl;
 
   factory _StokRehberiRequestModel.fromJson(Map<String, dynamic> json) =
       _$StokRehberiRequestModelImpl.fromJson;
@@ -466,6 +520,15 @@ abstract class _StokRehberiRequestModel implements StokRehberiRequestModel {
   @override
   String? get ozelKod2;
   set ozelKod2(String? value);
+  @override
+  String? get barkod2;
+  set barkod2(String? value);
+  @override
+  int? get faturaDepoKodu;
+  set faturaDepoKodu(int? value);
+  @override
+  int? get faturaHedefDepo;
+  set faturaHedefDepo(int? value);
 
   /// Create a copy of StokRehberiRequestModel
   /// with the given fields replaced by the non-null parameter values.

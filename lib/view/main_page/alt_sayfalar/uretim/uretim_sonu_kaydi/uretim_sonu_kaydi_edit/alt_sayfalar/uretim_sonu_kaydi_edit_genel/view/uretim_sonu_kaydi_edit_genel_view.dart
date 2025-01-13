@@ -367,7 +367,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
           final result = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true));
           if (result is StokListesiModel) {
             mamulKoduController.text = result.stokKodu ?? "";
-            serilerController.text = "";
+            serilerController.clear();
             viewModel
               ..setMamulKodu(result)
               ..setSeriList(null);

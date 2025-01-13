@@ -676,22 +676,22 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
     switch (value) {
       case 0:
         viewModel.setGrupKodu(null);
-        grupKoduController.text = "";
+        grupKoduController.clear();
       case 1:
         viewModel.changeArrKod1(null);
-        kod1Controller.text = "";
+        kod1Controller.clear();
       case 2:
         viewModel.changeArrKod2(null);
-        kod2Controller.text = "";
+        kod2Controller.clear();
       case 3:
         viewModel.changeArrKod3(null);
-        kod3Controller.text = "";
+        kod3Controller.clear();
       case 4:
         viewModel.changeArrKod4(null);
-        kod4Controller.text = "";
+        kod4Controller.clear();
       case 5:
         viewModel.changeArrKod5(null);
-        kod5Controller.text = "";
+        kod5Controller.clear();
     }
     await viewModel.resetList();
   }
