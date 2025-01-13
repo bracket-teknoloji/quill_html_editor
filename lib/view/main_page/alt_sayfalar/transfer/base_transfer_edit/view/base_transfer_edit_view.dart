@@ -1,4 +1,5 @@
 import "dart:convert";
+import "dart:developer";
 
 import "package:collection/collection.dart";
 import "package:flutter/material.dart";
@@ -500,6 +501,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
 
   Future<bool> postData() async {
     final instance = BaseSiparisEditModel.instance;
+    log(instance.genelToplamTutar.toString());
     if (widget.model.baseEditEnum == BaseEditEnum.ekle || (instance.isNew ?? false)) {
       instance.yeniKayit = true;
     }

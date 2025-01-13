@@ -205,6 +205,9 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsRehberdenStokSecilsin,
       EditTipiEnum.alisFatura => yetkiController.alisFatRehberdenStokSecilsin,
       EditTipiEnum.alisIrsaliye => yetkiController.alisIrsRehberdenStokSecilsin,
+      EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatRehberdenStokSecilsin,
+      EditTipiEnum.ambarGirisi => yetkiController.transferAGRehberdenStokSecilsin,
+      EditTipiEnum.ambarCikisi => yetkiController.transferACRehberdenStokSecilsin,
       _ => false
     };
   }
@@ -216,6 +219,9 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsKalemKlavyeAcilmasin,
       EditTipiEnum.alisFatura => yetkiController.alisFatKalemKlavyeAcilmasin,
       EditTipiEnum.alisIrsaliye => yetkiController.alisIrsKalemKlavyeAcilmasin,
+      EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatKalemKlavyeAcilmasin,
+      EditTipiEnum.ambarGirisi => yetkiController.transferAGKalemKlavyeAcilmasin,
+      EditTipiEnum.ambarCikisi => yetkiController.transferACKalemKlavyeAcilmasin,
       _ => false
     };
   }
@@ -247,6 +253,11 @@ extension EditTipiEnumExtension on EditTipiEnum {
       _ => false
     };
   }
+
+  bool get barkod2Sor => switch (this) {
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDATBarkod2Sor,
+        _ => false,
+      };
 
   bool get barkodluUrunGirisi => switch (this) {
         EditTipiEnum.satisFatura => yetkiController.satisFatBarkodUrunGirisi,

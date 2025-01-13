@@ -607,12 +607,18 @@ final class YetkiController {
   bool get satisIrsRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.sevkiyatSatisIrsStokRehberiAcilmasin ?? false));
   bool get alisFatRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.malKabulAlisFatStokRehberiAcilmasin ?? false));
   bool get alisIrsRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.malKabulAlisIrsStokRehberiAcilmasin ?? false));
+  bool get transferDatRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.transferDatStokRehberiAcilmasin ?? false));
+  bool get transferAGRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.transferAgStokRehberiAcilmasin ?? false));
+  bool get transferACRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.transferAcStokRehberiAcilmasin ?? false));
 
   //! Kalem Klavye Açılmasın
   bool get satisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisFatKlavyeEngelle);
   bool get satisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisIrsKlavyeEngelle);
   bool get alisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisFatKlavyeEngelle);
   bool get alisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisIrsKlavyeEngelle);
+  bool get transferDatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferDatKlavyeEngelle);
+  bool get transferAGKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferAgKlavyeEngelle);
+  bool get transferACKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferAcKlavyeEngelle);
 
   //! Barkodlu Giriş
   bool get satisFatBarkodUrunGirisi => _isTrue(_yetkiModel?.sevkiyatSatisFatBarkodluGiris);
@@ -641,6 +647,9 @@ final class YetkiController {
   bool get transferAGKalemDuzeltilsin => _isTrue(!(_yetkiModel?.transferAgKalemDuzeltilemesin ?? false));
   bool get transferACKalemDuzeltilsin => _isTrue(!(_yetkiModel?.transferAcKalemDuzeltilemesin ?? false));
 
+  //! Barkod2 Sor
+  bool get transferDATBarkod2Sor => _isTrue(_yetkiModel?.transferDatBarkod2Sor);
+
   //! FATURA
   String? get satisFaturaOzelKod1Degeri => _yetkiModel?.sevkiyatSatisFatOzelKod1Degeri;
   String? get satisFaturaOzelKod2Degeri => _yetkiModel?.sevkiyatSatisFatOzelKod2Degeri;
@@ -662,6 +671,8 @@ final class YetkiController {
         EditTipiEnum.satisTeklifi => talepTeklifSatisTeklifiAciklamaAlanlari(index),
         EditTipiEnum.alisTalebi => talepTeklifAlisTalebiAciklamaAlanlari(index),
         EditTipiEnum.satici => true,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => transferDatAciklamaAlanlari(index),
+        
         _ => false,
       };
 
@@ -739,6 +750,24 @@ final class YetkiController {
   bool get transferEkMaliyet1GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
   bool get transferEkMaliyet2GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet2);
   bool get transferEkMaliyet3GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet3);
+
+  bool transferDatAciklamaAlanlari(int index) => _isTrue(
+        _yetkiModel?.transferDatAciklamaAlanlari == null
+            ? false
+            : (index < 1 ? _yetkiModel?.transferDatAciklamaAlanlari?.isNotEmpty : _yetkiModel?.transferDatAciklamaAlanlari?.contains(index)) ?? false,
+      );
+
+      bool transferAGAciklamaAlanlari(int index) => _isTrue(
+        _yetkiModel?.transferAgAciklamaAlanlari == null
+            ? false
+            : (index < 1 ? _yetkiModel?.transferAgAciklamaAlanlari?.isNotEmpty : _yetkiModel?.transferAgAciklamaAlanlari?.contains(index)) ?? false,
+      );
+
+      bool transferACAciklamaAlanlari(int index) => _isTrue(
+        _yetkiModel?.transferAcAciklamaAlanlari == null
+            ? false
+            : (index < 1 ? _yetkiModel?.transferAcAciklamaAlanlari?.isNotEmpty : _yetkiModel?.transferAcAciklamaAlanlari?.contains(index)) ?? false,
+      );
 
   //* lokal DAT
 
