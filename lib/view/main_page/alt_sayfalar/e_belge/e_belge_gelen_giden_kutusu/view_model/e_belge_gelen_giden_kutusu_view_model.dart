@@ -29,7 +29,7 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
     "Cari Adı (Z-A)": "CARI_ADI_ZA",
   };
 
-  List<EBelgeTuruEnum> get eBelgeTuru => EBelgeTuruEnum.values.where((element) => element.yetkiVarMi(eBelgeEnum)).toList();
+  List<EBelgeTuruEnum> get eBelgeTuru => EBelgeTuruEnum.values.where((element) => element.gelenKutusu(eBelgeEnum)).toList();
 
   final Map<String, String?> taslakMap = {
     "Tümü": null,

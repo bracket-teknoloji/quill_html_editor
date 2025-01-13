@@ -7,8 +7,6 @@ import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../../core/constants/enum/barkod_tipi_enum.dart";
-import "../../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../stok_liste/model/stok_listesi_model.dart";
@@ -156,10 +154,10 @@ final class _BarkodTanimlaEditViewState extends BaseState<BarkodTanimlaEditView>
                       groupValue: viewModel.model.birim,
                       title: widget.model.stokKodu ?? "",
                       children: [
-                        BottomSheetModel(title: stok.olcuBirimi ?? "", description: "1", value: 1, groupValue: 1).yetkiKontrol(stok.olcuBirimi != null),
-                        BottomSheetModel(title: stok.olcuBirimi2 ?? "", description: "2", value: 2, groupValue: 2).yetkiKontrol(stok.olcuBirimi2 != null),
-                        BottomSheetModel(title: stok.olcuBirimi3 ?? "", description: "3", value: 3, groupValue: 3).yetkiKontrol(stok.olcuBirimi3 != null),
-                      ].nullCheckWithGeneric,
+                        if (stok.olcuBirimi != null) BottomSheetModel(title: stok.olcuBirimi ?? "", description: "1", value: 1, groupValue: 1),
+                        if (stok.olcuBirimi2 != null) BottomSheetModel(title: stok.olcuBirimi2 ?? "", description: "2", value: 2, groupValue: 2),
+                        if (stok.olcuBirimi3 != null) BottomSheetModel(title: stok.olcuBirimi3 ?? "", description: "3", value: 3, groupValue: 3),
+                      ],
                     );
                     if (result is int) {
                       olcuBirimiController.text = stok.olcuBirimiSelector(result) ?? "";

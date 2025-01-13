@@ -29,13 +29,13 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
       Atom(name: '_FiyatGecmisiViewModelBase.modelList', context: context);
 
   @override
-  ObservableList<FiyatGecmisiResponseModel?>? get modelList {
+  ObservableList<FiyatGecmisiResponseModel>? get modelList {
     _$modelListAtom.reportRead();
     return super.modelList;
   }
 
   @override
-  set modelList(ObservableList<FiyatGecmisiResponseModel?>? value) {
+  set modelList(ObservableList<FiyatGecmisiResponseModel>? value) {
     _$modelListAtom.reportWrite(value, super.modelList, () {
       super.modelList = value;
     });
@@ -45,13 +45,13 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
       name: '_FiyatGecmisiViewModelBase.filteredModelList', context: context);
 
   @override
-  ObservableList<FiyatGecmisiResponseModel?>? get filteredModelList {
+  ObservableList<FiyatGecmisiResponseModel>? get filteredModelList {
     _$filteredModelListAtom.reportRead();
     return super.filteredModelList;
   }
 
   @override
-  set filteredModelList(ObservableList<FiyatGecmisiResponseModel?>? value) {
+  set filteredModelList(ObservableList<FiyatGecmisiResponseModel>? value) {
     _$filteredModelListAtom.reportWrite(value, super.filteredModelList, () {
       super.filteredModelList = value;
     });
@@ -196,7 +196,7 @@ mixin _$FiyatGecmisiViewModel on _FiyatGecmisiViewModelBase, Store {
   }
 
   @override
-  void setModelList(List<FiyatGecmisiResponseModel?>? modelList) {
+  void setModelList(List<FiyatGecmisiResponseModel>? modelList) {
     final _$actionInfo = _$_FiyatGecmisiViewModelBaseActionController
         .startAction(name: '_FiyatGecmisiViewModelBase.setModelList');
     try {

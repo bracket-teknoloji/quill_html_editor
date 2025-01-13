@@ -37,7 +37,6 @@ import "../../../../../../constants/enum/cek_senet_listesi_enum.dart";
 import "../../../../../../constants/enum/edit_tipi_enum.dart";
 import "../../../../../../constants/enum/islem_tipi_enum.dart";
 import "../../../../../../constants/extensions/list_extensions.dart";
-import "../../../../../../constants/extensions/model_extensions.dart";
 import "../../../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../../../constants/yetki_controller/yetki_controller.dart";
 import "../../../../../../init/cache/cache_manager.dart";
@@ -221,7 +220,7 @@ final class IslemlerMenuItemConstants<T> {
           !siparisModel.uyariMi &&
               !siparisModel.hataliMi &&
               !siparisModel.basariliMi &&
-              (siparisModel.getEditTipiEnum.satisFaturasiMi || (siparisModel.getEditTipiEnum.satisIrsaliyesiMi && siparisModel.ebelgeCheckbox == "E")),
+              (siparisModel.getEditTipiEnum.satisFaturasiMi || (siparisModel.getEditTipiEnum.satisIrsaliyesiMi && siparisModel.eBelgeCheckBoxMi)),
           eFaturaGonder,
         )
         ..addIfConditionTrue(siparisModel.uyariMi || siparisModel.basariliMi || siparisModel.hataliMi, durumSorgula)
@@ -324,7 +323,7 @@ final class IslemlerMenuItemConstants<T> {
       } else {
         return GridItemModel.islemler(
           title: "Belgeyi Aç",
-          isEnabled: AccountModel.instance.admin == "E",
+          isEnabled: AccountModel.instance.adminMi,
           iconData: Icons.lock_open_outlined,
           onTap: () async {
             bool? result;
@@ -464,10 +463,8 @@ final class IslemlerMenuItemConstants<T> {
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-          final List<NetFectDizaynList> dizaynList = (_paramModel.netFectDizaynList?.filteredDizaynList(siparisModel?.getEditTipiEnum) ?? [])
-              .where((element) => element.ozelKod == siparisModel?.getEditTipiEnum?.getPrintValue)
-              .whereType<NetFectDizaynList>()
-              .toList();
+          final List<NetFectDizaynList> dizaynList =
+              (_paramModel.netFectDizaynList?.filteredDizaynList(siparisModel?.getEditTipiEnum) ?? []).where((element) => element.ozelKod == siparisModel?.getEditTipiEnum?.getPrintValue).toList();
           final result =
               await _bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
           if (result is NetFectDizaynList) {
@@ -517,15 +514,15 @@ final class IslemlerMenuItemConstants<T> {
       );
   GridItemModel? get seriHareketleri => GridItemModel.islemler(
         title: "Seri Hareketleri",
-        isEnabled: (_userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true)) ||
-            AccountModel.instance.admin == "E",
+        isEnabled:
+            (_userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true)) || AccountModel.instance.adminMi,
         iconData: Icons.dynamic_form_outlined,
         onTap: () async => Get.toNamed("/seriHareketleri", arguments: model),
       );
   GridItemModel? get seriBakiyeleri => GridItemModel.islemler(
         title: "Seri Bakiye Durumu",
-        isEnabled: (_userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true)) ||
-            AccountModel.instance.admin == "E",
+        isEnabled:
+            (_userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true)) || AccountModel.instance.adminMi,
         iconData: Icons.dynamic_form_outlined,
         onTap: () async => Get.toNamed("/seriBakiyeleri", arguments: model),
       );
@@ -561,15 +558,15 @@ final class IslemlerMenuItemConstants<T> {
             title: "Paylaş",
             groupValues: List.generate(7, (index) => true),
             children: [
-              BottomSheetModel(title: "Ünvan", value: newModel.cariAdi, groupValue: true).yetkiKontrol(newModel.cariAdi != null),
-              BottomSheetModel(title: "Adres", value: newModel.cariAdres, groupValue: true).yetkiKontrol(newModel.cariAdres != null),
-              BottomSheetModel(title: "İl/ İlçe", value: "${newModel.cariIl ?? ""} / ${newModel.cariIlce ?? ""}", groupValue: true).yetkiKontrol(newModel.cariIl != null || newModel.cariIlce != null),
-              BottomSheetModel(title: "Vergi Bilgileri", value: "${newModel.vergiDairesi ?? ""} ${newModel.vergiNumarasi ?? ""}", groupValue: true)
-                  .yetkiKontrol(newModel.vergiDairesi != null || newModel.vergiNumarasi != null),
-              BottomSheetModel(title: "Telefon", value: newModel.cariTel, groupValue: true).yetkiKontrol(newModel.cariTel != null),
-              BottomSheetModel(title: "Web Sitesi", value: newModel.web, groupValue: true).yetkiKontrol(newModel.web != null),
-              BottomSheetModel(title: "Mail", value: newModel.email, groupValue: true).yetkiKontrol(newModel.email != null),
-            ].nullCheckWithGeneric,
+              if (newModel.cariAdi != null) BottomSheetModel(title: "Ünvan", value: newModel.cariAdi, groupValue: true),
+              if (newModel.cariAdres != null) BottomSheetModel(title: "Adres", value: newModel.cariAdres, groupValue: true),
+              if (newModel.cariIl != null || newModel.cariIlce != null) BottomSheetModel(title: "İl/ İlçe", value: "${newModel.cariIl ?? ""} / ${newModel.cariIlce ?? ""}", groupValue: true),
+              if (newModel.vergiDairesi != null || newModel.vergiNumarasi != null)
+                BottomSheetModel(title: "Vergi Bilgileri", value: "${newModel.vergiDairesi ?? ""} ${newModel.vergiNumarasi ?? ""}", groupValue: true),
+              if (newModel.cariTel != null) BottomSheetModel(title: "Telefon", value: newModel.cariTel, groupValue: true),
+              if (newModel.web != null) BottomSheetModel(title: "Web Sitesi", value: newModel.web, groupValue: true),
+              if (newModel.email != null) BottomSheetModel(title: "Mail", value: newModel.email, groupValue: true),
+            ],
           );
           if (result.ext.isNotNullOrEmpty) {
             Clipboard.setData(ClipboardData(text: result!.join("\n")));
@@ -908,7 +905,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get konumGoster => GridItemModel.islemler(
         title: "Konum Göster",
         iconData: Icons.location_on_outlined,
-        isEnabled: _userModel?.cariHarita == true || AccountModel.instance.admin == "E",
+        isEnabled: _userModel?.cariHarita == true || AccountModel.instance.adminMi,
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
@@ -929,7 +926,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get konumaGit => GridItemModel.islemler(
         title: "Konuma Git",
         iconData: Icons.location_on_outlined,
-        isEnabled: _userModel?.cariHarita == true || AccountModel.instance.admin == "E",
+        isEnabled: _userModel?.cariHarita == true || AccountModel.instance.adminMi,
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
@@ -955,7 +952,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get konumAta => GridItemModel.islemler(
         title: "Konum Ata",
         iconData: Icons.location_on_outlined,
-        isEnabled: (_userModel?.cariHarita == true || AccountModel.instance.admin == "E") && _yetkiController.cariKartiDuzenleme,
+        isEnabled: (_userModel?.cariHarita == true || AccountModel.instance.adminMi) && _yetkiController.cariKartiDuzenleme,
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;

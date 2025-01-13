@@ -27,7 +27,7 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;
   @observable
-  bool ebelgeCheckbox = BaseSiparisEditModel.instance.ebelgeCheckbox == "E" ? true : false;
+  bool ebelgeCheckbox = BaseSiparisEditModel.instance.eBelgeCheckBoxMi ? true : false;
 
   @observable
   BaseSiparisEditModel model = BaseSiparisEditModel.instance;

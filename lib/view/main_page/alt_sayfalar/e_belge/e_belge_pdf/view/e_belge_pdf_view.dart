@@ -69,9 +69,9 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
         ),
         actions: [
           IconButton(onPressed: fileChecker, icon: const Icon(Icons.share_outlined)),
-          IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.send_outlined)).yetkiVarMi(widget.model.taslakMi),
+          if (widget.model.taslakMi) IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.send_outlined)),
           IconButton(onPressed: secenekler, icon: const Icon(Icons.more_vert_outlined)),
-        ].whereType<IconButton>().toList(),
+        ],
       );
 
   Observer body(BuildContext context) => Observer(

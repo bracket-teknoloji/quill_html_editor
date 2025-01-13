@@ -200,10 +200,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         controller: _dovizTipiController,
                         isMust: true,
                         readOnly: true,
-                        suffixMore: viewModel.kasa?.dovizli != "E",
+                        suffixMore: !(viewModel.kasa?.dovizliMi ?? false),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
                         onTap: () async {
-                          if (viewModel.kasa?.dovizli == "E") {
+                          if (viewModel.kasa?.dovizliMi ?? false) {
                             return;
                           }
                           final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model.dovizTipi);

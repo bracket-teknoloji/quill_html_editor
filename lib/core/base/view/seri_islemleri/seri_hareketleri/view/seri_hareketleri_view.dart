@@ -256,7 +256,7 @@ final class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                               // Text("Şube: ${item. ?? ""}"),
                               if (item.stharInc != null) Text("StHarInc: ${item.stharInc ?? ""}"),
                               if (item.belgeNo != null) Text("Belge No: ${item.belgeNo ?? ""}"),
-                            ].whereType<Text>().toList(),
+                            ],
                           ),
                           onTap: () async {
                             await bottomSheetDialogManager.showBottomSheetDialog(

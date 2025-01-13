@@ -83,31 +83,33 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
             subtitle: widget.model.baseEditEnum?.getName,
           ),
           actions: [
-            Observer(
-              builder: (_) => IconButton(
-                onPressed: () async {
-                  if (viewModel.requestModel.kalemList.ext.isNullOrEmpty) return dialogManager.showAlertDialog("Kalem seçiniz.");
-                  if (tabController.index != 1 && StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate() != true) return;
-                  dialogManager.showAreYouSureDialog(() async {
-                    final result = await viewModel.saveUSK();
-                    if (!result.isSuccess) return;
-                    Get.back(result: true);
-                    dialogManager.showSuccessSnackBar("Üretim Sonu Kaydı başarıyla kaydedildi.");
-                  });
-                },
-                icon: const Icon(Icons.save_outlined),
-              ).yetkiVarMi(viewModel.showSaveButton && !widget.model.baseEditEnum.goruntuleMi),
-            ),
+            if (viewModel.showSaveButton && !widget.model.baseEditEnum.goruntuleMi)
+              Observer(
+                builder: (_) => IconButton(
+                  onPressed: () async {
+                    if (viewModel.requestModel.kalemList.ext.isNullOrEmpty) return dialogManager.showAlertDialog("Kalem seçiniz.");
+                    if (tabController.index != 1 && StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate() != true) return;
+                    dialogManager.showAreYouSureDialog(() async {
+                      final result = await viewModel.saveUSK();
+                      if (!result.isSuccess) return;
+                      Get.back(result: true);
+                      dialogManager.showSuccessSnackBar("Üretim Sonu Kaydı başarıyla kaydedildi.");
+                    });
+                  },
+                  icon: const Icon(Icons.save_outlined),
+                ),
+              ),
           ],
           bottom: yetkiController.uretimSonuKalemliYapi
               ? TabBar(
                   controller: tabController,
                   tabs: [
                     Tab(text: loc.generalStrings.general),
-                    Observer(
-                      builder: (_) => Tab(text: "Kalemler (${viewModel.kalemList?.length ?? 0})"),
-                    ).yetkiVarMi(tabSize == 2),
-                  ].where((element) => element is! SizedBox).toList(),
+                    if (tabSize == 2)
+                      Observer(
+                        builder: (_) => Tab(text: "Kalemler (${viewModel.kalemList?.length ?? 0})"),
+                      ),
+                  ],
                 )
               : null,
         ),

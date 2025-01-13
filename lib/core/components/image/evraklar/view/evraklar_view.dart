@@ -5,10 +5,7 @@ import "package:get/get.dart";
 import "../../../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
 import "../../../../base/state/base_state.dart";
-import "../../../../constants/extensions/list_extensions.dart";
-import "../../../../constants/extensions/model_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
-import "../../../../constants/extensions/widget_extensions.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../floating_action_button/custom_floating_action_button.dart";
@@ -60,7 +57,9 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
         ),
       );
 
-  Widget fab() => CustomFloatingActionButton(
+  CustomFloatingActionButton? fab() {
+    if (yetkiController.stokResimEkle) {
+      return CustomFloatingActionButton(
         isScrolledDown: true,
         onPressed: () async {
           final result = await Get.toNamed("/imagePicker", arguments: viewModel.requestModel);
@@ -69,7 +68,10 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
             await viewModel.getData();
           }
         },
-      ).yetkiVarMi(yetkiController.stokResimEkle);
+      );
+    }
+    return null;
+  }
 
   Observer body() => Observer(builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: evrakCard));
 
@@ -94,28 +96,30 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
         context,
         title: loc.generalStrings.options,
         children: [
-          BottomSheetModel(
-            title: loc.generalStrings.view,
-            iconWidget: Icons.preview_outlined,
-            onTap: () {
-              Get.back();
-              return Get.to(ImageView(path: model?.resimUrl ?? "", title: model?.aciklama ?? ""));
-            },
-          ).yetkiKontrol(yetkiController.stokResimGoster),
-          BottomSheetModel(
-            title: loc.generalStrings.delete,
-            iconWidget: Icons.delete_outline_outlined,
-            onTap: () async {
-              Get.back();
-              dialogManager.showAreYouSureDialog(() async {
-                final result = await viewModel.deleteEvrak(model!);
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
-                  await viewModel.getData();
-                }
-              });
-            },
-          ).yetkiKontrol(yetkiController.stokResimSil),
-        ].nullCheckWithGeneric,
+          if (yetkiController.stokResimGoster)
+            BottomSheetModel(
+              title: loc.generalStrings.view,
+              iconWidget: Icons.preview_outlined,
+              onTap: () {
+                Get.back();
+                return Get.to(ImageView(path: model?.resimUrl ?? "", title: model?.aciklama ?? ""));
+              },
+            ),
+          if (yetkiController.stokResimSil)
+            BottomSheetModel(
+              title: loc.generalStrings.delete,
+              iconWidget: Icons.delete_outline_outlined,
+              onTap: () async {
+                Get.back();
+                dialogManager.showAreYouSureDialog(() async {
+                  final result = await viewModel.deleteEvrak(model!);
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
+                    await viewModel.getData();
+                  }
+                });
+              },
+            ),
+        ],
       );
 }

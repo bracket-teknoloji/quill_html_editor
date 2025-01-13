@@ -297,7 +297,7 @@ final class NetworkManager {
     }
   }
 
-  Future<List<EvraklarModel?>?> getEvraklar(String? path, String? belgeNo) async {
+  Future<List<EvraklarModel>?> getEvraklar(String? path, String? belgeNo) async {
     if (path == null) {
       return null;
     }

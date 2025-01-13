@@ -54,7 +54,7 @@ final class GridItemModel {
   String title;
   String? icon;
   IconData? iconData;
-  List<bool?>? yetkiListesi;
+  List<bool>? yetkiListesi;
   Color? color;
   List<GridItemModel>? altMenuler;
   String? route;
@@ -70,7 +70,7 @@ final class GridItemModel {
       if (name == null) {
         return altMenuVarMi;
       }
-      if ((_menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => element == false) ?? false) : true)) {
+      if ((_menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => !element) ?? false) : true)) {
         for (final element in altMenuler!) {
           if (element.yetkiKontrol) {
             sayac++;

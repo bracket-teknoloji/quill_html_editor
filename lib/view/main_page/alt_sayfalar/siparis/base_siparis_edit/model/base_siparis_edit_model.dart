@@ -841,6 +841,8 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
 
   bool get muhtelifMi => cariKodu == ("0" * 15);
 
+  bool get eBelgeCheckBoxMi => ebelgeCheckbox == "E";
+
   bool get eFaturaSerisindenMi => _yetkiController.eFaturaSerisindenMi(belgeNo ?? "");
 
   bool get eArsivSerisindenMi => _yetkiController.eArsivSerisindenMi(belgeNo ?? "");
@@ -1456,7 +1458,6 @@ final class KalemModel with NetworkManagerMixin {
       sonKullanmaTarihi: model.bulunanSeriSkt,
       stokAdi: model.stokAdi,
       stokKodu: model.stokKodu,
-      
     );
     if (model.okutulanBarkod != null) {
       kalemModel.brutFiyat = model.bulunanFiyat;

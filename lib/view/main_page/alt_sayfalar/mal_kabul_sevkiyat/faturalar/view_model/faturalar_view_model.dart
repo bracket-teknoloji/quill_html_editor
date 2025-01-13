@@ -145,22 +145,22 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   ObservableList<BaseGrupKoduModel>? get getGrupKod5 => grupKodList?.where((element) => element.grupNo == 5).toList().asObservable();
 
   @action
-  void changeArrKod0(List<String?> value) => faturaRequestModel = faturaRequestModel.copyWith(arrGrupKodu: jsonEncode(value));
+  void changeArrKod0(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrGrupKodu: jsonEncode(value));
 
   @action
-  void changeArrKod1(List<String?> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod1: jsonEncode(value));
+  void changeArrKod1(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod1: jsonEncode(value));
 
   @action
-  void changeArrKod2(List<String?> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod2: jsonEncode(value));
+  void changeArrKod2(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod2: jsonEncode(value));
 
   @action
-  void changeArrKod3(List<String?> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod3: jsonEncode(value));
+  void changeArrKod3(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod3: jsonEncode(value));
 
   @action
-  void changeArrKod4(List<String?> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod4: jsonEncode(value));
+  void changeArrKod4(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod4: jsonEncode(value));
 
   @action
-  void changeArrKod5(List<String?> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod5: jsonEncode(value));
+  void changeArrKod5(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod5: jsonEncode(value));
 
   @action
   void setKodlariGoster() {

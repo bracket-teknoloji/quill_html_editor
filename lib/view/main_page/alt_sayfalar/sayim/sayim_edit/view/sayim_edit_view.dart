@@ -14,8 +14,6 @@ import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "../../../../../../core/constants/enum/dizayn_ozel_kod_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
-import "../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/static_variables/singleton_models.dart";
@@ -66,86 +64,90 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
                   context,
                   title: loc.generalStrings.options,
                   children: [
-                    BottomSheetModel(
-                      title: "Sayım Raporu (PDF)",
-                      iconWidget: Icons.filter_9_outlined,
-                      onTap: () async {
-                        Get.back();
-                        final PdfModel pdfModel = PdfModel(
-                          etiketSayisi: 1,
-                          raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
-                          dicParams: DicParams(
-                            belgeNo: widget.model.fisno ?? "",
-                          ),
-                        );
-                        final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
-                          context,
-                          "",
-                        );
-                        if (sayimFiltre == null) return;
-                        pdfModel.dicParams?.filtre = DepoFarkRaporuFiltreEnum.values.indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi).toStringIfNotNull;
-                        // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
-                        final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
-                          context,
-                          "",
-                          ozelKod: DizaynOzelKodEnum.sayim,
-                        );
-                        if (dizayn == null) return;
-                        pdfModel.dizaynId = dizayn.id;
-                        final result = await networkManager.getPDF(pdfModel);
-                        if (!result.isSuccess) return;
-                        Get.to(() => GenelPdfView(model: result.dataList.firstOrNull));
-                        // final result = await bottomSheetDialogManager.showBottomSh
-                      },
-                    ).yetkiKontrol(yetkiController.sayimSayimRaporu),
-                    BottomSheetModel(
-                      title: "Sayımı Bitir",
-                      iconWidget: Icons.stop_outlined,
-                      onTap: () async {
-                        dialogManager.showAreYouSureDialog(() async {
-                          if (await viewModel.sayimiBitir()) {
-                            Get.back(result: true);
-                          }
-                        });
-                      },
-                    ).yetkiKontrol(widget.model.baslangicTarihi != null && widget.model.bitisTarihi == null && widget.model.serbestMi),
-                    BottomSheetModel(
-                      title: "Depo Fark Raporu",
-                      iconWidget: Icons.filter_9_outlined,
-                      onTap: () async {
-                        Get.back();
-                        await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
-                      },
-                    ).yetkiKontrol(yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi),
-                    BottomSheetModel(
-                      title: "Depo Transferi Oluştur",
-                      iconWidget: Icons.transform_outlined,
-                      onTap: () async {
-                        Get.back();
-                        final depo = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, widget.model.depoKodu);
-                        if (depo is! DepoList) return;
-                        final listOfKalemler = await viewModel.getKalemler(depo.depoKodu.toString());
-                        if (listOfKalemler.ext.isNullOrEmpty) return;
-                        Get.toNamed(
-                          "/mainPage/transferEdit",
-                          arguments: BaseEditModel<BaseSiparisEditModel>(
-                            editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
-                            baseEditEnum: BaseEditEnum.ekle,
-                            model: BaseSiparisEditModel(
-                              girisDepoKodu: depo.depoKodu,
-                              topluGirisDepoTanimi: depo.depoTanimi,
-                              cikisDepoKodu: widget.model.depoKodu,
-                              topluCikisDepoTanimi: widget.model.depoTanimi,
-                              hareketTuru: "B",
-                              projeKodu: listOfKalemler?.firstOrNull?.projeKodu,
-                              kalemList: listOfKalemler,
-                              aciklama: "Sayım ${widget.model.fisno}",
+                    if (yetkiController.sayimSayimRaporu)
+                      BottomSheetModel(
+                        title: "Sayım Raporu (PDF)",
+                        iconWidget: Icons.filter_9_outlined,
+                        onTap: () async {
+                          Get.back();
+                          final PdfModel pdfModel = PdfModel(
+                            etiketSayisi: 1,
+                            raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
+                            dicParams: DicParams(
+                              belgeNo: widget.model.fisno ?? "",
                             ),
-                          ),
-                        );
-                      },
-                    ).yetkiKontrol(yetkiController.transferDatEkle),
-                  ].nullCheckWithGeneric,
+                          );
+                          final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
+                            context,
+                            "",
+                          );
+                          if (sayimFiltre == null) return;
+                          pdfModel.dicParams?.filtre = DepoFarkRaporuFiltreEnum.values.indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi).toStringIfNotNull;
+                          // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
+                          final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
+                            context,
+                            "",
+                            ozelKod: DizaynOzelKodEnum.sayim,
+                          );
+                          if (dizayn == null) return;
+                          pdfModel.dizaynId = dizayn.id;
+                          final result = await networkManager.getPDF(pdfModel);
+                          if (!result.isSuccess) return;
+                          Get.to(() => GenelPdfView(model: result.dataList.firstOrNull));
+                          // final result = await bottomSheetDialogManager.showBottomSh
+                        },
+                      ),
+                    if (widget.model.baslangicTarihi != null && widget.model.bitisTarihi == null && widget.model.serbestMi)
+                      BottomSheetModel(
+                        title: "Sayımı Bitir",
+                        iconWidget: Icons.stop_outlined,
+                        onTap: () async {
+                          dialogManager.showAreYouSureDialog(() async {
+                            if (await viewModel.sayimiBitir()) {
+                              Get.back(result: true);
+                            }
+                          });
+                        },
+                      ),
+                    if (yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi)
+                      BottomSheetModel(
+                        title: "Depo Fark Raporu",
+                        iconWidget: Icons.filter_9_outlined,
+                        onTap: () async {
+                          Get.back();
+                          await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
+                        },
+                      ),
+                    if (yetkiController.transferDatEkle)
+                      BottomSheetModel(
+                        title: "Depo Transferi Oluştur",
+                        iconWidget: Icons.transform_outlined,
+                        onTap: () async {
+                          Get.back();
+                          final depo = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, widget.model.depoKodu);
+                          if (depo is! DepoList) return;
+                          final listOfKalemler = await viewModel.getKalemler(depo.depoKodu.toString());
+                          if (listOfKalemler.ext.isNullOrEmpty) return;
+                          Get.toNamed(
+                            "/mainPage/transferEdit",
+                            arguments: BaseEditModel<BaseSiparisEditModel>(
+                              editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
+                              baseEditEnum: BaseEditEnum.ekle,
+                              model: BaseSiparisEditModel(
+                                girisDepoKodu: depo.depoKodu,
+                                topluGirisDepoTanimi: depo.depoTanimi,
+                                cikisDepoKodu: widget.model.depoKodu,
+                                topluCikisDepoTanimi: widget.model.depoTanimi,
+                                hareketTuru: "B",
+                                projeKodu: listOfKalemler?.firstOrNull?.projeKodu,
+                                kalemList: listOfKalemler,
+                                aciklama: "Sayım ${widget.model.fisno}",
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                  ],
                 );
               },
               icon: const Icon(Icons.more_vert_outlined),

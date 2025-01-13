@@ -41,21 +41,21 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
   bool get goruntulenecekMi => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala;
   BaseCariEditViewModel viewModel = BaseCariEditViewModel();
   late final TabController tabController;
-  List<Tab> get tabs => <Widget>[
+  List<Tab> get tabs => [
         Tab(child: Text(loc.generalStrings.general)),
         Tab(child: Text(loc.generalStrings.other)),
-        const Tab(child: Text("Özet")).yetkiVarMi(goruntulenecekMi),
-        const Tab(child: Text("Banka")).yetkiVarMi(goruntulenecekMi),
-        const Tab(child: Text("İletişim")).yetkiVarMi(goruntulenecekMi),
-      ].whereType<Tab>().toList();
+        if (goruntulenecekMi) const Tab(child: Text("Özet")),
+        if (goruntulenecekMi) const Tab(child: Text("Banka")),
+        if (goruntulenecekMi) const Tab(child: Text("İletişim")),
+      ];
 
   List<Widget> get views => <Widget>[
         Observer(builder: (_) => viewModel.isDownloadCompletedSuccesfully == true ? BaseEditCariGenelView(model: widget.model) : Center(child: Text(viewModel.message ?? ""))),
         CariEditDigerView(model: widget.model),
-        const BaseEditCariOzetView().yetkiVarMi(goruntulenecekMi),
-        const BaseCariEditBankaView().yetkiVarMi(goruntulenecekMi),
-        const BaseCariEditIletisimView().yetkiVarMi(goruntulenecekMi),
-      ].where((element) => element is! SizedBox).toList();
+        if (goruntulenecekMi) const BaseEditCariOzetView(),
+        if (goruntulenecekMi) const BaseCariEditBankaView(),
+        if (goruntulenecekMi) const BaseCariEditIletisimView(),
+      ];
   @override
   void initState() {
     tabController = TabController(length: goruntulenecekMi ? 5 : 2, vsync: this);

@@ -1,8 +1,9 @@
-export "dart:ui";
-
 export "package:flutter/foundation.dart";
+export "package:flutter/gestures.dart";
+export "package:flutter/material.dart";
 export "package:flutter_localizations/flutter_localizations.dart";
 export "package:get/get.dart";
+export "package:picker/core/base/view/genel_rehber/view/genel_rehber_view.dart";
 export "package:picker/core/base/view/masraf_kodu/view/masraf_kodu_rehberi_view.dart";
 export "package:picker/core/base/view/muhtelif_cari_ekle/view/muhtelif_cari_ekle_view.dart";
 export "package:picker/core/base/view/seri_islemleri/seri_bakiyeleri/view/seri_bakiyeleri_view.dart";
@@ -55,7 +56,9 @@ export "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uret
 export "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view/uretim_sonu_kaydi_listesi_view.dart";
 export "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_seri_listesi/view/uretim_sonu_kaydi_seri_listesi_view.dart";
 export "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_raporu/view/uretim_sonu_raporu_view.dart";
+export "package:syncfusion_localizations/syncfusion_localizations.dart";
 
+export "../core/base/view/base_scaffold.dart";
 export "../core/base/view/cari_rehberi/view/cari_rehberi_view.dart";
 export "../core/base/view/doviz_kurlari/view/doviz_kurlari_view.dart";
 export "../core/base/view/e_belge_gonder/view/e_belge_gonder_view.dart";

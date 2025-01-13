@@ -66,9 +66,9 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
               ? TabBar(
                   controller: tabController,
                   tabs: [
-                    const Tab(text: "Stok Kartı").yetkiVarMi(yetkiController.stokBarkodStokKartiGorunsun),
-                    const Tab(text: "Barkod Kayıtları").yetkiVarMi(yetkiController.stokBarkodKayitlari),
-                  ].whereType<Tab>().toList(),
+                    if (yetkiController.stokBarkodStokKartiGorunsun) const Tab(text: "Stok Kartı"),
+                    if (yetkiController.stokBarkodKayitlari) const Tab(text: "Barkod Kayıtları"),
+                  ],
                 )
               : null,
         ),

@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -182,7 +183,7 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
                           text: kalemModel.iskontoDetayi,
                           style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
                         ),
-                      ].whereType<TextSpan>().toList(),
+                      ],
                     ),
                   ).yetkiVarMi(kalemModel.kdvOrani != null),
                   Text.rich(
@@ -229,7 +230,7 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
                   context,
                   title: "Hücre İşlemleri",
                   children: [
-                    BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
+                    if (kDebugMode) BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined),
                     BottomSheetModel(
                       title: "Stok İşlemleri",
                       iconWidget: Icons.list_alt_outlined,
@@ -238,7 +239,7 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
                         dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemList?.stokKodu ?? "");
                       },
                     ),
-                  ].nullCheckWithGeneric,
+                  ],
                 );
               },
               icon: const Icon(Icons.more_vert_outlined),

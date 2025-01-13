@@ -451,7 +451,7 @@ final class BottomSheetDialogManager {
       );
 
   /// `GroupValues must be a list of String`
-  Future<List<PlasiyerList?>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List? groupValues}) async {
+  Future<List<PlasiyerList>?> showPlasiyerListesiBottomSheetDialog(BuildContext context, {required List? groupValues}) async {
     final List<PlasiyerList> plasiyerList = _paramModel?.plasiyerList ?? <PlasiyerList>[];
     final result = await showCheckBoxBottomSheetDialog<PlasiyerList>(
       context,
@@ -471,7 +471,7 @@ final class BottomSheetDialogManager {
     // return null;
   }
 
-  Future<List<BaseGrupKoduModel?>?> showGrupKoduCheckBoxBottomSheetDialog(
+  Future<List<BaseGrupKoduModel>?> showGrupKoduCheckBoxBottomSheetDialog(
     BuildContext context, {
     required GrupKoduEnum modul,
     required int grupKodu,

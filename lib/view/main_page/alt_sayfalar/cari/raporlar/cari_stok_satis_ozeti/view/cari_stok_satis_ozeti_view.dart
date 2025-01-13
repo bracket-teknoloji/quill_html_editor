@@ -334,14 +334,8 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1);
       dialogManager.hideAlertDialog;
     }
-    final List<BottomSheetModel> bottomSheetList = grupKodList
-        .where((e) => e.grupNo == grupNo)
-        .toList()
-        .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
-        .toList()
-        .cast<BottomSheetModel>();
-    // ignore: use_build_context_synchronously
+    final List<BottomSheetModel> bottomSheetList =
+        grupKodList.where((e) => e.grupNo == grupNo).toList().map((e) => BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu ?? "", onTap: () => Get.back(result: e))).toList();
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {
       controller?.text = result.grupKodu ?? "";

@@ -5,7 +5,6 @@ import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 import "../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../../constants/enum/edit_tipi_enum.dart";
-import "../../../../constants/extensions/list_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
 import "../../../../init/network/login/api_urls.dart";
 import "../../../view_model/mobx_network_mixin.dart";
@@ -47,7 +46,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
         if (model?.olcuBirimi != null) (adi: model?.olcuBirimi, pay: 0.0, payda: 1.0),
         if (model?.olcuBirimi2 != null) (adi: model?.olcuBirimi2, pay: model?.olcuBirimi2Pay, payda: model?.olcuBirimi2Payda),
         if (model?.olcuBirimi3 != null) (adi: model?.olcuBirimi3, pay: model?.olcuBirimi3Pay, payda: model?.olcuBirimi3Payda),
-      ].nullCheckWithGeneric;
+      ];
 
   @observable
   KalemModel kalemModel = KalemModel(iskonto1OranMi: true);
@@ -86,7 +85,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
 
   @action
-  void addSeriList(SeriList seriList) => kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList?? [], seriList]);
+  void addSeriList(SeriList seriList) => kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList ?? [], seriList]);
 
   @action
   void setDovizAdi(String? value) => kalemModel = kalemModel.copyWith(dovizAdi: value);

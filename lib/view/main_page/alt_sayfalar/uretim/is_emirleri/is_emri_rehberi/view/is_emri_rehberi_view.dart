@@ -174,9 +174,9 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
                 children: [
                   Row(
                     children: [
-                      const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(item.kapali == "E"),
-                      const ColorfulBadge(label: Text("Rework"), badgeColorEnum: BadgeColorEnum.rework).yetkiVarMi(item.rework == "E"),
-                    ].whereType<ColorfulBadge>().map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
+                      if (item.kapali == "E") const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
+                      if (item.rework == "E") const ColorfulBadge(label: Text("Rework"), badgeColorEnum: BadgeColorEnum.rework),
+                    ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
                   ),
                   CustomLayoutBuilder(
                     splitCount: 2,
@@ -188,9 +188,9 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
                       Text("Kalan Miktar: ${item.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                       Text("Proje Kodu: ${item.projeKodu ?? ""}"),
                       Text("Teslim Tarihi: ${item.teslimTarihi.toDateString}"),
-                      Text("Giriş Depo: ${item.girisDepo} - ${item.girisDepoAdi}").yetkiVarMi(item.girisDepo != null),
-                      Text("Çıkış Depo: ${item.cikisDepo} - ${item.cikisDepoAdi}").yetkiVarMi(item.cikisDepo != null),
-                    ].whereType<Text>().toList(),
+                      if (item.girisDepo != null) Text("Giriş Depo: ${item.girisDepo} - ${item.girisDepoAdi}"),
+                      if (item.cikisDepo != null) Text("Çıkış Depo: ${item.cikisDepo} - ${item.cikisDepoAdi}"),
+                    ],
                   ),
                 ],
               ),

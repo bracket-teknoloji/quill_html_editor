@@ -7,8 +7,6 @@ import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom
 import "../../../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../../../core/components/layout/custom_layout_builder.dart";
 import "../../../../../../../../core/components/list_view/refreshable_list_view.dart";
-import "../../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../stok_liste/model/stok_listesi_model.dart";
 import "../model/barkod_tanimla_kayitlari_model.dart";
@@ -75,21 +73,22 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
                     context,
                     title: item.barkod ?? "",
                     children: [
-                      BottomSheetModel(
-                        title: loc.generalStrings.delete,
-                        iconWidget: Icons.delete_outline_outlined,
-                        onTap: () {
-                          Get.back();
-                          dialogManager.showAreYouSureDialog(() async {
-                            final result = await viewModel.deleteItem(item);
-                            if (result) {
-                              dialogManager.showSuccessSnackBar("${item.barkod} barkodlu kayıt başarıyla silindi.");
-                              await viewModel.getData();
-                            }
-                          });
-                        },
-                      ).yetkiKontrol(yetkiController.stokBarkodSil),
-                    ].nullCheckWithGeneric,
+                      if (yetkiController.stokBarkodSil)
+                        BottomSheetModel(
+                          title: loc.generalStrings.delete,
+                          iconWidget: Icons.delete_outline_outlined,
+                          onTap: () {
+                            Get.back();
+                            dialogManager.showAreYouSureDialog(() async {
+                              final result = await viewModel.deleteItem(item);
+                              if (result) {
+                                dialogManager.showSuccessSnackBar("${item.barkod} barkodlu kayıt başarıyla silindi.");
+                                await viewModel.getData();
+                              }
+                            });
+                          },
+                        ),
+                    ],
                   );
                 },
                 title: Text("Barkod: ${item.barkod}"),

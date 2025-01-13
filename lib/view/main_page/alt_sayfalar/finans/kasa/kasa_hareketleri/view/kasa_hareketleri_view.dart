@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/badge/colorful_badge.dart";
@@ -163,16 +164,16 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
               ),
             ],
           ),
-          subtitle: Wrap(
+          subtitle: CustomLayoutBuilder.divideInHalf(
             children: [
-              Text("Kasa: ${item?.kasaKodu ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)).yetkiVarMi(item?.kasaKodu != null),
-              Text("Belge No: ${item?.belgeNo ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)).yetkiVarMi(item?.belgeNo != null),
-              Text("Hesap Kodu: ${item?.cariKodu ?? ""}").yetkiVarMi(item?.cariKodu != null),
-              Text("Hesap Adı: ${item?.cariAdi ?? ""}").yetkiVarMi(item?.cariAdi != null),
-              Text("Proje: ${item?.projeKodu ?? ""}").yetkiVarMi(item?.projeKodu != null),
-              Text("Plasiyer: ${item?.plasiyerKodu ?? ""}").yetkiVarMi(item?.plasiyerKodu != null),
-              Text("Açıklama: ${item?.aciklama ?? ""}").yetkiVarMi(item?.aciklama != null),
-            ].whereType<Text>().toList().map((e) => SizedBox(width: width * 0.5, child: e)).toList(),
+              if (item?.kasaKodu != null) Text("Kasa: ${item?.kasaKodu ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)),
+              if (item?.belgeNo != null) Text("Belge No: ${item?.belgeNo ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)),
+              if (item?.cariKodu != null) Text("Hesap Kodu: ${item?.cariKodu ?? ""}"),
+              if (item?.cariAdi != null) Text("Hesap Adı: ${item?.cariAdi ?? ""}"),
+              if (item?.projeKodu != null) Text("Proje: ${item?.projeKodu ?? ""}"),
+              if (item?.plasiyerKodu != null) Text("Plasiyer: ${item?.plasiyerKodu ?? ""}"),
+              if (item?.aciklama != null) Text("Açıklama: ${item?.aciklama ?? ""}"),
+            ],
           ),
           trailing: Text(
             "${item?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${viewModel.dovizAdi}",

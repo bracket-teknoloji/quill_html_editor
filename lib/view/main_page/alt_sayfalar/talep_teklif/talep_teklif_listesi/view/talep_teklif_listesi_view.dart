@@ -369,12 +369,12 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                   onTap: () async {
                     final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
                       context,
-                      groupValues: ((jsonDecode(viewModel.siparislerRequestModel.arrPlasiyerKodu ?? "[]")) as List).map((e) => e as String).toList().cast<String>(),
+                      groupValues: ((jsonDecode(viewModel.siparislerRequestModel.arrPlasiyerKodu ?? "[]")) as List).map((e) => e as String).toList(),
                     );
                     if (result.ext.isNotNullOrEmpty) {
-                      _plasiyerController.text = result!.map((e) => e?.plasiyerAciklama).join(", ");
+                      _plasiyerController.text = result!.map((e) => e.plasiyerAciklama).join(", ");
 
-                      viewModel.setArrPlasiyerKodu(result.map((e) => e?.plasiyerKodu.toString()).toList().cast<String>());
+                      viewModel.setArrPlasiyerKodu(result.map((e) => e.plasiyerKodu.toString()).toList());
                     }
                   },
                 ),
@@ -616,7 +616,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
   }
 
   Future<void> grupKodlariBottomSheet(int index, dynamic groupValues, List<BaseGrupKoduModel>? list) async {
-    var result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
       context,
       title: "Grup Kodu Seçiniz",
       groupValues: ((jsonDecode(groupValues ?? "[]")) as List).map((e) => e as String).toList().cast<String>(),
@@ -630,25 +630,24 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
       ),
     );
     if (result != null) {
-      result = result.toList().cast<BaseGrupKoduModel>();
       switch (index) {
         case 0:
-          viewModel.setArrKod0(result.map((e) => e.grupKodu ?? "").toList().cast<String>());
+          viewModel.setArrKod0(result.map((e) => e.grupKodu ?? "").toList());
           _grupKoduController.text = result.map((e) => e.grupAdi).join(", ");
         case 1:
-          viewModel.setArrKod1(result.map((e) => e.grupKodu ?? "").toList().cast<String>());
+          viewModel.setArrKod1(result.map((e) => e.grupKodu ?? "").toList());
           _kod1Controller.text = result.map((e) => e.grupAdi).join(", ");
         case 2:
-          viewModel.setArrKod2(result.map((e) => e.grupKodu ?? "").toList().cast<String>());
+          viewModel.setArrKod2(result.map((e) => e.grupKodu ?? "").toList());
           _kod2Controller.text = result.map((e) => e.grupAdi).join(", ");
         case 3:
-          viewModel.setArrKod3(result.map((e) => e.grupKodu ?? "").toList().cast<String>());
+          viewModel.setArrKod3(result.map((e) => e.grupKodu ?? "").toList());
           _kod3Controller.text = result.map((e) => e.grupAdi).join(", ");
         case 4:
-          viewModel.setArrKod4(result.map((e) => e.grupKodu ?? "").toList().cast<String>());
+          viewModel.setArrKod4(result.map((e) => e.grupKodu ?? "").toList());
           _kod4Controller.text = result.map((e) => e.grupAdi).join(", ");
         case 5:
-          viewModel.setArrKod5(result.map((e) => e.grupKodu ?? "").toList().cast<String>());
+          viewModel.setArrKod5(result.map((e) => e.grupKodu ?? "").toList());
           _kod5Controller.text = result.map((e) => e.grupAdi).join(", ");
       }
     }

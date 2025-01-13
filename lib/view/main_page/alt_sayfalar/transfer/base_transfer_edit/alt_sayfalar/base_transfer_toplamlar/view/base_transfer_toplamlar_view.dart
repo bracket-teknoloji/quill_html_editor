@@ -489,7 +489,7 @@ final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplam
                       }
                     },
               child: const Text("E-İrsaliye Ek Bilgiler"),
-            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.ebelgeCheckbox == "E"),
+            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.eBelgeCheckBoxMi),
           ],
         ),
       );

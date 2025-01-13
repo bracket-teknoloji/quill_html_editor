@@ -554,8 +554,8 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                     onTap: () async {
                       final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: viewModel.cariRequestModelTemp.arrPlasiyerKodu);
                       if (result != null) {
-                        viewModel.changeArrPlasiyerKoduTemp(result.map((e) => e?.plasiyerKodu).toList().nullCheckWithGeneric);
-                        plasiyerController.text = result.map((e) => e?.plasiyerAciklama).join(", ");
+                        viewModel.changeArrPlasiyerKoduTemp(result.map((e) => e.plasiyerKodu).toList().nullCheckWithGeneric);
+                        plasiyerController.text = result.map((e) => e.plasiyerAciklama).join(", ");
                       }
                     },
                   ),
@@ -676,9 +676,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                       ),
                                     );
                                     if (result != null) {
-                                      final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                      viewModel.changeArrKod0Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
-                                      kod0Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                      final List<BaseGrupKoduModel> list = result;
+                                      viewModel.changeArrKod0Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
+                                      kod0Controller.text = list.map((e) => e.grupAdi).join(", ");
                                     }
                                   },
                                 ),
@@ -704,9 +704,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                       ),
                                     );
                                     if (result != null) {
-                                      final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                      viewModel.changeArrKod1Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
-                                      kod1Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                      final List<BaseGrupKoduModel> list = result;
+                                      viewModel.changeArrKod1Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
+                                      kod1Controller.text = list.map((e) => e.grupAdi).join(", ");
                                     }
                                   },
                                 ),
@@ -736,9 +736,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                       ),
                                     );
                                     if (result != null) {
-                                      final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                      viewModel.changeArrKod2Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
-                                      kod2Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                      final List<BaseGrupKoduModel> list = result;
+                                      viewModel.changeArrKod2Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
+                                      kod2Controller.text = list.map((e) => e.grupAdi).join(", ");
                                     }
                                   },
                                 ),
@@ -764,9 +764,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                       ),
                                     );
                                     if (result != null) {
-                                      final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                      viewModel.changeArrKod3Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
-                                      kod3Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                      final List<BaseGrupKoduModel> list = result;
+                                      viewModel.changeArrKod3Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
+                                      kod3Controller.text = list.map((e) => e.grupAdi).join(", ");
                                     }
                                   },
                                 ),
@@ -796,9 +796,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                       ),
                                     );
                                     if (result != null) {
-                                      final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                      viewModel.changeArrKod4Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
-                                      kod4Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                      final List<BaseGrupKoduModel> list = result;
+                                      viewModel.changeArrKod4Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
+                                      kod4Controller.text = list.map((e) => e.grupAdi).join(", ");
                                     }
                                   },
                                 ),
@@ -824,9 +824,9 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                                       ),
                                     );
                                     if (result != null) {
-                                      final List<BaseGrupKoduModel?> list = result.cast<BaseGrupKoduModel?>().toList();
-                                      viewModel.changeArrKod5Temp(list.map((e) => e?.grupKodu).toList().nullCheckWithGeneric);
-                                      kod5Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                      final List<BaseGrupKoduModel> list = result;
+                                      viewModel.changeArrKod5Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
+                                      kod5Controller.text = list.map((e) => e.grupAdi).join(", ");
                                     }
                                   },
                                 ),

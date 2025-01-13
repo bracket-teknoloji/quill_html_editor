@@ -8,7 +8,6 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_listesi/view_model/uretim_sonu_kaydi_listesi_view_model.dart";
 
@@ -50,7 +49,7 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
-        floatingActionButton: fab().yetkiVarMi(yetkiController.uretimSonuKaydiEkle),
+        floatingActionButton: fab(),
         body: body(),
       );
 
@@ -77,7 +76,9 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
         ],
       );
 
-  Observer fab() => Observer(
+  Observer? fab() {
+    if (yetkiController.uretimSonuKaydiEkle) {
+      return Observer(
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
@@ -88,6 +89,9 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
           },
         ),
       );
+    }
+    return null;
+  }
 
   Observer body() => Observer(
         builder: (_) => RefreshableListView.pageable(

@@ -8,8 +8,6 @@ import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_aktivite_kayitlari/model/cari_aktivite_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -57,72 +55,78 @@ final class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
               context,
               title: "#${model.id}",
               children: [
-                BottomSheetModel(
-                  title: loc.generalStrings.view,
-                  iconWidget: Icons.preview_outlined,
-                  onTap: () async {
-                    Get
-                      ..back()
-                      ..toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: await widget.updatedModel.call()));
-                  },
-                ).yetkiKontrol(model.bittiMi),
-                BottomSheetModel(
-                  title: loc.generalStrings.edit,
-                  iconWidget: Icons.edit_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.duzenle, model: await widget.updatedModel.call()));
-                    if (result == true) {
-                      widget.onRefresh.call(true);
-                    }
-                  },
-                ).yetkiKontrol(!model.bittiMi),
-                BottomSheetModel(
-                  title: loc.generalStrings.delete,
-                  iconWidget: Icons.delete_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    dialogManager.showAreYouSureDialog(() async {
-                      final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 3));
+                if (model.bittiMi)
+                  BottomSheetModel(
+                    title: loc.generalStrings.view,
+                    iconWidget: Icons.preview_outlined,
+                    onTap: () async {
+                      Get
+                        ..back()
+                        ..toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.goruntule, model: await widget.updatedModel.call()));
+                    },
+                  ),
+                if (!model.bittiMi)
+                  BottomSheetModel(
+                    title: loc.generalStrings.edit,
+                    iconWidget: Icons.edit_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.duzenle, model: await widget.updatedModel.call()));
+                      if (result == true) {
+                        widget.onRefresh.call(true);
+                      }
+                    },
+                  ),
+                if (yetkiController.cariAktiviteSilme)
+                  BottomSheetModel(
+                    title: loc.generalStrings.delete,
+                    iconWidget: Icons.delete_outline_outlined,
+                    onTap: () async {
+                      Get.back();
+                      dialogManager.showAreYouSureDialog(() async {
+                        final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 3));
+                        if (result.isSuccess) {
+                          dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                          widget.onRefresh.call(true);
+                        }
+                      });
+                    },
+                  ),
+                if (model.bittiMi && yetkiController.cariAktiviteBitirmeyiGeriAl && yetkiController.cariAktiviteDuzenleme)
+                  BottomSheetModel(
+                    title: "Bitirmeyi Geri Al",
+                    iconWidget: Icons.remove_done_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 8));
                       if (result.isSuccess) {
                         dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
                         widget.onRefresh.call(true);
                       }
-                    });
-                  },
-                ).yetkiKontrol(yetkiController.cariAktiviteSilme),
-                BottomSheetModel(
-                  title: "Bitirmeyi Geri Al",
-                  iconWidget: Icons.remove_done_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: CariAktiviteListesiModel(id: model.id, islemKodu: 8));
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                      widget.onRefresh.call(true);
-                    }
-                  },
-                ).yetkiKontrol(model.bittiMi && yetkiController.cariAktiviteBitirmeyiGeriAl && yetkiController.cariAktiviteDuzenleme),
-                BottomSheetModel(
-                  title: "Bitir",
-                  iconWidget: Icons.done_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.bitir, model: model));
-                    if (result == true) {
-                      widget.onRefresh.call(true);
-                    }
-                  },
-                ).yetkiKontrol(!model.bittiMi && yetkiController.cariAktiviteDuzenleme),
-                BottomSheetModel(
-                  title: "Cari İşlemleri",
-                  iconWidget: Icons.person_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    await showCariIslemleriDialog();
-                  },
-                ).yetkiKontrol(yetkiController.cariListesi),
-              ].nullCheckWithGeneric,
+                    },
+                  ),
+                if (!model.bittiMi && yetkiController.cariAktiviteDuzenleme)
+                  BottomSheetModel(
+                    title: "Bitir",
+                    iconWidget: Icons.done_outline_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await Get.toNamed("mainPage/cariAktiviteEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.bitir, model: model));
+                      if (result == true) {
+                        widget.onRefresh.call(true);
+                      }
+                    },
+                  ),
+                if (yetkiController.cariListesi)
+                  BottomSheetModel(
+                    title: "Cari İşlemleri",
+                    iconWidget: Icons.person_outline_outlined,
+                    onTap: () async {
+                      Get.back();
+                      await showCariIslemleriDialog();
+                    },
+                  ),
+              ],
             );
           },
           onLongPress: () async => await showCariIslemleriDialog(),

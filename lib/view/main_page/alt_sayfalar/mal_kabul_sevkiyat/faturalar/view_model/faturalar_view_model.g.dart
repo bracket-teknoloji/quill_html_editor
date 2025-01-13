@@ -308,7 +308,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void changeArrKod0(List<String?> value) {
+  void changeArrKod0(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.changeArrKod0');
     try {
@@ -319,7 +319,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void changeArrKod1(List<String?> value) {
+  void changeArrKod1(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.changeArrKod1');
     try {
@@ -330,7 +330,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void changeArrKod2(List<String?> value) {
+  void changeArrKod2(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.changeArrKod2');
     try {
@@ -341,7 +341,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void changeArrKod3(List<String?> value) {
+  void changeArrKod3(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.changeArrKod3');
     try {
@@ -352,7 +352,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void changeArrKod4(List<String?> value) {
+  void changeArrKod4(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.changeArrKod4');
     try {
@@ -363,7 +363,7 @@ mixin _$FaturalarViewModel on _FaturalarViewModelBase, Store {
   }
 
   @override
-  void changeArrKod5(List<String?> value) {
+  void changeArrKod5(List<String> value) {
     final _$actionInfo = _$_FaturalarViewModelBaseActionController.startAction(
         name: '_FaturalarViewModelBase.changeArrKod5');
     try {

@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -13,7 +14,6 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
@@ -106,19 +106,20 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
             subtitle: widget.model.baseEditEnum.getName,
           ),
           actions: [
-            IconButton(
-              onPressed: () {
-                if (!formkey.currentState!.validate()) return;
-                dialogManager.showAreYouSureDialog(() async {
-                  final result = await viewModel.sendData();
-                  if (result.isSuccess) {
-                    Get.back(result: true);
-                    dialogManager.showSuccessSnackBar(result.message ?? "${viewModel.model?.isemriNo} başarıyla kaydedildi.");
-                  }
-                });
-              },
-              icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi(isEnabled),
+            if (isEnabled)
+              IconButton(
+                onPressed: () {
+                  if (!formkey.currentState!.validate()) return;
+                  dialogManager.showAreYouSureDialog(() async {
+                    final result = await viewModel.sendData();
+                    if (result.isSuccess) {
+                      Get.back(result: true);
+                      dialogManager.showSuccessSnackBar(result.message ?? "${viewModel.model?.isemriNo} başarıyla kaydedildi.");
+                    }
+                  });
+                },
+                icon: const Icon(Icons.save_outlined),
+              ),
           ],
         ),
         body: SingleChildScrollView(
@@ -176,32 +177,33 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                   ),
                   onTap: viewModel.getBelgeNo,
                 ),
-                CustomTextField(
-                  labelText: "Stok Kodu",
-                  controller: stokKoduController,
-                  enabled: ekleMi,
-                  isMust: true,
-                  suffixMore: true,
-                  readOnly: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model?.stokAdi ?? "")),
-                  onTap: () async {
-                    final result = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true));
-                    if (result is StokListesiModel) {
-                      stokKoduController.text = result.stokKodu ?? "";
-                      viewModel.setStok(result);
-                    }
-                  },
-                  suffix: IconButton(
-                    icon: const Icon(Icons.qr_code_scanner_outlined),
-                    onPressed: () async {
-                      final qr = await Get.toNamed("qr");
-                      if (qr is String) {
-                        stokKoduController.text = qr;
-                        viewModel.setStok(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: qr)));
+                if (yetkiController.stokListesi)
+                  CustomTextField(
+                    labelText: "Stok Kodu",
+                    controller: stokKoduController,
+                    enabled: ekleMi,
+                    isMust: true,
+                    suffixMore: true,
+                    readOnly: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.stokAdi ?? "")),
+                    onTap: () async {
+                      final result = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true));
+                      if (result is StokListesiModel) {
+                        stokKoduController.text = result.stokKodu ?? "";
+                        viewModel.setStok(result);
                       }
                     },
+                    suffix: IconButton(
+                      icon: const Icon(Icons.qr_code_scanner_outlined),
+                      onPressed: () async {
+                        final qr = await Get.toNamed("qr");
+                        if (qr is String) {
+                          stokKoduController.text = qr;
+                          viewModel.setStok(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: qr)));
+                        }
+                      },
+                    ),
                   ),
-                ).yetkiVarMi(yetkiController.stokListesi),
                 Row(
                   children: [
                     Expanded(
@@ -213,24 +215,25 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                         isMust: true,
                       ),
                     ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Proje",
-                        controller: projeController,
-                        enabled: isEnabled,
-                        isMust: true,
-                        suffixMore: true,
-                        readOnly: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model?.projeKodu ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model?.projeKodu);
-                          if (result is BaseProjeModel) {
-                            projeController.text = result.projeAciklama ?? "";
-                            viewModel.setProje(result);
-                          }
-                        },
+                    if (yetkiController.projeUygulamasiAcikMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Proje",
+                          controller: projeController,
+                          enabled: isEnabled,
+                          isMust: true,
+                          suffixMore: true,
+                          readOnly: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model?.projeKodu ?? "")),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model?.projeKodu);
+                            if (result is BaseProjeModel) {
+                              projeController.text = result.projeAciklama ?? "";
+                              viewModel.setProje(result);
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                   ],
                 ),
                 Row(
@@ -290,13 +293,14 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                         }
                       },
                     ),
-                    CustomTextField(
-                      labelText: "Sipariş",
-                      controller: siparisController,
-                      enabled: isEnabled,
-                      suffixMore: true,
-                    ).isKDebug(),
-                  ].whereType<Widget>().toList(),
+                    if (kDebugMode)
+                      CustomTextField(
+                        labelText: "Sipariş",
+                        controller: siparisController,
+                        enabled: isEnabled,
+                        suffixMore: true,
+                      ),
+                  ],
                 ),
                 CustomLayoutBuilder.divideInHalf(
                   children: [

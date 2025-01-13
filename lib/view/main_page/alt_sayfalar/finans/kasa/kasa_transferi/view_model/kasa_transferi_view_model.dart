@@ -52,7 +52,7 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> setGirisKasa(KasaList value) async {
-    if (value.dovizli == "E") {
+    if (value.dovizliMi) {
       girisKasa = await getKasalar(value.kasaKodu);
     } else {
       girisKasa = value;

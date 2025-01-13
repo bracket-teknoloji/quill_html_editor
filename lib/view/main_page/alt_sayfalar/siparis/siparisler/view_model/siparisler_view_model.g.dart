@@ -718,7 +718,7 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   @override
-  void setSiparislerList(List<BaseSiparisEditModel?>? value) {
+  void setSiparislerList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
         name: '_SiparislerViewModelBase.setSiparislerList');
     try {
@@ -729,7 +729,7 @@ mixin _$SiparislerViewModel on _SiparislerViewModelBase, Store {
   }
 
   @override
-  void addSiparislerList(List<BaseSiparisEditModel?>? value) {
+  void addSiparislerList(List<BaseSiparisEditModel>? value) {
     final _$actionInfo = _$_SiparislerViewModelBaseActionController.startAction(
         name: '_SiparislerViewModelBase.addSiparislerList');
     try {

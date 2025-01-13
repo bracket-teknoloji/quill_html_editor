@@ -645,51 +645,53 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 ],
               ),
             ).yetkiVarMi(parametreModel.mapCariKullSahalar != null),
-            CustomWidgetWithLabel(
-              text: "E-İşlemler",
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CustomTextField(
-                    labelText: "E-Fatura Senaryo",
-                    enabled: enabled,
-                    isMust: true,
-                    readOnly: true,
-                    controller: eFaturaSenaryoController,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.efaturaSenaryo ?? "")),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "E-Fatura Senaryo",
-                        children: List.generate(
-                          viewModel.senaryoMap.length,
-                          (index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
-                        ),
-                      );
-                      if (result != null) {
-                        viewModel.setSenaryo(result.value);
-                        eFaturaSenaryoController.text = result.key;
-                      }
-                    },
-                  ).yetkiVarMi(yetkiController.eFaturaAktif),
-                  ElevatedButton(
-                    onPressed: () async {
-                      final result = await viewModel.postFaturaTipi();
-                      if (result.isSuccess) {
-                        dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                      } else {
-                        dialogManager.showErrorSnackBar(result.message ?? "Hata");
-                      }
-                    },
-                    child: Observer(
-                      builder: (_) => Text("E-Fatura Mükellefiyetini ${viewModel.efaturaButonAciklama}"),
-                    ),
-                  ).paddingAll(UIHelper.lowSize),
-                ],
+            if (parametreModel.eFaturaAktif == true && (widget.model?.isDuzenle ?? false))
+              CustomWidgetWithLabel(
+                text: "E-İşlemler",
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (yetkiController.eFaturaAktif)
+                      CustomTextField(
+                        labelText: "E-Fatura Senaryo",
+                        enabled: enabled,
+                        isMust: true,
+                        readOnly: true,
+                        controller: eFaturaSenaryoController,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model?.efaturaSenaryo ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: "E-Fatura Senaryo",
+                            children: List.generate(
+                              viewModel.senaryoMap.length,
+                              (index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
+                            ),
+                          );
+                          if (result != null) {
+                            viewModel.setSenaryo(result.value);
+                            eFaturaSenaryoController.text = result.key;
+                          }
+                        },
+                      ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        final result = await viewModel.postFaturaTipi();
+                        if (result.isSuccess) {
+                          dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                        } else {
+                          dialogManager.showErrorSnackBar(result.message ?? "Hata");
+                        }
+                      },
+                      child: Observer(
+                        builder: (_) => Text("E-Fatura Mükellefiyetini ${viewModel.efaturaButonAciklama}"),
+                      ),
+                    ).paddingAll(UIHelper.lowSize),
+                  ],
+                ),
               ),
-            ).yetkiVarMi(parametreModel.eFaturaAktif == true && (widget.model?.isDuzenle ?? false)),
-          ].whereType<Widget>().toList(),
+          ],
         ),
       ),
     );

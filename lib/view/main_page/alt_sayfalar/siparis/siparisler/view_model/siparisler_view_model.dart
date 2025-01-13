@@ -160,9 +160,9 @@ abstract class _SiparislerViewModelBase with Store {
   }
 
   @action
-  void setSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = value?.asObservable();
+  void setSiparislerList(List<BaseSiparisEditModel>? value) => musteriSiparisleriList = value?.asObservable();
   @action
-  void addSiparislerList(List<BaseSiparisEditModel?>? value) => musteriSiparisleriList = musteriSiparisleriList?..addAll(value!);
+  void addSiparislerList(List<BaseSiparisEditModel>? value) => musteriSiparisleriList = musteriSiparisleriList?..addAll(value!);
   @action
   void removeSiparislerList(int index) {
     musteriSiparisleriList = musteriSiparisleriList?..removeAt(index);

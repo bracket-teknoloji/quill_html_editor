@@ -11,7 +11,6 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../is_emri_hammade_takibi/model/is_emri_hammadde_takibi_listesi_model.dart";
@@ -64,19 +63,20 @@ final class _IsEmriHammaddeTakibiDetayViewState extends BaseState<IsEmriHammadde
                 ),
               ),
             ).paddingSymmetric(vertical: UIHelper.lowSize),
-            CustomTextField(
-              labelText: "Stok Kodu",
-              controller: controller,
-              suffixMore: true,
-              onSubmitted: (value) async => getStok(value),
-              suffix: IconButton(
-                icon: const Icon(Icons.qr_code_scanner_outlined),
-                onPressed: () async {
-                  final qr = await Get.toNamed("qr");
-                  if (qr != null) getStok(qr);
-                },
+            if (yetkiController.stokListesi)
+              CustomTextField(
+                labelText: "Stok Kodu",
+                controller: controller,
+                suffixMore: true,
+                onSubmitted: (value) async => getStok(value),
+                suffix: IconButton(
+                  icon: const Icon(Icons.qr_code_scanner_outlined),
+                  onPressed: () async {
+                    final qr = await Get.toNamed("qr");
+                    if (qr != null) getStok(qr);
+                  },
+                ),
               ),
-            ).yetkiVarMi(yetkiController.stokListesi),
             Expanded(
               child: Observer(
                 builder: (_) => RefreshableListView(

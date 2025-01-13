@@ -178,13 +178,8 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1);
     }
-    final List<BottomSheetModel> bottomSheetList = grupKodList
-        .where((e) => e.grupNo == grupNo)
-        .toList()
-        .cast<BaseGrupKoduModel>()
-        .map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
-        .toList()
-        .cast<BottomSheetModel>();
+    final List<BottomSheetModel> bottomSheetList =
+        grupKodList.where((e) => e.grupNo == grupNo).toList().map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e))).toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
     if (result != null) {

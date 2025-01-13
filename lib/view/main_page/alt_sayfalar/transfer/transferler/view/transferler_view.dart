@@ -97,7 +97,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
           ),
         ],
         bottom: AppBarPreferedSizedBottom(
-          children: <AppBarButton?>[
+          children: [
             AppBarButton(
               icon: Icons.filter_alt_outlined,
               onPressed: () async => await filter(),

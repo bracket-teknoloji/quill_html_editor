@@ -17,7 +17,6 @@ import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
@@ -67,30 +66,32 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                     spacing: UIHelper.lowSize,
                     children: [
                       Text(model.belgeNo ?? ""),
-                      const Icon(
-                        Icons.camera_alt_outlined,
-                        size: UIHelper.highSize,
-                      ).yetkiVarMi((model.evrakSayisi ?? 0) > 0),
+                      if ((model.evrakSayisi ?? 0) > 0)
+                        const Icon(
+                          Icons.camera_alt_outlined,
+                          size: UIHelper.highSize,
+                        ),
                     ],
                   ),
                   Text(model.yerAciklamaDurum, style: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)),
                 ],
               ),
-              Row(
-                children: [
-                  const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizKodu != null),
-                ],
-              ),
+              if (model.dovizKodu != null)
+                const Row(
+                  children: [
+                    ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+                  ],
+                ),
               Text(model.cariKodu ?? ""),
               LayoutBuilder(
                 builder: (context, constraints) => Wrap(
                   children: [
-                    Text("Döviz Tutarı: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu}").yetkiVarMi(model.dovizTutari != null),
+                    if (model.dovizTutari != null) Text("Döviz Tutarı: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu}"),
                     Text("Tutar: ${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                     Text("İşlem Tarihi: ${model.tarih.toDateString}"),
                     Text("Vade Tarihi: ${model.vadeTarihi.toDateString}"),
-                    Text("Asıl/Ciro: ${model.ciroTipiString}").yetkiVarMi(!widget.cekSenetListesiEnum.borcMu),
-                    Text("Seri No: ${model.seriNo ?? ""}").yetkiVarMi(widget.cekSenetListesiEnum.cekMi),
+                    if (!widget.cekSenetListesiEnum.borcMu) Text("Asıl/Ciro: ${model.ciroTipiString}"),
+                    if (widget.cekSenetListesiEnum.cekMi) Text("Seri No: ${model.seriNo ?? ""}"),
                   ]
                       .map(
                         (e) => e is! SizedBox
@@ -104,7 +105,7 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                       .nullCheckWithGeneric,
                 ),
               ),
-              Text("${model.getCekBankaAdi} ${model.getCekSubeAdi ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(model.getCekBankaAdi != null || model.getCekSubeAdi != null),
+              if (model.getCekBankaAdi != null || model.getCekSubeAdi != null) Text("${model.getCekBankaAdi} ${model.getCekSubeAdi ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize),
               Text(model.aciklamalar, style: const TextStyle(color: ColorPalette.slateGray)),
             ],
           ),

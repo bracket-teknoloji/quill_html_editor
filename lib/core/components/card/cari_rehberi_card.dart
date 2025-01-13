@@ -5,7 +5,6 @@ import "package:picker/core/components/listener/mouse_right_click_listener.dart"
 import "../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
-import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
@@ -45,18 +44,11 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
                 if (model.cariIl != null) Text("${model.cariIl ?? ""}/${model.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) else const SizedBox(),
                 Row(
                   children: [
-                    const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(model.efaturaMi == true),
-                    ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(model.dovizli == true),
-                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(model.boylam != null),
-                    const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(model.kilit == "E"),
-                    // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
-                    // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
-                  ]
-                      .map(
-                        (e) => e is! SizedBox? ? e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize) : null,
-                      )
-                      .toList()
-                      .nullCheckWithGeneric,
+                    if (model.efaturaMi == true) const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),
+                    if (model.dovizli == true) ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
+                    if (model.boylam != null) const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
+                    if (model.kilit == "E") const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
+                  ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
                 ),
               ],
             ),

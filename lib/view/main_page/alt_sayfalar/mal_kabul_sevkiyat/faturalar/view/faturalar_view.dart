@@ -146,7 +146,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
           IconButton(onPressed: () async => await viewModel.changeSearchBar(), icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined))),
         ],
         bottom: AppBarPreferedSizedBottom(
-          children: <AppBarButton?>[
+          children: [
             AppBarButton(
               icon: Icons.filter_alt_outlined,
               onPressed: () async => await filtrele(),
@@ -536,9 +536,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 ),
                               );
                               if (result != null) {
-                                final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod0(list.map((e) => e?.grupKodu).toList());
-                                _kod0Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                final List<BaseGrupKoduModel> list = result;
+                                viewModel.changeArrKod0(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                _kod0Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
@@ -566,9 +566,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 ),
                               );
                               if (result != null) {
-                                final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod1(list.map((e) => e?.grupKodu).toList());
-                                _kod1Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                final List<BaseGrupKoduModel> list = result;
+                                viewModel.changeArrKod1(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                _kod1Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
@@ -600,9 +600,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 ),
                               );
                               if (result != null) {
-                                final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod2(list.map((e) => e?.grupKodu).toList());
-                                _kod2Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                final List<BaseGrupKoduModel> list = result;
+                                viewModel.changeArrKod2(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                _kod2Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
@@ -630,9 +630,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 ),
                               );
                               if (result != null) {
-                                final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod3(list.map((e) => e?.grupKodu).toList());
-                                _kod3Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                final List<BaseGrupKoduModel> list = result;
+                                viewModel.changeArrKod3(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                _kod3Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
@@ -664,9 +664,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 ),
                               );
                               if (result != null) {
-                                final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod4(list.map((e) => e?.grupKodu).toList());
-                                _kod4Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                final List<BaseGrupKoduModel> list = result;
+                                viewModel.changeArrKod4(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                _kod4Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },
@@ -694,9 +694,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 ),
                               );
                               if (result != null) {
-                                final List<BaseGrupKoduModel?> list = result;
-                                viewModel.changeArrKod5(list.map((e) => e?.grupKodu).toList());
-                                _kod5Controller.text = list.map((e) => e?.grupAdi).join(", ");
+                                final List<BaseGrupKoduModel> list = result;
+                                viewModel.changeArrKod5(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                _kod5Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
                             },

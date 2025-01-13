@@ -36,8 +36,8 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
   CariHareketleriModel get model => widget.cariHareketleriModel;
   @override
   Widget build(BuildContext context) {
-    final slidableList = [
-      SlidableAction(
+    final List<SlidableAction> slidableList = [
+      if (widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun) SlidableAction(
         onPressed: (context) async {
           if (model.faturaMi) {
             await Get.toNamed(
@@ -58,8 +58,8 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
         backgroundColor: theme.colorScheme.onPrimary,
         foregroundColor: theme.colorScheme.primary,
         label: "Belgeye Git",
-      ).yetkiVarMi(widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun),
-    ].map((e) => e is! SizedBox ? e : null).toList().nullCheckWithGeneric;
+      ),
+    ];
     return InkWell(
       onTap: widget.onTap ?? () {},
       onLongPress: () async => await dialogManager.showCariHareketleriGridViewDialog(
@@ -77,7 +77,7 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
             enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun,
             endActionPane: ActionPane(
               motion: const BehindMotion(),
-              children: slidableList.whereType<SlidableAction>().toList(),
+              children: slidableList,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -161,14 +161,14 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
               ),
               Row(
                 children: [
-                  Expanded(
+                  if (yetkiController.plasiyerUygulamasiAcikMi) Expanded(
                     child: CustomWidgetWithLabel(
                       addPadding: false,
                       isVertical: true,
                       text: "Plasiyer",
                       child: SizedBox(child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
                     ),
-                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                  ),
                   Expanded(
                     child: CustomWidgetWithLabel(
                       addPadding: false,
@@ -177,7 +177,7 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> {
                       child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis),
                     ),
                   ),
-                ].whereType<Expanded>().toList(),
+                ],
               ),
               const Divider(
                 endIndent: 0,

@@ -1,4 +1,5 @@
 import "package:collection/collection.dart";
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 
@@ -7,7 +8,6 @@ import "../../../../core/constants/color_palette.dart";
 import "../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../core/constants/enum/menu_list_enum.dart";
 import "../../../../core/constants/enum/serbest_rapor_detay_kod_enum.dart";
-import "../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../core/init/cache/cache_manager.dart";
 import "../../../../core/init/network/login/api_urls.dart";
 import "../../../../core/init/network/network_manager.dart";
@@ -52,7 +52,7 @@ final class MenuItemConstants {
     );
   }
 
-  List<GridItemModel> gridItemModel = <Object?>[
+  List<GridItemModel> gridItemModel = [
     //*Cari
     //*
     GridItemModel.anamenu(
@@ -78,12 +78,11 @@ final class MenuItemConstants {
             GridItemModel.item(name: "cari_Rap_Hareket", title: "Cari Hareket Raporu", route: "/mainPage/cariHareketRaporu"),
             GridItemModel.item(name: "cari_Rap_HarDetayliYaslandir", title: "Hareket Detaylı Yaşlandırma Rap.", route: "/mainPage/cariHareketDetayliYaslandirmaRaporu"),
             GridItemModel.item(name: "cari_Rap_StokSatisOzeti", title: "Cari Stok Satış Özeti", route: "/mainPage/cariStokSatisOzeti"),
-            GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi")
-                .yetkiVarMi(AccountModel.instance.adminMi),
+            if (AccountModel.instance.adminMi) GridItemModel.item(name: "stok_Rap_UrunGrubunaGoreSatis", title: "Ürün Grubuna Göre Satış Grafiği", route: "/mainPage/urunGrubunaGoreSatisGrafigi"),
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.cari),
-          ].whereType<GridItemModel>().toList(),
+          ],
         ),
-      ].whereType<GridItemModel>().toList(),
+      ],
     ),
     //*E-Belge
     //*
@@ -118,10 +117,10 @@ final class MenuItemConstants {
           name: null,
           title: "Banka",
           iconData: Icons.account_balance_outlined,
-          altMenuler: <Object?>[
+          altMenuler: [
             GridItemModel.item(name: "yonetici_Banka_Banka_Litesi", title: "Banka Listesi", route: "/mainPage/bankaListesi"),
             GridItemModel.item(name: "yonetici_Banka_Islemleri", title: "İşlemler", route: "/mainPage/bankaIslemleri"),
-          ].whereType<GridItemModel>().toList(),
+          ],
         ),
         GridItemModel.altmenu(
           name: null,
@@ -193,11 +192,11 @@ final class MenuItemConstants {
           title: "Raporlar",
           icon: "monitoring",
           altMenuler: [
-            GridItemModel.item(name: "finans_OzetRapor", title: "Özet Rapor", route: "/mainPage/finansOzetRaporu").isKDebug(),
+            if (kDebugMode) GridItemModel.item(name: "finans_OzetRapor", title: "Özet Rapor", route: "/mainPage/finansOzetRaporu"),
             GridItemModel.item(name: "finans_Raporlar_FinansalDurum", title: "Finansal Durum Raporu", route: "/mainPage/finansFinansalDurumRaporu"),
             GridItemModel.item(name: "finans_Raporlar_AylikMizan", title: "Aylık Mizan Raporu", route: "/mainPage/finansAylikMizanRaporu"),
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.finans),
-          ].whereType<GridItemModel>().toList(),
+          ],
         ),
       ],
     ),
@@ -215,24 +214,25 @@ final class MenuItemConstants {
         GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/surumYenilikleri"),
         if (AccountModel.instance.adminMi) GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
-      ].whereType<GridItemModel>().toList(),
+      ],
     ),
 
     //* Hücre Takibi
     //*
-    GridItemModel.anamenu(
-      name: "HTAK",
-      title: "Hücre Takibi",
-      icon: "shelves",
-      color: ColorPalette.skyBlue,
-      altMenuler: <GridItemModel>[
-        GridItemModel.item(name: "hucre_Yerlestir", title: "Hücre Yerleştir", route: "/mainPage/hucreEditYerlestir"),
-        GridItemModel.item(name: "hucre_Bosalt", title: "Hücre Boşalt", route: "/mainPage/hucreEditBosalt"),
-        GridItemModel.item(name: "hucre_Transfer", title: "Hücre Transferi", route: "/mainPage/hucreTransferi"),
-        GridItemModel.item(name: "hucre_Arama", title: "Hücre Ara", route: "/mainPage/hucreAra"),
-        GridItemModel.item(name: "hucre_Listesi", title: "Hücre Listesi", route: "/mainPage/hucreListesi"),
-      ],
-    ).yetkiVarMi(_anaVeri?.paramModel?.lokalDepoUygulamasiAcik == true && _anaVeri?.paramModel?.depoList?.any((element) => element.hucreTakibi == "E") == true),
+    if (_anaVeri?.paramModel?.lokalDepoUygulamasiAcik == true && _anaVeri?.paramModel?.depoList?.any((element) => element.hucreTakibi == "E") == true)
+      GridItemModel.anamenu(
+        name: "HTAK",
+        title: "Hücre Takibi",
+        icon: "shelves",
+        color: ColorPalette.skyBlue,
+        altMenuler: <GridItemModel>[
+          GridItemModel.item(name: "hucre_Yerlestir", title: "Hücre Yerleştir", route: "/mainPage/hucreEditYerlestir"),
+          GridItemModel.item(name: "hucre_Bosalt", title: "Hücre Boşalt", route: "/mainPage/hucreEditBosalt"),
+          GridItemModel.item(name: "hucre_Transfer", title: "Hücre Transferi", route: "/mainPage/hucreTransferi"),
+          GridItemModel.item(name: "hucre_Arama", title: "Hücre Ara", route: "/mainPage/hucreAra"),
+          GridItemModel.item(name: "hucre_Listesi", title: "Hücre Listesi", route: "/mainPage/hucreListesi"),
+        ],
+      ),
 
     //* Mal Kabul
     //*
@@ -375,7 +375,7 @@ final class MenuItemConstants {
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.stok),
           ],
         ),
-      ].whereType<GridItemModel>().toList(),
+      ],
     ),
 
     //* Tahsilat & Ödeme
@@ -424,7 +424,7 @@ final class MenuItemConstants {
         //? anamenünün onTap'i olmadığı için tek item verdim. Tek item verince direkt onu açıyor. O yüzden parametrelerin bir anlamı yok.
         GridItemModel.item(name: "temsilci_Profil", title: "Profilim", icon: "profile", route: "/mainPage/temsilciProfil"),
       ],
-      yetkiListesi: <bool?>[
+      yetkiListesi: [
         CacheManager.getAnaVeri?.paramModel?.plasiyerUygulamasi == true,
       ],
     ),
@@ -441,7 +441,7 @@ final class MenuItemConstants {
         GridItemModel.item(name: "transfer_AG", title: "Ambar Giriş Fişi", route: "/mainPage/transferAmbarGiris"),
         GridItemModel.item(name: "transfer_AC", title: "Ambar Çıkış Fişi", route: "/mainPage/transferAmbarCikis"),
         // GridItemModel.item(name: "", title: "Stok Transfer Raporu", icon: ""),
-      ].whereType<GridItemModel>().toList(),
+      ],
     ),
 
     //* Üretim
@@ -455,8 +455,8 @@ final class MenuItemConstants {
         GridItemModel.item(name: "uretim_USK", title: "Üretim Sonu Kaydı", route: "/mainPage/uretimSonuKaydi"),
         GridItemModel.item(name: "uretim_IsEmri", title: "İş Emirleri", route: "/mainPage/isEmriRehberi"),
         GridItemModel.item(name: "uretim_MalToplama", title: "Üretime Mal Toplama"),
-        GridItemModel.item(name: "uretim_Isemri_HammaddeTakip", title: "İş Emri Hammadde Takibi", route: "/mainPage/isEmriHammaddeTakibi").isDebug(),
-      ].whereType<GridItemModel>().toList(),
+        if (AccountModel.instance.isDebug) GridItemModel.item(name: "uretim_Isemri_HammaddeTakip", title: "İş Emri Hammadde Takibi", route: "/mainPage/isEmriHammaddeTakibi"),
+      ],
     ),
     GridItemModel.anamenu(
       name: MenuItemsEnum.genelSerbestRaporlar.yetkiName,
@@ -486,7 +486,7 @@ final class MenuItemConstants {
         ),
       ],
     ),
-  ].whereType<GridItemModel>().toList();
+  ];
 
   List<GridItemModel> getList() => gridItemModel.where((element) => element.yetkiKontrol).toList();
 

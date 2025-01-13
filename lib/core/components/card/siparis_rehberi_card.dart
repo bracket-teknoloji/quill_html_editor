@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../view/main_page/model/param_model.dart";
@@ -8,9 +9,7 @@ import "../../base/state/base_state.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
@@ -44,11 +43,14 @@ final class SiparisRehberiCard extends StatefulWidget {
 final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
 
-  List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
+ List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).nonNulls.toList();
 
-  Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle)
-      .yetkiVarMi(widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
-
+  Widget? aciklamaText(int? index) {
+    if (widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true) {
+      return Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle);
+    }
+    return null;
+  }
   ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
   @override
@@ -80,53 +82,53 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
             children: [
               Row(
                 children: [
-                  ColorfulBadge(label: Text(widget.model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(widget.model.remoteTempBelgeEtiketi != null),
-                  ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model.dovizAdi != null),
-                  const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis).yetkiVarMi(widget.model.isNew == true),
-                  ColorfulBadge(label: Text("Fatura (${widget.model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(widget.model.faturalasanSayi != null),
-                  const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali).yetkiVarMi(widget.model.tipi == 1),
-                  const ColorfulBadge(label: Text("Onayda")).yetkiVarMi(widget.model.tipi == 3),
-                  ColorfulBadge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye).yetkiVarMi(widget.model.irsaliyelesti == "E"),
-                ].nullCheck.map((e) => e.runtimeType != SizedBox ? e.paddingOnly(right: UIHelper.lowSize) : e).toList(),
+                  if (widget.model.remoteTempBelgeEtiketi != null) ColorfulBadge(label: Text(widget.model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri),
+                  if (widget.model.dovizAdi != null) ColorfulBadge(label: Text("Dövizli ${widget.model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
+                  if (widget.model.isNew == true) const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis),
+                  if (widget.model.faturalasanSayi != null) ColorfulBadge(label: Text("Fatura (${widget.model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura),
+                  if (widget.model.tipi == 1) const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
+                  if (widget.model.tipi == 3) const ColorfulBadge(label: Text("Onayda")),
+                  if (widget.model.irsaliyelestiMi) ColorfulBadge(label: Text("İrsaliye (${widget.model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye),
+                ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
               ),
               Text(widget.model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-              LayoutBuilder(
-                builder: (context, constrains) => Wrap(
-                  children: [
-                    Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
-                    Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
-                    Text("Cari Kodu: ${widget.model.cariKodu ?? ""}"),
-                    Text("Koşul: ${widget.model.kosulKodu ?? ""}").yetkiVarMi(widget.model.kosulKodu != null),
-                    Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
-                    Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}").yetkiVarMi(widget.showVade == true),
-                    Text("Döviz Toplamı: ${widget.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.model.dovizAdi ?? ""}")
-                        .yetkiVarMi(widget.model.dovizTutari != null && widget.model.dovizAdi != null),
-                    Text("KDV: ${widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                  ].whereType<Widget>().map((e) => e is SizedBox ? null : SizedBox(width: constrains.maxWidth / 2, child: e)).whereType<Widget>().toList(),
-                ),
-              ),
-
-              const Divider(
-                indent: 0,
-                endIndent: 0,
-              ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showMiktar == true),
-              // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              CustomLayoutBuilder.divideInHalf(
                 children: [
-                  Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
-                  const Flexible(child: Text("|")),
-                  Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
-                  const Flexible(child: Text("|")),
-                  Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
-                ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
-              ).yetkiVarMi(widget.showMiktar == true),
-              const Divider(
-                indent: 0,
-                endIndent: 0,
-              ).paddingSymmetric(vertical: UIHelper.midSize).yetkiVarMi(widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty),
+                  Text("Tipi: ${widget.model.yurticiMi ? "Yurtiçi" : "Yurtdışı"}"),
+                  Text("Kalem Adedi: ${widget.model.kalemAdedi ?? ""}"),
+                  Text("Cari Kodu: ${widget.model.cariKodu ?? ""}"),
+                  if (widget.model.kosulKodu != null) Text("Koşul: ${widget.model.kosulKodu ?? ""}"),
+                  Text("Plasiyer: ${widget.model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
+                  if (widget.showVade == true) Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}"),
+                  if (widget.model.dovizTutari != null && widget.model.dovizAdi != null)
+                    Text("Döviz Toplamı: ${widget.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.model.dovizAdi ?? ""}"),
+                  Text("KDV: ${widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                  Text("Ara Toplam: ${widget.model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                  Text("Genel Toplam: ${widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                ],
+              ),
+              if (widget.showMiktar == true)
+                const Divider(
+                  indent: 0,
+                  endIndent: 0,
+                ).paddingSymmetric(vertical: UIHelper.midSize),
+              // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
+              if (widget.showMiktar == true)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
+                    const Flexible(child: Text("|")),
+                    Text("Teslim Miktar: ${((widget.model.miktar ?? 0) - (widget.model.kalanMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
+                    const Flexible(child: Text("|")),
+                    Text("Kalan Miktar: ${widget.model.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", style: greyTextStyle),
+                  ],
+                ),
+              if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)
+                const Divider(
+                  indent: 0,
+                  endIndent: 0,
+                ).paddingSymmetric(vertical: UIHelper.midSize),
               ...aciklamaList(),
             ],
           ),

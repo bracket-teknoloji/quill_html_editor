@@ -214,7 +214,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                     if (value?.length != 15) {
                       return "15 basamaklı olmalıdır.";
                     }
-                    if (viewModel.model.ebelgeCheckbox == "E" && !(parametreModel.arrEIrsSeri?.any((element) => value?.startsWith(element) ?? true) ?? false)) {
+                    if (viewModel.model.eBelgeCheckBoxMi && !(parametreModel.arrEIrsSeri?.any((element) => value?.startsWith(element) ?? true) ?? false)) {
                       return "E-İrsaliye için ${parametreModel.arrEIrsSeri?.join(", ")} serisi kullanılmalı.";
                     }
                     return null;
@@ -328,7 +328,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         isVertical: true,
                         child: Observer(
                           builder: (_) => Switch.adaptive(
-                            value: viewModel.model.ebelgeCheckbox == "E",
+                            value: viewModel.model.eBelgeCheckBoxMi,
                             onChanged: enable && !(model.getEditTipiEnum?.eIrsaliyeIsaretleyemesin ?? false)
                                 ? (value) {
                                     viewModel.setEIrsaliye(value);

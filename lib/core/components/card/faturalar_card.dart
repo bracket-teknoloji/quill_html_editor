@@ -20,7 +20,6 @@ import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
@@ -49,10 +48,14 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
 
   TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
 
-  List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).whereType<Text>().toList();
+  List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).nonNulls.toList();
 
-  Widget aciklamaText(int? index) => Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${model.toJson()["ACIK$index"]}", style: greyTextStyle)
-      .yetkiVarMi(model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true);
+  Widget? aciklamaText(int? index) {
+    if (widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true) {
+      return Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle);
+    }
+    return null;
+  }
 
   BaseSiparisEditModel get model => widget.model;
   @override
@@ -212,11 +215,11 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
               children: <Widget>[
                 Row(
                   children: <Widget>[
-                    if (model.irsaliyelesti == "E") ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye),
+                    if (model.irsaliyelestiMi) ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye),
                     if (model.faturalasmisAIrsMi || model.faturalasmisSIrsMi) const ColorfulBadge(label: Text("Faturalaşmış"), badgeColorEnum: BadgeColorEnum.taslak),
-                    if (model.efaturaMi == "E") const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura),
-                    if (model.eirsaliyeMi == "E") const ColorfulBadge(label: Text("E-İrsaliye"), badgeColorEnum: BadgeColorEnum.eFatura),
-                    if (model.earsivMi == "E") const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura),
+                    if (model.eFaturaMi) const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura),
+                    if (model.eIrsaliyeMi) const ColorfulBadge(label: Text("E-İrsaliye"), badgeColorEnum: BadgeColorEnum.eFatura),
+                    if (model.eArsivMi) const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura),
                     if (model.hataliMi) dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)),
                     if (model.taslakMi) dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)),
                     if (model.uyariMi) dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)),
@@ -260,7 +263,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Text>[
                       Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                    ].map((e) => e is SizedBox ? null : e).whereType<Widget>().toList(),
+                    ],
                   ),
                 ],
                 if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)

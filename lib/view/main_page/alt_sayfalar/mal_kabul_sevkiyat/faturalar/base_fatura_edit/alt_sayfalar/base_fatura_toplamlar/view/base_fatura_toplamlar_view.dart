@@ -487,7 +487,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                       }
                     },
               child: const Text("E-İrsaliye Ek Bilgiler"),
-            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.ebelgeCheckbox == "E" && (model.getEditTipiEnum?.satisIrsaliyesiMi ?? false)),
+            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.eBelgeCheckBoxMi && (model.getEditTipiEnum?.satisIrsaliyesiMi ?? false)),
           ],
         ),
       );

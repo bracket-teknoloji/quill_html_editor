@@ -278,8 +278,8 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
             onTap: () async {
               final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.cariHareketleriRequestModel.arrPlasiyerKodu ?? "[]"));
               if (result != null) {
-                plasiyerController.text = result.map((e) => e!.plasiyerAciklama).toList().nullCheckWithGeneric.join(", ");
-                viewModel.setPlasiyerKodu(result.map((e) => e!.plasiyerKodu).toList().nullCheckWithGeneric);
+                plasiyerController.text = result.map((e) => e.plasiyerAciklama).toList().nullCheckWithGeneric.join(", ");
+                viewModel.setPlasiyerKodu(result.map((e) => e.plasiyerKodu).toList().nullCheckWithGeneric);
               }
             },
           ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),

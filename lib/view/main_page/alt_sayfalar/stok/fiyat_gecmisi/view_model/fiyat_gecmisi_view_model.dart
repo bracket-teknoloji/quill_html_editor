@@ -17,10 +17,10 @@ abstract class _FiyatGecmisiViewModelBase with Store {
   FiyatGecmisiModel model = FiyatGecmisiModel();
 
   @observable
-  ObservableList<FiyatGecmisiResponseModel?>? modelList;
+  ObservableList<FiyatGecmisiResponseModel>? modelList;
 
   @observable
-  ObservableList<FiyatGecmisiResponseModel?>? filteredModelList;
+  ObservableList<FiyatGecmisiResponseModel>? filteredModelList;
 
   @observable
   PrintModel printModel = PrintModel(raporOzelKod: "StokEtiket");
@@ -44,7 +44,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     } else {
       filteredModelList = modelList
           ?.where(
-            (element) => (element?.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) || (element?.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false),
+            (element) => (element.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) || (element.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false),
           )
           .toList()
           .asObservable();
@@ -56,14 +56,14 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     if (value == null) {
       return;
     }
-    final index = modelList?.indexWhere((element) => element?.id == value.id);
+    final index = modelList?.indexWhere((element) => element.id == value.id);
     if (index != null && index != -1) {
       filteredModelList = filteredModelList?..[index] = value;
     }
   }
 
   @action
-  void setModelList(List<FiyatGecmisiResponseModel?>? modelList) {
+  void setModelList(List<FiyatGecmisiResponseModel>? modelList) {
     this.modelList = modelList?.asObservable();
     filterModelList("");
   }

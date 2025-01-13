@@ -21,7 +21,6 @@ import "../../../../constants/enum/edit_tipi_enum.dart";
 import "../../../../constants/enum/grup_kodu_enums.dart";
 import "../../../../constants/extensions/list_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
-import "../../../../constants/extensions/widget_extensions.dart";
 import "../../../../constants/ondalik_utils.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
@@ -135,7 +134,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 groupValues: viewModel.stokBottomSheetModel.arrGrupKodu,
                               );
                               if (result != null) {
-                                viewModel.setGrupKodu(result.whereType<BaseGrupKoduModel>().toList());
+                                viewModel.setGrupKodu(result.toList());
                                 grupKoduController.text = viewModel.stokBottomSheetModel.arrGrupKodu?.map((e) => e.grupAdi).join(",") ?? "";
                               }
                             },
@@ -155,7 +154,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 groupValues: viewModel.stokBottomSheetModel.arrKod1,
                               );
                               if (result != null) {
-                                viewModel.changeArrKod1(result.whereType<BaseGrupKoduModel>().toList());
+                                viewModel.changeArrKod1(result.toList());
                                 kod1Controller.text = viewModel.stokBottomSheetModel.arrKod1?.map((e) => e.grupAdi).join(",") ?? "";
                               }
                             },
@@ -179,7 +178,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 groupValues: viewModel.stokBottomSheetModel.arrKod2,
                               );
                               if (result != null) {
-                                viewModel.changeArrKod2(result.whereType<BaseGrupKoduModel>().toList());
+                                viewModel.changeArrKod2(result.toList());
                                 kod2Controller.text = viewModel.stokBottomSheetModel.arrKod2?.map((e) => e.grupAdi).join(",") ?? "";
                               }
                             },
@@ -199,7 +198,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 groupValues: viewModel.stokBottomSheetModel.arrKod3,
                               );
                               if (result != null) {
-                                viewModel.changeArrKod3(result.whereType<BaseGrupKoduModel>().toList());
+                                viewModel.changeArrKod3(result.toList());
                                 kod3Controller.text = viewModel.stokBottomSheetModel.arrKod3?.map((e) => e.grupAdi).join(",") ?? "";
                               }
                             },
@@ -223,7 +222,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 groupValues: viewModel.stokBottomSheetModel.arrKod4,
                               );
                               if (result != null) {
-                                viewModel.changeArrKod4(result.whereType<BaseGrupKoduModel>().toList());
+                                viewModel.changeArrKod4(result.toList());
                                 kod4Controller.text = viewModel.stokBottomSheetModel.arrKod4?.map((e) => e.grupAdi).join(",") ?? "";
                               }
                             },
@@ -243,7 +242,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                 groupValues: viewModel.stokBottomSheetModel.arrKod5,
                               );
                               if (result != null) {
-                                viewModel.changeArrKod5(result.whereType<BaseGrupKoduModel>().toList());
+                                viewModel.changeArrKod5(result.toList());
                                 kod5Controller.text = viewModel.stokBottomSheetModel.arrKod5?.map((e) => e.grupAdi).join(",") ?? "";
                               }
                             },
@@ -321,10 +320,12 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
             icon: const Icon(Icons.more_vert_outlined),
           ),
           IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.check_circle, color: UIHelper.primaryColor)),
-        ].whereType<Widget>().toList(),
+        ],
       );
 
-  Observer fab() => Observer(
+  Observer? fab() {
+    if (yetkiController.stokKartiYeniKayit) {
+      return Observer(
         builder: (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
@@ -333,8 +334,11 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
               viewModel.resetList();
             }
           },
-        ).yetkiVarMi(yetkiController.stokKartiYeniKayit),
+        ),
       );
+    }
+    return null;
+  }
 
   Padding body() => Padding(
         padding: UIHelper.lowPadding,
@@ -379,55 +383,61 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                 splitCount: 3,
                 doNotExpand: true,
                 children: [
-                  CustomTextField(
-                    labelText: "Grup Kodu",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: grupKoduController,
-                    onClear: () async => await grupKoduOnClear(0),
-                    onTap: () => getGrupKodlariBottomSheet(0),
-                  ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(0).ext.isNotNullOrEmpty)),
-                  CustomTextField(
-                    labelText: "Kod 1",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: kod1Controller,
-                    onClear: () async => await grupKoduOnClear(1),
-                    onTap: () => getGrupKodlariBottomSheet(1),
-                  ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(1).ext.isNotNullOrEmpty)),
-                  CustomTextField(
-                    labelText: "Kod 2",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: kod2Controller,
-                    onClear: () async => await grupKoduOnClear(2),
-                    onTap: () => getGrupKodlariBottomSheet(2),
-                  ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(2).ext.isNotNullOrEmpty)),
-                  CustomTextField(
-                    labelText: "Kod 3",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: kod3Controller,
-                    onClear: () async => await grupKoduOnClear(3),
-                    onTap: () => getGrupKodlariBottomSheet(3),
-                  ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(3).ext.isNotNullOrEmpty)),
-                  CustomTextField(
-                    labelText: "Kod 4",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: kod4Controller,
-                    onClear: () async => await grupKoduOnClear(4),
-                    onTap: () => getGrupKodlariBottomSheet(4),
-                  ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(4).ext.isNotNullOrEmpty)),
-                  CustomTextField(
-                    labelText: "Kod 5",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: kod5Controller,
-                    onClear: () async => await grupKoduOnClear(5),
-                    onTap: () => getGrupKodlariBottomSheet(5),
-                  ).yetkiVarMi(!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty)),
-                ].whereType<CustomTextField>().toList(),
+                  if (!viewModel.kategoriMi || (grupKoduWithIndex(0).ext.isNotNullOrEmpty))
+                    CustomTextField(
+                      labelText: "Grup Kodu",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: grupKoduController,
+                      onClear: () async => await grupKoduOnClear(0),
+                      onTap: () => getGrupKodlariBottomSheet(0),
+                    ),
+                  if (!viewModel.kategoriMi || (grupKoduWithIndex(1).ext.isNotNullOrEmpty))
+                    CustomTextField(
+                      labelText: "Kod 1",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: kod1Controller,
+                      onClear: () async => await grupKoduOnClear(1),
+                      onTap: () => getGrupKodlariBottomSheet(1),
+                    ),
+                  if (!viewModel.kategoriMi || (grupKoduWithIndex(2).ext.isNotNullOrEmpty))
+                    CustomTextField(
+                      labelText: "Kod 2",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: kod2Controller,
+                      onClear: () async => await grupKoduOnClear(2),
+                      onTap: () => getGrupKodlariBottomSheet(2),
+                    ),
+                  if (!viewModel.kategoriMi || (grupKoduWithIndex(3).ext.isNotNullOrEmpty))
+                    CustomTextField(
+                      labelText: "Kod 3",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: kod3Controller,
+                      onClear: () async => await grupKoduOnClear(3),
+                      onTap: () => getGrupKodlariBottomSheet(3),
+                    ),
+                  if (!viewModel.kategoriMi || (grupKoduWithIndex(4).ext.isNotNullOrEmpty))
+                    CustomTextField(
+                      labelText: "Kod 4",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: kod4Controller,
+                      onClear: () async => await grupKoduOnClear(4),
+                      onTap: () => getGrupKodlariBottomSheet(4),
+                    ),
+                  if (!viewModel.kategoriMi || (grupKoduWithIndex(5).ext.isNotNullOrEmpty))
+                    CustomTextField(
+                      labelText: "Kod 5",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: kod5Controller,
+                      onClear: () async => await grupKoduOnClear(5),
+                      onTap: () => getGrupKodlariBottomSheet(5),
+                    ),
+                ],
               ),
             ),
             Expanded(
@@ -485,14 +495,15 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                           Wrap(
                             spacing: UIHelper.lowSize,
                             children: [
-                              const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.seriCikislardaAcik == true),
-                              ColorfulBadge(
-                                label: Text("Dövizli ${(instance.getEditTipiEnum?.satisMi == true) ? item.satisDovizAdi : item.alisDovizAdi}"),
-                                badgeColorEnum: BadgeColorEnum.dovizli,
-                              ).yetkiVarMi((instance.getEditTipiEnum?.satisMi == true) ? item.satDovTip != null : item.alisDovTip != null),
-                              const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap).yetkiVarMi(item.yapilandirmaAktif == true),
-                              const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(item.kilitGenel == "E"),
-                            ].whereType<ColorfulBadge>().toList(),
+                              if (item.seriCikislardaAcik == true) const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
+                              if ((instance.getEditTipiEnum?.satisMi == true) ? item.satDovTip != null : item.alisDovTip != null)
+                                ColorfulBadge(
+                                  label: Text("Dövizli ${(instance.getEditTipiEnum?.satisMi == true) ? item.satisDovizAdi : item.alisDovizAdi}"),
+                                  badgeColorEnum: BadgeColorEnum.dovizli,
+                                ),
+                              if (item.yapilandirmaAktif == true) const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
+                              if (item.kilitGenel == "E") const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli),
+                            ],
                           ),
                           Text(item.stokAdi ?? ""),
                         ],

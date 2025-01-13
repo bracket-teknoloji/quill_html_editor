@@ -7,7 +7,6 @@ import "package:picker/core/components/floating_action_button/custom_floating_ac
 import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/view_model/sayim_listesi_view_model.dart";
 
@@ -62,7 +61,7 @@ final class _SayimListesiViewState extends BaseState<SayimListesiView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
-        floatingActionButton: fab().yetkiVarMi(yetkiController.sayimEkle),
+        floatingActionButton: fab(),
         body: body(),
       );
 
@@ -75,10 +74,15 @@ final class _SayimListesiViewState extends BaseState<SayimListesiView> {
         ),
       );
 
-  CustomFloatingActionButton fab() => CustomFloatingActionButton(
+  CustomFloatingActionButton? fab() {
+    if (yetkiController.sayimEkle) {
+      return CustomFloatingActionButton(
         isScrolledDown: true,
         onPressed: filterBottomSheet,
       );
+    }
+    return null;
+  }
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
         onRefresh: viewModel.getData,

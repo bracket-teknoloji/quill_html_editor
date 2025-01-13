@@ -193,14 +193,14 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
                   if (model.getEditTipiEnum?.fiyatGor == true)
                     Text.rich(
                       TextSpan(
-                        children: <TextSpan?>[
+                        children: [
                           TextSpan(text: "Satış İskontosu: ${kalemModel?.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} "),
                           if (kalemModel?.iskontoTutari != null)
                             TextSpan(
                               text: kalemModel?.iskontoDetayi,
                               style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
                             ),
-                        ].whereType<TextSpan>().toList(),
+                        ],
                       ),
                     ).yetkiVarMi(kalemModel?.kdvOrani != null),
                   if (model.getEditTipiEnum?.fiyatGor == true)

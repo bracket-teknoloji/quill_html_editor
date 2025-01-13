@@ -16,7 +16,6 @@ import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
@@ -235,7 +234,6 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
                           Get.back();
                           final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
                               .where((element) => element.ozelKod == BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue)
-                              .whereType<NetFectDizaynList>()
                               .toList();
                           final result = await bottomSheetDialogManager.showBottomSheetDialog(
                             Get.context!,
@@ -270,67 +268,70 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
                             ..toNamed("/dovizKurlari");
                         },
                       ),
-                      BottomSheetModel(
-                        title: "Döviz Kurlarını Güncelle",
-                        iconWidget: Icons.attach_money_outlined,
-                        onTap: () async {
-                          Get.back();
-                          final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi, tarih: BaseSiparisEditModel.instance.tarih);
-                          String dovizInfo = "";
-                          if (result != null) {
-                            BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) {
-                              if (!e.dovizliMi) return e;
-                              final dovizModel = result.firstWhereOrNull((element) => element.dovizTipi == e.dovizTipi);
-                              if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
-                                e
-                                  ..dovizKuru = dovizModel?.dovSatis
-                                  ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovSatis ?? 0);
-                              } else {
-                                e
-                                  ..dovizKuru = dovizModel?.dovAlis
-                                  ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovAlis ?? 0);
+                      if (BaseSiparisEditModel.instance.dovizAdi != null)
+                        BottomSheetModel(
+                          title: "Döviz Kurlarını Güncelle",
+                          iconWidget: Icons.attach_money_outlined,
+                          onTap: () async {
+                            Get.back();
+                            final result = await networkManager.getDovizKurlari(BaseSiparisEditModel.instance.dovizTipi, tarih: BaseSiparisEditModel.instance.tarih);
+                            String dovizInfo = "";
+                            if (result != null) {
+                              BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) {
+                                if (!e.dovizliMi) return e;
+                                final dovizModel = result.firstWhereOrNull((element) => element.dovizTipi == e.dovizTipi);
+                                if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
+                                  e
+                                    ..dovizKuru = dovizModel?.dovSatis
+                                    ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovSatis ?? 0);
+                                } else {
+                                  e
+                                    ..dovizKuru = dovizModel?.dovAlis
+                                    ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovAlis ?? 0);
+                                }
+                                return e;
+                              }).toList();
+                              viewModel.changeUpdateKalemler();
+                              for (final DovizKurlariModel element in result) {
+                                final selectedDovizList = BaseSiparisEditModel.instance.kalemList?.where((e) => e.dovizTipi == element.dovizTipi);
+                                if (selectedDovizList?.isNotEmpty ?? false) {
+                                  dovizInfo = selectedDovizList?.map((e) => e.stokKodu ?? "").join(", ") ?? "";
+                                  dovizInfo +=
+                                      " için ${element.dovizAdi} döviz kuru ${(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) ? element.dovSatis : element.dovAlis} olarak güncellendi.\n";
+                                }
                               }
-                              return e;
-                            }).toList();
-                            viewModel.changeUpdateKalemler();
-                            for (final DovizKurlariModel element in result) {
-                              final selectedDovizList = BaseSiparisEditModel.instance.kalemList?.where((e) => e.dovizTipi == element.dovizTipi);
-                              if (selectedDovizList?.isNotEmpty ?? false) {
-                                dovizInfo = selectedDovizList?.map((e) => e.stokKodu ?? "").join(", ") ?? "";
-                                dovizInfo +=
-                                    " için ${element.dovizAdi} döviz kuru ${(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) ? element.dovSatis : element.dovAlis} olarak güncellendi.\n";
-                              }
+                              dialogManager.showSuccesDialog(
+                                dovizInfo,
+                              );
                             }
-                            dialogManager.showSuccesDialog(
-                              dovizInfo,
-                            );
-                          }
-                        },
-                      ).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null),
-                      BottomSheetModel(
-                        title: "Cari'ye Yapılan Son Satışlar",
-                        iconWidget: Icons.info_outline_rounded,
-                        onTap: () async {
-                          Get.back();
-                          if (BaseSiparisEditModel.instance.cariKodu == null) {
-                            dialogManager.showAlertDialog("Cari kodu bulunamadı. Lütfen cari seçiniz.");
-                            return;
-                          }
-                          final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
-                          Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: cariModel);
-                        },
-                      ).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
+                          },
+                        ),
+                      if (yetkiController.cariRapStokSatisOzeti)
+                        BottomSheetModel(
+                          title: "Cari'ye Yapılan Son Satışlar",
+                          iconWidget: Icons.info_outline_rounded,
+                          onTap: () async {
+                            Get.back();
+                            if (BaseSiparisEditModel.instance.cariKodu == null) {
+                              dialogManager.showAlertDialog("Cari kodu bulunamadı. Lütfen cari seçiniz.");
+                              return;
+                            }
+                            final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
+                            Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: cariModel);
+                          },
+                        ),
                       // BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_outlined),
-                      BottomSheetModel(
-                        title: "Ekranı Yeni Kayda Hazırla",
-                        description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
-                        iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-                        onTap: () {
-                          Get.back();
-                          viewModel.changeYeniKaydaHazirlaMi();
-                        },
-                      ).yetkiKontrol(widget.model.isEkle),
-                    ].nullCheckWithGeneric,
+                      if (widget.model.isEkle)
+                        BottomSheetModel(
+                          title: "Ekranı Yeni Kayda Hazırla",
+                          description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
+                          iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+                          onTap: () {
+                            Get.back();
+                            viewModel.changeYeniKaydaHazirlaMi();
+                          },
+                        ),
+                    ],
                   );
                   if (result != null) {
                     viewModel.changeUpdateKalemler();
@@ -367,7 +368,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
                 if (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster ?? false)) Tab(child: Text(loc.generalStrings.other)),
                 const Tab(child: Text("Kalemler")),
                 const Tab(child: Text("Toplamlar")),
-              ].whereType<Widget>().toList(),
+              ],
             ),
           ),
           body: Observer(
@@ -387,7 +388,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
                 if (yetkiController.siparisDigerSekmesiGoster(widget.model.editTipiEnum?.digerSekmesiGoster ?? false)) BaseSiparislerDigerView(model: model),
                 BaseSiparisKalemlerView(model: model),
                 BaseSiparisToplamlarView(model: model),
-              ].whereType<Widget>().toList(),
+              ],
             ),
           ),
         ),

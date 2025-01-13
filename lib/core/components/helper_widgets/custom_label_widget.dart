@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 
 final class CustomWidgetWithLabel extends StatelessWidget {
@@ -21,15 +20,16 @@ final class CustomWidgetWithLabel extends StatelessWidget {
           direction: (isVertical ?? false) ? Axis.vertical : Axis.horizontal,
           runSpacing: UIHelper.lowSize,
           children: [
-            Text(
-              text ?? "",
-              style: (isTitleSmall ?? false)
-                  ? Theme.of(context).textTheme.bodySmall?.copyWith(
-                        fontSize: UIHelper.midSize,
-                        color: (isMust ?? false) ? UIHelper.primaryColor : null,
-                      )
-                  : null,
-            ).paddingOnly(left: addPadding ? UIHelper.lowSize : 0).yetkiVarMi(text != null),
+            if (text != null)
+              Text(
+                text ?? "",
+                style: (isTitleSmall ?? false)
+                    ? Theme.of(context).textTheme.bodySmall?.copyWith(
+                          fontSize: UIHelper.midSize,
+                          color: (isMust ?? false) ? UIHelper.primaryColor : null,
+                        )
+                    : null,
+              ).paddingOnly(left: addPadding ? UIHelper.lowSize : 0),
             child,
           ],
         ),

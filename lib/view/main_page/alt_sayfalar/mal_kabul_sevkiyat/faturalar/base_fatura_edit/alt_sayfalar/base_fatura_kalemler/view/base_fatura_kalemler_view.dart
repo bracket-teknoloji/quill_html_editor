@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -188,13 +189,13 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
                   if (kalemModel.malFazlasiMiktar != null) Text("Mal Fazlası Miktar: ${kalemModel.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}"),
                   Text.rich(
                     TextSpan(
-                      children: <TextSpan?>[
+                      children: [
                         TextSpan(text: "Satış İskontosu: ${kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} "),
                         TextSpan(
                           text: kalemModel.iskontoDetayi,
                           style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
                         ),
-                      ].whereType<TextSpan>().toList(),
+                      ],
                     ),
                   ).yetkiVarMi(kalemModel.kdvOrani != null),
                   if (model.getEditTipiEnum?.fiyatGor == true)
@@ -253,8 +254,8 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
                   title: "Hücre İşlemleri",
-                  children: <BottomSheetModel?>[
-                    BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
+                  children: <BottomSheetModel>[
+                    if (AccountModel.instance.isDebug) BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined),
                     BottomSheetModel(
                       title: "Stok İşlemleri",
                       iconWidget: Icons.list_alt_outlined,
@@ -263,7 +264,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
                         dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemList?.stokKodu ?? "");
                       },
                     ),
-                  ].nullCheckWithGeneric,
+                  ],
                 );
               },
               icon: const Icon(Icons.more_vert_outlined),

@@ -622,6 +622,8 @@ final class KasaList with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$KasaListToJson(this);
+
+  bool get dovizliMi => dovizli == "E";
 }
 
 @JsonSerializable(createFactory: true)

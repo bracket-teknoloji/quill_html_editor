@@ -248,9 +248,9 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                                 groupValues: ((jsonDecode(viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu ?? "[]")) as List).map((e) => e as String).toList().cast<String>(),
                               );
                               if (result.ext.isNotNullOrEmpty) {
-                                plasiyerController.text = result!.map((e) => e?.plasiyerAciklama).join(", ");
+                                plasiyerController.text = result!.map((e) => e.plasiyerAciklama).join(", ");
 
-                                viewModel.setArrPlasiyerKodu(result.map((e) => e?.plasiyerKodu.toString()).toList().cast<String>());
+                                viewModel.setArrPlasiyerKodu(result.map((e) => e.plasiyerKodu.toString()).toList().cast<String>());
                               }
                             },
                           ),
@@ -667,10 +667,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
     if (result.isSuccess) {
       if (viewModel.sayfa == 1) {
         viewModel
-          ..setSiparislerList(CacheManager.getSiparisEditLists(widget.widgetModel.editTipiEnum)?.toList().cast<BaseSiparisEditModel?>())
+          ..setSiparislerList(CacheManager.getSiparisEditLists(widget.widgetModel.editTipiEnum)?.toList())
           ..setParamData(result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).cast<String, dynamic>() ?? {});
       }
-      final List<BaseSiparisEditModel?> list = result.dataList;
+      final List<BaseSiparisEditModel> list = result.dataList;
       if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
         viewModel.setDahaVarMi(false);
       } else {

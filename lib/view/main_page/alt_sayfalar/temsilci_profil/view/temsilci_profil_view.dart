@@ -155,7 +155,7 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                             text: "KDV Dahil",
                             child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value))),
                           ).paddingAll(UIHelper.lowSize),
-                        ).yetkiVarMi(!yetkiController.temsilciProfilKdvDahilMi && AccountModel.instance.admin == "E"),
+                        ).yetkiVarMi(!yetkiController.temsilciProfilKdvDahilMi && AccountModel.instance.adminMi),
                         Expanded(
                           child: CustomWidgetWithLabel(
                             isVertical: true,

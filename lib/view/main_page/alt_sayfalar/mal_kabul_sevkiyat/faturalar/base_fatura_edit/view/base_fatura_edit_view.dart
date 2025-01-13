@@ -22,9 +22,7 @@ import "../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
@@ -382,7 +380,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                     final result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: loc.generalStrings.options,
-                      children: <BottomSheetModel?>[
+                      children: [
                         BottomSheetModel(
                           title: "Cari İşlemleri",
                           iconWidget: Icons.person_outline_outlined,
@@ -391,38 +389,39 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                             dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance)));
                           },
                         ),
-                        BottomSheetModel(
-                          title: "Kalemleri KDV'ye Göre Birleştir",
-                          iconWidget: Icons.person_outline_outlined,
-                          onTap: () async {
-                            Get.back();
-                            final List<KalemModel> newList = [];
-                            if (BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
-                              for (final KalemModel item in BaseSiparisEditModel.instance.kalemList ?? []) {
-                                if (newList.any((element) => element.kdvOrani == item.kdvOrani)) {
-                                  final int index = newList.indexWhere((element) => element.kdvOrani == item.kdvOrani);
-                                  newList[index] = newList[index]
-                                    // ..miktar = (newList[index].miktar ?? 0) + (item.miktar ?? 0)
-                                    ..dovizFiyati = (newList[index].dovizFiyati ?? 0) + (item.dovizFiyati ?? 0)
-                                    ..brutFiyat = (newList[index].brutFiyat ?? 0) + ((item.brutFiyat ?? 0) * (item.miktar ?? 0));
-                                } else {
-                                  newList.add(
-                                    item
-                                      ..brutFiyat = (item.brutFiyat ?? 0) * (item.miktar ?? 0)
-                                      ..miktar = 1,
-                                  );
+                        if (BaseSiparisEditModel.instance.efattanTutar != null && tabController.index == 2)
+                          BottomSheetModel(
+                            title: "Kalemleri KDV'ye Göre Birleştir",
+                            iconWidget: Icons.person_outline_outlined,
+                            onTap: () async {
+                              Get.back();
+                              final List<KalemModel> newList = [];
+                              if (BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+                                for (final KalemModel item in BaseSiparisEditModel.instance.kalemList ?? []) {
+                                  if (newList.any((element) => element.kdvOrani == item.kdvOrani)) {
+                                    final int index = newList.indexWhere((element) => element.kdvOrani == item.kdvOrani);
+                                    newList[index] = newList[index]
+                                      // ..miktar = (newList[index].miktar ?? 0) + (item.miktar ?? 0)
+                                      ..dovizFiyati = (newList[index].dovizFiyati ?? 0) + (item.dovizFiyati ?? 0)
+                                      ..brutFiyat = (newList[index].brutFiyat ?? 0) + ((item.brutFiyat ?? 0) * (item.miktar ?? 0));
+                                  } else {
+                                    newList.add(
+                                      item
+                                        ..brutFiyat = (item.brutFiyat ?? 0) * (item.miktar ?? 0)
+                                        ..miktar = 1,
+                                    );
+                                  }
                                 }
+                                BaseSiparisEditModel.instance.kalemList = newList;
+                                if (tabController.index == 2) {
+                                  tabController.animateTo(3);
+                                  await Future.delayed(const Duration(milliseconds: 500));
+                                  tabController.animateTo(2);
+                                }
+                                // setState(() {});
                               }
-                              BaseSiparisEditModel.instance.kalemList = newList;
-                              if (tabController.index == 2) {
-                                tabController.animateTo(3);
-                                await Future.delayed(const Duration(milliseconds: 500));
-                                tabController.animateTo(2);
-                              }
-                              // setState(() {});
-                            }
-                          },
-                        ).yetkiKontrol(BaseSiparisEditModel.instance.efattanTutar != null && tabController.index == 2),
+                            },
+                          ),
                         // topluIskontoBottomSheetModel(context),
                         BottomSheetModel(
                           title: "PDF Görüntüle",
@@ -431,7 +430,6 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                             Get.back();
                             final List<NetFectDizaynList> dizaynList = (CacheManager.getAnaVeri?.paramModel?.netFectDizaynList?.filteredDizaynList(widget.model.editTipiEnum) ?? [])
                                 .where((element) => element.ozelKod == BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue)
-                                .whereType<NetFectDizaynList>()
                                 .toList();
                             final result = await bottomSheetDialogManager.showBottomSheetDialog(
                               Get.context!,
@@ -466,38 +464,41 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                               ..toNamed("/dovizKurlari");
                           },
                         ),
-                        BottomSheetModel(
-                          title: "Döviz Kurlarını Güncelle",
-                          iconWidget: Icons.attach_money_outlined,
-                          onTap: () async {
-                            Get.back();
-                            await dovizGuncelle();
-                          },
-                        ).yetkiKontrol(BaseSiparisEditModel.instance.dovizAdi != null && !widget.model.isGoruntule),
-                        BottomSheetModel(
-                          title: "Cari'ye Yapılan Son Satışlar",
-                          iconWidget: Icons.info_outline_rounded,
-                          onTap: () async {
-                            Get.back();
-                            if (BaseSiparisEditModel.instance.cariKodu == null) {
-                              dialogManager.showAlertDialog("Cari kodu bulunamadı. Lütfen cari seçiniz.");
-                              return;
-                            }
-                            final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
-                            Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: cariModel);
-                          },
-                        ).yetkiKontrol(yetkiController.cariRapStokSatisOzeti),
+                        if (BaseSiparisEditModel.instance.dovizAdi != null && !widget.model.isGoruntule)
+                          BottomSheetModel(
+                            title: "Döviz Kurlarını Güncelle",
+                            iconWidget: Icons.attach_money_outlined,
+                            onTap: () async {
+                              Get.back();
+                              await dovizGuncelle();
+                            },
+                          ),
+                        if (yetkiController.cariRapStokSatisOzeti)
+                          BottomSheetModel(
+                            title: "Cari'ye Yapılan Son Satışlar",
+                            iconWidget: Icons.info_outline_rounded,
+                            onTap: () async {
+                              Get.back();
+                              if (BaseSiparisEditModel.instance.cariKodu == null) {
+                                dialogManager.showAlertDialog("Cari kodu bulunamadı. Lütfen cari seçiniz.");
+                                return;
+                              }
+                              final cariModel = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance));
+                              Get.toNamed("/mainPage/cariStokSatisOzeti", arguments: cariModel);
+                            },
+                          ),
                         BottomSheetModel(title: "Barkod Tanımla", iconWidget: Icons.qr_code_scanner),
-                        BottomSheetModel(
-                          title: "Ekranı Yeni Kayda Hazırla",
-                          description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
-                          iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-                          onTap: () {
-                            Get.back();
-                            viewModel.changeYeniKaydaHazirlaMi();
-                          },
-                        ).yetkiKontrol(widget.model.isEkle),
-                      ].nullCheckWithGeneric,
+                        if (widget.model.isEkle)
+                          BottomSheetModel(
+                            title: "Ekranı Yeni Kayda Hazırla",
+                            description: "Belge kaydından sonra yeni belge giriş ekranını otomatik hazırla.",
+                            iconWidget: viewModel.yeniKaydaHazirlaMi ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+                            onTap: () {
+                              Get.back();
+                              viewModel.changeYeniKaydaHazirlaMi();
+                            },
+                          ),
+                      ],
                     );
                     if (result != null) {
                       // viewModel.changeUpdateKalemler();
@@ -531,10 +532,10 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                 controller: tabController,
                 tabs: [
                   Tab(child: Text(loc.generalStrings.general)),
-                  Tab(child: Text(loc.generalStrings.other)).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
+                  if (widget.model.editTipiEnum?.digerSekmesiGoster ?? false) Tab(child: Text(loc.generalStrings.other)),
                   const Tab(child: Text("Kalemler")),
                   const Tab(child: Text("Toplamlar")),
-                ].whereType<Tab>().toList(),
+                ],
               ),
             ),
             body: TabBarView(
@@ -550,10 +551,10 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                     }
                   },
                 ),
-                BaseFaturaDigerView(model: model).yetkiVarMi(widget.model.editTipiEnum?.digerSekmesiGoster ?? false),
+                if (widget.model.editTipiEnum?.digerSekmesiGoster ?? false) BaseFaturaDigerView(model: model),
                 BaseFaturaKalemlerView(model: model),
                 BaseFaturaToplamlarView(model: model),
-              ].where((element) => element is! SizedBox).toList().nullCheckWithGeneric,
+              ],
             ),
           ),
         ),

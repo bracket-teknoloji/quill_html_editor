@@ -6,7 +6,6 @@ import "package:get/get.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/color_palette.dart";
 import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/list_extensions.dart";
 import "../../constants/extensions/text_span_extensions.dart";
 import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/text_field_formatter_helper.dart";
@@ -191,25 +190,26 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         if (widget.suffix != null) widget.suffix!,
-                        Observer(
-                          builder: (_) => Visibility(
-                            visible: (viewModel.showClearButton) && (widget.isMust != true),
-                            child: IconButton(
-                              style: ButtonStyle(
-                                padding: WidgetStateProperty.all(EdgeInsets.zero),
-                                splashFactory: NoSplash.splashFactory,
+                        if (widget.onClear != null)
+                          Observer(
+                            builder: (_) => Visibility(
+                              visible: (viewModel.showClearButton) && (widget.isMust != true),
+                              child: IconButton(
+                                style: ButtonStyle(
+                                  padding: WidgetStateProperty.all(EdgeInsets.zero),
+                                  splashFactory: NoSplash.splashFactory,
+                                ),
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints(),
+                                onPressed: () {
+                                  controller.clear();
+                                  widget.onClear!();
+                                  // viewModel.setShowClearButton(false);
+                                },
+                                icon: const Icon(Icons.close),
                               ),
-                              padding: EdgeInsets.zero,
-                              constraints: const BoxConstraints(),
-                              onPressed: () {
-                                controller.clear();
-                                widget.onClear!();
-                                // viewModel.setShowClearButton(false);
-                              },
-                              icon: const Icon(Icons.close),
                             ),
                           ),
-                        ).yetkiVarMi(widget.onClear != null),
                         if (widget.isDateTime == true)
                           IconButton(
                             padding: EdgeInsets.zero,
@@ -246,7 +246,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
                             ),
                           ),
                         ),
-                      ].where((element) => element is! SizedBox).toList().nullCheckWithGeneric,
+                      ],
                     )
                   : null,
               label: Row(
@@ -262,8 +262,8 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
                               : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withOpacity(0.6)) : TextStyle(color: ColorPalette.slateGray.withOpacity(0.8))),
                         ),
                         TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withOpacity(0.3), fontSize: 12)).yetkiVarMi(widget.valueText != null),
-                        widget.descriptionWidget,
-                      ].nullCheckWithGeneric,
+                        if (widget.descriptionWidget != null) widget.descriptionWidget!,
+                      ],
                     ),
                     // style: const TextStyle(fontSize: 15),
                   ),

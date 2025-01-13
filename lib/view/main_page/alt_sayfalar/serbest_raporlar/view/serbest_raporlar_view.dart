@@ -114,71 +114,68 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   }
 
   List<Widget> get getCustomTextFields =>
-      viewModel.serbestRaporResponseModelList
-          ?.map((e) {
-            if (e.tipi == "Date") {
-              return CustomTextField(
-                labelText: e.aciklama ?? e.adi ?? "",
-                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
-                isMust: e.bosGecilebilir != true,
-                readOnly: true,
-                isDateTime: true,
-                // suffix: const Icon(Icons.calendar_today),
-                onTap: () async {
-                  final DateTime? result =
-                      await dialogManager.showDateTimePicker(initialDate: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0].text.toDateTimeDDMMYYYY());
-                  if (result != null) {
-                    viewModel.changeDicParams(
-                      e.adi ?? "",
-                      result.toDateString,
-                    );
-                  }
-                },
-              );
-            } else if (e.rehberTipi != null) {
-              if (e.secmeliPlasiyerMi) {
-                viewModel.changeDicParams(e.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
+      viewModel.serbestRaporResponseModelList?.map((e) {
+        if (e.tipi == "Date") {
+          return CustomTextField(
+            labelText: e.aciklama ?? e.adi ?? "",
+            controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+            isMust: e.bosGecilebilir != true,
+            readOnly: true,
+            isDateTime: true,
+            // suffix: const Icon(Icons.calendar_today),
+            onTap: () async {
+              final DateTime? result =
+                  await dialogManager.showDateTimePicker(initialDate: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0].text.toDateTimeDDMMYYYY());
+              if (result != null) {
+                viewModel.changeDicParams(
+                  e.adi ?? "",
+                  result.toDateString,
+                );
               }
-              return CustomTextField(
-                labelText: e.aciklama ?? e.adi ?? "",
-                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
-                valueWidget: e.cokluMu ? null : Observer(builder: (_) => Text(viewModel.dicParams[e.adi ?? ""] ?? "")),
-                isMust: e.bosGecilebilir != true,
-                readOnly: true,
-                suffixMore: true,
-                onTap: () => getRehber(e),
-              );
-            } else {
-              return CustomTextField(
-                labelText: e.aciklama ?? e.adi ?? "",
-                readOnly: e.paramMap != null ? true : null,
-                controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
-                valueWidget: e.paramMap == null ? null : Observer(builder: (_) => Text(viewModel.dicParams[e.adi ?? ""] ?? "")),
-                isMust: e.bosGecilebilir != true,
-                suffixMore: e.paramMap != null,
-                onTap: e.paramMap == null
-                    ? null
-                    : () async {
-                        final List<BottomSheetModel<MapEntry>> bottomSheetModels = [];
-                        e.paramMap?.forEach((key, value) => bottomSheetModels.add(BottomSheetModel(title: value, value: MapEntry(key, value), description: key)));
-                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry>(
-                          context,
-                          title: "Seçiniz",
-                          groupValue: viewModel.dicParams[e.adi ?? ""],
-                          children: bottomSheetModels,
-                        );
-                        if (result != null) {
-                          viewModel.changeDicParams(e.adi ?? "", result.key, controllerValue: result.value);
-                        }
-                      },
-                onChanged: (value) {
-                  viewModel.changeDicParams(e.adi ?? "", value);
-                },
-              );
-            }
-          })
-          .toList()
-          .nullCheckWithGeneric ??
+            },
+          );
+        } else if (e.rehberTipi != null) {
+          if (e.secmeliPlasiyerMi) {
+            viewModel.changeDicParams(e.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
+          }
+          return CustomTextField(
+            labelText: e.aciklama ?? e.adi ?? "",
+            controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList?.indexOf(e) ?? 0],
+            valueWidget: e.cokluMu ? null : Observer(builder: (_) => Text(viewModel.dicParams[e.adi ?? ""] ?? "")),
+            isMust: e.bosGecilebilir != true,
+            readOnly: true,
+            suffixMore: true,
+            onTap: () => getRehber(e),
+          );
+        } else {
+          return CustomTextField(
+            labelText: e.aciklama ?? e.adi ?? "",
+            readOnly: e.paramMap != null ? true : null,
+            controller: viewModel.textEditingControllerList?[viewModel.serbestRaporResponseModelList!.indexOf(e)],
+            valueWidget: e.paramMap == null ? null : Observer(builder: (_) => Text(viewModel.dicParams[e.adi ?? ""] ?? "")),
+            isMust: e.bosGecilebilir != true,
+            suffixMore: e.paramMap != null,
+            onTap: e.paramMap == null
+                ? null
+                : () async {
+                    final List<BottomSheetModel<MapEntry>> bottomSheetModels = [];
+                    e.paramMap?.forEach((key, value) => bottomSheetModels.add(BottomSheetModel(title: value, value: MapEntry(key, value), description: key)));
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry>(
+                      context,
+                      title: "Seçiniz",
+                      groupValue: viewModel.dicParams[e.adi ?? ""],
+                      children: bottomSheetModels,
+                    );
+                    if (result != null) {
+                      viewModel.changeDicParams(e.adi ?? "", result.key, controllerValue: result.value);
+                    }
+                  },
+            onChanged: (value) {
+              viewModel.changeDicParams(e.adi ?? "", value);
+            },
+          );
+        }
+      }).toList() ??
       [];
 
   Future<void> getRehber(SerbestRaporResponseModel model) async {
@@ -201,7 +198,7 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       if (viewModel.dicParams[model.adi] == null) viewModel.changeDicParams(model.adi ?? "", parametreModel.plasiyerList?.map((e) => e.plasiyerKodu).join("; ") ?? "");
       final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: (viewModel.dicParams[model.adi] as String?)?.split("; "));
       if (result != null) {
-        viewModel.changeDicParams(model.adi ?? "", result.map((e) => e?.plasiyerKodu).join("; "));
+        viewModel.changeDicParams(model.adi ?? "", result.map((e) => e.plasiyerKodu).join("; "));
       }
     } else if (model.projeKoduMu) {
       final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.dicParams[model.adi ?? ""]);

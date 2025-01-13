@@ -15,7 +15,6 @@ import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
@@ -195,21 +194,22 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
           ),
           title: const AppBarTitle(title: "Şirkete Giriş"),
           actions: [
-            IconButton(
-              onPressed: () async {
-                if (sirketController.text.isEmpty) {
-                  dialogManager.showErrorSnackBar("Şirket seçiniz.");
-                  return;
-                }
-                final result = await networkManager.dbUpdate(sirketController.text);
-                if (result.isSuccess) {
-                  dialogManager.showInfoDialog("Veritabanı güncellendi\n${result.message ?? ""}");
-                } else {
-                  dialogManager.showErrorSnackBar("Veritabanı güncellenemedi.");
-                }
-              },
-              icon: const Icon(Icons.cloud_upload_outlined),
-            ).yetkiVarMi(AccountModel.instance.admin == "E"),
+            if (AccountModel.instance.adminMi)
+              IconButton(
+                onPressed: () async {
+                  if (sirketController.text.isEmpty) {
+                    dialogManager.showErrorSnackBar("Şirket seçiniz.");
+                    return;
+                  }
+                  final result = await networkManager.dbUpdate(sirketController.text);
+                  if (result.isSuccess) {
+                    dialogManager.showInfoDialog("Veritabanı güncellendi\n${result.message ?? ""}");
+                  } else {
+                    dialogManager.showErrorSnackBar("Veritabanı güncellenemedi.");
+                  }
+                },
+                icon: const Icon(Icons.cloud_upload_outlined),
+              ),
           ],
         ),
         body: Observer(

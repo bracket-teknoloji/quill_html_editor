@@ -226,15 +226,13 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
     final List<BottomSheetModel> bottomSheetList = grupKodList
         .where((e) => e.grupNo == grupNo)
         .toList()
-        .cast<BaseGrupKoduModel>()
         .map(
           (e) => BottomSheetModel(
             title: e.grupKodu ?? "",
             onTap: () => Get.back(result: e),
           ),
         )
-        .toList()
-        .cast<BottomSheetModel>();
+        .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,

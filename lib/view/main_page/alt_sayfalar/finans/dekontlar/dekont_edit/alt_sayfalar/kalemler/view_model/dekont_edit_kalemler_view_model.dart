@@ -2,7 +2,6 @@ import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../../../core/base/model/tahsilat_request_model.dart";
-import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../model/dekont_islemler_request_model.dart";
 
 part "dekont_edit_kalemler_view_model.g.dart";
@@ -27,7 +26,7 @@ abstract class _DekontEditKalemlerViewModelBase with Store {
 
   @action
   void addKalemler(DekontKalemler? model) {
-    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: [...kalemler ?? [], model].nullCheckWithGeneric.cast<DekontKalemler>());
+    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: [...?kalemler, if (model != null) model]);
     setSingleton();
   }
 
@@ -35,7 +34,7 @@ abstract class _DekontEditKalemlerViewModelBase with Store {
   void updateKalemler(int index, DekontKalemler model) {
     final List<DekontKalemler> list = (kalemler?..removeAt(index)) ?? [];
     dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: null);
-    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: [...list.nullCheckWithGeneric.cast<DekontKalemler>(), model]);
+    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: [...list, model]);
     setSingleton();
     dekontIslemlerRequestModel = SingletonDekontIslemlerRequestModel.instance;
   }
@@ -44,7 +43,7 @@ abstract class _DekontEditKalemlerViewModelBase with Store {
   void removeKalemler(int index) {
     final List<DekontKalemler> list = (kalemler?..removeAt(index)) ?? [];
     dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: null);
-    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: list.nullCheckWithGeneric.cast<DekontKalemler>());
+    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: list);
     setSingleton();
     dekontIslemlerRequestModel = SingletonDekontIslemlerRequestModel.instance;
   }

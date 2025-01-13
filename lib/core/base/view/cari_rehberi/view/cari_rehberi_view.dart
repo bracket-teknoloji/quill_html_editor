@@ -139,7 +139,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
             filtreleButton,
             siralaButton,
             if (BaseSiparisEditModel.instance.getEditTipiEnum?.talepTeklifMi ?? false) digerButton,
-          ].whereType<AppBarButton>().toList(),
+          ],
         ),
       );
 
@@ -402,7 +402,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                 ),
                               );
                               if (result != null) {
-                                viewModel.changeKod2(result.whereType<String>().toList());
+                                viewModel.changeKod2(result.toList());
                                 kod2Controller.text = result.join(", ");
                               } else {
                                 viewModel.changeKod2(null);
@@ -433,7 +433,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                                 ),
                               );
                               if (result != null) {
-                                viewModel.changeKod3(result.whereType<String>().toList());
+                                viewModel.changeKod3(result);
                                 kod3Controller.text = result.join(", ");
                               } else {
                                 viewModel.changeKod3(null);
@@ -467,7 +467,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                               ),
                             );
                             if (result != null) {
-                              viewModel.changeKod4(result.whereType<String>().toList());
+                              viewModel.changeKod4(result);
                               kod4Controller.text = result.join(", ");
                             } else {
                               viewModel.changeKod4(null);
@@ -497,7 +497,7 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                               ),
                             );
                             if (result != null) {
-                              viewModel.changeKod5(result.whereType<String>().toList());
+                              viewModel.changeKod5(result);
                               kod5Controller.text = result.join(", ");
                             } else {
                               viewModel.changeKod5(null);

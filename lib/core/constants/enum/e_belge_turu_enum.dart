@@ -24,7 +24,7 @@ extension EBelgeTuruEnumExtensions on EBelgeTuruEnum {
         EBelgeTuruEnum.irsaliye => _yetkiController.ebelgeEIrsaliyeGoruntule
       };
 
-  bool yetkiVarMi(EBelgeEnum eBelgeEnum) {
+  bool gelenKutusu(EBelgeEnum eBelgeEnum) {
     if (eBelgeEnum == EBelgeEnum.gelen) {
       return switch (this) {
         EBelgeTuruEnum.fatura => _yetkiController.ebelgeEFaturaGelenKutusu,

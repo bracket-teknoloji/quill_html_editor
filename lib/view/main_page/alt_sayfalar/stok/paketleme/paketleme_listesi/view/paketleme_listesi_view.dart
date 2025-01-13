@@ -11,8 +11,6 @@ import "../../../../../../../core/components/textfield/custom_app_bar_text_field
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../model/paketleme_listesi_model.dart";
@@ -117,23 +115,25 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
               ..toNamed("/mainPage/paketIcerigi", arguments: item);
           },
         ),
-        BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined).yetkiKontrol(yetkiController.stokPaketlemeEkle && item.kilit != "E"),
-        BottomSheetModel(
-          title: loc.generalStrings.delete,
-          iconWidget: Icons.delete_outline_outlined,
-          onTap: () async {
-            Get.back();
-            dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.deleteItem(item.id);
-              if (result.isSuccess) {
-                dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                await viewModel.getData();
-              }
-            });
-          },
-        ).yetkiKontrol(yetkiController.stokPaketlemeSil && item.kilit != "E"),
-        BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined).yetkiKontrol(yetkiController.yazdirmaPaketlemeEtiketi),
-      ].nullCheckWithGeneric,
+        if (yetkiController.stokPaketlemeEkle && item.kilit != "E") BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
+        if (yetkiController.stokPaketlemeSil && item.kilit != "E")
+          BottomSheetModel(
+            title: loc.generalStrings.delete,
+            iconWidget: Icons.delete_outline_outlined,
+            onTap: () async {
+              Get.back();
+              dialogManager.showAreYouSureDialog(() async {
+                final result = await viewModel.deleteItem(item.id);
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                  await viewModel.getData();
+                }
+              });
+            },
+          ),
+          //TODO : bir yere gitmiyor
+        // if (yetkiController.yazdirmaPaketlemeEtiketi) BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined),
+      ],
     );
   }
 }

@@ -121,7 +121,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
     viewModel.changeKdvDahil(model.kdvDahil == "E" ? true : false);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (model.belgeNo == null) {
-        await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi, seri: model.getEditTipiEnum?.irsaliyeMi == true && model.ebelgeCheckbox == "E" ? parametreModel.seriEIrsaliye : null);
+        await getBelgeNo(widget.model.baseEditEnum.siparistenKopyalaMi, seri: model.getEditTipiEnum?.irsaliyeMi == true && model.eBelgeCheckBoxMi ? parametreModel.seriEIrsaliye : null);
       }
     });
     super.initState();
@@ -206,7 +206,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     ),
                     validator: (value) {
                       if (value case (null || "")) return "Belge No Boş Olamaz";
-                      if (model.ebelgeCheckbox == "E" && !value.startsWith("EIR")) return "E-Fatura Belge No EIR ile başlamalıdır";
+                      if (model.eBelgeCheckBoxMi && !value.startsWith("EIR")) return "E-Fatura Belge No EIR ile başlamalıdır";
                       return null;
                     },
                     onChanged: (value) {
@@ -275,7 +275,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       _belgeNoController.clear();
                       await getBelgeNo(
                         widget.model.baseEditEnum.siparistenKopyalaMi,
-                        seri: viewModel.model.ebelgeCheckbox == "E" ? parametreModel.seriEIrsaliye : null,
+                        seri: viewModel.model.eBelgeCheckBoxMi ? parametreModel.seriEIrsaliye : null,
                       );
                     }
                   },

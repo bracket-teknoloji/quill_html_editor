@@ -5,7 +5,6 @@ import "package:get/get.dart";
 import "../../../../view/add_company/model/account_model.dart";
 import "../../../../view/add_company/model/account_response_model.dart";
 import "../../../base/state/base_state.dart";
-import "../../../constants/extensions/list_extensions.dart";
 import "../../../constants/ui_helper/icon_helper.dart";
 import "../../../constants/ui_helper/ui_helper.dart";
 import "../../../gen/assets.gen.dart";
@@ -238,7 +237,7 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
             return Get.toNamed("/surumYenilikleri");
           },
         ),
-      ].nullCheckWithGeneric.cast<DrawerModel>();
+      ];
 
   AccountResponseModel? account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
   String get _urlAdi {

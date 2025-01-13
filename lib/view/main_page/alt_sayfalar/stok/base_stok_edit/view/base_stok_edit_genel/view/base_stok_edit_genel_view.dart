@@ -10,7 +10,6 @@ import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../../../core/base/model/base_edit_siradaki_kod_model.dart";
@@ -188,7 +187,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                             },
                           ),
                         ),
-                      ).yetkiVarMi(widget.model.ekleMi),
+                      ),
                     Expanded(
                       flex: 4,
                       child: CustomTextField(
@@ -242,7 +241,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                         ),
                       ),
                     ),
-                  ].whereType<Expanded>().toList(),
+                  ],
                 ),
               ),
               CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController, onChanged: (p0) => stokModel.stokAdi = p0),

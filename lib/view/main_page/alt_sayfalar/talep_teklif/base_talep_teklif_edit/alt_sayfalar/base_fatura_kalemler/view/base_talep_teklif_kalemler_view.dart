@@ -182,13 +182,13 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
                   Text("Mal Fazlası Miktar: ${kalemModel.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.malFazlasiMiktar != null),
                   Text.rich(
                     TextSpan(
-                      children: <TextSpan?>[
+                      children: [
                         TextSpan(text: "Satış İskontosu: ${kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} "),
                         TextSpan(
                           text: kalemModel.iskontoDetayi,
                           style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
                         ),
-                      ].whereType<TextSpan>().toList(),
+                      ],
                     ),
                   ).yetkiVarMi(kalemModel.kdvOrani != null),
                   Text.rich(
