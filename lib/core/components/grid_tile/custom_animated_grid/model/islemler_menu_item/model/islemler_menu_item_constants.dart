@@ -300,44 +300,44 @@ final class IslemlerMenuItemConstants<T> {
   //* Siparis
   GridItemModel get irsaliyeOlustur => GridItemModel.islemler(title: "İrsaliye Oluştur", iconData: Icons.conveyor_belt);
   GridItemModel get belgeyiKapatAc {
-      final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-      if (siparisModel.tipi != 1) {
-        return GridItemModel.islemler(
-          title: "Belgeyi Kapat",
-          isEnabled: (siparisTipi?.belgeKapatabilirMi ?? false) || AccountModel.instance.adminMi,
-          iconData: Icons.lock_outline,
-          onTap: () async {
-            bool? result;
-            await _dialogManager.showAreYouSureDialog(
-              () async {
-                result = true;
-              },
-              title: "Kiliti kapatmak istediğinize emin misiniz?",
-            );
-            if (result == true) {
-              return await kilitRequest(siparisModel, 1);
-            }
-          },
-        );
-      } else {
-        return GridItemModel.islemler(
-          title: "Belgeyi Aç",
-          isEnabled: AccountModel.instance.adminMi,
-          iconData: Icons.lock_open_outlined,
-          onTap: () async {
-            bool? result;
-            await _dialogManager.showAreYouSureDialog(
-              () async {
-                result = true;
-              },
-              title: "Kiliti açmak istediğinize emin misiniz?",
-            );
-            if (result == true) {
-              return await kilitRequest(siparisModel, 2);
-            }
-          },
-        );
-      }
+    final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    if (siparisModel.tipi != 1) {
+      return GridItemModel.islemler(
+        title: "Belgeyi Kapat",
+        isEnabled: (siparisTipi?.belgeKapatabilirMi ?? false) || AccountModel.instance.adminMi,
+        iconData: Icons.lock_outline,
+        onTap: () async {
+          bool? result;
+          await _dialogManager.showAreYouSureDialog(
+            () async {
+              result = true;
+            },
+            title: "Kiliti kapatmak istediğinize emin misiniz?",
+          );
+          if (result == true) {
+            return await kilitRequest(siparisModel, 1);
+          }
+        },
+      );
+    } else {
+      return GridItemModel.islemler(
+        title: "Belgeyi Aç",
+        isEnabled: AccountModel.instance.adminMi,
+        iconData: Icons.lock_open_outlined,
+        onTap: () async {
+          bool? result;
+          await _dialogManager.showAreYouSureDialog(
+            () async {
+              result = true;
+            },
+            title: "Kiliti açmak istediğinize emin misiniz?",
+          );
+          if (result == true) {
+            return await kilitRequest(siparisModel, 2);
+          }
+        },
+      );
+    }
   }
 
   Future<bool> kilitRequest(BaseSiparisEditModel siparisModel, int yeniTipi) async {
@@ -412,7 +412,7 @@ final class IslemlerMenuItemConstants<T> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: Get.back,
-                        style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                        style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
                         child: const Text("İptal"),
                       ),
                     ),
@@ -640,7 +640,7 @@ final class IslemlerMenuItemConstants<T> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: Get.back,
-                        style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                        style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
                         child: const Text("İptal"),
                       ),
                     ),

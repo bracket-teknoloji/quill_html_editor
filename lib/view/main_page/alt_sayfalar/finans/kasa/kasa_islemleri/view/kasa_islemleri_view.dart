@@ -296,7 +296,7 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
                   onPressed: () {
                     viewModel.clearFilters();
                     plasiyerController.clear();

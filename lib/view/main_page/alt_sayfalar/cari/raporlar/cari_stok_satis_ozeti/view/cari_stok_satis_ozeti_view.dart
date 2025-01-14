@@ -180,7 +180,7 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
                         children: [
                           Expanded(
                             child: ElevatedButton(
-                              style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                              style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
                               onPressed: () {
                                 viewModel.deleteAllArr();
                                 stokGrupKoduController.clear();

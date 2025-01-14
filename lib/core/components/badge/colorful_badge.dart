@@ -18,9 +18,11 @@ final class _ColorfulBadgeState extends State<ColorfulBadge> {
   Widget build(BuildContext context) => Badge(
         textStyle: const TextStyle(fontSize: UIHelper.midSize),
         label: _child(),
-        textColor: (widget.badgeColorEnum?.getColor.computeLuminance() ?? 0) > 0.3 ? Colors.black : Colors.white,
-        backgroundColor: widget.badgeColorEnum?.getColor,
+        textColor: (_getColor().computeLuminance()) > 0.3 ? Colors.black : Colors.white,
+        backgroundColor: _getColor(),
       );
+
+  Color _getColor() => (widget.badgeColorEnum ?? BadgeColorEnum.cari).getColor;
 
   Widget _child() {
     if (widget.onTap != null) {

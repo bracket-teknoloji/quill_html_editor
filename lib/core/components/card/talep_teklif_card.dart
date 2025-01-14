@@ -59,7 +59,7 @@ final class TalepTeklifCard extends StatefulWidget {
 }
 
 final class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
-  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
+  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6));
 
   BaseSiparisEditModel get model => widget.model;
 
@@ -207,7 +207,7 @@ final class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                 TextSpan(
                   children: [
                     TextSpan(text: widget.model.tarih.toDateString),
-                    TextSpan(text: "   ${widget.model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
+                    TextSpan(text: "   ${widget.model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontSize: UIHelper.midSize)),
                   ],
                 ),
               ),

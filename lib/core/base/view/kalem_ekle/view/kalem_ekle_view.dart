@@ -377,7 +377,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             ].where((element) => element is! SizedBox).toList(),
                           ),
                           Card(
-                            color: theme.colorScheme.primary.withOpacity(0.1),
+                            color: theme.colorScheme.primary.withValues(alpha: 0.1),
                             child: Center(
                               child: Text.rich(
                                 TextSpan(
@@ -820,46 +820,47 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ).yetkiVarMi(
                       !editTipi.talepTeklifMi && (editTipi?.depoTransferiMi != true),
                     ),
-                    if (!editTipi.talepKalemlerFiltrele) Expanded(
-                      child: CustomTextField(
-                        labelText: "Ölçü Birimi",
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: olcuBirimiController,
-                        valueWidget: Observer(
-                          builder: (_) => TextScroll(
-                            viewModel.kalemModel.olcuBirimKodu == null
-                                ? ""
-                                : "${viewModel.kalemModel.olcuBirimKodu.toStringIfNotNull ?? ""} ${viewModel.kalemModel.olcuBirimKodu == 1 ? "" : "- ${viewModel.kalemModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${viewModel.kalemModel.olcuBirimAdi} = ${((viewModel.kalemModel.miktar ?? 0) * (viewModel.olcuBirimiMap.firstWhereOrNull((element) => element.adi == viewModel.kalemModel.olcuBirimAdi)?.payda ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran)} ${viewModel.olcuBirimiMap.firstOrNull?.adi}"}",
+                    if (!editTipi.talepKalemlerFiltrele)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Ölçü Birimi",
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: olcuBirimiController,
+                          valueWidget: Observer(
+                            builder: (_) => TextScroll(
+                              viewModel.kalemModel.olcuBirimKodu == null
+                                  ? ""
+                                  : "${viewModel.kalemModel.olcuBirimKodu.toStringIfNotNull ?? ""} ${viewModel.kalemModel.olcuBirimKodu == 1 ? "" : "- ${viewModel.kalemModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${viewModel.kalemModel.olcuBirimAdi} = ${((viewModel.kalemModel.miktar ?? 0) * (viewModel.olcuBirimiMap.firstWhereOrNull((element) => element.adi == viewModel.kalemModel.olcuBirimAdi)?.payda ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.oran)} ${viewModel.olcuBirimiMap.firstOrNull?.adi}"}",
+                            ),
                           ),
-                        ),
-                        // valueWidget: Observer(builder: (_) => TextScroll("12345678910    " * 10)),
-                        onClear: () => viewModel.setOlcuBirimi(null),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                            context,
-                            title: "Ölçü Birimi Seçiniz",
-                            groupValue: viewModel.kalemModel.olcuBirimKodu,
-                            children: List.generate(
-                              viewModel.olcuBirimiMap.length,
-                              (index) => BottomSheetModel(
-                                title: viewModel.olcuBirimiMap[index].adi ?? "",
-                                description: (index + 1).toStringIfNotNull,
-                                groupValue: index + 1,
-                                value: MapEntry<Olculer, int>(
-                                  viewModel.olcuBirimiMap[index],
-                                  index + 1,
+                          // valueWidget: Observer(builder: (_) => TextScroll("12345678910    " * 10)),
+                          onClear: () => viewModel.setOlcuBirimi(null),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              title: "Ölçü Birimi Seçiniz",
+                              groupValue: viewModel.kalemModel.olcuBirimKodu,
+                              children: List.generate(
+                                viewModel.olcuBirimiMap.length,
+                                (index) => BottomSheetModel(
+                                  title: viewModel.olcuBirimiMap[index].adi ?? "",
+                                  description: (index + 1).toStringIfNotNull,
+                                  groupValue: index + 1,
+                                  value: MapEntry<Olculer, int>(
+                                    viewModel.olcuBirimiMap[index],
+                                    index + 1,
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                          if (result != null) {
-                            viewModel.setOlcuBirimi(result);
-                            olcuBirimiController.text = result.key.adi ?? "";
-                          }
-                        },
+                            );
+                            if (result != null) {
+                              viewModel.setOlcuBirimi(result);
+                              olcuBirimiController.text = result.key.adi ?? "";
+                            }
+                          },
+                        ),
                       ),
-                    ),
                   ],
                 ),
                 if (editTipi?.fiyatGor == true)

@@ -41,9 +41,9 @@ final class SiparisRehberiCard extends StatefulWidget {
 }
 
 final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
-  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
+  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6));
 
- List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).nonNulls.toList();
+  List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).nonNulls.toList();
 
   Widget? aciklamaText(int? index) {
     if (widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true) {
@@ -51,6 +51,7 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
     }
     return null;
   }
+
   ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
   @override
@@ -71,7 +72,7 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
                 TextSpan(
                   children: [
                     TextSpan(text: widget.model.tarih.toDateString),
-                    TextSpan(text: "   ${widget.model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
+                    TextSpan(text: "   ${widget.model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontSize: UIHelper.midSize)),
                   ],
                 ),
               ),

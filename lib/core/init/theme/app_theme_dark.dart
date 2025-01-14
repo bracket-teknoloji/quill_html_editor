@@ -11,7 +11,7 @@ final class AppThemeDark extends AppTheme {
   AppThemeDark._init();
   static AppThemeDark? _instance;
   static AppThemeDark? get instance => _instance ??= AppThemeDark._init();
-  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withOpacity(0.2), brightness: Brightness.dark);
+  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withValues(alpha: 0.2), brightness: Brightness.dark);
   @override
   ThemeData get theme => ThemeData(
         cupertinoOverrideTheme: const CupertinoThemeData(
@@ -23,7 +23,7 @@ final class AppThemeDark extends AppTheme {
         ),
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
         datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
-        radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withOpacity(0.1))),
+        radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1))),
         useMaterial3: true,
         colorSchemeSeed: UIHelper.primaryColor,
         actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
@@ -43,7 +43,7 @@ final class AppThemeDark extends AppTheme {
             textStyle: WidgetStateProperty.all(const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
             backgroundColor: WidgetStateProperty.all(Colors.transparent),
             foregroundColor: WidgetStateProperty.all(UIHelper.primaryColor),
-            overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withOpacity(0.1)),
+            overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1)),
             shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
           ),
         ),
@@ -76,7 +76,7 @@ final class AppThemeDark extends AppTheme {
           }),
           // trackOutlineColor: WidgetStatePropertyAll(colorManager.onPrimaryFixedVariant),
         ),
-        dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withOpacity(0.2), endIndent: UIHelper.midSize, indent: UIHelper.midSize),
+        dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withValues(alpha: 0.2), endIndent: UIHelper.midSize, indent: UIHelper.midSize),
         progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
         dropdownMenuTheme: DropdownMenuThemeData(
           menuStyle: const MenuStyle(),
@@ -188,7 +188,7 @@ final class AppThemeDark extends AppTheme {
           isCollapsed: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,
-            borderSide: BorderSide(color: colorManager.onSurface.withOpacity(0.3)),
+            borderSide: BorderSide(color: colorManager.onSurface.withValues(alpha: 0.3)),
           ),
           border: OutlineInputBorder(
             borderRadius: UIHelper.lowBorderRadius,

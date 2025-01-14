@@ -114,7 +114,7 @@ final class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
                       itemBuilder: (context, index) {
                         final SeriList seriModel = viewModel.seriList![index];
                         return Card(
-                          color: UIHelper.getColorWithValue(seriModel.miktar ?? 0).withOpacity(0.5),
+                          color: UIHelper.getColorWithValue(seriModel.miktar ?? 0).withValues(alpha: 0.5),
                           child: ListTile(
                             title: Text(seriModel.seriNo ?? ""),
                             subtitle: CustomLayoutBuilder(

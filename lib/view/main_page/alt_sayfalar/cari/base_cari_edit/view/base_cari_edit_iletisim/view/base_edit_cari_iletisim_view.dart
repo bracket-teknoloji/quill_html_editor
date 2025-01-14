@@ -33,14 +33,14 @@ final class _BaseCariEditIletisimViewState extends State<BaseCariEditIletisimVie
               Text(_cariDetayModel.irtibatList?[index].gorev ?? ""),
               Row(
                 children: <Widget>[
-                  Expanded(child: Text("Tel 1:", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.slateGray.withOpacity(0.5)))),
+                  Expanded(child: Text("Tel 1:", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.slateGray.withValues(alpha: 0.5)))),
                   Expanded(flex: 3, child: Text(_cariDetayModel.irtibatList?[index].sabitTel1 ?? "")),
                 ],
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Expanded(child: Text("E-Posta:", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.slateGray.withOpacity(0.5)))),
+                  Expanded(child: Text("E-Posta:", style: TextStyle(fontWeight: FontWeight.bold, color: ColorPalette.slateGray.withValues(alpha: 0.5)))),
                   Expanded(flex: 3, child: Text(_cariDetayModel.irtibatList?[index].emailSplit?.replaceAll(";", "\n") ?? "")),
                 ],
               ),

@@ -252,7 +252,6 @@ final class YetkiController {
     return false;
   }
 
-  bool get siparisOzelKod1AktifMi => false;
   bool siparisGenIsk1AktifMi(EditTipiEnum? editTipi) =>
       (_musteriSiparisiMi(editTipi) ? siparisMSGenIsk1AktifMi : siparisSSGenIsk1AktifMi) && siparisMSDegismeyecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanGenIsk1);
   bool siparisGenIsk2AktifMi(EditTipiEnum? editTipi) =>

@@ -24,7 +24,7 @@ final class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGrid
   Widget build(BuildContext context) => DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: UIHelper.midBorderRadius,
-          border: Border.all(color: theme.colorScheme.onSurface.withOpacity(0.1)),
+          border: Border.all(color: theme.colorScheme.onSurface.withValues(alpha: 0.1)),
         ),
         child: InkWell(
           borderRadius: UIHelper.midBorderRadius,

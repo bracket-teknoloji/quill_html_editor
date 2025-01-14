@@ -46,7 +46,7 @@ final class FaturalarCard extends StatefulWidget {
 final class _FaturalarCardState extends BaseState<FaturalarCard> {
   ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
-  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6));
+  TextStyle get greyTextStyle => TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6));
 
   List<Widget> aciklamaList() => List.generate(16, (index) => aciklamaText(index + 1)).nonNulls.toList();
 
@@ -204,7 +204,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                   TextSpan(
                     children: <InlineSpan>[
                       TextSpan(text: model.tarih.toDateString),
-                      TextSpan(text: "   ${model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withOpacity(0.6), fontSize: UIHelper.midSize)),
+                      TextSpan(text: "   ${model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontSize: UIHelper.midSize)),
                     ],
                   ),
                 ),

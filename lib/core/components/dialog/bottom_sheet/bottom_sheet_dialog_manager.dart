@@ -77,7 +77,7 @@ final class BottomSheetDialogManager {
     final result = await showModalBottomSheet(
       useRootNavigator: true,
       isScrollControlled: true,
-      barrierColor: Colors.black.withOpacity(0.6),
+      barrierColor: Colors.black.withValues(alpha: 0.6),
       useSafeArea: true,
       constraints: BoxConstraints.loose(
         Size(
@@ -167,7 +167,7 @@ final class BottomSheetDialogManager {
                     ListTile(
                       onTap: item.onTap ?? () => Get.back(result: [item.value]),
                       title: Text(item.title),
-                      subtitle: Text(item.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6))).yetkiVarMi(item.description != null).sizedBoxMi,
+                      subtitle: Text(item.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.6))).yetkiVarMi(item.description != null).sizedBoxMi,
                       leading: item.icon != null || item.iconWidget != null
                           ? SizedBox(
                               width: 20,
@@ -254,7 +254,7 @@ final class BottomSheetDialogManager {
     //FocusScope.of(context).unfocus();
     final result = await showModalBottomSheet<T>(
       context: context,
-      barrierColor: Colors.black.withOpacity(0.6),
+      barrierColor: Colors.black.withValues(alpha: 0.6),
       // useSafeArea: true,
       isScrollControlled: true,
       constraints: BoxConstraints.loose(
@@ -321,7 +321,7 @@ final class BottomSheetDialogManager {
                                                         children: [
                                                           item?.descriptionWidget,
                                                           if (item?.description != null)
-                                                            Text(item?.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withOpacity(0.6))),
+                                                            Text(item?.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.6))),
                                                         ].nullCheckWithGeneric,
                                                       ).yetkiVarMi(item?.description != null || item?.descriptionWidget != null).sizedBoxMi,
                                                     ).paddingSymmetric(horizontal: UIHelper.midSize),

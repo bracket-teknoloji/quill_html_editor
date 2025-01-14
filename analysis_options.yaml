@@ -33,6 +33,7 @@ linter:
     avoid_relative_lib_imports: true
     directives_ordering: true
     join_return_with_assignment: true
+    use_truncating_division: true
     library_private_types_in_public_api: false
     no_literal_bool_comparisons: true
     prefer_conditional_assignment: true

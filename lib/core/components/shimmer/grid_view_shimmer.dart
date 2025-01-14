@@ -24,8 +24,8 @@ final class _GridViewShimmerState extends BaseState<GridViewShimmer> {
         children: List.generate(
           10 * widget.gridDelegate.crossAxisCount,
           (index) => Shimmer.fromColors(
-            baseColor: ColorPalette.slateGray.withOpacity(0.1),
-            highlightColor: ColorPalette.slateGray.withOpacity(0.2),
+            baseColor: ColorPalette.slateGray.withValues(alpha: 0.1),
+            highlightColor: ColorPalette.slateGray.withValues(alpha: 0.2),
             child: card(),
           ),
         ),
@@ -33,7 +33,7 @@ final class _GridViewShimmerState extends BaseState<GridViewShimmer> {
 
   Card card() => Card(
         elevation: 0,
-        color: theme.colorScheme.surfaceContainerHighest.withOpacity(0.3),
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
         child: GridTile(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

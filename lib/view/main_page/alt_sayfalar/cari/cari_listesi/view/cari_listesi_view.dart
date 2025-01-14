@@ -322,8 +322,8 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                       .toList()
                       .nullCheckWithGeneric,
                 ),
-                Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))),
-                if (item.cariIl != null) Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withOpacity(0.5))) else const SizedBox(),
+                Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
+                if (item.cariIl != null) Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))) else const SizedBox(),
               ],
             ),
             trailing: Wrap(
@@ -842,7 +842,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               children: [
                 Expanded(
                   child: ElevatedButton(
-                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withOpacity(0.1))),
+                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
                     onPressed: () {
                       Get.back();
                       viewModel.resetFilter();
