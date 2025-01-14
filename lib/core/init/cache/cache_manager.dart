@@ -161,8 +161,7 @@ final class CacheManager {
   static bool getIsLicenseVerified(String key) => key == "demo@netfect.com" ? true : (isLicenseVerifiedBox.get(key) ?? false);
 
   static BaseSiparisEditModel? getSiparisEdit(String cariKodu) => siparisEditBox.get(cariKodu);
-  static List<BaseSiparisEditModel> getSiparisEditList(EditTipiEnum siparisTipi) =>
-      siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList();
+  static List<BaseSiparisEditModel> getSiparisEditList(EditTipiEnum siparisTipi) => siparisEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList();
   static List<BaseSiparisEditModel>? getSiparisEditLists(EditTipiEnum siparisTipi) =>
       siparisEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList();
 
@@ -172,8 +171,7 @@ final class CacheManager {
       faturaEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList();
 
   static BaseSiparisEditModel? getTransferEdit(String key) => transferEditBox.get(key);
-  static List<BaseSiparisEditModel> getTransferEditList(EditTipiEnum siparisTipi) =>
-      transferEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList();
+  static List<BaseSiparisEditModel> getTransferEditList(EditTipiEnum siparisTipi) => transferEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList();
   static List<BaseSiparisEditModel>? getTransferEditLists(EditTipiEnum siparisTipi) {
     final result = transferEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList();
     if (result == null) {
@@ -183,8 +181,7 @@ final class CacheManager {
   }
 
   static BaseSiparisEditModel? getTaltekEdit(String key) => talepTeklifEditBox.get(key);
-  static List<BaseSiparisEditModel> getTaltekEditList(EditTipiEnum siparisTipi) =>
-      talepTeklifEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList();
+  static List<BaseSiparisEditModel> getTaltekEditList(EditTipiEnum siparisTipi) => talepTeklifEditBox.values.where((element) => element.siparisTipi == siparisTipi).toList();
   static List<BaseSiparisEditModel>? getTaltekEditLists(EditTipiEnum siparisTipi) =>
       talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list?.where((element) => element.siparisTipi == siparisTipi).toList();
 

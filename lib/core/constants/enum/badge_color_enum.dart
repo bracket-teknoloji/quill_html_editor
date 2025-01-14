@@ -23,6 +23,7 @@ enum BadgeColorEnum {
   hata,
   muhtelif,
   rework;
+
   Color get getColor => switch (this) {
         BadgeColorEnum.eFatura || BadgeColorEnum.merkezeGonderildi => ColorPalette.mountbattenPink,
         BadgeColorEnum.dovizli => ColorPalette.skyBlue,

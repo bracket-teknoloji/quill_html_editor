@@ -437,10 +437,10 @@ extension EditTipiEnumExtension on EditTipiEnum {
       };
 
   MasrafKoduRehberiModel? get varsayilanMasrafKodu => switch (this) {
-    EditTipiEnum.ambarGirisi => yetkiController.transferAgMasrafKodu,
-    EditTipiEnum.ambarCikisi => yetkiController.transferAcMasrafKodu,
-    _ => null,
-  };
+        EditTipiEnum.ambarGirisi => yetkiController.transferAgMasrafKodu,
+        EditTipiEnum.ambarCikisi => yetkiController.transferAcMasrafKodu,
+        _ => null,
+      };
   bool get satisMi => switch (this) {
         EditTipiEnum.musteri ||
         EditTipiEnum.satisFatura ||

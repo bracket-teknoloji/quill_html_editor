@@ -131,7 +131,7 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
               });
             },
           ),
-          //TODO : bir yere gitmiyor
+        //TODO : bir yere gitmiyor
         // if (yetkiController.yazdirmaPaketlemeEtiketi) BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined),
       ],
     );

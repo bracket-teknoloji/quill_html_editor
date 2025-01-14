@@ -97,10 +97,7 @@ extension WidgetExtension on Widget {
 
 extension YetkiExtension2 on Object? {
   bool get isNull => this == null;
-  Object? isDebug() => (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode
-      )
-      ? this
-      : null;
+  Object? isDebug() => (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode) ? this : null;
   Object? isKDebug() => kDebugMode ? this : null;
 
   Object? yetkiVarMi(bool? yetki) => yetki == true ? this : null;
