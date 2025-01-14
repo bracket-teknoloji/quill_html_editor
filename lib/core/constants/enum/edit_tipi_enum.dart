@@ -1,5 +1,6 @@
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -419,22 +420,14 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.satisTeklifi => yetkiController.cariKoduDegistirSatisTeklifi,
         EditTipiEnum.alisTalebi => yetkiController.cariKoduDegistirAlisTalebi,
         EditTipiEnum.satisTalebi => yetkiController.cariKoduDegistirSatisTalebi,
-        EditTipiEnum.depoTransferi ||
-        EditTipiEnum.olcumdenDepoTransferi ||
-        EditTipiEnum.ambarGirisi ||
-        EditTipiEnum.ambarCikisi ||
-        EditTipiEnum.cari ||
-        EditTipiEnum.isEmri ||
-        EditTipiEnum.altIsEmri ||
-        EditTipiEnum.isEmriTakip ||
-        EditTipiEnum.uretimSonuKaydi ||
-        EditTipiEnum.uretim ||
-        EditTipiEnum.paket ||
-        EditTipiEnum.belgesizIslem =>
-          false
+        _ => false,
       };
 
-  bool get belgeKapatabilirMi => switch (this) { EditTipiEnum.musteri => yetkiController.belgeKapatMusSip, EditTipiEnum.satici => yetkiController.belgeKapatSaticiSip, _ => false };
+  bool get belgeKapatabilirMi => switch (this) {
+        EditTipiEnum.musteri => yetkiController.belgeKapatMusSip,
+        EditTipiEnum.satici => yetkiController.belgeKapatSaticiSip,
+        _ => false,
+      };
 
   bool get fiyatGrubuGorunsunMu => switch (this) {
         EditTipiEnum.musteri => true,
@@ -442,6 +435,12 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.satisIrsaliye => true,
         _ => false,
       };
+
+  MasrafKoduRehberiModel? get varsayilanMasrafKodu => switch (this) {
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgMasrafKodu,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcMasrafKodu,
+    _ => null,
+  };
   bool get satisMi => switch (this) {
         EditTipiEnum.musteri ||
         EditTipiEnum.satisFatura ||

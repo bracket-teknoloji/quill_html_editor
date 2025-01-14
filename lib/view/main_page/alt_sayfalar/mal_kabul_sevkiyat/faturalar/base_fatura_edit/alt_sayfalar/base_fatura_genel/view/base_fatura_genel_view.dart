@@ -353,7 +353,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                             }
                           }
                         },
-                ).yetkiVarMi((model.getEditTipiEnum?.gizlenecekAlanlar("teslim_cari") ?? false) && widget.model.baseEditEnum != BaseEditEnum.taslak),
+                ).yetkiVarMi(!(model.getEditTipiEnum?.gizlenecekAlanlar("teslim_cari") ?? false) && widget.model.baseEditEnum != BaseEditEnum.taslak),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -364,7 +364,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         isMust: true,
                         suffixMore: true,
                         controller: _belgeTipiController,
-                        enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
+                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.belgeTipi.toStringIfNotNull ?? "")),
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
@@ -387,7 +387,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false),
+                    ).yetkiVarMi(!(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false)),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Tarih",
@@ -395,7 +395,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         isMust: true,
                         isDateTime: true,
                         controller: _tarihController,
-                        enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("teslim_cari") ?? false),
+                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("teslim_cari") ?? false),
                         onTap: () async {
                           final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                           if (result != null) {
@@ -416,7 +416,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         isMust: true,
                         suffixMore: true,
                         controller: _projeController,
-                        enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
+                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                         onTap: () async {
                           final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
@@ -426,7 +426,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && (model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false)),
+                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false)),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Plasiyer",
@@ -434,7 +434,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         isMust: true,
                         suffixMore: true,
                         controller: _plasiyerController,
-                        enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("plasiyer") ?? false),
+                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("plasiyer") ?? false),
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                         onTap: () async {
                           final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
@@ -444,7 +444,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && (model.getEditTipiEnum?.gizlenecekAlanlar("plasiyer") ?? false)),
+                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("plasiyer") ?? false)),
                   ],
                 ),
                 Row(
@@ -493,7 +493,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   readOnly: true,
                   suffixMore: true,
                   controller: _topluDepoController,
-                  enabled: enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("toplu_depo") ?? false),
+                  enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("toplu_depo") ?? false),
                   valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                   onClear: () => viewModel.setTopluDepoKodu(null),
                   onTap: () async {
@@ -503,7 +503,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       viewModel.setTopluDepoKodu(result.depoKodu);
                     }
                   },
-                ).yetkiVarMi(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false),
+                ).yetkiVarMi(!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false)),
                 CustomLayoutBuilder(
                   splitCount: 2,
                   children: [
@@ -513,10 +513,10 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       child: Observer(
                         builder: (_) => Switch.adaptive(
                           value: viewModel.kdvDahil,
-                          onChanged: (enable && (model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (value) => viewModel.changeKdvDahil(value) : null,
+                          onChanged: (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (value) => viewModel.changeKdvDahil(value) : null,
                         ),
                       ),
-                    ).yetkiVarMi(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false),
+                    ).yetkiVarMi(!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false)),
                     CustomWidgetWithLabel(
                       text: "E-İrsaliye",
                       isVertical: true,
@@ -547,6 +547,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(1) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
                           suffixMore: getEkRehberById(1) != null,
                           onTap: () async => await getGenelRehber(1),
                           onClear: () => viewModel.setAciklama(1, null),
@@ -561,6 +562,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(2) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A2"),
                           onClear: () => viewModel.setAciklama(2, null),
                           suffixMore: getEkRehberById(2) != null,
                           onTap: () async => await getGenelRehber(2),
@@ -575,6 +577,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(3) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A3"),
                           suffixMore: getEkRehberById(3) != null,
                           onClear: () => viewModel.setAciklama(3, null),
                           onChanged: (value) => viewModel.setAciklama(3, GenelRehberModel(kodu: value)),
@@ -588,6 +591,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(4) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A4"),
                           suffixMore: getEkRehberById(4) != null,
                           onClear: () => viewModel.setAciklama(4, null),
                           onTap: () async => await getGenelRehber(4),
@@ -602,6 +606,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(5) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A5"),
                           suffixMore: getEkRehberById(5) != null,
                           onTap: () async => await getGenelRehber(5),
                           onClear: () => viewModel.setAciklama(5, null),
@@ -616,6 +621,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(6) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A6"),
                           suffixMore: getEkRehberById(6) != null,
                           onTap: () async => await getGenelRehber(6),
                           onClear: () => viewModel.setAciklama(6, null),
@@ -630,6 +636,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(7) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A7"),
                           suffixMore: getEkRehberById(7) != null,
                           onTap: () async => await getGenelRehber(7),
                           onClear: () => viewModel.setAciklama(7, null),
@@ -644,6 +651,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(8) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("8"),
                           suffixMore: getEkRehberById(8) != null,
                           onClear: () => viewModel.setAciklama(8, null),
                           onTap: () async => await getGenelRehber(8),
@@ -658,6 +666,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(9) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A9"),
                           suffixMore: getEkRehberById(9) != null,
                           onTap: () async => await getGenelRehber(9),
                           onClear: () => viewModel.setAciklama(9, null),
@@ -672,6 +681,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(10) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A10"),
                           suffixMore: getEkRehberById(10) != null,
                           onTap: () async => await getGenelRehber(10),
                           onClear: () => viewModel.setAciklama(10, null),
@@ -686,6 +696,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(11) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A11"),
                           suffixMore: getEkRehberById(11) != null,
                           onTap: () async => await getGenelRehber(11),
                           onClear: () => viewModel.setAciklama(11, null),
@@ -700,6 +711,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(12) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A12"),
                           suffixMore: getEkRehberById(12) != null,
                           onTap: () async => await getGenelRehber(12),
                           onClear: () => viewModel.setAciklama(12, null),
@@ -714,6 +726,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(13) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A13"),
                           suffixMore: getEkRehberById(13) != null,
                           onTap: () async => await getGenelRehber(13),
                           onClear: () => viewModel.setAciklama(13, null),
@@ -728,6 +741,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(14) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A14"),
                           suffixMore: getEkRehberById(14) != null,
                           onTap: () async => await getGenelRehber(14),
                           onClear: () => viewModel.setAciklama(14, null),
@@ -742,6 +756,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(15) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A15"),
                           suffixMore: getEkRehberById(15) != null,
                           onTap: () async => await getGenelRehber(15),
                           onClear: () => viewModel.setAciklama(15, null),
@@ -756,6 +771,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
                           readOnly: getEkRehberById(16) != null,
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A16"),
                           suffixMore: getEkRehberById(16) != null,
                           onTap: () async => await getGenelRehber(16),
                           onClear: () => viewModel.setAciklama(16, null),

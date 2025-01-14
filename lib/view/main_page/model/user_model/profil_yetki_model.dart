@@ -2121,6 +2121,8 @@ final class ProfilYetkiModel {
   String? transferAgOzelKod2Degeri;
   @JsonKey(name: "transfer_AG_VarsayilanMasrafKodu")
   String? transferAgVarsayilanMasrafKodu;
+  @JsonKey(name: "transfer_AC_VarsayilanMasrafKodu")
+  String? transferAcVarsayilanMasrafKodu;
   @JsonKey(name: "transfer_AC_OzelKod1Degeri")
   String? transferAcOzelKod1Degeri;
   @JsonKey(name: "transfer_AC_OzelKod2Degeri")

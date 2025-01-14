@@ -452,11 +452,12 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     },
                   ),
                 //* Geri Kalanlar
-                if ((editTipi?.ekAlan1GorunsunMu ?? false) && (editTipi?.gizlenecekAlanlar("ekalan1") ?? false) && model.getEditTipiEnum?.ambarFisiMi == false)
+                if ((editTipi?.ekAlan1GorunsunMu ?? false) && !(editTipi?.gizlenecekAlanlar("ekalan1") ?? false) && model.getEditTipiEnum?.ambarFisiMi == false)
                   CustomTextField(
                     labelText: "Ek Alan 1",
                     controller: ekAlan1Controller,
                     readOnly: getEkRehberModel("EKALAN1") != null,
+                    isMust: editTipi?.bosGecilmeyecekAlanlar("ekalan1") ?? false,
                     suffixMore: getEkRehberModel("EKALAN1") != null,
                     onChanged: (p0) {
                       viewModel.kalemModel.ekalan1 = p0;
@@ -479,11 +480,12 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             builder: (_) => Text(viewModel.kalemModel.ekalan1 ?? ""),
                           ),
                   ),
-                if ((editTipi?.ekAlan2GorunsunMu ?? false) && (editTipi?.gizlenecekAlanlar("ekalan2") ?? false))
+                if ((editTipi?.ekAlan2GorunsunMu ?? false) && !(editTipi?.gizlenecekAlanlar("ekalan2") ?? false))
                   CustomTextField(
                     labelText: "Ek Alan 2",
                     controller: ekAlan2Controller,
                     readOnly: getEkRehberModel("EKALAN2") != null,
+                    isMust: editTipi?.bosGecilmeyecekAlanlar("ekalan2") ?? false,
                     suffixMore: getEkRehberModel("EKALAN2") != null,
                     onChanged: (p0) => viewModel.kalemModel.ekalan2 = p0,
                     onTap: () => getGenelRehberModel("EKALAN2"),
@@ -495,6 +497,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   ),
                 if ((parametreModel.satisSatirdaIsEmriSorulsun ?? false) &&
                     (editTipi?.satisMi ?? false) &&
+                    !(editTipi?.gizlenecekAlanlar("isemri") ?? false) &&
                     (editTipi?.depoTransferiMi ?? false) &&
                     !yetkiController.transferLokalDatGizlenecekAlanlar(
                       "FATURA_BOS_GECILMESIN_ISEMR",
@@ -502,7 +505,12 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   CustomTextField(
                     labelText: "İş Emri",
                     controller: isEmriController,
+                    isMust: editTipi?.bosGecilmeyecekAlanlar("isemri") ?? false,
+                    enabled: !(editTipi?.degistirilmeyecekAlanlar("isemri") ?? false),
                     suffixMore: true,
+                    valueWidget: Observer(
+                      builder: (_) => Text(viewModel.kalemModel.isemriNo ?? ""),
+                    ),
                     onTap: () async {
                       final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
                       if (result is IsEmirleriModel) {
@@ -689,98 +697,100 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           },
                         ),
                       ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Proje",
-                        controller: projeController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(
-                          builder: (_) => Text(viewModel.kalemModel.projeKodu ?? ""),
+                    if (yetkiController.projeUygulamasiAcikMi && !(editTipi?.gizlenecekAlanlar("proje") ?? false))
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Proje",
+                          controller: projeController,
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          valueWidget: Observer(
+                            builder: (_) => Text(viewModel.kalemModel.projeKodu ?? ""),
+                          ),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                              context,
+                              viewModel.kalemModel.projeKodu,
+                            );
+                            if (result != null) {
+                              projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                              viewModel.setProjeKodu(result.projeKodu ?? "");
+                            }
+                          },
                         ),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
-                            context,
-                            viewModel.kalemModel.projeKodu,
-                          );
-                          if (result != null) {
-                            projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
-                            viewModel.setProjeKodu(result.projeKodu ?? "");
-                          }
-                        },
                       ),
-                    ).yetkiVarMi(
-                      yetkiController.projeUygulamasiAcikMi && (editTipi?.depoTransferiMi != true),
-                    ),
                   ],
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: Observer(
-                        builder: (_) => CustomTextField(
-                          enabled: !viewModel.koliMi,
-                          labelText: "Miktar",
-                          isFormattedString: true,
-                          isMust: true,
-                          controller: viewModel.koliMi ? null : miktarController,
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true,
-                          ),
-                          validator: (value) {
-                            if (value case ("" || null)) {
-                              return "Miktar boş bırakılamaz";
-                            }
-                            if ((int.tryParse(value) ?? 0) <= 0) {
-                              return "Miktar sıfırdan büyük olmalı";
-                            }
-                            return null;
-                          },
-                          onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
-                          suffix: Wrap(
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.remove_outlined),
-                                onPressed: () => viewModel.decreaseMiktar(miktarController),
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.add_outlined),
-                                onPressed: () => viewModel.increaseMiktar(miktarController),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Observer(
-                        builder: (_) => CustomTextField(
-                          labelText: "Miktar 2",
-                          controller: miktar2Controller,
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true,
-                          ),
-                          validator: miktar2Validator,
-                          isMust: viewModel.model?.koliMi,
-                          onChanged: (value) => viewModel.setMiktar2(value.toDoubleWithFormattedString),
-                          suffix: Wrap(
-                            children: [
-                              IconButton(
-                                icon: const Icon(Icons.remove_outlined),
-                                onPressed: () => viewModel.decreaseMiktar2(miktar2Controller),
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.add_outlined),
-                                onPressed: () => viewModel.increaseMiktar2(miktar2Controller),
-                              ),
-                            ],
+                    if (!(editTipi?.gizlenecekAlanlar("miktar") ?? false))
+                      Expanded(
+                        child: Observer(
+                          builder: (_) => CustomTextField(
+                            enabled: !viewModel.koliMi && !(editTipi?.degistirilmeyecekAlanlar("miktar") ?? false),
+                            labelText: "Miktar",
+                            isFormattedString: true,
+                            isMust: true,
+                            controller: viewModel.koliMi ? null : miktarController,
+                            keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true,
+                            ),
+                            validator: (value) {
+                              if (value case ("" || null)) {
+                                return "Miktar boş bırakılamaz";
+                              }
+                              if ((int.tryParse(value) ?? 0) <= 0) {
+                                return "Miktar sıfırdan büyük olmalı";
+                              }
+                              return null;
+                            },
+                            onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
+                            suffix: Wrap(
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.remove_outlined),
+                                  onPressed: () => viewModel.decreaseMiktar(miktarController),
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.add_outlined),
+                                  onPressed: () => viewModel.increaseMiktar(miktarController),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    if (!(editTipi?.gizlenecekAlanlar("miktar2") ?? false))
+                      Expanded(
+                        child: Observer(
+                          builder: (_) => CustomTextField(
+                            labelText: "Miktar 2",
+                            controller: miktar2Controller,
+                            isFormattedString: true,
+                            keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true,
+                            ),
+                            enabled: !(editTipi?.degistirilmeyecekAlanlar("miktar2") ?? false),
+                            validator: miktar2Validator,
+                            isMust: (viewModel.model?.koliMi ?? false) || (editTipi?.bosGecilmeyecekAlanlar("miktar2") ?? false),
+                            onChanged: (value) => viewModel.setMiktar2(value.toDoubleWithFormattedString),
+                            suffix: Wrap(
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.remove_outlined),
+                                  onPressed: () => viewModel.decreaseMiktar2(miktar2Controller),
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.add_outlined),
+                                  onPressed: () => viewModel.increaseMiktar2(miktar2Controller),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                   ],
                 ),
                 Row(
@@ -810,7 +820,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ).yetkiVarMi(
                       !editTipi.talepTeklifMi && (editTipi?.depoTransferiMi != true),
                     ),
-                    Expanded(
+                    if (!editTipi.talepKalemlerFiltrele) Expanded(
                       child: CustomTextField(
                         labelText: "Ölçü Birimi",
                         readOnly: true,
@@ -849,7 +859,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                           }
                         },
                       ),
-                    ).yetkiVarMi(!editTipi.talepKalemlerFiltrele),
+                    ),
                   ],
                 ),
                 if (editTipi?.fiyatGor == true)
@@ -970,15 +980,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     ).yetkiVarMi(
                       !editTipi.talepKalemlerFiltrele && !transferMi,
                     ),
-                    if (editTipi?.fiyatGor == true)
+                    if (editTipi?.fiyatGor == true && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false))
                       Expanded(
                         child: CustomTextField(
                           labelText: "Fiyat",
                           controller: fiyatController,
-                          enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
+                          enabled: !(editTipi?.fiyatDegistirilmesin ?? false) && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false),
                           keyboardType: const TextInputType.numberWithOptions(
                             decimal: true,
                           ),
+                          isMust: editTipi?.bosGecilmeyecekAlanlar("fiyat"),
                           isFormattedString: true,
                           onChanged: (p0) {
                             viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
@@ -1014,10 +1025,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                     },
                   ).yetkiVarMi(seriliMi),
                 ),
-                if (editTipi?.gizlenecekAlanlar("satir_iskontolari") ?? false)
+                if (!(editTipi?.gizlenecekAlanlar("satir_iskontolari") ?? false))
                   ...List.generate(
                     editTipi.kademeliIskontoSayisi > 6 ? 6 : editTipi.kademeliIskontoSayisi,
-                    (index) => editTipi?.gizlenecekAlanlar("sat_isk$index") ?? false
+                    (index) => !(editTipi?.gizlenecekAlanlar("sat_isk$index") ?? false)
                         ? Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -1395,7 +1406,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       if (editTipi?.satisMi == true ? yetkiController.satisMiktar1Gelsin : yetkiController.alisMiktar1Gelsin) {
         viewModel.setMiktar(1);
       }
-
+      viewModel.kalemModel.isemriNo = model.isemriNo;
       viewModel.kalemModel.stokBirimAgirlik = stokListesiModel?.birimAgirlik;
       viewModel.kalemModel.stokAlisDovTip ??= stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip;
       viewModel.kalemModel.dovizTipi ??= (editTipi?.satisMi == true ? stokListesiModel?.satDovTip : viewModel.model?.alisDovTip);
@@ -1425,7 +1436,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     ekAlan2Controller.text = viewModel.kalemModel.ekalan2 ?? "";
     teslimTarihiController.text = viewModel.kalemModel.teslimTarihi?.toDateString ?? "";
     yapKodController.text = viewModel.kalemModel.yapkod ?? viewModel.model?.yapkodAciklama ?? viewModel.model?.yapkod ?? "";
-    isEmriController.text = viewModel.kalemModel.irsaliyeNo ?? "";
+    isEmriController.text = viewModel.kalemModel.isemriNo ?? "";
     isk1Controller?.text = viewModel.kalemModel.iskonto1.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
     isk1TipiController?.text = getIskTipiAciklama(viewModel.kalemModel.isk1Tipi.toIntIfDouble);
     isk2YuzdeController?.text = viewModel.kalemModel.iskonto2.commaSeparatedWithDecimalDigits(OndalikEnum.oran);

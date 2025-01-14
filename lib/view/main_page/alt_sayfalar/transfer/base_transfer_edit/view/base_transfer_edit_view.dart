@@ -167,6 +167,10 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
           ..topluGirisDepoTanimi = widget.model.model?.topluGirisDepoTanimi
           ..topluCikisDepoTanimi = widget.model.model?.topluCikisDepoTanimi
           ..isNew = true;
+        if (widget.model.editTipiEnum.ambarGirisiMi) {
+          BaseSiparisEditModel.instance.masrafKoduAdi = yetkiController.transferAgMasrafKodu?.masrafAdi;
+          BaseSiparisEditModel.instance.masrafKodu = yetkiController.transferAgMasrafKodu?.masrafKodu;
+        }
         if (BaseSiparisEditModel.instance.getEditTipiEnum?.siparisBaglantisiGoster ?? false) {
           BaseSiparisEditModel.instance
             ..belgeTipi = 2

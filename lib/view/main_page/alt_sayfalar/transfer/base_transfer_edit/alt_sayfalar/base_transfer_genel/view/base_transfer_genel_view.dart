@@ -298,30 +298,32 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      child: CustomWidgetWithLabel(
-                        text: "Lokal Depo",
-                        isVertical: true,
-                        child: Observer(
-                          builder: (_) => Switch.adaptive(
-                            value: viewModel.model.lokalDat == "E",
-                            onChanged: enable ? (value) => viewModel.setLokalDepo(value) : null,
+                    if (yetkiController.lokalDepoUygulamasiAcikMi && (model.getEditTipiEnum?.depoTransferiMi ?? false))
+                      Expanded(
+                        child: CustomWidgetWithLabel(
+                          text: "Lokal Depo",
+                          isVertical: true,
+                          child: Observer(
+                            builder: (_) => Switch.adaptive(
+                              value: viewModel.model.lokalDat == "E",
+                              onChanged: enable ? (value) => viewModel.setLokalDepo(value) : null,
+                            ),
                           ),
                         ),
                       ),
-                    ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
-                    Expanded(
-                      child: CustomWidgetWithLabel(
-                        text: "KDV Dahil",
-                        isVertical: true,
-                        child: Observer(
-                          builder: (_) => Switch.adaptive(
-                            value: viewModel.kdvDahil,
-                            onChanged: enable ? (value) => viewModel.changeKdvDahil(value) : null,
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false) && !model.getEditTipiEnum.depoTransferiMi)
+                      Expanded(
+                        child: CustomWidgetWithLabel(
+                          text: "KDV Dahil",
+                          isVertical: true,
+                          child: Observer(
+                            builder: (_) => Switch.adaptive(
+                              value: viewModel.kdvDahil,
+                              onChanged: enable ? (value) => viewModel.changeKdvDahil(value) : null,
+                            ),
                           ),
                         ),
                       ),
-                    ).yetkiVarMi(!(viewModel.model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false)),
                     Expanded(
                       child: CustomWidgetWithLabel(
                         text: "E-İrsaliye",
@@ -623,22 +625,24 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                     ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
                   ],
                 ),
-                CustomTextField(
-                  labelText: "İş Emri",
-                  suffixMore: true,
-                  readOnly: true,
-                  enabled: enable,
-                  controller: _isEmriController,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.isemriNo ?? "")),
-                  onClear: () => viewModel.changeIsEmri(null),
-                  onTap: () async {
-                    final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
-                    if (result is IsEmirleriModel) {
-                      viewModel.changeIsEmri(result);
-                      _isEmriController.text = result.stokKodu ?? "";
-                    }
-                  },
-                ).yetkiVarMi(yetkiController.transferIsEmriSorulsun && !(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isemri") ?? false))
+                  CustomTextField(
+                    labelText: "İş Emri",
+                    suffixMore: true,
+                    readOnly: true,
+                    isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("isemri"),
+                    enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("isemri") ?? false),
+                    controller: _isEmriController,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.isemriNo ?? "")),
+                    onClear: () => viewModel.changeIsEmri(null),
+                    onTap: () async {
+                      final result = await Get.toNamed("/mainPage/isEmriRehberiOzel");
+                      if (result is IsEmirleriModel) {
+                        viewModel.changeIsEmri(result);
+                        _isEmriController.text = result.stokKodu ?? "";
+                      }
+                    },
+                  ).yetkiVarMi(yetkiController.transferIsEmriSorulsun && !(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

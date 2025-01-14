@@ -220,10 +220,10 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            if (model.getEditTipiEnum?.gizlenecekAlanlar("genel_iskontolar") ?? false) ...[
+            if (!(model.getEditTipiEnum?.gizlenecekAlanlar("genel_iskontolar") ?? false)) ...[
               Row(
                 children: <CustomTextField>[
-                  if (model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false)
+                  if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
                     CustomTextField(
                       labelText: "Gen. İsk 1",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -244,7 +244,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                         icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined)),
                       ),
                     ),
-                  if (model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false)
+                  if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false))
                     CustomTextField(
                       labelText: "İsk.Tipi 1",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -267,7 +267,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
               ),
               Row(
                 children: <CustomTextField>[
-                  if (model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false)
+                  if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
                     CustomTextField(
                       labelText: "Gen. İsk 2",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -288,7 +288,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                         icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined)),
                       ),
                     ),
-                  if (model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false)
+                  if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false))
                     CustomTextField(
                       labelText: "İsk.Tipi 2",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -310,7 +310,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
               ),
               Row(
                 children: <CustomTextField>[
-                  if (model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk3") ?? false)
+                  if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk3") ?? false))
                     CustomTextField(
                       labelText: "Gen. İsk 3",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -331,7 +331,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                         icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined)),
                       ),
                     ),
-                  if (model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false)
+                  if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false))
                     CustomTextField(
                       labelText: "İsk.Tipi 3",
                       //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -385,39 +385,41 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
             ),
             Row(
               children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Vade Günü",
-                    enabled: enable,
-                    controller: vadeGunuController,
-                    keyboardType: TextInputType.number,
-                    onChanged: (value) {
-                      model.vadeGunu = int.tryParse(value);
-                      viewModel.setVadeTarihi(DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0)));
-                    },
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.vadeTarihi.toDateString)),
-                    suffix: IconButton(
-                      onPressed: () async {
-                        final date = await dialogManager.showDateTimePicker(
-                          initialDate: model.vadeTarihi ?? DateTime.now(),
-                        );
-                        // final date = await showDatePicker(
-                        //   context: context,
-                        //   initialDate: model.vadeTarihi ?? DateTime.now(),
-                        //   firstDate: model.tarih ?? DateTime.now(),
-                        //   lastDate: DateTime.now().add(const Duration(days: 365)),
-                        // );
-                        if (date != null) {
-                          // model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
-                          viewModel.setVadeTarihi(date);
-                          model.vadeGunu = viewModel.model.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays;
-                          vadeGunuController.text = model.vadeGunu.toString();
-                        }
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("vade_gunu") ?? false))
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Vade Günü",
+                      isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("vade_gunu") ?? false,
+                      enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("vade_gunu") ?? false),
+                      controller: vadeGunuController,
+                      keyboardType: TextInputType.number,
+                      onChanged: (value) {
+                        model.vadeGunu = int.tryParse(value);
+                        viewModel.setVadeTarihi(DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0)));
                       },
-                      icon: const Icon(Icons.calendar_today),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.vadeTarihi.toDateString)),
+                      suffix: IconButton(
+                        onPressed: () async {
+                          final date = await dialogManager.showDateTimePicker(
+                            initialDate: model.vadeTarihi ?? DateTime.now(),
+                          );
+                          // final date = await showDatePicker(
+                          //   context: context,
+                          //   initialDate: model.vadeTarihi ?? DateTime.now(),
+                          //   firstDate: model.tarih ?? DateTime.now(),
+                          //   lastDate: DateTime.now().add(const Duration(days: 365)),
+                          // );
+                          if (date != null) {
+                            // model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
+                            viewModel.setVadeTarihi(date);
+                            model.vadeGunu = viewModel.model.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays;
+                            vadeGunuController.text = model.vadeGunu.toString();
+                          }
+                        },
+                        icon: const Icon(Icons.calendar_today),
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
             Row(

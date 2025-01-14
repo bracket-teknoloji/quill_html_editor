@@ -232,7 +232,7 @@ final class _SeriGirisiViewState extends BaseState<SeriGirisiView> {
 
   Future<String?> getQrData() async {
     final result = await Get.toNamed("/qr");
-    return result;
+    return result as String?;
   }
 
   Future<void> getStok() async {

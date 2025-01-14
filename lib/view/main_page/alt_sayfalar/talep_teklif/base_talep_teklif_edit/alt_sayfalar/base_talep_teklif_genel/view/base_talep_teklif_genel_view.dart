@@ -223,24 +223,9 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                     }
                   },
                 ),
-                // CustomTextField(
-                //   labelText: "Teslim Cari",
-                //   readOnly: true,
-                //   isMust: true,
-                //   suffixMore: true,
-                //   controller: _teslimCariController,
-                //   enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
-                //   valueWidget: Observer(builder: (_) => Text(viewModel.model.teslimCari ?? "")),
-                //   onTap: () async {
-                //     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                //     if (result != null) {
-                //       _teslimCariController.text = result.cariAdi ?? "";
-                //     }
-                //   },
-                // ).yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.editTipiEnum?.irsaliyeMi != true),
                 Row(
                   children: <Widget>[
-                    if (yetkiController.projeUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("proje"))
+                    if (yetkiController.projeUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false))
                       Expanded(
                         child: CustomTextField(
                           labelText: "Proje",
@@ -248,7 +233,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                           isMust: true,
                           suffixMore: true,
                           controller: _projeController,
-                          enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("proje"),
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                           onTap: () async {
                             final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
@@ -259,7 +244,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                           },
                         ),
                       ),
-                    if (yetkiController.plasiyerUygulamasiAcikMi && yetkiController.sevkiyatSatisFatGizlenecekAlanlar("plasiyer"))
+                    if (yetkiController.plasiyerUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("plasiyer") ?? false))
                       Expanded(
                         child: CustomTextField(
                           labelText: "Plasiyer",
@@ -267,7 +252,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                           isMust: true,
                           suffixMore: true,
                           controller: _plasiyerController,
-                          enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("plasiyer"),
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("plasiyer") ?? false),
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                           onTap: () async {
                             final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
@@ -283,7 +268,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    if (yetkiController.sevkiyatSatisFatGizlenecekAlanlar("belge_tipi"))
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false))
                       Expanded(
                         child: CustomTextField(
                           labelText: "Belge Tipi",
@@ -291,7 +276,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                           isMust: true,
                           suffixMore: true,
                           controller: _belgeTipiController,
-                          enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("belge_tipi"),
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
                           onTap: () async {
                             final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.tipi);
@@ -309,7 +294,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                         isMust: true,
                         isDateTime: true,
                         controller: _tarihController,
-                        enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("teslim_cari"),
+                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("teslim_cari") ?? false),
                         onTap: () async {
                           final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
                           if (result != null) {
@@ -324,14 +309,15 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    if (yetkiController.sevkiyatSatisFatGizlenecekAlanlar("toplu_depo"))
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false))
                       Expanded(
                         child: CustomTextField(
                           labelText: "Toplu Depo",
                           readOnly: true,
                           suffixMore: true,
                           controller: _topluDepoController,
-                          enabled: enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("toplu_depo"),
+                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo") ?? false,
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("toplu_depo") ?? false),
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                           onClear: () => viewModel.setTopluDepoKodu(null),
                           onTap: () async {
@@ -345,14 +331,14 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                       ),
                   ],
                 ),
-                if (yetkiController.sevkiyatSatisFatGizlenecekAlanlar("kdv_dahil_haric"))
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false))
                   CustomWidgetWithLabel(
                     text: "KDV Dahil",
                     isVertical: true,
                     child: Observer(
                       builder: (_) => Switch.adaptive(
                         value: viewModel.kdvDahil,
-                        onChanged: (enable && yetkiController.sevkiyatIrsDegistirilmeyecekAlanlar("kdv_dahil_haric")) ? (value) => viewModel.changeKdvDahil(value) : null,
+                        onChanged: (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (value) => viewModel.changeKdvDahil(value) : null,
                       ),
                     ),
                   ),

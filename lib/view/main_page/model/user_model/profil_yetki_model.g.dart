@@ -1911,6 +1911,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferAgOzelKod2Degeri = json['transfer_AG_OzelKod2Degeri'] as String?
       ..transferAgVarsayilanMasrafKodu =
           json['transfer_AG_VarsayilanMasrafKodu'] as String?
+      ..transferAcVarsayilanMasrafKodu =
+          json['transfer_AC_VarsayilanMasrafKodu'] as String?
       ..transferAcOzelKod1Degeri = json['transfer_AC_OzelKod1Degeri'] as String?
       ..transferAcOzelKod2Degeri = json['transfer_AC_OzelKod2Degeri'] as String?
       ..malKabulAlisIrsOzelKod1Degeri =
@@ -4030,6 +4032,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
         'transfer_AG_OzelKod2Degeri': value,
       if (instance.transferAgVarsayilanMasrafKodu case final value?)
         'transfer_AG_VarsayilanMasrafKodu': value,
+      if (instance.transferAcVarsayilanMasrafKodu case final value?)
+        'transfer_AC_VarsayilanMasrafKodu': value,
       if (instance.transferAcOzelKod1Degeri case final value?)
         'transfer_AC_OzelKod1Degeri': value,
       if (instance.transferAcOzelKod2Degeri case final value?)
