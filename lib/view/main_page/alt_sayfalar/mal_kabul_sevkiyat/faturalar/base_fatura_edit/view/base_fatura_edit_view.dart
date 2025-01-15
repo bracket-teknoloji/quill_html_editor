@@ -287,7 +287,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
               if (cariModel.plasiyerKodu != null) {
                 BaseSiparisEditModel.instance
                   ..plasiyerKodu = cariModel.plasiyerKodu
-                  ..plasiyerAciklama = cariModel.plasiyerAciklama;
+                  ..plasiyerAciklama = parametreModel.plasiyerList?.firstWhereOrNull((element) => element.plasiyerKodu == cariModel.plasiyerKodu)?.plasiyerAciklama;
               }
             }
           }
@@ -314,8 +314,8 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           ..siparisTipi = model.editTipiEnum
           ..isNew = true
           ..belgeTuru = widget.model.editTipiEnum?.rawValue
-          ..projeAciklama = yetkiController.varsayilanProje?.projeAciklama
-          ..projeKodu = yetkiController.varsayilanProje?.projeKodu
+          ..projeAciklama ??= yetkiController.varsayilanProje?.projeAciklama
+          ..projeKodu ??= yetkiController.varsayilanProje?.projeKodu
           ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue
           ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
           ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
@@ -750,6 +750,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                   "/mainPage/siparisRehberi",
                   arguments: BaseSiparisEditModel(
                     pickerBelgeTuru: widget.model.editTipiEnum?.rawValue,
+                    belgeTuru:  widget.model.editTipiEnum?.rawValue,
                     cariKodu: viewModel.baseSiparisEditModel.cariKodu,
                   ),
                 );
@@ -762,6 +763,8 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                     //   viewModel.baseSiparisEditModel.cariKodu = cariModel?.cariKodu;
                     // }
                     _siparisController.text = list.firstOrNull?.belgeNo ?? "";
+                    viewModel.baseSiparisEditModel.cariAdi = list.firstOrNull?.cariAdi;
+                    viewModel.baseSiparisEditModel.cariKodu = list.firstOrNull?.cariKodu;
                   } else {
                     _siparisController.text = "${list.length} adet Sipariş Seçildi.";
                   }
@@ -863,7 +866,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
       queryParameters: {
         "filterText": "",
         "Kod": viewModel.baseSiparisEditModel.cariKodu,
-        "EFaturaGoster": true,
+        "EFaturaGoster": yetkiController.eFaturaAktif,
         "KisitYok": true,
         "BelgeTuru": widget.model.editTipiEnum?.rawValue,
         "PlasiyerKisitiYok": true,
@@ -873,7 +876,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
   }
 
   Future<void> getKalemRehberi() async {
-    final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: BaseSiparisEditModel.instance..belgeTuru = "MS");
+    final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: BaseSiparisEditModel.instance);
     if (result is List) {
       List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
       list = list

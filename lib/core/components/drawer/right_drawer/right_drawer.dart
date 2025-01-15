@@ -42,8 +42,24 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Expanded(child: LottieBuilder.network("https://assets9.lottiefiles.com/packages/lf20_yMpiqXia1k.json")),
-                  Assets.lotties.personLottie.lottie(height: height * 0.2).paddingAll(UIHelper.lowSize),
+                  Card(
+                    child: Column(
+                      children: [
+                        Assets.lotties.personLottie.lottie(height: height * 0.2).paddingAll(UIHelper.lowSize),
+                        Text(loc.rightDrawer.profile, style: theme.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold)).marginOnly(top: UIHelper.lowSize),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (userModel.admin) const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize),
+                            Text(
+                              CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc.rightDrawer.executiveUser,
+                              style: userModel.admin ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold) : theme.textTheme.bodySmall,
+                            ),
+                          ],
+                        ).marginOnly(bottom: UIHelper.midSize),
+                      ],
+                    ),
+                  ).paddingAll(UIHelper.lowSize),
                   Text(CacheManager.getAnaVeri!.userModel?.adSoyad ?? "", style: theme.textTheme.bodyLarge),
                   Text(
                     CacheManager.getVerifiedUser.account?.firma ?? "",
@@ -51,24 +67,13 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                     maxLines: 3,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(loc.rightDrawer.profile, style: theme.textTheme.bodySmall).marginOnly(top: UIHelper.midSize),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (userModel.admin) const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize),
-                      Text(
-                        CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc.rightDrawer.executiveUser,
-                        style: userModel.admin ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold) : theme.textTheme.bodySmall,
-                      ),
-                    ],
-                  ).marginOnly(bottom: UIHelper.midSize),
+                  ).paddingOnly(bottom: UIHelper.midSize),
                 ],
               ),
-              // const Divider(
-              //   indent: UIHelper.midSize,
-              //   endIndent: UIHelper.midSize,
-              // ),
+              const Divider(
+                indent: UIHelper.lowSize,
+                endIndent: UIHelper.lowSize,
+              ),
               Expanded(
                 child: ListView.builder(
                   primary: false,

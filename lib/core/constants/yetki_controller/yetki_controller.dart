@@ -680,6 +680,15 @@ final class YetkiController {
   bool get alisIrsaliyesiFaturaSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.malKabulAlisIrsSipBagSecenegi == "O");
   bool get satisIrsaliyesiFaturaSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "O");
 
+  // Sipariş Bağlantısı çoklu seçim
+  bool get alisFaturasiFaturaSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.malKabulAlisFatSipBagCokluSecim);
+  bool get satisFaturasiFaturaSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.sevkiyatSatisFatSipBagCokluSecim);
+  bool get alisIrsaliyesiFaturaSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.malKabulAlisIrsSipBagCokluSecim);
+  bool get satisIrsaliyesiFaturaSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.sevkiyatSatisIrsSipBagCokluSecim);
+  bool get transferDatSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferDatSipBagCokluSecim);
+  bool get transferAgSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferAgSipBagCokluSecim);
+  bool get transferAcSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferAcSipBagCokluSecim);
+
   bool alisFaturaAciklamaAlanlari(int index) => _isTrue(
         _yetkiModel?.malKabulAlisFatAciklamaAlanlari == null
             ? false
@@ -696,9 +705,9 @@ final class YetkiController {
             : (index < 1 ? _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.isNotEmpty : _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index)) ?? false,
       );
   bool satisIrsaliyeAciklamaAlanlari(int index) => _isTrue(
-        _yetkiModel?.sevkiyatSatisIrsAciklamaAlanlari == null
+        _yetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari == null
             ? false
-            : (index < 1 ? _yetkiModel?.sevkiyatSatisIrsAciklamaAlanlari?.isNotEmpty : _yetkiModel?.sevkiyatSatisIrsAciklamaAlanlari?.contains(index)) ?? false,
+            : (index < 1 ? _yetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.isNotEmpty : _yetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.contains(index)) ?? false,
       );
 
   bool get sevkiyatSatisFaturaAciklamaDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisFatAciklamaDuzenle);

@@ -488,22 +488,23 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     ).yetkiVarMi(yetkiController.ebelgeOzelKod2AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
                   ],
                 ),
-                CustomTextField(
-                  labelText: "Toplu Depo",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: _topluDepoController,
-                  enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("toplu_depo") ?? false),
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
-                  onClear: () => viewModel.setTopluDepoKodu(null),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
-                    if (result != null) {
-                      _topluDepoController.text = result.depoTanimi ?? "";
-                      viewModel.setTopluDepoKodu(result.depoKodu);
-                    }
-                  },
-                ).yetkiVarMi(!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false)),
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false))
+                  CustomTextField(
+                    labelText: "Toplu Depo",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: _topluDepoController,
+                    enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("toplu_depo") ?? false),
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                    onClear: () => viewModel.setTopluDepoKodu(null),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                      if (result != null) {
+                        _topluDepoController.text = result.depoTanimi ?? "";
+                        viewModel.setTopluDepoKodu(result.depoKodu);
+                      }
+                    },
+                  ),
                 CustomLayoutBuilder(
                   splitCount: 2,
                   children: [

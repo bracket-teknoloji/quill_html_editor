@@ -60,13 +60,14 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
           onTap: widget.onTap,
           title: Row(
             children: [
-              Checkbox(
-                value: widget.value,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onChanged: (value) {
-                  widget.onTap?.call();
-                },
-              ),
+              if (_cokluSecim)
+                Checkbox(
+                  value: widget.value,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  onChanged: (value) {
+                    widget.onTap?.call();
+                  },
+                ),
               Expanded(child: Text(widget.model.belgeNo ?? "")),
               Text.rich(
                 TextSpan(
@@ -135,4 +136,6 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
           ),
         ),
       );
+
+  bool get _cokluSecim => widget.editTipiEnum.siparisBaglantisiCokluSecim;
 }

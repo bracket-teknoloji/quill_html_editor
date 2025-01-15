@@ -505,7 +505,18 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.ambarCikisi => yetkiController.transferAcDigerSekmesiGoster,
         _ => true
       };
-
+      
+      bool get siparisBaglantisiCokluSecim => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.satisFaturasiFaturaSiparisBaglantisiCokluSecim,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyesiFaturaSiparisBaglantisiCokluSecim,
+        EditTipiEnum.alisFatura => yetkiController.alisFaturasiFaturaSiparisBaglantisiCokluSecim,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyesiFaturaSiparisBaglantisiCokluSecim,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSiparisBaglantisiCokluSecim,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiCokluSecim,
+        EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiCokluSecim,
+        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
+        _ => true,
+      };
   bool get siparisBaglantisiGoster => switch (this) {
         EditTipiEnum.depoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,
         EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,

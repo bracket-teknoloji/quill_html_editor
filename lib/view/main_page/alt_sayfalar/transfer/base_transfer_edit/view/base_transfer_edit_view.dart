@@ -611,6 +611,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                   "/mainPage/siparisRehberi",
                   arguments: BaseSiparisEditModel(
                     pickerBelgeTuru: widget.model.editTipiEnum?.rawValue,
+                    belgeTuru:  widget.model.editTipiEnum?.rawValue,
                     cariKodu: viewModel.baseSiparisEditModel.cariKodu,
                   ),
                 );
@@ -623,6 +624,8 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                     //   viewModel.baseSiparisEditModel.cariKodu = cariModel?.cariKodu;
                     // }
                     _siparisController.text = list.firstOrNull?.belgeNo ?? "";
+                    viewModel.baseSiparisEditModel.cariAdi = list.firstOrNull?.cariAdi;
+                    viewModel.baseSiparisEditModel.cariKodu = list.firstOrNull?.cariKodu;
                   } else {
                     _siparisController.text = "${list.length} adet Sipariş Seçildi.";
                   }
@@ -640,7 +643,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                   dialogManager.showAlertDialog("Lütfen Cari veya Sipariş seçiniz.");
                   return;
                 } else {
-                  final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: SiparislerRequestModel.fromBaseSiparisEditModel(viewModel.baseSiparisEditModel)..pickerBelgeTuru = "MS");
+                  final result = await Get.toNamed("/mainPage/kalemRehberi", arguments: SiparislerRequestModel.fromBaseSiparisEditModel(viewModel.baseSiparisEditModel));
                   if (result is List) {
                     List<KalemModel> list = result.map((e) => e as KalemModel).toList().cast<KalemModel>();
                     final cariModel = await networkManager.getCariModel(CariRequestModel(kod: [list.firstOrNull?.cariKodu ?? ""]));

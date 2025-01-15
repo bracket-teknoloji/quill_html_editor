@@ -99,9 +99,12 @@ final class _SiparisRehberiViewState extends BaseState<SiparisRehberiView> {
                         return Observer(
                           builder: (_) => SiparisRehberiCard(
                             model: model,
-                            editTipiEnum: EditTipiEnum.musteri,
+                            editTipiEnum: widget.model.getEditTipiEnum ?? EditTipiEnum.musteri,
                             value: viewModel.selectedSiparisList.any((element) => element.belgeNo == model.belgeNo),
                             onTap: () {
+                              if (!(widget.model.getEditTipiEnum?.siparisBaglantisiCokluSecim ?? false)) {
+                                Get.back(result: [model]);
+                              }
                               if (viewModel.selectedSiparisList.any((element) => element.belgeNo == model.belgeNo)) {
                                 viewModel.removeSelectedSiparis(model);
                               } else {
