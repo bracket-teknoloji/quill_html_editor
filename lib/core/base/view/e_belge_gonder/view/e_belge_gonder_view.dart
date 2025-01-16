@@ -323,68 +323,74 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                     ],
                   ),
                 ),
-                if (viewModel.siparisEditModel.taslakMi)
-                  Observer(
-                    builder: (_) => Row(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () async {
-                            dialogManager.showAreYouSureDialog(() async {
-                              final result = await viewModel.deleteTaslak();
-                              if (result.isSuccess) {
-                                final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
-                                if (siparisModel != null) {
-                                  dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                                  viewModel
-                                    ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
-                                    ..setSiparisModel(siparisModel);
-                                }
-                              }
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.persianRed, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
-                          child: const Column(
-                            children: [Icon(Icons.delete_outline_outlined), Text("Taslak Sil")],
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () async {
-                            final result = await Get.toNamed("/mainPage/eBelgePdf", arguments: model.copyWith(taslak: "E"));
-                            if (result == true) {
-                              dialogManager.showAreYouSureDialog(() async {
-                                final result = await viewModel.sendEBelge();
-                                if (result.isSuccess) {
-                                  dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                Observer(
+                  builder: (_) => !viewModel.siparisEditModel.taslakMi
+                      ? const SizedBox.shrink()
+                      : Row(
+                          children: [
+                            if (_taslakSil)
+                              ElevatedButton(
+                                onPressed: () async {
+                                  dialogManager.showAreYouSureDialog(() async {
+                                    final result = await viewModel.deleteTaslak();
+                                    if (result.isSuccess) {
+                                      final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
+                                      if (siparisModel != null) {
+                                        dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                                        viewModel
+                                          ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
+                                          ..setSiparisModel(siparisModel);
+                                      }
+                                    }
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.persianRed, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
+                                child: const Column(
+                                  children: [
+                                    Icon(Icons.delete_outline_outlined),
+                                    Text("Taslak Sil"),
+                                  ],
+                                ),
+                              ),
+                            ElevatedButton(
+                              onPressed: () async {
+                                final result = await Get.toNamed("/mainPage/eBelgePdf", arguments: model.copyWith(taslak: "E"));
+                                if (result == true) {
+                                  dialogManager.showAreYouSureDialog(() async {
+                                    final result = await viewModel.sendEBelge();
+                                    if (result.isSuccess) {
+                                      dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
 
-                                  Get.back(result: true);
+                                      Get.back(result: true);
+                                    }
+                                  });
                                 }
-                              });
-                            }
-                          },
-                          style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
-                          child: Column(
-                            children: [const Icon(Icons.preview_outlined), Text(loc.generalStrings.view)],
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () async {
-                            dialogManager.showAreYouSureDialog(() async {
-                              final result = await viewModel.sendEBelge();
-                              if (result.isSuccess) {
-                                dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                              },
+                              style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
+                              child: Column(
+                                children: [const Icon(Icons.preview_outlined), Text(loc.generalStrings.view)],
+                              ),
+                            ),
+                            if (_canSendEBelge)
+                              ElevatedButton(
+                                onPressed: () async {
+                                  dialogManager.showAreYouSureDialog(() async {
+                                    final result = await viewModel.sendEBelge();
+                                    if (result.isSuccess) {
+                                      dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
 
-                                Get.back(result: true);
-                              }
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.mantis, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
-                          child: const Column(
-                            children: [Icon(Icons.send_outlined), Text("Gönder")],
-                          ),
+                                      Get.back(result: true);
+                                    }
+                                  });
+                                },
+                                style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.mantis, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
+                                child: const Column(
+                                  children: [Icon(Icons.send_outlined), Text("Gönder")],
+                                ),
+                              ),
+                          ].map((e) => Expanded(child: e.paddingAll(UIHelper.lowSize))).toList(),
                         ),
-                      ].map((e) => Expanded(child: e.paddingAll(UIHelper.lowSize))).toList(),
-                    ),
-                  ),
+                ),
               ],
             ).paddingAll(UIHelper.lowSize),
           ),
@@ -432,5 +438,19 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
         viewModel.setDizaynNo(selectedDizaynModel.id ?? 0);
       }
     }
+  }
+
+  bool get _taslakSil {
+    if (viewModel.siparisEditModel.eArsivSerisindenMi) return yetkiController.ebelgeEArsivTaslakSil;
+    if (viewModel.siparisEditModel.eFaturaSerisindenMi) return yetkiController.ebelgeEIrsaliyeTaslakSil;
+    if (viewModel.siparisEditModel.eIrsaliyeSerisindenMi) return yetkiController.ebelgeEFaturaTaslakSil;
+    return false;
+  }
+
+  bool get _canSendEBelge {
+    if (viewModel.siparisEditModel.eArsivSerisindenMi) return yetkiController.ebelgeEArsivGonder;
+    if (viewModel.siparisEditModel.eFaturaSerisindenMi) return yetkiController.ebelgeEFaturaGonder;
+    if (viewModel.siparisEditModel.eIrsaliyeSerisindenMi) return yetkiController.ebelgeEIrsaliyeGonder;
+    return false;
   }
 }

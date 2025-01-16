@@ -1461,8 +1461,15 @@ final class IslemlerMenuItemConstants<T> {
 
   GridItemModel get eFaturaGonder {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    final bool yetki = () {
+      if (siparisModel.eArsivSerisindenMi) return _yetkiController.ebelgeEArsivGonder;
+      if (siparisModel.eFaturaSerisindenMi) return _yetkiController.ebelgeEFaturaGonder;
+      if (siparisModel.eIrsaliyeSerisindenMi) return _yetkiController.ebelgeEIrsaliyeGonder;
+      return false;
+    }.call();
     return GridItemModel.islemler(
       title: "${siparisModel.getTitle(siparisModel.belgeNo)} Gönder",
+      isEnabled: yetki,
       iconData: Icons.send_outlined,
       onTap: () async {
         final BaseSiparisEditModel? newSiparisModel = await _networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(model as BaseSiparisEditModel));
@@ -1519,8 +1526,17 @@ final class IslemlerMenuItemConstants<T> {
 
   GridItemModel get eBelgetaslakSil {
     final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+    final bool yetki = () {
+      if (siparisModel.eBelgeMi) {
+        if (siparisModel.eArsivMi) return _yetkiController.ebelgeEArsivTaslakSil;
+        if (siparisModel.eFaturaMi) return _yetkiController.ebelgeEFaturaTaslakSil;
+        if (siparisModel.eIrsaliyeMi) return _yetkiController.ebelgeEIrsaliyeTaslakSil;
+      }
+      return false;
+    }.call();
     return GridItemModel.islemler(
       title: "Taslağı Sil",
+      isEnabled: yetki,
       iconData: Icons.delete_outline,
       onTap: () async {
         bool boolean = false;

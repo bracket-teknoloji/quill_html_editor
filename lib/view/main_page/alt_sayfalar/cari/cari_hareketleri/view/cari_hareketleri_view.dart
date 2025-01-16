@@ -26,7 +26,6 @@ import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -86,7 +85,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
         // extendBody: true,
         // extendBodyBehindAppBar: false,
         appBar: appBar(context),
-        floatingActionButton: fab(),
+        floatingActionButton: (yetkiController.cariHareketleriYeniKayit) ? fab() : null,
         bottomNavigationBar: bottomButtonBar(),
         body: body(),
       );
@@ -169,7 +168,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
             );
             await viewModel.getData();
           },
-        ).yetkiVarMi(yetkiController.cariHareketleriYeniKayit),
+        ),
       );
 
   Observer body() => Observer(

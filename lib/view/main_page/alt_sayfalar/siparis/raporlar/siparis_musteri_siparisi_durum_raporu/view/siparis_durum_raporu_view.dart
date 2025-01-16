@@ -200,7 +200,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
               Wrap(
                 children: [
                   Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}").yetkiVarMi(viewModel.gorunecekAlanlarMap["Cari"] ?? false),
-                  Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                  if (_fiyatGor) Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                   Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? "0"}"),
                   Text("Kalan miktar: ${kalemModel?.kalan.toIntIfDouble ?? "0"}"),
                   Text("Döviz kuru: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
@@ -414,5 +414,11 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
           ..setDahaVarMi(true);
       }
     }
+  }
+
+  bool get _fiyatGor {
+    if (widget.editTipiEnum.musteriMi) return yetkiController.siparisMSDurumRaporuFiyatGor;
+    if (widget.editTipiEnum.saticiMi) return yetkiController.siparisSSDurumRaporuFiyatGor;
+    return false;
   }
 }

@@ -69,6 +69,9 @@ final class YetkiController {
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
   bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
   bool genIsk3AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk3AktifMi : siparisMSGenIsk3AktifMi;
+  bool get genelDovizEkle => _isTrue(_yetkiModel?.genelDovizKurlariEkle);
+  bool get genelDovizDuzenle => _isTrue(_yetkiModel?.genelDovizKurlariDuzelt);
+  bool get genelDovizSil => _isTrue(_yetkiModel?.genelDovizKurlariSil);
   bool muhRefSorulsun(EditTipiEnum? editTipi) {
     if (editTipi.talepTeklifMi) {
       return taltekMuhRefSorulsun;
@@ -106,15 +109,16 @@ final class YetkiController {
 
   //! TEMSİLCİ
   bool get temsilciProfilKdvDahilMi => _isTrue(_yetkiModel?.temsilciProfilKdvDahil, skipAdmin: true);
-  bool get temsilciProfilSatisPerformansiniGizle => _isTrue(_yetkiModel?.temsilciProfilSatisPerformansiniGizle, skipAdmin: true);
-  bool get temsilciProfilAylaraGoreSatisiGizle => _isTrue(_yetkiModel?.temsilciProfilAylaraGoreSatisiGizle, skipAdmin: true);
-  bool get temsilciProfilAylaraGoreTahsilatiGizle => _isTrue(_yetkiModel?.temsilciProfilAylaraGoreTahsilatiGizle, skipAdmin: true);
+  bool get temsilciProfilSatisPerformansiniGizle => _isTrue(_yetkiModel?.temsilciProfilSatisPerformansiniGizle);
+  bool get temsilciProfilAylaraGoreSatisiGizle => _isTrue(_yetkiModel?.temsilciProfilAylaraGoreSatisiGizle);
+  bool get temsilciProfilAylaraGoreTahsilatiGizle => _isTrue(_yetkiModel?.temsilciProfilAylaraGoreTahsilatiGizle);
 
   //! CARİ
 
   bool get cariListesi => _isTrue(_yetkiModel?.cariCariListesi);
   bool get cariRapStokSatisOzeti => _isTrue(_yetkiModel?.cariRapStokSatisOzeti);
   bool get cariListesiRiskGorebilir => _isTrue(_yetkiModel?.cariCariListesiRiskGorebilir);
+  bool get cariToplamGorunmesin => _isTrue(_yetkiModel?.cariToplamGorunmesin);
 
   //* Cari Kartı
   bool get cariKarti => _isTrue(_yetkiModel?.cariCariKarti);
@@ -123,7 +127,7 @@ final class YetkiController {
   bool get cariKartiSilme => _isTrue(_yetkiModel?.cariCariKartiSil);
   bool get cariKartiRotasUygulamasiAcikMi => _isTrue(_paramModel?.cariRotaUygulamasi == "E", skipAdmin: true);
 
-  bool cariKartiDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.cariCariKartiDegismeyecekAlanlar?.contains(index) ?? false, skipAdmin: true);
+  bool cariKartiDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.cariCariKartiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
 
   //* Cari Hareketleri
   bool get cariHareketleri => _isTrue(_yetkiModel?.cariCariHareketleri);
@@ -221,6 +225,8 @@ final class YetkiController {
   bool get cariTeslimCariRehberSadeceSecsin => _yetkiModel?.cariTeslimCariRehberSadeceSecsin == "E";
 
   //! Sipariş
+  bool get siparisMSDurumRaporuFiyatGor => _isTrue(_yetkiModel?.siparisMusteriSiparisiDurumRaporuFiyatGor);
+  bool get siparisSSDurumRaporuFiyatGor => _isTrue(_yetkiModel?.siparisSaticiSiparisiDurumRaporuFiyatGor);
   bool _musteriSiparisiMi(EditTipiEnum? editTipi) => editTipi?.musteriMi == true;
   bool get siparisKdvDahilMi {
     if (_yetkiModel?.siparisMusSipKdvDurumu == "D") return true;
@@ -364,6 +370,7 @@ final class YetkiController {
   // bool get siparisSSISk1YuzdeSor => _isTrue(_paramModel?.alisSatirIsk1YuzdeSor);
 
   //! FİNANS
+  bool get hizliTahsilatSil => _isTrue(_yetkiModel?.finansHizliTahsilatKayitlariSil);
   bool referansKoduSorulsun(bool tahsilatMi) => tahsilatMi ? tahsilatReferansKoduSorulsun : odemeReferansKoduSorulsun;
   bool referansKodu(String? hesapTipi) {
     if ((_paramModel?.muhasebeEntegre ?? false) && (_paramModel?.muhFislerdeRefKodSorulsun ?? false) && hesapTipi != null) {
@@ -392,6 +399,7 @@ final class YetkiController {
 
   //* Banka
   bool kayitliHesapTipiMi(int value) => _paramModel?.kayitliBankaHesapTipleri?.contains(value) ?? false;
+  bool get bankaKayitSilinsinMi => _isTrue(_yetkiModel?.yoneticiBankaIslemleriSil);
 
   bool get musteriCekSil => _isTrue(_yetkiModel?.finansMcekSil);
   bool get musteriSenetSil => _isTrue(_yetkiModel?.finansMsenSil);
@@ -426,6 +434,9 @@ final class YetkiController {
 
   bool get sevkiyatSatisFatFiyatDegistirilmesin => _isTrue(_yetkiModel?.sevkiyatSatisFatFiyatDegistirilmesin, skipAdmin: true);
   bool get satisIrsFiyatGor => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiFiyatGor);
+
+  bool get satisCariDovizTipiniKullan => _isTrue(_paramModel?.satisCariDovizTipiniKullan);
+  bool get alisCariDovizTipiniKullan => _isTrue(_paramModel?.alisCariDovizTipiniKullan);
 
   bool get satisFatEkle => _isTrue(_yetkiModel?.sevkiyatSatisFatKaydet);
   bool get satisFatDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisFatDuzelt);
@@ -688,6 +699,14 @@ final class YetkiController {
   bool get transferDatSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferDatSipBagCokluSecim);
   bool get transferAgSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferAgSipBagCokluSecim);
   bool get transferAcSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferAcSipBagCokluSecim);
+
+  bool get alisFaturasiSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.malKabulAlisFatSipBagTumKalemlerSecilsin);
+  bool get satisFaturasiSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.sevkiyatSatisFatSipBagTumKalemlerSecilsin);
+  bool get alisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.malKabulAlisIrsSipBagTumKalemlerSecilsin);
+  bool get satisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.sevkiyatSatisIrsSipBagTumKalemlerSecilsin);
+  bool get transferDatSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.transferDatSipBagTumKalemlerSecilsin);
+  bool get transferAgSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.transferAgSipBagTumKalemlerSecilsin);
+  bool get transferAcSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.transferAcSipBagTumKalemlerSecilsin);
 
   bool alisFaturaAciklamaAlanlari(int index) => _isTrue(
         _yetkiModel?.malKabulAlisFatAciklamaAlanlari == null

@@ -124,7 +124,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
         appBar: appBar(context),
         floatingActionButton: fab(),
         body: body(),
-        bottomNavigationBar: bottomButtonBar(),
+        bottomNavigationBar: yetkiController.cariToplamGorunmesin ? null : bottomButtonBar(),
       );
 
   AppBar appBar(BuildContext context) => AppBar(

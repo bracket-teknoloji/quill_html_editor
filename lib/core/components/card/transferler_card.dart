@@ -262,7 +262,7 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
           dialogManager.showColorfulSnackBar(
             model.eFaturaMi
                 ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
-                : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama}' : ""}",
+                : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama!}' : ""}",
             badge.badgeColorEnum?.getColor ?? UIHelper.primaryColor,
           );
         },

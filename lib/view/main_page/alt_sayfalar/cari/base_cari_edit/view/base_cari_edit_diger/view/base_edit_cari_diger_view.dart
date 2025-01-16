@@ -352,7 +352,7 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               ],
             ),
             CustomTextField(
-              enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("bilgi"),
+              enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("bilgi"),
               labelText: "Bilgi",
               controller: bilgiController,
               onChanged: (p0) => viewModel.changeBilgi(p0),
@@ -410,7 +410,7 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
             ).yetkiVarMi(parametreModel.muhasebeEntegre == true),
             CustomTextField(
               enabled: (enabled && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") ||
-                  widget.model?.baseEditEnum != BaseEditEnum.goruntule && yetkiController.cariKartiDegistirilmeyecekAlanlar("sube"),
+                  widget.model?.baseEditEnum != BaseEditEnum.goruntule && !yetkiController.cariKartiDegistirilmeyecekAlanlar("sube"),
               readOnly: true,
               suffixMore: true,
               isMust: true,
@@ -431,7 +431,7 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               },
             ),
             CustomTextField(
-              enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("konum"),
+              enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("konum"),
               readOnly: true,
               suffixMore: true,
               labelText: "Konum",
@@ -446,7 +446,7 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               },
             ),
             CustomTextField(
-              enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("kilit"),
+              enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("kilit"),
               readOnly: true,
               suffixMore: true,
               isMust: true,
@@ -467,7 +467,7 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               },
             ),
             CustomTextField(
-              enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("bagli_cari"),
+              enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("bagli_cari"),
               readOnly: true,
               suffixMore: true,
               labelText: "Bağlı Cari",

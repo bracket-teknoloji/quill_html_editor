@@ -11,7 +11,7 @@ final class GridItemModel {
   GridItemModel.anamenu({required this.name, required this.title, required this.color, required this.altMenuler, this.icon, this.iconData, this.yetkiListesi}) : menuTipi = "A";
 
   GridItemModel.altmenu({required this.name, required this.title, required this.altMenuler, this.icon, this.iconData}) : menuTipi = "S";
-  GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.onTap, this.route, this.arguments, this.siparisTipi}) : menuTipi = "I" {
+  GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.onTap, this.route, this.arguments, this.siparisTipi, this.yetkiListesi}) : menuTipi = "I" {
     if (onTap == null) {
       if (route == null) {
         onTap ??= () async => DialogManager().showInfoSnackBar("Yapım Aşamasında");
@@ -100,8 +100,12 @@ final class GridItemModel {
       if (name == null) {
         return true;
       }
-      final result = route != null ? _cacheManager?.profilYetki?.toJson()[name] : false;
-      return result ?? false;
+      if (yetkiListesi != null) {
+        return yetkiListesi!.any((element) => element);
+      } else {
+        final result = route != null ? _cacheManager?.profilYetki?.toJson()[name] : false;
+        return result ?? false;
+      }
     }
   }
 

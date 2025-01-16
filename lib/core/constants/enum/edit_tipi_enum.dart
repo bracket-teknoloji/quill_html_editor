@@ -345,6 +345,8 @@ extension EditTipiEnumExtension on EditTipiEnum {
         _ => false
       };
 
+  bool get cariDovizTipiniKullan => satisMi ? yetkiController.satisCariDovizTipiniKullan : yetkiController.alisCariDovizTipiniKullan;
+
   bool bosGecilmeyecekAlanlar(String value) => switch (this) {
         EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatBosGecilmeyecekAlanlar(value),
         EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgBosGecilmeyecekAlanlar(value),
@@ -505,8 +507,8 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.ambarCikisi => yetkiController.transferAcDigerSekmesiGoster,
         _ => true
       };
-      
-      bool get siparisBaglantisiCokluSecim => switch (this) {
+
+  bool get siparisBaglantisiCokluSecim => switch (this) {
         EditTipiEnum.satisFatura => yetkiController.satisFaturasiFaturaSiparisBaglantisiCokluSecim,
         EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyesiFaturaSiparisBaglantisiCokluSecim,
         EditTipiEnum.alisFatura => yetkiController.alisFaturasiFaturaSiparisBaglantisiCokluSecim,
@@ -516,6 +518,17 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiCokluSecim,
         EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
         _ => true,
+      };
+
+  bool get siparisBaglantisiTumuSeciliGelsin => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.satisFaturasiSiparisBaglantisiTamamiSeciliGelsin,
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin,
+        EditTipiEnum.alisFatura => yetkiController.alisFaturasiSiparisBaglantisiTamamiSeciliGelsin,
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSiparisBaglantisiTamamiSeciliGelsin,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiTamamiSeciliGelsin,
+        EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiTamamiSeciliGelsin,
+        _ => false,
       };
   bool get siparisBaglantisiGoster => switch (this) {
         EditTipiEnum.depoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,

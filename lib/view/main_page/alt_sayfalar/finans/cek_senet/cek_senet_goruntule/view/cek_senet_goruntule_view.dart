@@ -53,9 +53,9 @@ final class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView>
                 controllerText: model.getCekBankaAdi,
                 readOnly: true,
               ),
-              const CustomTextField(
+              CustomTextField(
                 labelText: "IBAN",
-                // controllerText: model.,
+                controllerText: model.belgeNo,
                 readOnly: true,
               ),
               Row(

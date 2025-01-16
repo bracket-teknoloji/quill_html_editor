@@ -50,7 +50,7 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
-        floatingActionButton: fab(context),
+        floatingActionButton: (yetkiController.genelDovizEkle) ? fab(context) : null,
         body: body().paddingAll(UIHelper.lowSize),
       );
 
@@ -227,42 +227,44 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
               context,
               title: loc.generalStrings.options,
               children: [
-                BottomSheetModel(
-                  title: loc.generalStrings.edit,
-                  iconWidget: Icons.edit_outlined,
-                  onTap: () async {
-                    Get.back();
-                    await Get.to(
-                      () => DovizKuruGirisiView(
-                        dovizKurlariModel: item,
-                      ),
-                    );
-                    await viewModel.getData();
-                  },
-                ),
-                BottomSheetModel(
-                  title: loc.generalStrings.delete,
-                  iconWidget: Icons.delete_outline,
-                  onTap: () {
-                    Get.back();
-                    dialogManager.showAreYouSureDialog(() async {
-                      final result = await networkManager.dioPost<DovizKurlariModel>(
-                        path: ApiUrls.deleteDovizKuru,
-                        bodyModel: DovizKurlariModel(),
-                        data: {
-                          "DovizTipi": item.dovizTipi,
-                          "Tarih": item.tarih.toDateString,
-                        },
+                if (yetkiController.genelDovizDuzenle)
+                  BottomSheetModel(
+                    title: loc.generalStrings.edit,
+                    iconWidget: Icons.edit_outlined,
+                    onTap: () async {
+                      Get.back();
+                      await Get.to(
+                        () => DovizKuruGirisiView(
+                          dovizKurlariModel: item,
+                        ),
                       );
-                      if (result.isSuccess) {
-                        dialogManager.showSuccessSnackBar(
-                          "Başarıyla Silindi",
+                      await viewModel.getData();
+                    },
+                  ),
+                if (yetkiController.genelDovizSil)
+                  BottomSheetModel(
+                    title: loc.generalStrings.delete,
+                    iconWidget: Icons.delete_outline,
+                    onTap: () {
+                      Get.back();
+                      dialogManager.showAreYouSureDialog(() async {
+                        final result = await networkManager.dioPost<DovizKurlariModel>(
+                          path: ApiUrls.deleteDovizKuru,
+                          bodyModel: DovizKurlariModel(),
+                          data: {
+                            "DovizTipi": item.dovizTipi,
+                            "Tarih": item.tarih.toDateString,
+                          },
                         );
-                        await viewModel.getData();
-                      }
-                    });
-                  },
-                ),
+                        if (result.isSuccess) {
+                          dialogManager.showSuccessSnackBar(
+                            "Başarıyla Silindi",
+                          );
+                          await viewModel.getData();
+                        }
+                      });
+                    },
+                  ),
               ],
             );
           },

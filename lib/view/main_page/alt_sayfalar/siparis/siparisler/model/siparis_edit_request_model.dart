@@ -71,6 +71,8 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     String? arrBelgeNo,
     String? bakiyeDurumu,
     bool? isNew,
+    @JsonKey(name: "Barkod") String? barkod,
+    @JsonKey(name: "Okutuldu") String? okutuldu,
   }) = _SiparisEditRequestModel;
 
   SiparisEditRequestModel._();

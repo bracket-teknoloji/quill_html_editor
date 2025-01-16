@@ -138,6 +138,14 @@ mixin _$SiparisEditRequestModel {
   set bakiyeDurumu(String? value) => throw _privateConstructorUsedError;
   bool? get isNew => throw _privateConstructorUsedError;
   set isNew(bool? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "Barkod")
+  String? get barkod => throw _privateConstructorUsedError;
+  @JsonKey(name: "Barkod")
+  set barkod(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "Okutuldu")
+  String? get okutuldu => throw _privateConstructorUsedError;
+  @JsonKey(name: "Okutuldu")
+  set okutuldu(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this SiparisEditRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -208,7 +216,9 @@ abstract class $SiparisEditRequestModelCopyWith<$Res> {
       String? arrBelgeTipi,
       String? arrBelgeNo,
       String? bakiyeDurumu,
-      bool? isNew});
+      bool? isNew,
+      @JsonKey(name: "Barkod") String? barkod,
+      @JsonKey(name: "Okutuldu") String? okutuldu});
 }
 
 /// @nodoc
@@ -280,6 +290,8 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
     Object? arrBelgeNo = freezed,
     Object? bakiyeDurumu = freezed,
     Object? isNew = freezed,
+    Object? barkod = freezed,
+    Object? okutuldu = freezed,
   }) {
     return _then(_value.copyWith(
       ekranTipi: freezed == ekranTipi
@@ -494,6 +506,14 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool?,
+      barkod: freezed == barkod
+          ? _value.barkod
+          : barkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      okutuldu: freezed == okutuldu
+          ? _value.okutuldu
+          : okutuldu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -560,7 +580,9 @@ abstract class _$$SiparisEditRequestModelImplCopyWith<$Res>
       String? arrBelgeTipi,
       String? arrBelgeNo,
       String? bakiyeDurumu,
-      bool? isNew});
+      bool? isNew,
+      @JsonKey(name: "Barkod") String? barkod,
+      @JsonKey(name: "Okutuldu") String? okutuldu});
 }
 
 /// @nodoc
@@ -631,6 +653,8 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
     Object? arrBelgeNo = freezed,
     Object? bakiyeDurumu = freezed,
     Object? isNew = freezed,
+    Object? barkod = freezed,
+    Object? okutuldu = freezed,
   }) {
     return _then(_$SiparisEditRequestModelImpl(
       ekranTipi: freezed == ekranTipi
@@ -845,6 +869,14 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool?,
+      barkod: freezed == barkod
+          ? _value.barkod
+          : barkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      okutuldu: freezed == okutuldu
+          ? _value.okutuldu
+          : okutuldu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -906,7 +938,9 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
       this.arrBelgeTipi,
       this.arrBelgeNo,
       this.bakiyeDurumu,
-      this.isNew})
+      this.isNew,
+      @JsonKey(name: "Barkod") this.barkod,
+      @JsonKey(name: "Okutuldu") this.okutuldu})
       : super._();
 
   factory _$SiparisEditRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -1023,6 +1057,12 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
   String? bakiyeDurumu;
   @override
   bool? isNew;
+  @override
+  @JsonKey(name: "Barkod")
+  String? barkod;
+  @override
+  @JsonKey(name: "Okutuldu")
+  String? okutuldu;
 
   /// Create a copy of SiparisEditRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -1043,59 +1083,62 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
 
 abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   factory _SiparisEditRequestModel(
-      {@JsonKey(defaultValue: "D") String? ekranTipi,
-      bool? kisitYok,
-      @JsonKey(name: "BelgeTipi") String? belgeTipi,
-      @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
-      bool? remoteTempBelge,
-      int? faturaTipi,
-      int? tempBelgeId,
-      int? tipi,
-      String? belgeNo,
-      String? belgeTarihi,
-      String? belgeTuru,
-      String? cariKodu,
-      String? islemId,
-      String? kayitModu,
-      String? menuKodu,
-      String? mevcutBelgeNo,
-      String? mevcutCariKodu,
-      String? paramMap,
-      String? resimGoster,
-      String? stokKodu,
-      String? tag,
-      bool? siparisSevkEdilenGoster,
-      int? filtreKodu,
-      int? eFaturaIncKeyNo,
-      int? depoKodu,
-      bool? iadeMi,
-      String? ozelKod2,
-      String? cariTipi,
-      String? miktarGetir,
-      @JsonKey(name: "SIRALAMA") String? siralama,
-      String? siparisKarsilanmaDurumu,
-      String? ozelKod1,
-      bool? kapaliBelgelerListelenmesin,
-      String? projeKodu,
-      bool? faturalasmaGoster,
-      String? arrKod5,
-      String? arrGrupKodu,
-      String? arrKod4,
-      String? arrKod3,
-      String? arrKod2,
-      String? arrPlasiyerKodu,
-      String? arrKod1,
-      int? sayfa,
-      String? baslamaTarihi,
-      String? bitisTarihi,
-      String? searchText,
-      String? siparisDurumu,
-      String? referansStokKodu,
-      String? refBelgeTuru,
-      String? arrBelgeTipi,
-      String? arrBelgeNo,
-      String? bakiyeDurumu,
-      bool? isNew}) = _$SiparisEditRequestModelImpl;
+          {@JsonKey(defaultValue: "D") String? ekranTipi,
+          bool? kisitYok,
+          @JsonKey(name: "BelgeTipi") String? belgeTipi,
+          @JsonKey(name: "PickerBelgeTuru") String? pickerBelgeTuru,
+          bool? remoteTempBelge,
+          int? faturaTipi,
+          int? tempBelgeId,
+          int? tipi,
+          String? belgeNo,
+          String? belgeTarihi,
+          String? belgeTuru,
+          String? cariKodu,
+          String? islemId,
+          String? kayitModu,
+          String? menuKodu,
+          String? mevcutBelgeNo,
+          String? mevcutCariKodu,
+          String? paramMap,
+          String? resimGoster,
+          String? stokKodu,
+          String? tag,
+          bool? siparisSevkEdilenGoster,
+          int? filtreKodu,
+          int? eFaturaIncKeyNo,
+          int? depoKodu,
+          bool? iadeMi,
+          String? ozelKod2,
+          String? cariTipi,
+          String? miktarGetir,
+          @JsonKey(name: "SIRALAMA") String? siralama,
+          String? siparisKarsilanmaDurumu,
+          String? ozelKod1,
+          bool? kapaliBelgelerListelenmesin,
+          String? projeKodu,
+          bool? faturalasmaGoster,
+          String? arrKod5,
+          String? arrGrupKodu,
+          String? arrKod4,
+          String? arrKod3,
+          String? arrKod2,
+          String? arrPlasiyerKodu,
+          String? arrKod1,
+          int? sayfa,
+          String? baslamaTarihi,
+          String? bitisTarihi,
+          String? searchText,
+          String? siparisDurumu,
+          String? referansStokKodu,
+          String? refBelgeTuru,
+          String? arrBelgeTipi,
+          String? arrBelgeNo,
+          String? bakiyeDurumu,
+          bool? isNew,
+          @JsonKey(name: "Barkod") String? barkod,
+          @JsonKey(name: "Okutuldu") String? okutuldu}) =
+      _$SiparisEditRequestModelImpl;
   _SiparisEditRequestModel._() : super._();
 
   factory _SiparisEditRequestModel.fromJson(Map<String, dynamic> json) =
@@ -1268,6 +1311,16 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   @override
   bool? get isNew;
   set isNew(bool? value);
+  @override
+  @JsonKey(name: "Barkod")
+  String? get barkod;
+  @JsonKey(name: "Barkod")
+  set barkod(String? value);
+  @override
+  @JsonKey(name: "Okutuldu")
+  String? get okutuldu;
+  @JsonKey(name: "Okutuldu")
+  set okutuldu(String? value);
 
   /// Create a copy of SiparisEditRequestModel
   /// with the given fields replaced by the non-null parameter values.

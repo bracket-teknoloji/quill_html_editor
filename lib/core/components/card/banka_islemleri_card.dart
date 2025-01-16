@@ -29,11 +29,12 @@ final class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
             context,
             title: model?.hesapAdi ?? "",
             children: [
-              BottomSheetModel(
-                title: loc.generalStrings.delete,
-                onTap: deleteData,
-                iconWidget: Icons.delete_outline_outlined,
-              ),
+              if (yetkiController.bankaKayitSilinsinMi)
+                BottomSheetModel(
+                  title: loc.generalStrings.delete,
+                  onTap: deleteData,
+                  iconWidget: Icons.delete_outline_outlined,
+                ),
             ],
           );
         },

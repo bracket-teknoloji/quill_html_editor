@@ -453,6 +453,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         dialogManager.showStokGridViewDialog(await getSelectedData(item));
                       },
                       onTap: () async {
+                        if (item.kilitliMi) {
+                          return dialogManager.showAlertDialog("Kilitli olduğu için bu işlemi gerçekleştiremezsiniz.\nKilit tipi: ${item.kilitTipi}");
+                        }
                         StokListesiModel? stokModel;
                         if (instance.kalemEkliMi(item)) {
                           final result = await dialogManager.showStokKayitliDialog(item);
@@ -502,7 +505,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                   badgeColorEnum: BadgeColorEnum.dovizli,
                                 ),
                               if (item.yapilandirmaAktif == true) const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
-                              if (item.kilitGenel == "E") const ColorfulBadge(label: Text("Kilitli (Genel)"), badgeColorEnum: BadgeColorEnum.kilitli),
+                              if (item.kilitliMi) ColorfulBadge(label: Text("Kilitli (${item.kilitTipi})"), badgeColorEnum: BadgeColorEnum.hata),
                             ],
                           ),
                           Text(item.stokAdi ?? ""),

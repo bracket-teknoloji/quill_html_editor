@@ -179,7 +179,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                   ),
                   Expanded(
                     child: CustomTextField(
-                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("tipi"),
+                      enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("tipi"),
                       isMust: true,
                       labelText: "Cari Tipi",
                       valueWidget: Observer(builder: (_) => Text(viewModel.model?.tipi ?? "")),
@@ -329,7 +329,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                 children: <Widget>[
                   Expanded(
                     child: CustomTextField(
-                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
+                      enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
                       labelText: "Vergi Dairesi",
                       controller: vergiDairesiController,
                       onChanged: (p0) => viewModel.changeVergiDairesi(p0),
@@ -338,7 +338,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                   Expanded(
                     child: Observer(
                       builder: (_) => CustomTextField(
-                        enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
+                        enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("vergi"),
                         labelText: viewModel.isSahisFirmasi ? "T.C. Kimlik No" : "Vergi No",
                         controller: vergiNoController,
                         keyboardType: TextInputType.number,
@@ -354,7 +354,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                 children: <Widget>[
                   Expanded(
                     child: CustomTextField(
-                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("plasiyer"),
+                      enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("plasiyer"),
                       labelText: "Plasiyer",
                       readOnly: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model?.plasiyerKodu ?? "")),
@@ -397,7 +397,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                 builder: (_) => Visibility(
                   visible: viewModel.isDovizli,
                   child: CustomTextField(
-                    enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("dov_tipi"),
+                    enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("dov_tipi"),
                     labelText: "Döviz Tipi",
                     valueWidget: Observer(builder: (_) => Text(viewModel.model?.dovizKodu.toStringIfNotNull ?? "")),
                     controller: dovizController,
@@ -418,7 +418,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                 children: <Widget>[
                   Expanded(
                     child: CustomTextField(
-                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("vade_gunu"),
+                      enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("vade_gunu"),
                       labelText: "Vade Günü",
                       controller: vadeGunuController,
                       keyboardType: TextInputType.number,
@@ -427,7 +427,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
                   ),
                   Expanded(
                     child: CustomTextField(
-                      enabled: enabled && yetkiController.cariKartiDegistirilmeyecekAlanlar("odeme_tipi"),
+                      enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("odeme_tipi"),
                       readOnly: true,
                       labelText: "Ödeme Tipi",
                       controller: odemeTipiController,

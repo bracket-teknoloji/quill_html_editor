@@ -254,14 +254,13 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
             Observer(
               builder: (_) => ListTile(title: const Text("Toplam"), trailing: Text("${viewModel.getBuYilTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
             ),
-            Observer(
-              builder: (_) {
-                if (viewModel.getAylikTahsilatlar.isEmpty) {
-                  return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                }
-                return CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar).yetkiVarMi(!yetkiController.temsilciProfilSatisPerformansiniGizle);
-              },
-            ),
+            if (!yetkiController.temsilciProfilSatisPerformansiniGizle)
+              Observer(
+                builder: (_) {
+                  if (viewModel.getAylikTahsilatlar.isEmpty) return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                  return CustomLineChart(lineChartValue: viewModel.getAylikTahsilatlar);
+                },
+              ),
           ],
         ).paddingAll(UIHelper.lowSize),
       );
@@ -282,14 +281,13 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
             Observer(
               builder: (_) => ListTile(title: const Text("Bu Yıl"), trailing: Text("${viewModel.getBuYilSiparis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
             ),
-            Observer(
-              builder: (_) {
-                if (viewModel.getAylikSiparisler.isEmpty) {
-                  return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                }
-                return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
-              },
-            ),
+            if (!yetkiController.temsilciProfilAylaraGoreSatisiGizle)
+              Observer(
+                builder: (_) {
+                  if (viewModel.getAylikSiparisler.isEmpty) return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                  return CustomLineChart(lineChartValue: viewModel.getAylikSiparisler);
+                },
+              ),
           ],
         ).paddingAll(UIHelper.lowSize),
       );
@@ -314,10 +312,8 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
             ),
             Observer(
               builder: (_) {
-                if (viewModel.getAylikAlislar.isEmpty) {
-                  return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                }
-                return CustomLineChart(lineChartValue: viewModel.getAylikAlislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreTahsilatiGizle);
+                if (viewModel.getAylikAlislar.isEmpty) return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                return CustomLineChart(lineChartValue: viewModel.getAylikAlislar);
               },
             ),
           ],
@@ -366,29 +362,28 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                 ),
               ],
             ),
-            CustomLayoutBuilder(
-              // direction: kIsWeb ? Axis.horizontal : Axis.vertical,
-              splitCount: (kIsWeb && context.isLandscape) ? 2 : 1,
-              // alignment: WrapAlignment.spaceEvenly,
-              children: [
-                Observer(
-                  builder: (_) {
-                    if (viewModel.getPlasiyerToplam.isEmpty) {
-                      return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                    }
-                    return CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam);
-                  },
-                ),
-                Observer(
-                  builder: (_) {
-                    if (viewModel.getAylikSatislar.isEmpty) {
-                      return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                    }
-                    return CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle);
-                  },
-                ).paddingOnly(top: UIHelper.lowSize),
-              ],
-            ),
+            if (!yetkiController.temsilciProfilSatisPerformansiniGizle)
+              CustomLayoutBuilder(
+                // direction: kIsWeb ? Axis.horizontal : Axis.vertical,
+                splitCount: (kIsWeb && context.isLandscape) ? 2 : 1,
+                // alignment: WrapAlignment.spaceEvenly,
+                children: [
+                  Observer(
+                    builder: (_) {
+                      if (viewModel.getPlasiyerToplam.isEmpty) {
+                        return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                      }
+                      return CustomPieChart(pieChartTitle: viewModel.getPlasiyerTitle, pieChartValue: viewModel.getPlasiyerToplam);
+                    },
+                  ),
+                  Observer(
+                    builder: (_) {
+                      if (viewModel.getAylikSatislar.isEmpty) return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
+                      return CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle);
+                    },
+                  ).paddingOnly(top: UIHelper.lowSize),
+                ],
+              ),
           ],
         ).paddingAll(UIHelper.lowSize),
       );

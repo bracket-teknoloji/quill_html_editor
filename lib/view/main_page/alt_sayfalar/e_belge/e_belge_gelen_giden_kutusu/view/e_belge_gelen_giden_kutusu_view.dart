@@ -392,4 +392,10 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
   }
 
   Future<void> refresh() async => await viewModel.resetPage();
+
+  List<EBelgeTuruEnum> get eBelgeTuru => [
+        EBelgeTuruEnum.fatura,
+        EBelgeTuruEnum.arsiv,
+        EBelgeTuruEnum.irsaliye,
+      ];
 }

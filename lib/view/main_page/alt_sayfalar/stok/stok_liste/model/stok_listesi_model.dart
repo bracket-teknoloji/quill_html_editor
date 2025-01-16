@@ -286,6 +286,17 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
   static StokListesiModel? _instance;
 
+  bool get kilitliMi => kilitGenel == "E" || kilitSaticisip == "E" || kilitMussip == "E" || kilitAlis == "E" || kilitSatis == "E";
+
+  String? get kilitTipi {
+    if (kilitGenel == "E") return "Genel";
+    if (kilitSaticisip == "E") return "Satıcı";
+    if (kilitMussip == "E") return "Müşteri";
+    if (kilitAlis == "E") return "Alış";
+    if (kilitSatis == "E") return "Satış";
+    return null;
+  }
+
   @override
   StokListesiModel fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
 

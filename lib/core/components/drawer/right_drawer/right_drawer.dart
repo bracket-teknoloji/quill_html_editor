@@ -129,12 +129,14 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                           children: [
                             // Icon(Icons.rule_s)
                             IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                            Expanded(
-                              child: Text(
-                                loc.rightDrawer.changeCompany,
-                                style: theme.textTheme.bodySmall,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
+                            Flexible(
+                              child: Center(
+                                child: Text(
+                                  loc.rightDrawer.changeCompany,
+                                  style: theme.textTheme.bodySmall,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                             ),
                           ],
@@ -162,7 +164,7 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                            Expanded(child: Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall)),
+                            Center(child: Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall)),
                           ],
                         ).paddingOnly(bottom: UIHelper.lowSize),
                       ),

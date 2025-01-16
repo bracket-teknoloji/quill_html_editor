@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
 
 import "../../../../core/components/dialog/dialog_manager.dart";
 import "../../../../core/constants/color_palette.dart";
@@ -23,6 +24,7 @@ final class MenuItemConstants {
 
   final BuildContext context;
   static MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
+  static YetkiController get _yetkiController => YetkiController();
 
   static List<NetFectDizaynList> get _serbestRapor => CacheManager.getAnaVeri?.userModel?.profilYetki?.yazdirmaSerbest == true || AccountModel.instance.adminMi
       ? _anaVeri?.paramModel?.netFectDizaynList
@@ -87,14 +89,31 @@ final class MenuItemConstants {
     //*E-Belge
     //*
     GridItemModel.anamenu(
-      name: "EBEL",
+      name: MenuItemsEnum.eBelge.yetkiName,
       title: "E-Belge",
       icon: "e_belge",
       color: ColorPalette.marineBlue,
       altMenuler: <GridItemModel>[
         //! UNUTMA BUNU AÇMAYI
-        GridItemModel.item(name: "ebelge_EIrsaliyeGelenKutusu", title: "Gelen Kutusu", route: "/mainPage/eBelgeGelenKutusu"), // onTap: () => Get.to(PDFViewerView())),
-        GridItemModel.item(name: "ebelge_EIrsaliyeGidenKutusu", title: "Giden Kutusu", route: "/mainPage/eBelgeGidenKutusu"),
+        GridItemModel.item(
+          name: "ebelge_EIrsaliyeGelenKutusu",
+          title: "Gelen Kutusu",
+          route: "/mainPage/eBelgeGelenKutusu",
+          yetkiListesi: [
+            _yetkiController.ebelgeEFaturaGelenKutusu,
+            _yetkiController.ebelgeEIrsaliyeGelenKutusu,
+          ],
+        ), // onTap: () => Get.to(PDFViewerView())),
+        GridItemModel.item(
+          name: "ebelge_EIrsaliyeGidenKutusu",
+          title: "Giden Kutusu",
+          route: "/mainPage/eBelgeGidenKutusu",
+          yetkiListesi: [
+            _yetkiController.ebelgeEFaturaGidenKutusu,
+            _yetkiController.ebelgeEIrsaliyeGidenKutusu,
+            _yetkiController.ebelgeEArsivGidenKutusu,
+          ],
+        ),
         GridItemModel.item(
           name: "ebelge_EFatCariGuncelle",
           title: "E-Fatura Carilerini Güncelle ",
@@ -108,7 +127,7 @@ final class MenuItemConstants {
     //*Finans
     //*
     GridItemModel.anamenu(
-      name: "YONE",
+      name: MenuItemsEnum.finans.yetkiName,
       title: "Finans",
       icon: "wallet",
       color: ColorPalette.persianRed,
@@ -221,7 +240,7 @@ final class MenuItemConstants {
     //*
     if (_anaVeri?.paramModel?.lokalDepoUygulamasiAcik == true && _anaVeri?.paramModel?.depoList?.any((element) => element.hucreTakibi == "E") == true)
       GridItemModel.anamenu(
-        name: "HTAK",
+        name: MenuItemsEnum.hucreTakibi.yetkiName,
         title: "Hücre Takibi",
         icon: "shelves",
         color: ColorPalette.skyBlue,
@@ -237,7 +256,7 @@ final class MenuItemConstants {
     //* Mal Kabul
     //*
     GridItemModel.anamenu(
-      name: "MKBL",
+      name: MenuItemsEnum.malKabul.yetkiName,
       title: "Mal Kabul",
       icon: "pallet",
       color: ColorPalette.coyote,
@@ -261,7 +280,7 @@ final class MenuItemConstants {
     //* Sayım
     //*
     GridItemModel.anamenu(
-      name: "SYIM",
+      name: MenuItemsEnum.sayim.yetkiName,
       title: "Sayım",
       icon: "counter",
       color: ColorPalette.dodgerBlue,
@@ -273,7 +292,7 @@ final class MenuItemConstants {
     //* Sevkiyat
     //*
     GridItemModel.anamenu(
-      name: "SEVK",
+      name: MenuItemsEnum.sevkiyat.yetkiName,
       title: "Sevkiyat",
       icon: "forklift",
       color: ColorPalette.mountbattenPink,
@@ -296,7 +315,7 @@ final class MenuItemConstants {
     //* Sipariş
     //*
     GridItemModel.anamenu(
-      name: "SIPA",
+      name: MenuItemsEnum.siparis.yetkiName,
       title: "Sipariş",
       icon: "order",
       color: ColorPalette.blueGray,
@@ -307,7 +326,6 @@ final class MenuItemConstants {
           name: null,
           title: "Raporlar",
           altMenuler: <GridItemModel>[
-            // GridItemModel.item(name: "siparis_MusteriSiparisi_DurumRaporu", title: "Müşteri Siparişi Durum Raporu"),
             GridItemModel.item(
               name: "siparis_MusteriSiparisi_DurumRaporu",
               title: "Müşteri Siparişi Durum Raporu",
@@ -381,7 +399,7 @@ final class MenuItemConstants {
     //* Tahsilat & Ödeme
     //*
     GridItemModel.anamenu(
-      name: "TAHS",
+      name: MenuItemsEnum.tahsilat.yetkiName,
       title: "Tahsilat & Ödeme",
       icon: "atm_dollar",
       color: ColorPalette.pineGreen,
@@ -402,7 +420,7 @@ final class MenuItemConstants {
     //* Talep & Teklif
     //*∑
     GridItemModel.anamenu(
-      name: "TEKL",
+      name: MenuItemsEnum.talepTeklif.yetkiName,
       title: "Talep & Teklif",
       icon: "offer",
       color: ColorPalette.mulberry,
@@ -416,7 +434,7 @@ final class MenuItemConstants {
     //* Temsilci
     //*
     GridItemModel.anamenu(
-      name: "TEMS",
+      name: MenuItemsEnum.temsilciProfil.yetkiName,
       title: "Profilim",
       icon: "profile",
       color: ColorPalette.gamboge,
@@ -432,7 +450,7 @@ final class MenuItemConstants {
     //* Transfer
     //*
     GridItemModel.anamenu(
-      name: "TRNS",
+      name: MenuItemsEnum.transfer.yetkiName,
       title: "Transfer",
       icon: "trolley",
       color: ColorPalette.slateGray,
@@ -470,7 +488,6 @@ final class MenuItemConstants {
     ),
     GridItemModel.anamenu(
       name: MenuItemsEnum.kalkon.yetkiName,
-      // name: AccountModel.instance.isDebug ? null : "KALKON",
       title: "Kalite Kontrol",
       icon: "quality_control",
       color: ColorPalette.surfGreen,

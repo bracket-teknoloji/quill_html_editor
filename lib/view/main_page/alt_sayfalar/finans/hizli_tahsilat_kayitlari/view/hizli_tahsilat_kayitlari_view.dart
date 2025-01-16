@@ -135,7 +135,7 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
               context,
               title: item.cariAdi ?? item.cariKodu ?? "",
               children: [
-                BottomSheetModel(
+                if (yetkiController.hizliTahsilatSil) BottomSheetModel(
                   title: loc.generalStrings.delete,
                   iconWidget: Icons.delete_outline_outlined,
                   onTap: () async {

@@ -743,6 +743,34 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
               controller: _siparisController,
               readOnly: true,
               suffixMore: true,
+              // suffix: IconButton(
+              //   icon: const Icon(Icons.qr_code_scanner_outlined),
+              //   onPressed: () async {
+              //     final result = await Get.toNamed("qr");
+              //     if (result is String) {
+              //       _siparisController.text = result;
+              //       final siparisModel = await networkManager.getBaseSiparisEditModel(
+              //         SiparisEditRequestModel(
+              //           belgeNo: result,
+              //           kapaliBelgelerListelenmesin: true,
+              //           siparisKarsilanmaDurumu: "K",
+              //           ekranTipi: "R",
+              //           filtreKodu: 2,
+              //           iadeMi: false,
+              //           belgeTipi: "2",
+              //           refBelgeTuru: model.editTipiEnum?.rawValue,
+              //           pickerBelgeTuru: "MS",
+              //           menuKodu: "COMM_BREH",
+              //           okutuldu: "E",
+              //         ),
+              //       );
+              //       if (siparisModel == null) return dialogManager.showAlertDialog("Sipariş bulunamadı.");
+              //       _siparisController.text = siparisModel.belgeNo ?? "";
+              //       viewModel.baseSiparisEditModel.cariAdi = siparisModel.cariAdi;
+              //       viewModel.baseSiparisEditModel.cariKodu = siparisModel.cariKodu;
+              //     }
+              //   },
+              // ),
               valueWidget: Observer(builder: (_) => Text((jsonDecode(viewModel.baseSiparisEditModel.arrBelgeNo ?? "[]") as List?)?.firstOrNull ?? "")),
               onClear: () => viewModel.setBelgeNo(null),
               onTap: () async {
@@ -750,7 +778,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                   "/mainPage/siparisRehberi",
                   arguments: BaseSiparisEditModel(
                     pickerBelgeTuru: widget.model.editTipiEnum?.rawValue,
-                    belgeTuru:  widget.model.editTipiEnum?.rawValue,
+                    belgeTuru: widget.model.editTipiEnum?.rawValue,
                     cariKodu: viewModel.baseSiparisEditModel.cariKodu,
                   ),
                 );
@@ -767,6 +795,9 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                     viewModel.baseSiparisEditModel.cariKodu = list.firstOrNull?.cariKodu;
                   } else {
                     _siparisController.text = "${list.length} adet Sipariş Seçildi.";
+                  }
+                  if (widget.model.editTipiEnum?.siparisBaglantisiTumuSeciliGelsin ?? false) {
+                    
                   }
                 }
               },
