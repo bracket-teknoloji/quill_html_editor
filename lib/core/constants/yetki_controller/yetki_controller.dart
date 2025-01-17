@@ -109,9 +109,9 @@ final class YetkiController {
 
   //! TEMSİLCİ
   bool get temsilciProfilKdvDahilMi => _isTrue(_yetkiModel?.temsilciProfilKdvDahil, skipAdmin: true);
-  bool get temsilciProfilSatisPerformansiniGizle => _isTrue(_yetkiModel?.temsilciProfilSatisPerformansiniGizle);
-  bool get temsilciProfilAylaraGoreSatisiGizle => _isTrue(_yetkiModel?.temsilciProfilAylaraGoreSatisiGizle);
-  bool get temsilciProfilAylaraGoreTahsilatiGizle => _isTrue(_yetkiModel?.temsilciProfilAylaraGoreTahsilatiGizle);
+  bool get temsilciProfilSatisPerformansiniGizle => _isTrue(_yetkiModel?.temsilciProfilSatisPerformansiniGizle, skipAdmin: true);
+  bool get temsilciProfilAylaraGoreSatisiGizle => _isTrue(_yetkiModel?.temsilciProfilAylaraGoreSatisiGizle, skipAdmin: true);
+  bool get temsilciProfilAylaraGoreTahsilatiGizle => _isTrue(_yetkiModel?.temsilciProfilAylaraGoreTahsilatiGizle, skipAdmin: true);
 
   //! CARİ
 
@@ -618,13 +618,13 @@ final class YetkiController {
   bool get transferACRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.transferAcStokRehberiAcilmasin ?? false));
 
   //! Kalem Klavye Açılmasın
-  bool get satisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisFatKlavyeEngelle);
-  bool get satisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisIrsKlavyeEngelle);
-  bool get alisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisFatKlavyeEngelle);
-  bool get alisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisIrsKlavyeEngelle);
-  bool get transferDatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferDatKlavyeEngelle);
-  bool get transferAGKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferAgKlavyeEngelle);
-  bool get transferACKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferAcKlavyeEngelle);
+  bool get satisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisFatKlavyeEngelle, skipAdmin: true);
+  bool get satisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisIrsKlavyeEngelle, skipAdmin: true);
+  bool get alisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisFatKlavyeEngelle, skipAdmin: true);
+  bool get alisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisIrsKlavyeEngelle, skipAdmin: true);
+  bool get transferDatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferDatKlavyeEngelle, skipAdmin: true);
+  bool get transferAGKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferAgKlavyeEngelle, skipAdmin: true);
+  bool get transferACKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferAcKlavyeEngelle, skipAdmin: true);
 
   //! Barkodlu Giriş
   bool get satisFatBarkodUrunGirisi => _isTrue(_yetkiModel?.sevkiyatSatisFatBarkodluGiris);

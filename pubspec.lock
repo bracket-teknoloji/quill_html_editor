@@ -1478,11 +1478,9 @@ packages:
   quill_html_editor:
     dependency: "direct main"
     description:
-      path: "."
-      ref: main
-      resolved-ref: "4e0a06f8a52ddbc5ec3cac543055f30e9b4914a2"
-      url: "git@github.com:brktlhylmz/quill_html_editor.git"
-    source: git
+      path: "packages/quill_html_editor"
+      relative: true
+    source: path
     version: "2.2.8"
   recase:
     dependency: transitive

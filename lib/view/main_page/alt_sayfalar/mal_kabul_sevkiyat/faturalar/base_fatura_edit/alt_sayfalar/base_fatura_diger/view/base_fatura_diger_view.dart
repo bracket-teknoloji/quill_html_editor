@@ -50,13 +50,7 @@ final class _BaseFaturaDigerViewState extends BaseState<BaseFaturaDigerView> {
                 textStyle: TextStyle(color: theme.colorScheme.onSurface),
                 backgroundColor: theme.colorScheme.surface,
                 onTextChanged: (text) => model.ekAciklama = text != "" ? text : null,
-                onEditorCreated: () async {
-                  if (model.ekAciklama != null) {
-                    await controller.insertText(model.ekAciklama ?? "");
-                  } else {
-                    await controller.insertText("");
-                  }
-                },
+                onEditorCreated: () async => await controller.insertText(model.ekAciklama ?? ""),
                 loadingBuilder: (context) => const Center(child: CircularProgressIndicator.adaptive()),
               ),
             ).paddingSymmetric(vertical: UIHelper.midSize, horizontal: UIHelper.lowSize),

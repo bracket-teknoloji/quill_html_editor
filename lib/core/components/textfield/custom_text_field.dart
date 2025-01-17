@@ -164,7 +164,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
             inputFormatters: widget.isFormattedString == true ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
             // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
             maxLength: widget.maxLength,
-            validator: widget.validator ?? ((widget.enabled != false ? (widget.isMust ?? false) : false) ? validator : null),
+            validator: ((widget.enabled != false ? (widget.isMust ?? false) : false) ? (widget.validator ?? validator) : null),
             controller: controller,
             obscureText: widget.obscureText,
             readOnly: widget.readOnly ?? false,

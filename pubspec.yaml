@@ -81,9 +81,7 @@ dependencies:
   firebase_app_check: ^0.3.1+4
 
   quill_html_editor:
-    git:
-      url: "git@github.com:brktlhylmz/quill_html_editor.git"
-      ref: "main"
+    path: packages/quill_html_editor
   freezed_annotation: ^2.4.1
   uuid: ^4.1.0
   number_text_input_formatter: ^1.0.0+7

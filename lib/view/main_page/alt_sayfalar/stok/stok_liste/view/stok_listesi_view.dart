@@ -709,6 +709,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                           Wrap(
                             children: [
                               if (item.seriCikislardaAcik == true) const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
+                              if (item.kilitliMi) ColorfulBadge(label: Text("Kilitli (${item.kilitTipi})"), badgeColorEnum: BadgeColorEnum.hata),
                               if (item.alisDovTip != null || item.satDovTip != null) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
                               if (item.yapilandirmaAktif == true) const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
                             ]
