@@ -7,7 +7,6 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/static_variables/static_variables.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -129,15 +128,16 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                 );
               },
             ),
-            Observer(
-              builder: (_) => UretimSonuKaydiEditKalemlerView(
-                model: widget.model,
-                kalemList: viewModel.kalemList,
-                requestModel: viewModel.requestModel,
-                onKalemListChange: viewModel.setKalemList,
+            if (yetkiController.uretimSonuKalemliYapi)
+              Observer(
+                builder: (_) => UretimSonuKaydiEditKalemlerView(
+                  model: widget.model,
+                  kalemList: viewModel.kalemList,
+                  requestModel: viewModel.requestModel,
+                  onKalemListChange: viewModel.setKalemList,
+                ),
               ),
-            ).yetkiVarMi(yetkiController.uretimSonuKalemliYapi),
-          ].where((element) => element is! SizedBox).toList(),
+          ],
         ).paddingAll(UIHelper.lowSize),
       );
 }

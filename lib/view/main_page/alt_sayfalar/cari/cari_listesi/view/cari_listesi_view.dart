@@ -31,7 +31,6 @@ import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
@@ -309,44 +308,41 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               children: [
                 Row(
                   children: [
-                    const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura).yetkiVarMi(item.efaturaMi == true),
-                    ColorfulBadge(label: Text("Dövizli ${item.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(item.dovizli == true),
-                    const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum).yetkiVarMi(item.boylam != null),
-                    const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli).yetkiVarMi(item.kilit == "E"),
+                    if (item.efaturaMi == true) const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),
+                    if (item.dovizli == true) ColorfulBadge(label: Text("Dövizli ${item.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
+                    if (item.boylam != null) const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
+                    if (item.kilit == "E") const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
                     // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
                     // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
-                  ]
-                      .map(
-                        (e) => e is! SizedBox? ? e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize) : null,
-                      )
-                      .toList()
-                      .nullCheckWithGeneric,
+                  ],
                 ),
                 Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
                 if (item.cariIl != null) Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))) else const SizedBox(),
               ],
             ),
-            trailing: Wrap(
-              children: [
-                Text.rich(
-                  TextSpan(
+            trailing: bakiyeGorunsunMu(item)
+                ? Wrap(
                     children: [
-                      TextSpan(
-                        text: item.bakiye == null ? "0,00 $mainCurrency\n" : "${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
-                        style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye ?? 0.0)),
-                      ),
-                      if (item.bakiye != null) TextSpan(text: "${((item.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic)) else null,
-                      if (item.dovizli == true && item.dovBakiye != null)
+                      Text.rich(
                         TextSpan(
-                          text: "${item.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${item.dovizAdi ?? ""}",
-                          style: TextStyle(color: UIHelper.getColorWithValue(item.dovBakiye ?? 0.0)),
+                          children: [
+                            TextSpan(
+                              text: item.bakiye == null ? "0,00 $mainCurrency\n" : "${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
+                              style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye ?? 0.0)),
+                            ),
+                            if (item.bakiye != null) TextSpan(text: "${((item.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic)),
+                            if (item.dovizli == true && item.dovBakiye != null)
+                              TextSpan(
+                                text: "${item.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${item.dovizAdi ?? ""}",
+                                style: TextStyle(color: UIHelper.getColorWithValue(item.dovBakiye ?? 0.0)),
+                              ),
+                          ],
                         ),
-                    ].nullCheckWithGeneric,
-                  ),
-                  textAlign: TextAlign.right,
-                ),
-              ],
-            ).yetkiVarMi(bakiyeGorunsunMu(item)),
+                        textAlign: TextAlign.right,
+                      ),
+                    ],
+                  )
+                : null,
           ),
         ),
       );
@@ -434,45 +430,48 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       context,
       title: "${object.cariKodu}\n${object.cariAdi}",
       children: [
-        BottomSheetModel(
-          title: loc.generalStrings.view,
-          iconWidget: Icons.preview_outlined,
-          value: CariSeceneklerModel(
-            path: "/mainPage/cariEdit",
-            baseEditEnum: BaseEditEnum.goruntule,
+        if (yetkiController.cariKarti)
+          BottomSheetModel(
+            title: loc.generalStrings.view,
+            iconWidget: Icons.preview_outlined,
+            value: CariSeceneklerModel(
+              path: "/mainPage/cariEdit",
+              baseEditEnum: BaseEditEnum.goruntule,
+            ),
           ),
-        ).yetkiKontrol(yetkiController.cariKarti),
-        BottomSheetModel(
-          title: loc.generalStrings.edit,
-          iconWidget: Icons.edit_outlined,
-          value: CariSeceneklerModel(
-            path: "/mainPage/cariEdit",
-            baseEditEnum: BaseEditEnum.duzenle,
+        if (yetkiController.cariKartiDuzenleme)
+          BottomSheetModel(
+            title: loc.generalStrings.edit,
+            iconWidget: Icons.edit_outlined,
+            value: CariSeceneklerModel(
+              path: "/mainPage/cariEdit",
+              baseEditEnum: BaseEditEnum.duzenle,
+            ),
           ),
-        ).yetkiKontrol(yetkiController.cariKartiDuzenleme),
-        BottomSheetModel(
-          title: loc.generalStrings.delete,
-          iconWidget: Icons.delete_outline,
-          onTap: () async {
-            Get.back();
-            dialogManager.showAreYouSureDialog(() async {
-              dialogManager.showLoadingDialog("Cari Siliniyor...");
-              final result = await networkManager.dioPost<CariListesiModel>(
-                path: ApiUrls.deleteCari,
-                bodyModel: CariListesiModel(),
-                queryParameters: {"CariKodu": object.cariKodu ?? ""},
-              );
-              dialogManager.hideAlertDialog;
-              if (result.isSuccess) {
-                dialogManager.showSuccessSnackBar("${object.cariAdi} adlı cari silindi");
-                viewModel.resetList();
-              } else {
-                dialogManager.showErrorSnackBar(result.message ?? "");
-              }
-            });
-          },
-        ).yetkiKontrol(yetkiController.cariKartiSilme),
-        BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")).yetkiKontrol(yetkiController.cariHareketleri),
+        if (yetkiController.cariKartiSilme)
+          BottomSheetModel(
+            title: loc.generalStrings.delete,
+            iconWidget: Icons.delete_outline,
+            onTap: () async {
+              Get.back();
+              dialogManager.showAreYouSureDialog(() async {
+                dialogManager.showLoadingDialog("Cari Siliniyor...");
+                final result = await networkManager.dioPost<CariListesiModel>(
+                  path: ApiUrls.deleteCari,
+                  bodyModel: CariListesiModel(),
+                  queryParameters: {"CariKodu": object.cariKodu ?? ""},
+                );
+                dialogManager.hideAlertDialog;
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar("${object.cariAdi} adlı cari silindi");
+                  viewModel.resetList();
+                } else {
+                  dialogManager.showErrorSnackBar(result.message ?? "");
+                }
+              });
+            },
+          ),
+        if (yetkiController.cariHareketleri) BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")),
         BottomSheetModel(
           title: loc.generalStrings.actions,
           iconWidget: Icons.list_alt_outlined,
@@ -502,7 +501,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor, title: object.cariAdi ?? object.cariKodu));
             },
           ),
-      ].nullCheckWithGeneric,
+      ],
     );
     if (pageName != null) {
       BaseEditEnum? baseEditEnum;
@@ -628,18 +627,19 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 ),
               ],
             ),
-            Card(
-              child: Observer(
-                builder: (_) => SwitchListTile.adaptive(
-                  value: viewModel.getRota,
-                  onChanged: (value) {
-                    viewModel.setRota(value);
-                    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(rotaDisiGorunsunMu: value));
-                  },
-                  title: const Text("Rota Dışı"),
+            if (yetkiController.cariKartiRotasUygulamasiAcikMi)
+              Card(
+                child: Observer(
+                  builder: (_) => SwitchListTile.adaptive(
+                    value: viewModel.getRota,
+                    onChanged: (value) {
+                      viewModel.setRota(value);
+                      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(rotaDisiGorunsunMu: value));
+                    },
+                    title: const Text("Rota Dışı"),
+                  ),
                 ),
-              ).yetkiVarMi(yetkiController.cariKartiRotasUygulamasiAcikMi),
-            ),
+              ),
             InkWell(
               onTap: viewModel.changeKodlariGoster,
               child: Row(

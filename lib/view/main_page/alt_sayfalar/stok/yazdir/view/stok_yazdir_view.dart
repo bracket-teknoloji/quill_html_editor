@@ -11,7 +11,6 @@ import "../../../../../../core/components/helper_widgets/custom_label_widget.dar
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -123,44 +122,45 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
           key: formKey,
           child: Column(
             children: [
-              CustomTextField(
-                labelText: "Stok",
-                controller: stokController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                onSubmitted: getStok,
-                valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.stokKodu ?? "")),
-                onTap: () async {
-                  var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
-                  if (result is StokListesiModel) {
-                    result = await getStok(result.stokKodu);
-                    viewModel.setStokKodu(result);
-                    stokController.text = result.stokKodu.toString();
-                    if (parametreModel.esnekYapilandir == true && result.yapilandirmaAktif != null) {
-                      final stokYapilandirmaKodu = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: result);
-                      if (stokYapilandirmaKodu is YapilandirmaRehberiModel) {
-                        viewModel.setYapilandirmaKodu(stokYapilandirmaKodu.yapkod);
-                        yapilandirmaKoduController.text = stokYapilandirmaKodu.yapacik ?? "";
+              if (widget.hucreModel == null)
+                CustomTextField(
+                  labelText: "Stok",
+                  controller: stokController,
+                  readOnly: true,
+                  isMust: true,
+                  suffixMore: true,
+                  onSubmitted: getStok,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.printModel.dicParams?.stokKodu ?? "")),
+                  onTap: () async {
+                    var result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
+                    if (result is StokListesiModel) {
+                      result = await getStok(result.stokKodu);
+                      viewModel.setStokKodu(result);
+                      stokController.text = result.stokKodu.toString();
+                      if (parametreModel.esnekYapilandir == true && result.yapilandirmaAktif != null) {
+                        final stokYapilandirmaKodu = await Get.toNamed("/mainPage/yapilandirmaRehberi", arguments: result);
+                        if (stokYapilandirmaKodu is YapilandirmaRehberiModel) {
+                          viewModel.setYapilandirmaKodu(stokYapilandirmaKodu.yapkod);
+                          yapilandirmaKoduController.text = stokYapilandirmaKodu.yapacik ?? "";
+                        }
+                      }
+                      stokController.text = result.stokAdi.toString();
+                      viewModel.setStokKodu(result);
+                      if (viewModel.stokSecildigindeYazdir) {
+                        postPrint();
                       }
                     }
-                    stokController.text = result.stokAdi.toString();
-                    viewModel.setStokKodu(result);
-                    if (viewModel.stokSecildigindeYazdir) {
-                      postPrint();
-                    }
-                  }
-                },
-                suffix: IconButton(
-                  icon: const Icon(Icons.qr_code_scanner),
-                  onPressed: () async {
-                    final result = await Get.toNamed("/qr");
-                    if (result != null) {
-                      // barkodKontroller.text = result.toString();
-                    }
                   },
+                  suffix: IconButton(
+                    icon: const Icon(Icons.qr_code_scanner),
+                    onPressed: () async {
+                      final result = await Get.toNamed("/qr");
+                      if (result != null) {
+                        // barkodKontroller.text = result.toString();
+                      }
+                    },
+                  ),
                 ),
-              ).yetkiVarMi(widget.hucreModel == null),
               Observer(
                 builder: (_) => Visibility(
                   visible: viewModel.stokListesiModel != null && viewModel.showYapilandirma,
@@ -207,30 +207,31 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
               ),
               Row(
                 children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Miktar/Bakiye",
-                      controller: miktarBakiyeController,
-                      suffix: Wrap(
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.remove),
-                            onPressed: () {
-                              viewModel.decreaseMiktar();
-                              miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
-                            },
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.add),
-                            onPressed: () {
-                              viewModel.increaseMiktar();
-                              miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
-                            },
-                          ),
-                        ],
+                  if (widget.hucreModel == null)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Miktar/Bakiye",
+                        controller: miktarBakiyeController,
+                        suffix: Wrap(
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.remove),
+                              onPressed: () {
+                                viewModel.decreaseMiktar();
+                                miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
+                              },
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.add),
+                              onPressed: () {
+                                viewModel.increaseMiktar();
+                                miktarBakiyeController.text = viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "";
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ).yetkiVarMi(widget.hucreModel == null),
                   Expanded(
                     child: CustomTextField(
                       labelText: "Kopya Sayısı",
@@ -260,13 +261,14 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
               ),
               Row(
                 children: [
-                  Expanded(
-                    child: CustomWidgetWithLabel(
-                      isVertical: true,
-                      text: "Stok Seçildiğinde Yazdır",
-                      child: Observer(builder: (_) => Switch.adaptive(value: viewModel.stokSecildigindeYazdir, onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value))),
-                    ).paddingAll(UIHelper.lowSize),
-                  ).yetkiVarMi(widget.model == null && widget.hucreModel == null),
+                  if (widget.model == null && widget.hucreModel == null)
+                    Expanded(
+                      child: CustomWidgetWithLabel(
+                        isVertical: true,
+                        text: "Stok Seçildiğinde Yazdır",
+                        child: Observer(builder: (_) => Switch.adaptive(value: viewModel.stokSecildigindeYazdir, onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value))),
+                      ).paddingAll(UIHelper.lowSize),
+                    ),
                   Expanded(
                     child: CustomWidgetWithLabel(
                       isVertical: true,

@@ -16,7 +16,6 @@ import "../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../model/is_emirleri_model.dart";
@@ -62,7 +61,7 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(),
-        floatingActionButton: fab().yetkiVarMi(yetkiController.uretimIsEmriEkle),
+        floatingActionButton: yetkiController.uretimIsEmriEkle ? fab() : null,
         body: body(),
       );
 
@@ -86,22 +85,23 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
         ),
         actions: [
           IconButton(onPressed: viewModel.changeSearchBarStatus, icon: Observer(builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined))),
-          IconButton(
-            onPressed: () async {
-              final result = await Get.toNamed("/qr");
-              if (result != null) {
-                viewModel.requestModel.searchText = result;
-                _appBarTextController.text = result;
-                if (!viewModel.isSearchBarOpen) {
-                  viewModel.changeSearchBarStatus();
+          if (widget.isGetData == true)
+            IconButton(
+              onPressed: () async {
+                final result = await Get.toNamed("/qr");
+                if (result != null) {
+                  viewModel.requestModel.searchText = result;
+                  _appBarTextController.text = result;
+                  if (!viewModel.isSearchBarOpen) {
+                    viewModel.changeSearchBarStatus();
+                  }
+                  await viewModel.resetList();
                 }
-                await viewModel.resetList();
-              }
-            },
-            icon: const Icon(Icons.qr_code_scanner),
-          ).yetkiVarMi(widget.isGetData == true),
+              },
+              icon: const Icon(Icons.qr_code_scanner),
+            ),
           //TODO sadece rehber olarak kullanıldığında görünecek.
-          IconButton(onPressed: () {}, icon: const Icon(Icons.sort_by_alpha_outlined)).yetkiVarMi(widget.isGetData == true),
+          if (widget.isGetData == true) IconButton(onPressed: () {}, icon: const Icon(Icons.sort_by_alpha_outlined)),
         ],
       );
 

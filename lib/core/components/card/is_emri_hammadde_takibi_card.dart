@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/uretim/is_emirleri/is_emri_hammade_takibi/model/is_emri_hammadde_takibi_listesi_model.dart";
 
@@ -36,12 +35,12 @@ final class _IsEmriHammaddeTakibiCardState extends BaseState<IsEmriHammaddeTakib
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
-                  Text("YapKod: ${model.yapkod}").yetkiVarMi(model.yapacik != null),
-                  Text("Yap.Açık.: ${model.yapacik}").yetkiVarMi(model.yapacik != null),
+                  if (model.yapacik != null) Text("YapKod: ${model.yapkod}"),
+                  if (model.yapacik != null) Text("Yap.Açık.: ${model.yapacik}"),
                 ],
               ),
-              Text("İş Emri No: ${model.isemrino}").yetkiVarMi(model.isemrino != null),
-              Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(model.miktar != null),
+              if (model.isemrino != null) Text("İş Emri No: ${model.isemrino}"),
+              if (model.miktar != null) Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
             ],
           ),
         ),

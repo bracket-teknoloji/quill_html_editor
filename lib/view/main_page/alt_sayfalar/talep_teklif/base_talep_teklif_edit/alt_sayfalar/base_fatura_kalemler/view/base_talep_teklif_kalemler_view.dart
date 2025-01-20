@@ -11,10 +11,7 @@ import "../../../../../../../../../core/components/textfield/custom_text_field.d
 import "../../../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/text_span_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
@@ -164,56 +161,60 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(kalemModel.dovizliMi),
-            const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(kalemModel.paketMi == "K"),
+            if (kalemModel.dovizliMi) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+            if (kalemModel.paketMi == "K") const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli),
             Text(kalemModel.stokKodu ?? ""),
-            Text("${kalemModel.depoKodu ?? ""} - ${kalemModel.depoTanimi ?? ""}").yetkiVarMi(kalemModel.depoKodu != null && kalemModel.depoTanimi != null),
-            // Text(kalemModel.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)).yetkiVarMi(kalemModel.seriList != null),
-            Text("Sipariş ${kalemModel.siparisNo ?? ""} (${kalemModel.siparisSira ?? ""})", style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor))
-                .yetkiVarMi(kalemModel.siparisNo != null)
-                .paddingOnly(bottom: UIHelper.lowSize),
+            if (kalemModel.depoKodu != null && kalemModel.depoTanimi != null) Text("${kalemModel.depoKodu ?? ""} - ${kalemModel.depoTanimi ?? ""}"),
+            if (kalemModel.seriList != null) // Text(kalemModel.faturaKalemAciklama ?? "", style: TextStyle(color: UIHelper.primaryColor)),
+              if (kalemModel.siparisNo != null)
+                Text(
+                  "Sipariş ${kalemModel.siparisNo ?? ""} (${kalemModel.siparisSira ?? ""})",
+                  style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                ).paddingOnly(bottom: UIHelper.lowSize),
             LayoutBuilder(
               builder: (context, constrains) => Wrap(
                 children: <Widget>[
-                  Text("Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}  ${kalemModel.olcuBirimCarpani != null ? "(${kalemModel.gercekMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${kalemModel.stokOlcuBirimi})" : ""}")
-                      .yetkiVarMi(!(kalemModel.miktar == null || kalemModel.miktar == 0.0)),
-                  Text("Miktar2: ${kalemModel.miktar2.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.miktar2 != null),
-                  Text("KDV: %${kalemModel.kdvOrani.toIntIfDouble ?? ""}").yetkiVarMi(kalemModel.kdvOrani != null),
-                  Text("Mal Fazlası Miktar: ${kalemModel.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.malFazlasiMiktar != null),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: "Satış İskontosu: ${kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} "),
-                        TextSpan(
-                          text: kalemModel.iskontoDetayi,
-                          style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
-                        ),
-                      ],
+                  if (!(kalemModel.miktar == null || kalemModel.miktar == 0.0))
+                    Text(
+                      "Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}  ${kalemModel.olcuBirimCarpani != null ? "(${kalemModel.gercekMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${kalemModel.stokOlcuBirimi})" : ""}",
                     ),
-                  ).yetkiVarMi(kalemModel.kdvOrani != null),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: "Fiyat: ${kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                        TextSpan(text: "\n(${kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency})")
-                            .yetkiVarMi(kalemModel.dovizliMi),
-                      ],
-                    ).yetkiVarMi(kalemModel.brutFiyat != null),
-                  ),
-                  Text("Kur: ${kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency}").yetkiVarMi(kalemModel.dovizKuru != null),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(text: "Tutar: ${(kalemModel.brutTutar - kalemModel.iskontoTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                        TextSpan(text: "\n(${kalemModel.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency})")
-                            .yetkiVarMi(kalemModel.dovizliMi),
-                      ],
-                    ).yetkiVarMi(kalemModel.brutFiyat != null),
-                  ),
-                  Text("Proje: ${kalemModel.projeKodu}").yetkiVarMi(kalemModel.projeKodu != null && yetkiController.projeUygulamasiAcikMi),
-                  // Text("Teslim Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.miktar != null),
-                  // Text("Kalan Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.miktar != null),
-                  Text("Teslim Tarihi: ${kalemModel.teslimTarihi.toDateStringIfNull ?? ""}").yetkiVarMi(kalemModel.teslimTarihi != null),
+                  if (kalemModel.miktar2 != null) Text("Miktar2: ${kalemModel.miktar2.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}"),
+                  if (kalemModel.kdvOrani != null) Text("KDV: %${kalemModel.kdvOrani.toIntIfDouble ?? ""}"),
+                  if (kalemModel.malFazlasiMiktar != null) Text("Mal Fazlası Miktar: ${kalemModel.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}"),
+                  if (kalemModel.kdvOrani != null)
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: "Satış İskontosu: ${kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} "),
+                          TextSpan(
+                            text: kalemModel.iskontoDetayi,
+                            style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                          ),
+                        ],
+                      ),
+                    ),
+                  if (kalemModel.brutFiyat != null)
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: "Fiyat: ${kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                          if (kalemModel.dovizliMi) TextSpan(text: "\n(${kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency})"),
+                        ],
+                      ),
+                    ),
+                  if (kalemModel.dovizKuru != null) Text("Kur: ${kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency}"),
+                  if (kalemModel.brutFiyat != null)
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: "Tutar: ${(kalemModel.brutTutar - kalemModel.iskontoTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                          if (kalemModel.dovizliMi)
+                            TextSpan(text: "\n(${kalemModel.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency})"),
+                        ],
+                      ),
+                    ),
+                  if (kalemModel.projeKodu != null && yetkiController.projeUygulamasiAcikMi) Text("Proje: ${kalemModel.projeKodu}"),
+                  if (kalemModel.teslimTarihi != null) Text("Teslim Tarihi: ${kalemModel.teslimTarihi.toDateStringIfNull ?? ""}"),
                 ].map((e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric,
               ),
             ),
@@ -234,8 +235,8 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
                   title: "Hücre İşlemleri",
-                  children: <BottomSheetModel?>[
-                    BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
+                  children: [
+                    // BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
                     BottomSheetModel(
                       title: "Stok İşlemleri",
                       iconWidget: Icons.list_alt_outlined,
@@ -281,29 +282,31 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: viewModel.kalemList?[index].stokAdi ?? "",
-      children: <BottomSheetModel?>[
-        BottomSheetModel(
-          title: loc.generalStrings.edit,
-          iconWidget: Icons.edit_outlined,
-          onTap: () async {
-            Get.back();
-            final result = await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
-            if (result is KalemModel) {
-              BaseSiparisEditModel.instance.kalemList?[index] = result;
-            }
-            viewModel.updateKalemList();
-          },
-        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
-        BottomSheetModel(
-          title: loc.generalStrings.delete,
-          iconWidget: Icons.delete_outline_outlined,
-          onTap: () {
-            Get.back();
-            return dialogManager.showAreYouSureDialog(() {
-              viewModel.removeAtKalemList(index);
-            });
-          },
-        ).yetkiKontrol(!widget.model.isGoruntule && model?.siparisNo == null),
+      children: [
+        if (!widget.model.isGoruntule && model?.siparisNo == null)
+          BottomSheetModel(
+            title: loc.generalStrings.edit,
+            iconWidget: Icons.edit_outlined,
+            onTap: () async {
+              Get.back();
+              final result = await Get.toNamed("/talepTeklifKalemEkle", arguments: viewModel.kalemList?[index]);
+              if (result is KalemModel) {
+                BaseSiparisEditModel.instance.kalemList?[index] = result;
+              }
+              viewModel.updateKalemList();
+            },
+          ),
+        if (!widget.model.isGoruntule && model?.siparisNo == null)
+          BottomSheetModel(
+            title: loc.generalStrings.delete,
+            iconWidget: Icons.delete_outline_outlined,
+            onTap: () {
+              Get.back();
+              return dialogManager.showAreYouSureDialog(() {
+                viewModel.removeAtKalemList(index);
+              });
+            },
+          ),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,

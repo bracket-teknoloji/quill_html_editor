@@ -10,7 +10,6 @@ import "../../../../../../../core/components/list_view/refreshable_list_view.dar
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/uretim_sonu_raporu_view_model.dart";
@@ -80,12 +79,12 @@ final class _UretimSonuRaporuViewState extends BaseState<UretimSonuRaporuView> {
                     CustomLayoutBuilder(
                       splitCount: 2,
                       children: [
-                        Text("Stok Kodu: ${item.stokKodu}").yetkiVarMi(item.stokKodu != null),
-                        Text("Giriş/Çıkış: ${item.cikisIslemi == true ? "Çıkış" : "Giriş"}").yetkiVarMi(item.cikisIslemi != null),
-                        Text("Miktar: ${item.stharGcmik.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(item.stharGcmik != null),
-                        Text("Ek Alan 1: ${item.ekalan1}").yetkiVarMi(item.ekalan1 != null),
-                        Text("Ek Alan 2: ${item.ekalan2}").yetkiVarMi(item.ekalan2 != null),
-                        Text("Açıklama: ${item.aciklama}").yetkiVarMi(item.aciklama != null),
+                        if (item.stokKodu != null) Text("Stok Kodu: ${item.stokKodu}"),
+                        if (item.cikisIslemi != null) Text("Giriş/Çıkış: ${item.cikisIslemi == true ? "Çıkış" : "Giriş"}"),
+                        if (item.stharGcmik != null) Text("Miktar: ${item.stharGcmik.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        if (item.ekalan1 != null) Text("Ek Alan 1: ${item.ekalan1}"),
+                        if (item.ekalan2 != null) Text("Ek Alan 2: ${item.ekalan2}"),
+                        if (item.aciklama != null) Text("Açıklama: ${item.aciklama}"),
                       ],
                     ),
                     Text("Depo: ${item.depoKodu}"),

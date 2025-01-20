@@ -21,9 +21,7 @@ import "../../../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/text_span_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/static_variables/static_variables.dart";
@@ -168,29 +166,30 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Card(
-                  child: ListTile(
-                    onTap: () async => Get.toNamed(
-                      "/mainPage/eBelgePdf",
-                      arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: model.resmiBelgeNo ?? ""),
+                if (model.efaturaMi == "E" && model.resmiBelgeNo != null)
+                  Card(
+                    child: ListTile(
+                      onTap: () async => Get.toNamed(
+                        "/mainPage/eBelgePdf",
+                        arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: model.resmiBelgeNo ?? ""),
+                      ),
+                      contentPadding: UIHelper.lowPaddingHorizontal,
+                      leading: const Icon(Icons.info_outline),
+                      title: Text(eBelgeButtonText),
+                      subtitle: model.efattanTutar != null
+                          ? Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(text: "Genel Toplam: ${model.efattanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                                  if (model.efattanDoviz != null)
+                                    TextSpan(text: "\nGenel Döviz Tutarı: ${model.efattanDoviz.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.efattanDovizAdi ?? ""}"),
+                                ],
+                              ),
+                            )
+                          : null,
+                      trailing: const Icon(Icons.open_in_new_outlined),
                     ),
-                    contentPadding: UIHelper.lowPaddingHorizontal,
-                    leading: const Icon(Icons.info_outline),
-                    title: Text(eBelgeButtonText),
-                    subtitle: model.efattanTutar != null
-                        ? Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: "Genel Toplam: ${model.efattanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                                TextSpan(text: "\nGenel Döviz Tutarı: ${model.efattanDoviz.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.efattanDovizAdi ?? ""}")
-                                    .yetkiVarMi(model.efattanDoviz != null),
-                              ].nullCheckWithGeneric,
-                            ),
-                          )
-                        : null,
-                    trailing: const Icon(Icons.open_in_new_outlined),
-                  ),
-                ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.efaturaMi == "E" && model.resmiBelgeNo != null),
+                  ).paddingOnly(bottom: UIHelper.lowSize),
                 if (!yetkiController.kontrolluAktarBelgeTipleri(model.getEditTipiEnum?.rawValue))
                   CustomTextField(
                     enabled: enable,
@@ -213,8 +212,8 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       model.belgeNo = value;
                     },
                   ),
-                CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {})
-                    .yetkiVarMi(widget.model.baseEditEnum == BaseEditEnum.goruntule || widget.model.baseEditEnum == BaseEditEnum.taslak),
+                if (widget.model.baseEditEnum == BaseEditEnum.goruntule || widget.model.baseEditEnum == BaseEditEnum.taslak)
+                  CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
                 CustomTextField(
                   labelText: "Cari",
                   readOnly: true,
@@ -236,19 +235,21 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       ),
                     ),
                   ),
-                  suffix: IconButton(
-                    onPressed: () async {
-                      if (_cariController.text.isEmpty) {
-                        dialogManager.showAlertDialog("Önce Cari Seçiniz");
-                        return;
-                      }
-                      final result = await networkManager.getCariModel(CariRequestModel(kod: [viewModel.model.cariKodu ?? ""]));
-                      if (result != null) {
-                        dialogManager.showCariIslemleriGridViewDialog(result);
-                      }
-                    },
-                    icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                  ).yetkiVarMi(isEkle),
+                  suffix: isEkle
+                      ? IconButton(
+                          onPressed: () async {
+                            if (_cariController.text.isEmpty) {
+                              dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                              return;
+                            }
+                            final result = await networkManager.getCariModel(CariRequestModel(kod: [viewModel.model.cariKodu ?? ""]));
+                            if (result != null) {
+                              dialogManager.showCariIslemleriGridViewDialog(result);
+                            }
+                          },
+                          icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                        )
+                      : null,
                   onTap: () async {
                     final result = await Get.toNamed(
                       "mainPage/cariRehberi",
@@ -558,7 +559,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(1)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
                           controller: _aciklama1Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -573,7 +574,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(2)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
                           controller: _aciklama2Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -587,7 +588,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(3)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
                           controller: _aciklama3Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -602,7 +603,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(4)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
                           controller: _aciklama4Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -617,7 +618,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(5)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
                           controller: _aciklama5Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -632,7 +633,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(6)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
                           controller: _aciklama6Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -647,7 +648,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(7)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
                           controller: _aciklama7Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -662,7 +663,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(8)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
                           controller: _aciklama8Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -677,7 +678,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(9)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
                           controller: _aciklama9Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -692,7 +693,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(10)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
                           controller: _aciklama10Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -707,7 +708,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(11)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
                           controller: _aciklama11Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -722,7 +723,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(12)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
                           controller: _aciklama12Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -737,7 +738,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(13)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
                           controller: _aciklama13Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -752,7 +753,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(14)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
                           controller: _aciklama14Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -767,7 +768,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(15)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
                           controller: _aciklama15Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15)),
+                        ),
                         CustomTextField(
                           enabled: enable,
                           maxLength: StaticVariables.maxAciklamaLength,
@@ -782,7 +783,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                               ? getEkRehberById(16)?.baslik
                               : (satisMi ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
                           controller: _aciklama16Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 16)),
+                        ),
                       ],
                     ),
                   ),

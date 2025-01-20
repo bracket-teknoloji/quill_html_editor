@@ -124,8 +124,7 @@ final class _OlcumKalemSecViewState extends BaseState<OlcumKalemSecView> {
                           ),
                         ],
                       ),
-                      subtitle: CustomLayoutBuilder(
-                        splitCount: 2,
+                      subtitle: CustomLayoutBuilder.divideInHalf(
                         children: [
                           Text("Stok Kodu: ${item.stokKodu ?? ""}"),
                           Text("Sıra: ${item.belgeSira ?? ""}"),

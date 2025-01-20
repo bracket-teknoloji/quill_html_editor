@@ -14,7 +14,6 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/enum/cek_senet_listesi_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
@@ -166,28 +165,30 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Plasiyer",
-                      controller: _plasiyerController,
-                      isMust: true,
-                      readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                      onTap: getPlasiyer,
+                  if (yetkiController.plasiyerUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Plasiyer",
+                        controller: _plasiyerController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        onTap: getPlasiyer,
+                      ),
                     ),
-                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Proje",
-                      controller: _projeController,
-                      isMust: true,
-                      readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                      onTap: getProje,
+                  if (yetkiController.projeUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Proje",
+                        controller: _projeController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                        onTap: getProje,
+                      ),
                     ),
-                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                 ],
               ),
               Observer(
@@ -221,7 +222,7 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text("Asıl/Ciro: ${item.ciroTipi == "C" ? "Ciro" : "Asıl"}"),
-                                Text(item.cekBanka ?? "").yetkiVarMi(item.cekBanka != null),
+                                if (item.cekBanka != null) Text(item.cekBanka ?? ""),
                               ],
                             ),
                             onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(

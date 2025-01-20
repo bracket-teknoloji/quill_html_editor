@@ -9,7 +9,6 @@ import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/color_palette.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../model/hucre_listesi_model.dart";
 import "../view_model/hucre_listesi_view_model.dart";
@@ -104,10 +103,11 @@ final class _HucreListesiViewState extends BaseState<HucreListesiView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("${item.depoKodu} - ${item.depoTanimi}"),
-              const Text(
-                "Eksiye düşebilen hücre",
-                style: TextStyle(color: ColorPalette.persianRed),
-              ).yetkiVarMi(item.eksiyeDusebilir == true),
+              if (item.eksiyeDusebilir == true)
+                const Text(
+                  "Eksiye düşebilen hücre",
+                  style: TextStyle(color: ColorPalette.persianRed),
+                ),
             ],
           ),
         ),

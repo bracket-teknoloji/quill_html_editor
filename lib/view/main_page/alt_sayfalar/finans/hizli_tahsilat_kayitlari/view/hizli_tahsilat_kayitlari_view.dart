@@ -11,7 +11,6 @@ import "../../../../../../core/components/textfield/custom_app_bar_text_field.da
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../cari/cari_listesi/model/cari_request_model.dart";
@@ -116,14 +115,14 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(item.cariAdi ?? ""),
-              Text("Belge no: ${item.belgeNo}").yetkiVarMi(item.belgeNo != null),
+              if (item.belgeNo != null) Text("Belge no: ${item.belgeNo}"),
               CustomLayoutBuilder.divideInHalf(
                 children: [
                   Text("Cari kodu: ${item.cariKodu}"),
                   Text("Kasa kodu: ${item.kasaKodu}"),
                   Text("Nakit/KK: ${item.nakitmi == "E" ? "Nakit" : "KK"}"),
                   // Text("Cari kodu: ${item.na}"),
-                  Text("Proje kodu: ${item.projeKodu}").yetkiVarMi(yetkiController.projeUygulamasiAcikMi && item.projeKodu != null),
+                  if (yetkiController.projeUygulamasiAcikMi && item.projeKodu != null) Text("Proje kodu: ${item.projeKodu}"),
                   // Text("Döviz tipi: ${item.dovizTipi}"),
                 ],
               ),
@@ -135,20 +134,21 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
               context,
               title: item.cariAdi ?? item.cariKodu ?? "",
               children: [
-                if (yetkiController.hizliTahsilatSil) BottomSheetModel(
-                  title: loc.generalStrings.delete,
-                  iconWidget: Icons.delete_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    dialogManager.showAreYouSureDialog(() async {
-                      final result = await viewModel.deleteHizliTahsilat(item.inckeyno!);
-                      if (result.isSuccess) {
-                        await viewModel.resetList();
-                        dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                      }
-                    });
-                  },
-                ),
+                if (yetkiController.hizliTahsilatSil)
+                  BottomSheetModel(
+                    title: loc.generalStrings.delete,
+                    iconWidget: Icons.delete_outline_outlined,
+                    onTap: () async {
+                      Get.back();
+                      dialogManager.showAreYouSureDialog(() async {
+                        final result = await viewModel.deleteHizliTahsilat(item.inckeyno!);
+                        if (result.isSuccess) {
+                          await viewModel.resetList();
+                          dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                        }
+                      });
+                    },
+                  ),
                 BottomSheetModel(
                   title: "Cari İşlemleri",
                   iconWidget: Icons.person_outline_outlined,

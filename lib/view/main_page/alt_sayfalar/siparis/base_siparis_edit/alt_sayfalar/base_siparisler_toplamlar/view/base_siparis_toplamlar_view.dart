@@ -10,8 +10,6 @@ import "../../../../../../../../core/components/textfield/custom_text_field.dart
 import "../../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/text_span_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../model/param_model.dart";
@@ -108,7 +106,7 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                         text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}").yetkiVarMi(model.dovizliMi),
+                      if (model.dovizliMi) TextSpan(text: "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                     ],
                   ),
                 ),
@@ -128,7 +126,7 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                         text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                      if (model.dovizliMi) TextSpan(text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
                     ],
                   ),
                 ),
@@ -143,7 +141,7 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                         text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                      if (model.dovizliMi) TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
                     ],
                   ),
                 ),
@@ -159,7 +157,7 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                           text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                        if (model.dovizliMi) TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
                       ],
                     ),
                   ),
@@ -181,9 +179,10 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                           text: "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        TextSpan(
-                          text: "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
-                        ).yetkiVarMi(model.dovizliMi),
+                        if (model.dovizliMi)
+                          TextSpan(
+                            text: "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                          ),
                       ],
                     ),
                   ),
@@ -204,7 +203,7 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                               text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                               style: const TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            TextSpan(text: "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                            if (model.dovizliMi) TextSpan(text: "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
                           ],
                         ),
                       ),
@@ -234,7 +233,7 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                           text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        TextSpan(text: "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}").yetkiVarMi(model.dovizliMi),
+                        if (model.dovizliMi) TextSpan(text: "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
                       ],
                     ),
                   ),
@@ -406,67 +405,70 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
             ),
             Row(
               children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Ek Mal. 1",
-                    enabled: enable,
-                    controller: ekMal1Controller,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (value) => viewModel.setEkMal1(
-                      double.tryParse(value.replaceAll(RegExp(r","), ".")),
+                if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Ek Mal. 1",
+                      enabled: enable,
+                      controller: ekMal1Controller,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      onChanged: (value) => viewModel.setEkMal1(
+                        double.tryParse(value.replaceAll(RegExp(r","), ".")),
+                      ),
                     ),
                   ),
-                ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
-                    enabled: enable,
-                    keyboardType: const TextInputType.numberWithOptions(
-                      decimal: true,
-                      signed: true,
-                    ),
-                    controller: tevkifatController,
-                    inputFormatter: [
-                      FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]")),
-                    ],
-                    suffix: IconButton(
-                      onPressed: () async {
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Tevkifat Oranı",
-                          children: List.generate(
-                            viewModel.tevkifatMap.length,
-                            (index) => BottomSheetModel(
-                              title: viewModel.tevkifatMap.keys.toList()[index],
-                              value: viewModel.tevkifatMap.values.toList()[index],
+                if (yetkiController.siparisEkMaliyet2GizlenecekMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
+                      enabled: enable,
+                      keyboardType: const TextInputType.numberWithOptions(
+                        decimal: true,
+                        signed: true,
+                      ),
+                      controller: tevkifatController,
+                      inputFormatter: [
+                        FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]")),
+                      ],
+                      suffix: IconButton(
+                        onPressed: () async {
+                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: "Tevkifat Oranı",
+                            children: List.generate(
+                              viewModel.tevkifatMap.length,
+                              (index) => BottomSheetModel(
+                                title: viewModel.tevkifatMap.keys.toList()[index],
+                                value: viewModel.tevkifatMap.values.toList()[index],
+                              ),
                             ),
-                          ),
-                        );
-                        if (result != null) {
-                          viewModel.setTevkifat(result);
-                          tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
-                        }
-                      },
-                      icon: const Icon(Icons.more_horiz_outlined),
+                          );
+                          if (result != null) {
+                            viewModel.setTevkifat(result);
+                            tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
+                          }
+                        },
+                        icon: const Icon(Icons.more_horiz_outlined),
+                      ),
+                      // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                     ),
-                    // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                   ),
-                ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi),
               ],
             ),
             Row(
               children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Ek Mal. 3",
-                    enabled: enable,
-                    controller: ekMal3Controller,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (value) => viewModel.setEkMal1(
-                      double.tryParse(value.replaceAll(RegExp(r","), ".")),
+                if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Ek Mal. 3",
+                      enabled: enable,
+                      controller: ekMal3Controller,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      onChanged: (value) => viewModel.setEkMal1(
+                        double.tryParse(value.replaceAll(RegExp(r","), ".")),
+                      ),
                     ),
                   ),
-                ).yetkiVarMi(!yetkiController.siparisMSEkMaliyet2AktifMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Vade Günü",

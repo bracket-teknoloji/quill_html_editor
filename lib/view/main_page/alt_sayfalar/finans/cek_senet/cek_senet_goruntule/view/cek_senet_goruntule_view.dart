@@ -6,7 +6,6 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../cek_senet_listesi/model/cek_senet_listesi_model.dart";
@@ -94,11 +93,12 @@ final class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView>
                   ),
                 ],
               ),
-              CustomTextField(
-                labelText: "Döviz Tutarı",
-                controllerText: "${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu ?? mainCurrency}",
-                readOnly: true,
-              ).yetkiVarMi(model.dovizTutari != null),
+              if (model.dovizTutari != null)
+                CustomTextField(
+                  labelText: "Döviz Tutarı",
+                  controllerText: "${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu ?? mainCurrency}",
+                  readOnly: true,
+                ),
               Row(
                 children: [
                   Expanded(
@@ -137,20 +137,22 @@ final class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView>
               ),
               Row(
                 children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Rapor Kodu",
-                      controllerText: model.raporKodu,
-                      readOnly: true,
+                  if (model.raporKodu != null)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Rapor Kodu",
+                        controllerText: model.raporKodu,
+                        readOnly: true,
+                      ),
                     ),
-                  ).yetkiVarMi(model.raporKodu != null),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Cari Rapor Kodu",
-                      controllerText: model.odemeTarihi.toDateString,
-                      readOnly: true,
+                  if (model.cariRaporKodu != null)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Cari Rapor Kodu",
+                        controllerText: model.odemeTarihi.toDateString,
+                        readOnly: true,
+                      ),
                     ),
-                  ).yetkiVarMi(model.cariRaporKodu != null),
                 ],
               ),
               CustomTextField(
@@ -158,12 +160,13 @@ final class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView>
                 controllerText: model.alinanBordroNo,
                 readOnly: true,
               ),
-              CustomTextField(
-                labelText: "Plasiyer",
-                valueWidget: Text(model.plasiyerKodu ?? ""),
-                controllerText: model.plasiyerKodu,
-                readOnly: true,
-              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+              if (yetkiController.plasiyerUygulamasiAcikMi)
+                CustomTextField(
+                  labelText: "Plasiyer",
+                  valueWidget: Text(model.plasiyerKodu ?? ""),
+                  controllerText: model.plasiyerKodu,
+                  readOnly: true,
+                ),
             ],
           ).paddingAll(UIHelper.lowSize),
         ),

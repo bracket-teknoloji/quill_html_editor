@@ -6,7 +6,6 @@ import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../belge_rehberi/model/belge_rehberi_model.dart";
@@ -115,20 +114,22 @@ final class _BaseHucreGenelViewState extends BaseState<BaseHucreGenelView> {
                 },
               ),
               Observer(
-                builder: (_) => CustomTextField(
-                  labelText: "Belge",
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: belgeController,
-                  onTap: () async {
-                    final result = await Get.toNamed("mainPage/belgeRehberi", arguments: viewModel.model.copyWith(pickerBelgeTuru: viewModel.selectedEditTipi?.rawValue, islemTuru: "HY"));
-                    if (result is BelgeRehberiModel) {
-                      viewModel.setBelge(result);
-                      belgeController.text = result.belgeNo ?? "";
-                    }
-                  },
-                ).yetkiVarMi(viewModel.isBelgeVisible),
+                builder: (_) => viewModel.isBelgeVisible
+                    ? CustomTextField(
+                        labelText: "Belge",
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: belgeController,
+                        onTap: () async {
+                          final result = await Get.toNamed("mainPage/belgeRehberi", arguments: viewModel.model.copyWith(pickerBelgeTuru: viewModel.selectedEditTipi?.rawValue, islemTuru: "HY"));
+                          if (result is BelgeRehberiModel) {
+                            viewModel.setBelge(result);
+                            belgeController.text = result.belgeNo ?? "";
+                          }
+                        },
+                      )
+                    : const SizedBox.shrink(),
               ),
             ],
           ),

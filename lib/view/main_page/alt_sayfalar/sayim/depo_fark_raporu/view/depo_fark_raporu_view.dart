@@ -14,7 +14,6 @@ import "../../../../../../core/constants/color_palette.dart";
 import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../sayim_edit/sayilanlar_listesi/model/sayilan_kalemler_request_model.dart";
@@ -153,11 +152,11 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
                       splitCount: 2,
                       children: [
                         Text("Stok Kodu: ${item.stokKodu}"),
-                        Text("Seri 1: ${item.seriNo}").yetkiVarMi(item.seriNo != null),
-                        Text("Seri 2: ${item.seri2}").yetkiVarMi(item.seri2 != null),
-                        Text("Seri 3: ${item.seri3}").yetkiVarMi(item.seri3 != null),
-                        Text("Seri 4: ${item.seri4}").yetkiVarMi(item.seri4 != null),
-                        Text("Son Kul. Tarihi: ${item.sonKullanmaTarihi.toDateString}").yetkiVarMi(item.sonKullanmaTarihi?.toDateString != null),
+                        if (item.seriNo != null) Text("Seri 1: ${item.seriNo}"),
+                        if (item.seri2 != null) Text("Seri 2: ${item.seri2}"),
+                        if (item.seri3 != null) Text("Seri 3: ${item.seri3}"),
+                        if (item.seri4 != null) Text("Seri 4: ${item.seri4}"),
+                        if (item.sonKullanmaTarihi?.toDateString != null) Text("Son Kul. Tarihi: ${item.sonKullanmaTarihi.toDateString}"),
                         Text("Depo Miktarı: ${item.stokBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                         Text("Sayım Miktarı: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                         Text("Fark: ${item.depoFark.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),

@@ -11,7 +11,6 @@ import "package:picker/core/constants/enum/e_belge_islem_kodu_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
@@ -55,19 +54,19 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
               children: [
                 //TODO yetkileri ekle
                 eBelgeGoruntule,
-                faturaGoruntule.yetkiKontrol((model.belgeIslendiMi || !model.gelenMi) && !model.iptalEdildiMi),
-                cariOlustur.yetkiKontrol(!model.cariKayitliMi && yetkiController.cariKartiYeniKayit),
-                alisFaturasiOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.belgeIslendiMi),
-                if (model.gelenMi) yanitGonder.yetkiKontrol(model.yanitBekliyorMu),
-                dekontOlustur.yetkiKontrol(!model.yanitBekliyorMu && !model.belgeIslendiMi),
-                eBelgeEslestir.yetkiKontrol(model.gelenMi && !model.belgeIslendiMi && model.eFaturaMi && !model.yanitBekliyorMu),
-                eBelgeEslestirmeIptali.yetkiKontrol(model.gelenMi && model.belgeIslendiMi && model.eFaturaMi),
-                kontrolDegistir.yetkiKontrol(model.gelenMi && model.eFaturaMi),
-                faturaIptali.yetkiKontrol(!model.gelenMi && !model.iptalEdildiMi && model.eFaturaMi && !model.taslakMi),
-                zarfiSil.yetkiKontrol(model.zarfSilinebilirMi),
-                cariIslemleri.yetkiKontrol(((!model.gelenMi && model.eArsivMi) || (model.cariKayitliMi && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)) && model.cariKayitliMi),
-                yazdir.yetkiKontrol(!(model.gelenMi && model.eArsivMi)),
-              ].nullCheckWithGeneric,
+                if ((model.belgeIslendiMi || !model.gelenMi) && !model.iptalEdildiMi) faturaGoruntule,
+                if (!model.cariKayitliMi && yetkiController.cariKartiYeniKayit) cariOlustur,
+                if (!model.yanitBekliyorMu && !model.belgeIslendiMi) alisFaturasiOlustur,
+                if (model.yanitBekliyorMu && model.gelenMi) yanitGonder,
+                if (!model.yanitBekliyorMu && !model.belgeIslendiMi) dekontOlustur,
+                if (model.gelenMi && !model.belgeIslendiMi && model.eFaturaMi && !model.yanitBekliyorMu) eBelgeEslestir,
+                if (model.gelenMi && model.belgeIslendiMi && model.eFaturaMi) eBelgeEslestirmeIptali,
+                if (model.gelenMi && model.eFaturaMi) kontrolDegistir,
+                if (!model.gelenMi && !model.iptalEdildiMi && model.eFaturaMi && !model.taslakMi) faturaIptali,
+                if (model.zarfSilinebilirMi) zarfiSil,
+                if (((!model.gelenMi && model.eArsivMi) || (model.cariKayitliMi && model.eFaturaMi) || (!model.gelenMi && model.eFaturaMi)) && model.cariKayitliMi) cariIslemleri,
+                if (!(model.gelenMi && model.eArsivMi)) yazdir,
+              ],
             );
           },
           title: Row(

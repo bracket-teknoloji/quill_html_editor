@@ -10,7 +10,6 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
@@ -212,40 +211,42 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Plasiyer",
-                        controller: _plasiyerController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.plasiyerKodu ?? "")),
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.requestModel.plasiyerKodu);
-                          if (result is PlasiyerList) {
-                            _plasiyerController.text = result.plasiyerAciklama ?? "";
-                            viewModel.setPlasiyer(result.plasiyerKodu);
-                          }
-                        },
+                    if (yetkiController.plasiyerUygulamasiAcikMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Plasiyer",
+                          controller: _plasiyerController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.plasiyerKodu ?? "")),
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.requestModel.plasiyerKodu);
+                            if (result is PlasiyerList) {
+                              _plasiyerController.text = result.plasiyerAciklama ?? "";
+                              viewModel.setPlasiyer(result.plasiyerKodu);
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Proje",
-                        controller: _projeController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.projeKodu ?? "")),
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.requestModel.projeKodu);
-                          if (result is PlasiyerList) {
-                            _projeController.text = result?.projeAciklama ?? "";
-                            viewModel.setProjeKodu(result?.projeKodu);
-                          }
-                        },
+                    if (yetkiController.projeUygulamasiAcikMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Proje",
+                          controller: _projeController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.projeKodu ?? "")),
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.requestModel.projeKodu);
+                            if (result is PlasiyerList) {
+                              _projeController.text = result?.projeAciklama ?? "";
+                              viewModel.setProjeKodu(result?.projeKodu);
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                   ],
                 ),
                 CustomTextField(

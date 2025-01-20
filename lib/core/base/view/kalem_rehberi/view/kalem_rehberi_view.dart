@@ -3,7 +3,6 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
@@ -120,7 +119,7 @@ final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli).yetkiVarMi(model.paketMi == "K"),
+                        if (model.paketMi == "K") const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli),
                         Text("Stok Kodu: ${model.stokKodu ?? ""}", overflow: TextOverflow.ellipsis),
                         CustomLayoutBuilder(
                           splitCount: 2,

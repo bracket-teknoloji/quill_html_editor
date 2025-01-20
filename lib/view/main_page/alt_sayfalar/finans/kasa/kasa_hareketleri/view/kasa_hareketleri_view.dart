@@ -16,7 +16,6 @@ import "../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../kasa_islemleri/model/kasa_islemleri_model.dart";
@@ -156,10 +155,11 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
               Row(
                 children: [
                   Text("${item?.tarih.toDateString ?? ""} "),
-                  ColorfulBadge(
-                    label: Text(item?.tipAciklama ?? ""),
-                    badgeColorEnum: BadgeColorEnum.tipAciklama,
-                  ).yetkiVarMi(item?.tipAciklama != null),
+                  if (item?.tipAciklama != null)
+                    ColorfulBadge(
+                      label: Text(item?.tipAciklama ?? ""),
+                      badgeColorEnum: BadgeColorEnum.tipAciklama,
+                    ),
                 ],
               ),
             ],

@@ -114,7 +114,6 @@ final class _SiparisRehberiCardState extends BaseState<SiparisRehberiCard> {
                   indent: 0,
                   endIndent: 0,
                 ).paddingSymmetric(vertical: UIHelper.midSize),
-              // Text("Miktar: ${widget.model.miktar?.commaSeparatedWithFixedDigits ?? ""}").yetkiVarMi(widget.showMiktar == true),
               if (widget.showMiktar == true)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

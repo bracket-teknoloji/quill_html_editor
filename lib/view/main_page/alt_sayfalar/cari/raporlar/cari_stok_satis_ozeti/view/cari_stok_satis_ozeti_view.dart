@@ -17,7 +17,6 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/enum/grup_kodu_enums.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -254,11 +253,11 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
                                   subtitle: CustomLayoutBuilder.divideInHalf(
                                     children: [
                                       Text("Stok Kodu: ${viewModel.filteredList?[index].stokKodu ?? ""}"),
-                                      Text("Döviz Kuru: ${viewModel.filteredList?[index].dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}")
-                                          .yetkiVarMi(viewModel.filteredList?[index].dovizKuru != null && viewModel.filteredList?[index].dovizKuru != 0),
-                                      Text("Döviz Tipi: ${viewModel.filteredList?[index].dovizAdi ?? ""}").yetkiVarMi(viewModel.filteredList?[index].dovizAdi != null),
-                                      Text("Döviz Net Tutarı: ${viewModel.filteredList?[index].dovNetTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? ""}")
-                                          .yetkiVarMi(viewModel.filteredList?[index].dovNetTutar != null && viewModel.filteredList?[index].dovNetTutar != 0),
+                                      if (viewModel.filteredList?[index].dovizKuru != null && viewModel.filteredList?[index].dovizKuru != 0)
+                                        Text("Döviz Kuru: ${viewModel.filteredList?[index].dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}"),
+                                      if (viewModel.filteredList?[index].dovizAdi != null) Text("Döviz Tipi: ${viewModel.filteredList?[index].dovizAdi ?? ""}"),
+                                      if (viewModel.filteredList?[index].dovNetTutar != null && viewModel.filteredList?[index].dovNetTutar != 0)
+                                        Text("Döviz Net Tutarı: ${viewModel.filteredList?[index].dovNetTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? ""}"),
                                     ],
                                   ),
                                   trailing:

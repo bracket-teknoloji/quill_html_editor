@@ -18,7 +18,6 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
@@ -278,20 +277,21 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               }
             },
           ),
-          CustomTextField(
-            labelText: "Plasiyer",
-            controller: plasiyerController,
-            readOnly: true,
-            suffixMore: true,
-            valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.plasiyerKodu ?? "")),
-            onTap: () async {
-              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.kasaIslemleriRequestModel.plasiyerKodu);
-              if (result is PlasiyerList) {
-                viewModel.setPlasiyerKodu(result);
-                plasiyerController.text = result.plasiyerAciklama ?? "";
-              }
-            },
-          ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+          if (yetkiController.plasiyerUygulamasiAcikMi)
+            CustomTextField(
+              labelText: "Plasiyer",
+              controller: plasiyerController,
+              readOnly: true,
+              suffixMore: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.plasiyerKodu ?? "")),
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.kasaIslemleriRequestModel.plasiyerKodu);
+                if (result is PlasiyerList) {
+                  viewModel.setPlasiyerKodu(result);
+                  plasiyerController.text = result.plasiyerAciklama ?? "";
+                }
+              },
+            ),
           Row(
             children: [
               Expanded(

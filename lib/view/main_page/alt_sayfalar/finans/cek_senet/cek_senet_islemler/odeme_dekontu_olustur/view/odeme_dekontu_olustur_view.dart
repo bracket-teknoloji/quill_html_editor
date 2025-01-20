@@ -11,7 +11,6 @@ import "../../../../../../../../core/components/textfield/custom_text_field.dart
 import "../../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../../core/constants/enum/cek_senet_listesi_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
@@ -121,12 +120,13 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
                 onTap: setSeri,
               ),
-              CustomTextField(
-                labelText: "Tahsil/Teminat Hesabı",
-                controller: _teminatHesabiController,
-                readOnly: true,
-                valueWidget: Observer(builder: (_) => Text(model.verilenKodu ?? "")),
-              ).yetkiVarMi(!widget.model.cekSenetListesiEnum.borcMu),
+              if (!widget.model.cekSenetListesiEnum.borcMu)
+                CustomTextField(
+                  labelText: "Tahsil/Teminat Hesabı",
+                  controller: _teminatHesabiController,
+                  readOnly: true,
+                  valueWidget: Observer(builder: (_) => Text(model.verilenKodu ?? "")),
+                ),
               CustomTextField(
                 labelText: !widget.model.cekSenetListesiEnum.borcMu ? "Virman Hesap" : "Ödeme Hesabı",
                 controller: _odemeHesabiController,
@@ -136,24 +136,26 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
                 onTap: setOdemeHesabi,
               ),
-              CustomTextField(
-                labelText: "Proje",
-                controller: _projeController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                onTap: setProjeKodu,
-              ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
-              CustomTextField(
-                labelText: "Plasiyer",
-                controller: _plasiyerController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                onTap: setPlasiyerkodu,
-              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+              if (yetkiController.projeUygulamasiAcikMi)
+                CustomTextField(
+                  labelText: "Proje",
+                  controller: _projeController,
+                  readOnly: true,
+                  isMust: true,
+                  suffixMore: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                  onTap: setProjeKodu,
+                ),
+              if (yetkiController.plasiyerUygulamasiAcikMi)
+                CustomTextField(
+                  labelText: "Plasiyer",
+                  controller: _plasiyerController,
+                  readOnly: true,
+                  isMust: true,
+                  suffixMore: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                  onTap: setPlasiyerkodu,
+                ),
               CustomTextField(
                 labelText: "Açıklama",
                 controller: _aciklamaController,

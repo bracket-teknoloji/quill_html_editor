@@ -20,7 +20,6 @@ import "../../../../../../../../core/components/helper_widgets/custom_label_widg
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../../auth/model/isletme_model.dart";
@@ -357,57 +356,64 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               controller: bilgiController,
               onChanged: (p0) => viewModel.changeBilgi(p0),
             ),
-            CustomTextField(
-              enabled: enabled,
-              labelText: "Muhasebe Kodu",
-              readOnly: true,
-              suffixMore: true,
-              controller: muhasebeKoduController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model?.muhasebeKodu ?? "")),
-              onClear: () => viewModel.changeMuhaseKodu(null),
-              onTap: () async {
-                final StokMuhasebeKoduModel? result =
-                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.muhasebeKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari.value, hesapTipi: "M");
-                if (result is StokMuhasebeKoduModel) {
-                  muhasebeKoduController.text = result.hesapAdi ?? "";
-                  viewModel.changeMuhaseKodu(result);
-                }
-              },
-            ).yetkiVarMi(parametreModel.muhasebeEntegre == true),
-            CustomTextField(
-              enabled: enabled,
-              labelText: "Kur Farkı Borç Muh. Kodu",
-              readOnly: true,
-              suffixMore: true,
-              controller: kurFarkiBorcMuhasebeKoduController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model?.kurfarkiborcKodu ?? "")),
-              onClear: () => viewModel.changeKurFarkiBorc(null),
-              onTap: () async {
-                final StokMuhasebeKoduModel? result =
-                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.kurfarkiborcKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari.value, hesapTipi: "M");
-                if (result is StokMuhasebeKoduModel) {
-                  kurFarkiBorcMuhasebeKoduController.text = result.hesapAdi ?? "";
-                  viewModel.changeKurFarkiBorc(result);
-                }
-              },
-            ).yetkiVarMi(parametreModel.muhasebeEntegre == true),
-            CustomTextField(
-              enabled: enabled,
-              labelText: "Kur Farkı Alacak Muh. Kodu",
-              readOnly: true,
-              suffixMore: true,
-              controller: kurFarkiAlacakMuhasebeKoduController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model?.kurfarkialacakKodu ?? "")),
-              onClear: () => viewModel.changeKurFarkiAlacak(null),
-              onTap: () async {
-                final StokMuhasebeKoduModel? result =
-                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.kurfarkialacakKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari.value, hesapTipi: "M");
-                if (result is StokMuhasebeKoduModel) {
-                  kurFarkiAlacakMuhasebeKoduController.text = result.hesapAdi ?? "";
-                  viewModel.changeKurFarkiAlacak(result);
-                }
-              },
-            ).yetkiVarMi(parametreModel.muhasebeEntegre == true),
+            if (parametreModel.muhasebeEntegre == true)
+              CustomTextField(
+                enabled: enabled,
+                labelText: "Muhasebe Kodu",
+                readOnly: true,
+                suffixMore: true,
+                controller: muhasebeKoduController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model?.muhasebeKodu ?? "")),
+                onClear: () => viewModel.changeMuhaseKodu(null),
+                onTap: () async {
+                  final StokMuhasebeKoduModel? result =
+                      await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.muhasebeKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari.value, hesapTipi: "M");
+                  if (result is StokMuhasebeKoduModel) {
+                    muhasebeKoduController.text = result.hesapAdi ?? "";
+                    viewModel.changeMuhaseKodu(result);
+                  }
+                },
+              ),
+            if (parametreModel.muhasebeEntegre == true)
+              CustomTextField(
+                enabled: enabled,
+                labelText: "Kur Farkı Borç Muh. Kodu",
+                readOnly: true,
+                suffixMore: true,
+                controller: kurFarkiBorcMuhasebeKoduController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model?.kurfarkiborcKodu ?? "")),
+                onClear: () => viewModel.changeKurFarkiBorc(null),
+                onTap: () async {
+                  final StokMuhasebeKoduModel? result =
+                      await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model?.kurfarkiborcKodu, belgeTipi: MuhasebeBelgeTipiEnum.cari.value, hesapTipi: "M");
+                  if (result is StokMuhasebeKoduModel) {
+                    kurFarkiBorcMuhasebeKoduController.text = result.hesapAdi ?? "";
+                    viewModel.changeKurFarkiBorc(result);
+                  }
+                },
+              ),
+            if (parametreModel.muhasebeEntegre == true)
+              CustomTextField(
+                enabled: enabled,
+                labelText: "Kur Farkı Alacak Muh. Kodu",
+                readOnly: true,
+                suffixMore: true,
+                controller: kurFarkiAlacakMuhasebeKoduController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model?.kurfarkialacakKodu ?? "")),
+                onClear: () => viewModel.changeKurFarkiAlacak(null),
+                onTap: () async {
+                  final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
+                    context,
+                    viewModel.model?.kurfarkialacakKodu,
+                    belgeTipi: MuhasebeBelgeTipiEnum.cari.value,
+                    hesapTipi: "M",
+                  );
+                  if (result is StokMuhasebeKoduModel) {
+                    kurFarkiAlacakMuhasebeKoduController.text = result.hesapAdi ?? "";
+                    viewModel.changeKurFarkiAlacak(result);
+                  }
+                },
+              ),
             CustomTextField(
               enabled: (enabled && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") ||
                   widget.model?.baseEditEnum != BaseEditEnum.goruntule && !yetkiController.cariKartiDegistirilmeyecekAlanlar("sube"),
@@ -482,169 +488,178 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                 }
               },
             ),
-            CustomTextField(
-              enabled: enabled,
-              readOnly: true,
-              suffixMore: true,
-              labelText: "Koşul Kodu",
-              controller: kosulKoduController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model?.kosulKodu ?? "")),
-              onClear: () => viewModel.changeKosul(null),
-              onTap: () async {
-                final CariKosullarModel? result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model?.kosulKodu, null);
-                if (result is CariKosullarModel) {
-                  kosulKoduController.text = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";
-                  viewModel.model?.kosulKoduAciklama = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";
-                  viewModel.changeKosul(result);
-                }
-              },
-              //TODO İlhami abiye parametreyi sor
-            ).yetkiVarMi(parametreModel.konsinyeUygulamasi == true),
+            if (parametreModel.konsinyeUygulamasi == true)
+              CustomTextField(
+                enabled: enabled,
+                readOnly: true,
+                suffixMore: true,
+                labelText: "Koşul Kodu",
+                controller: kosulKoduController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model?.kosulKodu ?? "")),
+                onClear: () => viewModel.changeKosul(null),
+                onTap: () async {
+                  final CariKosullarModel? result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model?.kosulKodu, null);
+                  if (result is CariKosullarModel) {
+                    kosulKoduController.text = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";
+                    viewModel.model?.kosulKoduAciklama = "${result.kosulKodu ?? ""} - ${result.kosulSabitAdi ?? ""}";
+                    viewModel.changeKosul(result);
+                  }
+                },
+              ),
             CustomTextField(enabled: enabled, labelText: "Açıklama 1", controller: aciklama1Controller, onChanged: (p0) => viewModel.changeAciklama(1, p0)),
             CustomTextField(enabled: enabled, labelText: "Açıklama 2", controller: aciklama2Controller, onChanged: (p0) => viewModel.changeAciklama(2, p0)),
             CustomTextField(enabled: enabled, labelText: "Açıklama 3", controller: aciklama3Controller, onChanged: (p0) => viewModel.changeAciklama(3, p0)),
-            CustomWidgetWithLabel(
-              text: "Kullanıcı Tanımlı Sahalar",
-              child: Wrap(
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 1", controller: a1Controller, onChanged: (p0) => viewModel.changeKullA(1, p0)))
-                          .yetkiVarMi(parametreModel.mapCariKullSahalar?.the1S != null),
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 2", controller: a2Controller, onChanged: (p0) => viewModel.changeKullA(2, p0)))
-                          .yetkiVarMi(parametreModel.mapCariKullSahalar?.the2S != null),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 3", controller: a3Controller, onChanged: (p0) => viewModel.changeKullA(3, p0)))
-                          .yetkiVarMi(parametreModel.mapCariKullSahalar?.the3S != null),
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 4", controller: a4Controller, onChanged: (p0) => viewModel.changeKullA(4, p0)))
-                          .yetkiVarMi(parametreModel.mapCariKullSahalar?.the4S != null),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 5", controller: a5Controller, onChanged: (p0) => viewModel.changeKullA(5, p0)))
-                          .yetkiVarMi(parametreModel.mapCariKullSahalar?.the5S != null),
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 6", controller: a6Controller, onChanged: (p0) => viewModel.changeKullA(6, p0)))
-                          .yetkiVarMi(parametreModel.mapCariKullSahalar?.the6S != null),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 7", controller: a7Controller, onChanged: (p0) => viewModel.changeKullA(7, p0)))
-                          .yetkiVarMi(parametreModel.mapCariKullSahalar?.the7S != null),
-                      Expanded(child: CustomTextField(enabled: enabled, labelText: "A 8", controller: a8Controller, onChanged: (p0) => viewModel.changeKullA(8, p0)))
-                          .yetkiVarMi(parametreModel.mapCariKullSahalar?.the8S != null),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 1",
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          controller: n1Controller,
-                          onChanged: (p0) => viewModel.changeKullN(1, p0),
-                        ),
-                      ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the1N != null),
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 2",
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          controller: n2Controller,
-                          onChanged: (p0) => viewModel.changeKullN(2, p0),
-                        ),
-                      ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the2N != null),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 3",
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          controller: n3Controller,
-                          onChanged: (p0) => viewModel.changeKullN(3, p0),
-                        ),
-                      ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the3N != null),
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 4",
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          controller: n4Controller,
-                          onChanged: (p0) => viewModel.changeKullN(4, p0),
-                        ),
-                      ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the4N != null),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 5",
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          controller: n5Controller,
-                          onChanged: (p0) => viewModel.changeKullN(5, p0),
-                        ),
-                      ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the5N != null),
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 6",
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          controller: n6Controller,
-                          onChanged: (p0) => viewModel.changeKullN(6, p0),
-                        ),
-                      ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the6N != null),
-                    ],
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 7",
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          controller: n7Controller,
-                          onChanged: (p0) => viewModel.changeKullN(7, p0),
-                        ),
-                      ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the7N != null),
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: enabled,
-                          labelText: "N 8",
-                          isFormattedString: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          controller: n8Controller,
-                          onChanged: (p0) => viewModel.changeKullN(8, p0),
-                        ),
-                      ).yetkiVarMi(parametreModel.mapCariKullSahalar?.the8N != null),
-                    ],
-                  ),
-                ],
+            if (parametreModel.mapCariKullSahalar != null)
+              CustomWidgetWithLabel(
+                text: "Kullanıcı Tanımlı Sahalar",
+                child: Wrap(
+                  children: <Widget>[
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (parametreModel.mapCariKullSahalar?.the1S != null)
+                          Expanded(child: CustomTextField(enabled: enabled, labelText: "A 1", controller: a1Controller, onChanged: (p0) => viewModel.changeKullA(1, p0))),
+                        if (parametreModel.mapCariKullSahalar?.the2S != null)
+                          Expanded(child: CustomTextField(enabled: enabled, labelText: "A 2", controller: a2Controller, onChanged: (p0) => viewModel.changeKullA(2, p0))),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        if (parametreModel.mapCariKullSahalar?.the3S != null)
+                          Expanded(child: CustomTextField(enabled: enabled, labelText: "A 3", controller: a3Controller, onChanged: (p0) => viewModel.changeKullA(3, p0))),
+                        if (parametreModel.mapCariKullSahalar?.the4S != null)
+                          Expanded(child: CustomTextField(enabled: enabled, labelText: "A 4", controller: a4Controller, onChanged: (p0) => viewModel.changeKullA(4, p0))),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (parametreModel.mapCariKullSahalar?.the5S != null)
+                          Expanded(child: CustomTextField(enabled: enabled, labelText: "A 5", controller: a5Controller, onChanged: (p0) => viewModel.changeKullA(5, p0))),
+                        if (parametreModel.mapCariKullSahalar?.the6S != null)
+                          Expanded(child: CustomTextField(enabled: enabled, labelText: "A 6", controller: a6Controller, onChanged: (p0) => viewModel.changeKullA(6, p0))),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (parametreModel.mapCariKullSahalar?.the7S != null)
+                          Expanded(child: CustomTextField(enabled: enabled, labelText: "A 7", controller: a7Controller, onChanged: (p0) => viewModel.changeKullA(7, p0))),
+                        if (parametreModel.mapCariKullSahalar?.the8S != null)
+                          Expanded(child: CustomTextField(enabled: enabled, labelText: "A 8", controller: a8Controller, onChanged: (p0) => viewModel.changeKullA(8, p0))),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (parametreModel.mapCariKullSahalar?.the1N != null)
+                          Expanded(
+                            child: CustomTextField(
+                              enabled: enabled,
+                              labelText: "N 1",
+                              isFormattedString: true,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              controller: n1Controller,
+                              onChanged: (p0) => viewModel.changeKullN(1, p0),
+                            ),
+                          ),
+                        if (parametreModel.mapCariKullSahalar?.the2N != null)
+                          Expanded(
+                            child: CustomTextField(
+                              enabled: enabled,
+                              labelText: "N 2",
+                              isFormattedString: true,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              controller: n2Controller,
+                              onChanged: (p0) => viewModel.changeKullN(2, p0),
+                            ),
+                          ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (parametreModel.mapCariKullSahalar?.the3N != null)
+                          Expanded(
+                            child: CustomTextField(
+                              enabled: enabled,
+                              labelText: "N 3",
+                              isFormattedString: true,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              controller: n3Controller,
+                              onChanged: (p0) => viewModel.changeKullN(3, p0),
+                            ),
+                          ),
+                        if (parametreModel.mapCariKullSahalar?.the4N != null)
+                          Expanded(
+                            child: CustomTextField(
+                              enabled: enabled,
+                              labelText: "N 4",
+                              isFormattedString: true,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              controller: n4Controller,
+                              onChanged: (p0) => viewModel.changeKullN(4, p0),
+                            ),
+                          ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (parametreModel.mapCariKullSahalar?.the5N != null)
+                          Expanded(
+                            child: CustomTextField(
+                              enabled: enabled,
+                              labelText: "N 5",
+                              isFormattedString: true,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              controller: n5Controller,
+                              onChanged: (p0) => viewModel.changeKullN(5, p0),
+                            ),
+                          ),
+                        if (parametreModel.mapCariKullSahalar?.the6N != null)
+                          Expanded(
+                            child: CustomTextField(
+                              enabled: enabled,
+                              labelText: "N 6",
+                              isFormattedString: true,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              controller: n6Controller,
+                              onChanged: (p0) => viewModel.changeKullN(6, p0),
+                            ),
+                          ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (parametreModel.mapCariKullSahalar?.the7N != null)
+                          Expanded(
+                            child: CustomTextField(
+                              enabled: enabled,
+                              labelText: "N 7",
+                              isFormattedString: true,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              controller: n7Controller,
+                              onChanged: (p0) => viewModel.changeKullN(7, p0),
+                            ),
+                          ),
+                        if (parametreModel.mapCariKullSahalar?.the8N != null)
+                          Expanded(
+                            child: CustomTextField(
+                              enabled: enabled,
+                              labelText: "N 8",
+                              isFormattedString: true,
+                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                              controller: n8Controller,
+                              onChanged: (p0) => viewModel.changeKullN(8, p0),
+                            ),
+                          ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ).yetkiVarMi(parametreModel.mapCariKullSahalar != null),
             if (parametreModel.eFaturaAktif == true && (widget.model?.isDuzenle ?? false))
               CustomWidgetWithLabel(
                 text: "E-İşlemler",

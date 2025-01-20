@@ -8,7 +8,6 @@ import "../../../../../../core/components/layout/custom_layout_builder.dart";
 import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../view_model/hucre_hareketleri_view_model.dart";
@@ -99,17 +98,16 @@ final class _HucreHareketleriViewState extends State<HucreHareketleriView> {
                         ),
                       ],
                     ),
-                    subtitle: CustomLayoutBuilder(
-                      splitCount: 2,
+                    subtitle: CustomLayoutBuilder.divideInHalf(
                       children: [
-                        Text("Belge No: ${item.stharFisno}").yetkiVarMi(item.stharFisno != null),
-                        Text("Stok Kodu: ${item.stokKodu}").yetkiVarMi(item.stokKodu != null),
-                        Text("YapKod: ${item.yapkod}").yetkiVarMi(item.yapkod != null),
-                        Text("Hücre: ${item.hucreKodu}").yetkiVarMi(item.hucreKodu != null),
-                        Text("Depo: ${item.depoTanimi}").yetkiVarMi(item.depoTanimi != null),
-                        Text("Hareket Türü: ${item.hareketTuru}").yetkiVarMi(item.hareketTuru != null),
-                        Text("Kaydeden: ${item.kayityapankul}").yetkiVarMi(item.kayityapankul != null),
-                        Text("Kayıt No: ${item.inckeyno}").yetkiVarMi(item.inckeyno != null),
+                        if (item.stharFisno != null) Text("Belge No: ${item.stharFisno}"),
+                        if (item.stokKodu != null) Text("Stok Kodu: ${item.stokKodu}"),
+                        if (item.yapkod != null) Text("YapKod: ${item.yapkod}"),
+                        if (item.hucreKodu != null) Text("Hücre: ${item.hucreKodu}"),
+                        if (item.depoTanimi != null) Text("Depo: ${item.depoTanimi}"),
+                        if (item.hareketTuru != null) Text("Hareket Türü: ${item.hareketTuru}"),
+                        if (item.kayityapankul != null) Text("Kaydeden: ${item.kayityapankul}"),
+                        if (item.inckeyno != null) Text("Kayıt No: ${item.inckeyno}"),
                       ],
                     ),
                   ),

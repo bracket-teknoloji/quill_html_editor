@@ -64,18 +64,18 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
             children: [
               Card(
                 child: ListTile(
-                  title: Text("Cari Adı: ${viewModel.model.belgeModel?.cariAdi}").yetkiVarMi(viewModel.model.belgeModel?.cariAdi != null),
+                  title: (viewModel.model.belgeModel?.cariAdi != null) ? Text("Cari Adı: ${viewModel.model.belgeModel?.cariAdi}") : null,
                   subtitle: CustomLayoutBuilder(
                     splitCount: 2,
                     children: [
-                      Text("Tarih: ${viewModel.model.belgeModel?.tarih.toDateString}").yetkiVarMi(viewModel.model.belgeModel?.tarih != null),
-                      Text("Belge Tipi: ${EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == viewModel.model.belgeTuru)?.getName}").yetkiVarMi(viewModel.model.belgeTuru != null),
-                      Text("Cari Kodu: ${viewModel.model.belgeModel?.cariKodu}").yetkiVarMi(viewModel.model.belgeModel?.cariKodu != null),
+                      if (viewModel.model.belgeModel?.tarih != null) Text("Tarih: ${viewModel.model.belgeModel?.tarih.toDateString}"),
+                      if (viewModel.model.belgeTuru != null) Text("Belge Tipi: ${EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == viewModel.model.belgeTuru)?.getName}"),
+                      if (viewModel.model.belgeModel?.cariKodu != null) Text("Cari Kodu: ${viewModel.model.belgeModel?.cariKodu}"),
                     ],
                   ),
                 ),
               ),
-              CustomTextField(
+              if (!viewModel.model.paketMi) CustomTextField(
                 labelText: "Stok",
                 readOnly: true,
                 isMust: true,
@@ -100,7 +100,7 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
                     updateStok(result);
                   }
                 },
-              ).yetkiVarMi(!viewModel.model.paketMi),
+              ),
               CustomTextField(
                 labelText: "Paket",
                 readOnly: true,

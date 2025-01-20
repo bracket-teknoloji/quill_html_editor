@@ -15,7 +15,6 @@ import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/iterable_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
@@ -168,47 +167,31 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
             children: [
               belgeNoField(),
               tarihField(),
-              isEmriField().yetkiVarMi(!yapiKalemliMi),
-              CustomLayoutBuilder(
-                splitCount: 2,
+              if (!yapiKalemliMi) isEmriField(),
+              CustomLayoutBuilder.divideInHalf(
                 children: [
                   depoOnceligiField(),
                   cikisDepoField(),
-                ],
-              ),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
                   girisDepoField(),
-                  projeField().yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                  if (yetkiController.projeUygulamasiAcikMi) projeField(),
+                  if (!yapiKalemliMi) olcuBirimiField(),
+                  if (!yapiKalemliMi) miktarField(),
                 ],
               ),
-              mamulKoduField().yetkiVarMi(!yapiKalemliMi),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  olcuBirimiField().yetkiVarMi(!yapiKalemliMi),
-                  miktarField().yetkiVarMi(!yapiKalemliMi),
-                ],
-              ),
+              if (!yapiKalemliMi) mamulKoduField(),
               Observer(
                 builder: (_) => CustomLayoutBuilder.divideInHalf(
                   children: [
-                    hurdaFireMiktariField().yetkiVarMi(!yapiKalemliMi),
-                    serilerField().yetkiVarMi(viewModel.kalem?.seriCikislardaAcik ?? false).yetkiVarMi(!yapiKalemliMi),
+                    if (!yapiKalemliMi) hurdaFireMiktariField(),
+                    if (!yapiKalemliMi && (viewModel.kalem?.seriCikislardaAcik ?? false)) serilerField(),
+                    if (!widget.model.baseEditEnum.ekleMi && !yapiKalemliMi) maliyetFiyatiField(),
+                    if (!widget.model.baseEditEnum.ekleMi && !yapiKalemliMi) mailyetTutariField(),
                   ],
                 ),
               ),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  maliyetFiyatiField().yetkiVarMi(!widget.model.baseEditEnum.ekleMi).yetkiVarMi(!yapiKalemliMi),
-                  mailyetTutariField().yetkiVarMi(!widget.model.baseEditEnum.ekleMi).yetkiVarMi(!yapiKalemliMi),
-                ],
-              ),
               aciklamaField(),
-              ekAlan1Field().yetkiVarMi(!yapiKalemliMi),
-              ekAlan2Field().yetkiVarMi(!yapiKalemliMi),
+              if (!yapiKalemliMi) ekAlan1Field(),
+              if (!yapiKalemliMi) ekAlan2Field(),
               ekAlanlarWidget(),
             ],
           ).paddingAll(UIHelper.lowSize),
@@ -481,50 +464,55 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
       );
 
   Observer ekAlanlarWidget() => Observer(
-        builder: (_) => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("Ek Alanlar").paddingOnly(left: UIHelper.lowSize),
-            ...List.generate(
-              viewModel.ekAlanlarList?.length ?? 0,
-              (index) {
-                final item = viewModel.ekAlanlarList?[index];
-                return CustomTextField(
-                  labelText: "${item?.alanAciklama}",
-                  controller: ekAlanlarControllers[index],
-                  enabled: isEnabled,
-                  suffixMore: item?.secimListesi?.isNotEmpty,
-                  isMust: item?.zorunlu == "E",
-                  maxLength: item?.uzunluk,
-                  readOnly: item?.secimListesi?.isNotEmpty,
-                  onChanged: (value) {
-                    if (item?.secimListesi?.isNotEmpty ?? false) return;
-                    viewModel.setEkAlanlar(index, value);
-                  },
-                  onTap: () async {
-                    if (item?.secimListesi?.isEmpty ?? false) return;
+        builder: (_) {
+          if (!viewModel.ekAlanlarList.ext.isNotNullOrEmpty) {
+            return const SizedBox.shrink();
+          }
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text("Ek Alanlar").paddingOnly(left: UIHelper.lowSize),
+              ...List.generate(
+                viewModel.ekAlanlarList?.length ?? 0,
+                (index) {
+                  final item = viewModel.ekAlanlarList?[index];
+                  return CustomTextField(
+                    labelText: "${item?.alanAciklama}",
+                    controller: ekAlanlarControllers[index],
+                    enabled: isEnabled,
+                    suffixMore: item?.secimListesi?.isNotEmpty,
+                    isMust: item?.zorunlu == "E",
+                    maxLength: item?.uzunluk,
+                    readOnly: item?.secimListesi?.isNotEmpty,
+                    onChanged: (value) {
+                      if (item?.secimListesi?.isNotEmpty ?? false) return;
+                      viewModel.setEkAlanlar(index, value);
+                    },
+                    onTap: () async {
+                      if (item?.secimListesi?.isEmpty ?? false) return;
 
-                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                      context,
-                      title: "Ek Alan $index",
-                      groupValue: viewModel.requestModel.ekAlanlar?[index],
-                      children: List.generate(
-                        item?.secimListesi?.length ?? 0,
-                        (newIndex) => BottomSheetModel(
-                          title: item?.secimListesi?[newIndex] ?? "",
-                          value: item?.secimListesi?[newIndex] ?? "",
-                          groupValue: item?.secimListesi?[newIndex] ?? "",
+                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                        context,
+                        title: "Ek Alan $index",
+                        groupValue: viewModel.requestModel.ekAlanlar?[index],
+                        children: List.generate(
+                          item?.secimListesi?.length ?? 0,
+                          (newIndex) => BottomSheetModel(
+                            title: item?.secimListesi?[newIndex] ?? "",
+                            value: item?.secimListesi?[newIndex] ?? "",
+                            groupValue: item?.secimListesi?[newIndex] ?? "",
+                          ),
                         ),
-                      ),
-                    );
-                    if (result == null) return;
-                    ekAlanlarControllers[index].text = result;
-                    viewModel.setEkAlanlar(index, result);
-                  },
-                );
-              },
-            ),
-          ],
-        ).yetkiVarMi(viewModel.ekAlanlarList.ext.isNotNullOrEmpty),
+                      );
+                      if (result == null) return;
+                      ekAlanlarControllers[index].text = result;
+                      viewModel.setEkAlanlar(index, result);
+                    },
+                  );
+                },
+              ),
+            ],
+          );
+        },
       );
 }

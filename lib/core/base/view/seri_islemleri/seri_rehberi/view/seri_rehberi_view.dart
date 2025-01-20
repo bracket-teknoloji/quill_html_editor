@@ -9,7 +9,6 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -97,8 +96,8 @@ final class _SeriRehberiViewState extends State<SeriRehberiView> {
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Açıklama 1: ${item.acik1 ?? ""}").yetkiVarMi(item.acik1 != null),
-                        Text("Açıklama 2: ${item.acik2 ?? ""}").yetkiVarMi(item.acik2 != null),
+                        if (item.acik1 != null) Text("Açıklama 1: ${item.acik1 ?? ""}"),
+                        if (item.acik2 != null) Text("Açıklama 2: ${item.acik2 ?? ""}"),
                         Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
                         Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
                       ],

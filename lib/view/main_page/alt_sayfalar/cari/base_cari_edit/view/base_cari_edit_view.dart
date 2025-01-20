@@ -10,7 +10,6 @@ import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
 import "../../cari_listesi/model/cari_detay_model.dart";
@@ -136,11 +135,7 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
               isSubTitleSmall: widget.isSubTitleSmall,
             ),
             actions: <Widget>[
-              // IconButton(
-              //   onPressed: () {},
-              //   icon: const Icon(Icons.more_vert_outlined),
-              // ),
-              IconButton(
+              if (kaydetButonuYetki) IconButton(
                 onPressed: () async {
                   if (validate.isEmpty) {
                     final result = await vergiNoChecker();
@@ -152,7 +147,7 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
                   }
                 },
                 icon: const Icon(Icons.save_outlined),
-              ).yetkiVarMi(kaydetButonuYetki),
+              ),
             ],
             bottom: TabBar(
               tabs: tabs,

@@ -342,141 +342,142 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                       ),
                     ),
                   ),
-                CustomWidgetWithLabel(
-                  text: "Ek Açıklamalar",
-                  child: Column(
-                    children: <Widget>[
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(1))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar1 ?? "Açıklama 1",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(1, value),
-                          controller: _aciklama1Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(2))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar2 ?? "Açıklama 2",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(2, value),
-                          controller: _aciklama2Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(3))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar3 ?? "Açıklama 3",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(3, value),
-                          controller: _aciklama3Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(4))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar4 ?? "Açıklama 4",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(4, value),
-                          controller: _aciklama4Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(5))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar5 ?? "Açıklama 5",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(5, value),
-                          controller: _aciklama5Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(6))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar6 ?? "Açıklama 6",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(6, value),
-                          controller: _aciklama6Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(7))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar7 ?? "Açıklama 7",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(7, value),
-                          controller: _aciklama7Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(8))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar8 ?? "Açıklama 8",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(8, value),
-                          controller: _aciklama8Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(9))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar9 ?? "Açıklama 9",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(9, value),
-                          controller: _aciklama9Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(10))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar10 ?? "Açıklama 10",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(10, value),
-                          controller: _aciklama10Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(11))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar11 ?? "Açıklama 11",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(11, value),
-                          controller: _aciklama11Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(12))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar12 ?? "Açıklama 12",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(12, value),
-                          controller: _aciklama12Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(13))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar13 ?? "Açıklama 13",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(13, value),
-                          controller: _aciklama13Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(14))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar14 ?? "Açıklama 14",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(14, value),
-                          controller: _aciklama14Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(15))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar15 ?? "Açıklama 15",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(15, value),
-                          controller: _aciklama15Controller,
-                        ),
-                      if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(16))
-                        CustomTextField(
-                          enabled: enable,
-                          labelText: taltekParam?.aciklar16 ?? "Açıklama 16",
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          onChanged: (value) => viewModel.setAciklama(16, value),
-                          controller: _aciklama16Controller,
-                        ),
-                    ],
+                if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))
+                  CustomWidgetWithLabel(
+                    text: "Ek Açıklamalar",
+                    child: Column(
+                      children: <Widget>[
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(1))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar1 ?? "Açıklama 1",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(1, value),
+                            controller: _aciklama1Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(2))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar2 ?? "Açıklama 2",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(2, value),
+                            controller: _aciklama2Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(3))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar3 ?? "Açıklama 3",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(3, value),
+                            controller: _aciklama3Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(4))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar4 ?? "Açıklama 4",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(4, value),
+                            controller: _aciklama4Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(5))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar5 ?? "Açıklama 5",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(5, value),
+                            controller: _aciklama5Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(6))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar6 ?? "Açıklama 6",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(6, value),
+                            controller: _aciklama6Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(7))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar7 ?? "Açıklama 7",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(7, value),
+                            controller: _aciklama7Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(8))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar8 ?? "Açıklama 8",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(8, value),
+                            controller: _aciklama8Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(9))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar9 ?? "Açıklama 9",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(9, value),
+                            controller: _aciklama9Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(10))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar10 ?? "Açıklama 10",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(10, value),
+                            controller: _aciklama10Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(11))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar11 ?? "Açıklama 11",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(11, value),
+                            controller: _aciklama11Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(12))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar12 ?? "Açıklama 12",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(12, value),
+                            controller: _aciklama12Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(13))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar13 ?? "Açıklama 13",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(13, value),
+                            controller: _aciklama13Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(14))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar14 ?? "Açıklama 14",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(14, value),
+                            controller: _aciklama14Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(15))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar15 ?? "Açıklama 15",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(15, value),
+                            controller: _aciklama15Controller,
+                          ),
+                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(16))
+                          CustomTextField(
+                            enabled: enable,
+                            labelText: taltekParam?.aciklar16 ?? "Açıklama 16",
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            onChanged: (value) => viewModel.setAciklama(16, value),
+                            controller: _aciklama16Controller,
+                          ),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
           ),

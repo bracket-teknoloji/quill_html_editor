@@ -9,7 +9,6 @@ import "../../../../../../../../../core/base/view/base_scaffold.dart";
 import "../../../../../../../../../core/components/card/cari_aktivite_detay_card.dart";
 import "../../../../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../model/cari_aktivite_listesi_model.dart";
 import "../view_model/cari_aktivite_detay_view_model.dart";
@@ -27,15 +26,7 @@ final class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        floatingActionButton: CustomFloatingActionButton(
-          isScrolledDown: true,
-          onPressed: () async {
-            final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: BaseEditModel<CariAktiviteListesiModel>(baseEditEnum: widget.baseEditEnum));
-            if (result is CariAktiviteListesiModel) {
-              viewModel.addAktivite(result);
-            }
-          },
-        ).yetkiVarMi(!widget.baseEditEnum.goruntuleMi),
+        floatingActionButton: !widget.baseEditEnum.goruntuleMi ? fab() : null,
         body: Observer(
           builder: (_) {
             if (viewModel.aktiviteList.isEmpty) {
@@ -67,5 +58,15 @@ final class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
             }
           },
         ),
+      );
+
+  CustomFloatingActionButton fab() => CustomFloatingActionButton(
+        isScrolledDown: true,
+        onPressed: () async {
+          final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: BaseEditModel<CariAktiviteListesiModel>(baseEditEnum: widget.baseEditEnum));
+          if (result is CariAktiviteListesiModel) {
+            viewModel.addAktivite(result);
+          }
+        },
       );
 }

@@ -15,7 +15,6 @@ import "../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../core/components/button/elevated_buttons/footer_button.dart";
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
 import "../../e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
@@ -58,7 +57,7 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar,
         bottomNavigationBar: Observer(
-          builder: (_) => bottomAppBar.yetkiVarMi(viewModel.pageCounter > 1),
+          builder: (_) => viewModel.pageCounter > 1 ? bottomAppBar : const SizedBox.shrink(),
         ),
         body: body(context),
       );

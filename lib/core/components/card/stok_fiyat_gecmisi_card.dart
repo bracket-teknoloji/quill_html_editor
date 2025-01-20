@@ -7,7 +7,6 @@ import "../../constants/color_palette.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/text_style_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
@@ -55,7 +54,7 @@ final class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli).yetkiVarMi(widget.model?.dovizAdi != null),
+              if (widget.model?.dovizAdi != null) ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli),
               CustomLayoutBuilder.divideInHalf(
                 children: [
                   Wrap(

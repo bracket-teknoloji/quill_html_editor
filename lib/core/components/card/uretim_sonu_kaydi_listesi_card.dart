@@ -7,7 +7,6 @@ import "../../base/state/base_state.dart";
 import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../layout/custom_layout_builder.dart";
@@ -75,11 +74,10 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
                     Text(model.stokAdi ?? ""),
                     Text(model.stokKodu ?? ""),
                     if (model.kalemSayisi == 1)
-                      CustomLayoutBuilder(
-                        splitCount: 2,
+                      CustomLayoutBuilder.divideInHalf(
                         children: [
-                          Text("Çıkış Depo: ${model.cikisDepo}").yetkiVarMi(model.cikisDepo != null),
-                          Text("Giriş Depo: ${model.girisDepo}").yetkiVarMi(model.girisDepo != null),
+                          if (model.cikisDepo != null) Text("Çıkış Depo: ${model.cikisDepo}"),
+                          if (model.girisDepo != null) Text("Giriş Depo: ${model.girisDepo}"),
                           Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                           Text("Hurda/Fir: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                         ],

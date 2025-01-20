@@ -106,8 +106,7 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   Card(
                     child: ListTile(
                       title: Text(widget.model.model!.proses ?? ""),
-                      subtitle: CustomLayoutBuilder(
-                        splitCount: 2,
+                      subtitle: CustomLayoutBuilder.divideInHalf(
                         children: [
                           if (widget.model.model!.kriter != null) Text("Kriter: ${widget.model.model!.kriter}"),
                           if (widget.model.model!.tolerans != null) Text("Tolerans: ${widget.model.model!.tolerans}"),

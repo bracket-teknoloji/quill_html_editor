@@ -11,9 +11,7 @@ import "../../constants/color_palette.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
-import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/cache/cache_manager.dart";
@@ -42,10 +40,10 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
             context,
             title: model.aciklama ?? model.cariAdi ?? model.kasaAdi ?? "",
             children: [
-              BottomSheetModel(title: "Tahsilat Makbuzu", onTap: () async => showMakbuz(true), iconWidget: Icons.receipt_long_outlined).yetkiKontrol(isTahsilat),
-              BottomSheetModel(title: "Ödeme Makbuzu", onTap: () async => showMakbuz(false), iconWidget: Icons.delete_outline_outlined).yetkiKontrol(isOdeme),
+              if (isTahsilat) BottomSheetModel(title: "Tahsilat Makbuzu", onTap: () async => showMakbuz(true), iconWidget: Icons.receipt_long_outlined),
+              if (isOdeme) BottomSheetModel(title: "Ödeme Makbuzu", onTap: () async => showMakbuz(false), iconWidget: Icons.delete_outline_outlined),
               BottomSheetModel(title: loc.generalStrings.delete, onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
-            ].nullCheckWithGeneric,
+            ],
           );
         },
         child: Card(
@@ -57,7 +55,7 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [Text(model.tarih.toDateString), bakiyeText],
                 ),
-                Text(model.cariAdi ?? "").yetkiVarMi(model.cariAdi != null),
+                if (model.cariAdi != null) Text(model.cariAdi ?? ""),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -73,27 +71,30 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("Proje", style: TextStyle(fontWeight: FontWeight.bold)),
-                        Text(model.projeAdi ?? "", overflow: TextOverflow.ellipsis),
-                      ],
-                    ).yetkiVarMi(model.projeAdi != null && yetkiController.projeUygulamasiAcikMi),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("Plasiyer", style: TextStyle(fontWeight: FontWeight.bold)),
-                        Text(model.plasiyerAdi ?? "", overflow: TextOverflow.ellipsis),
-                      ],
-                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi && model.plasiyerAdi != null),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("Kasa", style: TextStyle(fontWeight: FontWeight.bold)),
-                        Text(model.kasaAdi ?? "", overflow: TextOverflow.ellipsis),
-                      ],
-                    ).yetkiVarMi(model.kasaAdi != null),
+                    if (model.projeAdi != null && yetkiController.projeUygulamasiAcikMi)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("Proje", style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text(model.projeAdi ?? "", overflow: TextOverflow.ellipsis),
+                        ],
+                      ),
+                    if (yetkiController.plasiyerUygulamasiAcikMi && model.plasiyerAdi != null)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("Plasiyer", style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text(model.plasiyerAdi ?? "", overflow: TextOverflow.ellipsis),
+                        ],
+                      ),
+                    if (model.kasaAdi != null)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("Kasa", style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text(model.kasaAdi ?? "", overflow: TextOverflow.ellipsis),
+                        ],
+                      ),
                   ].map((e) => e is! SizedBox ? Expanded(child: e) : null).toList().nullCheckWithGeneric,
                 ).paddingSymmetric(vertical: UIHelper.lowSize),
                 Column(

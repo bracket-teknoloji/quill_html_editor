@@ -6,10 +6,7 @@ import "../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_
 import "../../base/state/base_state.dart";
 import "../../base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "../../constants/enum/badge_color_enum.dart";
-import "../../constants/extensions/list_extensions.dart";
-import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -38,7 +35,7 @@ final class _PaketIcerigiCardState extends BaseState<PaketIcerigiCard> {
             children: [
               Row(
                 children: [
-                  const ColorfulBadge(label: Text("Serili"), badgeColorEnum: BadgeColorEnum.seri).yetkiVarMi(item.cikistaSeri == "E"),
+                  if (item.cikistaSeri == "E") const ColorfulBadge(label: Text("Serili"), badgeColorEnum: BadgeColorEnum.seri),
                 ],
               ),
               CustomLayoutBuilder(
@@ -46,7 +43,7 @@ final class _PaketIcerigiCardState extends BaseState<PaketIcerigiCard> {
                 children: [
                   Text("Stok Kodu: ${item.stokKodu ?? ""}"),
                   Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  Text("Seriler: ${item.seriList?.length ?? ""} adet seri").yetkiVarMi(item.cikistaSeri == "E"),
+                  if (item.cikistaSeri == "E") Text("Seriler: ${item.seriList?.length ?? ""} adet seri"),
                 ],
               ),
               Text(item.seriList?.map((e) => e.seriNo).join(", ") ?? ""),
@@ -59,31 +56,34 @@ final class _PaketIcerigiCardState extends BaseState<PaketIcerigiCard> {
         context,
         title: item.stokKodu ?? "",
         children: [
-          BottomSheetModel(
-            title: loc.generalStrings.delete,
-            iconWidget: Icons.delete_outline_outlined,
-            onTap: () async {
-              widget.onDeleted();
-            },
-          ).yetkiKontrol(yetkiController.stokPaketlemeSil && !widget.kilitliMi),
-          BottomSheetModel(
-            title: "Seri Listesi",
-            iconWidget: Icons.dynamic_form_outlined,
-            onTap: () async {
-              Get
-                ..back()
-                ..toNamed("/seriHareketleri", arguments: await getStok);
-            },
-          ).yetkiKontrol(yetkiController.seriIslemleri && yetkiController.seriUygulamasiAcikMi),
-          BottomSheetModel(
-            title: "Stok İşlemleri",
-            iconWidget: Icons.list_alt_outlined,
-            onTap: () async {
-              Get.back();
-              dialogManager.showStokGridViewDialog(await getStok);
-            },
-          ).yetkiKontrol(yetkiController.stokListesi),
-        ].nullCheckWithGeneric,
+          if (yetkiController.stokPaketlemeSil && !widget.kilitliMi)
+            BottomSheetModel(
+              title: loc.generalStrings.delete,
+              iconWidget: Icons.delete_outline_outlined,
+              onTap: () async {
+                widget.onDeleted();
+              },
+            ),
+          if (yetkiController.seriIslemleri && yetkiController.seriUygulamasiAcikMi)
+            BottomSheetModel(
+              title: "Seri Listesi",
+              iconWidget: Icons.dynamic_form_outlined,
+              onTap: () async {
+                Get
+                  ..back()
+                  ..toNamed("/seriHareketleri", arguments: await getStok);
+              },
+            ),
+          if (yetkiController.stokListesi)
+            BottomSheetModel(
+              title: "Stok İşlemleri",
+              iconWidget: Icons.list_alt_outlined,
+              onTap: () async {
+                Get.back();
+                dialogManager.showStokGridViewDialog(await getStok);
+              },
+            ),
+        ],
       );
 
   Future<StokListesiModel?> get getStok async => await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu));

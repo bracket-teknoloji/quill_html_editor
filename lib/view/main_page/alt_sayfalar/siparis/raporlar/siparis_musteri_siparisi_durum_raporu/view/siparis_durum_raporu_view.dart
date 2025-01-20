@@ -17,7 +17,6 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -194,12 +193,12 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(kalemModel?.cariAdi ?? ""),
-              Text(kalemModel?.belgeNo ?? "").yetkiVarMi(viewModel.gorunecekAlanlarMap["Belge No"] ?? false),
-              Text("Stok kodu: ${kalemModel?.stokKodu ?? ""}").yetkiVarMi(viewModel.gorunecekAlanlarMap["Stok"] ?? false),
+              if (viewModel.gorunecekAlanlarMap["Belge No"] ?? false) Text(kalemModel?.belgeNo ?? ""),
+              if (viewModel.gorunecekAlanlarMap["Stok"] ?? false) Text("Stok kodu: ${kalemModel?.stokKodu ?? ""}"),
               Text(kalemModel?.cariKodu ?? ""),
               Wrap(
                 children: [
-                  Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}").yetkiVarMi(viewModel.gorunecekAlanlarMap["Cari"] ?? false),
+                  if (viewModel.gorunecekAlanlarMap["Cari"] ?? false) Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}"),
                   if (_fiyatGor) Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                   Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? "0"}"),
                   Text("Kalan miktar: ${kalemModel?.kalan.toIntIfDouble ?? "0"}"),

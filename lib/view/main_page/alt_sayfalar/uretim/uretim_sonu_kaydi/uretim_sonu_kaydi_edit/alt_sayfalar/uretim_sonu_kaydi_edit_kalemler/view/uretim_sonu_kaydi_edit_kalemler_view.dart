@@ -13,7 +13,6 @@ import "../../../../../../../../../core/components/layout/custom_layout_builder.
 import "../../../../../../../../../core/components/list_view/refreshable_list_view.dart";
 import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -42,12 +41,12 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        floatingActionButton: fab(),
+        floatingActionButton: !widget.model.baseEditEnum.goruntuleMi ? fab() : null,
         body: body(),
         bottomNavigationBar: bottomBar(),
       );
 
-  Widget fab() => CustomFloatingActionButton(
+  CustomFloatingActionButton fab() => CustomFloatingActionButton(
         isScrolledDown: true,
         onPressed: () async {
           final result = await Get.toNamed("mainPage/uretimSonuKaydiKalemEdit", arguments: widget.requestModel);
@@ -56,7 +55,7 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
             widget.onKalemListChange.call(viewModel.observableList?.toList());
           }
         },
-      ).yetkiVarMi(!widget.model.baseEditEnum.goruntuleMi);
+      );
 
   Column body() => Column(
         children: [
@@ -97,8 +96,8 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("${item.cikisdepoKodu} (${item.cikisDepoAdi}) => ${item.girisdepoKodu} (${item.girisDepoAdi})").yetkiVarMi(widget.model.baseEditEnum.goruntuleMi),
-              Text("İş Emri: ${item.isemriNo ?? ""}").yetkiVarMi(item.isemriNo != null),
+              if (widget.model.baseEditEnum.goruntuleMi) Text("${item.cikisdepoKodu} (${item.cikisDepoAdi}) => ${item.girisdepoKodu} (${item.girisDepoAdi})"),
+              if (item.isemriNo != null) Text("İş Emri: ${item.isemriNo ?? ""}"),
               CustomLayoutBuilder.divideInHalf(
                 children: [
                   Text("Kodu: ${item.stokKodu}"),
@@ -109,7 +108,7 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
                   Text("BarkodSay: ${item.barkod ?? ""}"),
                 ],
               ),
-              Text(item.aciklama ?? "").paddingOnly(top: UIHelper.lowSize).yetkiVarMi(item.aciklama != null),
+              if (item.aciklama != null) Text(item.aciklama ?? "").paddingOnly(top: UIHelper.lowSize),
             ],
           ),
         ),

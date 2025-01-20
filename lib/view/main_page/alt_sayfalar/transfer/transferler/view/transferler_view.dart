@@ -20,7 +20,6 @@ import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../model/param_model.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -72,7 +71,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
   @override
   Widget build(BuildContext context) => BaseScaffold(
         appBar: appBar(context),
-        floatingActionButton: fab().yetkiVarMi(widget.editTipiEnum.eklensinMi),
+        floatingActionButton: widget.editTipiEnum.eklensinMi ? fab() : null,
         body: body(),
       );
 
@@ -241,17 +240,18 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
               }
             },
           ),
-          Observer(
-            builder: (_) => SlideControllerWidget(
-              childrenTitleList: viewModel.transferTipiMap.keys.toList(),
-              filterOnChanged: (index) {
-                viewModel.setLokalDAT(viewModel.transferTipiMap.values.toList()[index ?? 0]);
-              },
-              title: "Transfer Tipi",
-              childrenValueList: viewModel.transferTipiMap.values.toList(),
-              groupValue: viewModel.faturaRequestModel.lokalDAT,
+          if (widget.editTipiEnum.depoTransferiMi)
+            Observer(
+              builder: (_) => SlideControllerWidget(
+                childrenTitleList: viewModel.transferTipiMap.keys.toList(),
+                filterOnChanged: (index) {
+                  viewModel.setLokalDAT(viewModel.transferTipiMap.values.toList()[index ?? 0]);
+                },
+                title: "Transfer Tipi",
+                childrenValueList: viewModel.transferTipiMap.values.toList(),
+                groupValue: viewModel.faturaRequestModel.lokalDAT,
+              ),
             ),
-          ).yetkiVarMi(widget.editTipiEnum.depoTransferiMi),
           Row(
             children: <Widget>[
               Expanded(

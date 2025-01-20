@@ -9,7 +9,6 @@ import "../../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../banka_listesi/model/banka_listesi_model.dart";
@@ -78,7 +77,7 @@ final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
                               "${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                               style: TextStyle(color: UIHelper.getColorWithValue(model.ba == "B" ? 1 : -1)),
                             ),
-                            Text("${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi ?? mainCurrency}").yetkiVarMi(model.dovizAdi != null),
+                            if (model.dovizAdi != null) Text("${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi ?? mainCurrency}"),
                           ],
                         ),
                       ],
@@ -87,7 +86,7 @@ final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(model.hareketAciklama ?? "", style: const TextStyle(color: UIHelper.primaryColor)),
-                        Text(model.belgeno ?? "").yetkiVarMi(model.belgeno != null),
+                        if (model.belgeno != null) Text(model.belgeno ?? ""),
                         Text(model.aciklama ?? "", style: const TextStyle(fontStyle: FontStyle.italic)),
                       ].where((element) => element is! SizedBox).toList(),
                     ),

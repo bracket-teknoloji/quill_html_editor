@@ -187,41 +187,42 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
           builder: (_) => Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              RaporFiltreDateTimeBottomSheetView(
-                showBugunFirst: true,
-                baslangicTarihiController: _baslangicTarihiController,
-                bitisTarihiController: _bitisTarihiController,
-                isChanged: viewModel.isChanged,
-                filterOnChanged: (index) {
-                  viewModel
-                    ..changeBaslangicTarihi(_baslangicTarihiController.text)
-                    ..changeBitisTarihi(_bitisTarihiController.text);
-                },
-              ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.giden || (widget.eBelgeEnum == EBelgeEnum.gelen && viewModel.eBelgeRequestModel.eBelgeTuru != "AFT")),
-              // ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" ),
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () async {
-                      viewModel.decreaseGetWeek();
-                      _baslangicTarihiController.text = viewModel.eBelgeRequestModel.baslamaTarihi ?? "";
-                      _bitisTarihiController.text = viewModel.eBelgeRequestModel.bitisTarihi ?? "";
-                      _eArsivTarihiController.text = viewModel.eArsivDateString;
-                    },
-                    icon: const Icon(Icons.arrow_back_ios_outlined),
-                  ),
-                  Expanded(child: CustomTextField(labelText: "Dönem", controller: _eArsivTarihiController, readOnly: true)),
-                  IconButton(
-                    onPressed: () async {
-                      viewModel.increaseGetWeek();
-                      _baslangicTarihiController.text = viewModel.eBelgeRequestModel.baslamaTarihi ?? "";
-                      _bitisTarihiController.text = viewModel.eBelgeRequestModel.bitisTarihi ?? "";
-                      _eArsivTarihiController.text = viewModel.eArsivDateString;
-                    },
-                    icon: const Icon(Icons.arrow_forward_ios_outlined),
-                  ),
-                ],
-              ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" && widget.eBelgeEnum == EBelgeEnum.gelen),
+              if (widget.eBelgeEnum == EBelgeEnum.giden || (widget.eBelgeEnum == EBelgeEnum.gelen && viewModel.eBelgeRequestModel.eBelgeTuru != "AFT"))
+                RaporFiltreDateTimeBottomSheetView(
+                  showBugunFirst: true,
+                  baslangicTarihiController: _baslangicTarihiController,
+                  bitisTarihiController: _bitisTarihiController,
+                  isChanged: viewModel.isChanged,
+                  filterOnChanged: (index) {
+                    viewModel
+                      ..changeBaslangicTarihi(_baslangicTarihiController.text)
+                      ..changeBitisTarihi(_bitisTarihiController.text);
+                  },
+                ),
+              if (viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" && widget.eBelgeEnum == EBelgeEnum.gelen)
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () async {
+                        viewModel.decreaseGetWeek();
+                        _baslangicTarihiController.text = viewModel.eBelgeRequestModel.baslamaTarihi ?? "";
+                        _bitisTarihiController.text = viewModel.eBelgeRequestModel.bitisTarihi ?? "";
+                        _eArsivTarihiController.text = viewModel.eArsivDateString;
+                      },
+                      icon: const Icon(Icons.arrow_back_ios_outlined),
+                    ),
+                    Expanded(child: CustomTextField(labelText: "Dönem", controller: _eArsivTarihiController, readOnly: true)),
+                    IconButton(
+                      onPressed: () async {
+                        viewModel.increaseGetWeek();
+                        _baslangicTarihiController.text = viewModel.eBelgeRequestModel.baslamaTarihi ?? "";
+                        _bitisTarihiController.text = viewModel.eBelgeRequestModel.bitisTarihi ?? "";
+                        _eArsivTarihiController.text = viewModel.eArsivDateString;
+                      },
+                      icon: const Icon(Icons.arrow_forward_ios_outlined),
+                    ),
+                  ],
+                ),
               // viewModel.eBelgeRequestModel.eBelgeTuru == "AFT" && widget.eBelgeEnum == EBelgeEnum.gelen),
               CustomWidgetWithLabel(
                 text: "E-Belge Türü",
@@ -255,27 +256,29 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                   ),
                 ),
               ),
-              CustomWidgetWithLabel(
-                text: "Gönderme Durumu",
-                child: Observer(
-                  builder: (_) => SlideControllerWidget(
-                    childrenTitleList: viewModel.taslakMap.keys.toList(),
-                    childrenValueList: viewModel.taslakMap.values.toList(),
-                    filterOnChanged: (index) => viewModel.changeTaslak(viewModel.taslakMap.values.toList()[index ?? 0]),
-                    groupValue: viewModel.eBelgeRequestModel.taslak,
+              if (viewModel.eBelgeRequestModel.eBelgeTuru != "AFT" && widget.eBelgeEnum == EBelgeEnum.giden)
+                CustomWidgetWithLabel(
+                  text: "Gönderme Durumu",
+                  child: Observer(
+                    builder: (_) => SlideControllerWidget(
+                      childrenTitleList: viewModel.taslakMap.keys.toList(),
+                      childrenValueList: viewModel.taslakMap.values.toList(),
+                      filterOnChanged: (index) => viewModel.changeTaslak(viewModel.taslakMap.values.toList()[index ?? 0]),
+                      groupValue: viewModel.eBelgeRequestModel.taslak,
+                    ),
                   ),
                 ),
-              ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru != "AFT" && widget.eBelgeEnum == EBelgeEnum.giden),
-              InkWell(
-                onTap: () => viewModel.changeSorgulanmasin(),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text("Sorgulama Yapmadan Sadece Listele"),
-                    Observer(builder: (_) => Switch.adaptive(value: viewModel.eBelgeRequestModel.sorgulanmasin ?? false, onChanged: (value) => viewModel.changeSorgulanmasin())),
-                  ],
-                ),
-              ).paddingAll(UIHelper.lowSize).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.giden || (widget.eBelgeEnum == EBelgeEnum.gelen && viewModel.eBelgeRequestModel.eBelgeTuru != "AFT")),
+              if (widget.eBelgeEnum == EBelgeEnum.giden || (widget.eBelgeEnum == EBelgeEnum.gelen && viewModel.eBelgeRequestModel.eBelgeTuru != "AFT"))
+                InkWell(
+                  onTap: () => viewModel.changeSorgulanmasin(),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text("Sorgulama Yapmadan Sadece Listele"),
+                      Observer(builder: (_) => Switch.adaptive(value: viewModel.eBelgeRequestModel.sorgulanmasin ?? false, onChanged: (value) => viewModel.changeSorgulanmasin())),
+                    ],
+                  ),
+                ).paddingAll(UIHelper.lowSize),
               InkWell(
                 onTap: () => viewModel.changeDigerGoster(),
                 child: Row(
@@ -285,18 +288,19 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
               ).paddingAll(UIHelper.lowSize),
               Column(
                 children: [
-                  CustomWidgetWithLabel(
-                    text: "Senaryo",
-                    child: Observer(
-                      builder: (_) => SlideControllerWidget(
-                        scroll: false,
-                        childrenTitleList: viewModel.senaryoMap.keys.toList(),
-                        childrenValueList: viewModel.senaryoMap.values.toList(),
-                        filterOnChanged: (index) => viewModel.changeSenaryo(viewModel.senaryoMap.values.toList()[index ?? 0]),
-                        groupValue: viewModel.eBelgeRequestModel.senaryo,
+                  if (viewModel.eBelgeRequestModel.eBelgeTuru == "EFT")
+                    CustomWidgetWithLabel(
+                      text: "Senaryo",
+                      child: Observer(
+                        builder: (_) => SlideControllerWidget(
+                          scroll: false,
+                          childrenTitleList: viewModel.senaryoMap.keys.toList(),
+                          childrenValueList: viewModel.senaryoMap.values.toList(),
+                          filterOnChanged: (index) => viewModel.changeSenaryo(viewModel.senaryoMap.values.toList()[index ?? 0]),
+                          groupValue: viewModel.eBelgeRequestModel.senaryo,
+                        ),
                       ),
                     ),
-                  ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru == "EFT"),
                   CustomWidgetWithLabel(
                     text: "Basım",
                     child: Observer(
@@ -308,41 +312,44 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                       ),
                     ),
                   ),
-                  CustomWidgetWithLabel(
-                    text: "Onay Durumu",
-                    child: Observer(
-                      builder: (_) => SlideControllerWidget(
-                        childrenTitleList: viewModel.onayMap.keys.toList(),
-                        childrenValueList: viewModel.onayMap.values.toList(),
-                        filterOnChanged: (index) => viewModel.changeOnayDurumu(viewModel.onayMap.values.toList()[index ?? 0]),
-                        groupValue: viewModel.eBelgeRequestModel.onayDurumu,
+                  if (viewModel.eBelgeRequestModel.eBelgeTuru != "AFT")
+                    CustomWidgetWithLabel(
+                      text: "Onay Durumu",
+                      child: Observer(
+                        builder: (_) => SlideControllerWidget(
+                          childrenTitleList: viewModel.onayMap.keys.toList(),
+                          childrenValueList: viewModel.onayMap.values.toList(),
+                          filterOnChanged: (index) => viewModel.changeOnayDurumu(viewModel.onayMap.values.toList()[index ?? 0]),
+                          groupValue: viewModel.eBelgeRequestModel.onayDurumu,
+                        ),
                       ),
                     ),
-                  ).yetkiVarMi(viewModel.eBelgeRequestModel.eBelgeTuru != "AFT"),
-                  CustomWidgetWithLabel(
-                    text: "Netsis'e İşlenme Durumu",
-                    child: Observer(
-                      builder: (_) => SlideControllerWidget(
-                        scroll: false,
-                        childrenTitleList: viewModel.netsisIslenmeMap.keys.toList(),
-                        childrenValueList: viewModel.netsisIslenmeMap.values.toList(),
-                        filterOnChanged: (index) => viewModel.changeNetsisIslenme(viewModel.netsisIslenmeMap.values.toList()[index ?? 0]),
-                        groupValue: viewModel.eBelgeRequestModel.islendi,
+                  if (widget.eBelgeEnum == EBelgeEnum.gelen)
+                    CustomWidgetWithLabel(
+                      text: "Netsis'e İşlenme Durumu",
+                      child: Observer(
+                        builder: (_) => SlideControllerWidget(
+                          scroll: false,
+                          childrenTitleList: viewModel.netsisIslenmeMap.keys.toList(),
+                          childrenValueList: viewModel.netsisIslenmeMap.values.toList(),
+                          filterOnChanged: (index) => viewModel.changeNetsisIslenme(viewModel.netsisIslenmeMap.values.toList()[index ?? 0]),
+                          groupValue: viewModel.eBelgeRequestModel.islendi,
+                        ),
                       ),
                     ),
-                  ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.gelen),
-                  CustomWidgetWithLabel(
-                    text: "Kontrol Edildi",
-                    child: Observer(
-                      builder: (_) => SlideControllerWidget(
-                        scroll: false,
-                        childrenTitleList: viewModel.kontrolMap.keys.toList(),
-                        childrenValueList: viewModel.kontrolMap.values.toList(),
-                        filterOnChanged: (index) => viewModel.changeKontrol(viewModel.kontrolMap.values.toList()[index ?? 0]),
-                        groupValue: viewModel.eBelgeRequestModel.kontrolEdildi,
+                  if (widget.eBelgeEnum == EBelgeEnum.gelen)
+                    CustomWidgetWithLabel(
+                      text: "Kontrol Edildi",
+                      child: Observer(
+                        builder: (_) => SlideControllerWidget(
+                          scroll: false,
+                          childrenTitleList: viewModel.kontrolMap.keys.toList(),
+                          childrenValueList: viewModel.kontrolMap.values.toList(),
+                          filterOnChanged: (index) => viewModel.changeKontrol(viewModel.kontrolMap.values.toList()[index ?? 0]),
+                          groupValue: viewModel.eBelgeRequestModel.kontrolEdildi,
+                        ),
                       ),
                     ),
-                  ).yetkiVarMi(widget.eBelgeEnum == EBelgeEnum.gelen),
                 ],
               ).yetkiVarMi(viewModel.digerGoster),
 

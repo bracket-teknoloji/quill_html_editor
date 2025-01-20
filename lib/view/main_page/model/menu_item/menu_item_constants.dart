@@ -229,7 +229,7 @@ final class MenuItemConstants {
       color: ColorPalette.tomato,
       altMenuler: [
         GridItemModel.item(name: "genel_DovizKurlari", title: "Döviz Kurları", route: "/dovizKurlari"),
-        GridItemModel.item(name: null, title: "Firmalar", route: "/addCompany"),
+        GridItemModel.item(name: "ayarlar_FirmaAyarlari", title: "Firmalar", route: "/addCompany"),
         GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/surumYenilikleri"),
         if (AccountModel.instance.adminMi) GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),

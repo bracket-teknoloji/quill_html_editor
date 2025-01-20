@@ -6,7 +6,6 @@ import "../../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/dekont_edit_genel_view_model.dart";
 
@@ -80,24 +79,26 @@ final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
               valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.dekontSeri ?? "")),
               onTap: setSeri,
             ),
-            CustomTextField(
-              labelText: "Plasiyer",
-              suffixMore: true,
-              isMust: true,
-              readOnly: true,
-              controller: _plasiyerController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.plasiyerKodu ?? "")),
-              onTap: setPlasiyer,
-            ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-            CustomTextField(
-              labelText: "Proje",
-              suffixMore: true,
-              isMust: true,
-              readOnly: true,
-              controller: _projeController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.projeKodu ?? "")),
-              onTap: setProje,
-            ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+            if (yetkiController.plasiyerUygulamasiAcikMi)
+              CustomTextField(
+                labelText: "Plasiyer",
+                suffixMore: true,
+                isMust: true,
+                readOnly: true,
+                controller: _plasiyerController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.plasiyerKodu ?? "")),
+                onTap: setPlasiyer,
+              ),
+            if (yetkiController.projeUygulamasiAcikMi)
+              CustomTextField(
+                labelText: "Proje",
+                suffixMore: true,
+                isMust: true,
+                readOnly: true,
+                controller: _projeController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.projeKodu ?? "")),
+                onTap: setProje,
+              ),
           ],
         ).paddingAll(UIHelper.lowSize),
       );

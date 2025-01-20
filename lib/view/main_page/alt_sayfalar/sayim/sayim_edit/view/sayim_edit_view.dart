@@ -15,7 +15,6 @@ import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart"
 import "../../../../../../core/constants/enum/dizayn_ozel_kod_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/static_variables/singleton_models.dart";
 import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
@@ -153,10 +152,12 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
               icon: const Icon(Icons.more_vert_outlined),
             ),
             Observer(
-              builder: (_) => IconButton(
-                onPressed: () async => await saveSayim(),
-                icon: const Icon(Icons.save_outlined),
-              ).yetkiVarMi(viewModel.indexSifirMi),
+              builder: (_) => viewModel.indexSifirMi
+                  ? IconButton(
+                      onPressed: () async => await saveSayim(),
+                      icon: const Icon(Icons.save_outlined),
+                    )
+                  : const SizedBox.shrink(),
             ),
           ],
           bottom: TabBar(

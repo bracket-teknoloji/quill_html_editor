@@ -6,8 +6,6 @@ import "package:get/get.dart";
 import "../../base/state/base_state.dart";
 import "../../constants/color_palette.dart";
 import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/text_span_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ui_helper/text_field_formatter_helper.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "custom_text_field_view_model.dart";
@@ -249,28 +247,32 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
                       ],
                     )
                   : null,
-              label: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
-                          style: (widget.enabled != false ? (widget.isMust ?? false) : false)
-                              ? const TextStyle(color: UIHelper.primaryColor)
-                              : ((widget.controller?.text == "") ? TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.6)) : TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8))),
+              label: widget.labelText != null
+                  ? Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text.rich(
+                          TextSpan(
+                            children: [
+                              TextSpan(
+                                text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
+                                style: (widget.enabled != false ? (widget.isMust ?? false) : false)
+                                    ? const TextStyle(color: UIHelper.primaryColor)
+                                    : ((widget.controller?.text == "")
+                                        ? TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.6))
+                                        : TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8))),
+                              ),
+                              if (widget.valueText != null) TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.3), fontSize: 12)),
+                              if (widget.descriptionWidget != null) widget.descriptionWidget!,
+                            ],
+                          ),
+                          // style: const TextStyle(fontSize: 15),
                         ),
-                        TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.3), fontSize: 12)).yetkiVarMi(widget.valueText != null),
-                        if (widget.descriptionWidget != null) widget.descriptionWidget!,
+                        // if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
+                        if (widget.valueWidget != null) Flexible(child: widget.valueWidget!),
                       ],
-                    ),
-                    // style: const TextStyle(fontSize: 15),
-                  ),
-                  // if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
-                  if (widget.valueWidget != null) Flexible(child: widget.valueWidget!),
-                ],
-              ).yetkiVarMi(widget.labelText != null),
+                    )
+                  : null,
             ),
           ).paddingAll(UIHelper.lowSize),
         ),

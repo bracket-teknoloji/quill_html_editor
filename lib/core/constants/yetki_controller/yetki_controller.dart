@@ -780,11 +780,15 @@ final class YetkiController {
       );
 
   bool transferAGAciklamaAlanlari(int index) => _isTrue(
-        _yetkiModel?.transferAgAciklamaAlanlari == null ? false : (index < 1 ? _yetkiModel?.transferAgAciklamaAlanlari?.isNotEmpty : _yetkiModel?.transferAgAciklamaAlanlari?.contains(index)) ?? false,
+        _yetkiModel?.transferAgAciklamaAlanlari == null
+            ? false
+            : (index < 1 ? _yetkiModel?.transferAgAciklamaAlanlari?.isNotEmpty : _yetkiModel?.transferAgAciklamaAlanlari?.contains(index)) ?? false,
       );
 
   bool transferACAciklamaAlanlari(int index) => _isTrue(
-        _yetkiModel?.transferAcAciklamaAlanlari == null ? false : (index < 1 ? _yetkiModel?.transferAcAciklamaAlanlari?.isNotEmpty : _yetkiModel?.transferAcAciklamaAlanlari?.contains(index)) ?? false,
+        _yetkiModel?.transferAcAciklamaAlanlari == null
+            ? false
+            : (index < 1 ? _yetkiModel?.transferAcAciklamaAlanlari?.isNotEmpty : _yetkiModel?.transferAcAciklamaAlanlari?.contains(index)) ?? false,
       );
 
   //* lokal DAT

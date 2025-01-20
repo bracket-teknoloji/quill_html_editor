@@ -8,7 +8,6 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/enum/grup_kodu_enums.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../model/param_model.dart";
 import "../../../../stok/stok_liste/model/stok_listesi_model.dart";
 import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -96,22 +95,23 @@ final class _StokIhtiyacRaporuViewViewState extends BaseState<StokIhtiyacRaporuV
                   },
                 ),
               ),
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Plasiyer",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: plasiyerController,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.pdfModel.dicParams?.plasiyerKodu ?? "")),
-                  onTap: () async {
-                    final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
-                    if (result != null) {
-                      plasiyerController.text = result.plasiyerAciklama ?? "";
-                      viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
-                    }
-                  },
+              if (yetkiController.plasiyerUygulamasiAcikMi)
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Plasiyer",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: plasiyerController,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.pdfModel.dicParams?.plasiyerKodu ?? "")),
+                    onTap: () async {
+                      final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
+                      if (result != null) {
+                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
+                      }
+                    },
+                  ),
                 ),
-              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
             ],
           ),
           CustomTextField(

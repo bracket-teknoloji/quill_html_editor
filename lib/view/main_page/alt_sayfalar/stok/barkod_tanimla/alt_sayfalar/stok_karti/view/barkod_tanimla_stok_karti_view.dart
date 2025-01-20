@@ -5,7 +5,6 @@ import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/sto
 
 import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../stok_liste/model/stok_listesi_model.dart";
 
 final class BarkodTanimlaStokKartiView extends StatefulWidget {
@@ -54,42 +53,45 @@ final class BarkodTanimlaStokKartiViewState extends BaseState<BarkodTanimlaStokK
   Widget build(BuildContext context) => ListView(
         physics: const ClampingScrollPhysics(),
         children: [
-          CustomTextField(
-            labelText: "Barkod 1",
-            maxLength: 35,
-            controller: barkod1Controller,
-            suffix: Row(
-              children: [
-                barkodUretSuffix(1),
-                qrSuffix(1),
-              ],
+          if (yetkiController.stokBarkodGorunecekAlanlar("B1"))
+            CustomTextField(
+              labelText: "Barkod 1",
+              maxLength: 35,
+              controller: barkod1Controller,
+              suffix: Row(
+                children: [
+                  barkodUretSuffix(1),
+                  qrSuffix(1),
+                ],
+              ),
+              onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod1: value)),
             ),
-            onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod1: value)),
-          ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B1")),
-          CustomTextField(
-            labelText: "Barkod 2",
-            maxLength: 35,
-            controller: barkod2Controller,
-            suffix: Row(
-              children: [
-                barkodUretSuffix(2),
-                qrSuffix(2),
-              ],
+          if (yetkiController.stokBarkodGorunecekAlanlar("B2"))
+            CustomTextField(
+              labelText: "Barkod 2",
+              maxLength: 35,
+              controller: barkod2Controller,
+              suffix: Row(
+                children: [
+                  barkodUretSuffix(2),
+                  qrSuffix(2),
+                ],
+              ),
+              onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod2: value)),
             ),
-            onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod2: value)),
-          ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B2")),
-          CustomTextField(
-            labelText: "Barkod 3",
-            maxLength: 35,
-            controller: barkod3Controller,
-            suffix: Row(
-              children: [
-                barkodUretSuffix(3),
-                qrSuffix(3),
-              ],
+          if (yetkiController.stokBarkodGorunecekAlanlar("B3"))
+            CustomTextField(
+              labelText: "Barkod 3",
+              maxLength: 35,
+              controller: barkod3Controller,
+              suffix: Row(
+                children: [
+                  barkodUretSuffix(3),
+                  qrSuffix(3),
+                ],
+              ),
+              onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod3: value)),
             ),
-            onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod3: value)),
-          ).yetkiVarMi(yetkiController.stokBarkodGorunecekAlanlar("B3")),
         ],
       );
 

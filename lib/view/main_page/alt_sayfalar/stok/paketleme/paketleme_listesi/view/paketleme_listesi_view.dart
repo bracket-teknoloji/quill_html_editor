@@ -12,7 +12,6 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../model/paketleme_listesi_model.dart";
 import "../view_model/paketleme_listesi_view_model.dart";
 
@@ -74,28 +73,28 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
         child: ListTile(
           onTap: () => bottomSheet(item),
           title: Text(item.kodu ?? ""),
-          trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.print_outlined)).yetkiVarMi(yetkiController.yazdirmaPaketlemeEtiketi),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
-                  const ColorfulBadge(
-                    label: Text("Kilitli"),
-                    badgeColorEnum: BadgeColorEnum.kilitli,
-                  ).yetkiVarMi(item.kilit == "E"),
+                  if (item.kilit == "E")
+                    const ColorfulBadge(
+                      label: Text("Kilitli"),
+                      badgeColorEnum: BadgeColorEnum.kilitli,
+                    ),
                 ],
               ),
-              Text("Paket Türü: ${item.paketTuruTanimi}").yetkiVarMi(item.paketTuruTanimi != null),
+              if (item.paketTuruTanimi != null) Text("Paket Türü: ${item.paketTuruTanimi}"),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
-                  Text("Kalem Adedi: ${item.kalemSayisi ?? 0}").yetkiVarMi(item.kalemSayisi != null),
-                  Text("Depo Kodu: ${item.depoKodu}").yetkiVarMi(item.depoKodu != null),
+                  if (item.kalemSayisi != null) Text("Kalem Adedi: ${item.kalemSayisi ?? 0}"),
+                  if (item.depoKodu != null) Text("Depo Kodu: ${item.depoKodu}"),
                 ],
               ),
-              Text("Kaydeden: ${item.kayityapankul}").yetkiVarMi(item.kayityapankul != null),
-              Text("Kaydeden: ${item.kayittarihi?.toDateString}").yetkiVarMi(item.kayittarihi != null),
+              if (item.kayityapankul != null) Text("Kaydeden: ${item.kayityapankul}"),
+              if (item.kayittarihi != null) Text("Kaydeden: ${item.kayittarihi?.toDateString}"),
             ],
           ),
         ),

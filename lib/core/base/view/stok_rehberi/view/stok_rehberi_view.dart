@@ -294,7 +294,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                       final List<StokDetayliAramaAlanlar> aramaList = [
                         StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
                         StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
-                        ...parametreModel.stokDetayliAramaAlanlar ?? [],
+                        ...?parametreModel.stokDetayliAramaAlanlar,
                       ];
                       for (final StokDetayliAramaAlanlar item in aramaList) {
                         if (viewModel.getRequestModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {

@@ -13,7 +13,6 @@ import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../cari_listesi/model/cari_listesi_model.dart";
 import "../../cari_listesi/model/cari_request_model.dart";
@@ -76,21 +75,7 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
             ),
           ],
         ),
-        floatingActionButton: CustomFloatingActionButton(
-          isScrolledDown: true,
-          onPressed: () async {
-            final result = await Get.toNamed(
-              "/mainPage/cariAktiviteEdit",
-              arguments: BaseEditModel<CariAktiviteListesiModel>(
-                baseEditEnum: BaseEditEnum.ekle,
-                model: CariAktiviteListesiModel(cariKodu: widget.cariModel?.cariKodu, cariAdi: cariController.text, kullaniciAdi: kullaniciController.text),
-              ),
-            );
-            if (result == true) {
-              await viewModel.getData();
-            }
-          },
-        ).yetkiVarMi(yetkiController.cariAktiviteYeniKayit),
+        floatingActionButton: yetkiController.cariAktiviteYeniKayit ? fab() : null,
         body: Column(
           children: [
             CustomTextField(
@@ -134,6 +119,22 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
             ),
           ],
         ).paddingAll(UIHelper.lowSize),
+      );
+
+  CustomFloatingActionButton fab() => CustomFloatingActionButton(
+        isScrolledDown: true,
+        onPressed: () async {
+          final result = await Get.toNamed(
+            "/mainPage/cariAktiviteEdit",
+            arguments: BaseEditModel<CariAktiviteListesiModel>(
+              baseEditEnum: BaseEditEnum.ekle,
+              model: CariAktiviteListesiModel(cariKodu: widget.cariModel?.cariKodu, cariAdi: cariController.text, kullaniciAdi: kullaniciController.text),
+            ),
+          );
+          if (result == true) {
+            await viewModel.getData();
+          }
+        },
       );
 
   Future<void> getFilter() async {

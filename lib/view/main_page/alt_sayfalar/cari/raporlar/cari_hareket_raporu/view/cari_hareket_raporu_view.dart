@@ -10,7 +10,6 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../model/param_model.dart";
@@ -108,28 +107,29 @@ final class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView>
           ),
           Row(
             children: [
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Plasiyer",
-                  controller: plasiyerController,
-                  readOnly: true,
-                  onTap: () async {
-                    final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
-                    if (plasiyerList != null) {
-                      final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "Plasiyer",
-                        children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList(),
-                      );
-                      if (result != null) {
-                        plasiyerController.text = result.plasiyerAciklama ?? "";
-                        viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
+              if (yetkiController.plasiyerUygulamasiAcikMi)
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Plasiyer",
+                    controller: plasiyerController,
+                    readOnly: true,
+                    onTap: () async {
+                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
+                      if (plasiyerList != null) {
+                        final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: "Plasiyer",
+                          children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList(),
+                        );
+                        if (result != null) {
+                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                          viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
+                        }
                       }
-                    }
-                  },
-                  suffixMore: true,
+                    },
+                    suffixMore: true,
+                  ),
                 ),
-              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
               Expanded(
                 child: CustomTextField(
                   labelText: loc.generalStrings.sort,

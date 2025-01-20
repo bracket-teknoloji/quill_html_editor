@@ -23,10 +23,7 @@ import "../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -71,7 +68,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        floatingActionButton: fab().yetkiVarMi(yetkiController.stokHareketleriStokYeniKayit),
+        floatingActionButton: yetkiController.stokHareketleriStokYeniKayit ? fab() : null,
         appBar: appBar(),
         body: body(),
       );
@@ -294,7 +291,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                             final StokHareketleriModel model = viewModel.stokHareketleri![index];
                             final List<Widget> children2 = [];
                             if (model.hareketTuruAciklama == "Devir" && yetkiController.stokHareketleriStokSilme) {
-                              final Widget slidableAction = SlidableAction(
+                              final SlidableAction slidableAction = SlidableAction(
                                 onPressed: (context) async {
                                   dialogManager.showAreYouSureDialog(() async {
                                     final result = await networkManager.dioPost<StokHareketleriModel>(
@@ -314,8 +311,8 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 backgroundColor: theme.colorScheme.onPrimary,
                                 foregroundColor: theme.colorScheme.primary,
                                 label: loc.generalStrings.delete,
-                              ).yetkiVarMi(yetkiController.stokHareketleriStokSilme);
-                              if (slidableAction != const SizedBox()) {
+                              );
+                              if (yetkiController.stokHareketleriStokSilme) {
                                 children2.add(slidableAction);
                               }
                             }
@@ -363,21 +360,22 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                     context,
                                     title: loc.generalStrings.options,
                                     children: [
-                                      BottomSheetModel(
-                                        title: "Belgeyi Görüntüle",
-                                        iconWidget: Icons.preview_outlined,
-                                        onTap: () async {
-                                          await Get.toNamed(
-                                            "mainPage/faturaEdit",
-                                            arguments: BaseEditModel<SiparisEditRequestModel>(
-                                              baseEditEnum: BaseEditEnum.goruntule,
-                                              model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                              editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model.belgeTipiAciklama),
-                                            ),
-                                          );
-                                          viewModel.setStokHareketleri(await getData()!);
-                                        },
-                                      ).yetkiKontrol(!yetkiController.stokHareketDetayiniGizle),
+                                      if (!yetkiController.stokHareketDetayiniGizle)
+                                        BottomSheetModel(
+                                          title: "Belgeyi Görüntüle",
+                                          iconWidget: Icons.preview_outlined,
+                                          onTap: () async {
+                                            await Get.toNamed(
+                                              "mainPage/faturaEdit",
+                                              arguments: BaseEditModel<SiparisEditRequestModel>(
+                                                baseEditEnum: BaseEditEnum.goruntule,
+                                                model: SiparisEditRequestModel.fromStokHareketleriModel(model),
+                                                editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model.belgeTipiAciklama),
+                                              ),
+                                            );
+                                            viewModel.setStokHareketleri(await getData()!);
+                                          },
+                                        ),
                                       BottomSheetModel(
                                         title: "Stok İşlemleri",
                                         iconWidget: Icons.list_alt_outlined,
@@ -386,7 +384,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                           dialogManager.showStokGridViewDialog(widget.model);
                                         },
                                       ),
-                                    ].nullCheckWithGeneric,
+                                    ],
                                   );
                                 }
                               },
@@ -402,12 +400,13 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                       // crossAxisAlignment: CrossAxisAlignment.stretch,
                                       children: [
                                         listTile(model),
-                                        Container(
-                                          width: UIHelper.lowSize,
-                                          decoration: const BoxDecoration(
-                                            color: UIHelper.primaryColor,
+                                        if (children2.ext.isNotNullOrEmpty)
+                                          Container(
+                                            width: UIHelper.lowSize,
+                                            decoration: const BoxDecoration(
+                                              color: UIHelper.primaryColor,
+                                            ),
                                           ),
-                                        ).yetkiVarMi(children2.ext.isNotNullOrEmpty),
                                       ],
                                     ),
                                   ),
@@ -433,8 +432,8 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
               Expanded(
                 child: Wrap(
                   children: [
-                    Text(model.stharTarih.toDateString).yetkiVarMi(model.stharTarih != null),
-                    const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).paddingOnly(left: UIHelper.lowSize).yetkiVarMi(model.dovizTipi == 1),
+                    if (model.stharTarih != null) Text(model.stharTarih.toDateString),
+                    if (model.dovizTipi == 1) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).paddingOnly(left: UIHelper.lowSize),
                     // model.dovizTipi == 1 ? const Badge(label: Text("Dövizli")) : Container(),
                   ],
                 ),
@@ -449,7 +448,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(model.cariAdi ?? "").yetkiVarMi(model.cariAdi != null),
+              if (model.cariAdi != null) Text(model.cariAdi ?? ""),
               Text.rich(
                 TextSpan(
                   children: [
@@ -464,7 +463,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
               Row(
                 children: [
                   Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
-                  Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
+                  if (yetkiController.lokalDepoUygulamasiAcikMi) Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")),
                 ],
               ),
               Row(

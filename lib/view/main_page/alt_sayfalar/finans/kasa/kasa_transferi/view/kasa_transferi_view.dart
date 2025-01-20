@@ -11,7 +11,6 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
@@ -201,40 +200,42 @@ final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                 builder: (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Döviz Tipi",
-                        controller: dovizTipiController,
-                        readOnly: true,
-                        isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isFormattedString: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
-                        onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
-                      ),
-                    ).yetkiVarMi(viewModel.model.dovizliMi),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Döviz Kuru",
-                        controller: dovizKuruController,
-                        isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isFormattedString: true,
-                        onChanged: (value) {
-                          if (dovizKuruController.text != "") {
-                            viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
-                            dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                          } else {
-                            viewModel.setDovizTutari(null);
-                            dovizTutariController.clear();
-                          }
-                        },
-                        suffix: IconButton(
-                          onPressed: () async => await getDovizDialog(),
-                          icon: const Icon(Icons.more_horiz_outlined),
+                    if (viewModel.model.dovizliMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Döviz Tipi",
+                          controller: dovizTipiController,
+                          readOnly: true,
+                          isMust: true,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          isFormattedString: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
+                          onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
                         ),
                       ),
-                    ).yetkiVarMi(viewModel.model.dovizliMi),
+                    if (viewModel.model.dovizliMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Döviz Kuru",
+                          controller: dovizKuruController,
+                          isMust: true,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          isFormattedString: true,
+                          onChanged: (value) {
+                            if (dovizKuruController.text != "") {
+                              viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / dovizKuruController.text.toDoubleWithFormattedString);
+                              dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                            } else {
+                              viewModel.setDovizTutari(null);
+                              dovizTutariController.clear();
+                            }
+                          },
+                          suffix: IconButton(
+                            onPressed: () async => await getDovizDialog(),
+                            icon: const Icon(Icons.more_horiz_outlined),
+                          ),
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -242,21 +243,22 @@ final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                 builder: (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Döviz Tutarı",
-                        controller: dovizTutariController,
-                        isMust: true,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isFormattedString: true,
-                        onChanged: (value) {
-                          viewModel
-                            ..setDovizTutari(value.toDoubleWithFormattedString)
-                            ..setTutar((viewModel.model.dovizTutari ?? 0) * (dovizKuruController.text.toDoubleWithFormattedString));
-                          tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                        },
+                    if (viewModel.model.dovizliMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Döviz Tutarı",
+                          controller: dovizTutariController,
+                          isMust: true,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          isFormattedString: true,
+                          onChanged: (value) {
+                            viewModel
+                              ..setDovizTutari(value.toDoubleWithFormattedString)
+                              ..setTutar((viewModel.model.dovizTutari ?? 0) * (dovizKuruController.text.toDoubleWithFormattedString));
+                            tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(viewModel.model.dovizliMi),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Tutar",
@@ -282,40 +284,42 @@ final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Plasiyer",
-                      controller: plasiyerController,
-                      suffixMore: true,
-                      isMust: true,
-                      readOnly: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                      onTap: () async {
-                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
-                        if (result != null) {
-                          viewModel.setPlasiyerKodu(result);
-                          plasiyerController.text = result.plasiyerAciklama ?? "";
-                        }
-                      },
+                  if (yetkiController.plasiyerUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Plasiyer",
+                        controller: plasiyerController,
+                        suffixMore: true,
+                        isMust: true,
+                        readOnly: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                          if (result != null) {
+                            viewModel.setPlasiyerKodu(result);
+                            plasiyerController.text = result.plasiyerAciklama ?? "";
+                          }
+                        },
+                      ),
                     ),
-                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Proje",
-                      controller: projeController,
-                      suffixMore: true,
-                      isMust: true,
-                      readOnly: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                      onTap: () async {
-                        final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                        if (result != null) {
-                          viewModel.setProjekodu(result.projeKodu);
-                          projeController.text = result.projeAciklama ?? "";
-                        }
-                      },
+                  if (yetkiController.projeUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Proje",
+                        controller: projeController,
+                        suffixMore: true,
+                        isMust: true,
+                        readOnly: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                        onTap: () async {
+                          final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                          if (result != null) {
+                            viewModel.setProjekodu(result.projeKodu);
+                            projeController.text = result.projeAciklama ?? "";
+                          }
+                        },
+                      ),
                     ),
-                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                 ],
               ),
               CustomTextField(

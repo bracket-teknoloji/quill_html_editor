@@ -23,8 +23,6 @@ import "../../../../../../core/constants/color_palette.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/enum/islem_tipi_enum.dart";
-import "../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
@@ -183,42 +181,44 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                 context,
                 title: loc.generalStrings.options,
                 children: [
-                  BottomSheetModel(
-                    iconWidget: Icons.preview_outlined,
-                    title: loc.generalStrings.view,
-                    onTap: () async {
-                      Get.back();
-                      if (item.faturaMi) {
+                  if (!item.dekontMu && yetkiController.cariHareketleriHarDetayGorsun)
+                    BottomSheetModel(
+                      iconWidget: Icons.preview_outlined,
+                      title: loc.generalStrings.view,
+                      onTap: () async {
+                        Get.back();
+                        if (item.faturaMi) {
+                          await Get.toNamed(
+                            "/mainPage/faturaEdit",
+                            arguments: BaseEditModel(
+                              baseEditEnum: BaseEditEnum.goruntule,
+                              editTipiEnum: EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(item.belgeTipi),
+                              model: SiparisEditRequestModel.fromCariHareketleriModel(item),
+                            ),
+                          );
+                        } else if (item.kasaMi) {
+                          await Get.toNamed("/mainPage/kasaHareketDetayi", arguments: item);
+                        } else {
+                          await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: item));
+                        }
+                      },
+                    ),
+                  if (item.resmiBelgeNo != null)
+                    BottomSheetModel(
+                      iconWidget: Icons.preview_outlined,
+                      title: "E-Belge Görüntüle",
+                      onTap: () async {
+                        Get.back();
                         await Get.toNamed(
-                          "/mainPage/faturaEdit",
-                          arguments: BaseEditModel(
-                            baseEditEnum: BaseEditEnum.goruntule,
-                            editTipiEnum: EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(item.belgeTipi),
-                            model: SiparisEditRequestModel.fromCariHareketleriModel(item),
+                          "/mainPage/eBelgePdf",
+                          arguments: EBelgeListesiModel(
+                            resmiBelgeNo: item.resmiBelgeNo,
+                            belgeTuru: item.belgeTipi,
+                            ebelgeTuru: item.ebelgeTuru,
                           ),
                         );
-                      } else if (item.kasaMi) {
-                        await Get.toNamed("/mainPage/kasaHareketDetayi", arguments: item);
-                      } else {
-                        await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: item));
-                      }
-                    },
-                  ).yetkiKontrol(!item.dekontMu && yetkiController.cariHareketleriHarDetayGorsun),
-                  BottomSheetModel(
-                    iconWidget: Icons.preview_outlined,
-                    title: "E-Belge Görüntüle",
-                    onTap: () async {
-                      Get.back();
-                      await Get.toNamed(
-                        "/mainPage/eBelgePdf",
-                        arguments: EBelgeListesiModel(
-                          resmiBelgeNo: item.resmiBelgeNo,
-                          belgeTuru: item.belgeTipi,
-                          ebelgeTuru: item.ebelgeTuru,
-                        ),
-                      );
-                    },
-                  ).yetkiKontrol(item.resmiBelgeNo != null),
+                      },
+                    ),
                   BottomSheetModel(
                     iconWidget: Icons.list_alt_outlined,
                     title: loc.generalStrings.actions,
@@ -234,44 +234,47 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       );
                     },
                   ),
-                  BottomSheetModel(
-                    iconWidget: Icons.edit_outlined,
-                    title: loc.generalStrings.edit,
-                    onTap: () async {
-                      Get.back();
-                      final result = await Get.toNamed(
-                        "/mainPage/cariYeniKayit",
-                        arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
-                      );
-                      if (result != null) {
-                        await viewModel.getData();
-                      }
-                    },
-                  ).yetkiKontrol(item.devirMi && yetkiController.cariHareketleriDuzenleme),
-                  BottomSheetModel(
-                    title: loc.generalStrings.delete,
-                    iconWidget: Icons.delete_outline_outlined,
-                    onTap: () async {
-                      Get.back();
-                      await dialogManager.showAreYouSureDialog(
-                        () async {
-                          final result = await networkManager.dioPost(path: ApiUrls.deleteCariHareket, bodyModel: CariHareketleriModel(), queryParameters: {"INCKEYNO": item.inckeyno});
-                          if (result.isSuccess) {
-                            dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                            await viewModel.getData();
-                          } else {
-                            dialogManager.showErrorSnackBar(result.message ?? "");
-                          }
-                        },
-                        title: "Bu hareket kaydını silmek istediğinizden emin misiniz?",
-                      );
-                    },
-                  ).yetkiKontrol(item.devirMi && yetkiController.cariHareketleriSilme),
-                  BottomSheetModel(
-                    iconWidget: Icons.receipt_long_outlined,
-                    title: "Tahsilat Makbuzu",
-                    onTap: () async => await showPdf("TahsilatMakbuzu", item),
-                  ).yetkiKontrol(item.kasaMi),
+                  if (item.devirMi && yetkiController.cariHareketleriDuzenleme)
+                    BottomSheetModel(
+                      iconWidget: Icons.edit_outlined,
+                      title: loc.generalStrings.edit,
+                      onTap: () async {
+                        Get.back();
+                        final result = await Get.toNamed(
+                          "/mainPage/cariYeniKayit",
+                          arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
+                        );
+                        if (result != null) {
+                          await viewModel.getData();
+                        }
+                      },
+                    ),
+                  if (item.devirMi && yetkiController.cariHareketleriSilme)
+                    BottomSheetModel(
+                      title: loc.generalStrings.delete,
+                      iconWidget: Icons.delete_outline_outlined,
+                      onTap: () async {
+                        Get.back();
+                        await dialogManager.showAreYouSureDialog(
+                          () async {
+                            final result = await networkManager.dioPost(path: ApiUrls.deleteCariHareket, bodyModel: CariHareketleriModel(), queryParameters: {"INCKEYNO": item.inckeyno});
+                            if (result.isSuccess) {
+                              dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                              await viewModel.getData();
+                            } else {
+                              dialogManager.showErrorSnackBar(result.message ?? "");
+                            }
+                          },
+                          title: "Bu hareket kaydını silmek istediğinizden emin misiniz?",
+                        );
+                      },
+                    ),
+                  if (item.kasaMi)
+                    BottomSheetModel(
+                      iconWidget: Icons.receipt_long_outlined,
+                      title: "Tahsilat Makbuzu",
+                      onTap: () async => await showPdf("TahsilatMakbuzu", item),
+                    ),
                   BottomSheetModel(
                     iconWidget: Icons.picture_as_pdf_outlined,
                     title: "PDF Görüntüle",
@@ -279,7 +282,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                       await showPdf("CariHareket", item);
                     },
                   ),
-                ].nullCheckWithGeneric,
+                ],
               );
             },
           ),

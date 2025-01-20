@@ -13,7 +13,6 @@ import "../../../../../../../../core/components/helper_widgets/custom_label_widg
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
@@ -352,26 +351,27 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Expanded(
-                    child: CustomTextField(
-                      enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("plasiyer"),
-                      labelText: "Plasiyer",
-                      readOnly: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model?.plasiyerKodu ?? "")),
-                      controller: plasiyerController,
-                      suffixMore: true,
-                      onClear: () {
-                        viewModel.changePlasiyer(null);
-                      },
-                      onTap: () async {
-                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model?.plasiyerKodu);
-                        if (result != null) {
-                          plasiyerController.text = result.plasiyerAciklama ?? "";
-                          viewModel.changePlasiyer(result.plasiyerKodu);
-                        }
-                      },
+                  if (yetkiController.plasiyerUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomTextField(
+                        enabled: enabled && !yetkiController.cariKartiDegistirilmeyecekAlanlar("plasiyer"),
+                        labelText: "Plasiyer",
+                        readOnly: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model?.plasiyerKodu ?? "")),
+                        controller: plasiyerController,
+                        suffixMore: true,
+                        onClear: () {
+                          viewModel.changePlasiyer(null);
+                        },
+                        onTap: () async {
+                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model?.plasiyerKodu);
+                          if (result != null) {
+                            plasiyerController.text = result.plasiyerAciklama ?? "";
+                            viewModel.changePlasiyer(result.plasiyerKodu);
+                          }
+                        },
+                      ),
                     ),
-                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                   Expanded(
                     child: CustomWidgetWithLabel(
                       text: "Dövizli",

@@ -255,7 +255,7 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
+                  if(yetkiController.plasiyerUygulamasiAcikMi) Expanded(
                     child: CustomTextField(
                       labelText: "Plasiyer",
                       controller: _plasiyerController,
@@ -271,8 +271,8 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
                         }
                       },
                     ),
-                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                  Expanded(
+                  ),
+                  if(yetkiController.projeUygulamasiAcikMi) Expanded(
                     child: CustomTextField(
                       labelText: "Proje",
                       controller: _projeController,
@@ -288,7 +288,7 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
                         }
                       },
                     ),
-                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                  ),
                 ],
               ),
               CustomTextField(

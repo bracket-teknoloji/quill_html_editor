@@ -7,7 +7,7 @@ import "../../../../../../../../core/components/dialog/bottom_sheet/model/bottom
 import "../../../../../../../../core/components/floating_action_button/custom_floating_action_button.dart";
 import "../../../../../../../../core/components/layout/custom_layout_builder.dart";
 import "../../../../../../../../core/components/list_view/refreshable_list_view.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
+
 import "../../../../stok_liste/model/stok_listesi_model.dart";
 import "../model/barkod_tanimla_kayitlari_model.dart";
 import "../view_model/barkod_tanimla_kayitlari_view_model.dart";
@@ -49,19 +49,7 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        floatingActionButton: CustomFloatingActionButton(
-          isScrolledDown: true,
-          onPressed: () async {
-            if (widget.model != null) {
-              final result = await Get.toNamed("mainPage/barkodEdit", arguments: widget.model);
-              if (result == true) {
-                await viewModel.getData();
-              }
-            } else {
-              await dialogManager.showAlertDialog("Stok kartı seçilmedi.");
-            }
-          },
-        ).yetkiVarMi(yetkiController.stokBarkodEkle),
+        floatingActionButton: yetkiController.stokBarkodEkle ? fab() : null,
         body: Observer(
           builder: (_) => RefreshableListView<BarkodTanimlaKayitlariModel>(
             onRefresh: viewModel.getData,
@@ -102,12 +90,26 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
                         Text("Tipi: ${item.barkodTipi}-${item.barkodTipiAdi}"),
                       ],
                     ),
-                    Text("Açıklama: ${item.aciklama}").yetkiVarMi(item.aciklama != null),
+                    if (item.aciklama != null) Text("Açıklama: ${item.aciklama}"),
                   ],
                 ),
               ),
             ),
           ),
         ),
+      );
+
+  CustomFloatingActionButton fab() => CustomFloatingActionButton(
+        isScrolledDown: true,
+        onPressed: () async {
+          if (widget.model != null) {
+            final result = await Get.toNamed("mainPage/barkodEdit", arguments: widget.model);
+            if (result == true) {
+              await viewModel.getData();
+            }
+          } else {
+            await dialogManager.showAlertDialog("Stok kartı seçilmedi.");
+          }
+        },
       );
 }

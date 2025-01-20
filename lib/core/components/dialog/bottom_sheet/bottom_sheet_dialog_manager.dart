@@ -27,9 +27,7 @@ import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/core/constants/enum/grup_kodu_enums.dart";
 import "package:picker/core/constants/enum/muhasebe_kodu_belge_tipi_enum.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
-import "package:picker/core/constants/extensions/model_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/icon_helper.dart";
 import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
@@ -167,7 +165,7 @@ final class BottomSheetDialogManager {
                     ListTile(
                       onTap: item.onTap ?? () => Get.back(result: [item.value]),
                       title: Text(item.title),
-                      subtitle: Text(item.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.6))).yetkiVarMi(item.description != null).sizedBoxMi,
+                      subtitle: item.description != null ? Text(item.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.6))) : null,
                       leading: item.icon != null || item.iconWidget != null
                           ? SizedBox(
                               width: 20,
@@ -316,14 +314,16 @@ final class BottomSheetDialogManager {
                                                       value: item?.groupValue ?? "",
                                                       groupValue: groupValue,
                                                       title: Text(item?.title ?? ""),
-                                                      subtitle: Column(
-                                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                                        children: [
-                                                          item?.descriptionWidget,
-                                                          if (item?.description != null)
-                                                            Text(item?.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.6))),
-                                                        ].nullCheckWithGeneric,
-                                                      ).yetkiVarMi(item?.description != null || item?.descriptionWidget != null).sizedBoxMi,
+                                                      subtitle: item?.description != null || item?.descriptionWidget != null
+                                                          ? Column(
+                                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                                              children: [
+                                                                item?.descriptionWidget,
+                                                                if (item?.description != null)
+                                                                  Text(item?.description ?? "", style: TextStyle(color: context.theme.textTheme.bodyLarge?.color?.withValues(alpha: 0.6))),
+                                                              ].nullCheckWithGeneric,
+                                                            )
+                                                          : null,
                                                     ).paddingSymmetric(horizontal: UIHelper.midSize),
                                                     if (index != (viewModel.getFilteredList?.length ?? 0) - 1)
                                                       const Padding(
@@ -624,9 +624,9 @@ final class BottomSheetDialogManager {
       title: "Bağlantı Şekli Seçiniz",
       groupValue: CacheManager.getUzaktanMi(account?.firmaKisaAdi),
       children: [
-        BottomSheetModel(title: "Uzaktan", value: true, groupValue: true).yetkiKontrol(account?.wsWan != null),
-        BottomSheetModel(title: "Yerel", value: false, groupValue: false).yetkiKontrol(account?.wsLan != null),
-      ].nullCheckWithGeneric,
+        if (account?.wsWan != null) BottomSheetModel(title: "Uzaktan", value: true, groupValue: true),
+        if (account?.wsLan != null) BottomSheetModel(title: "Yerel", value: false, groupValue: false),
+      ],
     );
     if (result != null && model != null) {
       CacheManager.setUzaktanMi(account?.firmaKisaAdi ?? "", result);

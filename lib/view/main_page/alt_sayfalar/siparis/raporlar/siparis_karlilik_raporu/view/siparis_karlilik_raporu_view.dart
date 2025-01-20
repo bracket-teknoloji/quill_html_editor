@@ -9,7 +9,6 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../model/param_model.dart";
 import "../../../../cari/cari_listesi/model/cari_listesi_model.dart";
@@ -172,25 +171,26 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Plasiyer",
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: plasiyerController,
-                    onClear: () {
-                      viewModel.setPlasiyer(null);
-                      plasiyerController.clear();
-                    },
-                    onTap: () async {
-                      final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
-                      if (result != null) {
-                        plasiyerController.text = result.plasiyerAciklama ?? "";
-                        viewModel.setPlasiyer(result.plasiyerKodu);
-                      }
-                    },
+                if (yetkiController.plasiyerUygulamasiAcikMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Plasiyer",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: plasiyerController,
+                      onClear: () {
+                        viewModel.setPlasiyer(null);
+                        plasiyerController.clear();
+                      },
+                      onTap: () async {
+                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
+                        if (result != null) {
+                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                          viewModel.setPlasiyer(result.plasiyerKodu);
+                        }
+                      },
+                    ),
                   ),
-                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Maliyet Tipi",

@@ -11,7 +11,6 @@ import "../../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../../core/constants/enum/cek_senet_listesi_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../model/param_model.dart";
@@ -152,43 +151,46 @@ final class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
                         readOnly: true,
                       ),
                     ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Plasiyer",
-                        controller: _plasiyerController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                        onTap: setPlasiyerKodu,
+                    if (yetkiController.plasiyerUygulamasiAcikMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Plasiyer",
+                          controller: _plasiyerController,
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                          onTap: setPlasiyerKodu,
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                   ],
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Proje",
-                        controller: _projeController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                        onTap: setProjekodu,
+                    if (yetkiController.projeUygulamasiAcikMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Proje",
+                          controller: _projeController,
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                          onTap: setProjekodu,
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Referans Kodu",
-                        controller: _referansKoduController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
-                        onTap: setReferansKodu,
+                    if (!cekSenetEnum.borcMu)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Referans Kodu",
+                          controller: _referansKoduController,
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+                          onTap: setReferansKodu,
+                        ),
                       ),
-                    ).yetkiVarMi(!cekSenetEnum.borcMu),
                   ],
                 ),
                 CustomTextField(labelText: "Kasa Har. Açıklama", controller: _kasaHarAciklamaController, onChanged: viewModel.setKasaHarAciklama),

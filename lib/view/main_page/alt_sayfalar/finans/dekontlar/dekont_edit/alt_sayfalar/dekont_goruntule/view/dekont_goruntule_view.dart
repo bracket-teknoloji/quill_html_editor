@@ -8,7 +8,6 @@ import "../../../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../model/dekont_listesi_model.dart";
@@ -138,8 +137,8 @@ final class _DekontGoruntuleViewState extends BaseState<DekontGoruntuleView> {
                               Text("Hesap Tipi:\n${item.hesapTipi ?? ""}"),
                               Text("Hesap Kodu:\n${item.hesapKodu ?? ""}"),
                               Text("Tutar:\n${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                              Text("Döviz Tutarı:\n${item.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${item.dovizAdi ?? ""}").yetkiVarMi(item.dovizliMi),
-                              Text("Kur:\n${item.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}").yetkiVarMi(item.dovizliMi),
+                              if (item.dovizliMi) Text("Döviz Tutarı:\n${item.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${item.dovizAdi ?? ""}"),
+                              if (item.dovizliMi) Text("Kur:\n${item.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                               Text("Plasiyer:\n${item.plasiyerAciklama ?? ""}"),
                             ].map((e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 3, child: e)).toList().nullCheckWithGeneric,
                           ),

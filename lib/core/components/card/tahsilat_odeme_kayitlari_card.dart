@@ -11,10 +11,7 @@ import "../../base/view/pdf_viewer/model/pdf_viewer_model.dart";
 import "../../base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
-import "../../constants/extensions/list_extensions.dart";
-import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
-import "../../constants/extensions/widget_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
 import "../../init/network/login/api_urls.dart";
@@ -57,15 +54,15 @@ final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayi
             children: [
               Row(
                 children: [
-                  const ColorfulBadge(label: Text("Tahsilat"), badgeColorEnum: BadgeColorEnum.basarili).yetkiVarMi(widget.cariHareketleriModel.alacakMi),
-                  const ColorfulBadge(label: Text("Ödeme"), badgeColorEnum: BadgeColorEnum.uyari).yetkiVarMi(!widget.cariHareketleriModel.alacakMi),
+                  if (widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Tahsilat"), badgeColorEnum: BadgeColorEnum.basarili),
+                  if (!widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Ödeme"), badgeColorEnum: BadgeColorEnum.uyari),
                 ],
               ),
               Row(
                 children: [
                   Expanded(child: Text(widget.cariHareketleriModel.cariAdi ?? "", overflow: TextOverflow.ellipsis).paddingOnly(right: UIHelper.lowSize)),
-                  Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.cariHareketleriModel.dovizAdi ?? ""}")
-                      .yetkiVarMi(widget.cariHareketleriModel.dovizliMi),
+                  if (widget.cariHareketleriModel.dovizliMi)
+                    Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.cariHareketleriModel.dovizAdi ?? ""}"),
                 ],
               ),
               Row(
@@ -90,51 +87,49 @@ final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayi
       context,
       title: model.cariAdi ?? "",
       children: [
-        BottomSheetModel(
-          title: "Hareket Detayı",
-          iconWidget: Icons.preview_outlined,
-          onTap: () async {
-            Get.back();
-            switch (widget.cariHareketleriModel.hareketAciklama) {
-              // case "Müşteri Senedi":
-              // case "Borç Senedi":
-              // case "Müşteri Çeki":
-              // Get.toNamed("/mainPage/cekSenetGoruntule", arguments: CekSenetListesiModel());
-              case "Borç Çeki":
-              case "Protestolu Senet":
-              case "Karşılıksız Çek":
-              case "Dekont":
-                await getDekont();
-              case "Kasa":
-                Get.toNamed("/mainPage/kasaHareketDetayi", arguments: widget.cariHareketleriModel);
-              default:
-            }
-            //   if (widget.cariHareketleriModel.hareketAciklama == "Dekont") {
-            //   } else if (widget.cariHareketleriModel.hareketAciklama == "Çek") {}
-            //   else if (widget.cariHareketleriModel.hareketAciklama)
-          },
-        ).yetkiKontrol(widget.cariHareketleriModel.hareketKodu != "K" && widget.cariHareketleriModel.refkey != null),
-        BottomSheetModel(
-          title: "Ödeme Makbuzu",
-          iconWidget: Icons.receipt_long_outlined,
-          onTap: () async => await showPdf("OdemeMakbuzu", model),
-        ).yetkiKontrol(
-          !widget.cariHareketleriModel.alacakMi,
-        ),
-        BottomSheetModel(
-          title: "Tahsilat Makbuzu",
-          iconWidget: Icons.receipt_long_outlined,
-          onTap: () async => await showPdf("TahsilatMakbuzu", model),
-        ).yetkiKontrol(
-          widget.cariHareketleriModel.alacakMi,
-        ),
-        BottomSheetModel(
-          title: loc.generalStrings.delete,
-          iconWidget: Icons.delete_outline_outlined,
-          onTap: () async => await deleteData(),
-        ).yetkiKontrol(
-          widget.cariHareketleriModel.hareketAciklama == "Kasa",
-        ),
+        if (widget.cariHareketleriModel.hareketKodu != "K" && widget.cariHareketleriModel.refkey != null)
+          BottomSheetModel(
+            title: "Hareket Detayı",
+            iconWidget: Icons.preview_outlined,
+            onTap: () async {
+              Get.back();
+              switch (widget.cariHareketleriModel.hareketAciklama) {
+                // case "Müşteri Senedi":
+                // case "Borç Senedi":
+                // case "Müşteri Çeki":
+                // Get.toNamed("/mainPage/cekSenetGoruntule", arguments: CekSenetListesiModel());
+                case "Borç Çeki":
+                case "Protestolu Senet":
+                case "Karşılıksız Çek":
+                case "Dekont":
+                  await getDekont();
+                case "Kasa":
+                  Get.toNamed("/mainPage/kasaHareketDetayi", arguments: widget.cariHareketleriModel);
+                default:
+              }
+              //   if (widget.cariHareketleriModel.hareketAciklama == "Dekont") {
+              //   } else if (widget.cariHareketleriModel.hareketAciklama == "Çek") {}
+              //   else if (widget.cariHareketleriModel.hareketAciklama)
+            },
+          ),
+        if (!widget.cariHareketleriModel.alacakMi)
+          BottomSheetModel(
+            title: "Ödeme Makbuzu",
+            iconWidget: Icons.receipt_long_outlined,
+            onTap: () async => await showPdf("OdemeMakbuzu", model),
+          ),
+        if (widget.cariHareketleriModel.alacakMi)
+          BottomSheetModel(
+            title: "Tahsilat Makbuzu",
+            iconWidget: Icons.receipt_long_outlined,
+            onTap: () async => await showPdf("TahsilatMakbuzu", model),
+          ),
+        if (widget.cariHareketleriModel.hareketAciklama == "Kasa")
+          BottomSheetModel(
+            title: loc.generalStrings.delete,
+            iconWidget: Icons.delete_outline_outlined,
+            onTap: () async => await deleteData(),
+          ),
         BottomSheetModel(
           title: "Cari İşlemleri",
           iconWidget: Icons.edit_outlined,
@@ -150,7 +145,7 @@ final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayi
             );
           },
         ),
-      ].nullCheckWithGeneric,
+      ],
     );
   }
 

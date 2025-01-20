@@ -84,10 +84,11 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
             ),
           ),
           actions: [
-            IconButton(
-              onPressed: () async => Get.back(result: viewModel.currentPosition),
-              icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi(widget.isGetData == true),
+            if (widget.isGetData == true)
+              IconButton(
+                onPressed: () async => Get.back(result: viewModel.currentPosition),
+                icon: const Icon(Icons.save_outlined),
+              ),
           ],
         ),
         body: Observer(
@@ -165,7 +166,7 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                           },
                   ),
                 ),
-                Center(child: Assets.lotties.locationLottie.lottie()).paddingOnly(bottom: UIHelper.midSize * 3).yetkiVarMi(widget.isGetData == true),
+                if (widget.isGetData == true) Center(child: Assets.lotties.locationLottie.lottie()).paddingOnly(bottom: UIHelper.midSize * 3),
               ],
             );
           },

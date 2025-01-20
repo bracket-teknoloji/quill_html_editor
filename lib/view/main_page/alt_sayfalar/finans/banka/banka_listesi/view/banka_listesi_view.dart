@@ -19,7 +19,6 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../model/banka_listesi_model.dart";
@@ -215,15 +214,16 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
                               ),
                             ],
                           ),
-                          Row(
-                            children: List.generate(
-                              itemList.bakiyeMap(mainCurrency).length,
-                              (index) => Text(
-                                "${itemList.bakiyeMap(mainCurrency).values.toList()[index].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${itemList.bakiyeMap(mainCurrency).keys.toList()[index]})  ",
-                                style: const TextStyle(color: ColorPalette.slateGray),
+                          if (itemList.any((element) => element.dovizAdi != null))
+                            Row(
+                              children: List.generate(
+                                itemList.bakiyeMap(mainCurrency).length,
+                                (index) => Text(
+                                  "${itemList.bakiyeMap(mainCurrency).values.toList()[index].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${itemList.bakiyeMap(mainCurrency).keys.toList()[index]})  ",
+                                  style: const TextStyle(color: ColorPalette.slateGray),
+                                ),
                               ),
                             ),
-                          ).yetkiVarMi(itemList.any((element) => element.dovizAdi != null)),
                         ],
                       ).paddingAll(UIHelper.lowSize),
                       ListView.builder(
@@ -252,7 +252,7 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
                                 children: [
                                   Row(
                                     children: [
-                                      ColorfulBadge(badgeColorEnum: BadgeColorEnum.dovizli, label: Text("Dövizli ${item.dovizAdi ?? ""}")).yetkiVarMi((item.dovizTipi ?? 0) > 1),
+                                      if ((item.dovizTipi ?? 0) > 1) ColorfulBadge(badgeColorEnum: BadgeColorEnum.dovizli, label: Text("Dövizli ${item.dovizAdi ?? ""}")),
                                     ],
                                   ),
                                   Row(

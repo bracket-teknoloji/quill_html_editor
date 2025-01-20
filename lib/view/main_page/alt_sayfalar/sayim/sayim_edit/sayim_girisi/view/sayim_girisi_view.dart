@@ -11,7 +11,6 @@ import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sh
 import "../../../../../../../core/components/layout/custom_layout_builder.dart";
 import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/extensions/iterable_extensions.dart";
-import "../../../../../../../core/constants/extensions/list_extensions.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
@@ -237,7 +236,7 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
               //TODO Serileri ekle
 
               Observer(
-                builder: (_) => CustomTextField(
+                builder: (_) =>viewModel.stokModel?.seriGirislerdeAcik == true?  CustomTextField(
                   labelText: "Seriler",
                   isMust: true,
                   controller: serilerController,
@@ -262,36 +261,41 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     }
                     return null;
                   },
-                ).yetkiVarMi(viewModel.stokModel?.seriGirislerdeAcik == true),
+                ) : const SizedBox.shrink(),
               ),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
-                  CustomTextField(
-                    labelText: "Ek Alan 1",
-                    controller: ekAlan1Controller,
-                    onChanged: viewModel.setEkAlan1,
-                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(1)),
-                  CustomTextField(
-                    labelText: "Ek Alan 2",
-                    controller: ekAlan2Controller,
-                    onChanged: viewModel.setEkAlan2,
-                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(2)),
-                  CustomTextField(
-                    labelText: "Ek Alan 3",
-                    controller: ekAlan3Controller,
-                    onChanged: viewModel.setEkAlan3,
-                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(3)),
-                  CustomTextField(
-                    labelText: "Ek Alan 4",
-                    controller: ekAlan4Controller,
-                    onChanged: viewModel.setEkAlan4,
-                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(4)),
-                  CustomTextField(
-                    labelText: "Ek Alan 5",
-                    controller: ekAlan5Controller,
-                    onChanged: viewModel.setEkAlan5,
-                  ).yetkiVarMi(yetkiController.sayimEkAlanlar(5)),
+                  if (yetkiController.sayimEkAlanlar(1))
+                    CustomTextField(
+                      labelText: "Ek Alan 1",
+                      controller: ekAlan1Controller,
+                      onChanged: viewModel.setEkAlan1,
+                    ),
+                  if (yetkiController.sayimEkAlanlar(2))
+                    CustomTextField(
+                      labelText: "Ek Alan 2",
+                      controller: ekAlan2Controller,
+                      onChanged: viewModel.setEkAlan2,
+                    ),
+                  if (yetkiController.sayimEkAlanlar(3))
+                    CustomTextField(
+                      labelText: "Ek Alan 3",
+                      controller: ekAlan3Controller,
+                      onChanged: viewModel.setEkAlan3,
+                    ),
+                  if (yetkiController.sayimEkAlanlar(4))
+                    CustomTextField(
+                      labelText: "Ek Alan 4",
+                      controller: ekAlan4Controller,
+                      onChanged: viewModel.setEkAlan4,
+                    ),
+                  if (yetkiController.sayimEkAlanlar(5))
+                    CustomTextField(
+                      labelText: "Ek Alan 5",
+                      controller: ekAlan5Controller,
+                      onChanged: viewModel.setEkAlan5,
+                    ),
                 ],
               ),
               Observer(
@@ -337,7 +341,7 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
         if (viewModel.stokModel?.olcuBirimi != null) BottomSheetModel(title: viewModel.stokModel?.olcuBirimi ?? "", value: 1, groupValue: 1),
         if (viewModel.stokModel?.olcuBirimi2 != null) BottomSheetModel(title: viewModel.stokModel?.olcuBirimi2 ?? "", value: 2, groupValue: 2),
         if (viewModel.stokModel?.olcuBirimi3 != null) BottomSheetModel(title: viewModel.stokModel?.olcuBirimi3 ?? "", value: 3, groupValue: 3),
-      ].nullCheckWithGeneric,
+      ],
     );
     if (result is! int) return;
     viewModel.setOlcuBirimi(result);

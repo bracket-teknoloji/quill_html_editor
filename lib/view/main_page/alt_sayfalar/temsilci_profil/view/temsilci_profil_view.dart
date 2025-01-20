@@ -15,7 +15,6 @@ import "../../../../../core/components/slide_controller/view/slide_controller_vi
 import "../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../core/constants/ui_helper/text_style_helper.dart";
 import "../../../../../core/constants/ui_helper/ui_helper.dart";
@@ -113,23 +112,24 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Plasiyer",
-                            controller: plasiyerController,
-                            readOnly: true,
-                            suffixMore: true,
-                            valueWidget: Observer(builder: (_) => Text(viewModel.plasiyer?.toString() ?? "")),
-                            onClear: () => viewModel.setPlasiyer(null),
-                            onTap: () async {
-                              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.plasiyer);
-                              if (result != null) {
-                                plasiyerController.text = result.plasiyerAciklama ?? "";
-                                viewModel.setPlasiyer(result.plasiyerKodu);
-                              }
-                            },
+                        if (yetkiController.plasiyerUygulamasiAcikMi)
+                          Expanded(
+                            child: CustomTextField(
+                              labelText: "Plasiyer",
+                              controller: plasiyerController,
+                              readOnly: true,
+                              suffixMore: true,
+                              valueWidget: Observer(builder: (_) => Text(viewModel.plasiyer?.toString() ?? "")),
+                              onClear: () => viewModel.setPlasiyer(null),
+                              onTap: () async {
+                                final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.plasiyer);
+                                if (result != null) {
+                                  plasiyerController.text = result.plasiyerAciklama ?? "";
+                                  viewModel.setPlasiyer(result.plasiyerKodu);
+                                }
+                              },
+                            ),
                           ),
-                        ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                         Expanded(
                           child: CustomTextField(
                             labelText: "Cari",
@@ -149,13 +149,14 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                     ),
                     Row(
                       children: <Widget>[
-                        Expanded(
-                          child: CustomWidgetWithLabel(
-                            isVertical: true,
-                            text: "KDV Dahil",
-                            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value))),
-                          ).paddingAll(UIHelper.lowSize),
-                        ).yetkiVarMi(!yetkiController.temsilciProfilKdvDahilMi && AccountModel.instance.adminMi),
+                        if (!yetkiController.temsilciProfilKdvDahilMi && AccountModel.instance.adminMi)
+                          Expanded(
+                            child: CustomWidgetWithLabel(
+                              isVertical: true,
+                              text: "KDV Dahil",
+                              child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kdvDahil, onChanged: (value) => viewModel.setKDVDahil(value))),
+                            ).paddingAll(UIHelper.lowSize),
+                          ),
                         Expanded(
                           child: CustomWidgetWithLabel(
                             isVertical: true,
@@ -379,7 +380,8 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                   Observer(
                     builder: (_) {
                       if (viewModel.getAylikSatislar.isEmpty) return Center(child: const Text("Veri bulunamadı.").paddingAll(UIHelper.highSize));
-                      return CustomLineChart(lineChartValue: viewModel.getAylikSatislar).yetkiVarMi(!yetkiController.temsilciProfilAylaraGoreSatisiGizle);
+                      if (!yetkiController.temsilciProfilAylaraGoreSatisiGizle) return CustomLineChart(lineChartValue: viewModel.getAylikSatislar);
+                      return const SizedBox.shrink();
                     },
                   ).paddingOnly(top: UIHelper.lowSize),
                 ],

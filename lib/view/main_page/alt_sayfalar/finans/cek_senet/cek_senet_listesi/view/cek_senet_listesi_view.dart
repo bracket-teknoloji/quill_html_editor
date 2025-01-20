@@ -24,7 +24,6 @@ import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/banka_constants.dart";
 import "../../../../../../../core/constants/enum/cek_senet_listesi_enum.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -205,79 +204,81 @@ final class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                           icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                         ),
                       ),
-                      CustomTextField(
-                        labelText: "Verilen Cari",
-                        controller: _verilenCariController,
-                        suffixMore: true,
-                        readOnly: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.cekSenetListesiRequestModel.verilenKodu ?? "")),
-                        onClear: () => viewModel.setVerilenCari(null),
-                        onTap: () async {
-                          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                          if (result is CariListesiModel) {
-                            viewModel.setVerilenCari(result.cariKodu);
-                            _verilenCariController.text = result.cariAdi ?? "";
-                          }
-                        },
-                        suffix: IconButton(
-                          onPressed: () async {
-                            if (viewModel.cekSenetListesiRequestModel.verilenKodu != null) {
-                              return showCariIslemler(false);
-                            } else {
-                              dialogManager.showInfoDialog("Verilen cari seçiniz");
+                      if (viewModel.cekSenetListesiRequestModel.yer == "C")
+                        CustomTextField(
+                          labelText: "Verilen Cari",
+                          controller: _verilenCariController,
+                          suffixMore: true,
+                          readOnly: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.cekSenetListesiRequestModel.verilenKodu ?? "")),
+                          onClear: () => viewModel.setVerilenCari(null),
+                          onTap: () async {
+                            final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                            if (result is CariListesiModel) {
+                              viewModel.setVerilenCari(result.cariKodu);
+                              _verilenCariController.text = result.cariAdi ?? "";
                             }
                           },
-                          icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                          suffix: IconButton(
+                            onPressed: () async {
+                              if (viewModel.cekSenetListesiRequestModel.verilenKodu != null) {
+                                return showCariIslemler(false);
+                              } else {
+                                dialogManager.showInfoDialog("Verilen cari seçiniz");
+                              }
+                            },
+                            icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                          ),
                         ),
-                      ).yetkiVarMi(viewModel.cekSenetListesiRequestModel.yer == "C"),
-                      CustomTextField(
-                        labelText: "Banka",
-                        controller: _bankaController,
-                        suffixMore: true,
-                        readOnly: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.cekSenetListesiRequestModel.verilenKodu ?? "")),
-                        onClear: () => viewModel.setBanka(null),
-                        onTap: () async {
-                          final List<int> arrHesapTipi = [];
-                          if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekMusteri &&
-                              (yetkiController.kayitliHesapTipiMi(BankaConstants.tahsilCekleri) || yetkiController.kayitliHesapTipiMi(BankaConstants.teminatCekleri))) {
-                            arrHesapTipi
-                              ..add(BankaConstants.tahsilCekleri)
-                              ..add(BankaConstants.teminatCekleri);
-                          } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.senetMusteri &&
-                              (yetkiController.kayitliHesapTipiMi(BankaConstants.tahsilSenetleri) || yetkiController.kayitliHesapTipiMi(BankaConstants.teminatSenetleri))) {
-                            arrHesapTipi
-                              ..add(BankaConstants.tahsilSenetleri)
-                              ..add(BankaConstants.teminatSenetleri);
-                          } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekBorc && yetkiController.kayitliHesapTipiMi(BankaConstants.borcCekleri)) {
-                            arrHesapTipi.add(BankaConstants.borcCekleri);
-                          } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.senetBorc && yetkiController.kayitliHesapTipiMi(BankaConstants.borcSenetleri)) {
-                            arrHesapTipi.add(BankaConstants.borcSenetleri);
-                          }
-                          // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
-                          //   context,
-                          //   BankaListesiRequestModel(
-                          //     arrHesapTipi: jsonEncode(arrHesapTipi),
-                          //     ekranTipi: "R",
-                          //     belgeTipi: widget.cekSenetListesiEnum.belgeTipi,
-                          //     menuKodu: "YONE_BHRE",
-                          //   ),
-                          //   viewModel.cekSenetListesiRequestModel.verilenKodu,
-                          // );
-                          final result = await Get.toNamed(
-                            "/mainPage/bankaListesiOzel",
-                            arguments: BankaListesiRequestModel(
-                              arrHesapTipi: jsonEncode(arrHesapTipi),
-                              belgeTipi: widget.cekSenetListesiEnum.belgeTipi,
-                              menuKodu: "YONE_BHRE",
-                            ),
-                          );
-                          if (result is BankaListesiModel) {
-                            viewModel.setBanka(result.hesapKodu);
-                            _bankaController.text = result.hesapAdi ?? "";
-                          }
-                        },
-                      ).yetkiVarMi(viewModel.cekSenetListesiRequestModel.yer == "T" || viewModel.cekSenetListesiRequestModel.yer == "E"),
+                      if (viewModel.cekSenetListesiRequestModel.yer == "T" || viewModel.cekSenetListesiRequestModel.yer == "E")
+                        CustomTextField(
+                          labelText: "Banka",
+                          controller: _bankaController,
+                          suffixMore: true,
+                          readOnly: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.cekSenetListesiRequestModel.verilenKodu ?? "")),
+                          onClear: () => viewModel.setBanka(null),
+                          onTap: () async {
+                            final List<int> arrHesapTipi = [];
+                            if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekMusteri &&
+                                (yetkiController.kayitliHesapTipiMi(BankaConstants.tahsilCekleri) || yetkiController.kayitliHesapTipiMi(BankaConstants.teminatCekleri))) {
+                              arrHesapTipi
+                                ..add(BankaConstants.tahsilCekleri)
+                                ..add(BankaConstants.teminatCekleri);
+                            } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.senetMusteri &&
+                                (yetkiController.kayitliHesapTipiMi(BankaConstants.tahsilSenetleri) || yetkiController.kayitliHesapTipiMi(BankaConstants.teminatSenetleri))) {
+                              arrHesapTipi
+                                ..add(BankaConstants.tahsilSenetleri)
+                                ..add(BankaConstants.teminatSenetleri);
+                            } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekBorc && yetkiController.kayitliHesapTipiMi(BankaConstants.borcCekleri)) {
+                              arrHesapTipi.add(BankaConstants.borcCekleri);
+                            } else if (widget.cekSenetListesiEnum == CekSenetListesiEnum.senetBorc && yetkiController.kayitliHesapTipiMi(BankaConstants.borcSenetleri)) {
+                              arrHesapTipi.add(BankaConstants.borcSenetleri);
+                            }
+                            // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+                            //   context,
+                            //   BankaListesiRequestModel(
+                            //     arrHesapTipi: jsonEncode(arrHesapTipi),
+                            //     ekranTipi: "R",
+                            //     belgeTipi: widget.cekSenetListesiEnum.belgeTipi,
+                            //     menuKodu: "YONE_BHRE",
+                            //   ),
+                            //   viewModel.cekSenetListesiRequestModel.verilenKodu,
+                            // );
+                            final result = await Get.toNamed(
+                              "/mainPage/bankaListesiOzel",
+                              arguments: BankaListesiRequestModel(
+                                arrHesapTipi: jsonEncode(arrHesapTipi),
+                                belgeTipi: widget.cekSenetListesiEnum.belgeTipi,
+                                menuKodu: "YONE_BHRE",
+                              ),
+                            );
+                            if (result is BankaListesiModel) {
+                              viewModel.setBanka(result.hesapKodu);
+                              _bankaController.text = result.hesapAdi ?? "";
+                            }
+                          },
+                        ),
                       CustomTextField(
                         labelText: "Vade Tarihi",
                         controller: _vadeTarihiController,
@@ -377,15 +378,17 @@ final class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
         ),
       );
 
-  Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: !viewModel.isScrollDown,
-          onPressed: () async {
-            await Get.toNamed(widget.cekSenetListesiEnum.tahsilatRoute);
-            await viewModel.getData();
-          },
-        ).yetkiVarMi(widget.cekSenetListesiEnum.eklenebilirMi),
-      );
+  Observer? fab() => widget.cekSenetListesiEnum.eklenebilirMi
+      ? Observer(
+          builder: (_) => CustomFloatingActionButton(
+            isScrolledDown: !viewModel.isScrollDown,
+            onPressed: () async {
+              await Get.toNamed(widget.cekSenetListesiEnum.tahsilatRoute);
+              await viewModel.getData();
+            },
+          ),
+        )
+      : null;
 
   RefreshIndicator get body => RefreshIndicator.adaptive(
         onRefresh: viewModel.getData,

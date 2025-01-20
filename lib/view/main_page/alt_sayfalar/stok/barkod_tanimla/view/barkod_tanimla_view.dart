@@ -5,7 +5,6 @@ import "package:get/get.dart";
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../stok_liste/model/stok_listesi_model.dart";
 import "../alt_sayfalar/barkod_kayitlari/view/barkod_tanimla_kayitlari_view.dart";
@@ -57,10 +56,11 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
             title: "Barkod Tanımla",
           ),
           actions: [
-            IconButton(
-              onPressed: saveStok,
-              icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi(yetkiController.stokBarkodStokKartiGorunsun && yetkiController.stokBarkodEkle),
+            if (yetkiController.stokBarkodStokKartiGorunsun && yetkiController.stokBarkodEkle)
+              IconButton(
+                onPressed: saveStok,
+                icon: const Icon(Icons.save_outlined),
+              ),
           ],
           bottom: yetkiController.stokBarkodStokKartiGorunsun
               ? TabBar(
@@ -127,15 +127,17 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
             controller: tabController,
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              Observer(
-                builder: (_) => BarkodTanimlaStokKartiView(
-                  model: viewModel.stokModel,
-                  onChanged: viewModel.setStokModel,
+              if (yetkiController.stokBarkodStokKartiGorunsun)
+                Observer(
+                  builder: (_) => BarkodTanimlaStokKartiView(
+                    model: viewModel.stokModel,
+                    onChanged: viewModel.setStokModel,
+                  ),
                 ),
-              ).yetkiVarMi(yetkiController.stokBarkodStokKartiGorunsun),
-              Observer(
-                builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel),
-              ).yetkiVarMi(yetkiController.stokBarkodKayitlari),
+              if (yetkiController.stokBarkodKayitlari)
+                Observer(
+                  builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel),
+                ),
             ].where((element) => element is! SizedBox).toList(),
           ),
         ).paddingAll(UIHelper.lowSize),

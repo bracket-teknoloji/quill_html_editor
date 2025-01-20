@@ -10,8 +10,8 @@ import "package:picker/core/components/hero/hero_widget.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
 extension WidgetExtension on Widget {
-  Widget yetkiVarMi(bool yetki) => yetki ? this : const SizedBox();
-  Widget? get sizedBoxMi => this is SizedBox ? null : this;
+  Widget yetkiVarMi(bool yetki) => yetki ? this : const SizedBox.shrink();
+  // Widget? get sizedBoxMi => this is SizedBox ? null : this;
 
   Widget wrapWithHero(dynamic tag) => InkWell(
         onTap: () => Get.to(() => HeroWidget(tag: tag, child: this)),
@@ -100,5 +100,5 @@ extension YetkiExtension2 on Object? {
   Object? isDebug() => (CacheManager.getHesapBilgileri?.uyeEmail == "destek@netfect.com" || kDebugMode) ? this : null;
   Object? isKDebug() => kDebugMode ? this : null;
 
-  Object? yetkiVarMi(bool? yetki) => yetki == true ? this : null;
+  // Object? yetkiVarMi(bool? yetki) => yetki == true ? this : null;
 }

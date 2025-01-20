@@ -11,7 +11,6 @@ import "../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../core/constants/enum/grup_kodu_enums.dart";
 import "../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../../model/param_model.dart";
@@ -133,28 +132,29 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                   },
                 ),
               ),
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Plasiyer",
-                  readOnly: true,
-                  controller: plasiyerController,
-                  onTap: () async {
-                    final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
-                    if (plasiyerList != null) {
-                      final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "Plasiyer",
-                        children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList(),
-                      );
-                      if (result != null) {
-                        plasiyerController.text = result.plasiyerAciklama ?? "";
-                        viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
+              if (yetkiController.plasiyerUygulamasiAcikMi)
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Plasiyer",
+                    readOnly: true,
+                    controller: plasiyerController,
+                    onTap: () async {
+                      final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
+                      if (plasiyerList != null) {
+                        final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: "Plasiyer",
+                          children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList(),
+                        );
+                        if (result != null) {
+                          plasiyerController.text = result.plasiyerAciklama ?? "";
+                          viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
+                        }
                       }
-                    }
-                  },
-                  suffixMore: true,
+                    },
+                    suffixMore: true,
+                  ),
                 ),
-              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
             ],
           ),
           Row(

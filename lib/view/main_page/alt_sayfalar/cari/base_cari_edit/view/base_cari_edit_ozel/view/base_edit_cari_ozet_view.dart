@@ -6,7 +6,6 @@ import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../cari_listesi/model/cari_detay_model.dart";
@@ -74,45 +73,48 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         Expanded(child: Text("Bakiye")),
                       ],
                     ).paddingAll(UIHelper.lowSize),
-                    CustomWidgetWithLabel(
-                      text: "€",
-                      isVertical: false,
-                      child: SizedBox(
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcEuroController)),
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakEuroController)),
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
-                          ],
+                    if (cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 2) ?? false)
+                      CustomWidgetWithLabel(
+                        text: "€",
+                        isVertical: false,
+                        child: SizedBox(
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcEuroController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakEuroController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
+                            ],
+                          ),
                         ),
                       ),
-                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 2) ?? false),
-                    CustomWidgetWithLabel(
-                      text: "\$",
-                      isVertical: false,
-                      child: SizedBox(
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcDolarController)),
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakDolarController)),
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
-                          ],
+                    if (cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 1) ?? false)
+                      CustomWidgetWithLabel(
+                        text: "\$",
+                        isVertical: false,
+                        child: SizedBox(
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcDolarController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakDolarController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
+                            ],
+                          ),
                         ),
                       ),
-                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 1) ?? false),
-                    CustomWidgetWithLabel(
-                      text: mainCurrency,
-                      isVertical: false,
-                      child: SizedBox(
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController)),
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakTLController)),
-                            Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
-                          ],
+                    if (cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 0) ?? false)
+                      CustomWidgetWithLabel(
+                        text: mainCurrency,
+                        isVertical: false,
+                        child: SizedBox(
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakTLController)),
+                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
+                            ],
+                          ),
                         ),
                       ),
-                    ).yetkiVarMi(cariDetayModel?.bakiyeList?.any((element) => element.dovizTipi == 0) ?? false),
                   ],
                 ),
               ),

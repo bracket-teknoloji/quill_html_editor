@@ -11,7 +11,6 @@ import "../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/network/login/api_urls.dart";
@@ -208,70 +207,73 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   controller: aciklamaController,
                   onSubmitted: (p0) => viewModel.model.aciklama = p0,
                 ),
-                CustomTextField(
-                  labelText: "Plasiyer",
-                  isMust: true,
-                  readOnly: true,
-                  controller: plasiyerController,
-                  suffixMore: true,
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: "Plasiyer",
-                      children: viewModel.anaVeri?.paramModel?.plasiyerList
-                          ?.map(
-                            (e) => BottomSheetModel(
-                              title: e.plasiyerAciklama ?? "",
-                              onTap: () {
-                                Get.back(result: e);
-                              },
-                            ),
-                          )
-                          .toList(),
-                    );
-                    if (result != null) {
-                      plasiyerController.text = result.plasiyerAciklama ?? "";
-                      viewModel.model.plasiyerKodu = result.plasiyerKodu;
-                    }
-                  },
-                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                CustomTextField(
-                  labelText: "Proje",
-                  valueText: viewModel.model.projeKodu ?? "",
-                  isMust: true,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return "Bu alan boş bırakılamaz";
-                    }
-                    return null;
-                  },
-                  readOnly: true,
-                  controller: projeController,
-                  suffixMore: true,
-                  onTap: () async {
-                    final result = viewModel.projeListesi ?? await getProjeData();
-                    if (result != null) {
-                      // ignore: use_build_context_synchronously
-                      final BaseProjeModel? dialogResult = await bottomSheetDialogManager.showBottomSheetDialog(
+                if (yetkiController.plasiyerUygulamasiAcikMi)
+                  CustomTextField(
+                    labelText: "Plasiyer",
+                    isMust: true,
+                    readOnly: true,
+                    controller: plasiyerController,
+                    suffixMore: true,
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
-                        title: "Proje (${result.length})",
-                        children: result
-                            .map(
+                        title: "Plasiyer",
+                        children: viewModel.anaVeri?.paramModel?.plasiyerList
+                            ?.map(
                               (e) => BottomSheetModel(
-                                title: e.projeKodu ?? "",
-                                description: e.projeAciklama ?? "",
-                                value: e,
+                                title: e.plasiyerAciklama ?? "",
+                                onTap: () {
+                                  Get.back(result: e);
+                                },
                               ),
                             )
                             .toList(),
                       );
-                      if (dialogResult != null) {
-                        projeController.text = dialogResult.projeAciklama ?? "";
-                        viewModel.model.projeKodu = dialogResult.projeKodu;
+                      if (result != null) {
+                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        viewModel.model.plasiyerKodu = result.plasiyerKodu;
                       }
-                    }
-                  },
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
+                    },
+                  ),
+                if (yetkiController.projeUygulamasiAcikMi)
+                  CustomTextField(
+                    labelText: "Proje",
+                    valueText: viewModel.model.projeKodu ?? "",
+                    isMust: true,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Bu alan boş bırakılamaz";
+                      }
+                      return null;
+                    },
+                    readOnly: true,
+                    controller: projeController,
+                    suffixMore: true,
+                    onTap: () async {
+                      final result = viewModel.projeListesi ?? await getProjeData();
+                      if (result != null) {
+                        // ignore: use_build_context_synchronously
+                        final BaseProjeModel? dialogResult = await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: "Proje (${result.length})",
+                          children: result
+                              .map(
+                                (e) => BottomSheetModel(
+                                  title: e.projeKodu ?? "",
+                                  description: e.projeAciklama ?? "",
+                                  value: e,
+                                ),
+                              )
+                              .toList(),
+                        );
+                        if (dialogResult != null) {
+                          projeController.text = dialogResult.projeAciklama ?? "";
+                          viewModel.model.projeKodu = dialogResult.projeKodu;
+                        }
+                        
+                      }
+                    },
+                  ),
               ].map((e) => e.paddingOnly(bottom: UIHelper.lowSize)).toList(),
             ).paddingAll(UIHelper.lowSize),
           ),

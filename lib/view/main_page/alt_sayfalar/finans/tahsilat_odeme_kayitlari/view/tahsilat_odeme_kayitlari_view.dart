@@ -10,7 +10,6 @@ import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_mo
 import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/constants/extensions/list_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/tahsilat_odeme_kayitlari/view_model/tahsilat_odeme_kayitlari_view_model.dart";
@@ -270,19 +269,20 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
               }
             },
           ),
-          CustomTextField(
-            labelText: "Plasiyer",
-            controller: plasiyerController,
-            suffixMore: true,
-            readOnly: true,
-            onTap: () async {
-              final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.cariHareketleriRequestModel.arrPlasiyerKodu ?? "[]"));
-              if (result != null) {
-                plasiyerController.text = result.map((e) => e.plasiyerAciklama).toList().nullCheckWithGeneric.join(", ");
-                viewModel.setPlasiyerKodu(result.map((e) => e.plasiyerKodu).toList().nullCheckWithGeneric);
-              }
-            },
-          ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+          if (yetkiController.plasiyerUygulamasiAcikMi)
+            CustomTextField(
+              labelText: "Plasiyer",
+              controller: plasiyerController,
+              suffixMore: true,
+              readOnly: true,
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.cariHareketleriRequestModel.arrPlasiyerKodu ?? "[]"));
+                if (result != null) {
+                  plasiyerController.text = result.map((e) => e.plasiyerAciklama).toList().nullCheckWithGeneric.join(", ");
+                  viewModel.setPlasiyerKodu(result.map((e) => e.plasiyerKodu).toList().nullCheckWithGeneric);
+                }
+              },
+            ),
           Row(
             children: [
               Expanded(

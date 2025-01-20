@@ -15,7 +15,6 @@ import "../../constants/enum/badge_color_enum.dart";
 import "../../constants/enum/cek_senet_listesi_enum.dart";
 import "../../constants/extensions/date_time_extensions.dart";
 import "../../constants/extensions/list_extensions.dart";
-import "../../constants/extensions/model_extensions.dart";
 import "../../constants/extensions/number_extensions.dart";
 import "../../constants/ondalik_utils.dart";
 import "../../constants/ui_helper/ui_helper.dart";
@@ -49,7 +48,7 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
             final result = await bottomSheetDialogManager.showBottomSheetDialog(
               context,
               title: model.belgeNo ?? "",
-              children: bottomSheetItems.where((element) => element?.onTap != null).toList().nullCheckWithGeneric,
+              children: bottomSheetItems.where((element) => element.onTap != null).toList(),
             );
             if (result != null) {
               widget.onUpdate?.call(true);
@@ -112,17 +111,18 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
         ),
       );
 
-  List<BottomSheetModel?> get bottomSheetItems => [
+  List<BottomSheetModel> get bottomSheetItems => [
         BottomSheetModel(
           title: loc.generalStrings.view,
           iconWidget: Icons.preview_outlined,
           onTap: goruntuleCekSenet,
         ),
-        BottomSheetModel(
-          title: loc.generalStrings.delete,
-          iconWidget: Icons.delete_outline_outlined,
-          onTap: deleteCekSenet,
-        ).yetkiKontrol(widget.cekSenetListesiEnum.silebilirMi),
+        if (widget.cekSenetListesiEnum.silebilirMi)
+          BottomSheetModel(
+            title: loc.generalStrings.delete,
+            iconWidget: Icons.delete_outline_outlined,
+            onTap: deleteCekSenet,
+          ),
         BottomSheetModel(
           title: loc.generalStrings.actions,
           iconWidget: Icons.list_alt_outlined,
@@ -131,11 +131,12 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
             await dialogManager.showCekSenetGridViewDialog(model, onSelected: widget.onUpdate);
           },
         ),
-        BottomSheetModel(
-          title: "Hareketler",
-          iconWidget: Icons.sync_alt_outlined,
-          onTap: hareketlerCekSenet,
-        ).yetkiKontrol(widget.cekSenetListesiEnum.hareketlerGorulebilirMi),
+        if (widget.cekSenetListesiEnum.hareketlerGorulebilirMi)
+          BottomSheetModel(
+            title: "Hareketler",
+            iconWidget: Icons.sync_alt_outlined,
+            onTap: hareketlerCekSenet,
+          ),
         BottomSheetModel(
           title: "Evraklar",
           iconWidget: Icons.description_outlined,

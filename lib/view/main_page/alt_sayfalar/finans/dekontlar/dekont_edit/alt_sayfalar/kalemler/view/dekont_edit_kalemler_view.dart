@@ -13,7 +13,6 @@ import "../../../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/dekont_edit_kalemler_view_model.dart";
@@ -68,7 +67,7 @@ final class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerVie
                             ),
                             Row(
                               children: [
-                                const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).paddingOnly(right: UIHelper.lowSize).yetkiVarMi(item.dovizliMi),
+                                if (item.dovizliMi) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).paddingOnly(right: UIHelper.lowSize),
                                 Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                                 ColorfulBadge(label: Text(item.ba ?? "")).paddingOnly(left: UIHelper.lowSize),
                               ],
@@ -81,7 +80,7 @@ final class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerVie
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("${item.aciklama}").paddingOnly(top: UIHelper.highSize).yetkiVarMi(item.aciklama != null),
+                        if (item.aciklama != null) Text("${item.aciklama}").paddingOnly(top: UIHelper.highSize),
                         Text("Plasiyer:\n${item.plasiyerAdi ?? item.plasiyerKodu ?? ""}").paddingOnly(top: UIHelper.highSize),
                       ],
                     ),

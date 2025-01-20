@@ -3,6 +3,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -11,11 +12,7 @@ import "../../../../../../../../../core/components/dialog/bottom_sheet/model/bot
 import "../../../../../../../../../core/components/textfield/custom_text_field.dart";
 import "../../../../../../../../../core/constants/enum/badge_color_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/text_span_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
@@ -175,59 +172,54 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
                     .paddingOnly(bottom: UIHelper.lowSize),
             if (kalemModel.faturaKalemAciklama != "") Text(kalemModel.faturaKalemAciklama, style: const TextStyle(color: UIHelper.primaryColor)),
             if (kalemModel.barkodList != null) Text("Barkod Sayısı: ${kalemModel.barkodList?.length ?? 0}", style: const TextStyle(color: UIHelper.primaryColor)),
-            LayoutBuilder(
-              builder: (context, constrains) => Wrap(
-                children: <Widget>[
-                  if (!(kalemModel.miktar == null || kalemModel.miktar == 0.0))
-                    Text(
-                      "Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}  ${kalemModel.olcuBirimCarpani != null ? "(${kalemModel.gercekMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${kalemModel.stokOlcuBirimi})" : ""}",
+            CustomLayoutBuilder.divideInHalf(
+              children: [
+                if (!(kalemModel.miktar == null || kalemModel.miktar == 0.0))
+                  Text(
+                    "Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}  ${kalemModel.olcuBirimCarpani != null ? "(${kalemModel.gercekMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${kalemModel.stokOlcuBirimi})" : ""}",
+                  ),
+                Text("Miktar2: ${kalemModel.miktar2.toIntIfDouble ?? "0"} ${kalemModel.olcuBirimAdi ?? ""}"),
+                if (kalemModel.kdvOrani != null) Text("KDV: %${kalemModel.kdvOrani.toIntIfDouble ?? ""}"),
+                if (kalemModel.malFazlasiMiktar != null) Text("Mal Fazlası Miktar: ${kalemModel.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}"),
+                if (model.getEditTipiEnum?.fiyatGor == true && kalemModel.kdvOrani != null)
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: "Satış İskontosu: ${kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} "),
+                        if (kalemModel.iskontoTutari > 0)
+                          TextSpan(
+                            text: kalemModel.iskontoDetayi,
+                            style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
+                          ),
+                      ],
                     ),
-                  Text("Miktar2: ${kalemModel.miktar2.toIntIfDouble ?? "0"} ${kalemModel.olcuBirimAdi ?? ""}"),
-                  if (kalemModel.kdvOrani != null) Text("KDV: %${kalemModel.kdvOrani.toIntIfDouble ?? ""}"),
-                  if (kalemModel.malFazlasiMiktar != null) Text("Mal Fazlası Miktar: ${kalemModel.malFazlasiMiktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}"),
-                  if (model.getEditTipiEnum?.fiyatGor == true)
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: "Satış İskontosu: ${kalemModel.iskontoTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} "),
-                          if (kalemModel.iskontoTutari > 0)
-                            TextSpan(
-                              text: kalemModel.iskontoDetayi,
-                              style: theme.textTheme.bodySmall?.copyWith(color: UIHelper.primaryColor),
-                            ),
-                        ],
-                      ),
-                    ).yetkiVarMi(kalemModel.kdvOrani != null),
-                  if (model.getEditTipiEnum?.fiyatGor == true)
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: "Fiyat: ${kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                          TextSpan(text: "\n(${kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency})")
-                              .yetkiVarMi(kalemModel.dovizliMi),
-                        ],
-                      ),
-                    ).yetkiVarMi(kalemModel.brutFiyat != null),
-                  if (model.getEditTipiEnum?.fiyatGor == true)
-                    Text("Kur: ${kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency}").yetkiVarMi(kalemModel.dovizKuru != null),
-                  if (model.getEditTipiEnum?.fiyatGor == true)
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: "Tutar: ${(kalemModel.brutTutar - kalemModel.iskontoTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                          TextSpan(text: "\n(${kalemModel.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency})")
-                              .yetkiVarMi(kalemModel.dovizliMi),
-                        ],
-                      ),
-                    ).yetkiVarMi(kalemModel.brutFiyat != null),
-                  Text("Proje: ${kalemModel.projeKodu}").yetkiVarMi(kalemModel.projeKodu != null && yetkiController.projeUygulamasiAcikMi),
-                  // Text("Teslim Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.miktar != null),
-                  // Text("Kalan Miktar: ${kalemModel.miktar.toIntIfDouble ?? ""} ${kalemModel.olcuBirimAdi ?? ""}").yetkiVarMi(kalemModel.miktar != null),
-                  Text("Teslim Tarihi: ${kalemModel.teslimTarihi.toDateStringIfNull ?? ""}").yetkiVarMi(kalemModel.teslimTarihi != null),
-                ].map((e) => e is! SizedBox ? SizedBox(width: constrains.maxWidth / 2, child: e) : null).toList().nullCheckWithGeneric,
-              ),
+                  ),
+                if (model.getEditTipiEnum?.fiyatGor == true && kalemModel.brutFiyat != null)
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: "Fiyat: ${kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                        if (kalemModel.dovizliMi) TextSpan(text: "\n(${kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency})"),
+                      ],
+                    ),
+                  ),
+                if (model.getEditTipiEnum?.fiyatGor == true && kalemModel.dovizKuru != null)
+                  Text("Kur: ${kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency}"),
+                if (model.getEditTipiEnum?.fiyatGor == true && kalemModel.brutFiyat != null)
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(text: "Tutar: ${(kalemModel.brutTutar - kalemModel.iskontoTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                        if (kalemModel.dovizliMi)
+                          TextSpan(text: "\n(${kalemModel.dovizGenelToplamTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency})"),
+                      ],
+                    ),
+                  ),
+                if (kalemModel.projeKodu != null && yetkiController.projeUygulamasiAcikMi) Text("Proje: ${kalemModel.projeKodu}"),
+                if (kalemModel.teslimTarihi != null) Text("Teslim Tarihi: ${kalemModel.teslimTarihi.toDateStringIfNull ?? ""}"),
+              ],
             ),
-          ].nullCheckWithGeneric,
+          ],
         ),
       );
 
@@ -244,8 +236,8 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
                 await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
                   title: "Hücre İşlemleri",
-                  children: <BottomSheetModel?>[
-                    BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined).yetkiKontrol(false),
+                  children: [
+                    // BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined),
                     BottomSheetModel(
                       title: "Stok İşlemleri",
                       iconWidget: Icons.list_alt_outlined,
@@ -254,7 +246,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
                         dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemList?.stokKodu ?? "");
                       },
                     ),
-                  ].nullCheckWithGeneric,
+                  ],
                 );
               },
               icon: const Icon(Icons.more_vert_outlined),
@@ -293,7 +285,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: viewModel.kalemList?[index].stokAdi ?? viewModel.kalemList?[index].kalemAdi ?? "",
-      children: <BottomSheetModel?>[
+      children: [
         if (!widget.model.isGoruntule && ((model?.siparisNo == null || model?.siparisNo == "") || model?.siparisNo == ""))
           BottomSheetModel(
             title: loc.generalStrings.edit,
@@ -326,7 +318,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
             return dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "");
           },
         ),
-      ].nullCheckWithGeneric,
+      ],
     );
   }
 

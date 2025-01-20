@@ -13,7 +13,6 @@ import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../core/constants/extensions/list_extensions.dart";
-import "../../../../../../core/constants/extensions/model_extensions.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
@@ -73,79 +72,81 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                   context,
                   title: loc.generalStrings.options,
                   children: [
-                    BottomSheetModel(
-                      title: "Teknik Resimleri Görüntüle",
-                      iconWidget: Icons.picture_as_pdf_outlined,
-                      onTap: () async {
-                        Get.back();
-                        final result = await networkManager.dioPost(
-                          path: ApiUrls.getBelgeler,
-                          bodyModel: OlcumPdfModel(),
-                          showLoading: true,
-                          data: widget.model.belge?.firstOrNull?.forTeknikResim,
-                        );
-                        if (result.isSuccess) {
-                          OlcumPdfModel? selectedItem;
-                          final List<OlcumPdfModel> list = result.dataList;
-                          if (list.length == 1) {
-                            selectedItem = list.first;
-                          } else {
-                            selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                              context,
-                              groupValue: null,
-                              title: "Teknik Resim Seçiniz",
-                              children: List.generate(list.length, (index) {
-                                final OlcumPdfModel item = list[index];
-                                return BottomSheetModel(title: item.revno ?? "", value: item);
-                              }),
-                            );
-                          }
-                          if (selectedItem != null) {
-                            final pdfData = await networkManager.getTeknikResimPdf(selectedItem);
-                            if (pdfData.isSuccess) {
-                              Get.to(() => GenelPdfView(model: pdfData.dataItem));
+                    if (widget.model.belge?.firstOrNull?.teknikResimVarmi == "E" && yetkiController.sigmaTeknikResim)
+                      BottomSheetModel(
+                        title: "Teknik Resimleri Görüntüle",
+                        iconWidget: Icons.picture_as_pdf_outlined,
+                        onTap: () async {
+                          Get.back();
+                          final result = await networkManager.dioPost(
+                            path: ApiUrls.getBelgeler,
+                            bodyModel: OlcumPdfModel(),
+                            showLoading: true,
+                            data: widget.model.belge?.firstOrNull?.forTeknikResim,
+                          );
+                          if (result.isSuccess) {
+                            OlcumPdfModel? selectedItem;
+                            final List<OlcumPdfModel> list = result.dataList;
+                            if (list.length == 1) {
+                              selectedItem = list.first;
+                            } else {
+                              selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                                context,
+                                groupValue: null,
+                                title: "Teknik Resim Seçiniz",
+                                children: List.generate(list.length, (index) {
+                                  final OlcumPdfModel item = list[index];
+                                  return BottomSheetModel(title: item.revno ?? "", value: item);
+                                }),
+                              );
+                            }
+                            if (selectedItem != null) {
+                              final pdfData = await networkManager.getTeknikResimPdf(selectedItem);
+                              if (pdfData.isSuccess) {
+                                Get.to(() => GenelPdfView(model: pdfData.dataItem));
+                              }
                             }
                           }
-                        }
-                      },
-                    ).yetkiKontrol(widget.model.belge?.firstOrNull?.teknikResimVarmi == "E" && yetkiController.sigmaTeknikResim),
-                    BottomSheetModel(
-                      title: "Kontrol Planlarını Görüntüle",
-                      iconWidget: Icons.picture_as_pdf_outlined,
-                      onTap: () async {
-                        Get.back();
-                        final result = await networkManager.dioPost(
-                          path: ApiUrls.getBelgeler,
-                          bodyModel: OlcumPdfModel(),
-                          showLoading: true,
-                          data: widget.model.belge?.firstOrNull?.forKontrolPlani,
-                        );
-                        if (result.isSuccess) {
-                          OlcumPdfModel? selectedItem;
-                          final List<OlcumPdfModel> list = result.dataList;
-                          if (list.length == 1) {
-                            selectedItem = list.first;
-                          } else {
-                            selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                              context,
-                              groupValue: null,
-                              title: "Kontrol Planı Seçiniz",
-                              children: List.generate(list.length, (index) {
-                                final OlcumPdfModel item = list[index];
-                                return BottomSheetModel(title: item.revno ?? "", value: item);
-                              }),
-                            );
-                          }
-                          if (selectedItem != null) {
-                            final pdfData = await networkManager.getKontrolPlaniPdf(selectedItem);
-                            if (pdfData.isSuccess) {
-                              Get.to(() => GenelPdfView(model: pdfData.dataItem));
+                        },
+                      ),
+                    if (widget.model.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani)
+                      BottomSheetModel(
+                        title: "Kontrol Planlarını Görüntüle",
+                        iconWidget: Icons.picture_as_pdf_outlined,
+                        onTap: () async {
+                          Get.back();
+                          final result = await networkManager.dioPost(
+                            path: ApiUrls.getBelgeler,
+                            bodyModel: OlcumPdfModel(),
+                            showLoading: true,
+                            data: widget.model.belge?.firstOrNull?.forKontrolPlani,
+                          );
+                          if (result.isSuccess) {
+                            OlcumPdfModel? selectedItem;
+                            final List<OlcumPdfModel> list = result.dataList;
+                            if (list.length == 1) {
+                              selectedItem = list.first;
+                            } else {
+                              selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                                context,
+                                groupValue: null,
+                                title: "Kontrol Planı Seçiniz",
+                                children: List.generate(list.length, (index) {
+                                  final OlcumPdfModel item = list[index];
+                                  return BottomSheetModel(title: item.revno ?? "", value: item);
+                                }),
+                              );
+                            }
+                            if (selectedItem != null) {
+                              final pdfData = await networkManager.getKontrolPlaniPdf(selectedItem);
+                              if (pdfData.isSuccess) {
+                                Get.to(() => GenelPdfView(model: pdfData.dataItem));
+                              }
                             }
                           }
-                        }
-                      },
-                    ).yetkiKontrol(widget.model.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani),
-                  ].nullCheckWithGeneric,
+                        },
+                      ),
+                  ],
                 );
               },
               icon: const Icon(Icons.more_vert_outlined),
@@ -270,13 +271,13 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                                 CustomLayoutBuilder(
                                   splitCount: 2,
                                   children: [
-                                    Text("Kriter: ${eklenenProses?.kriter}").yetkiVarMi(eklenenProses?.kriter != null),
-                                    Text("Kabul Şartı: ${eklenenProses?.kabulSarti ?? ""}").yetkiVarMi(eklenenProses?.kabulSarti != null),
-                                    Text("Ekipman: ${eklenenProses?.ekipman}").yetkiVarMi(eklenenProses?.ekipman != null),
+                                    if (eklenenProses?.kriter != null) Text("Kriter: ${eklenenProses?.kriter}"),
+                                    if (eklenenProses?.kabulSarti != null) Text("Kabul Şartı: ${eklenenProses?.kabulSarti ?? ""}"),
+                                    if (eklenenProses?.ekipman != null) Text("Ekipman: ${eklenenProses?.ekipman}"),
                                     Text("Numune Miktarı: ${eklenenProses?.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis),
                                   ],
                                 ),
-                                Text("Açıklama: ${eklenenProses?.aciklama}").yetkiVarMi(eklenenProses?.aciklama != null),
+                                if (eklenenProses?.aciklama != null) Text("Açıklama: ${eklenenProses?.aciklama}"),
                               ],
                             );
                           },

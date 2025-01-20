@@ -8,7 +8,6 @@ import "../../../../../components/textfield/custom_text_field.dart";
 import "../../../../../components/wrap/appbar_title.dart";
 import "../../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../../constants/extensions/number_extensions.dart";
-import "../../../../../constants/extensions/widget_extensions.dart";
 import "../../../../../constants/ondalik_utils.dart";
 import "../../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../state/base_state.dart";
@@ -100,12 +99,13 @@ final class _SeriDetayiViewState extends BaseState<SeriDetayiView> {
             key: formKey,
             child: Column(
               children: [
-                const Card(
-                  child: ListTile(
-                    leading: Icon(Icons.info_outline),
-                    title: Text("Her 1 miktar için seri giriniz."),
+                if (widget.seriDetayiModel.miktarKadarSor == true)
+                  const Card(
+                    child: ListTile(
+                      leading: Icon(Icons.info_outline),
+                      title: Text("Her 1 miktar için seri giriniz."),
+                    ),
                   ),
-                ).yetkiVarMi(widget.seriDetayiModel.miktarKadarSor == true),
                 CustomTextField(
                   labelText: "Seri 1",
                   focusNode: _focusNode,

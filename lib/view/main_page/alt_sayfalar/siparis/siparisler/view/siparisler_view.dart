@@ -275,23 +275,24 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                     ),
                     Row(
                       children: [
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "Özel Kod 1",
-                            controller: ozelKod1Controller,
-                            onChanged: (value) => viewModel.setOzelKod1(value),
-                            suffix: IconButton(
-                              onPressed: () async {
-                                final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.ozelKod1);
-                                if (result != null) {
-                                  ozelKod1Controller.text = result.aciklama ?? "";
-                                  viewModel.setOzelKod1(result.kod);
-                                }
-                              },
-                              icon: const Icon(Icons.more_horiz_outlined),
+                        if (yetkiController.satisOzelKod1AktifMi)
+                          Expanded(
+                            child: CustomTextField(
+                              labelText: "Özel Kod 1",
+                              controller: ozelKod1Controller,
+                              onChanged: (value) => viewModel.setOzelKod1(value),
+                              suffix: IconButton(
+                                onPressed: () async {
+                                  final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.ozelKod1);
+                                  if (result != null) {
+                                    ozelKod1Controller.text = result.aciklama ?? "";
+                                    viewModel.setOzelKod1(result.kod);
+                                  }
+                                },
+                                icon: const Icon(Icons.more_horiz_outlined),
+                              ),
                             ),
                           ),
-                        ).yetkiVarMi(yetkiController.satisOzelKod1AktifMi),
                         Expanded(
                           child: CustomTextField(
                             labelText: "Özel Kod 2",

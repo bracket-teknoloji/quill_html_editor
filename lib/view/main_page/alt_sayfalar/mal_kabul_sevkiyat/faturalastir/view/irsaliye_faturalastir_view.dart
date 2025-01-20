@@ -95,12 +95,13 @@ final class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalasti
             key: formKey,
             child: Column(
               children: [
-                const Card(
-                  child: ListTile(
-                    leading: Icon(Icons.info_outlined),
-                    title: Text("Cari E-Fatura Mükellefidir."),
+                if (widget.model.model?.eBelgeMi == true)
+                  const Card(
+                    child: ListTile(
+                      leading: Icon(Icons.info_outlined),
+                      title: Text("Cari E-Fatura Mükellefidir."),
+                    ),
                   ),
-                ).yetkiVarMi(widget.model.model?.eBelgeMi == true),
                 CustomTextField(
                   labelText: "Cari",
                   readOnly: true,
