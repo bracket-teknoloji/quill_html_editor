@@ -98,7 +98,7 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
         itemCount: dahaVarMi ? items!.length + 2 : items!.length,
         itemBuilder: (context, index) {
           if (index == items!.length) {
-            return const SizedBox();
+            return const SizedBox.shrink();
           }
           if (index == items!.length + 1) {
             return Center(

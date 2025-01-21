@@ -102,7 +102,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                   },
                 )
               : (kIsWeb && context.isLandscape)
-                  ? const SizedBox()
+                  ? const SizedBox.shrink()
                   : IconButton(
                       icon: const Icon(Icons.star_border_outlined),
                       onPressed: () async {

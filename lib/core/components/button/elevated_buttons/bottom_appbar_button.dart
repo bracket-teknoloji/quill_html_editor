@@ -36,7 +36,7 @@ final class AppBarButton extends StatelessWidget {
                 fill: 1,
                 color: (hasFilter ?? false) ? UIHelper.primaryColor : null,
               ),
-            iconWidget ?? const SizedBox(),
+            iconWidget ?? const SizedBox.shrink(),
             child,
           ].nullCheckWithGeneric,
         ),

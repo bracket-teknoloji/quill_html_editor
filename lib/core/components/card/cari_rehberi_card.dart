@@ -43,7 +43,7 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
                 if (model.cariIl != null)
                   Text("${model.cariIl ?? ""}/${model.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)))
                 else
-                  const SizedBox(),
+                  const SizedBox.shrink(),
                 Row(
                   children: [
                     if (model.efaturaMi == true) const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),

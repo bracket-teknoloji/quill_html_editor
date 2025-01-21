@@ -9,7 +9,6 @@ import "../../../../../../../../core/components/textfield/custom_text_field.dart
 import "../../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../../core/constants/enum/cirola_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../model/param_model.dart";
 import "../../../../../cari/cari_listesi/model/cari_listesi_model.dart";
@@ -113,43 +112,47 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
                   readOnly: true,
                   onTap: setTarih,
                 ),
-                CustomTextField(
-                  labelText: "Cari",
-                  controller: _cariController,
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  suffix: IconButton(onPressed: getCariIslemler, icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
-                  onTap: setCari,
-                ).yetkiVarMi(widget.cirolaEnum == CirolaEnum.cari),
-                CustomTextField(
-                  labelText: "Tahsil Hesabı",
-                  controller: _cariController,
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
-                  onTap: getTahsilHesabi,
-                ).yetkiVarMi(widget.cirolaEnum == CirolaEnum.tahsil),
-                CustomTextField(
-                  labelText: "Proje",
-                  controller: _projeController,
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                  onTap: setProjekodu,
-                ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
-                CustomTextField(
-                  labelText: "Plasiyer",
-                  controller: _plasiyerController,
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                  onTap: setPlasiyerKodu,
-                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+                if (widget.cirolaEnum == CirolaEnum.cari)
+                  CustomTextField(
+                    labelText: "Cari",
+                    controller: _cariController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    suffix: IconButton(onPressed: getCariIslemler, icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
+                    onTap: setCari,
+                  ),
+                if (widget.cirolaEnum == CirolaEnum.tahsil)
+                  CustomTextField(
+                    labelText: "Tahsil Hesabı",
+                    controller: _cariController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
+                    onTap: getTahsilHesabi,
+                  ),
+                if (yetkiController.projeUygulamasiAcikMi)
+                  CustomTextField(
+                    labelText: "Proje",
+                    controller: _projeController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                    onTap: setProjekodu,
+                  ),
+                if (yetkiController.plasiyerUygulamasiAcikMi)
+                  CustomTextField(
+                    labelText: "Plasiyer",
+                    controller: _plasiyerController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                    onTap: setPlasiyerKodu,
+                  ),
               ],
             ),
           ),

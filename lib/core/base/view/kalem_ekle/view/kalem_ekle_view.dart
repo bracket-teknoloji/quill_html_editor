@@ -22,7 +22,6 @@ import "../../../../constants/enum/edit_tipi_enum.dart";
 import "../../../../constants/extensions/date_time_extensions.dart";
 import "../../../../constants/extensions/iterable_extensions.dart";
 import "../../../../constants/extensions/number_extensions.dart";
-import "../../../../constants/extensions/widget_extensions.dart";
 import "../../../../constants/ondalik_utils.dart";
 import "../../../../constants/ui_helper/ui_helper.dart";
 import "../../../../init/network/login/api_urls.dart";
@@ -890,29 +889,28 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                 },
                               ),
                             ),
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Döviz Kuru",
-                              isMust: true,
-                              controller: dovizKuruController,
-                              enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
-                              isFormattedString: true,
-                              keyboardType: const TextInputType.numberWithOptions(
-                                decimal: true,
+                          if (viewModel.kalemModel.dovizliMi && !transferMi)
+                            Expanded(
+                              child: CustomTextField(
+                                labelText: "Döviz Kuru",
+                                isMust: true,
+                                controller: dovizKuruController,
+                                enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
+                                isFormattedString: true,
+                                keyboardType: const TextInputType.numberWithOptions(
+                                  decimal: true,
+                                ),
+                                onChanged: (value) {
+                                  viewModel.kalemModel.dovizKuru = value.toDoubleWithFormattedString;
+                                  viewModel.setBrutFiyat(
+                                    (viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1),
+                                  );
+                                  fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(
+                                    OndalikEnum.fiyat,
+                                  );
+                                },
                               ),
-                              onChanged: (value) {
-                                viewModel.kalemModel.dovizKuru = value.toDoubleWithFormattedString;
-                                viewModel.setBrutFiyat(
-                                  (viewModel.kalemModel.dovizliFiyat ?? 0) * (viewModel.kalemModel.dovizKuru ?? 1),
-                                );
-                                fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(
-                                  OndalikEnum.fiyat,
-                                );
-                              },
                             ),
-                          ).yetkiVarMi(
-                            viewModel.kalemModel.dovizliMi && !transferMi,
-                          ),
                         ],
                       ),
                     ),
@@ -940,36 +938,35 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: CustomTextField(
-                          enabled: yetkiController.siparisSatirdaKDVSor(editTipi),
-                          labelText: "KDV Oranı",
-                          controller: kdvOraniController,
-                          isMust: true,
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true,
-                          ),
-                          isFormattedString: true,
-                          onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
-                          suffix: IconButton(
-                            icon: const Icon(Icons.more_horiz_outlined),
-                            onPressed: () async {
-                              final result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(
-                                context,
-                                viewModel.kalemModel.kdvOrani,
-                              );
-                              if (result != null) {
-                                viewModel.setKdvOrani(result);
-                                kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
-                                // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNotNull ?? "");
-                                // kdvOraniController.buildTextSpan(context: context, withComposing: true);
-                              }
-                            },
+                      if (!editTipi.talepKalemlerFiltrele && !transferMi)
+                        Expanded(
+                          child: CustomTextField(
+                            enabled: yetkiController.siparisSatirdaKDVSor(editTipi),
+                            labelText: "KDV Oranı",
+                            controller: kdvOraniController,
+                            isMust: true,
+                            keyboardType: const TextInputType.numberWithOptions(
+                              decimal: true,
+                            ),
+                            isFormattedString: true,
+                            onChanged: (p0) => viewModel.setKdvOrani(p0.toDoubleWithFormattedString),
+                            suffix: IconButton(
+                              icon: const Icon(Icons.more_horiz_outlined),
+                              onPressed: () async {
+                                final result = await bottomSheetDialogManager.showKdvOranlariBottomSheetDialog(
+                                  context,
+                                  viewModel.kalemModel.kdvOrani,
+                                );
+                                if (result != null) {
+                                  viewModel.setKdvOrani(result);
+                                  kdvOraniController.text = result.toIntIfDouble.toStringIfNotNull ?? "";
+                                  // kdvOraniController.value = TextEditingValue(text: result.toIntIfDouble.toStringIfNotNull ?? "");
+                                  // kdvOraniController.buildTextSpan(context: context, withComposing: true);
+                                }
+                              },
+                            ),
                           ),
                         ),
-                      ).yetkiVarMi(
-                        !editTipi.talepKalemlerFiltrele && !transferMi,
-                      ),
                       if (editTipi?.fiyatGor == true && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false))
                         Expanded(
                           child: CustomTextField(
@@ -996,27 +993,28 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         ),
                     ],
                   ),
-                  if (seriliMi) CustomTextField(
-                    labelText: "Seriler",
-                    isMust: true,
-                    controller: serilerController,
-                    suffixMore: true,
-                    readOnly: true,
-                    onTap: serilerOnTap,
-                    validator: (value) {
-                      if (value == "") {
-                        return "Bu alan boş bırakılamaz.";
-                      }
-                      if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
-                        return "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})";
-                      }
-                      return null;
-                    },
-                  ),
+                  if (seriliMi)
+                    CustomTextField(
+                      labelText: "Seriler",
+                      isMust: true,
+                      controller: serilerController,
+                      suffixMore: true,
+                      readOnly: true,
+                      onTap: serilerOnTap,
+                      validator: (value) {
+                        if (value == "") {
+                          return "Bu alan boş bırakılamaz.";
+                        }
+                        if (widget.stokListesiModel?.seriMiktarKadarSor == true && viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length) {
+                          return "Girdiğiniz miktar (${viewModel.kalemModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.kalemModel.seriList?.length ?? 0})";
+                        }
+                        return null;
+                      },
+                    ),
                   if (!(editTipi?.gizlenecekAlanlar("satir_iskontolari") ?? false))
                     ...List.generate(
                       editTipi.kademeliIskontoSayisi > 6 ? 6 : editTipi.kademeliIskontoSayisi,
-                      (index) => !(editTipi?.gizlenecekAlanlar("sat_isk$index") ?? false)
+                      (index) => !((editTipi?.gizlenecekAlanlar("sat_isk$index") ?? false) && !editTipi.talepKalemlerFiltrele && !transferMi)
                           ? Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -1063,16 +1061,15 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   ),
                                 ),
                               ],
-                            ).yetkiVarMi(!editTipi.talepKalemlerFiltrele && !transferMi)
+                            )
                           : const SizedBox.shrink(),
                     ),
                   // TODO Açıklama parametrelerini düzenle
-                  const Text(
-                    "Açıklamalar",
-                    style: TextStyle(fontSize: UIHelper.highSize),
-                  ).paddingSymmetric(vertical: UIHelper.lowSize).yetkiVarMi(
-                        yetkiController.siparisSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi,
-                      ),
+                  if (yetkiController.siparisSatirAciklamaAlanlari(null) && !editTipi.talepTeklifMi && !transferMi)
+                    const Text(
+                      "Açıklamalar",
+                      style: TextStyle(fontSize: UIHelper.highSize),
+                    ).paddingSymmetric(vertical: UIHelper.lowSize),
                   if (!editTipi.talepTeklifMi && yetkiController.siparisSatirAciklamaAlanlari(1) && !transferMi)
                     CustomTextField(
                       labelText: getAciklamaLabel(1),

@@ -156,6 +156,10 @@ class ApiUrls {
   static const String getHucreTakibiBelgeler = "Depo/GetHucreTakibiBelgeler";
   static const String deleteSayimKalem = "Depo/DeleteSayimKalem";
 
+  //* Transfer
+  static const String getDepoTalepleri = "fatura/GetDepoTalepleri";
+  static const String saveDepoTalep = "fatura/SaveDepoTalep";
+
   //* Sigma Kalite-Kontrol
   static const String getOlcumBelgeler = "Sigma/GetOlcumBelgeler";
   static const String getOlcum = "Sigma/GetOlcum";

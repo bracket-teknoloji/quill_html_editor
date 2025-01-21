@@ -175,19 +175,21 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Observer(
-                builder: (_) => CustomTextField(
-                  labelText: "Belge No",
-                  controller: _belgeNoController,
-                  maxLength: 15,
-                  onChanged: (value) => viewModel.setBelgeNo(value),
-                  suffix: IconButton(
-                    onPressed: () async {
-                      await viewModel.getSiradakiKod();
-                      _belgeNoController.text = viewModel.model.belgeNo ?? "";
-                    },
-                    icon: const Icon(Icons.add_outlined),
-                  ),
-                ).yetkiVarMi(viewModel.model.kktYontemi != "D"),
+                builder: (_) => (viewModel.model.kktYontemi != "D")
+                    ? CustomTextField(
+                        labelText: "Belge No",
+                        controller: _belgeNoController,
+                        maxLength: 15,
+                        onChanged: (value) => viewModel.setBelgeNo(value),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            await viewModel.getSiradakiKod();
+                            _belgeNoController.text = viewModel.model.belgeNo ?? "";
+                          },
+                          icon: const Icon(Icons.add_outlined),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ),
               CustomTextField(
                 labelText: "Tarih",
@@ -232,17 +234,18 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
               Observer(
                 builder: (_) => Row(
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Kasa",
-                        controller: _kasaController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.kasaKodu ?? "")),
-                        onTap: () async => await getKasa(),
+                    if (viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H")
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Kasa",
+                          controller: _kasaController,
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.kasaKodu ?? "")),
+                          onTap: () async => await getKasa(),
+                        ),
                       ),
-                    ).yetkiVarMi(viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H"),
                     Expanded(
                       child: CustomTextField(
                         labelText: "Sözleşme",
@@ -307,69 +310,72 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                       onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
                     ),
                   ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Plasiyer",
-                      controller: _plasiyerController,
-                      isMust: true,
-                      readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                      onTap: () async {
-                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
-                        if (result is PlasiyerList) {
-                          _plasiyerController.text = result.plasiyerAciklama ?? "";
-                          viewModel.setPlasiyerKodu(result);
-                        }
-                      },
+                  if (yetkiController.plasiyerUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Plasiyer",
+                        controller: _plasiyerController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                          if (result is PlasiyerList) {
+                            _plasiyerController.text = result.plasiyerAciklama ?? "";
+                            viewModel.setPlasiyerKodu(result);
+                          }
+                        },
+                      ),
                     ),
-                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 ],
               ),
               Row(
                 children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Proje",
-                      controller: _projekoduController,
-                      isMust: true,
-                      readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                      onTap: () async {
-                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                        if (result is BaseProjeModel) {
-                          _projekoduController.text = result.projeAciklama ?? "";
-                          viewModel.setProjekodu(result.projeKodu);
-                        }
-                      },
+                  if (yetkiController.projeUygulamasiAcikMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Proje",
+                        controller: _projekoduController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                          if (result is BaseProjeModel) {
+                            _projekoduController.text = result.projeAciklama ?? "";
+                            viewModel.setProjekodu(result.projeKodu);
+                          }
+                        },
+                      ),
                     ),
-                  ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Referans Kodu",
-                      controller: _referansKoduController,
-                      isMust: true,
-                      readOnly: true,
-                      suffixMore: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
-                      onTap: () async {
-                        if (viewModel.muhaRefList.ext.isNullOrEmpty) {
-                          await viewModel.getMuhaRefList();
-                        }
-                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                          context,
-                          title: "Referans Kodu",
-                          groupValue: viewModel.model.refKod,
-                          children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu)).toList(),
-                        );
-                        if (result is MuhasebeReferansModel) {
-                          _referansKoduController.text = result.tanimi ?? "";
-                          viewModel.setReferansKodu(result.kodu);
-                        }
-                      },
+                  if (yetkiController.referansKodu(viewModel.model.refKod))
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "Referans Kodu",
+                        controller: _referansKoduController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+                        onTap: () async {
+                          if (viewModel.muhaRefList.ext.isNullOrEmpty) {
+                            await viewModel.getMuhaRefList();
+                          }
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Referans Kodu",
+                            groupValue: viewModel.model.refKod,
+                            children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu)).toList(),
+                          );
+                          if (result is MuhasebeReferansModel) {
+                            _referansKoduController.text = result.tanimi ?? "";
+                            viewModel.setReferansKodu(result.kodu);
+                          }
+                        },
+                      ),
                     ),
-                  ).yetkiVarMi(yetkiController.referansKodu(viewModel.model.refKod)),
                 ],
               ),
               CustomTextField(

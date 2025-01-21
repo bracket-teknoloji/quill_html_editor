@@ -155,7 +155,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
           hideSearchBar(),
           Observer(
             builder: (_) => viewModel.isSearchBarOpen
-                ? const SizedBox()
+                ? const SizedBox.shrink()
                 : IconButton(
                     onPressed: () async {
                       await bottomSheetDialogManager.showBottomSheetDialog(

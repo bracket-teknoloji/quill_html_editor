@@ -312,12 +312,15 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                     if (item.dovizli == true) ColorfulBadge(label: Text("Dövizli ${item.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
                     if (item.boylam != null) const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
                     if (item.kilit == "E") const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
-                    // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox(),
-                    // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox(),
+                    // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox.shrink(),
+                    // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox.shrink(),
                   ],
                 ),
                 Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
-                if (item.cariIl != null) Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))) else const SizedBox(),
+                if (item.cariIl != null)
+                  Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)))
+                else
+                  const SizedBox.shrink(),
               ],
             ),
             trailing: bakiyeGorunsunMu(item)

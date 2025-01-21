@@ -32,7 +32,7 @@ final class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepA
                 child: Image.memory(
                   snapshot.data!.bytes,
                   fit: widget.fit ? BoxFit.cover : null,
-                  errorBuilder: (context, error, stackTrace) => const SizedBox(),
+                  errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
                 ),
               ),
             ),

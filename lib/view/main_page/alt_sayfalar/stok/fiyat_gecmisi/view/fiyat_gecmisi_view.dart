@@ -90,7 +90,7 @@ final class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
           ),
           Observer(
             builder: (_) => viewModel.searchBar
-                ? const SizedBox()
+                ? const SizedBox.shrink()
                 : IconButton(
                     icon: const Icon(Icons.sort_by_alpha_outlined),
                     onPressed: () async {
@@ -116,7 +116,7 @@ final class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
           ),
           Observer(
             builder: (_) => viewModel.searchBar
-                ? const SizedBox()
+                ? const SizedBox.shrink()
                 : IconButton(
                     icon: const Icon(Icons.filter_alt_outlined),
                     onPressed: () async {

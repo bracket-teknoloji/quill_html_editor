@@ -87,7 +87,10 @@ final class _CariHareketRaporuViewState extends BaseState<CariHareketRaporuView>
         children: [
           Observer(
             builder: (_) => RaporFiltreDateTimeBottomSheetView(
-              filterOnChanged: (index) => viewModel.pdfModel.dicParams?.aralikTipi,
+              filterOnChanged: (index) {
+                viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text;
+                viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text;
+              },
               baslangicTarihiController: baslangicTarihiController,
               bitisTarihiController: bitisTarihiController,
             ),

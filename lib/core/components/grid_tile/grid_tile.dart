@@ -144,7 +144,8 @@ final class CustomGridTileState extends BaseState<CustomGridTile> {
         ).paddingOnly(right: UIHelper.lowSize / 2, top: UIHelper.lowSize / 2)
       : null;
 
-  Widget footer() => (widget.model?.menuTipi == "S" && (widget.model?.altMenuler.ext.isNotNullOrEmpty ?? false)) ? const Icon(Icons.expand_more, size: 15, color: Colors.white) : const SizedBox();
+  Widget footer() =>
+      (widget.model?.menuTipi == "S" && (widget.model?.altMenuler.ext.isNotNullOrEmpty ?? false)) ? const Icon(Icons.expand_more, size: 15, color: Colors.white) : const SizedBox.shrink();
 
   //
 }

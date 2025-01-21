@@ -53,7 +53,7 @@ final class AnimatedIslemlerGridTileState extends BaseState<AnimatedIslemlerGrid
                   overflow: TextOverflow.ellipsis,
                   style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurface, fontSize: 10),
                 ),
-                // Flexible(child: (widget.item?.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox())
+                // Flexible(child: (widget.item?.altMenuVarMi ?? false) ? const Icon(Icons.expand_more, size: 15) : const SizedBox.shrink())
               ],
             ).marginOnly(top: UIHelper.highSize, left: UIHelper.lowSize, right: UIHelper.lowSize),
           ),

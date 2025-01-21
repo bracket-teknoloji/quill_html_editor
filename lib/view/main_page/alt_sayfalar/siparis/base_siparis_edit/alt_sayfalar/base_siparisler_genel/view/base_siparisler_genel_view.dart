@@ -16,7 +16,6 @@ import "../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
@@ -96,18 +95,6 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Card(
-                //   child: ListTile(
-                //     onTap: () async => Get.toNamed(
-                //       "/mainPage/eBelgePdf",
-                //       arguments: EBelgeListesiModel(belgeTuru: widget.model.editTipiEnum?.rawValue, ebelgeTuru: "EFT", resmiBelgeNo: model.resmiBelgeNo ?? model.belgeNo ?? ""),
-                //     ),
-                //     contentPadding: UIHelper.lowPaddingHorizontal,
-                //     leading: const Icon(Icons.info_outline),
-                //     title: Text("E-Fatura Taslağı (${model.resmiBelgeNo})"),
-                //     trailing: const Icon(Icons.open_in_new_outlined),
-                //   ),
-                // ).paddingOnly(bottom: UIHelper.lowSize).yetkiVarMi(model.cariEfaturami == "E"),
                 Visibility(
                   visible: model.isRemoteTempBelgeNull && !yetkiController.kontrolluAktarBelgeTipleri(model.getEditTipiEnum?.rawValue),
                   child: CustomTextField(
@@ -154,79 +141,80 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     }
                   },
                 ),
-                CustomTextField(
-                  enabled: enable && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum),
-                  labelText: "Teslim Cari",
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: teslimCariController,
-                  suffix: yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi
-                      ? null
-                      : IconButton(
-                          onPressed: () async {
-                            if (cariController.text.isEmpty) {
-                              dialogManager.showAlertDialog("Önce Cari Seçiniz");
-                              return;
-                            }
-                            final result = await Get.toNamed(
-                              "mainPage/cariRehberi",
-                              arguments: CariListesiRequestModel(
-                                bagliCariKodu: model.cariKodu,
-                                teslimCari: "E",
-                                belgeTuru: widget.model.editTipiEnum?.rawValue,
-                              ),
-                            );
-                            if (result != null && result is CariListesiModel) {
-                              model
-                                ..teslimCari = result.cariKodu
-                                ..teslimCariAdi = result.cariAdi;
-                              teslimCariController.text = result.cariAdi ?? "";
+                if (yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum) && parametreModel.bagliCariVar == true)
+                  CustomTextField(
+                    enabled: enable && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum),
+                    labelText: "Teslim Cari",
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: teslimCariController,
+                    suffix: yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi
+                        ? null
+                        : IconButton(
+                            onPressed: () async {
+                              if (cariController.text.isEmpty) {
+                                dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                                return;
+                              }
+                              final result = await Get.toNamed(
+                                "mainPage/cariRehberi",
+                                arguments: CariListesiRequestModel(
+                                  bagliCariKodu: model.cariKodu,
+                                  teslimCari: "E",
+                                  belgeTuru: widget.model.editTipiEnum?.rawValue,
+                                ),
+                              );
+                              if (result != null && result is CariListesiModel) {
+                                model
+                                  ..teslimCari = result.cariKodu
+                                  ..teslimCariAdi = result.cariAdi;
+                                teslimCariController.text = result.cariAdi ?? "";
+                              }
+                            },
+                            icon: const Icon(Icons.hub_outlined),
+                          ),
+                    onClear: () {
+                      model
+                        ..teslimCari = null
+                        ..teslimCariAdi = null;
+                      teslimCariController.clear();
+                    },
+                    onTap: !yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)
+                        ? null
+                        : () async {
+                            if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
+                              final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
+                              if (result != null && result is CariListesiModel) {
+                                model
+                                  ..teslimCari = result.cariKodu
+                                  ..teslimCariAdi = result.cariAdi
+                                  ..plasiyerAciklama = result.plasiyerAciklama
+                                  ..plasiyerKodu = result.plasiyerKodu;
+                                teslimCariController.text = result.cariAdi ?? "";
+                                plasiyerController.text = result.plasiyerAciklama ?? "";
+                              }
+                            } else {
+                              if (cariController.text.isEmpty) {
+                                dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                                return;
+                              }
+                              final result = await Get.toNamed(
+                                "mainPage/cariRehberi",
+                                arguments: CariListesiRequestModel(
+                                  bagliCariKodu: model.cariKodu,
+                                  teslimCari: "E",
+                                  belgeTuru: widget.model.editTipiEnum?.rawValue,
+                                ),
+                              );
+                              if (result != null && result is CariListesiModel) {
+                                model
+                                  ..teslimCari = result.cariKodu
+                                  ..teslimCariAdi = result.cariAdi;
+                                teslimCariController.text = result.cariAdi ?? "";
+                              }
                             }
                           },
-                          icon: const Icon(Icons.hub_outlined),
-                        ),
-                  onClear: () {
-                    model
-                      ..teslimCari = null
-                      ..teslimCariAdi = null;
-                    teslimCariController.clear();
-                  },
-                  onTap: !yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)
-                      ? null
-                      : () async {
-                          if (!yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
-                            final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                            if (result != null && result is CariListesiModel) {
-                              model
-                                ..teslimCari = result.cariKodu
-                                ..teslimCariAdi = result.cariAdi
-                                ..plasiyerAciklama = result.plasiyerAciklama
-                                ..plasiyerKodu = result.plasiyerKodu;
-                              teslimCariController.text = result.cariAdi ?? "";
-                              plasiyerController.text = result.plasiyerAciklama ?? "";
-                            }
-                          } else {
-                            if (cariController.text.isEmpty) {
-                              dialogManager.showAlertDialog("Önce Cari Seçiniz");
-                              return;
-                            }
-                            final result = await Get.toNamed(
-                              "mainPage/cariRehberi",
-                              arguments: CariListesiRequestModel(
-                                bagliCariKodu: model.cariKodu,
-                                teslimCari: "E",
-                                belgeTuru: widget.model.editTipiEnum?.rawValue,
-                              ),
-                            );
-                            if (result != null && result is CariListesiModel) {
-                              model
-                                ..teslimCari = result.cariKodu
-                                ..teslimCariAdi = result.cariAdi;
-                              teslimCariController.text = result.cariAdi ?? "";
-                            }
-                          }
-                        },
-                ).yetkiVarMi(yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum) && parametreModel.bagliCariVar == true),
+                  ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -251,27 +239,28 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                         },
                       ),
                     ),
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Plasiyer",
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: plasiyerController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
-                          if (result != null) {
-                            viewModel.setPlasiyer(result);
-                            model
-                              ..plasiyerKodu = result.plasiyerKodu
-                              ..plasiyerAciklama = result.plasiyerAciklama;
-                            plasiyerController.text = result.plasiyerAciklama ?? "";
-                          }
-                        },
+                    if (yetkiController.plasiyerUygulamasiAcikMi)
+                      Expanded(
+                        child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Plasiyer",
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: plasiyerController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                            if (result != null) {
+                              viewModel.setPlasiyer(result);
+                              model
+                                ..plasiyerKodu = result.plasiyerKodu
+                                ..plasiyerAciklama = result.plasiyerAciklama;
+                              plasiyerController.text = result.plasiyerAciklama ?? "";
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                   ],
                 ),
                 Row(
@@ -316,124 +305,130 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Toplu Depo",
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: topluDepoController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
-                        onClear: () => viewModel.setTopluDepoKodu(null),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model.topluDepo);
-                          if (result is DepoList) {
-                            viewModel.setTopluDepoKodu(result.depoKodu);
-                            topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
-                          }
-                        },
+                    if (yetkiController.lokalDepoUygulamasiAcikMi)
+                      Expanded(
+                        child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Toplu Depo",
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: topluDepoController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                          onClear: () => viewModel.setTopluDepoKodu(null),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                            if (result is DepoList) {
+                              viewModel.setTopluDepoKodu(result.depoKodu);
+                              topluDepoController.text = result.depoTanimi ?? result.depoKodu.toStringIfNotNull ?? "";
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.lokalDepoUygulamasiAcikMi),
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Proje",
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: projeController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                        onTap: () async {
-                          final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                          if (result is BaseProjeModel) {
-                            viewModel.setProjeKodu(result);
-                            projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
-                          }
-                        },
+                    if (yetkiController.projeUygulamasiAcikMi)
+                      Expanded(
+                        child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Proje",
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: projeController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                          onTap: () async {
+                            final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                            if (result is BaseProjeModel) {
+                              viewModel.setProjeKodu(result);
+                              projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                   ],
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Ödeme Kodu",
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: odemeKoduController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.odemeKodu ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context, viewModel.model.odemeKodu);
-                          if (result is ListCariOdemeKodu) {
-                            viewModel.setOdemeKodu(result.odemeKodu);
-                            odemeKoduController.text = result.aciklama ?? "";
-                          }
-                        },
+                    if (yetkiController.siparisKosulAktifMi(model.getEditTipiEnum))
+                      Expanded(
+                        child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Ödeme Kodu",
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: odemeKoduController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.odemeKodu ?? "")),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showOdemeKoduBottomSheetDialog(context, viewModel.model.odemeKodu);
+                            if (result is ListCariOdemeKodu) {
+                              viewModel.setOdemeKodu(result.odemeKodu);
+                              odemeKoduController.text = result.aciklama ?? "";
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.siparisKosulAktifMi(model.getEditTipiEnum)),
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Koşul",
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: kosulController,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model.kosulKodu, null);
-                          if (result != null) {
-                            viewModel.setKosulKodu(result.kosulKodu);
-                            kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
-                          }
-                        },
+                    if (yetkiController.siparisKosulAktifMi(model.getEditTipiEnum))
+                      Expanded(
+                        child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Koşul",
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: kosulController,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.kosulKodu ?? "")),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showKosullarBottomSheetDialog(context, viewModel.model.kosulKodu, null);
+                            if (result != null) {
+                              viewModel.setKosulKodu(result.kosulKodu);
+                              kosulController.text = result.genelKosulAdi ?? result.kosulKodu ?? "";
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.siparisKosulAktifMi(model.getEditTipiEnum)),
                   ],
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Özel Kod 1",
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: ozelKod1Controller,
-                        onClear: () => model.ozelKod2 = null,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
-                        onTap: () async {
-                          final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.model.ozelKod1);
-                          if (result != null) {
-                            viewModel.setOzelKod1(result.kod);
-                            ozelKod1Controller.text = result.aciklama ?? result.kod ?? "";
-                          }
-                          // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
-                        },
+                    if (yetkiController.satisOzelKod1AktifMi)
+                      Expanded(
+                        child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Özel Kod 1",
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: ozelKod1Controller,
+                          onClear: () => model.ozelKod2 = null,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
+                          onTap: () async {
+                            final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.model.ozelKod1);
+                            if (result != null) {
+                              viewModel.setOzelKod1(result.kod);
+                              ozelKod1Controller.text = result.aciklama ?? result.kod ?? "";
+                            }
+                            // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.satisOzelKod1AktifMi),
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Özel Kod 2",
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: ozelKod2Controller,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
-                        onClear: () => viewModel.setOzelKod2(null),
-                        onTap: () async {
-                          final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
-                          if (result != null) {
-                            viewModel.setOzelKod2(result.kod);
-                            ozelKod2Controller.text = result.aciklama ?? result.kod ?? "";
-                          }
-                        },
+                    if (yetkiController.satisOzelKod2AktifMi)
+                      Expanded(
+                        child: CustomTextField(
+                          enabled: enable,
+                          labelText: "Özel Kod 2",
+                          readOnly: true,
+                          suffixMore: true,
+                          controller: ozelKod2Controller,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod2 ?? "")),
+                          onClear: () => viewModel.setOzelKod2(null),
+                          onTap: () async {
+                            final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.model.ozelKod2);
+                            if (result != null) {
+                              viewModel.setOzelKod2(result.kod);
+                              ozelKod2Controller.text = result.aciklama ?? result.kod ?? "";
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(yetkiController.satisOzelKod2AktifMi),
                   ],
                 ),
                 CustomWidgetWithLabel(
@@ -448,229 +443,245 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                     text: "Ek Açıklamalar",
                     child: Column(
                       children: <Widget>[
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(1) != null,
-                          suffixMore: getEkRehberById(1) != null,
-                          onTap: () async => await getGenelRehber(1),
-                          onClear: () => viewModel.setAciklama(1, null),
-                          onChanged: (value) => viewModel.setAciklama(1, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama1Adi ?? "")),
-                          labelText: getEkRehberById(1)?.alan == "ACIK1"
-                              ? getEkRehberById(1)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
-                          controller: _aciklama1Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(2) != null,
-                          onClear: () => viewModel.setAciklama(2, null),
-                          suffixMore: getEkRehberById(2) != null,
-                          onTap: () async => await getGenelRehber(2),
-                          onChanged: (value) => viewModel.setAciklama(2, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama2Adi ?? "")),
-                          labelText: getEkRehberById(2)?.alan == "ACIK2"
-                              ? getEkRehberById(2)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
-                          controller: _aciklama2Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(3) != null,
-                          suffixMore: getEkRehberById(3) != null,
-                          onClear: () => viewModel.setAciklama(3, null),
-                          onChanged: (value) => viewModel.setAciklama(3, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama3Adi ?? "")),
-                          labelText: getEkRehberById(3)?.alan == "ACIK3"
-                              ? getEkRehberById(3)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
-                          controller: _aciklama3Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(4) != null,
-                          suffixMore: getEkRehberById(4) != null,
-                          onClear: () => viewModel.setAciklama(4, null),
-                          onTap: () async => await getGenelRehber(4),
-                          onChanged: (value) => viewModel.setAciklama(4, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama4Adi ?? "")),
-                          labelText: getEkRehberById(4)?.alan == "ACIK4"
-                              ? getEkRehberById(4)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
-                          controller: _aciklama4Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(5) != null,
-                          suffixMore: getEkRehberById(5) != null,
-                          onTap: () async => await getGenelRehber(5),
-                          onClear: () => viewModel.setAciklama(5, null),
-                          onChanged: (value) => viewModel.setAciklama(5, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama5Adi ?? "")),
-                          labelText: getEkRehberById(5)?.alan == "ACIK5"
-                              ? getEkRehberById(5)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
-                          controller: _aciklama5Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(6) != null,
-                          suffixMore: getEkRehberById(6) != null,
-                          onTap: () async => await getGenelRehber(6),
-                          onClear: () => viewModel.setAciklama(6, null),
-                          onChanged: (value) => viewModel.setAciklama(6, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama6Adi ?? "")),
-                          labelText: getEkRehberById(6)?.alan == "ACIK6"
-                              ? getEkRehberById(6)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
-                          controller: _aciklama6Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(7) != null,
-                          suffixMore: getEkRehberById(7) != null,
-                          onTap: () async => await getGenelRehber(7),
-                          onClear: () => viewModel.setAciklama(7, null),
-                          onChanged: (value) => viewModel.setAciklama(7, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama7Adi ?? "")),
-                          labelText: getEkRehberById(7)?.alan == "ACIK7"
-                              ? getEkRehberById(7)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
-                          controller: _aciklama7Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(8) != null,
-                          suffixMore: getEkRehberById(8) != null,
-                          onClear: () => viewModel.setAciklama(8, null),
-                          onTap: () async => await getGenelRehber(8),
-                          onChanged: (value) => viewModel.setAciklama(8, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama8Adi ?? "")),
-                          labelText: getEkRehberById(8)?.alan == "ACIK8"
-                              ? getEkRehberById(8)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
-                          controller: _aciklama8Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(9) != null,
-                          suffixMore: getEkRehberById(9) != null,
-                          onTap: () async => await getGenelRehber(9),
-                          onClear: () => viewModel.setAciklama(9, null),
-                          onChanged: (value) => viewModel.setAciklama(9, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama9Adi ?? "")),
-                          labelText: getEkRehberById(9)?.alan == "ACIK9"
-                              ? getEkRehberById(9)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
-                          controller: _aciklama9Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(10) != null,
-                          suffixMore: getEkRehberById(10) != null,
-                          onTap: () async => await getGenelRehber(10),
-                          onClear: () => viewModel.setAciklama(10, null),
-                          onChanged: (value) => viewModel.setAciklama(10, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama10Adi ?? "")),
-                          labelText: getEkRehberById(10)?.alan == "ACIK10"
-                              ? getEkRehberById(10)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
-                          controller: _aciklama10Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(11) != null,
-                          suffixMore: getEkRehberById(11) != null,
-                          onTap: () async => await getGenelRehber(11),
-                          onClear: () => viewModel.setAciklama(11, null),
-                          onChanged: (value) => viewModel.setAciklama(11, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama11Adi ?? "")),
-                          labelText: getEkRehberById(11)?.alan == "ACIK11"
-                              ? getEkRehberById(11)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
-                          controller: _aciklama11Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(12) != null,
-                          suffixMore: getEkRehberById(12) != null,
-                          onTap: () async => await getGenelRehber(12),
-                          onClear: () => viewModel.setAciklama(12, null),
-                          onChanged: (value) => viewModel.setAciklama(12, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama12Adi ?? "")),
-                          labelText: getEkRehberById(12)?.alan == "ACIK12"
-                              ? getEkRehberById(12)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
-                          controller: _aciklama12Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(13) != null,
-                          suffixMore: getEkRehberById(13) != null,
-                          onTap: () async => await getGenelRehber(13),
-                          onClear: () => viewModel.setAciklama(13, null),
-                          onChanged: (value) => viewModel.setAciklama(13, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama13Adi ?? "")),
-                          labelText: getEkRehberById(13)?.alan == "ACIK13"
-                              ? getEkRehberById(13)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
-                          controller: _aciklama13Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(14) != null,
-                          suffixMore: getEkRehberById(14) != null,
-                          onTap: () async => await getGenelRehber(14),
-                          onClear: () => viewModel.setAciklama(14, null),
-                          onChanged: (value) => viewModel.setAciklama(14, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama14Adi ?? "")),
-                          labelText: getEkRehberById(14)?.alan == "ACIK14"
-                              ? getEkRehberById(14)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
-                          controller: _aciklama14Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(15) != null,
-                          suffixMore: getEkRehberById(15) != null,
-                          onTap: () async => await getGenelRehber(15),
-                          onClear: () => viewModel.setAciklama(15, null),
-                          onChanged: (value) => viewModel.setAciklama(15, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama5Adi ?? "")),
-                          labelText: getEkRehberById(15)?.alan == "ACIK15"
-                              ? getEkRehberById(15)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
-                          controller: _aciklama15Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15)),
-                        CustomTextField(
-                          enabled: enable,
-                          maxLength: StaticVariables.maxAciklamaLength,
-                          readOnly: getEkRehberById(16) != null,
-                          suffixMore: getEkRehberById(16) != null,
-                          onTap: () async => await getGenelRehber(16),
-                          onClear: () => viewModel.setAciklama(16, null),
-                          onChanged: (value) => viewModel.setAciklama(16, GenelRehberModel(kodu: value)),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama6Adi ?? "")),
-                          labelText: getEkRehberById(16)?.alan == "ACIK16"
-                              ? getEkRehberById(16)?.baslik
-                              : (satisMi ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
-                          controller: _aciklama16Controller,
-                        ).yetkiVarMi(yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 16)),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 1))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(1) != null,
+                            suffixMore: getEkRehberById(1) != null,
+                            onTap: () async => await getGenelRehber(1),
+                            onClear: () => viewModel.setAciklama(1, null),
+                            onChanged: (value) => viewModel.setAciklama(1, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama1Adi ?? "")),
+                            labelText: getEkRehberById(1)?.alan == "ACIK1"
+                                ? getEkRehberById(1)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi1 : parametreModel.alisEkAciklamaTanimi1) ?? "Açıklama 1",
+                            controller: _aciklama1Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 2))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(2) != null,
+                            onClear: () => viewModel.setAciklama(2, null),
+                            suffixMore: getEkRehberById(2) != null,
+                            onTap: () async => await getGenelRehber(2),
+                            onChanged: (value) => viewModel.setAciklama(2, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama2Adi ?? "")),
+                            labelText: getEkRehberById(2)?.alan == "ACIK2"
+                                ? getEkRehberById(2)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi2 : parametreModel.alisEkAciklamaTanimi2) ?? "Açıklama 2",
+                            controller: _aciklama2Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 3))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(3) != null,
+                            suffixMore: getEkRehberById(3) != null,
+                            onClear: () => viewModel.setAciklama(3, null),
+                            onChanged: (value) => viewModel.setAciklama(3, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama3Adi ?? "")),
+                            labelText: getEkRehberById(3)?.alan == "ACIK3"
+                                ? getEkRehberById(3)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi3 : parametreModel.alisEkAciklamaTanimi3) ?? "Açıklama 3",
+                            controller: _aciklama3Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 4))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(4) != null,
+                            suffixMore: getEkRehberById(4) != null,
+                            onClear: () => viewModel.setAciklama(4, null),
+                            onTap: () async => await getGenelRehber(4),
+                            onChanged: (value) => viewModel.setAciklama(4, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama4Adi ?? "")),
+                            labelText: getEkRehberById(4)?.alan == "ACIK4"
+                                ? getEkRehberById(4)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi4 : parametreModel.alisEkAciklamaTanimi4) ?? "Açıklama 4",
+                            controller: _aciklama4Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 5))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(5) != null,
+                            suffixMore: getEkRehberById(5) != null,
+                            onTap: () async => await getGenelRehber(5),
+                            onClear: () => viewModel.setAciklama(5, null),
+                            onChanged: (value) => viewModel.setAciklama(5, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama5Adi ?? "")),
+                            labelText: getEkRehberById(5)?.alan == "ACIK5"
+                                ? getEkRehberById(5)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi5 : parametreModel.alisEkAciklamaTanimi5) ?? "Açıklama 5",
+                            controller: _aciklama5Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 6))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(6) != null,
+                            suffixMore: getEkRehberById(6) != null,
+                            onTap: () async => await getGenelRehber(6),
+                            onClear: () => viewModel.setAciklama(6, null),
+                            onChanged: (value) => viewModel.setAciklama(6, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama6Adi ?? "")),
+                            labelText: getEkRehberById(6)?.alan == "ACIK6"
+                                ? getEkRehberById(6)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi6 : parametreModel.alisEkAciklamaTanimi6) ?? "Açıklama 6",
+                            controller: _aciklama6Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 7))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(7) != null,
+                            suffixMore: getEkRehberById(7) != null,
+                            onTap: () async => await getGenelRehber(7),
+                            onClear: () => viewModel.setAciklama(7, null),
+                            onChanged: (value) => viewModel.setAciklama(7, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama7Adi ?? "")),
+                            labelText: getEkRehberById(7)?.alan == "ACIK7"
+                                ? getEkRehberById(7)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi7 : parametreModel.alisEkAciklamaTanimi7) ?? "Açıklama 7",
+                            controller: _aciklama7Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 8))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(8) != null,
+                            suffixMore: getEkRehberById(8) != null,
+                            onClear: () => viewModel.setAciklama(8, null),
+                            onTap: () async => await getGenelRehber(8),
+                            onChanged: (value) => viewModel.setAciklama(8, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama8Adi ?? "")),
+                            labelText: getEkRehberById(8)?.alan == "ACIK8"
+                                ? getEkRehberById(8)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi8 : parametreModel.alisEkAciklamaTanimi8) ?? "Açıklama 8",
+                            controller: _aciklama8Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 9))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(9) != null,
+                            suffixMore: getEkRehberById(9) != null,
+                            onTap: () async => await getGenelRehber(9),
+                            onClear: () => viewModel.setAciklama(9, null),
+                            onChanged: (value) => viewModel.setAciklama(9, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama9Adi ?? "")),
+                            labelText: getEkRehberById(9)?.alan == "ACIK9"
+                                ? getEkRehberById(9)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi9 : parametreModel.alisEkAciklamaTanimi9) ?? "Açıklama 9",
+                            controller: _aciklama9Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 10))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(10) != null,
+                            suffixMore: getEkRehberById(10) != null,
+                            onTap: () async => await getGenelRehber(10),
+                            onClear: () => viewModel.setAciklama(10, null),
+                            onChanged: (value) => viewModel.setAciklama(10, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama10Adi ?? "")),
+                            labelText: getEkRehberById(10)?.alan == "ACIK10"
+                                ? getEkRehberById(10)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi10 : parametreModel.alisEkAciklamaTanimi10) ?? "Açıklama 10",
+                            controller: _aciklama10Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 11))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(11) != null,
+                            suffixMore: getEkRehberById(11) != null,
+                            onTap: () async => await getGenelRehber(11),
+                            onClear: () => viewModel.setAciklama(11, null),
+                            onChanged: (value) => viewModel.setAciklama(11, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama11Adi ?? "")),
+                            labelText: getEkRehberById(11)?.alan == "ACIK11"
+                                ? getEkRehberById(11)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi11 : parametreModel.alisEkAciklamaTanimi11) ?? "Açıklama 11",
+                            controller: _aciklama11Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 12))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(12) != null,
+                            suffixMore: getEkRehberById(12) != null,
+                            onTap: () async => await getGenelRehber(12),
+                            onClear: () => viewModel.setAciklama(12, null),
+                            onChanged: (value) => viewModel.setAciklama(12, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama12Adi ?? "")),
+                            labelText: getEkRehberById(12)?.alan == "ACIK12"
+                                ? getEkRehberById(12)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi12 : parametreModel.alisEkAciklamaTanimi12) ?? "Açıklama 12",
+                            controller: _aciklama12Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 13))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(13) != null,
+                            suffixMore: getEkRehberById(13) != null,
+                            onTap: () async => await getGenelRehber(13),
+                            onClear: () => viewModel.setAciklama(13, null),
+                            onChanged: (value) => viewModel.setAciklama(13, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama13Adi ?? "")),
+                            labelText: getEkRehberById(13)?.alan == "ACIK13"
+                                ? getEkRehberById(13)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi13 : parametreModel.alisEkAciklamaTanimi13) ?? "Açıklama 13",
+                            controller: _aciklama13Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 14))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(14) != null,
+                            suffixMore: getEkRehberById(14) != null,
+                            onTap: () async => await getGenelRehber(14),
+                            onClear: () => viewModel.setAciklama(14, null),
+                            onChanged: (value) => viewModel.setAciklama(14, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama14Adi ?? "")),
+                            labelText: getEkRehberById(14)?.alan == "ACIK14"
+                                ? getEkRehberById(14)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi14 : parametreModel.alisEkAciklamaTanimi14) ?? "Açıklama 14",
+                            controller: _aciklama14Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 15))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(15) != null,
+                            suffixMore: getEkRehberById(15) != null,
+                            onTap: () async => await getGenelRehber(15),
+                            onClear: () => viewModel.setAciklama(15, null),
+                            onChanged: (value) => viewModel.setAciklama(15, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama5Adi ?? "")),
+                            labelText: getEkRehberById(15)?.alan == "ACIK15"
+                                ? getEkRehberById(15)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi15 : parametreModel.alisEkAciklamaTanimi15) ?? "Açıklama 15",
+                            controller: _aciklama15Controller,
+                          ),
+                        if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 16))
+                          CustomTextField(
+                            enabled: enable,
+                            maxLength: StaticVariables.maxAciklamaLength,
+                            readOnly: getEkRehberById(16) != null,
+                            suffixMore: getEkRehberById(16) != null,
+                            onTap: () async => await getGenelRehber(16),
+                            onClear: () => viewModel.setAciklama(16, null),
+                            onChanged: (value) => viewModel.setAciklama(16, GenelRehberModel(kodu: value)),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.model.aciklama6Adi ?? "")),
+                            labelText: getEkRehberById(16)?.alan == "ACIK16"
+                                ? getEkRehberById(16)?.baslik
+                                : (satisMi ? parametreModel.satisEkAciklamaTanimi16 : parametreModel.alisEkAciklamaTanimi16) ?? "Açıklama 16",
+                            controller: _aciklama16Controller,
+                          ),
                       ],
                     ),
                   ),

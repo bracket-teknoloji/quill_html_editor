@@ -6,7 +6,6 @@ import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_mo
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/hucre_takibi/hucre_listesi/model/hucre_listesi_model.dart";
@@ -121,107 +120,112 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                       }
                     },
                   ),
-                  CustomTextField(
-                    labelText: "Kaynak Hücre",
-                    isMust: true,
-                    controller: kaynakHucreController,
-                    suffixMore: true,
-                    readOnly: true,
-                    suffix: IconButton(onPressed: () async {}, icon: const Icon(Icons.qr_code_scanner_outlined)),
-                    onTap: () async {
-                      if (viewModel.model.depoKodu == null) return dialogManager.showAlertDialog("Depo Seçilmedi. Lütfen Deponu Seçiniz!");
-                      final result = await getHucreModel();
-                      if (result is HucreListesiModel) {
-                        kaynakHucreController.text = result.hucreKodu ?? "";
-                        viewModel.setHucreKodu(result.hucreKodu);
-                      }
-                    },
-                  ).yetkiVarMi(viewModel.isStok),
-                  CustomTextField(
-                    labelText: "Stok",
-                    isMust: true,
-                    readOnly: true,
-                    controller: stokController,
-                    suffixMore: true,
-                    suffix: IconButton(
-                      onPressed: () async {
-                        if (viewModel.model.hucreKodu == null) return emptyHucreDialog();
-                        final qr = await getQR();
-                        if (qr is String) {
-                          final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: qr));
-                          updateStok(result);
+                  if (viewModel.isStok)
+                    CustomTextField(
+                      labelText: "Kaynak Hücre",
+                      isMust: true,
+                      controller: kaynakHucreController,
+                      suffixMore: true,
+                      readOnly: true,
+                      suffix: IconButton(onPressed: () async {}, icon: const Icon(Icons.qr_code_scanner_outlined)),
+                      onTap: () async {
+                        if (viewModel.model.depoKodu == null) return dialogManager.showAlertDialog("Depo Seçilmedi. Lütfen Deponu Seçiniz!");
+                        final result = await getHucreModel();
+                        if (result is HucreListesiModel) {
+                          kaynakHucreController.text = result.hucreKodu ?? "";
+                          viewModel.setHucreKodu(result.hucreKodu);
                         }
                       },
-                      icon: const Icon(Icons.qr_code_scanner_outlined),
                     ),
-                    onTap: () async {
-                      if (viewModel.model.hucreKodu == null) return emptyHucreDialog();
-                      final result = await Get.toNamed(
-                        "/mainPage/hucredekiStoklar",
-                        arguments: HucreListesiRequestModel(
-                          depoKodu: viewModel.model.depoKodu,
-                          hucreKodu: viewModel.model.hucreKodu,
-                          filterText: null,
-                        ),
-                      );
-                      updateStok(result);
-                    },
-                  ).yetkiVarMi(viewModel.isStok),
-                  CustomTextField(
-                    labelText: "Stok Adı",
-                    readOnly: true,
-                    controller: stokAdiController,
-                    suffix: IconButton(
-                      onPressed: () async {
-                        if (viewModel.model.stokKodu == null) return dialogManager.showAlertDialog("Stok Kodu Boş Olamaz");
-                        dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model.stokKodu)));
-                      },
-                      icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                    ),
-                  ).yetkiVarMi(viewModel.isStok),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Hücre Miktarı",
-                          controller: hucreMiktariController,
-                          readOnly: true,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          isFormattedString: true,
-                        ),
+                  if (viewModel.isStok)
+                    CustomTextField(
+                      labelText: "Stok",
+                      isMust: true,
+                      readOnly: true,
+                      controller: stokController,
+                      suffixMore: true,
+                      suffix: IconButton(
+                        onPressed: () async {
+                          if (viewModel.model.hucreKodu == null) return emptyHucreDialog();
+                          final qr = await getQR();
+                          if (qr is String) {
+                            final result = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: qr));
+                            updateStok(result);
+                          }
+                        },
+                        icon: const Icon(Icons.qr_code_scanner_outlined),
                       ),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "İşlem Miktarı",
-                          isMust: true,
-                          controller: islemMiktariController,
-                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                          isFormattedString: true,
-                          onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) return "Lütfen işlem miktarını giriniz!";
-                            if (value.toDoubleWithFormattedString <= 0) return "Lütfen işlem miktarını doğru giriniz!";
-                            if (value.toDoubleWithFormattedString > hucreMiktariController.text.toDoubleWithFormattedString) return "Hücre miktarından büyük olamaz!";
-                            return null;
-                          },
-                        ),
-                      ),
-                    ],
-                  ).yetkiVarMi(viewModel.isStok),
-                  CustomTextField(
-                    labelText: "Paket",
-                    isMust: true,
-                    controller: paketController,
-                    suffix: IconButton(
-                      onPressed: () async {
-                        final qr = await getQR();
-                        if (qr is! String) return;
-                        await paketChecker(qr);
+                      onTap: () async {
+                        if (viewModel.model.hucreKodu == null) return emptyHucreDialog();
+                        final result = await Get.toNamed(
+                          "/mainPage/hucredekiStoklar",
+                          arguments: HucreListesiRequestModel(
+                            depoKodu: viewModel.model.depoKodu,
+                            hucreKodu: viewModel.model.hucreKodu,
+                            filterText: null,
+                          ),
+                        );
+                        updateStok(result);
                       },
-                      icon: const Icon(Icons.qr_code_scanner_outlined),
                     ),
-                  ).yetkiVarMi(!viewModel.isStok),
+                  if (viewModel.isStok)
+                    CustomTextField(
+                      labelText: "Stok Adı",
+                      readOnly: true,
+                      controller: stokAdiController,
+                      suffix: IconButton(
+                        onPressed: () async {
+                          if (viewModel.model.stokKodu == null) return dialogManager.showAlertDialog("Stok Kodu Boş Olamaz");
+                          dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model.stokKodu)));
+                        },
+                        icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                      ),
+                    ),
+                  if (viewModel.isStok)
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                            labelText: "Hücre Miktarı",
+                            controller: hucreMiktariController,
+                            readOnly: true,
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            isFormattedString: true,
+                          ),
+                        ),
+                        Expanded(
+                          child: CustomTextField(
+                            labelText: "İşlem Miktarı",
+                            isMust: true,
+                            controller: islemMiktariController,
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            isFormattedString: true,
+                            onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) return "Lütfen işlem miktarını giriniz!";
+                              if (value.toDoubleWithFormattedString <= 0) return "Lütfen işlem miktarını doğru giriniz!";
+                              if (value.toDoubleWithFormattedString > hucreMiktariController.text.toDoubleWithFormattedString) return "Hücre miktarından büyük olamaz!";
+                              return null;
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  if (!viewModel.isStok)
+                    CustomTextField(
+                      labelText: "Paket",
+                      isMust: true,
+                      controller: paketController,
+                      suffix: IconButton(
+                        onPressed: () async {
+                          final qr = await getQR();
+                          if (qr is! String) return;
+                          await paketChecker(qr);
+                        },
+                        icon: const Icon(Icons.qr_code_scanner_outlined),
+                      ),
+                    ),
                   CustomTextField(
                     labelText: "Hedef Hücre",
                     isMust: true,

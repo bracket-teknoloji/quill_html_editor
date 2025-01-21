@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -16,7 +15,6 @@ import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../model/param_model.dart";
@@ -91,7 +89,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                       TextSpan(text: "Genel Toplam: ${model.efattanTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
                       if (model.efattanDoviz != null)
                         TextSpan(text: "\nGenel Döviz Tutarı: ${model.efattanDoviz.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.efattanDovizAdi ?? ""}"),
-                    ].nullCheckWithGeneric,
+                    ],
                   ),
                 )
               : null,
@@ -354,33 +352,34 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
             ],
             Row(
               children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
-                    labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
-                    enabled: enable,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    controller: tevkifatController,
-                    inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
-                    suffix: IconButton(
-                      onPressed: () async {
-                        final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Tevkifat Oranı",
-                          children: List.generate(
-                            viewModel.tevkifatMap.length,
-                            (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),
-                          ),
-                        );
-                        if (result != null) {
-                          viewModel.setTevkifat(result);
-                          tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
-                        }
-                      },
-                      icon: const Icon(Icons.more_horiz_outlined),
+                if (yetkiController.siparisEkMaliyet2GizlenecekMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
+                      enabled: enable,
+                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                      controller: tevkifatController,
+                      inputFormatter: <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
+                      suffix: IconButton(
+                        onPressed: () async {
+                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: "Tevkifat Oranı",
+                            children: List.generate(
+                              viewModel.tevkifatMap.length,
+                              (index) => BottomSheetModel(title: viewModel.tevkifatMap.keys.toList()[index], value: viewModel.tevkifatMap.values.toList()[index]),
+                            ),
+                          );
+                          if (result != null) {
+                            viewModel.setTevkifat(result);
+                            tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
+                          }
+                        },
+                        icon: const Icon(Icons.more_horiz_outlined),
+                      ),
+                      // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                     ),
-                    // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                   ),
-                ).yetkiVarMi(yetkiController.siparisEkMaliyet2GizlenecekMi),
               ],
             ),
             Row(
@@ -422,74 +421,78 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                   ),
               ],
             ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "İstisna Kodu",
-                    enabled: enable,
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: istisnaKoduController,
-                    valueWidget: Observer(
-                      builder: (_) => Text(
-                        viewModel.model.efatOzelkod.toStringIfNotNull ?? "",
+            if (widget.model.editTipiEnum?.irsaliyeMi != true)
+              Row(
+                children: <Widget>[
+                  if (model.sFaturaMi)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "İstisna Kodu",
+                        enabled: enable,
+                        readOnly: true,
+                        suffixMore: true,
+                        controller: istisnaKoduController,
+                        valueWidget: Observer(
+                          builder: (_) => Text(
+                            viewModel.model.efatOzelkod.toStringIfNotNull ?? "",
+                          ),
+                        ),
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showEFaturaOzelKodBottomSheetDialog(
+                            context,
+                            viewModel.model.efatOzelkod,
+                            cariKodu: model.cariKodu,
+                            belgeTipi: model.belgeTuru,
+                            belgeNo: model.belgeNo,
+                          );
+                          if (result != null) {
+                            istisnaKoduController.text = result.aciklama ?? "";
+                            viewModel.setEfatOzelkod(result.kod);
+                          }
+                        },
                       ),
                     ),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showEFaturaOzelKodBottomSheetDialog(
-                        context,
-                        viewModel.model.efatOzelkod,
-                        cariKodu: model.cariKodu,
-                        belgeTipi: model.belgeTuru,
-                        belgeNo: model.belgeNo,
-                      );
-                      if (result != null) {
-                        istisnaKoduController.text = result.aciklama ?? "";
-                        viewModel.setEfatOzelkod(result.kod);
-                      }
-                    },
-                  ),
-                ).yetkiVarMi(model.sFaturaMi),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "E-Fatura Senaryo",
-                    enabled: enable && yetkiController.eFaturaSenaryoDegistir,
-                    isMust: true,
-                    readOnly: true,
-                    controller: eFaturaSenaryoController,
-                    suffixMore: true,
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "E-Fatura Senaryo",
-                        children: List.generate(
-                          viewModel.senaryoMap.length,
-                          (index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
-                        ),
-                      );
-                      if (result != null) {
-                        viewModel.setSenaryo(result.value);
-                        eFaturaSenaryoController.text = result.key;
-                      }
-                    },
-                  ),
-                ).yetkiVarMi(model.eFaturaSerisindenMi && yetkiController.eFaturaAktif),
-              ],
-            ).yetkiVarMi(widget.model.editTipiEnum?.irsaliyeMi != true),
+                  if (model.eFaturaSerisindenMi && yetkiController.eFaturaAktif)
+                    Expanded(
+                      child: CustomTextField(
+                        labelText: "E-Fatura Senaryo",
+                        enabled: enable && yetkiController.eFaturaSenaryoDegistir,
+                        isMust: true,
+                        readOnly: true,
+                        controller: eFaturaSenaryoController,
+                        suffixMore: true,
+                        onTap: () async {
+                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: "E-Fatura Senaryo",
+                            children: List.generate(
+                              viewModel.senaryoMap.length,
+                              (index) => BottomSheetModel(title: viewModel.senaryoMap.keys.toList()[index], value: viewModel.senaryoMap.entries.toList()[index]),
+                            ),
+                          );
+                          if (result != null) {
+                            viewModel.setSenaryo(result.value);
+                            eFaturaSenaryoController.text = result.key;
+                          }
+                        },
+                      ),
+                    ),
+                ],
+              ),
 
             // Eğer enable ise sayfaya yönlendirme yapılabilir.
-            ElevatedButton(
-              onPressed: !enable
-                  ? null
-                  : () async {
-                      final result = await Get.toNamed("/mainPage/eIrsaliyeEkBilgiler", arguments: model.eirsBilgiModel);
-                      if (result is EIrsaliyeBilgiModel) {
-                        model.eirsBilgiModel = result;
-                      }
-                    },
-              child: const Text("E-İrsaliye Ek Bilgiler"),
-            ).paddingAll(UIHelper.lowSize).yetkiVarMi(model.eBelgeCheckBoxMi && (model.getEditTipiEnum?.satisIrsaliyesiMi ?? false)),
+            if (model.eBelgeCheckBoxMi && (model.getEditTipiEnum?.satisIrsaliyesiMi ?? false))
+              ElevatedButton(
+                onPressed: !enable
+                    ? null
+                    : () async {
+                        final result = await Get.toNamed("/mainPage/eIrsaliyeEkBilgiler", arguments: model.eirsBilgiModel);
+                        if (result is EIrsaliyeBilgiModel) {
+                          model.eirsBilgiModel = result;
+                        }
+                      },
+                child: const Text("E-İrsaliye Ek Bilgiler"),
+              ).paddingAll(UIHelper.lowSize),
           ],
         ),
       );

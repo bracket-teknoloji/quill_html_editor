@@ -21,7 +21,6 @@ import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/enum/e_belge_enum.dart";
 import "../../../../../../core/constants/enum/e_belge_turu_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../view_model/e_belge_gelen_giden_kutusu_view_model.dart";
 
@@ -286,72 +285,73 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                   children: [Text(loc.generalStrings.other), Observer(builder: (_) => Icon(viewModel.digerGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
                 ),
               ).paddingAll(UIHelper.lowSize),
-              Column(
-                children: [
-                  if (viewModel.eBelgeRequestModel.eBelgeTuru == "EFT")
+              if (viewModel.digerGoster)
+                Column(
+                  children: [
+                    if (viewModel.eBelgeRequestModel.eBelgeTuru == "EFT")
+                      CustomWidgetWithLabel(
+                        text: "Senaryo",
+                        child: Observer(
+                          builder: (_) => SlideControllerWidget(
+                            scroll: false,
+                            childrenTitleList: viewModel.senaryoMap.keys.toList(),
+                            childrenValueList: viewModel.senaryoMap.values.toList(),
+                            filterOnChanged: (index) => viewModel.changeSenaryo(viewModel.senaryoMap.values.toList()[index ?? 0]),
+                            groupValue: viewModel.eBelgeRequestModel.senaryo,
+                          ),
+                        ),
+                      ),
                     CustomWidgetWithLabel(
-                      text: "Senaryo",
+                      text: "Basım",
                       child: Observer(
                         builder: (_) => SlideControllerWidget(
-                          scroll: false,
-                          childrenTitleList: viewModel.senaryoMap.keys.toList(),
-                          childrenValueList: viewModel.senaryoMap.values.toList(),
-                          filterOnChanged: (index) => viewModel.changeSenaryo(viewModel.senaryoMap.values.toList()[index ?? 0]),
-                          groupValue: viewModel.eBelgeRequestModel.senaryo,
+                          childrenTitleList: viewModel.basimMap.keys.toList(),
+                          childrenValueList: viewModel.basimMap.values.toList(),
+                          filterOnChanged: (index) => viewModel.changeBasim(viewModel.basimMap.values.toList()[index ?? 0]),
+                          groupValue: viewModel.eBelgeRequestModel.basimDurumu,
                         ),
                       ),
                     ),
-                  CustomWidgetWithLabel(
-                    text: "Basım",
-                    child: Observer(
-                      builder: (_) => SlideControllerWidget(
-                        childrenTitleList: viewModel.basimMap.keys.toList(),
-                        childrenValueList: viewModel.basimMap.values.toList(),
-                        filterOnChanged: (index) => viewModel.changeBasim(viewModel.basimMap.values.toList()[index ?? 0]),
-                        groupValue: viewModel.eBelgeRequestModel.basimDurumu,
-                      ),
-                    ),
-                  ),
-                  if (viewModel.eBelgeRequestModel.eBelgeTuru != "AFT")
-                    CustomWidgetWithLabel(
-                      text: "Onay Durumu",
-                      child: Observer(
-                        builder: (_) => SlideControllerWidget(
-                          childrenTitleList: viewModel.onayMap.keys.toList(),
-                          childrenValueList: viewModel.onayMap.values.toList(),
-                          filterOnChanged: (index) => viewModel.changeOnayDurumu(viewModel.onayMap.values.toList()[index ?? 0]),
-                          groupValue: viewModel.eBelgeRequestModel.onayDurumu,
+                    if (viewModel.eBelgeRequestModel.eBelgeTuru != "AFT")
+                      CustomWidgetWithLabel(
+                        text: "Onay Durumu",
+                        child: Observer(
+                          builder: (_) => SlideControllerWidget(
+                            childrenTitleList: viewModel.onayMap.keys.toList(),
+                            childrenValueList: viewModel.onayMap.values.toList(),
+                            filterOnChanged: (index) => viewModel.changeOnayDurumu(viewModel.onayMap.values.toList()[index ?? 0]),
+                            groupValue: viewModel.eBelgeRequestModel.onayDurumu,
+                          ),
                         ),
                       ),
-                    ),
-                  if (widget.eBelgeEnum == EBelgeEnum.gelen)
-                    CustomWidgetWithLabel(
-                      text: "Netsis'e İşlenme Durumu",
-                      child: Observer(
-                        builder: (_) => SlideControllerWidget(
-                          scroll: false,
-                          childrenTitleList: viewModel.netsisIslenmeMap.keys.toList(),
-                          childrenValueList: viewModel.netsisIslenmeMap.values.toList(),
-                          filterOnChanged: (index) => viewModel.changeNetsisIslenme(viewModel.netsisIslenmeMap.values.toList()[index ?? 0]),
-                          groupValue: viewModel.eBelgeRequestModel.islendi,
+                    if (widget.eBelgeEnum == EBelgeEnum.gelen)
+                      CustomWidgetWithLabel(
+                        text: "Netsis'e İşlenme Durumu",
+                        child: Observer(
+                          builder: (_) => SlideControllerWidget(
+                            scroll: false,
+                            childrenTitleList: viewModel.netsisIslenmeMap.keys.toList(),
+                            childrenValueList: viewModel.netsisIslenmeMap.values.toList(),
+                            filterOnChanged: (index) => viewModel.changeNetsisIslenme(viewModel.netsisIslenmeMap.values.toList()[index ?? 0]),
+                            groupValue: viewModel.eBelgeRequestModel.islendi,
+                          ),
                         ),
                       ),
-                    ),
-                  if (widget.eBelgeEnum == EBelgeEnum.gelen)
-                    CustomWidgetWithLabel(
-                      text: "Kontrol Edildi",
-                      child: Observer(
-                        builder: (_) => SlideControllerWidget(
-                          scroll: false,
-                          childrenTitleList: viewModel.kontrolMap.keys.toList(),
-                          childrenValueList: viewModel.kontrolMap.values.toList(),
-                          filterOnChanged: (index) => viewModel.changeKontrol(viewModel.kontrolMap.values.toList()[index ?? 0]),
-                          groupValue: viewModel.eBelgeRequestModel.kontrolEdildi,
+                    if (widget.eBelgeEnum == EBelgeEnum.gelen)
+                      CustomWidgetWithLabel(
+                        text: "Kontrol Edildi",
+                        child: Observer(
+                          builder: (_) => SlideControllerWidget(
+                            scroll: false,
+                            childrenTitleList: viewModel.kontrolMap.keys.toList(),
+                            childrenValueList: viewModel.kontrolMap.values.toList(),
+                            filterOnChanged: (index) => viewModel.changeKontrol(viewModel.kontrolMap.values.toList()[index ?? 0]),
+                            groupValue: viewModel.eBelgeRequestModel.kontrolEdildi,
+                          ),
                         ),
                       ),
-                    ),
-                ],
-              ).yetkiVarMi(viewModel.digerGoster),
+                  ],
+                ),
 
               // CustomWidgetWithLabel(
               //   text: "Tarih Türü",

@@ -9,7 +9,6 @@ import "../../../../../../../../../core/components/textfield/custom_text_field.d
 import "../../../../../../../../../core/constants/enum/base_edit_enum.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
 import "../../../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../../core/constants/static_variables/singleton_models.dart";
 import "../../../../../../../../../core/constants/ui_helper/ui_helper.dart";
@@ -182,50 +181,53 @@ final class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView>
                   }
                 },
               ),
-              CustomTextField(
-                labelText: "Aktivite Tipi",
-                enabled: enabled,
-                controller: aktiviteTipiController,
-                suffixMore: true,
-                readOnly: true,
-                isMust: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.model.aktiviteTipi.toStringIfNotNull ?? "")),
-                onTap: getAktiviteTipi,
-              ).yetkiVarMi(!yetkiController.cariAktiviteDetayliMi),
-              CustomTextField(
-                labelText: "Bölüm/Departman",
-                enabled: enabled,
-                controller: bolumController,
-                maxLength: 100,
-                onChanged: viewModel.setBolum,
-                suffix: IconButton(
-                  onPressed: () async {
-                    final result = await bottomSheetDialogManager.showCariAktiviteBolumlerBottomSheetDialog(context, viewModel.model.bolum);
-                    if (result != null) {
-                      bolumController.text = result.adi ?? "";
-                      viewModel.setBolum(result.adi);
-                    }
-                  },
-                  icon: const Icon(Icons.more_horiz_outlined),
+              if (!yetkiController.cariAktiviteDetayliMi)
+                CustomTextField(
+                  labelText: "Aktivite Tipi",
+                  enabled: enabled,
+                  controller: aktiviteTipiController,
+                  suffixMore: true,
+                  readOnly: true,
+                  isMust: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.aktiviteTipi.toStringIfNotNull ?? "")),
+                  onTap: getAktiviteTipi,
                 ),
-              ).yetkiVarMi(!yetkiController.cariAktiviteDetayliMi),
-              CustomTextField(
-                labelText: "İlgili Kişi",
-                enabled: enabled,
-                controller: ilgiliKisiController,
-                maxLength: 100,
-                onChanged: viewModel.setIlgiliKisi,
-                suffix: IconButton(
-                  onPressed: () async {
-                    final result = await bottomSheetDialogManager.showIlgiliKisilerBottomSheetDialog(context, viewModel.model.ilgiliKisi);
-                    if (result != null) {
-                      ilgiliKisiController.text = result.adi ?? "";
-                      viewModel.setIlgiliKisi(result.adi);
-                    }
-                  },
-                  icon: const Icon(Icons.more_horiz_outlined),
+              if (!yetkiController.cariAktiviteDetayliMi)
+                CustomTextField(
+                  labelText: "Bölüm/Departman",
+                  enabled: enabled,
+                  controller: bolumController,
+                  maxLength: 100,
+                  onChanged: viewModel.setBolum,
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final result = await bottomSheetDialogManager.showCariAktiviteBolumlerBottomSheetDialog(context, viewModel.model.bolum);
+                      if (result != null) {
+                        bolumController.text = result.adi ?? "";
+                        viewModel.setBolum(result.adi);
+                      }
+                    },
+                    icon: const Icon(Icons.more_horiz_outlined),
+                  ),
                 ),
-              ).yetkiVarMi(!yetkiController.cariAktiviteDetayliMi),
+              if (!yetkiController.cariAktiviteDetayliMi)
+                CustomTextField(
+                  labelText: "İlgili Kişi",
+                  enabled: enabled,
+                  controller: ilgiliKisiController,
+                  maxLength: 100,
+                  onChanged: viewModel.setIlgiliKisi,
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final result = await bottomSheetDialogManager.showIlgiliKisilerBottomSheetDialog(context, viewModel.model.ilgiliKisi);
+                      if (result != null) {
+                        ilgiliKisiController.text = result.adi ?? "";
+                        viewModel.setIlgiliKisi(result.adi);
+                      }
+                    },
+                    icon: const Icon(Icons.more_horiz_outlined),
+                  ),
+                ),
               CustomTextField(
                 labelText: "Açıklama/Konu",
                 enabled: enabled,
@@ -243,42 +245,47 @@ final class _CariAktiviteGenelViewState extends BaseState<CariAktiviteGenelView>
                   icon: const Icon(Icons.more_horiz_outlined),
                 ),
               ),
-              Card(
-                child: Observer(
-                  builder: (_) => SwitchListTile.adaptive(
-                    value: viewModel.aktiviteBitirilsinMi,
-                    onChanged: viewModel.setAktiviteBitirilsinMi,
-                    title: const Text("Aktivite Bitirilsin"),
+              if (widget.model.baseEditEnum.ekleMi)
+                Card(
+                  child: Observer(
+                    builder: (_) => SwitchListTile.adaptive(
+                      value: viewModel.aktiviteBitirilsinMi,
+                      onChanged: viewModel.setAktiviteBitirilsinMi,
+                      title: const Text("Aktivite Bitirilsin"),
+                    ),
                   ),
                 ),
-              ).yetkiVarMi(widget.model.baseEditEnum.ekleMi),
               Observer(
-                builder: (_) => CustomTextField(
-                  labelText: "Sonuç Açıklaması",
-                  isMust: true,
-                  controller: sonucAciklamaController,
-                  onChanged: viewModel.setSonucAciklama,
-                  suffix: IconButton(
-                    onPressed: () async {
-                      final result = await bottomSheetDialogManager.showCariAktiviteSonucAciklamalarBottomSheetDialog(context, viewModel.model.sonucAciklama);
-                      if (result != null) {
-                        sonucAciklamaController.text = result.adi ?? "";
-                        viewModel.setAciklama(result.adi);
-                      }
-                    },
-                    icon: const Icon(Icons.more_horiz_outlined),
-                  ),
-                ).yetkiVarMi(viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi),
+                builder: (_) => viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi
+                    ? CustomTextField(
+                        labelText: "Sonuç Açıklaması",
+                        isMust: true,
+                        controller: sonucAciklamaController,
+                        onChanged: viewModel.setSonucAciklama,
+                        suffix: IconButton(
+                          onPressed: () async {
+                            final result = await bottomSheetDialogManager.showCariAktiviteSonucAciklamalarBottomSheetDialog(context, viewModel.model.sonucAciklama);
+                            if (result != null) {
+                              sonucAciklamaController.text = result.adi ?? "";
+                              viewModel.setAciklama(result.adi);
+                            }
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ),
               Observer(
-                builder: (_) => CustomTextField(
-                  labelText: "Süre (Saat)",
-                  controller: sureController,
-                  isFormattedString: true,
-                  isMust: true,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (value) => viewModel.setSure(value.toDoubleWithFormattedString),
-                ).yetkiVarMi(viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi),
+                builder: (_) => viewModel.aktiviteBitirilsinMi && !yetkiController.cariAktiviteDetayliMi
+                    ? CustomTextField(
+                        labelText: "Süre (Saat)",
+                        controller: sureController,
+                        isFormattedString: true,
+                        isMust: true,
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                        onChanged: (value) => viewModel.setSure(value.toDoubleWithFormattedString),
+                      )
+                    : const SizedBox.shrink(),
               ),
             ],
           ).paddingAll(UIHelper.lowSize),

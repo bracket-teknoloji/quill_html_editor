@@ -82,6 +82,7 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
                   ],
                 ),
               Text(model.cariKodu ?? ""),
+              Text(model.cariAdi ?? ""),
               LayoutBuilder(
                 builder: (context, constraints) => Wrap(
                   children: [

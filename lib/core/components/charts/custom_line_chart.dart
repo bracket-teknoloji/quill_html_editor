@@ -139,7 +139,7 @@ final class _CustomLineChartState extends BaseState<CustomLineChart> {
                 ),
                 duration: DurationHelper.durationLow,
               )
-            : const SizedBox(),
+            : const SizedBox.shrink(),
       );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {

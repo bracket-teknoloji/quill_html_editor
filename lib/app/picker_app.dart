@@ -1,3 +1,5 @@
+import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view/transfer_mal_talebi_listesi_view.dart";
+
 import "picker_app_imports.dart";
 
 final class PickerApp extends StatelessWidget {
@@ -304,6 +306,7 @@ final class PickerMaterialApp extends StatelessWidget {
               GetPage(name: "/transferDepo", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.depoTransferi)),
               GetPage(name: "/transferAmbarGiris", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarGirisi)),
               GetPage(name: "/transferAmbarCikis", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarCikisi)),
+              GetPage(name: "/transferMalTalebi", page: () => const TransferMalTalebiListesiView()),
 
               //* * Transfer Açıklama Düzenleme
               GetPage(name: "/transferDepoAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.depoTransferi)),
@@ -312,6 +315,7 @@ final class PickerMaterialApp extends StatelessWidget {
 
               //* * Transfer Edit
               GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
+              GetPage(name: "/transferMalTalebiEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
 
               //* Üretim
 
