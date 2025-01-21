@@ -1,0 +1,120 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'transfer_mal_talebi_listesi_view_model.dart';
+
+// **************************************************************************
+// StoreGenerator
+// **************************************************************************
+
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
+
+mixin _$TransferMalTalebiListesiViewModel
+    on _TransferMalTalebiListesiViewModelBase, Store {
+  Computed<List<TransferMalTalebiListesiModel>?>?
+      _$filteredObservableListComputed;
+
+  @override
+  List<TransferMalTalebiListesiModel>? get filteredObservableList =>
+      (_$filteredObservableListComputed ??= Computed<
+                  List<TransferMalTalebiListesiModel>?>(
+              () => super.filteredObservableList,
+              name:
+                  '_TransferMalTalebiListesiViewModelBase.filteredObservableList'))
+          .value;
+
+  late final _$observableListAtom = Atom(
+      name: '_TransferMalTalebiListesiViewModelBase.observableList',
+      context: context);
+
+  @override
+  ObservableList<TransferMalTalebiListesiModel>? get observableList {
+    _$observableListAtom.reportRead();
+    return super.observableList;
+  }
+
+  @override
+  set observableList(ObservableList<TransferMalTalebiListesiModel>? value) {
+    _$observableListAtom.reportWrite(value, super.observableList, () {
+      super.observableList = value;
+    });
+  }
+
+  late final _$isSearchBarOpenAtom = Atom(
+      name: '_TransferMalTalebiListesiViewModelBase.isSearchBarOpen',
+      context: context);
+
+  @override
+  bool get isSearchBarOpen {
+    _$isSearchBarOpenAtom.reportRead();
+    return super.isSearchBarOpen;
+  }
+
+  @override
+  set isSearchBarOpen(bool value) {
+    _$isSearchBarOpenAtom.reportWrite(value, super.isSearchBarOpen, () {
+      super.isSearchBarOpen = value;
+    });
+  }
+
+  late final _$searchTextAtom = Atom(
+      name: '_TransferMalTalebiListesiViewModelBase.searchText',
+      context: context);
+
+  @override
+  String? get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String? value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
+    });
+  }
+
+  late final _$getDataAsyncAction = AsyncAction(
+      '_TransferMalTalebiListesiViewModelBase.getData',
+      context: context);
+
+  @override
+  Future<void> getData() {
+    return _$getDataAsyncAction.run(() => super.getData());
+  }
+
+  late final _$resetListAsyncAction = AsyncAction(
+      '_TransferMalTalebiListesiViewModelBase.resetList',
+      context: context);
+
+  @override
+  Future<void> resetList() {
+    return _$resetListAsyncAction.run(() => super.resetList());
+  }
+
+  late final _$_TransferMalTalebiListesiViewModelBaseActionController =
+      ActionController(
+          name: '_TransferMalTalebiListesiViewModelBase', context: context);
+
+  @override
+  void setObservableList(List<TransferMalTalebiListesiModel>? list) {
+    final _$actionInfo =
+        _$_TransferMalTalebiListesiViewModelBaseActionController.startAction(
+            name: '_TransferMalTalebiListesiViewModelBase.setObservableList');
+    try {
+      return super.setObservableList(list);
+    } finally {
+      _$_TransferMalTalebiListesiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  String toString() {
+    return '''
+observableList: ${observableList},
+isSearchBarOpen: ${isSearchBarOpen},
+searchText: ${searchText},
+filteredObservableList: ${filteredObservableList}
+    ''';
+  }
+}
