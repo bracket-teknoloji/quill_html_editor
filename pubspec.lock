@@ -691,11 +691,10 @@ packages:
   flutter_slidable:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "7dbeb6667bf410d9a8401f0f8412e14669e7338f"
-      url: "https://github.com/letsar/flutter_slidable"
-    source: git
+      name: flutter_slidable
+      sha256: a857de7ea701f276fd6a6c4c67ae885b60729a3449e42766bb0e655171042801
+      url: "https://pub.dev"
+    source: hosted
     version: "3.1.2"
   flutter_staggered_animations:
     dependency: "direct main"
