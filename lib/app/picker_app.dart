@@ -1,3 +1,4 @@
+import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/view/transfer_mal_talebi_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view/transfer_mal_talebi_listesi_view.dart";
 
 import "picker_app_imports.dart";
@@ -315,7 +316,7 @@ final class PickerMaterialApp extends StatelessWidget {
 
               //* * Transfer Edit
               GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
-              GetPage(name: "/transferMalTalebiEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
+              GetPage(name: "/transferMalTalebiEdit", page: () => TransferMalTalebiEditView(model: Get.arguments)),
 
               //* Üretim
 
