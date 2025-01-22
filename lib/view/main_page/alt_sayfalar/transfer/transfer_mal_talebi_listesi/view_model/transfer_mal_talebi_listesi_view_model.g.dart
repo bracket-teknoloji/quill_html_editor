@@ -39,6 +39,23 @@ mixin _$TransferMalTalebiListesiViewModel
     });
   }
 
+  late final _$requestModelAtom = Atom(
+      name: '_TransferMalTalebiListesiViewModelBase.requestModel',
+      context: context);
+
+  @override
+  TransferMalTalebiListesiRequestModel get requestModel {
+    _$requestModelAtom.reportRead();
+    return super.requestModel;
+  }
+
+  @override
+  set requestModel(TransferMalTalebiListesiRequestModel value) {
+    _$requestModelAtom.reportWrite(value, super.requestModel, () {
+      super.requestModel = value;
+    });
+  }
+
   late final _$isSearchBarOpenAtom = Atom(
       name: '_TransferMalTalebiListesiViewModelBase.isSearchBarOpen',
       context: context);
@@ -73,6 +90,24 @@ mixin _$TransferMalTalebiListesiViewModel
     });
   }
 
+  late final _$selectedDepoMalToplamaEnumAtom = Atom(
+      name: '_TransferMalTalebiListesiViewModelBase.selectedDepoMalToplamaEnum',
+      context: context);
+
+  @override
+  DepoMalToplamaEnum get selectedDepoMalToplamaEnum {
+    _$selectedDepoMalToplamaEnumAtom.reportRead();
+    return super.selectedDepoMalToplamaEnum;
+  }
+
+  @override
+  set selectedDepoMalToplamaEnum(DepoMalToplamaEnum value) {
+    _$selectedDepoMalToplamaEnumAtom
+        .reportWrite(value, super.selectedDepoMalToplamaEnum, () {
+      super.selectedDepoMalToplamaEnum = value;
+    });
+  }
+
   late final _$getDataAsyncAction = AsyncAction(
       '_TransferMalTalebiListesiViewModelBase.getData',
       context: context);
@@ -80,6 +115,16 @@ mixin _$TransferMalTalebiListesiViewModel
   @override
   Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
+  }
+
+  late final _$setSelectedDepoMalToplamaEnumAsyncAction = AsyncAction(
+      '_TransferMalTalebiListesiViewModelBase.setSelectedDepoMalToplamaEnum',
+      context: context);
+
+  @override
+  Future<void> setSelectedDepoMalToplamaEnum(DepoMalToplamaEnum value) {
+    return _$setSelectedDepoMalToplamaEnumAsyncAction
+        .run(() => super.setSelectedDepoMalToplamaEnum(value));
   }
 
   late final _$resetListAsyncAction = AsyncAction(
@@ -112,8 +157,10 @@ mixin _$TransferMalTalebiListesiViewModel
   String toString() {
     return '''
 observableList: ${observableList},
+requestModel: ${requestModel},
 isSearchBarOpen: ${isSearchBarOpen},
 searchText: ${searchText},
+selectedDepoMalToplamaEnum: ${selectedDepoMalToplamaEnum},
 filteredObservableList: ${filteredObservableList}
     ''';
   }
