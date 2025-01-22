@@ -24,8 +24,7 @@ final class AppThemeDark extends AppTheme {
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
         datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
         radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1))),
-        useMaterial3: true,
-        colorSchemeSeed: UIHelper.primaryColor,
+        colorScheme: colorManager,
         actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
         tabBarTheme: const TabBarTheme(
           indicatorColor: UIHelper.primaryColor,

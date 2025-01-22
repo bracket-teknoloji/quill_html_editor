@@ -6,7 +6,7 @@ import "../../../constants/ui_helper/ui_helper.dart";
 import "../../helper_widgets/custom_label_widget.dart";
 
 /// merhaba ben volkan konak
-final class SlideControllerWidget extends StatefulWidget {
+final class SlideControllerWidget<T> extends StatefulWidget {
   const SlideControllerWidget({
     required this.childrenTitleList,
     required this.filterOnChanged,
@@ -18,8 +18,8 @@ final class SlideControllerWidget extends StatefulWidget {
   }) : assert(childrenTitleList.length == childrenValueList.length, "childrenTitleList and childrenValueList length must be equal");
   final String? title;
   final List<String> childrenTitleList;
-  final List childrenValueList;
-  final dynamic groupValue;
+  final List<T> childrenValueList;
+  final T groupValue;
   final bool? scroll;
   final void Function(int? index) filterOnChanged;
 

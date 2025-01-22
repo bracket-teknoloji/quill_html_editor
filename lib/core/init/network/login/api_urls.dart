@@ -158,6 +158,7 @@ class ApiUrls {
 
   //* Transfer
   static const String getDepoTalepleri = "fatura/GetDepoTalepleri";
+  static const String getDepoTalepKalemleri = "fatura/GetDepoTalepKalemleri";
   static const String saveDepoTalep = "fatura/SaveDepoTalep";
 
   //* Sigma Kalite-Kontrol
