@@ -1965,7 +1965,17 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
                       as String)
       ..sevkiyatSatisFatSipBagSipOkutulsunKalanMiktarGelsin =
           json['sevkiyat_SatisFat_SipBag_SipOkutulsun_KalanMiktarGelsin']
-              as String?;
+              as String?
+      ..transferAcVarsayilanHarTuru =
+          json['transfer_AC_VarsayilanHarTuru'] as String?
+      ..transferAcVarsayilanCikisYeri =
+          json['transfer_AC_VarsayilanCikisYeri'] as String?
+      ..transferDepoTalebiRehberdenStokSecilmesin =
+          json['transfer_DepoTalebi_RehberdenStokSecilmesin'] as String?
+      ..stokCariHarGizlenecekAlanlar =
+          (json['stok_CariHar_GizlenecekAlanlar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList();
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
     <String, dynamic>{
@@ -4085,6 +4095,14 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
       if (instance.sevkiyatSatisFatSipBagSipOkutulsunKalanMiktarGelsin
           case final value?)
         'sevkiyat_SatisFat_SipBag_SipOkutulsun_KalanMiktarGelsin': value,
+      if (instance.transferAcVarsayilanHarTuru case final value?)
+        'transfer_AC_VarsayilanHarTuru': value,
+      if (instance.transferAcVarsayilanCikisYeri case final value?)
+        'transfer_AC_VarsayilanCikisYeri': value,
+      if (instance.transferDepoTalebiRehberdenStokSecilmesin case final value?)
+        'transfer_DepoTalebi_RehberdenStokSecilmesin': value,
+      if (instance.stokCariHarGizlenecekAlanlar case final value?)
+        'stok_CariHar_GizlenecekAlanlar': value,
     };
 
 const _$BarkodSayisiSaklanacakAlanEnumMap = {

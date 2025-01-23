@@ -2163,6 +2163,14 @@ final class ProfilYetkiModel {
   BarkodSayisiSaklanacakAlan? sevkiyatSatisIrsBarkodSayisiSaklanacakAlan;
   @JsonKey(name: "sevkiyat_SatisFat_SipBag_SipOkutulsun_KalanMiktarGelsin")
   String? sevkiyatSatisFatSipBagSipOkutulsunKalanMiktarGelsin;
+  @JsonKey(name: "transfer_AC_VarsayilanHarTuru")
+  String? transferAcVarsayilanHarTuru;
+  @JsonKey(name: "transfer_AC_VarsayilanCikisYeri")
+  String? transferAcVarsayilanCikisYeri;
+  @JsonKey(name: "transfer_DepoTalebi_RehberdenStokSecilmesin")
+  String? transferDepoTalebiRehberdenStokSecilmesin;
+  @JsonKey(name: "stok_CariHar_GizlenecekAlanlar")
+  List<String>? stokCariHarGizlenecekAlanlar;
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 
