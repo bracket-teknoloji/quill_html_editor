@@ -155,6 +155,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
           ..tarih = DateTime.now().dateTimeWithoutTime
           ..isNew = true
           ..cariAdi ??= widget.model.model?.cariAdi
+          ..cikisYeri ??= widget.model.editTipiEnum?.ambarCikisiMi == true ? yetkiController.transferAcVarsayilanCikisYeri : null
           ..cariKodu ??= widget.model.model?.cariKodu
           ..hareketTuru = widget.model.model?.hareketTuru
           ..projeAciklama = yetkiController.varsayilanProje?.projeAciklama
@@ -611,7 +612,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                   "/mainPage/siparisRehberi",
                   arguments: BaseSiparisEditModel(
                     pickerBelgeTuru: widget.model.editTipiEnum?.rawValue,
-                    belgeTuru:  widget.model.editTipiEnum?.rawValue,
+                    belgeTuru: widget.model.editTipiEnum?.rawValue,
                     cariKodu: viewModel.baseSiparisEditModel.cariKodu,
                   ),
                 );
