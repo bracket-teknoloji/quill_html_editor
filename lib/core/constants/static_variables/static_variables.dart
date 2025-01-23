@@ -38,6 +38,7 @@ final class StaticVariables {
   //* Fatura
   bool get isFaturaValid => faturaGenelFormKey.currentState?.validate() ?? false;
   GlobalKey<FormState> faturaGenelFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> faturaToplamlarFormKey = GlobalKey<FormState>();
 
   //* Transfer
   bool get isTransferValid => transferGenelFormKey.currentState?.validate() ?? false;
