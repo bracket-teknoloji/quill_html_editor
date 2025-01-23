@@ -227,6 +227,76 @@ extension EditTipiEnumExtension on EditTipiEnum {
     };
   }
 
+  bool get maxIskontoUygula => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxIskontoUygula,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxIskontoUygula,
+        EditTipiEnum.musteri => yetkiController.msMaxIskontoUygula,
+        _ => false,
+      };
+
+  double? get maxGenelIskonto1 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto1,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto1,
+        EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto1,
+        _ => null,
+      };
+
+  double? get maxGenelIskonto2 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto2,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto2,
+        EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto2,
+        _ => null,
+      };
+
+  double? get maxGenelIskonto3 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto3,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto3,
+        EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto3,
+        _ => null,
+      };
+
+      double? get maxSatirIskonto1 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto1,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto1,
+        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto1,
+        _ => null,
+      };
+
+  double? get maxSatirIskonto2 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto2,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto2,
+        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto2,
+        _ => null,
+      };
+
+  double? get maxSatirIskonto3 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto3,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto3,
+        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto3,
+        _ => null,
+      };
+
+  double? get maxSatirIskonto4 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto4,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto4,
+        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto4,
+        _ => null,
+      };
+
+  double? get maxSatirIskonto5 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto5,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto5,
+        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto5,
+        _ => null,
+      };
+
+  double? get maxSatirIskonto6 => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto6,
+        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto6,
+        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto6,
+        _ => null,
+      };
+
   bool get urunOtomatikEklensin {
     if (!barkodluUrunGirisi) return true;
     return switch (this) {
