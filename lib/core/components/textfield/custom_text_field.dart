@@ -162,7 +162,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
             inputFormatters: widget.isFormattedString == true ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
             // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
             maxLength: widget.maxLength,
-            validator: ((widget.enabled != false ? (widget.isMust ?? false) : false) ? (widget.validator ?? validator) : null),
+            validator: (widget.enabled != false ? validator : null),
             controller: controller,
             obscureText: widget.obscureText,
             readOnly: widget.readOnly ?? false,
@@ -279,6 +279,8 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
       );
 
   String? validator(String? p0) {
+    if (widget.validator != null) return widget.validator?.call(p0);
+    if (widget.isMust != true) return null;
     if (p0 == null || p0.isEmpty) {
       return "${widget.labelText ?? ""} boş bırakılamaz";
     } else if (widget.maxLength != null && p0.length > widget.maxLength!) {
