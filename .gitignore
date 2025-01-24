@@ -872,3 +872,4 @@ lib/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_tr
 # FVM Version Cache
 .fvm/
 lib/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/deneme.json
+lib/core/base/view/kalem_ekle/view/deneme.json
