@@ -511,6 +511,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                     visible: viewModel.isLastPage && kaydetButonuYetki,
                     child: IconButton(
                       onPressed: () async {
+                        if (StaticVariables.instance.faturaToplamlarFormKey.currentState?.validate() != true) return;
                         await dialogManager.showAreYouSureDialog(() async {
                           if (await postData()) {
                             await CacheManager.removeFaturaEditListWithUuid(BaseSiparisEditModel.instance.uuid);
@@ -796,9 +797,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                   } else {
                     _siparisController.text = "${list.length} adet Sipariş Seçildi.";
                   }
-                  if (widget.model.editTipiEnum?.siparisBaglantisiTumuSeciliGelsin ?? false) {
-                    
-                  }
+                  if (widget.model.editTipiEnum?.siparisBaglantisiTumuSeciliGelsin ?? false) {}
                 }
               },
             ),

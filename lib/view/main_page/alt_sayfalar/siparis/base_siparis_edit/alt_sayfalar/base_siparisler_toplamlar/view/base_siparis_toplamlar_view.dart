@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
@@ -250,6 +251,7 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
           children: [
             Row(
               children: [
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
                 CustomTextField(
                   labelText: "Gen. İsk 1",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -275,7 +277,8 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                       ),
                     ),
                   ),
-                ),
+                ),                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
+
                 CustomTextField(
                   labelText: "İsk.Tipi 1",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -302,6 +305,7 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
             ),
             Row(
               children: [
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
                 CustomTextField(
                   labelText: "Gen. İsk 2",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -327,7 +331,8 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                       ),
                     ),
                   ),
-                ),
+                ),                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
+
                 CustomTextField(
                   labelText: "İsk.Tipi 2",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -379,7 +384,8 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                       ),
                     ),
                   ),
-                ),
+                ),                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk3") ?? false))
+
                 CustomTextField(
                   labelText: "İsk.Tipi 3",
                   //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.

@@ -160,7 +160,7 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (kalemModel.paketMi == "K") const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli),
-            Text(kalemModel.stokKodu ?? ""),
+            if (kalemModel.stokKodu case final value?) Text(value),
             Text("${kalemModel.depoKodu ?? ""} - ${kalemModel.depoTanimi ?? ""}").paddingOnly(bottom: UIHelper.lowSize),
             if (kalemModel.faturaKalemAciklama != "") Text(kalemModel.faturaKalemAciklama, style: const TextStyle(color: UIHelper.primaryColor)),
             LayoutBuilder(

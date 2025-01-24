@@ -257,6 +257,7 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     this.aciklama16Adi,
     this.cikisSubeAciklama,
     this.girisSubeAciklama,
+    this.id,
   });
 
   BaseSiparisEditModel._init();
@@ -821,6 +822,7 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   String? cikisSubeAciklama;
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? girisSubeAciklama;
+  int? id;
 
   void kalemlerOTVHesapla() {
     for (final element in kalemList ?? <KalemModel>[]) {
@@ -1454,13 +1456,24 @@ final class KalemModel with NetworkManagerMixin {
         seriMiktarKadarSor: model.seriMiktarKadarSor,
       );
   factory KalemModel.fromBarkodModel(StokListesiModel model) {
-    final BarkodList newBarkod = BarkodList(barkod: model.okutulanBarkod, miktar: model.varsayilanMiktar, miktar2: model.miktar2);
+    final BarkodList newBarkod = BarkodList(barkod: model.okutulanBarkod, miktar: model.bulunanMiktar ?? model.varsayilanMiktar, miktar2: model.miktar2);
     final KalemModel kalemModel = KalemModel.fromStokListesiModel(model)
       ..barkodList = [newBarkod]
-      ..miktar = model.varsayilanMiktar
+      ..dovizTipi = model.bulunanDovizTipi
+      ..dovizKodu = model.bulunanDovizTipi
+      ..seriGirislerdeAcik = model.seriGirislerdeAcik
+      ..seriCikislardaAcik = model.seriCikislardaAcik
+      ..dovizFiyati = model.bulunanDovizFiyati
+      ..dovizliFiyat = model.bulunanDovizFiyati
+      ..ekalan1 = model.bulunanEkalan1
+      ..ekalan2 = model.bulunanEkalan2
+      ..isemriNo = model.bulunanIsemri
+      ..miktar = model.bulunanMiktar ?? model.varsayilanMiktar
+      ..depoKodu = model.bulunanDepo
+      ..brutFiyat = model.bulunanFiyat
       ..barkod = model.okutulanBarkod;
     final SeriList newSeri = SeriList(
-      miktar: model.varsayilanMiktar,
+      miktar: model.bulunanMiktar ?? model.varsayilanMiktar,
       sonKullanmaTarihi: model.bulunanSeriSkt,
       stokAdi: model.stokAdi,
       stokKodu: model.stokKodu,

@@ -261,6 +261,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       final cariModel = await networkManager.getCariModel(CariRequestModel.fromCariListesiModel(result));
                       _cariController.text = cariModel!.cariAdi ?? "";
                       // _plasiyerController.text = result.plasiyerAciklama ?? "";
+                      viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
                       viewModel.model.cariTitle = cariModel.efaturaCarisi == "E"
                           ? "E-Fatura"
                           : cariModel.efaturaCarisi == "H"
@@ -519,25 +520,26 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                         ),
                       ),
                     ).yetkiVarMi(!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false)),
-                    CustomWidgetWithLabel(
-                      text: "E-İrsaliye",
-                      isVertical: true,
-                      child: Observer(
-                        builder: (_) => Switch.adaptive(
-                          value: viewModel.ebelgeCheckbox,
-                          onChanged: enable
-                              ? (value) async {
-                                  viewModel.changeEbelgeCheckBox(value);
-                                  if (value) {
-                                    await getBelgeNo(false, seri: parametreModel.seriEIrsaliye ?? "");
-                                  } else {
-                                    await getBelgeNo(false, seri: "");
+                    if (yetkiController.eIrsaliyeAktif)
+                      CustomWidgetWithLabel(
+                        text: "E-İrsaliye",
+                        isVertical: true,
+                        child: Observer(
+                          builder: (_) => Switch.adaptive(
+                            value: viewModel.ebelgeCheckbox && !(model.getEditTipiEnum?.eIrsaliyeIsaretleyemesin ?? false),
+                            onChanged: enable
+                                ? (value) async {
+                                    viewModel.changeEbelgeCheckBox(value);
+                                    if (value) {
+                                      await getBelgeNo(false, seri: parametreModel.seriEIrsaliye ?? "");
+                                    } else {
+                                      await getBelgeNo(false, seri: "");
+                                    }
                                   }
-                                }
-                              : null,
+                                : null,
+                          ),
                         ),
-                      ),
-                    ).yetkiVarMi(model.getEditTipiEnum.irsaliyeMi),
+                      ).yetkiVarMi(model.getEditTipiEnum.irsaliyeMi),
                   ],
                 ),
                 if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))

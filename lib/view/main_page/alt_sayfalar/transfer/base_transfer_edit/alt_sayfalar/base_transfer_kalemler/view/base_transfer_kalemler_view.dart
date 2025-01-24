@@ -375,7 +375,9 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
         dialogManager.showAlertDialog("Barkod bulunamadı.\nSadece Barkodlu Stoklar Eklenebilir.\nOkutulan barkod: $result");
       }
     } else {
-      final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel);
+      final bool satisMi = model.getEditTipiEnum?.satisMi ?? false;
+      final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)
+        ..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
       if (model.getEditTipiEnum?.urunOtomatikEklensin ?? false) {
         BaseSiparisEditModel.instance.kalemList ??= [];
         BaseSiparisEditModel.instance.kalemList?.add(kalemModel);

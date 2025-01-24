@@ -1,6 +1,7 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/model/transfer_mal_talebi_listesi_model.dart";
 
 part "transfer_mal_talebi_edit_view_model.g.dart";
@@ -9,13 +10,13 @@ class TransferMalTalebiEditViewModel = _TransferMalTalebiEditViewModelBase with 
 
 abstract class _TransferMalTalebiEditViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TransferMalTalebiListesiModel model = TransferMalTalebiListesiModel();
+  BaseSiparisEditModel model = BaseSiparisEditModel();
 
   @action
-  void setModel(TransferMalTalebiListesiModel value) => model = value;
+  void setModel(BaseSiparisEditModel value) => model = value;
 
   @action
-  getData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.getDepoTalepleri, bodyModel: TransferMalTalebiListesiModel(), data: {"ID": model.id});
+  Future<void> getData() async {
+    final result = await networkManager.dioPost(path: ApiUrls.getDepoTalepleri, bodyModel: BaseSiparisEditModel(), data: {"ID": model.id});
   }
 }

@@ -421,6 +421,8 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel girisSubeAciklama(String? girisSubeAciklama);
 
+  BaseSiparisEditModel id(int? id);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -635,6 +637,7 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? aciklama16Adi,
     String? cikisSubeAciklama,
     String? girisSubeAciklama,
+    int? id,
   });
 }
 
@@ -1402,6 +1405,9 @@ class _$BaseSiparisEditModelCWProxyImpl
       this(girisSubeAciklama: girisSubeAciklama);
 
   @override
+  BaseSiparisEditModel id(int? id) => this(id: id);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1617,6 +1623,7 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? aciklama16Adi = const $CopyWithPlaceholder(),
     Object? cikisSubeAciklama = const $CopyWithPlaceholder(),
     Object? girisSubeAciklama = const $CopyWithPlaceholder(),
+    Object? id = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2451,6 +2458,10 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.girisSubeAciklama
           // ignore: cast_nullable_to_non_nullable
           : girisSubeAciklama as String?,
+      id: id == const $CopyWithPlaceholder()
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as int?,
     );
   }
 }
@@ -5439,6 +5450,7 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       hedefDepoAdi: json['HEDEF_DEPO_ADI'] as String?,
       otvTutari: (json['OTV_TUTARI'] as num?)?.toDouble(),
       index: (json['INDEX'] as num?)?.toInt(),
+      id: (json['ID'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -5668,6 +5680,7 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
       if (instance.hedefDepoAdi case final value?) 'HEDEF_DEPO_ADI': value,
       if (instance.otvTutari case final value?) 'OTV_TUTARI': value,
       if (instance.index case final value?) 'INDEX': value,
+      if (instance.id case final value?) 'ID': value,
     };
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(

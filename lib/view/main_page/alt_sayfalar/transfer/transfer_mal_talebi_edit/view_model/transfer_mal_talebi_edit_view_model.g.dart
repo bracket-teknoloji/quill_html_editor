@@ -14,13 +14,13 @@ mixin _$TransferMalTalebiEditViewModel
       Atom(name: '_TransferMalTalebiEditViewModelBase.model', context: context);
 
   @override
-  TransferMalTalebiListesiModel get model {
+  BaseSiparisEditModel get model {
     _$modelAtom.reportRead();
     return super.model;
   }
 
   @override
-  set model(TransferMalTalebiListesiModel value) {
+  set model(BaseSiparisEditModel value) {
     _$modelAtom.reportWrite(value, super.model, () {
       super.model = value;
     });
@@ -31,7 +31,7 @@ mixin _$TransferMalTalebiEditViewModel
       context: context);
 
   @override
-  Future getData() {
+  Future<void> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
@@ -40,7 +40,7 @@ mixin _$TransferMalTalebiEditViewModel
           name: '_TransferMalTalebiEditViewModelBase', context: context);
 
   @override
-  void setModel(TransferMalTalebiListesiModel value) {
+  void setModel(BaseSiparisEditModel value) {
     final _$actionInfo = _$_TransferMalTalebiEditViewModelBaseActionController
         .startAction(name: '_TransferMalTalebiEditViewModelBase.setModel');
     try {

@@ -252,7 +252,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                           icon: Observer(builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined)),
                         ),
                       ),
-                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false))
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
                       CustomTextField(
                         labelText: "İsk.Tipi 1",
                         //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -303,7 +303,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                           icon: Observer(builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined)),
                         ),
                       ),
-                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false))
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
                       CustomTextField(
                         labelText: "İsk.Tipi 2",
                         //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -353,7 +353,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
                           icon: Observer(builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined)),
                         ),
                       ),
-                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false))
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk3") ?? false))
                       CustomTextField(
                         labelText: "İsk.Tipi 3",
                         //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
@@ -376,7 +376,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
               ],
               Row(
                 children: <Widget>[
-                  if (yetkiController.siparisEkMaliyet2GizlenecekMi)
+                  if (yetkiController.siparisEkMaliyet2GizlenecekMi && yetkiController.ekMaliyet2Aktif(model.getEditTipiEnum))
                     Expanded(
                       child: CustomTextField(
                         labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
