@@ -165,7 +165,7 @@ abstract class _$StokListesiModelCWProxy {
 
   StokListesiModel bulunanDovizFiyati(double? bulunanDovizFiyati);
 
-  StokListesiModel bulunanDovizTipi(int bulunanDovizTipi);
+  StokListesiModel bulunanDovizTipi(int? bulunanDovizTipi);
 
   StokListesiModel kull1n(double? kull1n);
 
@@ -325,7 +325,7 @@ abstract class _$StokListesiModelCWProxy {
     double? satisKuru,
     DateTime? satisKurTarihi,
     double? bulunanDovizFiyati,
-    int bulunanDovizTipi,
+    int? bulunanDovizTipi,
     double? kull1n,
     double? kull2n,
     double? kull3n,
@@ -658,7 +658,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
       this(bulunanDovizFiyati: bulunanDovizFiyati);
 
   @override
-  StokListesiModel bulunanDovizTipi(int bulunanDovizTipi) =>
+  StokListesiModel bulunanDovizTipi(int? bulunanDovizTipi) =>
       this(bulunanDovizTipi: bulunanDovizTipi);
 
   @override
@@ -1229,7 +1229,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
       bulunanDovizTipi: bulunanDovizTipi == const $CopyWithPlaceholder()
           ? _value.bulunanDovizTipi
           // ignore: cast_nullable_to_non_nullable
-          : bulunanDovizTipi as int,
+          : bulunanDovizTipi as int?,
       kull1n: kull1n == const $CopyWithPlaceholder()
           ? _value.kull1n
           // ignore: cast_nullable_to_non_nullable
@@ -1774,7 +1774,12 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..bulunanSerilot5 = json['BULUNAN_SERILOT5'] as String?
       ..bulunanSeriAcik3 = json['BULUNAN_SERI_ACIK3'] as String?
       ..bulunanSeriAcik4 = json['BULUNAN_SERI_ACIK4'] as String?
-      ..bulunanMiktar = (json['BULUNAN_MIKTAR'] as num?)?.toDouble();
+      ..bulunanMiktar = (json['BULUNAN_MIKTAR'] as num?)?.toDouble()
+      ..bulunanIsemri = json['BULUNAN_ISEMRI'] as String?
+      ..bulunanEkalan1 = json['BULUNAN_EKALAN1'] as String?
+      ..bulunanEkalan2 = json['BULUNAN_EKALAN2'] as String?
+      ..bulunanHucre = json['BULUNAN_HUCRE'] as String?
+      ..bulunanDepo = (json['BULUNAN_DEPO'] as num?)?.toInt();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
     <String, dynamic>{
@@ -1873,7 +1878,8 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
         'SATIS_KUR_TARIHI': value,
       if (instance.bulunanDovizFiyati case final value?)
         'BULUNAN_DOVIZ_FIYATI': value,
-      'BULUNAN_DOVIZ_TIPI': instance.bulunanDovizTipi,
+      if (instance.bulunanDovizTipi case final value?)
+        'BULUNAN_DOVIZ_TIPI': value,
       if (instance.yapacik case final value?) 'YAPACIK': value,
       if (instance.netMiktar case final value?) 'NET_MIKTAR': value,
       if (instance.depoBakiyeListe?.map((e) => e.toJson()).toList()
@@ -1923,6 +1929,11 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
       if (instance.bulunanMiktar case final value?) 'BULUNAN_MIKTAR': value,
       if (instance.bulunanSeriSkt?.toIso8601String() case final value?)
         'BULUNAN_SERI_SKT': value,
+      if (instance.bulunanIsemri case final value?) 'BULUNAN_ISEMRI': value,
+      if (instance.bulunanEkalan1 case final value?) 'BULUNAN_EKALAN1': value,
+      if (instance.bulunanEkalan2 case final value?) 'BULUNAN_EKALAN2': value,
+      if (instance.bulunanHucre case final value?) 'BULUNAN_HUCRE': value,
+      if (instance.bulunanDepo case final value?) 'BULUNAN_DEPO': value,
     };
 
 StokList _$StokListFromJson(Map<String, dynamic> json) => StokList(

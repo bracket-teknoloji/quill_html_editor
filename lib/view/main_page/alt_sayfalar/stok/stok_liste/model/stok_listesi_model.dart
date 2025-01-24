@@ -2,7 +2,6 @@ import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive/hive.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
-import "package:picker/core/init/app_info/app_info.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/base_stok_mixin.dart";
@@ -243,7 +242,7 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   double? satisKuru;
   DateTime? satisKurTarihi;
   double? bulunanDovizFiyati;
-  int bulunanDovizTipi = 0;
+  int? bulunanDovizTipi;
   String? yapacik;
   @override
   double? netMiktar;
@@ -284,6 +283,11 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   String? okutulanBarkod;
   double? bulunanMiktar;
   DateTime? bulunanSeriSkt;
+  String? bulunanIsemri;
+  String? bulunanEkalan1;
+  String? bulunanEkalan2;
+  String? bulunanHucre;
+  int? bulunanDepo;
 
   static StokListesiModel? _instance;
 
