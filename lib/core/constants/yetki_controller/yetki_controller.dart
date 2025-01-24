@@ -44,15 +44,22 @@ final class YetkiController {
   //! GENEL
 
   bool get adminMi => _userModel?.adminMi ?? false;
-  List<DepoList>? get yetkiliDepoList => _paramModel?.depoList
-      ?.where(
-        (element) => _isTrue(
-          _kullaniciYetkiModel?.sirketDepoYetkiTuru == null
-              ? (_kullaniciYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu))
-              : _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu),
-        ),
-      )
-      .toList();
+  List<DepoList>? get yetkiliDepoList {
+    if (_kullaniciYetkiModel?.sirketDepoYetkiTuru == "T" || adminMi) return _paramModel?.depoList;
+    if (_isTrue(_kullaniciYetkiModel?.sirketDepoYetkiTuru == null)) {
+      return _paramModel?.depoList;
+    }
+    return _paramModel?.depoList
+        ?.where(
+          (element) => _isTrue(
+            _kullaniciYetkiModel?.sirketDepoYetkiTuru == null
+                ? (_kullaniciYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ?? _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu))
+                : _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu),
+          ),
+        )
+        .toList();
+  }
+
   // Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   PlasiyerList? get varsayilanPlasiyer =>
       _kullaniciYetkiModel?.varsayilanPlasiyerKodu != null && _paramModel?.plasiyerList?.any((element) => element.plasiyerKodu == _kullaniciYetkiModel?.varsayilanPlasiyerKodu) == true
@@ -64,7 +71,6 @@ final class YetkiController {
           : null;
   BaseProjeModel? get varsayilanProje =>
       _kullaniciYetkiModel?.varsayilanProjeKodu != null ? BaseProjeModel(projeKodu: _kullaniciYetkiModel?.varsayilanProjeKodu, projeAciklama: _kullaniciYetkiModel?.varsayilanProjeTanimi) : null;
-
 
   bool projeYetkisiVarMi(String? projeKodu) => _isTrue(_yetkiModel?.sirketAktifProjeler == null || (_yetkiModel?.sirketAktifProjeler?.contains(projeKodu) ?? true));
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
@@ -84,6 +90,8 @@ final class YetkiController {
   }
 
   //! Şirket
+
+  bool kosulAktif(EditTipiEnum? editTipi) => _isTrue(editTipi?.satisMi == true ? _paramModel?.satisKosulAktif : _paramModel?.alisKosulAktif, skipAdmin: true);
 
   bool get kontrolluBelgeAktarimAktif => _isTrue(_paramModel?.kontrolluBelgeAktarimAktif, skipAdmin: true);
   bool kontrolluAktarBelgeTipleri(String? belgeTuru) => _isTrue(kontrolluBelgeAktarimAktif && (_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(belgeTuru) ?? false)) && !adminMi;
@@ -246,7 +254,11 @@ final class YetkiController {
 
   //* Genel Sipariş Yetkileri
 
-  String? siparisSatisEkMaliyet2Adi(EditTipiEnum? editTipi) => _musteriSiparisiMi(editTipi) ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
+  bool ekMaliyet2Aktif(EditTipiEnum? editTipi) => _isTrue(editTipi?.satisMi == true ? _paramModel?.satisEkMaliyet2Aktif : _paramModel?.alisEkMaliyet2Aktif, skipAdmin: true);
+
+  String? siparisSatisEkMaliyet2Adi(EditTipiEnum? editTipi) =>
+      _paramModel?.listFatuEkMaliyet?.firstWhereOrNull((element) => element.belgeTipi == editTipi?.rawValue)?.adi ??
+      (_musteriSiparisiMi(editTipi) ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi);
   int siparisSatirKademeliIskontoSayisi(EditTipiEnum? editTipi) => _musteriSiparisiMi(editTipi) ? _paramModel?.satisSatirKademeliIskontoSayisi ?? 0 : _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
   bool get msOnayIslemleri => _isTrue(_yetkiModel?.siparisMusSipOnayIslemleri);
   bool get ssOnayIslemleri => _isTrue(_yetkiModel?.siparisSaticiSipOnayIslemleri);
@@ -964,8 +976,6 @@ final class YetkiController {
   bool get msMaxIskontoUygula => _isTrue(_yetkiModel?.siparisMusSipMaxIskUygulamasi);
   bool get sfMaxIskontoUygula => _isTrue(_yetkiModel?.sevkiyatSatisFatMaxIskUygulamasi);
   bool get siMaxIskontoUygula => _isTrue(_yetkiModel?.sevkiyatSatisIrsMaxIskUygulamasi);
-
-
 
   //! Sigma
   bool get sigmaOlcumGirisi => _isTrue(_yetkiModel?.sigmaOlcumGir);
