@@ -5,39 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: update_fastlane" time="6.669855">
+      <testcase classname="fastlane.lanes" name="0: update_fastlane" time="6.022403">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000251">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000164">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: latest_testflight_build_number" time="8.04884">
+      <testcase classname="fastlane.lanes" name="2: latest_testflight_build_number" time="9.624139">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.208189">
+      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.24583">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: cocoapods" time="79.211135">
+      <testcase classname="fastlane.lanes" name="4: cocoapods" time="5.751214">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: build_app" time="3113.201622">
+      <testcase classname="fastlane.lanes" name="5: build_app" time="267.500024">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: upload_to_testflight" time="49066.582848">
-        
-          <failure message="/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:229:in `chdir&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing&apos;&#10;Fastfile:30:in `block (2 levels) in parsing_binding&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/lane.rb:41:in `call&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:45:in `chdir&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:45:in `execute&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/lane_manager.rb:46:in `cruise_lane&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/command_line_handler.rb:34:in `handle&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:110:in `block (2 levels) in run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/commander-4.6.0/lib/commander/command.rb:187:in `call&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/commander-4.6.0/lib/commander/command.rb:157:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:124:in `run!&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:363:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:43:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/cli_tools_distributor.rb:123:in `take_off&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/bin/fastlane:23:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/bin/fastlane:25:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/bin/fastlane:25:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli/exec.rb:58:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli/exec.rb:58:in `kernel_load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli/exec.rb:23:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli.rb:455:in `exec&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/vendor/thor/lib/thor.rb:527:in `dispatch&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli.rb:35:in `dispatch&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli.rb:29:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/exe/bundle:28:in `block in &lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/exe/bundle:20:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/bin/bundle:25:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/bin/bundle:25:in `&lt;main&gt;&apos;&#10;&#10;Error uploading ipa file: &#10; [Application Loader Error Output]: URL Session Data Task returned an error: Error Domain=NSURLErrorDomain Code=-1001 &quot;The request timed out.&quot; UserInfo={_kCFStreamErrorCodeKey=-2102, NSUnderlyingError=0x125a0e2a0 {Error Domain=kCFErrorDomainCFNetwork Code=-1001 &quot;(null)&quot; UserInfo={_kCFStreamErrorCodeKey=-2102, _kCFStreamErrorDomainKey=4}}, _NSURLErrorFailingURLSessionTaskErrorKey=LocalDataTask &lt;9A1E6634-A6F3-4592-8319-75284DF56259&gt;.&lt;1&gt;, _NSURLErrorRelatedURLSessionTaskErrorKey=(&#10;[Application Loader Error Output]: Error uploading &apos;/var/folders/dj/35jcly2n5_n14fcmzq6vj5440000gn/T/09384b3f-c168-4ff4-8393-ce591067ad58.ipa&apos;.&#10;[Application Loader Error Output]: Unable to upload archive. Failed to get authorization for username &apos;bracket.teknoloji.apple@gmail.com&apos; and password. (&#10;[Application Loader Error Output]: The call to the altool completed with a non-zero exit status: 1. This indicates a failure." />
+      <testcase classname="fastlane.lanes" name="6: upload_to_testflight" time="137.793097">
         
       </testcase>
     
