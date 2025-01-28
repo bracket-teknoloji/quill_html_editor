@@ -232,8 +232,10 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
           if (didPop) {
             return;
           }
-          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
-          BaseSiparisEditModel.resetInstance();
+          await dialogManager.showAreYouSureDialog(() {
+            Get.back(result: true);
+            BaseSiparisEditModel.resetInstance();
+          });
         },
         child: BaseScaffold(
           appBar: AppBar(

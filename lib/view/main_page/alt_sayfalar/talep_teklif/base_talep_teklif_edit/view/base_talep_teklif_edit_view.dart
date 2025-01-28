@@ -219,8 +219,10 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
           if (didPop) {
             return;
           }
-          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
-          BaseSiparisEditModel.resetInstance();
+          await dialogManager.showAreYouSureDialog(() {
+            Get.back(result: true);
+            BaseSiparisEditModel.resetInstance();
+          });
         },
         child: BaseScaffold(
           appBar: AppBar(
