@@ -258,7 +258,6 @@ final class AccountModel with NetworkManagerMixin {
       cihazModeli = iosInfo.utsname.machine;
       ozelCihazKimligi = iosInfo.identifierForVendor;
       cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
-      await Future.delayed(const Duration(seconds: 1));
       await AppTrackingTransparency.requestTrackingAuthorization();
       // }
     }
