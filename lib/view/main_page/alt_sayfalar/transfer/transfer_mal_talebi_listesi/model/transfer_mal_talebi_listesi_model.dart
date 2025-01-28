@@ -34,7 +34,4 @@ class TransferMalTalebiListesiModel with _$TransferMalTalebiListesiModel, Networ
   @override
   TransferMalTalebiListesiModel fromJson(Map<String, dynamic> json) => _$TransferMalTalebiListesiModelFromJson(json);
 
-  bool get isTamamlandi => (tamamlananMiktar ?? 0) == (miktar ?? 0);
-
-  bool get isKapali => kapali ?? false;
 }

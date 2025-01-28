@@ -1,6 +1,5 @@
-import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
-import "package:get/get.dart";
+import "package:picker/app/picker_app_imports.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
@@ -13,13 +12,11 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
-import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/depo_mal_toplama_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/model/transfer_mal_talebi_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view_model/transfer_mal_talebi_listesi_view_model.dart";
 
 final class TransferMalTalebiListesiView extends StatefulWidget {
@@ -81,7 +78,10 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
         isScrolledDown: true,
         onPressed: () async {
-          final result = await Get.toNamed("mainPage/transferMalTalebiEdit", arguments: BaseEditModel<TransferMalTalebiListesiModel>(baseEditEnum: BaseEditEnum.ekle));
+          final result = await Get.toNamed("mainPage/transferMalTalebiEdit", arguments: BaseEditModel<BaseSiparisEditModel>(baseEditEnum: BaseEditEnum.ekle));
+          if (result == true) {
+            await viewModel.resetList();
+          }
         },
       );
 
@@ -107,7 +107,7 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
         ],
       );
 
-  Card _malToplamaCard(TransferMalTalebiListesiModel item) => Card(
+  Card _malToplamaCard(BaseSiparisEditModel item) => Card(
         color: item.isTamamlandi || item.isKapali ? ColorPalette.mantis.withValues(alpha: 0.5) : null,
         child: ListTile(
           title: Row(
@@ -149,8 +149,9 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                   title: loc.generalStrings.view,
                   iconWidget: Icons.preview_outlined,
                   onTap: () async {
-                    Get.back();
-                    final result = await Get.toNamed("mainPage/transferMalTalebiEdit", arguments: BaseEditModel<TransferMalTalebiListesiModel>(baseEditEnum: BaseEditEnum.goruntule, model: item));
+                    Get
+                      ..back()
+                      ..toNamed("mainPage/transferMalTalebiEdit", arguments: BaseEditModel<BaseSiparisEditModel>(baseEditEnum: BaseEditEnum.goruntule, model: item));
                   },
                 ),
                 BottomSheetModel(
@@ -158,16 +159,23 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                   iconWidget: Icons.edit_outlined,
                   onTap: () async {
                     Get.back();
-                    final result = await Get.toNamed("mainPage/transferMalTalebiEdit", arguments: BaseEditModel<TransferMalTalebiListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: item));
+                    final result = await Get.toNamed("mainPage/transferMalTalebiEdit", arguments: BaseEditModel<BaseSiparisEditModel>(baseEditEnum: BaseEditEnum.duzenle, model: item));
+                    if (result == true) {
+                      await viewModel.resetList();
+                    }
                   },
                 ),
                 BottomSheetModel(
                   title: loc.generalStrings.delete,
                   iconWidget: Icons.delete_outline,
                   onTap: () async {
+                    if (item.id == null) {
+                      dialogManager.showErrorSnackBar("ID bulunamadı.");
+                      return;
+                    }
                     Get.back();
                     dialogManager.showAreYouSureDialog(() async {
-                      final result = await viewModel.deleteMalTalebi(item.id);
+                      final result = await viewModel.deleteMalTalebi(item.id!);
                       if (result) {
                         dialogManager.showSuccessSnackBar("${item.id} numaralı kayıt Silindi");
                         await viewModel.resetList();
@@ -180,9 +188,13 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                     title: "Talebi Aç",
                     iconWidget: Icons.refresh_outlined,
                     onTap: () async {
+                      if (item.id == null) {
+                        dialogManager.showErrorSnackBar("ID bulunamadı.");
+                        return;
+                      }
                       Get.back();
                       dialogManager.showAreYouSureDialog(() async {
-                        final result = await viewModel.talebiAc(item.id);
+                        final result = await viewModel.talebiAc(item.id!);
                         if (result) {
                           dialogManager.showSuccessSnackBar("${item.id} numaralı talep açıldı");
                           await viewModel.resetList();
@@ -195,9 +207,13 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                     title: "Talebi Kapat",
                     iconWidget: Icons.close_outlined,
                     onTap: () async {
+                      if (item.id == null) {
+                        dialogManager.showErrorSnackBar("ID bulunamadı.");
+                        return;
+                      }
                       Get.back();
                       dialogManager.showAreYouSureDialog(() async {
-                        final result = await viewModel.talebiKapat(item.id);
+                        final result = await viewModel.talebiKapat(item.id!);
                         if (result) {
                           dialogManager.showSuccessSnackBar("${item.id} numaralı talep kapatıldı");
                           await viewModel.resetList();

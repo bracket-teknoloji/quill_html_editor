@@ -10,13 +10,12 @@ part of 'transfer_mal_talebi_listesi_view_model.dart';
 
 mixin _$TransferMalTalebiListesiViewModel
     on _TransferMalTalebiListesiViewModelBase, Store {
-  Computed<List<TransferMalTalebiListesiModel>?>?
-      _$filteredObservableListComputed;
+  Computed<List<BaseSiparisEditModel>?>? _$filteredObservableListComputed;
 
   @override
-  List<TransferMalTalebiListesiModel>? get filteredObservableList =>
+  List<BaseSiparisEditModel>? get filteredObservableList =>
       (_$filteredObservableListComputed ??= Computed<
-                  List<TransferMalTalebiListesiModel>?>(
+                  List<BaseSiparisEditModel>?>(
               () => super.filteredObservableList,
               name:
                   '_TransferMalTalebiListesiViewModelBase.filteredObservableList'))
@@ -27,13 +26,13 @@ mixin _$TransferMalTalebiListesiViewModel
       context: context);
 
   @override
-  ObservableList<TransferMalTalebiListesiModel>? get observableList {
+  ObservableList<BaseSiparisEditModel>? get observableList {
     _$observableListAtom.reportRead();
     return super.observableList;
   }
 
   @override
-  set observableList(ObservableList<TransferMalTalebiListesiModel>? value) {
+  set observableList(ObservableList<BaseSiparisEditModel>? value) {
     _$observableListAtom.reportWrite(value, super.observableList, () {
       super.observableList = value;
     });
@@ -141,7 +140,7 @@ mixin _$TransferMalTalebiListesiViewModel
           name: '_TransferMalTalebiListesiViewModelBase', context: context);
 
   @override
-  void setObservableList(List<TransferMalTalebiListesiModel>? list) {
+  void setObservableList(List<BaseSiparisEditModel>? list) {
     final _$actionInfo =
         _$_TransferMalTalebiListesiViewModelBaseActionController.startAction(
             name: '_TransferMalTalebiListesiViewModelBase.setObservableList');

@@ -1,21 +1,21 @@
 import "package:mobx/mobx.dart";
+import "package:picker/app/picker_app_imports.dart";
 import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/base/view_model/searchable_mixin.dart";
 import "package:picker/core/constants/enum/depo_mal_toplama_enum.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/model/transfer_mal_talebi_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/model/transfer_mal_talebi_listesi_request_model.dart";
 
 part "transfer_mal_talebi_listesi_view_model.g.dart";
 
 final class TransferMalTalebiListesiViewModel = _TransferMalTalebiListesiViewModelBase with _$TransferMalTalebiListesiViewModel;
 
-abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<TransferMalTalebiListesiModel>, SearchableMixin {
+abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin {
   @observable
   @override
-  ObservableList<TransferMalTalebiListesiModel>? observableList;
+  ObservableList<BaseSiparisEditModel>? observableList;
 
   @observable
   TransferMalTalebiListesiRequestModel requestModel = const TransferMalTalebiListesiRequestModel(filtreler: [5]);
@@ -31,7 +31,7 @@ abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMix
   DepoMalToplamaEnum selectedDepoMalToplamaEnum = DepoMalToplamaEnum.tumu;
 
   @computed
-  List<TransferMalTalebiListesiModel>? get filteredObservableList {
+  List<BaseSiparisEditModel>? get filteredObservableList {
     if (searchText case (null || "")) return observableList;
     return observableList?.where((element) => element.id.toStringIfNotNull?.contains(searchText!) ?? false).toList();
   }
@@ -39,7 +39,7 @@ abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMix
   @action
   @override
   Future<void> getData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.getDepoTalepleri, bodyModel: TransferMalTalebiListesiModel(), data: requestModel.toJson());
+    final result = await networkManager.dioPost(path: ApiUrls.getDepoTalepleri, bodyModel: BaseSiparisEditModel(), data: requestModel.toJson());
     setObservableList(result.dataList);
   }
 
@@ -61,7 +61,7 @@ abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMix
 
   @action
   @override
-  void setObservableList(List<TransferMalTalebiListesiModel>? list) => observableList = list?.asObservable();
+  void setObservableList(List<BaseSiparisEditModel>? list) => observableList = list?.asObservable();
 
   @override
   void changeSearchBarStatus() => isSearchBarOpen = !isSearchBarOpen;
@@ -69,17 +69,17 @@ abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMix
   void setSearchText(String? value) => searchText = value;
 
   Future<bool> deleteMalTalebi(int id) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: TransferMalTalebiListesiModel(), data: {"ID": id, "ISLEM_KODU": 3});
+    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: BaseSiparisEditModel(), data: {"ID": id, "ISLEM_KODU": 3});
     return result.isSuccess;
   }
 
   Future<bool> talebiAc(int id) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: TransferMalTalebiListesiModel(), data: {"ID": id, "ISLEM_KODU": 9});
+    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: BaseSiparisEditModel(), data: {"ID": id, "ISLEM_KODU": 9});
     return result.isSuccess;
   }
 
   Future<bool> talebiKapat(int id) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: TransferMalTalebiListesiModel(), data: {"ID": id, "ISLEM_KODU": 10});
+    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: BaseSiparisEditModel(), data: {"ID": id, "ISLEM_KODU": 10});
     return result.isSuccess;
   }
 }
