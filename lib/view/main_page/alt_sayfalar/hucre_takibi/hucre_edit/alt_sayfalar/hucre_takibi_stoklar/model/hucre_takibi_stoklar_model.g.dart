@@ -28,6 +28,7 @@ _$HucreTakibiStoklarModelImpl _$$HucreTakibiStoklarModelImplFromJson(
           ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))
           .toList(),
       eksiyeDusebilir: json['EKSIYE_DUSEBILIR'] as bool?,
+      paketKodu: json['PAKET_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$HucreTakibiStoklarModelImplToJson(
@@ -54,4 +55,5 @@ Map<String, dynamic> _$$HucreTakibiStoklarModelImplToJson(
       if (instance.seriList?.map((e) => e.toJson()).toList() case final value?)
         'SERI_LIST': value,
       if (instance.eksiyeDusebilir case final value?) 'EKSIYE_DUSEBILIR': value,
+      if (instance.paketKodu case final value?) 'PAKET_KODU': value,
     };

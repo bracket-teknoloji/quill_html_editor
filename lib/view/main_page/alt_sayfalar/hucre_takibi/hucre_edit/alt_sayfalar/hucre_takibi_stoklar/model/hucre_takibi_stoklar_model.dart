@@ -27,6 +27,7 @@ class HucreTakibiStoklarModel with _$HucreTakibiStoklarModel, NetworkManagerMixi
     String? depoTanimi,
     List<SeriList>? seriList,
     bool? eksiyeDusebilir,
+    String? paketKodu,
   }) = _HucreTakibiStoklarModel;
   HucreTakibiStoklarModel._();
 

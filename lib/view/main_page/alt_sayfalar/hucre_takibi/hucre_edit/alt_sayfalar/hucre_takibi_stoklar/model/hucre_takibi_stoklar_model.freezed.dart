@@ -38,6 +38,7 @@ mixin _$HucreTakibiStoklarModel {
   String? get depoTanimi => throw _privateConstructorUsedError;
   List<SeriList>? get seriList => throw _privateConstructorUsedError;
   bool? get eksiyeDusebilir => throw _privateConstructorUsedError;
+  String? get paketKodu => throw _privateConstructorUsedError;
 
   /// Serializes this HucreTakibiStoklarModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -72,7 +73,8 @@ abstract class $HucreTakibiStoklarModelCopyWith<$Res> {
       String? olcuBirimi,
       String? depoTanimi,
       List<SeriList>? seriList,
-      bool? eksiyeDusebilir});
+      bool? eksiyeDusebilir,
+      String? paketKodu});
 }
 
 /// @nodoc
@@ -108,6 +110,7 @@ class _$HucreTakibiStoklarModelCopyWithImpl<$Res,
     Object? depoTanimi = freezed,
     Object? seriList = freezed,
     Object? eksiyeDusebilir = freezed,
+    Object? paketKodu = freezed,
   }) {
     return _then(_value.copyWith(
       stokKodu: freezed == stokKodu
@@ -178,6 +181,10 @@ class _$HucreTakibiStoklarModelCopyWithImpl<$Res,
           ? _value.eksiyeDusebilir
           : eksiyeDusebilir // ignore: cast_nullable_to_non_nullable
               as bool?,
+      paketKodu: freezed == paketKodu
+          ? _value.paketKodu
+          : paketKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -208,7 +215,8 @@ abstract class _$$HucreTakibiStoklarModelImplCopyWith<$Res>
       String? olcuBirimi,
       String? depoTanimi,
       List<SeriList>? seriList,
-      bool? eksiyeDusebilir});
+      bool? eksiyeDusebilir,
+      String? paketKodu});
 }
 
 /// @nodoc
@@ -243,6 +251,7 @@ class __$$HucreTakibiStoklarModelImplCopyWithImpl<$Res>
     Object? depoTanimi = freezed,
     Object? seriList = freezed,
     Object? eksiyeDusebilir = freezed,
+    Object? paketKodu = freezed,
   }) {
     return _then(_$HucreTakibiStoklarModelImpl(
       stokKodu: freezed == stokKodu
@@ -313,6 +322,10 @@ class __$$HucreTakibiStoklarModelImplCopyWithImpl<$Res>
           ? _value.eksiyeDusebilir
           : eksiyeDusebilir // ignore: cast_nullable_to_non_nullable
               as bool?,
+      paketKodu: freezed == paketKodu
+          ? _value.paketKodu
+          : paketKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -337,7 +350,8 @@ class _$HucreTakibiStoklarModelImpl extends _HucreTakibiStoklarModel {
       this.olcuBirimi,
       this.depoTanimi,
       final List<SeriList>? seriList,
-      this.eksiyeDusebilir})
+      this.eksiyeDusebilir,
+      this.paketKodu})
       : _seriList = seriList,
         super._();
 
@@ -386,6 +400,8 @@ class _$HucreTakibiStoklarModelImpl extends _HucreTakibiStoklarModel {
 
   @override
   final bool? eksiyeDusebilir;
+  @override
+  final String? paketKodu;
 
   /// Create a copy of HucreTakibiStoklarModel
   /// with the given fields replaced by the non-null parameter values.
@@ -422,7 +438,8 @@ abstract class _HucreTakibiStoklarModel extends HucreTakibiStoklarModel {
       final String? olcuBirimi,
       final String? depoTanimi,
       final List<SeriList>? seriList,
-      final bool? eksiyeDusebilir}) = _$HucreTakibiStoklarModelImpl;
+      final bool? eksiyeDusebilir,
+      final String? paketKodu}) = _$HucreTakibiStoklarModelImpl;
   _HucreTakibiStoklarModel._() : super._();
 
   factory _HucreTakibiStoklarModel.fromJson(Map<String, dynamic> json) =
@@ -462,6 +479,8 @@ abstract class _HucreTakibiStoklarModel extends HucreTakibiStoklarModel {
   List<SeriList>? get seriList;
   @override
   bool? get eksiyeDusebilir;
+  @override
+  String? get paketKodu;
 
   /// Create a copy of HucreTakibiStoklarModel
   /// with the given fields replaced by the non-null parameter values.
