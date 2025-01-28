@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
@@ -63,6 +64,186 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
       );
 
   Card toplamlarCard() => Card(
+        child: CustomLayoutBuilder(
+          splitCount: 3,
+          children: [
+            Text.rich(
+              TextSpan(
+                children: [
+                  const TextSpan(
+                    text: "Miktar\n",
+                    style: TextStyle(color: ColorPalette.slateGray),
+                  ),
+                  TextSpan(
+                    text: BaseSiparisEditModel.instance.toplamKalemMiktari().toIntIfDouble.toStringIfNotNull ?? "0",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+            const Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: "Mal Ağırlığı\n",
+                    style: TextStyle(color: ColorPalette.slateGray),
+                  ),
+                  TextSpan(
+                    text: "0",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+            ),
+            Text.rich(
+              TextSpan(
+                children: [
+                  const TextSpan(
+                    text: "Brüt Tutar\n",
+                    style: TextStyle(color: ColorPalette.slateGray),
+                  ),
+                  TextSpan(
+                    text: "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  if (model.dovizliMi) TextSpan(text: "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                ],
+              ),
+            ),
+            Text.rich(
+              TextSpan(
+                children: [
+                  const TextSpan(
+                    text: "Mal. Faz. İsk.\n",
+                    style: TextStyle(color: ColorPalette.slateGray),
+                  ),
+                  TextSpan(
+                    text: "${viewModel.model.malFazlasiTutar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  if (model.dovizliMi) TextSpan(text: "\n${model.malFazlasiDovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
+                ],
+              ),
+            ),
+            Text.rich(
+              TextSpan(
+                children: [
+                  const TextSpan(
+                    text: "Satır İsk.\n",
+                    style: TextStyle(color: ColorPalette.slateGray),
+                  ),
+                  TextSpan(
+                    text: "${viewModel.model.satirIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  if (model.dovizliMi) TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
+                ],
+              ),
+            ),
+            Observer(
+              builder: (_) => Text.rich(
+                TextSpan(
+                  children: [
+                    const TextSpan(
+                      text: "Toplam İskonto\n",
+                      style: TextStyle(color: ColorPalette.slateGray),
+                    ),
+                    TextSpan(
+                      text: "${viewModel.model.getToplamIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} $mainCurrency",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    if (model.dovizliMi) TextSpan(text: "\n${model.satirDovizIskonto.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
+                  ],
+                ),
+              ),
+            ),
+            Observer(
+              builder: (_) => Text.rich(
+                TextSpan(
+                  children: [
+                    const TextSpan(
+                      text: "Ara Toplam\n",
+                      style: TextStyle(color: ColorPalette.slateGray),
+                    ),
+                    TextSpan(
+                      text: "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    if (model.dovizliMi)
+                      TextSpan(
+                        text: "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            Observer(
+              builder: (_) => Text.rich(
+                TextSpan(
+                  children: <InlineSpan>[
+                    const TextSpan(text: "ÖTV Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
+                    TextSpan(text: "${viewModel.model.getOTVToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                    if (model.dovizliMi) TextSpan(text: "\n${viewModel.model.getDovizliOTVToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
+                  ],
+                ),
+              ),
+            ),
+            Observer(
+              builder: (_) => Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: "KDV Tutarı\n",
+                          style: TextStyle(color: ColorPalette.slateGray),
+                        ),
+                        TextSpan(
+                          text: "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        if (model.dovizliMi) TextSpan(text: "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    alignment: Alignment.topLeft,
+                    padding: UIHelper.zeroPadding,
+                    onPressed: () async {
+                      dialogManager.showInfoDialog("KDV Tutarları\n${viewModel.model.kdvTutarlariVeOranlari}");
+                    },
+                    icon: const Icon(
+                      Icons.open_in_new_outlined,
+                      size: UIHelper.highSize,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Observer(
+              builder: (_) => Text.rich(
+                TextSpan(
+                  children: [
+                    const TextSpan(
+                      text: "Genel Toplam\n",
+                      style: TextStyle(color: ColorPalette.slateGray),
+                    ),
+                    TextSpan(
+                      text: "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    if (model.dovizliMi) TextSpan(text: "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      );
+
+  Card toplamlardCard() => Card(
         child: Column(
           children: [
             Row(
@@ -189,6 +370,17 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                   ),
                 ),
                 Observer(
+                  builder: (_) => Text.rich(
+                    TextSpan(
+                      children: <InlineSpan>[
+                        const TextSpan(text: "ÖTV Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
+                        TextSpan(text: "${viewModel.model.getOTVToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(fontWeight: FontWeight.bold)),
+                        if (model.dovizliMi) TextSpan(text: "\n${viewModel.model.getDovizliOTVToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}"),
+                      ],
+                    ),
+                  ),
+                ),
+                Observer(
                   builder: (_) => Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -251,110 +443,110 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
           children: [
             Row(
               children: [
-                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
-                CustomTextField(
-                  labelText: "Gen. İsk 1",
-                  //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
-                  controller: genelIskonto1Controller,
-                  isFormattedString: true,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (p0) => viewModel.setGenIsk1(
-                    p0.toDoubleWithFormattedString,
-                  ),
-                  valueWidget: Observer(
-                    builder: (_) => Text(
-                      viewModel.isGenIsk1T
-                          ? "%${(viewModel.model.genIsk1o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                          : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
+                  CustomTextField(
+                    labelText: "Gen. İsk 1",
+                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                    enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
+                    controller: genelIskonto1Controller,
+                    isFormattedString: true,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    onChanged: (p0) => viewModel.setGenIsk1(
+                      p0.toDoubleWithFormattedString,
                     ),
-                  ),
-                  suffix: IconButton(
-                    onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller),
-                    icon: Observer(
-                      builder: (_) => Icon(
-                        viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined,
+                    valueWidget: Observer(
+                      builder: (_) => Text(
+                        viewModel.isGenIsk1T
+                            ? "%${(viewModel.model.genIsk1o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
+                            : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                    ),
+                    suffix: IconButton(
+                      onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller),
+                      icon: Observer(
+                        builder: (_) => Icon(
+                          viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined,
+                        ),
                       ),
                     ),
                   ),
-                ),                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
-
-                CustomTextField(
-                  labelText: "İsk.Tipi 1",
-                  //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: iskontoTipi1Controller,
-                  valueWidget: Observer(
-                    builder: (_) => Text(
-                      viewModel.model.genisk1Tipi?.toStringIfNotNull ?? "",
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
+                  CustomTextField(
+                    labelText: "İsk.Tipi 1",
+                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                    enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: iskontoTipi1Controller,
+                    valueWidget: Observer(
+                      builder: (_) => Text(
+                        viewModel.model.genisk1Tipi?.toStringIfNotNull ?? "",
+                      ),
                     ),
-                  ),
 
-                  onClear: () => viewModel.setIskTipi1(null),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk1Tipi);
-                    if (result != null) {
-                      viewModel.setIskTipi1(result.iskontoTipi);
-                      iskontoTipi1Controller.text = result.aciklama ?? "";
-                    }
-                  },
-                ),
+                    onClear: () => viewModel.setIskTipi1(null),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk1Tipi);
+                      if (result != null) {
+                        viewModel.setIskTipi1(result.iskontoTipi);
+                        iskontoTipi1Controller.text = result.aciklama ?? "";
+                      }
+                    },
+                  ),
               ].map((e) => Expanded(child: e)).toList(),
             ),
             Row(
               children: [
-                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
-                CustomTextField(
-                  labelText: "Gen. İsk 2",
-                  //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
-                  controller: genelIskonto2Controller,
-                  isFormattedString: true,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  valueWidget: Observer(
-                    builder: (_) => Text(
-                      viewModel.isGenIsk2T
-                          ? "%${(viewModel.model.genIsk2o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                          : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
+                  CustomTextField(
+                    labelText: "Gen. İsk 2",
+                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                    enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
+                    controller: genelIskonto2Controller,
+                    isFormattedString: true,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    valueWidget: Observer(
+                      builder: (_) => Text(
+                        viewModel.isGenIsk2T
+                            ? "%${(viewModel.model.genIsk2o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
+                            : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
                     ),
-                  ),
-                  onChanged: (p0) => viewModel.setGenIsk2(
-                    p0.toDoubleWithFormattedString,
-                  ),
-                  suffix: IconButton(
-                    onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
-                    icon: Observer(
-                      builder: (_) => Icon(
-                        viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined,
+                    onChanged: (p0) => viewModel.setGenIsk2(
+                      p0.toDoubleWithFormattedString,
+                    ),
+                    suffix: IconButton(
+                      onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
+                      icon: Observer(
+                        builder: (_) => Icon(
+                          viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined,
+                        ),
                       ),
                     ),
                   ),
-                ),                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
-
-                CustomTextField(
-                  labelText: "İsk.Tipi 2",
-                  //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
-                  readOnly: true,
-                  isFormattedString: true,
-                  suffixMore: true,
-                  valueWidget: Observer(
-                    builder: (_) => Text(
-                      viewModel.model.genisk2Tipi?.toStringIfNotNull ?? "",
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
+                  CustomTextField(
+                    labelText: "İsk.Tipi 2",
+                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                    enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
+                    readOnly: true,
+                    isFormattedString: true,
+                    suffixMore: true,
+                    valueWidget: Observer(
+                      builder: (_) => Text(
+                        viewModel.model.genisk2Tipi?.toStringIfNotNull ?? "",
+                      ),
                     ),
+                    controller: iskontoTipi2Controller,
+                    onClear: () => viewModel.setIskTipi2(null),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk2Tipi);
+                      if (result != null) {
+                        viewModel.setIskTipi2(result.iskontoTipi);
+                        iskontoTipi2Controller.text = result.aciklama ?? "";
+                      }
+                    },
                   ),
-                  controller: iskontoTipi2Controller,
-                  onClear: () => viewModel.setIskTipi2(null),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk2Tipi);
-                    if (result != null) {
-                      viewModel.setIskTipi2(result.iskontoTipi);
-                      iskontoTipi2Controller.text = result.aciklama ?? "";
-                    }
-                  },
-                ),
               ].map((e) => Expanded(child: e)).toList(),
             ),
             Row(
@@ -384,29 +576,29 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                       ),
                     ),
                   ),
-                ),                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk3") ?? false))
-
-                CustomTextField(
-                  labelText: "İsk.Tipi 3",
-                  //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
-                  suffixMore: true,
-                  readOnly: true,
-                  controller: iskontoTipi3Controller,
-                  valueWidget: Observer(
-                    builder: (_) => Text(
-                      viewModel.model.genisk3Tipi?.toStringIfNotNull ?? "",
-                    ),
-                  ),
-                  onClear: () => viewModel.setIskTipi3(null),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk3Tipi);
-                    if (result != null) {
-                      viewModel.setIskTipi3(result.iskontoTipi);
-                      iskontoTipi3Controller.text = result.aciklama ?? "";
-                    }
-                  },
                 ),
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) && !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk3") ?? false))
+                  CustomTextField(
+                    labelText: "İsk.Tipi 3",
+                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                    enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
+                    suffixMore: true,
+                    readOnly: true,
+                    controller: iskontoTipi3Controller,
+                    valueWidget: Observer(
+                      builder: (_) => Text(
+                        viewModel.model.genisk3Tipi?.toStringIfNotNull ?? "",
+                      ),
+                    ),
+                    onClear: () => viewModel.setIskTipi3(null),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(context, viewModel.model.genisk3Tipi);
+                      if (result != null) {
+                        viewModel.setIskTipi3(result.iskontoTipi);
+                        iskontoTipi3Controller.text = result.aciklama ?? "";
+                      }
+                    },
+                  ),
               ].map((e) => Expanded(child: e)).toList(),
             ),
             Row(
