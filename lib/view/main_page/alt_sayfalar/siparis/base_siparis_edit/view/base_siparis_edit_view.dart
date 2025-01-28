@@ -89,7 +89,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
 
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle || widget.model.baseEditEnum == BaseEditEnum.kopyala) {
       model.model?.kayitModu = "S";
-    } else if (widget.model.baseEditEnum == BaseEditEnum.goruntule) {
+    } else if (widget.model.baseEditEnum.goruntuleMi) {
       model.model?.kayitModu = "U";
     } else {
       model.model?.kayitModu = null;
@@ -195,7 +195,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: widget.model.baseEditEnum == BaseEditEnum.goruntule,
+        canPop: widget.model.baseEditEnum.goruntuleMi,
         onPopInvokedWithResult: (didPop, value) async {
           if (didPop) {
             return;
@@ -562,7 +562,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
   }
 
   bool get kaydetButonuYetki {
-    if (widget.model.baseEditEnum == BaseEditEnum.goruntule) return false;
+    if (widget.model.baseEditEnum.goruntuleMi) return false;
     return switch (widget.model.baseEditEnum) {
       BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => widget.model.editTipiEnum?.eklensinMi ?? false,
       BaseEditEnum.duzenle => widget.model.editTipiEnum?.duzenlensinMi ?? false,
