@@ -495,6 +495,40 @@ final class ParamModel {
   bool? faturaSatisIadeUygulamasi;
   @JsonKey(name: "CariRotaUygulamasi")
   String? cariRotaUygulamasi;
+  @JsonKey(name: "sevkEmriYeniKullaniciSistemi")
+  bool? sevkEmriYeniKullaniciSistemi;
+  @JsonKey(name: "fatuEkMaliyet3FieldVar")
+  bool? fatuEkMaliyet3FieldVar;
+  @JsonKey(name: "ClientTimeoutSeconds")
+  int? clientTimeoutSeconds;
+  @JsonKey(name: "AlisIhracatMiktarStoklaraGecsin")
+  bool? alisIhracatMiktarStoklaraGecsin;
+  @JsonKey(name: "SatisIhracatMiktarStoklaraGecsin")
+  bool? satisIhracatMiktarStoklaraGecsin;
+  @JsonKey(name: "SeriOpsiyonelSahalar")
+  int? seriOpsiyonelSahalar;
+  @JsonKey(name: "UretimMiktar2Uyg")
+  bool? uretimMiktar2Uyg;
+  @JsonKey(name: "UretimFireUyg")
+  bool? uretimFireUyg;
+  @JsonKey(name: "NetsisOzelParam_FaturaOzelIletisimVergisi")
+  bool? netsisOzelParamFaturaOzelIletisimVergisi;
+  @JsonKey(name: "eMail_Sunucu")
+  String? eMailSunucu;
+  @JsonKey(name: "eMail_MailAdresi")
+  String? eMailMailAdresi;
+  @JsonKey(name: "eMail_Parola")
+  String? eMailParola;
+  @JsonKey(name: "eMail_Port")
+  int? eMailPort;
+  @JsonKey(name: "eMail_SSLKullan")
+  bool? eMailSslKullan;
+  @JsonKey(name: "SevkEmriMalTopFazlaTeslimat")
+  String? sevkEmriMalTopFazlaTeslimat;
+  @JsonKey(name: "say_Kull1S")
+  String? sayKull1S;
+  @JsonKey(name: "say_Kull2S")
+  String? sayKull2S;
   Map<String, dynamic> toJson() => _$ParamModelToJson(this);
 }
 

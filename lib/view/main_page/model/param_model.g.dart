@@ -460,7 +460,27 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisTeslimCarideBaglanmisCarilerSecilsin =
       json['AlisTeslimCarideBaglanmisCarilerSecilsin'] as bool?
   ..faturaSatisIadeUygulamasi = json['FaturaSatisIadeUygulamasi'] as bool?
-  ..cariRotaUygulamasi = json['CariRotaUygulamasi'] as String?;
+  ..cariRotaUygulamasi = json['CariRotaUygulamasi'] as String?
+  ..sevkEmriYeniKullaniciSistemi = json['sevkEmriYeniKullaniciSistemi'] as bool?
+  ..fatuEkMaliyet3FieldVar = json['fatuEkMaliyet3FieldVar'] as bool?
+  ..clientTimeoutSeconds = (json['ClientTimeoutSeconds'] as num?)?.toInt()
+  ..alisIhracatMiktarStoklaraGecsin =
+      json['AlisIhracatMiktarStoklaraGecsin'] as bool?
+  ..satisIhracatMiktarStoklaraGecsin =
+      json['SatisIhracatMiktarStoklaraGecsin'] as bool?
+  ..seriOpsiyonelSahalar = (json['SeriOpsiyonelSahalar'] as num?)?.toInt()
+  ..uretimMiktar2Uyg = json['UretimMiktar2Uyg'] as bool?
+  ..uretimFireUyg = json['UretimFireUyg'] as bool?
+  ..netsisOzelParamFaturaOzelIletisimVergisi =
+      json['NetsisOzelParam_FaturaOzelIletisimVergisi'] as bool?
+  ..eMailSunucu = json['eMail_Sunucu'] as String?
+  ..eMailMailAdresi = json['eMail_MailAdresi'] as String?
+  ..eMailParola = json['eMail_Parola'] as String?
+  ..eMailPort = (json['eMail_Port'] as num?)?.toInt()
+  ..eMailSslKullan = json['eMail_SSLKullan'] as bool?
+  ..sevkEmriMalTopFazlaTeslimat = json['SevkEmriMalTopFazlaTeslimat'] as String?
+  ..sayKull1S = json['say_Kull1S'] as String?
+  ..sayKull2S = json['say_Kull2S'] as String?;
 
 Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
     <String, dynamic>{
@@ -927,6 +947,32 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
         'FaturaSatisIadeUygulamasi': value,
       if (instance.cariRotaUygulamasi case final value?)
         'CariRotaUygulamasi': value,
+      if (instance.sevkEmriYeniKullaniciSistemi case final value?)
+        'sevkEmriYeniKullaniciSistemi': value,
+      if (instance.fatuEkMaliyet3FieldVar case final value?)
+        'fatuEkMaliyet3FieldVar': value,
+      if (instance.clientTimeoutSeconds case final value?)
+        'ClientTimeoutSeconds': value,
+      if (instance.alisIhracatMiktarStoklaraGecsin case final value?)
+        'AlisIhracatMiktarStoklaraGecsin': value,
+      if (instance.satisIhracatMiktarStoklaraGecsin case final value?)
+        'SatisIhracatMiktarStoklaraGecsin': value,
+      if (instance.seriOpsiyonelSahalar case final value?)
+        'SeriOpsiyonelSahalar': value,
+      if (instance.uretimMiktar2Uyg case final value?)
+        'UretimMiktar2Uyg': value,
+      if (instance.uretimFireUyg case final value?) 'UretimFireUyg': value,
+      if (instance.netsisOzelParamFaturaOzelIletisimVergisi case final value?)
+        'NetsisOzelParam_FaturaOzelIletisimVergisi': value,
+      if (instance.eMailSunucu case final value?) 'eMail_Sunucu': value,
+      if (instance.eMailMailAdresi case final value?) 'eMail_MailAdresi': value,
+      if (instance.eMailParola case final value?) 'eMail_Parola': value,
+      if (instance.eMailPort case final value?) 'eMail_Port': value,
+      if (instance.eMailSslKullan case final value?) 'eMail_SSLKullan': value,
+      if (instance.sevkEmriMalTopFazlaTeslimat case final value?)
+        'SevkEmriMalTopFazlaTeslimat': value,
+      if (instance.sayKull1S case final value?) 'say_Kull1S': value,
+      if (instance.sayKull2S case final value?) 'say_Kull2S': value,
     };
 
 CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) =>
