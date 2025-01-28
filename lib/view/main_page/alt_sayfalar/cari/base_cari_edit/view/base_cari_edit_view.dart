@@ -120,7 +120,7 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
           if (didPop) {
             return;
           }
-          if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
+          if (widget.model?.baseEditEnum.goruntuleMi ?? false) {
             Get.back(result: false);
             return;
           }
@@ -135,19 +135,20 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
               isSubTitleSmall: widget.isSubTitleSmall,
             ),
             actions: <Widget>[
-              if (kaydetButonuYetki) IconButton(
-                onPressed: () async {
-                  if (validate.isEmpty) {
-                    final result = await vergiNoChecker();
-                    if (result) {
-                      await dialogManager.showAreYouSureDialog(() async => await postData());
+              if (kaydetButonuYetki)
+                IconButton(
+                  onPressed: () async {
+                    if (validate.isEmpty) {
+                      final result = await vergiNoChecker();
+                      if (result) {
+                        await dialogManager.showAreYouSureDialog(() async => await postData());
+                      }
+                    } else {
+                      await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController.animateTo(validate.values.first));
                     }
-                  } else {
-                    await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController.animateTo(validate.values.first));
-                  }
-                },
-                icon: const Icon(Icons.save_outlined),
-              ),
+                  },
+                  icon: const Icon(Icons.save_outlined),
+                ),
             ],
             bottom: TabBar(
               tabs: tabs,
@@ -214,7 +215,7 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
   }
 
   bool get kaydetButonuYetki {
-    if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) return false;
+    if (widget.model?.baseEditEnum.goruntuleMi ?? false) return false;
     return switch (widget.model?.baseEditEnum) {
       BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => widget.model?.editTipiEnum?.eklensinMi ?? false,
       BaseEditEnum.duzenle => widget.model?.editTipiEnum?.duzenlensinMi ?? false,

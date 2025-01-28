@@ -212,7 +212,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                       model.belgeNo = value;
                     },
                   ),
-                if (widget.model.baseEditEnum == BaseEditEnum.goruntule || widget.model.baseEditEnum == BaseEditEnum.taslak)
+                if (widget.model.baseEditEnum.goruntuleMi || widget.model.baseEditEnum == BaseEditEnum.taslak)
                   CustomTextField(labelText: "Resmi Belge No", isMust: true, controller: _resmiBelgeNoController, enabled: enable, maxLength: 16, onTap: () {}),
                 CustomTextField(
                   labelText: "Cari",

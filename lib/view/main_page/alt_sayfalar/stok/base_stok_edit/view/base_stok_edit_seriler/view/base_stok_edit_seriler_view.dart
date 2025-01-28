@@ -49,7 +49,7 @@ final class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerV
                       child: Observer(
                         builder: (_) => Switch.adaptive(
                           value: viewModel.switchValueList[index],
-                          onChanged: widget.model == BaseEditEnum.goruntule
+                          onChanged: widget.model.goruntuleMi
                               ? null
                               : (value) {
                                   viewModel.changeSwitchValue(index);
@@ -77,7 +77,7 @@ final class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerV
             //         child: Observer(
             //           builder: (_) => Switch.adaptive(
             //             value: viewModel.switchValueList[index],
-            //             onChanged: widget.model == BaseEditEnum.goruntule
+            //             onChanged: widget.model.goruntuleMi
             //                 ? null
             //                 : (value) {
             //                     viewModel.changeSwitchValue(index);

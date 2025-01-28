@@ -117,7 +117,7 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   isSelected: viewModel.isSelected,
                   constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
                   children: viewModel.toggleButtonLabelList.map(Text.new).toList(),
-                  onPressed: (index) => widget.model?.baseEditEnum == BaseEditEnum.goruntule ? null : viewModel.setIsSelected(index),
+                  onPressed: (index) => widget.model?.baseEditEnum.goruntuleMi ?? false ? null : viewModel.setIsSelected(index),
                 ),
               ).paddingSymmetric(vertical: UIHelper.lowSize),
               CustomTextField(enabled: enable, labelText: "Cari", valueText: viewModel.model.cariKodu, readOnly: true, isMust: true, controller: cariKoduController),

@@ -23,7 +23,7 @@ final class BaseEditModel<T> {
       baseEditEnum == BaseEditEnum.revize ||
       baseEditEnum == BaseEditEnum.taslak;
   bool get isDuzenle => baseEditEnum == BaseEditEnum.duzenle;
-  bool get isGoruntule => baseEditEnum == BaseEditEnum.goruntule;
+  bool get isGoruntule => baseEditEnum.goruntuleMi;
   bool get isEkle => baseEditEnum == BaseEditEnum.ekle;
   bool get isKopyala => baseEditEnum == BaseEditEnum.kopyala || baseEditEnum == BaseEditEnum.siparistenKopyala;
   bool get isTaslak => baseEditEnum == BaseEditEnum.taslak;

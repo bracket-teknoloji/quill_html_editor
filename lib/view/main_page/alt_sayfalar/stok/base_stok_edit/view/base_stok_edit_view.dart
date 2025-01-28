@@ -81,7 +81,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
           if (didPop) {
             return;
           }
-          if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) {
+          if (widget.model?.baseEditEnum.goruntuleMi ?? false) {
             Get.back(result: true);
             return;
           }
@@ -195,7 +195,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
   }
 
   bool get kaydetButonuYetki {
-    if (widget.model?.baseEditEnum == BaseEditEnum.goruntule) return false;
+    if (widget.model?.baseEditEnum.goruntuleMi ?? false) return false;
     return switch (widget.model?.baseEditEnum) {
       BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => yetkiController.stokKartiYeniKayit,
       BaseEditEnum.duzenle => yetkiController.stokKartiDuzenleme,
