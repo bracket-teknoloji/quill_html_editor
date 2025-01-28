@@ -160,6 +160,9 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   Future<void> getData() async {
     final result = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: getRequestModel.toJsonWithList(), bodyModel: StokListesiModel());
     if (result.isSuccess) {
+      if (result.dataList.any((element) => element.otvUygula != null)) {
+        debugPrint(result.dataList.firstWhere((element) => element.otvUygula != null).stokAdi);
+      }
       if (page > 1) {
         addObservableList(result.dataList);
       } else {
