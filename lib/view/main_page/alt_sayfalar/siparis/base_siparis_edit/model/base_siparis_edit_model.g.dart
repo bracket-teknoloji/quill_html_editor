@@ -423,6 +423,18 @@ abstract class _$BaseSiparisEditModelCWProxy {
 
   BaseSiparisEditModel id(int? id);
 
+  BaseSiparisEditModel hedefSube(int? hedefSube);
+
+  BaseSiparisEditModel depoKodu(int? depoKodu);
+
+  BaseSiparisEditModel durumAdi(String? durumAdi);
+
+  BaseSiparisEditModel kalemSayisi(int? kalemSayisi);
+
+  BaseSiparisEditModel kapali(bool? kapali);
+
+  BaseSiparisEditModel tamamlananMiktar(double? tamamlananMiktar);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -638,6 +650,12 @@ abstract class _$BaseSiparisEditModelCWProxy {
     String? cikisSubeAciklama,
     String? girisSubeAciklama,
     int? id,
+    int? hedefSube,
+    int? depoKodu,
+    String? durumAdi,
+    int? kalemSayisi,
+    bool? kapali,
+    double? tamamlananMiktar,
   });
 }
 
@@ -1408,6 +1426,26 @@ class _$BaseSiparisEditModelCWProxyImpl
   BaseSiparisEditModel id(int? id) => this(id: id);
 
   @override
+  BaseSiparisEditModel hedefSube(int? hedefSube) => this(hedefSube: hedefSube);
+
+  @override
+  BaseSiparisEditModel depoKodu(int? depoKodu) => this(depoKodu: depoKodu);
+
+  @override
+  BaseSiparisEditModel durumAdi(String? durumAdi) => this(durumAdi: durumAdi);
+
+  @override
+  BaseSiparisEditModel kalemSayisi(int? kalemSayisi) =>
+      this(kalemSayisi: kalemSayisi);
+
+  @override
+  BaseSiparisEditModel kapali(bool? kapali) => this(kapali: kapali);
+
+  @override
+  BaseSiparisEditModel tamamlananMiktar(double? tamamlananMiktar) =>
+      this(tamamlananMiktar: tamamlananMiktar);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BaseSiparisEditModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -1624,6 +1662,12 @@ class _$BaseSiparisEditModelCWProxyImpl
     Object? cikisSubeAciklama = const $CopyWithPlaceholder(),
     Object? girisSubeAciklama = const $CopyWithPlaceholder(),
     Object? id = const $CopyWithPlaceholder(),
+    Object? hedefSube = const $CopyWithPlaceholder(),
+    Object? depoKodu = const $CopyWithPlaceholder(),
+    Object? durumAdi = const $CopyWithPlaceholder(),
+    Object? kalemSayisi = const $CopyWithPlaceholder(),
+    Object? kapali = const $CopyWithPlaceholder(),
+    Object? tamamlananMiktar = const $CopyWithPlaceholder(),
   }) {
     return BaseSiparisEditModel(
       duzeltmetarihi: duzeltmetarihi == const $CopyWithPlaceholder()
@@ -2462,6 +2506,30 @@ class _$BaseSiparisEditModelCWProxyImpl
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int?,
+      hedefSube: hedefSube == const $CopyWithPlaceholder()
+          ? _value.hedefSube
+          // ignore: cast_nullable_to_non_nullable
+          : hedefSube as int?,
+      depoKodu: depoKodu == const $CopyWithPlaceholder()
+          ? _value.depoKodu
+          // ignore: cast_nullable_to_non_nullable
+          : depoKodu as int?,
+      durumAdi: durumAdi == const $CopyWithPlaceholder()
+          ? _value.durumAdi
+          // ignore: cast_nullable_to_non_nullable
+          : durumAdi as String?,
+      kalemSayisi: kalemSayisi == const $CopyWithPlaceholder()
+          ? _value.kalemSayisi
+          // ignore: cast_nullable_to_non_nullable
+          : kalemSayisi as int?,
+      kapali: kapali == const $CopyWithPlaceholder()
+          ? _value.kapali
+          // ignore: cast_nullable_to_non_nullable
+          : kapali as bool?,
+      tamamlananMiktar: tamamlananMiktar == const $CopyWithPlaceholder()
+          ? _value.tamamlananMiktar
+          // ignore: cast_nullable_to_non_nullable
+          : tamamlananMiktar as double?,
     );
   }
 }
@@ -5451,6 +5519,12 @@ BaseSiparisEditModel _$BaseSiparisEditModelFromJson(
       otvTutari: (json['OTV_TUTARI'] as num?)?.toDouble(),
       index: (json['INDEX'] as num?)?.toInt(),
       id: (json['ID'] as num?)?.toInt(),
+      hedefSube: (json['HEDEF_SUBE'] as num?)?.toInt(),
+      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
+      durumAdi: json['DURUM_ADI'] as String?,
+      kalemSayisi: (json['KALEM_SAYISI'] as num?)?.toInt(),
+      kapali: json['KAPALI'] as bool?,
+      tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$BaseSiparisEditModelToJson(
@@ -5681,6 +5755,13 @@ Map<String, dynamic> _$BaseSiparisEditModelToJson(
       if (instance.otvTutari case final value?) 'OTV_TUTARI': value,
       if (instance.index case final value?) 'INDEX': value,
       if (instance.id case final value?) 'ID': value,
+      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
+      if (instance.durumAdi case final value?) 'DURUM_ADI': value,
+      if (instance.kalemSayisi case final value?) 'KALEM_SAYISI': value,
+      if (instance.tamamlananMiktar case final value?)
+        'TAMAMLANAN_MIKTAR': value,
+      if (instance.kapali case final value?) 'KAPALI': value,
+      if (instance.hedefSube case final value?) 'HEDEF_SUBE': value,
     };
 
 KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(

@@ -163,7 +163,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 }
               }
               if (formKey.currentState?.validate() ?? false) {
-                viewModel.kalemModel.otvHesapla();
+                if (viewModel.kalemModel.otvVarmi == true) {
+                  viewModel.kalemModel.otvHesapla();
+                }
                 if (!yetkiController.lokalDepoUygulamasiAcikMi) {
                   viewModel.kalemModel.depoKodu = 0;
                 }
@@ -1316,9 +1318,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     aciklama8Controller = TextEditingController();
     aciklama9Controller = TextEditingController();
     aciklama10Controller = TextEditingController();
-    viewModel.setShowDovizBilgileri(
-      widget.kalemModel?.dovizliMi ?? widget.stokListesiModel?.dovizliMi ?? false,
-    );
+    viewModel.setShowDovizBilgileri(widget.kalemModel?.dovizliMi ?? false);
   }
 
   Future<void> getData() async {
@@ -1393,6 +1393,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         viewModel.setKdvOrani(0);
       }
     } else {
+      
       viewModel.setOTVliMi();
       viewModel.kalemModel
         ..kalemList ??= viewModel.model?.stokList?.map(KalemModel.fromStokList).toList()
@@ -1401,10 +1402,16 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         viewModel.kalemModel
           ..stokSatDovizAdi ??= stokListesiModel?.bulunanDovizTipi?.toStringIfNotNull ?? viewModel.model?.satisDovizAdi
           ..stokSatDovTip ??= stokListesiModel?.bulunanDovizTipi ?? stokListesiModel?.satDovTip ?? viewModel.model?.satDovTip;
+        if ((viewModel.kalemModel.stokSatDovTip ?? 0) <= 0) {
+          viewModel.setShowDovizBilgileri(false);
+        }
       } else {
         viewModel.kalemModel
           ..stokAlisDovizAdi ??= stokListesiModel?.bulunanDovizTipi?.toStringIfNotNull ?? viewModel.model?.alisDovizAdi
           ..stokAlisDovTip ??= stokListesiModel?.bulunanDovizTipi ?? stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip;
+        if ((viewModel.kalemModel.stokAlisDovTip ?? 0) <= 0) {
+          viewModel.setShowDovizBilgileri(false);
+        }
       }
       viewModel.setYapKod(stokListesiModel?.yapkod);
       if (editTipi?.satisMi == true ? yetkiController.satisMiktar1Gelsin : yetkiController.alisMiktar1Gelsin) {

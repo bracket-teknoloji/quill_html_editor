@@ -258,6 +258,12 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     this.cikisSubeAciklama,
     this.girisSubeAciklama,
     this.id,
+    this.hedefSube,
+    this.depoKodu,
+    this.durumAdi,
+    this.kalemSayisi,
+    this.kapali,
+    this.tamamlananMiktar,
   });
 
   BaseSiparisEditModel._init();
@@ -823,6 +829,17 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   @JsonKey(includeToJson: false, includeFromJson: false)
   String? girisSubeAciklama;
   int? id;
+  int? depoKodu;
+  String? durumAdi;
+  int? kalemSayisi;
+  double? tamamlananMiktar;
+  bool? kapali;
+
+  int? hedefSube;
+
+  bool get isTamamlandi => (tamamlananMiktar ?? 0) == (miktar ?? 0);
+
+  bool get isKapali => kapali ?? false;
 
   void kalemlerOTVHesapla() {
     for (final element in kalemList ?? <KalemModel>[]) {
@@ -1869,6 +1886,8 @@ final class KalemModel with NetworkManagerMixin {
 
   double get araToplamTutari => brutTutar - iskontoTutari - mfTutari;
 
+  double get otvliAraToplamTutari => araToplamTutari + (CacheManager.getAnaVeri?.paramModel?.netsisOzelParamFaturaOzelIletisimVergisi == true ? 0 : (otvTutar ?? 0));
+
   double get getAraToplamTutari => araToplamTutari - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
 
   double get araToplamNetTutari => ((getSelectedMiktar ?? 0) * (netFiyat ?? 0)) - iskontoTutari;
@@ -1879,7 +1898,8 @@ final class KalemModel with NetworkManagerMixin {
 
   double get mfTutari => (malfazIskAdedi ?? 0) * (brutFiyat ?? 0);
 
-  double get kdvTutari => (BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? araToplamTutari - (araToplamTutari * 100 / ((kdvOrani ?? 0) + 100)) : araToplamTutari * ((kdvOrani ?? 0) / 100);
+  double get kdvTutari =>
+      (BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? otvliAraToplamTutari - (otvliAraToplamTutari * 100 / ((kdvOrani ?? 0) + 100)) : otvliAraToplamTutari * ((kdvOrani ?? 0) / 100);
 
   double get dovizKdvTutari => !dovizliMi ? 0 : kdvTutari / (dovizKuru ?? 1);
 

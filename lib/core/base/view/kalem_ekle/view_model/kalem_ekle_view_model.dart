@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
@@ -59,13 +60,16 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setOTVliMi() {
-    kalemModel = kalemModel.copyWith(
-      otvVarmi: model?.otvUygula == (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "S" : "A"),
-      otvDegeri: model?.otvDeger,
-      otvOranmi: model?.otvOranmi == "E",
-    );
-    if (kalemModel.otvVarmi == true) {
-      updateOtv();
+    final String otvUygulanacakMi = BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "S" : "A";
+    if (model?.otvUygula == otvUygulanacakMi) {
+      kalemModel = kalemModel.copyWith(
+        otvVarmi: model?.otvUygula == otvUygulanacakMi,
+        otvDegeri: model?.otvDeger,
+        otvOranmi: model?.otvOranmi == "E",
+      );
+      if (kalemModel.otvVarmi == true) {
+        updateOtv();
+      }
     }
   }
 
@@ -123,8 +127,12 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void updateOtv() {
+    if (kalemModel.otvVarmi != true) {
+      kalemModel = kalemModel..otvTutar = null;
+      return;
+    }
     if (kalemModel.otvOranmi == true) {
-      kalemModel = kalemModel.copyWith(otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.getAraToplamTutari);
+        kalemModel = kalemModel.copyWith(otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.getAraToplamTutari);
     } else {
       kalemModel = kalemModel.copyWith(otvTutar: (model?.otvDeger ?? 0) * (kalemModel.miktar ?? 0));
     }
@@ -192,14 +200,14 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   @action
   void increaseMiktar(TextEditingController controller) {
     setMiktar((kalemModel.miktar ?? 0) + 1);
-    controller.text = (kalemModel.miktar ?? 0).toIntIfDouble.toString();
+    controller.text = (kalemModel.miktar ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
   }
 
   @action
   void decreaseMiktar(TextEditingController controller) {
     if ((kalemModel.miktar ?? 0) > 1) {
       setMiktar((kalemModel.miktar ?? 0) - 1);
-      controller.text = (kalemModel.miktar ?? 0).toIntIfDouble.toString();
+      controller.text = (kalemModel.miktar ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     }
   }
 
@@ -209,7 +217,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
       miktar2: (kalemModel.miktar2 ?? 0) + 1,
       miktar: (kalemModel.miktar2 ?? 0) + 1,
     );
-    controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
+    controller.text = (kalemModel.miktar2 ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
   }
 
   @action
@@ -227,7 +235,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
         miktar2: (kalemModel.miktar2 ?? 0) - 1,
         miktar: (kalemModel.miktar2 ?? 0) - 1,
       );
-      controller.text = (kalemModel.miktar2 ?? 0).toIntIfDouble.toString();
+      controller.text = (kalemModel.miktar2 ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     }
   }
 
@@ -237,7 +245,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
       malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) + 1,
       malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) + 1,
     );
-    controller.text = (kalemModel.malFazlasiMiktar ?? 0).toIntIfDouble.toString();
+    controller.text = (kalemModel.malFazlasiMiktar ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
   }
 
   @action
@@ -250,7 +258,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
         malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) - 1,
         malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) - 1,
       );
-      controller.text = (kalemModel.malFazlasiMiktar ?? 0).toIntIfDouble.toString();
+      controller.text = (kalemModel.malFazlasiMiktar ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     }
   }
 
