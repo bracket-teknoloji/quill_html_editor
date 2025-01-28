@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 import "../color_palette.dart";
 
@@ -22,7 +23,8 @@ enum BadgeColorEnum {
   uyari,
   hata,
   muhtelif,
-  rework;
+  rework,
+  primaryColor;
 
   Color get getColor => switch (this) {
         BadgeColorEnum.eFatura || BadgeColorEnum.merkezeGonderildi => ColorPalette.mountbattenPink,
@@ -34,5 +36,6 @@ enum BadgeColorEnum {
         BadgeColorEnum.esYap || BadgeColorEnum.muhtelif => ColorPalette.asparagus,
         BadgeColorEnum.karmaKoli => ColorPalette.mulberry,
         BadgeColorEnum.rework => ColorPalette.outerSpace,
+        BadgeColorEnum.primaryColor => UIHelper.primaryColor,
       };
 }

@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:picker/core/components/badge/colorful_badge.dart";
+import "package:picker/core/constants/enum/badge_color_enum.dart";
 
 import "../../../view/main_page/alt_sayfalar/hucre_takibi/hucre_edit/alt_sayfalar/hucre_takibi_stoklar/model/hucre_takibi_stoklar_model.dart";
 import "../../base/state/base_state.dart";
@@ -26,7 +28,8 @@ final class _HucreAraCardState extends BaseState<HucreAraCard> {
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (model.eksiyeDusebilir == true) const Text("Eksiye Düşebilen Hücre", style: TextStyle(color: UIHelper.primaryColor)),
+              if (model.eksiyeDusebilir ?? false) const Text("Eksiye Düşebilen Hücre", style: TextStyle(color: UIHelper.primaryColor)),
+              if (model.paketKodu case final value?) ColorfulBadge(label: Text(value), badgeColorEnum: BadgeColorEnum.primaryColor),
               CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
