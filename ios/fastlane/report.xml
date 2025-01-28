@@ -5,37 +5,39 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: update_fastlane" time="6.022403">
+      <testcase classname="fastlane.lanes" name="0: update_fastlane" time="5.333994">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000164">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.000106">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: latest_testflight_build_number" time="9.624139">
+      <testcase classname="fastlane.lanes" name="2: latest_testflight_build_number" time="10.062298">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.24583">
+      <testcase classname="fastlane.lanes" name="3: increment_build_number" time="0.224799">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: cocoapods" time="5.751214">
+      <testcase classname="fastlane.lanes" name="4: cocoapods" time="81.52585">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: build_app" time="267.500024">
+      <testcase classname="fastlane.lanes" name="5: build_app" time="255.777437">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: upload_to_testflight" time="137.793097">
+      <testcase classname="fastlane.lanes" name="6: upload_to_testflight" time="103.349751">
+        
+          <failure message="/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/actions/actions_helper.rb:67:in `execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:255:in `block in execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:229:in `chdir&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:229:in `execute_action&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:157:in `trigger_action_by_name&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/fast_file.rb:159:in `method_missing&apos;&#10;Fastfile:30:in `block (2 levels) in parsing_binding&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/lane.rb:41:in `call&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:49:in `block in execute&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:45:in `chdir&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/runner.rb:45:in `execute&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/lane_manager.rb:46:in `cruise_lane&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/command_line_handler.rb:34:in `handle&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:110:in `block (2 levels) in run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/commander-4.6.0/lib/commander/command.rb:187:in `call&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/commander-4.6.0/lib/commander/command.rb:157:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/commander-4.6.0/lib/commander/runner.rb:444:in `run_active_command&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane_core/lib/fastlane_core/ui/fastlane_runner.rb:124:in `run!&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/commander-4.6.0/lib/commander/delegates.rb:18:in `run!&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:363:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/commands_generator.rb:43:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/fastlane/lib/fastlane/cli_tools_distributor.rb:123:in `take_off&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/fastlane-2.226.0/bin/fastlane:23:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/bin/fastlane:25:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/bin/fastlane:25:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli/exec.rb:58:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli/exec.rb:58:in `kernel_load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli/exec.rb:23:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli.rb:455:in `exec&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/vendor/thor/lib/thor/command.rb:28:in `run&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/vendor/thor/lib/thor/invocation.rb:127:in `invoke_command&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/vendor/thor/lib/thor.rb:527:in `dispatch&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli.rb:35:in `dispatch&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/vendor/thor/lib/thor/base.rb:584:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/cli.rb:29:in `start&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/exe/bundle:28:in `block in &lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/lib/bundler/friendly_errors.rb:117:in `with_friendly_errors&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/bundler-2.5.19/exe/bundle:20:in `&lt;top (required)&gt;&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/bin/bundle:25:in `load&apos;&#10;/Users/bracketteknoloji/.rbenv/versions/3.3.5/bin/bundle:25:in `&lt;main&gt;&apos;&#10;&#10;Error uploading ipa file: &#10; [Application Loader Error Output]: [ContentDelivery.Uploader.14C60EC30] Asset validation failed (90186) Invalid Pre-Release Train. The train version &apos;1.8.18&apos; is closed for new build submissions (ID: 70389db5-f7af-4a98-b7f7-8336bf553112)&#10;[Application Loader Error Output]: [ContentDelivery.Uploader.14C60EC30] Asset validation failed (90062) This bundle is invalid. The value for key CFBundleShortVersionString [1.8.18] in the Info.plist file must contain a higher version than that of the previously approved version [1.8.18]. Please find more information about CFBundleShortVersionString at https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleshortversionstring (ID: 1da3fc51-c323-4707-a1f8-1bd1126fd798)&#10;[Application Loader Error Output]: Error uploading &apos;/var/folders/dj/35jcly2n5_n14fcmzq6vj5440000gn/T/08002cb5-224e-4219-894c-56b59df89b6c.ipa&apos;.&#10;[Application Loader Error Output]: Asset validation failed Invalid Pre-Release Train. The train version &apos;1.8.18&apos; is closed for new build submissions (ID: 70389db5-f7af-4a98-b7f7-8336bf553112) (90186)&#10;[Application Loader Error Output]: Asset validation failed This bundle is invalid. The value for key CFBundleShortVersionString [1.8.18] in the Info.plist file must contain a higher version than that of the previously approved version [1.8.18]. Please find more information about CFBundleShortVersionString at https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleshortversionstring (ID: 1da3fc51-c323-4707-a1f8-1bd1126fd798) (90062)&#10;[Application Loader Error Output]: The call to the altool completed with a non-zero exit status: 1. This indicates a failure." />
         
       </testcase>
     
