@@ -43,6 +43,9 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(UIHelper.midSize),
+                    ),
                     child: Column(
                       children: [
                         Assets.lotties.personLottie.lottie(height: height * 0.2).paddingAll(UIHelper.lowSize),
@@ -81,6 +84,9 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                   itemBuilder: (context, index) {
                     final DrawerModel item = items[index];
                     return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(UIHelper.midSize),
+                      ),
                       child: ListTile(
                         // dense: true,
                         onTap: item.onTap,
