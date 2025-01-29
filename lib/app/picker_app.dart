@@ -1,3 +1,4 @@
+import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/depo_talep_kalem_detay/view/depo_talep_kalem_detay_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/view/transfer_mal_talebi_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view/transfer_mal_talebi_listesi_view.dart";
 
@@ -245,6 +246,7 @@ final class PickerMaterialApp extends StatelessWidget {
               GetPage(name: "/stokEdit", page: () => BaseStokEditingView(model: Get.arguments)),
               GetPage(name: "/stokRehberi", page: () => StokRehberiView(searchText: Get.arguments)),
               GetPage(name: "/talepTeklifStokRehberi", page: () => StokRehberiView(searchText: Get.arguments, isTalepTeklif: true)),
+              GetPage(name: "/depoTalepStokRehberi", page: () => StokRehberiView(searchText: Get.arguments, isDepoTalep: true)),
               GetPage(name: "/yapilandirmaRehberi", page: () => YapilandirmaRehberiView(model: Get.arguments)),
               GetPage(
                 name: "/stokHareketleri",
@@ -317,6 +319,9 @@ final class PickerMaterialApp extends StatelessWidget {
               //* * Transfer Edit
               GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
               GetPage(name: "/transferMalTalebiEdit", page: () => TransferMalTalebiEditView(model: Get.arguments)),
+
+              //* * Depo Mal Talebi
+              GetPage(name: "/depoMalTalebiKalemEkle", page: () => DepoTalepKalemDetayView(model: Get.arguments)),
 
               //* Üretim
 
