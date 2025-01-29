@@ -45,7 +45,7 @@ final class BaseTalepTeklifEditingView extends StatefulWidget {
 }
 
 final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEditingView> with TickerProviderStateMixin {
-  BaseTalepTeklifEditingViewModel viewModel = BaseTalepTeklifEditingViewModel();
+  final BaseTalepTeklifEditingViewModel viewModel = BaseTalepTeklifEditingViewModel();
   late final TabController tabController;
   late BaseEditModel<SiparisEditRequestModel> model;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
