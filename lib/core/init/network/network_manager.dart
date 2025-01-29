@@ -59,7 +59,7 @@ final class NetworkManager {
 
   NetworkManager._internal() {
     log("NetworkManager oluşturuldu", name: "NETWORK MANAGER");
-    dio.interceptors.add(
+    _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) => handler.next(options),
         onError: (e, handler) {
@@ -78,7 +78,7 @@ final class NetworkManager {
       ),
     );
     if (kDebugMode) {
-      dio.interceptors.add(
+      _dio.interceptors.add(
         TalkerDioLogger(
           settings: TalkerDioLoggerSettings(
             printResponseData: false,
@@ -92,9 +92,9 @@ final class NetworkManager {
   //create singleton
   static final NetworkManager _singleton = NetworkManager._internal();
 
-  final Dio dio = Dio();
+  final Dio _dio = Dio();
 
-  BaseOptions get dioOptions => BaseOptions(
+  BaseOptions get _dioOptions => BaseOptions(
         baseUrl: getBaseUrl,
         preserveHeaderCase: true,
         followRedirects: false,
@@ -107,7 +107,7 @@ final class NetworkManager {
         contentType: Headers.jsonContentType,
       );
 
-  BaseOptions get eBelgeDioOptions => BaseOptions(
+  BaseOptions get _eBelgeDioOptions => BaseOptions(
         baseUrl: getBaseUrl,
         preserveHeaderCase: true,
         followRedirects: false,
@@ -120,11 +120,11 @@ final class NetworkManager {
 
   Future<TokenModel?> getToken({Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
     // final FormData formData = FormData.fromMap(data);
-    dio.options.baseUrl = getBaseUrl;
+    _dio.options.baseUrl = getBaseUrl;
     log(AccountModel.instance.toString());
     log(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.firma ?? "")?.wsWan ?? "");
     try {
-      final response = await dio.request(
+      final response = await _dio.request(
         ApiUrls.token,
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
@@ -168,12 +168,12 @@ final class NetworkManager {
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
 
       if (path.startsWith("EBelge")) {
-        dio.options = eBelgeDioOptions;
+        _dio.options = _eBelgeDioOptions;
       } else {
-        dio.options = dioOptions;
+        _dio.options = _dioOptions;
       }
       // response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
-      response = await dio.get(
+      response = await _dio.get(
         path,
         queryParameters: queries,
         cancelToken: CancelToken(),
@@ -234,12 +234,12 @@ final class NetworkManager {
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
       if (queryParameters != null) queries.addEntries(queryParameters.entries);
       if (path.startsWith("EBelge")) {
-        dio.options = eBelgeDioOptions;
+        _dio.options = _eBelgeDioOptions;
       } else {
-        dio.options = dioOptions;
+        _dio.options = _dioOptions;
       }
       // response = await dio.post(path, queryParameters: queries, options: Options(headers: head, responseType: ResponseType.json), data: data);
-      response = await dio.post(
+      response = await _dio.post(
         path,
         queryParameters: queries,
         cancelToken: CancelToken(),
@@ -283,7 +283,7 @@ final class NetworkManager {
       return null;
     }
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
+    final response = await _dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
     // response is a png file
     try {
       if (response.data is Uint8List) {
@@ -311,7 +311,7 @@ final class NetworkManager {
 
   Future<Uint8List?> getImageUint8List(String path) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
+    final response = await _dio.get(path, options: Options(headers: head, responseType: ResponseType.bytes));
     log(response.data.toString());
     // response is a png file
     if (response.data is Uint8List) {
