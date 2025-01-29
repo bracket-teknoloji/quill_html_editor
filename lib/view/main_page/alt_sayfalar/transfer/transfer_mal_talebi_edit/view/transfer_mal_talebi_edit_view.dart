@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/base_edit_enum.dart";
+import "package:picker/core/constants/extensions/list_extensions.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/transfer_mal_talebi_genel/view/transfer_mal_talebi_genel_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/transfer_mal_talebi_kalemler/view/transfer_mal_talebi_kalemler_view.dart";
@@ -32,8 +34,10 @@ class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiEditVie
       BaseSiparisEditModel.setInstance(widget.model.model!);
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if (widget.model.enable) {
+      if (!widget.model.isEkle) {
         await viewModel.getData(widget.model.model?.id ?? 0);
+      } else {
+        viewModel.setModel(BaseSiparisEditModel());
       }
     });
   }
@@ -57,7 +61,33 @@ class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiEditVie
           subtitle: widget.model.baseEditEnum?.getName,
         ),
         actions: [
-          if (widget.model.baseEditEnum?.goruntuleMi != true) IconButton(onPressed: () {}, icon: const Icon(Icons.save_outlined)),
+          if (widget.model.baseEditEnum?.goruntuleMi != true)
+            IconButton(
+              onPressed: () async {
+                if (BaseSiparisEditModel.instance.kalemler.isEmptyOrNull) {
+                  dialogManager.showErrorSnackBar("En az bir kalem eklemelisiniz");
+                  return;
+                }
+                if (BaseSiparisEditModel.instance.hedefSube == null) {
+                  dialogManager.showErrorSnackBar("Karşı şube seçmelisiniz");
+                  return;
+                }
+                if (BaseSiparisEditModel.instance.depoKodu == null) {
+                  dialogManager.showErrorSnackBar("Giriş depo seçmelisiniz");
+                  return;
+                }
+                dialogManager.showAreYouSureDialog(
+                  () async {
+                    final result = await viewModel.save(widget.model.isEkle);
+                    if (result) {
+                      Get.back(result: true);
+                      dialogManager.showSuccessSnackBar("İşlem başarılı");
+                    }
+                  },
+                );
+              },
+              icon: const Icon(Icons.save_outlined),
+            ),
         ],
         bottom: TabBar(
           controller: _tabController,
@@ -74,7 +104,9 @@ class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiEditVie
           Observer(
             builder: (_) => viewModel.model != null ? TransferMalTalebiGenelView(model: widget.model) : const Center(child: CircularProgressIndicator.adaptive()),
           ),
-          const TransferMalTalebiKalemlerView(),
+          Observer(
+            builder: (_) => TransferMalTalebiKalemlerView(model: widget.model..model = BaseSiparisEditModel.instance),
+          ),
         ],
       );
 }

@@ -107,6 +107,16 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
         ],
       );
 
+  BadgeColorEnum getBadgeColorEnum(BaseSiparisEditModel item) {
+    if (item.isTamamlandi) {
+      return BadgeColorEnum.basarili;
+    }
+    if (item.isToplaniyor) {
+      return BadgeColorEnum.uyari;
+    }
+    return BadgeColorEnum.kapali;
+  }
+
   Card _malToplamaCard(BaseSiparisEditModel item) => Card(
         color: item.isTamamlandi || item.isKapali ? ColorPalette.mantis.withValues(alpha: 0.5) : null,
         child: ListTile(
@@ -116,7 +126,7 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
               Row(
                 children: [
                   Text("#${item.id}", style: const TextStyle(fontWeight: FontWeight.bold)).paddingOnly(right: UIHelper.lowSize),
-                  ColorfulBadge(label: Text(item.durumAdi ?? ""), badgeColorEnum: item.isTamamlandi || item.isKapali ? BadgeColorEnum.basarili : BadgeColorEnum.kapali),
+                  ColorfulBadge(label: Text(item.durumAdi ?? ""), badgeColorEnum: getBadgeColorEnum(item)),
                 ],
               ),
               if (item.tarih != null) Text(item.tarih.toDateString),
@@ -130,10 +140,11 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                 children: [
                   // Text("Karşı Şube: ${item.kars}"),
                   Text("Karşı Şube: ${item.hedefSube ?? 0}"),
-                  if (item.kalemSayisi != null) Text("Kalem Adedi: ${item.kalemSayisi}"),
-                  if (item.miktar != null) Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  if (item.tamamlananMiktar != null) Text("Tamamlanan Miktar: ${item.tamamlananMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  if (item.kalanMiktar != null) Text("Kalan Miktar: ${item.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  Text("Karşı Depo: ${item.depoKodu ?? 0}"),
+                  Text("Kalem Adedi: ${item.kalemSayisi}"),
+                  Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  Text("Tamamlanan Miktar: ${item.tamamlananMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  Text("Kalan Miktar: ${item.kalanMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                 ],
               ),
               if (item.kayityapankul != null) Text("Kaydeden: ${item.kayityapankul}"),

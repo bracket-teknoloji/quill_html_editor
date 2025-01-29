@@ -21,7 +21,7 @@ abstract class _TransferMalTalebiGenelViewModelBase with Store {
   void setAciklama(String? value) => setModel(model.copyWith(aciklama: value));
 
   @action
-  void setHedefSube(SubeList? value) => setModel(model.copyWith(hedefDepo: value?.subeKodu, hedefDepoAdi: value?.subeAdi));
+  void setHedefSube(SubeList? value) => setModel(model.copyWith(hedefSube: value?.subeKodu));
 
   @action
   void setDepoKodu(DepoList? value) => setModel(model.copyWith(depoKodu: value?.depoKodu, depoTanimi: value?.depoTanimi));

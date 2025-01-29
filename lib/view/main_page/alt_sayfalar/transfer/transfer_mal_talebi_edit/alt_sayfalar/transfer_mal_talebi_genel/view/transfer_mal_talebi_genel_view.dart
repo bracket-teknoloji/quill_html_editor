@@ -43,7 +43,7 @@ final class _TransferMalTalebiGenelViewState extends BaseState<TransferMalTalebi
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       _subeController.text = CacheManager.getIsletmeSube["Şube"];
       _girisDepoController.text = yetkiController.yetkiliDepoList?.firstWhereOrNull((element) => element.depoKodu == model.depoKodu)?.depoTanimi ?? "";
-      _karsiSubeController.text = parametreModel.subeList?.firstWhereOrNull((element) => element.subeKodu == model.hedefSube)?.subeAdi ?? "";
+      _karsiSubeController.text = (model.hedefSube != null) ? parametreModel.subeList?.firstWhereOrNull((element) => element.subeKodu == model.hedefSube)?.subeAdi ?? "" : "";
       _isEmriController.text = model.belgeNo ?? "";
       _aciklamaController.text = model.aciklama ?? "";
     });

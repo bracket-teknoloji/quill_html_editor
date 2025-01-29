@@ -26,6 +26,14 @@ mixin _$TransferMalTalebiEditViewModel
     });
   }
 
+  late final _$saveAsyncAction =
+      AsyncAction('_TransferMalTalebiEditViewModelBase.save', context: context);
+
+  @override
+  Future<bool> save(bool isEkle) {
+    return _$saveAsyncAction.run(() => super.save(isEkle));
+  }
+
   late final _$_TransferMalTalebiEditViewModelBaseActionController =
       ActionController(
           name: '_TransferMalTalebiEditViewModelBase', context: context);
