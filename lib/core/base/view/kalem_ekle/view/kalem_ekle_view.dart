@@ -950,13 +950,13 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (!editTipi.talepKalemlerFiltrele && !transferMi)
+                    if (!editTipi.talepKalemlerFiltrele && !transferMi && !(editTipi?.gizlenecekAlanlar("kdv_orani") ?? false) && yetkiController.siparisSatirdaKDVSor(editTipi))
                       Expanded(
                         child: CustomTextField(
-                          enabled: yetkiController.siparisSatirdaKDVSor(editTipi),
+                          enabled: !(editTipi?.degistirilmeyecekAlanlar("kdv_orani") ?? false),
                           labelText: "KDV Oranı",
                           controller: kdvOraniController,
-                          isMust: true,
+                          isMust: editTipi?.bosGecilmeyecekAlanlar("kdv_orani"),
                           keyboardType: const TextInputType.numberWithOptions(
                             decimal: true,
                           ),
@@ -1393,7 +1393,6 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
         viewModel.setKdvOrani(0);
       }
     } else {
-      
       viewModel.setOTVliMi();
       viewModel.kalemModel
         ..kalemList ??= viewModel.model?.stokList?.map(KalemModel.fromStokList).toList()
