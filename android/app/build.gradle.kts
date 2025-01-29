@@ -76,8 +76,8 @@ android {
         }
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = false
-            isShrinkResources = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
@@ -93,7 +93,4 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.activity:activity:1.6.0-alpha05")
     implementation("com.google.android.play:integrity:1.3.0")
-    // coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
 }
-
-// android.buildTypes.release.ndk.debugSymbolLevel = "FULL"
