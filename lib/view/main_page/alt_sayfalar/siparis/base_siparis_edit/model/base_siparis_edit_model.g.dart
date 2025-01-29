@@ -2822,6 +2822,30 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel gercekMiktar(double? gercekMiktar);
 
+  KalemModel barkodList(List<BarkodList>? barkodList);
+
+  KalemModel grupKodu(String? grupKodu);
+
+  KalemModel id(int? id);
+
+  KalemModel islemKodu(int? islemKodu);
+
+  KalemModel kalanMiktar(double? kalanMiktar);
+
+  KalemModel kayittarihi(DateTime? kayittarihi);
+
+  KalemModel olcuBirimi(int? olcuBirimi);
+
+  KalemModel olcuBirimiAdi(String? olcuBirimiAdi);
+
+  KalemModel olcuBirimiCarpan(double? olcuBirimiCarpan);
+
+  KalemModel talepId(int? talepId);
+
+  KalemModel tur(String? tur);
+
+  KalemModel tamamlananMiktar(double? tamamlananMiktar);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -2968,6 +2992,18 @@ abstract class _$KalemModelCWProxy {
     double? otvDegeri,
     DateTime? vadeTarihi,
     double? gercekMiktar,
+    List<BarkodList>? barkodList,
+    String? grupKodu,
+    int? id,
+    int? islemKodu,
+    double? kalanMiktar,
+    DateTime? kayittarihi,
+    int? olcuBirimi,
+    String? olcuBirimiAdi,
+    double? olcuBirimiCarpan,
+    int? talepId,
+    String? tur,
+    double? tamamlananMiktar,
   });
 }
 
@@ -3447,6 +3483,47 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(gercekMiktar: gercekMiktar);
 
   @override
+  KalemModel barkodList(List<BarkodList>? barkodList) =>
+      this(barkodList: barkodList);
+
+  @override
+  KalemModel grupKodu(String? grupKodu) => this(grupKodu: grupKodu);
+
+  @override
+  KalemModel id(int? id) => this(id: id);
+
+  @override
+  KalemModel islemKodu(int? islemKodu) => this(islemKodu: islemKodu);
+
+  @override
+  KalemModel kalanMiktar(double? kalanMiktar) => this(kalanMiktar: kalanMiktar);
+
+  @override
+  KalemModel kayittarihi(DateTime? kayittarihi) =>
+      this(kayittarihi: kayittarihi);
+
+  @override
+  KalemModel olcuBirimi(int? olcuBirimi) => this(olcuBirimi: olcuBirimi);
+
+  @override
+  KalemModel olcuBirimiAdi(String? olcuBirimiAdi) =>
+      this(olcuBirimiAdi: olcuBirimiAdi);
+
+  @override
+  KalemModel olcuBirimiCarpan(double? olcuBirimiCarpan) =>
+      this(olcuBirimiCarpan: olcuBirimiCarpan);
+
+  @override
+  KalemModel talepId(int? talepId) => this(talepId: talepId);
+
+  @override
+  KalemModel tur(String? tur) => this(tur: tur);
+
+  @override
+  KalemModel tamamlananMiktar(double? tamamlananMiktar) =>
+      this(tamamlananMiktar: tamamlananMiktar);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3594,6 +3671,18 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? otvDegeri = const $CopyWithPlaceholder(),
     Object? vadeTarihi = const $CopyWithPlaceholder(),
     Object? gercekMiktar = const $CopyWithPlaceholder(),
+    Object? barkodList = const $CopyWithPlaceholder(),
+    Object? grupKodu = const $CopyWithPlaceholder(),
+    Object? id = const $CopyWithPlaceholder(),
+    Object? islemKodu = const $CopyWithPlaceholder(),
+    Object? kalanMiktar = const $CopyWithPlaceholder(),
+    Object? kayittarihi = const $CopyWithPlaceholder(),
+    Object? olcuBirimi = const $CopyWithPlaceholder(),
+    Object? olcuBirimiAdi = const $CopyWithPlaceholder(),
+    Object? olcuBirimiCarpan = const $CopyWithPlaceholder(),
+    Object? talepId = const $CopyWithPlaceholder(),
+    Object? tur = const $CopyWithPlaceholder(),
+    Object? tamamlananMiktar = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -4155,6 +4244,54 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.gercekMiktar
           // ignore: cast_nullable_to_non_nullable
           : gercekMiktar as double?,
+      barkodList: barkodList == const $CopyWithPlaceholder()
+          ? _value.barkodList
+          // ignore: cast_nullable_to_non_nullable
+          : barkodList as List<BarkodList>?,
+      grupKodu: grupKodu == const $CopyWithPlaceholder()
+          ? _value.grupKodu
+          // ignore: cast_nullable_to_non_nullable
+          : grupKodu as String?,
+      id: id == const $CopyWithPlaceholder()
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as int?,
+      islemKodu: islemKodu == const $CopyWithPlaceholder()
+          ? _value.islemKodu
+          // ignore: cast_nullable_to_non_nullable
+          : islemKodu as int?,
+      kalanMiktar: kalanMiktar == const $CopyWithPlaceholder()
+          ? _value.kalanMiktar
+          // ignore: cast_nullable_to_non_nullable
+          : kalanMiktar as double?,
+      kayittarihi: kayittarihi == const $CopyWithPlaceholder()
+          ? _value.kayittarihi
+          // ignore: cast_nullable_to_non_nullable
+          : kayittarihi as DateTime?,
+      olcuBirimi: olcuBirimi == const $CopyWithPlaceholder()
+          ? _value.olcuBirimi
+          // ignore: cast_nullable_to_non_nullable
+          : olcuBirimi as int?,
+      olcuBirimiAdi: olcuBirimiAdi == const $CopyWithPlaceholder()
+          ? _value.olcuBirimiAdi
+          // ignore: cast_nullable_to_non_nullable
+          : olcuBirimiAdi as String?,
+      olcuBirimiCarpan: olcuBirimiCarpan == const $CopyWithPlaceholder()
+          ? _value.olcuBirimiCarpan
+          // ignore: cast_nullable_to_non_nullable
+          : olcuBirimiCarpan as double?,
+      talepId: talepId == const $CopyWithPlaceholder()
+          ? _value.talepId
+          // ignore: cast_nullable_to_non_nullable
+          : talepId as int?,
+      tur: tur == const $CopyWithPlaceholder()
+          ? _value.tur
+          // ignore: cast_nullable_to_non_nullable
+          : tur as String?,
+      tamamlananMiktar: tamamlananMiktar == const $CopyWithPlaceholder()
+          ? _value.tamamlananMiktar
+          // ignore: cast_nullable_to_non_nullable
+          : tamamlananMiktar as double?,
     );
   }
 }
@@ -4948,13 +5085,25 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       otvDegeri: fields[136] as double?,
       vadeTarihi: fields[137] as DateTime?,
       gercekMiktar: fields[138] as double?,
-    )..barkodList = (fields[139] as List?)?.cast<BarkodList>();
+      barkodList: (fields[139] as List?)?.cast<BarkodList>(),
+      grupKodu: fields[143] as String?,
+      id: fields[140] as int?,
+      islemKodu: fields[149] as int?,
+      kalanMiktar: fields[147] as double?,
+      kayittarihi: fields[148] as DateTime?,
+      olcuBirimi: fields[144] as int?,
+      olcuBirimiAdi: fields[145] as String?,
+      olcuBirimiCarpan: fields[146] as double?,
+      talepId: fields[141] as int?,
+      tur: fields[142] as String?,
+      tamamlananMiktar: fields[150] as double?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(140)
+      ..writeByte(151)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -5234,7 +5383,29 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(138)
       ..write(obj.gercekMiktar)
       ..writeByte(139)
-      ..write(obj.barkodList);
+      ..write(obj.barkodList)
+      ..writeByte(140)
+      ..write(obj.id)
+      ..writeByte(141)
+      ..write(obj.talepId)
+      ..writeByte(142)
+      ..write(obj.tur)
+      ..writeByte(143)
+      ..write(obj.grupKodu)
+      ..writeByte(144)
+      ..write(obj.olcuBirimi)
+      ..writeByte(145)
+      ..write(obj.olcuBirimiAdi)
+      ..writeByte(146)
+      ..write(obj.olcuBirimiCarpan)
+      ..writeByte(147)
+      ..write(obj.kalanMiktar)
+      ..writeByte(148)
+      ..write(obj.kayittarihi)
+      ..writeByte(149)
+      ..write(obj.islemKodu)
+      ..writeByte(150)
+      ..write(obj.tamamlananMiktar);
   }
 
   @override
@@ -5918,9 +6089,23 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
           ? null
           : DateTime.parse(json['VADE_TARIHI'] as String),
       gercekMiktar: (json['GERCEK_MIKTAR'] as num?)?.toDouble(),
-    )..barkodList = (json['BARKOD_LIST'] as List<dynamic>?)
-        ?.map((e) => BarkodList.fromJson(e as Map<String, dynamic>))
-        .toList();
+      barkodList: (json['BARKOD_LIST'] as List<dynamic>?)
+          ?.map((e) => BarkodList.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      grupKodu: json['GRUP_KODU'] as String?,
+      id: (json['ID'] as num?)?.toInt(),
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
+      kalanMiktar: (json['KALAN_MIKTAR'] as num?)?.toDouble(),
+      kayittarihi: json['KAYITTARIHI'] == null
+          ? null
+          : DateTime.parse(json['KAYITTARIHI'] as String),
+      olcuBirimi: (json['OLCU_BIRIMI'] as num?)?.toInt(),
+      olcuBirimiAdi: json['OLCU_BIRIMI_ADI'] as String?,
+      olcuBirimiCarpan: (json['OLCU_BIRIMI_CARPAN'] as num?)?.toDouble(),
+      talepId: (json['TALEP_ID'] as num?)?.toInt(),
+      tur: json['TUR'] as String?,
+      tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
     <String, dynamic>{
@@ -6091,6 +6276,20 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
       if (instance.barkodList?.map((e) => e.toJson()).toList()
           case final value?)
         'BARKOD_LIST': value,
+      if (instance.id case final value?) 'ID': value,
+      if (instance.talepId case final value?) 'TALEP_ID': value,
+      if (instance.tur case final value?) 'TUR': value,
+      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
+      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
+      if (instance.olcuBirimiAdi case final value?) 'OLCU_BIRIMI_ADI': value,
+      if (instance.olcuBirimiCarpan case final value?)
+        'OLCU_BIRIMI_CARPAN': value,
+      if (instance.kalanMiktar case final value?) 'KALAN_MIKTAR': value,
+      if (instance.kayittarihi?.toIso8601String() case final value?)
+        'KAYITTARIHI': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
+      if (instance.tamamlananMiktar case final value?)
+        'TAMAMLANAN_MIKTAR': value,
     };
 
 BarkodList _$BarkodListFromJson(Map<String, dynamic> json) => BarkodList(

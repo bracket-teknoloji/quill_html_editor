@@ -834,10 +834,11 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   int? kalemSayisi;
   double? tamamlananMiktar;
   bool? kapali;
-
   int? hedefSube;
 
   bool get isTamamlandi => (tamamlananMiktar ?? 0) == (miktar ?? 0);
+
+  bool get isToplaniyor => (tamamlananMiktar ?? 0) > 0 && (tamamlananMiktar ?? 0) < (miktar ?? 0);
 
   bool get isKapali => kapali ?? false;
 
@@ -1419,6 +1420,18 @@ final class KalemModel with NetworkManagerMixin {
     this.otvDegeri,
     this.vadeTarihi,
     this.gercekMiktar,
+    this.barkodList,
+    this.grupKodu,
+    this.id,
+    this.islemKodu,
+    this.kalanMiktar,
+    this.kayittarihi,
+    this.olcuBirimi,
+    this.olcuBirimiAdi,
+    this.olcuBirimiCarpan,
+    this.talepId,
+    this.tur,
+    this.tamamlananMiktar,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1796,6 +1809,28 @@ final class KalemModel with NetworkManagerMixin {
   double? gercekMiktar;
   @HiveField(139)
   List<BarkodList>? barkodList;
+  @HiveField(140)
+  int? id;
+  @HiveField(141)
+  int? talepId;
+  @HiveField(142)
+  String? tur;
+  @HiveField(143)
+  String? grupKodu;
+  @HiveField(144)
+  int? olcuBirimi;
+  @HiveField(145)
+  String? olcuBirimiAdi;
+  @HiveField(146)
+  double? olcuBirimiCarpan;
+  @HiveField(147)
+  double? kalanMiktar;
+  @HiveField(148)
+  DateTime? kayittarihi;
+  @HiveField(149)
+  int? islemKodu;
+  @HiveField(150)
+  double? tamamlananMiktar;
 
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().sum ?? 0;
