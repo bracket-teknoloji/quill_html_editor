@@ -32,9 +32,10 @@ import "../../yapilandirma_rehberi/model/yapilandirma_rehberi_model.dart";
 import "../view_model/stok_rehberi_view_model.dart";
 
 final class StokRehberiView extends StatefulWidget {
-  const StokRehberiView({super.key, this.searchText, this.isTalepTeklif});
+  const StokRehberiView({super.key, this.searchText, this.isTalepTeklif, this.isDepoTalep});
   final String? searchText;
   final bool? isTalepTeklif;
+  final bool? isDepoTalep;
 
   @override
   State<StokRehberiView> createState() => _StokRehberiViewState();
@@ -475,6 +476,13 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             return;
                           }
                           stokModel.yapkodAciklama = result.yapacik;
+                        }
+                        if (widget.isDepoTalep == true) {
+                          if (BaseSiparisEditModel.instance.kalemler?.any((element) => element.stokKodu == stokModel?.stokKodu) ?? false) {
+                            return dialogManager.showAlertDialog("Bu stok kodu daha önce eklenmiş.");
+                          }
+                          Get.back(result: stokModel);
+                          return;
                         }
                         await Get.toNamed((widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle", arguments: stokModel);
                         viewModel.setSelectedStokModel(null);
