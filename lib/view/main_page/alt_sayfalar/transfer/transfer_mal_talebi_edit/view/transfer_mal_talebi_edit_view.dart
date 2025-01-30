@@ -11,7 +11,7 @@ import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/transfer_mal_talebi_kalemler/view/transfer_mal_talebi_kalemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/view_model/transfer_mal_talebi_edit_view_model.dart";
 
-class TransferMalTalebiEditView extends StatefulWidget {
+final class TransferMalTalebiEditView extends StatefulWidget {
   const TransferMalTalebiEditView({required this.model, super.key});
 
   final BaseEditModel<BaseSiparisEditModel> model;
@@ -20,7 +20,7 @@ class TransferMalTalebiEditView extends StatefulWidget {
   State<TransferMalTalebiEditView> createState() => _TransferMalTalebiEditViewState();
 }
 
-class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiEditView> with SingleTickerProviderStateMixin {
+final class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiEditView> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
   final TransferMalTalebiEditViewModel viewModel = TransferMalTalebiEditViewModel();

@@ -12,9 +12,11 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/depo_talep_kalem_detay/view_model/depo_talep_kalem_detay_view_model.dart";
 
 final class DepoTalepKalemDetayView extends StatefulWidget {
-  const DepoTalepKalemDetayView({required this.model, super.key});
+  const DepoTalepKalemDetayView({required this.model, required this.isTalep, super.key});
 
   final KalemModel? model;
+
+  final bool isTalep;
 
   @override
   State<DepoTalepKalemDetayView> createState() => _DepoTalepKalemDetayViewState();
@@ -23,6 +25,7 @@ final class DepoTalepKalemDetayView extends StatefulWidget {
 final class _DepoTalepKalemDetayViewState extends BaseState<DepoTalepKalemDetayView> {
   final DepoTalepKalemDetayViewModel viewModel = DepoTalepKalemDetayViewModel();
 
+  late final TextEditingController _depoController;
   late final TextEditingController _olcuBirimiController;
   late final TextEditingController _miktarController;
   late final TextEditingController _aciklamaController;
@@ -30,18 +33,25 @@ final class _DepoTalepKalemDetayViewState extends BaseState<DepoTalepKalemDetayV
 
   @override
   void initState() {
-    if (widget.model case final value?) viewModel.setModel(value);
-    _olcuBirimiController = TextEditingController(text: widget.model?.olcuBirimiAdi);
-    _miktarController = TextEditingController(text: widget.model?.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar));
-    _aciklamaController = TextEditingController(text: widget.model?.aciklama);
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await viewModel.getStokModel();
-    });
+    if (widget.model case final value?) {
+      viewModel.setModel(
+        value.copyWith(
+          miktar: widget.isTalep ? widget.model?.miktar : widget.model?.kalanMiktar,
+          miktar2: widget.isTalep ? widget.model?.miktar : widget.model?.kalanMiktar,
+        ),
+      );
+    }
+    _depoController = TextEditingController(text: viewModel.model.depoTanimi);
+    _olcuBirimiController = TextEditingController(text: viewModel.model.olcuBirimiAdi);
+    _miktarController = TextEditingController(text: viewModel.model.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar));
+    _aciklamaController = TextEditingController(text: viewModel.model.aciklama);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async => await viewModel.getStokModel());
     super.initState();
   }
 
   @override
   void dispose() {
+    _depoController.dispose();
     _olcuBirimiController.dispose();
     _miktarController.dispose();
     _aciklamaController.dispose();
@@ -56,8 +66,8 @@ final class _DepoTalepKalemDetayViewState extends BaseState<DepoTalepKalemDetayV
       );
 
   AppBar appBar() => AppBar(
-        title: const AppBarTitle(
-          title: "Depo Talep Detayı",
+        title: AppBarTitle(
+          title: widget.isTalep ? "Depo Talep Detayı" : "Depo Talep Mal Toplama Detayı",
         ),
         actions: [
           IconButton(
@@ -91,9 +101,23 @@ final class _DepoTalepKalemDetayViewState extends BaseState<DepoTalepKalemDetayV
                   children: [
                     if (widget.model?.stokKodu case final value?) Text("Stok Kodu: $value"),
                     if (widget.model?.stokAdi case final value?) Text("Stok Adı: $value"),
+                    if (!widget.isTalep) ...[
+                      if (widget.model?.miktar case final value?) Text("Miktar: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${widget.model?.olcuBirimiAdi}"),
+                      if (widget.model?.tamamlananMiktar case final value?) Text("Toplanan Miktar: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${widget.model?.olcuBirimiAdi}"),
+                      if (widget.model?.kalanMiktar case final value?) Text("Kalan Miktar: ${value.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${widget.model?.olcuBirimiAdi}"),
+                    ],
                   ],
                 ).paddingAll(UIHelper.lowSize),
               ),
+              if (!widget.isTalep)
+                CustomTextField(
+                  labelText: "Depo",
+                  readOnly: true,
+                  isMust: true,
+                  controller: _depoController,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.depoKodu.toStringIfNotNull ?? "")),
+                  suffixMore: true,
+                ),
               CustomTextField(
                 labelText: "Ölçü Birimi",
                 readOnly: true,
@@ -102,6 +126,7 @@ final class _DepoTalepKalemDetayViewState extends BaseState<DepoTalepKalemDetayV
                 valueWidget: Observer(
                   builder: (_) => Text(viewModel.model.olcuBirimKodu.toStringIfNotNull ?? ""),
                 ),
+                onClear: () => viewModel.setOlcuBirimi((adi: null, kodu: null)),
                 onTap: () async {
                   final List<BottomSheetModel> list = List.generate(viewModel.stokModel?.getOlcuBirimiRecords.length ?? 0, (index) {
                     final item = viewModel.stokModel!.getOlcuBirimiRecords[index];
@@ -149,11 +174,12 @@ final class _DepoTalepKalemDetayViewState extends BaseState<DepoTalepKalemDetayV
                   ],
                 ),
               ),
-              CustomTextField(
-                labelText: "Açıklama",
-                controller: _aciklamaController,
-                onChanged: viewModel.setAciklama,
-              ),
+              if (widget.isTalep)
+                CustomTextField(
+                  labelText: "Açıklama",
+                  controller: _aciklamaController,
+                  onChanged: viewModel.setAciklama,
+                ),
             ],
           ).paddingAll(UIHelper.lowSize),
         ),

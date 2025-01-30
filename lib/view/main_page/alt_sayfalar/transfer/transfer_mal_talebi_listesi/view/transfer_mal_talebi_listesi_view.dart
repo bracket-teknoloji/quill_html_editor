@@ -20,7 +20,9 @@ import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view_model/transfer_mal_talebi_listesi_view_model.dart";
 
 final class TransferMalTalebiListesiView extends StatefulWidget {
-  const TransferMalTalebiListesiView({super.key});
+  const TransferMalTalebiListesiView({required this.talepMi, super.key});
+
+  final bool talepMi;
 
   @override
   State<TransferMalTalebiListesiView> createState() => _TransferMalTalebiListesiViewState();
@@ -152,6 +154,9 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
             ],
           ),
           onTap: () async {
+            if (!widget.talepMi) {
+              return Get.toNamed("mainPage/transferMalToplamaEdit", arguments: item);
+            }
             bottomSheetDialogManager.showBottomSheetDialog(
               context,
               title: loc.generalStrings.options,
@@ -176,28 +181,29 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                     }
                   },
                 ),
-                BottomSheetModel(
-                  title: loc.generalStrings.delete,
-                  iconWidget: Icons.delete_outline,
-                  onTap: () async {
-                    if (item.id == null) {
-                      dialogManager.showErrorSnackBar("ID bulunamadı.");
-                      return;
-                    }
-                    Get.back();
-                    dialogManager.showAreYouSureDialog(() async {
-                      final result = await viewModel.deleteMalTalebi(item.id!);
-                      if (result) {
-                        dialogManager.showSuccessSnackBar("${item.id} numaralı kayıt Silindi");
-                        await viewModel.resetList();
+                if (yetkiController.transferMalTalebiSil)
+                  BottomSheetModel(
+                    title: loc.generalStrings.delete,
+                    iconWidget: Icons.delete_outline,
+                    onTap: () async {
+                      if (item.id == null) {
+                        dialogManager.showErrorSnackBar("ID bulunamadı.");
+                        return;
                       }
-                    });
-                  },
-                ),
+                      Get.back();
+                      dialogManager.showAreYouSureDialog(() async {
+                        final result = await viewModel.deleteMalTalebi(item.id!);
+                        if (result) {
+                          dialogManager.showSuccessSnackBar("${item.id} numaralı kayıt Silindi");
+                          await viewModel.resetList();
+                        }
+                      });
+                    },
+                  ),
                 if (item.isKapali)
                   BottomSheetModel(
                     title: "Talebi Aç",
-                    iconWidget: Icons.refresh_outlined,
+                    iconWidget: Icons.lock_open_outlined,
                     onTap: () async {
                       if (item.id == null) {
                         dialogManager.showErrorSnackBar("ID bulunamadı.");
@@ -216,7 +222,7 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                 if (!item.isKapali)
                   BottomSheetModel(
                     title: "Talebi Kapat",
-                    iconWidget: Icons.close_outlined,
+                    iconWidget: Icons.lock_outlined,
                     onTap: () async {
                       if (item.id == null) {
                         dialogManager.showErrorSnackBar("ID bulunamadı.");
