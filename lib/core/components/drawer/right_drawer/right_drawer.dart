@@ -43,6 +43,7 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Card(
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(UIHelper.midSize),
                     ),
@@ -84,6 +85,7 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                   itemBuilder: (context, index) {
                     final DrawerModel item = items[index];
                     return Card(
+                      elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(UIHelper.midSize),
                       ),
