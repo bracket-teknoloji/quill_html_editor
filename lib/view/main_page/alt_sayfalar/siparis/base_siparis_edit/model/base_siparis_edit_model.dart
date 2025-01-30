@@ -1432,6 +1432,8 @@ final class KalemModel with NetworkManagerMixin {
     this.talepId,
     this.tur,
     this.tamamlananMiktar,
+    this.detayId,
+    this.kayityapankul,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
@@ -1831,6 +1833,10 @@ final class KalemModel with NetworkManagerMixin {
   int? islemKodu;
   @HiveField(150)
   double? tamamlananMiktar;
+  @HiveField(151)
+  int? detayId;
+  @HiveField(152)
+  String? kayityapankul;
 
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().sum ?? 0;

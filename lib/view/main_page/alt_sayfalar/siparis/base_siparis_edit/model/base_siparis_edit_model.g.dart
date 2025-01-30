@@ -2846,6 +2846,10 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel tamamlananMiktar(double? tamamlananMiktar);
 
+  KalemModel detayId(int? detayId);
+
+  KalemModel kayityapankul(String? kayityapankul);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -3004,6 +3008,8 @@ abstract class _$KalemModelCWProxy {
     int? talepId,
     String? tur,
     double? tamamlananMiktar,
+    int? detayId,
+    String? kayityapankul,
   });
 }
 
@@ -3524,6 +3530,13 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(tamamlananMiktar: tamamlananMiktar);
 
   @override
+  KalemModel detayId(int? detayId) => this(detayId: detayId);
+
+  @override
+  KalemModel kayityapankul(String? kayityapankul) =>
+      this(kayityapankul: kayityapankul);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3683,6 +3696,8 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? talepId = const $CopyWithPlaceholder(),
     Object? tur = const $CopyWithPlaceholder(),
     Object? tamamlananMiktar = const $CopyWithPlaceholder(),
+    Object? detayId = const $CopyWithPlaceholder(),
+    Object? kayityapankul = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -4292,6 +4307,14 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.tamamlananMiktar
           // ignore: cast_nullable_to_non_nullable
           : tamamlananMiktar as double?,
+      detayId: detayId == const $CopyWithPlaceholder()
+          ? _value.detayId
+          // ignore: cast_nullable_to_non_nullable
+          : detayId as int?,
+      kayityapankul: kayityapankul == const $CopyWithPlaceholder()
+          ? _value.kayityapankul
+          // ignore: cast_nullable_to_non_nullable
+          : kayityapankul as String?,
     );
   }
 }
@@ -5097,13 +5120,15 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       talepId: fields[141] as int?,
       tur: fields[142] as String?,
       tamamlananMiktar: fields[150] as double?,
+      detayId: fields[151] as int?,
+      kayityapankul: fields[152] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, KalemModel obj) {
     writer
-      ..writeByte(151)
+      ..writeByte(153)
       ..writeByte(0)
       ..write(obj.iskonto1OranMi)
       ..writeByte(1)
@@ -5405,7 +5430,11 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       ..writeByte(149)
       ..write(obj.islemKodu)
       ..writeByte(150)
-      ..write(obj.tamamlananMiktar);
+      ..write(obj.tamamlananMiktar)
+      ..writeByte(151)
+      ..write(obj.detayId)
+      ..writeByte(152)
+      ..write(obj.kayityapankul);
   }
 
   @override
@@ -6105,6 +6134,8 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       talepId: (json['TALEP_ID'] as num?)?.toInt(),
       tur: json['TUR'] as String?,
       tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
+      detayId: (json['DETAY_ID'] as num?)?.toInt(),
+      kayityapankul: json['KAYITYAPANKUL'] as String?,
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
@@ -6290,6 +6321,8 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
       if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
       if (instance.tamamlananMiktar case final value?)
         'TAMAMLANAN_MIKTAR': value,
+      if (instance.detayId case final value?) 'DETAY_ID': value,
+      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
     };
 
 BarkodList _$BarkodListFromJson(Map<String, dynamic> json) => BarkodList(
