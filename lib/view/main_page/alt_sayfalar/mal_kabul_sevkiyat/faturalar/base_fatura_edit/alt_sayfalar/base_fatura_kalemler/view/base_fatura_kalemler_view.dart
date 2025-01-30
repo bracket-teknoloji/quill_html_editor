@@ -333,7 +333,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
               Get.back();
               final result = await Get.toNamed(
                 "/mainPage/stokEdit",
-                arguments: BaseEditModel<StokListesiModel>(model: StokListesiModel.fromKalemModel(model..stokKodu = null), baseEditEnum: BaseEditEnum.ekle),
+                arguments: BaseEditModel<StokListesiModel>(model: StokListesiModel.fromKalemModel(model.copyWith.stokKodu(null)), baseEditEnum: BaseEditEnum.ekle),
               );
               if (result is SaveStokModel) {
                 BaseSiparisEditModel.instance.kalemList?[index] = viewModel.kalemList![index].copyWith(
@@ -345,7 +345,6 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
                   seriMiktarKadarSor: result.seriMiktarKadar,
                   //TODO efatura_stok değişmiyor
                 );
-
                 viewModel.updateKalemList();
               }
             },
@@ -421,8 +420,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
       }
     } else {
       final bool satisMi = model.getEditTipiEnum?.satisMi ?? false;
-      final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)
-        ..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
+      final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
       if (model.getEditTipiEnum?.urunOtomatikEklensin ?? false) {
         BaseSiparisEditModel.instance.kalemList ??= [];
         BaseSiparisEditModel.instance.kalemList?.add(kalemModel);

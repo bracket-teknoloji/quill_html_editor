@@ -187,7 +187,6 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
             }
             BaseSiparisEditModel.instance
               ..belgeKodu = null
-              ..teslimTarihi = null
               ..kapatilmis = null
               ..vadeGunu = null
               ..tempSipList = null
