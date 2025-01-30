@@ -1528,6 +1528,12 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     viewModel.kalemModel.depoTanimi ??= depoController.text;
     if (viewModel.kalemModel.sira == null) {
       await getDovizData();
+    } else {
+      viewModel
+        ..setShowDovizBilgileri(viewModel.kalemModel.dovizliMi)
+        ..setDovizAdi(widget.kalemModel?.dovizAdi)
+        ..setDovizFiyati(widget.kalemModel?.dovizliFiyat);
+      dovizKuruController.text = viewModel.kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
     }
     setSerilerController();
     // if (editTipi?.satisMi == true) {
