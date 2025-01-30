@@ -63,6 +63,10 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
       irsFaturalasanIrsaliyelerGelsin:
           json['IRS_FATURALASAN_IRSALIYELER_GELSIN'] as bool? ?? false,
       eIrsaliyeSeciliGelsin: json['E_IRSALIYE_SECILI_GELSIN'] as bool? ?? false,
+      depoTalepDepoList: json['DEPO_TALEP_DEPO_LIST'] == null
+          ? null
+          : DepoList.fromJson(
+              json['DEPO_TALEP_DEPO_LIST'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -104,6 +108,8 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
       'IRS_FATURALASAN_IRSALIYELER_GELSIN':
           instance.irsFaturalasanIrsaliyelerGelsin,
       'E_IRSALIYE_SECILI_GELSIN': instance.eIrsaliyeSeciliGelsin,
+      if (instance.depoTalepDepoList?.toJson() case final value?)
+        'DEPO_TALEP_DEPO_LIST': value,
     };
 
 const _$ThemeModeEnumMap = {

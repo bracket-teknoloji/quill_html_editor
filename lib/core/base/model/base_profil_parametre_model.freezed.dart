@@ -61,6 +61,7 @@ mixin _$BaseProfilParametreModel {
   bool get irsFaturalasanIrsaliyelerGelsin =>
       throw _privateConstructorUsedError;
   bool get eIrsaliyeSeciliGelsin => throw _privateConstructorUsedError;
+  DepoList? get depoTalepDepoList => throw _privateConstructorUsedError;
 
   /// Serializes this BaseProfilParametreModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -107,7 +108,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       String cariListesiSirala,
       String stokListesiSirala,
       bool irsFaturalasanIrsaliyelerGelsin,
-      bool eIrsaliyeSeciliGelsin});
+      bool eIrsaliyeSeciliGelsin,
+      DepoList? depoTalepDepoList});
 }
 
 /// @nodoc
@@ -155,6 +157,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? stokListesiSirala = null,
     Object? irsFaturalasanIrsaliyelerGelsin = null,
     Object? eIrsaliyeSeciliGelsin = null,
+    Object? depoTalepDepoList = freezed,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -273,6 +276,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.eIrsaliyeSeciliGelsin
           : eIrsaliyeSeciliGelsin // ignore: cast_nullable_to_non_nullable
               as bool,
+      depoTalepDepoList: freezed == depoTalepDepoList
+          ? _value.depoTalepDepoList
+          : depoTalepDepoList // ignore: cast_nullable_to_non_nullable
+              as DepoList?,
     ) as $Val);
   }
 }
@@ -315,7 +322,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       String cariListesiSirala,
       String stokListesiSirala,
       bool irsFaturalasanIrsaliyelerGelsin,
-      bool eIrsaliyeSeciliGelsin});
+      bool eIrsaliyeSeciliGelsin,
+      DepoList? depoTalepDepoList});
 }
 
 /// @nodoc
@@ -362,6 +370,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? stokListesiSirala = null,
     Object? irsFaturalasanIrsaliyelerGelsin = null,
     Object? eIrsaliyeSeciliGelsin = null,
+    Object? depoTalepDepoList = freezed,
   }) {
     return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -480,6 +489,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.eIrsaliyeSeciliGelsin
           : eIrsaliyeSeciliGelsin // ignore: cast_nullable_to_non_nullable
               as bool,
+      depoTalepDepoList: freezed == depoTalepDepoList
+          ? _value.depoTalepDepoList
+          : depoTalepDepoList // ignore: cast_nullable_to_non_nullable
+              as DepoList?,
     ));
   }
 }
@@ -517,7 +530,8 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.cariListesiSirala = "AZ",
       this.stokListesiSirala = "AZ",
       this.irsFaturalasanIrsaliyelerGelsin = false,
-      this.eIrsaliyeSeciliGelsin = false})
+      this.eIrsaliyeSeciliGelsin = false,
+      this.depoTalepDepoList = null})
       : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
         super._();
 
@@ -621,6 +635,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final bool eIrsaliyeSeciliGelsin;
+  @override
+  @JsonKey()
+  final DepoList? depoTalepDepoList;
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
@@ -669,7 +686,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final String cariListesiSirala,
       final String stokListesiSirala,
       final bool irsFaturalasanIrsaliyelerGelsin,
-      final bool eIrsaliyeSeciliGelsin}) = _$BaseProfilParametreModelImpl;
+      final bool eIrsaliyeSeciliGelsin,
+      final DepoList? depoTalepDepoList}) = _$BaseProfilParametreModelImpl;
   const _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -738,6 +756,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get irsFaturalasanIrsaliyelerGelsin;
   @override
   bool get eIrsaliyeSeciliGelsin;
+  @override
+  DepoList? get depoTalepDepoList;
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.

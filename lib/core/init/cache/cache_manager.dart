@@ -45,7 +45,8 @@ final class CacheManager {
       ..registerAdapter(ListSiparisEditModelAdapter())
       ..registerAdapter(StokListAdapter())
       ..registerAdapter(SeriListImplAdapter())
-      ..registerAdapter(BarkodListAdapter());
+      ..registerAdapter(BarkodListAdapter())
+      ..registerAdapter(DepoListAdapter());
     initHiveBoxes();
   }
   static late Box tokenBox;
