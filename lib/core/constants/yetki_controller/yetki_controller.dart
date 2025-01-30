@@ -128,7 +128,7 @@ final class YetkiController {
   bool get cariListesi => _isTrue(_yetkiModel?.cariCariListesi);
   bool get cariRapStokSatisOzeti => _isTrue(_yetkiModel?.cariRapStokSatisOzeti);
   bool get cariListesiRiskGorebilir => _isTrue(_yetkiModel?.cariCariListesiRiskGorebilir);
-  bool get cariToplamGorunmesin => _isTrue(_yetkiModel?.cariToplamGorunmesin);
+  bool get cariToplamGorunmesin => _isTrue(_yetkiModel?.cariToplamGorunmesin, skipAdmin: true);
 
   //* Cari Kartı
   bool get cariKarti => _isTrue(_yetkiModel?.cariCariKarti);
@@ -774,6 +774,7 @@ final class YetkiController {
   bool get transferDatSil => _isTrue(_yetkiModel?.transferDatSil);
   bool get transferAGSil => _isTrue(_yetkiModel?.transferAgSil);
   bool get transferACSil => _isTrue(_yetkiModel?.transferAcSil);
+  bool get transferMalTalebiSil => _isTrue(_yetkiModel?.transferDepoTalebi);
 
   //* Birim1den Kaydet
   bool get transferDatBirim1Kaydet => _isTrue(_yetkiModel?.transferDatBirim1DenKaydet, skipAdmin: true);
@@ -788,6 +789,8 @@ final class YetkiController {
   bool get transferEkMaliyet1GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
   bool get transferEkMaliyet2GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet2);
   bool get transferEkMaliyet3GizlenecekMi => transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet3);
+
+  bool get transferDepoMalToplamaFazlaTeslimatYapabilir => _isTrue(_yetkiModel?.transferDepoTalebiMalTopFazlaTeslimat == "E");
 
   bool transferDatAciklamaAlanlari(int index) => _isTrue(
         _yetkiModel?.transferDatAciklamaAlanlari == null
