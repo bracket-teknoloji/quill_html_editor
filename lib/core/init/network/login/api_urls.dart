@@ -1,4 +1,4 @@
-class ApiUrls {
+abstract final class ApiUrls {
   static const String createSession = "General/CreateSessionV3";
   static const String deleteDovizKuru = "General/DeleteDovizKuru";
   static const String dovizKuruGuncelle = "General/DovizKuruGuncelle";
@@ -160,6 +160,7 @@ class ApiUrls {
   static const String getDepoTalepleri = "fatura/GetDepoTalepleri";
   static const String getDepoTalepKalemleri = "fatura/GetDepoTalepKalemleri";
   static const String saveDepoTalep = "fatura/SaveDepoTalep";
+  static const String getDepoTalepToplananlar = "fatura/GetDepoTalepToplananlar";
 
   //* Sigma Kalite-Kontrol
   static const String getOlcumBelgeler = "Sigma/GetOlcumBelgeler";
