@@ -562,19 +562,25 @@ final class CekSenParam {
 }
 
 @JsonSerializable(createFactory: true)
+@HiveType(typeId: 3)
 final class DepoList {
   DepoList();
 
   factory DepoList.fromJson(Map<String, dynamic> json) => _$DepoListFromJson(json);
   @JsonKey(name: "DEPO_KODU")
+  @HiveField(0)
   int? depoKodu;
   @JsonKey(name: "DEPO_TANIMI")
+  @HiveField(1)
   String? depoTanimi;
   @JsonKey(name: "BAKIYE_TAKIBI")
+  @HiveField(2)
   String? bakiyeTakibi;
   @JsonKey(name: "HUCRE_TAKIBI")
+  @HiveField(3)
   String? hucreTakibi;
   @JsonKey(name: "SUBE_KODU")
+  @HiveField(4)
   int? subeKodu;
   Map<String, dynamic> toJson() => _$DepoListToJson(this);
 }
