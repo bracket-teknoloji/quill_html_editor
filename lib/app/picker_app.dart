@@ -1,3 +1,5 @@
+import "package:picker/view/main_page/alt_sayfalar/transfer/depo_ta%C5%9Fep_toplananlar/view/depo_talep_toplananlar_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/transfer/depo_talep_mal_toplama/view/depo_talep_mal_toplama_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/depo_talep_kalem_detay/view/depo_talep_kalem_detay_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/view/transfer_mal_talebi_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view/transfer_mal_talebi_listesi_view.dart";
@@ -54,7 +56,6 @@ final class PickerMaterialApp extends StatelessWidget {
         themeMode: CacheManager.getProfilParametre.temaModu,
         initialRoute: "/",
         onUnknownRoute: (settings) => GetPageRoute(settings: const RouteSettings(name: "/"), page: SplashAuthView.new),
-        onGenerateRoute: (settings) => GetPageRoute(page: () => BaseScaffold(body: const Center(child: Text("data")))),
         getPages: <GetPage>[
           GetPage(name: "/", page: SplashAuthView.new),
           GetPage(name: "/login", page: () => const LoginView()),
@@ -309,7 +310,9 @@ final class PickerMaterialApp extends StatelessWidget {
               GetPage(name: "/transferDepo", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.depoTransferi)),
               GetPage(name: "/transferAmbarGiris", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarGirisi)),
               GetPage(name: "/transferAmbarCikis", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarCikisi)),
-              GetPage(name: "/transferMalTalebi", page: () => const TransferMalTalebiListesiView()),
+              GetPage(name: "/transferMalTalebi", page: () => const TransferMalTalebiListesiView(talepMi: true)),
+              GetPage(name: "/transferMalToplama", page: () => const TransferMalTalebiListesiView(talepMi: false)),
+              GetPage(name: "/transferTalepToplananlar", page: () => DepoTalepToplananlarView(model: Get.arguments)),
 
               //* * Transfer Açıklama Düzenleme
               GetPage(name: "/transferDepoAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.depoTransferi)),
@@ -318,10 +321,12 @@ final class PickerMaterialApp extends StatelessWidget {
 
               //* * Transfer Edit
               GetPage(name: "/transferEdit", page: () => BaseTransferEditingView(model: Get.arguments)),
+              GetPage(name: "/transferMalToplamaEdit", page: () => DepoTalepMalToplamaView(model: Get.arguments)),
               GetPage(name: "/transferMalTalebiEdit", page: () => TransferMalTalebiEditView(model: Get.arguments)),
 
               //* * Depo Mal Talebi
-              GetPage(name: "/depoMalTalebiKalemEkle", page: () => DepoTalepKalemDetayView(model: Get.arguments)),
+              GetPage(name: "/depoMalTalebiKalemEkle", page: () => DepoTalepKalemDetayView(model: Get.arguments, isTalep: true)),
+              GetPage(name: "/depoMalToplamaKalemEkle", page: () => DepoTalepKalemDetayView(model: Get.arguments, isTalep: false)),
 
               //* Üretim
 
