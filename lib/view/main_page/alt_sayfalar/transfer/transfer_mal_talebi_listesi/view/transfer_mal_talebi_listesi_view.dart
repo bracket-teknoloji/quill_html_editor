@@ -119,8 +119,18 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
     return BadgeColorEnum.kapali;
   }
 
+  Color? getCardColor(BaseSiparisEditModel item) {
+    if (item.isTamamlandi) {
+      return ColorPalette.mantis.withValues(alpha: 0.5);
+    }
+    if (item.isToplaniyor) {
+      return ColorPalette.gamboge.withValues(alpha: 0.5);
+    }
+    return null;
+  }
+
   Card _malToplamaCard(BaseSiparisEditModel item) => Card(
-        color: item.isTamamlandi || item.isKapali ? ColorPalette.mantis.withValues(alpha: 0.5) : null,
+        color: getCardColor(item),
         child: ListTile(
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -155,7 +165,11 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
           ),
           onTap: () async {
             if (!widget.talepMi) {
-              return Get.toNamed("mainPage/transferMalToplamaEdit", arguments: item);
+              final result = await Get.toNamed("mainPage/transferMalToplamaEdit", arguments: item);
+              if (result == true) {
+                await viewModel.resetList();
+              }
+              return;
             }
             bottomSheetDialogManager.showBottomSheetDialog(
               context,
