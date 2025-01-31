@@ -71,6 +71,7 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     String? arrBelgeNo,
     String? bakiyeDurumu,
     bool? isNew,
+    int? hedefDepoKodu,
     @JsonKey(name: "Barkod") String? barkod,
     @JsonKey(name: "Okutuldu") String? okutuldu,
   }) = _SiparisEditRequestModel;
@@ -105,6 +106,14 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         tipi: model.tipi,
         tempBelgeId: model.tempBelgeId,
         isNew: model.isNew,
+      );
+
+      factory SiparisEditRequestModel.forTalepMalToplama(BaseSiparisEditModel model) => SiparisEditRequestModel(
+        iadeMi: false,
+        filtreKodu: 6,
+        belgeNo: model.id.toStringIfNotNull,
+        hedefDepoKodu: model.depoKodu,
+        kisitYok: null,
       );
 
   factory SiparisEditRequestModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => SiparisEditRequestModel(

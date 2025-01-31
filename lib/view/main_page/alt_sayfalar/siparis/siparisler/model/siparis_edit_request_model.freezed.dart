@@ -138,6 +138,8 @@ mixin _$SiparisEditRequestModel {
   set bakiyeDurumu(String? value) => throw _privateConstructorUsedError;
   bool? get isNew => throw _privateConstructorUsedError;
   set isNew(bool? value) => throw _privateConstructorUsedError;
+  int? get hedefDepoKodu => throw _privateConstructorUsedError;
+  set hedefDepoKodu(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "Barkod")
   String? get barkod => throw _privateConstructorUsedError;
   @JsonKey(name: "Barkod")
@@ -217,6 +219,7 @@ abstract class $SiparisEditRequestModelCopyWith<$Res> {
       String? arrBelgeNo,
       String? bakiyeDurumu,
       bool? isNew,
+      int? hedefDepoKodu,
       @JsonKey(name: "Barkod") String? barkod,
       @JsonKey(name: "Okutuldu") String? okutuldu});
 }
@@ -290,6 +293,7 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
     Object? arrBelgeNo = freezed,
     Object? bakiyeDurumu = freezed,
     Object? isNew = freezed,
+    Object? hedefDepoKodu = freezed,
     Object? barkod = freezed,
     Object? okutuldu = freezed,
   }) {
@@ -506,6 +510,10 @@ class _$SiparisEditRequestModelCopyWithImpl<$Res,
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool?,
+      hedefDepoKodu: freezed == hedefDepoKodu
+          ? _value.hedefDepoKodu
+          : hedefDepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
       barkod: freezed == barkod
           ? _value.barkod
           : barkod // ignore: cast_nullable_to_non_nullable
@@ -581,6 +589,7 @@ abstract class _$$SiparisEditRequestModelImplCopyWith<$Res>
       String? arrBelgeNo,
       String? bakiyeDurumu,
       bool? isNew,
+      int? hedefDepoKodu,
       @JsonKey(name: "Barkod") String? barkod,
       @JsonKey(name: "Okutuldu") String? okutuldu});
 }
@@ -653,6 +662,7 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
     Object? arrBelgeNo = freezed,
     Object? bakiyeDurumu = freezed,
     Object? isNew = freezed,
+    Object? hedefDepoKodu = freezed,
     Object? barkod = freezed,
     Object? okutuldu = freezed,
   }) {
@@ -869,6 +879,10 @@ class __$$SiparisEditRequestModelImplCopyWithImpl<$Res>
           ? _value.isNew
           : isNew // ignore: cast_nullable_to_non_nullable
               as bool?,
+      hedefDepoKodu: freezed == hedefDepoKodu
+          ? _value.hedefDepoKodu
+          : hedefDepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
       barkod: freezed == barkod
           ? _value.barkod
           : barkod // ignore: cast_nullable_to_non_nullable
@@ -939,6 +953,7 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
       this.arrBelgeNo,
       this.bakiyeDurumu,
       this.isNew,
+      this.hedefDepoKodu,
       @JsonKey(name: "Barkod") this.barkod,
       @JsonKey(name: "Okutuldu") this.okutuldu})
       : super._();
@@ -1058,6 +1073,8 @@ class _$SiparisEditRequestModelImpl extends _SiparisEditRequestModel {
   @override
   bool? isNew;
   @override
+  int? hedefDepoKodu;
+  @override
   @JsonKey(name: "Barkod")
   String? barkod;
   @override
@@ -1136,6 +1153,7 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
           String? arrBelgeNo,
           String? bakiyeDurumu,
           bool? isNew,
+          int? hedefDepoKodu,
           @JsonKey(name: "Barkod") String? barkod,
           @JsonKey(name: "Okutuldu") String? okutuldu}) =
       _$SiparisEditRequestModelImpl;
@@ -1311,6 +1329,9 @@ abstract class _SiparisEditRequestModel extends SiparisEditRequestModel {
   @override
   bool? get isNew;
   set isNew(bool? value);
+  @override
+  int? get hedefDepoKodu;
+  set hedefDepoKodu(int? value);
   @override
   @JsonKey(name: "Barkod")
   String? get barkod;

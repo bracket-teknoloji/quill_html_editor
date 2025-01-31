@@ -62,6 +62,7 @@ _$SiparisEditRequestModelImpl _$$SiparisEditRequestModelImplFromJson(
       arrBelgeNo: json['ArrBelgeNo'] as String?,
       bakiyeDurumu: json['BakiyeDurumu'] as String?,
       isNew: json['IsNew'] as bool?,
+      hedefDepoKodu: (json['HedefDepoKodu'] as num?)?.toInt(),
       barkod: json['Barkod'] as String?,
       okutuldu: json['Okutuldu'] as String?,
     );
@@ -127,6 +128,7 @@ Map<String, dynamic> _$$SiparisEditRequestModelImplToJson(
       if (instance.arrBelgeNo case final value?) 'ArrBelgeNo': value,
       if (instance.bakiyeDurumu case final value?) 'BakiyeDurumu': value,
       if (instance.isNew case final value?) 'IsNew': value,
+      if (instance.hedefDepoKodu case final value?) 'HedefDepoKodu': value,
       if (instance.barkod case final value?) 'Barkod': value,
       if (instance.okutuldu case final value?) 'Okutuldu': value,
     };
