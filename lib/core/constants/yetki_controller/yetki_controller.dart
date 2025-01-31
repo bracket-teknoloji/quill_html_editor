@@ -814,7 +814,7 @@ final class YetkiController {
   bool transferLokalDatDegistirilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalDatBosGecilmeyecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalDatGizlenecekAlanlar(String? index) => _isTrue(_yetkiModel?.transferDatGizlenecekAlanlar?.contains(index), skipAdmin: true);
-  bool get transferDatAciklamaDuzenle => _isTrue(_yetkiModel?.transferDatAciklamaDuzenle, skipAdmin: true);
+  bool get transferDatAciklamaDuzenle => _isTrue(_yetkiModel?.transferDatAciklamaDuzenle);
 
   String? get transferLokalDatHareketTuru => _yetkiModel?.transferDatVarsayilanHarTuru;
   bool get transferLokalDatHarTuruDegismesin => _isTrue(_yetkiModel?.transferDatVarsayilanHarTuruDegistiremesin, skipAdmin: true);
