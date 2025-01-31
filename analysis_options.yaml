@@ -44,6 +44,7 @@ linter:
     prefer_conditional_assignment: true
     prefer_const_constructors: true
     prefer_contains: true
+    sort_child_properties_last: true
     prefer_double_quotes: true
     prefer_final_locals: true
     avoid_web_libraries_in_flutter: false
