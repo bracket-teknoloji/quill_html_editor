@@ -155,10 +155,18 @@ final class _DepoTalepKalemDetayViewState extends BaseState<DepoTalepKalemDetayV
                 controller: _miktarController,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
+                validator: (value) {
+                  if (value.toDoubleWithFormattedString < 1) return "Miktar giriniz";
+                  if (!yetkiController.transferDepoMalToplamaFazlaTeslimatYapabilir) {
+                    if (value.toDoubleWithFormattedString > (widget.model?.kalanMiktar ?? 0)) return "Kalan miktarı aşamazsınız";
+                  }
+                  return null;
+                },
                 suffix: Wrap(
                   children: [
                     IconButton(
                       onPressed: () {
+                        if ((viewModel.model.miktar ?? 0) - 1 <= 0) return;
                         _miktarController.text = ((_miktarController.text.toDoubleWithFormattedString) - 1).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
                         viewModel.setMiktar(_miktarController.text.toDoubleWithFormattedString);
                       },

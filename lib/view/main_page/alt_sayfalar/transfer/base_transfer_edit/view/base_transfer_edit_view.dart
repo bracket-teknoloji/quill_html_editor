@@ -88,8 +88,6 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
       model
         ..baseEditEnum = widget.model.baseEditEnum
         ..editTipiEnum = widget.model.editTipiEnum;
-    } else if (widget.model.model is BaseSiparisEditModel) {
-      model = widget.model as BaseEditModel<SiparisEditRequestModel>;
     } else {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
       model
@@ -154,6 +152,11 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
           ..pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue
           ..tarih = DateTime.now().dateTimeWithoutTime
           ..isNew = true
+          ..girisDepoKodu = widget.model.model?.girisDepoKodu
+          ..topluGirisDepoTanimi = widget.model.model?.topluGirisDepoTanimi
+          ..cikisDepoKodu = widget.model.model?.cikisDepoKodu
+          ..topluCikisDepoTanimi = widget.model.model?.topluCikisDepoTanimi
+          ..girisDepoKodu ??= widget.model.model?.hedefDepo
           ..cariAdi ??= widget.model.model?.cariAdi
           ..cikisYeri ??= widget.model.editTipiEnum?.ambarCikisiMi == true ? yetkiController.transferAcVarsayilanCikisYeri : null
           ..cariKodu ??= widget.model.model?.cariKodu
@@ -163,10 +166,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
           ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue
           ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
           ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
-          ..girisDepoKodu = widget.model.model?.girisDepoKodu
-          ..cikisDepoKodu = widget.model.model?.cikisDepoKodu
-          ..topluGirisDepoTanimi = widget.model.model?.topluGirisDepoTanimi
-          ..topluCikisDepoTanimi = widget.model.model?.topluCikisDepoTanimi
+          ..aciklama = widget.model.model?.aciklama
           ..isNew = true;
         if (widget.model.editTipiEnum.ambarGirisiMi) {
           BaseSiparisEditModel.instance.masrafKoduAdi = yetkiController.transferAgMasrafKodu?.masrafAdi;

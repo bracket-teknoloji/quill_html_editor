@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
@@ -62,7 +63,10 @@ class _DepoTalepToplananlarViewState extends BaseState<DepoTalepToplananlarView>
                   dialogManager.showAreYouSureDialog(() async {
                     final result = await viewModel.deleteKalem(item.id!);
                     if (result) {
-                      Get.back(result: result);
+                      await viewModel.getKalemler(widget.model.id!);
+                      if (viewModel.kalemList.ext.isNullOrEmpty) {
+                        Get.back(result: result);
+                      }
                       dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
                     }
                   });
