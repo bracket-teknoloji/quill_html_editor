@@ -1855,6 +1855,10 @@ final class KalemModel with NetworkManagerMixin {
     }
   }
 
+  bool get isToplaniyor => (tamamlananMiktar != miktar) && (tamamlananMiktar != 0) && (tamamlananMiktar != null);
+
+  bool get isTamamlandi => tamamlananMiktar == miktar;
+
   double get maliyetTutari => (miktar ?? 0) * (maliyetFiyati ?? 0);
 
   double get kalemAgirlik => (miktar ?? 0) * (stokBirimAgirlik ?? 0);
