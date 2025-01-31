@@ -622,6 +622,30 @@ final class NetworkManager {
     return null;
   }
 
+  Future<BaseSiparisEditModel?> postFatura(BuildContext context, SiparisEditRequestModel model) async {
+    final result = await dioPost<BaseSiparisEditModel>(
+      path: ApiUrls.getFaturalar,
+      bodyModel: BaseSiparisEditModel(),
+      showLoading: true,
+      // headers: {"platform": AccountModel.instance.platform ?? ""},
+      data: model.toJson(),
+    );
+    if ((result.isSuccess) && result.isSuccess) {
+      final List<BaseSiparisEditModel> list = result.dataList;
+      if (result.dataList.length == 1) {
+        return result.dataList.firstOrNull;
+      } else {
+        // ignore: use_build_context_synchronously
+        return await BottomSheetDialogManager().showBottomSheetDialog(
+          context,
+          title: "Fatura Seçiniz",
+          children: list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e)).toList(),
+        );
+      }
+    }
+    return null;
+  }
+
   Future<BaseSiparisEditModel?> getBaseSiparisEditModel(SiparisEditRequestModel model) async {
     final result = await dioPost<BaseSiparisEditModel>(
       path: ApiUrls.getFaturaDetay,
