@@ -459,10 +459,8 @@ final class MenuItemConstants {
         GridItemModel.item(name: "transfer_DAT", title: "Depo Transferi", route: "/mainPage/transferDepo"),
         GridItemModel.item(name: "transfer_AG", title: "Ambar Giriş Fişi", route: "/mainPage/transferAmbarGiris"),
         GridItemModel.item(name: "transfer_AC", title: "Ambar Çıkış Fişi", route: "/mainPage/transferAmbarCikis"),
-        if (AccountModel.instance.isDebug) ...[
-          GridItemModel.item(name: "transfer_DepoTalebi", title: "Depodan Mal Talebi", route: "/mainPage/transferMalTalebi"),
-          GridItemModel.item(name: "transfer_DepoTalebi_MalTop", title: "Depo Talebinden Mal Toplama", route: "/mainPage/transferMalToplama"),
-        ],
+        GridItemModel.item(name: "transfer_DepoTalebi", title: "Depodan Mal Talebi", route: "/mainPage/transferMalTalebi"),
+        GridItemModel.item(name: "transfer_DepoTalebi_MalTop", title: "Depo Talebinden Mal Toplama", route: "/mainPage/transferMalToplama"),
         // GridItemModel.item(name: "", title: "Stok Transfer Raporu", icon: ""),
       ],
     ),
