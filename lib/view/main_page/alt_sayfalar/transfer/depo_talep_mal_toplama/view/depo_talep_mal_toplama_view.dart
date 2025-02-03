@@ -138,8 +138,8 @@ final class _DepoTalepMalToplamaViewState extends BaseState<DepoTalepMalToplamaV
                       if (result case final KalemModel value?) {
                         final success = await viewModel.saveKalem(value);
                         if (success) dialogManager.showSuccessSnackBar("Kalem eklendi");
-                        await viewModel.getKalemler();
                       }
+                      await viewModel.getKalemler();
                     },
                     title: Text(item.stokAdi ?? ""),
                     trailing: IconButton(
@@ -196,7 +196,7 @@ final class _DepoTalepMalToplamaViewState extends BaseState<DepoTalepMalToplamaV
     if (viewModel.model?.kalemler?.firstWhereOrNull((element) => element.stokKodu?.toUpperCase() == value.toUpperCase()) == null) {
       dialogManager.showAlertDialog("Stok bulunamadı");
     } else {
-      editKalem(viewModel.model!.kalemler!.firstWhere((element) => element.stokKodu?.toUpperCase() == value.toUpperCase()));
+      if (viewModel.model?.kalemler?.firstWhereOrNull((element) => element.stokKodu?.toUpperCase() == value.toUpperCase()) case final KalemModel value?) editKalem(value);
     }
   }
 

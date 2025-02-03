@@ -444,7 +444,7 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
               controller: konumController,
               onClear: () => viewModel.changeKonum(null),
               onTap: () async {
-                final result = await Get.toNamed("/mainPage/cariHaritasiOzel", arguments: (viewModel.model?.enlem, viewModel.model?.boylam));
+                final result = await Get.toNamed("/mainPage/cariHaritasiOzel", arguments: (enlem: viewModel.model?.enlem, boylam: viewModel.model?.boylam));
                 if (result is LatLng) {
                   viewModel.changeKonum((result.latitude, result.longitude));
                   konumController.text = "${result.latitude.toStringAsFixed(5)}, ${result.longitude.toStringAsFixed(5)}";
