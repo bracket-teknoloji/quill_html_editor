@@ -104,7 +104,7 @@ final class CacheManager {
     talepTeklifEditListBox = await Hive.openBox<ListSiparisEditModel>("talepTeklifEditList");
     talepTeklifEditBox = await Hive.openBox<BaseSiparisEditModel>("transferEdit");
     transferEditListBox = await Hive.openBox<ListSiparisEditModel>("transferEditList");
-    finansOzelRaporOrderBox = await Hive.openBox("finansOzelRaporOrder");
+    finansOzelRaporOrderBox = await Hive.openBox<int>("finansOzelRaporOrder");
     webCihazKimligiBox = await Hive.openBox<String>("webCihazKimligi");
     // profilParametreBox.clear();
     // await verifiedUsersBox.clear();
