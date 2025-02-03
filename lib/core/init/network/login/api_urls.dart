@@ -125,6 +125,7 @@ abstract final class ApiUrls {
 
   //* User
   static const String getOturumlar = "User/GetOturumlar";
+  static const String getKullaniciHaritasi = "User/GetKullaniciHaritasi";
 
   //* Servis
   static const String dbUpdate = "Servis/DBUpdate";
