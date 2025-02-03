@@ -2211,15 +2211,17 @@ enum BarkodSayisiSaklanacakAlan {
   k9,
   @JsonValue("K10")
   k10,
-  @JsonValue("miktar2")
+  @JsonValue("M2")
   miktar2,
   @JsonValue("E1")
   e1,
   @JsonValue("E2")
   e2,
+  @JsonValue(null)
+  bos,
   ;
 
-  factory BarkodSayisiSaklanacakAlan.fromJson(String json) => _$BarkodSayisiSaklanacakAlanEnumMap.map((key, value) => MapEntry(value, key))[json]!;
+  factory BarkodSayisiSaklanacakAlan.fromJson(String json) => _$BarkodSayisiSaklanacakAlanEnumMap.map((key, value) => MapEntry(value, key))[json] ?? bos;
 
   String get value => _$BarkodSayisiSaklanacakAlanEnumMap[this]!;
 }

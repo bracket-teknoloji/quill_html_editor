@@ -4116,9 +4116,10 @@ const _$BarkodSayisiSaklanacakAlanEnumMap = {
   BarkodSayisiSaklanacakAlan.k8: 'K8',
   BarkodSayisiSaklanacakAlan.k9: 'K9',
   BarkodSayisiSaklanacakAlan.k10: 'K10',
-  BarkodSayisiSaklanacakAlan.miktar2: 'miktar2',
+  BarkodSayisiSaklanacakAlan.miktar2: 'M2d',
   BarkodSayisiSaklanacakAlan.e1: 'E1',
   BarkodSayisiSaklanacakAlan.e2: 'E2',
+  BarkodSayisiSaklanacakAlan.bos: null,
 };
 
 SevkemriMalKontrolTipi _$SevkemriMalKontrolTipiFromJson(
