@@ -56,7 +56,7 @@ abstract class _TransferMalTalebiKalemlerViewModelBase with Store, MobxNetworkMi
           )
           .toJson(),
     );
-    if (result.isSuccess) setKalemList([...kalemList, model.copyWith(id: int.tryParse(result.paramData?["OLUSAN_ID"] ?? ""))]);
+    if (result.isSuccess) setKalemList([...kalemList, model.copyWith(id: result.paramData?["OLUSAN_ID"])]);
     return result.isSuccess;
   }
 }

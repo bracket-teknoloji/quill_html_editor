@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 
@@ -161,7 +162,7 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
     final result = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: getRequestModel.toJsonWithList(), bodyModel: StokListesiModel());
     if (result.isSuccess) {
       if (result.dataList.any((element) => element.otvUygula != null)) {
-        debugPrint(result.dataList.firstWhere((element) => element.otvUygula != null).stokAdi);
+        debugPrint(result.dataList.firstWhereOrNull((element) => element.otvUygula != null)?.stokAdi);
       }
       if (page > 1) {
         addObservableList(result.dataList);

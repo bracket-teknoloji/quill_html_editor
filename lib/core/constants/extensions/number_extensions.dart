@@ -48,7 +48,7 @@ extension NumExtensionWithFormattedStringToDouble on String? {
   double get toDoubleWithFormattedString {
     if (this == null) return 0;
     if (ext.isNotNullOrNoEmpty) {
-      return double.parse(this!.replaceAll(".", "").replaceAll(",", "."));
+      return double.tryParse(this!.replaceAll(".", "").replaceAll(",", ".")) ?? 0;
     } else {
       return 0;
     }

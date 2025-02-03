@@ -96,9 +96,9 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
               suffixMore: true,
               onTap: () async {
                 final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                if (result != null) {
-                  viewModel.pdfModel.dicParams?.cariKodu = result;
-                  cariController.text = result;
+                if (result case final CariListesiModel result?) {
+                  viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu;
+                  cariController.text = result.cariAdi ?? "";
                 }
               },
             ),

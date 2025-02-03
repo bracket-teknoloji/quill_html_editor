@@ -1,3 +1,4 @@
+import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -47,7 +48,7 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
     plasiyerController = TextEditingController();
     projeController = TextEditingController();
     raporTipiController = TextEditingController();
-    raporTipiController.text = viewModel.raporTipi.entries.firstWhere((element) => element.value == CacheManager.getProfilParametre.urunGrubunaGoreSatisRaporTipi).key;
+    raporTipiController.text = viewModel.raporTipi.entries.firstWhereOrNull((element) => element.value == CacheManager.getProfilParametre.urunGrubunaGoreSatisRaporTipi)?.key ?? "";
     cariController.text = widget.model?.cariKodu ?? "";
     viewModel.model.cariKodu = widget.model?.cariKodu ?? "";
     super.initState();

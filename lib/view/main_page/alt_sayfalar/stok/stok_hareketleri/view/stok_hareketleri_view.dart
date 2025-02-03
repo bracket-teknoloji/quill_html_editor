@@ -373,7 +373,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                                 editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model.belgeTipiAciklama),
                                               ),
                                             );
-                                            viewModel.setStokHareketleri(await getData()!);
+                                            viewModel.setStokHareketleri(await getData() ?? []);
                                           },
                                         ),
                                       BottomSheetModel(
