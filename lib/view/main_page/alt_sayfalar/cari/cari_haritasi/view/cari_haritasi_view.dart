@@ -16,11 +16,13 @@ import "../../../../../../core/gen/assets.gen.dart";
 import "../../cari_listesi/model/cari_listesi_model.dart";
 import "../view_model/cari_haritasi_view_model.dart";
 
+
+typedef Konum = ({double? enlem, double? boylam});
 final class CariHaritasiView extends StatefulWidget {
   const CariHaritasiView({super.key, this.isGetData, this.konum, this.model});
   final bool? isGetData;
   final CariListesiModel? model;
-  final (double? enlem, double? boylam)? konum;
+  final Konum? konum;
 
   @override
   State<CariHaritasiView> createState() => CariHaritasiViewState();
@@ -42,7 +44,7 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
   void initState() {
     // setMarker();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if ((widget.konum?.$1 == null && widget.konum?.$2 == null) && widget.model == null) {
+      if ((widget.konum?.enlem == null && widget.konum?.boylam == null) && widget.model == null) {
         await setCameraPosition();
       }
       final bool locationEnabled = await isLocationEnabled();
@@ -123,7 +125,7 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                       _controller = controller;
                       if (widget.konum != null) {
                         myLocation = CameraPosition(
-                          target: LatLng(widget.konum?.$1 ?? 0, widget.konum?.$2 ?? 0),
+                          target: LatLng(widget.konum?.enlem ?? 0, widget.konum?.boylam ?? 0),
                           zoom: 15.5,
                         );
                       }
