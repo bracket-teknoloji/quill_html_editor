@@ -9,6 +9,7 @@ import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart" hide FormData, Response;
+import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
@@ -185,6 +186,10 @@ final class NetworkManager {
       );
       responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
     } catch (e) {
+      String errorText = e.toString();
+      if (e is MissingRequiredKeysException) {
+        errorText = "${e.missingKeys} eksik";
+      }
       if (showLoading) {
         DialogManager().hideAlertDialog;
       }
@@ -192,7 +197,7 @@ final class NetworkManager {
       if (showError) {
         await DialogManager().showAlertDialog(e.toString());
       }
-      return GenericResponseModel<T>(success: false, message: e.toString());
+      return GenericResponseModel<T>(success: false, message: errorText);
     }
     if (showLoading) {
       DialogManager().hideAlertDialog;
