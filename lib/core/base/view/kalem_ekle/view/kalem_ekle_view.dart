@@ -269,6 +269,34 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                                   ],
                                 ),
                               ),
+                              if (yetkiController.siparisMSEkstraAlanlari("acik_sip_miktari"))
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      const TextSpan(text: "AçSipMik: "),
+                                      TextSpan(
+                                        text: "${viewModel.model?.acikMussipMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              if (yetkiController.siparisMSEkstraAlanlari("satilabilir_miktar"))
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      const TextSpan(text: "Satılabilir: "),
+                                      TextSpan(
+                                        text: "${viewModel.model?.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               if (editTipi?.fiyatGor == true)
                                 Text.rich(
                                   TextSpan(
