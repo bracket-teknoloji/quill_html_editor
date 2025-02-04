@@ -308,6 +308,7 @@ final class MenuItemConstants {
           altMenuler: [
             GridItemModel.item(name: "malKabul_AlisFat_KalemRaporu", title: "Satış Fat. Kalem Raporu", route: "/mainPage/sevkiyatSatisFaturaKalemRaporu"),
             GridItemModel.item(name: "malKabul_AlisIrs_KalemRaporu", title: "Satış İrs. Kalem Raporu", route: "/mainPage/sevkiyatSatisIrsaliyeKalemRaporu"),
+            GridItemModel.item(name: "sevkiyat_SatisFat_KarlilikRaporu", title: "Fatura Karlılık Raporu", route: "/mainPage/faturaKarlilikRaporu"),
           ],
         ),
         // GridItemModel.item(name: "sevkemri_MalToplama", title: "Mal Toplama").isDebug(),
