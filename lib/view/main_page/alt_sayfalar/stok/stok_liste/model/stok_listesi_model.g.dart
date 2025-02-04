@@ -1779,7 +1779,8 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..bulunanEkalan1 = json['BULUNAN_EKALAN1'] as String?
       ..bulunanEkalan2 = json['BULUNAN_EKALAN2'] as String?
       ..bulunanHucre = json['BULUNAN_HUCRE'] as String?
-      ..bulunanDepo = (json['BULUNAN_DEPO'] as num?)?.toInt();
+      ..bulunanDepo = (json['BULUNAN_DEPO'] as num?)?.toInt()
+      ..acikMussipMiktari = (json['ACIK_MUSSIP_MIKTARI'] as num?)?.toDouble();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
     <String, dynamic>{
@@ -1934,6 +1935,8 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
       if (instance.bulunanEkalan2 case final value?) 'BULUNAN_EKALAN2': value,
       if (instance.bulunanHucre case final value?) 'BULUNAN_HUCRE': value,
       if (instance.bulunanDepo case final value?) 'BULUNAN_DEPO': value,
+      if (instance.acikMussipMiktari case final value?)
+        'ACIK_MUSSIP_MIKTARI': value,
     };
 
 StokList _$StokListFromJson(Map<String, dynamic> json) => StokList(

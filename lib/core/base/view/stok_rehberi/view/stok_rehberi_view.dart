@@ -517,6 +517,17 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             ],
                           ),
                           Text(item.stokAdi ?? ""),
+                          CustomLayoutBuilder.divideInHalf(
+                            children: [
+                              if (yetkiController.siparisMSEkstraAlanlari("acik_sip_miktari")) Text("Sip. Miktarı: ${item.acikMussipMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                              if (yetkiController.siparisMSEkstraAlanlari("satilabilir_miktar"))
+                                Text(
+                                  "Satılabilir Miktar: ${item.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                                  style: TextStyle(color: UIHelper.getColorWithValue(item.satilabilirMiktar ?? 0)),
+                                ),
+                              // Text("KDV: ${item.kdvOrani?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} %"),
+                            ],
+                          ),
                         ],
                       ),
                       trailing: Text("${item.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} ${item.olcuBirimi ?? ""}"),
