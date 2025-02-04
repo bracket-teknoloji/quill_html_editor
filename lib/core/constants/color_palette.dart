@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-final class ColorPalette {
+abstract final class ColorPalette {
   static const Color ecru = Color.fromRGBO(165, 156, 108, 1);
   static const Color persianRed = Color.fromRGBO(202, 52, 51, 1);
   static const Color skyBlue = Color.fromRGBO(135, 206, 235, 1);

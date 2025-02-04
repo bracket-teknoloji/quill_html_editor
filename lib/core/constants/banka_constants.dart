@@ -1,4 +1,4 @@
-class BankaConstants {
+abstract final class BankaConstants {
   static const int vadesizMevduat = 0;
   static const int vadeliMevduat = 1;
   static const int repo = 2;
