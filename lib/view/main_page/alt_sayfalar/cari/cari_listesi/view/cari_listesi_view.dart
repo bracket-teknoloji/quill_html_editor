@@ -317,6 +317,8 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                   ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
                 ),
                 Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
+                if (yetkiController.plasiyerUygulamasiAcikMi && item.plasiyerAciklama != null)
+                  Text("Plasiyer Adı: ${item.plasiyerAciklama}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
                 if (item.cariIl != null)
                   Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)))
                 else
