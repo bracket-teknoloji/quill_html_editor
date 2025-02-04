@@ -23,7 +23,7 @@ final class MalKabulSevkiyatKalemRaporuView extends StatefulWidget {
 }
 
 final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevkiyatKalemRaporuView> {
-  MalKabulSevkiyatKalemRaporuViewModel viewModel = MalKabulSevkiyatKalemRaporuViewModel();
+  final MalKabulSevkiyatKalemRaporuViewModel viewModel = MalKabulSevkiyatKalemRaporuViewModel();
   late final TextEditingController belgeNoController;
   late final TextEditingController cariController;
   late final TextEditingController plasiyerController;
