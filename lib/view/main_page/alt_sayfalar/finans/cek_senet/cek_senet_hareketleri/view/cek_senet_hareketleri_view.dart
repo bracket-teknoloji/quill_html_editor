@@ -56,6 +56,7 @@ final class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [Text(model.belgeNo ?? ""), Text(model.tarih.toDateString)],
                         ),
+                        Text(widget.model.cariAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
                         Text(model.hesapKodu ?? ""),
                         Text(model.islemAdi ?? ""),
                       ],
