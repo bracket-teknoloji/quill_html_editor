@@ -67,6 +67,8 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
           ? null
           : DepoList.fromJson(
               json['DEPO_TALEP_DEPO_LIST'] as Map<String, dynamic>),
+      faturaKarlilikMaliyetTipi:
+          json['FATURA_KARLILIK_MALIYET_TIPI'] as String? ?? "SGF",
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -110,6 +112,7 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
       'E_IRSALIYE_SECILI_GELSIN': instance.eIrsaliyeSeciliGelsin,
       if (instance.depoTalepDepoList?.toJson() case final value?)
         'DEPO_TALEP_DEPO_LIST': value,
+      'FATURA_KARLILIK_MALIYET_TIPI': instance.faturaKarlilikMaliyetTipi,
     };
 
 const _$ThemeModeEnumMap = {

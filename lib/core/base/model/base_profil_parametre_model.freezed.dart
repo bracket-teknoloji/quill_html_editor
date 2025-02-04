@@ -62,6 +62,7 @@ mixin _$BaseProfilParametreModel {
       throw _privateConstructorUsedError;
   bool get eIrsaliyeSeciliGelsin => throw _privateConstructorUsedError;
   DepoList? get depoTalepDepoList => throw _privateConstructorUsedError;
+  String get faturaKarlilikMaliyetTipi => throw _privateConstructorUsedError;
 
   /// Serializes this BaseProfilParametreModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -109,7 +110,8 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       String stokListesiSirala,
       bool irsFaturalasanIrsaliyelerGelsin,
       bool eIrsaliyeSeciliGelsin,
-      DepoList? depoTalepDepoList});
+      DepoList? depoTalepDepoList,
+      String faturaKarlilikMaliyetTipi});
 }
 
 /// @nodoc
@@ -158,6 +160,7 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? irsFaturalasanIrsaliyelerGelsin = null,
     Object? eIrsaliyeSeciliGelsin = null,
     Object? depoTalepDepoList = freezed,
+    Object? faturaKarlilikMaliyetTipi = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -280,6 +283,10 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.depoTalepDepoList
           : depoTalepDepoList // ignore: cast_nullable_to_non_nullable
               as DepoList?,
+      faturaKarlilikMaliyetTipi: null == faturaKarlilikMaliyetTipi
+          ? _value.faturaKarlilikMaliyetTipi
+          : faturaKarlilikMaliyetTipi // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -323,7 +330,8 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       String stokListesiSirala,
       bool irsFaturalasanIrsaliyelerGelsin,
       bool eIrsaliyeSeciliGelsin,
-      DepoList? depoTalepDepoList});
+      DepoList? depoTalepDepoList,
+      String faturaKarlilikMaliyetTipi});
 }
 
 /// @nodoc
@@ -371,6 +379,7 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? irsFaturalasanIrsaliyelerGelsin = null,
     Object? eIrsaliyeSeciliGelsin = null,
     Object? depoTalepDepoList = freezed,
+    Object? faturaKarlilikMaliyetTipi = null,
   }) {
     return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -493,6 +502,10 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.depoTalepDepoList
           : depoTalepDepoList // ignore: cast_nullable_to_non_nullable
               as DepoList?,
+      faturaKarlilikMaliyetTipi: null == faturaKarlilikMaliyetTipi
+          ? _value.faturaKarlilikMaliyetTipi
+          : faturaKarlilikMaliyetTipi // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -531,7 +544,8 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.stokListesiSirala = "AZ",
       this.irsFaturalasanIrsaliyelerGelsin = false,
       this.eIrsaliyeSeciliGelsin = false,
-      this.depoTalepDepoList = null})
+      this.depoTalepDepoList = null,
+      this.faturaKarlilikMaliyetTipi = "SGF"})
       : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
         super._();
 
@@ -638,6 +652,9 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final DepoList? depoTalepDepoList;
+  @override
+  @JsonKey()
+  final String faturaKarlilikMaliyetTipi;
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
@@ -687,7 +704,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final String stokListesiSirala,
       final bool irsFaturalasanIrsaliyelerGelsin,
       final bool eIrsaliyeSeciliGelsin,
-      final DepoList? depoTalepDepoList}) = _$BaseProfilParametreModelImpl;
+      final DepoList? depoTalepDepoList,
+      final String faturaKarlilikMaliyetTipi}) = _$BaseProfilParametreModelImpl;
   const _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -758,6 +776,8 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   bool get eIrsaliyeSeciliGelsin;
   @override
   DepoList? get depoTalepDepoList;
+  @override
+  String get faturaKarlilikMaliyetTipi;
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
