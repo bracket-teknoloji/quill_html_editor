@@ -825,7 +825,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                     if (item.alisDovTip != null || item.satDovTip != null) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
                     if (item.yapilandirmaAktif == true) const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
                   ],
-                ),
+                ).paddingSymmetric(vertical: UIHelper.lowSize),
               ],
             ),
             subtitle: CustomLayoutBuilder.divideInHalf(
@@ -846,6 +846,13 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                 if (item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null) Text("${viewModel.gorunecekAlanlar?["6N"]}: ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
                 if (item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null) Text("${viewModel.gorunecekAlanlar?["7N"]}: ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
                 if (item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null) Text("${viewModel.gorunecekAlanlar?["8N"]}: ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
+                if (yetkiController.stokListesiExtraAlanlar("acik_sip_miktari")) Text("Açık Müş. Sip. Miktarı: ${item.acikMussipMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                if (yetkiController.stokListesiExtraAlanlar("satilabilir_miktar"))
+                  Text(
+                    "Satılabilir Miktar: ${item.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                    style: TextStyle(color: UIHelper.getColorWithValue(item.satilabilirMiktar ?? 0)),
+                  ),
+                // if (item)
               ],
             ),
             onTap: () => stokOnTap(item),

@@ -288,6 +288,12 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   String? bulunanEkalan2;
   String? bulunanHucre;
   int? bulunanDepo;
+  double? acikMussipMiktari;
+
+  double? get satilabilirMiktar {
+    if ((bakiye ?? 0) - (acikMussipMiktari ?? 0) case <= 0) return 0;
+    return (bakiye ?? 0) - (acikMussipMiktari ?? 0);
+  }
 
   static StokListesiModel? _instance;
 
