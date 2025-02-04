@@ -9,7 +9,9 @@ import "package:picker/core/base/view/kullanici_haritasi/view_model/kullanici_ha
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
+import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/gen/assets.gen.dart";
 
@@ -131,7 +133,7 @@ class _KullaniciHaritasiViewState extends BaseState<KullaniciHaritasiView> {
         ),
       );
 
-  Future<BitmapDescriptor> setMarker(KullaniciHaritasiModel? model) => Column(
+  Future<BitmapDescriptor> setMarker(KullaniciHaritasiModel model) => Column(
         mainAxisAlignment: MainAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -143,7 +145,7 @@ class _KullaniciHaritasiViewState extends BaseState<KullaniciHaritasiView> {
               child: Column(
                 children: [
                   Text(
-                    model?.kullaniciAdsoyad ?? "",
+                    model.kullaniciAdsoyad ?? "",
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -152,13 +154,12 @@ class _KullaniciHaritasiViewState extends BaseState<KullaniciHaritasiView> {
                     maxLines: 2,
                   ),
                   Text(
-                    "${model?.kullanici} (${model?.cihazMarka} - ${model?.cihazModel})\n${model?.tarih.toDateString}",
+                    "${model.kullanici} (${model.cihazMarka} - ${model.cihazModel})\n${model.tarih.toDateString}\nhız: ${model.hiz.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} km/s",
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 16,
                     ),
-                    maxLines: 2,
                   ),
                 ],
               ).paddingAll(UIHelper.lowSize),
