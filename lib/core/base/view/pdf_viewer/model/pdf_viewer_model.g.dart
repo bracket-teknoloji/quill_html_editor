@@ -77,6 +77,7 @@ _$DicParamsImpl _$$DicParamsImplFromJson(Map<String, dynamic> json) =>
       hucreKodu: json['HUCRE_KODU'] as String?,
       kalemId: json['KALEM_ID'] as String?,
       tempBelgeId: json['TEMP_BELGE_ID'] as String?,
+      irsDahil: json['IRS_DAHIL'] as String?,
     );
 
 Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) =>
@@ -134,4 +135,5 @@ Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) =>
       if (instance.hucreKodu case final value?) 'HUCRE_KODU': value,
       if (instance.kalemId case final value?) 'KALEM_ID': value,
       if (instance.tempBelgeId case final value?) 'TEMP_BELGE_ID': value,
+      if (instance.irsDahil case final value?) 'IRS_DAHIL': value,
     };

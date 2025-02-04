@@ -390,6 +390,8 @@ mixin _$DicParams {
   set kalemId(String? value) => throw _privateConstructorUsedError;
   String? get tempBelgeId => throw _privateConstructorUsedError;
   set tempBelgeId(String? value) => throw _privateConstructorUsedError;
+  String? get irsDahil => throw _privateConstructorUsedError;
+  set irsDahil(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this DicParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -454,7 +456,8 @@ abstract class $DicParamsCopyWith<$Res> {
       String? depoKodu,
       String? hucreKodu,
       String? kalemId,
-      String? tempBelgeId});
+      String? tempBelgeId,
+      String? irsDahil});
 }
 
 /// @nodoc
@@ -520,6 +523,7 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
     Object? hucreKodu = freezed,
     Object? kalemId = freezed,
     Object? tempBelgeId = freezed,
+    Object? irsDahil = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: null == belgeNo
@@ -714,6 +718,10 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
           ? _value.tempBelgeId
           : tempBelgeId // ignore: cast_nullable_to_non_nullable
               as String?,
+      irsDahil: freezed == irsDahil
+          ? _value.irsDahil
+          : irsDahil // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -774,7 +782,8 @@ abstract class _$$DicParamsImplCopyWith<$Res>
       String? depoKodu,
       String? hucreKodu,
       String? kalemId,
-      String? tempBelgeId});
+      String? tempBelgeId,
+      String? irsDahil});
 }
 
 /// @nodoc
@@ -838,6 +847,7 @@ class __$$DicParamsImplCopyWithImpl<$Res>
     Object? hucreKodu = freezed,
     Object? kalemId = freezed,
     Object? tempBelgeId = freezed,
+    Object? irsDahil = freezed,
   }) {
     return _then(_$DicParamsImpl(
       belgeNo: null == belgeNo
@@ -1032,6 +1042,10 @@ class __$$DicParamsImplCopyWithImpl<$Res>
           ? _value.tempBelgeId
           : tempBelgeId // ignore: cast_nullable_to_non_nullable
               as String?,
+      irsDahil: freezed == irsDahil
+          ? _value.irsDahil
+          : irsDahil // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1087,7 +1101,8 @@ class _$DicParamsImpl implements _DicParams {
       this.depoKodu,
       this.hucreKodu,
       this.kalemId,
-      this.tempBelgeId});
+      this.tempBelgeId,
+      this.irsDahil});
 
   factory _$DicParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$DicParamsImplFromJson(json);
@@ -1188,6 +1203,8 @@ class _$DicParamsImpl implements _DicParams {
   String? kalemId;
   @override
   String? tempBelgeId;
+  @override
+  String? irsDahil;
 
   /// Create a copy of DicParams
   /// with the given fields replaced by the non-null parameter values.
@@ -1254,7 +1271,8 @@ abstract class _DicParams implements DicParams {
       String? depoKodu,
       String? hucreKodu,
       String? kalemId,
-      String? tempBelgeId}) = _$DicParamsImpl;
+      String? tempBelgeId,
+      String? irsDahil}) = _$DicParamsImpl;
 
   factory _DicParams.fromJson(Map<String, dynamic> json) =
       _$DicParamsImpl.fromJson;
@@ -1403,6 +1421,9 @@ abstract class _DicParams implements DicParams {
   @override
   String? get tempBelgeId;
   set tempBelgeId(String? value);
+  @override
+  String? get irsDahil;
+  set irsDahil(String? value);
 
   /// Create a copy of DicParams
   /// with the given fields replaced by the non-null parameter values.
