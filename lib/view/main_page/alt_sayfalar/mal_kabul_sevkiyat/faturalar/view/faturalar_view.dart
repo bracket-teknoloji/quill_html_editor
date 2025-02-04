@@ -36,9 +36,10 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/faturalar_view_model.dart";
 
 final class FaturalarView extends StatefulWidget {
-  const FaturalarView({required this.editTipiEnum, super.key, this.isGetData});
+  const FaturalarView({required this.editTipiEnum, super.key, this.isGetData, this.isFromRapor});
   final EditTipiEnum editTipiEnum;
   final bool? isGetData;
+  final bool? isFromRapor;
 
   @override
   State<FaturalarView> createState() => _FaturalarViewState();
@@ -88,6 +89,12 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
     _kod5Controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       _scrollController.addListener(() async => viewModel.changeScrollStatus(_scrollController.position));
+      if (widget.isFromRapor ?? false) {
+        viewModel.faturaRequestModel
+          ..kapaliBelgelerListelenmesin = null
+          ..faturalanmisIrsaliyelerGelsin = null
+          ..ekranTipi = "L";
+      }
       await viewModel.getData();
     });
 
