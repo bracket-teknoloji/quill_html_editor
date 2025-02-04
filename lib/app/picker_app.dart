@@ -1,4 +1,5 @@
 import "package:picker/core/base/view/kullanici_haritasi/view/kullanici_haritasi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/fatura_karlilik_raporu/view/fatura_karlilik_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/depo_ta%C5%9Fep_toplananlar/view/depo_talep_toplananlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/depo_talep_mal_toplama/view/depo_talep_mal_toplama_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/depo_talep_kalem_detay/view/depo_talep_kalem_detay_view.dart";
@@ -279,9 +280,11 @@ final class PickerMaterialApp extends StatelessWidget {
 
               //* Sevkiyat
               GetPage(name: "/sevkiyatSatisFaturasi", page: () => FaturalarView(editTipiEnum: EditTipiEnum.satisFatura, isGetData: Get.arguments)),
+              GetPage(name: "/sevkiyatSatisFaturasiOzel", page: () => FaturalarView(editTipiEnum: EditTipiEnum.satisFatura, isGetData: true, isFromRapor: Get.arguments)),
               GetPage(name: "/sevkiyatSatisIrsaliyesi", page: () => FaturalarView(editTipiEnum: EditTipiEnum.satisIrsaliye, isGetData: Get.arguments)),
               GetPage(name: "/sevkiyatSatisFaturaKalemRaporu", page: () => const MalKabulSevkiyatKalemRaporuView(editTipiEnum: EditTipiEnum.satisFatura)),
               GetPage(name: "/sevkiyatSatisIrsaliyeKalemRaporu", page: () => const MalKabulSevkiyatKalemRaporuView(editTipiEnum: EditTipiEnum.satisIrsaliye)),
+              GetPage(name: "/faturaKarlilikRaporu", page: () => const FaturaKarlilikRaporuView()),
 
               //* * Faturalar Açıklama Düzenleme
               GetPage(name: "/faturaAlisFaturasiAciklamaDuzenle", page: () => AciklamaDuzenleView(model: Get.arguments, editEnum: EditTipiEnum.alisFatura)),
