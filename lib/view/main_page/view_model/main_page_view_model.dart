@@ -42,7 +42,7 @@ abstract class _MainPageViewModelBase with Store {
     removeLastTitle();
     if (lastItems.isEmpty) {
       titleList.add("Picker");
-      setItems(MenuItemConstants(context).getList());
+      setItems(MenuItemConstants.getList());
     }
   }
 }

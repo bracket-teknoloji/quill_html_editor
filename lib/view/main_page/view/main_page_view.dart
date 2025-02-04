@@ -37,7 +37,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
 
   @override
   void initState() {
-    viewModel.setItems(MenuItemConstants(context).getList());
+    viewModel.setItems(MenuItemConstants.getList());
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       FirebaseMessaging.onMessage.listen((message) {
         if (message.data["route"] != null && widget.fromSplash) Get.toNamed(message.data["route"] ?? "/");

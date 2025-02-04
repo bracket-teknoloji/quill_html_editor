@@ -19,10 +19,8 @@ import "../grid_item_model.dart";
 import "../main_page_model.dart";
 import "../param_model.dart";
 
-final class MenuItemConstants {
-  MenuItemConstants(this.context);
+abstract final class MenuItemConstants {
 
-  final BuildContext context;
   static MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
   static YetkiController get _yetkiController => YetkiController();
 
@@ -54,7 +52,7 @@ final class MenuItemConstants {
     );
   }
 
-  List<GridItemModel> gridItemModel = [
+  static List<GridItemModel> gridItemModel = [
     //*Cari
     //*
     GridItemModel.anamenu(
@@ -510,7 +508,7 @@ final class MenuItemConstants {
     ),
   ];
 
-  List<GridItemModel> getList() => gridItemModel.where((element) => element.yetkiKontrol).toList();
+  static List<GridItemModel> getList() => gridItemModel.where((element) => element.yetkiKontrol).toList();
 
   List<GridItemModel?> getAltMenuList(String name) => getGridItemModel.where((element) => element.name == name).toList();
 

@@ -889,7 +889,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                 return Get.toNamed("/mainPage/stokHareketleri", arguments: item);
               },
             ),
-          if (MenuItemConstants(context)
+          if (MenuItemConstants
                   .gridItemModel
                   .firstWhereOrNull((element) => element.title == "Stok")
                   ?.altMenuler

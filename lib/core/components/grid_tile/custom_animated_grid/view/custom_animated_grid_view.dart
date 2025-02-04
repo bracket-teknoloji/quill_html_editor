@@ -40,7 +40,7 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
   // late List<GridItemModel> result;
   @override
   void initState() {
-    viewModel.setGridItemModel(MenuItemConstants(context).getList());
+    viewModel.setGridItemModel(MenuItemConstants.getList());
     // viewModel.setGridItemModel(result.getList().firstOrNull?.altMenuler?.where((element) => element.title == "Raporlar").firstOrNull?.altMenuler?.where((element) => element.yetkiKontrol == true).toList());
     if (raporMu) {
       if (widget.islemTipi == IslemTipiEnum.cariRapor) {
