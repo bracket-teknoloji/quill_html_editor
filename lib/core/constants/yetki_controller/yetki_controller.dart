@@ -167,6 +167,8 @@ final class YetkiController {
   bool get stokSatisFiyatGoster => _isTrue(!_isTrue(_yetkiModel?.stokStokKartiSatisFiyatiGizle));
   bool get stokFiyatOzeti => _isTrue(_yetkiModel?.stokFiyatOzeti);
 
+  bool stokListesiExtraAlanlar(String value) => _isTrue(_yetkiModel?.stokStokListesiExtraAlanlar?.contains(value), skipAdmin: true);
+
   //* Seri İşlemleri
   bool get seriIslemleri => _isTrue(_paramModel?.seriUygulamasiAcik);
   // bool get seriIslemEkle => _isTrue(_yetkiModel?.kaydet)
@@ -334,6 +336,8 @@ final class YetkiController {
   bool get siparisMSSatirdaEkAlan2AktifMi => _isTrue(_paramModel?.satisSatirdaEkAlan2Aktif, skipAdmin: true);
   bool get siparisMSSatirIsk1YuzdeSor => _isTrue(_paramModel?.satisSatirIsk1YuzdeSor, skipAdmin: true);
   bool get siparisMSsatirdaTeslimTarihiSor => _isTrue(_paramModel?.satisSatirdaTeslimTarihiSor, skipAdmin: true);
+  
+  bool siparisMSEkstraAlanlari(String value) => _isTrue(_yetkiModel?.siparisMusSipEkstraAlanlar?.contains(value), skipAdmin: true); 
 
   // bool get siparisMSbelgeKopyala => _isTrue(_yetkiModel?.siparisMusSipBelge);
   ///? Eğer içeriyorsa boş geçilecek
