@@ -227,7 +227,7 @@ abstract final class MenuItemConstants {
       icon: "settings",
       color: ColorPalette.tomato,
       altMenuler: [
-        if (AccountModel.instance.isDebug) GridItemModel.item(name: null, title: "Kullanıcı Haritası", route: "/kullaniciHaritasi"),
+        if (AccountModel.instance.adminMi) GridItemModel.item(name: null, title: "Kullanıcı Haritası", route: "/kullaniciHaritasi"),
         GridItemModel.item(name: "genel_DovizKurlari", title: "Döviz Kurları", route: "/dovizKurlari"),
         GridItemModel.item(name: "ayarlar_FirmaAyarlari", title: "Firmalar", route: "/addCompany"),
         GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
