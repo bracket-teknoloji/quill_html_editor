@@ -20,7 +20,6 @@ import "../main_page_model.dart";
 import "../param_model.dart";
 
 abstract final class MenuItemConstants {
-
   static MainPageModel? get _anaVeri => CacheManager.getAnaVeri;
   static YetkiController get _yetkiController => YetkiController();
 

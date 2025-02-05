@@ -1,4 +1,4 @@
-class ProfilResponseModel {
+abstract final class ProfilResponseModel {
   static const String sipBagSecenegiOpsiyonel = "O";
   static const String sipBagSecenegiZorunlu = "E";
   static const String sipBagSecenegiBaglantisiz = "H";
