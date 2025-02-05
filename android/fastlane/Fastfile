@@ -11,39 +11,75 @@
 #
 
 # Uncomment the line if you want fastlane to automatically update itself
-FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD = "gsbb-uybx-zqnj-ketk"
-update_fastlane
+# update_fastlane
 
 default_platform(:android)
 
 platform :android do
-  desc "Firebase deploy"
-  lane :firebase do
-    firebase_app_distribution(
-      app: "com.bracket23.picker",
-      groups: "com.bracket23.picker",
-      release_notes: "New features and bug fixes",
-      debug: false)
+
+  def increment_version_code()
+    path = '../app/build.gradle.kts'
+    re = /versionCode\s*=\s*(\d+)/
+    s = File.read(path)
+      version_code = s[re, 1].to_i
+      s[re, 1] = (version_code + 1).to_s
+      File.open(path, 'w') { |f| f.write(s) }
+      puts "Version code incremented to #{version_code + 1}"
   end
-end
-platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
+
+
+
+  before_all do
+    ENV["FIREBASE_LOGIN_CREDENTIALS"] = "fastlane/picker-firebase.json"
+    ENV["FIREBASE_APP_ID"] = "1:9609536428:android:5a7b2c579d031d2e579009"
   end
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    # gradle(task: "clean assembleRelease")
-    crashlytics
+    before_all()
+    increment_version_code()
+    latest_release = firebase_app_distribution_get_latest_release(
+    app: ENV["FIREBASE_APP_ID"]
+    )
+    puts latest_release
+    if latest_release.nil?
+      latest_release = {
+        buildVersion: 0,
+      }
+    end
+      gradle(task: "clean")
+      gradle(task: "assemble", build_type: "Release",  properties: { 'versionCode' => latest_release[:buildVersion].to_i + 1 }, flags: "-Ptarget=lib/main.dart")
+      output_path = "/Users/bracketteknoloji/Desktop/development/picker/build/app/outputs/flutter-apk/"
+      output_json_path = "/Users/bracketteknoloji/Desktop/development/Picker/android/app/build/outputs/apk/release/output-metadata.json"
+      build_output = load_json(json_path: output_json_path)
+      elements = build_output["elements"][0]
+      apk_path = output_path + elements["outputFile"]
 
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
+     release_note_information = "BRANCH =>#{git_branch}, VERSION => #{latest_release[:buildVersion].to_i + 1 }"
+     release_note = "#{release_note_information}"
+
+     firebase_app_distribution(
+           app: ENV["FIREBASE_APP_ID"],
+           apk_path: apk_path,
+           release_notes: "Bracket Teknoloji #{release_note}",
+           groups_file: "fastlane/groups.txt",
+           service_credentials_file: ENV["FIREBASE_LOGIN_CREDENTIALS"]
+     )
   end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  lane :prod do
+    increment_version_code()
+    gradle(task: "clean")
+    gradle(task: "bundle", build_type: "Release", flags: "-Ptarget=lib/main.dart")
+    supply(
+      package_name: "com.bracket23.picker",
+      aab: "/Users/bracketteknoloji/Desktop/development/picker/build/app/outputs/bundle/Release/app-release.aab",
+      track: 'internal',
+      release_status: 'draft',
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_changelogs: true,
+      )
   end
 end
