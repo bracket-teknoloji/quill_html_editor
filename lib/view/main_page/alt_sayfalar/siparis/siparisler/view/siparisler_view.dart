@@ -198,10 +198,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                             controller: cariController,
                             suffixMore: true,
                             readOnly: true,
-                            onClear: () {
-                              viewModel.setCariKodu(null);
-                              cariController.clear();
-                            },
+                            onClear: () => viewModel.setCariKodu(null),
                             onTap: () async {
                               final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
                               if (result != null) {
@@ -217,10 +214,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                             controller: cariTipiController,
                             suffixMore: true,
                             readOnly: true,
-                            onClear: () {
-                              viewModel.setCariTipi(null);
-                              cariTipiController.clear();
-                            },
+                            onClear: () => viewModel.setCariTipi(null),
                             onTap: () async {
                               final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.cariTipi);
                               if (result != null) {
@@ -279,6 +273,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                           Expanded(
                             child: CustomTextField(
                               labelText: "Özel Kod 1",
+                              onClear: () => viewModel.setOzelKod1(null),
                               controller: ozelKod1Controller,
                               onChanged: (value) => viewModel.setOzelKod1(value),
                               suffix: IconButton(
@@ -297,6 +292,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                           child: CustomTextField(
                             labelText: "Özel Kod 2",
                             controller: ozelKod2Controller,
+                            onClear: () => viewModel.setOzelKod2(null),
                             onChanged: (value) => viewModel.setOzelKod2(value),
                             suffix: IconButton(
                               onPressed: () async {
@@ -357,6 +353,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                                     controller: grupKoduController,
                                     readOnly: true,
                                     suffixMore: true,
+                                    onClear: () => viewModel.setArrGrupKodu(null),
                                     onTap: () => getGrupKodu(0, grupKoduController),
                                   ),
                                 ).yetkiVarMi(viewModel.grupKodList0),
@@ -366,10 +363,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                                     controller: kod1Controller,
                                     readOnly: true,
                                     suffixMore: true,
-                                    onClear: () {
-                                      viewModel.setArrKod1(null);
-                                      kod1Controller.clear();
-                                    },
+                                    onClear: () => viewModel.setArrKod1(null),
                                     onTap: () => getGrupKodu(1, kod1Controller),
                                   ),
                                 ).yetkiVarMi(viewModel.grupKodList1),
@@ -383,10 +377,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                                     controller: kod2Controller,
                                     readOnly: true,
                                     suffixMore: true,
-                                    onClear: () {
-                                      viewModel.setArrKod2(null);
-                                      kod2Controller.clear();
-                                    },
+                                    onClear: () => viewModel.setArrKod2(null),
                                     onTap: () => getGrupKodu(2, kod2Controller),
                                   ),
                                 ).yetkiVarMi(viewModel.grupKodList2),
@@ -396,10 +387,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                                     controller: kod3Controller,
                                     readOnly: true,
                                     suffixMore: true,
-                                    onClear: () {
-                                      viewModel.setArrKod3(null);
-                                      kod3Controller.clear();
-                                    },
+                                    onClear: () => viewModel.setArrKod3(null),
                                     onTap: () => getGrupKodu(3, kod3Controller),
                                   ),
                                 ).yetkiVarMi(viewModel.grupKodList3),
@@ -414,10 +402,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                                       controller: kod4Controller,
                                       readOnly: true,
                                       suffixMore: true,
-                                      onClear: () {
-                                        viewModel.setArrKod4(null);
-                                        kod4Controller.clear();
-                                      },
+                                      onClear: () => viewModel.setArrKod4(null),
                                       onTap: () => getGrupKodu(4, kod4Controller),
                                     ),
                                   ).yetkiVarMi(viewModel.grupKodList4),
@@ -427,10 +412,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                                       controller: kod5Controller,
                                       readOnly: true,
                                       suffixMore: true,
-                                      onClear: () {
-                                        viewModel.setArrKod5(null);
-                                        kod5Controller.clear();
-                                      },
+                                      onClear: () => viewModel.setArrKod5(null),
                                       onTap: () => getGrupKodu(5, kod5Controller),
                                     ),
                                   ).yetkiVarMi(viewModel.grupKodList5),
