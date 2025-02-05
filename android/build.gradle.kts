@@ -5,11 +5,12 @@ allprojects {
     }
 }
 
-rootProject.buildDir = File("../build")
+rootProject.layout.buildDirectory.set(File("../build"))
 subprojects {
-    project.buildDir = File("${rootProject.buildDir}/${project.name}")
-    project.evaluationDependsOn(":app")
-    project.configurations.all {
+    layout.buildDirectory.set(rootProject.layout.buildDirectory.dir(project.name))
+    evaluationDependsOn(":app")
+
+    configurations.all {
         exclude(group = "com.google.android.gms", module = "play-services-safetynet")
         resolutionStrategy.eachDependency {
             if (requested.group == "com.android.support" && !requested.name.contains("multidex")) {
@@ -20,5 +21,5 @@ subprojects {
 }
 
 tasks.register<Delete>("clean") {
-    delete(rootProject.buildDir)
+    delete(rootProject.layout.buildDirectory)
 }

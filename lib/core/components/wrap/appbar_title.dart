@@ -3,9 +3,10 @@ import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 
 final class AppBarTitle extends StatelessWidget {
-  const AppBarTitle({super.key, this.title, this.subtitle, this.isSubTitleSmall});
+  const AppBarTitle({super.key, this.title, this.subtitle, this.isSubTitleSmall, this.titleStyle});
   final String? title;
   final String? subtitle;
+  final TextStyle? titleStyle;
   final bool? isSubTitleSmall;
 
   @override
@@ -19,6 +20,7 @@ final class AppBarTitle extends StatelessWidget {
               TypewriterAnimatedText(
                 title ?? "",
                 cursor: "",
+                textStyle: titleStyle,
               ),
             ],
             totalRepeatCount: 1,

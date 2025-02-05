@@ -18,7 +18,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-var flutterVersionCode = localProperties.getProperty("flutter.versionCode") ?: "1"
 var flutterVersionName = localProperties.getProperty("flutter.versionName") ?: "1.0"
 
 // START: FlutterFire Configuration
@@ -89,8 +88,8 @@ flutter {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.10.1")
+    implementation("androidx.core:core-ktx:1.15.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-    implementation("androidx.activity:activity:1.6.0-alpha05")
-    implementation("com.google.android.play:integrity:1.3.0")
+    implementation("androidx.activity:activity-ktx:1.10.0")
+    implementation("com.google.android.play:integrity:1.4.0")
 }
