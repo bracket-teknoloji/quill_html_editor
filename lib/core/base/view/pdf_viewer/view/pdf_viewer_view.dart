@@ -8,6 +8,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:open_filex/open_filex.dart";
 import "package:path_provider/path_provider.dart";
+import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:share_plus/share_plus.dart";
 import "package:syncfusion_flutter_pdfviewer/pdfviewer.dart";
 import "package:url_launcher/url_launcher.dart";
@@ -228,6 +229,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
 
   BottomAppBar bottomAppBar() => BottomAppBar(
         child: Row(
+          spacing: UIHelper.lowSize,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.min,
           children: [
