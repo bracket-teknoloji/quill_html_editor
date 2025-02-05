@@ -849,7 +849,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                 if (yetkiController.stokListesiExtraAlanlar("acik_sip_miktari")) Text("Açık Müş. Sip. Miktarı: ${item.acikMussipMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                 if (yetkiController.stokListesiExtraAlanlar("satilabilir_miktar"))
                   Text(
-                    "Satılabilir Miktar: ${item.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                    "Sat. Mik.: ${item.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
                     style: TextStyle(color: UIHelper.getColorWithValue(item.satilabilirMiktar ?? 0)),
                   ),
                 // if (item)
