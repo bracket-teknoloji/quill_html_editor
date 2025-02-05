@@ -349,10 +349,11 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                 const Text("Satış Performansı", style: TextStyleHelper.title),
                 OutlinedButton.icon(
                   onPressed: () async {
-                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                       context,
+                      groupValue: viewModel.donemKodu,
                       title: "Dönem",
-                      children: viewModel.aylar.map((e) => BottomSheetModel(title: e, value: e)).toList(),
+                      children: viewModel.aylar.map((e) => BottomSheetModel(title: e, value: e, groupValue: viewModel.aylar.indexOf(e) + 1)).toList(),
                     );
                     if (result != null) {
                       viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);
