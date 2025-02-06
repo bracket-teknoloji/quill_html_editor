@@ -24,10 +24,17 @@
 		</array>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Uygulamamız, size daha iyi hizmet verebilmek için konumunuza ihtiyaç duyar.</string>
+		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+		<string>Uygulamamız, arka planda da konum takibi yaparak size daha iyi bir deneyim sunar.</string>
+		<key>NSLocationAlwaysUsageDescription</key>
+		<string>Uygulama kapalıyken de konum takibi yapmak istiyoruz.</string>
 		<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 		<string>Konumunuzu belirlemek için uygulamamızın konum verilerine erişmesi gerekiyor.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
-		<string>Bu izin, kullanıcının konumunu belirlemek için kullanılan diğer izinlerin yanı sıra gereklidir. Lütfen uygulamamızın konum verilerine erişmesine izin verin.</string>
+		<string>Bu izin, kullanıcının konumunu belirlemek için kullanılan diğer izinlerin yanı sıra
+			gereklidir. Lütfen uygulamamızın konum verilerine erişmesine izin verin.</string>
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>Konumunuzu belirlemek için uygulamamızın konum verilerine erişmesi gerekiyor.</string>
 		<key>CFBundleGetInfoString</key>
