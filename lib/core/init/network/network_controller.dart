@@ -17,7 +17,7 @@ final class NetworkController extends GetxController {
   Future<void> initConnectivity(List<ConnectivityResult>? result) async {
     if (connectivityResult != result?.firstOrNull && result?.firstOrNull == ConnectivityResult.none) {
       connectivityResult = result?.firstOrNull;
-      DialogManager().internetConnectionDialog();
+      if (Get.context != null) DialogManager().internetConnectionDialog();
       isOffline = true;
     } else if (result?.firstOrNull == ConnectivityResult.mobile || result?.firstOrNull == ConnectivityResult.wifi) {
       connectivityResult = result?.firstOrNull;

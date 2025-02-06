@@ -7,6 +7,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
+import "package:picker/core/init/location/location_manager.dart";
 
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -39,6 +41,10 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   void initState() {
     viewModel.setItems(MenuItemConstants.getList());
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await DIManager.init();
+      if (parametreModel.genelKonumTakibiYapilsin == "E") {
+        await DIManager.read<LocationManager>().startTracking();
+      }
       FirebaseMessaging.onMessage.listen((message) {
         if (message.data["route"] != null && widget.fromSplash) Get.toNamed(message.data["route"] ?? "/");
       });
