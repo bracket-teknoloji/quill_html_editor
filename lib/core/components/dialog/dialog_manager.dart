@@ -370,7 +370,9 @@ final class DialogManager {
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
-  void get hideAlertDialog => Get.back(closeOverlays: true);
+  void get hideAlertDialog {
+    if (Get.isDialogOpen ?? false) Get.back(closeOverlays: true);
+  }
 
   AlertDialog listTileDialog({required String title}) {
     final Box box = Hive.box("accounts");
