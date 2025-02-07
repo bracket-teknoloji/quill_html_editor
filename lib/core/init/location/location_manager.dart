@@ -8,6 +8,7 @@ import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/dependency_injection/intectable_interface.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 
 final class LocationManager implements InjectableInterface {
   LocationManager({this.distanceFilterMeters = 200, this.timeFilter = const Duration(seconds: 10)});
@@ -22,22 +23,37 @@ final class LocationManager implements InjectableInterface {
   Future<void> startTracking() async {
     final bool hasPermission = await _requestLocationPermission();
     if (!hasPermission) {
-      log("Konum izni verilmedi.");
+      log("Konum izni verilmedi.", name: "LocationManager");
       return;
     }
+    late final LocationSettings locationSettings;
     // Geolocator ayarları (doğruluk, mesafe filtresi vb.)
-    final LocationSettings locationSettings = AndroidSettings(
-      foregroundNotificationConfig: const ForegroundNotificationConfig(
-        notificationText: "Uygulama konumunuzu kullanıyor",
-        notificationTitle: "Konum Takibi",
-        enableWakeLock: true,
-      ),
-    );
-
+    if (["ios", "macos"].contains(AccountModel.instance.platform)) {
+      locationSettings = AppleSettings(
+        distanceFilter: distanceFilterMeters,
+        timeLimit: timeFilter,
+        showBackgroundLocationIndicator: true,
+        pauseLocationUpdatesAutomatically: true,
+      );
+    } else if (AccountModel.instance.platform == "android") {
+      locationSettings = AndroidSettings(
+        foregroundNotificationConfig: const ForegroundNotificationConfig(
+          notificationText: "Uygulama konumunuzu kullanıyor",
+          notificationTitle: "Konum Takibi",
+          enableWakeLock: true,
+          notificationIcon: AndroidResource(name: "mipmap/ic_launcher"),
+        ),
+      );
+    } else if (AccountModel.instance.platform == "web") {
+      locationSettings = LocationSettings(
+        distanceFilter: distanceFilterMeters,
+        timeLimit: timeFilter,
+      );
+    }
     _positionStreamSubscription = Geolocator.getPositionStream(locationSettings: locationSettings).listen(
       _processPositionUpdate,
       onError: (error) {
-        log("Konum hatası: $error");
+        log("Konum hatası: $error", name: "LocationManager");
         // Hata durumunda yapılacak işlemler (örn. kullanıcıya bildirim gösterme)
       },
     );
@@ -90,10 +106,10 @@ final class LocationManager implements InjectableInterface {
       bodyModel: BaseEmptyModel(),
       showError: false,
       data: {
-        "KONUM_BOYLAM": _lastPosition?.latitude,
-        "KONUM_ENLEM": _lastPosition?.longitude,
-        "KONUM_DATE": "${DateTime.now().toDateString} ${DateTime.now().getTime}",
-        "KONUM_TARIHI": DateTime.now().toIso8601String(),
+        "KONUM_BOYLAM": _lastPosition?.longitude,
+        "KONUM_ENLEM": _lastPosition?.latitude,
+        "KONUM_TARIHI": "${DateTime.now().toDateString} ${DateTime.now().getTime}",
+        "KONUM_DATE": DateTime.now().toIso8601String(),
       },
     );
   }
