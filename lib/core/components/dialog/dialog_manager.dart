@@ -9,6 +9,8 @@ import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:location/location.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
+import "package:picker/core/init/location/location_manager.dart";
 
 import "../../../generated/locale_base.dart";
 import "../../../view/add_company/model/account_model.dart";
@@ -317,6 +319,7 @@ final class DialogManager {
         desc: "Çıkmak istediğinize emin misiniz?",
         dialogType: DialogType.question,
         onOk: () async {
+          DIManager.delete<LocationManager>();
           final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson(), showLoading: true);
           if (response.isSuccess) {
             showLoadingDialog("Çıkış yapılıyor...");
@@ -370,9 +373,7 @@ final class DialogManager {
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
-  void get hideAlertDialog {
-    if (Get.isDialogOpen ?? false) Get.back(closeOverlays: true);
-  }
+  void get hideAlertDialog => Get.back(closeOverlays: true);
 
   AlertDialog listTileDialog({required String title}) {
     final Box box = Hive.box("accounts");

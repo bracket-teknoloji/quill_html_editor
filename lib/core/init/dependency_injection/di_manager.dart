@@ -36,4 +36,8 @@ abstract final class DIManager {
   static Future<void> reset<T extends InjectableInterface>() async {
     await _getIt.resetLazySingleton<T>(instance: _getIt<T>());
   }
+
+  static Future<void> delete<T extends InjectableInterface>() async {
+    await _getIt.unregister<T>();
+  }
 }
