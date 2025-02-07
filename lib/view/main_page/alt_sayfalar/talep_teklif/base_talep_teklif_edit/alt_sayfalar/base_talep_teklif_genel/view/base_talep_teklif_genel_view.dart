@@ -309,7 +309,7 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false))
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false) && (yetkiController.topluDepoKullan(model.getEditTipiEnum)))
                       Expanded(
                         child: CustomTextField(
                           labelText: "Toplu Depo",
