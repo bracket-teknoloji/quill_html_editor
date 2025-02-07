@@ -1444,17 +1444,18 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       if (editTipi?.satisMi == true ? yetkiController.satisMiktar1Gelsin : yetkiController.alisMiktar1Gelsin) {
         viewModel.setMiktar(1);
       }
-
-      viewModel.kalemModel
-        ..dovizTipi ??= widget.stokListesiModel?.bulunanDovizTipi
-        ..dovizKodu ??= widget.stokListesiModel?.bulunanDovizTipi
-        ..isemriNo = model.isemriNo
-        ..dovizFiyati ??= widget.stokListesiModel?.bulunanDovizFiyati
-        ..dovizliFiyat ??= widget.stokListesiModel?.bulunanDovizFiyati
-        ..stokBirimAgirlik = stokListesiModel?.birimAgirlik
-        ..stokAlisDovTip ??= stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip
-        ..dovizTipi ??= (editTipi?.satisMi == true ? stokListesiModel?.satDovTip : viewModel.model?.alisDovTip)
-        ..dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
+      if (widget.kalemModel == null) {
+        viewModel.kalemModel
+          ..dovizTipi ??= widget.stokListesiModel?.bulunanDovizTipi
+          ..dovizKodu ??= widget.stokListesiModel?.bulunanDovizTipi
+          ..isemriNo = model.isemriNo
+          ..dovizFiyati ??= widget.stokListesiModel?.bulunanDovizFiyati
+          ..dovizliFiyat ??= widget.stokListesiModel?.bulunanDovizFiyati
+          ..stokBirimAgirlik = stokListesiModel?.birimAgirlik
+          ..stokAlisDovTip ??= stokListesiModel?.alisDovTip ?? viewModel.model?.alisDovTip
+          ..dovizTipi ??= (editTipi?.satisMi == true ? stokListesiModel?.satDovTip : viewModel.model?.alisDovTip)
+          ..dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
+      }
     }
     kalemAdiController.text = viewModel.kalemModel.kalemAdi ?? viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? "";
     ekAlan1Controller.text = viewModel.kalemModel.ekalan1 ?? model.masrafKodu ?? "";
@@ -1514,7 +1515,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     // viewModel.setShowDovizBilgileri(viewModel.dovizliMi);
     // viewModel.setOlcuBirimi(MapEntry<Olculer, int>((adi: stokListesiModel?.olcuBirimi ?? viewModel.kalemModel.olcuBirimAdi ?? "", pay: 0.0, payda: 0.0), 1));
     if (widget.kalemModel == null && viewModel.kalemModel.sira == null) {
-      viewModel.setKosul(model.kosulKodu ?? "");
+      viewModel
+        ..setKosul(model.kosulKodu ?? "")
+        ..setMuhasebeReferansKodu(yetkiController.varsayilanMuhRefKodu?.hesapKodu);
       if (yetkiController.projeUygulamasiAcikMi) {
         viewModel.setProjeKodu(model.projeKodu ?? "");
       }
