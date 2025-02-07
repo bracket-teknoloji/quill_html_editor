@@ -146,7 +146,13 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
         // BaseSiparisEditModel.instance.belgeNo= await networkManager.getSiradakiBelgeNo(SiradakiBelgeNoModel(belgeNo: model.belgeNo, belgeTuru: model.belgeTuru, sirketKodu: model.sirketKodu));
       }
       if (yetkiController.projeUygulamasiAcikMi && viewModel.model.projeKodu == null) {
-        viewModel.setProje(yetkiController.varsayilanProje);
+        final projeList = await networkManager.getProjeData();
+        if (projeList != null) {
+          final proje = projeList.firstWhereOrNull((element) => element.projeKodu == yetkiController.varsayilanProje?.projeKodu);
+          if (proje != null) {
+            viewModel.setProje(proje);
+          }
+        }
         _projeController.text = viewModel.model.projeAciklama ?? viewModel.model.projeKodu ?? "";
       }
     });
@@ -646,42 +652,44 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Toplu Depo",
-                        readOnly: true,
-                        //  && model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
-                        suffixMore: true,
-                        controller: _topluDepoController,
-                        enabled: enable,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
-                          if (result != null) {
-                            _topluDepoController.text = result.depoTanimi ?? "";
-                            viewModel.setDepoKodu(result);
-                          }
-                        },
+                    if (yetkiController.topluDepoKullan(model.getEditTipiEnum))
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Toplu Depo",
+                          readOnly: true,
+                          //  && model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
+                          suffixMore: true,
+                          controller: _topluDepoController,
+                          enabled: enable,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                            if (result != null) {
+                              _topluDepoController.text = result.depoTanimi ?? "";
+                              viewModel.setDepoKodu(result);
+                            }
+                          },
+                        ),
+                      ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi != true),
+                    if (yetkiController.projeUygulamasiAcikMi && !(viewModel.model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false))
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Proje",
+                          readOnly: true,
+                          isMust: true,
+                          suffixMore: true,
+                          controller: _projeController,
+                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                          onTap: () async {
+                            final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                            if (result is BaseProjeModel) {
+                              _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                              viewModel.setProje(result);
+                            }
+                          },
+                        ),
                       ),
-                    ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi != true),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Proje",
-                        readOnly: true,
-                        isMust: true,
-                        suffixMore: true,
-                        controller: _projeController,
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                        onTap: () async {
-                          final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                          if (result is BaseProjeModel) {
-                            _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
-                            viewModel.setProje(result);
-                          }
-                        },
-                      ),
-                    ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi && !(viewModel.model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false)),
                   ],
                 ),
                 CustomTextField(
