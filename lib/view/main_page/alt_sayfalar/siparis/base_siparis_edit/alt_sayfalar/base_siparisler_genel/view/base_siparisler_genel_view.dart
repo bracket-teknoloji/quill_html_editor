@@ -305,7 +305,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    if (yetkiController.lokalDepoUygulamasiAcikMi)
+                    if (yetkiController.lokalDepoUygulamasiAcikMi && (yetkiController.topluDepoKullan(model.getEditTipiEnum)))
                       Expanded(
                         child: CustomTextField(
                           enabled: enable,
