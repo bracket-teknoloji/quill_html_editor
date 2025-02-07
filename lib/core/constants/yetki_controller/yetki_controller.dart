@@ -1,6 +1,7 @@
 import "package:collection/collection.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "package:picker/view/main_page/model/user_model/kullanici_yetki_model.dart";
 
 import "../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -108,6 +109,10 @@ final class YetkiController {
 
   int get satisKademeliIskontoSayisi => _paramModel?.satisSatirKademeliIskontoSayisi ?? 0;
   int get alisKademeliIskontoSayisi => _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
+
+  StokMuhasebeKoduModel? get varsayilanMuhRefKodu => StokMuhasebeKoduModel()
+    ..hesapKodu = _kullaniciYetkiModel?.varsayilanMuhasebeReferansKodu
+    ..hesapAdi = _kullaniciYetkiModel?.varsayilanMuhasebeReferansTanimi;
 
   bool get projeUygulamasiAcikMi => _isTrue(_paramModel?.projeUygulamasiAcik, skipAdmin: true);
   bool get plasiyerUygulamasiAcikMi => _isTrue(_paramModel?.plasiyerUygulamasi, skipAdmin: true);
