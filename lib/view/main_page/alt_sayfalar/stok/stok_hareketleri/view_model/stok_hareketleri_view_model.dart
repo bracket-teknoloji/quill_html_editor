@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/constants/extensions/iterable_extensions.dart";
 
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../model/stok_hareketleri_model.dart";
@@ -41,6 +42,15 @@ abstract class _StokHareketleriViewModelBase with Store {
       : isSelectedGroupValue == 1
           ? "G"
           : "C";
+
+  @computed
+  double get toplamGiris => stokHareketleri!.where((element) => element.cikisIslemi != true).map((e) => e.stharGcmik).sum;
+
+  @computed
+  double get toplamCikis => stokHareketleri!.where((element) => element.cikisIslemi == true).map((e) => e.stharGcmik).sum;
+
+  @computed
+  double get toplamBakiye => toplamGiris - toplamCikis;
 
   @observable
   Map<String, String> hareketTuruMap = {

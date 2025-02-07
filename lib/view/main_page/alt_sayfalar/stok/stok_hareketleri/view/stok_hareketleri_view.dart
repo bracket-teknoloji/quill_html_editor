@@ -5,6 +5,8 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_slidable/flutter_slidable.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -70,6 +72,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
   Widget build(BuildContext context) => BaseScaffold(
         floatingActionButton: yetkiController.stokHareketleriStokYeniKayit ? fab() : null,
         appBar: appBar(),
+        bottomNavigationBar: bottomButtonBar(),
         body: body(),
       );
 
@@ -149,16 +152,15 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           controllerText: viewModel.arrHareketTuru?.join(", "),
                           onTap: () async {
                             bottomSheetDialogManager.clearSelectedData();
-                            final List? result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
+                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
                               context,
                               title: "Hareket Türü",
                               groupValues: viewModel.arrHareketTuru,
-                              children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key, value: e.key, groupValue: e.key)).toList(),
+                              children: viewModel.hareketTuruMap.entries.map((e) => BottomSheetModel(title: e.key, value: e, groupValue: e.value)).toList(),
                             );
                             if (result != null) {
-                              _hareketTuruController.text = result.join(", ");
-                              viewModel.changeArrHareketTuru(result.map((e) => e as String).toList().cast<String>());
-                              // setState(() {});
+                              _hareketTuruController.text = result.map((e) => e.key).join(", ");
+                              viewModel.changeArrHareketTuru(result.map((e) => e.value).toList());
                             }
                           },
                           suffixMore: true,
@@ -422,6 +424,45 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
             return const ListViewShimmer();
           }
         },
+      );
+
+  Widget bottomButtonBar() => Observer(
+        builder: (_) => BottomBarWidget(
+          isScrolledDown: true,
+          children: [
+            FooterButton(
+              children: [
+                const Text("Giriş"),
+                Observer(
+                  builder: (_) => Text(
+                    viewModel.toplamGiris.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+                  ),
+                ),
+              ],
+            ),
+            FooterButton(
+              children: [
+                const Text("Çıkış"),
+                Observer(
+                  builder: (_) => Text(
+                    viewModel.toplamCikis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+                  ),
+                ),
+              ],
+            ),
+            FooterButton(
+              children: [
+                const Text("Kalan"),
+                Observer(
+                  builder: (_) => Text(
+                    viewModel.toplamBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+                    style: TextStyle(color: UIHelper.getColorWithValue(viewModel.toplamBakiye)),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       );
 
   Expanded listTile(StokHareketleriModel model) => Expanded(

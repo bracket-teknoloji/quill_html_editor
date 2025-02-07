@@ -16,6 +16,27 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
       (_$getIsSelectedComputed ??= Computed<String>(() => super.getIsSelected,
               name: '_StokHareketleriViewModelBase.getIsSelected'))
           .value;
+  Computed<double>? _$toplamGirisComputed;
+
+  @override
+  double get toplamGiris =>
+      (_$toplamGirisComputed ??= Computed<double>(() => super.toplamGiris,
+              name: '_StokHareketleriViewModelBase.toplamGiris'))
+          .value;
+  Computed<double>? _$toplamCikisComputed;
+
+  @override
+  double get toplamCikis =>
+      (_$toplamCikisComputed ??= Computed<double>(() => super.toplamCikis,
+              name: '_StokHareketleriViewModelBase.toplamCikis'))
+          .value;
+  Computed<double>? _$toplamBakiyeComputed;
+
+  @override
+  double get toplamBakiye =>
+      (_$toplamBakiyeComputed ??= Computed<double>(() => super.toplamBakiye,
+              name: '_StokHareketleriViewModelBase.toplamBakiye'))
+          .value;
   Computed<String>? _$getArrHareketTuruComputed;
 
   @override
@@ -373,6 +394,9 @@ searchBar: ${searchBar},
 stokHareketleri: ${stokHareketleri},
 filteredStokHareketleri: ${filteredStokHareketleri},
 getIsSelected: ${getIsSelected},
+toplamGiris: ${toplamGiris},
+toplamCikis: ${toplamCikis},
+toplamBakiye: ${toplamBakiye},
 getArrHareketTuru: ${getArrHareketTuru}
     ''';
   }
