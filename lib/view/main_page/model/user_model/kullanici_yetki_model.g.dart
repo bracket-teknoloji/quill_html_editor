@@ -62,6 +62,36 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
       varsayilanProjeTanimi: json['varsayilan_ProjeTanimi'] as String?,
       varsayilanProjeKodu: json['varsayilan_ProjeKodu'] as String?,
       varsayilanKrediKartiKasa: json['varsayilanKrediKartiKasa'] as String?,
+      varsayilanMuhasebeReferansTanimi:
+          json['varsayilan_MuhasebeReferansTanimi'] as String?,
+      varsayilanMuhasebeReferansKodu:
+          json['varsayilan_MuhasebeReferansKodu'] as String?,
+      satSipOnEki: json['satSipOnEki'] as String?,
+      musSipOnEki: json['musSipOnEki'] as String?,
+      alIrsOnEki: json['alIrsOnEki'] as String?,
+      eFatOnEki: json['eFatOnEki'] as String?,
+      eArvOnEki: json['eArvOnEki'] as String?,
+      satAlmTalOnEki: json['satAlmTalOnEki'] as String?,
+      satisTalOnEki: json['satisTalOnEki'] as String?,
+      satAlmTekOnEki: json['satAlmTekOnEki'] as String?,
+      satisTekOnEki: json['satisTekOnEki'] as String?,
+      tahsilatOnEki: json['tahsilatOnEki'] as String?,
+      sevkEmriOnEki: json['sevkEmriOnEki'] as String?,
+      kkTahsilatOnEki: json['kkTahsilatOnEki'] as String?,
+      eIrsDatOnEki: json['eIrsDATOnEki'] as String?,
+      datOnEki: json['DATOnEki'] as String?,
+      ambarCikisOnEki: json['ambarCikisOnEki'] as String?,
+      ambarGirisOnEki: json['ambarGirisOnEki'] as String?,
+      cariOnEki: json['cariOnEki'] as String?,
+      uskOnEki: json['uskOnEki'] as String?,
+      alisFatOnEki: json['alisFatOnEki'] as String?,
+      satisFatOnEki: json['satisFatOnEki'] as String?,
+      dekSeriCekTahsil: json['dekSeri_CekTahsil'] as String?,
+      dekSeriKKartiTahsilati: json['dekSeri_KKartiTahsilati'] as String?,
+      dekSeriCariEft: json['dekSeri_CariEFT'] as String?,
+      dekSeriHesArasiVirman: json['dekSeri_HesArasiVirman'] as String?,
+      dekSeriHesArasiEft: json['dekSeri_HesArasiEFT'] as String?,
+      dekSeriCariVirman: json['dekSeri_CariVirman'] as String?,
     );
 
 Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
@@ -125,4 +155,39 @@ Map<String, dynamic> _$$KullaniciYetkiModelImplToJson(
         'varsayilan_ProjeKodu': value,
       if (instance.varsayilanKrediKartiKasa case final value?)
         'varsayilanKrediKartiKasa': value,
+      if (instance.varsayilanMuhasebeReferansTanimi case final value?)
+        'varsayilan_MuhasebeReferansTanimi': value,
+      if (instance.varsayilanMuhasebeReferansKodu case final value?)
+        'varsayilan_MuhasebeReferansKodu': value,
+      if (instance.satSipOnEki case final value?) 'satSipOnEki': value,
+      if (instance.musSipOnEki case final value?) 'musSipOnEki': value,
+      if (instance.alIrsOnEki case final value?) 'alIrsOnEki': value,
+      if (instance.eFatOnEki case final value?) 'eFatOnEki': value,
+      if (instance.eArvOnEki case final value?) 'eArvOnEki': value,
+      if (instance.satAlmTalOnEki case final value?) 'satAlmTalOnEki': value,
+      if (instance.satisTalOnEki case final value?) 'satisTalOnEki': value,
+      if (instance.satAlmTekOnEki case final value?) 'satAlmTekOnEki': value,
+      if (instance.satisTekOnEki case final value?) 'satisTekOnEki': value,
+      if (instance.tahsilatOnEki case final value?) 'tahsilatOnEki': value,
+      if (instance.sevkEmriOnEki case final value?) 'sevkEmriOnEki': value,
+      if (instance.kkTahsilatOnEki case final value?) 'kkTahsilatOnEki': value,
+      if (instance.eIrsDatOnEki case final value?) 'eIrsDATOnEki': value,
+      if (instance.datOnEki case final value?) 'DATOnEki': value,
+      if (instance.ambarCikisOnEki case final value?) 'ambarCikisOnEki': value,
+      if (instance.ambarGirisOnEki case final value?) 'ambarGirisOnEki': value,
+      if (instance.cariOnEki case final value?) 'cariOnEki': value,
+      if (instance.uskOnEki case final value?) 'uskOnEki': value,
+      if (instance.alisFatOnEki case final value?) 'alisFatOnEki': value,
+      if (instance.satisFatOnEki case final value?) 'satisFatOnEki': value,
+      if (instance.dekSeriCekTahsil case final value?)
+        'dekSeri_CekTahsil': value,
+      if (instance.dekSeriKKartiTahsilati case final value?)
+        'dekSeri_KKartiTahsilati': value,
+      if (instance.dekSeriCariEft case final value?) 'dekSeri_CariEFT': value,
+      if (instance.dekSeriHesArasiVirman case final value?)
+        'dekSeri_HesArasiVirman': value,
+      if (instance.dekSeriHesArasiEft case final value?)
+        'dekSeri_HesArasiEFT': value,
+      if (instance.dekSeriCariVirman case final value?)
+        'dekSeri_CariVirman': value,
     };

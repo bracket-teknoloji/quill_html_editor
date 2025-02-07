@@ -185,6 +185,124 @@ mixin _$KullaniciYetkiModel {
   @JsonKey(name: "varsayilanKrediKartiKasa")
   set varsayilanKrediKartiKasa(String? value) =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+  String? get varsayilanMuhasebeReferansTanimi =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+  set varsayilanMuhasebeReferansTanimi(String? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+  String? get varsayilanMuhasebeReferansKodu =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+  set varsayilanMuhasebeReferansKodu(String? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "satSipOnEki")
+  String? get satSipOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "satSipOnEki")
+  set satSipOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "musSipOnEki")
+  String? get musSipOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "musSipOnEki")
+  set musSipOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "alIrsOnEki")
+  String? get alIrsOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "alIrsOnEki")
+  set alIrsOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "eFatOnEki")
+  String? get eFatOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "eFatOnEki")
+  set eFatOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "eArvOnEki")
+  String? get eArvOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "eArvOnEki")
+  set eArvOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "satAlmTalOnEki")
+  String? get satAlmTalOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "satAlmTalOnEki")
+  set satAlmTalOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "satisTalOnEki")
+  String? get satisTalOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "satisTalOnEki")
+  set satisTalOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "satAlmTekOnEki")
+  String? get satAlmTekOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "satAlmTekOnEki")
+  set satAlmTekOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "satisTekOnEki")
+  String? get satisTekOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "satisTekOnEki")
+  set satisTekOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "tahsilatOnEki")
+  String? get tahsilatOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "tahsilatOnEki")
+  set tahsilatOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "sevkEmriOnEki")
+  String? get sevkEmriOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "sevkEmriOnEki")
+  set sevkEmriOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "kkTahsilatOnEki")
+  String? get kkTahsilatOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "kkTahsilatOnEki")
+  set kkTahsilatOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "eIrsDATOnEki")
+  String? get eIrsDatOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "eIrsDATOnEki")
+  set eIrsDatOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "DATOnEki")
+  String? get datOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "DATOnEki")
+  set datOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "ambarCikisOnEki")
+  String? get ambarCikisOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "ambarCikisOnEki")
+  set ambarCikisOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "ambarGirisOnEki")
+  String? get ambarGirisOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "ambarGirisOnEki")
+  set ambarGirisOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "cariOnEki")
+  String? get cariOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "cariOnEki")
+  set cariOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "uskOnEki")
+  String? get uskOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "uskOnEki")
+  set uskOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "alisFatOnEki")
+  String? get alisFatOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "alisFatOnEki")
+  set alisFatOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "satisFatOnEki")
+  String? get satisFatOnEki => throw _privateConstructorUsedError;
+  @JsonKey(name: "satisFatOnEki")
+  set satisFatOnEki(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_CekTahsil")
+  String? get dekSeriCekTahsil => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_CekTahsil")
+  set dekSeriCekTahsil(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_KKartiTahsilati")
+  String? get dekSeriKKartiTahsilati => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_KKartiTahsilati")
+  set dekSeriKKartiTahsilati(String? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_CariEFT")
+  String? get dekSeriCariEft => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_CariEFT")
+  set dekSeriCariEft(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_HesArasiVirman")
+  String? get dekSeriHesArasiVirman => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_HesArasiVirman")
+  set dekSeriHesArasiVirman(String? value) =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_HesArasiEFT")
+  String? get dekSeriHesArasiEft => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_HesArasiEFT")
+  set dekSeriHesArasiEft(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_CariVirman")
+  String? get dekSeriCariVirman => throw _privateConstructorUsedError;
+  @JsonKey(name: "dekSeri_CariVirman")
+  set dekSeriCariVirman(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this KullaniciYetkiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -249,7 +367,37 @@ abstract class $KullaniciYetkiModelCopyWith<$Res> {
       @JsonKey(name: "varsayilan_ProjeTanimi") String? varsayilanProjeTanimi,
       @JsonKey(name: "varsayilan_ProjeKodu") String? varsayilanProjeKodu,
       @JsonKey(name: "varsayilanKrediKartiKasa")
-      String? varsayilanKrediKartiKasa});
+      String? varsayilanKrediKartiKasa,
+      @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+      String? varsayilanMuhasebeReferansTanimi,
+      @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+      String? varsayilanMuhasebeReferansKodu,
+      @JsonKey(name: "satSipOnEki") String? satSipOnEki,
+      @JsonKey(name: "musSipOnEki") String? musSipOnEki,
+      @JsonKey(name: "alIrsOnEki") String? alIrsOnEki,
+      @JsonKey(name: "eFatOnEki") String? eFatOnEki,
+      @JsonKey(name: "eArvOnEki") String? eArvOnEki,
+      @JsonKey(name: "satAlmTalOnEki") String? satAlmTalOnEki,
+      @JsonKey(name: "satisTalOnEki") String? satisTalOnEki,
+      @JsonKey(name: "satAlmTekOnEki") String? satAlmTekOnEki,
+      @JsonKey(name: "satisTekOnEki") String? satisTekOnEki,
+      @JsonKey(name: "tahsilatOnEki") String? tahsilatOnEki,
+      @JsonKey(name: "sevkEmriOnEki") String? sevkEmriOnEki,
+      @JsonKey(name: "kkTahsilatOnEki") String? kkTahsilatOnEki,
+      @JsonKey(name: "eIrsDATOnEki") String? eIrsDatOnEki,
+      @JsonKey(name: "DATOnEki") String? datOnEki,
+      @JsonKey(name: "ambarCikisOnEki") String? ambarCikisOnEki,
+      @JsonKey(name: "ambarGirisOnEki") String? ambarGirisOnEki,
+      @JsonKey(name: "cariOnEki") String? cariOnEki,
+      @JsonKey(name: "uskOnEki") String? uskOnEki,
+      @JsonKey(name: "alisFatOnEki") String? alisFatOnEki,
+      @JsonKey(name: "satisFatOnEki") String? satisFatOnEki,
+      @JsonKey(name: "dekSeri_CekTahsil") String? dekSeriCekTahsil,
+      @JsonKey(name: "dekSeri_KKartiTahsilati") String? dekSeriKKartiTahsilati,
+      @JsonKey(name: "dekSeri_CariEFT") String? dekSeriCariEft,
+      @JsonKey(name: "dekSeri_HesArasiVirman") String? dekSeriHesArasiVirman,
+      @JsonKey(name: "dekSeri_HesArasiEFT") String? dekSeriHesArasiEft,
+      @JsonKey(name: "dekSeri_CariVirman") String? dekSeriCariVirman});
 }
 
 /// @nodoc
@@ -302,6 +450,34 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
     Object? varsayilanProjeTanimi = freezed,
     Object? varsayilanProjeKodu = freezed,
     Object? varsayilanKrediKartiKasa = freezed,
+    Object? varsayilanMuhasebeReferansTanimi = freezed,
+    Object? varsayilanMuhasebeReferansKodu = freezed,
+    Object? satSipOnEki = freezed,
+    Object? musSipOnEki = freezed,
+    Object? alIrsOnEki = freezed,
+    Object? eFatOnEki = freezed,
+    Object? eArvOnEki = freezed,
+    Object? satAlmTalOnEki = freezed,
+    Object? satisTalOnEki = freezed,
+    Object? satAlmTekOnEki = freezed,
+    Object? satisTekOnEki = freezed,
+    Object? tahsilatOnEki = freezed,
+    Object? sevkEmriOnEki = freezed,
+    Object? kkTahsilatOnEki = freezed,
+    Object? eIrsDatOnEki = freezed,
+    Object? datOnEki = freezed,
+    Object? ambarCikisOnEki = freezed,
+    Object? ambarGirisOnEki = freezed,
+    Object? cariOnEki = freezed,
+    Object? uskOnEki = freezed,
+    Object? alisFatOnEki = freezed,
+    Object? satisFatOnEki = freezed,
+    Object? dekSeriCekTahsil = freezed,
+    Object? dekSeriKKartiTahsilati = freezed,
+    Object? dekSeriCariEft = freezed,
+    Object? dekSeriHesArasiVirman = freezed,
+    Object? dekSeriHesArasiEft = freezed,
+    Object? dekSeriCariVirman = freezed,
   }) {
     return _then(_value.copyWith(
       bagliPlasiyerler: freezed == bagliPlasiyerler
@@ -448,6 +624,119 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
           ? _value.varsayilanKrediKartiKasa
           : varsayilanKrediKartiKasa // ignore: cast_nullable_to_non_nullable
               as String?,
+      varsayilanMuhasebeReferansTanimi: freezed ==
+              varsayilanMuhasebeReferansTanimi
+          ? _value.varsayilanMuhasebeReferansTanimi
+          : varsayilanMuhasebeReferansTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanMuhasebeReferansKodu: freezed == varsayilanMuhasebeReferansKodu
+          ? _value.varsayilanMuhasebeReferansKodu
+          : varsayilanMuhasebeReferansKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satSipOnEki: freezed == satSipOnEki
+          ? _value.satSipOnEki
+          : satSipOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      musSipOnEki: freezed == musSipOnEki
+          ? _value.musSipOnEki
+          : musSipOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      alIrsOnEki: freezed == alIrsOnEki
+          ? _value.alIrsOnEki
+          : alIrsOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eFatOnEki: freezed == eFatOnEki
+          ? _value.eFatOnEki
+          : eFatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eArvOnEki: freezed == eArvOnEki
+          ? _value.eArvOnEki
+          : eArvOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satAlmTalOnEki: freezed == satAlmTalOnEki
+          ? _value.satAlmTalOnEki
+          : satAlmTalOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satisTalOnEki: freezed == satisTalOnEki
+          ? _value.satisTalOnEki
+          : satisTalOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satAlmTekOnEki: freezed == satAlmTekOnEki
+          ? _value.satAlmTekOnEki
+          : satAlmTekOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satisTekOnEki: freezed == satisTekOnEki
+          ? _value.satisTekOnEki
+          : satisTekOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tahsilatOnEki: freezed == tahsilatOnEki
+          ? _value.tahsilatOnEki
+          : tahsilatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sevkEmriOnEki: freezed == sevkEmriOnEki
+          ? _value.sevkEmriOnEki
+          : sevkEmriOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kkTahsilatOnEki: freezed == kkTahsilatOnEki
+          ? _value.kkTahsilatOnEki
+          : kkTahsilatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eIrsDatOnEki: freezed == eIrsDatOnEki
+          ? _value.eIrsDatOnEki
+          : eIrsDatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      datOnEki: freezed == datOnEki
+          ? _value.datOnEki
+          : datOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ambarCikisOnEki: freezed == ambarCikisOnEki
+          ? _value.ambarCikisOnEki
+          : ambarCikisOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ambarGirisOnEki: freezed == ambarGirisOnEki
+          ? _value.ambarGirisOnEki
+          : ambarGirisOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariOnEki: freezed == cariOnEki
+          ? _value.cariOnEki
+          : cariOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      uskOnEki: freezed == uskOnEki
+          ? _value.uskOnEki
+          : uskOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      alisFatOnEki: freezed == alisFatOnEki
+          ? _value.alisFatOnEki
+          : alisFatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satisFatOnEki: freezed == satisFatOnEki
+          ? _value.satisFatOnEki
+          : satisFatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriCekTahsil: freezed == dekSeriCekTahsil
+          ? _value.dekSeriCekTahsil
+          : dekSeriCekTahsil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriKKartiTahsilati: freezed == dekSeriKKartiTahsilati
+          ? _value.dekSeriKKartiTahsilati
+          : dekSeriKKartiTahsilati // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriCariEft: freezed == dekSeriCariEft
+          ? _value.dekSeriCariEft
+          : dekSeriCariEft // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriHesArasiVirman: freezed == dekSeriHesArasiVirman
+          ? _value.dekSeriHesArasiVirman
+          : dekSeriHesArasiVirman // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriHesArasiEft: freezed == dekSeriHesArasiEft
+          ? _value.dekSeriHesArasiEft
+          : dekSeriHesArasiEft // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriCariVirman: freezed == dekSeriCariVirman
+          ? _value.dekSeriCariVirman
+          : dekSeriCariVirman // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -507,7 +796,37 @@ abstract class _$$KullaniciYetkiModelImplCopyWith<$Res>
       @JsonKey(name: "varsayilan_ProjeTanimi") String? varsayilanProjeTanimi,
       @JsonKey(name: "varsayilan_ProjeKodu") String? varsayilanProjeKodu,
       @JsonKey(name: "varsayilanKrediKartiKasa")
-      String? varsayilanKrediKartiKasa});
+      String? varsayilanKrediKartiKasa,
+      @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+      String? varsayilanMuhasebeReferansTanimi,
+      @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+      String? varsayilanMuhasebeReferansKodu,
+      @JsonKey(name: "satSipOnEki") String? satSipOnEki,
+      @JsonKey(name: "musSipOnEki") String? musSipOnEki,
+      @JsonKey(name: "alIrsOnEki") String? alIrsOnEki,
+      @JsonKey(name: "eFatOnEki") String? eFatOnEki,
+      @JsonKey(name: "eArvOnEki") String? eArvOnEki,
+      @JsonKey(name: "satAlmTalOnEki") String? satAlmTalOnEki,
+      @JsonKey(name: "satisTalOnEki") String? satisTalOnEki,
+      @JsonKey(name: "satAlmTekOnEki") String? satAlmTekOnEki,
+      @JsonKey(name: "satisTekOnEki") String? satisTekOnEki,
+      @JsonKey(name: "tahsilatOnEki") String? tahsilatOnEki,
+      @JsonKey(name: "sevkEmriOnEki") String? sevkEmriOnEki,
+      @JsonKey(name: "kkTahsilatOnEki") String? kkTahsilatOnEki,
+      @JsonKey(name: "eIrsDATOnEki") String? eIrsDatOnEki,
+      @JsonKey(name: "DATOnEki") String? datOnEki,
+      @JsonKey(name: "ambarCikisOnEki") String? ambarCikisOnEki,
+      @JsonKey(name: "ambarGirisOnEki") String? ambarGirisOnEki,
+      @JsonKey(name: "cariOnEki") String? cariOnEki,
+      @JsonKey(name: "uskOnEki") String? uskOnEki,
+      @JsonKey(name: "alisFatOnEki") String? alisFatOnEki,
+      @JsonKey(name: "satisFatOnEki") String? satisFatOnEki,
+      @JsonKey(name: "dekSeri_CekTahsil") String? dekSeriCekTahsil,
+      @JsonKey(name: "dekSeri_KKartiTahsilati") String? dekSeriKKartiTahsilati,
+      @JsonKey(name: "dekSeri_CariEFT") String? dekSeriCariEft,
+      @JsonKey(name: "dekSeri_HesArasiVirman") String? dekSeriHesArasiVirman,
+      @JsonKey(name: "dekSeri_HesArasiEFT") String? dekSeriHesArasiEft,
+      @JsonKey(name: "dekSeri_CariVirman") String? dekSeriCariVirman});
 }
 
 /// @nodoc
@@ -558,6 +877,34 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
     Object? varsayilanProjeTanimi = freezed,
     Object? varsayilanProjeKodu = freezed,
     Object? varsayilanKrediKartiKasa = freezed,
+    Object? varsayilanMuhasebeReferansTanimi = freezed,
+    Object? varsayilanMuhasebeReferansKodu = freezed,
+    Object? satSipOnEki = freezed,
+    Object? musSipOnEki = freezed,
+    Object? alIrsOnEki = freezed,
+    Object? eFatOnEki = freezed,
+    Object? eArvOnEki = freezed,
+    Object? satAlmTalOnEki = freezed,
+    Object? satisTalOnEki = freezed,
+    Object? satAlmTekOnEki = freezed,
+    Object? satisTekOnEki = freezed,
+    Object? tahsilatOnEki = freezed,
+    Object? sevkEmriOnEki = freezed,
+    Object? kkTahsilatOnEki = freezed,
+    Object? eIrsDatOnEki = freezed,
+    Object? datOnEki = freezed,
+    Object? ambarCikisOnEki = freezed,
+    Object? ambarGirisOnEki = freezed,
+    Object? cariOnEki = freezed,
+    Object? uskOnEki = freezed,
+    Object? alisFatOnEki = freezed,
+    Object? satisFatOnEki = freezed,
+    Object? dekSeriCekTahsil = freezed,
+    Object? dekSeriKKartiTahsilati = freezed,
+    Object? dekSeriCariEft = freezed,
+    Object? dekSeriHesArasiVirman = freezed,
+    Object? dekSeriHesArasiEft = freezed,
+    Object? dekSeriCariVirman = freezed,
   }) {
     return _then(_$KullaniciYetkiModelImpl(
       bagliPlasiyerler: freezed == bagliPlasiyerler
@@ -704,6 +1051,119 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
           ? _value.varsayilanKrediKartiKasa
           : varsayilanKrediKartiKasa // ignore: cast_nullable_to_non_nullable
               as String?,
+      varsayilanMuhasebeReferansTanimi: freezed ==
+              varsayilanMuhasebeReferansTanimi
+          ? _value.varsayilanMuhasebeReferansTanimi
+          : varsayilanMuhasebeReferansTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      varsayilanMuhasebeReferansKodu: freezed == varsayilanMuhasebeReferansKodu
+          ? _value.varsayilanMuhasebeReferansKodu
+          : varsayilanMuhasebeReferansKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satSipOnEki: freezed == satSipOnEki
+          ? _value.satSipOnEki
+          : satSipOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      musSipOnEki: freezed == musSipOnEki
+          ? _value.musSipOnEki
+          : musSipOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      alIrsOnEki: freezed == alIrsOnEki
+          ? _value.alIrsOnEki
+          : alIrsOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eFatOnEki: freezed == eFatOnEki
+          ? _value.eFatOnEki
+          : eFatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eArvOnEki: freezed == eArvOnEki
+          ? _value.eArvOnEki
+          : eArvOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satAlmTalOnEki: freezed == satAlmTalOnEki
+          ? _value.satAlmTalOnEki
+          : satAlmTalOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satisTalOnEki: freezed == satisTalOnEki
+          ? _value.satisTalOnEki
+          : satisTalOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satAlmTekOnEki: freezed == satAlmTekOnEki
+          ? _value.satAlmTekOnEki
+          : satAlmTekOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satisTekOnEki: freezed == satisTekOnEki
+          ? _value.satisTekOnEki
+          : satisTekOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tahsilatOnEki: freezed == tahsilatOnEki
+          ? _value.tahsilatOnEki
+          : tahsilatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sevkEmriOnEki: freezed == sevkEmriOnEki
+          ? _value.sevkEmriOnEki
+          : sevkEmriOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kkTahsilatOnEki: freezed == kkTahsilatOnEki
+          ? _value.kkTahsilatOnEki
+          : kkTahsilatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eIrsDatOnEki: freezed == eIrsDatOnEki
+          ? _value.eIrsDatOnEki
+          : eIrsDatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      datOnEki: freezed == datOnEki
+          ? _value.datOnEki
+          : datOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ambarCikisOnEki: freezed == ambarCikisOnEki
+          ? _value.ambarCikisOnEki
+          : ambarCikisOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ambarGirisOnEki: freezed == ambarGirisOnEki
+          ? _value.ambarGirisOnEki
+          : ambarGirisOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariOnEki: freezed == cariOnEki
+          ? _value.cariOnEki
+          : cariOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      uskOnEki: freezed == uskOnEki
+          ? _value.uskOnEki
+          : uskOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      alisFatOnEki: freezed == alisFatOnEki
+          ? _value.alisFatOnEki
+          : alisFatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      satisFatOnEki: freezed == satisFatOnEki
+          ? _value.satisFatOnEki
+          : satisFatOnEki // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriCekTahsil: freezed == dekSeriCekTahsil
+          ? _value.dekSeriCekTahsil
+          : dekSeriCekTahsil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriKKartiTahsilati: freezed == dekSeriKKartiTahsilati
+          ? _value.dekSeriKKartiTahsilati
+          : dekSeriKKartiTahsilati // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriCariEft: freezed == dekSeriCariEft
+          ? _value.dekSeriCariEft
+          : dekSeriCariEft // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriHesArasiVirman: freezed == dekSeriHesArasiVirman
+          ? _value.dekSeriHesArasiVirman
+          : dekSeriHesArasiVirman // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriHesArasiEft: freezed == dekSeriHesArasiEft
+          ? _value.dekSeriHesArasiEft
+          : dekSeriHesArasiEft // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dekSeriCariVirman: freezed == dekSeriCariVirman
+          ? _value.dekSeriCariVirman
+          : dekSeriCariVirman // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -756,8 +1216,37 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
       @JsonKey(name: "sirket_Depo_YetkiTuru") this.sirketDepoYetkiTuru,
       @JsonKey(name: "varsayilan_ProjeTanimi") this.varsayilanProjeTanimi,
       @JsonKey(name: "varsayilan_ProjeKodu") this.varsayilanProjeKodu,
-      @JsonKey(name: "varsayilanKrediKartiKasa")
-      this.varsayilanKrediKartiKasa});
+      @JsonKey(name: "varsayilanKrediKartiKasa") this.varsayilanKrediKartiKasa,
+      @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+      this.varsayilanMuhasebeReferansTanimi,
+      @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+      this.varsayilanMuhasebeReferansKodu,
+      @JsonKey(name: "satSipOnEki") this.satSipOnEki,
+      @JsonKey(name: "musSipOnEki") this.musSipOnEki,
+      @JsonKey(name: "alIrsOnEki") this.alIrsOnEki,
+      @JsonKey(name: "eFatOnEki") this.eFatOnEki,
+      @JsonKey(name: "eArvOnEki") this.eArvOnEki,
+      @JsonKey(name: "satAlmTalOnEki") this.satAlmTalOnEki,
+      @JsonKey(name: "satisTalOnEki") this.satisTalOnEki,
+      @JsonKey(name: "satAlmTekOnEki") this.satAlmTekOnEki,
+      @JsonKey(name: "satisTekOnEki") this.satisTekOnEki,
+      @JsonKey(name: "tahsilatOnEki") this.tahsilatOnEki,
+      @JsonKey(name: "sevkEmriOnEki") this.sevkEmriOnEki,
+      @JsonKey(name: "kkTahsilatOnEki") this.kkTahsilatOnEki,
+      @JsonKey(name: "eIrsDATOnEki") this.eIrsDatOnEki,
+      @JsonKey(name: "DATOnEki") this.datOnEki,
+      @JsonKey(name: "ambarCikisOnEki") this.ambarCikisOnEki,
+      @JsonKey(name: "ambarGirisOnEki") this.ambarGirisOnEki,
+      @JsonKey(name: "cariOnEki") this.cariOnEki,
+      @JsonKey(name: "uskOnEki") this.uskOnEki,
+      @JsonKey(name: "alisFatOnEki") this.alisFatOnEki,
+      @JsonKey(name: "satisFatOnEki") this.satisFatOnEki,
+      @JsonKey(name: "dekSeri_CekTahsil") this.dekSeriCekTahsil,
+      @JsonKey(name: "dekSeri_KKartiTahsilati") this.dekSeriKKartiTahsilati,
+      @JsonKey(name: "dekSeri_CariEFT") this.dekSeriCariEft,
+      @JsonKey(name: "dekSeri_HesArasiVirman") this.dekSeriHesArasiVirman,
+      @JsonKey(name: "dekSeri_HesArasiEFT") this.dekSeriHesArasiEft,
+      @JsonKey(name: "dekSeri_CariVirman") this.dekSeriCariVirman});
 
   factory _$KullaniciYetkiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$KullaniciYetkiModelImplFromJson(json);
@@ -867,6 +1356,90 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
   @override
   @JsonKey(name: "varsayilanKrediKartiKasa")
   String? varsayilanKrediKartiKasa;
+  @override
+  @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+  String? varsayilanMuhasebeReferansTanimi;
+  @override
+  @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+  String? varsayilanMuhasebeReferansKodu;
+  @override
+  @JsonKey(name: "satSipOnEki")
+  String? satSipOnEki;
+  @override
+  @JsonKey(name: "musSipOnEki")
+  String? musSipOnEki;
+  @override
+  @JsonKey(name: "alIrsOnEki")
+  String? alIrsOnEki;
+  @override
+  @JsonKey(name: "eFatOnEki")
+  String? eFatOnEki;
+  @override
+  @JsonKey(name: "eArvOnEki")
+  String? eArvOnEki;
+  @override
+  @JsonKey(name: "satAlmTalOnEki")
+  String? satAlmTalOnEki;
+  @override
+  @JsonKey(name: "satisTalOnEki")
+  String? satisTalOnEki;
+  @override
+  @JsonKey(name: "satAlmTekOnEki")
+  String? satAlmTekOnEki;
+  @override
+  @JsonKey(name: "satisTekOnEki")
+  String? satisTekOnEki;
+  @override
+  @JsonKey(name: "tahsilatOnEki")
+  String? tahsilatOnEki;
+  @override
+  @JsonKey(name: "sevkEmriOnEki")
+  String? sevkEmriOnEki;
+  @override
+  @JsonKey(name: "kkTahsilatOnEki")
+  String? kkTahsilatOnEki;
+  @override
+  @JsonKey(name: "eIrsDATOnEki")
+  String? eIrsDatOnEki;
+  @override
+  @JsonKey(name: "DATOnEki")
+  String? datOnEki;
+  @override
+  @JsonKey(name: "ambarCikisOnEki")
+  String? ambarCikisOnEki;
+  @override
+  @JsonKey(name: "ambarGirisOnEki")
+  String? ambarGirisOnEki;
+  @override
+  @JsonKey(name: "cariOnEki")
+  String? cariOnEki;
+  @override
+  @JsonKey(name: "uskOnEki")
+  String? uskOnEki;
+  @override
+  @JsonKey(name: "alisFatOnEki")
+  String? alisFatOnEki;
+  @override
+  @JsonKey(name: "satisFatOnEki")
+  String? satisFatOnEki;
+  @override
+  @JsonKey(name: "dekSeri_CekTahsil")
+  String? dekSeriCekTahsil;
+  @override
+  @JsonKey(name: "dekSeri_KKartiTahsilati")
+  String? dekSeriKKartiTahsilati;
+  @override
+  @JsonKey(name: "dekSeri_CariEFT")
+  String? dekSeriCariEft;
+  @override
+  @JsonKey(name: "dekSeri_HesArasiVirman")
+  String? dekSeriHesArasiVirman;
+  @override
+  @JsonKey(name: "dekSeri_HesArasiEFT")
+  String? dekSeriHesArasiEft;
+  @override
+  @JsonKey(name: "dekSeri_CariVirman")
+  String? dekSeriCariVirman;
 
   /// Create a copy of KullaniciYetkiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -933,7 +1506,38 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
       @JsonKey(name: "varsayilan_ProjeTanimi") String? varsayilanProjeTanimi,
       @JsonKey(name: "varsayilan_ProjeKodu") String? varsayilanProjeKodu,
       @JsonKey(name: "varsayilanKrediKartiKasa")
-      String? varsayilanKrediKartiKasa}) = _$KullaniciYetkiModelImpl;
+      String? varsayilanKrediKartiKasa,
+      @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+      String? varsayilanMuhasebeReferansTanimi,
+      @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+      String? varsayilanMuhasebeReferansKodu,
+      @JsonKey(name: "satSipOnEki") String? satSipOnEki,
+      @JsonKey(name: "musSipOnEki") String? musSipOnEki,
+      @JsonKey(name: "alIrsOnEki") String? alIrsOnEki,
+      @JsonKey(name: "eFatOnEki") String? eFatOnEki,
+      @JsonKey(name: "eArvOnEki") String? eArvOnEki,
+      @JsonKey(name: "satAlmTalOnEki") String? satAlmTalOnEki,
+      @JsonKey(name: "satisTalOnEki") String? satisTalOnEki,
+      @JsonKey(name: "satAlmTekOnEki") String? satAlmTekOnEki,
+      @JsonKey(name: "satisTekOnEki") String? satisTekOnEki,
+      @JsonKey(name: "tahsilatOnEki") String? tahsilatOnEki,
+      @JsonKey(name: "sevkEmriOnEki") String? sevkEmriOnEki,
+      @JsonKey(name: "kkTahsilatOnEki") String? kkTahsilatOnEki,
+      @JsonKey(name: "eIrsDATOnEki") String? eIrsDatOnEki,
+      @JsonKey(name: "DATOnEki") String? datOnEki,
+      @JsonKey(name: "ambarCikisOnEki") String? ambarCikisOnEki,
+      @JsonKey(name: "ambarGirisOnEki") String? ambarGirisOnEki,
+      @JsonKey(name: "cariOnEki") String? cariOnEki,
+      @JsonKey(name: "uskOnEki") String? uskOnEki,
+      @JsonKey(name: "alisFatOnEki") String? alisFatOnEki,
+      @JsonKey(name: "satisFatOnEki") String? satisFatOnEki,
+      @JsonKey(name: "dekSeri_CekTahsil") String? dekSeriCekTahsil,
+      @JsonKey(name: "dekSeri_KKartiTahsilati") String? dekSeriKKartiTahsilati,
+      @JsonKey(name: "dekSeri_CariEFT") String? dekSeriCariEft,
+      @JsonKey(name: "dekSeri_HesArasiVirman") String? dekSeriHesArasiVirman,
+      @JsonKey(name: "dekSeri_HesArasiEFT") String? dekSeriHesArasiEft,
+      @JsonKey(name: "dekSeri_CariVirman")
+      String? dekSeriCariVirman}) = _$KullaniciYetkiModelImpl;
 
   factory _KullaniciYetkiModel.fromJson(Map<String, dynamic> json) =
       _$KullaniciYetkiModelImpl.fromJson;
@@ -1113,6 +1717,146 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
   String? get varsayilanKrediKartiKasa;
   @JsonKey(name: "varsayilanKrediKartiKasa")
   set varsayilanKrediKartiKasa(String? value);
+  @override
+  @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+  String? get varsayilanMuhasebeReferansTanimi;
+  @JsonKey(name: "varsayilan_MuhasebeReferansTanimi")
+  set varsayilanMuhasebeReferansTanimi(String? value);
+  @override
+  @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+  String? get varsayilanMuhasebeReferansKodu;
+  @JsonKey(name: "varsayilan_MuhasebeReferansKodu")
+  set varsayilanMuhasebeReferansKodu(String? value);
+  @override
+  @JsonKey(name: "satSipOnEki")
+  String? get satSipOnEki;
+  @JsonKey(name: "satSipOnEki")
+  set satSipOnEki(String? value);
+  @override
+  @JsonKey(name: "musSipOnEki")
+  String? get musSipOnEki;
+  @JsonKey(name: "musSipOnEki")
+  set musSipOnEki(String? value);
+  @override
+  @JsonKey(name: "alIrsOnEki")
+  String? get alIrsOnEki;
+  @JsonKey(name: "alIrsOnEki")
+  set alIrsOnEki(String? value);
+  @override
+  @JsonKey(name: "eFatOnEki")
+  String? get eFatOnEki;
+  @JsonKey(name: "eFatOnEki")
+  set eFatOnEki(String? value);
+  @override
+  @JsonKey(name: "eArvOnEki")
+  String? get eArvOnEki;
+  @JsonKey(name: "eArvOnEki")
+  set eArvOnEki(String? value);
+  @override
+  @JsonKey(name: "satAlmTalOnEki")
+  String? get satAlmTalOnEki;
+  @JsonKey(name: "satAlmTalOnEki")
+  set satAlmTalOnEki(String? value);
+  @override
+  @JsonKey(name: "satisTalOnEki")
+  String? get satisTalOnEki;
+  @JsonKey(name: "satisTalOnEki")
+  set satisTalOnEki(String? value);
+  @override
+  @JsonKey(name: "satAlmTekOnEki")
+  String? get satAlmTekOnEki;
+  @JsonKey(name: "satAlmTekOnEki")
+  set satAlmTekOnEki(String? value);
+  @override
+  @JsonKey(name: "satisTekOnEki")
+  String? get satisTekOnEki;
+  @JsonKey(name: "satisTekOnEki")
+  set satisTekOnEki(String? value);
+  @override
+  @JsonKey(name: "tahsilatOnEki")
+  String? get tahsilatOnEki;
+  @JsonKey(name: "tahsilatOnEki")
+  set tahsilatOnEki(String? value);
+  @override
+  @JsonKey(name: "sevkEmriOnEki")
+  String? get sevkEmriOnEki;
+  @JsonKey(name: "sevkEmriOnEki")
+  set sevkEmriOnEki(String? value);
+  @override
+  @JsonKey(name: "kkTahsilatOnEki")
+  String? get kkTahsilatOnEki;
+  @JsonKey(name: "kkTahsilatOnEki")
+  set kkTahsilatOnEki(String? value);
+  @override
+  @JsonKey(name: "eIrsDATOnEki")
+  String? get eIrsDatOnEki;
+  @JsonKey(name: "eIrsDATOnEki")
+  set eIrsDatOnEki(String? value);
+  @override
+  @JsonKey(name: "DATOnEki")
+  String? get datOnEki;
+  @JsonKey(name: "DATOnEki")
+  set datOnEki(String? value);
+  @override
+  @JsonKey(name: "ambarCikisOnEki")
+  String? get ambarCikisOnEki;
+  @JsonKey(name: "ambarCikisOnEki")
+  set ambarCikisOnEki(String? value);
+  @override
+  @JsonKey(name: "ambarGirisOnEki")
+  String? get ambarGirisOnEki;
+  @JsonKey(name: "ambarGirisOnEki")
+  set ambarGirisOnEki(String? value);
+  @override
+  @JsonKey(name: "cariOnEki")
+  String? get cariOnEki;
+  @JsonKey(name: "cariOnEki")
+  set cariOnEki(String? value);
+  @override
+  @JsonKey(name: "uskOnEki")
+  String? get uskOnEki;
+  @JsonKey(name: "uskOnEki")
+  set uskOnEki(String? value);
+  @override
+  @JsonKey(name: "alisFatOnEki")
+  String? get alisFatOnEki;
+  @JsonKey(name: "alisFatOnEki")
+  set alisFatOnEki(String? value);
+  @override
+  @JsonKey(name: "satisFatOnEki")
+  String? get satisFatOnEki;
+  @JsonKey(name: "satisFatOnEki")
+  set satisFatOnEki(String? value);
+  @override
+  @JsonKey(name: "dekSeri_CekTahsil")
+  String? get dekSeriCekTahsil;
+  @JsonKey(name: "dekSeri_CekTahsil")
+  set dekSeriCekTahsil(String? value);
+  @override
+  @JsonKey(name: "dekSeri_KKartiTahsilati")
+  String? get dekSeriKKartiTahsilati;
+  @JsonKey(name: "dekSeri_KKartiTahsilati")
+  set dekSeriKKartiTahsilati(String? value);
+  @override
+  @JsonKey(name: "dekSeri_CariEFT")
+  String? get dekSeriCariEft;
+  @JsonKey(name: "dekSeri_CariEFT")
+  set dekSeriCariEft(String? value);
+  @override
+  @JsonKey(name: "dekSeri_HesArasiVirman")
+  String? get dekSeriHesArasiVirman;
+  @JsonKey(name: "dekSeri_HesArasiVirman")
+  set dekSeriHesArasiVirman(String? value);
+  @override
+  @JsonKey(name: "dekSeri_HesArasiEFT")
+  String? get dekSeriHesArasiEft;
+  @JsonKey(name: "dekSeri_HesArasiEFT")
+  set dekSeriHesArasiEft(String? value);
+  @override
+  @JsonKey(name: "dekSeri_CariVirman")
+  String? get dekSeriCariVirman;
+  @JsonKey(name: "dekSeri_CariVirman")
+  set dekSeriCariVirman(String? value);
 
   /// Create a copy of KullaniciYetkiModel
   /// with the given fields replaced by the non-null parameter values.
