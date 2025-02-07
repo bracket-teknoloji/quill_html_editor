@@ -11,7 +11,7 @@ import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 final class LocationManager implements InjectableInterface {
-  LocationManager({this.distanceFilterMeters = 200, this.timeFilter = const Duration(seconds: 10)});
+  LocationManager({this.distanceFilterMeters = 200, this.timeFilter = Duration.zero});
   Position? _lastPosition;
   DateTime? _lastPositionTime;
   StreamSubscription<Position>? _positionStreamSubscription;
@@ -31,7 +31,6 @@ final class LocationManager implements InjectableInterface {
     if (["ios", "macos"].contains(AccountModel.instance.platform)) {
       locationSettings = AppleSettings(
         distanceFilter: distanceFilterMeters,
-        timeLimit: timeFilter,
         showBackgroundLocationIndicator: true,
         pauseLocationUpdatesAutomatically: true,
       );
