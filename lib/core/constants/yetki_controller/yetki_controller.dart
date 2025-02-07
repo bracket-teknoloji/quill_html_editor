@@ -296,7 +296,7 @@ final class YetkiController {
   bool siparisDigerSekmesiGoster(bool musteriMi) => musteriMi ? siparisMSDigerSekmesiGoster : siparisSSDigerSekmesiGoster;
   bool siparisKosulAktifMi(EditTipiEnum? editTipi) => _musteriSiparisiMi(editTipi) ? siparisMSKosulAktifMi : siparisSSKosulAktifMi;
   bool siparisKosulSatirdaSor(EditTipiEnum? editTipi) => _musteriSiparisiMi(editTipi) ? (siparisMSKosulAktifMi && siparisMSKosulSatirdaSor) : siparisSSKosulAktifMi;
-  bool siparisFarkliTeslimCariAktif(EditTipiEnum? editTipi) => _musteriSiparisiMi(editTipi) ? siparisMSFarkliTeslimCariAktif : siparisSSFarkliTeslimCariAktif;
+  bool siparisFarkliTeslimCariAktif(EditTipiEnum? editTipi) => editTipi?.satisMi ?? false ? siparisMSFarkliTeslimCariAktif : siparisSSFarkliTeslimCariAktif;
   bool siparisMiktar2Sor(EditTipiEnum? editTipi) => _musteriSiparisiMi(editTipi) ? siparisMSMiktar2Sor : siparisSSMiktar2Sor;
   bool siparisSatirdaKDVSor(EditTipiEnum? editTipi) => _musteriSiparisiMi(editTipi) ? siparisMSsatirdaKDVSor : siparisSSsatirdaKDVSor;
   bool get siparisEkMaliyet1GizlenecekMi => siparisMSGizlenecekAlanMi(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
