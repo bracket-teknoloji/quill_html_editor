@@ -255,7 +255,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         _ => null,
       };
 
-      double? get maxSatirIskonto1 => switch (this) {
+  double? get maxSatirIskonto1 => switch (this) {
         EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto1,
         EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto1,
         EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto1,
@@ -440,9 +440,17 @@ extension EditTipiEnumExtension on EditTipiEnum {
       };
 
   bool aciklamalarGorunecekMi(int value) => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => true,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatAciklamaAlanlari(value),
         EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgAciklamaAlanlari(value),
         EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcAciklamaAlanlari(value),
+        EditTipiEnum.satisFatura => yetkiController.satisFaturaAciklamaAlanlari(value),
+        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeAciklamaAlanlari(value),
+        EditTipiEnum.alisFatura => yetkiController.alisFaturaAciklamaAlanlari(value),
+        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyeAciklamaAlanlari(value),
+        EditTipiEnum.musteri => yetkiController.siparisMSAciklamaAlanlari(value),
+        EditTipiEnum.satisTeklifi => yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(value),
+        EditTipiEnum.alisTalebi => yetkiController.talepTeklifAlisTalebiAciklamaAlanlari(value),
+        EditTipiEnum.satici => true,
         _ => false
       };
 
@@ -844,12 +852,12 @@ extension EditTipiEnumExtension on EditTipiEnum {
 
   EditTipiEnum? getEditTipiEnumWithRawValue(String? rawValue) => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
 
-  String aciklamaLabel(int index) {
+  String aciklamaLabel(int value) {
     final ParamModel? paramModel = CacheManager.getAnaVeri?.paramModel;
     String? label;
     if (talepTeklifMi) {
       final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == rawValue);
-      switch (index) {
+      switch (value) {
         case 1:
           label = talTekParam?.aciklar1;
         case 2:
@@ -884,7 +892,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
           label = talTekParam?.aciklar16;
       }
     } else if (satisMi) {
-      switch (index) {
+      switch (value) {
         case 1:
           label = paramModel?.satisEkAciklamaTanimi1;
         case 2:
@@ -919,7 +927,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
           label = paramModel?.satisEkAciklamaTanimi16;
       }
     } else {
-      switch (index) {
+      switch (value) {
         case 1:
           label = paramModel?.alisEkAciklamaTanimi1;
         case 2:
@@ -954,6 +962,6 @@ extension EditTipiEnumExtension on EditTipiEnum {
           label = paramModel?.alisEkAciklamaTanimi16;
       }
     }
-    return label ?? "Açıklama $index";
+    return label ?? "Açıklama $value";
   }
 }

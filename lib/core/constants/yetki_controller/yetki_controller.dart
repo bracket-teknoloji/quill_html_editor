@@ -43,7 +43,7 @@ final class YetkiController {
 
   //! GENEL
 
-  bool get adminMi => _userModel?.adminMi ?? false;
+  bool get adminMi => _userModel?.admin ?? false;
   List<DepoList>? get yetkiliDepoList {
     if (_kullaniciYetkiModel?.sirketDepoYetkiTuru == "T" || adminMi) return _paramModel?.depoList;
     if (_isTrue(_kullaniciYetkiModel?.sirketDepoYetkiTuru == null)) {
@@ -72,6 +72,9 @@ final class YetkiController {
   BaseProjeModel? get varsayilanProje =>
       _kullaniciYetkiModel?.varsayilanProjeKodu != null ? BaseProjeModel(projeKodu: _kullaniciYetkiModel?.varsayilanProjeKodu, projeAciklama: _kullaniciYetkiModel?.varsayilanProjeTanimi) : null;
 
+  bool get alisTopluDepoKullan => _isTrue(_paramModel?.alisTopluDepoAktif);
+  bool get satisTopluDepoKullan => _isTrue(_paramModel?.satisTopluDepoAktif);
+  bool topluDepoKullan(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? satisTopluDepoKullan : alisTopluDepoKullan;
   bool projeYetkisiVarMi(String? projeKodu) => _isTrue(_yetkiModel?.sirketAktifProjeler == null || (_yetkiModel?.sirketAktifProjeler?.contains(projeKodu) ?? true));
   bool genIsk1AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
   bool genIsk2AktifMi(EditTipiEnum? editTipi) => editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
@@ -336,8 +339,8 @@ final class YetkiController {
   bool get siparisMSSatirdaEkAlan2AktifMi => _isTrue(_paramModel?.satisSatirdaEkAlan2Aktif, skipAdmin: true);
   bool get siparisMSSatirIsk1YuzdeSor => _isTrue(_paramModel?.satisSatirIsk1YuzdeSor, skipAdmin: true);
   bool get siparisMSsatirdaTeslimTarihiSor => _isTrue(_paramModel?.satisSatirdaTeslimTarihiSor, skipAdmin: true);
-  
-  bool siparisMSEkstraAlanlari(String value) => _isTrue(_yetkiModel?.siparisMusSipEkstraAlanlar?.contains(value), skipAdmin: true); 
+
+  bool siparisMSEkstraAlanlari(String value) => _isTrue(_yetkiModel?.siparisMusSipEkstraAlanlar?.contains(value), skipAdmin: true);
 
   // bool get siparisMSbelgeKopyala => _isTrue(_yetkiModel?.siparisMusSipBelge);
   ///? Eğer içeriyorsa boş geçilecek
@@ -366,8 +369,6 @@ final class YetkiController {
 
   bool get siparisSSFiyatDegistirilmesin => _isTrue(_yetkiModel?.siparisSaticiSiparisiFiyatDegistirilmesin, skipAdmin: true);
   bool get siparisSSKdvDahilMi => _isTrue(_paramModel?.alisGenellikleKdvHaric, skipAdmin: true);
-  // bool get alisOzelKod1AktifMi => _isTrue(_paramModel?.alisO);
-  // bool get alisOzelKod2AktifMi => _isTrue(_paramModel?.alisOzelKod2Aktif);
   bool get siparisSSGenIsk1AktifMi => _isTrue(_paramModel?.alisGenIsk1Aktif, skipAdmin: true);
   bool get siparisSSGenIsk2AktifMi => _isTrue(_paramModel?.alisGenIsk2Aktif, skipAdmin: true);
   bool get siparisSSGenIsk3AktifMi => _isTrue(_paramModel?.alisGenIsk3Aktif, skipAdmin: true);
@@ -737,7 +738,7 @@ final class YetkiController {
             : (index < 1 ? _yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.isNotEmpty : _yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index)) ?? false,
       );
   bool satisFaturaAciklamaAlanlari(int index) => _isTrue(
-        _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari == null
+        _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari.ext.isNullOrEmpty ?? false
             ? false
             : (index < 1 ? _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.isNotEmpty : _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index)) ?? false,
       );
