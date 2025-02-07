@@ -126,6 +126,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
               ..isNew = true
               ..yeniKayit = true
               ..belgeNo = null
+              ..girisDepoKodu = BaseSiparisEditModel.instance.girisDepo
               ..teklifRevizeIslemi = true
               ..vadeGunu = (widget.model.model as BaseSiparisEditModel).vadeGunu
               ..vadeTarihi = (widget.model.model as BaseSiparisEditModel).vadeTarihi;
