@@ -246,12 +246,14 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                     Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
                   ],
                 ),
-              if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)
+              if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty) ...[
                 const Divider(
                   indent: 0,
                   endIndent: 0,
                 ).paddingSymmetric(vertical: UIHelper.midSize),
-              ...aciklamaList(),
+                ...aciklamaList(),
+              ],
+              if (widget.model.aciklama case final value?) Text("Belge Açıklaması: $value", style: greyTextStyle),
             ],
           ),
         ),
