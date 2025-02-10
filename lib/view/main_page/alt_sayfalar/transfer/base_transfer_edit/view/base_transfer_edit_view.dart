@@ -84,7 +84,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
     }
 
     if (widget.model.model is BaseSiparisEditModel) {
-      model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel.fromSiparislerModel(widget.model.model as BaseSiparisEditModel);
+      model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel.forDepolarArasiTransfer(widget.model.model as BaseSiparisEditModel);
       model
         ..baseEditEnum = widget.model.baseEditEnum
         ..editTipiEnum = widget.model.editTipiEnum;
@@ -109,10 +109,13 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
         final result = await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.getFaturaDetay, bodyModel: BaseSiparisEditModel(), data: model.model?.toJson(), showLoading: true);
         if (result.isSuccess) {
           BaseSiparisEditModel.setInstance(result.dataList.first);
-          BaseSiparisEditModel.instance.isNew = false;
-          BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
-          BaseSiparisEditModel.instance.mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo;
-          BaseSiparisEditModel.instance.mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
+          BaseSiparisEditModel.instance
+            ..isNew = false
+            ..islemeBaslamaTarihi = DateTime.now()
+            ..cikisDepoKodu = BaseSiparisEditModel.instance.topluDepo
+            ..girisDepoKodu = BaseSiparisEditModel.instance.girisDepo
+            ..mevcutBelgeNo = BaseSiparisEditModel.instance.belgeNo
+            ..mevcutCariKodu = BaseSiparisEditModel.instance.cariKodu;
           if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
           } else if (widget.model.baseEditEnum == BaseEditEnum.kopyala) {
             BaseSiparisEditModel.instance
@@ -182,15 +185,17 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
             ..siparisTipi = model.editTipiEnum
             ..isNew = true;
         }
-        BaseSiparisEditModel.instance
-          ..cikisDepoKodu ??= yetkiController.transferLokalDatCikisDepo?.depoKodu
-          ..girisDepoKodu ??= yetkiController.transferLokalDatGirisDepo?.depoKodu
-          ..topluCikisDepoTanimi ??= yetkiController.transferLokalDatCikisDepo?.depoTanimi
-          ..topluGirisDepoTanimi ??= yetkiController.transferLokalDatGirisDepo?.depoTanimi;
-        if (yetkiController.transferDatLokalDATSeciliGelmesin) {
-          BaseSiparisEditModel.instance.lokalDat = "H";
-        } else {
-          BaseSiparisEditModel.instance.lokalDat = "E";
+        if (widget.model.editTipiEnum.depoTransferiMi) {
+          BaseSiparisEditModel.instance
+            ..cikisDepoKodu ??= yetkiController.transferLokalDatCikisDepo?.depoKodu
+            ..girisDepoKodu ??= yetkiController.transferLokalDatGirisDepo?.depoKodu
+            ..topluCikisDepoTanimi ??= yetkiController.transferLokalDatCikisDepo?.depoTanimi
+            ..topluGirisDepoTanimi ??= yetkiController.transferLokalDatGirisDepo?.depoTanimi;
+          if (yetkiController.transferDatLokalDATSeciliGelmesin) {
+            BaseSiparisEditModel.instance.lokalDat = "H";
+          } else {
+            BaseSiparisEditModel.instance.lokalDat = "E";
+          }
         }
         BaseSiparisEditModel.instance.tag = "FaturaModel";
         // 2 olma sebebi yeni açılan her kayıtta yurtiçi belge tipinde olarak başlaması için
