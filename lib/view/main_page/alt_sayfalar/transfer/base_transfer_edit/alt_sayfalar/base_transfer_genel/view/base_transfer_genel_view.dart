@@ -692,14 +692,15 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       ),
                   ],
                 ),
-                CustomTextField(
-                  labelText: "Açıklama",
-                  enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
-                  isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A"),
-                  maxLength: StaticVariables.maxAciklamaLength,
-                  controllerText: viewModel.model.aciklama,
-                  onChanged: (value) => viewModel.model.aciklama = value,
-                ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false) && (viewModel.model.getEditTipiEnum?.aciklamaDuzenlensinMi ?? false)),
+                if (!(widget.model.editTipiEnum?.ambarGirisiMi ?? false) && (viewModel.model.getEditTipiEnum?.aciklamaDuzenlensinMi ?? false))
+                  CustomTextField(
+                    labelText: "Açıklama",
+                    enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
+                    isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A"),
+                    maxLength: StaticVariables.maxAciklamaLength,
+                    controllerText: viewModel.model.aciklama,
+                    onChanged: (value) => viewModel.model.aciklama = value,
+                  ),
 
                 if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))
                   CustomWidgetWithLabel(
