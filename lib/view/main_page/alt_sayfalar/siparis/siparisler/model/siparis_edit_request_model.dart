@@ -108,7 +108,16 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
         isNew: model.isNew,
       );
 
-      factory SiparisEditRequestModel.forTalepMalToplama(BaseSiparisEditModel model) => SiparisEditRequestModel(
+  factory SiparisEditRequestModel.forDepolarArasiTransfer(BaseSiparisEditModel model) => SiparisEditRequestModel(
+        belgeNo: model.belgeNo,
+        belgeTuru: model.belgeTuru,
+        cariKodu: model.cariKodu,
+        tipi: model.tipi,
+        ekranTipi: "D",
+        kayitModu: "U",
+      );
+
+  factory SiparisEditRequestModel.forTalepMalToplama(BaseSiparisEditModel model) => SiparisEditRequestModel(
         iadeMi: false,
         filtreKodu: 6,
         belgeNo: model.id.toStringIfNotNull,
