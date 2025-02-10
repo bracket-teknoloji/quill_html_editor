@@ -110,9 +110,12 @@ final class YetkiController {
   int get satisKademeliIskontoSayisi => _paramModel?.satisSatirKademeliIskontoSayisi ?? 0;
   int get alisKademeliIskontoSayisi => _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
 
-  StokMuhasebeKoduModel? get varsayilanMuhRefKodu => StokMuhasebeKoduModel()
-    ..hesapKodu = _kullaniciYetkiModel?.varsayilanMuhasebeReferansKodu
-    ..hesapAdi = _kullaniciYetkiModel?.varsayilanMuhasebeReferansTanimi;
+  StokMuhasebeKoduModel? get varsayilanMuhRefKodu {
+    if (_kullaniciYetkiModel?.varsayilanMuhasebeReferansKodu == null) return null;
+    return StokMuhasebeKoduModel()
+      ..hesapKodu = _kullaniciYetkiModel?.varsayilanMuhasebeReferansKodu
+      ..hesapAdi = _kullaniciYetkiModel?.varsayilanMuhasebeReferansTanimi;
+  }
 
   bool get projeUygulamasiAcikMi => _isTrue(_paramModel?.projeUygulamasiAcik, skipAdmin: true);
   bool get plasiyerUygulamasiAcikMi => _isTrue(_paramModel?.plasiyerUygulamasi, skipAdmin: true);
@@ -366,9 +369,19 @@ final class YetkiController {
       );
 
   ///? Eğer içeriyorsa gösterilecek (Kalemler İçin)
-  bool siparisSatirAciklamaAlanlari(int? index) => index == null
-      ? _isTrue(_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty)
-      : _isTrue((_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index) ?? false) && (_paramModel?.satisSatirdaAciklamalarAktif ?? false));
+  bool siparisSatirAciklamaAlanlari(EditTipiEnum? editTipi, int? index) => editTipi?.satisMi ?? false ? siparisMSSatirAciklamaAlanlari(index) : siparisMSSatirAciklamaAlanlari(index);
+
+  bool siparisSSSatirAciklamaAlanlari(int? index) =>
+      (_paramModel?.alisSatirdaAciklamalarAktif ?? false) &&
+      (index == null
+          ? _isTrue(_yetkiModel?.siparisSaticiSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty)
+          : _isTrue(_yetkiModel?.siparisSaticiSiparisiSatirAciklamaAlanlari?.contains(index) ?? false));
+
+  bool siparisMSSatirAciklamaAlanlari(int? index) =>
+      (_paramModel?.satisSatirdaAciklamalarAktif ?? false) &&
+      (index == null
+          ? _isTrue(_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty)
+          : _isTrue(_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index) ?? false));
 
   //* Satıcı Siparişi
 
