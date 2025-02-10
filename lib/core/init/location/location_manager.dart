@@ -28,27 +28,28 @@ final class LocationManager implements InjectableInterface {
     }
     late final LocationSettings locationSettings;
     // Geolocator ayarları (doğruluk, mesafe filtresi vb.)
-    if (["ios", "macos"].contains(AccountModel.instance.platform)) {
-      locationSettings = AppleSettings(
-        distanceFilter: distanceFilterMeters,
-        showBackgroundLocationIndicator: true,
-        pauseLocationUpdatesAutomatically: true,
-      );
-    } else if (AccountModel.instance.platform == "android") {
-      locationSettings = AndroidSettings(
-        foregroundNotificationConfig: const ForegroundNotificationConfig(
-          notificationText: "Uygulama konumunuzu kullanıyor",
-          notificationTitle: "Konum Takibi",
-          enableWakeLock: true,
-          notificationIcon: AndroidResource(name: "mipmap/ic_launcher"),
+    locationSettings = switch (AccountModel.instance.platform) {
+      "ios" || "macos" => AppleSettings(
+          showBackgroundLocationIndicator: true,
+          distanceFilter: distanceFilterMeters,
+          timeLimit: timeFilter,
         ),
-      );
-    } else if (AccountModel.instance.platform == "web") {
-      locationSettings = LocationSettings(
-        distanceFilter: distanceFilterMeters,
-        timeLimit: timeFilter,
-      );
-    }
+      "android" => AndroidSettings(
+          foregroundNotificationConfig: const ForegroundNotificationConfig(
+            notificationText: "Uygulama konumunuzu kullanıyor",
+            notificationTitle: "Konum Takibi",
+            enableWakeLock: true,
+            notificationIcon: AndroidResource(name: "mipmap-xxxhdpi/ic_launcher"),
+          ),
+          distanceFilter: distanceFilterMeters,
+          timeLimit: timeFilter,
+        ),
+      "web" => WebSettings(
+          distanceFilter: distanceFilterMeters,
+          timeLimit: timeFilter,
+        ),
+      _ => throw UnsupportedError("Unsupported platform: ${AccountModel.instance.platform}"),
+    };
     _positionStreamSubscription = Geolocator.getPositionStream(locationSettings: locationSettings).listen(
       _processPositionUpdate,
       onError: (error) {
@@ -115,6 +116,9 @@ final class LocationManager implements InjectableInterface {
 
   Future<bool> _requestLocationPermission() async {
     // Konum izni durumunu kontrol et
+    if (await Permission.locationAlways.status.isPermanentlyDenied) {
+      await Permission.locationAlways.request();
+    }
     var status = await Permission.locationWhenInUse.status;
 
     if (status.isGranted) {
