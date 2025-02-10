@@ -33,8 +33,10 @@ final class LocationManager implements InjectableInterface {
           showBackgroundLocationIndicator: true,
           distanceFilter: distanceFilterMeters,
           timeLimit: timeFilter,
+          accuracy: LocationAccuracy.medium,
         ),
       "android" => AndroidSettings(
+          accuracy: LocationAccuracy.medium,
           foregroundNotificationConfig: const ForegroundNotificationConfig(
             notificationText: "Uygulama konumunuzu kullanıyor",
             notificationTitle: "Konum Takibi",
@@ -46,6 +48,7 @@ final class LocationManager implements InjectableInterface {
         ),
       "web" => WebSettings(
           distanceFilter: distanceFilterMeters,
+          accuracy: LocationAccuracy.medium,
           timeLimit: timeFilter,
         ),
       _ => throw UnsupportedError("Unsupported platform: ${AccountModel.instance.platform}"),
