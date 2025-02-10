@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/kullanicilar_model.dart";
@@ -65,7 +66,7 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
           title: Observer(
             builder: (_) => AppBarTitle(
               title: "Aktivite Kayıtları",
-              subtitle: (viewModel.observableList?.length ?? 0).toString(),
+              subtitle: (viewModel.filteredList?.length ?? 0).toString(),
             ),
           ),
           actions: [
@@ -104,7 +105,7 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
               child: Observer(
                 builder: (_) => RefreshableListView(
                   onRefresh: viewModel.getData,
-                  items: viewModel.observableList,
+                  items: viewModel.filteredList,
                   itemBuilder: (item) => CariAktiviteCard(
                     model: item,
                     onRefresh: (value) async {
@@ -144,6 +145,16 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Observer(
+            builder: (_) => SlideControllerWidget(
+              childrenTitleList: CariAktiviteDurumEnum.values.map((e) => e.value).toList(),
+              childrenValueList: CariAktiviteDurumEnum.values,
+              groupValue: viewModel.durum,
+              filterOnChanged: (index) async {
+                viewModel.setDurum(CariAktiviteDurumEnum.values[index ?? 0]);
+              },
+            ),
+          ),
           CustomTextField(
             labelText: "Cari",
             suffixMore: true,

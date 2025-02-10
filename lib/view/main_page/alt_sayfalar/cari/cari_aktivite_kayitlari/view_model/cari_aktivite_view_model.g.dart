@@ -9,6 +9,31 @@ part of 'cari_aktivite_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
+  Computed<List<CariAktiviteListesiModel>?>? _$tamamlananlarComputed;
+
+  @override
+  List<CariAktiviteListesiModel>? get tamamlananlar =>
+      (_$tamamlananlarComputed ??= Computed<List<CariAktiviteListesiModel>?>(
+              () => super.tamamlananlar,
+              name: '_CariAktiviteViewModelBase.tamamlananlar'))
+          .value;
+  Computed<List<CariAktiviteListesiModel>?>? _$tamamlanmayanlarComputed;
+
+  @override
+  List<CariAktiviteListesiModel>? get tamamlanmayanlar =>
+      (_$tamamlanmayanlarComputed ??= Computed<List<CariAktiviteListesiModel>?>(
+              () => super.tamamlanmayanlar,
+              name: '_CariAktiviteViewModelBase.tamamlanmayanlar'))
+          .value;
+  Computed<List<CariAktiviteListesiModel>?>? _$filteredListComputed;
+
+  @override
+  List<CariAktiviteListesiModel>? get filteredList =>
+      (_$filteredListComputed ??= Computed<List<CariAktiviteListesiModel>?>(
+              () => super.filteredList,
+              name: '_CariAktiviteViewModelBase.filteredList'))
+          .value;
+
   late final _$requestModelAtom =
       Atom(name: '_CariAktiviteViewModelBase.requestModel', context: context);
 
@@ -22,6 +47,22 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
   set requestModel(CariListesiRequestModel value) {
     _$requestModelAtom.reportWrite(value, super.requestModel, () {
       super.requestModel = value;
+    });
+  }
+
+  late final _$durumAtom =
+      Atom(name: '_CariAktiviteViewModelBase.durum', context: context);
+
+  @override
+  CariAktiviteDurumEnum get durum {
+    _$durumAtom.reportRead();
+    return super.durum;
+  }
+
+  @override
+  set durum(CariAktiviteDurumEnum value) {
+    _$durumAtom.reportWrite(value, super.durum, () {
+      super.durum = value;
     });
   }
 
@@ -59,6 +100,17 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
 
   late final _$_CariAktiviteViewModelBaseActionController =
       ActionController(name: '_CariAktiviteViewModelBase', context: context);
+
+  @override
+  void setDurum(CariAktiviteDurumEnum value) {
+    final _$actionInfo = _$_CariAktiviteViewModelBaseActionController
+        .startAction(name: '_CariAktiviteViewModelBase.setDurum');
+    try {
+      return super.setDurum(value);
+    } finally {
+      _$_CariAktiviteViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setCariKodu(String? value) {
@@ -130,7 +182,11 @@ mixin _$CariAktiviteViewModel on _CariAktiviteViewModelBase, Store {
   String toString() {
     return '''
 requestModel: ${requestModel},
-observableList: ${observableList}
+durum: ${durum},
+observableList: ${observableList},
+tamamlananlar: ${tamamlananlar},
+tamamlanmayanlar: ${tamamlanmayanlar},
+filteredList: ${filteredList}
     ''';
   }
 }

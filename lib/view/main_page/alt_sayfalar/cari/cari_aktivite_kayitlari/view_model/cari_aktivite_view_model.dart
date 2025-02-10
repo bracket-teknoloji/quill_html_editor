@@ -20,9 +20,33 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin, Listable
     siralama: null,
   );
 
+  @observable
+  CariAktiviteDurumEnum durum = CariAktiviteDurumEnum.tumu;
+
+  @action
+  void setDurum(CariAktiviteDurumEnum value) => durum = value;
+
   @override
   @observable
   ObservableList<CariAktiviteListesiModel>? observableList;
+
+  @computed
+  List<CariAktiviteListesiModel>? get tamamlananlar => observableList?.where((element) => element.bittiMi).toList();
+
+  @computed
+  List<CariAktiviteListesiModel>? get tamamlanmayanlar => observableList?.where((element) => !element.bittiMi).toList();
+
+  @computed
+  List<CariAktiviteListesiModel>? get filteredList {
+    switch (durum) {
+      case CariAktiviteDurumEnum.tamamlananlar:
+        return tamamlananlar;
+      case CariAktiviteDurumEnum.tamamlanmayanlar:
+        return tamamlanmayanlar;
+      default:
+        return observableList;
+    }
+  }
 
   @action
   void setCariKodu(String? value) => requestModel = requestModel.copyWith(cariKodu: value);
@@ -66,5 +90,22 @@ abstract class _CariAktiviteViewModelBase with Store, MobxNetworkMixin, Listable
       return result.dataList.firstOrNull;
     }
     return null;
+  }
+}
+
+enum CariAktiviteDurumEnum {
+  tumu,
+  tamamlananlar,
+  tamamlanmayanlar;
+
+  String get value {
+    switch (this) {
+      case CariAktiviteDurumEnum.tumu:
+        return "Tümü";
+      case CariAktiviteDurumEnum.tamamlananlar:
+        return "Tamamlananlar";
+      case CariAktiviteDurumEnum.tamamlanmayanlar:
+        return "Tamamlanmayanlar";
+    }
   }
 }
