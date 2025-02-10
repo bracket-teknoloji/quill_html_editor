@@ -20,8 +20,8 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
   _TransferlerViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {
     faturaRequestModel = faturaRequestModel.copyWith(
       pickerBelgeTuru: pickerBelgeTuru,
-      faturalasmaGoster: pickerBelgeTuru == "SF" ? true : null,
-      miktarGetir: pickerBelgeTuru == "AF" ? "E" : null,
+      iadeMi: false,
+      miktarGetir: "E",
       belgeNo: pickerBelgeTuru == "AF" ? null : "",
     );
   }
