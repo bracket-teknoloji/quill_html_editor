@@ -41,13 +41,16 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..bayiKodu = fields[21] as dynamic
       ..bayiEmail = fields[22] as dynamic
       ..bayiUnvan = fields[23] as dynamic
-      ..bracketCihazi = fields[24] as bool?;
+      ..bracketCihazi = fields[24] as bool?
+      ..sozlesmeUyarisi = fields[25] as bool?
+      ..sozlesmeUyarisiGoster = fields[26] as bool?
+      ..karsilamaBaslik = fields[27] as String?;
   }
 
   @override
   void write(BinaryWriter writer, AccountResponseModel obj) {
     writer
-      ..writeByte(25)
+      ..writeByte(28)
       ..writeByte(0)
       ..write(obj.firma)
       ..writeByte(1)
@@ -97,7 +100,13 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..writeByte(23)
       ..write(obj.bayiUnvan)
       ..writeByte(24)
-      ..write(obj.bracketCihazi);
+      ..write(obj.bracketCihazi)
+      ..writeByte(25)
+      ..write(obj.sozlesmeUyarisi)
+      ..writeByte(26)
+      ..write(obj.sozlesmeUyarisiGoster)
+      ..writeByte(27)
+      ..write(obj.karsilamaBaslik);
   }
 
   @override
@@ -143,7 +152,10 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..bayiKodu = json['BAYI_KODU']
       ..bayiEmail = json['BAYI_EMAIL']
       ..bayiUnvan = json['BAYI_UNVAN']
-      ..bracketCihazi = json['BRACKET_CIHAZI'] as bool?;
+      ..bracketCihazi = json['BRACKET_CIHAZI'] as bool?
+      ..sozlesmeUyarisi = json['SOZLESME_UYARISI'] as bool?
+      ..sozlesmeUyarisiGoster = json['SOZLESME_UYARISI_GOSTER'] as bool?
+      ..karsilamaBaslik = json['KARSILAMA_BASLIK'] as String?;
 
 Map<String, dynamic> _$AccountResponseModelToJson(
         AccountResponseModel instance) =>
@@ -179,4 +191,8 @@ Map<String, dynamic> _$AccountResponseModelToJson(
       if (instance.bayiEmail case final value?) 'BAYI_EMAIL': value,
       if (instance.bayiUnvan case final value?) 'BAYI_UNVAN': value,
       if (instance.bracketCihazi case final value?) 'BRACKET_CIHAZI': value,
+      if (instance.sozlesmeUyarisi case final value?) 'SOZLESME_UYARISI': value,
+      if (instance.sozlesmeUyarisiGoster case final value?)
+        'SOZLESME_UYARISI_GOSTER': value,
+      if (instance.karsilamaBaslik case final value?) 'KARSILAMA_BASLIK': value,
     };

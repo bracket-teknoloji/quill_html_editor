@@ -62,6 +62,12 @@ final class AccountResponseModel with NetworkManagerMixin {
   dynamic bayiUnvan;
   @HiveField(24)
   bool? bracketCihazi;
+  @HiveField(25)
+  bool? sozlesmeUyarisi;
+  @HiveField(26)
+  bool? sozlesmeUyarisiGoster;
+  @HiveField(27)
+  String? karsilamaBaslik;
 
   @override
   AccountResponseModel fromJson(Map<String, dynamic> json) => _$AccountResponseModelFromJson(json);
