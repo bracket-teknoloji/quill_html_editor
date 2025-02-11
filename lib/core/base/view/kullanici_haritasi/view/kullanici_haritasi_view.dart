@@ -42,6 +42,7 @@ class _KullaniciHaritasiViewState extends BaseState<KullaniciHaritasiView> {
             viewModel.addMarker(
               Marker(
                 markerId: MarkerId(element.kullanici ?? ""),
+                clusterManagerId: const ClusterManagerId("value"),
                 position: LatLng(element.enlem ?? 0, element.boylam ?? 0),
                 icon: await setMarker(element),
               ),
