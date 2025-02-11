@@ -159,6 +159,9 @@ final class AppThemeDark extends AppTheme {
             borderRadius: UIHelper.zeroBorderRadius,
           ),
         ),
+        bannerTheme: MaterialBannerThemeData(
+          backgroundColor: colorManager.primaryContainer.withValues(alpha: 0.7),
+        ),
         textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             splashFactory: InkRipple.splashFactory,

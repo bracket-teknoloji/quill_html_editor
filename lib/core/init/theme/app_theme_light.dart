@@ -19,11 +19,13 @@ final class AppThemeLight extends AppTheme {
           primaryColor: UIHelper.primaryColor,
           applyThemeToAll: true,
         ),
-        // scaffoldBackgroundColor: colorManager.onInverseSurface,
         platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
         datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
         radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1))),
         useMaterial3: true,
+        bannerTheme: MaterialBannerThemeData(
+          backgroundColor: colorManager.primaryContainer.withValues(alpha: 0.7),
+        ),
         colorSchemeSeed: UIHelper.primaryColor,
         actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
         tabBarTheme: const TabBarTheme(
