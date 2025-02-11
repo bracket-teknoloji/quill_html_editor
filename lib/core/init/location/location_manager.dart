@@ -12,11 +12,12 @@ import "package:picker/view/add_company/model/account_model.dart";
 
 final class LocationManager implements InjectableInterface {
   LocationManager({this.distanceFilterMeters = 200, this.timeFilter = Duration.zero});
+
   Position? _lastPosition;
   DateTime? _lastPositionTime;
   StreamSubscription<Position>? _positionStreamSubscription;
+  Timer? _sendDataTimer;
 
-  // Konum güncelleme koşulları
   final int distanceFilterMeters;
   final Duration timeFilter;
 
@@ -26,8 +27,8 @@ final class LocationManager implements InjectableInterface {
       log("Konum izni verilmedi.", name: "LocationManager");
       return;
     }
+
     late final LocationSettings locationSettings;
-    // Geolocator ayarları (doğruluk, mesafe filtresi vb.)
     locationSettings = switch (AccountModel.instance.platform) {
       "ios" || "macos" => AppleSettings(
           showBackgroundLocationIndicator: true,
@@ -43,6 +44,7 @@ final class LocationManager implements InjectableInterface {
             enableWakeLock: true,
             notificationIcon: AndroidResource(name: "mipmap-xxxhdpi/ic_launcher"),
           ),
+          forceLocationManager: true,
           distanceFilter: distanceFilterMeters,
           timeLimit: timeFilter,
         ),
@@ -53,25 +55,24 @@ final class LocationManager implements InjectableInterface {
         ),
       _ => throw UnsupportedError("Unsupported platform: ${AccountModel.instance.platform}"),
     };
+
     _positionStreamSubscription = Geolocator.getPositionStream(locationSettings: locationSettings).listen(
       _processPositionUpdate,
       onError: (error) {
         log("Konum hatası: $error", name: "LocationManager");
-        // Hata durumunda yapılacak işlemler (örn. kullanıcıya bildirim gösterme)
       },
     );
+
+    sendData(); // İlk istek hemen gönderilsin
   }
 
   void _processPositionUpdate(Position newPosition) {
     if (_lastPosition == null) {
-      // İlk konum alındı
       _lastPosition = newPosition;
       _lastPositionTime = DateTime.now();
-      _handleNewLocation(newPosition);
       return;
     }
 
-    // Mesafe kontrolü
     final double distanceInMeters = Geolocator.distanceBetween(
       _lastPosition!.latitude,
       _lastPosition!.longitude,
@@ -79,31 +80,34 @@ final class LocationManager implements InjectableInterface {
       newPosition.longitude,
     );
 
-    // Zaman kontrolü
     final Duration timeDifference = DateTime.now().difference(_lastPositionTime!);
 
     if (distanceInMeters >= distanceFilterMeters || timeDifference >= timeFilter) {
-      // Konum güncelleme koşulları sağlandı
       _lastPosition = newPosition;
       _lastPositionTime = DateTime.now();
-      _handleNewLocation(newPosition); // Yeni konumu işle
+      _handleNewLocation(newPosition);
     }
   }
 
   void _handleNewLocation(Position position) {
     log("Yeni konum: ${position.latitude}, ${position.longitude}, Zaman: ${DateTime.now()}", name: "LocationManager");
-    sendData();
+
+    _sendDataTimer?.cancel();
+    _sendDataTimer = Timer(timeFilter, sendData);
   }
 
   Future<void> stopTracking() async {
     await _positionStreamSubscription?.cancel();
     _positionStreamSubscription = null;
+    _sendDataTimer?.cancel();
   }
 
   @override
   Future<void> load() async => await sendData();
 
   Future<void> sendData() async {
+    if (_lastPosition == null) return;
+
     await NetworkManager().dioPost(
       path: ApiUrls.saveKonum,
       bodyModel: BaseEmptyModel(),
@@ -118,30 +122,24 @@ final class LocationManager implements InjectableInterface {
   }
 
   Future<bool> _requestLocationPermission() async {
-    // Konum izni durumunu kontrol et
     if (await Permission.locationAlways.status.isPermanentlyDenied) {
       await Permission.locationAlways.request();
     }
     var status = await Permission.locationWhenInUse.status;
 
     if (status.isGranted) {
-      // Zaten izin verilmiş
       return true;
     } else if (status.isDenied) {
-      // İzin verilmemiş, kullanıcıdan iste
       status = await Permission.location.request();
       if (status.isGranted) {
         return true;
       } else if (status.isPermanentlyDenied) {
-        // Kullanıcı izni kalıcı olarak reddetmiş, ayarları açmasını isteyebiliriz.
-        openAppSettings(); //Kullanıcıyı uygulama ayarlarına yönlendir.
+        openAppSettings();
         return false;
       } else {
-        // Kullanıcı reddetti
         return false;
       }
     } else if (status.isRestricted || status.isLimited) {
-      // İzin durumu kısıtlı veya sınırlı (örn. ebeveyn kontrolü)
       return false;
     }
     return false;
