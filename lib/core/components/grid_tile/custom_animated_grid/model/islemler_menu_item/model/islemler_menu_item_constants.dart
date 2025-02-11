@@ -877,7 +877,7 @@ final class IslemlerMenuItemConstants<T> {
                 arguments: BaseEditModel(
                   model: cariModel,
                   editTipiEnum: EditTipiEnum.cari,
-                  baseEditEnum: BaseEditEnum.duzenle,
+                  baseEditEnum: BaseEditEnum.goruntule,
                 ),
               );
             }
@@ -953,7 +953,7 @@ final class IslemlerMenuItemConstants<T> {
         onTap: () async {
           if (model is CariListesiModel) {
             final CariListesiModel cariModel = model as CariListesiModel;
-            final result = await Get.toNamed("/mainPage/cariHaritasiOzel");
+            final result = await Get.toNamed("/mainPage/cariHaritasiOzel", arguments: (enlem: cariModel.enlem, boylam: cariModel.boylam));
             if (result is LatLng) {
               final saveCari = await _networkManager.dioPost(
                 path: ApiUrls.saveCari,
