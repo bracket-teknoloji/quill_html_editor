@@ -323,6 +323,7 @@ final class DialogManager {
           final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson(), showLoading: true);
           if (response.isSuccess) {
             showLoadingDialog("Çıkış yapılıyor...");
+            hideMaterialBanner();
             log("Çıkış yapılıyor...");
             CacheManager.setLogout(false);
             Get.offAllNamed("/login", arguments: true);
@@ -370,6 +371,23 @@ final class DialogManager {
         },
         onCancel: () {},
       ).show();
+
+  ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showMaterialBanner(String message, {String? desc}) => ScaffoldMessenger.of(context).showMaterialBanner(
+        MaterialBanner(
+          leading: const Icon(Icons.crisis_alert_outlined),
+          content: Text(message, style: const TextStyle(fontWeight: FontWeight.bold)),
+          actions: [
+            const Text(""),
+            if (desc != null)
+              IconButton(
+                icon: const Icon(Icons.chevron_right_outlined),
+                onPressed: () => showInfoDialog(desc),
+              ),
+          ],
+        ),
+      );
+
+  void hideMaterialBanner() => ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
 
   void get hideSnackBar => ScaffoldMessenger.of(context).clearSnackBars();
 
@@ -461,17 +479,24 @@ final class DialogManager {
     );
   }
 
-  SnackBar _snackBarColorful(String message, Color color) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: color);
+  double _snackBarWidth() => kIsWeb ? Get.width * 0.5 : double.maxFinite;
 
-  SnackBar _snackBarError(String message) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.persianRed);
+  SnackBar _snackBarColorful(String message, Color color) =>
+      SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.floating, backgroundColor: color, width: _snackBarWidth());
 
-  SnackBar _snackBarSuccess(String message) => SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.fixed, backgroundColor: ColorPalette.mantis);
+  SnackBar _snackBarError(String message) =>
+      SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.floating, backgroundColor: ColorPalette.persianRed, width: _snackBarWidth());
+
+  SnackBar _snackBarSuccess(String message) =>
+      SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.floating, backgroundColor: ColorPalette.mantis, width: _snackBarWidth());
 
   SnackBar _snackBarInfo(String message, {Duration? duration}) => SnackBar(
         content: Text(message, style: const TextStyle(color: Colors.white)),
-        behavior: SnackBarBehavior.fixed,
-        backgroundColor: ColorPalette.marineBlue,
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: UIHelper.primaryColor,
         duration: duration ?? const Duration(milliseconds: 4000),
+        width: _snackBarWidth(),
+        showCloseIcon: kIsWeb,
       );
 
   AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) => _baseDialog(
