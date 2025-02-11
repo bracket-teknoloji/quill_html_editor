@@ -134,7 +134,7 @@ final class LocationManager implements InjectableInterface {
       if (status.isGranted) {
         return true;
       } else if (status.isPermanentlyDenied) {
-        openAppSettings();
+        // openAppSettings();
         return false;
       } else {
         return false;
