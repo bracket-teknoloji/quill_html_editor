@@ -1,5 +1,7 @@
 import "dart:convert";
+import "dart:io";
 
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -78,7 +80,18 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
                 direction: Axis.vertical,
                 children: [
                   Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize))),
-                  Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center))),
+                  SizedBox(
+                    width: kIsWeb
+                        ? context.isLandscape
+                            ? MediaQuery.sizeOf(context).width * 0.4
+                            : MediaQuery.sizeOf(context).width * 0.6
+                        : Platform.isLinux || Platform.isWindows || Platform.isMacOS
+                            ? context.isLandscape
+                                ? MediaQuery.sizeOf(context).width * 0.4
+                                : MediaQuery.sizeOf(context).width * 0.6
+                            : null,
+                    child: Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center))),
+                  ),
                   Observer(
                     builder: (_) => Visibility(
                       visible: viewModel.isError,
