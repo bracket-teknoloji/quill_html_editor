@@ -372,17 +372,34 @@ final class DialogManager {
         onCancel: () {},
       ).show();
 
-  ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showMaterialBanner(String message, {String? desc}) => ScaffoldMessenger.of(context).showMaterialBanner(
+  ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBanner(String message, {String? desc}) => ScaffoldMessenger.of(context).showMaterialBanner(
         MaterialBanner(
-          leading: const Icon(Icons.crisis_alert_outlined),
+          leading: const Icon(Icons.warning_outlined),
           content: Text(message, style: const TextStyle(fontWeight: FontWeight.bold)),
           actions: [
-            const Text(""),
             if (desc != null)
               IconButton(
                 icon: const Icon(Icons.chevron_right_outlined),
                 onPressed: () => showInfoDialog(desc),
-              ),
+              )
+            else
+              const SizedBox.shrink(),
+          ],
+        ),
+      );
+
+      ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBannerWithAction(String message, {String? desc, void Function()? onAction}) => ScaffoldMessenger.of(context).showMaterialBanner(
+        MaterialBanner(
+          leading: const Icon(Icons.warning_outlined),
+          content: Text(message, style: const TextStyle(fontWeight: FontWeight.bold)),
+          actions: [
+            if (desc != null)
+              IconButton(
+                icon: const Icon(Icons.chevron_right_outlined),
+                onPressed: onAction ?? () {},
+              )
+            else
+              const SizedBox.shrink(),
           ],
         ),
       );
