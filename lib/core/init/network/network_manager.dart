@@ -83,8 +83,8 @@ final class NetworkManager {
         TalkerDioLogger(
           settings: TalkerDioLoggerSettings(
             printResponseData: false,
-            requestFilter: (requestOptions) => !requestOptions.path.contains("GetEvrakResim") && !requestOptions.path.contains("SaveKonum"),
-            responseFilter: (response) => !response.requestOptions.path.contains("GetEvrakResim") && !response.requestOptions.path.contains("SaveKonum"),
+            requestFilter: (requestOptions) => !requestOptions.path.contains("GetEvrakResim"),
+            responseFilter: (response) => !response.requestOptions.path.contains("GetEvrakResim"),
           ),
         ),
       );
