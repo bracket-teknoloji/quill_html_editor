@@ -101,7 +101,10 @@ final class LocationManager implements InjectableInterface {
 
   // Yeniden deneme zamanlaması
   void _scheduleRetry() {
-    if (_isRetrying) return;
+    if (_isRetrying) {
+      log("Zaten yeniden deneme yapılıyor.", name: "LocationManager");
+      return;
+    }
 
     _isRetrying = true;
     _locationRetryTimer?.cancel();
@@ -120,6 +123,7 @@ final class LocationManager implements InjectableInterface {
         "ios" || "macos" => AppleSettings(
             showBackgroundLocationIndicator: true,
             distanceFilter: distanceFilterMeters,
+            timeLimit: timeFilter,
           ),
         "android" => AndroidSettings(
             foregroundNotificationConfig: const ForegroundNotificationConfig(
@@ -129,9 +133,11 @@ final class LocationManager implements InjectableInterface {
               notificationIcon: AndroidResource(name: "mipmap-xxxhdpi/ic_launcher"),
             ),
             distanceFilter: distanceFilterMeters,
+            timeLimit: timeFilter,
           ),
         "web" => WebSettings(
             distanceFilter: distanceFilterMeters,
+            timeLimit: timeFilter,
           ),
         _ => throw UnsupportedError("Platform desteklenmiyor: ${AccountModel.instance.platform}"),
       };
@@ -142,6 +148,7 @@ final class LocationManager implements InjectableInterface {
 
     if (_lastPosition == null) {
       _updatePosition(newPosition);
+      log("İlk konum güncellendi: ${newPosition.latitude}, ${newPosition.longitude}", name: "LocationManager");
       return;
     }
 
