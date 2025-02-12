@@ -79,7 +79,7 @@ final class BottomSheetDialogManager {
       useSafeArea: true,
       constraints: BoxConstraints.loose(
         Size(
-          MediaQuery.sizeOf(context).width * (context.isLandscape ? 0.5 : 1),
+          MediaQuery.sizeOf(context).width * (context.isLandscape ? 0.4 : 1),
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),
@@ -257,7 +257,7 @@ final class BottomSheetDialogManager {
       isScrollControlled: true,
       constraints: BoxConstraints.loose(
         Size(
-          MediaQuery.sizeOf(context).width * (context.isLandscape ? 0.5 : 1),
+          MediaQuery.sizeOf(context).width * (context.isLandscape ? 0.4 : 1),
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),
