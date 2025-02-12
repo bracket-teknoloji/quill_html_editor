@@ -160,6 +160,7 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
         return;
       }
       if (viewModel.accountResponseModel?.karsilamaMesaji != null) {
+        viewModel.setTitle("");
         await Future.delayed(Duration(seconds: viewModel.accountResponseModel?.karsilamaSaniye ?? 3));
       }
 
