@@ -44,13 +44,14 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..bracketCihazi = fields[24] as bool?
       ..sozlesmeUyarisi = fields[25] as bool?
       ..sozlesmeUyarisiGoster = fields[26] as bool?
-      ..karsilamaBaslik = fields[27] as String?;
+      ..karsilamaBaslik = fields[27] as String?
+      ..sozlesmeTeklifGoster = fields[28] as bool?;
   }
 
   @override
   void write(BinaryWriter writer, AccountResponseModel obj) {
     writer
-      ..writeByte(28)
+      ..writeByte(29)
       ..writeByte(0)
       ..write(obj.firma)
       ..writeByte(1)
@@ -106,7 +107,9 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..writeByte(26)
       ..write(obj.sozlesmeUyarisiGoster)
       ..writeByte(27)
-      ..write(obj.karsilamaBaslik);
+      ..write(obj.karsilamaBaslik)
+      ..writeByte(28)
+      ..write(obj.sozlesmeTeklifGoster);
   }
 
   @override
@@ -155,7 +158,8 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..bracketCihazi = json['BRACKET_CIHAZI'] as bool?
       ..sozlesmeUyarisi = json['SOZLESME_UYARISI'] as bool?
       ..sozlesmeUyarisiGoster = json['SOZLESME_UYARISI_GOSTER'] as bool?
-      ..karsilamaBaslik = json['KARSILAMA_BASLIK'] as String?;
+      ..karsilamaBaslik = json['KARSILAMA_BASLIK'] as String?
+      ..sozlesmeTeklifGoster = json['SOZLESME_TEKLIF_GOSTER'] as bool?;
 
 Map<String, dynamic> _$AccountResponseModelToJson(
         AccountResponseModel instance) =>
@@ -195,4 +199,6 @@ Map<String, dynamic> _$AccountResponseModelToJson(
       if (instance.sozlesmeUyarisiGoster case final value?)
         'SOZLESME_UYARISI_GOSTER': value,
       if (instance.karsilamaBaslik case final value?) 'KARSILAMA_BASLIK': value,
+      if (instance.sozlesmeTeklifGoster case final value?)
+        'SOZLESME_TEKLIF_GOSTER': value,
     };
