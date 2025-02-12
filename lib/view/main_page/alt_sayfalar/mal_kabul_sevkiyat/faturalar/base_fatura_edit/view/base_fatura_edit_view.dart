@@ -317,6 +317,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           ..projeKodu ??= yetkiController.varsayilanProje?.projeKodu
           ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue
           ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
+          ..cariAdi ??= widget.model.model?.cariAdi
           ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
           ..ebelgeCheckbox = CacheManager.getProfilParametre.eIrsaliyeSeciliGelsin ? "E" : null;
       }
@@ -712,6 +713,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
               labelText: "Cari",
               controller: _cariKoduController,
               readOnly: true,
+              enabled: _cariKoduController.text.isEmpty,
               suffixMore: true,
               valueWidget: Observer(builder: (_) => Text(viewModel.baseSiparisEditModel.cariKodu ?? "")),
               suffix: IconButton(
