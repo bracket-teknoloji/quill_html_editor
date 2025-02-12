@@ -3,6 +3,7 @@ import "dart:developer";
 
 import "package:geolocator/geolocator.dart";
 import "package:permission_handler/permission_handler.dart";
+import "package:picker/app/picker_app_imports.dart";
 import "package:picker/core/base/model/base_empty_model.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/init/dependency_injection/intectable_interface.dart";
@@ -11,65 +12,136 @@ import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 final class LocationManager implements InjectableInterface {
-  LocationManager({this.distanceFilterMeters = 200, this.timeFilter = Duration.zero});
+  // Singleton yapısı
+  LocationManager({
+    this.distanceFilterMeters = 200,
+    this.timeFilter = const Duration(minutes: 5),
+  });
 
+  // Sınıf değişkenleri
   Position? _lastPosition;
   DateTime? _lastPositionTime;
+  DateTime? _lastSentTime;
   StreamSubscription<Position>? _positionStreamSubscription;
-  Timer? _sendDataTimer;
+  Timer? _locationRetryTimer;
+  bool _isRetrying = false;
 
-  final int distanceFilterMeters;
-  final Duration timeFilter;
+  late final int distanceFilterMeters;
+  late final Duration timeFilter;
 
-  Future<void> startTracking() async {
+  // Getters
+  bool get isTracking => _positionStreamSubscription != null;
+  Position? get lastPosition => _lastPosition;
+  DateTime? get lastUpdateTime => _lastPositionTime;
+
+  // Konum takibini başlatma
+  Future<bool> startTracking() async {
+    if (isTracking) {
+      log("Konum takibi zaten aktif.", name: "LocationManager");
+      return true;
+    }
+
     final bool hasPermission = await _requestLocationPermission();
     if (!hasPermission) {
       log("Konum izni verilmedi.", name: "LocationManager");
-      return;
+      return false;
     }
 
-    late final LocationSettings locationSettings;
-    locationSettings = switch (AccountModel.instance.platform) {
-      "ios" || "macos" => AppleSettings(
-          showBackgroundLocationIndicator: true,
-          distanceFilter: distanceFilterMeters,
-          timeLimit: timeFilter,
-          accuracy: LocationAccuracy.medium,
-        ),
-      "android" => AndroidSettings(
-          accuracy: LocationAccuracy.medium,
-          foregroundNotificationConfig: const ForegroundNotificationConfig(
-            notificationText: "Uygulama konumunuzu kullanıyor",
-            notificationTitle: "Konum Takibi",
-            enableWakeLock: true,
-            notificationIcon: AndroidResource(name: "mipmap-xxxhdpi/ic_launcher"),
-          ),
-          forceLocationManager: true,
-          distanceFilter: distanceFilterMeters,
-          timeLimit: timeFilter,
-        ),
-      "web" => WebSettings(
-          distanceFilter: distanceFilterMeters,
-          accuracy: LocationAccuracy.medium,
-          timeLimit: timeFilter,
-        ),
-      _ => throw UnsupportedError("Unsupported platform: ${AccountModel.instance.platform}"),
-    };
-
-    _positionStreamSubscription = Geolocator.getPositionStream(locationSettings: locationSettings).listen(
-      _processPositionUpdate,
-      onError: (error) {
-        log("Konum hatası: $error", name: "LocationManager");
-      },
-    );
-
-    sendData(); // İlk istek hemen gönderilsin
+    return await _startLocationUpdates();
   }
 
-  void _processPositionUpdate(Position newPosition) {
+  // Konum güncellemelerini başlatma
+  Future<bool> _startLocationUpdates() async {
+    try {
+      if (!await Geolocator.isLocationServiceEnabled()) {
+        log("Konum servisi kapalı. Lütfen GPS'i açın.", name: "LocationManager");
+        return false;
+      }
+
+      final locationSettings = _getLocationSettings();
+
+      // İlk konumu al
+      try {
+        _lastPosition = await Geolocator.getCurrentPosition();
+        _lastPositionTime = DateTime.now();
+        await _sendLocationData(); // İlk veriyi gönder
+        _lastSentTime = DateTime.now();
+      } catch (e) {
+        log("İlk konum alınamadı: $e", name: "LocationManager");
+      }
+
+      // Konum stream'ini başlat
+      _positionStreamSubscription = Geolocator.getPositionStream(
+        locationSettings: locationSettings,
+      ).listen(
+        _onPositionUpdate,
+        onError: _handleLocationError,
+        cancelOnError: false,
+        onDone: () {
+          log("Konum stream'i sonlandı.", name: "LocationManager");
+          _scheduleRetry();
+        },
+      );
+
+      return true;
+    } catch (e) {
+      log("Konum takibi başlatılamadı: $e", name: "LocationManager");
+      _scheduleRetry();
+      return false;
+    }
+  }
+
+  // Konum hatalarını yönetme
+  void _handleLocationError(dynamic error) {
+    log("Konum hatası: $error", name: "LocationManager");
+    if (error is TimeoutException) {
+      _scheduleRetry();
+    }
+  }
+
+  // Yeniden deneme zamanlaması
+  void _scheduleRetry() {
+    if (_isRetrying) return;
+
+    _isRetrying = true;
+    _locationRetryTimer?.cancel();
+
+    _locationRetryTimer = Timer(const Duration(seconds: 30), () async {
+      log("Konum servisi yeniden başlatılıyor...", name: "LocationManager");
+      _isRetrying = false;
+
+      await stopTracking();
+      await _startLocationUpdates();
+    });
+  }
+
+  // Platform'a göre konum ayarlarını alma
+  LocationSettings _getLocationSettings() => switch (AccountModel.instance.platform) {
+        "ios" || "macos" => AppleSettings(
+            showBackgroundLocationIndicator: true,
+            distanceFilter: distanceFilterMeters,
+          ),
+        "android" => AndroidSettings(
+            foregroundNotificationConfig: const ForegroundNotificationConfig(
+              notificationText: "Uygulama arka planda konumunuzu takip ediyor",
+              notificationTitle: "Konum Takibi Aktif",
+              enableWakeLock: true,
+              notificationIcon: AndroidResource(name: "mipmap-xxxhdpi/ic_launcher"),
+            ),
+            distanceFilter: distanceFilterMeters,
+          ),
+        "web" => WebSettings(
+            distanceFilter: distanceFilterMeters,
+          ),
+        _ => throw UnsupportedError("Platform desteklenmiyor: ${AccountModel.instance.platform}"),
+      };
+
+  // Yeni konum güncellemelerini işleme
+  void _onPositionUpdate(Position newPosition) {
+    _isRetrying = false;
+
     if (_lastPosition == null) {
-      _lastPosition = newPosition;
-      _lastPositionTime = DateTime.now();
+      _updatePosition(newPosition);
       return;
     }
 
@@ -80,68 +152,81 @@ final class LocationManager implements InjectableInterface {
       newPosition.longitude,
     );
 
-    final Duration timeDifference = DateTime.now().difference(_lastPositionTime!);
+    final Duration timeDifference = DateTime.now().difference(_lastSentTime ?? DateTime.now());
 
     if (distanceInMeters >= distanceFilterMeters || timeDifference >= timeFilter) {
-      _lastPosition = newPosition;
-      _lastPositionTime = DateTime.now();
-      _handleNewLocation(newPosition);
+      _updatePosition(newPosition);
     }
   }
 
-  void _handleNewLocation(Position position) {
-    log("Yeni konum: ${position.latitude}, ${position.longitude}, Zaman: ${DateTime.now()}", name: "LocationManager");
+  // Konum güncelleme
+  void _updatePosition(Position position) {
+    _lastPosition = position;
+    _lastPositionTime = DateTime.now();
 
-    _sendDataTimer?.cancel();
-    _sendDataTimer = Timer(timeFilter, sendData);
+    log(
+      "Yeni konum güncellendi: ${position.latitude}, ${position.longitude}",
+      name: "LocationManager",
+    );
+
+    _sendLocationData().then((_) {
+      _lastSentTime = DateTime.now();
+    });
   }
 
+  // Konum takibini durdurma
   Future<void> stopTracking() async {
     await _positionStreamSubscription?.cancel();
     _positionStreamSubscription = null;
-    _sendDataTimer?.cancel();
+    _locationRetryTimer?.cancel();
+    _locationRetryTimer = null;
+    _isRetrying = false;
+    _lastSentTime = null;
+    log("Konum takibi durduruldu.", name: "LocationManager");
   }
 
-  @override
-  Future<void> load() async => await sendData();
+  // Konum verilerini sunucuya gönderme
+  Future<void> _sendLocationData() async {
+    if (_lastPosition == null) {
+      log("Gönderilecek konum verisi yok.", name: "LocationManager");
+      return;
+    }
 
-  Future<void> sendData() async {
-    if (_lastPosition == null) return;
-
-    await NetworkManager().dioPost(
-      path: ApiUrls.saveKonum,
-      bodyModel: BaseEmptyModel(),
-      showError: false,
-      data: {
-        "KONUM_BOYLAM": _lastPosition?.longitude,
-        "KONUM_ENLEM": _lastPosition?.latitude,
-        "KONUM_TARIHI": "${DateTime.now().toDateString} ${DateTime.now().getTime}",
-        "KONUM_DATE": DateTime.now().toIso8601String(),
-      },
-    );
+    try {
+      await NetworkManager().dioPost(
+        path: ApiUrls.saveKonum,
+        bodyModel: BaseEmptyModel(),
+        showError: false,
+        data: {
+          "KONUM_BOYLAM": _lastPosition?.longitude,
+          "KONUM_ENLEM": _lastPosition?.latitude,
+          "KONUM_TARIHI": "${_lastPositionTime?.toDateString} ${_lastPositionTime?.getTime}",
+          "KONUM_DATE": _lastPositionTime?.toIso8601String(),
+          if (_lastPosition?.speed case final speed?) "KONUM_HIZ": speed,
+        },
+      );
+      log("Konum verisi başarıyla gönderildi.", name: "LocationManager");
+      log("Konum verisi: ${_lastPosition?.latitude}, ${_lastPosition?.longitude}", name: "LocationManager");
+      log("Konum tarihi: ${_lastPositionTime?.toDateString} ${_lastPositionTime?.getTime}", name: "LocationManager");
+    } catch (e) {
+      log("Konum verisi gönderilemedi: $e", name: "LocationManager");
+    }
   }
 
+  // İzin isteme
   Future<bool> _requestLocationPermission() async {
+    if (kIsWeb) {
+      await Permission.location.request();
+    }else {
     if (await Permission.locationAlways.status.isPermanentlyDenied) {
       await Permission.locationAlways.request();
     }
-    var status = await Permission.locationWhenInUse.status;
-
-    if (status.isGranted) {
-      return true;
-    } else if (status.isDenied) {
-      status = await Permission.location.request();
-      if (status.isGranted) {
-        return true;
-      } else if (status.isPermanentlyDenied) {
-        // openAppSettings();
-        return false;
-      } else {
-        return false;
-      }
-    } else if (status.isRestricted || status.isLimited) {
-      return false;
     }
-    return false;
+
+    final status = await Permission.locationWhenInUse.request();
+    return status.isGranted;
   }
+
+  @override
+  Future<void> load() async {}
 }
