@@ -1,6 +1,5 @@
 import "dart:io";
 
-import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
@@ -45,6 +44,10 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   void initState() {
     viewModel.setItems(MenuItemConstants.getList());
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await DIManager.init();
+      if (parametreModel.genelKonumTakibiYapilsin == "E") {
+        await DIManager.read<LocationManager>().startTracking();
+      }
       if (!kIsWeb) {
         if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "") case final value?) {
           if (value.sozlesmeUyarisiGoster != true) return;
@@ -55,13 +58,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
           }
         }
       }
-      await DIManager.init();
-      if (parametreModel.genelKonumTakibiYapilsin == "E") {
-        await DIManager.read<LocationManager>().startTracking();
-      }
-      FirebaseMessaging.onMessage.listen((message) {
-        if (message.data["route"] != null && widget.fromSplash) Get.toNamed(message.data["route"] ?? "/");
-      });
+      
     });
     super.initState();
   }
@@ -347,6 +344,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
         }
       },
       title: "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.karsilamaMesaji}\n\nTeklif almak ister misiniz?",
+      yesButtonText: "Teklif İste",
     );
   }
 }
