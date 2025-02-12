@@ -150,7 +150,7 @@ final class DialogManager {
           ),
         ),
       ).show();
-  Future showAreYouSureDialog(void Function() onYes, {String? title}) async => await _areYouSureDialog(onYes, title).show();
+  Future showAreYouSureDialog(void Function() onYes, {String? title, String? yesButtonText}) async => await _areYouSureDialog(onYes, title, yesButtonText: yesButtonText).show();
 
   void showSuccesDialog(String? description) => _baseDialog(
         dialogType: DialogType.success,
@@ -388,7 +388,8 @@ final class DialogManager {
         ),
       );
 
-      ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBannerWithAction(String message, {String? desc, void Function()? onAction}) => ScaffoldMessenger.of(context).showMaterialBanner(
+  ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBannerWithAction(String message, {String? desc, void Function()? onAction}) =>
+      ScaffoldMessenger.of(context).showMaterialBanner(
         MaterialBanner(
           leading: const Icon(Icons.warning_outlined),
           content: Text(message, style: const TextStyle(fontWeight: FontWeight.bold)),
@@ -516,12 +517,12 @@ final class DialogManager {
         showCloseIcon: kIsWeb,
       );
 
-  AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc) => _baseDialog(
+  AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc, {String? yesButtonText}) => _baseDialog(
         title: "Uyarı",
         desc: desc ?? "Bu işlemi yapmak istediğinizden emin misiniz?",
         dialogType: DialogType.question,
         onOk: onYes,
-        btnOkText: "Evet",
+        btnOkText: yesButtonText ?? "Evet",
         onCancel: () {},
         btnCancelText: "Hayır",
       );
@@ -602,12 +603,12 @@ final class DialogManager {
         isDense: true,
         width: kIsWeb
             ? context.isLandscape
-                ? MediaQuery.sizeOf(context).width * 0.5
-                : MediaQuery.sizeOf(context).width * 0.8
+                ? MediaQuery.sizeOf(context).width * 0.4
+                : MediaQuery.sizeOf(context).width * 0.6
             : Platform.isLinux || Platform.isWindows || Platform.isMacOS
                 ? context.isLandscape
-                    ? MediaQuery.sizeOf(context).width * 0.5
-                    : MediaQuery.sizeOf(context).width * 0.8
+                    ? MediaQuery.sizeOf(context).width * 0.4
+                    : MediaQuery.sizeOf(context).width * 0.6
                 : null,
         customHeader: customHeader,
         onDismissCallback: (type) {},
