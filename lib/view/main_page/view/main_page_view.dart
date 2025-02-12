@@ -7,8 +7,10 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/teklif_iste_model.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/location/location_manager.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:text_scroll/text_scroll.dart";
 
@@ -45,7 +47,12 @@ final class _MainPageViewState extends BaseState<MainPageView> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (!kIsWeb) {
         if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "") case final value?) {
-          if (value.sozlesmeUyarisiGoster ?? false) dialogManager.showMaterialBanner(value.karsilamaBaslik ?? "", desc: value.karsilamaMesaji);
+          if (value.sozlesmeUyarisiGoster != true) return;
+          if ((value.sozlesmeTeklifGoster ?? false) && AccountModel.instance.adminMi) {
+            dialogManager.showInfoMaterialBannerWithAction(value.karsilamaBaslik ?? "", desc: value.karsilamaMesaji, onAction: getTeklif);
+          } else {
+            dialogManager.showInfoMaterialBanner(value.karsilamaBaslik ?? "", desc: value.karsilamaMesaji);
+          }
         }
       }
       await DIManager.init();
@@ -170,15 +177,20 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                   child: ListTile(
                     title: Text(value.karsilamaBaslik ?? value.karsilamaMesaji ?? ""),
                     subtitle: TextScroll(value.karsilamaMesaji ?? ""),
-                    leading: const Icon(Icons.crisis_alert_outlined),
+                    leading: const Icon(Icons.warning_outlined),
                     trailing: IconButton(
                       icon: const Icon(Icons.chevron_right),
-                      onPressed: () {
-                        dialogManager.showInfoDialog(value.karsilamaMesaji ?? "");
+                      onPressed: () async {
+                        if (value.sozlesmeUyarisiGoster != true) return;
+                        if ((value.sozlesmeTeklifGoster ?? false) && AccountModel.instance.adminMi) {
+                          await getTeklif();
+                        } else {
+                          dialogManager.showInfoDialog(value.karsilamaMesaji ?? "");
+                        }
                       },
                     ),
                   ),
-                ),
+                ).paddingAll(UIHelper.lowSize),
             Expanded(
               child: Stack(
                 children: [
@@ -325,4 +337,16 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   //     return const Icon(Icons.star_border, size: 20);
   //   }
   // }
+
+  Future<void> getTeklif() async {
+    dialogManager.showAreYouSureDialog(
+      () async {
+        final result = await networkManager.dioPost(path: ApiUrls.teklifIste, bodyModel: const TeklifIsteModel(), data: AccountModel.instance, showLoading: true);
+        if (result.isSuccess) {
+          dialogManager.showSuccesDialog(result.dataList.first.mesaj ?? "Teklif isteği başarıyla gönderildi.");
+        }
+      },
+      title: "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.karsilamaMesaji}\n\nTeklif almak ister misiniz?",
+    );
+  }
 }
