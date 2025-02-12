@@ -23,6 +23,7 @@ abstract final class ApiUrls {
   static const String saveEvrak = "General/SaveEvrak";
   static const String saveUyeBilgileri = "https://storews.netfect.com/api/Picker/SaveUyeBilgileri";
   static const String surumYenilikleri = "https://storews.netfect.com/api/Picker/GetSurumYenilikleri";
+  static const String teklifIste = "https://storews.netfect.com/api/Picker/PickerTeklifIste";
   // static const String surumYenilikleri = "http://ofis.bracket.com.tr:7575/NetStore/api/Picker/GetSurumYenilikleri";
   static const String token = "token";
   static const String veriTabanlari = "General/GetVeritabanlari";
