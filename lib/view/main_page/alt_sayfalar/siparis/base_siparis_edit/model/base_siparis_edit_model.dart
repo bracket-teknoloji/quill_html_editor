@@ -337,8 +337,10 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     if (_instance?.isNew == true && _instance?.belgeNo != null && _instance?.kalemList.ext.isNotNullOrEmpty == true) {
       // final BaseSiparisEditModel? otherInstance = _instance?.siparisTipi?.getEditModel;
       // if (_instance != otherInstance) {
-      const uuid = Uuid();
-      _instance?.uuid = uuid.v4();
+      if (_instance?.uuid == null) {
+        const uuid = Uuid();
+        _instance?.uuid = uuid.v4();
+      }
       final EditTipiEnum? editTipi = _instance?.getEditTipiEnum;
       if (editTipi.siparisMi) CacheManager.addSiparisEditListItem(_instance!);
       if (editTipi.faturaMi) CacheManager.addFaturaEditListItem(_instance!);

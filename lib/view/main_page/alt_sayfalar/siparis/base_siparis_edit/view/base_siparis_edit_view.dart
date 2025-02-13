@@ -201,7 +201,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
             return;
           }
           await dialogManager.showAreYouSureDialog(() {
-            Get.back(result: false);
+            Get.back();
             BaseSiparisEditModel.resetInstance();
           });
         },
@@ -349,7 +349,7 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
                       dialogManager.showAreYouSureDialog(() async {
                         if (await postData()) {
                           await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                          Get.back(result: true);
+                          Get.back(result: BaseSiparisEditModel.instance);
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;

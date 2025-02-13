@@ -259,8 +259,9 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                     onPressed: () async {
                       dialogManager.showAreYouSureDialog(() async {
                         if (await postData()) {
-                          Get.back(result: true);
-                          await dialogManager.showAreYouSureDialog(
+                          Get.back(result: BaseSiparisEditModel.instance.belgeNo);
+                          if (!(widget.model.editTipiEnum?.otoPDFGor ?? false)) {
+                            await dialogManager.showAreYouSureDialog(
                             () async {
                               final PdfModel pdfModel = PdfModel(
                                 raporOzelKod: BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue ?? "",
@@ -274,6 +275,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                             },
                             title: "PDF görüntülemek ister misiniz?",
                           );
+                          }
                           await CacheManager.removeTransferEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                           BaseSiparisEditModel.resetInstance();
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {

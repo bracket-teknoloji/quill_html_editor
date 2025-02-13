@@ -213,6 +213,18 @@ extension EditTipiEnumExtension on EditTipiEnum {
     };
   }
 
+  bool get otoPDFGor => switch (this) {
+        EditTipiEnum.satisFatura => yetkiController.sevkiyatSatFatOtomatikPDFGor,
+        EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsOtomatikPDFGor,
+        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOtomatikPDFGor,
+        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatOtomatikPDFGor,
+        EditTipiEnum.ambarGirisi => yetkiController.transferAgOtomatikPDFGor,
+        EditTipiEnum.ambarCikisi => yetkiController.transferAcOtomatikPDFGor,
+        EditTipiEnum.musteri => yetkiController.siparisMSOtomatikPDFGor,
+        EditTipiEnum.satici => yetkiController.siparisSSOtomatikPDFGor,
+        _ => false
+      };
+
   bool get kalemlerKlavyeAcilmasin {
     if (!barkodluUrunGirisi) return true;
     return switch (this) {
@@ -383,7 +395,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   bool get yazdirilsinMi => switch (this) {
         EditTipiEnum.musteri => yetkiController.yazdirmaMusSip,
         EditTipiEnum.satici => yetkiController.yazdirmaSaticiSip,
-        EditTipiEnum.satisFatura => yetkiController.yazdirmaSaticiSip,
+        EditTipiEnum.satisFatura => yetkiController.yazdirmaSatisFat,
         EditTipiEnum.satisIrsaliye => yetkiController.yazdirmaSatisIrs,
         EditTipiEnum.alisFatura => yetkiController.yazdirmaAlisFat,
         EditTipiEnum.alisIrsaliye => yetkiController.yazdirmaAlisIrs,
@@ -392,16 +404,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
         EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.yazdirmaDepoTransferi,
         EditTipiEnum.ambarGirisi => yetkiController.yazdirmaAmbarGirisi,
         EditTipiEnum.ambarCikisi => yetkiController.yazdirmaAmbarCikisi,
-        EditTipiEnum.alisTalebi ||
-        EditTipiEnum.isEmri ||
-        EditTipiEnum.altIsEmri ||
-        EditTipiEnum.isEmriTakip ||
-        EditTipiEnum.uretimSonuKaydi ||
-        EditTipiEnum.cari ||
-        EditTipiEnum.uretim ||
-        EditTipiEnum.paket ||
-        EditTipiEnum.belgesizIslem =>
-          false
+        _ => false,
       };
 
   bool degistirilmeyecekAlanlar(String value) => switch (this) {

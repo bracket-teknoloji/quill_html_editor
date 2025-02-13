@@ -209,7 +209,7 @@ final class LocationManager implements InjectableInterface {
           "KONUM_ENLEM": _lastPosition?.latitude,
           "KONUM_TARIHI": "${_lastPositionTime?.toDateString} ${_lastPositionTime?.getTime}",
           "KONUM_DATE": _lastPositionTime?.toIso8601String(),
-          if (_lastPosition?.speed case final speed?) "KONUM_HIZ": speed,
+          if ((_lastPosition?.speed ?? 0) != 0) "KONUM_HIZ": _lastPosition?.speed,
         },
       );
       log("Konum verisi başarıyla gönderildi.", name: "LocationManager");
@@ -224,14 +224,14 @@ final class LocationManager implements InjectableInterface {
   Future<bool> _requestLocationPermission() async {
     if (kIsWeb) {
       await Permission.location.request();
+      return await Permission.location.isGranted;
     } else {
       if (await Permission.locationAlways.status.isPermanentlyDenied) {
         await Permission.locationAlways.request();
+        return await Permission.locationAlways.isGranted;
       }
     }
-
-    final status = await Permission.locationWhenInUse.request();
-    return status.isGranted;
+    return false;
   }
 
   @override

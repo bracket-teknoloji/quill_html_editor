@@ -4,6 +4,8 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
@@ -241,7 +243,10 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrollDown,
             onPressed: () async {
-              await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum));
+              final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum));
+              if (result is BaseSiparisEditModel) {
+                await resetPage(result);
+              }
               await viewModel.resetList();
             },
           ),
@@ -266,8 +271,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                 await viewModel.resetList();
               },
               onUpdated: (value) async {
-                if (value) {
-                  await viewModel.resetList();
+                if (value != null) {
+                  await resetPage(item);
                 }
               },
             ),
@@ -764,5 +769,26 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
     _kod3Controller.clear();
     _kod4Controller.clear();
     _kod5Controller.clear();
+  }
+
+  Future<void> resetPage(BaseSiparisEditModel item) async {
+    await viewModel.resetList();
+    if (widget.editTipiEnum.otoPDFGor) {
+      final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, null, editTipi: widget.editTipiEnum);
+      if (dizayn == null) {
+        return;
+      }
+      final PdfModel pdfModel = PdfModel(
+        raporOzelKod: widget.editTipiEnum.getPrintValue,
+        dizaynId: dizayn.id,
+        dicParams: DicParams(
+          belgeNo: item.isTempBelge ? "" : item.belgeNo!,
+          belgeTipi: item.getEditTipiEnum?.rawValue,
+          cariKodu: item.cariKodu,
+          tempBelgeId: item.isTempBelge ? item.tempBelgeId.toStringIfNotNull : null,
+        ),
+      );
+      await Get.to(() => PDFViewerView(title: dizayn.dizaynAdi ?? "", pdfData: pdfModel));
+    }
   }
 }

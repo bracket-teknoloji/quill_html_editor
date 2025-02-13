@@ -326,7 +326,6 @@ final class YetkiController {
   bool get siparisMSKaydet => _isTrue(_yetkiModel?.siparisMusteriSiparisiKaydet);
   bool get siparisMSSil => _isTrue(_yetkiModel?.siparisMusteriSiparisiSil);
   bool get siparisMSCariKoduDegistir => _isTrue(_yetkiModel?.siparisMusSipCariKoduDegistir);
-  bool get siparisMSOtoPdfGor => _isTrue(_yetkiModel?.siparisMusSipOtoPdfGor);
   bool get siparisMSKapalilarListelenmesin => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapalilarListelenmesin);
   bool get siparisMSBirim1denKaydet => _isTrue(_yetkiModel?.siparisMusSipBirim1DenKaydet);
   bool get siparisMSKapatmaIslemi => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
@@ -932,6 +931,16 @@ final class YetkiController {
   bool get yazdirmaHucre => _isTrue(_yetkiModel?.yazdirmaHucreEtiketi);
   bool get yazdirmaPaketlemeEtiketi => _isTrue(_yetkiModel?.yazdirmaPaketlemeEtiketi);
 
+
+  //! Otomatik PDF Gör
+  bool get siparisMSOtomatikPDFGor => _isTrue(_yetkiModel?.siparisMusSipOtoPdfGor, skipAdmin: true);
+  bool get siparisSSOtomatikPDFGor => _isTrue(_yetkiModel?.siparisSaticiSipOtoPdfGor, skipAdmin: true);
+  bool get malKabulAlisIrsOtomatikPDFGor => _isTrue(_yetkiModel?.malKabulAlisIrsOtoPdfGor, skipAdmin: true);
+  bool get sevkiyatSatisIrsOtomatikPDFGor => _isTrue(_yetkiModel?.sevkiyatSatisIrsOtoPdfGor, skipAdmin: true);
+  bool get sevkiyatSatFatOtomatikPDFGor => _isTrue(_yetkiModel?.sevkiyatSatisFatOtoPdfGor, skipAdmin: true);
+  bool get transferDatOtomatikPDFGor => _isTrue(_yetkiModel?.transferDatOtoPdfGor, skipAdmin: true);
+  bool get transferAcOtomatikPDFGor => _isTrue(_yetkiModel?.transferAcOtoPdfGor, skipAdmin: true);
+  bool get transferAgOtomatikPDFGor => _isTrue(_yetkiModel?.transferAgOtoPdfGor, skipAdmin: true);
   //! Kopyala
   bool get kopyalaMusSip => _isTrue(_yetkiModel?.siparisMusSipBelgeKopyala);
   bool get kopyalaAlisTalebi => _isTrue(_yetkiModel?.taltekAtalBelgeKopyala);

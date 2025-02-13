@@ -729,7 +729,7 @@ final class BottomSheetDialogManager {
 
   Future<NetFectDizaynList?> showDizaynBottomSheetDialog(BuildContext context, dynamic groupValue, {DizaynOzelKodEnum? ozelKod, EditTipiEnum? editTipi}) async {
     final List<NetFectDizaynList> netFectDizaynList =
-        (_paramModel?.netFectDizaynList ?? <NetFectDizaynList>[]).where((element) => element.ozelKod == ozelKod?.ozelKodAdi).toList().filteredDizaynList(editTipi);
+        (_paramModel?.netFectDizaynList ?? <NetFectDizaynList>[]).where((element) => ozelKod == null ? true : element.ozelKod == ozelKod.ozelKodAdi).toList().filteredDizaynList(editTipi);
     log(netFectDizaynList.toString());
     final NetFectDizaynList? dizayn = await showRadioBottomSheetDialog(
       context,

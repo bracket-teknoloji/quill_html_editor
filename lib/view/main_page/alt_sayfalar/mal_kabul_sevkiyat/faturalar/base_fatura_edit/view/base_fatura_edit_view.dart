@@ -362,7 +362,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           }
           await dialogManager.showAreYouSureDialog(() {
             BaseSiparisEditModel.resetInstance();
-            Get.back(result: false);
+            Get.back();
           });
         },
         child: DefaultTabController(
@@ -515,7 +515,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                         await dialogManager.showAreYouSureDialog(() async {
                           if (await postData()) {
                             await CacheManager.removeFaturaEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                            Get.back(result: true);
+                            Get.back(result: BaseSiparisEditModel.instance);
                             if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                               BaseSiparisEditModel.resetInstance();
                               BaseSiparisEditModel.instance.isNew = true;

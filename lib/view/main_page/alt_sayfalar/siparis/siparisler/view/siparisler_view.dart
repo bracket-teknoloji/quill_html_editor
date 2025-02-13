@@ -5,6 +5,8 @@ import "package:flutter/rendering.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
+import "package:picker/core/base/view/pdf_viewer/view/pdf_viewer_view.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/model/base_grup_kodu_model.dart";
@@ -550,15 +552,13 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
             onPressed: () async {
-              await Get.toNamed(
+              final result = await Get.toNamed(
                 "mainPage/siparisEdit",
                 arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.widgetModel.editTipiEnum),
               );
-              viewModel
-                ..setSiparislerList(null)
-                ..setDahaVarMi(true)
-                ..resetSayfa();
-              getData();
+              if (result is BaseSiparisEditModel) {
+                await resetPage(result);
+              }
             },
           ),
         ),
@@ -600,13 +600,9 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                           index: index,
                           editTipiEnum: widget.widgetModel.editTipiEnum,
                           onDeleted: () => viewModel.removeSiparislerList(index),
-                          onUpdated: (value) {
-                            if (value) {
-                              viewModel
-                                ..setSiparislerList(null)
-                                ..setDahaVarMi(true)
-                                ..resetSayfa();
-                              getData();
+                          onUpdated: (value) async {
+                            if (value is BaseSiparisEditModel) {
+                              await resetPage(value);
                             }
                           },
                         ),
@@ -728,5 +724,30 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
     kod3Controller.clear();
     kod4Controller.clear();
     kod5Controller.clear();
+  }
+
+  Future<void> resetPage(BaseSiparisEditModel item) async {
+    viewModel
+      ..setSiparislerList(null)
+      ..setDahaVarMi(true)
+      ..resetSayfa();
+    await getData();
+    if (widget.widgetModel.editTipiEnum.otoPDFGor) {
+      final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, null, editTipi: widget.widgetModel.editTipiEnum);
+      if (dizayn == null) {
+        return;
+      }
+      final PdfModel pdfModel = PdfModel(
+        raporOzelKod: widget.widgetModel.editTipiEnum.getPrintValue,
+        dizaynId: dizayn.id,
+        dicParams: DicParams(
+          belgeNo: item.isTempBelge ? "" : item.belgeNo!,
+          belgeTipi: item.getEditTipiEnum?.rawValue,
+          cariKodu: item.cariKodu,
+          tempBelgeId: item.isTempBelge ? item.tempBelgeId.toStringIfNotNull : null,
+        ),
+      );
+      await Get.to(() => PDFViewerView(title: dizayn.dizaynAdi ?? "", pdfData: pdfModel));
+    }
   }
 }
