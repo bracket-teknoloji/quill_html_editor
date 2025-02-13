@@ -16,7 +16,7 @@ import "../../../../../../core/components/button/elevated_buttons/footer_button.
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../../../../core/init/platform_implementations.dart" if (dart.library.html) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
+import "../../../../../../core/init/platform_implementations.dart" if (dart.library.js_interop) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
 import "../../e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../model/e_belge_pdf_request_model.dart";
 import "../view_model/e_belge_pdf_view_model.dart";

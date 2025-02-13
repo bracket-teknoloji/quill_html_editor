@@ -1,20 +1,12 @@
-import "dart:js_interop" as js;
+import "dart:html" as web_file;
 
 import "package:flutter/foundation.dart";
-import "package:web/web.dart" as web_file;
 
 void fileDownload(Uint8List data, String fileName) {
   if (kIsWeb) {
-    final blob = web_file.Blob(
-      js.JSArray()..add(data.jsify()),
-      web_file.BlobPropertyBag(
-        type: "native",
-        endings: "application/pdf",
-      ),
-    );
+    final blob = web_file.Blob([data], "application/pdf", "native");
 
-    web_file.HTMLAnchorElement()
-      ..href = web_file.URL.createObjectURL(blob)
+    web_file.AnchorElement(href: web_file.Url.createObjectUrlFromBlob(blob))
       ..setAttribute("download", fileName)
       ..click();
   }
