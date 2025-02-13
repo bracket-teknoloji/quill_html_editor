@@ -29,7 +29,7 @@ import "../layout/custom_layout_builder.dart";
 final class FaturalarCard extends StatefulWidget {
   const FaturalarCard({required this.model, required this.editTipiEnum, super.key, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.onDeleted, this.index, this.isGetData});
   final BaseSiparisEditModel model;
-  final ValueChanged<bool>? onUpdated;
+  final ValueChanged<BaseSiparisEditModel?>? onUpdated;
   final bool? showMiktar;
   final EditTipiEnum editTipiEnum;
   final bool? showVade;
@@ -87,7 +87,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                       onTap: () async {
                         Get.back();
                         final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
-                        if (result == true) {
+                        if (result is BaseSiparisEditModel) {
                           if (model.isNew == true) {
                             CacheManager.removeFaturaEditList(model.belgeNo ?? "");
                           }
@@ -160,7 +160,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                         await dialogManager.showFaturaGridViewDialog(
                           model: result,
                           onSelected: (value) {
-                            widget.onUpdated?.call(value);
+                            if (value) widget.onUpdated?.call(widget.model);
                           },
                         );
                       },
@@ -178,11 +178,11 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                         final result = await dialogManager.showEBelgeGridViewDialog(
                           model: model,
                           onSelected: (value) {
-                            widget.onUpdated?.call(value);
+                            if (value) widget.onUpdated?.call(widget.model);
                           },
                         );
                         if (result == true) {
-                          widget.onUpdated?.call(true);
+                          if (result) widget.onUpdated?.call(widget.model);
                         }
                       },
                     ),
@@ -285,7 +285,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
     await dialogManager.showFaturaGridViewDialog(
       model: model,
       onSelected: (value) {
-        widget.onUpdated?.call(value);
+        if (value) widget.onUpdated?.call(widget.model);
       },
     );
   }

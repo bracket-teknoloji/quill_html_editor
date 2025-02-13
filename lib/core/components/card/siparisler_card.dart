@@ -46,7 +46,7 @@ final class SiparislerCard extends StatefulWidget {
   final bool? isGetData;
   final BaseSiparisEditModel model;
   final Function? onDeleted;
-  final ValueChanged<bool>? onUpdated;
+  final ValueChanged<BaseSiparisEditModel?>? onUpdated;
   final bool? showEkAciklama;
   final bool? showMiktar;
   final bool? showVade;
@@ -78,7 +78,7 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
               model: widget.model,
               siparisTipi: widget.model.getEditTipiEnum,
               onSelected: (value) {
-                widget.onUpdated?.call(value);
+                if (value) widget.onUpdated?.call(widget.model);
               },
             );
           }
@@ -92,7 +92,7 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
                       model: widget.model,
                       siparisTipi: widget.model.getEditTipiEnum,
                       onSelected: (value) {
-                        widget.onUpdated?.call(value);
+                        if (value) widget.onUpdated?.call(widget.model);
                       },
                     );
                   }
@@ -109,11 +109,12 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
                           title: loc.generalStrings.view,
                           iconWidget: Icons.preview_outlined,
                           onTap: () {
-                            Get.back();
-                            return Get.toNamed(
-                              "mainPage/siparisEdit",
-                              arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum),
-                            );
+                            Get
+                              ..back()
+                              ..toNamed(
+                                "mainPage/siparisEdit",
+                                arguments: BaseEditModel(model: SiparisEditRequestModel.fromSiparislerModel(widget.model), baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum),
+                              );
                           },
                         ),
                         if (yetkiController.siparisDuzelt(widget.model.getEditTipiEnum) && widget.model.tipi != 1)
@@ -133,11 +134,11 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
                                   editTipiEnum: widget.editTipiEnum,
                                 ),
                               );
-                              if (result == true) {
+                              if (result is BaseSiparisEditModel) {
                                 if (widget.model.isNew == true) {
                                   CacheManager.removeSiparisEditList(widget.model.belgeNo ?? "");
                                 }
-                                widget.onUpdated?.call(true);
+                                widget.onUpdated?.call(result);
                               }
                             },
                           ),
@@ -215,7 +216,7 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
                                 model: widget.model,
                                 siparisTipi: widget.model.getEditTipiEnum,
                                 onSelected: (value) {
-                                  widget.onUpdated?.call(value);
+                                  if (value) widget.onUpdated?.call(widget.model);
                                 },
                               );
                             },

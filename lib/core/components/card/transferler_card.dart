@@ -24,7 +24,7 @@ import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 final class TransferlerCard extends StatefulWidget {
   const TransferlerCard({required this.model, required this.editTipiEnum, super.key, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.onDeleted, this.index});
   final BaseSiparisEditModel model;
-  final ValueChanged<bool>? onUpdated;
+  final ValueChanged<BaseSiparisEditModel?>? onUpdated;
   final bool? showMiktar;
   final EditTipiEnum editTipiEnum;
   final bool? showVade;
@@ -58,7 +58,7 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
             await dialogManager.showTransferGridViewDialog(
               model: widget.model,
               onSelected: (value) {
-                widget.onUpdated?.call(value);
+                if (value) widget.onUpdated?.call(widget.model);
               },
             );
           },
@@ -81,7 +81,7 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                   onTap: () async {
                     Get.back();
                     final result = await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
-                    if (result != null) {
+                    if (result is BaseSiparisEditModel) {
                       if (widget.model.isNew == true) {
                         CacheManager.removeTransferEditList(model.belgeNo ?? "");
                       }
@@ -153,7 +153,7 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                     await dialogManager.showTransferGridViewDialog(
                       model: widget.model,
                       onSelected: (value) {
-                        widget.onUpdated?.call(value);
+                        if (value) widget.onUpdated?.call(widget.model);
                       },
                     );
                   },
@@ -171,11 +171,11 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                     final result = await dialogManager.showEBelgeGridViewDialog(
                       model: widget.model,
                       onSelected: (value) {
-                        widget.onUpdated?.call(value);
+                        if (value) widget.onUpdated?.call(widget.model);
                       },
                     );
                     if (result == true) {
-                      widget.onUpdated?.call(true);
+                      widget.onUpdated?.call(widget.model);
                     }
                   },
                 ),
