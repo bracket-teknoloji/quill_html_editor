@@ -82,7 +82,6 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
         actions: [
           IconButton(
             onPressed: () async {
-              //! EKLENECEK
               await fileChecker();
             },
             icon: const Icon(Icons.share_outlined),
