@@ -63,7 +63,7 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
             tabController.animateTo(tabController.previousIndex);
           }
         }
-        if (tabController.index == (3) && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
+        if (tabController.index == 3 && BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty) {
           viewModel.changeIsLastPage(true);
         } else {
           viewModel.changeIsLastPage(false);
