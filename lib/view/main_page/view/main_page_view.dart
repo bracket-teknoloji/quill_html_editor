@@ -168,25 +168,26 @@ final class _MainPageViewState extends BaseState<MainPageView> {
           children: [
             if (kIsWeb)
               if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "") case final value?)
-                Card(
-                  color: UIHelper.primaryColor.withValues(alpha: 0.7),
-                  child: ListTile(
-                    title: Text(value.karsilamaBaslik ?? value.karsilamaMesaji ?? ""),
-                    subtitle: TextScroll(value.karsilamaMesaji ?? ""),
-                    leading: const Icon(Icons.warning_outlined),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.chevron_right),
-                      onPressed: () async {
-                        if (value.sozlesmeUyarisiGoster != true) return;
-                        if ((value.sozlesmeTeklifGoster ?? false) && AccountModel.instance.adminMi) {
-                          await getTeklif();
-                        } else {
-                          dialogManager.showInfoDialog(value.karsilamaMesaji ?? "");
-                        }
-                      },
+                if (value.sozlesmeUyarisiGoster ?? false)
+                  Card(
+                    color: UIHelper.primaryColor.withValues(alpha: 0.7),
+                    child: ListTile(
+                      title: Text(value.karsilamaBaslik ?? value.karsilamaMesaji ?? ""),
+                      subtitle: TextScroll(value.karsilamaMesaji ?? ""),
+                      leading: const Icon(Icons.warning_outlined),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.chevron_right),
+                        onPressed: () async {
+                          if (value.sozlesmeUyarisiGoster != true) return;
+                          if ((value.sozlesmeTeklifGoster ?? false) && AccountModel.instance.adminMi) {
+                            await getTeklif();
+                          } else {
+                            dialogManager.showInfoDialog(value.karsilamaMesaji ?? "");
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                ).paddingAll(UIHelper.lowSize),
+                  ).paddingAll(UIHelper.lowSize),
             Expanded(
               child: Stack(
                 children: [
