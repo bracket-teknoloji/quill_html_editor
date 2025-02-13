@@ -236,32 +236,34 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
               //TODO Serileri ekle
 
               Observer(
-                builder: (_) =>viewModel.stokModel?.seriGirislerdeAcik == true?  CustomTextField(
-                  labelText: "Seriler",
-                  isMust: true,
-                  controller: serilerController,
-                  suffixMore: true,
-                  readOnly: true,
-                  onTap: () async {
-                    final result = await Get.toNamed(
-                      "seriListesi",
-                      arguments: KalemModel.fromStokListesiModel(viewModel.stokModel!)
-                        ..miktar = viewModel.filtreModel.miktar
-                        ..seriList = viewModel.filtreModel.seriList,
-                    );
-                    if (result is List<SeriList>) {
-                      viewModel.setSeriler(result.map((e) => e.copyWith(depoKodu: viewModel.filtreModel.depoKodu, stokKodu: viewModel.stokModel!.stokKodu)).toList());
-                      serilerController.text = "${result.length} adet seri.Miktar: ${result.map((element) => element.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
-                    }
-                  },
-                  validator: (value) {
-                    if (value == "") return "Bu alan boş bırakılamaz.";
-                    if (viewModel.stokModel?.seriMiktarKadarSor == true && viewModel.filtreModel.miktar != viewModel.filtreModel.seriList?.length) {
-                      return "Girdiğiniz miktar (${viewModel.filtreModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.filtreModel.seriList?.length ?? 0})";
-                    }
-                    return null;
-                  },
-                ) : const SizedBox.shrink(),
+                builder: (_) => viewModel.stokModel?.seriGirislerdeAcik == true
+                    ? CustomTextField(
+                        labelText: "Seriler",
+                        isMust: true,
+                        controller: serilerController,
+                        suffixMore: true,
+                        readOnly: true,
+                        onTap: () async {
+                          final result = await Get.toNamed(
+                            "seriListesi",
+                            arguments: KalemModel.fromStokListesiModel(viewModel.stokModel!)
+                              ..miktar = viewModel.filtreModel.miktar
+                              ..seriList = viewModel.filtreModel.seriList,
+                          );
+                          if (result is List<SeriList>) {
+                            viewModel.setSeriler(result.map((e) => e.copyWith(depoKodu: viewModel.filtreModel.depoKodu, stokKodu: viewModel.stokModel!.stokKodu)).toList());
+                            serilerController.text = "${result.length} adet seri.Miktar: ${result.map((element) => element.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+                          }
+                        },
+                        validator: (value) {
+                          if (value == "") return "Bu alan boş bırakılamaz.";
+                          if (viewModel.stokModel?.seriMiktarKadarSor == true && viewModel.filtreModel.miktar != viewModel.filtreModel.seriList?.length) {
+                            return "Girdiğiniz miktar (${viewModel.filtreModel.miktar.toIntIfDouble ?? 0}) ve seri miktarı (${viewModel.filtreModel.seriList?.length ?? 0})";
+                          }
+                          return null;
+                        },
+                      )
+                    : const SizedBox.shrink(),
               ),
               CustomLayoutBuilder(
                 splitCount: 2,

@@ -485,8 +485,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
             showCariGrid(object);
           },
         ),
-        if (MenuItemConstants
-                .gridItemModel
+        if (MenuItemConstants.gridItemModel
                 .firstWhereOrNull((element) => element.title == "Cari")
                 ?.altMenuler
                 ?.firstWhereOrNull((element) => element.title == "Raporlar")

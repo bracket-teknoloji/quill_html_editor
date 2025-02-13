@@ -99,29 +99,30 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                   }
                 },
               ),
-              if (yetkiController.cariListesi) CustomTextField(
-                labelText: "Cari",
-                controller: cariController,
-                readOnly: true,
-                suffixMore: true,
-                suffix: IconButton(
-                  onPressed: () async {
-                    if (viewModel.pdfModel.dicParams?.cariKodu == null) {
-                      dialogManager.showAlertDialog("Cari Seçiniz.");
-                      return;
+              if (yetkiController.cariListesi)
+                CustomTextField(
+                  labelText: "Cari",
+                  controller: cariController,
+                  readOnly: true,
+                  suffixMore: true,
+                  suffix: IconButton(
+                    onPressed: () async {
+                      if (viewModel.pdfModel.dicParams?.cariKodu == null) {
+                        dialogManager.showAlertDialog("Cari Seçiniz.");
+                        return;
+                      }
+                      dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.pdfModel.dicParams?.cariKodu ?? ""])));
+                    },
+                    icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                  ),
+                  onTap: () async {
+                    final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                    if (result is CariListesiModel) {
+                      viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu;
+                      cariController.text = result.cariAdi ?? "";
                     }
-                    dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.pdfModel.dicParams?.cariKodu ?? ""])));
                   },
-                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                 ),
-                onTap: () async {
-                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                  if (result is CariListesiModel) {
-                    viewModel.pdfModel.dicParams?.cariKodu = result.cariKodu;
-                    cariController.text = result.cariAdi ?? "";
-                  }
-                },
-              ),
               CustomLayoutBuilder.divideInHalf(
                 children: [
                   if (yetkiController.plasiyerUygulamasiAcikMi)

@@ -75,32 +75,33 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
                   ),
                 ),
               ),
-              if (!viewModel.model.paketMi) CustomTextField(
-                labelText: "Stok",
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                controller: stokController,
-                suffix: IconButton(
-                  onPressed: () async {
-                    final result = await Get.toNamed("/qr");
-                    if (result is String) {
-                      final BaseStokMixin? stok = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: result));
-                      updateStok(stok);
+              if (!viewModel.model.paketMi)
+                CustomTextField(
+                  labelText: "Stok",
+                  readOnly: true,
+                  isMust: true,
+                  suffixMore: true,
+                  controller: stokController,
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final result = await Get.toNamed("/qr");
+                      if (result is String) {
+                        final BaseStokMixin? stok = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: result));
+                        updateStok(stok);
+                      }
+                    },
+                    icon: const Icon(Icons.qr_code_scanner),
+                  ),
+                  onTap: () async {
+                    if (viewModel.model.belgeGorunsunMu) {
+                      final result = await Get.toNamed("mainPage/hucreTakibiStoklar");
+                      updateStok(result);
+                    } else {
+                      final result = await Get.toNamed("mainPage/stokListesiOzel");
+                      updateStok(result);
                     }
                   },
-                  icon: const Icon(Icons.qr_code_scanner),
                 ),
-                onTap: () async {
-                  if (viewModel.model.belgeGorunsunMu) {
-                    final result = await Get.toNamed("mainPage/hucreTakibiStoklar");
-                    updateStok(result);
-                  } else {
-                    final result = await Get.toNamed("mainPage/stokListesiOzel");
-                    updateStok(result);
-                  }
-                },
-              ),
               CustomTextField(
                 labelText: "Paket",
                 readOnly: true,

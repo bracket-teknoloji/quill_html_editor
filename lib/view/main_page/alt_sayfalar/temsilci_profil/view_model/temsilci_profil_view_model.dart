@@ -413,8 +413,8 @@ abstract class _TemsilciProfilViewModelBase with Store {
     "Aralık",
   ];
 
-
-  double get getTahsilatNakit => temsilciProfilList
+  double get getTahsilatNakit =>
+      temsilciProfilList
           ?.where(
             (element) => element.tabloTipi == "TAHSILAT" && element.ayKodu == donemKodu,
           )

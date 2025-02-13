@@ -270,7 +270,6 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                           projeController.text = dialogResult.projeAciklama ?? "";
                           viewModel.model.projeKodu = dialogResult.projeKodu;
                         }
-                        
                       }
                     },
                   ),

@@ -125,7 +125,6 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                     },
                     initialCameraPosition: myLocation,
                     webGestureHandling: WebGestureHandling.greedy,
-                    
                     onMapCreated: (controller) async {
                       if (_controller == null) {
                         _controller = controller;

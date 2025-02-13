@@ -132,7 +132,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
       return;
     }
     if (kalemModel.otvOranmi == true) {
-        kalemModel = kalemModel.copyWith(otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.getAraToplamTutari);
+      kalemModel = kalemModel.copyWith(otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.getAraToplamTutari);
     } else {
       kalemModel = kalemModel.copyWith(otvTutar: (model?.otvDeger ?? 0) * (kalemModel.miktar ?? 0));
     }

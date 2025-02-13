@@ -376,8 +376,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
       }
     } else {
       final bool satisMi = model.getEditTipiEnum?.satisMi ?? false;
-      final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)
-        ..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
+      final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
       if (model.getEditTipiEnum?.urunOtomatikEklensin ?? false) {
         BaseSiparisEditModel.instance.kalemList ??= [];
         BaseSiparisEditModel.instance.kalemList?.add(kalemModel);

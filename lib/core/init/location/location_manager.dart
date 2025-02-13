@@ -224,10 +224,10 @@ final class LocationManager implements InjectableInterface {
   Future<bool> _requestLocationPermission() async {
     if (kIsWeb) {
       await Permission.location.request();
-    }else {
-    if (await Permission.locationAlways.status.isPermanentlyDenied) {
-      await Permission.locationAlways.request();
-    }
+    } else {
+      if (await Permission.locationAlways.status.isPermanentlyDenied) {
+        await Permission.locationAlways.request();
+      }
     }
 
     final status = await Permission.locationWhenInUse.request();

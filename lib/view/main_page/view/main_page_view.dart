@@ -58,7 +58,6 @@ final class _MainPageViewState extends BaseState<MainPageView> {
           }
         }
       }
-      
     });
     super.initState();
   }
