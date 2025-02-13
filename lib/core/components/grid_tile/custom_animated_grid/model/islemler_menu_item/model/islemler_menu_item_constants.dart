@@ -250,7 +250,6 @@ final class IslemlerMenuItemConstants<T> {
   // T? get model2 => model;
   DialogManager get _dialogManager => DialogManager();
   NetworkManager get _networkManager => NetworkManager();
-  ParamModel get _paramModel => CacheManager.getAnaVeri?.paramModel ?? ParamModel();
   YetkiController get _yetkiController => YetkiController();
   ProfilYetkiModel? get _userModel => CacheManager.getAnaVeri?.userModel?.profilYetki;
   BottomSheetDialogManager get _bottomSheetDialogManager => BottomSheetDialogManager();
@@ -460,10 +459,7 @@ final class IslemlerMenuItemConstants<T> {
         iconData: Icons.picture_as_pdf_outlined,
         onTap: () async {
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
-          final List<NetFectDizaynList> dizaynList =
-              (_paramModel.netFectDizaynList?.filteredDizaynList(siparisModel?.getEditTipiEnum) ?? []).where((element) => element.ozelKod == siparisModel?.getEditTipiEnum?.getPrintValue).toList();
-          final result =
-              await _bottomSheetDialogManager.showBottomSheetDialog(context, title: "PDF Görüntüle", children: dizaynList.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e)).toList());
+          final result = await _bottomSheetDialogManager.showDizaynBottomSheetDialog(context, null, editTipi: (model as BaseSiparisEditModel).getEditTipiEnum);
           if (result is NetFectDizaynList) {
             // Get.back();
             Get.to(
