@@ -100,6 +100,7 @@ dependencies:
   package_info_plus: ^8.1.0
   geolocator: ^13.0.2
   get_it: ^8.0.3
+  web: ^1.1.0
 # dependency_overrides:
 # google_maps_flutter_ios: 2.3.0
 # rive: 0.13.15

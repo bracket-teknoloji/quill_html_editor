@@ -18,8 +18,10 @@ analyzer:
     invalid_annotation_target: false
 
 format:
+  page_width: 200
   exclude:
   - "**/*.g.dart"
+  - "**/*.freezed.dart"
 
 linter:
   # The lint rules applied to this project can be customized in the
@@ -87,7 +89,6 @@ linter:
     package_names: true
     avoid_redundant_argument_values: true
     cascade_invocations: true
-    package_api_docs: true
     prefer_typing_uninitialized_variables: true
     slash_for_doc_comments: true
     use_rethrow_when_possible: true
