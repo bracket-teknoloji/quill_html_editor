@@ -128,117 +128,113 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        // resizeToAvoidBottomInset: true,
-        // extendBody: true,
-        // extendBodyBehindAppBar: false,
-        appBar: appBar(),
-        floatingActionButton: fab(),
-        body: body(),
-        bottomNavigationBar: bottomBar(),
-      );
+    // resizeToAvoidBottomInset: true,
+    // extendBody: true,
+    // extendBodyBehindAppBar: false,
+    appBar: appBar(),
+    floatingActionButton: fab(),
+    body: body(),
+    bottomNavigationBar: bottomBar(),
+  );
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) {
-            if (viewModel.searchBar) {
-              return CustomAppBarTextField(
-                onFieldSubmitted: (value) async {
-                  viewModel.setSearchText(value);
-                  await viewModel.resetList();
-                },
-              );
+    title: Observer(
+      builder: (_) {
+        if (viewModel.searchBar) {
+          return CustomAppBarTextField(
+            onFieldSubmitted: (value) async {
+              viewModel.setSearchText(value);
+              await viewModel.resetList();
+            },
+          );
+        }
+        return AppBarTitle(title: widget.editTipiEnum.getName, subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "");
+      },
+    ),
+    actions: <Widget>[
+      IconButton(onPressed: () async => await viewModel.changeSearchBar(), icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined))),
+    ],
+    bottom: AppBarPreferedSizedBottom(
+      children: [
+        AppBarButton(icon: Icons.filter_alt_outlined, onPressed: () async => await filtrele(), child: Text(loc.generalStrings.filter)),
+        AppBarButton(
+          icon: Icons.sort_by_alpha_outlined,
+          child: Text(loc.generalStrings.sort),
+          onPressed: () async {
+            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              title: "Sıralama",
+              groupValue: viewModel.faturaRequestModel.siralama,
+              children: List.generate(
+                viewModel.siralaMap.length,
+                (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index], groupValue: viewModel.siralaMap.values.toList()[index]),
+              ),
+            );
+            if (result != null) {
+              viewModel.setSiralama(result);
+              await viewModel.resetList();
             }
-            return AppBarTitle(title: widget.editTipiEnum.getName, subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "");
           },
         ),
-        actions: <Widget>[
-          IconButton(onPressed: () async => await viewModel.changeSearchBar(), icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined))),
-        ],
-        bottom: AppBarPreferedSizedBottom(
-          children: [
-            AppBarButton(
-              icon: Icons.filter_alt_outlined,
-              onPressed: () async => await filtrele(),
-              child: Text(loc.generalStrings.filter),
-            ),
-            AppBarButton(
-              icon: Icons.sort_by_alpha_outlined,
-              child: Text(loc.generalStrings.sort),
-              onPressed: () async {
-                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                  context,
-                  title: "Sıralama",
-                  groupValue: viewModel.faturaRequestModel.siralama,
-                  children: List.generate(
-                    viewModel.siralaMap.length,
-                    (index) => BottomSheetModel(
-                      title: viewModel.siralaMap.keys.toList()[index],
-                      value: viewModel.siralaMap.values.toList()[index],
-                      groupValue: viewModel.siralaMap.values.toList()[index],
-                    ),
-                  ),
-                );
-                if (result != null) {
-                  viewModel.setSiralama(result);
-                  await viewModel.resetList();
-                }
-              },
-            ),
-            AppBarButton(
-              onPressed: () async {
-                await bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: loc.generalStrings.options,
-                  children: <BottomSheetModel>[
-                    BottomSheetModel(
+        AppBarButton(
+          onPressed: () async {
+            await bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: loc.generalStrings.options,
+              children: <BottomSheetModel>[
+                BottomSheetModel(
+                  title: "Görünecek Ekstra Alanlar",
+                  iconWidget: Icons.add_circle_outline_outlined,
+                  onTap: () async {
+                    Get.back();
+                    await bottomSheetDialogManager.showBottomSheetDialog(
+                      context,
                       title: "Görünecek Ekstra Alanlar",
-                      iconWidget: Icons.add_circle_outline_outlined,
-                      onTap: () async {
-                        Get.back();
-                        await bottomSheetDialogManager.showBottomSheetDialog(
-                          context,
-                          title: "Görünecek Ekstra Alanlar",
-                          body: Column(
-                            children: <Widget>[
-                              Observer(
-                                builder: (_) => SwitchListTile.adaptive(
+                      body: Column(
+                        children: <Widget>[
+                          Observer(
+                            builder:
+                                (_) => SwitchListTile.adaptive(
                                   title: const Text("Ek Açıklamalar"),
                                   value: viewModel.ekstraAlanlarMap["EK"] ?? false,
                                   onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value),
                                 ),
-                              ),
-                              Observer(
-                                builder: (_) => SwitchListTile.adaptive(
+                          ),
+                          Observer(
+                            builder:
+                                (_) => SwitchListTile.adaptive(
                                   title: const Text("Miktar"),
                                   value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                                   onChanged: (value) {
                                     viewModel.changeEkstraAlanlarMap("MİK", value);
                                   },
                                 ),
-                              ),
-                              Observer(
-                                builder: (_) => SwitchListTile.adaptive(
+                          ),
+                          Observer(
+                            builder:
+                                (_) => SwitchListTile.adaptive(
                                   title: const Text("Vade"),
                                   value: viewModel.ekstraAlanlarMap["VADE"] ?? false,
                                   onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value),
                                 ),
-                              ),
-                            ],
                           ),
-                        );
-                      },
-                    ),
-                  ],
-                );
-              },
-              child: const Icon(Icons.more_horiz_outlined),
-            ),
-          ],
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
+            );
+          },
+          child: const Icon(Icons.more_horiz_outlined),
         ),
-      );
+      ],
+    ),
+  );
 
   Observer fab() => Observer(
-        builder: (_) => Visibility(
+    builder:
+        (_) => Visibility(
           visible: viewModel.observableList != null && widget.editTipiEnum.eklensinMi,
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrollDown,
@@ -251,37 +247,41 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
             },
           ),
         ),
-      );
+  );
 
   Widget body() => Observer(
-        builder: (_) => RefreshableListView<BaseSiparisEditModel>.pageable(
+    builder:
+        (_) => RefreshableListView<BaseSiparisEditModel>.pageable(
           scrollController: _scrollController,
           onRefresh: viewModel.resetList,
           dahaVarMi: viewModel.dahaVarMi,
           items: viewModel.observableList,
-          itemBuilder: (item) => Observer(
-            builder: (_) => FaturalarCard(
-              model: item,
-              showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
-              showMiktar: viewModel.ekstraAlanlarMap["MİK"],
-              showVade: viewModel.ekstraAlanlarMap["VADE"],
-              editTipiEnum: widget.editTipiEnum,
-              isGetData: widget.isGetData,
-              onDeleted: () async {
-                await viewModel.resetList();
-              },
-              onUpdated: (value) async {
-                if (value != null) {
-                  await resetPage(item);
-                }
-              },
-            ),
-          ),
+          itemBuilder:
+              (item) => Observer(
+                builder:
+                    (_) => FaturalarCard(
+                      model: item,
+                      showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
+                      showMiktar: viewModel.ekstraAlanlarMap["MİK"],
+                      showVade: viewModel.ekstraAlanlarMap["VADE"],
+                      editTipiEnum: widget.editTipiEnum,
+                      isGetData: widget.isGetData,
+                      onDeleted: () async {
+                        await viewModel.resetList();
+                      },
+                      onUpdated: (value) async {
+                        if (value != null) {
+                          await resetPage(item);
+                        }
+                      },
+                    ),
+              ),
         ),
-      );
+  );
 
   Observer bottomBar() => Observer(
-        builder: (_) => BottomBarWidget(
+    builder:
+        (_) => BottomBarWidget(
           isScrolledDown: viewModel.isScrollDown,
           children: <FooterButton>[
             FooterButton(
@@ -291,10 +291,7 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               ],
             ),
             FooterButton(
-              children: <Widget>[
-                const Text("KDV"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
-              ],
+              children: <Widget>[const Text("KDV"), Observer(builder: (_) => Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))],
             ),
             FooterButton(
               children: <Widget>[
@@ -304,224 +301,215 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
             ),
           ],
         ),
-      );
+  );
 
   Future<void> filtrele() async => await bottomSheetDialogManager.showBottomSheetDialog(
-        context,
-        title: loc.generalStrings.filter,
-        body: Column(
-          children: <Widget>[
-            RaporFiltreDateTimeBottomSheetView(
-              canChangeFuture: true,
-              filterOnChanged: (index) async {
-                viewModel
-                  ..setBaslamaTarihi(_baslangicTarihiController.text)
-                  ..setBitisTarihi(_bitisTarihiController.text);
-              },
-              baslangicTarihiController: _baslangicTarihiController,
-              bitisTarihiController: _bitisTarihiController,
+    context,
+    title: loc.generalStrings.filter,
+    body: Column(
+      children: <Widget>[
+        RaporFiltreDateTimeBottomSheetView(
+          canChangeFuture: true,
+          filterOnChanged: (index) async {
+            viewModel
+              ..setBaslamaTarihi(_baslangicTarihiController.text)
+              ..setBitisTarihi(_bitisTarihiController.text);
+          },
+          baslangicTarihiController: _baslangicTarihiController,
+          bitisTarihiController: _bitisTarihiController,
+        ),
+        CustomLayoutBuilder.divideInHalf(
+          children: [
+            CustomWidgetWithLabel(
+              text: "Kapalı belgeler listelenmesin",
+              isVertical: true,
+              child: Observer(
+                builder: (_) => Switch.adaptive(value: viewModel.faturaRequestModel.kapaliBelgelerListelenmesin ?? false, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value)),
+              ),
             ),
-            CustomLayoutBuilder.divideInHalf(
-              children: [
-                CustomWidgetWithLabel(
-                  text: "Kapalı belgeler listelenmesin",
-                  isVertical: true,
-                  child: Observer(
-                    builder: (_) => Switch.adaptive(
-                      value: viewModel.faturaRequestModel.kapaliBelgelerListelenmesin ?? false,
-                      onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value),
-                    ),
-                  ),
+            if (widget.editTipiEnum.irsaliyeMi)
+              CustomWidgetWithLabel(
+                text: "Faturalananları göster",
+                isVertical: true,
+                child: Observer(
+                  builder: (_) => Switch.adaptive(value: viewModel.faturaRequestModel.faturalanmisIrsaliyelerGelsin ?? false, onChanged: (value) => viewModel.setFaturalasmaGoster(value)),
                 ),
-                if (widget.editTipiEnum.irsaliyeMi)
-                  CustomWidgetWithLabel(
-                    text: "Faturalananları göster",
-                    isVertical: true,
-                    child: Observer(
-                      builder: (_) => Switch.adaptive(
-                        value: viewModel.faturaRequestModel.faturalanmisIrsaliyelerGelsin ?? false,
-                        onChanged: (value) => viewModel.setFaturalasmaGoster(value),
-                      ),
-                    ),
-                  ),
-              ],
-            ),
-            CustomLayoutBuilder.divideInHalf(
-              children: [
-                if (yetkiController.cariListesi)
-                  CustomTextField(
-                    labelText: "Cari",
-                    suffixMore: true,
-                    readOnly: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.cariKodu ?? "")),
-                    controller: _cariController,
-                    onClear: () => viewModel.setCari(null),
-                    suffix: IconButton(
-                      onPressed: () async {
-                        if (viewModel.faturaRequestModel.cariKodu case (null || "")) {
-                          await dialogManager.showAlertDialog("Cari Seçiniz");
-                        } else {
-                          Get.back();
-                          dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.faturaRequestModel.cariKodu);
-                        }
-                      },
-                      icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
-                    ),
-                    onTap: () async {
-                      final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                      if (result is CariListesiModel) {
-                        _cariController.text = result.cariAdi ?? "";
-                        viewModel.setCari(result.cariKodu ?? "");
-                      }
-                    },
-                  ),
-                if (yetkiController.cariListesi)
-                  CustomTextField(
-                    labelText: "Teslim Cari",
-                    suffixMore: true,
-                    readOnly: true,
-                    controller: _teslimCariController,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.teslimCariKodu ?? "")),
-                    onClear: () => viewModel.setTeslimCari(null),
-                    onTap: () async {
-                      final result = await Get.toNamed("/mainPage/cariListesiOzel", arguments: CariRequestModel(bagliCariKodu: viewModel.faturaRequestModel.cariKodu, teslimCari: "E"));
-                      if (result is CariListesiModel) {
-                        _teslimCariController.text = result.cariAdi ?? "";
-                        viewModel.setTeslimCari(result.cariKodu ?? "");
-                      }
-                    },
-                  ),
-                if (yetkiController.cariListesi)
-                  CustomTextField(
-                    labelText: "Cari Tipi",
-                    suffixMore: true,
-                    readOnly: true,
-                    controller: _cariTipiController,
-                    onClear: () => viewModel.setCariTipi(null),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "Cari Tipi",
-                        children: List.generate(
-                          viewModel.tipiMap.length,
-                          (index) => BottomSheetModel(
-                            title: viewModel.tipiMap.keys.toList()[index],
-                            value: viewModel.tipiMap.entries.toList()[index],
-                          ),
-                        ),
-                      );
-                      if (result != null) {
-                        _cariTipiController.text = result.key;
-                        viewModel.setCariTipi(result.value);
-                      }
-                    },
-                  ),
-                if (yetkiController.plasiyerUygulamasiAcikMi)
-                  CustomTextField(
-                    labelText: "Plasiyer",
-                    suffixMore: true,
-                    readOnly: true,
-                    controller: _plasiyerController,
-                    onClear: () => viewModel.setPlasiyerArr([]),
-                    onTap: () async {
-                      final List<PlasiyerList?>? result =
-                          await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? "[]"));
-                      if (result != null) {
-                        _plasiyerController.text = result.map((e) => e?.plasiyerAciklama).join(", ");
-                        viewModel.setPlasiyerArr(result.map((e) => e?.plasiyerKodu).toList());
-                      }
-                    },
-                  ),
-                if (yetkiController.projeUygulamasiAcikMi)
-                  CustomTextField(
-                    labelText: "Proje",
-                    suffixMore: true,
-                    readOnly: true,
-                    controller: _projeController,
-                    onClear: () => viewModel.setProjeKodu(null),
-                    onTap: () async {
-                      final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.faturaRequestModel.projeKodu);
-                      if (result != null) {
-                        _projeController.text = result.projeAciklama ?? "";
-                        viewModel.setProjeKodu(result.projeKodu ?? "");
-                      }
-                    },
-                  ),
-                CustomTextField(
-                  labelText: "Özel Kod 1",
-                  controller: _ozelKod1Controller,
-                  onChanged: (value) => viewModel.setOzelKod1(value),
-                  onClear: () => viewModel.setOzelKod1(null),
-                  suffix: IconButton(
-                    onPressed: () async {
-                      // var result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "Özel Kod Seçiniz",
-                        children: List.generate(viewModel.tipiList.length, (index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index])),
-                      );
-                      if (result != null) {
-                        _ozelKod1Controller.text = result;
-                        viewModel.setOzelKod1(result);
-                      }
-                    },
-                    icon: const Icon(Icons.more_horiz_outlined),
-                  ),
+              ),
+          ],
+        ),
+        CustomLayoutBuilder.divideInHalf(
+          children: [
+            if (yetkiController.cariListesi)
+              CustomTextField(
+                labelText: "Cari",
+                suffixMore: true,
+                readOnly: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.cariKodu ?? "")),
+                controller: _cariController,
+                onClear: () => viewModel.setCari(null),
+                suffix: IconButton(
+                  onPressed: () async {
+                    if (viewModel.faturaRequestModel.cariKodu case (null || "")) {
+                      await dialogManager.showAlertDialog("Cari Seçiniz");
+                    } else {
+                      Get.back();
+                      dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.faturaRequestModel.cariKodu);
+                    }
+                  },
+                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                 ),
-                CustomTextField(
-                  labelText: "Özel Kod 2",
-                  controller: _ozelKod2Controller,
-                  onChanged: (value) => viewModel.setOzelKod2(value),
-                  onClear: () => viewModel.setOzelKod2(null),
-                  suffix: IconButton(
-                    onPressed: () async {
-                      final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.faturaRequestModel.ozelKod2);
-                      if (result != null) {
-                        _ozelKod2Controller.text = result.kod ?? "";
-                        viewModel.setOzelKod2(result.kod);
-                      }
-                    },
-                    icon: const Icon(Icons.more_horiz_outlined),
-                  ),
-                ),
-              ],
+                onTap: () async {
+                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                  if (result is CariListesiModel) {
+                    _cariController.text = result.cariAdi ?? "";
+                    viewModel.setCari(result.cariKodu ?? "");
+                  }
+                },
+              ),
+            if (yetkiController.cariListesi)
+              CustomTextField(
+                labelText: "Teslim Cari",
+                suffixMore: true,
+                readOnly: true,
+                controller: _teslimCariController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.teslimCariKodu ?? "")),
+                onClear: () => viewModel.setTeslimCari(null),
+                onTap: () async {
+                  final result = await Get.toNamed("/mainPage/cariListesiOzel", arguments: CariRequestModel(bagliCariKodu: viewModel.faturaRequestModel.cariKodu, teslimCari: "E"));
+                  if (result is CariListesiModel) {
+                    _teslimCariController.text = result.cariAdi ?? "";
+                    viewModel.setTeslimCari(result.cariKodu ?? "");
+                  }
+                },
+              ),
+            if (yetkiController.cariListesi)
+              CustomTextField(
+                labelText: "Cari Tipi",
+                suffixMore: true,
+                readOnly: true,
+                controller: _cariTipiController,
+                onClear: () => viewModel.setCariTipi(null),
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    context,
+                    title: "Cari Tipi",
+                    children: List.generate(viewModel.tipiMap.length, (index) => BottomSheetModel(title: viewModel.tipiMap.keys.toList()[index], value: viewModel.tipiMap.entries.toList()[index])),
+                  );
+                  if (result != null) {
+                    _cariTipiController.text = result.key;
+                    viewModel.setCariTipi(result.value);
+                  }
+                },
+              ),
+            if (yetkiController.plasiyerUygulamasiAcikMi)
+              CustomTextField(
+                labelText: "Plasiyer",
+                suffixMore: true,
+                readOnly: true,
+                controller: _plasiyerController,
+                onClear: () => viewModel.setPlasiyerArr([]),
+                onTap: () async {
+                  final List<PlasiyerList?>? result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
+                    context,
+                    groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? "[]"),
+                  );
+                  if (result != null) {
+                    _plasiyerController.text = result.map((e) => e?.plasiyerAciklama).join(", ");
+                    viewModel.setPlasiyerArr(result.map((e) => e?.plasiyerKodu).toList());
+                  }
+                },
+              ),
+            if (yetkiController.projeUygulamasiAcikMi)
+              CustomTextField(
+                labelText: "Proje",
+                suffixMore: true,
+                readOnly: true,
+                controller: _projeController,
+                onClear: () => viewModel.setProjeKodu(null),
+                onTap: () async {
+                  final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.faturaRequestModel.projeKodu);
+                  if (result != null) {
+                    _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                    viewModel.setProjeKodu(result.projeKodu ?? "");
+                  }
+                },
+              ),
+            CustomTextField(
+              labelText: "Özel Kod 1",
+              controller: _ozelKod1Controller,
+              onChanged: (value) => viewModel.setOzelKod1(value),
+              onClear: () => viewModel.setOzelKod1(null),
+              suffix: IconButton(
+                onPressed: () async {
+                  // var result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context);
+                  final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                    context,
+                    title: "Özel Kod Seçiniz",
+                    children: List.generate(viewModel.tipiList.length, (index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index])),
+                  );
+                  if (result != null) {
+                    _ozelKod1Controller.text = result;
+                    viewModel.setOzelKod1(result);
+                  }
+                },
+                icon: const Icon(Icons.more_horiz_outlined),
+              ),
             ),
             CustomTextField(
-              labelText: "Belge Tipi",
-              suffixMore: true,
-              controller: _belgeTipiController,
-              readOnly: true,
-              onClear: () => viewModel.setBelgeTipi(null),
-              onTap: () async {
-                final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, int>>(
-                  context,
-                  title: "Belge Tipi",
-                  groupValues: jsonDecode(viewModel.faturaRequestModel.arrBelgeTipi ?? "[]"),
-                  children: List.generate(
-                    viewModel.belgeTipiMap.length,
-                    (index) => BottomSheetModel(
-                      title: viewModel.belgeTipiMap.keys.toList()[index],
-                      description: viewModel.belgeTipiMap.values.toList()[index].toStringIfNotNull,
-                      value: viewModel.belgeTipiMap.entries.toList()[index],
-                      groupValue: viewModel.belgeTipiMap.values.toList()[index],
-                    ),
-                  ),
-                );
-                if (result != null) {
-                  _belgeTipiController.text = result.map((e) => e.key).join(", ");
-                  viewModel.setBelgeTipi(result.map((e) => e.value).toList());
-                }
-              },
-            ),
-            InkWell(
-              onTap: () => viewModel.setKodlariGoster(),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[const Text("Cari Rapor Kodları"), Observer(builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
+              labelText: "Özel Kod 2",
+              controller: _ozelKod2Controller,
+              onChanged: (value) => viewModel.setOzelKod2(value),
+              onClear: () => viewModel.setOzelKod2(null),
+              suffix: IconButton(
+                onPressed: () async {
+                  final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.faturaRequestModel.ozelKod2);
+                  if (result != null) {
+                    _ozelKod2Controller.text = result.kod ?? "";
+                    viewModel.setOzelKod2(result.kod);
+                  }
+                },
+                icon: const Icon(Icons.more_horiz_outlined),
               ),
-            ).paddingAll(UIHelper.lowSize),
-            Observer(
-              builder: (_) => Visibility(
+            ),
+          ],
+        ),
+        CustomTextField(
+          labelText: "Belge Tipi",
+          suffixMore: true,
+          controller: _belgeTipiController,
+          readOnly: true,
+          onClear: () => viewModel.setBelgeTipi(null),
+          onTap: () async {
+            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, int>>(
+              context,
+              title: "Belge Tipi",
+              groupValues: jsonDecode(viewModel.faturaRequestModel.arrBelgeTipi ?? "[]"),
+              children: List.generate(
+                viewModel.belgeTipiMap.length,
+                (index) => BottomSheetModel(
+                  title: viewModel.belgeTipiMap.keys.toList()[index],
+                  description: viewModel.belgeTipiMap.values.toList()[index].toStringIfNotNull,
+                  value: viewModel.belgeTipiMap.entries.toList()[index],
+                  groupValue: viewModel.belgeTipiMap.values.toList()[index],
+                ),
+              ),
+            );
+            if (result != null) {
+              _belgeTipiController.text = result.map((e) => e.key).join(", ");
+              viewModel.setBelgeTipi(result.map((e) => e.value).toList());
+            }
+          },
+        ),
+        InkWell(
+          onTap: () => viewModel.setKodlariGoster(),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[const Text("Cari Rapor Kodları"), Observer(builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
+          ),
+        ).paddingAll(UIHelper.lowSize),
+        Observer(
+          builder:
+              (_) => Visibility(
                 visible: viewModel.kodlariGoster,
                 child: Wrap(
                   children: <Widget>[
@@ -542,11 +530,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                   groupValues: jsonDecode(viewModel.faturaRequestModel.arrGrupKodu ?? "[]"),
                                   children: List.generate(
                                     viewModel.getGrupKod0?.length ?? 0,
-                                    (index) => BottomSheetModel(
-                                      title: viewModel.getGrupKod0?[index].grupAdi ?? "",
-                                      value: viewModel.getGrupKod0?[index],
-                                      groupValue: viewModel.getGrupKod0?[index].grupKodu,
-                                    ),
+                                    (index) =>
+                                        BottomSheetModel(title: viewModel.getGrupKod0?[index].grupAdi ?? "", value: viewModel.getGrupKod0?[index], groupValue: viewModel.getGrupKod0?[index].grupKodu),
                                   ),
                                 );
                                 if (result != null) {
@@ -573,11 +558,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                   groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod1 ?? "[]"),
                                   children: List.generate(
                                     viewModel.getGrupKod1?.length ?? 0,
-                                    (index) => BottomSheetModel(
-                                      title: viewModel.getGrupKod1?[index].grupAdi ?? "",
-                                      value: viewModel.getGrupKod1?[index],
-                                      groupValue: viewModel.getGrupKod1?[index].grupKodu,
-                                    ),
+                                    (index) =>
+                                        BottomSheetModel(title: viewModel.getGrupKod1?[index].grupAdi ?? "", value: viewModel.getGrupKod1?[index], groupValue: viewModel.getGrupKod1?[index].grupKodu),
                                   ),
                                 );
                                 if (result != null) {
@@ -607,11 +589,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod2 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod2?.length ?? 0,
-                                  (index) => BottomSheetModel(
-                                    title: viewModel.getGrupKod2?[index].grupAdi ?? "",
-                                    value: viewModel.getGrupKod2?[index],
-                                    groupValue: viewModel.getGrupKod2?[index].grupKodu,
-                                  ),
+                                  (index) =>
+                                      BottomSheetModel(title: viewModel.getGrupKod2?[index].grupAdi ?? "", value: viewModel.getGrupKod2?[index], groupValue: viewModel.getGrupKod2?[index].grupKodu),
                                 ),
                               );
                               if (result != null) {
@@ -637,11 +616,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod3 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod3?.length ?? 0,
-                                  (index) => BottomSheetModel(
-                                    title: viewModel.getGrupKod3?[index].grupAdi ?? "",
-                                    value: viewModel.getGrupKod3?[index],
-                                    groupValue: viewModel.getGrupKod3?[index].grupKodu,
-                                  ),
+                                  (index) =>
+                                      BottomSheetModel(title: viewModel.getGrupKod3?[index].grupAdi ?? "", value: viewModel.getGrupKod3?[index], groupValue: viewModel.getGrupKod3?[index].grupKodu),
                                 ),
                               );
                               if (result != null) {
@@ -671,11 +647,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod4 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod4?.length ?? 0,
-                                  (index) => BottomSheetModel(
-                                    title: viewModel.getGrupKod4?[index].grupAdi ?? "",
-                                    value: viewModel.getGrupKod4?[index],
-                                    groupValue: viewModel.getGrupKod4?[index].grupKodu,
-                                  ),
+                                  (index) =>
+                                      BottomSheetModel(title: viewModel.getGrupKod4?[index].grupAdi ?? "", value: viewModel.getGrupKod4?[index], groupValue: viewModel.getGrupKod4?[index].grupKodu),
                                 ),
                               );
                               if (result != null) {
@@ -701,11 +674,8 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                                 groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod5 ?? "[]"),
                                 children: List.generate(
                                   viewModel.getGrupKod5?.length ?? 0,
-                                  (index) => BottomSheetModel(
-                                    title: viewModel.getGrupKod5?[index].grupAdi ?? "",
-                                    value: viewModel.getGrupKod5?[index],
-                                    groupValue: viewModel.getGrupKod5?[index].grupKodu,
-                                  ),
+                                  (index) =>
+                                      BottomSheetModel(title: viewModel.getGrupKod5?[index].grupAdi ?? "", value: viewModel.getGrupKod5?[index], groupValue: viewModel.getGrupKod5?[index].grupKodu),
                                 ),
                               );
                               if (result != null) {
@@ -722,37 +692,37 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                   ],
                 ),
               ),
-            ),
-            Row(
-              children: <Widget>[
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.back();
-                      resetFilters();
-                      viewModel
-                        ..resetFilter()
-                        ..resetList();
-                    },
-                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
-                    child: const Text("Temizle"),
-                  ),
-                ),
-                SizedBox(width: context.sized.dynamicWidth(0.02)),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.back();
-                      viewModel.resetList();
-                    },
-                    child: const Text("Kaydet"),
-                  ),
-                ),
-              ],
-            ).paddingAll(UIHelper.lowSize),
-          ],
         ),
-      );
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  Get.back();
+                  resetFilters();
+                  viewModel
+                    ..resetFilter()
+                    ..resetList();
+                },
+                style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
+                child: const Text("Temizle"),
+              ),
+            ),
+            SizedBox(width: context.sized.dynamicWidth(0.02)),
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  Get.back();
+                  viewModel.resetList();
+                },
+                child: const Text("Kaydet"),
+              ),
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      ],
+    ),
+  );
 
   void resetFilters() {
     _baslangicTarihiController.clear();
