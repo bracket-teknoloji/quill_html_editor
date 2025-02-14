@@ -13,10 +13,7 @@ import "package:picker/view/add_company/model/account_model.dart";
 
 final class LocationManager implements InjectableInterface {
   // Singleton yapısı
-  LocationManager({
-    this.distanceFilterMeters = 200,
-    this.timeFilter = const Duration(minutes: 5),
-  });
+  LocationManager({this.distanceFilterMeters = 200, this.timeFilter = const Duration(minutes: 5)});
 
   // Sınıf değişkenleri
   Position? _lastPosition;
@@ -71,9 +68,7 @@ final class LocationManager implements InjectableInterface {
       }
 
       // Konum stream'ini başlat
-      _positionStreamSubscription = Geolocator.getPositionStream(
-        locationSettings: locationSettings,
-      ).listen(
+      _positionStreamSubscription = Geolocator.getPositionStream(locationSettings: locationSettings).listen(
         _onPositionUpdate,
         onError: _handleLocationError,
         cancelOnError: false,
@@ -120,27 +115,20 @@ final class LocationManager implements InjectableInterface {
 
   // Platform'a göre konum ayarlarını alma
   LocationSettings _getLocationSettings() => switch (AccountModel.instance.platform) {
-        "ios" || "macos" => AppleSettings(
-            showBackgroundLocationIndicator: true,
-            distanceFilter: distanceFilterMeters,
-            timeLimit: timeFilter,
-          ),
-        "android" => AndroidSettings(
-            foregroundNotificationConfig: const ForegroundNotificationConfig(
-              notificationText: "Uygulama arka planda konumunuzu takip ediyor",
-              notificationTitle: "Konum Takibi Aktif",
-              enableWakeLock: true,
-              notificationIcon: AndroidResource(name: "mipmap-xxxhdpi/ic_launcher"),
-            ),
-            distanceFilter: distanceFilterMeters,
-            timeLimit: timeFilter,
-          ),
-        "web" => WebSettings(
-            distanceFilter: distanceFilterMeters,
-            timeLimit: timeFilter,
-          ),
-        _ => throw UnsupportedError("Platform desteklenmiyor: ${AccountModel.instance.platform}"),
-      };
+    "ios" || "macos" => AppleSettings(showBackgroundLocationIndicator: true, distanceFilter: distanceFilterMeters, timeLimit: timeFilter),
+    "android" => AndroidSettings(
+      foregroundNotificationConfig: const ForegroundNotificationConfig(
+        notificationText: "Uygulama arka planda konumunuzu takip ediyor",
+        notificationTitle: "Konum Takibi Aktif",
+        enableWakeLock: true,
+        notificationIcon: AndroidResource(name: "mipmap-xxxhdpi/ic_launcher"),
+      ),
+      distanceFilter: distanceFilterMeters,
+      timeLimit: timeFilter,
+    ),
+    "web" => WebSettings(distanceFilter: distanceFilterMeters, timeLimit: timeFilter),
+    _ => throw UnsupportedError("Platform desteklenmiyor: ${AccountModel.instance.platform}"),
+  };
 
   // Yeni konum güncellemelerini işleme
   void _onPositionUpdate(Position newPosition) {
@@ -152,12 +140,7 @@ final class LocationManager implements InjectableInterface {
       return;
     }
 
-    final double distanceInMeters = Geolocator.distanceBetween(
-      _lastPosition!.latitude,
-      _lastPosition!.longitude,
-      newPosition.latitude,
-      newPosition.longitude,
-    );
+    final double distanceInMeters = Geolocator.distanceBetween(_lastPosition!.latitude, _lastPosition!.longitude, newPosition.latitude, newPosition.longitude);
 
     final Duration timeDifference = DateTime.now().difference(_lastSentTime ?? DateTime.now());
 
@@ -171,10 +154,7 @@ final class LocationManager implements InjectableInterface {
     _lastPosition = position;
     _lastPositionTime = DateTime.now();
 
-    log(
-      "Yeni konum güncellendi: ${position.latitude}, ${position.longitude}",
-      name: "LocationManager",
-    );
+    log("Yeni konum güncellendi: ${position.latitude}, ${position.longitude}", name: "LocationManager");
 
     _sendLocationData().then((_) {
       _lastSentTime = DateTime.now();
@@ -226,12 +206,11 @@ final class LocationManager implements InjectableInterface {
       await Permission.location.request();
       return await Permission.location.isGranted;
     } else {
-      if (await Permission.locationAlways.status.isPermanentlyDenied) {
+      if (await Permission.locationAlways.status.isDenied) {
         await Permission.locationAlways.request();
-        return await Permission.locationAlways.isGranted;
       }
+      return await Permission.locationAlways.isGranted;
     }
-    return false;
   }
 
   @override
