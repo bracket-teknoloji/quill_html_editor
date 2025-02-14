@@ -365,7 +365,7 @@ final class IslemlerMenuItemConstants<T> {
           }
           final BaseSiparisEditModel? siparisModel = model as BaseSiparisEditModel?;
           final formKey = GlobalKey<FormState>();
-          var updatePage = false;
+          bool updatePage = false;
           await _bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: "Belge No Değiştir",
