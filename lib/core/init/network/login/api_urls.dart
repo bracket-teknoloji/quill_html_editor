@@ -51,6 +51,7 @@ abstract final class ApiUrls {
   //* Stoklar
   static const String barkodUret = "Stok/BarkodUret";
   static const String deleteStok = "Stok/DeleteStok";
+  static const String getStokFiyatiTumSira = "Stok/GetStokFiyatiTumSira";
   static const String deleteStokHareket = "Stok/DeleteStokHareket";
   static const String getFiyatGorFiyatlari = "Stok/GetFiyatGorFiyatlari";
   static const String getOlcuBirimleri = "Stok/GetOlcuBirimleri";
