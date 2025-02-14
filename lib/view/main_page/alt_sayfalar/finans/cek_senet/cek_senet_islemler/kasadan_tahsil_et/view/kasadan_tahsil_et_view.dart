@@ -74,131 +74,112 @@ final class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Kasadan Tahsil Et",
-            subtitle: cekSenetEnum.title,
-          ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  dialogManager.showAreYouSureDialog(() async {
-                    if (viewModel.model.tutar case (null || 0.0)) {
-                      dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
-                      return;
-                    }
-                    viewModel.model.guid = const Uuid().v4();
-                    final result = await viewModel.postData();
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                      Get.back(result: true);
-                    }
-                  });
-                  // await viewModel.saveData();
-                  // await Get.back(result: true);
+    appBar: AppBar(
+      title: AppBarTitle(title: "Kasadan Tahsil Et", subtitle: cekSenetEnum.title),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            if (_formKey.currentState!.validate()) {
+              dialogManager.showAreYouSureDialog(() async {
+                if (viewModel.model.tutar case (null || 0.0)) {
+                  dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+                  return;
                 }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ],
+                viewModel.model.guid = const Uuid().v4();
+                final result = await viewModel.postData();
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                  Get.back(result: true);
+                }
+              });
+              // await viewModel.saveData();
+              // await Get.back(result: true);
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        body: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Column(
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Tarih",
-                        controller: _tarihController,
-                        isDateTime: true,
-                        isMust: true,
-                        readOnly: true,
-                        onTap: setTarih,
-                      ),
-                    ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Kasa",
-                        controller: _kasaController,
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.kasaKodu ?? "")),
-                        onTap: setKasa,
-                      ),
-                    ),
-                  ],
+                Expanded(child: CustomTextField(labelText: "Tarih", controller: _tarihController, isDateTime: true, isMust: true, readOnly: true, onTap: setTarih)),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kasa",
+                    controller: _kasaController,
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.kasaKodu ?? "")),
+                    onTap: setKasa,
+                  ),
                 ),
-                CustomTextField(
-                  labelText: "Müşteri Çeki",
-                  controller: _musteriCekiController,
-                  onChanged: (value) {
-                    viewModel.setMusteriCeki(value);
-                    _kasaHarAciklamaController.text = viewModel.aciklama;
-                  },
-                ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Tutar",
-                        controller: _tutarController,
-                        isMust: true,
-                        readOnly: true,
-                      ),
-                    ),
-                    if (yetkiController.plasiyerUygulamasiAcikMi)
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Plasiyer",
-                          controller: _plasiyerController,
-                          isMust: true,
-                          readOnly: true,
-                          suffixMore: true,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                          onTap: setPlasiyerKodu,
-                        ),
-                      ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    if (yetkiController.projeUygulamasiAcikMi)
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Proje",
-                          controller: _projeController,
-                          isMust: true,
-                          readOnly: true,
-                          suffixMore: true,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                          onTap: setProjekodu,
-                        ),
-                      ),
-                    if (!cekSenetEnum.borcMu)
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Referans Kodu",
-                          controller: _referansKoduController,
-                          isMust: true,
-                          readOnly: true,
-                          suffixMore: true,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
-                          onTap: setReferansKodu,
-                        ),
-                      ),
-                  ],
-                ),
-                CustomTextField(labelText: "Kasa Har. Açıklama", controller: _kasaHarAciklamaController, onChanged: viewModel.setKasaHarAciklama),
               ],
-            ).paddingAll(UIHelper.lowSize),
-          ),
-        ),
-      );
+            ),
+            CustomTextField(
+              labelText: "Müşteri Çeki",
+              controller: _musteriCekiController,
+              onChanged: (value) {
+                viewModel.setMusteriCeki(value);
+                _kasaHarAciklamaController.text = viewModel.aciklama;
+              },
+            ),
+            Row(
+              children: [
+                Expanded(child: CustomTextField(labelText: "Tutar", controller: _tutarController, isMust: true, readOnly: true)),
+                if (yetkiController.plasiyerUygulamasiAcikMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Plasiyer",
+                      controller: _plasiyerController,
+                      isMust: true,
+                      readOnly: true,
+                      suffixMore: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                      onTap: setPlasiyerKodu,
+                    ),
+                  ),
+              ],
+            ),
+            Row(
+              children: [
+                if (yetkiController.projeUygulamasiAcikMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Proje",
+                      controller: _projeController,
+                      isMust: true,
+                      readOnly: true,
+                      suffixMore: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                      onTap: setProjekodu,
+                    ),
+                  ),
+                if (!cekSenetEnum.borcMu)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Referans Kodu",
+                      controller: _referansKoduController,
+                      isMust: true,
+                      readOnly: true,
+                      suffixMore: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+                      onTap: setReferansKodu,
+                    ),
+                  ),
+              ],
+            ),
+            CustomTextField(labelText: "Kasa Har. Açıklama", controller: _kasaHarAciklamaController, onChanged: viewModel.setKasaHarAciklama),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      ),
+    ),
+  );
 
   Future<void> setTarih() async {
     final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
@@ -228,7 +209,7 @@ final class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
     final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
     if (result is BaseProjeModel) {
       viewModel.setProjeKodu(result.projeKodu);
-      _projeController.text = result.projeAciklama ?? "";
+      _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
     }
   }
 

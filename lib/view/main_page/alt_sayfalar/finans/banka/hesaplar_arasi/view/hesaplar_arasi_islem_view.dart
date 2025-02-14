@@ -331,7 +331,7 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                 onTap: () async {
                   final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                   if (result != null) {
-                    _projeController.text = result.projeAciklama ?? "";
+                    _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                     viewModel.setProjeKodu(result.projeKodu);
                   }
                 },

@@ -84,67 +84,61 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(context),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body(context));
 
   AppBar appBar() => AppBar(
-        title: AppBarTitle(title: "Cari Hareket", subtitle: widget.model!.baseEditEnum!.getName),
-        actions: [
-          Visibility(
-            visible: enable,
-            child: IconButton(
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  dialogManager.showAreYouSureDialog(postData);
-                }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ),
-        ],
-      );
+    title: AppBarTitle(title: "Cari Hareket", subtitle: widget.model!.baseEditEnum!.getName),
+    actions: [
+      Visibility(
+        visible: enable,
+        child: IconButton(
+          onPressed: () async {
+            if (_formKey.currentState!.validate()) {
+              dialogManager.showAreYouSureDialog(postData);
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
+        ),
+      ),
+    ],
+  );
 
   SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: Column(
-            children: [
-              Observer(
-                builder: (_) => ToggleButtons(
+    child: Form(
+      key: _formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Column(
+        children: [
+          Observer(
+            builder:
+                (_) => ToggleButtons(
                   isSelected: viewModel.isSelected,
                   constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
                   children: viewModel.toggleButtonLabelList.map(Text.new).toList(),
                   onPressed: (index) => widget.model?.baseEditEnum.goruntuleMi ?? false ? null : viewModel.setIsSelected(index),
                 ),
-              ).paddingSymmetric(vertical: UIHelper.lowSize),
-              CustomTextField(enabled: enable, labelText: "Cari", valueText: viewModel.model.cariKodu, readOnly: true, isMust: true, controller: cariKoduController),
-              CustomTextField(
-                enabled: enable,
-                labelText: "Tarih",
-                isMust: true,
-                readOnly: true,
-                controller: tarihController,
-                isDateTime: true,
-                // suffix: const Icon(Icons.calendar_month_outlined),
-                onTap: () {
-                  showDatePicker(
-                    context: context,
-                    initialDate: viewModel.model.tarih ?? DateTime.now(),
-                    firstDate: DateTime(2000),
-                    lastDate: DateTime(2100),
-                  ).then((value) {
-                    if (value != null) {
-                      viewModel.model.tarih = value;
-                      tarihController.text = value.toDateString;
-                    }
-                  });
-                },
-              ),
-              Observer(
-                builder: (_) => CustomTextField(
+          ).paddingSymmetric(vertical: UIHelper.lowSize),
+          CustomTextField(enabled: enable, labelText: "Cari", valueText: viewModel.model.cariKodu, readOnly: true, isMust: true, controller: cariKoduController),
+          CustomTextField(
+            enabled: enable,
+            labelText: "Tarih",
+            isMust: true,
+            readOnly: true,
+            controller: tarihController,
+            isDateTime: true,
+            // suffix: const Icon(Icons.calendar_month_outlined),
+            onTap: () {
+              showDatePicker(context: context, initialDate: viewModel.model.tarih ?? DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100)).then((value) {
+                if (value != null) {
+                  viewModel.model.tarih = value;
+                  tarihController.text = value.toDateString;
+                }
+              });
+            },
+          ),
+          Observer(
+            builder:
+                (_) => CustomTextField(
                   enabled: enable,
                   labelText: "Hareket Türü",
                   valueText: model?.hareketKodu ?? viewModel.getHareketKodu,
@@ -166,116 +160,107 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                     }
                   },
                 ),
+          ),
+          CustomTextField(enabled: enable, labelText: "Belge No", controller: belgeNoController, onChanged: (value) => viewModel.model.belgeNo = value),
+          CustomTextField(enabled: enable, labelText: "Açıklama", controller: aciklamaController, onChanged: (value) => viewModel.model.aciklama = value),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  enabled: enable,
+                  labelText: "Vade Tarihi",
+                  isMust: true,
+                  readOnly: true,
+                  controller: vadeTarihiController,
+                  isDateTime: true,
+                  // suffix: const Icon(Icons.calendar_month_outlined),
+                  onTap: () {
+                    showDatePicker(context: context, initialDate: viewModel.model.vadeTarihi ?? DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100)).then((value) {
+                      if (value != null) {
+                        viewModel.model.vadeTarihi = value;
+                        vadeTarihiController.text = value.toDateString;
+                      }
+                    });
+                  },
+                ),
               ),
-              CustomTextField(enabled: enable, labelText: "Belge No", controller: belgeNoController, onChanged: (value) => viewModel.model.belgeNo = value),
-              CustomTextField(enabled: enable, labelText: "Açıklama", controller: aciklamaController, onChanged: (value) => viewModel.model.aciklama = value),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      enabled: enable,
-                      labelText: "Vade Tarihi",
-                      isMust: true,
-                      readOnly: true,
-                      controller: vadeTarihiController,
-                      isDateTime: true,
-                      // suffix: const Icon(Icons.calendar_month_outlined),
-                      onTap: () {
-                        showDatePicker(
-                          context: context,
-                          initialDate: viewModel.model.vadeTarihi ?? DateTime.now(),
-                          firstDate: DateTime(2000),
-                          lastDate: DateTime(2100),
-                        ).then((value) {
-                          if (value != null) {
-                            viewModel.model.vadeTarihi = value;
-                            vadeTarihiController.text = value.toDateString;
-                          }
-                        });
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      enabled: enable,
-                      labelText: "Tutar",
-                      isMust: true,
-                      isFormattedString: true,
-                      controller: tutarController,
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      onChanged: (value) => viewModel.model.borc == null ? viewModel.model.alacak = double.tryParse(value) : viewModel.model.borc = double.tryParse(value),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (yetkiController.plasiyerUygulamasiAcikMi)
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Plasiyer",
-                        isMust: true,
-                        readOnly: true,
-                        suffixMore: true,
-                        controller: plasiyerController,
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                            context,
-                            title: "Plasiyer",
-                            children: mainPageModel?.paramModel?.plasiyerList
-                                ?.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", description: e.plasiyerKodu, onTap: () => Get.back(result: e)))
-                                .toList(),
-                          );
-                          if (result is PlasiyerList) {
-                            plasiyerController.text = result.plasiyerAciklama ?? "";
-                            viewModel.model.plasiyerKodu = result.plasiyerKodu;
-                          }
-                        },
-                      ),
-                    ),
-                  if (yetkiController.projeUygulamasiAcikMi)
-                    Expanded(
-                      child: CustomTextField(
-                        enabled: enable,
-                        labelText: "Proje",
-                        readOnly: true,
-                        isMust: true,
-                        controller: projeController,
-                        suffixMore: true,
-                        onTap: () async {
-                          if (viewModel.projeList.isEmpty) {
-                            viewModel.setProjeList(await getProjeData());
-                          }
-                          // ignore: use_build_context_synchronously
-                          final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                            context,
-                            title: "Projeler",
-                            children: viewModel.projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", description: e.projeKodu, value: e)).toList(),
-                          );
-                          if (result is BaseProjeModel) {
-                            projeController.text = result.projeAciklama ?? "";
-                            viewModel.model.projeKodu = result.projeKodu;
-                          }
-                        },
-                      ),
-                    ),
-                ],
+              Expanded(
+                child: CustomTextField(
+                  enabled: enable,
+                  labelText: "Tutar",
+                  isMust: true,
+                  isFormattedString: true,
+                  controller: tutarController,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  onChanged: (value) => viewModel.model.borc == null ? viewModel.model.alacak = double.tryParse(value) : viewModel.model.borc = double.tryParse(value),
+                ),
               ),
             ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (yetkiController.plasiyerUygulamasiAcikMi)
+                Expanded(
+                  child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Plasiyer",
+                    isMust: true,
+                    readOnly: true,
+                    suffixMore: true,
+                    controller: plasiyerController,
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "Plasiyer",
+                        children:
+                            mainPageModel?.paramModel?.plasiyerList
+                                ?.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", description: e.plasiyerKodu, onTap: () => Get.back(result: e)))
+                                .toList(),
+                      );
+                      if (result is PlasiyerList) {
+                        plasiyerController.text = result.plasiyerAciklama ?? "";
+                        viewModel.model.plasiyerKodu = result.plasiyerKodu;
+                      }
+                    },
+                  ),
+                ),
+              if (yetkiController.projeUygulamasiAcikMi)
+                Expanded(
+                  child: CustomTextField(
+                    enabled: enable,
+                    labelText: "Proje",
+                    readOnly: true,
+                    isMust: true,
+                    controller: projeController,
+                    suffixMore: true,
+                    onTap: () async {
+                      if (viewModel.projeList.isEmpty) {
+                        viewModel.setProjeList(await getProjeData());
+                      }
+                      // ignore: use_build_context_synchronously
+                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: "Projeler",
+                        children: viewModel.projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", description: e.projeKodu, value: e)).toList(),
+                      );
+                      if (result is BaseProjeModel) {
+                        projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                        viewModel.model.projeKodu = result.projeKodu;
+                      }
+                    },
+                  ),
+                ),
+            ],
+          ),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 
   Future<void> postData() async {
-    final result = await networkManager.dioPost<CariHareketleriModel>(
-      path: ApiUrls.saveCariHareket,
-      bodyModel: CariHareketleriModel(),
-      showLoading: true,
-      data: viewModel.model.toJson(),
-    );
+    final result = await networkManager.dioPost<CariHareketleriModel>(path: ApiUrls.saveCariHareket, bodyModel: CariHareketleriModel(), showLoading: true, data: viewModel.model.toJson());
     if (result.isSuccess) {
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       Get.back(result: false);

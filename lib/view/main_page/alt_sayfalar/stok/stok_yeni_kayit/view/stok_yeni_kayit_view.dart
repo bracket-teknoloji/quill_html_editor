@@ -42,61 +42,53 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
   final GlobalKey key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Yeni Stok hareket Kaydı"),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                //check if form is valid
-                if ((key.currentState as FormState).validate()) {
-                  dialogManager.showAreYouSureDialog(() async {
-                    dialogManager.showLoadingDialog("Kaydediliyor");
-                    viewModel.setStokKodu(stokKoduController.text);
-                    final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
-                      path: ApiUrls.saveStokHareket,
-                      bodyModel: StokYeniKayitModel(),
-                      data: viewModel.model.toJson(),
-                    );
-                    dialogManager.hideAlertDialog;
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar("Kayıt başarılı");
-                      Get.back();
-                    } else {
-                      dialogManager.showErrorSnackBar("Kayıt başarısız");
-                    }
-                  });
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Yeni Stok hareket Kaydı"),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            //check if form is valid
+            if ((key.currentState as FormState).validate()) {
+              dialogManager.showAreYouSureDialog(() async {
+                dialogManager.showLoadingDialog("Kaydediliyor");
+                viewModel.setStokKodu(stokKoduController.text);
+                final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(path: ApiUrls.saveStokHareket, bodyModel: StokYeniKayitModel(), data: viewModel.model.toJson());
+                dialogManager.hideAlertDialog;
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar("Kayıt başarılı");
+                  Get.back();
+                } else {
+                  dialogManager.showErrorSnackBar("Kayıt başarısız");
                 }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ],
+              });
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        body: SingleChildScrollView(
-          child: Form(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            key: key,
-            child: Column(
-              children: [
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        key: key,
+        child: Column(
+          children:
+              [
                 Center(
                   child: Observer(
-                    builder: (_) => ToggleButtons(
-                      constraints: BoxConstraints(minWidth: width / 2.1, minHeight: height / 20),
-                      isSelected: viewModel.isSelected,
-                      children: viewModel.toggleButtonName.map(Text.new).toList(),
-                      onPressed: (index) {
-                        viewModel.model.gc = index == 0 ? "G" : "C";
-                        viewModel.changeIsSelected(index);
-                      },
-                    ),
+                    builder:
+                        (_) => ToggleButtons(
+                          constraints: BoxConstraints(minWidth: width / 2.1, minHeight: height / 20),
+                          isSelected: viewModel.isSelected,
+                          children: viewModel.toggleButtonName.map(Text.new).toList(),
+                          onPressed: (index) {
+                            viewModel.model.gc = index == 0 ? "G" : "C";
+                            viewModel.changeIsSelected(index);
+                          },
+                        ),
                   ),
                 ),
-                CustomTextField(
-                  labelText: "Stok",
-                  valueText: widget.model?.stokKodu ?? "",
-                  readOnly: true,
-                  isMust: true,
-                  controller: stokKoduController,
-                ),
+                CustomTextField(labelText: "Stok", valueText: widget.model?.stokKodu ?? "", readOnly: true, isMust: true, controller: stokKoduController),
                 CustomTextField(
                   labelText: "Tarih",
                   isMust: true,
@@ -104,12 +96,7 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   controller: tarihController,
                   isDateTime: true,
                   onTap: () {
-                    showDatePicker(
-                      context: context,
-                      initialDate: viewModel.model.tarih ?? DateTime.now(),
-                      firstDate: DateTime(2000),
-                      lastDate: DateTime(2100),
-                    ).then((value) {
+                    showDatePicker(context: context, initialDate: viewModel.model.tarih ?? DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100)).then((value) {
                       if (value != null) {
                         viewModel.model.tarih = value;
                         tarihController.text = viewModel.model.tarih.toDateString;
@@ -202,11 +189,7 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     ],
                   ),
                 ),
-                CustomTextField(
-                  labelText: "Açıklama",
-                  controller: aciklamaController,
-                  onSubmitted: (p0) => viewModel.model.aciklama = p0,
-                ),
+                CustomTextField(labelText: "Açıklama", controller: aciklamaController, onSubmitted: (p0) => viewModel.model.aciklama = p0),
                 if (yetkiController.plasiyerUygulamasiAcikMi)
                   CustomTextField(
                     labelText: "Plasiyer",
@@ -218,16 +201,17 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         title: "Plasiyer",
-                        children: viewModel.anaVeri?.paramModel?.plasiyerList
-                            ?.map(
-                              (e) => BottomSheetModel(
-                                title: e.plasiyerAciklama ?? "",
-                                onTap: () {
-                                  Get.back(result: e);
-                                },
-                              ),
-                            )
-                            .toList(),
+                        children:
+                            viewModel.anaVeri?.paramModel?.plasiyerList
+                                ?.map(
+                                  (e) => BottomSheetModel(
+                                    title: e.plasiyerAciklama ?? "",
+                                    onTap: () {
+                                      Get.back(result: e);
+                                    },
+                                  ),
+                                )
+                                .toList(),
                       );
                       if (result != null) {
                         plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -256,28 +240,20 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                         final BaseProjeModel? dialogResult = await bottomSheetDialogManager.showBottomSheetDialog(
                           context,
                           title: "Proje (${result.length})",
-                          children: result
-                              .map(
-                                (e) => BottomSheetModel(
-                                  title: e.projeKodu ?? "",
-                                  description: e.projeAciklama ?? "",
-                                  value: e,
-                                ),
-                              )
-                              .toList(),
+                          children: result.map((e) => BottomSheetModel(title: e.projeKodu ?? "", description: e.projeAciklama ?? "", value: e)).toList(),
                         );
                         if (dialogResult != null) {
-                          projeController.text = dialogResult.projeAciklama ?? "";
+                          projeController.text = dialogResult.projeAciklama ?? dialogResult.projeKodu ?? "";
                           viewModel.model.projeKodu = dialogResult.projeKodu;
                         }
                       }
                     },
                   ),
               ].map((e) => e.paddingOnly(bottom: UIHelper.lowSize)).toList(),
-            ).paddingAll(UIHelper.lowSize),
-          ),
-        ),
-      );
+        ).paddingAll(UIHelper.lowSize),
+      ),
+    ),
+  );
 
   Future<List<BaseProjeModel>?> getProjeData() async {
     dialogManager.showLoadingDialog("Proje Listesi Getiriliyor...");

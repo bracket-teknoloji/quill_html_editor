@@ -76,95 +76,76 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: widget.model.cekSenetListesiEnum.dekontTitle,
-            subtitle: model.belgeNo ?? "",
-          ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (_formKey.currentState?.validate() ?? false) {
-                  dialogManager.showAreYouSureDialog(() async {
-                    viewModel.model.guid = const Uuid().v4();
-                    final result = await viewModel.postData();
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
-                      Get.back(result: true);
-                    }
-                  });
+    appBar: AppBar(
+      title: AppBarTitle(title: widget.model.cekSenetListesiEnum.dekontTitle, subtitle: model.belgeNo ?? ""),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            if (_formKey.currentState?.validate() ?? false) {
+              dialogManager.showAreYouSureDialog(() async {
+                viewModel.model.guid = const Uuid().v4();
+                final result = await viewModel.postData();
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
+                  Get.back(result: true);
                 }
-              },
-              icon: const Icon(Icons.save_outlined),
+              });
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
+        ),
+      ],
+    ),
+    body: Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          CustomTextField(labelText: "Kayıt Tarihi", controller: _kayitTarihiController, isDateTime: true, readOnly: true, isMust: true, onTap: setTarih),
+          CustomTextField(
+            labelText: "Seri",
+            controller: _seriController,
+            readOnly: true,
+            isMust: true,
+            suffixMore: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
+            onTap: setSeri,
+          ),
+          if (!widget.model.cekSenetListesiEnum.borcMu)
+            CustomTextField(labelText: "Tahsil/Teminat Hesabı", controller: _teminatHesabiController, readOnly: true, valueWidget: Observer(builder: (_) => Text(model.verilenKodu ?? ""))),
+          CustomTextField(
+            labelText: !widget.model.cekSenetListesiEnum.borcMu ? "Virman Hesap" : "Ödeme Hesabı",
+            controller: _odemeHesabiController,
+            readOnly: true,
+            isMust: true,
+            suffixMore: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
+            onTap: setOdemeHesabi,
+          ),
+          if (yetkiController.projeUygulamasiAcikMi)
+            CustomTextField(
+              labelText: "Proje",
+              controller: _projeController,
+              readOnly: true,
+              isMust: true,
+              suffixMore: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+              onTap: setProjeKodu,
             ),
-          ],
-        ),
-        body: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              CustomTextField(
-                labelText: "Kayıt Tarihi",
-                controller: _kayitTarihiController,
-                isDateTime: true,
-                readOnly: true,
-                isMust: true,
-                onTap: setTarih,
-              ),
-              CustomTextField(
-                labelText: "Seri",
-                controller: _seriController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
-                onTap: setSeri,
-              ),
-              if (!widget.model.cekSenetListesiEnum.borcMu)
-                CustomTextField(
-                  labelText: "Tahsil/Teminat Hesabı",
-                  controller: _teminatHesabiController,
-                  readOnly: true,
-                  valueWidget: Observer(builder: (_) => Text(model.verilenKodu ?? "")),
-                ),
-              CustomTextField(
-                labelText: !widget.model.cekSenetListesiEnum.borcMu ? "Virman Hesap" : "Ödeme Hesabı",
-                controller: _odemeHesabiController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
-                onTap: setOdemeHesabi,
-              ),
-              if (yetkiController.projeUygulamasiAcikMi)
-                CustomTextField(
-                  labelText: "Proje",
-                  controller: _projeController,
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                  onTap: setProjeKodu,
-                ),
-              if (yetkiController.plasiyerUygulamasiAcikMi)
-                CustomTextField(
-                  labelText: "Plasiyer",
-                  controller: _plasiyerController,
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                  onTap: setPlasiyerkodu,
-                ),
-              CustomTextField(
-                labelText: "Açıklama",
-                controller: _aciklamaController,
-                onChanged: viewModel.setAciklama,
-              ),
-            ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+          if (yetkiController.plasiyerUygulamasiAcikMi)
+            CustomTextField(
+              labelText: "Plasiyer",
+              controller: _plasiyerController,
+              readOnly: true,
+              isMust: true,
+              suffixMore: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+              onTap: setPlasiyerkodu,
+            ),
+          CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 
   Future<void> setTarih() async {
     final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
@@ -194,12 +175,7 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
     // );
     final result = await Get.toNamed(
       "/mainPage/bankaListesiOzel",
-      arguments: BankaListesiRequestModel(
-        arrHesapTipi: "[0]",
-        belgeTipi: viewModel.model.dekontIslemTuru,
-        menuKodu: "YONE_BHRE",
-        bankaKodu: model.verilenBankaKodu,
-      ),
+      arguments: BankaListesiRequestModel(arrHesapTipi: "[0]", belgeTipi: viewModel.model.dekontIslemTuru, menuKodu: "YONE_BHRE", bankaKodu: model.verilenBankaKodu),
     );
     if (result is BankaListesiModel) {
       viewModel.setOdemeHesabi(result.hesapKodu);
@@ -211,7 +187,7 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
     final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
     if (result is BaseProjeModel) {
       viewModel.setProjeKodu(result.projeKodu);
-      _projeController.text = result.projeAciklama ?? "";
+      _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
     }
   }
 

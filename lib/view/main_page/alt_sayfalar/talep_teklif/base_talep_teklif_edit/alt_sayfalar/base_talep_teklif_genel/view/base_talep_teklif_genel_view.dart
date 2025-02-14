@@ -145,344 +145,339 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: UIHelper.lowPadding,
-        child: SingleChildScrollView(
-          child: Form(
-            key: StaticVariables.instance.talepTeklifGenelFormKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                CustomTextField(
-                  labelText: "Belge No",
-                  isMust: true,
-                  controller: _belgeNoController,
-                  enabled: enable,
-                  maxLength: 15,
-                  suffix: IconButton(
-                    onPressed: () async {
-                      await getBelgeNo();
-                    },
-                    icon: const Icon(Icons.format_list_numbered_rtl_outlined),
-                  ),
-                  onChanged: (value) {
-                    model.belgeNo = value;
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Cari",
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  controller: _cariController,
-                  enabled: isEkle,
-                  valueWidget: Observer(
-                    builder: (_) => Text.rich(
+    padding: UIHelper.lowPadding,
+    child: SingleChildScrollView(
+      child: Form(
+        key: StaticVariables.instance.talepTeklifGenelFormKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            CustomTextField(
+              labelText: "Belge No",
+              isMust: true,
+              controller: _belgeNoController,
+              enabled: enable,
+              maxLength: 15,
+              suffix: IconButton(
+                onPressed: () async {
+                  await getBelgeNo();
+                },
+                icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+              ),
+              onChanged: (value) {
+                model.belgeNo = value;
+              },
+            ),
+            CustomTextField(
+              labelText: "Cari",
+              readOnly: true,
+              isMust: true,
+              suffixMore: true,
+              controller: _cariController,
+              enabled: isEkle,
+              valueWidget: Observer(
+                builder:
+                    (_) => Text.rich(
                       TextSpan(
                         children: [
                           TextSpan(text: viewModel.model.cariKodu ?? ""),
                           const TextSpan(text: "  "),
-                          TextSpan(
-                            text: viewModel.model.cariTitle,
-                            style: const TextStyle(color: ColorPalette.mantis),
-                          ),
+                          TextSpan(text: viewModel.model.cariTitle, style: const TextStyle(color: ColorPalette.mantis)),
                         ],
                       ),
                     ),
-                  ),
-                  onTap: () async {
-                    final cariModel = await Get.toNamed(
-                      "mainPage/cariRehberi",
-                      arguments: CariListesiRequestModel(
-                        belgeTuru: model.getEditTipiEnum?.rawValue,
-                      ),
-                    );
-                    if (cariModel == null) return;
-                    final result = await networkManager.getCariModel(
-                      CariRequestModel.fromCariListesiModel(cariModel)
-                        ..secildi = "E"
-                        ..kisitYok = true
-                        ..teslimCari = "E"
-                        ..eFaturaGoster = true,
-                    );
-                    if (result is CariListesiModel) {
-                      _cariController.text = result.cariAdi ?? "";
-                      _plasiyerController.text = result.plasiyerAciklama ?? "";
-                      viewModel.model.cariTitle = result.efaturaCarisi == "E"
+              ),
+              onTap: () async {
+                final cariModel = await Get.toNamed("mainPage/cariRehberi", arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue));
+                if (cariModel == null) return;
+                final result = await networkManager.getCariModel(
+                  CariRequestModel.fromCariListesiModel(cariModel)
+                    ..secildi = "E"
+                    ..kisitYok = true
+                    ..teslimCari = "E"
+                    ..eFaturaGoster = true,
+                );
+                if (result is CariListesiModel) {
+                  _cariController.text = result.cariAdi ?? "";
+                  _plasiyerController.text = result.plasiyerAciklama ?? "";
+                  viewModel.model.cariTitle =
+                      result.efaturaCarisi == "E"
                           ? "E-Fatura"
                           : result.efaturaCarisi == "H"
-                              ? "E-Arşiv"
-                              : null;
-                      viewModel
-                        ..setCariAdi(result.cariAdi)
-                        ..setCariKodu(result.cariKodu)
-                        ..setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
-                      viewModel.model.vadeGunu = result.vadeGunu;
-                      viewModel.model.efaturaTipi = result.efaturaTipi;
-                      _belgeNoController.clear();
-                      await getBelgeNo();
-                    }
-                  },
-                ),
-                Row(
-                  children: <Widget>[
-                    if (yetkiController.projeUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false))
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Proje",
-                          readOnly: true,
-                          isMust: true,
-                          suffixMore: true,
-                          controller: _projeController,
-                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                          onTap: () async {
-                            final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                            if (result is BaseProjeModel) {
-                              _projeController.text = result.projeAciklama ?? "";
-                              viewModel.setProje(result);
-                            }
-                          },
-                        ),
-                      ),
-                    if (yetkiController.plasiyerUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("plasiyer") ?? false))
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Plasiyer",
-                          readOnly: true,
-                          isMust: true,
-                          suffixMore: true,
-                          controller: _plasiyerController,
-                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("plasiyer") ?? false),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                          onTap: () async {
-                            final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
-                            if (result != null) {
-                              _plasiyerController.text = result.plasiyerAciklama ?? "";
-                              viewModel.setPlasiyer(result);
-                            }
-                          },
-                        ),
-                      ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false))
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Belge Tipi",
-                          readOnly: true,
-                          isMust: true,
-                          suffixMore: true,
-                          controller: _belgeTipiController,
-                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.tipi);
-                            if (result is BelgeTipiModel) {
-                              _belgeTipiController.text = result.belgeTipi ?? "";
-                              viewModel.setBelgeTipi(result.belgeTipiId);
-                            }
-                          },
-                        ),
-                      ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Tarih",
-                        readOnly: true,
-                        isMust: true,
-                        isDateTime: true,
-                        controller: _tarihController,
-                        enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("teslim_cari") ?? false),
-                        onTap: () async {
-                          final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
-                          if (result != null) {
-                            _tarihController.text = result.toDateString;
-                            viewModel.setTarih(result);
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false) && (yetkiController.topluDepoKullan(model.getEditTipiEnum)))
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Toplu Depo",
-                          readOnly: true,
-                          suffixMore: true,
-                          controller: _topluDepoController,
-                          isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo") ?? false,
-                          enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("toplu_depo") ?? false),
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
-                          onClear: () => viewModel.setTopluDepoKodu(null),
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
-                            if (result != null) {
-                              _topluDepoController.text = result.depoTanimi ?? "";
-                              viewModel.setTopluDepoKodu(result.depoKodu);
-                            }
-                          },
-                        ),
-                      ),
-                  ],
-                ),
-                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false))
-                  CustomWidgetWithLabel(
-                    text: "KDV Dahil",
-                    isVertical: true,
-                    child: Observer(
-                      builder: (_) => Switch.adaptive(
-                        value: viewModel.kdvDahil,
-                        onChanged: (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (value) => viewModel.changeKdvDahil(value) : null,
-                      ),
+                          ? "E-Arşiv"
+                          : null;
+                  viewModel
+                    ..setCariAdi(result.cariAdi)
+                    ..setCariKodu(result.cariKodu)
+                    ..setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
+                  viewModel.model.vadeGunu = result.vadeGunu;
+                  viewModel.model.efaturaTipi = result.efaturaTipi;
+                  _belgeNoController.clear();
+                  await getBelgeNo();
+                }
+              },
+            ),
+            Row(
+              children: <Widget>[
+                if (yetkiController.projeUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false))
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Proje",
+                      readOnly: true,
+                      isMust: true,
+                      suffixMore: true,
+                      controller: _projeController,
+                      enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                      onTap: () async {
+                        final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                        if (result is BaseProjeModel) {
+                          _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                          viewModel.setProje(result);
+                        }
+                      },
                     ),
                   ),
-                if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))
-                  CustomWidgetWithLabel(
-                    text: "Ek Açıklamalar",
-                    child: Column(
-                      children: <Widget>[
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(1))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar1 ?? "Açıklama 1",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(1, value),
-                            controller: _aciklama1Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(2))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar2 ?? "Açıklama 2",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(2, value),
-                            controller: _aciklama2Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(3))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar3 ?? "Açıklama 3",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(3, value),
-                            controller: _aciklama3Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(4))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar4 ?? "Açıklama 4",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(4, value),
-                            controller: _aciklama4Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(5))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar5 ?? "Açıklama 5",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(5, value),
-                            controller: _aciklama5Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(6))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar6 ?? "Açıklama 6",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(6, value),
-                            controller: _aciklama6Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(7))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar7 ?? "Açıklama 7",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(7, value),
-                            controller: _aciklama7Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(8))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar8 ?? "Açıklama 8",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(8, value),
-                            controller: _aciklama8Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(9))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar9 ?? "Açıklama 9",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(9, value),
-                            controller: _aciklama9Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(10))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar10 ?? "Açıklama 10",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(10, value),
-                            controller: _aciklama10Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(11))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar11 ?? "Açıklama 11",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(11, value),
-                            controller: _aciklama11Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(12))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar12 ?? "Açıklama 12",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(12, value),
-                            controller: _aciklama12Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(13))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar13 ?? "Açıklama 13",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(13, value),
-                            controller: _aciklama13Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(14))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar14 ?? "Açıklama 14",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(14, value),
-                            controller: _aciklama14Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(15))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar15 ?? "Açıklama 15",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(15, value),
-                            controller: _aciklama15Controller,
-                          ),
-                        if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(16))
-                          CustomTextField(
-                            enabled: enable,
-                            labelText: taltekParam?.aciklar16 ?? "Açıklama 16",
-                            maxLength: StaticVariables.maxAciklamaLength,
-                            onChanged: (value) => viewModel.setAciklama(16, value),
-                            controller: _aciklama16Controller,
-                          ),
-                      ],
+                if (yetkiController.plasiyerUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("plasiyer") ?? false))
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Plasiyer",
+                      readOnly: true,
+                      isMust: true,
+                      suffixMore: true,
+                      controller: _plasiyerController,
+                      enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("plasiyer") ?? false),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                      onTap: () async {
+                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                        if (result != null) {
+                          _plasiyerController.text = result.plasiyerAciklama ?? "";
+                          viewModel.setPlasiyer(result);
+                        }
+                      },
                     ),
                   ),
               ],
             ),
-          ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("belge_tipi") ?? false))
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Belge Tipi",
+                      readOnly: true,
+                      isMust: true,
+                      suffixMore: true,
+                      controller: _belgeTipiController,
+                      enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.tipi);
+                        if (result is BelgeTipiModel) {
+                          _belgeTipiController.text = result.belgeTipi ?? "";
+                          viewModel.setBelgeTipi(result.belgeTipiId);
+                        }
+                      },
+                    ),
+                  ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Tarih",
+                    readOnly: true,
+                    isMust: true,
+                    isDateTime: true,
+                    controller: _tarihController,
+                    enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("teslim_cari") ?? false),
+                    onTap: () async {
+                      final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
+                      if (result != null) {
+                        _tarihController.text = result.toDateString;
+                        viewModel.setTarih(result);
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false) && (yetkiController.topluDepoKullan(model.getEditTipiEnum)))
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Toplu Depo",
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: _topluDepoController,
+                      isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo") ?? false,
+                      enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("toplu_depo") ?? false),
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
+                      onClear: () => viewModel.setTopluDepoKodu(null),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                        if (result != null) {
+                          _topluDepoController.text = result.depoTanimi ?? "";
+                          viewModel.setTopluDepoKodu(result.depoKodu);
+                        }
+                      },
+                    ),
+                  ),
+              ],
+            ),
+            if (!(model.getEditTipiEnum?.gizlenecekAlanlar("kdv_dahil_haric") ?? false))
+              CustomWidgetWithLabel(
+                text: "KDV Dahil",
+                isVertical: true,
+                child: Observer(
+                  builder:
+                      (_) => Switch.adaptive(
+                        value: viewModel.kdvDahil,
+                        onChanged: (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (value) => viewModel.changeKdvDahil(value) : null,
+                      ),
+                ),
+              ),
+            if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))
+              CustomWidgetWithLabel(
+                text: "Ek Açıklamalar",
+                child: Column(
+                  children: <Widget>[
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(1))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar1 ?? "Açıklama 1",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(1, value),
+                        controller: _aciklama1Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(2))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar2 ?? "Açıklama 2",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(2, value),
+                        controller: _aciklama2Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(3))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar3 ?? "Açıklama 3",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(3, value),
+                        controller: _aciklama3Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(4))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar4 ?? "Açıklama 4",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(4, value),
+                        controller: _aciklama4Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(5))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar5 ?? "Açıklama 5",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(5, value),
+                        controller: _aciklama5Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(6))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar6 ?? "Açıklama 6",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(6, value),
+                        controller: _aciklama6Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(7))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar7 ?? "Açıklama 7",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(7, value),
+                        controller: _aciklama7Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(8))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar8 ?? "Açıklama 8",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(8, value),
+                        controller: _aciklama8Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(9))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar9 ?? "Açıklama 9",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(9, value),
+                        controller: _aciklama9Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(10))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar10 ?? "Açıklama 10",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(10, value),
+                        controller: _aciklama10Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(11))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar11 ?? "Açıklama 11",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(11, value),
+                        controller: _aciklama11Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(12))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar12 ?? "Açıklama 12",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(12, value),
+                        controller: _aciklama12Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(13))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar13 ?? "Açıklama 13",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(13, value),
+                        controller: _aciklama13Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(14))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar14 ?? "Açıklama 14",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(14, value),
+                        controller: _aciklama14Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(15))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar15 ?? "Açıklama 15",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(15, value),
+                        controller: _aciklama15Controller,
+                      ),
+                    if (yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(16))
+                      CustomTextField(
+                        enabled: enable,
+                        labelText: taltekParam?.aciklar16 ?? "Açıklama 16",
+                        maxLength: StaticVariables.maxAciklamaLength,
+                        onChanged: (value) => viewModel.setAciklama(16, value),
+                        controller: _aciklama16Controller,
+                      ),
+                  ],
+                ),
+              ),
+          ],
         ),
-      );
+      ),
+    ),
+  );
 
   Future<void> getBelgeNo({String? seri}) async {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(

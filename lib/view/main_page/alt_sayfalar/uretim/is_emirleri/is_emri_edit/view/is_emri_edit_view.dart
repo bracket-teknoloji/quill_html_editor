@@ -100,237 +100,213 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "İş Emri Detay",
-            subtitle: widget.model.baseEditEnum.getName,
+    appBar: AppBar(
+      title: AppBarTitle(title: "İş Emri Detay", subtitle: widget.model.baseEditEnum.getName),
+      actions: [
+        if (isEnabled)
+          IconButton(
+            onPressed: () {
+              if (!formkey.currentState!.validate()) return;
+              dialogManager.showAreYouSureDialog(() async {
+                final result = await viewModel.sendData();
+                if (result.isSuccess) {
+                  Get.back(result: true);
+                  dialogManager.showSuccessSnackBar(result.message ?? "${viewModel.model?.isemriNo} başarıyla kaydedildi.");
+                }
+              });
+            },
+            icon: const Icon(Icons.save_outlined),
           ),
-          actions: [
-            if (isEnabled)
-              IconButton(
-                onPressed: () {
-                  if (!formkey.currentState!.validate()) return;
-                  dialogManager.showAreYouSureDialog(() async {
-                    final result = await viewModel.sendData();
-                    if (result.isSuccess) {
-                      Get.back(result: true);
-                      dialogManager.showSuccessSnackBar(result.message ?? "${viewModel.model?.isemriNo} başarıyla kaydedildi.");
-                    }
-                  });
-                },
-                icon: const Icon(Icons.save_outlined),
-              ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Form(
-            key: formkey,
-            child: Column(
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        key: formkey,
+        child: Column(
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Tarih",
-                        controller: tarihController,
-                        enabled: isEnabled,
-                        isDateTime: true,
-                        readOnly: true,
-                        isMust: true,
-                        onTap: () async {
-                          final date = await dialogManager.showDateTimePicker(initialDate: viewModel.model?.tarih);
-                          if (date is DateTime) {
-                            viewModel.setTarih(date);
-                            tarihController.text = date.toDateString;
-                          }
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Teslim Tarihi",
-                        controller: teslimTarihiController,
-                        enabled: isEnabled,
-                        readOnly: true,
-                        isDateTime: true,
-                        isMust: true,
-                        onTap: () async {
-                          final date = await dialogManager.showDateTimePicker(initialDate: viewModel.model?.teslimTarihi);
-                          if (date is DateTime) {
-                            viewModel.setTeslimTarihi(date);
-                            teslimTarihiController.text = date.toDateString;
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                CustomTextField(
-                  labelText: "Belge No",
-                  controller: belgeNoController,
-                  enabled: ekleMi,
-                  isMust: true,
-                  onChanged: viewModel.setBelgeNo,
-                  suffix: IconButton(
-                    icon: const Icon(Icons.qr_code_scanner_outlined),
-                    onPressed: setBelgeNo,
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Tarih",
+                    controller: tarihController,
+                    enabled: isEnabled,
+                    isDateTime: true,
+                    readOnly: true,
+                    isMust: true,
+                    onTap: () async {
+                      final date = await dialogManager.showDateTimePicker(initialDate: viewModel.model?.tarih);
+                      if (date is DateTime) {
+                        viewModel.setTarih(date);
+                        tarihController.text = date.toDateString;
+                      }
+                    },
                   ),
-                  onTap: viewModel.getBelgeNo,
                 ),
-                if (yetkiController.stokListesi)
-                  CustomTextField(
-                    labelText: "Stok Kodu",
-                    controller: stokKoduController,
-                    enabled: ekleMi,
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Teslim Tarihi",
+                    controller: teslimTarihiController,
+                    enabled: isEnabled,
+                    readOnly: true,
+                    isDateTime: true,
+                    isMust: true,
+                    onTap: () async {
+                      final date = await dialogManager.showDateTimePicker(initialDate: viewModel.model?.teslimTarihi);
+                      if (date is DateTime) {
+                        viewModel.setTeslimTarihi(date);
+                        teslimTarihiController.text = date.toDateString;
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+            CustomTextField(
+              labelText: "Belge No",
+              controller: belgeNoController,
+              enabled: ekleMi,
+              isMust: true,
+              onChanged: viewModel.setBelgeNo,
+              suffix: IconButton(icon: const Icon(Icons.qr_code_scanner_outlined), onPressed: setBelgeNo),
+              onTap: viewModel.getBelgeNo,
+            ),
+            if (yetkiController.stokListesi)
+              CustomTextField(
+                labelText: "Stok Kodu",
+                controller: stokKoduController,
+                enabled: ekleMi,
+                isMust: true,
+                suffixMore: true,
+                readOnly: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model?.stokAdi ?? "")),
+                onTap: () async {
+                  final result = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true));
+                  if (result is StokListesiModel) {
+                    stokKoduController.text = result.stokKodu ?? "";
+                    viewModel.setStok(result);
+                  }
+                },
+                suffix: IconButton(
+                  icon: const Icon(Icons.qr_code_scanner_outlined),
+                  onPressed: () async {
+                    final qr = await Get.toNamed("qr");
+                    if (qr is String) {
+                      stokKoduController.text = qr;
+                      viewModel.setStok(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: qr)));
+                    }
+                  },
+                ),
+              ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(labelText: "Miktar", controller: miktarController, enabled: isEnabled, keyboardType: const TextInputType.numberWithOptions(decimal: true), isMust: true),
+                ),
+                if (yetkiController.projeUygulamasiAcikMi)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Proje",
+                      controller: projeController,
+                      enabled: isEnabled,
+                      isMust: true,
+                      suffixMore: true,
+                      readOnly: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model?.projeKodu ?? "")),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model?.projeKodu);
+                        if (result is BaseProjeModel) {
+                          projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                          viewModel.setProje(result);
+                        }
+                      },
+                    ),
+                  ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Giriş Depo",
+                    controller: girisDepoController,
+                    enabled: isEnabled,
                     isMust: true,
                     suffixMore: true,
                     readOnly: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.stokAdi ?? "")),
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.girisDepo.toStringIfNotNull ?? "")),
                     onTap: () async {
-                      final result = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true));
-                      if (result is StokListesiModel) {
-                        stokKoduController.text = result.stokKodu ?? "";
-                        viewModel.setStok(result);
+                      final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model?.girisDepo);
+                      if (result is DepoList) {
+                        girisDepoController.text = result.depoTanimi ?? "";
+                        viewModel.setGirisDepo(result);
                       }
                     },
-                    suffix: IconButton(
-                      icon: const Icon(Icons.qr_code_scanner_outlined),
-                      onPressed: () async {
-                        final qr = await Get.toNamed("qr");
-                        if (qr is String) {
-                          stokKoduController.text = qr;
-                          viewModel.setStok(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: qr)));
-                        }
-                      },
-                    ),
                   ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Miktar",
-                        controller: miktarController,
-                        enabled: isEnabled,
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                        isMust: true,
-                      ),
-                    ),
-                    if (yetkiController.projeUygulamasiAcikMi)
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Proje",
-                          controller: projeController,
-                          enabled: isEnabled,
-                          isMust: true,
-                          suffixMore: true,
-                          readOnly: true,
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model?.projeKodu ?? "")),
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model?.projeKodu);
-                            if (result is BaseProjeModel) {
-                              projeController.text = result.projeAciklama ?? "";
-                              viewModel.setProje(result);
-                            }
-                          },
-                        ),
-                      ),
-                  ],
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Giriş Depo",
-                        controller: girisDepoController,
-                        enabled: isEnabled,
-                        isMust: true,
-                        suffixMore: true,
-                        readOnly: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model?.girisDepo.toStringIfNotNull ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model?.girisDepo);
-                          if (result is DepoList) {
-                            girisDepoController.text = result.depoTanimi ?? "";
-                            viewModel.setGirisDepo(result);
-                          }
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Çıkış Depo",
-                        controller: cikisDepoController,
-                        enabled: isEnabled,
-                        isMust: true,
-                        suffixMore: true,
-                        readOnly: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model?.cikisDepo.toStringIfNotNull ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model?.cikisDepo);
-                          if (result is DepoList) {
-                            cikisDepoController.text = result.depoTanimi ?? "";
-                            viewModel.setCikisDepo(result);
-                          }
-                        },
-                      ),
-                    ),
-                  ],
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Çıkış Depo",
+                    controller: cikisDepoController,
+                    enabled: isEnabled,
+                    isMust: true,
+                    suffixMore: true,
+                    readOnly: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model?.cikisDepo.toStringIfNotNull ?? "")),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model?.cikisDepo);
+                      if (result is DepoList) {
+                        cikisDepoController.text = result.depoTanimi ?? "";
+                        viewModel.setCikisDepo(result);
+                      }
+                    },
+                  ),
                 ),
-                CustomLayoutBuilder.divideInHalf(
-                  children: [
-                    CustomTextField(
-                      labelText: "Referans İş Emri",
-                      controller: referansIsEmriController,
-                      enabled: isEnabled,
-                      suffixMore: true,
-                      readOnly: true,
-                      onClear: () => viewModel.setReferansIsEmri(null),
-                      onTap: () async {
-                        final result = await Get.toNamed("mainPage/isEmriRehberiOzel");
-                        if (result is IsEmirleriModel) {
-                          referansIsEmriController.text = result.isemriNo.toString();
-                          viewModel.setReferansIsEmri(result);
-                        }
-                      },
-                    ),
-                    if (kDebugMode)
-                      CustomTextField(
-                        labelText: "Sipariş",
-                        controller: siparisController,
-                        enabled: isEnabled,
-                        suffixMore: true,
-                      ),
-                  ],
+              ],
+            ),
+            CustomLayoutBuilder.divideInHalf(
+              children: [
+                CustomTextField(
+                  labelText: "Referans İş Emri",
+                  controller: referansIsEmriController,
+                  enabled: isEnabled,
+                  suffixMore: true,
+                  readOnly: true,
+                  onClear: () => viewModel.setReferansIsEmri(null),
+                  onTap: () async {
+                    final result = await Get.toNamed("mainPage/isEmriRehberiOzel");
+                    if (result is IsEmirleriModel) {
+                      referansIsEmriController.text = result.isemriNo.toString();
+                      viewModel.setReferansIsEmri(result);
+                    }
+                  },
                 ),
-                CustomLayoutBuilder.divideInHalf(
-                  children: [
-                    Observer(
-                      builder: (_) => CustomWidgetWithLabel(
-                        text: "Kapalı",
-                        isVertical: true,
-                        child: Switch.adaptive(value: viewModel.model?.kapali == "E", onChanged: !isEnabled ? null : viewModel.setKapaliMi),
-                      ),
-                    ),
-                    Observer(
-                      builder: (_) => CustomWidgetWithLabel(
+                if (kDebugMode) CustomTextField(labelText: "Sipariş", controller: siparisController, enabled: isEnabled, suffixMore: true),
+              ],
+            ),
+            CustomLayoutBuilder.divideInHalf(
+              children: [
+                Observer(
+                  builder:
+                      (_) =>
+                          CustomWidgetWithLabel(text: "Kapalı", isVertical: true, child: Switch.adaptive(value: viewModel.model?.kapali == "E", onChanged: !isEnabled ? null : viewModel.setKapaliMi)),
+                ),
+                Observer(
+                  builder:
+                      (_) => CustomWidgetWithLabel(
                         text: "Rework İş Emri",
                         isVertical: true,
                         child: Switch.adaptive(value: viewModel.model?.rework == "E", onChanged: !isEnabled ? null : viewModel.setReworkMu),
                       ),
-                    ),
-                  ],
-                ),
-                CustomTextField(
-                  labelText: "Açıklama",
-                  controller: aciklamaController,
-                  enabled: isEnabled,
-                  onChanged: viewModel.setAciklama,
                 ),
               ],
-            ).paddingAll(UIHelper.lowSize),
-          ),
-        ),
-      );
+            ),
+            CustomTextField(labelText: "Açıklama", controller: aciklamaController, enabled: isEnabled, onChanged: viewModel.setAciklama),
+          ],
+        ).paddingAll(UIHelper.lowSize),
+      ),
+    ),
+  );
 
   Future<void> setBelgeNo() async {
     await viewModel.getBelgeNo();

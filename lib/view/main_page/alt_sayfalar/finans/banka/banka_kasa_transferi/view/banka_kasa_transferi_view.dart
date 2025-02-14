@@ -87,53 +87,53 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Banka Kasa Transferi"),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (_formKey.currentState!.validate()) {
-                  if (viewModel.model.tutar case (null || 0.0)) {
-                    dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
-                    return;
-                  }
-                  await dialogManager.showAreYouSureDialog(() async {
-                    viewModel.setGuid(const Uuid().v4());
-                    final result = await viewModel.saveTahsilat();
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar(result.message ?? "");
-                      Get.back(result: true);
-                    }
-                  });
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Banka Kasa Transferi"),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            if (_formKey.currentState!.validate()) {
+              if (viewModel.model.tutar case (null || 0.0)) {
+                dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+                return;
+              }
+              await dialogManager.showAreYouSureDialog(() async {
+                viewModel.setGuid(const Uuid().v4());
+                final result = await viewModel.saveTahsilat();
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar(result.message ?? "");
+                  Get.back(result: true);
                 }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ],
+              });
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        body: SingleChildScrollView(
-          child: Observer(
-            builder: (_) => Form(
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Observer(
+        builder:
+            (_) => Form(
               key: _formKey,
               child: Column(
                 children: [
                   LayoutBuilder(
-                    builder: (context, constraints) => Observer(
-                      builder: (_) => ToggleButtons(
-                        constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
-                        isSelected: [viewModel.model.gc == "C", viewModel.model.gc == "G"],
-                        onPressed: (index) {
-                          final bool value = index == 0;
-                          viewModel.setGc(!value ? "G" : "C");
-                          _bankaHarAciklamaController.text = viewModel.bankaHarAciklama;
-                          viewModel.setHedefAciklama(viewModel.bankaHarAciklama);
-                        },
-                        children: const [
-                          Text("Bankaya Para Girişi"),
-                          Text("Bankadan Para Çıkışı"),
-                        ],
-                      ),
-                    ),
+                    builder:
+                        (context, constraints) => Observer(
+                          builder:
+                              (_) => ToggleButtons(
+                                constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
+                                isSelected: [viewModel.model.gc == "C", viewModel.model.gc == "G"],
+                                onPressed: (index) {
+                                  final bool value = index == 0;
+                                  viewModel.setGc(!value ? "G" : "C");
+                                  _bankaHarAciklamaController.text = viewModel.bankaHarAciklama;
+                                  viewModel.setHedefAciklama(viewModel.bankaHarAciklama);
+                                },
+                                children: const [Text("Bankaya Para Girişi"), Text("Bankadan Para Çıkışı")],
+                              ),
+                        ),
                   ).paddingSymmetric(vertical: UIHelper.lowSize),
                   // Observer(
                   //   builder: (_) => SwitchListTile.adaptive(
@@ -193,36 +193,30 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                     onTap: () async => await getKasaListesi(),
                   ),
                   Observer(
-                    builder: (_) => Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (viewModel.model.dovizliMi || viewModel.bankaDovizliMi)
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Döviz Tipi",
-                              controller: _dovizTipiController,
-                              readOnly: true,
-                              isMust: true,
-                            ),
-                          ),
-                        if (viewModel.model.dovizliMi)
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Döviz Tutarı",
-                              controller: _dovizTutariController,
-                              isMust: true,
-                              keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                              isFormattedString: true,
-                              onChanged: (value) {
-                                viewModel
-                                  ..setDovizTutari(value.toDoubleWithFormattedString)
-                                  ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
-                                _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
-                              },
-                            ),
-                          ),
-                      ],
-                    ),
+                    builder:
+                        (_) => Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (viewModel.model.dovizliMi || viewModel.bankaDovizliMi)
+                              Expanded(child: CustomTextField(labelText: "Döviz Tipi", controller: _dovizTipiController, readOnly: true, isMust: true)),
+                            if (viewModel.model.dovizliMi)
+                              Expanded(
+                                child: CustomTextField(
+                                  labelText: "Döviz Tutarı",
+                                  controller: _dovizTutariController,
+                                  isMust: true,
+                                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                                  isFormattedString: true,
+                                  onChanged: (value) {
+                                    viewModel
+                                      ..setDovizTutari(value.toDoubleWithFormattedString)
+                                      ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+                                    _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                  },
+                                ),
+                              ),
+                          ],
+                        ),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -244,10 +238,7 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                                 _dovizTutariController.clear();
                               }
                             },
-                            suffix: IconButton(
-                              onPressed: () async => await getDovizDialog(),
-                              icon: const Icon(Icons.more_horiz_outlined),
-                            ),
+                            suffix: IconButton(onPressed: () async => await getDovizDialog(), icon: const Icon(Icons.more_horiz_outlined)),
                           ),
                         ),
                       Expanded(
@@ -316,25 +307,19 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                       onTap: () async {
                         final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                         if (result != null) {
-                          _projeController.text = result.projeAciklama ?? "";
+                          _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                           viewModel.setProjeKodu(result.projeKodu);
                         }
                       },
                     ),
-                  CustomTextField(
-                    labelText: "Kasa Hareket Açıklama",
-                    controller: _kasaHarAciklamaController,
-                  ),
-                  CustomTextField(
-                    labelText: "Banka Hareket Açıklama",
-                    controller: _bankaHarAciklamaController,
-                  ),
+                  CustomTextField(labelText: "Kasa Hareket Açıklama", controller: _kasaHarAciklamaController),
+                  CustomTextField(labelText: "Banka Hareket Açıklama", controller: _bankaHarAciklamaController),
                 ],
               ).paddingAll(UIHelper.lowSize),
             ),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
@@ -398,7 +383,8 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
   }
 
   Future<void> getKasaListesi() async {
-    final List<KasaList> list = parametreModel.kasaList
+    final List<KasaList> list =
+        parametreModel.kasaList
             ?.where((element) => CacheManager.getAnaVeri?.userModel?.adminMi ?? CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.yetkiliKasalar?.contains(element.kasaKodu) ?? false)
             .toList() ??
         [];
@@ -406,15 +392,7 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
       context,
       title: "Kasa Seçiniz",
       groupValue: viewModel.model.kasaKodu,
-      children: list
-          .map(
-            (e) => BottomSheetModel(
-              title: e.kasaTanimi ?? e.kasaKodu ?? "",
-              value: e,
-              groupValue: e.kasaKodu,
-            ),
-          )
-          .toList(),
+      children: list.map((e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu)).toList(),
     );
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";

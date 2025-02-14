@@ -259,7 +259,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                               onTap: () async {
                                 final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.projeKodu);
                                 if (result != null) {
-                                  projeController.text = result.projeAciklama ?? "";
+                                  projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                                   viewModel.setProjeKodu(result.projeKodu);
                                 }
                               },

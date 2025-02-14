@@ -107,57 +107,55 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(context),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body(context));
 
   AppBar appBar() => AppBar(
-        title: Observer(builder: (_) => AppBarTitle(title: "Muhtelif ${viewModel.model.tahsilatmi == true ? "Tahsilat" : "Ödeme"}")),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              if (formKey.currentState!.validate()) {
-                if (viewModel.model.tutar case (null || 0.0)) {
-                  dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
-                  return;
-                }
-                viewModel.setAciklama(_aciklamaController.text);
-                await dialogManager.showAreYouSureDialog(() async {
-                  final result = await viewModel.postData();
-                  if (result.isSuccess) {
-                    Get.back(result: true);
-                    dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
-                  }
-                });
+    title: Observer(builder: (_) => AppBarTitle(title: "Muhtelif ${viewModel.model.tahsilatmi == true ? "Tahsilat" : "Ödeme"}")),
+    actions: [
+      IconButton(
+        onPressed: () async {
+          if (formKey.currentState!.validate()) {
+            if (viewModel.model.tutar case (null || 0.0)) {
+              dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+              return;
+            }
+            viewModel.setAciklama(_aciklamaController.text);
+            await dialogManager.showAreYouSureDialog(() async {
+              final result = await viewModel.postData();
+              if (result.isSuccess) {
+                Get.back(result: true);
+                dialogManager.showSuccessSnackBar(result.message ?? "Kayıt başarılı");
               }
-            },
-            icon: const Icon(Icons.save_outlined),
-          ),
-        ],
-      );
+            });
+          }
+        },
+        icon: const Icon(Icons.save_outlined),
+      ),
+    ],
+  );
 
   SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
-        child: Form(
-          key: formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomTextField(
-                labelText: "Belge No",
-                controller: _belgeNoController,
-                maxLength: 15,
-                onChanged: (value) => viewModel.setBelgeNo(value),
-                suffix: IconButton(
-                  onPressed: () async {
-                    await viewModel.getSiradakiKod();
-                    _belgeNoController.text = viewModel.model.belgeNo ?? "";
-                  },
-                  icon: const Icon(Icons.add_outlined),
-                ),
-              ),
-              Observer(
-                builder: (_) => Row(
+    child: Form(
+      key: formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomTextField(
+            labelText: "Belge No",
+            controller: _belgeNoController,
+            maxLength: 15,
+            onChanged: (value) => viewModel.setBelgeNo(value),
+            suffix: IconButton(
+              onPressed: () async {
+                await viewModel.getSiradakiKod();
+                _belgeNoController.text = viewModel.model.belgeNo ?? "";
+              },
+              icon: const Icon(Icons.add_outlined),
+            ),
+          ),
+          Observer(
+            builder:
+                (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
@@ -189,9 +187,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                     ),
                   ],
                 ),
-              ),
-              Observer(
-                builder: (_) => Row(
+          ),
+          Observer(
+            builder:
+                (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
@@ -230,17 +229,15 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                             _dovizTutariController.clear();
                           }
                         },
-                        suffix: IconButton(
-                          onPressed: () async => await getDovizDialog(),
-                          icon: const Icon(Icons.more_horiz_outlined),
-                        ),
+                        suffix: IconButton(onPressed: () async => await getDovizDialog(), icon: const Icon(Icons.more_horiz_outlined)),
                       ),
                     ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
                   ],
                 ),
-              ),
-              Observer(
-                builder: (_) => Row(
+          ),
+          Observer(
+            builder:
+                (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
@@ -280,9 +277,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                     ),
                   ],
                 ),
-              ),
-              Observer(
-                builder: (_) => Row(
+          ),
+          Observer(
+            builder:
+                (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
@@ -313,7 +311,7 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         onTap: () async {
                           final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                           if (result is BaseProjeModel) {
-                            _projekoduController.text = result.projeAciklama ?? "";
+                            _projekoduController.text = result.projeAciklama ?? result.projeKodu ?? "";
                             // viewModel.setPlasiyerKodu(result);
                             viewModel.setProjeKodu(result);
                           }
@@ -322,9 +320,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                     ).yetkiVarMi(yetkiController.projeUygulamasiAcikMi),
                   ],
                 ),
-              ),
-              Observer(
-                builder: (_) => Row(
+          ),
+          Observer(
+            builder:
+                (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
@@ -354,11 +353,7 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                             context,
                             title: "Referans Kodu",
                             groupValue: viewModel.model.refKod,
-                            children: viewModel.muhaRefList!
-                                .map(
-                                  (e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu),
-                                )
-                                .toList(),
+                            children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu)).toList(),
                           );
                           if (result is MuhasebeReferansModel) {
                             _referansKoduController.text = result.tanimi ?? "";
@@ -369,20 +364,20 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                     ).yetkiVarMi(yetkiController.referansKodu(viewModel.showReferansKodu)),
                   ],
                 ),
-              ),
-              CustomTextField(
-                labelText: "Kasa Har. Açıklama",
-                controller: _aciklamaController,
-                onChanged: (value) => viewModel.setAciklama(value),
-              ),
-            ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+          ),
+          CustomTextField(labelText: "Kasa Har. Açıklama", controller: _aciklamaController, onChanged: (value) => viewModel.setAciklama(value)),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 
   Future<void> getMuhKodu() async {
-    final result =
-        await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.muo.value, hesapTipi: viewModel.model.hesapTipi);
+    final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
+      context,
+      viewModel.model.hesapKodu,
+      belgeTipi: MuhasebeBelgeTipiEnum.muo.value,
+      hesapTipi: viewModel.model.hesapTipi,
+    );
     if (result is StokMuhasebeKoduModel) {
       _hesapController.text = result.hesapAdi ?? result.hesapKodu ?? "";
       viewModel

@@ -168,7 +168,7 @@ final class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalasti
       );
   Future<void> getSiradakiKod() async {
     final result = await viewModel.getSiradakiBelgeNo(widget.model.editTipiEnum!, faturaNoController.text);
-    if (result != "") {
+    if (result case ("" || null)) {
       faturaNoController.text = result ?? "";
       viewModel.setResmiFaturaNo(
         result?.belgeNoToResmiBelgeNo(result, viewModel.model?.tarih),

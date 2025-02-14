@@ -1,20 +1,43 @@
-BankaFilterRequestModel filterModel = null;
-                if (BelgeUtils.cekSenetMi(_belgeTipi)) {
-                    filterModel = new BankaFilterRequestModel();
-                    ParamResponseModel paramModel = PrefManager.getInstance().getParamsModel();
-                    ArrayList<Integer> list = new ArrayList<>();
-                    if (BelgeUtils.musteriCekiMi(_belgeTipi) && (paramModel.bankaHesapTipiKayitliMi(BankaManager.HesapTipi.TAHSIL_CEKLERI) || paramModel.bankaHesapTipiKayitliMi(BankaManager.HesapTipi.TEMINAT_CEKLERI))) {
-                        list.add(BankaManager.HesapTipi.TAHSIL_CEKLERI);
-                        list.add(BankaManager.HesapTipi.TEMINAT_CEKLERI);
-                    } else if (BelgeUtils.musteriSenediMi(_belgeTipi) && (paramModel.bankaHesapTipiKayitliMi(BankaManager.HesapTipi.TAHSIL_SENETLERI) || paramModel.bankaHesapTipiKayitliMi(BankaManager.HesapTipi.TEMINAT_SENETLERI))) {
-                        list.add(BankaManager.HesapTipi.TAHSIL_SENETLERI);
-                        list.add(BankaManager.HesapTipi.TEMINAT_SENETLERI);
-                    } else if (BelgeUtils.borcCekiMi(_belgeTipi)  && paramModel.bankaHesapTipiKayitliMi(BankaManager.HesapTipi.BORC_CEKLERI) ) {
-                        list.add(BankaManager.HesapTipi.BORC_CEKLERI);
-                    } else if (BelgeUtils.borcSenediMi(_belgeTipi)  && paramModel.bankaHesapTipiKayitliMi(BankaManager.HesapTipi.BORC_SENETLERI) ) {
-                        list.add(BankaManager.HesapTipi.BORC_SENETLERI);
-                    } else {
-                        list.add(BankaManager.HesapTipi.VADESIZ_MEVDUAT);
-                    }
-                    filterModel.ArrHesapTipi = list;
-                }
+if (fiyatRehberGorebilir()) {
+   if (!_paramModel.OzelFiyatSistemi) { //apk 166 : if (_paramModel.OzelFiyatSistemi == false) eklendi
+    if (_initStokResponseModel.dovizliMi(_satisaYonelikMi)) {
+     b.layoutDovizFiyati.setRightImageResource(R.drawable.ic_rehber_gray, new OneClickListener() {
+      @Override
+      public void onOneClick(View v) {
+       b.layoutBrutFiyatTL.setRightImageResource(0);
+       showFiyatSecDialog(b.layoutDovizFiyati);
+      }
+     });
+    } else {
+     b.layoutBrutFiyatTL.setRightImageResource(R.drawable.ic_rehber_gray, new OneClickListener() {
+      @Override
+      public void onOneClick(View v) {
+       b.layoutDovizFiyati.setRightImageResource(0);
+       showFiyatSecDialog(b.layoutBrutFiyatTL);
+      }
+     });
+    }
+   } else { // APK 233
+    b.layoutBrutFiyatTL.setRightImageResource(R.drawable.ic_rehber_gray, new OneClickListener() {
+     @Override
+     public void onOneClick(View v) {
+      b.layoutDovizFiyati.setRightImageResource(0);
+      showListeFiyatSecDialog(b.layoutBrutFiyatTL);
+     }
+    });
+   }
+  }
+private boolean fiyatRehberGorebilir() {
+  if (_profilModel.kullanici_AdminMi) return true;
+  if (!_profilModel.stok_FiyatGorEkrani) return false;
+
+  if (_alisaYonelikMi) {
+   return (_profilModel.stokFiyatGorEkraniGorunecekAlanMi("alis_doviz_fiyati") || _profilModel.stokFiyatGorEkraniGorunecekAlanMi(
+     "alis_fiyat1")  _profilModel.stokFiyatGorEkraniGorunecekAlanMi("alis_fiyat2")  _profilModel.stokFiyatGorEkraniGorunecekAlanMi(
+     "alis_fiyat3") || _profilModel.stokFiyatGorEkraniGorunecekAlanMi("alis_fiyat4"));
+  } else {
+   return (_profilModel.stokFiyatGorEkraniGorunecekAlanMi("satis_doviz_fiyati") || _profilModel.stokFiyatGorEkraniGorunecekAlanMi(
+     "satis_fiyat1")  _profilModel.stokFiyatGorEkraniGorunecekAlanMi("satis_fiyat2")  _profilModel.stokFiyatGorEkraniGorunecekAlanMi(
+     "satis_fiyat3") || _profilModel.stokFiyatGorEkraniGorunecekAlanMi("satis_fiyat4"));
+  }
+ }

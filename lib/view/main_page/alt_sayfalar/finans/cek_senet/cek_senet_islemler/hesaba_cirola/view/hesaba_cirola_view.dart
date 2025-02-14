@@ -71,93 +71,79 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: widget.cirolaEnum.name,
-            subtitle: model.belgeNo ?? "",
-          ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (_formKey.currentState?.validate() ?? false) {
-                  dialogManager.showAreYouSureDialog(() async {
-                    viewModel.model.guid = const Uuid().v4();
-                    final result = await viewModel.saveData();
-                    if (result.isSuccess) {
-                      Get.back(result: true);
-                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                    }
-                  });
+    appBar: AppBar(
+      title: AppBarTitle(title: widget.cirolaEnum.name, subtitle: model.belgeNo ?? ""),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            if (_formKey.currentState?.validate() ?? false) {
+              dialogManager.showAreYouSureDialog(() async {
+                viewModel.model.guid = const Uuid().v4();
+                final result = await viewModel.saveData();
+                if (result.isSuccess) {
+                  Get.back(result: true);
+                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
                 }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
+              });
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
+        ),
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            CustomTextField(labelText: "Belge No", controller: _belgeNoController, readOnly: true),
+            CustomTextField(labelText: "İşlem Tarihi", controller: _islemTarihiController, isDateTime: true, isMust: true, readOnly: true, onTap: setTarih),
+            if (widget.cirolaEnum == CirolaEnum.cari)
+              CustomTextField(
+                labelText: "Cari",
+                controller: _cariController,
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                suffix: IconButton(onPressed: getCariIslemler, icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
+                onTap: setCari,
+              ),
+            if (widget.cirolaEnum == CirolaEnum.tahsil)
+              CustomTextField(
+                labelText: "Tahsil Hesabı",
+                controller: _cariController,
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
+                onTap: getTahsilHesabi,
+              ),
+            if (yetkiController.projeUygulamasiAcikMi)
+              CustomTextField(
+                labelText: "Proje",
+                controller: _projeController,
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                onTap: setProjekodu,
+              ),
+            if (yetkiController.plasiyerUygulamasiAcikMi)
+              CustomTextField(
+                labelText: "Plasiyer",
+                controller: _plasiyerController,
+                isMust: true,
+                readOnly: true,
+                suffixMore: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                onTap: setPlasiyerKodu,
+              ),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                CustomTextField(
-                  labelText: "Belge No",
-                  controller: _belgeNoController,
-                  readOnly: true,
-                ),
-                CustomTextField(
-                  labelText: "İşlem Tarihi",
-                  controller: _islemTarihiController,
-                  isDateTime: true,
-                  isMust: true,
-                  readOnly: true,
-                  onTap: setTarih,
-                ),
-                if (widget.cirolaEnum == CirolaEnum.cari)
-                  CustomTextField(
-                    labelText: "Cari",
-                    controller: _cariController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    suffix: IconButton(onPressed: getCariIslemler, icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
-                    onTap: setCari,
-                  ),
-                if (widget.cirolaEnum == CirolaEnum.tahsil)
-                  CustomTextField(
-                    labelText: "Tahsil Hesabı",
-                    controller: _cariController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
-                    onTap: getTahsilHesabi,
-                  ),
-                if (yetkiController.projeUygulamasiAcikMi)
-                  CustomTextField(
-                    labelText: "Proje",
-                    controller: _projeController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                    onTap: setProjekodu,
-                  ),
-                if (yetkiController.plasiyerUygulamasiAcikMi)
-                  CustomTextField(
-                    labelText: "Plasiyer",
-                    controller: _plasiyerController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                    onTap: setPlasiyerKodu,
-                  ),
-              ],
-            ),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 
   Future<void> setTarih() async {
     final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
@@ -189,14 +175,7 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
     //   ,
     //   viewModel.model.verilenKodu,
     // );
-    final result = await Get.toNamed(
-      "/mainPage/bankaListesiOzel",
-      arguments: BankaListesiRequestModel(
-        arrHesapTipi: "[5]",
-        belgeTipi: viewModel.model.pickerTahsilatTuru,
-        menuKodu: "YONE_BHRE",
-      ),
-    );
+    final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: BankaListesiRequestModel(arrHesapTipi: "[5]", belgeTipi: viewModel.model.pickerTahsilatTuru, menuKodu: "YONE_BHRE"));
     if (result is BankaListesiModel) {
       _cariController.text = result.bankaAdi ?? "";
       viewModel.setTahsilHesabi(result.hesapKodu);
@@ -206,7 +185,7 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
   Future<void> setProjekodu() async {
     final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
     if (result is BaseProjeModel) {
-      _projeController.text = result.projeAciklama ?? "";
+      _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
       viewModel.setProjekodu(result.projeKodu);
     }
   }

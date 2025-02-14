@@ -93,10 +93,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
               context,
               title: "Giriş/Çıkış seçiniz",
               groupValue: viewModel.model.cariyiBorclandir != true,
-              children: [
-                BottomSheetModel(title: "Bankaya Para Girişi", value: 0, groupValue: 0),
-                BottomSheetModel(title: "Bankadan Para Çıkışı", value: 1, groupValue: 1),
-              ],
+              children: [BottomSheetModel(title: "Bankaya Para Girişi", value: 0, groupValue: 0), BottomSheetModel(title: "Bankadan Para Çıkışı", value: 1, groupValue: 1)],
             ) ??
             0,
       );
@@ -129,47 +126,45 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(
-            title: "Cari EFT/Havale",
-          ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (_formKey.currentState?.validate() == true) {
-                  await dialogManager.showAreYouSureDialog(() async {
-                    viewModel.model.guid = const Uuid().v4();
-                    final result = await viewModel.postData();
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
-                      Get.back(result: result.isSuccess);
-                    }
-                  });
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Cari EFT/Havale"),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            if (_formKey.currentState?.validate() == true) {
+              await dialogManager.showAreYouSureDialog(() async {
+                viewModel.model.guid = const Uuid().v4();
+                final result = await viewModel.postData();
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
+                  Get.back(result: result.isSuccess);
                 }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ],
+              });
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        body: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Observer(
-              builder: (_) => Column(
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        child: Observer(
+          builder:
+              (_) => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   LayoutBuilder(
-                    builder: (context, constraints) => Observer(
-                      builder: (_) => ToggleButtons(
-                        constraints: BoxConstraints.expand(width: constraints.maxWidth / 2 - 2),
-                        isSelected: [(viewModel.model.cariyiBorclandir == null), viewModel.model.cariyiBorclandir ?? false],
-                        onPressed: setGirisCikis,
-                        children: const [
-                          Text("Bankaya Para Girişi"),
-                          Text("Bankadan Para Çıkışı"),
-                        ],
-                      ),
-                    ),
+                    builder:
+                        (context, constraints) => Observer(
+                          builder:
+                              (_) => ToggleButtons(
+                                constraints: BoxConstraints.expand(width: constraints.maxWidth / 2 - 2),
+                                isSelected: [(viewModel.model.cariyiBorclandir == null), viewModel.model.cariyiBorclandir ?? false],
+                                onPressed: setGirisCikis,
+                                children: const [Text("Bankaya Para Girişi"), Text("Bankadan Para Çıkışı")],
+                              ),
+                        ),
                   ).paddingAll(UIHelper.lowSize),
                   // Observer(
                   //   builder: (_) => SwitchListTile.adaptive(
@@ -217,13 +212,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           },
                         ),
                       ),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Dekont No",
-                          controller: _dekontNoController,
-                          onChanged: viewModel.setDekontNo,
-                        ),
-                      ),
+                      Expanded(child: CustomTextField(labelText: "Dekont No", controller: _dekontNoController, onChanged: viewModel.setDekontNo)),
                     ],
                   ),
                   CustomTextField(
@@ -255,15 +244,18 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     onTap: () async => getCari(),
                   ),
                   Observer(
-                    builder: (_) => viewModel.cariModel != null
-                        ? Text(
-                            "Bakiye: ${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${viewModel.cariModel?.dovizAdi ?? mainCurrency} ${(viewModel.cariModel?.bakiye ?? 0) > 0 ? "(Tahsil Edilecek)" : (viewModel.cariModel?.bakiye ?? 0) < 0 ? "(Ödenecek)" : ""}",
-                            style: TextStyle(
-                              color: (viewModel.cariModel?.bakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ).paddingAll(UIHelper.lowSize)
-                        : const SizedBox.shrink(),
+                    builder:
+                        (_) =>
+                            viewModel.cariModel != null
+                                ? Text(
+                                  "Bakiye: ${viewModel.cariModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${viewModel.cariModel?.dovizAdi ?? mainCurrency} ${(viewModel.cariModel?.bakiye ?? 0) > 0
+                                      ? "(Tahsil Edilecek)"
+                                      : (viewModel.cariModel?.bakiye ?? 0) < 0
+                                      ? "(Ödenecek)"
+                                      : ""}",
+                                  style: TextStyle(color: (viewModel.cariModel?.bakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed, fontWeight: FontWeight.bold),
+                                ).paddingAll(UIHelper.lowSize)
+                                : const SizedBox.shrink(),
                   ),
                   if (viewModel.model.cariyiBorclandir ?? false)
                     Row(
@@ -312,18 +304,8 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                         ),
                       ],
                     ),
-                  if (viewModel.model.cariyiBorclandir ?? false)
-                    CustomTextField(
-                      labelText: "Banka Hesap No",
-                      controller: _bankaHesapNoController,
-                      onChanged: viewModel.setBankaHesapNo,
-                    ),
-                  if (viewModel.model.cariyiBorclandir ?? false)
-                    CustomTextField(
-                      labelText: "IBAN",
-                      controller: _ibanController,
-                      onChanged: viewModel.setIBAN,
-                    ),
+                  if (viewModel.model.cariyiBorclandir ?? false) CustomTextField(labelText: "Banka Hesap No", controller: _bankaHesapNoController, onChanged: viewModel.setBankaHesapNo),
+                  if (viewModel.model.cariyiBorclandir ?? false) CustomTextField(labelText: "IBAN", controller: _ibanController, onChanged: viewModel.setIBAN),
                   Row(
                     children: [
                       if (viewModel.cariModel?.dovizli == true)
@@ -384,10 +366,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                                 _dovizTutariController.clear();
                               }
                             },
-                            suffix: IconButton(
-                              onPressed: () async => await getDovizDialog(),
-                              icon: const Icon(Icons.more_horiz_outlined),
-                            ),
+                            suffix: IconButton(onPressed: () async => await getDovizDialog(), icon: const Icon(Icons.more_horiz_outlined)),
                           ),
                         ),
                       Expanded(
@@ -494,21 +473,18 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                       onTap: () async {
                         final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                         if (result != null) {
-                          _projeController.text = result.projeAciklama ?? "";
+                          _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                           viewModel.setProjeKodu(result.projeKodu);
                         }
                       },
                     ),
-                  CustomTextField(
-                    labelText: "Açıklama",
-                    controller: _aciklamaController,
-                  ),
+                  CustomTextField(labelText: "Açıklama", controller: _aciklamaController),
                 ],
               ).paddingAll(UIHelper.lowSize),
-            ),
-          ),
         ),
-      );
+      ),
+    ),
+  );
 
   void setGirisCikis(int value) {
     viewModel.setGc(value == 0 ? null : true);

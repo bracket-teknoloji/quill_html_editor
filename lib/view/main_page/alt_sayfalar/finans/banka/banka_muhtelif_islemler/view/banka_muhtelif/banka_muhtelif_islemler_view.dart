@@ -81,88 +81,86 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(context),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body(context));
 
   AppBar appBar() => AppBar(
-        title: Text(widget.bankaMuhtelifIslemlerEnum.title),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              if (_formKey.currentState?.validate() ?? false) {
-                dialogManager.showAreYouSureDialog(() async {
-                  viewModel.model.guid = const Uuid().v4();
-                  final result = await viewModel.postData();
-                  if (result.isSuccess) {
-                    Get.back();
-                  }
-                });
+    title: Text(widget.bankaMuhtelifIslemlerEnum.title),
+    actions: [
+      IconButton(
+        onPressed: () async {
+          if (_formKey.currentState?.validate() ?? false) {
+            dialogManager.showAreYouSureDialog(() async {
+              viewModel.model.guid = const Uuid().v4();
+              final result = await viewModel.postData();
+              if (result.isSuccess) {
+                Get.back();
               }
-            },
-            icon: const Icon(Icons.save_outlined),
-          ),
-        ],
-      );
+            });
+          }
+        },
+        icon: const Icon(Icons.save_outlined),
+      ),
+    ],
+  );
 
   Widget body(BuildContext context) => SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
+    child: Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Tarih",
-                      controller: _tarihController,
-                      isDateTime: true,
-                      readOnly: true,
-                      isMust: true,
-                      onTap: () async {
-                        final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
-                        if (result is DateTime) {
-                          viewModel.setTarih(result);
-                          _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
-                        }
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Seri",
-                      controller: _seriController,
-                      suffixMore: true,
-                      readOnly: true,
-                      isMust: true,
-                      valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
-                      onTap: getSeri,
-                    ),
-                  ),
-                ],
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Tarih",
+                  controller: _tarihController,
+                  isDateTime: true,
+                  readOnly: true,
+                  isMust: true,
+                  onTap: () async {
+                    final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
+                    if (result is DateTime) {
+                      viewModel.setTarih(result);
+                      _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
+                    }
+                  },
+                ),
               ),
-              CustomTextField(
-                labelText: "Hesap",
-                controller: _hesapController,
-                suffixMore: true,
-                readOnly: true,
-                isMust: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
-                onTap: getHesapListesi,
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Seri",
+                  controller: _seriController,
+                  suffixMore: true,
+                  readOnly: true,
+                  isMust: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.dekontSeri ?? "")),
+                  onTap: getSeri,
+                ),
               ),
-              CustomTextField(
-                labelText: "Muhasebe Kodu",
-                controller: _muhasebeKoduController,
-                suffixMore: true,
-                readOnly: true,
-                isMust: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.model.hedefHesapKodu ?? "")),
-                onTap: getMuhasebeKodu,
-              ),
-              Observer(
-                builder: (_) => Row(
+            ],
+          ),
+          CustomTextField(
+            labelText: "Hesap",
+            controller: _hesapController,
+            suffixMore: true,
+            readOnly: true,
+            isMust: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
+            onTap: getHesapListesi,
+          ),
+          CustomTextField(
+            labelText: "Muhasebe Kodu",
+            controller: _muhasebeKoduController,
+            suffixMore: true,
+            readOnly: true,
+            isMust: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.model.hedefHesapKodu ?? "")),
+            onTap: getMuhasebeKodu,
+          ),
+          Observer(
+            builder:
+                (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (viewModel.model.dovizliMi) ...[
@@ -204,9 +202,10 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
                     ],
                   ],
                 ),
-              ),
-              Observer(
-                builder: (_) => Row(
+          ),
+          Observer(
+            builder:
+                (_) => Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (viewModel.model.dovizliMi)
@@ -226,10 +225,7 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
                               _dovizTutariController.clear();
                             }
                           },
-                          suffix: IconButton(
-                            onPressed: () async => await getDovizDialog(),
-                            icon: const Icon(Icons.more_horiz_outlined),
-                          ),
+                          suffix: IconButton(onPressed: () async => await getDovizDialog(), icon: const Icon(Icons.more_horiz_outlined)),
                         ),
                       ),
                     Expanded(
@@ -253,57 +249,53 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
                     ),
                   ],
                 ),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (yetkiController.plasiyerUygulamasiAcikMi)
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Plasiyer",
-                        controller: _plasiyerController,
-                        suffixMore: true,
-                        readOnly: true,
-                        isMust: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
-                          if (result != null) {
-                            viewModel.setPlasiyerKodu(result.plasiyerKodu);
-                            _plasiyerController.text = result.plasiyerAciklama ?? "";
-                          }
-                        },
-                      ),
-                    ),
-                  if (yetkiController.projeUygulamasiAcikMi)
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Proje",
-                        controller: _projeController,
-                        suffixMore: true,
-                        readOnly: true,
-                        isMust: true,
-                        valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
-                        onTap: () async {
-                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
-                          if (result != null) {
-                            viewModel.setProjeKodu(result.projeKodu);
-                            _projeController.text = result.projeAciklama ?? "";
-                          }
-                        },
-                      ),
-                    ),
-                ],
-              ),
-              CustomTextField(
-                labelText: "Açıklama",
-                controller: _aciklamaController,
-                onChanged: viewModel.setAciklama,
-              ),
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (yetkiController.plasiyerUygulamasiAcikMi)
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Plasiyer",
+                    controller: _plasiyerController,
+                    suffixMore: true,
+                    readOnly: true,
+                    isMust: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                      if (result != null) {
+                        viewModel.setPlasiyerKodu(result.plasiyerKodu);
+                        _plasiyerController.text = result.plasiyerAciklama ?? "";
+                      }
+                    },
+                  ),
+                ),
+              if (yetkiController.projeUygulamasiAcikMi)
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Proje",
+                    controller: _projeController,
+                    suffixMore: true,
+                    readOnly: true,
+                    isMust: true,
+                    valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                      if (result != null) {
+                        viewModel.setProjeKodu(result.projeKodu);
+                        _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
+                      }
+                    },
+                  ),
+                ),
             ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+          ),
+          CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
   Future<void> getDovizDialog() async {
     await viewModel.getDovizler();
     if (viewModel.dovizKurlariListesi.ext.isNotNullOrEmpty) {
@@ -394,16 +386,7 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
         context,
         title: "Seri",
         groupValue: viewModel.model.dekontSeri,
-        children: viewModel.seriList!
-            .map(
-              (e) => BottomSheetModel(
-                title: e.aciklama ?? "",
-                description: e.seriNo,
-                value: e,
-                groupValue: e.seriNo,
-              ),
-            )
-            .toList(),
+        children: viewModel.seriList!.map((e) => BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e, groupValue: e.seriNo)).toList(),
       );
       if (result != null) {
         _seriController.text = result.aciklama ?? "";

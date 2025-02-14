@@ -56,52 +56,52 @@ final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
 
   @override
   Widget build(BuildContext context) => Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            CustomTextField(
-              labelText: "Tarih",
-              enabled: widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak,
-              isDateTime: true,
-              isMust: true,
-              readOnly: true,
-              controller: _tarihController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.tarih?.toDateString ?? "")),
-              onTap: setTarih,
-            ),
-            CustomTextField(
-              labelText: "Seri",
-              enabled: widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak,
-              suffixMore: true,
-              isMust: true,
-              readOnly: true,
-              controller: _seriController,
-              valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.dekontSeri ?? "")),
-              onTap: setSeri,
-            ),
-            if (yetkiController.plasiyerUygulamasiAcikMi)
-              CustomTextField(
-                labelText: "Plasiyer",
-                suffixMore: true,
-                isMust: true,
-                readOnly: true,
-                controller: _plasiyerController,
-                valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.plasiyerKodu ?? "")),
-                onTap: setPlasiyer,
-              ),
-            if (yetkiController.projeUygulamasiAcikMi)
-              CustomTextField(
-                labelText: "Proje",
-                suffixMore: true,
-                isMust: true,
-                readOnly: true,
-                controller: _projeController,
-                valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.projeKodu ?? "")),
-                onTap: setProje,
-              ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+    key: _formKey,
+    child: Column(
+      children: [
+        CustomTextField(
+          labelText: "Tarih",
+          enabled: widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak,
+          isDateTime: true,
+          isMust: true,
+          readOnly: true,
+          controller: _tarihController,
+          valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.tarih?.toDateString ?? "")),
+          onTap: setTarih,
+        ),
+        CustomTextField(
+          labelText: "Seri",
+          enabled: widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak,
+          suffixMore: true,
+          isMust: true,
+          readOnly: true,
+          controller: _seriController,
+          valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.dekontSeri ?? "")),
+          onTap: setSeri,
+        ),
+        if (yetkiController.plasiyerUygulamasiAcikMi)
+          CustomTextField(
+            labelText: "Plasiyer",
+            suffixMore: true,
+            isMust: true,
+            readOnly: true,
+            controller: _plasiyerController,
+            valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.plasiyerKodu ?? "")),
+            onTap: setPlasiyer,
+          ),
+        if (yetkiController.projeUygulamasiAcikMi)
+          CustomTextField(
+            labelText: "Proje",
+            suffixMore: true,
+            isMust: true,
+            readOnly: true,
+            controller: _projeController,
+            valueWidget: Observer(builder: (_) => Text(viewModel.dekontIslemlerRequestModel.projeKodu ?? "")),
+            onTap: setProje,
+          ),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Future<void> setTarih() async {
     final result = await dialogManager.showDateTimePicker(initialDate: viewModel.dekontIslemlerRequestModel.tarih);
@@ -130,7 +130,7 @@ final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
   Future<void> setProje() async {
     final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, true);
     if (result != null) {
-      _projeController.text = result.projeAciklama ?? "";
+      _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
       viewModel.setProjeKodu(result);
     }
   }
