@@ -48,228 +48,153 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        floatingActionButton: (yetkiController.genelDovizEkle) ? fab(context) : null,
-        body: body().paddingAll(UIHelper.lowSize),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), floatingActionButton: (yetkiController.genelDovizEkle) ? fab(context) : null, body: body().paddingAll(UIHelper.lowSize));
 
-  AppBar appBar() => AppBar(
-        title: const AppBarTitle(title: "Döviz Kurları"),
-      );
+  AppBar appBar() => AppBar(title: const AppBarTitle(title: "Döviz Kurları"));
 
   FloatingActionButton fab(BuildContext context) => FloatingActionButton(
-        onPressed: () async {
-          await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: loc.generalStrings.options,
-            children: [
-              BottomSheetModel(
-                title: "Kur Girişi",
-                iconWidget: Icons.add,
-                onTap: () async {
-                  if (setDovizBottomSheetList.ext.isNotNullOrEmpty) {
-                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: "Döviz Tipi",
-                      children: setDovizBottomSheetList,
-                    );
-                    if (result != null && result is DovizList) {
-                      Get.back();
-                      await Get.to(
-                        () => DovizKuruGirisiView(
-                          dovizKurlariModel: DovizKurlariModel(
-                            tarih: DateTime.now(),
-                            dovizTipi: result.dovizTipi,
-                            dovizAdi: result.isim ?? result.dovizKodu.toStringIfNotNull,
-                          ),
-                        ),
-                      );
-                      await viewModel.getData();
-                    }
-                  } else {
-                    Get.back();
-                    await dialogManager.showAlertDialog(
-                      "Döviz kuru girişi için en fazla 2 kayıt olabilir",
-                    );
-                  }
-                },
-              ),
-              BottomSheetModel(
-                title: "Kurları Netsis'ten Getir",
-                iconWidget: Icons.edit_outlined,
-                onTap: () async {
-                  Get.back();
-                  await dovizKuruGuncelle();
-                },
-              ),
-            ],
-          );
-        },
-        child: const Icon(Icons.add),
-      );
-
-  Column body() => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    onPressed: () async {
+      await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: loc.generalStrings.options,
         children: [
-          Card(
-            child: Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    viewModel.changeTarihYesterday();
-                    _controller.text = viewModel.tarih.toDateString;
-                    viewModel.getData();
-                  },
-                  icon: const Icon(Icons.chevron_left_outlined),
-                ),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Tarih",
-                    readOnly: true,
-                    isMust: true,
-                    controller: _controller,
-                    isDateTime: true,
-                    onTap: () async {
-                      final result = await dialogManager.showDateTimePicker();
-                      if (result != null) {
-                        viewModel.changeTarih(result);
-                        _controller.text = viewModel.tarih.toDateString;
-                        await viewModel.getData();
-                      }
-                    },
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    viewModel.changeTarihTomorow();
-                    _controller.text = viewModel.tarih.toDateString;
-                    viewModel.getData();
-                  },
-                  icon: const Icon(Icons.chevron_right_outlined),
-                ),
-              ],
-            ),
-          ).paddingAll(UIHelper.lowSize),
-          Text(
-            "Kurlar",
-            style: theme.textTheme.headlineMedium,
-          ).paddingOnly(top: UIHelper.midSize, left: UIHelper.midSize),
-          const Divider().paddingSymmetric(vertical: UIHelper.lowSize),
-          Expanded(
-            child: Observer(
-              builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: dovizKurlariCard),
-            ),
+          BottomSheetModel(
+            title: "Kur Girişi",
+            iconWidget: Icons.add,
+            onTap: () async {
+              if (setDovizBottomSheetList.ext.isNotNullOrEmpty) {
+                final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Döviz Tipi", children: setDovizBottomSheetList);
+                if (result != null && result is DovizList) {
+                  Get.back();
+                  await Get.to(
+                    () => DovizKuruGirisiView(dovizKurlariModel: DovizKurlariModel(tarih: DateTime.now(), dovizTipi: result.dovizTipi, dovizAdi: result.isim ?? result.dovizKodu.toStringIfNotNull)),
+                  );
+                  await viewModel.getData();
+                }
+              } else {
+                Get.back();
+                await dialogManager.showAlertDialog("Döviz kuru girişi için en fazla 2 kayıt olabilir");
+              }
+            },
+          ),
+          BottomSheetModel(
+            title: "Kurları Netsis'ten Getir",
+            iconWidget: Icons.edit_outlined,
+            onTap: () async {
+              Get.back();
+              await dovizKuruGuncelle();
+            },
           ),
         ],
       );
+    },
+    child: const Icon(Icons.add),
+  );
+
+  Column body() => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Card(
+        child: Row(
+          children: [
+            IconButton(
+              onPressed: () {
+                viewModel.changeTarihYesterday();
+                _controller.text = viewModel.tarih.toDateString;
+                viewModel.getData();
+              },
+              icon: const Icon(Icons.chevron_left_outlined),
+            ),
+            Expanded(
+              child: CustomTextField(
+                labelText: "Tarih",
+                readOnly: true,
+                isMust: true,
+                controller: _controller,
+                isDateTime: true,
+                onTap: () async {
+                  final result = await dialogManager.showDateTimePicker();
+                  if (result != null) {
+                    viewModel.changeTarih(result);
+                    _controller.text = viewModel.tarih.toDateString;
+                    await viewModel.getData();
+                  }
+                },
+              ),
+            ),
+            IconButton(
+              onPressed: () {
+                viewModel.changeTarihTomorow();
+                _controller.text = viewModel.tarih.toDateString;
+                viewModel.getData();
+              },
+              icon: const Icon(Icons.chevron_right_outlined),
+            ),
+          ],
+        ),
+      ).paddingAll(UIHelper.lowSize),
+      Text("Kurlar", style: theme.textTheme.headlineMedium).paddingOnly(top: UIHelper.midSize, left: UIHelper.midSize),
+      const Divider().paddingSymmetric(vertical: UIHelper.lowSize),
+      Expanded(child: Observer(builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: dovizKurlariCard))),
+    ],
+  );
 
   Card dovizKurlariCard(DovizKurlariModel item) => Card(
-        child: ListTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(item.dovizAdi ?? ""),
-              Text(
-                item.tarih.toDateString,
-                style: const TextStyle(color: ColorPalette.slateGray),
-              ),
-            ],
-          ).paddingOnly(bottom: UIHelper.highSize),
-          subtitle: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomWidgetWithLabel(
-                isVertical: true,
-                addPadding: false,
-                text: "Alış",
-                child: Text(
-                  item.dovAlis.commaSeparatedWithDecimalDigits(
-                    OndalikEnum.dovizFiyati,
-                  ),
-                ),
-              ),
-              CustomWidgetWithLabel(
-                isVertical: true,
-                addPadding: false,
-                text: "Satış",
-                child: Text(
-                  item.dovSatis.commaSeparatedWithDecimalDigits(
-                    OndalikEnum.dovizFiyati,
-                  ),
-                ),
-              ),
-              CustomWidgetWithLabel(
-                isVertical: true,
-                addPadding: false,
-                text: "Ef. Alış",
-                child: Text(
-                  item.effAlis.commaSeparatedWithDecimalDigits(
-                    OndalikEnum.dovizFiyati,
-                  ),
-                ),
-              ),
-              CustomWidgetWithLabel(
-                isVertical: true,
-                addPadding: false,
-                text: "Ef. Satış",
-                child: Text(
-                  item.effSatis.commaSeparatedWithDecimalDigits(
-                    OndalikEnum.dovizFiyati,
-                  ),
-                ),
-              ),
+    child: ListTile(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [Text(item.dovizAdi ?? ""), Text(item.tarih.toDateString, style: const TextStyle(color: ColorPalette.slateGray))],
+      ).paddingOnly(bottom: UIHelper.highSize),
+      subtitle: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children:
+            [
+              CustomWidgetWithLabel(isVertical: true, addPadding: false, text: "Alış", child: Text(item.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
+              CustomWidgetWithLabel(isVertical: true, addPadding: false, text: "Satış", child: Text(item.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
+              CustomWidgetWithLabel(isVertical: true, addPadding: false, text: "Ef. Alış", child: Text(item.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
+              CustomWidgetWithLabel(isVertical: true, addPadding: false, text: "Ef. Satış", child: Text(item.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
             ].map((e) => Expanded(child: e)).toList(),
-          ),
-          onTap: () async {
-            await bottomSheetDialogManager.showBottomSheetDialog(
-              context,
-              title: loc.generalStrings.options,
-              children: [
-                if (yetkiController.genelDovizDuzenle)
-                  BottomSheetModel(
-                    title: loc.generalStrings.edit,
-                    iconWidget: Icons.edit_outlined,
-                    onTap: () async {
-                      Get.back();
-                      await Get.to(
-                        () => DovizKuruGirisiView(
-                          dovizKurlariModel: item,
-                        ),
-                      );
+      ),
+      onTap: () async {
+        await bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: loc.generalStrings.options,
+          children: [
+            if (yetkiController.genelDovizDuzenle)
+              BottomSheetModel(
+                title: loc.generalStrings.edit,
+                iconWidget: Icons.edit_outlined,
+                onTap: () async {
+                  Get.back();
+                  await Get.to(() => DovizKuruGirisiView(dovizKurlariModel: item));
+                  await viewModel.getData();
+                },
+              ),
+            if (yetkiController.genelDovizSil)
+              BottomSheetModel(
+                title: loc.generalStrings.delete,
+                iconWidget: Icons.delete_outline,
+                onTap: () {
+                  Get.back();
+                  dialogManager.showAreYouSureDialog(() async {
+                    final result = await networkManager.dioPost<DovizKurlariModel>(
+                      path: ApiUrls.deleteDovizKuru,
+                      bodyModel: DovizKurlariModel(),
+                      data: {"DovizTipi": item.dovizTipi, "Tarih": item.tarih.toDateString},
+                    );
+                    if (result.isSuccess) {
+                      dialogManager.showSuccessSnackBar("Başarıyla Silindi");
                       await viewModel.getData();
-                    },
-                  ),
-                if (yetkiController.genelDovizSil)
-                  BottomSheetModel(
-                    title: loc.generalStrings.delete,
-                    iconWidget: Icons.delete_outline,
-                    onTap: () {
-                      Get.back();
-                      dialogManager.showAreYouSureDialog(() async {
-                        final result = await networkManager.dioPost<DovizKurlariModel>(
-                          path: ApiUrls.deleteDovizKuru,
-                          bodyModel: DovizKurlariModel(),
-                          data: {
-                            "DovizTipi": item.dovizTipi,
-                            "Tarih": item.tarih.toDateString,
-                          },
-                        );
-                        if (result.isSuccess) {
-                          dialogManager.showSuccessSnackBar(
-                            "Başarıyla Silindi",
-                          );
-                          await viewModel.getData();
-                        }
-                      });
-                    },
-                  ),
-              ],
-            );
-          },
-        ),
-      );
+                    }
+                  });
+                },
+              ),
+          ],
+        );
+      },
+    ),
+  );
 
   Future<void> dovizKuruGuncelle() async {
     await dialogManager.showDialog(
@@ -278,10 +203,7 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
           showLoading: true,
           path: ApiUrls.dovizKuruGuncelle,
           bodyModel: DovizKurlariModel(),
-          data: {
-            "SilGuncelle": viewModel.kurlariSilTekrarGuncelle,
-            "Tarih": viewModel.tarih.toDateString,
-          },
+          data: {"SilGuncelle": viewModel.kurlariSilTekrarGuncelle, "Tarih": viewModel.tarih.toDateString},
         );
         if (result.isSuccess) {
           dialogManager.showSuccessSnackBar("Başarıyla Güncellendi");
@@ -290,15 +212,14 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
       },
       body: Column(
         children: [
-          Text(
-            "${viewModel.tarih.toDateString} tarihli döviz kurları güncellensin mi?",
-          ),
+          Text("${viewModel.tarih.toDateString} tarihli döviz kurları güncellensin mi?"),
           Observer(
-            builder: (_) => CheckboxListTile.adaptive(
-              title: const Text("Mevcut kurları sil ve tekrar güncelle"),
-              value: viewModel.kurlariSilTekrarGuncelle,
-              onChanged: (value) => viewModel.changeKurlariSilTekrarGuncelle(),
-            ),
+            builder:
+                (_) => CheckboxListTile.adaptive(
+                  title: const Text("Mevcut kurları sil ve tekrar güncelle"),
+                  value: viewModel.kurlariSilTekrarGuncelle,
+                  onChanged: (value) => viewModel.changeKurlariSilTekrarGuncelle(),
+                ),
           ).paddingSymmetric(vertical: UIHelper.lowSize),
         ],
       ),
@@ -310,13 +231,7 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
     final List<BottomSheetModel> bottomSheetList = [];
     for (final DovizList item in dovizList?.where((element) => element.dovizTipi != 0).toList() ?? []) {
       if (viewModel.observableList?.any((element) => element.dovizTipi != item.dovizTipi) ?? false) {
-        bottomSheetList.add(
-          BottomSheetModel(
-            title: item.isim ?? item.dovizTipi.toStringIfNotNull ?? "",
-            iconWidget: Icons.add,
-            value: item,
-          ),
-        );
+        bottomSheetList.add(BottomSheetModel(title: item.isim ?? item.dovizTipi.toStringIfNotNull ?? "", iconWidget: Icons.add, value: item));
       }
     }
     return bottomSheetList;
