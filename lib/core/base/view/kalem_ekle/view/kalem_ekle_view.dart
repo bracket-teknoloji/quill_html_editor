@@ -826,6 +826,37 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             enabled: !(editTipi?.fiyatDegistirilmesin ?? false),
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             isFormattedString: true,
+                            // suffix:
+                            //     fiyatRehberiGorebilir() && viewModel.kalemModel.dovizliMi && !(parametreModel.ozelFiyatSistemi ?? false)
+                            //         ? IconButton(
+                            //           onPressed: () async {
+                            //             final siraList = await viewModel.getStokFiyatlari();
+                            //             final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            //               groupValue: dovizFiyatiController.text.toDoubleWithFormattedString,
+                            //               context,
+                            //               title: "Fiyat seçiniz",
+                            //               children: List.generate(siraList?.length ?? 0, (index) {
+                            //                 final item = siraList![index];
+                            //                 return BottomSheetModel(
+                            //                   title: "${++index}. Fiyat",
+                            //                   description: item.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat),
+                            //                   groupValue: item.fiyat,
+                            //                   value: item,
+                            //                 );
+                            //               }),
+                            //             );
+                            //             if (result != null) {
+                            //               viewModel.setBrutFiyat(result.fiyat);
+                            //               fiyatController.text = result.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+                            //               if (viewModel.model?.dovizliMi ?? false) {
+                            //                 viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
+                            //                 dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+                            //               }
+                            //             }
+                            //           },
+                            //           icon: const Icon(Icons.more_horiz_outlined),
+                            //         )
+                            //         : null,
                             onChanged: (p0) {
                               viewModel
                                 ..setDovizFiyati(p0.toDoubleWithFormattedString)
@@ -866,51 +897,54 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   ),
                 if (editTipi?.fiyatGor == true && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false))
                   Expanded(
-                    child: CustomTextField(
-                      labelText: "Fiyat",
-                      controller: fiyatController,
-                      enabled: !(editTipi?.fiyatDegistirilmesin ?? false) && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false),
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      isMust: editTipi?.bosGecilmeyecekAlanlar("fiyat"),
-                      isFormattedString: true,
-                      suffix:
-                          AccountModel.instance.adminMi || (editTipi?.fiyatGor == true && yetkiController.stokFiyatGorEkrani && yetkiController.stokSatisTuruneGoreFiyatGor(editTipi))
-                              ? IconButton(
-                                onPressed: () async {
-                                  final siraList = await viewModel.getStokFiyatlari();
-                                  final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                    groupValue: fiyatController.text.toDoubleWithFormattedString,
-                                    context,
-                                    title: "Fiyat seçiniz",
-                                    children: List.generate(siraList?.length ?? 0, (index) {
-                                      final item = siraList![index];
-                                      return BottomSheetModel(
-                                        title: "${++index}. Fiyat",
-                                        description: item.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat),
-                                        groupValue: item.fiyat,
-                                        value: item,
-                                      );
-                                    }),
-                                  );
-                                  if (result != null) {
-                                    viewModel.setBrutFiyat(result.fiyat);
-                                    fiyatController.text = result.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-                                    if (viewModel.model?.dovizliMi ?? false) {
-                                      viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
-                                      dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-                                    }
-                                  }
-                                },
-                                icon: const Icon(Icons.more_horiz_outlined),
-                              )
-                              : null,
-                      onChanged: (p0) {
-                        viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
-                        if (viewModel.model?.dovizliMi ?? false) {
-                          viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
-                          dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-                        }
-                      },
+                    child: Observer(
+                      builder:
+                          (_) => CustomTextField(
+                            labelText: "Fiyat",
+                            controller: fiyatController,
+                            enabled: !(editTipi?.fiyatDegistirilmesin ?? false) && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false),
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            isMust: editTipi?.bosGecilmeyecekAlanlar("fiyat"),
+                            isFormattedString: true,
+                            suffix:
+                                fiyatRehberiGorebilir() && !viewModel.kalemModel.dovizliMi
+                                    ? IconButton(
+                                      onPressed: () async {
+                                        final siraList = await viewModel.getStokFiyatlari();
+                                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                                          groupValue: fiyatController.text.toDoubleWithFormattedString,
+                                          context,
+                                          title: "Fiyat seçiniz",
+                                          children: List.generate(siraList?.length ?? 0, (index) {
+                                            final item = siraList![index];
+                                            return BottomSheetModel(
+                                              title: "${++index}. Fiyat",
+                                              description: item.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat),
+                                              groupValue: item.fiyat,
+                                              value: item,
+                                            );
+                                          }),
+                                        );
+                                        if (result != null) {
+                                          viewModel.setBrutFiyat(result.fiyat);
+                                          fiyatController.text = result.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+                                          if (viewModel.model?.dovizliMi ?? false) {
+                                            viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
+                                            dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+                                          }
+                                        }
+                                      },
+                                      icon: const Icon(Icons.more_horiz_outlined),
+                                    )
+                                    : null,
+                            onChanged: (p0) {
+                              viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
+                              if (viewModel.model?.dovizliMi ?? false) {
+                                viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
+                                dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+                              }
+                            },
+                          ),
                     ),
                   ),
               ],
@@ -1123,6 +1157,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       ),
     ),
   );
+
+  bool fiyatRehberiGorebilir() => AccountModel.instance.adminMi || (editTipi?.fiyatGor == true && yetkiController.stokFiyatGorEkrani && yetkiController.stokSatisTuruneGoreFiyatGor(editTipi));
 
   bool get seriliMi =>
       ((model.getEditTipiEnum?.satisMi ?? false) ? viewModel.model?.seriCikislardaAcik : viewModel.model?.seriGirislerdeAcik) == true &&
