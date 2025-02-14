@@ -205,12 +205,11 @@ final class LocationManager implements InjectableInterface {
     if (kIsWeb) {
       await Permission.location.request();
       return await Permission.location.isGranted;
-    } else {
-      if (await Permission.locationAlways.status.isDenied) {
-        await Permission.locationAlways.request();
-      }
-      return await Permission.locationAlways.isGranted;
     }
+    if (await Permission.locationAlways.status.isDenied) {
+      await Permission.locationAlways.request();
+    }
+    return await Permission.locationAlways.isGranted;
   }
 
   @override
