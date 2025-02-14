@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view/kalem_ekle/model/stok_fiyati_model.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -44,29 +45,23 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @computed
   List<Olculer> get olcuBirimiMap => [
-        if (model?.olcuBirimi != null) (adi: model?.olcuBirimi, pay: 0.0, payda: 1.0),
-        if (model?.olcuBirimi2 != null) (adi: model?.olcuBirimi2, pay: model?.olcuBirimi2Pay, payda: model?.olcuBirimi2Payda),
-        if (model?.olcuBirimi3 != null) (adi: model?.olcuBirimi3, pay: model?.olcuBirimi3Pay, payda: model?.olcuBirimi3Payda),
-      ];
+    if (model?.olcuBirimi != null) (adi: model?.olcuBirimi, pay: 0.0, payda: 1.0),
+    if (model?.olcuBirimi2 != null) (adi: model?.olcuBirimi2, pay: model?.olcuBirimi2Pay, payda: model?.olcuBirimi2Payda),
+    if (model?.olcuBirimi3 != null) (adi: model?.olcuBirimi3, pay: model?.olcuBirimi3Pay, payda: model?.olcuBirimi3Payda),
+  ];
 
   @observable
   KalemModel kalemModel = KalemModel(iskonto1OranMi: true);
   @action
   void setKoliMi() {
-    kalemModel = kalemModel.copyWith(
-      koliMi: model?.koliMi ?? false || kalemModel.kalemList != null,
-    );
+    kalemModel = kalemModel.copyWith(koliMi: model?.koliMi ?? false || kalemModel.kalemList != null);
   }
 
   @action
   void setOTVliMi() {
     final String otvUygulanacakMi = BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "S" : "A";
     if (model?.otvUygula == otvUygulanacakMi) {
-      kalemModel = kalemModel.copyWith(
-        otvVarmi: model?.otvUygula == otvUygulanacakMi,
-        otvDegeri: model?.otvDeger,
-        otvOranmi: model?.otvOranmi == "E",
-      );
+      kalemModel = kalemModel.copyWith(otvVarmi: model?.otvUygula == otvUygulanacakMi, otvDegeri: model?.otvDeger, otvOranmi: model?.otvOranmi == "E");
       if (kalemModel.otvVarmi == true) {
         updateOtv();
       }
@@ -213,38 +208,26 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void increaseMiktar2(TextEditingController controller) {
-    kalemModel = kalemModel.copyWith(
-      miktar2: (kalemModel.miktar2 ?? 0) + 1,
-      miktar: (kalemModel.miktar2 ?? 0) + 1,
-    );
+    kalemModel = kalemModel.copyWith(miktar2: (kalemModel.miktar2 ?? 0) + 1, miktar: (kalemModel.miktar2 ?? 0) + 1);
     controller.text = (kalemModel.miktar2 ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
   }
 
   @action
   void setMiktar2(double value) {
-    kalemModel = kalemModel.copyWith(
-      miktar2: value,
-      miktar: value,
-    );
+    kalemModel = kalemModel.copyWith(miktar2: value, miktar: value);
   }
 
   @action
   void decreaseMiktar2(TextEditingController controller) {
     if ((kalemModel.miktar2 ?? 0) > 0) {
-      kalemModel = kalemModel.copyWith(
-        miktar2: (kalemModel.miktar2 ?? 0) - 1,
-        miktar: (kalemModel.miktar2 ?? 0) - 1,
-      );
+      kalemModel = kalemModel.copyWith(miktar2: (kalemModel.miktar2 ?? 0) - 1, miktar: (kalemModel.miktar2 ?? 0) - 1);
       controller.text = (kalemModel.miktar2 ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     }
   }
 
   @action
   void increaseMFMiktar(TextEditingController controller) {
-    kalemModel = kalemModel.copyWith(
-      malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) + 1,
-      malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) + 1,
-    );
+    kalemModel = kalemModel.copyWith(malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) + 1, malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) + 1);
     controller.text = (kalemModel.malFazlasiMiktar ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
   }
 
@@ -254,10 +237,7 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   @action
   void decreaseMFMiktar(TextEditingController controller) {
     if ((kalemModel.malFazlasiMiktar ?? 0) > 0) {
-      kalemModel = kalemModel.copyWith(
-        malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) - 1,
-        malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) - 1,
-      );
+      kalemModel = kalemModel.copyWith(malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) - 1, malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) - 1);
       controller.text = (kalemModel.malFazlasiMiktar ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     }
   }
@@ -267,5 +247,23 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
     if (result.isSuccess) {
       setModel(result.dataList.first);
     }
+  }
+
+  Future<List<StokFiyatiModel>?> getStokFiyatlari() async {
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getStokFiyatiTumSira,
+      bodyModel: StokFiyatiModel(),
+      queryParameters: {
+        "StokKodu": model?.stokKodu,
+        "CariKodu": BaseSiparisEditModel.instance.cariKodu,
+        "BelgeTarihi": BaseSiparisEditModel.instance.tarih,
+        "SatisFiyati": BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false,
+        "BelgeTuru": BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
+      },
+    );
+    if (result.isSuccess) {
+      return result.dataList;
+    }
+    return null;
   }
 }
