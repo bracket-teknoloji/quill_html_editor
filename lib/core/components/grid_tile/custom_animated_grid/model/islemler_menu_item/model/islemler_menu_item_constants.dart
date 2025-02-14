@@ -1353,7 +1353,7 @@ final class IslemlerMenuItemConstants<T> {
                 }
                 result.depoTanimi ??= siparisModel.depoTanimi;
                 BaseSiparisEditModel.resetInstance();
-                final boolean = await Get.toNamed(
+                final faturaModel = await Get.toNamed(
                   "mainPage/faturaEdit",
                   arguments: BaseEditModel(
                     model: result..kalemList = kalemList.map((e) => e..miktar = e.kalan).toList(),
@@ -1361,8 +1361,8 @@ final class IslemlerMenuItemConstants<T> {
                     editTipiEnum: siparisTipi?.saticiMi == true ? EditTipiEnum.alisFatura : EditTipiEnum.satisFatura,
                   ),
                 );
-                if (boolean == true) {
-                  return true;
+                if (faturaModel is BaseSiparisEditModel) {
+                  return faturaModel;
                 }
               }
             }
