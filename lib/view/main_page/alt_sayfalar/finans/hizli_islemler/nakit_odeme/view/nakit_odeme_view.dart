@@ -212,10 +212,13 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                     ),
                   ),
                   Observer(
-                    builder: (_) => Text(
-                      (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
-                      style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed),
-                    ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null),
+                    builder: (_) => Visibility(
+                      visible: viewModel.getCariBakiye != null,
+                      child: Text(
+                        (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
+                        style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed),
+                      ).paddingAll(UIHelper.lowSize),
+                    ),
                   ),
                   Observer(
                     builder: (_) => Row(

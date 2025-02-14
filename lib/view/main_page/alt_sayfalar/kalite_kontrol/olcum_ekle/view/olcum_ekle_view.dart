@@ -254,10 +254,10 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(proses.proses ?? ""),
-                                ColorfulBadge(
+                                if (eklenenProses?.sonuc != null)ColorfulBadge(
                                   label: Text(eklenenProses.sonucAdi),
                                   badgeColorEnum: eklenenProses.cardColor,
-                                ).yetkiVarMi(eklenenProses?.sonuc != null),
+                                ),
                               ],
                             );
                           },
