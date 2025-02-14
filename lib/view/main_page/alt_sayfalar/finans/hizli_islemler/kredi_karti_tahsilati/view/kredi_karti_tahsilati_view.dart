@@ -314,7 +314,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
                 ),
-              ),
+              ).yetkiVarMi(false),
               if (yetkiController.plasiyerUygulamasiAcikMi)
                 Expanded(
                   child: CustomTextField(
@@ -349,7 +349,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                     onTap: () async {
                       final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
                       if (result is BaseProjeModel) {
-                        _projekoduController.text = result.projeAciklama ?? "";
+                        _projekoduController.text = result.projeAciklama ?? result.projeKodu ?? "";
                         viewModel.setProjekodu(result.projeKodu);
                       }
                     },
