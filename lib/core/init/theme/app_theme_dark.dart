@@ -20,6 +20,7 @@ final class AppThemeDark extends AppTheme {
     datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
     radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1))),
     colorScheme: colorManager,
+    pageTransitionsTheme: const PageTransitionsTheme(builders: {TargetPlatform.android: FadeForwardsPageTransitionsBuilder()}),
     actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
     tabBarTheme: const TabBarTheme(
       indicatorColor: UIHelper.primaryColor,
@@ -62,13 +63,7 @@ final class AppThemeDark extends AppTheme {
       // trackOutlineColor: WidgetStatePropertyAll(colorManager.onPrimaryFixedVariant),
     ),
     dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withValues(alpha: 0.2), endIndent: UIHelper.midSize, indent: UIHelper.midSize),
-    progressIndicatorTheme: const ProgressIndicatorThemeData(
-      year2023: true,
-      color: UIHelper.primaryColor,
-      linearTrackColor: Colors.transparent,
-      circularTrackColor: Colors.transparent,
-      linearMinHeight: 2,
-    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
     dropdownMenuTheme: DropdownMenuThemeData(
       menuStyle: const MenuStyle(),
       inputDecorationTheme: InputDecorationTheme(
