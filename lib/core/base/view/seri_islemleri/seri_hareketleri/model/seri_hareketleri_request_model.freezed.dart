@@ -29,10 +29,26 @@ mixin _$SeriHareketleriRequestModel {
   String? get seriNo => throw _privateConstructorUsedError;
   @JsonKey(name: "SeriNo")
   set seriNo(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: "Sirala")
+  @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA")
   String? get sirala => throw _privateConstructorUsedError;
-  @JsonKey(name: "Sirala")
+  @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA")
   set sirala(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "BelgeNo")
+  String? get belgeNo => throw _privateConstructorUsedError;
+  @JsonKey(name: "BelgeNo")
+  set belgeNo(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "BelgeTipi")
+  String? get belgeTipi => throw _privateConstructorUsedError;
+  @JsonKey(name: "BelgeTipi")
+  set belgeTipi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "HareketID")
+  int? get hareketId => throw _privateConstructorUsedError;
+  @JsonKey(name: "HareketID")
+  set hareketId(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "TempGetir")
+  String? get tempGetir => throw _privateConstructorUsedError;
+  @JsonKey(name: "TempGetir")
+  set tempGetir(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this SeriHareketleriRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,7 +71,11 @@ abstract class $SeriHareketleriRequestModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: "StokKodu") String? stokKodu,
       @JsonKey(name: "SeriNo") String? seriNo,
-      @JsonKey(name: "Sirala") String? sirala});
+      @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
+      @JsonKey(name: "BelgeNo") String? belgeNo,
+      @JsonKey(name: "BelgeTipi") String? belgeTipi,
+      @JsonKey(name: "HareketID") int? hareketId,
+      @JsonKey(name: "TempGetir") String? tempGetir});
 }
 
 /// @nodoc
@@ -77,6 +97,10 @@ class _$SeriHareketleriRequestModelCopyWithImpl<$Res,
     Object? stokKodu = freezed,
     Object? seriNo = freezed,
     Object? sirala = freezed,
+    Object? belgeNo = freezed,
+    Object? belgeTipi = freezed,
+    Object? hareketId = freezed,
+    Object? tempGetir = freezed,
   }) {
     return _then(_value.copyWith(
       stokKodu: freezed == stokKodu
@@ -90,6 +114,22 @@ class _$SeriHareketleriRequestModelCopyWithImpl<$Res,
       sirala: freezed == sirala
           ? _value.sirala
           : sirala // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hareketId: freezed == hareketId
+          ? _value.hareketId
+          : hareketId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tempGetir: freezed == tempGetir
+          ? _value.tempGetir
+          : tempGetir // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -107,7 +147,11 @@ abstract class _$$SeriHareketleriRequestModelImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: "StokKodu") String? stokKodu,
       @JsonKey(name: "SeriNo") String? seriNo,
-      @JsonKey(name: "Sirala") String? sirala});
+      @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
+      @JsonKey(name: "BelgeNo") String? belgeNo,
+      @JsonKey(name: "BelgeTipi") String? belgeTipi,
+      @JsonKey(name: "HareketID") int? hareketId,
+      @JsonKey(name: "TempGetir") String? tempGetir});
 }
 
 /// @nodoc
@@ -128,6 +172,10 @@ class __$$SeriHareketleriRequestModelImplCopyWithImpl<$Res>
     Object? stokKodu = freezed,
     Object? seriNo = freezed,
     Object? sirala = freezed,
+    Object? belgeNo = freezed,
+    Object? belgeTipi = freezed,
+    Object? hareketId = freezed,
+    Object? tempGetir = freezed,
   }) {
     return _then(_$SeriHareketleriRequestModelImpl(
       stokKodu: freezed == stokKodu
@@ -142,6 +190,22 @@ class __$$SeriHareketleriRequestModelImplCopyWithImpl<$Res>
           ? _value.sirala
           : sirala // ignore: cast_nullable_to_non_nullable
               as String?,
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hareketId: freezed == hareketId
+          ? _value.hareketId
+          : hareketId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tempGetir: freezed == tempGetir
+          ? _value.tempGetir
+          : tempGetir // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -153,7 +217,11 @@ class _$SeriHareketleriRequestModelImpl
   _$SeriHareketleriRequestModelImpl(
       {@JsonKey(name: "StokKodu") this.stokKodu,
       @JsonKey(name: "SeriNo") this.seriNo,
-      @JsonKey(name: "Sirala") this.sirala});
+      @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") this.sirala,
+      @JsonKey(name: "BelgeNo") this.belgeNo,
+      @JsonKey(name: "BelgeTipi") this.belgeTipi,
+      @JsonKey(name: "HareketID") this.hareketId,
+      @JsonKey(name: "TempGetir") this.tempGetir});
 
   factory _$SeriHareketleriRequestModelImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -166,8 +234,20 @@ class _$SeriHareketleriRequestModelImpl
   @JsonKey(name: "SeriNo")
   String? seriNo;
   @override
-  @JsonKey(name: "Sirala")
+  @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA")
   String? sirala;
+  @override
+  @JsonKey(name: "BelgeNo")
+  String? belgeNo;
+  @override
+  @JsonKey(name: "BelgeTipi")
+  String? belgeTipi;
+  @override
+  @JsonKey(name: "HareketID")
+  int? hareketId;
+  @override
+  @JsonKey(name: "TempGetir")
+  String? tempGetir;
 
   /// Create a copy of SeriHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -191,7 +271,11 @@ abstract class _SeriHareketleriRequestModel
   factory _SeriHareketleriRequestModel(
           {@JsonKey(name: "StokKodu") String? stokKodu,
           @JsonKey(name: "SeriNo") String? seriNo,
-          @JsonKey(name: "Sirala") String? sirala}) =
+          @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA") String? sirala,
+          @JsonKey(name: "BelgeNo") String? belgeNo,
+          @JsonKey(name: "BelgeTipi") String? belgeTipi,
+          @JsonKey(name: "HareketID") int? hareketId,
+          @JsonKey(name: "TempGetir") String? tempGetir}) =
       _$SeriHareketleriRequestModelImpl;
 
   factory _SeriHareketleriRequestModel.fromJson(Map<String, dynamic> json) =
@@ -208,10 +292,30 @@ abstract class _SeriHareketleriRequestModel
   @JsonKey(name: "SeriNo")
   set seriNo(String? value);
   @override
-  @JsonKey(name: "Sirala")
+  @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA")
   String? get sirala;
-  @JsonKey(name: "Sirala")
+  @JsonKey(name: "Sirala", defaultValue: "TARIH_ZA")
   set sirala(String? value);
+  @override
+  @JsonKey(name: "BelgeNo")
+  String? get belgeNo;
+  @JsonKey(name: "BelgeNo")
+  set belgeNo(String? value);
+  @override
+  @JsonKey(name: "BelgeTipi")
+  String? get belgeTipi;
+  @JsonKey(name: "BelgeTipi")
+  set belgeTipi(String? value);
+  @override
+  @JsonKey(name: "HareketID")
+  int? get hareketId;
+  @JsonKey(name: "HareketID")
+  set hareketId(int? value);
+  @override
+  @JsonKey(name: "TempGetir")
+  String? get tempGetir;
+  @JsonKey(name: "TempGetir")
+  set tempGetir(String? value);
 
   /// Create a copy of SeriHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
