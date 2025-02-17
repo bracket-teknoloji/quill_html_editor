@@ -5,6 +5,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_model.dart";
+import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_request_model.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/view_model/seri_hareketleri_view_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -23,7 +24,7 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 
 final class SeriHareketleriView extends StatefulWidget {
   const SeriHareketleriView({required this.model, super.key});
-  final StokListesiModel? model;
+  final SeriHareketleriRequestModel? model;
 
   @override
   State<SeriHareketleriView> createState() => _SeriHareketleriViewState();
@@ -37,7 +38,7 @@ final class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
   void initState() {
     _stokKoduController = TextEditingController(text: widget.model?.stokKodu ?? "");
     if (widget.model != null) {
-      viewModel.setStokListesiModel(widget.model!);
+      viewModel.setRequestModel(widget.model!);
     }
     viewModel.setStokKodu(widget.model?.stokKodu ?? "");
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {

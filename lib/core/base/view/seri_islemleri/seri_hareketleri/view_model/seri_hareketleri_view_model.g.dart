@@ -140,6 +140,17 @@ mixin _$SeriHareketleriViewModel on _SeriHareketleriViewModelBase, Store {
       ActionController(name: '_SeriHareketleriViewModelBase', context: context);
 
   @override
+  void setRequestModel(SeriHareketleriRequestModel model) {
+    final _$actionInfo = _$_SeriHareketleriViewModelBaseActionController
+        .startAction(name: '_SeriHareketleriViewModelBase.setRequestModel');
+    try {
+      return super.setRequestModel(model);
+    } finally {
+      _$_SeriHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSearchQuery(String query) {
     final _$actionInfo = _$_SeriHareketleriViewModelBaseActionController
         .startAction(name: '_SeriHareketleriViewModelBase.setSearchQuery');

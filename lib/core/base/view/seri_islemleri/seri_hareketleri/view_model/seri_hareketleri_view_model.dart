@@ -46,6 +46,9 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setRequestModel(SeriHareketleriRequestModel model) => requestModel = model;
+
+  @action
   void setSearchQuery(String query) => searchQuery = query;
 
   @action
