@@ -113,191 +113,206 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
       FocusScope.of(context).unfocus();
     }
     kod5Controller.text = viewModel.kod5?.map((e) => e.grupAdi).join(", ") ?? "";
-    return BaseScaffold(
-      floatingActionButton: fab(),
-      appBar: appBar(),
-      body: body(),
-    );
+    return BaseScaffold(floatingActionButton: fab(), appBar: appBar(), body: body());
   }
 
   AppBar appBar() => AppBar(
-        // controller: scrollController,
-        leading: IconButton(
-          onPressed: () {
-            if (viewModel.isSearchBarOpen) {
-              viewModel
-                ..changeSearchBarStatus()
-                ..setSearchText("")
-                ..resetList();
-            } else {
-              Get.back();
-            }
-          },
-          icon: const Icon(Icons.arrow_back_outlined),
-        ),
-        title: Observer(
-          builder: (_) => viewModel.isSearchBarOpen
-              ? CustomAppBarTextField(
-                  controller: TextEditingController(text: viewModel.searchText),
-                  onFieldSubmitted: (value) {
-                    viewModel
-                      ..setSearchText(value)
-                      ..resetList()
-                      ..getData();
-                  },
-                )
-              : AppBarTitle(
-                  title: (widget.isGetData ?? false) ? "Stok Seçiniz" : "Stok Listesi",
-                  subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "",
-                ),
-        ),
-        actions: [
-          hideSearchBar(),
-          Observer(
-            builder: (_) => viewModel.isSearchBarOpen
-                ? const SizedBox.shrink()
-                : IconButton(
-                    onPressed: () async {
-                      await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: loc.generalStrings.options,
-                        body: Column(
-                          children: [
-                            Observer(
-                              builder: (_) => SwitchListTile.adaptive(
-                                title: const Text("Resimleri Göster"),
-                                secondary: const Icon(Icons.preview_outlined, color: UIHelper.primaryColor),
-                                value: viewModel.resimleriGoster == "E",
-                                onChanged: (value) async {
-                                  viewModel.setResimleriGoster();
-                                  if (viewModel.resimleriGoster == "E") {
-                                    viewModel.resetList();
-                                    await viewModel.getData();
-                                  } else {
-                                    viewModel.resetList();
-                                    await viewModel.getData();
+    // controller: scrollController,
+    leading: IconButton(
+      onPressed: () {
+        if (viewModel.isSearchBarOpen) {
+          viewModel
+            ..changeSearchBarStatus()
+            ..setSearchText("")
+            ..resetList();
+        } else {
+          Get.back();
+        }
+      },
+      icon: const Icon(Icons.arrow_back_outlined),
+    ),
+    title: Observer(
+      builder:
+          (_) =>
+              viewModel.isSearchBarOpen
+                  ? CustomAppBarTextField(
+                    controller: TextEditingController(text: viewModel.searchText),
+                    onFieldSubmitted: (value) {
+                      viewModel
+                        ..setSearchText(value)
+                        ..resetList()
+                        ..getData();
+                    },
+                  )
+                  : AppBarTitle(
+                    title: (widget.isGetData ?? false) ? "Stok Seçiniz" : "Stok Listesi",
+                    subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "",
+                  ),
+    ),
+    actions: [
+      hideSearchBar(),
+      Observer(
+        builder:
+            (_) =>
+                viewModel.isSearchBarOpen
+                    ? const SizedBox.shrink()
+                    : IconButton(
+                      onPressed: () async {
+                        await bottomSheetDialogManager.showBottomSheetDialog(
+                          context,
+                          title: loc.generalStrings.options,
+                          body: Column(
+                            children: [
+                              Observer(
+                                builder:
+                                    (_) => SwitchListTile.adaptive(
+                                      title: const Text("Resimleri Göster"),
+                                      secondary: const Icon(Icons.preview_outlined, color: UIHelper.primaryColor),
+                                      value: viewModel.resimleriGoster == "E",
+                                      onChanged: (value) async {
+                                        viewModel.setResimleriGoster();
+                                        if (viewModel.resimleriGoster == "E") {
+                                          viewModel.resetList();
+                                          await viewModel.getData();
+                                        } else {
+                                          viewModel.resetList();
+                                          await viewModel.getData();
+                                        }
+                                      },
+                                    ),
+                              ),
+                              const Divider(endIndent: 10, indent: 10).paddingSymmetric(vertical: UIHelper.lowSize),
+                              ListTile(
+                                title: const Text("Detaylı Arama"),
+                                leading: const Icon(Icons.search_outlined, color: UIHelper.primaryColor),
+                                onTap: () async {
+                                  Get.back();
+                                  final List<StokDetayliAramaAlanlar> list = [];
+                                  final List<StokDetayliAramaAlanlar> aramaList = [
+                                    StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
+                                    StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
+                                    ...parametreModel.stokDetayliAramaAlanlar ?? [],
+                                  ];
+                                  for (final StokDetayliAramaAlanlar item in aramaList) {
+                                    if (viewModel.bottomSheetModel.searchList?.any(
+                                          (element) => element.searchField == item.searchField,
+                                        ) ??
+                                        false) {
+                                      list.add(
+                                        viewModel.bottomSheetModel.searchList!.firstWhere(
+                                          (element) => element.searchField == item.searchField,
+                                        ),
+                                      );
+                                    } else {
+                                      list.add(item);
+                                    }
+                                  }
+                                  final result = await Get.toNamed("mainPage/stokDetayliArama", arguments: list);
+                                  if (result != null) {
+                                    if (result == true) {
+                                      viewModel.setSearchList(null);
+                                    } else {
+                                      viewModel.setSearchList(result);
+                                    }
+                                    await viewModel.resetList();
                                   }
                                 },
                               ),
-                            ),
-                            const Divider(
-                              endIndent: 10,
-                              indent: 10,
-                            ).paddingSymmetric(vertical: UIHelper.lowSize),
-                            ListTile(
-                              title: const Text("Detaylı Arama"),
-                              leading: const Icon(Icons.search_outlined, color: UIHelper.primaryColor),
-                              onTap: () async {
-                                Get.back();
-                                final List<StokDetayliAramaAlanlar> list = [];
-                                final List<StokDetayliAramaAlanlar> aramaList = [
-                                  StokDetayliAramaAlanlar(name: "Stok Kodu", searchField: "STOK_KODU"),
-                                  StokDetayliAramaAlanlar(name: "Stok Adı", searchField: "STOK_ADI"),
-                                  ...parametreModel.stokDetayliAramaAlanlar ?? [],
-                                ];
-                                for (final StokDetayliAramaAlanlar item in aramaList) {
-                                  if (viewModel.bottomSheetModel.searchList?.any((element) => element.searchField == item.searchField) ?? false) {
-                                    list.add(viewModel.bottomSheetModel.searchList!.firstWhere((element) => element.searchField == item.searchField));
-                                  } else {
-                                    list.add(item);
-                                  }
-                                }
-                                final result = await Get.toNamed("mainPage/stokDetayliArama", arguments: list);
-                                if (result != null) {
-                                  if (result == true) {
-                                    viewModel.setSearchList(null);
-                                  } else {
-                                    viewModel.setSearchList(result);
-                                  }
-                                  await viewModel.resetList();
-                                }
-                              },
-                            ),
-                            Column(
-                              children: [
-                                const Divider(
-                                  endIndent: 10,
-                                  indent: 10,
-                                ).paddingSymmetric(vertical: UIHelper.lowSize),
-                                ListTile(
-                                  title: const Text("Görünecek Ekstra Alanlar"),
-                                  leading: const Icon(Icons.add_circle_outline_outlined, color: UIHelper.primaryColor),
-                                  onTap: () async {
-                                    final result = await bottomSheetDialogManager.showStokGorunecekAlanlarCheckBoxBottomSheetDialog(
-                                      context,
-                                      viewModel.gorunecekAlanlar?.entries.map((e) => e.key).toList(),
-                                    );
-                                    if (result != null) {
-                                      Get.back();
-                                      viewModel.setGorunecekAlanlar(result);
-                                      await viewModel.resetList();
-                                    }
-                                  },
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.more_vert_outlined),
-                  ),
-          ),
-        ],
-        bottom: appBarBottom(),
-      );
+                              Column(
+                                children: [
+                                  const Divider(endIndent: 10, indent: 10).paddingSymmetric(vertical: UIHelper.lowSize),
+                                  ListTile(
+                                    title: const Text("Görünecek Ekstra Alanlar"),
+                                    leading: const Icon(
+                                      Icons.add_circle_outline_outlined,
+                                      color: UIHelper.primaryColor,
+                                    ),
+                                    onTap: () async {
+                                      final result = await bottomSheetDialogManager
+                                          .showStokGorunecekAlanlarCheckBoxBottomSheetDialog(
+                                            context,
+                                            viewModel.gorunecekAlanlar?.entries.map((e) => e.key).toList(),
+                                          );
+                                      if (result != null) {
+                                        Get.back();
+                                        viewModel.setGorunecekAlanlar(result);
+                                        await viewModel.resetList();
+                                      }
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                      icon: const Icon(Icons.more_vert_outlined),
+                    ),
+      ),
+    ],
+    bottom: appBarBottom(),
+  );
 
-  AppBarPreferedSizedBottom appBarBottom() => AppBarPreferedSizedBottom(
-        children: appBarBottomChildren.nullCheckWithGeneric,
-      );
+  AppBarPreferedSizedBottom appBarBottom() =>
+      AppBarPreferedSizedBottom(children: appBarBottomChildren.nullCheckWithGeneric);
 
   List<AppBarButton> get appBarBottomChildren => [
-        AppBarButton(
-          icon: Icons.qr_code_scanner,
-          child: const Text("Barkod"),
-          onPressed: () async {
-            final result = await Get.toNamed("/qr");
-            if (result != null) {
-              viewModel.setSearchText(result);
+    AppBarButton(
+      icon: Icons.qr_code_scanner,
+      child: const Text("Barkod"),
+      onPressed: () async {
+        final result = await Get.toNamed("/qr");
+        if (result != null) {
+          viewModel.setSearchText(result);
 
-              if (!viewModel.isSearchBarOpen) {
-                viewModel.changeSearchBarStatus();
-              }
-              viewModel.resetList();
-              await viewModel.getData();
-            }
-          },
-        ),
-        AppBarButton(
-          iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null)),
-          child: Text(loc.generalStrings.filter),
-          onPressed: () async {
-            if (viewModel.grupKodlari.isEmptyOrNull) {
-              final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
-              if (grupKodlari.isSuccess) {
-                viewModel.setGrupKodlari(grupKodlari.dataList);
-              }
-            }
-            await bottomSheetDialogManager.showBottomSheetDialog(
-              context,
-              title: loc.generalStrings.filter,
-              body: Column(
+          if (!viewModel.isSearchBarOpen) {
+            viewModel.changeSearchBarStatus();
+          }
+          viewModel.resetList();
+          await viewModel.getData();
+        }
+      },
+    ),
+    AppBarButton(
+      iconWidget: Observer(
+        builder:
+            (_) => Icon(
+              Icons.filter_alt_outlined,
+              size: 20,
+              fill: 1,
+              color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null,
+            ),
+      ),
+      child: Text(loc.generalStrings.filter),
+      onPressed: () async {
+        if (viewModel.grupKodlari.isEmptyOrNull) {
+          final grupKodlari = await CariNetworkManager.getKod(name: GrupKoduEnum.stok);
+          if (grupKodlari.isSuccess) {
+            viewModel.setGrupKodlari(grupKodlari.dataList);
+          }
+        }
+        await bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: loc.generalStrings.filter,
+          body: Column(
+            children: [
+              Wrap(
                 children: [
-                  Wrap(
-                    children: [
-                      CustomWidgetWithLabel(
-                        text: "Bakiye Durumu",
-                        child: Observer(
-                          builder: (_) => SlideControllerWidget(
+                  CustomWidgetWithLabel(
+                    text: "Bakiye Durumu",
+                    child: Observer(
+                      builder:
+                          (_) => SlideControllerWidget(
                             childrenTitleList: viewModel.selectedList,
                             filterOnChanged: (index) => viewModel.changeBakiyeDurumuTemp(index ?? 0),
                             childrenValueList: viewModel.selectedList.map((e) => e.substring(0, 1)).toList(),
                             groupValue: viewModel.bottomSheetModelTemp.bakiyeDurumu,
                           ),
-                        ),
-                      ),
-                      Observer(
-                        builder: (_) => Row(
+                    ),
+                  ),
+                  Observer(
+                    builder:
+                        (_) => Row(
                           children: [
                             if (viewModel.grupKodlari.any((element) => element.grupNo == 0))
                               Expanded(
@@ -307,20 +322,25 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   controller: grupKoduController,
                                   onClear: () => viewModel.changeArrGrupKoduTemp(null),
                                   onTap: () async {
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Grup Kodu",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrGrupKodu?.map((e) => e.grupKodu).toList(),
-                                      children: viewModel.grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
+                                    final result = await bottomSheetDialogManager
+                                        .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                          context,
+                                          title: "Grup Kodu",
+                                          groupValues:
+                                              viewModel.bottomSheetModelTemp.arrGrupKodu
+                                                  ?.map((e) => e.grupKodu)
+                                                  .toList(),
+                                          children:
+                                              viewModel.grupKodlari
+                                                  .map(
+                                                    (e) => BottomSheetModel(
+                                                      title: e.grupAdi ?? "",
+                                                      value: e,
+                                                      groupValue: e.grupKodu,
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                        );
                                     if (result != null) {
                                       viewModel.changeArrGrupKoduTemp(result);
                                       grupKoduController.text = result.map((e) => e.grupAdi).join(", ");
@@ -338,21 +358,25 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   controller: kod1Controller,
                                   onClear: () => viewModel.changeArrKod1Temp(null),
                                   onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod 1",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod1?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
+                                    final List<BaseGrupKoduModel> grupKodlari =
+                                        viewModel.grupKodlari.where((element) => element.grupNo == 1).toList();
+                                    final result = await bottomSheetDialogManager
+                                        .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                          context,
+                                          title: "Kod 1",
+                                          groupValues:
+                                              viewModel.bottomSheetModelTemp.arrKod1?.map((e) => e.grupKodu).toList(),
+                                          children:
+                                              grupKodlari
+                                                  .map(
+                                                    (e) => BottomSheetModel(
+                                                      title: e.grupAdi ?? "",
+                                                      value: e,
+                                                      groupValue: e.grupKodu,
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                        );
                                     if (result != null) {
                                       viewModel.changeArrKod1Temp(result);
                                       kod1Controller.text = result.map((e) => e.grupAdi).join(", ");
@@ -362,9 +386,10 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                               ),
                           ],
                         ),
-                      ),
-                      Observer(
-                        builder: (_) => Row(
+                  ),
+                  Observer(
+                    builder:
+                        (_) => Row(
                           children: [
                             if (viewModel.grupKodlari.any((element) => element.grupNo == 2))
                               Expanded(
@@ -375,21 +400,25 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   controller: kod2Controller,
                                   onClear: () => viewModel.changeArrKod2Temp(null),
                                   onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod 2",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod2?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
+                                    final List<BaseGrupKoduModel> grupKodlari =
+                                        viewModel.grupKodlari.where((element) => element.grupNo == 2).toList();
+                                    final result = await bottomSheetDialogManager
+                                        .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                          context,
+                                          title: "Kod 2",
+                                          groupValues:
+                                              viewModel.bottomSheetModelTemp.arrKod2?.map((e) => e.grupKodu).toList(),
+                                          children:
+                                              grupKodlari
+                                                  .map(
+                                                    (e) => BottomSheetModel(
+                                                      title: e.grupAdi ?? "",
+                                                      value: e,
+                                                      groupValue: e.grupKodu,
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                        );
                                     if (result != null) {
                                       viewModel.changeArrKod2(result);
                                       kod2Controller.text = result.map((e) => e.grupAdi).join(", ");
@@ -406,21 +435,25 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   controller: kod3Controller,
                                   onClear: () => viewModel.changeArrKod3Temp(null),
                                   onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod 3",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod3?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
+                                    final List<BaseGrupKoduModel> grupKodlari =
+                                        viewModel.grupKodlari.where((element) => element.grupNo == 3).toList();
+                                    final result = await bottomSheetDialogManager
+                                        .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                          context,
+                                          title: "Kod 3",
+                                          groupValues:
+                                              viewModel.bottomSheetModelTemp.arrKod3?.map((e) => e.grupKodu).toList(),
+                                          children:
+                                              grupKodlari
+                                                  .map(
+                                                    (e) => BottomSheetModel(
+                                                      title: e.grupAdi ?? "",
+                                                      value: e,
+                                                      groupValue: e.grupKodu,
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                        );
                                     if (result != null) {
                                       viewModel.changeArrKod3Temp(result);
                                       kod3Controller.text = result.map((e) => e.grupAdi).join(", ");
@@ -430,9 +463,10 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                               ),
                           ],
                         ),
-                      ),
-                      Observer(
-                        builder: (_) => Row(
+                  ),
+                  Observer(
+                    builder:
+                        (_) => Row(
                           children: [
                             if (viewModel.grupKodlari.any((element) => element.grupNo == 4))
                               Expanded(
@@ -443,21 +477,25 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   controller: kod4Controller,
                                   onClear: () => viewModel.changeArrKod4Temp(null),
                                   onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod 4",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod4?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
+                                    final List<BaseGrupKoduModel> grupKodlari =
+                                        viewModel.grupKodlari.where((element) => element.grupNo == 4).toList();
+                                    final result = await bottomSheetDialogManager
+                                        .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                          context,
+                                          title: "Kod 4",
+                                          groupValues:
+                                              viewModel.bottomSheetModelTemp.arrKod4?.map((e) => e.grupKodu).toList(),
+                                          children:
+                                              grupKodlari
+                                                  .map(
+                                                    (e) => BottomSheetModel(
+                                                      title: e.grupAdi ?? "",
+                                                      value: e,
+                                                      groupValue: e.grupKodu,
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                        );
                                     if (result != null) {
                                       viewModel.changeArrKod4Temp(result);
                                       kod4Controller.text = result.map((e) => e.grupAdi).join(", ");
@@ -474,21 +512,25 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                                   controller: kod5Controller,
                                   onClear: () => viewModel.changeArrKod5Temp(null),
                                   onTap: () async {
-                                    final List<BaseGrupKoduModel> grupKodlari = viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod 5",
-                                      groupValues: viewModel.bottomSheetModelTemp.arrKod5?.map((e) => e.grupKodu).toList(),
-                                      children: grupKodlari
-                                          .map(
-                                            (e) => BottomSheetModel(
-                                              title: e.grupAdi ?? "",
-                                              value: e,
-                                              groupValue: e.grupKodu,
-                                            ),
-                                          )
-                                          .toList(),
-                                    );
+                                    final List<BaseGrupKoduModel> grupKodlari =
+                                        viewModel.grupKodlari.where((element) => element.grupNo == 5).toList();
+                                    final result = await bottomSheetDialogManager
+                                        .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                          context,
+                                          title: "Kod 5",
+                                          groupValues:
+                                              viewModel.bottomSheetModelTemp.arrKod5?.map((e) => e.grupKodu).toList(),
+                                          children:
+                                              grupKodlari
+                                                  .map(
+                                                    (e) => BottomSheetModel(
+                                                      title: e.grupAdi ?? "",
+                                                      value: e,
+                                                      groupValue: e.grupKodu,
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                        );
                                     if (result != null) {
                                       viewModel.changeArrKod5Temp(result);
                                       kod5Controller.text = result.map((e) => e.grupAdi).join(", ");
@@ -498,122 +540,137 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                               ),
                           ],
                         ),
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                grupKoduController.clear();
-                                kod1Controller.clear();
-                                kod2Controller.clear();
-                                kod3Controller.clear();
-                                kod4Controller.clear();
-                                kod5Controller.clear();
-                                // viewModel.setBottomSheetModel(StokBottomSheetModel());
-                                viewModel
-                                  ..changeBakiyeDurumu("T")
-                                  ..changeBakiyeDurumuTemp(0)
-                                  ..resetSelectedArr()
-                                  ..resetList();
-                                Get.back();
-                              },
-                              style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
-                              child: const Text("Temizle"),
-                            ),
-                          ),
-                          SizedBox(width: width * 0.02),
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () async {
-                                viewModel
-                                  ..changeBakiyeDurumu(viewModel.bottomSheetModelTemp.bakiyeDurumu)
-                                  ..changeArrGrupKodu(viewModel.bottomSheetModelTemp.arrGrupKodu ?? <BaseGrupKoduModel>[])
-                                  ..changeArrKod1(viewModel.bottomSheetModelTemp.arrKod1 ?? <BaseGrupKoduModel>[])
-                                  ..changeArrKod2(viewModel.bottomSheetModelTemp.arrKod2 ?? <BaseGrupKoduModel>[])
-                                  ..changeArrKod3(viewModel.bottomSheetModelTemp.arrKod3 ?? <BaseGrupKoduModel>[])
-                                  ..changeArrKod4(viewModel.bottomSheetModelTemp.arrKod4 ?? <BaseGrupKoduModel>[])
-                                  ..changeArrKod5(viewModel.bottomSheetModelTemp.arrKod5 ?? <BaseGrupKoduModel>[])
-                                  ..resetList();
-                                Get.back();
-                              },
-                              child: Text(loc.generalStrings.apply),
-                            ),
-                          ),
-                        ],
-                      ).paddingAll(UIHelper.lowSize),
-                    ],
                   ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            grupKoduController.clear();
+                            kod1Controller.clear();
+                            kod2Controller.clear();
+                            kod3Controller.clear();
+                            kod4Controller.clear();
+                            kod5Controller.clear();
+                            // viewModel.setBottomSheetModel(StokBottomSheetModel());
+                            viewModel
+                              ..changeBakiyeDurumu("T")
+                              ..changeBakiyeDurumuTemp(0)
+                              ..resetSelectedArr()
+                              ..resetList();
+                            Get.back();
+                          },
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStateProperty.all(
+                              theme.colorScheme.onSurface.withValues(alpha: 0.1),
+                            ),
+                          ),
+                          child: const Text("Temizle"),
+                        ),
+                      ),
+                      SizedBox(width: width * 0.02),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            viewModel
+                              ..changeBakiyeDurumu(viewModel.bottomSheetModelTemp.bakiyeDurumu)
+                              ..changeArrGrupKodu(viewModel.bottomSheetModelTemp.arrGrupKodu ?? <BaseGrupKoduModel>[])
+                              ..changeArrKod1(viewModel.bottomSheetModelTemp.arrKod1 ?? <BaseGrupKoduModel>[])
+                              ..changeArrKod2(viewModel.bottomSheetModelTemp.arrKod2 ?? <BaseGrupKoduModel>[])
+                              ..changeArrKod3(viewModel.bottomSheetModelTemp.arrKod3 ?? <BaseGrupKoduModel>[])
+                              ..changeArrKod4(viewModel.bottomSheetModelTemp.arrKod4 ?? <BaseGrupKoduModel>[])
+                              ..changeArrKod5(viewModel.bottomSheetModelTemp.arrKod5 ?? <BaseGrupKoduModel>[])
+                              ..resetList();
+                            Get.back();
+                          },
+                          child: Text(loc.generalStrings.apply),
+                        ),
+                      ),
+                    ],
+                  ).paddingAll(UIHelper.lowSize),
                 ],
               ),
-            );
-          },
-        ),
-        AppBarButton(
-          icon: Icons.sort_by_alpha_outlined,
-          child: Text(loc.generalStrings.sort),
-          // child: const Icon(Icons.sort_by_alpha_outlined),
-          onPressed: () async {
-            final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+            ],
+          ),
+        );
+      },
+    ),
+    AppBarButton(
+      icon: Icons.sort_by_alpha_outlined,
+      child: Text(loc.generalStrings.sort),
+      // child: const Icon(Icons.sort_by_alpha_outlined),
+      onPressed: () async {
+        final String? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+          context,
+          title: loc.generalStrings.sort,
+          groupValue: viewModel.bottomSheetModel.siralama,
+          children: [
+            BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", groupValue: "AZ"),
+            BottomSheetModel(title: "Stok Adı (Z-A)", value: "ZA", groupValue: "ZA"),
+            BottomSheetModel(title: "Stok Kodu (A-Z)", value: "KOD_AZ", groupValue: "KOD_AZ"),
+            BottomSheetModel(title: "Stok Kodu (Z-A)", value: "KOD_ZA", groupValue: "KOD_ZA"),
+            BottomSheetModel(title: "Bakiye (Artan)", value: "BAKIYE_AZ", groupValue: "BAKIYE_AZ"),
+            BottomSheetModel(title: "Bakiye (Azalan)", value: "BAKIYE_ZA", groupValue: "BAKIYE_ZA"),
+          ],
+        );
+        if (result != null) {
+          viewModel
+            ..setSiralama(result)
+            ..resetList();
+        }
+      },
+    ),
+    AppBarButton(
+      icon: Icons.grid_view_outlined,
+      child: Text(loc.generalStrings.view),
+      onPressed: () async {
+        int? count;
+        final result = await bottomSheetDialogManager.showBottomSheetDialog<bool>(
+          context,
+          title: "Listeleme türünü seçin",
+          children: [
+            BottomSheetModel(
+              title: "Liste Görünümü",
+              iconWidget: Icons.list_alt_outlined,
+              value: false,
+              groupValue: false,
+            ),
+            BottomSheetModel(
+              title: "Kart Görünümü",
+              iconWidget: Icons.grid_view_outlined,
+              value: true,
+              groupValue: true,
+            ),
+          ],
+        );
+        if (result != null) {
+          if (!result) {
+            count = 0;
+          } else {
+            count = await bottomSheetDialogManager.showRadioBottomSheetDialog(
               context,
-              title: loc.generalStrings.sort,
-              groupValue: viewModel.bottomSheetModel.siralama,
-              children: [
-                BottomSheetModel(title: "Stok Adı (A-Z)", value: "AZ", groupValue: "AZ"),
-                BottomSheetModel(title: "Stok Adı (Z-A)", value: "ZA", groupValue: "ZA"),
-                BottomSheetModel(title: "Stok Kodu (A-Z)", value: "KOD_AZ", groupValue: "KOD_AZ"),
-                BottomSheetModel(title: "Stok Kodu (Z-A)", value: "KOD_ZA", groupValue: "KOD_ZA"),
-                BottomSheetModel(title: "Bakiye (Artan)", value: "BAKIYE_AZ", groupValue: "BAKIYE_AZ"),
-                BottomSheetModel(title: "Bakiye (Azalan)", value: "BAKIYE_ZA", groupValue: "BAKIYE_ZA"),
-              ],
+              title: "Sayı Seçiniz",
+              groupValue: viewModel.gridSayisi,
+              children: List.generate(
+                kIsWeb ? 8 : 4,
+                (index) => BottomSheetModel(title: (index + 1).toString(), value: index + 1, groupValue: index + 1),
+              ),
             );
-            if (result != null) {
-              viewModel
-                ..setSiralama(result)
-                ..resetList();
-            }
-          },
-        ),
-        AppBarButton(
-          icon: Icons.grid_view_outlined,
-          child: Text(loc.generalStrings.view),
-          onPressed: () async {
-            int? count;
-            final result = await bottomSheetDialogManager.showBottomSheetDialog<bool>(
-              context,
-              title: "Listeleme türünü seçin",
-              children: [
-                BottomSheetModel(title: "Liste Görünümü", iconWidget: Icons.list_alt_outlined, value: false, groupValue: false),
-                BottomSheetModel(title: "Kart Görünümü", iconWidget: Icons.grid_view_outlined, value: true, groupValue: true),
-              ],
-            );
-            if (result != null) {
-              if (!result) {
-                count = 0;
-              } else {
-                count = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                  context,
-                  title: "Sayı Seçiniz",
-                  groupValue: viewModel.gridSayisi,
-                  children: List.generate(
-                    kIsWeb ? 8 : 4,
-                    (index) => BottomSheetModel(title: (index + 1).toString(), value: index + 1, groupValue: index + 1),
-                  ),
-                );
-              }
-              if (count != null) {
-                viewModel
-                  ..setGridSayisi(count)
-                  ..resetList();
-              }
-            }
-          },
-        ),
-        //! AppBarButton(icon: Icons.refresh_outlined, onPressed: () {})
-      ];
+          }
+          if (count != null) {
+            viewModel
+              ..setGridSayisi(count)
+              ..resetList();
+          }
+        }
+      },
+    ),
+    //! AppBarButton(icon: Icons.refresh_outlined, onPressed: () {})
+  ];
 
   Widget hideSearchBar() => Observer(
-        builder: (_) => IconButton(
+    builder:
+        (_) => IconButton(
           onPressed: () {
             viewModel.changeSearchBarStatus();
             if (!viewModel.isSearchBarOpen) {
@@ -624,147 +681,184 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
           },
           icon: Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
         ),
-      );
+  );
 
   Observer? fab() {
     if (yetkiController.stokKartiYeniKayit) {
       return Observer(
-        builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrollDown,
-          onPressed: () async {
-            final BaseEditModel result = BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.ekle, model: StokListesiModel());
-            final isSucces = await Get.toNamed("/mainPage/stokEdit", arguments: result);
-            if (isSucces != null) {
-              viewModel.resetList();
-            }
-          },
-        ),
+        builder:
+            (_) => CustomFloatingActionButton(
+              isScrolledDown: viewModel.isScrollDown,
+              onPressed: () async {
+                final BaseEditModel result = BaseEditModel<StokListesiModel>(
+                  baseEditEnum: BaseEditEnum.ekle,
+                  model: StokListesiModel(),
+                );
+                final isSucces = await Get.toNamed("/mainPage/stokEdit", arguments: result);
+                if (isSucces != null) {
+                  viewModel.resetList();
+                }
+              },
+            ),
       );
     }
     return null;
   }
 
   Column body() => Column(
-        children: [
-          grupKoduFilter(),
-          Expanded(
-            child: Observer(
-              builder: (_) => viewModel.gridSayisi != 0
-                  ? Observer(
-                      builder: (_) => RefreshableGridView.pageable(
-                        crossAxisCount: viewModel.gridSayisi,
+    children: [
+      grupKoduFilter(),
+      Expanded(
+        child: Observer(
+          builder:
+              (_) =>
+                  viewModel.gridSayisi != 0
+                      ? Observer(
+                        builder:
+                            (_) => RefreshableGridView.pageable(
+                              crossAxisCount: viewModel.gridSayisi,
+                              scrollController: scrollController,
+                              onRefresh: viewModel.resetList,
+                              dahaVarMi: viewModel.dahaVarMi,
+                              items: viewModel.observableList,
+                              itemBuilder: (item, {crossAxisCount}) => stokListesiGridTile(item, crossAxisCount),
+                            ),
+                      )
+                      : RefreshableListView.pageable(
                         scrollController: scrollController,
                         onRefresh: viewModel.resetList,
                         dahaVarMi: viewModel.dahaVarMi,
                         items: viewModel.observableList,
-                        itemBuilder: (item, {crossAxisCount}) => stokListesiGridTile(item, crossAxisCount),
+                        itemBuilder: stokListesiCard,
                       ),
-                    )
-                  : RefreshableListView.pageable(
-                      scrollController: scrollController,
-                      onRefresh: viewModel.resetList,
-                      dahaVarMi: viewModel.dahaVarMi,
-                      items: viewModel.observableList,
-                      itemBuilder: stokListesiCard,
-                    ),
-            ),
-          ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 
   Widget stokListesiGridTile(StokListesiModel item, int? crossAxisCount) => MouseRightClickListener(
-        onRightClick: () => showStokIslemlerDialog(item),
-        child: Card(
-          child: InkWell(
-            onLongPress: () => showStokIslemlerDialog(item),
-            onTap: () => stokOnTap(item),
-            child: GridTile(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: ImageWidget(
-                      path: item.resimUrl,
-                      onTap: () {
-                        if (item.resimUrl != null) {
-                          Get.to(() => ImageCarouselView(model: item));
-                        }
-                      },
-                    ),
-                  ),
-                  Flexible(
-                    child: SingleChildScrollView(
-                      primary: false,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (item.stokAdi != null)
-                            Text(
-                              item.stokAdi ?? "",
-                              style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
-                              maxLines: 2,
-                            ),
-                          Wrap(
-                            children: [
-                              if (item.seriCikislardaAcik == true) const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
-                              if (item.kilitliMi) ColorfulBadge(label: Text("Kilitli (${item.kilitTipi})"), badgeColorEnum: BadgeColorEnum.hata),
-                              if (item.alisDovTip != null || item.satDovTip != null) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
-                              if (item.yapilandirmaAktif == true) const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
-                            ]
-                                .map(
-                                  (e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize),
-                                )
-                                .toList(),
-                          ),
-                          CustomLayoutBuilder(
-                            splitCount: crossAxisCount == 1
+    onRightClick: () => showStokIslemlerDialog(item),
+    child: Card(
+      child: InkWell(
+        onLongPress: () => showStokIslemlerDialog(item),
+        onTap: () => stokOnTap(item),
+        child: GridTile(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Expanded(
+                flex: 2,
+                child: ImageWidget(
+                  path: item.resimUrl,
+                  fit: false,
+                  onTap: () {
+                    if (item.resimUrl != null) Get.to(() => ImageCarouselView(model: item));
+                  },
+                ),
+              ),
+              Flexible(
+                child: SingleChildScrollView(
+                  primary: false,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (item.stokAdi != null)
+                        Text(
+                          item.stokAdi ?? "",
+                          style: const TextStyle(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                          maxLines: 2,
+                        ),
+                      Wrap(
+                        children:
+                            [
+                              if (item.seriCikislardaAcik == true)
+                                const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
+                              if (item.kilitliMi)
+                                ColorfulBadge(
+                                  label: Text("Kilitli (${item.kilitTipi})"),
+                                  badgeColorEnum: BadgeColorEnum.hata,
+                                ),
+                              if (item.alisDovTip != null || item.satDovTip != null)
+                                const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+                              if (item.yapilandirmaAktif == true)
+                                const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
+                            ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
+                      ),
+                      CustomLayoutBuilder(
+                        splitCount:
+                            crossAxisCount == 1
                                 ? 3
                                 : crossAxisCount == 2
-                                    ? 2
-                                    : 1,
-                            children: [
-                              Text("Stok Kodu:  ${item.stokKodu}"),
-                              Text("Bakiye:  ${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}"),
-                              if (item.yapacik != null) Text("Yap.Açık:  ${item.yapacik ?? ""}"),
-                              if (item.yapkod != null) Text("YapKod:  ${item.yapkod ?? ""}"),
-                              if (item.kull1s != null && viewModel.gorunecekAlanlar?["1S"] != null) Text("${viewModel.gorunecekAlanlar?["1S"]}:  ${item.kull1s}"),
-                              if (item.kull2s != null && viewModel.gorunecekAlanlar?["2S"] != null) Text("${viewModel.gorunecekAlanlar?["2S"]}:  ${item.kull2s}"),
-                              if (item.kull3s != null && viewModel.gorunecekAlanlar?["3S"] != null) Text("${viewModel.gorunecekAlanlar?["3S"]}:  ${item.kull3s}"),
-                              if (item.kull4s != null && viewModel.gorunecekAlanlar?["4S"] != null) Text("${viewModel.gorunecekAlanlar?["4S"]}:  ${item.kull4s}"),
-                              if (item.kull5s != null && viewModel.gorunecekAlanlar?["5S"] != null) Text("${viewModel.gorunecekAlanlar?["5S"]}:  ${item.kull5s}"),
-                              if (item.kull6s != null && viewModel.gorunecekAlanlar?["6S"] != null) Text("${viewModel.gorunecekAlanlar?["6S"]}:  ${item.kull6s}"),
-                              if (item.kull7s != null && viewModel.gorunecekAlanlar?["7S"] != null) Text("${viewModel.gorunecekAlanlar?["7S"]}:  ${item.kull7s}"),
-                              if (item.kull8s != null && viewModel.gorunecekAlanlar?["8S"] != null) Text("${viewModel.gorunecekAlanlar?["8S"]}:  ${item.kull8s}"),
-                              if (item.kull1n != null && viewModel.gorunecekAlanlar?["1N"] != null)
-                                Text("${viewModel.gorunecekAlanlar?["1N"]}:  ${item.kull1n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              if (item.kull2n != null && viewModel.gorunecekAlanlar?["2N"] != null)
-                                Text("${viewModel.gorunecekAlanlar?["2N"]}:  ${item.kull2n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              if (item.kull3n != null && viewModel.gorunecekAlanlar?["3N"] != null)
-                                Text("${viewModel.gorunecekAlanlar?["3N"]}:  ${item.kull3n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              if (item.kull4n != null && viewModel.gorunecekAlanlar?["4N"] != null)
-                                Text("${viewModel.gorunecekAlanlar?["4N"]}:  ${item.kull4n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              if (item.kull5n != null && viewModel.gorunecekAlanlar?["5N"] != null)
-                                Text("${viewModel.gorunecekAlanlar?["5N"]}:  ${item.kull5n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              if (item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null)
-                                Text("${viewModel.gorunecekAlanlar?["6N"]}:  ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              if (item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null)
-                                Text("${viewModel.gorunecekAlanlar?["7N"]}:  ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              if (item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null)
-                                Text("${viewModel.gorunecekAlanlar?["8N"]}:  ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            ],
+                                ? 2
+                                : 1,
+                        children: [
+                          Text("Stok Kodu:  ${item.stokKodu}"),
+                          Text(
+                            "Bakiye:  ${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}",
                           ),
+                          if (item.yapacik != null) Text("Yap.Açık:  ${item.yapacik ?? ""}"),
+                          if (item.yapkod != null) Text("YapKod:  ${item.yapkod ?? ""}"),
+                          if (item.kull1s != null && viewModel.gorunecekAlanlar?["1S"] != null)
+                            Text("${viewModel.gorunecekAlanlar?["1S"]}:  ${item.kull1s}"),
+                          if (item.kull2s != null && viewModel.gorunecekAlanlar?["2S"] != null)
+                            Text("${viewModel.gorunecekAlanlar?["2S"]}:  ${item.kull2s}"),
+                          if (item.kull3s != null && viewModel.gorunecekAlanlar?["3S"] != null)
+                            Text("${viewModel.gorunecekAlanlar?["3S"]}:  ${item.kull3s}"),
+                          if (item.kull4s != null && viewModel.gorunecekAlanlar?["4S"] != null)
+                            Text("${viewModel.gorunecekAlanlar?["4S"]}:  ${item.kull4s}"),
+                          if (item.kull5s != null && viewModel.gorunecekAlanlar?["5S"] != null)
+                            Text("${viewModel.gorunecekAlanlar?["5S"]}:  ${item.kull5s}"),
+                          if (item.kull6s != null && viewModel.gorunecekAlanlar?["6S"] != null)
+                            Text("${viewModel.gorunecekAlanlar?["6S"]}:  ${item.kull6s}"),
+                          if (item.kull7s != null && viewModel.gorunecekAlanlar?["7S"] != null)
+                            Text("${viewModel.gorunecekAlanlar?["7S"]}:  ${item.kull7s}"),
+                          if (item.kull8s != null && viewModel.gorunecekAlanlar?["8S"] != null)
+                            Text("${viewModel.gorunecekAlanlar?["8S"]}:  ${item.kull8s}"),
+                          if (item.kull1n != null && viewModel.gorunecekAlanlar?["1N"] != null)
+                            Text(
+                              "${viewModel.gorunecekAlanlar?["1N"]}:  ${item.kull1n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (item.kull2n != null && viewModel.gorunecekAlanlar?["2N"] != null)
+                            Text(
+                              "${viewModel.gorunecekAlanlar?["2N"]}:  ${item.kull2n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (item.kull3n != null && viewModel.gorunecekAlanlar?["3N"] != null)
+                            Text(
+                              "${viewModel.gorunecekAlanlar?["3N"]}:  ${item.kull3n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (item.kull4n != null && viewModel.gorunecekAlanlar?["4N"] != null)
+                            Text(
+                              "${viewModel.gorunecekAlanlar?["4N"]}:  ${item.kull4n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (item.kull5n != null && viewModel.gorunecekAlanlar?["5N"] != null)
+                            Text(
+                              "${viewModel.gorunecekAlanlar?["5N"]}:  ${item.kull5n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null)
+                            Text(
+                              "${viewModel.gorunecekAlanlar?["6N"]}:  ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null)
+                            Text(
+                              "${viewModel.gorunecekAlanlar?["7N"]}:  ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null)
+                            Text(
+                              "${viewModel.gorunecekAlanlar?["8N"]}:  ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
                         ],
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ).paddingAll(UIHelper.lowSize),
-            ),
-          ),
+                ),
+              ),
+            ],
+          ).paddingAll(UIHelper.lowSize),
         ),
-      );
+      ),
+    ),
+  );
 
   Future<dynamic> showStokIslemlerDialog(StokListesiModel item, [IslemTipiEnum? islemTipi]) async {
     await dialogManager.showStokGridViewDialog(
@@ -779,86 +873,129 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Widget stokListesiCard(StokListesiModel item) => MouseRightClickListener(
-        onRightClick: () => showStokIslemlerDialog(item),
-        child: Card(
-          child: ListTile(
-            onLongPress: () => showStokIslemlerDialog(item),
-            // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
-            leading: CircleAvatar(
-              backgroundColor: theme.scaffoldBackgroundColor,
-              child: item.resimUrlKucuk != null && viewModel.resimleriGoster == "E"
+    onRightClick: () => showStokIslemlerDialog(item),
+    child: Card(
+      child: ListTile(
+        onLongPress: () => showStokIslemlerDialog(item),
+        // leading: stok.resimUrlKucuk !=null ? Image.memory(networkManager.getImage(stok.resimUrlKucuk))
+        leading: CircleAvatar(
+          backgroundColor: theme.scaffoldBackgroundColor,
+          child:
+              item.resimUrlKucuk != null && viewModel.resimleriGoster == "E"
                   ? SizedBox(
-                      height: UIHelper.highSize * 3,
-                      width: UIHelper.highSize * 3,
-                      child: InkWell(
-                        borderRadius: UIHelper.lowBorderRadius,
-                        onTap: () {
-                          if (item.resimUrl != null) {
-                            Get.to(() => ImageCarouselView(model: item));
-                          }
-                        },
-                        child: ImageWidget(path: item.resimUrlKucuk),
-                      ),
-                    )
+                    height: UIHelper.highSize * 3,
+                    width: UIHelper.highSize * 3,
+                    child: InkWell(
+                      borderRadius: UIHelper.lowBorderRadius,
+                      onTap: () {
+                        if (item.resimUrl != null) {
+                          Get.to(() => ImageCarouselView(model: item));
+                        }
+                      },
+                      child: ImageWidget(path: item.resimUrlKucuk),
+                    ),
+                  )
                   : Text((item.stokAdi ?? "  ").substring(0, 1)),
-            ),
-            trailing: Text(
-              "${(item.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}",
-              style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(item.bakiye ?? 0)),
-            ),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text.rich(
-                  TextSpan(
-                    text: item.stokAdi,
-                    children: [
-                      TextSpan(text: "\n${item.stokKodu}", style: context.textTheme.bodySmall?.copyWith(color: ColorPalette.slateGray)),
-                    ],
-                  ),
-                ),
-                Wrap(
-                  spacing: UIHelper.lowSize,
-                  children: [
-                    if (item.seriCikislardaAcik == true) const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
-                    if (item.kilitliMi) ColorfulBadge(label: Text("Kilitli (${item.kilitTipi})"), badgeColorEnum: BadgeColorEnum.hata),
-                    if (item.alisDovTip != null || item.satDovTip != null) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
-                    if (item.yapilandirmaAktif == true) const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
-                  ],
-                ).paddingSymmetric(vertical: UIHelper.lowSize),
-              ],
-            ),
-            subtitle: CustomLayoutBuilder.divideInHalf(
-              children: [
-                if (item.kull1s != null && viewModel.gorunecekAlanlar?["1S"] != null) Text("${viewModel.gorunecekAlanlar?["1S"]}: ${item.kull1s}"),
-                if (item.kull2s != null && viewModel.gorunecekAlanlar?["2S"] != null) Text("${viewModel.gorunecekAlanlar?["2S"]}: ${item.kull2s}"),
-                if (item.kull3s != null && viewModel.gorunecekAlanlar?["3S"] != null) Text("${viewModel.gorunecekAlanlar?["3S"]}: ${item.kull3s}"),
-                if (item.kull4s != null && viewModel.gorunecekAlanlar?["4S"] != null) Text("${viewModel.gorunecekAlanlar?["4S"]}: ${item.kull4s}"),
-                if (item.kull5s != null && viewModel.gorunecekAlanlar?["5S"] != null) Text("${viewModel.gorunecekAlanlar?["5S"]}: ${item.kull5s}"),
-                if (item.kull6s != null && viewModel.gorunecekAlanlar?["6S"] != null) Text("${viewModel.gorunecekAlanlar?["6S"]}: ${item.kull6s}"),
-                if (item.kull7s != null && viewModel.gorunecekAlanlar?["7S"] != null) Text("${viewModel.gorunecekAlanlar?["7S"]}: ${item.kull7s}"),
-                if (item.kull8s != null && viewModel.gorunecekAlanlar?["8S"] != null) Text("${viewModel.gorunecekAlanlar?["8S"]}: ${item.kull8s}"),
-                if (item.kull1n != null && viewModel.gorunecekAlanlar?["1N"] != null) Text("${viewModel.gorunecekAlanlar?["1N"]}: ${item.kull1n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
-                if (item.kull2n != null && viewModel.gorunecekAlanlar?["2N"] != null) Text("${viewModel.gorunecekAlanlar?["2N"]}: ${item.kull2n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
-                if (item.kull3n != null && viewModel.gorunecekAlanlar?["3N"] != null) Text("${viewModel.gorunecekAlanlar?["3N"]}: ${item.kull3n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
-                if (item.kull4n != null && viewModel.gorunecekAlanlar?["4N"] != null) Text("${viewModel.gorunecekAlanlar?["4N"]}: ${item.kull4n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
-                if (item.kull5n != null && viewModel.gorunecekAlanlar?["5N"] != null) Text("${viewModel.gorunecekAlanlar?["5N"]}: ${item.kull5n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
-                if (item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null) Text("${viewModel.gorunecekAlanlar?["6N"]}: ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
-                if (item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null) Text("${viewModel.gorunecekAlanlar?["7N"]}: ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
-                if (item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null) Text("${viewModel.gorunecekAlanlar?["8N"]}: ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"),
-                if (yetkiController.stokListesiExtraAlanlar("acik_sip_miktari")) Text("Açık Müş. Sip. Miktarı: ${item.acikMussipMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                if (yetkiController.stokListesiExtraAlanlar("satilabilir_miktar"))
-                  Text(
-                    "Sat. Mik.: ${item.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                    style: TextStyle(color: UIHelper.getColorWithValue(item.satilabilirMiktar ?? 0)),
-                  ),
-                // if (item)
-              ],
-            ),
-            onTap: () => stokOnTap(item),
-          ),
         ),
-      );
+        trailing: Text(
+          "${(item.bakiye ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimi ?? ""}",
+          style: context.textTheme.bodySmall?.copyWith(color: UIHelper.getColorWithValue(item.bakiye ?? 0)),
+        ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text.rich(
+              TextSpan(
+                text: item.stokAdi,
+                children: [
+                  TextSpan(
+                    text: "\n${item.stokKodu}",
+                    style: context.textTheme.bodySmall?.copyWith(color: ColorPalette.slateGray),
+                  ),
+                ],
+              ),
+            ),
+            Wrap(
+              spacing: UIHelper.lowSize,
+              children: [
+                if (item.seriCikislardaAcik == true)
+                  const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
+                if (item.kilitliMi)
+                  ColorfulBadge(label: Text("Kilitli (${item.kilitTipi})"), badgeColorEnum: BadgeColorEnum.hata),
+                if (item.alisDovTip != null || item.satDovTip != null)
+                  const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
+                if (item.yapilandirmaAktif == true)
+                  const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
+              ],
+            ).paddingSymmetric(vertical: UIHelper.lowSize),
+          ],
+        ),
+        subtitle: CustomLayoutBuilder.divideInHalf(
+          children: [
+            if (item.kull1s != null && viewModel.gorunecekAlanlar?["1S"] != null)
+              Text("${viewModel.gorunecekAlanlar?["1S"]}: ${item.kull1s}"),
+            if (item.kull2s != null && viewModel.gorunecekAlanlar?["2S"] != null)
+              Text("${viewModel.gorunecekAlanlar?["2S"]}: ${item.kull2s}"),
+            if (item.kull3s != null && viewModel.gorunecekAlanlar?["3S"] != null)
+              Text("${viewModel.gorunecekAlanlar?["3S"]}: ${item.kull3s}"),
+            if (item.kull4s != null && viewModel.gorunecekAlanlar?["4S"] != null)
+              Text("${viewModel.gorunecekAlanlar?["4S"]}: ${item.kull4s}"),
+            if (item.kull5s != null && viewModel.gorunecekAlanlar?["5S"] != null)
+              Text("${viewModel.gorunecekAlanlar?["5S"]}: ${item.kull5s}"),
+            if (item.kull6s != null && viewModel.gorunecekAlanlar?["6S"] != null)
+              Text("${viewModel.gorunecekAlanlar?["6S"]}: ${item.kull6s}"),
+            if (item.kull7s != null && viewModel.gorunecekAlanlar?["7S"] != null)
+              Text("${viewModel.gorunecekAlanlar?["7S"]}: ${item.kull7s}"),
+            if (item.kull8s != null && viewModel.gorunecekAlanlar?["8S"] != null)
+              Text("${viewModel.gorunecekAlanlar?["8S"]}: ${item.kull8s}"),
+            if (item.kull1n != null && viewModel.gorunecekAlanlar?["1N"] != null)
+              Text(
+                "${viewModel.gorunecekAlanlar?["1N"]}: ${item.kull1n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+              ),
+            if (item.kull2n != null && viewModel.gorunecekAlanlar?["2N"] != null)
+              Text(
+                "${viewModel.gorunecekAlanlar?["2N"]}: ${item.kull2n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+              ),
+            if (item.kull3n != null && viewModel.gorunecekAlanlar?["3N"] != null)
+              Text(
+                "${viewModel.gorunecekAlanlar?["3N"]}: ${item.kull3n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+              ),
+            if (item.kull4n != null && viewModel.gorunecekAlanlar?["4N"] != null)
+              Text(
+                "${viewModel.gorunecekAlanlar?["4N"]}: ${item.kull4n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+              ),
+            if (item.kull5n != null && viewModel.gorunecekAlanlar?["5N"] != null)
+              Text(
+                "${viewModel.gorunecekAlanlar?["5N"]}: ${item.kull5n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+              ),
+            if (item.kull6n != null && viewModel.gorunecekAlanlar?["6N"] != null)
+              Text(
+                "${viewModel.gorunecekAlanlar?["6N"]}: ${item.kull6n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+              ),
+            if (item.kull7n != null && viewModel.gorunecekAlanlar?["7N"] != null)
+              Text(
+                "${viewModel.gorunecekAlanlar?["7N"]}: ${item.kull7n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+              ),
+            if (item.kull8n != null && viewModel.gorunecekAlanlar?["8N"] != null)
+              Text(
+                "${viewModel.gorunecekAlanlar?["8N"]}: ${item.kull8n.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+              ),
+            if (yetkiController.stokListesiExtraAlanlar("acik_sip_miktari"))
+              Text(
+                "Açık Müş. Sip. Miktarı: ${item.acikMussipMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+              ),
+            if (yetkiController.stokListesiExtraAlanlar("satilabilir_miktar"))
+              Text(
+                "Sat. Mik.: ${item.satilabilirMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                style: TextStyle(color: UIHelper.getColorWithValue(item.satilabilirMiktar ?? 0)),
+              ),
+            // if (item)
+          ],
+        ),
+        onTap: () => stokOnTap(item),
+      ),
+    ),
+  );
 
   Future<void> stokOnTap(StokListesiModel item) async {
     if (widget.isGetData == true) {
@@ -879,7 +1016,12 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               iconWidget: Icons.edit,
               value: BaseEditModel<StokListesiModel>(baseEditEnum: BaseEditEnum.duzenle, model: item),
             ),
-          if (yetkiController.stokKartiSilme) BottomSheetModel(title: loc.generalStrings.delete, iconWidget: Icons.delete, onTap: () => deleteStok(item.stokKodu ?? "")),
+          if (yetkiController.stokKartiSilme)
+            BottomSheetModel(
+              title: loc.generalStrings.delete,
+              iconWidget: Icons.delete,
+              onTap: () => deleteStok(item.stokKodu ?? ""),
+            ),
           if (yetkiController.stokHareketleriStokHareketleri)
             BottomSheetModel(
               title: "Hareketler",
@@ -937,7 +1079,11 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
         ];
 
         final List<BottomSheetModel> newResult = children2.nullCheckWithGeneric;
-        final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: item.stokKodu ?? "", children: newResult);
+        final result = await bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: item.stokKodu ?? "",
+          children: newResult,
+        );
         if (result != null && result is BaseEditModel) {
           await Get.toNamed("/mainPage/stokEdit", arguments: result);
           viewModel.resetList();
@@ -947,7 +1093,8 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Observer grupKoduFilter() => Observer(
-        builder: (_) => CustomLayoutBuilder(
+    builder:
+        (_) => CustomLayoutBuilder(
           splitCount: 3,
           doNotExpand: true,
           children: [
@@ -1007,15 +1154,19 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               ),
           ],
         ),
-      );
+  );
 
   Future<MemoryImage?> getImage(String path) async => await networkManager.getImage(path);
 
   void deleteStok(String stokKodu) {
     Get.back();
     dialogManager.showAreYouSureDialog(() async {
-      final GenericResponseModel response =
-          await networkManager.dioPost<StokListesiModel>(bodyModel: StokListesiModel(), path: ApiUrls.deleteStok, queryParameters: {"Kod": stokKodu}, showLoading: true);
+      final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
+        bodyModel: StokListesiModel(),
+        path: ApiUrls.deleteStok,
+        queryParameters: {"Kod": stokKodu},
+        showLoading: true,
+      );
       if (response.isSuccess) {
         dialogManager.showSuccessSnackBar("Başarıyla Silindi");
         viewModel.resetList();
@@ -1039,7 +1190,11 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
       case 5:
         selectedList = viewModel.bottomSheetModel.arrKod5;
     }
-    final iterable = (viewModel.kategoriGrupKodlari.ext.isNotNullOrEmpty ? grupKoduWithIndex(value) : viewModel.grupKodlari.where((element) => element.grupNo == value))?.toList();
+    final iterable =
+        (viewModel.kategoriGrupKodlari.ext.isNotNullOrEmpty
+                ? grupKoduWithIndex(value)
+                : viewModel.grupKodlari.where((element) => element.grupNo == value))
+            ?.toList();
     final uniqueList = <BaseGrupKoduModel>[];
     for (final item in iterable ?? <BaseGrupKoduModel>[]) {
       if (!uniqueList.any((element) => grupKoduWithItem(element, value) == grupKoduWithItem(item, value))) {
@@ -1121,12 +1276,24 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
   List<BaseGrupKoduModel>? grupKoduWithIndex(int index) {
     final Iterable<BaseGrupKoduModel>? filteredList = viewModel.kategoriGrupKodlari?.where(
       (e) =>
-          (viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu == null ? true : e.grupKodu == viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu) &&
-          (viewModel.bottomSheetModel.arrKod1?.firstOrNull?.kod1 == null ? true : e.kod1 == viewModel.bottomSheetModel.arrKod1?.firstOrNull?.kod1) &&
-          (viewModel.bottomSheetModel.arrKod2?.firstOrNull?.kod2 == null ? true : e.kod2 == viewModel.bottomSheetModel.arrKod2?.firstOrNull?.kod2) &&
-          (viewModel.bottomSheetModel.arrKod3?.firstOrNull?.kod3 == null ? true : e.kod3 == viewModel.bottomSheetModel.arrKod3?.firstOrNull?.kod3) &&
-          (viewModel.bottomSheetModel.arrKod4?.firstOrNull?.kod4 == null ? true : e.kod4 == viewModel.bottomSheetModel.arrKod4?.firstOrNull?.kod4) &&
-          (viewModel.bottomSheetModel.arrKod5?.firstOrNull?.kod5 == null ? true : e.kod5 == viewModel.bottomSheetModel.arrKod5?.firstOrNull?.kod5),
+          (viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu == null
+              ? true
+              : e.grupKodu == viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu) &&
+          (viewModel.bottomSheetModel.arrKod1?.firstOrNull?.kod1 == null
+              ? true
+              : e.kod1 == viewModel.bottomSheetModel.arrKod1?.firstOrNull?.kod1) &&
+          (viewModel.bottomSheetModel.arrKod2?.firstOrNull?.kod2 == null
+              ? true
+              : e.kod2 == viewModel.bottomSheetModel.arrKod2?.firstOrNull?.kod2) &&
+          (viewModel.bottomSheetModel.arrKod3?.firstOrNull?.kod3 == null
+              ? true
+              : e.kod3 == viewModel.bottomSheetModel.arrKod3?.firstOrNull?.kod3) &&
+          (viewModel.bottomSheetModel.arrKod4?.firstOrNull?.kod4 == null
+              ? true
+              : e.kod4 == viewModel.bottomSheetModel.arrKod4?.firstOrNull?.kod4) &&
+          (viewModel.bottomSheetModel.arrKod5?.firstOrNull?.kod5 == null
+              ? true
+              : e.kod5 == viewModel.bottomSheetModel.arrKod5?.firstOrNull?.kod5),
     );
     // if (filteredList?.every((element) => element.grupKodu == viewModel.bottomSheetModel.arrGrupKodu?.firstOrNull?.grupKodu) ?? false) viewModel.changeArrGrupKodu(null);
     // if (filteredList?.every((element) => element.kod1 == viewModel.bottomSheetModel.arrKod1?.firstOrNull?.kod1) ?? false) viewModel.changeArrKod1(null);
@@ -1153,7 +1320,12 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
   }
 
   Future<void> grupKoduOnClear(int value) async {
-    if (grupKoduController.text.isEmpty && kod1Controller.text.isEmpty && kod2Controller.text.isEmpty && kod3Controller.text.isEmpty && kod4Controller.text.isEmpty && kod5Controller.text.isEmpty) {
+    if (grupKoduController.text.isEmpty &&
+        kod1Controller.text.isEmpty &&
+        kod2Controller.text.isEmpty &&
+        kod3Controller.text.isEmpty &&
+        kod4Controller.text.isEmpty &&
+        kod5Controller.text.isEmpty) {
       viewModel
         ..setKategoriMi(false)
         ..setGrupNo(-1)
