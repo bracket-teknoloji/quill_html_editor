@@ -68,30 +68,34 @@ final class _LoginViewState extends BaseState<LoginView> {
   }
 
   @override
-  Widget build(BuildContext context) => PopScope(
-        canPop: false,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            systemOverlayStyle: theme.appBarTheme.systemOverlayStyle?.copyWith(
-              systemNavigationBarColor: theme.colorScheme.surfaceContainer,
-              systemNavigationBarDividerColor: theme.colorScheme.surfaceContainer,
+  Widget build(BuildContext context) => Title(
+    color: theme.colorScheme.primary,
+    title: "Picker'a Giriş Yap",
+    child: PopScope(
+          canPop: false,
+          child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.transparent,
+              systemOverlayStyle: theme.appBarTheme.systemOverlayStyle?.copyWith(
+                systemNavigationBarColor: theme.colorScheme.surfaceContainer,
+                systemNavigationBarDividerColor: theme.colorScheme.surfaceContainer,
+              ),
+            ),
+            // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
+            floatingActionButton: !context.general.isKeyBoardOpen ? fab() : null,
+            floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
+            // primary: true,
+            // backgroundColor: Colors.transparent,
+            extendBodyBehindAppBar: true,
+            body: Stack(
+              children: [
+                const LoginWaveWidget(),
+                body(context),
+              ],
             ),
           ),
-          // appBar: AppBar(elevation: 0, backgroundColor: Colors.transparent, automaticallyImplyLeading: false),
-          floatingActionButton: !context.general.isKeyBoardOpen ? fab() : null,
-          floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerDocked,
-          // primary: true,
-          // backgroundColor: Colors.transparent,
-          extendBodyBehindAppBar: true,
-          body: Stack(
-            children: [
-              const LoginWaveWidget(),
-              body(context),
-            ],
-          ),
         ),
-      );
+  );
 
   Widget fab() => Column(
         mainAxisSize: MainAxisSize.min,
