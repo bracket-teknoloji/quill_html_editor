@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/enum/menu_list_enum.dart";
 
 import "../../../core/components/dialog/dialog_manager.dart";
 import "../../../core/constants/enum/edit_tipi_enum.dart";
@@ -8,7 +9,9 @@ import "../../../core/init/cache/cache_manager.dart";
 import "user_model/user_model.dart";
 
 final class GridItemModel {
-  GridItemModel.anamenu({required this.name, required this.title, required this.color, required this.altMenuler, this.icon, this.iconData, this.yetkiListesi}) : menuTipi = "A";
+  GridItemModel.anamenu({required MenuItemsEnum? name, required this.title, required this.color, required this.altMenuler, this.icon, this.iconData, this.yetkiListesi})
+    : menuTipi = "A",
+      name = name?.yetkiName;
 
   GridItemModel.altmenu({required this.name, required this.title, required this.altMenuler, this.icon, this.iconData}) : menuTipi = "S";
   GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.onTap, this.route, this.arguments, this.siparisTipi, this.yetkiListesi}) : menuTipi = "I" {
@@ -20,14 +23,7 @@ final class GridItemModel {
       }
     }
   }
-  GridItemModel.islemler({
-    required this.title,
-    this.icon,
-    this.color,
-    this.onTap,
-    this.iconData,
-    this.isEnabled,
-  }) {
+  GridItemModel.islemler({required this.title, this.icon, this.color, this.onTap, this.iconData, this.isEnabled}) {
     menuTipi = "IS";
     isEnabled ??= true;
     if (isEnabled != true) {
@@ -37,12 +33,7 @@ final class GridItemModel {
       onTap ??= () async => DialogManager().showErrorSnackBar("Yapım Aşamasında");
     }
   }
-  GridItemModel.serbestRaporlar({
-    required this.title,
-    this.arguments,
-    this.color,
-    this.name,
-  }) {
+  GridItemModel.serbestRaporlar({required this.title, this.arguments, this.color, this.name}) {
     menuTipi = "SR";
     route = "/mainPage/serbestRaporlar";
     onTap = () async => await Get.toNamed("/mainPage/serbestRaporlar", arguments: arguments);
