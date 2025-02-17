@@ -32,25 +32,22 @@ final class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
 
   @override
   Widget build(BuildContext context) => Container(
-        alignment: Alignment.bottomCenter,
-        height: kBottomNavigationBarHeight * 1.2,
-        child: Container(
-          constraints: kIsWeb && (Get.context?.isLandscape ?? false) ? BoxConstraints(maxWidth: Get.width * 0.5, maxHeight: kBottomNavigationBarHeight * 1.2) : null,
-          child: ScrollableWidget(
-            isScrolledDown: kIsWeb ? true : widget.isScrolledDown,
-            child: Container(
-              color: theme.appBarTheme.systemOverlayStyle?.statusBarColor,
-              // width: kIsWeb && context.isLandscape ? (width * 0.5) : null,
-              // constraints: kIsWeb && context.isLandscape ? BoxConstraints(maxWidth: width * 0.5) : null,
-              child: widget.visible && widget.children.isNotEmpty
-                  ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      // RunTimeType kontrolü yapılıyor. Eğer FooterButton değilse Expanded ile sarılıyor. Vertical Divider'lar yüzünden yapılıyor.
-                      children: list.map((e) => e.runtimeType != FooterButton ? e : Expanded(child: e)).toList(),
-                    )
-                  : null,
-            ),
-          ),
-        ),
-      );
+    constraints: kIsWeb && (Get.context?.isLandscape ?? false) ? const BoxConstraints(maxHeight: kBottomNavigationBarHeight * 1.2) : null,
+    child: ScrollableWidget(
+      isScrolledDown: kIsWeb ? true : widget.isScrolledDown,
+      child: Container(
+        color: theme.appBarTheme.systemOverlayStyle?.statusBarColor,
+        // width: kIsWeb && context.isLandscape ? (width * 0.5) : null,
+        // constraints: kIsWeb && context.isLandscape ? BoxConstraints(maxWidth: width * 0.5) : null,
+        child:
+            widget.visible && widget.children.isNotEmpty
+                ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  // RunTimeType kontrolü yapılıyor. Eğer FooterButton değilse Expanded ile sarılıyor. Vertical Divider'lar yüzünden yapılıyor.
+                  children: list.map((e) => e.runtimeType != FooterButton ? e : Expanded(child: e)).toList(),
+                )
+                : null,
+      ),
+    ),
+  );
 }

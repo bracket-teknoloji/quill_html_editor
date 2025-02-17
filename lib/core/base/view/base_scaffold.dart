@@ -4,8 +4,8 @@ import "package:get/get.dart";
 
 final class BaseScaffold extends Scaffold {
   BaseScaffold({
-    final Widget? body,
-    final AppBar? appBar,
+    super.body,
+    AppBar? super.appBar,
     final Color? backgroundColor,
     // final FloatingActionButtonLocation? floatingActionButtonLocation,
     // final Widget? floatingActionButton,
@@ -32,34 +32,26 @@ final class BaseScaffold extends Scaffold {
     super.onEndDrawerChanged,
     super.persistentFooterAlignment,
   }) : super(
-          extendBody: true,
-          extendBodyBehindAppBar: false,
-          // primary: bottomNavigationBar != null,
-          backgroundColor: (kIsWeb && (Get.context?.isLandscape ?? false) ? Colors.transparent : null),
-          // floatingActionButton: floatingActionButton?.paddingOnly(right: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.17 : 0),
-          // floatingActionButtonLocation: (kIsWeb && (Get.context?.isLandscape ?? false) ? FloatingActionButtonLocation.miniCenterDocked : null),
-          resizeToAvoidBottomInset: bottomNavigationBar == null,
-          body: body == null
-              ? null
-              : Container(
-                  alignment: Alignment.topCenter,
-                  child: Container(color: Get.theme.scaffoldBackgroundColor, height: double.infinity, width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.5 : null, child: body),
-                ),
-          appBar: appBar == null
-              ? null
-              : PreferredSize(
-                  preferredSize: Size(kIsWeb ? Get.width * 0.5 : double.maxFinite, (appBar.bottom != null ? 2 : 1) * kToolbarHeight),
-                  child: Align(
-                    child: SizedBox(width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.5 : null, child: appBar),
-                  ),
-                ),
-          // bottomNavigationBar: Align(
-          //   alignment: Alignment.bottomCenter,
-          //   child: Container(
-          // //   alignment: Alignment.bottomCenter,
-          // //     constraints: kIsWeb && (Get.context?.isLandscape ?? false) ? BoxConstraints(maxWidth: Get.width * 0.5, maxHeight: double.maxFinite) : null,
-          //     child: bottomNavigationBar,
-          //   ),
-          // ),
-        );
+         extendBody: true,
+         extendBodyBehindAppBar: false,
+         // primary: bottomNavigationBar != null,
+        //  backgroundColor: (kIsWeb && (Get.context?.isLandscape ?? false) ? Colors.transparent : null),
+         // floatingActionButton: floatingActionButton?.paddingOnly(right: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.17 : 0),
+         // floatingActionButtonLocation: (kIsWeb && (Get.context?.isLandscape ?? false) ? FloatingActionButtonLocation.miniCenterDocked : null),
+         resizeToAvoidBottomInset: bottomNavigationBar == null,
+         // : PreferredSize(
+         //     preferredSize: Size(kIsWeb ? Get.width * 0.5 : double.maxFinite, (appBar.bottom != null ? 2 : 1) * kToolbarHeight),
+         //     child: Align(
+         //       child: SizedBox(width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.5 : null, child: appBar),
+         //     ),
+         //   ),
+         // bottomNavigationBar: Align(
+         //   alignment: Alignment.bottomCenter,
+         //   child: Container(
+         // //   alignment: Alignment.bottomCenter,
+         // //     constraints: kIsWeb && (Get.context?.isLandscape ?? false) ? BoxConstraints(maxWidth: Get.width * 0.5, maxHeight: double.maxFinite) : null,
+         //     child: bottomNavigationBar,
+         //   ),
+         // ),
+       );
 }

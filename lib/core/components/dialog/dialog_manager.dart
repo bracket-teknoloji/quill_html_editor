@@ -11,6 +11,7 @@ import "package:kartal/kartal.dart";
 import "package:location/location.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/location/location_manager.dart";
+import "package:text_scroll/text_scroll.dart";
 
 import "../../../generated/locale_base.dart";
 import "../../../view/add_company/model/account_model.dart";
@@ -68,22 +69,12 @@ final class DialogManager {
     ScaffoldMessenger.of(context).showSnackBar(_snackBarSuccess(message));
   }
 
-  Future<DateTime?> showDateTimePicker({
-    DateTime? initialDate,
-  }) async =>
-      await showDatePicker(
-        context: context,
-        locale: Get.locale,
-        initialDate: initialDate ?? DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2100),
-      );
-  Future<TimeOfDay?> showSaatPicker() async => await showTimePicker(
-        context: context,
-        initialTime: TimeOfDay.now(),
-      );
+  Future<DateTime?> showDateTimePicker({DateTime? initialDate}) async =>
+      await showDatePicker(context: context, locale: Get.locale, initialDate: initialDate ?? DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
+  Future<TimeOfDay?> showSaatPicker() async => await showTimePicker(context: context, initialTime: TimeOfDay.now());
 
-  Future<void> showAlertDialog(String message) async => _baseDialog(
+  Future<void> showAlertDialog(String message) async =>
+      _baseDialog(
         dialogType: DialogType.error,
         btnOkText: "Tamam",
         body: Column(
@@ -94,14 +85,8 @@ final class DialogManager {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: UIHelper.midSize),
-                      child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                    ),
-                    Padding(
-                      padding: UIHelper.midPaddingHorizontal,
-                      child: SelectableText(message, textAlign: TextAlign.center),
-                    ),
+                    const Padding(padding: EdgeInsets.only(bottom: UIHelper.midSize), child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
+                    Padding(padding: UIHelper.midPaddingHorizontal, child: SelectableText(message, textAlign: TextAlign.center)),
                   ],
                 ),
               ),
@@ -122,19 +107,14 @@ final class DialogManager {
   Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) =>
       _baseDialog(dialogType: DialogType.error, title: "Eksik var", btnOkText: "Tamam", desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ", onOk: onOk ?? () {}).show();
 
-  void internetConnectionDialog() => _baseDialog(
+  void internetConnectionDialog() =>
+      _baseDialog(
         customHeader: const CircularProgressIndicator.adaptive(),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: UIHelper.midSize),
-              child: Text("Uyarı"),
-            ),
-            const Padding(
-              padding: UIHelper.midPaddingHorizontal,
-              child: Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
-            ),
+            const Padding(padding: EdgeInsets.only(bottom: UIHelper.midSize), child: Text("Uyarı")),
+            const Padding(padding: UIHelper.midPaddingHorizontal, child: Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center)),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
               child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8)), textAlign: TextAlign.center),
@@ -143,28 +123,15 @@ final class DialogManager {
         ),
       ).show();
 
-  void showLoadingDialog(String loadText) => _baseDialog(
-        body: Center(
-          child: Column(
-            children: [const CircularProgressIndicator.adaptive(), context.sized.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall)],
-          ),
-        ),
+  void showLoadingDialog(String loadText) =>
+      _baseDialog(
+        body: Center(child: Column(children: [const CircularProgressIndicator.adaptive(), context.sized.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall)])),
       ).show();
   Future showAreYouSureDialog(void Function() onYes, {String? title, String? yesButtonText}) async => await _areYouSureDialog(onYes, title, yesButtonText: yesButtonText).show();
 
-  void showSuccesDialog(String? description) => _baseDialog(
-        dialogType: DialogType.success,
-        btnOkText: "Tamam",
-        body: Text(description ?? "", textAlign: TextAlign.center),
-        onOk: () {},
-      ).show();
+  void showSuccesDialog(String? description) => _baseDialog(dialogType: DialogType.success, btnOkText: "Tamam", body: Text(description ?? "", textAlign: TextAlign.center), onOk: () {}).show();
 
-  void showInfoDialog(String? description) => _baseDialog(
-        dialogType: DialogType.info,
-        btnOkText: "Tamam",
-        body: Text(description ?? "", textAlign: TextAlign.center),
-        onOk: () {},
-      ).show();
+  void showInfoDialog(String? description) => _baseDialog(dialogType: DialogType.info, btnOkText: "Tamam", body: Text(description ?? "", textAlign: TextAlign.center), onOk: () {}).show();
 
   Future showStokKayitliDialog(StokListesiModel model) async {
     bool result = false;
@@ -184,7 +151,8 @@ final class DialogManager {
 
   void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  Future<void> showCariGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected, IslemTipiEnum islemTipi = IslemTipiEnum.cari}) async => _baseDialog(
+  Future<void> showCariGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected, IslemTipiEnum islemTipi = IslemTipiEnum.cari}) async =>
+      _baseDialog(
         body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: islemTipi, title: model?.cariAdi ?? model?.cariKodu, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
@@ -197,13 +165,7 @@ final class DialogManager {
     }
     if (_yetkiController.cariListesi) {
       return _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(
-          cariListesiModel: model,
-          model: model,
-          islemTipi: IslemTipiEnum.cariIslemleri,
-          title: model.cariAdi ?? model.cariKodu,
-          onSelected: onselected,
-        ),
+        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: IslemTipiEnum.cariIslemleri, title: model.cariAdi ?? model.cariKodu, onSelected: onselected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -211,7 +173,8 @@ final class DialogManager {
     }
   }
 
-  Future<dynamic> showEBelgeGridViewDialog({required BaseSiparisEditModel model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showEBelgeGridViewDialog({required BaseSiparisEditModel model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(
           model: model,
           islemTipi: tip ?? IslemTipiEnum.eBelge,
@@ -224,58 +187,61 @@ final class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showCekSenetGridViewDialog(CekSenetListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showCekSenetGridViewDialog(CekSenetListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<CekSenetListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.cekSenet, title: model?.cariAdi ?? model?.cariKodu, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<void> showCariHareketleriGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected}) async => await _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(
-          model: model,
-          title: model?.cariAdi,
-          islemTipi: IslemTipiEnum.cariHareketleri,
-          onSelected: onSelected,
-        ),
+  Future<void> showCariHareketleriGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected}) async =>
+      await _baseDialog(
+        body: CustomAnimatedGridView<CariListesiModel>(model: model, title: model?.cariAdi, islemTipi: IslemTipiEnum.cariHareketleri, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showTalepTeklifGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showTalepTeklifGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.talepTeklif, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showFaturaGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showFaturaGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.fatura, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showTransferGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showTransferGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.depoTransferi, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<KasaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri", onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showBankaIslemleriGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showBankaIslemleriGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.bankaIslemleri, title: "Banka İşlemleri", onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showBankaGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showBankaGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.banka, title: "Banka İşlemleri", onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
@@ -301,20 +267,23 @@ final class DialogManager {
     }
   }
 
-  Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showOdemeTahsilatGridViewDialog({CariHareketleriModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async => await _baseDialog(
+  Future<dynamic> showOdemeTahsilatGridViewDialog({CariHareketleriModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+      await _baseDialog(
         body: CustomAnimatedGridView<CariHareketleriModel>(model: model, islemTipi: tip ?? IslemTipiEnum.tahsilatOdeme, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  void showExitDialog() => _baseDialog(
+  void showExitDialog() =>
+      _baseDialog(
         title: "Uyarı",
         desc: "Çıkmak istediğinize emin misiniz?",
         dialogType: DialogType.question,
@@ -363,7 +332,8 @@ final class DialogManager {
     // ).show();
   }
 
-  Future<void> showSettingsDialog(String value) async => _baseDialog(
+  Future<void> showSettingsDialog(String value) async =>
+      _baseDialog(
         dialogType: DialogType.question,
         body: Text("$value\nUygulama ayarlarına gitmek istiyor musunuz?", textAlign: TextAlign.center),
         onOk: () async {
@@ -373,35 +343,28 @@ final class DialogManager {
       ).show();
 
   ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBanner(String message, {String? desc}) => ScaffoldMessenger.of(context).showMaterialBanner(
-        MaterialBanner(
-          leading: const Icon(Icons.warning_outlined),
-          content: Text(message, style: const TextStyle(fontWeight: FontWeight.bold)),
-          actions: [
-            if (desc != null)
-              IconButton(
-                icon: const Icon(Icons.chevron_right_outlined),
-                onPressed: () => showInfoDialog(desc),
-              )
-            else
-              const SizedBox.shrink(),
-          ],
-        ),
-      );
+    MaterialBanner(
+      leading: const Icon(Icons.warning_outlined),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [Text(message, style: const TextStyle(fontWeight: FontWeight.bold)), if (desc != null) TextScroll(desc)],
+      ),
+      actions: [if (desc != null) IconButton(icon: const Icon(Icons.chevron_right_outlined), onPressed: () => showInfoDialog(desc)) else const SizedBox.shrink()],
+    ),
+  );
 
   ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBannerWithAction(String message, {String? desc, void Function()? onAction}) =>
       ScaffoldMessenger.of(context).showMaterialBanner(
         MaterialBanner(
           leading: const Icon(Icons.warning_outlined),
-          content: Text(message, style: const TextStyle(fontWeight: FontWeight.bold)),
-          actions: [
-            if (desc != null)
-              IconButton(
-                icon: const Icon(Icons.chevron_right_outlined),
-                onPressed: onAction ?? () {},
-              )
-            else
-              const SizedBox.shrink(),
-          ],
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [Text(message, style: const TextStyle(fontWeight: FontWeight.bold)), if (desc != null) TextScroll(desc)],
+          ),
+
+          actions: [if (desc != null) IconButton(icon: const Icon(Icons.chevron_right_outlined), onPressed: onAction ?? () {}) else const SizedBox.shrink()],
         ),
       );
 
@@ -418,9 +381,7 @@ final class DialogManager {
       contentPadding: EdgeInsets.zero,
       actionsOverflowButtonSpacing: 0,
       elevation: 0,
-      icon: const Icon(
-        Icons.account_circle_outlined,
-      ),
+      icon: const Icon(Icons.account_circle_outlined),
       iconColor: Colors.black,
       title: Text(title),
       content: Column(
@@ -434,35 +395,22 @@ final class DialogManager {
               Get.back(result: {"company": "DEMO", "user": "demo", "password": "demo"});
             },
           ),
-          ...List.generate(
-            box.length,
-            (index) {
-              final title = box.getAt(index).firma.toString();
-              log(box.getAt(index).toString());
-              return ListTile(
-                title: Text(title),
-                subtitle: Text(box.getAt(index).kullanici.toString()),
-                leading: IconHelper.smallIcon("User-Account"),
-                onTap: () {
-                  Get.back(
-                    result: {
-                      "company": title,
-                      "user": preferences.get(title)?[1] ?? "",
-                      "password": preferences.get(title)?[2] ?? "",
-                    },
-                    closeOverlays: true,
-                  );
-                },
-              );
-            },
-          ),
+          ...List.generate(box.length, (index) {
+            final title = box.getAt(index).firma.toString();
+            log(box.getAt(index).toString());
+            return ListTile(
+              title: Text(title),
+              subtitle: Text(box.getAt(index).kullanici.toString()),
+              leading: IconHelper.smallIcon("User-Account"),
+              onTap: () {
+                Get.back(result: {"company": title, "user": preferences.get(title)?[1] ?? "", "password": preferences.get(title)?[2] ?? ""}, closeOverlays: true);
+              },
+            );
+          }),
         ],
       ),
       actions: [
-        Divider(
-          color: UIHelper.primaryColor.withValues(alpha: 0.3),
-          thickness: 1,
-        ),
+        Divider(color: UIHelper.primaryColor.withValues(alpha: 0.3), thickness: 1),
         Padding(
           padding: UIHelper.lowPaddingVertical,
           child: Row(
@@ -471,9 +419,7 @@ final class DialogManager {
               Expanded(
                 child: TextButton(
                   onPressed: () {
-                    Get.toNamed(
-                      "/addCompany",
-                    );
+                    Get.toNamed("/addCompany");
                   },
                   child: const Text("Firmaları Düzenle"),
                 ),
@@ -484,10 +430,7 @@ final class DialogManager {
                     final dynamic result = {};
                     Get.back(result: result);
                   },
-                  child: const Text(
-                    "İptal",
-                    textAlign: TextAlign.justify,
-                  ),
+                  child: const Text("İptal", textAlign: TextAlign.justify),
                 ),
               ),
             ],
@@ -509,23 +452,23 @@ final class DialogManager {
       SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.floating, backgroundColor: ColorPalette.mantis, width: _snackBarWidth());
 
   SnackBar _snackBarInfo(String message, {Duration? duration}) => SnackBar(
-        content: Text(message, style: const TextStyle(color: Colors.white)),
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: UIHelper.primaryColor,
-        duration: duration ?? const Duration(milliseconds: 4000),
-        width: _snackBarWidth(),
-        showCloseIcon: kIsWeb,
-      );
+    content: Text(message, style: const TextStyle(color: Colors.white)),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: UIHelper.primaryColor,
+    duration: duration ?? const Duration(milliseconds: 4000),
+    width: _snackBarWidth(),
+    showCloseIcon: kIsWeb,
+  );
 
   AwesomeDialog _areYouSureDialog(void Function() onYes, String? desc, {String? yesButtonText}) => _baseDialog(
-        title: "Uyarı",
-        desc: desc ?? "Bu işlemi yapmak istediğinizden emin misiniz?",
-        dialogType: DialogType.question,
-        onOk: onYes,
-        btnOkText: yesButtonText ?? "Evet",
-        onCancel: () {},
-        btnCancelText: "Hayır",
-      );
+    title: "Uyarı",
+    desc: desc ?? "Bu işlemi yapmak istediğinizden emin misiniz?",
+    dialogType: DialogType.question,
+    onOk: onYes,
+    btnOkText: yesButtonText ?? "Evet",
+    onCancel: () {},
+    btnCancelText: "Hayır",
+  );
 
   Future selectCompanyDialog() {
     final Box preferences = CacheManager.preferencesBox;
@@ -533,9 +476,7 @@ final class DialogManager {
       btnOkText: "Firmaları Düzenle",
       btnCancelText: "Vazgeç",
       onOk: () {
-        Get.toNamed(
-          "/addCompany",
-        );
+        Get.toNamed("/addCompany");
       },
       onCancel: () {},
       body: Column(
@@ -548,32 +489,30 @@ final class DialogManager {
             onTap: () {
               Get.back(
                 result: LoginDialogModel(
-                  account: AccountResponseModel()
-                    ..firma = "demo"
-                    ..email = "demo@netfect.com",
+                  account:
+                      AccountResponseModel()
+                        ..firma = "demo"
+                        ..email = "demo@netfect.com",
                   username: "demo",
                   password: "demo",
                 ),
               );
             },
           ),
-          ...List.generate(
-            CacheManager.accountsBox.length,
-            (index) {
-              final title = (CacheManager.accountsBox.getAt(index)?.firma ?? "").toString();
-              log(CacheManager.accountsBox.getAt(index).toString());
-              return ListTile(
-                title: Text(title),
-                leading: IconHelper.smallIcon("User-Account"),
-                onTap: () {
-                  Get.back(
-                    result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""),
-                    closeOverlays: true,
-                  );
-                },
-              );
-            },
-          ),
+          ...List.generate(CacheManager.accountsBox.length, (index) {
+            final title = (CacheManager.accountsBox.getAt(index)?.firma ?? "").toString();
+            log(CacheManager.accountsBox.getAt(index).toString());
+            return ListTile(
+              title: Text(title),
+              leading: IconHelper.smallIcon("User-Account"),
+              onTap: () {
+                Get.back(
+                  result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""),
+                  closeOverlays: true,
+                );
+              },
+            );
+          }),
         ],
       ),
     ).show();
@@ -594,47 +533,47 @@ final class DialogManager {
     Color? btnCancelColor,
     Widget? customHeader,
     Widget? body,
-  }) =>
-      AwesomeDialog(
-        //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
-        bodyHeaderDistance: dialogType != DialogType.noHeader ? UIHelper.highSize : UIHelper.lowSize,
-        enableEnterKey: true,
-        context: context,
-        isDense: true,
-        width: kIsWeb
+  }) => AwesomeDialog(
+    //* Standardı 15 olduğu için ve null kabul etmediği için 15 verdim.
+    bodyHeaderDistance: dialogType != DialogType.noHeader ? UIHelper.highSize : UIHelper.lowSize,
+    enableEnterKey: true,
+    context: context,
+    isDense: true,
+    width:
+        kIsWeb
             ? context.isLandscape
                 ? MediaQuery.sizeOf(context).width * 0.4
                 : MediaQuery.sizeOf(context).width * 0.6
             : Platform.isLinux || Platform.isWindows || Platform.isMacOS
-                ? context.isLandscape
-                    ? MediaQuery.sizeOf(context).width * 0.4
-                    : MediaQuery.sizeOf(context).width * 0.6
-                : null,
-        customHeader: customHeader,
-        onDismissCallback: (type) {},
-        barrierColor: Colors.black.withValues(alpha: 0.6),
-        dialogBorderRadius: UIHelper.highBorderRadius,
-        headerAnimationLoop: false,
-        padding: UIHelper.midPaddingVertical,
-        buttonsBorderRadius: UIHelper.midBorderRadius,
-        animType: AnimType.bottomSlide,
-        btnOkIcon: btnOkIcon,
-        btnCancelIcon: btnCancelIcon,
-        dialogBackgroundColor: Theme.of(context).colorScheme.onInverseSurface,
-        descTextStyle: Theme.of(context).textTheme.bodySmall,
-        titleTextStyle: Theme.of(context).textTheme.bodyLarge,
-        buttonsTextStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white),
-        title: title,
-        desc: desc,
-        btnOkOnPress: onOk,
-        btnCancelOnPress: onCancel,
-        btnOkText: btnOkText ?? Localizations.of<LocaleBase>(context, LocaleBase)?.generalStrings.ok,
-        dialogType: dialogType ?? DialogType.noHeader,
-        btnCancelText: btnCancelText ?? Localizations.of<LocaleBase>(context, LocaleBase)?.generalStrings.cancel,
-        btnOkColor: btnOkColor ?? UIHelper.primaryColor,
-        btnCancelColor: btnCancelColor ?? ColorPalette.slateGray,
-        dismissOnBackKeyPress: false,
-        dismissOnTouchOutside: false,
-        body: body,
-      );
+            ? context.isLandscape
+                ? MediaQuery.sizeOf(context).width * 0.4
+                : MediaQuery.sizeOf(context).width * 0.6
+            : null,
+    customHeader: customHeader,
+    onDismissCallback: (type) {},
+    barrierColor: Colors.black.withValues(alpha: 0.6),
+    dialogBorderRadius: UIHelper.highBorderRadius,
+    headerAnimationLoop: false,
+    padding: UIHelper.midPaddingVertical,
+    buttonsBorderRadius: UIHelper.midBorderRadius,
+    animType: AnimType.bottomSlide,
+    btnOkIcon: btnOkIcon,
+    btnCancelIcon: btnCancelIcon,
+    dialogBackgroundColor: Theme.of(context).colorScheme.onInverseSurface,
+    descTextStyle: Theme.of(context).textTheme.bodySmall,
+    titleTextStyle: Theme.of(context).textTheme.bodyLarge,
+    buttonsTextStyle: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white),
+    title: title,
+    desc: desc,
+    btnOkOnPress: onOk,
+    btnCancelOnPress: onCancel,
+    btnOkText: btnOkText ?? Localizations.of<LocaleBase>(context, LocaleBase)?.generalStrings.ok,
+    dialogType: dialogType ?? DialogType.noHeader,
+    btnCancelText: btnCancelText ?? Localizations.of<LocaleBase>(context, LocaleBase)?.generalStrings.cancel,
+    btnOkColor: btnOkColor ?? UIHelper.primaryColor,
+    btnCancelColor: btnCancelColor ?? ColorPalette.slateGray,
+    dismissOnBackKeyPress: false,
+    dismissOnTouchOutside: false,
+    body: body,
+  );
 }
