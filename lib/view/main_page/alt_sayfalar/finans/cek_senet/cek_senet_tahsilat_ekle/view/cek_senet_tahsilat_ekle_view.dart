@@ -361,29 +361,33 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
           ).yetkiVarMi(widget.cekSenetListesiEnum.cekMi),
           Row(
             children: [
-              Expanded(
-                child: CustomTextField(labelText: "İl", controller: _ilController, onChanged: viewModel.setIl),
-              ).yetkiVarMi(widget.cekSenetListesiEnum == CekSenetListesiEnum.cekMusteri),
+              if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekMusteri)
+                Expanded(
+                  child: CustomTextField(labelText: "İl", controller: _ilController, onChanged: viewModel.setIl),
+                ),
               Expanded(
                 child: CustomTextField(labelText: "İlçe", controller: _ilceController, onChanged: viewModel.setIlce),
               ).yetkiVarMi(widget.cekSenetListesiEnum == CekSenetListesiEnum.cekMusteri),
             ],
           ),
-          CustomTextField(
-            labelText: "Açıklama 1",
-            controller: _aciklama1Controller,
-            onChanged: viewModel.setAciklama1,
-          ).yetkiVarMi(widget.cekSenetListesiEnum != CekSenetListesiEnum.senetMusteri),
-          CustomTextField(
-            labelText: "Açıklama 2",
-            controller: _aciklama2Controller,
-            onChanged: viewModel.setAciklama2,
-          ).yetkiVarMi(widget.cekSenetListesiEnum != CekSenetListesiEnum.senetMusteri),
-          CustomTextField(
-            labelText: "Açıklama 3",
-            controller: _aciklama3Controller,
-            onChanged: viewModel.setAciklama3,
-          ).yetkiVarMi(widget.cekSenetListesiEnum != CekSenetListesiEnum.senetMusteri),
+          if (widget.cekSenetListesiEnum != CekSenetListesiEnum.senetMusteri)
+            CustomTextField(
+              labelText: "Açıklama 1",
+              controller: _aciklama1Controller,
+              onChanged: viewModel.setAciklama1,
+            ),
+          if (widget.cekSenetListesiEnum != CekSenetListesiEnum.senetMusteri)
+            CustomTextField(
+              labelText: "Açıklama 2",
+              controller: _aciklama2Controller,
+              onChanged: viewModel.setAciklama2,
+            ),
+          if (widget.cekSenetListesiEnum != CekSenetListesiEnum.senetMusteri)
+            CustomTextField(
+              labelText: "Açıklama 3",
+              controller: _aciklama3Controller,
+              onChanged: viewModel.setAciklama3,
+            ),
           Row(
             children: [
               Expanded(

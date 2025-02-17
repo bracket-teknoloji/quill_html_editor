@@ -275,7 +275,6 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
             //     }
             //   },
             // ),
-            // //.yetkiVarMi(yetkiController.sevkiyatSatisFatGizlenecekAlanlar("teslim_cari") && widget.model.editTipiEnum?.irsaliyeMi != true),
             Observer(
               builder:
                   (_) => CustomTextField(
