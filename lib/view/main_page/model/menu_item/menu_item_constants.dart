@@ -55,7 +55,7 @@ abstract final class MenuItemConstants {
     //*Cari
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.cari.yetkiName,
+      name: MenuItemsEnum.cari,
       title: "Cari",
       icon: "supervisor",
       color: ColorPalette.ecru,
@@ -86,7 +86,7 @@ abstract final class MenuItemConstants {
     //*E-Belge
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.eBelge.yetkiName,
+      name: MenuItemsEnum.eBelge,
       title: "E-Belge",
       icon: "e_belge",
       color: ColorPalette.marineBlue,
@@ -124,7 +124,7 @@ abstract final class MenuItemConstants {
     //*Finans
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.finans.yetkiName,
+      name: MenuItemsEnum.finans,
       title: "Finans",
       icon: "wallet",
       color: ColorPalette.persianRed,
@@ -239,7 +239,7 @@ abstract final class MenuItemConstants {
     //*
     if (_anaVeri?.paramModel?.lokalDepoUygulamasiAcik == true && _anaVeri?.paramModel?.depoList?.any((element) => element.hucreTakibi == "E") == true)
       GridItemModel.anamenu(
-        name: MenuItemsEnum.hucreTakibi.yetkiName,
+        name: MenuItemsEnum.hucreTakibi,
         title: "Hücre Takibi",
         icon: "shelves",
         color: ColorPalette.skyBlue,
@@ -255,7 +255,7 @@ abstract final class MenuItemConstants {
     //* Mal Kabul
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.malKabul.yetkiName,
+      name: MenuItemsEnum.malKabul,
       title: "Mal Kabul",
       icon: "pallet",
       color: ColorPalette.coyote,
@@ -279,7 +279,7 @@ abstract final class MenuItemConstants {
     //* Sayım
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.sayim.yetkiName,
+      name: MenuItemsEnum.sayim,
       title: "Sayım",
       icon: "counter",
       color: ColorPalette.dodgerBlue,
@@ -291,7 +291,7 @@ abstract final class MenuItemConstants {
     //* Sevkiyat
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.sevkiyat.yetkiName,
+      name: MenuItemsEnum.sevkiyat,
       title: "Sevkiyat",
       icon: "forklift",
       color: ColorPalette.mountbattenPink,
@@ -315,7 +315,7 @@ abstract final class MenuItemConstants {
     //* Sipariş
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.siparis.yetkiName,
+      name: MenuItemsEnum.siparis,
       title: "Sipariş",
       icon: "order",
       color: ColorPalette.blueGray,
@@ -364,7 +364,7 @@ abstract final class MenuItemConstants {
     //* Stok
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.stok.yetkiName,
+      name: MenuItemsEnum.stok,
       title: "Stok",
       icon: "inventory",
       color: ColorPalette.mantis,
@@ -399,7 +399,7 @@ abstract final class MenuItemConstants {
     //* Tahsilat & Ödeme
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.tahsilat.yetkiName,
+      name: MenuItemsEnum.tahsilat,
       title: "Tahsilat & Ödeme",
       icon: "atm_dollar",
       color: ColorPalette.pineGreen,
@@ -420,7 +420,7 @@ abstract final class MenuItemConstants {
     //* Talep & Teklif
     //*∑
     GridItemModel.anamenu(
-      name: MenuItemsEnum.talepTeklif.yetkiName,
+      name: MenuItemsEnum.talepTeklif,
       title: "Talep & Teklif",
       icon: "offer",
       color: ColorPalette.mulberry,
@@ -434,7 +434,7 @@ abstract final class MenuItemConstants {
     //* Temsilci
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.temsilciProfil.yetkiName,
+      name: MenuItemsEnum.temsilciProfil,
       title: "Profilim",
       icon: "profile",
       color: ColorPalette.gamboge,
@@ -450,7 +450,7 @@ abstract final class MenuItemConstants {
     //* Transfer
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.transfer.yetkiName,
+      name: MenuItemsEnum.transfer,
       title: "Transfer",
       icon: "trolley",
       color: ColorPalette.slateGray,
@@ -467,7 +467,7 @@ abstract final class MenuItemConstants {
     //* Üretim
     //*
     GridItemModel.anamenu(
-      name: MenuItemsEnum.uretim.yetkiName,
+      name: MenuItemsEnum.uretim,
       title: "Üretim",
       icon: "factory_2",
       color: ColorPalette.outerSpace,
@@ -479,7 +479,7 @@ abstract final class MenuItemConstants {
       ],
     ),
     GridItemModel.anamenu(
-      name: MenuItemsEnum.genelSerbestRaporlar.yetkiName,
+      name: MenuItemsEnum.genelSerbestRaporlar,
       title: "Serbest Raporlar",
       icon: "monitoring",
       color: ColorPalette.asparagus,
@@ -489,7 +489,7 @@ abstract final class MenuItemConstants {
       ],
     ),
     GridItemModel.anamenu(
-      name: MenuItemsEnum.kalkon.yetkiName,
+      name: MenuItemsEnum.kalkon,
       title: "Kalite Kontrol",
       icon: "quality_control",
       color: ColorPalette.surfGreen,

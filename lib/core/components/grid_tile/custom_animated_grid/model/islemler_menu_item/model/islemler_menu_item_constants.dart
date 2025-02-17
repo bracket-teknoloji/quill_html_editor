@@ -7,6 +7,7 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_request_model.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:share_plus/share_plus.dart";
 
@@ -510,7 +511,7 @@ final class IslemlerMenuItemConstants<T> {
         isEnabled:
             (_userModel?.stokSeriHar == true && ((model as StokListesiModel).seriCikislardaAcik == true || (model as StokListesiModel).seriGirislerdeAcik == true)) || AccountModel.instance.adminMi,
         iconData: Icons.dynamic_form_outlined,
-        onTap: () async => Get.toNamed("/seriHareketleri", arguments: model),
+        onTap: () async => Get.toNamed("/seriHareketleri", arguments: SeriHareketleriRequestModel(stokKodu: (model as StokListesiModel).stokKodu)),
       );
   GridItemModel get seriBakiyeleri => GridItemModel.islemler(
         title: "Seri Bakiye Durumu",
