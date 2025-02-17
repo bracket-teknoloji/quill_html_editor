@@ -8,13 +8,11 @@ part "stok_fiyat_ozeti_request_model.g.dart";
 @unfreezed
 class StokFiyatOzetiRequestModel with _$StokFiyatOzetiRequestModel {
   @JsonSerializable(fieldRename: FieldRename.pascal)
-  factory StokFiyatOzetiRequestModel({
-    String? yapKod,
-    String? cariKodu,
-    String? stokKodu,
-  }) = _StokFiyatOzetiRequestModel;
+  factory StokFiyatOzetiRequestModel({String? yapKod, String? cariKodu, String? stokKodu}) =
+      _StokFiyatOzetiRequestModel;
 
   factory StokFiyatOzetiRequestModel.fromJson(Map<String, dynamic> json) => _$StokFiyatOzetiRequestModelFromJson(json);
 
-  factory StokFiyatOzetiRequestModel.fromStokListesiModel(StokListesiModel model) => StokFiyatOzetiRequestModel(yapKod: model.yapkod, stokKodu: model.stokKodu);
+  factory StokFiyatOzetiRequestModel.fromStokListesiModel(StokListesiModel model) =>
+      StokFiyatOzetiRequestModel(yapKod: model.yapkod, stokKodu: model.stokKodu);
 }

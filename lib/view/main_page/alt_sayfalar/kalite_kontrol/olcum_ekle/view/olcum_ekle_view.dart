@@ -60,186 +60,199 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Ölçüm ${widget.baseEditEnum.getName}",
-            subtitle: viewModel.requestModel.belgeTipi,
-          ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: loc.generalStrings.options,
-                  children: [
-                    if (widget.model.belge?.firstOrNull?.teknikResimVarmi == "E" && yetkiController.sigmaTeknikResim)
-                      BottomSheetModel(
-                        title: "Teknik Resimleri Görüntüle",
-                        iconWidget: Icons.picture_as_pdf_outlined,
-                        onTap: () async {
-                          Get.back();
-                          final result = await networkManager.dioPost(
-                            path: ApiUrls.getBelgeler,
-                            bodyModel: OlcumPdfModel(),
-                            showLoading: true,
-                            data: widget.model.belge?.firstOrNull?.forTeknikResim,
+    appBar: AppBar(
+      title: AppBarTitle(title: "Ölçüm ${widget.baseEditEnum.getName}", subtitle: viewModel.requestModel.belgeTipi),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: loc.generalStrings.options,
+              children: [
+                if (widget.model.belge?.firstOrNull?.teknikResimVarmi == "E" && yetkiController.sigmaTeknikResim)
+                  BottomSheetModel(
+                    title: "Teknik Resimleri Görüntüle",
+                    iconWidget: Icons.picture_as_pdf_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await networkManager.dioPost(
+                        path: ApiUrls.getBelgeler,
+                        bodyModel: OlcumPdfModel(),
+                        showLoading: true,
+                        data: widget.model.belge?.firstOrNull?.forTeknikResim,
+                      );
+                      if (result.isSuccess) {
+                        OlcumPdfModel? selectedItem;
+                        final List<OlcumPdfModel> list = result.dataList;
+                        if (list.length == 1) {
+                          selectedItem = list.first;
+                        } else {
+                          selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            groupValue: null,
+                            title: "Teknik Resim Seçiniz",
+                            children: List.generate(list.length, (index) {
+                              final OlcumPdfModel item = list[index];
+                              return BottomSheetModel(title: item.revno ?? "", value: item);
+                            }),
                           );
-                          if (result.isSuccess) {
-                            OlcumPdfModel? selectedItem;
-                            final List<OlcumPdfModel> list = result.dataList;
-                            if (list.length == 1) {
-                              selectedItem = list.first;
-                            } else {
-                              selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                groupValue: null,
-                                title: "Teknik Resim Seçiniz",
-                                children: List.generate(list.length, (index) {
-                                  final OlcumPdfModel item = list[index];
-                                  return BottomSheetModel(title: item.revno ?? "", value: item);
-                                }),
-                              );
-                            }
-                            if (selectedItem != null) {
-                              final pdfData = await networkManager.getTeknikResimPdf(selectedItem);
-                              if (pdfData.isSuccess) {
-                                Get.to(() => GenelPdfView(model: pdfData.dataItem));
-                              }
-                            }
+                        }
+                        if (selectedItem != null) {
+                          final pdfData = await networkManager.getTeknikResimPdf(selectedItem);
+                          if (pdfData.isSuccess) {
+                            Get.to(() => GenelPdfView(model: pdfData.dataItem));
                           }
-                        },
-                      ),
-                    if (widget.model.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani)
-                      BottomSheetModel(
-                        title: "Kontrol Planlarını Görüntüle",
-                        iconWidget: Icons.picture_as_pdf_outlined,
-                        onTap: () async {
-                          Get.back();
-                          final result = await networkManager.dioPost(
-                            path: ApiUrls.getBelgeler,
-                            bodyModel: OlcumPdfModel(),
-                            showLoading: true,
-                            data: widget.model.belge?.firstOrNull?.forKontrolPlani,
+                        }
+                      }
+                    },
+                  ),
+                if (widget.model.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani)
+                  BottomSheetModel(
+                    title: "Kontrol Planlarını Görüntüle",
+                    iconWidget: Icons.picture_as_pdf_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await networkManager.dioPost(
+                        path: ApiUrls.getBelgeler,
+                        bodyModel: OlcumPdfModel(),
+                        showLoading: true,
+                        data: widget.model.belge?.firstOrNull?.forKontrolPlani,
+                      );
+                      if (result.isSuccess) {
+                        OlcumPdfModel? selectedItem;
+                        final List<OlcumPdfModel> list = result.dataList;
+                        if (list.length == 1) {
+                          selectedItem = list.first;
+                        } else {
+                          selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            groupValue: null,
+                            title: "Kontrol Planı Seçiniz",
+                            children: List.generate(list.length, (index) {
+                              final OlcumPdfModel item = list[index];
+                              return BottomSheetModel(title: item.revno ?? "", value: item);
+                            }),
                           );
-                          if (result.isSuccess) {
-                            OlcumPdfModel? selectedItem;
-                            final List<OlcumPdfModel> list = result.dataList;
-                            if (list.length == 1) {
-                              selectedItem = list.first;
-                            } else {
-                              selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                groupValue: null,
-                                title: "Kontrol Planı Seçiniz",
-                                children: List.generate(list.length, (index) {
-                                  final OlcumPdfModel item = list[index];
-                                  return BottomSheetModel(title: item.revno ?? "", value: item);
-                                }),
-                              );
-                            }
-                            if (selectedItem != null) {
-                              final pdfData = await networkManager.getKontrolPlaniPdf(selectedItem);
-                              if (pdfData.isSuccess) {
-                                Get.to(() => GenelPdfView(model: pdfData.dataItem));
-                              }
-                            }
+                        }
+                        if (selectedItem != null) {
+                          final pdfData = await networkManager.getKontrolPlaniPdf(selectedItem);
+                          if (pdfData.isSuccess) {
+                            Get.to(() => GenelPdfView(model: pdfData.dataItem));
                           }
-                        },
-                      ),
-                  ],
-                );
-              },
-              icon: const Icon(Icons.more_vert_outlined),
-            ).yetkiVarMi(widget.model.olcumModel?.kontrolPlaniVarmi == "E" || widget.model.olcumModel?.teknikResimVarmi == "E"),
-            IconButton(
-              onPressed: () async {
-                if (viewModel.requestModel.kayitOperator == null) {
-                  dialogManager.showAlertDialog("Kayıt Operatörü Seçiniz.");
-                  return;
-                }
-                if (viewModel.requestModel.seriNo == null && widget.model.olcumModel?.seriSorulsunmu == "E") {
-                  dialogManager.showAlertDialog("Seri numarasını doldurunuz.");
-                  return;
-                }
-                dialogManager.showAreYouSureDialog(() async {
-                  if (widget.model.belge?.firstOrNull?.yarimOlcumYapabilirmi == "E" || (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false)) {
-                    final result = await viewModel.sendData(widget.baseEditEnum);
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                      Get.back(result: true);
-                    }
-                  } else {
-                    dialogManager.showAlertDialog("Proseslerin Sonuçları Boş Bırakılamaz");
-                  }
-                });
-              },
-              icon: const Icon(Icons.save_outlined),
-            ).yetkiVarMi((widget.baseEditEnum.ekleMi && yetkiController.sigmaOlcumKaydet) || (widget.baseEditEnum.duzenleMi && yetkiController.sigmaOlcumDuzelt)),
-          ],
+                        }
+                      }
+                    },
+                  ),
+              ],
+            );
+          },
+          icon: const Icon(Icons.more_vert_outlined),
+        ).yetkiVarMi(
+          widget.model.olcumModel?.kontrolPlaniVarmi == "E" || widget.model.olcumModel?.teknikResimVarmi == "E",
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Card(
-              child: ListTile(
-                title: Text("Belge No: ${viewModel.requestModel.belgeNo ?? ""}"),
-                subtitle: Column(
+        IconButton(
+          onPressed: () async {
+            if (viewModel.requestModel.kayitOperator == null) {
+              dialogManager.showAlertDialog("Kayıt Operatörü Seçiniz.");
+              return;
+            }
+            if (viewModel.requestModel.seriNo == null && widget.model.olcumModel?.seriSorulsunmu == "E") {
+              dialogManager.showAlertDialog("Seri numarasını doldurunuz.");
+              return;
+            }
+            dialogManager.showAreYouSureDialog(() async {
+              if (widget.model.belge?.firstOrNull?.yarimOlcumYapabilirmi == "E" ||
+                  (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false)) {
+                final result = await viewModel.sendData(widget.baseEditEnum);
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                  Get.back(result: true);
+                }
+              } else {
+                dialogManager.showAlertDialog("Proseslerin Sonuçları Boş Bırakılamaz");
+              }
+            });
+          },
+          icon: const Icon(Icons.save_outlined),
+        ).yetkiVarMi(
+          (widget.baseEditEnum.ekleMi && yetkiController.sigmaOlcumKaydet) ||
+              (widget.baseEditEnum.duzenleMi && yetkiController.sigmaOlcumDuzelt),
+        ),
+      ],
+    ),
+    body: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Card(
+          child: ListTile(
+            title: Text("Belge No: ${viewModel.requestModel.belgeNo ?? ""}"),
+            subtitle: Column(
+              children: [
+                CustomLayoutBuilder(
+                  splitCount: 2,
                   children: [
-                    CustomLayoutBuilder(
-                      splitCount: 2,
-                      children: [
-                        Text("Sıra: ${widget.model.olcumModel?.belgeSira}"),
-                        Text("Belge Tipi: ${widget.model.olcumModel?.belgeTipi ?? ""}"),
-                        Text("Tarih: ${widget.model.olcumModel?.tarih.toDateString}"),
-                        Text("Stok Adı: ${widget.model.olcumModel?.stokAdi}"),
-                        Text("Stok Kodu: ${widget.model.olcumModel?.stokKodu}"),
-                        // Text(widget.model.stok ?? ""),
-                      ],
-                    ),
+                    Text("Sıra: ${widget.model.olcumModel?.belgeSira}"),
+                    Text("Belge Tipi: ${widget.model.olcumModel?.belgeTipi ?? ""}"),
+                    Text("Tarih: ${widget.model.olcumModel?.tarih.toDateString}"),
+                    Text("Stok Adı: ${widget.model.olcumModel?.stokAdi}"),
+                    Text("Stok Kodu: ${widget.model.olcumModel?.stokKodu}"),
+                    // Text(widget.model.stok ?? ""),
                   ],
                 ),
-              ),
+              ],
             ),
-            CustomTextField(
-              labelText: "Kayıt Operatörü",
-              readOnly: true,
-              controller: kayitOperatorController,
-              enabled: !widget.baseEditEnum.goruntuleMi,
-              suffixMore: true,
-              isMust: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.kayitOperator ?? "")),
-              onTap: () async {
-                final result = await bottomSheetDialogManager.showOlcumOperatorBottomSheetDialog(context, viewModel.requestModel.kayitOperator);
-                if (result != null) {
-                  viewModel.setKayitOperatoru(result.sicilno);
-                  kayitOperatorController.text = result.adiSoyadi ?? "";
-                }
-              },
-            ),
-            CustomTextField(
-              labelText: "Seri Numarası",
-              controller: seriNumarasiController,
-              enabled: !widget.baseEditEnum.goruntuleMi,
-              isMust: true,
-              onChanged: viewModel.setSeriNo,
-            ).yetkiVarMi(widget.model.olcumModel?.seriSorulsunmu == "E" && yetkiController.seriUygulamasiAcikMi),
-            Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: widget.model.prosesler?.length ?? 0,
-                itemBuilder: (context, index) {
-                  final proses = widget.model.prosesler![index];
-                  return Card(
-                    // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
-                    child: Observer(
-                      builder: (_) => ListTile(
+          ),
+        ),
+        CustomTextField(
+          labelText: "Kayıt Operatörü",
+          readOnly: true,
+          controller: kayitOperatorController,
+          enabled: !widget.baseEditEnum.goruntuleMi,
+          suffixMore: true,
+          isMust: true,
+          valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.kayitOperator ?? "")),
+          onTap: () async {
+            final result = await bottomSheetDialogManager.showOlcumOperatorBottomSheetDialog(
+              context,
+              viewModel.requestModel.kayitOperator,
+            );
+            if (result != null) {
+              viewModel.setKayitOperatoru(result.sicilno);
+              kayitOperatorController.text = result.adiSoyadi ?? "";
+            }
+          },
+        ),
+        CustomTextField(
+          labelText: "Seri Numarası",
+          controller: seriNumarasiController,
+          enabled: !widget.baseEditEnum.goruntuleMi,
+          isMust: true,
+          onChanged: viewModel.setSeriNo,
+        ).yetkiVarMi(widget.model.olcumModel?.seriSorulsunmu == "E" && yetkiController.seriUygulamasiAcikMi),
+        Text("Prosesler", style: theme.textTheme.bodyLarge).paddingAll(UIHelper.lowSize),
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: widget.model.prosesler?.length ?? 0,
+            itemBuilder: (context, index) {
+              final proses = widget.model.prosesler![index];
+              return Card(
+                // color: cardColor(viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
+                child: Observer(
+                  builder:
+                      (_) => ListTile(
                         onTap: () async {
-                          final eklenenProses = viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
+                          final eklenenProses =
+                              viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
                           final result = await Get.toNamed(
                             "/mainPage/prosesEkle",
                             arguments: BaseEditModel<OlcumProsesModel>(
-                              model: eklenenProses?.copyWith(numuneler: viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull),
+                              model: eklenenProses?.copyWith(
+                                numuneler:
+                                    viewModel.requestModel.prosesler
+                                        ?.where((element) => element.id == proses.id)
+                                        .firstOrNull,
+                              ),
                               baseEditEnum: widget.baseEditEnum,
                             ),
                           );
@@ -249,22 +262,29 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                         },
                         title: Observer(
                           builder: (_) {
-                            final eklenenProses = viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
+                            final eklenenProses =
+                                viewModel.requestModel.prosesler
+                                    ?.where((element) => element.id == proses.id)
+                                    .firstOrNull;
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(proses.proses ?? ""),
-                                if (eklenenProses?.sonuc != null)ColorfulBadge(
-                                  label: Text(eklenenProses.sonucAdi),
-                                  badgeColorEnum: eklenenProses.cardColor,
-                                ),
+                                if (eklenenProses?.sonuc != null)
+                                  ColorfulBadge(
+                                    label: Text(eklenenProses.sonucAdi),
+                                    badgeColorEnum: eklenenProses.cardColor,
+                                  ),
                               ],
                             );
                           },
                         ),
                         subtitle: Observer(
                           builder: (_) {
-                            final eklenenProses = viewModel.requestModel.prosesler?.where((element) => element.id == proses.id).firstOrNull;
+                            final eklenenProses =
+                                viewModel.requestModel.prosesler
+                                    ?.where((element) => element.id == proses.id)
+                                    .firstOrNull;
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -272,9 +292,13 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                                   splitCount: 2,
                                   children: [
                                     if (eklenenProses?.kriter != null) Text("Kriter: ${eklenenProses?.kriter}"),
-                                    if (eklenenProses?.kabulSarti != null) Text("Kabul Şartı: ${eklenenProses?.kabulSarti ?? ""}"),
+                                    if (eklenenProses?.kabulSarti != null)
+                                      Text("Kabul Şartı: ${eklenenProses?.kabulSarti ?? ""}"),
                                     if (eklenenProses?.ekipman != null) Text("Ekipman: ${eklenenProses?.ekipman}"),
-                                    Text("Numune Miktarı: ${eklenenProses?.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}", overflow: TextOverflow.ellipsis),
+                                    Text(
+                                      "Numune Miktarı: ${eklenenProses?.numuneMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
                                   ],
                                 ),
                                 if (eklenenProses?.aciklama != null) Text("Açıklama: ${eklenenProses?.aciklama}"),
@@ -283,17 +307,23 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
                           },
                         ),
                         trailing: Observer(
-                          builder: (_) => Icon(
-                            viewModel.requestModel.prosesler?.any((element) => (element.id == proses.id) && element.sonuc != null) ?? false ? Icons.check_box_outlined : Icons.check_box_outline_blank,
-                          ),
+                          builder:
+                              (_) => Icon(
+                                viewModel.requestModel.prosesler?.any(
+                                          (element) => (element.id == proses.id) && element.sonuc != null,
+                                        ) ??
+                                        false
+                                    ? Icons.check_box_outlined
+                                    : Icons.check_box_outline_blank,
+                              ),
                         ).yetkiVarMi(!widget.baseEditEnum.goruntuleMi),
                       ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 }

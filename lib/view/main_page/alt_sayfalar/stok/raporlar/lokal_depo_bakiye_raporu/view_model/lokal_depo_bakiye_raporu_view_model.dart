@@ -18,15 +18,16 @@ abstract class _LokalDepoBakiyeRaporuViewModelBase with Store {
     dicParams: DicParams(belgeNo: "")..sifirHaric = "H",
   );
 
-  List<BottomSheetModel>? bottomSheetList = CacheManager.getAnaVeri?.paramModel?.depoList
-      ?.map(
-        (e) => BottomSheetModel(
-          title: e.depoTanimi ?? "",
-          description: e.depoKodu.toStringIfNotNull ?? "",
-          onTap: () => Get.back(result: e.depoKodu.toStringIfNotNull),
-        ),
-      )
-      .toList();
+  List<BottomSheetModel>? bottomSheetList =
+      CacheManager.getAnaVeri?.paramModel?.depoList
+          ?.map(
+            (e) => BottomSheetModel(
+              title: e.depoTanimi ?? "",
+              description: e.depoKodu.toStringIfNotNull ?? "",
+              onTap: () => Get.back(result: e.depoKodu.toStringIfNotNull),
+            ),
+          )
+          .toList();
   @observable
   bool sifirHaricValue = false;
 

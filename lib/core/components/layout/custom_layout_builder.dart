@@ -3,8 +3,19 @@ import "package:flutter/material.dart";
 import "../../base/state/base_state.dart";
 
 final class CustomLayoutBuilder extends StatefulWidget {
-  const CustomLayoutBuilder({required this.splitCount, required this.children, super.key, this.lastItemExpanded, this.doNotExpand = false});
-  const CustomLayoutBuilder.divideInHalf({required this.children, super.key, this.lastItemExpanded, this.doNotExpand = false}) : splitCount = 2;
+  const CustomLayoutBuilder({
+    required this.splitCount,
+    required this.children,
+    super.key,
+    this.lastItemExpanded,
+    this.doNotExpand = false,
+  });
+  const CustomLayoutBuilder.divideInHalf({
+    required this.children,
+    super.key,
+    this.lastItemExpanded,
+    this.doNotExpand = false,
+  }) : splitCount = 2;
   final List<Widget> children;
   final int splitCount;
   final bool? lastItemExpanded;
@@ -18,9 +29,7 @@ final class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
   List<Widget> get children => widget.children.where((element) => element is! SizedBox).toList().cast<Widget>();
 
   @override
-  Widget build(BuildContext context) => Column(
-        children: columnItems,
-      );
+  Widget build(BuildContext context) => Column(children: columnItems);
 
   int get rowValue => children.length % widget.splitCount;
 
@@ -39,16 +48,13 @@ final class _CustomLayoutBuilderState extends BaseState<CustomLayoutBuilder> {
         if (widget.doNotExpand) {
           list.add(
             LayoutBuilder(
-              builder: (context, constraints) => Row(
-                children: rowChildren
-                    .map(
-                      (e) => SizedBox(
-                        width: constraints.maxWidth / widget.splitCount,
-                        child: e,
-                      ),
-                    )
-                    .toList(),
-              ),
+              builder:
+                  (context, constraints) => Row(
+                    children:
+                        rowChildren
+                            .map((e) => SizedBox(width: constraints.maxWidth / widget.splitCount, child: e))
+                            .toList(),
+                  ),
             ),
           );
         } else {

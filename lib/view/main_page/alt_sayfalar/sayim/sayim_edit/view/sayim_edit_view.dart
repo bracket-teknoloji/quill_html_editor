@@ -51,142 +51,128 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Sayım",
-            subtitle: "Depo: ${widget.model.depoKodu}",
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: loc.generalStrings.options,
-                  children: [
-                    if (yetkiController.sayimSayimRaporu)
-                      BottomSheetModel(
-                        title: "Sayım Raporu (PDF)",
-                        iconWidget: Icons.filter_9_outlined,
-                        onTap: () async {
-                          Get.back();
-                          final PdfModel pdfModel = PdfModel(
-                            etiketSayisi: 1,
-                            raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
-                            dicParams: DicParams(
-                              belgeNo: widget.model.fisno ?? "",
-                            ),
-                          );
-                          final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
-                            context,
-                            "",
-                          );
-                          if (sayimFiltre == null) return;
-                          pdfModel.dicParams?.filtre = DepoFarkRaporuFiltreEnum.values.indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi).toStringIfNotNull;
-                          // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
-                          final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
-                            context,
-                            "",
-                            ozelKod: DizaynOzelKodEnum.sayim,
-                          );
-                          if (dizayn == null) return;
-                          pdfModel.dizaynId = dizayn.id;
-                          final result = await networkManager.getPDF(pdfModel);
-                          if (!result.isSuccess) return;
-                          Get.to(() => GenelPdfView(model: result.dataList.firstOrNull));
-                          // final result = await bottomSheetDialogManager.showBottomSh
-                        },
-                      ),
-                    if (widget.model.baslangicTarihi != null && widget.model.bitisTarihi == null && widget.model.serbestMi)
-                      BottomSheetModel(
-                        title: "Sayımı Bitir",
-                        iconWidget: Icons.stop_outlined,
-                        onTap: () async {
-                          dialogManager.showAreYouSureDialog(() async {
-                            if (await viewModel.sayimiBitir()) {
-                              Get.back(result: true);
-                            }
-                          });
-                        },
-                      ),
-                    if (yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi)
-                      BottomSheetModel(
-                        title: "Depo Fark Raporu",
-                        iconWidget: Icons.filter_9_outlined,
-                        onTap: () async {
-                          Get.back();
-                          await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
-                        },
-                      ),
-                    if (yetkiController.transferDatEkle)
-                      BottomSheetModel(
-                        title: "Depo Transferi Oluştur",
-                        iconWidget: Icons.transform_outlined,
-                        onTap: () async {
-                          Get.back();
-                          final depo = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, widget.model.depoKodu);
-                          if (depo is! DepoList) return;
-                          final listOfKalemler = await viewModel.getKalemler(depo.depoKodu.toString());
-                          if (listOfKalemler.ext.isNullOrEmpty) return;
-                          Get.toNamed(
-                            "/mainPage/transferEdit",
-                            arguments: BaseEditModel<BaseSiparisEditModel>(
-                              editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
-                              baseEditEnum: BaseEditEnum.ekle,
-                              model: BaseSiparisEditModel(
-                                girisDepoKodu: depo.depoKodu,
-                                topluGirisDepoTanimi: depo.depoTanimi,
-                                cikisDepoKodu: widget.model.depoKodu,
-                                topluCikisDepoTanimi: widget.model.depoTanimi,
-                                hareketTuru: "B",
-                                projeKodu: listOfKalemler?.firstOrNull?.projeKodu,
-                                kalemList: listOfKalemler,
-                                aciklama: "Sayım ${widget.model.fisno}",
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                  ],
-                );
-              },
-              icon: const Icon(Icons.more_vert_outlined),
-            ),
-            Observer(
-              builder: (_) => viewModel.indexSifirMi
-                  ? IconButton(
-                      onPressed: () async => await saveSayim(),
-                      icon: const Icon(Icons.save_outlined),
-                    )
-                  : const SizedBox.shrink(),
-            ),
-          ],
-          bottom: TabBar(
-            controller: controller,
-            tabs: const [
-              Tab(
-                child: Text("Sayım Girişi"),
-              ),
-              Tab(
-                child: Text("Sayılanlar"),
-              ),
-            ],
-          ),
+    appBar: AppBar(
+      title: AppBarTitle(title: "Sayım", subtitle: "Depo: ${widget.model.depoKodu}"),
+      actions: [
+        IconButton(
+          onPressed: () {
+            bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: loc.generalStrings.options,
+              children: [
+                if (yetkiController.sayimSayimRaporu)
+                  BottomSheetModel(
+                    title: "Sayım Raporu (PDF)",
+                    iconWidget: Icons.filter_9_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final PdfModel pdfModel = PdfModel(
+                        etiketSayisi: 1,
+                        raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
+                        dicParams: DicParams(belgeNo: widget.model.fisno ?? ""),
+                      );
+                      final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
+                        context,
+                        "",
+                      );
+                      if (sayimFiltre == null) return;
+                      pdfModel.dicParams?.filtre =
+                          DepoFarkRaporuFiltreEnum.values
+                              .indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi)
+                              .toStringIfNotNull;
+                      // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
+                      final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
+                        context,
+                        "",
+                        ozelKod: DizaynOzelKodEnum.sayim,
+                      );
+                      if (dizayn == null) return;
+                      pdfModel.dizaynId = dizayn.id;
+                      final result = await networkManager.getPDF(pdfModel);
+                      if (!result.isSuccess) return;
+                      Get.to(() => GenelPdfView(model: result.dataList.firstOrNull));
+                      // final result = await bottomSheetDialogManager.showBottomSh
+                    },
+                  ),
+                if (widget.model.baslangicTarihi != null && widget.model.bitisTarihi == null && widget.model.serbestMi)
+                  BottomSheetModel(
+                    title: "Sayımı Bitir",
+                    iconWidget: Icons.stop_outlined,
+                    onTap: () async {
+                      dialogManager.showAreYouSureDialog(() async {
+                        if (await viewModel.sayimiBitir()) {
+                          Get.back(result: true);
+                        }
+                      });
+                    },
+                  ),
+                if (yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi)
+                  BottomSheetModel(
+                    title: "Depo Fark Raporu",
+                    iconWidget: Icons.filter_9_outlined,
+                    onTap: () async {
+                      Get.back();
+                      await Get.toNamed("/mainPage/sayimDepoFarkRaporu", arguments: widget.model);
+                    },
+                  ),
+                if (yetkiController.transferDatEkle)
+                  BottomSheetModel(
+                    title: "Depo Transferi Oluştur",
+                    iconWidget: Icons.transform_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final depo = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+                        context,
+                        widget.model.depoKodu,
+                      );
+                      if (depo is! DepoList) return;
+                      final listOfKalemler = await viewModel.getKalemler(depo.depoKodu.toString());
+                      if (listOfKalemler.ext.isNullOrEmpty) return;
+                      Get.toNamed(
+                        "/mainPage/transferEdit",
+                        arguments: BaseEditModel<BaseSiparisEditModel>(
+                          editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
+                          baseEditEnum: BaseEditEnum.ekle,
+                          model: BaseSiparisEditModel(
+                            girisDepoKodu: depo.depoKodu,
+                            topluGirisDepoTanimi: depo.depoTanimi,
+                            cikisDepoKodu: widget.model.depoKodu,
+                            topluCikisDepoTanimi: widget.model.depoTanimi,
+                            hareketTuru: "B",
+                            projeKodu: listOfKalemler?.firstOrNull?.projeKodu,
+                            kalemList: listOfKalemler,
+                            aciklama: "Sayım ${widget.model.fisno}",
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+              ],
+            );
+          },
+          icon: const Icon(Icons.more_vert_outlined),
         ),
-        body: TabBarView(
-          controller: controller,
-          children: [
-            Observer(
-              builder: (_) => SayimGirisiView(
-                onStokSelected: saveSayim,
-                resetFiltreModel: resetFiltreModel,
-              ),
-            ),
-            Observer(
-              builder: (_) => SayimSayilanlarView(onEdit: onEdit),
-            ),
-          ],
+        Observer(
+          builder:
+              (_) =>
+                  viewModel.indexSifirMi
+                      ? IconButton(onPressed: () async => await saveSayim(), icon: const Icon(Icons.save_outlined))
+                      : const SizedBox.shrink(),
         ),
-      );
+      ],
+      bottom: TabBar(
+        controller: controller,
+        tabs: const [Tab(child: Text("Sayım Girişi")), Tab(child: Text("Sayılanlar"))],
+      ),
+    ),
+    body: TabBarView(
+      controller: controller,
+      children: [
+        Observer(builder: (_) => SayimGirisiView(onStokSelected: saveSayim, resetFiltreModel: resetFiltreModel)),
+        Observer(builder: (_) => SayimSayilanlarView(onEdit: onEdit)),
+      ],
+    ),
+  );
 
   Future<void> saveSayim() async {
     if (!StaticVariables.instance.isSayimValid) {
@@ -224,7 +210,9 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
   }
 
   void resetFiltreModel() {
-    SingletonModels.setSayimListesi = SingletonModels.sayimListesi?..filtre = widget.model.filtre?.copyWith(belgeNo: widget.model.fisno, islemKodu: 1);
+    SingletonModels.setSayimListesi =
+        SingletonModels.sayimListesi
+          ?..filtre = widget.model.filtre?.copyWith(belgeNo: widget.model.fisno, islemKodu: 1);
     controller.animateTo(1);
   }
 

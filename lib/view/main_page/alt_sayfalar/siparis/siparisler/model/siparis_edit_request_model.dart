@@ -81,74 +81,74 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
   factory SiparisEditRequestModel.fromJson(Map<String, Object?> json) => _$SiparisEditRequestModelFromJson(json);
 
   factory SiparisEditRequestModel.fromKalemModel(KalemModel model) => SiparisEditRequestModel(
-        belgeNo: model.belgeNo,
-        cariKodu: model.cariKodu,
-        belgeTuru: model.belgeTipi,
-        belgeTipi: model.belgeTipi,
-      );
+    belgeNo: model.belgeNo,
+    cariKodu: model.cariKodu,
+    belgeTuru: model.belgeTipi,
+    belgeTipi: model.belgeTipi,
+  );
 
   factory SiparisEditRequestModel.fromCariHareketleriModel(CariHareketleriModel model) => SiparisEditRequestModel(
-        cariKodu: model.cariKodu,
-        belgeNo: model.belgeNo,
-        belgeTuru: model.belgeTipi,
-        belgeTipi: model.belgeTipi,
-        pickerBelgeTuru: model.belgeTipi,
-      );
+    cariKodu: model.cariKodu,
+    belgeNo: model.belgeNo,
+    belgeTuru: model.belgeTipi,
+    belgeTipi: model.belgeTipi,
+    pickerBelgeTuru: model.belgeTipi,
+  );
 
   factory SiparisEditRequestModel.fromSiparislerModel(BaseSiparisEditModel model) => SiparisEditRequestModel(
-        belgeNo: model.belgeNo,
-        pickerBelgeTuru: model.belgeTuru,
-        belgeTuru: model.belgeTuru,
-        belgeTipi: model.belgeTipi.toStringIfNotNull,
-        belgeTarihi: model.tarih?.toDateString,
-        cariKodu: model.cariKodu,
-        filtreKodu: 2,
-        tipi: model.tipi,
-        tempBelgeId: model.tempBelgeId,
-        isNew: model.isNew,
-      );
+    belgeNo: model.belgeNo,
+    pickerBelgeTuru: model.belgeTuru,
+    belgeTuru: model.belgeTuru,
+    belgeTipi: model.belgeTipi.toStringIfNotNull,
+    belgeTarihi: model.tarih?.toDateString,
+    cariKodu: model.cariKodu,
+    filtreKodu: 2,
+    tipi: model.tipi,
+    tempBelgeId: model.tempBelgeId,
+    isNew: model.isNew,
+  );
 
   factory SiparisEditRequestModel.forDepolarArasiTransfer(BaseSiparisEditModel model) => SiparisEditRequestModel(
-        belgeNo: model.belgeNo,
-        belgeTuru: model.belgeTuru,
-        cariKodu: model.cariKodu,
-        tipi: model.tipi,
-        ekranTipi: "D",
-        kayitModu: "U",
-      );
+    belgeNo: model.belgeNo,
+    belgeTuru: model.belgeTuru,
+    cariKodu: model.cariKodu,
+    tipi: model.tipi,
+    ekranTipi: "D",
+    kayitModu: "U",
+  );
 
   factory SiparisEditRequestModel.forTalepMalToplama(BaseSiparisEditModel model) => SiparisEditRequestModel(
-        iadeMi: false,
-        filtreKodu: 6,
-        belgeNo: model.id.toStringIfNotNull,
-        hedefDepoKodu: model.depoKodu,
-        kisitYok: null,
-      );
+    iadeMi: false,
+    filtreKodu: 6,
+    belgeNo: model.id.toStringIfNotNull,
+    hedefDepoKodu: model.depoKodu,
+    kisitYok: null,
+  );
 
   factory SiparisEditRequestModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => SiparisEditRequestModel(
-        belgeNo: model.belgeNo,
-        cariKodu: model.cariKodu,
-        belgeTuru: model.belgeTuru,
-        belgeTipi: model.belgeTuru,
-      );
+    belgeNo: model.belgeNo,
+    cariKodu: model.cariKodu,
+    belgeTuru: model.belgeTuru,
+    belgeTipi: model.belgeTuru,
+  );
 
   factory SiparisEditRequestModel.fromEBelgeListesiModel(EBelgeListesiModel? model) => SiparisEditRequestModel(
-        belgeNo: model?.belgeNo,
-        cariKodu: model?.cariKodu,
-        belgeTuru: model?.belgeTuru,
-        belgeTipi: model?.belgeTuru,
-        pickerBelgeTuru: model?.belgeTuru,
-        filtreKodu: 8,
-        tipi: model?.dovizTipi,
-        eFaturaIncKeyNo: model?.inckeyno,
-      );
+    belgeNo: model?.belgeNo,
+    cariKodu: model?.cariKodu,
+    belgeTuru: model?.belgeTuru,
+    belgeTipi: model?.belgeTuru,
+    pickerBelgeTuru: model?.belgeTuru,
+    filtreKodu: 8,
+    tipi: model?.dovizTipi,
+    eFaturaIncKeyNo: model?.inckeyno,
+  );
 
   factory SiparisEditRequestModel.fromStokHareketleriModel(StokHareketleriModel? model) => SiparisEditRequestModel(
-        belgeNo: model?.fisno,
-        cariKodu: model?.cariKodu,
-        belgeTipi: model?.belgeTipi,
-        belgeTuru: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model?.belgeTipiAciklama)?.rawValue,
-      );
+    belgeNo: model?.fisno,
+    cariKodu: model?.cariKodu,
+    belgeTipi: model?.belgeTipi,
+    belgeTuru: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model?.belgeTipiAciklama)?.rawValue,
+  );
   @override
   SiparisEditRequestModel fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);
 }

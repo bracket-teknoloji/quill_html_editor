@@ -7,13 +7,7 @@ part "toggle_button_view_model.g.dart";
 final class ToggleButtonViewModel = _ToggleButtonViewModelBase with _$ToggleButtonViewModel;
 
 abstract class _ToggleButtonViewModelBase with Store {
-  final List<String> title = [
-    "Tümü",
-    "Tahsil Edilecek",
-    "Ödeme Yapılacak",
-    "Sıfır Bakiye",
-    "Bakiyeli",
-  ];
+  final List<String> title = ["Tümü", "Tahsil Edilecek", "Ödeme Yapılacak", "Sıfır Bakiye", "Bakiyeli"];
   @observable
   ObservableList<bool> isSelected = [false, false, false, false, false].asObservable();
 

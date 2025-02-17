@@ -37,7 +37,8 @@ abstract class _IsEmriEditViewModelBase with Store, MobxNetworkMixin {
   void setBelgeNo(String belgeNo) => model = model?.copyWith(isemriNo: belgeNo);
 
   @action
-  void setStok(StokListesiModel? stok) => model = model?.copyWith(stokKodu: stok?.stokKodu, stokAdi: stok?.stokAdi, stokOlcuBirimi: stok?.olcuBirimi);
+  void setStok(StokListesiModel? stok) =>
+      model = model?.copyWith(stokKodu: stok?.stokKodu, stokAdi: stok?.stokAdi, stokOlcuBirimi: stok?.olcuBirimi);
 
   @action
   void setReferansIsEmri(IsEmirleriModel? isEmri) => model = model?.copyWith(refIsemrino: isEmri?.isemriNo);
@@ -49,10 +50,12 @@ abstract class _IsEmriEditViewModelBase with Store, MobxNetworkMixin {
   void setProje(BaseProjeModel? proje) => model = model?.copyWith(projeKodu: proje?.projeKodu);
 
   @action
-  void setGirisDepo(DepoList? depo) => model = model?.copyWith(girisDepo: depo?.depoKodu, girisDepoAdi: depo?.depoTanimi);
+  void setGirisDepo(DepoList? depo) =>
+      model = model?.copyWith(girisDepo: depo?.depoKodu, girisDepoAdi: depo?.depoTanimi);
 
   @action
-  void setCikisDepo(DepoList? depo) => model = model?.copyWith(cikisDepo: depo?.depoKodu, cikisDepoAdi: depo?.depoTanimi);
+  void setCikisDepo(DepoList? depo) =>
+      model = model?.copyWith(cikisDepo: depo?.depoKodu, cikisDepoAdi: depo?.depoTanimi);
 
   @action
   void setAciklama(String? aciklama) => model = model?.copyWith(aciklama: aciklama);
@@ -71,5 +74,10 @@ abstract class _IsEmriEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(path: ApiUrls.saveIsEmri, showLoading: true, bodyModel: IsEmirleriModel(), data: model?.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(
+    path: ApiUrls.saveIsEmri,
+    showLoading: true,
+    bodyModel: IsEmirleriModel(),
+    data: model?.toJson(),
+  );
 }

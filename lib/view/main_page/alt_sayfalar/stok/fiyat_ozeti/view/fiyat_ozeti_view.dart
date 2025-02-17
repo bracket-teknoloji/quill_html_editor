@@ -35,68 +35,64 @@ final class _FiyatOzetiViewState extends State<FiyatOzetiView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body());
 
-  AppBar appBar() => AppBar(
-        title: AppBarTitle(
-          title: "Fiyat Özeti",
-          subtitle: widget.model.stokKodu,
-        ),
-      );
+  AppBar appBar() => AppBar(title: AppBarTitle(title: "Fiyat Özeti", subtitle: widget.model.stokKodu));
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: () async {
-          viewModel.setStokFiyatOzetiListesi(null);
-          await viewModel.getData();
-        },
-        child: Observer(
-          builder: (_) {
-            if (viewModel.grupList == null) return const ListViewShimmer();
-            if (viewModel.grupList?.isEmpty ?? true) return const Center(child: Text("Veri Bulunamadı"));
-            return ListView.builder(
-              itemCount: viewModel.grupList?.length ?? 0,
-              itemBuilder: (context, index) {
-                final grup = viewModel.grupList![index];
-                return Column(
-                  children: [
-                    Text(grup ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                    ...List.generate(viewModel.grupMap[grup ?? ""]?.length ?? 0, (index) {
-                      final stok = viewModel.grupMap[grup ?? ""]![index];
-                      return Card(
-                        child: ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    onRefresh: () async {
+      viewModel.setStokFiyatOzetiListesi(null);
+      await viewModel.getData();
+    },
+    child: Observer(
+      builder: (_) {
+        if (viewModel.grupList == null) return const ListViewShimmer();
+        if (viewModel.grupList?.isEmpty ?? true) return const Center(child: Text("Veri Bulunamadı"));
+        return ListView.builder(
+          itemCount: viewModel.grupList?.length ?? 0,
+          itemBuilder: (context, index) {
+            final grup = viewModel.grupList![index];
+            return Column(
+              children: [
+                Text(grup ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                ...List.generate(viewModel.grupMap[grup ?? ""]?.length ?? 0, (index) {
+                  final stok = viewModel.grupMap[grup ?? ""]![index];
+                  return Card(
+                    child: ListTile(
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(stok.tip?.toUpperCase() ?? "", style: const TextStyle(color: UIHelper.primaryColor)),
+                          Text(stok.tarih.toDateString),
+                        ],
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(stok.cariAdi ?? ""),
+                          CustomLayoutBuilder(
+                            splitCount: 2,
                             children: [
-                              Text(stok.tip?.toUpperCase() ?? "", style: const TextStyle(color: UIHelper.primaryColor)),
-                              Text(stok.tarih.toDateString),
-                            ],
-                          ),
-                          subtitle: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(stok.cariAdi ?? ""),
-                              CustomLayoutBuilder(
-                                splitCount: 2,
-                                children: [
-                                  Text("Net Fiyat\n${stok.fiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} ${stok.dovizAdi}"),
-                                  Text("Brüt Fiyat\n${stok.brutFiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} ${stok.dovizAdi}"),
-                                ],
+                              Text(
+                                "Net Fiyat\n${stok.fiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} ${stok.dovizAdi}",
+                              ),
+                              Text(
+                                "Brüt Fiyat\n${stok.brutFiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)} ${stok.dovizAdi}",
                               ),
                             ],
                           ),
-                          // subtitle: Text(stok.fiyat.toStringAsFixed(2)),
-                          // trailing: Text(stok.stokKodu),
-                        ),
-                      );
-                    }),
-                  ],
-                );
-              },
-            ).paddingAll(UIHelper.lowSize);
+                        ],
+                      ),
+                      // subtitle: Text(stok.fiyat.toStringAsFixed(2)),
+                      // trailing: Text(stok.stokKodu),
+                    ),
+                  );
+                }),
+              ],
+            );
           },
-        ),
-      );
+        ).paddingAll(UIHelper.lowSize);
+      },
+    ),
+  );
 }

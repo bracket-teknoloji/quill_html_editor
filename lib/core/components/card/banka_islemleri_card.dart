@@ -24,92 +24,78 @@ final class _BankaIslemleriCardState extends BaseState<BankaIslemleriCard> {
   BankaHareketleriModel? get model => widget.bankaHareketleriModel;
   @override
   Widget build(BuildContext context) => InkWell(
-        onTap: () async {
-          await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: model?.hesapAdi ?? "",
-            children: [
-              if (yetkiController.bankaKayitSilinsinMi)
-                BottomSheetModel(
-                  title: loc.generalStrings.delete,
-                  onTap: deleteData,
-                  iconWidget: Icons.delete_outline_outlined,
-                ),
-            ],
-          );
-        },
-        child: Card(
-          child: ListTile(
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    if (model?.hesapAdi != null) Text(model?.hesapAdi ?? ""),
-                    Text(model?.tarih.toDateString ?? ""),
-                  ],
-                ),
-                Text(
-                  model?.subeAdi ?? "",
-                  style: const TextStyle(color: ColorPalette.slateGray),
-                ),
-                Text(
-                  model?.bankaAdi ?? "",
-                  style: const TextStyle(color: ColorPalette.slateGray),
-                ),
-              ],
+    onTap: () async {
+      await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: model?.hesapAdi ?? "",
+        children: [
+          if (yetkiController.bankaKayitSilinsinMi)
+            BottomSheetModel(
+              title: loc.generalStrings.delete,
+              onTap: deleteData,
+              iconWidget: Icons.delete_outline_outlined,
             ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Hesap Kodu: ${model?.hesapAdi ?? ""}"),
-                Text("Belge No: ${model?.belgeno ?? ""}"),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            const TextSpan(text: "Tür: "),
-                            TextSpan(
-                              text: model?.hareketAciklama ?? "",
-                              style: TextStyle(
-                                color: model?.ba == "A" ? ColorPalette.persianRed : ColorPalette.mantis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            const TextSpan(text: "Tutar: "),
-                            TextSpan(
-                              text: "${model?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                              style: TextStyle(
-                                color: model?.ba == "A" ? ColorPalette.persianRed : ColorPalette.mantis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const Divider(indent: 0, endIndent: 0).paddingSymmetric(vertical: UIHelper.midSize),
-                Text(
-                  "Açıklama: ${model?.aciklama ?? ""}",
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                ),
-              ],
-            ),
-          ),
-        ),
+        ],
       );
+    },
+    child: Card(
+      child: ListTile(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (model?.hesapAdi != null) Text(model?.hesapAdi ?? ""),
+                Text(model?.tarih.toDateString ?? ""),
+              ],
+            ),
+            Text(model?.subeAdi ?? "", style: const TextStyle(color: ColorPalette.slateGray)),
+            Text(model?.bankaAdi ?? "", style: const TextStyle(color: ColorPalette.slateGray)),
+          ],
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Hesap Kodu: ${model?.hesapAdi ?? ""}"),
+            Text("Belge No: ${model?.belgeno ?? ""}"),
+            Row(
+              children: [
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        const TextSpan(text: "Tür: "),
+                        TextSpan(
+                          text: model?.hareketAciklama ?? "",
+                          style: TextStyle(color: model?.ba == "A" ? ColorPalette.persianRed : ColorPalette.mantis),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        const TextSpan(text: "Tutar: "),
+                        TextSpan(
+                          text: "${model?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                          style: TextStyle(color: model?.ba == "A" ? ColorPalette.persianRed : ColorPalette.mantis),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Divider(indent: 0, endIndent: 0).paddingSymmetric(vertical: UIHelper.midSize),
+            Text("Açıklama: ${model?.aciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 3),
+          ],
+        ),
+      ),
+    ),
+  );
 
   Future<void> deleteData() async {
     Get.back();

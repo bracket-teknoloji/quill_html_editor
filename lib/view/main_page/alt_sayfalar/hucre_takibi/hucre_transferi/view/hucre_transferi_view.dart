@@ -66,44 +66,44 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(
-            title: "Hücre Transferi",
-          ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (formKey.currentState?.validate() != true) return;
-                if (!viewModel.isStok) {
-                  final result = await paketChecker(paketController.text);
-                  if (result == null) return;
-                }
-                await sendData();
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ],
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Hücre Transferi"),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            if (formKey.currentState?.validate() != true) return;
+            if (!viewModel.isStok) {
+              final result = await paketChecker(paketController.text);
+              if (result == null) return;
+            }
+            await sendData();
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        body: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Observer(
-              builder: (_) => Column(
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        key: formKey,
+        child: Observer(
+          builder:
+              (_) => Column(
                 children: [
                   LayoutBuilder(
-                    builder: (context, constraints) => Observer(
-                      builder: (_) => ToggleButtons(
-                        constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
-                        isSelected: viewModel.isStokList,
-                        onPressed: (index) {
-                          viewModel.setIsStok(index != 1);
-                        },
-                        children: const [
-                          Text("Stok"),
-                          Text("Paket"),
-                        ],
-                      ),
-                    ),
+                    builder:
+                        (context, constraints) => Observer(
+                          builder:
+                              (_) => ToggleButtons(
+                                constraints: BoxConstraints.expand(
+                                  width: (constraints.maxWidth - UIHelper.midSize - 4) / 2,
+                                ),
+                                isSelected: viewModel.isStokList,
+                                onPressed: (index) {
+                                  viewModel.setIsStok(index != 1);
+                                },
+                                children: const [Text("Stok"), Text("Paket")],
+                              ),
+                        ),
                   ),
                   CustomTextField(
                     labelText: "Depo",
@@ -113,7 +113,10 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                     controller: depoController,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.depoKodu.toStringIfNotNull ?? "")),
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showHucreDepoBottomSheetDialog(context, viewModel.model.depoKodu);
+                      final result = await bottomSheetDialogManager.showHucreDepoBottomSheetDialog(
+                        context,
+                        viewModel.model.depoKodu,
+                      );
                       if (result is DepoList) {
                         depoController.text = result.depoTanimi ?? "";
                         viewModel.setDepoKodu(result.depoKodu);
@@ -129,7 +132,9 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                       readOnly: true,
                       suffix: IconButton(onPressed: () async {}, icon: const Icon(Icons.qr_code_scanner_outlined)),
                       onTap: () async {
-                        if (viewModel.model.depoKodu == null) return dialogManager.showAlertDialog("Depo Seçilmedi. Lütfen Deponu Seçiniz!");
+                        if (viewModel.model.depoKodu == null) {
+                          return dialogManager.showAlertDialog("Depo Seçilmedi. Lütfen Deponu Seçiniz!");
+                        }
                         final result = await getHucreModel();
                         if (result is HucreListesiModel) {
                           kaynakHucreController.text = result.hucreKodu ?? "";
@@ -175,8 +180,14 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                       controller: stokAdiController,
                       suffix: IconButton(
                         onPressed: () async {
-                          if (viewModel.model.stokKodu == null) return dialogManager.showAlertDialog("Stok Kodu Boş Olamaz");
-                          dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model.stokKodu)));
+                          if (viewModel.model.stokKodu == null) {
+                            return dialogManager.showAlertDialog("Stok Kodu Boş Olamaz");
+                          }
+                          dialogManager.showStokGridViewDialog(
+                            await networkManager.getStokModel(
+                              StokRehberiRequestModel(stokKodu: viewModel.model.stokKodu),
+                            ),
+                          );
                         },
                         icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                       ),
@@ -204,8 +215,13 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                             onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
                             validator: (value) {
                               if (value == null || value.isEmpty) return "Lütfen işlem miktarını giriniz!";
-                              if (value.toDoubleWithFormattedString <= 0) return "Lütfen işlem miktarını doğru giriniz!";
-                              if (value.toDoubleWithFormattedString > hucreMiktariController.text.toDoubleWithFormattedString) return "Hücre miktarından büyük olamaz!";
+                              if (value.toDoubleWithFormattedString <= 0) {
+                                return "Lütfen işlem miktarını doğru giriniz!";
+                              }
+                              if (value.toDoubleWithFormattedString >
+                                  hucreMiktariController.text.toDoubleWithFormattedString) {
+                                return "Hücre miktarından büyük olamaz!";
+                              }
                               return null;
                             },
                           ),
@@ -247,10 +263,10 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
                   ),
                 ],
               ),
-            ),
-          ),
-        ).paddingAll(UIHelper.lowSize),
-      );
+        ),
+      ),
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Future<void> sendData() async {
     final result = await viewModel.sendData();

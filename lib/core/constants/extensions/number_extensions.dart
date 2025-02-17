@@ -29,10 +29,7 @@ extension NumExtensionWithFixedDigits on num? {
 
   String get dotSeparatedWithFixedDigits {
     if (this != null) {
-      return this!.toStringAsFixed(2).replaceAllMapped(
-            RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"),
-            (m) => "${m[1]}.",
-          );
+      return this!.toStringAsFixed(2).replaceAllMapped(RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (m) => "${m[1]}.");
     } else {
       return "0.00";
     }

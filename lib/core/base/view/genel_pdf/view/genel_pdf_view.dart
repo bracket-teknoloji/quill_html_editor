@@ -46,66 +46,66 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(context),
-        bottomNavigationBar: Observer(builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar())),
-        body: body(),
-      );
+    appBar: appBar(context),
+    bottomNavigationBar: Observer(
+      builder: (_) => Visibility(visible: viewModel.pageCounter > 1, child: bottomAppBar()),
+    ),
+    body: body(),
+  );
 
   AppBar appBar(BuildContext context) => AppBar(
-        title: AppBarTitle(
-          title: "PDF Görüntüle",
-          subtitle: widget.model?.dosyaAdi,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              //! EKLENECEK
-              await fileChecker();
-            },
-            icon: const Icon(Icons.share_outlined),
-          ),
-          // IconButton(
-          //     onPressed: () async {
-          //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
-          //😳     title: "Yazıcı", children: CacheManager.getAnaVeri?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
-          //     },
-          //     icon: const Icon(Icons.more_vert_outlined)),
-        ],
-        // bottom: AppBarPreferedSizedBottom(
-        //   children: [
-        //     AppBarButton(
-        //       icon: Icons.print_outlined,
-        //       child: Text(loc.generalStrings.print),
-        //       onPressed: () async {
-        //         final PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "", standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
-        //         await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);
-        //       },
-        //     ),
-        //     AppBarButton(
-        //       icon: Icons.picture_as_pdf_outlined,
-        //       child: const Text("PDF Görüntüle"),
-        //       onPressed: () async {
-        //         if (await getFile != null) {
-        //           await OpenFile.open((await getFile)!.path);
-        //         }
-        //       },
-        //     ),
-        //     // AppBarButton(
-        //     //     icon: Icons.mail_outline_outlined,
-        //     //     child: const Text("Mail Gönder"),
-        //     //     onPressed: () async {
-        //     //       //! EKLENECEK
-        //     //       await fileChecker();
-        //     //     }),
-        //   ],
-        // ),
-      );
+    title: AppBarTitle(title: "PDF Görüntüle", subtitle: widget.model?.dosyaAdi),
+    actions: [
+      IconButton(
+        onPressed: () async {
+          //! EKLENECEK
+          await fileChecker();
+        },
+        icon: const Icon(Icons.share_outlined),
+      ),
+      // IconButton(
+      //     onPressed: () async {
+      //😳 await bottomSheetDialogManager.showBottomSheetDialog(context,
+      //😳     title: "Yazıcı", children: CacheManager.getAnaVeri?.paramModel?.yaziciList?.map((e) => BottomSheetModel(title: e.yaziciAdi ?? "", onTap: () {})).toList());
+      //     },
+      //     icon: const Icon(Icons.more_vert_outlined)),
+    ],
+    // bottom: AppBarPreferedSizedBottom(
+    //   children: [
+    //     AppBarButton(
+    //       icon: Icons.print_outlined,
+    //       child: Text(loc.generalStrings.print),
+    //       onPressed: () async {
+    //         final PrintModel printModel = PrintModel(raporOzelKod: widget.pdfData?.raporOzelKod ?? "", standart: true, etiketSayisi: 1, dicParams: widget.pdfData?.dicParams);
+    //         await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);
+    //       },
+    //     ),
+    //     AppBarButton(
+    //       icon: Icons.picture_as_pdf_outlined,
+    //       child: const Text("PDF Görüntüle"),
+    //       onPressed: () async {
+    //         if (await getFile != null) {
+    //           await OpenFile.open((await getFile)!.path);
+    //         }
+    //       },
+    //     ),
+    //     // AppBarButton(
+    //     //     icon: Icons.mail_outline_outlined,
+    //     //     child: const Text("Mail Gönder"),
+    //     //     onPressed: () async {
+    //     //       //! EKLENECEK
+    //     //       await fileChecker();
+    //     //     }),
+    //   ],
+    // ),
+  );
 
   Observer body() => Observer(
-        builder: (_) {
-          if (viewModel.pdfFile != null) {
-            return Observer(
-              builder: (_) => SfPdfViewer.file(
+    builder: (_) {
+      if (viewModel.pdfFile != null) {
+        return Observer(
+          builder:
+              (_) => SfPdfViewer.file(
                 viewModel.pdfFile!,
                 controller: pdfViewerController,
                 onTextSelectionChanged: (details) {
@@ -124,27 +124,43 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
                 onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
                 onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
               ),
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator.adaptive());
-          }
-        },
-      );
+        );
+      } else {
+        return const Center(child: CircularProgressIndicator.adaptive());
+      }
+    },
+  );
 
   BottomAppBar bottomAppBar() => BottomAppBar(
-        child: Row(
-          spacing: UIHelper.lowSize,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
-            FloatingActionButton(heroTag: 1, onPressed: () => pdfViewerController.firstPage(), child: const Icon(Icons.first_page_outlined)),
-            FloatingActionButton(heroTag: 2, onPressed: () => pdfViewerController.previousPage(), child: const Icon(Icons.arrow_back_outlined)),
-            FloatingActionButton(heroTag: 3, onPressed: () => pdfViewerController.nextPage(), child: const Icon(Icons.arrow_forward_outlined)),
-            FloatingActionButton(heroTag: 4, onPressed: () => pdfViewerController.lastPage(), child: const Icon(Icons.last_page_outlined)),
-          ],
+    child: Row(
+      spacing: UIHelper.lowSize,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
+        FloatingActionButton(
+          heroTag: 1,
+          onPressed: () => pdfViewerController.firstPage(),
+          child: const Icon(Icons.first_page_outlined),
         ),
-      );
+        FloatingActionButton(
+          heroTag: 2,
+          onPressed: () => pdfViewerController.previousPage(),
+          child: const Icon(Icons.arrow_back_outlined),
+        ),
+        FloatingActionButton(
+          heroTag: 3,
+          onPressed: () => pdfViewerController.nextPage(),
+          child: const Icon(Icons.arrow_forward_outlined),
+        ),
+        FloatingActionButton(
+          heroTag: 4,
+          onPressed: () => pdfViewerController.lastPage(),
+          child: const Icon(Icons.last_page_outlined),
+        ),
+      ],
+    ),
+  );
 
   Future<void> fileChecker() async {
     if (await getFile != null) {
@@ -161,9 +177,7 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
     final appStorage = await getApplicationDocumentsDirectory();
     //create a folder in documents/picker as name picker
     await Directory("${appStorage.path}/picker/pdf").create(recursive: true);
-    final file = File(
-      "${appStorage.path}/picker/pdf/${widget.model?.dosyaAdi ?? "demo.pdf"}${widget.model?.uzanti}",
-    );
+    final file = File("${appStorage.path}/picker/pdf/${widget.model?.dosyaAdi ?? "demo.pdf"}${widget.model?.uzanti}");
     final fileWriter = file.openSync(mode: FileMode.write)..writeFromSync(base64Decode(widget.model?.byteData ?? ""));
     await fileWriter.close();
     if (file.lengthSync() > 0) {
@@ -175,19 +189,20 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
   void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
     final OverlayState overlayState = Overlay.of(context);
     overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: details.globalSelectedRegion!.center.dy - 55,
-        left: details.globalSelectedRegion!.bottomLeft.dx,
-        child: ElevatedButton(
-          onPressed: () {
-            Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
-            dialogManager.showSuccessSnackBar("Kopyalandı");
-            pdfViewerController.clearSelection();
-            overlayEntry?.remove();
-          },
-          child: const Text("Kopyala"),
-        ),
-      ),
+      builder:
+          (context) => Positioned(
+            top: details.globalSelectedRegion!.center.dy - 55,
+            left: details.globalSelectedRegion!.bottomLeft.dx,
+            child: ElevatedButton(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
+                dialogManager.showSuccessSnackBar("Kopyalandı");
+                pdfViewerController.clearSelection();
+                overlayEntry?.remove();
+              },
+              child: const Text("Kopyala"),
+            ),
+          ),
     );
     if (overlayEntry != null) {
       overlayState.insert(overlayEntry!);

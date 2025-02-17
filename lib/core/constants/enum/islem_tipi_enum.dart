@@ -21,7 +21,11 @@ enum IslemTipiEnum {
 
   String get value {
     //return capitalized with method
-    if (this case (!= IslemTipiEnum.siparis && != IslemTipiEnum.cariIslemleri && != IslemTipiEnum.cari && != IslemTipiEnum.cariListesi)) {
+    if (this
+        case (!= IslemTipiEnum.siparis &&
+            != IslemTipiEnum.cariIslemleri &&
+            != IslemTipiEnum.cari &&
+            != IslemTipiEnum.cariListesi)) {
       return "${toString().split('.').last[0].toUpperCase()}${toString().split('.').last.substring(1)}";
     } else if (this case (IslemTipiEnum.cariIslemleri || IslemTipiEnum.cari || IslemTipiEnum.cariListesi)) {
       return "Cari";

@@ -33,50 +33,50 @@ final class _MasrafKoduRehberiViewState extends State<MasrafKoduRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) => viewModel.isSearchBarOpen
-              ? CustomAppBarTextField(
-                  onFieldSubmitted: (value) async {
-                    viewModel.setSearchText(value);
-                    await viewModel.resetList();
-                  },
-                )
-              : AppBarTitle(
-                  title: "Masraf Kodu Rehberi",
-                  subtitle: viewModel.observableList?.length.toStringIfNotNull,
-                ),
+    title: Observer(
+      builder:
+          (_) =>
+              viewModel.isSearchBarOpen
+                  ? CustomAppBarTextField(
+                    onFieldSubmitted: (value) async {
+                      viewModel.setSearchText(value);
+                      await viewModel.resetList();
+                    },
+                  )
+                  : AppBarTitle(
+                    title: "Masraf Kodu Rehberi",
+                    subtitle: viewModel.observableList?.length.toStringIfNotNull,
+                  ),
+    ),
+    actions: [
+      IconButton(
+        onPressed: viewModel.changeSearchBarStatus,
+        icon: Observer(
+          builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
         ),
-        actions: [
-          IconButton(
-            onPressed: viewModel.changeSearchBarStatus,
-            icon: Observer(
-              builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
-            ),
-          ),
-        ],
-      );
+      ),
+    ],
+  );
 
   Widget body() => Observer(
-        builder: (_) => RefreshableListView.pageable(
+    builder:
+        (_) => RefreshableListView.pageable(
           onRefresh: viewModel.resetList,
           scrollController: _scrollController,
           dahaVarMi: viewModel.dahaVarMi,
           items: viewModel.observableList,
           itemBuilder: masrafKoduCard,
         ),
-      );
+  );
 
   Card masrafKoduCard(MasrafKoduRehberiModel item) => Card(
-        child: ListTile(
-          title: Text(item.masrafKodu ?? ""),
-          subtitle: Text(item.masrafAdi ?? ""),
-          onTap: () => Get.back(result: item),
-        ),
-      );
+    child: ListTile(
+      title: Text(item.masrafKodu ?? ""),
+      subtitle: Text(item.masrafAdi ?? ""),
+      onTap: () => Get.back(result: item),
+    ),
+  );
 }

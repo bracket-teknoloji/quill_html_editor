@@ -50,7 +50,16 @@ abstract class CariAktiviteGenelViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setSaat(DateTime? value) {
-    model = model.copyWith(bastar: DateTime(model.bastar!.year, model.bastar!.month, model.bastar!.day, value!.hour, value.minute, value.second));
+    model = model.copyWith(
+      bastar: DateTime(
+        model.bastar!.year,
+        model.bastar!.month,
+        model.bastar!.day,
+        value!.hour,
+        value.minute,
+        value.second,
+      ),
+    );
     SingletonModels.setCariAktiviteListesi = model;
   }
 
@@ -108,6 +117,11 @@ abstract class CariAktiviteGenelViewModelBase with Store, MobxNetworkMixin {
     if (aktiviteBitirilsinMi) {
       model = model.copyWith(bittar: DateTime.now());
     }
-    return networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: model.toJson(), showLoading: true);
+    return networkManager.dioPost(
+      path: ApiUrls.saveAktivite,
+      bodyModel: CariAktiviteListesiModel(),
+      data: model.toJson(),
+      showLoading: true,
+    );
   }
 }

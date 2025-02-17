@@ -35,10 +35,18 @@ abstract class _FinansOzetRaporViewModelBase with Store, MobxNetworkMixin {
   ObservableList<FinansOzetRaporModel>? aylikTutarlarList;
 
   @computed
-  double? get toplamSatisFaturasi => aylikTutarlarList?.where((element) => element.belgeTipi == EditTipiEnum.satisFatura.rawValue).map((e) => e.tutar1).sum;
+  double? get toplamSatisFaturasi =>
+      aylikTutarlarList
+          ?.where((element) => element.belgeTipi == EditTipiEnum.satisFatura.rawValue)
+          .map((e) => e.tutar1)
+          .sum;
 
   @computed
-  double? get toplamAlisFaturasi => aylikTutarlarList?.where((element) => element.belgeTipi == EditTipiEnum.alisFatura.rawValue).map((e) => e.tutar1).sum;
+  double? get toplamAlisFaturasi =>
+      aylikTutarlarList
+          ?.where((element) => element.belgeTipi == EditTipiEnum.alisFatura.rawValue)
+          .map((e) => e.tutar1)
+          .sum;
 
   @action
   void setBaslangicTarihi(String? value) => requestModel.baslamaTarihi = value;
@@ -73,12 +81,20 @@ abstract class _FinansOzetRaporViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getGunSonuRaporu() async {
     setAylikTutarlarList(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getGunSonuRaporu, bodyModel: FinansOzetRaporModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getGunSonuRaporu,
+      bodyModel: FinansOzetRaporModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setGunSonuRaporuList(result.dataList);
     }
     if (CacheManager.getProfilParametre.finansOzelRaporGrafikGoster) {
-      final result2 = await networkManager.dioGet(path: ApiUrls.getAylikTutarlar, bodyModel: FinansOzetRaporModel(), queryParameters: requestModel.toJson());
+      final result2 = await networkManager.dioGet(
+        path: ApiUrls.getAylikTutarlar,
+        bodyModel: FinansOzetRaporModel(),
+        queryParameters: requestModel.toJson(),
+      );
       if (result2.isSuccess) {
         setAylikTutarlarList(result2.dataList);
       }

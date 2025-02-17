@@ -44,116 +44,119 @@ final class _IsEmriHammaddeTakibiDetayViewState extends BaseState<IsEmriHammadde
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: widget.model.makineKodu,
-            subtitle: "#${widget.model.takipno.toStringIfNotNull}",
+    appBar: AppBar(
+      title: AppBarTitle(title: widget.model.makineKodu, subtitle: "#${widget.model.takipno.toStringIfNotNull}"),
+    ),
+    body: Column(
+      children: [
+        LayoutBuilder(
+          builder:
+              (context, constraints) => Observer(
+                builder:
+                    (_) => ToggleButtons(
+                      constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 2) / 3),
+                      isSelected: viewModel.valueList,
+                      // isSelected: viewModel.seriHareketleriModel.gckod == "C" ? [false, true] : [true, false],
+                      onPressed: (index) => viewModel.setSelectedTipi(viewModel.tipiMap.values.toList()[index]),
+                      children: List.generate(
+                        viewModel.tipiMap.length,
+                        (index) => Text(viewModel.tipiMap.keys.toList()[index]),
+                      ),
+                    ),
+              ),
+        ).paddingSymmetric(vertical: UIHelper.lowSize),
+        if (yetkiController.stokListesi)
+          CustomTextField(
+            labelText: "Stok Kodu",
+            controller: controller,
+            suffixMore: true,
+            onSubmitted: (value) async => getStok(value),
+            suffix: IconButton(
+              icon: const Icon(Icons.qr_code_scanner_outlined),
+              onPressed: () async {
+                final qr = await Get.toNamed("qr");
+                if (qr != null) getStok(qr);
+              },
+            ),
           ),
-        ),
-        body: Column(
-          children: [
-            LayoutBuilder(
-              builder: (context, constraints) => Observer(
-                builder: (_) => ToggleButtons(
-                  constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 2) / 3),
-                  isSelected: viewModel.valueList,
-                  // isSelected: viewModel.seriHareketleriModel.gckod == "C" ? [false, true] : [true, false],
-                  onPressed: (index) => viewModel.setSelectedTipi(viewModel.tipiMap.values.toList()[index]),
-                  children: List.generate(viewModel.tipiMap.length, (index) => Text(viewModel.tipiMap.keys.toList()[index])),
-                ),
-              ),
-            ).paddingSymmetric(vertical: UIHelper.lowSize),
-            if (yetkiController.stokListesi)
-              CustomTextField(
-                labelText: "Stok Kodu",
-                controller: controller,
-                suffixMore: true,
-                onSubmitted: (value) async => getStok(value),
-                suffix: IconButton(
-                  icon: const Icon(Icons.qr_code_scanner_outlined),
-                  onPressed: () async {
-                    final qr = await Get.toNamed("qr");
-                    if (qr != null) getStok(qr);
-                  },
-                ),
-              ),
-            Expanded(
-              child: Observer(
-                builder: (_) => RefreshableListView(
+        Expanded(
+          child: Observer(
+            builder:
+                (_) => RefreshableListView(
                   onRefresh: viewModel.getData,
                   items: viewModel.observableList,
-                  itemBuilder: (item) => Card(
-                    color: item.referanslar.ext.isNotNullOrEmpty ? ColorPalette.mantisWithOpacity : null,
-                    child: ListTile(
-                      title: Text(item.referanslar?.firstOrNull?.referansStokKodu ?? item.hamKodu ?? ""),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(item.referanslar?.firstOrNull?.referansStokAdi ?? item.hamAdi ?? ""),
-                          Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                          CustomLayoutBuilder.divideInHalf(
+                  itemBuilder:
+                      (item) => Card(
+                        color: item.referanslar.ext.isNotNullOrEmpty ? ColorPalette.mantisWithOpacity : null,
+                        child: ListTile(
+                          title: Text(item.referanslar?.firstOrNull?.referansStokKodu ?? item.hamKodu ?? ""),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ...List.generate(item.referanslar?.where((element) => element.hammaddeNo != null).length ?? 0, (index) => Text("Hammadde No: ${item.referanslar?[index].hammaddeNo}")),
-                              if (item.referanslar?.any((element) => element.referansStokKodu != null) ?? false)
-                                Text("Alternatif: ${item.referanslar?.firstOrNull?.stokKodu} | ${item.referanslar?.firstOrNull?.stokAdi}"),
+                              Text(item.referanslar?.firstOrNull?.referansStokAdi ?? item.hamAdi ?? ""),
+                              Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                              CustomLayoutBuilder.divideInHalf(
+                                children: [
+                                  ...List.generate(
+                                    item.referanslar?.where((element) => element.hammaddeNo != null).length ?? 0,
+                                    (index) => Text("Hammadde No: ${item.referanslar?[index].hammaddeNo}"),
+                                  ),
+                                  if (item.referanslar?.any((element) => element.referansStokKodu != null) ?? false)
+                                    Text(
+                                      "Alternatif: ${item.referanslar?.firstOrNull?.stokKodu} | ${item.referanslar?.firstOrNull?.stokAdi}",
+                                    ),
+                                ],
+                              ),
                             ],
                           ),
-                        ],
+                          trailing:
+                              item.referanslar.ext.isNotNullOrEmpty
+                                  ? IconButton(
+                                    icon: const Icon(Icons.delete_outline_outlined),
+                                    onPressed: () async {
+                                      dialogManager.showAreYouSureDialog(() async {
+                                        final result = await viewModel.deleteItem(item);
+                                        if (result) {
+                                          dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
+                                          viewModel.getData();
+                                        }
+                                      });
+                                    },
+                                  )
+                                  : null,
+                        ),
                       ),
-                      trailing: item.referanslar.ext.isNotNullOrEmpty
-                          ? IconButton(
-                              icon: const Icon(Icons.delete_outline_outlined),
-                              onPressed: () async {
-                                dialogManager.showAreYouSureDialog(() async {
-                                  final result = await viewModel.deleteItem(item);
-                                  if (result) {
-                                    dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-                                    viewModel.getData();
-                                  }
-                                });
-                              },
-                            )
-                          : null,
-                    ),
-                  ),
                 ),
-              ),
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+          ),
+        ),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Future<void> getStok(String value) async {
     if (controller.text.isEmpty) return;
     final result = await viewModel.setBarkod(value);
     if (result.isSuccess) {
-      dialogManager.showAreYouSureDialog(
-        () async {
-          final selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-            context,
-            groupValue: 0,
-            title: "Alternatif seçiniz",
-            children: List.generate(viewModel.observableList?.length ?? 0, (index) {
-              final item = viewModel.observableList?[index];
-              return BottomSheetModel(
-                title: item?.hamAdi ?? "",
-                description: item?.hamKodu,
-                value: item,
-              );
-            }),
-          );
-          if (selectedItem != null) {
-            dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.addItem(value, selectedItem.hamKodu ?? "");
-              if (result) {
-                dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-                viewModel.getData();
-              }
-            });
-          }
-        },
-        title: result.message,
-      );
+      dialogManager.showAreYouSureDialog(() async {
+        final selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+          context,
+          groupValue: 0,
+          title: "Alternatif seçiniz",
+          children: List.generate(viewModel.observableList?.length ?? 0, (index) {
+            final item = viewModel.observableList?[index];
+            return BottomSheetModel(title: item?.hamAdi ?? "", description: item?.hamKodu, value: item);
+          }),
+        );
+        if (selectedItem != null) {
+          dialogManager.showAreYouSureDialog(() async {
+            final result = await viewModel.addItem(value, selectedItem.hamKodu ?? "");
+            if (result) {
+              dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
+              viewModel.getData();
+            }
+          });
+        }
+      }, title: result.message,);
     }
   }
 }

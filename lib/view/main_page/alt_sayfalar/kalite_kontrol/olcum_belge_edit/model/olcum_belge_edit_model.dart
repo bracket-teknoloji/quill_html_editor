@@ -149,11 +149,7 @@ class OlcumProsesModel with _$OlcumProsesModel, NetworkManagerMixin {
 
 @unfreezed
 class OlcumEkleDetayModel with _$OlcumEkleDetayModel {
-  factory OlcumEkleDetayModel({
-    double? deger,
-    int? detayId,
-    DateTime? zaman,
-  }) = _OlcumEkleDetayModel;
+  factory OlcumEkleDetayModel({double? deger, int? detayId, DateTime? zaman}) = _OlcumEkleDetayModel;
 
   factory OlcumEkleDetayModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleDetayModelFromJson(json);
 }
@@ -185,44 +181,23 @@ extension OlcumBelgeEditModelExtensions on OlcumBelgeEditModel {
 
 extension OlcumBelgeModelExtensions on OlcumBelgeModel {
   OlcumBelgeModel get forDetayRequest => OlcumBelgeModel(
-        stokKodu: stokKodu,
-        yapkod: yapkod,
-        opkodu: opkodu,
-        belgeNo: belgeNo,
-        belgeTipi: belgeTipi,
-        belgeSira: sira,
-      );
+    stokKodu: stokKodu,
+    yapkod: yapkod,
+    opkodu: opkodu,
+    belgeNo: belgeNo,
+    belgeTipi: belgeTipi,
+    belgeSira: sira,
+  );
 
-  OlcumBelgeModel get forKalemSec => OlcumBelgeModel(
-        belgeNo: belgeNo,
-        belgeTipi: belgeTipi,
-        sayfa: sayfa,
-      );
+  OlcumBelgeModel get forKalemSec => OlcumBelgeModel(belgeNo: belgeNo, belgeTipi: belgeTipi, sayfa: sayfa);
 
-  OlcumBelgeModel get forTeknikResim => OlcumBelgeModel(
-        stokKodu: stokKodu,
-        yapkod: yapkod,
-        opkodu: opkodu,
-        tur: "T",
-      );
+  OlcumBelgeModel get forTeknikResim => OlcumBelgeModel(stokKodu: stokKodu, yapkod: yapkod, opkodu: opkodu, tur: "T");
 
-  OlcumBelgeModel get forDatListesi => OlcumBelgeModel(
-        belgeNo: belgeNo,
-        belgeTipi: belgeTipi,
-      );
+  OlcumBelgeModel get forDatListesi => OlcumBelgeModel(belgeNo: belgeNo, belgeTipi: belgeTipi);
 
-  OlcumBelgeModel get forOlcumlerList => OlcumBelgeModel(
-        belgeNo: belgeNo,
-        belgeTipi: belgeTipi,
-        belgeSira: belgeSira,
-      );
+  OlcumBelgeModel get forOlcumlerList => OlcumBelgeModel(belgeNo: belgeNo, belgeTipi: belgeTipi, belgeSira: belgeSira);
 
-  OlcumBelgeModel get forKontrolPlani => OlcumBelgeModel(
-        stokKodu: stokKodu,
-        yapkod: yapkod,
-        opkodu: opkodu,
-        tur: "K",
-      );
+  OlcumBelgeModel get forKontrolPlani => OlcumBelgeModel(stokKodu: stokKodu, yapkod: yapkod, opkodu: opkodu, tur: "K");
 
   bool get prosesVarMi => prosesVar == "E";
 
@@ -232,20 +207,20 @@ extension OlcumBelgeModelExtensions on OlcumBelgeModel {
 extension OlcumEkleProsesExtensions on OlcumProsesModel? {
   bool get olculecekMi => this?.olculecekmi == "E" ? true : false;
   String get sonucAdi => switch (this?.sonuc) {
-        null => "",
-        "K" => "Kabul",
-        "R" => "Ret",
-        "S" => "Şartlı Kabul (${this?.sartliKabulNedeniAciklama})",
-        _ => "",
-      };
+    null => "",
+    "K" => "Kabul",
+    "R" => "Ret",
+    "S" => "Şartlı Kabul (${this?.sartliKabulNedeniAciklama})",
+    _ => "",
+  };
 
   BadgeColorEnum get cardColor => switch (this?.sonuc) {
-        null => BadgeColorEnum.basarili,
-        "K" => BadgeColorEnum.basarili,
-        "R" => BadgeColorEnum.hata,
-        "S" => BadgeColorEnum.uyari,
-        _ => BadgeColorEnum.uyari,
-      };
+    null => BadgeColorEnum.basarili,
+    "K" => BadgeColorEnum.basarili,
+    "R" => BadgeColorEnum.hata,
+    "S" => BadgeColorEnum.uyari,
+    _ => BadgeColorEnum.uyari,
+  };
 }
 
 extension OlcumOlcumlerModelExtensions on OlcumOlcumlerModel? {

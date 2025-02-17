@@ -16,46 +16,60 @@ final class BaseCariEditBankaView extends StatefulWidget {
 final class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView> {
   CariDetayModel cariDetayModel = CariDetayModel.instance;
   @override
-  Widget build(BuildContext context) => cariDetayModel.bankaList == null || cariDetayModel.bankaList!.isEmpty
-      ? const Center(
-          child: Text("Banka bilgisi bulunamadı"),
-        )
-      : ListView.builder(
-          itemCount: cariDetayModel.bankaList?.length,
-          itemBuilder: (context, index) => Card(
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[Text(cariDetayModel.bankaList?[index].bankaAdi ?? ""), Badge(label: Text(cariDetayModel.bankaList?[index].dovizAdi ?? mainCurrency))],
-                ),
-                const Divider().paddingAll(UIHelper.lowSize),
-                Column(
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Row(
-                          children: <Widget>[const Text("IBAN").paddingOnly(right: UIHelper.midSize), Text(cariDetayModel.bankaList?[index].ibanno ?? "")],
-                        ),
-                        IconButton(
-                          style: ButtonStyle(
-                            padding: WidgetStateProperty.all(EdgeInsets.zero),
+  Widget build(BuildContext context) =>
+      cariDetayModel.bankaList == null || cariDetayModel.bankaList!.isEmpty
+          ? const Center(child: Text("Banka bilgisi bulunamadı"))
+          : ListView.builder(
+            itemCount: cariDetayModel.bankaList?.length,
+            itemBuilder:
+                (context, index) => Card(
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(cariDetayModel.bankaList?[index].bankaAdi ?? ""),
+                          Badge(label: Text(cariDetayModel.bankaList?[index].dovizAdi ?? mainCurrency)),
+                        ],
+                      ),
+                      const Divider().paddingAll(UIHelper.lowSize),
+                      Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Row(
+                                children: <Widget>[
+                                  const Text("IBAN").paddingOnly(right: UIHelper.midSize),
+                                  Text(cariDetayModel.bankaList?[index].ibanno ?? ""),
+                                ],
+                              ),
+                              IconButton(
+                                style: ButtonStyle(padding: WidgetStateProperty.all(EdgeInsets.zero)),
+                                onPressed: () {
+                                  Clipboard.setData(ClipboardData(text: cariDetayModel.bankaList?[index].ibanno ?? ""));
+                                  dialogManager.showInfoSnackBar("IBAN numarası kopyalandı.");
+                                },
+                                icon: const Icon(Icons.share_outlined),
+                              ),
+                            ],
                           ),
-                          onPressed: () {
-                            Clipboard.setData(ClipboardData(text: cariDetayModel.bankaList?[index].ibanno ?? ""));
-                            dialogManager.showInfoSnackBar("IBAN numarası kopyalandı.");
-                          },
-                          icon: const Icon(Icons.share_outlined),
-                        ),
-                      ],
-                    ),
-                    Row(children: <Widget>[const Text("IBAN").paddingOnly(right: UIHelper.midSize), Text(cariDetayModel.bankaList?[index].subeAdi ?? "")]),
-                    Row(children: <Widget>[const Text("Şube").paddingOnly(right: UIHelper.midSize), Text(cariDetayModel.bankaList?[index].bankahesno ?? "")]),
-                  ],
+                          Row(
+                            children: <Widget>[
+                              const Text("IBAN").paddingOnly(right: UIHelper.midSize),
+                              Text(cariDetayModel.bankaList?[index].subeAdi ?? ""),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              const Text("Şube").paddingOnly(right: UIHelper.midSize),
+                              Text(cariDetayModel.bankaList?[index].bankahesno ?? ""),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ).paddingAll(UIHelper.lowSize),
                 ),
-              ],
-            ).paddingAll(UIHelper.lowSize),
-          ),
-        );
+          );
 }

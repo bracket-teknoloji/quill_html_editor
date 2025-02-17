@@ -11,7 +11,6 @@ import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/location/location_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/view/add_company/model/account_model.dart";
-import "package:text_scroll/text_scroll.dart";
 
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
@@ -183,28 +182,6 @@ final class _MainPageViewState extends BaseState<MainPageView> {
   SafeArea body(BuildContext context) => SafeArea(
     child: Column(
       children: [
-        if (kIsWeb)
-          if (CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "") case final value?)
-            if (value.sozlesmeUyarisiGoster ?? false)
-              Card(
-                color: UIHelper.primaryColor.withValues(alpha: 0.7),
-                child: ListTile(
-                  title: Text(value.karsilamaBaslik ?? value.karsilamaMesaji ?? ""),
-                  subtitle: TextScroll(value.karsilamaMesaji ?? ""),
-                  leading: const Icon(Icons.warning_outlined),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.chevron_right),
-                    onPressed: () async {
-                      if (value.sozlesmeUyarisiGoster != true) return;
-                      if ((value.sozlesmeTeklifGoster ?? false) && AccountModel.instance.adminMi) {
-                        await getTeklif();
-                      } else {
-                        dialogManager.showInfoDialog(value.karsilamaMesaji ?? "");
-                      }
-                    },
-                  ),
-                ),
-              ).paddingAll(UIHelper.lowSize),
         Expanded(
           child: Stack(
             children: [

@@ -20,13 +20,7 @@ abstract class _FiyatGorViewModelBase with Store {
   @action
   void setModelList(List<FiyatGorModel?>? modelList) => this.modelList = modelList;
 
-  final List<String> titleList = [
-    "Döviz Fiyatı",
-    "Fiyat 1",
-    "Fiyat 2",
-    "Fiyat 3",
-    "Fiyat 4",
-  ];
+  final List<String> titleList = ["Döviz Fiyatı", "Fiyat 1", "Fiyat 2", "Fiyat 3", "Fiyat 4"];
 
   @action
   double? getBilgi(int index, {bool isSatis = false}) {

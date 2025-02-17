@@ -23,28 +23,25 @@ final class AppBarPreferedSizedBottom extends StatefulWidget implements Preferre
 final class _AppBarPreferedSizedBottomState extends BaseState<AppBarPreferedSizedBottom> {
   @override
   Widget build(BuildContext context) => SizedBox(
-        height: widget.toolbarHeight,
-        child: Column(
-          children: [
-            Expanded(
-              child: LayoutBuilder(
-                builder: (context, constraints) => ListView(
+    height: widget.toolbarHeight,
+    child: Column(
+      children: [
+        Expanded(
+          child: LayoutBuilder(
+            builder:
+                (context, constraints) => ListView(
                   shrinkWrap: true,
                   itemExtent: constraints.maxWidth / widget.children.length,
                   scrollDirection: Axis.horizontal,
-                  children: widget.children
-                      .map(
-                        (e) => e.paddingSymmetric(
-                          horizontal: UIHelper.lowSize,
-                          vertical: UIHelper.lowSize,
-                        ),
-                      )
-                      .toList(),
+                  children:
+                      widget.children
+                          .map((e) => e.paddingSymmetric(horizontal: UIHelper.lowSize, vertical: UIHelper.lowSize))
+                          .toList(),
                 ),
-              ),
-            ),
-            if (widget.filter != null) widget.filter!,
-          ],
+          ),
         ),
-      );
+        if (widget.filter != null) widget.filter!,
+      ],
+    ),
+  );
 }

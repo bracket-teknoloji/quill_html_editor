@@ -26,7 +26,10 @@ final class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> w
   GlobalKey<FormState>? formKey;
   CariAktiviteListesiModel get cariAktiviteModel => widget.model.model!;
 
-  bool get kayitYetkisi => widget.model.baseEditEnum?.ekleMi == true ? yetkiController.cariAktiviteYeniKayit : yetkiController.cariAktiviteDuzenleme;
+  bool get kayitYetkisi =>
+      widget.model.baseEditEnum?.ekleMi == true
+          ? yetkiController.cariAktiviteYeniKayit
+          : yetkiController.cariAktiviteDuzenleme;
 
   bool get enabled => widget.model.baseEditEnum?.goruntuleMi != true;
 
@@ -46,47 +49,44 @@ final class _CariAktiviteEditViewState extends BaseState<CariAktiviteEditView> w
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Cari Aktivite",
-            subtitle: widget.model.baseEditEnum?.getName,
+    appBar: AppBar(
+      title: AppBarTitle(title: "Cari Aktivite", subtitle: widget.model.baseEditEnum?.getName),
+      actions: [
+        if (kayitYetkisi && widget.model.baseEditEnum != BaseEditEnum.goruntule)
+          IconButton(
+            onPressed: () async {
+              tabController.animateTo(0);
+              await Future.delayed(const Duration(milliseconds: 100));
+              if (formKey?.currentState?.validate() == true) {
+                final result = await viewModel.saveCariAktivite();
+                if (result.isSuccess) {
+                  dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                  Get.back(result: true);
+                }
+              }
+            },
+            icon: const Icon(Icons.save_outlined),
           ),
-          actions: [
-            if (kayitYetkisi && widget.model.baseEditEnum != BaseEditEnum.goruntule)
-              IconButton(
-                onPressed: () async {
-                  tabController.animateTo(0);
-                  await Future.delayed(const Duration(milliseconds: 100));
-                  if (formKey?.currentState?.validate() == true) {
-                    final result = await viewModel.saveCariAktivite();
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                      Get.back(result: true);
-                    }
-                  }
-                },
-                icon: const Icon(Icons.save_outlined),
-              ),
-          ],
-          bottom: !yetkiController.cariAktiviteDetayliMi
+      ],
+      bottom:
+          !yetkiController.cariAktiviteDetayliMi
               ? null
               : TabBar(
-                  controller: tabController,
-                  tabs: [
-                    const Tab(text: "Genel"),
-                    if (yetkiController.cariAktiviteDetayliMi) const Tab(text: "Detay"),
-                  ].whereNot((element) => element is SizedBox).toList(),
-                ),
-        ),
-        body: TabBarView(
-          controller: tabController,
-          children: [
-            CariAktiviteGenelView(
-              model: widget.model,
-              onSave: (value) => formKey = value,
-            ),
+                controller: tabController,
+                tabs:
+                    [
+                      const Tab(text: "Genel"),
+                      if (yetkiController.cariAktiviteDetayliMi) const Tab(text: "Detay"),
+                    ].whereNot((element) => element is SizedBox).toList(),
+              ),
+    ),
+    body: TabBarView(
+      controller: tabController,
+      children:
+          [
+            CariAktiviteGenelView(model: widget.model, onSave: (value) => formKey = value),
             if (yetkiController.cariAktiviteDetayliMi) CariAktiviteDetayView(baseEditEnum: widget.model.baseEditEnum!),
           ].whereNot((element) => element is SizedBox).toList(),
-        ),
-      );
+    ),
+  );
 }

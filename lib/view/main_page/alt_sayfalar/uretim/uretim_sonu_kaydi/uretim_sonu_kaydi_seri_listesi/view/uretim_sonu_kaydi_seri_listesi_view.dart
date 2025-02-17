@@ -40,86 +40,94 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(),
-        bottomNavigationBar: bottomBar(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body(), bottomNavigationBar: bottomBar());
 
   AppBar appBar() => AppBar(
-        title: const AppBarTitle(
-          title: "Seri Girişi",
-          subtitle: "Üretim Sonu Kaydı",
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.check_circle_outline_outlined),
-            onPressed: () => Get.back(result: viewModel.observableList?.toList()),
-          ),
-        ],
-      );
+    title: const AppBarTitle(title: "Seri Girişi", subtitle: "Üretim Sonu Kaydı"),
+    actions: [
+      IconButton(
+        icon: const Icon(Icons.check_circle_outline_outlined),
+        onPressed: () => Get.back(result: viewModel.observableList?.toList()),
+      ),
+    ],
+  );
 
   Observer body() => Observer(
-        builder: (_) => RefreshableListView(
-          onRefresh: () async {},
-          items: viewModel.observableList,
-          itemBuilder: seriCard,
-        ),
-      );
+    builder: (_) => RefreshableListView(onRefresh: () async {}, items: viewModel.observableList, itemBuilder: seriCard),
+  );
 
   BottomBarWidget bottomBar() => BottomBarWidget(
-        isScrolledDown: true,
+    isScrolledDown: true,
+    children: [
+      FooterButton(
         children: [
-          FooterButton(
-            children: [
-              const Text("Miktar"),
-              Observer(
-                builder: (_) => Text(viewModel.observableList?.map((element) => element.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "0"),
-              ),
-            ],
-          ),
-          FooterButton(
-            children: [
-              const Text("Kalan Miktar"),
-              Observer(
-                builder: (_) => Text(viewModel.observableList?.map((element) => element.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "0  "),
-              ),
-            ],
+          const Text("Miktar"),
+          Observer(
+            builder:
+                (_) => Text(
+                  viewModel.observableList
+                          ?.map((element) => element.miktar ?? 0)
+                          .sum
+                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                      "0",
+                ),
           ),
         ],
-      );
+      ),
+      FooterButton(
+        children: [
+          const Text("Kalan Miktar"),
+          Observer(
+            builder:
+                (_) => Text(
+                  viewModel.observableList
+                          ?.map((element) => element.miktar ?? 0)
+                          .sum
+                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                      "0  ",
+                ),
+          ),
+        ],
+      ),
+    ],
+  );
 
   Observer seriCard(UskReceteModel item) => Observer(
-        builder: (_) => Card(
+    builder:
+        (_) => Card(
           color: item.miktar == item.seriList?.map((e) => e.miktar ?? 0).sum ? ColorPalette.mantis : null,
           child: ListTile(
             onTap: () async {
               final result = await Get.toNamed(
                 "/seriListesi",
-                arguments: KalemModel.fromUSKReceteModel(item)
-                  ..tarih = widget.model.tarih
-                  ..depoKodu = widget.model.cikisDepo,
+                arguments:
+                    KalemModel.fromUSKReceteModel(item)
+                      ..tarih = widget.model.tarih
+                      ..depoKodu = widget.model.cikisDepo,
               );
               if (result is List<SeriList>) {
                 viewModel.updateCard(
                   item.copyWith(
-                    seriList: result
-                        .map(
-                          (e) => e.copyWith(
-                            requestVersion: 2,
-                            barkod: widget.model.stokKodu,
-                            tempBarkod: widget.model.stokKodu,
-                            gckod: item.sira != "0" ? "C" : "G",
-                            inckeyno: -1,
-                          ),
-                        )
-                        .toList(),
+                    seriList:
+                        result
+                            .map(
+                              (e) => e.copyWith(
+                                requestVersion: 2,
+                                barkod: widget.model.stokKodu,
+                                tempBarkod: widget.model.stokKodu,
+                                gckod: item.sira != "0" ? "C" : "G",
+                                inckeyno: -1,
+                              ),
+                            )
+                            .toList(),
                   ),
                 );
               }
             },
             onLongPress: () async {
-              dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)));
+              dialogManager.showStokGridViewDialog(
+                await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
+              );
             },
             title: Text(item.stokAdi ?? ""),
             subtitle: Column(
@@ -129,7 +137,9 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
                   children: [
                     Text("Stok Kodu: ${item.stokKodu}"),
                     Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                    Text("Seri Miktarı: ${item.seriList?.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}"),
+                    Text(
+                      "Seri Miktarı: ${item.seriList?.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}",
+                    ),
                     const Text("Giriş/Çıkış: ${"G"}"),
                   ],
                 ),
@@ -138,5 +148,5 @@ final class _UretimSonuKaydiSeriListesiState extends BaseState<UretimSonuKaydiSe
             ),
           ),
         ),
-      );
+  );
 }

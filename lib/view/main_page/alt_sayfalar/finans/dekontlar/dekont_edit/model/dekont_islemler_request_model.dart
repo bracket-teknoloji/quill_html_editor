@@ -27,7 +27,8 @@ class DekontIslemlerRequestModel with _$DekontIslemlerRequestModel, NetworkManag
     @JsonKey(includeFromJson: false, includeToJson: false) String? projeAdi,
   }) = _DekontIslemlerRequestModel;
 
-  factory DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(List<DekontDuzenleRequestModel> list) => DekontIslemlerRequestModel(
+  factory DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(List<DekontDuzenleRequestModel> list) =>
+      DekontIslemlerRequestModel(
         plasiyerKodu: list.firstOrNull?.plasiyerKodu,
         tarih: list.firstOrNull?.tarih,
         dekontSeri: list.firstOrNull?.seriNo,

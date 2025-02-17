@@ -29,7 +29,11 @@ abstract class _ImageCarouselViewModelBase with Store, MobxNetworkMixin {
   void setSelectedImage(String? image) => selectedImage = image;
 
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: requestModel?.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getEvraklar,
+      bodyModel: EvraklarModel(),
+      queryParameters: requestModel?.toJson(),
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
       setSelectedImage(result.dataList.first.resimUrl);

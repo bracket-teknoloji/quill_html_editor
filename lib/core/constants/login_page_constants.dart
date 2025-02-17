@@ -8,9 +8,6 @@ final class LoginConstants {
     begin: Alignment.topCenter,
     end: Alignment.bottomRight,
     stops: [0.2, 0.8],
-    colors: [
-      Colors.black,
-      UIHelper.primaryColor,
-    ],
+    colors: [Colors.black, UIHelper.primaryColor],
   );
 }

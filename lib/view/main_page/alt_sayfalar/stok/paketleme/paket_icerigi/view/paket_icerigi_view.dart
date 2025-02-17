@@ -27,55 +27,55 @@ final class _PaketIcerigiViewState extends BaseState<PaketIcerigiView> {
   @override
   void initState() {
     viewModel.setPaketID(widget.model.id!);
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) async {
-        await viewModel.getData();
-      },
-    );
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await viewModel.getData();
+    });
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        bottomNavigationBar: bottomBar(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), bottomNavigationBar: bottomBar(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) => AppBarTitle(
+    title: Observer(
+      builder:
+          (_) => AppBarTitle(
             title: "Paket İçeriği (${viewModel.observableList?.length ?? 0})",
             subtitle: widget.model.kodu,
           ),
-        ),
-      );
+    ),
+  );
 
   BottomBarWidget bottomBar() => BottomBarWidget(
-        isScrolledDown: true,
+    isScrolledDown: true,
+    children: [
+      FooterButton(
         children: [
-          FooterButton(
-            children: [
-              const Text("Paket Miktarı"),
-              Observer(
-                builder: (_) => Text(viewModel.toplamPaketMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
-              ),
-            ],
+          const Text("Paket Miktarı"),
+          Observer(
+            builder: (_) => Text(viewModel.toplamPaketMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
           ),
         ],
-      );
+      ),
+    ],
+  );
 
   Widget body() => Observer(
-        builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: paketIcerigiCard),
-      );
+    builder:
+        (_) => RefreshableListView(
+          onRefresh: viewModel.getData,
+          items: viewModel.observableList,
+          itemBuilder: paketIcerigiCard,
+        ),
+  );
 
   PaketIcerigiCard paketIcerigiCard(PaketIcerigiModel item) => PaketIcerigiCard(
-        item: item,
-        kilitliMi: widget.model.kilit == "E",
-        onDeleted: () {
-          dialogManager.showAreYouSureDialog(() async {
-            await viewModel.getData();
-          });
-        },
-      );
+    item: item,
+    kilitliMi: widget.model.kilit == "E",
+    onDeleted: () {
+      dialogManager.showAreYouSureDialog(() async {
+        await viewModel.getData();
+      });
+    },
+  );
 }

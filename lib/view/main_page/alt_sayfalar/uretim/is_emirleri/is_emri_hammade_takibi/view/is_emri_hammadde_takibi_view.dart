@@ -36,44 +36,45 @@ final class _IsEmriHammaddeTakibiViewState extends State<IsEmriHammaddeTakibiVie
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) {
-            if (viewModel.isSearchBarOpen) {
-              return CustomAppBarTextField(
-                controller: searchController,
-                onChanged: viewModel.setSearchText,
-                onFieldSubmitted: (value) => viewModel.resetList(),
-              );
-            }
-            return AppBarTitle(title: "İş Emri Hammadde Takibi", subtitle: (viewModel.observableList?.length ?? 0).toStringIfNotNull);
-          },
+    title: Observer(
+      builder: (_) {
+        if (viewModel.isSearchBarOpen) {
+          return CustomAppBarTextField(
+            controller: searchController,
+            onChanged: viewModel.setSearchText,
+            onFieldSubmitted: (value) => viewModel.resetList(),
+          );
+        }
+        return AppBarTitle(
+          title: "İş Emri Hammadde Takibi",
+          subtitle: (viewModel.observableList?.length ?? 0).toStringIfNotNull,
+        );
+      },
+    ),
+    actions: [
+      IconButton(
+        onPressed: () {
+          viewModel.changeSearchBarStatus();
+          if (!viewModel.isSearchBarOpen) {
+            searchController.clear();
+          }
+        },
+        icon: Observer(
+          builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              viewModel.changeSearchBarStatus();
-              if (!viewModel.isSearchBarOpen) {
-                searchController.clear();
-              }
-            },
-            icon: Observer(
-              builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
-            ),
-          ),
-        ],
-      );
+      ),
+    ],
+  );
 
   Observer body() => Observer(
-        builder: (_) => RefreshableListView(
+    builder:
+        (_) => RefreshableListView(
           onRefresh: viewModel.getData,
           items: viewModel.getList,
           itemBuilder: (item) => IsEmriHammaddeTakibiCard(model: item),
         ),
-      );
+  );
 }

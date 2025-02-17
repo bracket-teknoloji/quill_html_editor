@@ -125,7 +125,16 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(child: CustomTextField(labelText: "Tarih", controller: _tarihController, isDateTime: true, isMust: true, readOnly: true, onTap: () async => await getTarih())),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Tarih",
+                    controller: _tarihController,
+                    isDateTime: true,
+                    isMust: true,
+                    readOnly: true,
+                    onTap: () async => await getTarih(),
+                  ),
+                ),
                 Expanded(child: CustomTextField(labelText: "Dekont No", controller: _dekontNoController)),
               ],
             ),
@@ -160,9 +169,14 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                             isMust: true,
                             readOnly: true,
                             suffixMore: true,
-                            valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi?.toStringIfNotNull ?? "")),
+                            valueWidget: Observer(
+                              builder: (_) => Text(viewModel.model.dovizTipi?.toStringIfNotNull ?? ""),
+                            ),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model.dovizTipi);
+                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
+                                context,
+                                viewModel.model.dovizTipi,
+                              );
                               if (result != null) {
                                 if (result.dovizKodu != viewModel.model.dovizTipi) {
                                   _dovizTipiController.text = result.isim ?? "";
@@ -192,8 +206,12 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                               }
                               viewModel
                                 ..setDovizTutari(value.toDoubleWithFormattedString)
-                                ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
-                              _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                ..setTutar(
+                                  (viewModel.model.dovizTutari ?? 0) *
+                                      (_dovizKuruController.text.toDoubleWithFormattedString),
+                                );
+                              _tutarController.text =
+                                  viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             },
                           ),
                         ),
@@ -215,8 +233,12 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             onChanged: (value) {
                               if (_dovizKuruController.text != "") {
-                                viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                                _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                viewModel.setDovizTutari(
+                                  (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                                );
+                                _dovizTutariController.text =
+                                    viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+                                    "";
                               } else {
                                 viewModel.setDovizTutari(null);
                                 _dovizTutariController.clear();
@@ -239,8 +261,11 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                           onChanged: (value) {
                             viewModel.setTutar(value.toDoubleWithFormattedString);
                             if (viewModel.model.dovizliMi) {
-                              viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                              _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                              viewModel.setDovizTutari(
+                                (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                              );
+                              _dovizTutariController.text =
+                                  viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             } else {
                               viewModel.setDovizTutari(null);
                               _dovizTutariController.clear();
@@ -292,7 +317,10 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                           context,
                           viewModel.model.masrafMuhKodu,
                           hesapTipi: "M",
-                          belgeTipi: widget.hesaplarArasiEnum == HesaplarArasiEnum.eftHavale ? MuhasebeBelgeTipiEnum.hesaplarArasiEft.value : MuhasebeBelgeTipiEnum.hesaplarArasiVirman.value,
+                          belgeTipi:
+                              widget.hesaplarArasiEnum == HesaplarArasiEnum.eftHavale
+                                  ? MuhasebeBelgeTipiEnum.hesaplarArasiEft.value
+                                  : MuhasebeBelgeTipiEnum.hesaplarArasiVirman.value,
                         );
                         if (result != null) {
                           _masrafMuhKoduController.text = result.hesapAdi ?? "";
@@ -310,7 +338,10 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                       suffixMore: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                          context,
+                          viewModel.model.plasiyerKodu,
+                        );
                         if (result != null) {
                           _plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.setPlasiyerKodu(result.plasiyerKodu);
@@ -329,14 +360,21 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
                 readOnly: true,
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                 onTap: () async {
-                  final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                  final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                    context,
+                    viewModel.model.projeKodu,
+                  );
                   if (result != null) {
                     _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                     viewModel.setProjeKodu(result.projeKodu);
                   }
                 },
               ),
-            CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: (value) => viewModel.setAciklama(value)),
+            CustomTextField(
+              labelText: "Açıklama",
+              controller: _aciklamaController,
+              onChanged: (value) => viewModel.setAciklama(value),
+            ),
           ],
         ).paddingAll(UIHelper.lowSize),
       ),
@@ -354,22 +392,26 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
         title: "Döviz Kuru",
         children: [
           BottomSheetModel(
-            title: "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effSatis,
             iconWidget: Icons.calculate_outlined,
           ),
@@ -378,10 +420,15 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
       if (result is double) {
         _dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
         if (_tutarController.text != "") {
-          viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-          _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          viewModel.setDovizTutari(
+            (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+          );
+          _dovizTutariController.text =
+              viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else if (_dovizTutariController.text != "") {
-          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+          viewModel.setTutar(
+            (viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString),
+          );
           _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         }
       }

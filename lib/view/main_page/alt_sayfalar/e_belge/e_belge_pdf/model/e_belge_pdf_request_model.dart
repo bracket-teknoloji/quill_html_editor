@@ -7,15 +7,15 @@ part "e_belge_pdf_request_model.g.dart";
 
 @freezed
 class EBelgePdfRequestModel with _$EBelgePdfRequestModel {
-  const factory EBelgePdfRequestModel({
-    String? belgeTuru,
-    String? ebelgeTuru,
-    int? islemKodu,
-    String? resmiBelgeNo,
-  }) = _EBelgePdfRequestModel;
+  const factory EBelgePdfRequestModel({String? belgeTuru, String? ebelgeTuru, int? islemKodu, String? resmiBelgeNo}) =
+      _EBelgePdfRequestModel;
 
   factory EBelgePdfRequestModel.fromJson(Map<String, dynamic> json) => _$EBelgePdfRequestModelFromJson(json);
 
-  factory EBelgePdfRequestModel.fromEBelgeListesiModel(EBelgeListesiModel? model) =>
-      EBelgePdfRequestModel(belgeTuru: model?.belgeTuru, ebelgeTuru: model?.ebelgeTuru, islemKodu: 1, resmiBelgeNo: model?.resmiBelgeNo ?? model?.belgeNo);
+  factory EBelgePdfRequestModel.fromEBelgeListesiModel(EBelgeListesiModel? model) => EBelgePdfRequestModel(
+    belgeTuru: model?.belgeTuru,
+    ebelgeTuru: model?.ebelgeTuru,
+    islemKodu: 1,
+    resmiBelgeNo: model?.resmiBelgeNo ?? model?.belgeNo,
+  );
 }

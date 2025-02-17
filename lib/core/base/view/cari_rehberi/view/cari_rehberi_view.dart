@@ -89,61 +89,61 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        floatingActionButton: fab(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), floatingActionButton: fab(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) => viewModel.isSearchBarOpen
-              ? CustomTextField(
-                  labelText: "Ara",
-                  focusNode: searchFocusNode,
-                  controller: searchController,
-                  onSubmitted: (value) {
-                    viewModel
-                      ..setSearchText(value)
-                      ..resetList();
-                  },
-                  onClear: () => viewModel.setSearchText(""),
-                )
-              : AppBarTitle(
-                  title: "Cari Rehberi",
-                  subtitle: widget.cariRequestModel.kod != null ? "${widget.cariRequestModel.kod} Koduna Bağlı Cariler" : null,
-                ),
+    title: Observer(
+      builder:
+          (_) =>
+              viewModel.isSearchBarOpen
+                  ? CustomTextField(
+                    labelText: "Ara",
+                    focusNode: searchFocusNode,
+                    controller: searchController,
+                    onSubmitted: (value) {
+                      viewModel
+                        ..setSearchText(value)
+                        ..resetList();
+                    },
+                    onClear: () => viewModel.setSearchText(""),
+                  )
+                  : AppBarTitle(
+                    title: "Cari Rehberi",
+                    subtitle:
+                        widget.cariRequestModel.kod != null
+                            ? "${widget.cariRequestModel.kod} Koduna Bağlı Cariler"
+                            : null,
+                  ),
+    ),
+    actions: [
+      IconButton(
+        onPressed: () {
+          viewModel.changeSearchBarStatus();
+          if (viewModel.isSearchBarOpen) {
+            searchFocusNode.requestFocus();
+          } else {
+            viewModel
+              ..setSearchText("")
+              ..resetList();
+          }
+        },
+        icon: Observer(
+          builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              viewModel.changeSearchBarStatus();
-              if (viewModel.isSearchBarOpen) {
-                searchFocusNode.requestFocus();
-              } else {
-                viewModel
-                  ..setSearchText("")
-                  ..resetList();
-              }
-            },
-            icon: Observer(
-              builder: (_) => Icon(
-                viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined,
-              ),
-            ),
-          ),
-        ],
-        bottom: AppBarPreferedSizedBottom(
-          children: [
-            filtreleButton,
-            siralaButton,
-            if (BaseSiparisEditModel.instance.getEditTipiEnum?.talepTeklifMi ?? false) digerButton,
-          ],
-        ),
-      );
+      ),
+    ],
+    bottom: AppBarPreferedSizedBottom(
+      children: [
+        filtreleButton,
+        siralaButton,
+        if (BaseSiparisEditModel.instance.getEditTipiEnum?.talepTeklifMi ?? false) digerButton,
+      ],
+    ),
+  );
 
   Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(
+    builder:
+        (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             final String? siradakiKod = await CariNetworkManager.getSiradakiKod();
@@ -159,109 +159,109 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
             if (result is String) {}
           },
         ),
-      );
+  );
   Widget body() => Observer(
-        builder: (_) => RefreshableListView.pageable(
+    builder:
+        (_) => RefreshableListView.pageable(
           scrollController: scrollController,
           onRefresh: viewModel.resetList,
           dahaVarMi: viewModel.dahaVarMi,
           items: viewModel.observableList,
           itemBuilder: (item) => CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E"),
         ),
-      );
+  );
   @Deprecated("")
   RefreshIndicator body2() => RefreshIndicator.adaptive(
-        onRefresh: viewModel.resetList,
-        child: Observer(
-          builder: (_) {
-            if (viewModel.observableList.ext.isNullOrEmpty) {
-              if (viewModel.observableList != null) {
-                //* Eğer cariListesi boş ise
-                return const Center(child: Text("Cari Bulunamadı"));
-              } else {
-                //* Eğer cariListesi null ise
-                return const ListViewShimmer();
+    onRefresh: viewModel.resetList,
+    child: Observer(
+      builder: (_) {
+        if (viewModel.observableList.ext.isNullOrEmpty) {
+          if (viewModel.observableList != null) {
+            //* Eğer cariListesi boş ise
+            return const Center(child: Text("Cari Bulunamadı"));
+          } else {
+            //* Eğer cariListesi null ise
+            return const ListViewShimmer();
+          }
+        } else {
+          //* Eğer cariListesi boş veya null değilse
+          return ListView.builder(
+            controller: scrollController,
+            itemCount: viewModel.observableList != null ? (viewModel.observableList!.length + 1) : 0,
+            itemBuilder: (context, index) {
+              if (index == viewModel.observableList!.length) {
+                return Visibility(
+                  visible: viewModel.dahaVarMi,
+                  child: const Center(child: CircularProgressIndicator.adaptive()),
+                );
               }
-            } else {
-              //* Eğer cariListesi boş veya null değilse
-              return ListView.builder(
-                controller: scrollController,
-                itemCount: viewModel.observableList != null ? (viewModel.observableList!.length + 1) : 0,
-                itemBuilder: (context, index) {
-                  if (index == viewModel.observableList!.length) {
-                    return Visibility(
-                      visible: viewModel.dahaVarMi,
-                      child: const Center(
-                        child: CircularProgressIndicator.adaptive(),
-                      ),
-                    );
-                  }
-                  final CariListesiModel item = viewModel.observableList![index];
-                  return CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E");
-                },
-              );
-            }
-          },
-        ),
-      );
+              final CariListesiModel item = viewModel.observableList![index];
+              return CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E");
+            },
+          );
+        }
+      },
+    ),
+  );
 
   AppBarButton get siralaButton => AppBarButton(
-        icon: Icons.sort_by_alpha_outlined,
-        child: Text(loc.generalStrings.sort),
-        onPressed: () async {
-          final result = await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: loc.generalStrings.sort,
-            children: List.generate(
-              viewModel.siralaMap.length,
-              (index) => BottomSheetModel(
-                title: viewModel.siralaMap.keys.toList()[index],
-                value: viewModel.siralaMap.values.toList()[index],
-              ),
-            ),
-          );
-          if (result != null) {
-            viewModel
-              ..changeSiralama(result)
-              ..resetList();
-          }
-        },
+    icon: Icons.sort_by_alpha_outlined,
+    child: Text(loc.generalStrings.sort),
+    onPressed: () async {
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: loc.generalStrings.sort,
+        children: List.generate(
+          viewModel.siralaMap.length,
+          (index) => BottomSheetModel(
+            title: viewModel.siralaMap.keys.toList()[index],
+            value: viewModel.siralaMap.values.toList()[index],
+          ),
+        ),
       );
+      if (result != null) {
+        viewModel
+          ..changeSiralama(result)
+          ..resetList();
+      }
+    },
+  );
   AppBarButton get digerButton => AppBarButton(
-        icon: Icons.more_horiz_outlined,
-        onPressed: () async {
-          final result = await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: loc.generalStrings.options,
-            children: [
-              BottomSheetModel(
-                title: "Muhtelif Cari Oluştur",
-                iconWidget: Icons.person_outline_outlined,
-                onTap: () async {
-                  Get.back();
-                  final result = await Get.toNamed("mainPage/MuhtelifCariEkle");
-                  if (result is CariListesiModel) {
-                    Get.back(result: result);
-                  }
-                },
-              ),
-            ],
-          );
-          if (result != null) {
-            viewModel.changeSiralama(result);
-          }
-        },
+    icon: Icons.more_horiz_outlined,
+    onPressed: () async {
+      final result = await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: loc.generalStrings.options,
+        children: [
+          BottomSheetModel(
+            title: "Muhtelif Cari Oluştur",
+            iconWidget: Icons.person_outline_outlined,
+            onTap: () async {
+              Get.back();
+              final result = await Get.toNamed("mainPage/MuhtelifCariEkle");
+              if (result is CariListesiModel) {
+                Get.back(result: result);
+              }
+            },
+          ),
+        ],
       );
+      if (result != null) {
+        viewModel.changeSiralama(result);
+      }
+    },
+  );
   AppBarButton get filtreleButton => AppBarButton(
-        icon: Icons.filter_alt_outlined,
-        child: Text(loc.generalStrings.filter),
-        onPressed: () async {
-          await viewModel.getGrupKodlari();
-          await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: loc.generalStrings.filter,
-            body: Observer(
-              builder: (_) => Column(
+    icon: Icons.filter_alt_outlined,
+    child: Text(loc.generalStrings.filter),
+    onPressed: () async {
+      await viewModel.getGrupKodlari();
+      await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: loc.generalStrings.filter,
+        body: Observer(
+          builder:
+              (_) => Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
@@ -518,8 +518,8 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
                   ),
                 ],
               ),
-            ),
-          );
-        },
+        ),
       );
+    },
+  );
 }

@@ -35,42 +35,57 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
   bool get isOdeme => isCari && model.gc == "C";
   @override
   Widget build(BuildContext context) => InkWell(
-        onTap: () async {
-          await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: model.aciklama ?? model.cariAdi ?? model.kasaAdi ?? "",
-            children: [
-              if (isTahsilat) BottomSheetModel(title: "Tahsilat Makbuzu", onTap: () async => showMakbuz(true), iconWidget: Icons.receipt_long_outlined),
-              if (isOdeme) BottomSheetModel(title: "Ödeme Makbuzu", onTap: () async => showMakbuz(false), iconWidget: Icons.delete_outline_outlined),
-              BottomSheetModel(title: loc.generalStrings.delete, onTap: deleteData, iconWidget: Icons.delete_outline_outlined),
-            ],
-          );
-        },
-        child: Card(
-          child: ListTile(
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    onTap: () async {
+      await bottomSheetDialogManager.showBottomSheetDialog(
+        context,
+        title: model.aciklama ?? model.cariAdi ?? model.kasaAdi ?? "",
+        children: [
+          if (isTahsilat)
+            BottomSheetModel(
+              title: "Tahsilat Makbuzu",
+              onTap: () async => showMakbuz(true),
+              iconWidget: Icons.receipt_long_outlined,
+            ),
+          if (isOdeme)
+            BottomSheetModel(
+              title: "Ödeme Makbuzu",
+              onTap: () async => showMakbuz(false),
+              iconWidget: Icons.delete_outline_outlined,
+            ),
+          BottomSheetModel(
+            title: loc.generalStrings.delete,
+            onTap: deleteData,
+            iconWidget: Icons.delete_outline_outlined,
+          ),
+        ],
+      );
+    },
+    child: Card(
+      child: ListTile(
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [Text(model.tarih.toDateString), bakiyeText],
+            ),
+            if (model.cariAdi != null) Text(model.cariAdi ?? ""),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text(model.tarih.toDateString), bakiyeText],
-                ),
-                if (model.cariAdi != null) Text(model.cariAdi ?? ""),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(model.belgeNo ?? ""),
-                    ColorfulBadge(label: Text(model.tipAciklama ?? ""), badgeColorEnum: BadgeColorEnum.tipAciklama),
-                  ],
-                ),
+                Text(model.belgeNo ?? ""),
+                ColorfulBadge(label: Text(model.tipAciklama ?? ""), badgeColorEnum: BadgeColorEnum.tipAciklama),
               ],
             ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+          ],
+        ),
+        subtitle: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:
+                  [
                     if (model.projeAdi != null && yetkiController.projeUygulamasiAcikMi)
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,42 +111,50 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
                         ],
                       ),
                   ].map((e) => e is! SizedBox ? Expanded(child: e) : null).toList().nullCheckWithGeneric,
-                ).paddingSymmetric(vertical: UIHelper.lowSize),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+            ).paddingSymmetric(vertical: UIHelper.lowSize),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:
+                  [
                     const Text("Açıklama", style: TextStyle(fontWeight: FontWeight.bold)),
                     Text(model.aciklama ?? ""),
                   ].where((element) => element is! SizedBox).toList(),
-                ),
-              ],
             ),
-          ),
+          ],
         ),
-      );
+      ),
+    ),
+  );
 
   Future<void> deleteData() async {
     Get.back();
-    await dialogManager.showAreYouSureDialog(
-      () async {
-        final result =
-            await networkManager.dioPost<KasaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: KasaIslemleriModel(), queryParameters: {"INCKEYNO": model.inckeyno}, showLoading: true);
-        if (result.isSuccess) {
-          widget.onDeleted?.call(model.inckeyno);
-          dialogManager.showSuccessSnackBar(result.message ?? "");
-        } else {
-          dialogManager.showErrorSnackBar(result.message ?? "");
-        }
-      },
-      title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",
-    );
+    await dialogManager.showAreYouSureDialog(() async {
+      final result = await networkManager.dioPost<KasaIslemleriModel>(
+        path: ApiUrls.deleteKasaHareket,
+        bodyModel: KasaIslemleriModel(),
+        queryParameters: {"INCKEYNO": model.inckeyno},
+        showLoading: true,
+      );
+      if (result.isSuccess) {
+        widget.onDeleted?.call(model.inckeyno);
+        dialogManager.showSuccessSnackBar(result.message ?? "");
+      } else {
+        dialogManager.showErrorSnackBar(result.message ?? "");
+      }
+    }, title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",);
   }
 
   Future<void> showMakbuz(bool tahsilatMi) async {
     Get.back();
-    final PdfModel pdfModel = PdfModel(raporOzelKod: tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu", dicParams: DicParams(belgeNo: model.belgeNo ?? ""));
+    final PdfModel pdfModel = PdfModel(
+      raporOzelKod: tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu",
+      dicParams: DicParams(belgeNo: model.belgeNo ?? ""),
+    );
     final anaVeri = CacheManager.getAnaVeri;
-    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == (tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu")).toList();
+    final result =
+        anaVeri?.paramModel?.netFectDizaynList
+            ?.where((element) => element.ozelKod == (tahsilatMi ? "TahsilatMakbuzu" : "OdemeMakbuzu"))
+            .toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {
       pdfModel.dicParams?.caharInckey = model.caharInckeyno.toStringIfNotNull;
@@ -159,15 +182,25 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
       text: TextSpan(
         children: [
           TextSpan(
-            text: dovizliMi
-                ? (model.tutar != 0 ? " ${model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency" : "")
-                : (model.dovizTutari != 0 ? " ${model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model.dovizAdi ?? ""}" : ""),
+            text:
+                dovizliMi
+                    ? (model.tutar != 0
+                        ? " ${model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency"
+                        : "")
+                    : (model.dovizTutari != 0
+                        ? " ${model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model.dovizAdi ?? ""}"
+                        : ""),
             style: const TextStyle(color: ColorPalette.slateGray, fontSize: UIHelper.midSize),
           ),
           TextSpan(
-            text: dovizliMi
-                ? (model.dovizTutari != 0 ? " ${model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model.dovizAdi ?? ""}" : "")
-                : (model.tutar != 0 ? " ${model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency" : ""),
+            text:
+                dovizliMi
+                    ? (model.dovizTutari != 0
+                        ? " ${model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${model.dovizAdi ?? ""}"
+                        : "")
+                    : (model.tutar != 0
+                        ? " ${model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} $mainCurrency"
+                        : ""),
             style: TextStyle(color: model.gc == "G" ? ColorPalette.mantis : ColorPalette.persianRed),
           ),
         ],

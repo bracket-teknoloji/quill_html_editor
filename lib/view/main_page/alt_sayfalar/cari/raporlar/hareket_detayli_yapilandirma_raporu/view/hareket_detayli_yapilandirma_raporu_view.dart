@@ -43,7 +43,11 @@ final class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketD
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Hareket Detaylı Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) => PDFViewerView(
+    filterBottomSheet: filterBottomSheet,
+    title: "Hareket Detaylı Yaşlandırma Raporu",
+    pdfData: viewModel.pdfModel,
+  );
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -54,12 +58,13 @@ final class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketD
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Observer(
-            builder: (_) => SlideControllerWidget(
-              childrenTitleList: viewModel.bakiyeDurumuTitleList,
-              filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
-              childrenValueList: viewModel.bakiyeDurumuListValue,
-              groupValue: viewModel.bakiyeDurumuGroupValue,
-            ),
+            builder:
+                (_) => SlideControllerWidget(
+                  childrenTitleList: viewModel.bakiyeDurumuTitleList,
+                  filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
+                  childrenValueList: viewModel.bakiyeDurumuListValue,
+                  groupValue: viewModel.bakiyeDurumuGroupValue,
+                ),
           ),
           CustomTextField(
             labelText: "Cari",
@@ -83,7 +88,9 @@ final class _HareketDetayliYaslandirmaRaporuViewState extends BaseState<HareketD
             isDateTime: true,
             // suffix: const Icon(Icons.calendar_today_outlined),
             onTap: () async {
-              final result = await dialogManager.showDateTimePicker(initialDate: viewModel.pdfModel.dicParams?.refTarih?.toDateTimeDDMMYYYY());
+              final result = await dialogManager.showDateTimePicker(
+                initialDate: viewModel.pdfModel.dicParams?.refTarih?.toDateTimeDDMMYYYY(),
+              );
               if (result != null) {
                 viewModel.pdfModel.dicParams?.refTarih = result.toDateStringIfNull;
                 referansTarihController.text = result.toDateString;

@@ -15,7 +15,8 @@ part "paketleme_listesi_view_model.g.dart";
 
 final class PaketlemeListesiViewModel = _PaketlemeListesiViewModelBase with _$PaketlemeListesiViewModel;
 
-abstract class _PaketlemeListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<PaketlemeListesiModel>, SearchableMixin {
+abstract class _PaketlemeListesiViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<PaketlemeListesiModel>, SearchableMixin {
   @override
   @observable
   ObservableList<PaketlemeListesiModel>? observableList;
@@ -31,7 +32,10 @@ abstract class _PaketlemeListesiViewModelBase with Store, MobxNetworkMixin, List
   PaketlemeListesiRequestModel requestModel = PaketlemeListesiRequestModel(menuKodu: "STOK_PKET");
 
   @computed
-  List<PaketlemeListesiModel>? get filteredPaketlemeListesi => observableList?.where((element) => element.kodu?.toLowerCase().contains(searchText.toLowerCase()) ?? false).toList();
+  List<PaketlemeListesiModel>? get filteredPaketlemeListesi =>
+      observableList
+          ?.where((element) => element.kodu?.toLowerCase().contains(searchText.toLowerCase()) ?? false)
+          .toList();
 
   @override
   @action
@@ -54,7 +58,11 @@ abstract class _PaketlemeListesiViewModelBase with Store, MobxNetworkMixin, List
   @action
   Future<void> getData() async {
     setObservableList(null);
-    final result = await networkManager.dioPost(path: ApiUrls.getPaketler, bodyModel: PaketlemeListesiModel(), data: requestModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getPaketler,
+      bodyModel: PaketlemeListesiModel(),
+      data: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
     }

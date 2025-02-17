@@ -62,7 +62,11 @@ abstract class _EBelgePdfViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioPost<EBelgePdfModel>(path: ApiUrls.eBelgeIslemi, bodyModel: EBelgePdfModel(), data: model.toJson());
+    final result = await networkManager.dioPost<EBelgePdfModel>(
+      path: ApiUrls.eBelgeIslemi,
+      bodyModel: EBelgePdfModel(),
+      data: model.toJson(),
+    );
     if (result.isSuccess) {
       changeEBelgePdfModel(result.dataList.first);
     } else {

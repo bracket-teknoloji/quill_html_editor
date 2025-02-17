@@ -25,12 +25,10 @@ final class _StokDetayliAramaViewState extends BaseState<StokDetayliAramaView> {
   @override
   void initState() {
     viewModel.setObservableList(
-      widget.aramaList.map(
-        (e) {
-          if (e.searchCriter != null) return e;
-          return e..searchCriter = "IC";
-        },
-      ).toList(),
+      widget.aramaList.map((e) {
+        if (e.searchCriter != null) return e;
+        return e..searchCriter = "IC";
+      }).toList(),
     );
     controllerList = viewModel.observableList?.map((e) => TextEditingController(text: e.searchText)).toList() ?? [];
     super.initState();
@@ -46,39 +44,55 @@ final class _StokDetayliAramaViewState extends BaseState<StokDetayliAramaView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Detaylı Arama"),
-          actions: [
-            IconButton(
-              onPressed: () {
-                dialogManager.showAreYouSureDialog(() async {
-                  Get.back(result: true);
-                });
-              },
-              icon: const Icon(Icons.delete_outline_outlined),
-            ),
-            IconButton(
-              onPressed: () {
-                Get.back(result: viewModel.observableList?.where((element) => element.searchText != null).toList());
-              },
-              icon: const Icon(Icons.check_circle_outline_outlined),
-            ),
-          ],
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Detaylı Arama"),
+      actions: [
+        IconButton(
+          onPressed: () {
+            dialogManager.showAreYouSureDialog(() async {
+              Get.back(result: true);
+            });
+          },
+          icon: const Icon(Icons.delete_outline_outlined),
         ),
-        body: ListView.builder(
-          itemCount: viewModel.observableList?.length,
-          itemBuilder: (context, index) => CustomTextField(
+        IconButton(
+          onPressed: () {
+            Get.back(result: viewModel.observableList?.where((element) => element.searchText != null).toList());
+          },
+          icon: const Icon(Icons.check_circle_outline_outlined),
+        ),
+      ],
+    ),
+    body: ListView.builder(
+      itemCount: viewModel.observableList?.length,
+      itemBuilder:
+          (context, index) => CustomTextField(
             controller: controllerList[index],
             labelText: viewModel.observableList?[index].name ?? "",
             onChanged: (value) => viewModel.setSearchText(index, value),
-            valueWidget: Observer(builder: (_) => Text(viewModel.detaySekliList.firstWhereOrNull((element) => element.kodu == viewModel.observableList?[index].searchCriter)?.adi ?? "")),
+            valueWidget: Observer(
+              builder:
+                  (_) => Text(
+                    viewModel.detaySekliList
+                            .firstWhereOrNull(
+                              (element) => element.kodu == viewModel.observableList?[index].searchCriter,
+                            )
+                            ?.adi ??
+                        "",
+                  ),
+            ),
             suffix: IconButton(
               onPressed: () async {
                 final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
                   context,
                   title: "Kriter Seçiniz",
                   groupValue: viewModel.observableList?[index].searchCriter,
-                  children: viewModel.detaySekliList.map((element) => BottomSheetModel(title: element.adi, value: element, groupValue: element.kodu)).toList(),
+                  children:
+                      viewModel.detaySekliList
+                          .map(
+                            (element) => BottomSheetModel(title: element.adi, value: element, groupValue: element.kodu),
+                          )
+                          .toList(),
                 );
                 if (result is DetaySekliRecord) {
                   viewModel.setKriter(index, result);
@@ -87,6 +101,6 @@ final class _StokDetayliAramaViewState extends BaseState<StokDetayliAramaView> {
               icon: const Icon(Icons.manage_search_outlined),
             ),
           ),
-        ).paddingAll(UIHelper.lowSize),
-      );
+    ).paddingAll(UIHelper.lowSize),
+  );
 }

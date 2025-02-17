@@ -16,7 +16,8 @@ final class UrunGrubunaGoreSatisGrafigiModel with NetworkManagerMixin {
   double? oranMiktar;
   double? oranTutar;
   @override
-  UrunGrubunaGoreSatisGrafigiModel fromJson(Map<String, dynamic> json) => _$UrunGrubunaGoreSatisGrafigiModelFromJson(json);
+  UrunGrubunaGoreSatisGrafigiModel fromJson(Map<String, dynamic> json) =>
+      _$UrunGrubunaGoreSatisGrafigiModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$UrunGrubunaGoreSatisGrafigiModelToJson(this);

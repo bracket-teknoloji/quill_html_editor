@@ -33,36 +33,58 @@ class _TransferMalTalebiKalemlerViewState extends BaseState<TransferMalTalebiKal
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        body: body(),
-        floatingActionButton: (widget.model.enable) ? fab() : null,
-      );
+  Widget build(BuildContext context) =>
+      BaseScaffold(body: body(), floatingActionButton: (widget.model.enable) ? fab() : null);
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        isScrolledDown: true,
-        onPressed: () async {
-          final result = await Get.toNamed("mainPage/depoTalepStokRehberi");
-          if (result is! StokListesiModel) return;
-          final kalem = await Get.toNamed("mainPage/depoMalTalebiKalemEkle", arguments: KalemModel.fromStokListesiModel(result));
-          if (kalem case final KalemModel value?) {
-            if (widget.model.isDuzenle) {
-              viewModel.saveKalem(value);
-            } else {
-              viewModel.addKalem(value);
-            }
-          }
-        },
+    isScrolledDown: true,
+    onPressed: () async {
+      final result = await Get.toNamed("mainPage/depoTalepStokRehberi");
+      if (result is! StokListesiModel) return;
+      final kalem = await Get.toNamed(
+        "mainPage/depoMalTalebiKalemEkle",
+        arguments: KalemModel.fromStokListesiModel(result),
       );
+      if (kalem case final KalemModel value?) {
+        if (widget.model.isDuzenle) {
+          viewModel.saveKalem(value);
+        } else {
+          viewModel.addKalem(value);
+        }
+      }
+    },
+  );
 
   Widget body() => Column(
-        children: [
-          if (widget.model.enable)
-            CustomTextField(
-              labelText: "Stok kodu / barkod giriniz",
-              onSubmitted: (value) async {
+    children: [
+      if (widget.model.enable)
+        CustomTextField(
+          labelText: "Stok kodu / barkod giriniz",
+          onSubmitted: (value) async {
+            final result = await Get.toNamed("mainPage/depoTalepStokRehberi", arguments: value);
+            if (result is! StokListesiModel) return;
+            final kalem = await Get.toNamed(
+              "mainPage/depoMalTalebiKalemEkle",
+              arguments: KalemModel.fromStokListesiModel(result),
+            );
+            if (kalem case final KalemModel value?) {
+              if (widget.model.isDuzenle) {
+                viewModel.saveKalem(value);
+              } else {
+                viewModel.addKalem(value);
+              }
+            }
+          },
+          suffix: IconButton(
+            onPressed: () async {
+              final qr = await Get.toNamed("qr");
+              if (qr case final String value?) {
                 final result = await Get.toNamed("mainPage/depoTalepStokRehberi", arguments: value);
                 if (result is! StokListesiModel) return;
-                final kalem = await Get.toNamed("mainPage/depoMalTalebiKalemEkle", arguments: KalemModel.fromStokListesiModel(result));
+                final kalem = await Get.toNamed(
+                  "mainPage/depoMalTalebiKalemEkle",
+                  arguments: KalemModel.fromStokListesiModel(result),
+                );
                 if (kalem case final KalemModel value?) {
                   if (widget.model.isDuzenle) {
                     viewModel.saveKalem(value);
@@ -70,94 +92,94 @@ class _TransferMalTalebiKalemlerViewState extends BaseState<TransferMalTalebiKal
                     viewModel.addKalem(value);
                   }
                 }
-              },
-              suffix: IconButton(
-                onPressed: () async {
-                  final qr = await Get.toNamed("qr");
-                  if (qr case final String value?) {
-                    final result = await Get.toNamed("mainPage/depoTalepStokRehberi", arguments: value);
-                    if (result is! StokListesiModel) return;
-                    final kalem = await Get.toNamed("mainPage/depoMalTalebiKalemEkle", arguments: KalemModel.fromStokListesiModel(result));
-                    if (kalem case final KalemModel value?) {
-                      if (widget.model.isDuzenle) {
-                        viewModel.saveKalem(value);
-                      } else {
-                        viewModel.addKalem(value);
-                      }
-                    }
-                  }
-                },
-                icon: const Icon(Icons.qr_code_scanner_outlined),
-              ),
-            ).paddingAll(UIHelper.lowSize),
-          Expanded(
-            child: Observer(
-              builder: (_) => RefreshableListView(
+              }
+            },
+            icon: const Icon(Icons.qr_code_scanner_outlined),
+          ),
+        ).paddingAll(UIHelper.lowSize),
+      Expanded(
+        child: Observer(
+          builder:
+              (_) => RefreshableListView(
                 onRefresh: () async {},
                 items: viewModel.kalemList,
-                itemBuilder: (item) => Card(
-                  child: ListTile(
-                    title: Text(item.stokAdi ?? ""),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (item.stokKodu case final value?) Text(value).paddingSymmetric(vertical: UIHelper.lowSize),
-                        CustomLayoutBuilder.divideInHalf(
+                itemBuilder:
+                    (item) => Card(
+                      child: ListTile(
+                        title: Text(item.stokAdi ?? ""),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimiAdi ?? ""}"),
-                            Text("Tamamlanan Miktar: ${item.tamamlananMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            Text("Kalan Miktar: ${(item.kalanMiktar ?? (item.miktar ?? 0) - (item.tamamlananMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                            if (item.stokKodu case final value?)
+                              Text(value).paddingSymmetric(vertical: UIHelper.lowSize),
+                            CustomLayoutBuilder.divideInHalf(
+                              children: [
+                                Text(
+                                  "Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${item.olcuBirimiAdi ?? ""}",
+                                ),
+                                Text(
+                                  "Tamamlanan Miktar: ${item.tamamlananMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                                ),
+                                Text(
+                                  "Kalan Miktar: ${(item.kalanMiktar ?? (item.miktar ?? 0) - (item.tamamlananMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                                ),
+                              ],
+                            ),
+                            if (item.aciklama case final value?)
+                              Text("Açıklama: $value").paddingOnly(top: UIHelper.lowSize),
                           ],
                         ),
-                        if (item.aciklama case final value?) Text("Açıklama: $value").paddingOnly(top: UIHelper.lowSize),
-                      ],
+                        onTap: () {
+                          bottomSheetDialogManager.showBottomSheetDialog(
+                            context,
+                            title: item.stokKodu ?? "",
+                            children: [
+                              if (!widget.model.isGoruntule)
+                                BottomSheetModel(
+                                  title: loc.generalStrings.edit,
+                                  iconWidget: Icons.edit_outlined,
+                                  onTap: () async {
+                                    Get.back();
+                                    final result = await Get.toNamed(
+                                      "mainPage/depoMalTalebiKalemEkle",
+                                      arguments: item,
+                                    );
+                                    if (result case final value?) {
+                                      viewModel.updateKalem(value);
+                                      dialogManager.showSuccessSnackBar("Güncelleme işlemi başarılı");
+                                    }
+                                  },
+                                ),
+                              if (!widget.model.isGoruntule)
+                                BottomSheetModel(
+                                  title: loc.generalStrings.delete,
+                                  iconWidget: Icons.delete_outline_outlined,
+                                  onTap: () {
+                                    Get.back();
+                                    dialogManager.showAreYouSureDialog(() async {
+                                      await viewModel.removeKalem(item);
+                                      dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
+                                    });
+                                  },
+                                ),
+                              BottomSheetModel(
+                                title: "Stok İşlemleri",
+                                iconWidget: Icons.list_alt,
+                                onTap: () async {
+                                  Get.back();
+                                  dialogManager.showStokGridViewDialog(
+                                    await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
+                                  );
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
-                    onTap: () {
-                      bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: item.stokKodu ?? "",
-                        children: [
-                          if (!widget.model.isGoruntule)
-                            BottomSheetModel(
-                              title: loc.generalStrings.edit,
-                              iconWidget: Icons.edit_outlined,
-                              onTap: () async {
-                                Get.back();
-                                final result = await Get.toNamed("mainPage/depoMalTalebiKalemEkle", arguments: item);
-                                if (result case final value?) {
-                                  viewModel.updateKalem(value);
-                                  dialogManager.showSuccessSnackBar("Güncelleme işlemi başarılı");
-                                }
-                              },
-                            ),
-                          if (!widget.model.isGoruntule)
-                            BottomSheetModel(
-                              title: loc.generalStrings.delete,
-                              iconWidget: Icons.delete_outline_outlined,
-                              onTap: () {
-                                Get.back();
-                                dialogManager.showAreYouSureDialog(() async {
-                                  await viewModel.removeKalem(item);
-                                  dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-                                });
-                              },
-                            ),
-                          BottomSheetModel(
-                            title: "Stok İşlemleri",
-                            iconWidget: Icons.list_alt,
-                            onTap: () async {
-                              Get.back();
-                              dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)));
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
               ),
-            ),
-          ),
-        ],
-      ).paddingAll(UIHelper.lowSize);
+        ),
+      ),
+    ],
+  ).paddingAll(UIHelper.lowSize);
 }

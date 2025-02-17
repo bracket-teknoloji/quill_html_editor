@@ -19,14 +19,25 @@ final class BankaKasaTransferiViewModel = _BankaKasaTransferiViewModelBase with 
 
 abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TahsilatRequestModel model =
-      TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, tag: "TahsilatModel", pickerBelgeTuru: "BKT", hesapTipi: "B", tarih: DateTime.now().dateTimeWithoutTime, gc: "C");
+  TahsilatRequestModel model = TahsilatRequestModel(
+    tahsilatmi: true,
+    yeniKayit: true,
+    tag: "TahsilatModel",
+    pickerBelgeTuru: "BKT",
+    hesapTipi: "B",
+    tarih: DateTime.now().dateTimeWithoutTime,
+    gc: "C",
+  );
 
   @observable
   bool bankaDovizliMi = false;
 
   @observable
-  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "BKT", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(
+    belgeTipi: "BKT",
+    menuKodu: "YONE_BHRE",
+    arrHesapTipi: jsonEncode([0, 7, 14]),
+  );
 
   @observable
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
@@ -48,10 +59,7 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setHesapKodu(BankaListesiModel? value) {
-    model = model.copyWith(
-      hesapKodu: value?.hesapKodu,
-      dovizTipi: value?.dovizTipi,
-    );
+    model = model.copyWith(hesapKodu: value?.hesapKodu, dovizTipi: value?.dovizTipi);
     setBankaDovizliMi(value?.dovizAdi != null);
   }
 
@@ -120,5 +128,10 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> saveTahsilat() async =>
-      await networkManager.dioPost<BankaListesiModel>(path: ApiUrls.saveTahsilat, bodyModel: BankaListesiModel(), data: model.toJson(), showLoading: true);
+      await networkManager.dioPost<BankaListesiModel>(
+        path: ApiUrls.saveTahsilat,
+        bodyModel: BankaListesiModel(),
+        data: model.toJson(),
+        showLoading: true,
+      );
 }

@@ -10,7 +10,11 @@ abstract class _AylikMizanRaporuViewModelBase with Store {
   //* Model
   //*
   @observable
-  PdfModel pdfModel = PdfModel(raporOzelKod: "Rapor_FinansAylikMizan", standart: true, dicParams: DicParams(belgeNo: ""));
+  PdfModel pdfModel = PdfModel(
+    raporOzelKod: "Rapor_FinansAylikMizan",
+    standart: true,
+    dicParams: DicParams(belgeNo: ""),
+  );
 
   //* Future
   //*

@@ -33,14 +33,22 @@ abstract class _EvraklarViewModelBase with Store, MobxNetworkMixin, ListableMixi
   @override
   Future<void> getData() async {
     if (observableList != null) setObservableList(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: requestModel?.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getEvraklar,
+      bodyModel: EvraklarModel(),
+      queryParameters: requestModel?.toJson(),
+    );
     if (result.isSuccess) setObservableList(result.dataList);
   }
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(EvraklarModel model) async {
     setRefresh(true);
-    final result = await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: EvraklarModel(), data: EvraklarModel.forDelete(model).toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveEvrak,
+      bodyModel: EvraklarModel(),
+      data: EvraklarModel.forDelete(model).toJson(),
+    );
     return result;
   }
 }

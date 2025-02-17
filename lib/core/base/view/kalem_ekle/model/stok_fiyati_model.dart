@@ -6,7 +6,14 @@ part "stok_fiyati_model.g.dart";
 
 @freezed
 class StokFiyatiModel with _$StokFiyatiModel, NetworkManagerMixin {
-  factory StokFiyatiModel({double? fiyat, String? yer, int? fiyatSirasi, String? stokKodu, String? cariKodu, DateTime? tarih}) = _StokFiyatiModel;
+  factory StokFiyatiModel({
+    double? fiyat,
+    String? yer,
+    int? fiyatSirasi,
+    String? stokKodu,
+    String? cariKodu,
+    DateTime? tarih,
+  }) = _StokFiyatiModel;
   StokFiyatiModel._();
 
   factory StokFiyatiModel.fromJson(Map<String, dynamic> json) => _$StokFiyatiModelFromJson(json);

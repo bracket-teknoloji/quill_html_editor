@@ -21,17 +21,15 @@ class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
   }) = _DekontListesiModel;
 
   factory DekontListesiModel.fromCariHareketleriModel(CariHareketleriModel model) => DekontListesiModel(
-        inckeyno: model.inckeyno,
-        // dekontNo: model.hare,
-        // tarih: model.tarih,
-        // borcToplami: model.borcToplami,
-        // seriAdi: model.dekontSeriAdi,
-      );
+    inckeyno: model.inckeyno,
+    // dekontNo: model.hare,
+    // tarih: model.tarih,
+    // borcToplami: model.borcToplami,
+    // seriAdi: model.dekontSeriAdi,
+  );
 
-  factory DekontListesiModel.fromDekontDuzenleRequestModel(DekontDuzenleRequestModel model) => DekontListesiModel(
-        dekontNo: model.dekontNo,
-        seri: model.seriNo,
-      );
+  factory DekontListesiModel.fromDekontDuzenleRequestModel(DekontDuzenleRequestModel model) =>
+      DekontListesiModel(dekontNo: model.dekontNo, seri: model.seriNo);
 
   factory DekontListesiModel.fromEBelgeListesiModel(EBelgeListesiModel model) => DekontListesiModel();
   DekontListesiModel._();
@@ -45,8 +43,5 @@ class DekontListesiModel with _$DekontListesiModel, NetworkManagerMixin {
 extension DekontListesiExtensions on DekontListesiModel {
   String get title => "$seri-$dekontNo";
 
-  Map<String, dynamic> get queryParam => {
-        "DekontNo": dekontNo,
-        "SeriNo": seri,
-      };
+  Map<String, dynamic> get queryParam => {"DekontNo": dekontNo, "SeriNo": seri};
 }

@@ -22,7 +22,17 @@ import "../badge/colorful_badge.dart";
 import "../dialog/bottom_sheet/model/bottom_sheet_model.dart";
 
 final class TransferlerCard extends StatefulWidget {
-  const TransferlerCard({required this.model, required this.editTipiEnum, super.key, this.onUpdated, this.showMiktar, this.showEkAciklama, this.showVade, this.onDeleted, this.index});
+  const TransferlerCard({
+    required this.model,
+    required this.editTipiEnum,
+    super.key,
+    this.onUpdated,
+    this.showMiktar,
+    this.showEkAciklama,
+    this.showVade,
+    this.onDeleted,
+    this.index,
+  });
   final BaseSiparisEditModel model;
   final ValueChanged<BaseSiparisEditModel?>? onUpdated;
   final bool? showMiktar;
@@ -45,7 +55,10 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
 
   Widget? aciklamaText(int? index) {
     if (widget.model.toJson()["ACIK$index"] != null && widget.showEkAciklama == true) {
-      return Text("${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}", style: greyTextStyle);
+      return Text(
+        "${paramModel?.toJson()["SatisEkAciklamaTanimi$index"] ?? "Açıklama $index"}: ${widget.model.toJson()["ACIK$index"]}",
+        style: greyTextStyle,
+      );
     }
     return null;
   }
@@ -53,16 +66,17 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
   BaseSiparisEditModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(
-        child: ListTile(
-          onLongPress: () async {
-            await dialogManager.showTransferGridViewDialog(
-              model: widget.model,
-              onSelected: (value) {
-                if (value) widget.onUpdated?.call(widget.model);
-              },
-            );
+    child: ListTile(
+      onLongPress: () async {
+        await dialogManager.showTransferGridViewDialog(
+          model: widget.model,
+          onSelected: (value) {
+            if (value) widget.onUpdated?.call(widget.model);
           },
-          onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+        );
+      },
+      onTap:
+          () async => await bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: model.belgeNo ?? "",
             children: [
@@ -71,16 +85,31 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                 iconWidget: Icons.preview_outlined,
                 onTap: () async {
                   Get.back();
-                  await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum));
+                  await Get.toNamed(
+                    "/mainPage/transferEdit",
+                    arguments: BaseEditModel(
+                      model: model,
+                      baseEditEnum: BaseEditEnum.goruntule,
+                      editTipiEnum: widget.editTipiEnum,
+                    ),
+                  );
                 },
               ),
-              if ((widget.editTipiEnum.duzenlensinMi && !model.basariliMi) && (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true))
+              if ((widget.editTipiEnum.duzenlensinMi && !model.basariliMi) &&
+                  (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true))
                 BottomSheetModel(
                   title: loc.generalStrings.edit,
                   iconWidget: Icons.edit_outlined,
                   onTap: () async {
                     Get.back();
-                    final result = await Get.toNamed("/mainPage/transferEdit", arguments: BaseEditModel(model: model, baseEditEnum: BaseEditEnum.duzenle, editTipiEnum: widget.editTipiEnum));
+                    final result = await Get.toNamed(
+                      "/mainPage/transferEdit",
+                      arguments: BaseEditModel(
+                        model: model,
+                        baseEditEnum: BaseEditEnum.duzenle,
+                        editTipiEnum: widget.editTipiEnum,
+                      ),
+                    );
                     if (result is BaseSiparisEditModel) {
                       if (widget.model.isNew == true) {
                         CacheManager.removeTransferEditList(model.belgeNo ?? "");
@@ -121,10 +150,7 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                   iconWidget: Icons.edit_note_outlined,
                   onTap: () async {
                     Get.back();
-                    final result = await Get.toNamed(
-                      widget.editTipiEnum.aciklamaDuzenleRoute,
-                      arguments: widget.model,
-                    );
+                    final result = await Get.toNamed(widget.editTipiEnum.aciklamaDuzenleRoute, arguments: widget.model);
                     if (result != null) {
                       widget.onUpdated?.call(result);
                     }
@@ -139,9 +165,19 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                     final PrintModel printModel = PrintModel(
                       raporOzelKod: widget.editTipiEnum.getPrintValue,
                       etiketSayisi: 1,
-                      dicParams: DicParams(belgeNo: widget.model.belgeNo ?? "", belgeTipi: widget.model.getEditTipiEnum?.rawValue, cariKodu: widget.model.cariKodu),
+                      dicParams: DicParams(
+                        belgeNo: widget.model.belgeNo ?? "",
+                        belgeTipi: widget.model.getEditTipiEnum?.rawValue,
+                        cariKodu: widget.model.cariKodu,
+                      ),
                     );
-                    await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, true, true, editTipiEnum: widget.editTipiEnum);
+                    await bottomSheetDialogManager.showPrintBottomSheetDialog(
+                      context,
+                      printModel,
+                      true,
+                      true,
+                      editTipiEnum: widget.editTipiEnum,
+                    );
                   },
                 ),
               if (widget.model.remoteTempBelgeEtiketi == null)
@@ -181,93 +217,125 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                 ),
             ],
           ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(model.belgeNo ?? ""),
-              Text.rich(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(model.belgeNo ?? ""),
+          Text.rich(
+            TextSpan(
+              children: <InlineSpan>[
+                TextSpan(text: model.tarih.toDateString),
                 TextSpan(
-                  children: <InlineSpan>[
-                    TextSpan(text: model.tarih.toDateString),
-                    TextSpan(text: "   ${model.kayittarihi.toTimeString}", style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.6), fontSize: UIHelper.midSize)),
-                  ],
+                  text: "   ${model.kayittarihi.toTimeString}",
+                  style: TextStyle(
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                    fontSize: UIHelper.midSize,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  if (model.remoteTempBelgeEtiketi != null) ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri),
-                  if (model.dovizAdi != null) ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
-                  if (model.isNew == true) const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis),
-                  if (model.faturalasanSayi != null) ColorfulBadge(label: Text("Fatura (${model.faturalasanSayi})"), badgeColorEnum: BadgeColorEnum.fatura),
-                  if (model.tipi == 1) const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
-                  if (model.datOnayda == "E") const ColorfulBadge(label: Text("Onayda")),
-                  if (model.irsaliyelestiMi) ColorfulBadge(label: Text("İrsaliye (${model.irslesenSayi ?? ""})"), badgeColorEnum: BadgeColorEnum.irsaliye),
-                  if (model.efaturaMi == "E") const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura),
-                  if (model.earsivMi == "E") const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura),
-                  if ((model.earsivDurumu == "HAT" || model.efaturaDurumu == "HAT") && (model.efaturaMi == "E" || model.earsivMi == "E"))
-                    dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)),
-                  if (model.taslakMi) dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)),
-                  if ((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") && (model.efaturaMi == "E" || model.earsivMi == "E"))
-                    dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)),
-                  if (model.basariliMi) dialogInkWell(const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili)),
-                  if (model.efatOnayDurumKodu == "1") const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata),
-                ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
-              ),
-              if (model.cariAdi != null) Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
-              if (model.resmiBelgeNo != null) Text("Resmi Belge No: ${model.resmiBelgeNo ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize),
-              CustomLayoutBuilder.divideInHalf(
-                children: [
-                  if (model.hedefDepo != null && model.topluDepo != null) Text("Toplu Depo: ${model.topluDepo} => ${model.hedefDepo}"),
-                  Text("Tipi: ${model.lokalDat == "E" ? "Lokal Transfer" : ""}"),
-                  Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
-                  if (model.cariKodu != null) Text("Cari Kodu: ${model.cariKodu ?? ""}"),
-                  // Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
-                  if (widget.showVade == true) Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}"),
-                  if (model.dovizTutari != null && model.dovizAdi != null) Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}"),
-                  Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                  Text("Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                  Text("Genel Toplam: ${(model.genelToplam ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                ],
-              ),
-              if (widget.showMiktar == true)
-                const Divider(
-                  indent: 0,
-                  endIndent: 0,
-                ).paddingSymmetric(vertical: UIHelper.midSize),
-              if (widget.showMiktar == true)
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Text>[
-                    Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  ],
-                ),
-              if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty) ...[
-                const Divider(
-                  indent: 0,
-                  endIndent: 0,
-                ).paddingSymmetric(vertical: UIHelper.midSize),
-                ...aciklamaList(),
               ],
-              if (widget.model.aciklama case final value?) Text("Belge Açıklaması: $value", style: greyTextStyle),
+            ),
+          ),
+        ],
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children:
+                <Widget>[
+                  if (model.remoteTempBelgeEtiketi != null)
+                    ColorfulBadge(label: Text(model.remoteTempBelgeEtiketi ?? ""), badgeColorEnum: BadgeColorEnum.seri),
+                  if (model.dovizAdi != null)
+                    ColorfulBadge(
+                      label: Text("Dövizli ${model.dovizAdi ?? ""}"),
+                      badgeColorEnum: BadgeColorEnum.dovizli,
+                    ),
+                  if (model.isNew == true)
+                    const ColorfulBadge(label: Text("Tamamlanmamış"), badgeColorEnum: BadgeColorEnum.tamamlanmamis),
+                  if (model.faturalasanSayi != null)
+                    ColorfulBadge(
+                      label: Text("Fatura (${model.faturalasanSayi})"),
+                      badgeColorEnum: BadgeColorEnum.fatura,
+                    ),
+                  if (model.tipi == 1)
+                    const ColorfulBadge(label: Text("Kapalı"), badgeColorEnum: BadgeColorEnum.kapali),
+                  if (model.datOnayda == "E") const ColorfulBadge(label: Text("Onayda")),
+                  if (model.irsaliyelestiMi)
+                    ColorfulBadge(
+                      label: Text("İrsaliye (${model.irslesenSayi ?? ""})"),
+                      badgeColorEnum: BadgeColorEnum.irsaliye,
+                    ),
+                  if (model.efaturaMi == "E")
+                    const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.eFatura),
+                  if (model.earsivMi == "E")
+                    const ColorfulBadge(label: Text("E-Arşiv"), badgeColorEnum: BadgeColorEnum.eFatura),
+                  if ((model.earsivDurumu == "HAT" || model.efaturaDurumu == "HAT") &&
+                      (model.efaturaMi == "E" || model.earsivMi == "E"))
+                    dialogInkWell(const ColorfulBadge(label: Text("Hata"), badgeColorEnum: BadgeColorEnum.hata)),
+                  if (model.taslakMi)
+                    dialogInkWell(const ColorfulBadge(label: Text("Taslak"), badgeColorEnum: BadgeColorEnum.taslak)),
+                  if ((model.earsivDurumu == "BEK" || model.efaturaDurumu == "BEK") &&
+                      (model.efaturaMi == "E" || model.earsivMi == "E"))
+                    dialogInkWell(const ColorfulBadge(label: Text("Uyarı"), badgeColorEnum: BadgeColorEnum.uyari)),
+                  if (model.basariliMi)
+                    dialogInkWell(
+                      const ColorfulBadge(label: Text("Başarılı"), badgeColorEnum: BadgeColorEnum.basarili),
+                    ),
+                  if (model.efatOnayDurumKodu == "1")
+                    const ColorfulBadge(label: Text("Reddedildi"), badgeColorEnum: BadgeColorEnum.hata),
+                ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
+          ),
+          if (model.cariAdi != null) Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
+          if (model.resmiBelgeNo != null)
+            Text("Resmi Belge No: ${model.resmiBelgeNo ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize),
+          CustomLayoutBuilder.divideInHalf(
+            children: [
+              if (model.hedefDepo != null && model.topluDepo != null)
+                Text("Toplu Depo: ${model.topluDepo} => ${model.hedefDepo}"),
+              Text("Tipi: ${model.lokalDat == "E" ? "Lokal Transfer" : ""}"),
+              Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
+              if (model.cariKodu != null) Text("Cari Kodu: ${model.cariKodu ?? ""}"),
+              // Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
+              if (widget.showVade == true) Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}"),
+              if (model.dovizTutari != null && model.dovizAdi != null)
+                Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}"),
+              Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+              Text(
+                "Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+              ),
+              Text(
+                "Genel Toplam: ${(model.genelToplam ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+              ),
             ],
           ),
-        ),
-      );
+          if (widget.showMiktar == true)
+            const Divider(indent: 0, endIndent: 0).paddingSymmetric(vertical: UIHelper.midSize),
+          if (widget.showMiktar == true)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Text>[
+                Text("Miktar: ${widget.model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              ],
+            ),
+          if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty) ...[
+            const Divider(indent: 0, endIndent: 0).paddingSymmetric(vertical: UIHelper.midSize),
+            ...aciklamaList(),
+          ],
+          if (widget.model.aciklama case final value?) Text("Belge Açıklaması: $value", style: greyTextStyle),
+        ],
+      ),
+    ),
+  );
 
   InkWell dialogInkWell(ColorfulBadge badge) => InkWell(
-        onTap: () {
-          dialogManager.showColorfulSnackBar(
-            model.eFaturaMi
-                ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
-                : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama!}' : ""}",
-            badge.badgeColorEnum?.getColor ?? UIHelper.primaryColor,
-          );
-        },
-        child: badge,
+    onTap: () {
+      dialogManager.showColorfulSnackBar(
+        model.eFaturaMi
+            ? "Durum Kodu: ${model.efaturaGibDurumKodu ?? 0} ${model.efaturaDurumAciklama != null ? '\n${model.efaturaDurumAciklama}' : ""}"
+            : "Durum Kodu: ${model.earsivGibDurumKodu ?? 0} ${model.earsivDurumAciklama != null ? '\n${model.earsivDurumAciklama!}' : ""}",
+        badge.badgeColorEnum?.getColor ?? UIHelper.primaryColor,
       );
+    },
+    child: badge,
+  );
 }

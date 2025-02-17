@@ -14,10 +14,7 @@ final class BaseFaturaToplamlarViewModel = _BaseFaturaToplamlarViewModelBase wit
 abstract class _BaseFaturaToplamlarViewModelBase with Store {
   static ParamModel? get paramModel => CacheManager.getAnaVeri?.paramModel;
 
-  final Map<String, String> senaryoMap = {
-    "Temel": "TEM",
-    "Ticari": "TIC",
-  };
+  final Map<String, String> senaryoMap = {"Temel": "TEM", "Ticari": "TIC"};
 
   @observable
   bool isGenIsk1T = false;
@@ -80,9 +77,15 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       BaseSiparisEditModel.setInstance(model);
       return;
     } else if (isGenIsk1T) {
-      model = model.copyWith(genIsk1o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100, genIsk1t: value);
+      model = model.copyWith(
+        genIsk1o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) * 100,
+        genIsk1t: value,
+      );
     } else {
-      model = model.copyWith(genIsk1o: value, genIsk1t: value * (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) / 100);
+      model = model.copyWith(
+        genIsk1o: value,
+        genIsk1t: value * (model.toplamAraToplam != 0 ? (model.toplamAraToplam) : 1) / 100,
+      );
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -95,9 +98,15 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
       return;
     }
     if (isGenIsk2T) {
-      model = model.copyWith(genIsk2o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) * 100, genIsk2t: value);
+      model = model.copyWith(
+        genIsk2o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) * 100,
+        genIsk2t: value,
+      );
     } else {
-      model = model.copyWith(genIsk2o: value, genIsk2t: value * (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) / 100);
+      model = model.copyWith(
+        genIsk2o: value,
+        genIsk2t: value * (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) : 1) / 100,
+      );
     }
     BaseSiparisEditModel.setInstance(model);
   }
@@ -111,13 +120,19 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
     }
     if (isGenIsk3T) {
       model = model.copyWith(
-        genIsk3o: value / (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) * 100,
+        genIsk3o:
+            value /
+            (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) *
+            100,
         genIsk3t: value,
       );
     } else {
       model = model.copyWith(
         genIsk3o: value,
-        genIsk3t: value * (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) / 100,
+        genIsk3t:
+            value *
+            (model.toplamAraToplam != 0 ? (model.toplamAraToplam) - (model.genIsk1t ?? 0) - (model.genIsk2t ?? 0) : 1) /
+            100,
       );
     }
     BaseSiparisEditModel.setInstance(model);
@@ -167,19 +182,23 @@ abstract class _BaseFaturaToplamlarViewModelBase with Store {
   }
 
   Map<String, double> get tevkifatMap => <String, double>{
-        "$getTevkifatPay/$getTevkifatPayda (Varsayılan)": getTevkifatOranlari,
-        "1/10": 0.1,
-        "2/10": 0.2,
-        "3/10": 0.3,
-        "4/10": 0.4,
-        "5/10": 0.5,
-        "6/10": 0.6,
-        "7/10": 0.7,
-        "8/10": 0.8,
-        "9/10": 0.9,
-      };
+    "$getTevkifatPay/$getTevkifatPayda (Varsayılan)": getTevkifatOranlari,
+    "1/10": 0.1,
+    "2/10": 0.2,
+    "3/10": 0.3,
+    "4/10": 0.4,
+    "5/10": 0.5,
+    "6/10": 0.6,
+    "7/10": 0.7,
+    "8/10": 0.8,
+    "9/10": 0.9,
+  };
 
-  int get getTevkifatPay => model.getEditTipiEnum?.satisMi == true ? (paramModel?.satisTevkifatPay ?? 0) : (paramModel?.alisTevkifatPay ?? 0);
-  int get getTevkifatPayda => model.getEditTipiEnum?.satisMi == true ? (paramModel?.satisTevkifatPayda ?? 0) : (paramModel?.alisTevkifatPayda ?? 0);
+  int get getTevkifatPay =>
+      model.getEditTipiEnum?.satisMi == true ? (paramModel?.satisTevkifatPay ?? 0) : (paramModel?.alisTevkifatPay ?? 0);
+  int get getTevkifatPayda =>
+      model.getEditTipiEnum?.satisMi == true
+          ? (paramModel?.satisTevkifatPayda ?? 0)
+          : (paramModel?.alisTevkifatPayda ?? 0);
   double get getTevkifatOranlari => getTevkifatPay / getTevkifatPayda;
 }

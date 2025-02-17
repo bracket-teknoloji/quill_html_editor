@@ -26,77 +26,73 @@ final class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerV
   BaseStokEditSerilerViewModel viewModel = BaseStokEditSerilerViewModel();
   StokDetayModel get stokModel => StokDetayModel.instance;
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        body: body(),
-        bottomNavigationBar: bottomBar(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(body: body(), bottomNavigationBar: bottomBar());
 
   Widget body() => SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomLayoutBuilder(
-              splitCount: context.isLandscape ? 3 : 2,
-              children: List.generate(
-                6,
-                (index) => Card(
-                  child: ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(viewModel.labelList[index]).paddingOnly(left: UIHelper.lowSize),
-                    subtitle: Align(
-                      alignment: Alignment.topLeft,
-                      child: Observer(
-                        builder: (_) => Switch.adaptive(
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CustomLayoutBuilder(
+          splitCount: context.isLandscape ? 3 : 2,
+          children: List.generate(
+            6,
+            (index) => Card(
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                title: Text(viewModel.labelList[index]).paddingOnly(left: UIHelper.lowSize),
+                subtitle: Align(
+                  alignment: Alignment.topLeft,
+                  child: Observer(
+                    builder:
+                        (_) => Switch.adaptive(
                           value: viewModel.switchValueList[index],
-                          onChanged: widget.model.goruntuleMi
-                              ? null
-                              : (value) {
-                                  viewModel.changeSwitchValue(index);
-                                },
+                          onChanged:
+                              widget.model.goruntuleMi
+                                  ? null
+                                  : (value) {
+                                    viewModel.changeSwitchValue(index);
+                                  },
                         ),
-                      ),
-                    ),
                   ),
                 ),
               ),
             ),
-            // GridView.builder(
-            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //     crossAxisCount: context.isLandscape ? 3 : 2,
-            //     childAspectRatio: 2.5,
-            //   ),
-            //   shrinkWrap: true,
-            //   physics: const NeverScrollableScrollPhysics(),
-            //   itemCount: viewModel.labelList.length,
-            //   itemBuilder: (context, index) => Card(
-            //     child: ListTile(
-            //       title: Text(viewModel.labelList[index]),
-            //       subtitle: Align(
-            //         alignment: Alignment.topLeft,
-            //         child: Observer(
-            //           builder: (_) => Switch.adaptive(
-            //             value: viewModel.switchValueList[index],
-            //             onChanged: widget.model.goruntuleMi
-            //                 ? null
-            //                 : (value) {
-            //                     viewModel.changeSwitchValue(index);
-            //                   },
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-            Text("Seri Bakiye Listesi", style: context.textTheme.titleLarge).paddingAll(UIHelper.lowSize),
-            const Divider(
-              indent: UIHelper.lowSize,
-              endIndent: UIHelper.lowSize,
-            ),
-            seriListesi(),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+          ),
+        ),
+        // GridView.builder(
+        //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //     crossAxisCount: context.isLandscape ? 3 : 2,
+        //     childAspectRatio: 2.5,
+        //   ),
+        //   shrinkWrap: true,
+        //   physics: const NeverScrollableScrollPhysics(),
+        //   itemCount: viewModel.labelList.length,
+        //   itemBuilder: (context, index) => Card(
+        //     child: ListTile(
+        //       title: Text(viewModel.labelList[index]),
+        //       subtitle: Align(
+        //         alignment: Alignment.topLeft,
+        //         child: Observer(
+        //           builder: (_) => Switch.adaptive(
+        //             value: viewModel.switchValueList[index],
+        //             onChanged: widget.model.goruntuleMi
+        //                 ? null
+        //                 : (value) {
+        //                     viewModel.changeSwitchValue(index);
+        //                   },
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+        Text("Seri Bakiye Listesi", style: context.textTheme.titleLarge).paddingAll(UIHelper.lowSize),
+        const Divider(indent: UIHelper.lowSize, endIndent: UIHelper.lowSize),
+        seriListesi(),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Widget seriListesi() {
     if (stokModel.seriList == null || stokModel.seriList!.isEmpty) {
@@ -129,10 +125,19 @@ final class _BaseStokEditSerilerViewState extends BaseState<BaseStokEditSerilerV
   }
 
   BottomBarWidget bottomBar() => BottomBarWidget(
-        isScrolledDown: true,
+    isScrolledDown: true,
+    children: [
+      FooterButton(children: [const Text("Kayıt Sayısı"), Text(stokModel.seriList?.length.toStringIfNotNull ?? "0")]),
+      FooterButton(
         children: [
-          FooterButton(children: [const Text("Kayıt Sayısı"), Text(stokModel.seriList?.length.toStringIfNotNull ?? "0")]),
-          FooterButton(children: [const Text("Miktar"), Text((stokModel.seriList?.map((e) => e.miktar ?? 0).sum ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar))]),
+          const Text("Miktar"),
+          Text(
+            (stokModel.seriList?.map((e) => e.miktar ?? 0).sum ?? 0).commaSeparatedWithDecimalDigits(
+              OndalikEnum.miktar,
+            ),
+          ),
         ],
-      );
+      ),
+    ],
+  );
 }

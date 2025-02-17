@@ -41,13 +41,18 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   bool get dovizliMi => kalemModel.dovizliMi;
 
   @computed
-  String get dovizAdi => BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? kalemModel.stokSatDovizAdi ?? "" : kalemModel.stokAlisDovizAdi ?? "";
+  String get dovizAdi =>
+      BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true
+          ? kalemModel.stokSatDovizAdi ?? ""
+          : kalemModel.stokAlisDovizAdi ?? "";
 
   @computed
   List<Olculer> get olcuBirimiMap => [
     if (model?.olcuBirimi != null) (adi: model?.olcuBirimi, pay: 0.0, payda: 1.0),
-    if (model?.olcuBirimi2 != null) (adi: model?.olcuBirimi2, pay: model?.olcuBirimi2Pay, payda: model?.olcuBirimi2Payda),
-    if (model?.olcuBirimi3 != null) (adi: model?.olcuBirimi3, pay: model?.olcuBirimi3Pay, payda: model?.olcuBirimi3Payda),
+    if (model?.olcuBirimi2 != null)
+      (adi: model?.olcuBirimi2, pay: model?.olcuBirimi2Pay, payda: model?.olcuBirimi2Payda),
+    if (model?.olcuBirimi3 != null)
+      (adi: model?.olcuBirimi3, pay: model?.olcuBirimi3Pay, payda: model?.olcuBirimi3Payda),
   ];
 
   @observable
@@ -61,7 +66,11 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setOTVliMi() {
     final String otvUygulanacakMi = BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "S" : "A";
     if (model?.otvUygula == otvUygulanacakMi) {
-      kalemModel = kalemModel.copyWith(otvVarmi: model?.otvUygula == otvUygulanacakMi, otvDegeri: model?.otvDeger, otvOranmi: model?.otvOranmi == "E");
+      kalemModel = kalemModel.copyWith(
+        otvVarmi: model?.otvUygula == otvUygulanacakMi,
+        otvDegeri: model?.otvDeger,
+        otvOranmi: model?.otvOranmi == "E",
+      );
       if (kalemModel.otvVarmi == true) {
         updateOtv();
       }
@@ -69,7 +78,8 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   }
 
   @computed
-  bool get koliMi => (model?.koliMi ?? false) || (kalemModel.koliMi ?? false) || (kalemModel.kalemList?.isNotEmpty ?? false);
+  bool get koliMi =>
+      (model?.koliMi ?? false) || (kalemModel.koliMi ?? false) || (kalemModel.kalemList?.isNotEmpty ?? false);
 
   @computed
   double? get birimAgirlik => (model?.birimAgirlik ?? 0) * (kalemModel.miktar ?? 0);
@@ -84,7 +94,10 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setKalemModel(KalemModel? value) => kalemModel = value ?? KalemModel();
 
   @action
-  void addSeriList(SeriList seriList) => kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList ?? [], seriList]);
+  void addSeriList(SeriList seriList) =>
+      kalemModel = kalemModel.copyWith(
+        seriList: kalemModel.seriList != null ? [seriList] : [...kalemModel.seriList ?? [], seriList],
+      );
 
   @action
   void setDovizAdi(String? value) => kalemModel = kalemModel.copyWith(dovizAdi: value);
@@ -97,7 +110,11 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setOlcuBirimi(MapEntry<Olculer, int>? value) =>
-      kalemModel = kalemModel.copyWith(olcuBirimKodu: value?.value, olcuBirimAdi: value?.key.adi, olcuBirimCarpani: (value?.key.pay ?? 1) / (value?.key.payda ?? 1));
+      kalemModel = kalemModel.copyWith(
+        olcuBirimKodu: value?.value,
+        olcuBirimAdi: value?.key.adi,
+        olcuBirimCarpani: (value?.key.pay ?? 1) / (value?.key.payda ?? 1),
+      );
 
   @action
   void setFiyat(double? value) => kalemModel = kalemModel.copyWith(satisFiyati: value);
@@ -127,7 +144,9 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
       return;
     }
     if (kalemModel.otvOranmi == true) {
-      kalemModel = kalemModel.copyWith(otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.getAraToplamTutari);
+      kalemModel = kalemModel.copyWith(
+        otvTutar: ((model?.getOtvOrani(kalemModel.brutFiyat ?? 0) ?? 0) / 100) * kalemModel.getAraToplamTutari,
+      );
     } else {
       kalemModel = kalemModel.copyWith(otvTutar: (model?.otvDeger ?? 0) * (kalemModel.miktar ?? 0));
     }
@@ -191,7 +210,8 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setIskonto1OranMi(bool? value) => kalemModel = kalemModel.copyWith(iskonto1OranMi: value);
 
   @action
-  void changeIskonto1OranMi() => kalemModel = kalemModel.copyWith(iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false));
+  void changeIskonto1OranMi() =>
+      kalemModel = kalemModel.copyWith(iskonto1OranMi: !(kalemModel.iskonto1OranMi ?? false));
   @action
   void increaseMiktar(TextEditingController controller) {
     setMiktar((kalemModel.miktar ?? 0) + 1);
@@ -227,7 +247,10 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void increaseMFMiktar(TextEditingController controller) {
-    kalemModel = kalemModel.copyWith(malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) + 1, malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) + 1);
+    kalemModel = kalemModel.copyWith(
+      malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) + 1,
+      malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) + 1,
+    );
     controller.text = (kalemModel.malFazlasiMiktar ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
   }
 
@@ -237,13 +260,21 @@ abstract class _KalemEkleViewModelBase with Store, MobxNetworkMixin {
   @action
   void decreaseMFMiktar(TextEditingController controller) {
     if ((kalemModel.malFazlasiMiktar ?? 0) > 0) {
-      kalemModel = kalemModel.copyWith(malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) - 1, malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) - 1);
+      kalemModel = kalemModel.copyWith(
+        malFazlasiMiktar: (kalemModel.malFazlasiMiktar ?? 0) - 1,
+        malfazIskAdedi: (kalemModel.malFazlasiMiktar ?? 0) - 1,
+      );
       controller.text = (kalemModel.malFazlasiMiktar ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
     }
   }
 
   Future<void> getData(StokRehberiRequestModel model) async {
-    final result = await networkManager.dioPost(path: ApiUrls.getStoklar, bodyModel: StokListesiModel(), showLoading: true, data: model.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getStoklar,
+      bodyModel: StokListesiModel(),
+      showLoading: true,
+      data: model.toJson(),
+    );
     if (result.isSuccess) {
       setModel(result.dataList.first);
     }

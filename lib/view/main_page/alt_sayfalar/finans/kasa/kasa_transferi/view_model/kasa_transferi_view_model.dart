@@ -17,7 +17,14 @@ final class KasaTransferiViewModel = _KasaTransferiViewModelBase with _$KasaTran
 
 abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "KAT", hesapTipi: "T");
+  TahsilatRequestModel model = TahsilatRequestModel(
+    tahsilatmi: true,
+    yeniKayit: true,
+    gc: "C",
+    tag: "TahsilatModel",
+    pickerBelgeTuru: "KAT",
+    hesapTipi: "T",
+  );
 
   @observable
   KasaList? girisKasa;
@@ -99,7 +106,12 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
-    final result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
+    final result = await networkManager.dioGet<KasaList>(
+      path: ApiUrls.getKasalar,
+      bodyModel: KasaList(),
+      showLoading: true,
+      queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu},
+    );
     if (result.isSuccess) {
       return result.dataList.firstOrNull as KasaList;
     }
@@ -120,6 +132,10 @@ abstract class _KasaTransferiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveTahsilat, bodyModel: DovizKurlariModel(), showLoading: true, data: getStokYeniKayitModel.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
+    path: ApiUrls.saveTahsilat,
+    bodyModel: DovizKurlariModel(),
+    showLoading: true,
+    data: getStokYeniKayitModel.toJson(),
+  );
 }

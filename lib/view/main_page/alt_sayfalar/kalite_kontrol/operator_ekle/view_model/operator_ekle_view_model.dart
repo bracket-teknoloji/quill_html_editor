@@ -9,8 +9,5 @@ final class OperatorEkleViewModel = _OperatorEkleViewModelBase with _$OperatorEk
 
 abstract class _OperatorEkleViewModelBase with Store {
   @observable
-  OlcumOperatorModel model = OlcumOperatorModel(
-    durum: "A",
-    isletmeKodu: CacheManager.getIsletmeSube["İşletme"],
-  );
+  OlcumOperatorModel model = OlcumOperatorModel(durum: "A", isletmeKodu: CacheManager.getIsletmeSube["İşletme"]);
 }

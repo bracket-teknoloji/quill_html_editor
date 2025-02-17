@@ -3,7 +3,7 @@ enum DizaynOzelKodEnum {
   odemeMakbuzu("odemeMakbuzu"),
   cariHareket("CariHareket"),
   musteriSiparisi("MusteriSiparisi"),
-  
+
   sayim("Sayim");
 
   const DizaynOzelKodEnum(this.ozelKodAdi);

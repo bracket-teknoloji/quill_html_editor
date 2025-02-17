@@ -27,17 +27,17 @@ class OlcumEkleModel with _$OlcumEkleModel, NetworkManagerMixin {
   }) = _OlcumEkleModel;
 
   factory OlcumEkleModel.fromOlcumBelgeEditModel(OlcumBelgeEditModel model) => OlcumEkleModel(
-        belgeNo: model.belge?.firstOrNull?.belgeNo,
-        belgeTipi: model.belge?.firstOrNull?.belgeTipi,
-        stokKodu: model.belge?.firstOrNull?.stokKodu,
-        belgeSira: model.belge?.firstOrNull?.belgeSira,
-        belgeId: model.olcumler?.firstOrNull?.id,
-        yapkod: model.yapkod,
-        opkodu: model.opkodu,
-        kayitOperator: model.kayitOperatorKodu,
-        prosesler: model.prosesler,
-        seriNo: model.seriNo,
-      );
+    belgeNo: model.belge?.firstOrNull?.belgeNo,
+    belgeTipi: model.belge?.firstOrNull?.belgeTipi,
+    stokKodu: model.belge?.firstOrNull?.stokKodu,
+    belgeSira: model.belge?.firstOrNull?.belgeSira,
+    belgeId: model.olcumler?.firstOrNull?.id,
+    yapkod: model.yapkod,
+    opkodu: model.opkodu,
+    kayitOperator: model.kayitOperatorKodu,
+    prosesler: model.prosesler,
+    seriNo: model.seriNo,
+  );
   OlcumEkleModel._();
 
   factory OlcumEkleModel.fromJson(Map<String, dynamic> json) => _$OlcumEkleModelFromJson(json);

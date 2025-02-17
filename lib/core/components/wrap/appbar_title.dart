@@ -4,7 +4,14 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 
 final class AppBarTitle extends StatelessWidget {
-  const AppBarTitle({super.key, this.title, this.subtitle, this.isSubTitleSmall, this.titleStyle, this.changeTitle = true});
+  const AppBarTitle({
+    super.key,
+    this.title,
+    this.subtitle,
+    this.isSubTitleSmall,
+    this.titleStyle,
+    this.changeTitle = true,
+  });
   final bool changeTitle;
   final String? title;
   final String? subtitle;

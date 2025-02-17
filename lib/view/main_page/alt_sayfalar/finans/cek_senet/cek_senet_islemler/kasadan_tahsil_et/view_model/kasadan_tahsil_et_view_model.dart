@@ -43,6 +43,10 @@ abstract class _KasadanTahsilEtViewModelBase with Store, MobxNetworkMixin {
   void setKasaHarAciklama(String? value) => model = model.copyWith(aciklama: value);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost(path: ApiUrls.saveTahsilat, bodyModel: SaveCekSenetModel(), data: model.toJson(), showLoading: true);
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost(
+    path: ApiUrls.saveTahsilat,
+    bodyModel: SaveCekSenetModel(),
+    data: model.toJson(),
+    showLoading: true,
+  );
 }

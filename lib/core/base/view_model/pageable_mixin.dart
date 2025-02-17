@@ -13,14 +13,12 @@ mixin PageableMixin<T extends NetworkManagerMixin> on ScrollControllableMixin<T>
   bool dahaVarMi = true;
 
   @nonVirtual
-
   /// Sayfayı [1] artırmak için kullanılır.
   ///
   /// Bu metodu override etmeyiniz.
   void increasePage() => page++;
 
   @nonVirtual
-
   /// Sayfa sayısını [1] yapar.
   /// Listedeki elemanları siler.
   ///
@@ -34,7 +32,6 @@ mixin PageableMixin<T extends NetworkManagerMixin> on ScrollControllableMixin<T>
   void addObservableList(List<T>? list);
 
   @nonVirtual
-
   /// DahaVarMi değişkenini değerine göre günceller.
   void setDahaVarMi(bool result) => dahaVarMi = result;
 }

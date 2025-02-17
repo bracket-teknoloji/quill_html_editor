@@ -30,7 +30,8 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
     double toplamVadeTarihi = 0;
     for (final item in model.kalemler ?? []) {
       toplamTutari += item.tutar ?? 0;
-      toplamVadeTarihi += (item.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0) * (item.tutar ?? 0);
+      toplamVadeTarihi +=
+          (item.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0) * (item.tutar ?? 0);
     }
     return (toplamVadeTarihi / toplamTutari).isNaN ? 0 : (toplamVadeTarihi / toplamTutari);
   }
@@ -82,6 +83,10 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<SaveCekSenetModel>(path: ApiUrls.saveCekSenetler, bodyModel: SaveCekSenetModel(), data: model.toJson(), showLoading: true);
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<SaveCekSenetModel>(
+    path: ApiUrls.saveCekSenetler,
+    bodyModel: SaveCekSenetModel(),
+    data: model.toJson(),
+    showLoading: true,
+  );
 }

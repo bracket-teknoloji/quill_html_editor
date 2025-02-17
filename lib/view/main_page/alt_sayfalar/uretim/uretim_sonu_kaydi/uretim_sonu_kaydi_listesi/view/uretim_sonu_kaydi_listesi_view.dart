@@ -47,68 +47,75 @@ final class _UretimSonuKaydiListesiViewState extends BaseState<UretimSonuKaydiLi
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        floatingActionButton: fab(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), floatingActionButton: fab(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) {
-            if (viewModel.isSearchBarOpen) {
-              return CustomAppBarTextField(
-                controller: searchController,
-                onChanged: viewModel.setSearchText,
-                onFieldSubmitted: (value) => viewModel.resetList(),
-              );
-            }
-            return AppBarTitle(title: "Üretim Sonu Kayıtları", subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "0");
-          },
+    title: Observer(
+      builder: (_) {
+        if (viewModel.isSearchBarOpen) {
+          return CustomAppBarTextField(
+            controller: searchController,
+            onChanged: viewModel.setSearchText,
+            onFieldSubmitted: (value) => viewModel.resetList(),
+          );
+        }
+        return AppBarTitle(
+          title: "Üretim Sonu Kayıtları",
+          subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "0",
+        );
+      },
+    ),
+    actions: [
+      IconButton(
+        onPressed: viewModel.changeSearchBarStatus,
+        icon: Observer(
+          builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
         ),
-        actions: [
-          IconButton(
-            onPressed: viewModel.changeSearchBarStatus,
-            icon: Observer(
-              builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
-            ),
-          ),
-        ],
-      );
+      ),
+    ],
+  );
 
   Observer? fab() {
     if (yetkiController.uretimSonuKaydiEkle) {
       return Observer(
-        builder: (_) => CustomFloatingActionButton(
-          isScrolledDown: viewModel.isScrollDown,
-          onPressed: () async {
-            final result = await Get.toNamed("mainPage/uretimSonuKaydiEdit", arguments: BaseEditModel<KalemModel>(baseEditEnum: BaseEditEnum.ekle));
-            if (result == true) {
-              await viewModel.resetList();
-            }
-          },
-        ),
+        builder:
+            (_) => CustomFloatingActionButton(
+              isScrolledDown: viewModel.isScrollDown,
+              onPressed: () async {
+                final result = await Get.toNamed(
+                  "mainPage/uretimSonuKaydiEdit",
+                  arguments: BaseEditModel<KalemModel>(baseEditEnum: BaseEditEnum.ekle),
+                );
+                if (result == true) {
+                  await viewModel.resetList();
+                }
+              },
+            ),
       );
     }
     return null;
   }
 
   Observer body() => Observer(
-        builder: (_) => RefreshableListView.pageable(
+    builder:
+        (_) => RefreshableListView.pageable(
           scrollController: scrollController,
           onRefresh: viewModel.resetList,
           dahaVarMi: viewModel.dahaVarMi,
           items: viewModel.observableList,
-          itemBuilder: (item) => UretimSonuKaydiListesiCard(
-            model: item,
-            onChanged: () async {
-              final result = await viewModel.deleteItem(item);
-              if (result.isSuccess) {
-                dialogManager.showSuccessSnackBar(result.message ?? "${item.belgeNo} numaralı belge başarıyla silindi.");
-                await viewModel.resetList();
-              }
-            },
-          ),
+          itemBuilder:
+              (item) => UretimSonuKaydiListesiCard(
+                model: item,
+                onChanged: () async {
+                  final result = await viewModel.deleteItem(item);
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(
+                      result.message ?? "${item.belgeNo} numaralı belge başarıyla silindi.",
+                    );
+                    await viewModel.resetList();
+                  }
+                },
+              ),
         ),
-      );
+  );
 }

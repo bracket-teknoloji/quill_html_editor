@@ -34,7 +34,12 @@ final class _PaketIcerigiCardState extends BaseState<PaketIcerigiCard> {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [if (item.cikistaSeri == "E") const ColorfulBadge(label: Text("Serili"), badgeColorEnum: BadgeColorEnum.seri)]),
+          Row(
+            children: [
+              if (item.cikistaSeri == "E")
+                const ColorfulBadge(label: Text("Serili"), badgeColorEnum: BadgeColorEnum.seri),
+            ],
+          ),
           CustomLayoutBuilder(
             splitCount: 2,
             children: [
@@ -68,7 +73,10 @@ final class _PaketIcerigiCardState extends BaseState<PaketIcerigiCard> {
           onTap: () async {
             Get
               ..back()
-              ..toNamed("/seriHareketleri", arguments: SeriHareketleriRequestModel(stokKodu: (await getStok)?.stokKodu, hareketId: item.id));
+              ..toNamed(
+                "/seriHareketleri",
+                arguments: SeriHareketleriRequestModel(stokKodu: (await getStok)?.stokKodu, hareketId: item.id),
+              );
           },
         ),
       if (yetkiController.stokListesi)
@@ -83,5 +91,6 @@ final class _PaketIcerigiCardState extends BaseState<PaketIcerigiCard> {
     ],
   );
 
-  Future<StokListesiModel?> get getStok async => await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu));
+  Future<StokListesiModel?> get getStok async =>
+      await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu));
 }

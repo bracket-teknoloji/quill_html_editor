@@ -18,31 +18,18 @@ final class _ImageViewState extends BaseState<ImageView> {
   XFile? xfile;
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: loc.generalStrings.view,
-            subtitle: widget.title,
-          ),
-          // actions: [
-          //   IconButton(
-          //     onPressed: () async {
-          //       xfile = await
-          //       await Share.shareXFiles([xfile].nullCheckWithGeneric, subject: "Resim Paylaşımı");
-          //     },
-          //     icon: const Icon(Icons.share_outlined),
-          //   ),
-          // ],
-        ),
-        body: Column(
-          children: [
-            Expanded(
-              child: InteractiveViewer(
-                child: Center(
-                  child: ImageWidget(path: widget.path),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
+    appBar: AppBar(
+      title: AppBarTitle(title: loc.generalStrings.view, subtitle: widget.title),
+      // actions: [
+      //   IconButton(
+      //     onPressed: () async {
+      //       xfile = await
+      //       await Share.shareXFiles([xfile].nullCheckWithGeneric, subject: "Resim Paylaşımı");
+      //     },
+      //     icon: const Icon(Icons.share_outlined),
+      //   ),
+      // ],
+    ),
+    body: Column(children: [Expanded(child: InteractiveViewer(child: Center(child: ImageWidget(path: widget.path))))]),
+  );
 }

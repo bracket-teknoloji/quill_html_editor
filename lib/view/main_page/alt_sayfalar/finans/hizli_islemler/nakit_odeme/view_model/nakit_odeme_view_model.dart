@@ -23,7 +23,14 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   double? cariBakiye;
 
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "G", tag: "TahsilatModel", pickerBelgeTuru: "NAT", hesapTipi: "C");
+  TahsilatRequestModel model = TahsilatRequestModel(
+    tahsilatmi: true,
+    yeniKayit: true,
+    gc: "G",
+    tag: "TahsilatModel",
+    pickerBelgeTuru: "NAT",
+    hesapTipi: "C",
+  );
 
   @observable
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
@@ -63,7 +70,12 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setTahsilatmi(bool? value) => model = model.copyWith(tahsilatmi: value, gc: value == true ? "G" : "C", pickerBelgeTuru: value == true ? "NAT" : "NAO");
+  void setTahsilatmi(bool? value) =>
+      model = model.copyWith(
+        tahsilatmi: value,
+        gc: value == true ? "G" : "C",
+        pickerBelgeTuru: value == true ? "NAT" : "NAO",
+      );
 
   @action
   void setBelgeNo(String? value) => model = model.copyWith(belgeNo: value);
@@ -128,7 +140,12 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
-    final result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
+    final result = await networkManager.dioGet<KasaList>(
+      path: ApiUrls.getKasalar,
+      bodyModel: KasaList(),
+      showLoading: true,
+      queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu},
+    );
     if (result.isSuccess) {
       return result.dataList.firstOrNull as KasaList;
     }
@@ -137,7 +154,11 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getMuhaRefList() async {
-    final result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    final result = await networkManager.dioGet<MuhasebeReferansModel>(
+      path: ApiUrls.getMuhaRefList,
+      bodyModel: MuhasebeReferansModel(),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       setMuhaRefList(result.dataList);
     }
@@ -157,6 +178,10 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveTahsilat, bodyModel: DovizKurlariModel(), showLoading: true, data: getStokYeniKayitModel.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
+    path: ApiUrls.saveTahsilat,
+    bodyModel: DovizKurlariModel(),
+    showLoading: true,
+    data: getStokYeniKayitModel.toJson(),
+  );
 }

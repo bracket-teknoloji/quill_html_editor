@@ -136,26 +136,27 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
   factory StokListesiModel.fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
 
-  factory StokListesiModel.fromKalemModel(KalemModel model) => StokListesiModel()
-    ..stokKodu = model.stokKodu
-    ..stokAdi = model.stokAdi
-    ..paketMi = model.paketMi
-    ..alisKdv = model.kdvOrani
-    ..satisKdv = model.kdvOrani
-    ..alisDovTip = model.dovizTipi ?? 0
-    ..satDovTip = model.dovizTipi ?? 0
-    ..alisDovizAdi = model.dovizAdi
-    ..satisDovizAdi = model.dovizAdi
-    ..alisFiat1 = model.brutFiyat
-    ..satisFiat1 = model.brutFiyat
-    ..seriCikislardaAcik = model.seriCikislardaAcik
-    ..seriGirislerdeAcik = model.seriGirislerdeAcik
-    ..seriMiktarKadarSor = model.seriMiktarKadarSor
-    ..dovAlisFiat = model.dovizliFiyat
-    ..dovSatisFiat = model.dovizliFiyat
-    ..satisDovizAdi = model.dovizAdi
-    ..alisDovizAdi = model.dovizAdi
-    ..depoKodu = model.depoKodu;
+  factory StokListesiModel.fromKalemModel(KalemModel model) =>
+      StokListesiModel()
+        ..stokKodu = model.stokKodu
+        ..stokAdi = model.stokAdi
+        ..paketMi = model.paketMi
+        ..alisKdv = model.kdvOrani
+        ..satisKdv = model.kdvOrani
+        ..alisDovTip = model.dovizTipi ?? 0
+        ..satDovTip = model.dovizTipi ?? 0
+        ..alisDovizAdi = model.dovizAdi
+        ..satisDovizAdi = model.dovizAdi
+        ..alisFiat1 = model.brutFiyat
+        ..satisFiat1 = model.brutFiyat
+        ..seriCikislardaAcik = model.seriCikislardaAcik
+        ..seriGirislerdeAcik = model.seriGirislerdeAcik
+        ..seriMiktarKadarSor = model.seriMiktarKadarSor
+        ..dovAlisFiat = model.dovizliFiyat
+        ..dovSatisFiat = model.dovizliFiyat
+        ..satisDovizAdi = model.dovizAdi
+        ..alisDovizAdi = model.dovizAdi
+        ..depoKodu = model.depoKodu;
   StokListesiModel._init();
   @override
   String? stokAdi;
@@ -297,7 +298,8 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
 
   static StokListesiModel? _instance;
 
-  bool get kilitliMi => kilitGenel == "E" || kilitSaticisip == "E" || kilitMussip == "E" || kilitAlis == "E" || kilitSatis == "E";
+  bool get kilitliMi =>
+      kilitGenel == "E" || kilitSaticisip == "E" || kilitMussip == "E" || kilitAlis == "E" || kilitSatis == "E";
 
   String? get kilitTipi {
     if (kilitGenel == "E") return "Genel";
@@ -538,12 +540,7 @@ final class StokList with BaseStokMixin {
 
 @JsonSerializable()
 final class DepoBakiyeListe {
-  DepoBakiyeListe({
-    this.depoKodu,
-    this.giris,
-    this.cikis,
-    this.bakiye,
-  });
+  DepoBakiyeListe({this.depoKodu, this.giris, this.cikis, this.bakiye});
 
   factory DepoBakiyeListe.fromJson(Map<String, dynamic> json) => _$DepoBakiyeListeFromJson(json);
   int? depoKodu;
@@ -556,11 +553,7 @@ final class DepoBakiyeListe {
 
 @JsonSerializable()
 final class OtvAralikModel {
-  OtvAralikModel(
-    this.alt,
-    this.ust,
-    this.oran,
-  );
+  OtvAralikModel(this.alt, this.ust, this.oran);
 
   factory OtvAralikModel.fromJson(Map<String, dynamic> json) => _$OtvAralikModelFromJson(json);
   double alt;

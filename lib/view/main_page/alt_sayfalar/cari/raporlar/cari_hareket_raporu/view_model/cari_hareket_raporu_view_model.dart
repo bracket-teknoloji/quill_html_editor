@@ -9,22 +9,10 @@ final class CariHareketRaporuViewModel = _CariHareketRaporuViewModelBase with _$
 
 abstract class _CariHareketRaporuViewModelBase with Store {
   final List<BottomSheetModel<String>> siralaBottomSheetList = [
-    BottomSheetModel(
-      title: "Kayıt No (Artan)",
-      value: "INC",
-    ),
-    BottomSheetModel(
-      title: "Kayıt No (Azalan)",
-      value: "INC_DESC",
-    ),
-    BottomSheetModel(
-      title: "Tarih (Artan)",
-      value: "TARIH",
-    ),
-    BottomSheetModel(
-      title: "Tarih (Azalan)",
-      value: "TARIH_DESC",
-    ),
+    BottomSheetModel(title: "Kayıt No (Artan)", value: "INC"),
+    BottomSheetModel(title: "Kayıt No (Azalan)", value: "INC_DESC"),
+    BottomSheetModel(title: "Tarih (Artan)", value: "TARIH"),
+    BottomSheetModel(title: "Tarih (Azalan)", value: "TARIH_DESC"),
   ];
   //* Model
   //*

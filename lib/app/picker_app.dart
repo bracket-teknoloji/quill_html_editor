@@ -644,7 +644,7 @@ final class PickerMaterialApp extends StatelessWidget {
         ],
       ),
     ],
-    
+
     builder: (context, child) {
       if (child != null) {
         return SizedBox(

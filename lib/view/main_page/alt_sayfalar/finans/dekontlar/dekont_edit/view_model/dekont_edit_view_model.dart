@@ -36,14 +36,25 @@ abstract class _DekontEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> postData() async {
     SingletonDekontIslemlerRequestModel.instance.guid = const Uuid().v4();
-    SingletonDekontIslemlerRequestModel.instance.kalemler?.map((e) => e.tarih = SingletonDekontIslemlerRequestModel.instance.tarih).toList();
-    return await networkManager.dioPost(path: ApiUrls.saveDekont, bodyModel: DekontIslemlerModel(), data: SingletonDekontIslemlerRequestModel.instance.toJson(), showLoading: true);
+    SingletonDekontIslemlerRequestModel.instance.kalemler
+        ?.map((e) => e.tarih = SingletonDekontIslemlerRequestModel.instance.tarih)
+        .toList();
+    return await networkManager.dioPost(
+      path: ApiUrls.saveDekont,
+      bodyModel: DekontIslemlerModel(),
+      data: SingletonDekontIslemlerRequestModel.instance.toJson(),
+      showLoading: true,
+    );
   }
 
   @action
   Future<void> getData(DekontListesiModel model) async {
-    final result =
-        await networkManager.dioGet<DekontDuzenleRequestModel>(path: ApiUrls.getDekontHareketleri, bodyModel: DekontDuzenleRequestModel(), queryParameters: model.queryParam, showLoading: true);
+    final result = await networkManager.dioGet<DekontDuzenleRequestModel>(
+      path: ApiUrls.getDekontHareketleri,
+      bodyModel: DekontDuzenleRequestModel(),
+      queryParameters: model.queryParam,
+      showLoading: true,
+    );
     if (result.isSuccess) {
       final List<DekontDuzenleRequestModel> list = result.dataList;
       SingletonDekontIslemlerRequestModel.setInstance(DekontIslemlerRequestModel.fromListOfDekontDuzenleModel(list));

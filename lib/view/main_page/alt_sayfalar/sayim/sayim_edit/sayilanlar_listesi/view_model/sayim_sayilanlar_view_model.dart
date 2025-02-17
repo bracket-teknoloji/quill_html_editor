@@ -28,7 +28,11 @@ abstract class _SayimSayilanlarViewModelBase with Store, MobxNetworkMixin {
   String filterText = "";
 
   @computed
-  ObservableList<SayimFiltreModel>? get sayimListesi => _sayimListesi?.where((element) => element.stokAdi?.toLowerCase().contains(filterText.toLowerCase()) == true).toList().asObservable();
+  ObservableList<SayimFiltreModel>? get sayimListesi =>
+      _sayimListesi
+          ?.where((element) => element.stokAdi?.toLowerCase().contains(filterText.toLowerCase()) == true)
+          .toList()
+          .asObservable();
 
   @action
   void setSayimListesi(List<SayimFiltreModel>? value) => _sayimListesi = value?.asObservable();
@@ -38,15 +42,23 @@ abstract class _SayimSayilanlarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<bool?> deleteItem(SayimFiltreModel model) async {
-    final result =
-        await networkManager.dioPost(path: ApiUrls.deleteSayimKalem, bodyModel: SayimFiltreModel(), showLoading: true, queryParameters: SayimKalemRequestModel.fromSayimFiltreModel(model).toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.deleteSayimKalem,
+      bodyModel: SayimFiltreModel(),
+      showLoading: true,
+      queryParameters: SayimKalemRequestModel.fromSayimFiltreModel(model).toJson(),
+    );
     return result.isSuccess;
   }
 
   @action
   Future<void> getData() async {
     setSayimListesi(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getSayimKalemleri, bodyModel: SayimFiltreModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getSayimKalemleri,
+      bodyModel: SayimFiltreModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setSayimListesi(result.dataList);
     }
@@ -54,7 +66,12 @@ abstract class _SayimSayilanlarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<SayimFiltreModel?> getSelectedItem(int? id) async {
-    final result = await networkManager.dioGet(path: ApiUrls.getSayimKalemleri, bodyModel: SayimFiltreModel(), showLoading: true, queryParameters: requestModel.copyWith(id: id).toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getSayimKalemleri,
+      bodyModel: SayimFiltreModel(),
+      showLoading: true,
+      queryParameters: requestModel.copyWith(id: id).toJson(),
+    );
     if (result.isSuccess) {
       return result.dataList.firstOrNull;
     }

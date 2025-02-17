@@ -57,7 +57,11 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
     _plasiyerController = TextEditingController(text: model.plasiyerKodu);
     _aciklamaController = TextEditingController(text: viewModel.model.aciklama);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      _plasiyerController.text = (await networkManager.getCariModel(CariRequestModel.fromCariListesiModel(CariListesiModel(cariKodu: model.cariKodu))))?.plasiyerAciklama ?? "";
+      _plasiyerController.text =
+          (await networkManager.getCariModel(
+            CariRequestModel.fromCariListesiModel(CariListesiModel(cariKodu: model.cariKodu)),
+          ))?.plasiyerAciklama ??
+          "";
     });
     super.initState();
   }
@@ -100,7 +104,14 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
       key: _formKey,
       child: Column(
         children: [
-          CustomTextField(labelText: "Kayıt Tarihi", controller: _kayitTarihiController, isDateTime: true, readOnly: true, isMust: true, onTap: setTarih),
+          CustomTextField(
+            labelText: "Kayıt Tarihi",
+            controller: _kayitTarihiController,
+            isDateTime: true,
+            readOnly: true,
+            isMust: true,
+            onTap: setTarih,
+          ),
           CustomTextField(
             labelText: "Seri",
             controller: _seriController,
@@ -111,7 +122,12 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
             onTap: setSeri,
           ),
           if (!widget.model.cekSenetListesiEnum.borcMu)
-            CustomTextField(labelText: "Tahsil/Teminat Hesabı", controller: _teminatHesabiController, readOnly: true, valueWidget: Observer(builder: (_) => Text(model.verilenKodu ?? ""))),
+            CustomTextField(
+              labelText: "Tahsil/Teminat Hesabı",
+              controller: _teminatHesabiController,
+              readOnly: true,
+              valueWidget: Observer(builder: (_) => Text(model.verilenKodu ?? "")),
+            ),
           CustomTextField(
             labelText: !widget.model.cekSenetListesiEnum.borcMu ? "Virman Hesap" : "Ödeme Hesabı",
             controller: _odemeHesabiController,
@@ -175,7 +191,12 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
     // );
     final result = await Get.toNamed(
       "/mainPage/bankaListesiOzel",
-      arguments: BankaListesiRequestModel(arrHesapTipi: "[0]", belgeTipi: viewModel.model.dekontIslemTuru, menuKodu: "YONE_BHRE", bankaKodu: model.verilenBankaKodu),
+      arguments: BankaListesiRequestModel(
+        arrHesapTipi: "[0]",
+        belgeTipi: viewModel.model.dekontIslemTuru,
+        menuKodu: "YONE_BHRE",
+        bankaKodu: model.verilenBankaKodu,
+      ),
     );
     if (result is BankaListesiModel) {
       viewModel.setOdemeHesabi(result.hesapKodu);

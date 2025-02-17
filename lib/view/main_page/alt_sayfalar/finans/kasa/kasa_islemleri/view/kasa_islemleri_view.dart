@@ -83,107 +83,117 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        // resizeToAvoidBottomInset: true,
-        // extendBody: true,
-        // extendBodyBehindAppBar: false,
-        appBar: appBar(),
-        floatingActionButton: fab(),
-        body: body(),
-        bottomNavigationBar: bottomAppBar(),
-      );
+    // resizeToAvoidBottomInset: true,
+    // extendBody: true,
+    // extendBodyBehindAppBar: false,
+    appBar: appBar(),
+    floatingActionButton: fab(),
+    body: body(),
+    bottomNavigationBar: bottomAppBar(),
+  );
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) {
-            if (viewModel.searchBar) {
-              return CustomAppBarTextField(
-                onChanged: (value) => viewModel.setSearchText(value),
-              );
-            } else {
-              return AppBarTitle(title: "Kasa İşlemleri", subtitle: "${viewModel.getKasaIslemleriListesi?.length ?? 0}");
-            }
-          },
+    title: Observer(
+      builder: (_) {
+        if (viewModel.searchBar) {
+          return CustomAppBarTextField(onChanged: (value) => viewModel.setSearchText(value));
+        } else {
+          return AppBarTitle(title: "Kasa İşlemleri", subtitle: "${viewModel.getKasaIslemleriListesi?.length ?? 0}");
+        }
+      },
+    ),
+    actions: [
+      IconButton(
+        onPressed: () => viewModel.changeSearchBar(),
+        icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+      ),
+      IconButton(
+        onPressed: filter,
+        icon: Observer(
+          builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? UIHelper.primaryColor : null),
         ),
-        actions: [
-          IconButton(
-            onPressed: () => viewModel.changeSearchBar(),
-            icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
-          ),
-          IconButton(
-            onPressed: filter,
-            icon: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? UIHelper.primaryColor : null)),
-          ),
-        ],
-      );
+      ),
+    ],
+  );
 
   Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(
+    builder:
+        (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             await dialogManager.showKasaGridViewDialog(null, onSelected: (p0) => p0 ? viewModel.resetPage() : null);
             // viewModel.resetPage();
           },
         ),
-      );
+  );
 
   Column body() => Column(
-        children: [
-          RaporFiltreDateTimeBottomSheetView(
-            showBugunFirst: true,
-            filterOnChanged: (index) async {
-              viewModel
-                ..setBaslamaTarihi(baslangicTarihiController.text)
-                ..setBitisTarihi(bitisTarihiController.text);
-              await viewModel.resetPage();
-            },
-            baslangicTarihiController: baslangicTarihiController,
-            bitisTarihiController: bitisTarihiController,
-          ).paddingSymmetric(horizontal: UIHelper.lowSize),
-          Expanded(
-            child: RefreshIndicator.adaptive(
-              onRefresh: () async => await viewModel.resetPage(),
-              child: Observer(
-                builder: (_) => viewModel.getKasaIslemleriListesi == null
-                    ? const Center(child: CircularProgressIndicator.adaptive())
-                    : viewModel.getKasaIslemleriListesi.ext.isNullOrEmpty
+    children: [
+      RaporFiltreDateTimeBottomSheetView(
+        showBugunFirst: true,
+        filterOnChanged: (index) async {
+          viewModel
+            ..setBaslamaTarihi(baslangicTarihiController.text)
+            ..setBitisTarihi(bitisTarihiController.text);
+          await viewModel.resetPage();
+        },
+        baslangicTarihiController: baslangicTarihiController,
+        bitisTarihiController: bitisTarihiController,
+      ).paddingSymmetric(horizontal: UIHelper.lowSize),
+      Expanded(
+        child: RefreshIndicator.adaptive(
+          onRefresh: () async => await viewModel.resetPage(),
+          child: Observer(
+            builder:
+                (_) =>
+                    viewModel.getKasaIslemleriListesi == null
+                        ? const Center(child: CircularProgressIndicator.adaptive())
+                        : viewModel.getKasaIslemleriListesi.ext.isNullOrEmpty
                         ? const Center(child: Text("Veri bulunamadı"))
                         : ListView.builder(
-                            padding: UIHelper.lowPadding,
-                            primary: false,
-                            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                            controller: _scrollController,
-                            shrinkWrap: true,
-                            itemCount: viewModel.getKasaIslemleriListesi != null ? ((viewModel.getKasaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
-                            itemBuilder: (context, index) {
-                              if (index == (viewModel.getKasaIslemleriListesi?.length ?? 0)) {
-                                return const Center(child: CircularProgressIndicator.adaptive());
-                              } else {
-                                final KasaIslemleriModel item = viewModel.getKasaIslemleriListesi![index];
-                                return KasaIslemleriCard(
-                                  kasaIslemleriModel: item,
-                                  onDeleted: (deneme) {
-                                    viewModel.resetPage();
-                                  },
-                                );
-                              }
-                            },
-                          ),
-              ),
-            ),
+                          padding: UIHelper.lowPadding,
+                          primary: false,
+                          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                          controller: _scrollController,
+                          shrinkWrap: true,
+                          itemCount:
+                              viewModel.getKasaIslemleriListesi != null
+                                  ? ((viewModel.getKasaIslemleriListesi?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0))
+                                  : 0,
+                          itemBuilder: (context, index) {
+                            if (index == (viewModel.getKasaIslemleriListesi?.length ?? 0)) {
+                              return const Center(child: CircularProgressIndicator.adaptive());
+                            } else {
+                              final KasaIslemleriModel item = viewModel.getKasaIslemleriListesi![index];
+                              return KasaIslemleriCard(
+                                kasaIslemleriModel: item,
+                                onDeleted: (deneme) {
+                                  viewModel.resetPage();
+                                },
+                              );
+                            }
+                          },
+                        ),
           ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 
   Observer bottomAppBar() => Observer(
-        builder: (_) => BottomBarWidget(
+    builder:
+        (_) => BottomBarWidget(
           isScrolledDown: viewModel.isScrollDown,
           children: [
             FooterButton(
               children: [
                 const Text("Gelir"),
                 Observer(
-                  builder: (_) =>
-                      Text("${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.mantis)),
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["TOPLAM_GELIR"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        style: const TextStyle(color: ColorPalette.mantis),
+                      ),
                 ),
               ],
               onPressed: () {
@@ -199,10 +209,11 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               children: [
                 const Text("Gider"),
                 Observer(
-                  builder: (_) => Text(
-                    "${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(color: ColorPalette.persianRed),
-                  ),
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["TOPLAM_GIDER"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        style: const TextStyle(color: ColorPalette.persianRed),
+                      ),
                 ),
               ],
               onPressed: () {
@@ -216,7 +227,7 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             ),
           ],
         ),
-      );
+  );
 
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -225,14 +236,15 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
       body: Column(
         children: [
           Observer(
-            builder: (_) => SlideControllerWidget(
-              childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
-              filterOnChanged: (index) {
-                viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
-              },
-              childrenValueList: viewModel.hesapTipiMap.values.toList(),
-              groupValue: viewModel.hesapTipiGroupValue,
-            ),
+            builder:
+                (_) => SlideControllerWidget(
+                  childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
+                  filterOnChanged: (index) {
+                    viewModel.setHesapTipi(viewModel.hesapTipiMap.values.toList()[index ?? 0]);
+                  },
+                  childrenValueList: viewModel.hesapTipiMap.values.toList(),
+                  groupValue: viewModel.hesapTipiGroupValue,
+                ),
           ),
           CustomTextField(
             labelText: "Kasa",
@@ -245,7 +257,10 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               final result = await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
                 title: "Kasa Seçiniz",
-                children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])),
+                children: List.generate(
+                  kasaList?.length ?? 0,
+                  (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index]),
+                ),
               );
               if (result is KasaList) {
                 viewModel.setKasaKodu(result);
@@ -262,7 +277,9 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             suffix: IconButton(
               onPressed: () {
                 if (viewModel.kasaIslemleriRequestModel.hesapKodu != null) {
-                  dialogManager.showCariGridViewDialog(CariListesiModel(cariKodu: viewModel.kasaIslemleriRequestModel.hesapKodu));
+                  dialogManager.showCariGridViewDialog(
+                    CariListesiModel(cariKodu: viewModel.kasaIslemleriRequestModel.hesapKodu),
+                  );
                 } else {
                   dialogManager.showInfoDialog("Cari kodu boş olduğu için bu işlem gerçekleştirilemiyor.");
                 }
@@ -285,7 +302,10 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
               suffixMore: true,
               valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriRequestModel.plasiyerKodu ?? "")),
               onTap: () async {
-                final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.kasaIslemleriRequestModel.plasiyerKodu);
+                final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                  context,
+                  viewModel.kasaIslemleriRequestModel.plasiyerKodu,
+                );
                 if (result is PlasiyerList) {
                   viewModel.setPlasiyerKodu(result);
                   plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -296,7 +316,9 @@ final class _KasaIslemleriViewState extends BaseState<KasaIslemleriView> {
             children: [
               Expanded(
                 child: ElevatedButton(
-                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1)),
+                  ),
                   onPressed: () {
                     viewModel.clearFilters();
                     plasiyerController.clear();

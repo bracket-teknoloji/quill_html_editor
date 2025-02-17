@@ -29,7 +29,8 @@ class TransferMalTalebiListesiModel with _$TransferMalTalebiListesiModel, Networ
 
   TransferMalTalebiListesiModel._();
 
-  factory TransferMalTalebiListesiModel.fromJson(Map<String, dynamic> json) => _$TransferMalTalebiListesiModelFromJson(json);
+  factory TransferMalTalebiListesiModel.fromJson(Map<String, dynamic> json) =>
+      _$TransferMalTalebiListesiModelFromJson(json);
 
   @override
   TransferMalTalebiListesiModel fromJson(Map<String, dynamic> json) => _$TransferMalTalebiListesiModelFromJson(json);

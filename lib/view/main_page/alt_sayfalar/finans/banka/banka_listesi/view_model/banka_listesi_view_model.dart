@@ -20,12 +20,7 @@ abstract class _BankaListesiViewModelBase with Store, MobxNetworkMixin {
     "Hesap Adı (Z-A)": "ADI_ZA",
   };
 
-  final Map<String, String?> filtreleMap = {
-    "Tümü": null,
-    "Bakiyeli": "B",
-    "Eksi": "E",
-    "Artı": "A",
-  };
+  final Map<String, String?> filtreleMap = {"Tümü": null, "Bakiyeli": "B", "Eksi": "E", "Artı": "A"};
 
   final List<String> hesapTipiList = [
     "Vadesiz Mevduat",
@@ -70,9 +65,16 @@ abstract class _BankaListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<List<BankaListesiModel>> get groupedWithHesapTipiAdiList {
     if (bankaListesi == null) return <ObservableList<BankaListesiModel>>[].asObservable();
     // create a list of filtered items by searchValue
-    final filteredList = bankaListesi?.where((element) => element.hesapAdi?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? true).toList().asObservable();
+    final filteredList =
+        bankaListesi
+            ?.where((element) => element.hesapAdi?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? true)
+            .toList()
+            .asObservable();
     final groupedList = groupBy(filteredList ?? <BankaListesiModel>[], (e) => e.hesapTipiAdi);
-    return groupedList.values.toList().sorted((a, b) => b.firstOrNull?.hesapTipi?.compareTo(a.firstOrNull?.hesapTipi ?? 0) ?? 0).asObservable();
+    return groupedList.values
+        .toList()
+        .sorted((a, b) => b.firstOrNull?.hesapTipi?.compareTo(a.firstOrNull?.hesapTipi ?? 0) ?? 0)
+        .asObservable();
   }
 
   @action

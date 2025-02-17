@@ -16,20 +16,17 @@ final class ColorfulBadge extends StatefulWidget {
 final class _ColorfulBadgeState extends State<ColorfulBadge> {
   @override
   Widget build(BuildContext context) => Badge(
-        textStyle: const TextStyle(fontSize: UIHelper.midSize),
-        label: _child(),
-        textColor: (_getColor().computeLuminance()) > 0.3 ? Colors.black : Colors.white,
-        backgroundColor: _getColor(),
-      );
+    textStyle: const TextStyle(fontSize: UIHelper.midSize),
+    label: _child(),
+    textColor: (_getColor().computeLuminance()) > 0.3 ? Colors.black : Colors.white,
+    backgroundColor: _getColor(),
+  );
 
   Color _getColor() => (widget.badgeColorEnum ?? BadgeColorEnum.cari).getColor;
 
   Widget _child() {
     if (widget.onTap != null) {
-      return InkWell(
-        onTap: widget.onTap,
-        child: widget.label,
-      );
+      return InkWell(onTap: widget.onTap, child: widget.label);
     } else {
       return widget.label;
     }

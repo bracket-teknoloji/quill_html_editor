@@ -79,144 +79,161 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => viewModel.searchBar
-                ? CustomAppBarTextField(
-                    onChanged: viewModel.setSearchText,
-                  )
-                : const AppBarTitle(title: "Cari Stok Satış Özeti"),
-          ),
-          actions: [
-            IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
-            IconButton(
-              onPressed: () async {
-                viewModel.setSirala(await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc.generalStrings.sort, children: viewModel.bottomSheetModelList));
-                getData();
-              },
-              icon: const Icon(Icons.sort_by_alpha_outlined),
-            ),
-            IconButton(
-              onPressed: () async {
-                await bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: loc.generalStrings.filter,
-                  body: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) =>
+                viewModel.searchBar
+                    ? CustomAppBarTextField(onChanged: viewModel.setSearchText)
+                    : const AppBarTitle(title: "Cari Stok Satış Özeti"),
+      ),
+      actions: [
+        IconButton(onPressed: () async => viewModel.setSearchBar(), icon: const Icon(Icons.search_outlined)),
+        IconButton(
+          onPressed: () async {
+            viewModel.setSirala(
+              await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: loc.generalStrings.sort,
+                children: viewModel.bottomSheetModelList,
+              ),
+            );
+            getData();
+          },
+          icon: const Icon(Icons.sort_by_alpha_outlined),
+        ),
+        IconButton(
+          onPressed: () async {
+            await bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: loc.generalStrings.filter,
+              body: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomWidgetWithLabel(
+                    text: "İrsaliyeler Dahil",
+                    isVertical: true,
+                    child: Observer(
+                      builder:
+                          (_) => Switch.adaptive(
+                            value: viewModel.irsDahil,
+                            onChanged: (value) => viewModel.setIrsDahil(value),
+                          ),
+                    ),
+                  ),
+                  Row(
                     children: [
-                      CustomWidgetWithLabel(
-                        text: "İrsaliyeler Dahil",
-                        isVertical: true,
-                        child: Observer(builder: (_) => Switch.adaptive(value: viewModel.irsDahil, onChanged: (value) => viewModel.setIrsDahil(value))),
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Stok Grup Kodu",
+                          controller: stokGrupKoduController,
+                          readOnly: true,
+                          suffixMore: true,
+                          onTap: () async => await getGrupKodu(0, stokGrupKoduController),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Stok Grup Kodu",
-                              controller: stokGrupKoduController,
-                              readOnly: true,
-                              suffixMore: true,
-                              onTap: () async => await getGrupKodu(0, stokGrupKoduController),
-                            ),
-                          ),
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Stok Kod 1",
-                              controller: stokKodu1Controller,
-                              readOnly: true,
-                              suffixMore: true,
-                              onTap: () async => await getGrupKodu(1, stokKodu1Controller),
-                            ),
-                          ),
-                        ],
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Stok Kod 1",
+                          controller: stokKodu1Controller,
+                          readOnly: true,
+                          suffixMore: true,
+                          onTap: () async => await getGrupKodu(1, stokKodu1Controller),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Stok Kod 2",
-                              controller: stokKodu2Controller,
-                              readOnly: true,
-                              suffixMore: true,
-                              onTap: () async => await getGrupKodu(2, stokKodu2Controller),
-                            ),
-                          ),
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Stok Kod 3",
-                              controller: stokKodu3Controller,
-                              readOnly: true,
-                              suffixMore: true,
-                              onTap: () async => await getGrupKodu(3, stokKodu3Controller),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Stok Kod 4",
-                              controller: stokKodu4Controller,
-                              readOnly: true,
-                              suffixMore: true,
-                              onTap: () async => await getGrupKodu(4, stokKodu4Controller),
-                            ),
-                          ),
-                          Expanded(
-                            child: CustomTextField(
-                              labelText: "Stok Kod 5",
-                              controller: stokKodu5Controller,
-                              readOnly: true,
-                              suffixMore: true,
-                              onTap: () async => await getGrupKodu(5, stokKodu5Controller),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                              style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
-                              onPressed: () {
-                                viewModel.deleteAllArr();
-                                stokGrupKoduController.clear();
-                                stokKodu1Controller.clear();
-                                stokKodu2Controller.clear();
-                                stokKodu3Controller.clear();
-                                stokKodu4Controller.clear();
-                                stokKodu5Controller.clear();
-                                getData();
-                                Get.back();
-                              },
-                              child: const Text("Temizle"),
-                            ),
-                          ),
-                          const SizedBox(width: UIHelper.midSize),
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                getData();
-                                Get.back();
-                              },
-                              child: const Text("Tamam"),
-                            ),
-                          ),
-                        ],
-                      ).paddingAll(UIHelper.lowSize),
                     ],
                   ),
-                );
-              },
-              icon: const Icon(Icons.filter_alt_outlined),
-            ),
-          ],
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Stok Kod 2",
+                          controller: stokKodu2Controller,
+                          readOnly: true,
+                          suffixMore: true,
+                          onTap: () async => await getGrupKodu(2, stokKodu2Controller),
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Stok Kod 3",
+                          controller: stokKodu3Controller,
+                          readOnly: true,
+                          suffixMore: true,
+                          onTap: () async => await getGrupKodu(3, stokKodu3Controller),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Stok Kod 4",
+                          controller: stokKodu4Controller,
+                          readOnly: true,
+                          suffixMore: true,
+                          onTap: () async => await getGrupKodu(4, stokKodu4Controller),
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Stok Kod 5",
+                          controller: stokKodu5Controller,
+                          readOnly: true,
+                          suffixMore: true,
+                          onTap: () async => await getGrupKodu(5, stokKodu5Controller),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: WidgetStateProperty.all(
+                              theme.colorScheme.onSurface.withValues(alpha: 0.1),
+                            ),
+                          ),
+                          onPressed: () {
+                            viewModel.deleteAllArr();
+                            stokGrupKoduController.clear();
+                            stokKodu1Controller.clear();
+                            stokKodu2Controller.clear();
+                            stokKodu3Controller.clear();
+                            stokKodu4Controller.clear();
+                            stokKodu5Controller.clear();
+                            getData();
+                            Get.back();
+                          },
+                          child: const Text("Temizle"),
+                        ),
+                      ),
+                      const SizedBox(width: UIHelper.midSize),
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {
+                            getData();
+                            Get.back();
+                          },
+                          child: const Text("Tamam"),
+                        ),
+                      ),
+                    ],
+                  ).paddingAll(UIHelper.lowSize),
+                ],
+              ),
+            );
+          },
+          icon: const Icon(Icons.filter_alt_outlined),
         ),
-        body: SingleChildScrollView(
-          child: Observer(
-            builder: (_) => Column(
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Observer(
+        builder:
+            (_) => Column(
               children: [
                 RaporFiltreDateTimeBottomSheetView(
                   filterOnChanged: (value) {
@@ -242,54 +259,72 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
                 if (viewModel.filteredList != null)
                   viewModel.filteredList!.isNotEmpty
                       ? SizedBox(
-                          height: context.sized.dynamicHeight(0.8),
-                          child: Observer(
-                            builder: (_) => ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: viewModel.filteredList?.length,
-                              itemBuilder: (context, index) => Card(
-                                child: ListTile(
-                                  title: Text(viewModel.filteredList?[index].stokAdi ?? ""),
-                                  subtitle: CustomLayoutBuilder.divideInHalf(
-                                    children: [
-                                      Text("Stok Kodu: ${viewModel.filteredList?[index].stokKodu ?? ""}"),
-                                      if (viewModel.filteredList?[index].dovizKuru != null && viewModel.filteredList?[index].dovizKuru != 0)
-                                        Text("Döviz Kuru: ${viewModel.filteredList?[index].dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}"),
-                                      if (viewModel.filteredList?[index].dovizAdi != null) Text("Döviz Tipi: ${viewModel.filteredList?[index].dovizAdi ?? ""}"),
-                                      if (viewModel.filteredList?[index].dovNetTutar != null && viewModel.filteredList?[index].dovNetTutar != 0)
-                                        Text("Döviz Net Tutarı: ${viewModel.filteredList?[index].dovNetTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? ""}"),
-                                    ],
-                                  ),
-                                  trailing:
-                                      Text("${viewModel.filteredList?[index].miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? ""} ${viewModel.filteredList?[index].olcuBirimAdi ?? ""}"),
-                                  onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
-                                    context,
-                                    title: loc.generalStrings.options,
-                                    children: [
-                                      BottomSheetModel(
-                                        title: "Cari Stok Satış Hareketleri",
-                                        iconWidget: Icons.sync_alt_outlined,
-                                        onTap: () {
-                                          Get.back();
-                                          return Get.toNamed("/mainPage/stokHareketleri", arguments: viewModel.filteredList?[index].stokKodu);
-                                        },
+                        height: context.sized.dynamicHeight(0.8),
+                        child: Observer(
+                          builder:
+                              (_) => ListView.builder(
+                                shrinkWrap: true,
+                                itemCount: viewModel.filteredList?.length,
+                                itemBuilder:
+                                    (context, index) => Card(
+                                      child: ListTile(
+                                        title: Text(viewModel.filteredList?[index].stokAdi ?? ""),
+                                        subtitle: CustomLayoutBuilder.divideInHalf(
+                                          children: [
+                                            Text("Stok Kodu: ${viewModel.filteredList?[index].stokKodu ?? ""}"),
+                                            if (viewModel.filteredList?[index].dovizKuru != null &&
+                                                viewModel.filteredList?[index].dovizKuru != 0)
+                                              Text(
+                                                "Döviz Kuru: ${viewModel.filteredList?[index].dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+                                              ),
+                                            if (viewModel.filteredList?[index].dovizAdi != null)
+                                              Text("Döviz Tipi: ${viewModel.filteredList?[index].dovizAdi ?? ""}"),
+                                            if (viewModel.filteredList?[index].dovNetTutar != null &&
+                                                viewModel.filteredList?[index].dovNetTutar != 0)
+                                              Text(
+                                                "Döviz Net Tutarı: ${viewModel.filteredList?[index].dovNetTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? ""}",
+                                              ),
+                                          ],
+                                        ),
+                                        trailing: Text(
+                                          "${viewModel.filteredList?[index].miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? ""} ${viewModel.filteredList?[index].olcuBirimAdi ?? ""}",
+                                        ),
+                                        onTap:
+                                            () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                                              context,
+                                              title: loc.generalStrings.options,
+                                              children: [
+                                                BottomSheetModel(
+                                                  title: "Cari Stok Satış Hareketleri",
+                                                  iconWidget: Icons.sync_alt_outlined,
+                                                  onTap: () {
+                                                    Get.back();
+                                                    return Get.toNamed(
+                                                      "/mainPage/stokHareketleri",
+                                                      arguments: viewModel.filteredList?[index].stokKodu,
+                                                    );
+                                                  },
+                                                ),
+                                                BottomSheetModel(
+                                                  title: "Stok İşlemleri",
+                                                  iconWidget: Icons.list_alt_outlined,
+                                                  onTap: () {},
+                                                ),
+                                              ],
+                                            ),
                                       ),
-                                      BottomSheetModel(title: "Stok İşlemleri", iconWidget: Icons.list_alt_outlined, onTap: () {}),
-                                    ],
-                                  ),
-                                ),
+                                    ),
                               ),
-                            ),
-                          ),
-                        )
+                        ),
+                      )
                       : const Center(child: Text("Sonuç Bulunamadı"))
                 else
                   const Center(child: CircularProgressIndicator.adaptive()),
               ],
             ).paddingAll(UIHelper.lowSize),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 
   Future<void> getData() async {
     if (viewModel.model == null) {
@@ -313,14 +348,19 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
         "BelgeTuru": "",
         "CariKodu": "",
         "BelgeNo": "",
-        if (viewModel.arrStokGrupKodu.ext.isNotNullOrEmpty) "ArrStokGrupKodu": jsonEncode(viewModel.arrStokGrupKodu.toList()),
+        if (viewModel.arrStokGrupKodu.ext.isNotNullOrEmpty)
+          "ArrStokGrupKodu": jsonEncode(viewModel.arrStokGrupKodu.toList()),
         if (viewModel.arrStokKod1.ext.isNotNullOrEmpty) "ArrStokKod1": jsonEncode(viewModel.arrStokKod1.toList()),
         if (viewModel.arrStokKod2.ext.isNotNullOrEmpty) "ArrStokKod2": jsonEncode(viewModel.arrStokKod2.toList()),
         if (viewModel.arrStokKod3.ext.isNotNullOrEmpty) "ArrStokKod3": jsonEncode(viewModel.arrStokKod3.toList()),
         if (viewModel.arrStokKod4.ext.isNotNullOrEmpty) "ArrStokKod4": jsonEncode(viewModel.arrStokKod4.toList()),
         if (viewModel.arrStokKod5.ext.isNotNullOrEmpty) "ArrStokKod5": jsonEncode(viewModel.arrStokKod5.toList()),
       };
-      final result = await networkManager.dioPost<CariStokSatisOzetiModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: CariStokSatisOzetiModel(), queryParameters: map);
+      final result = await networkManager.dioPost<CariStokSatisOzetiModel>(
+        path: ApiUrls.getFaturaKalemleri,
+        bodyModel: CariStokSatisOzetiModel(),
+        queryParameters: map,
+      );
       if (result.isSuccess) {
         viewModel.setModelList(result.dataList);
       }
@@ -334,8 +374,22 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
       dialogManager.hideAlertDialog;
     }
     final List<BottomSheetModel> bottomSheetList =
-        grupKodList.where((e) => e.grupNo == grupNo).toList().map((e) => BottomSheetModel(title: e.grupAdi ?? "", description: e.grupKodu ?? "", onTap: () => Get.back(result: e))).toList();
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
+        grupKodList
+            .where((e) => e.grupNo == grupNo)
+            .toList()
+            .map(
+              (e) => BottomSheetModel(
+                title: e.grupAdi ?? "",
+                description: e.grupKodu ?? "",
+                onTap: () => Get.back(result: e),
+              ),
+            )
+            .toList();
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Grup Kodu",
+      children: bottomSheetList,
+    );
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {

@@ -51,92 +51,89 @@ final class _OlcumKalemSecViewState extends BaseState<OlcumKalemSecView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) {
-              if (viewModel.searchBar) {
-                return CustomAppBarTextField(
-                  onFieldSubmitted: viewModel.setSearchText,
+    appBar: AppBar(
+      title: Observer(
+        builder: (_) {
+          if (viewModel.searchBar) {
+            return CustomAppBarTextField(onFieldSubmitted: viewModel.setSearchText);
+          }
+          return AppBarTitle(title: "Kalem Seç", subtitle: widget.model.belgeNo);
+        },
+      ),
+      actions: [
+        IconButton(
+          onPressed: viewModel.setSearchBar,
+          icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+        ),
+      ],
+    ),
+    body: RefreshIndicator.adaptive(
+      onRefresh: () async => viewModel.resetSayfa(),
+      child: Observer(
+        builder: (_) {
+          if (viewModel.olcumGirisiListesi == null) {
+            return const ListViewShimmer();
+          }
+          if (viewModel.olcumGirisiListesi?.isEmpty ?? false) {
+            return const Center(child: Text("Kalem bulunamadı!"));
+          }
+          return ListView.builder(
+            primary: false,
+            controller: _scrollController,
+            itemCount: viewModel.olcumGirisiListesi?.length != null ? viewModel.olcumGirisiListesi!.length + 1 : 0,
+            //musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0
+            padding: UIHelper.lowPadding,
+            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            itemBuilder: (context, index) {
+              if (index == viewModel.olcumGirisiListesi?.length) {
+                return Observer(
+                  builder:
+                      (_) => Visibility(
+                        visible: viewModel.dahaVarMi,
+                        child: const Center(child: CircularProgressIndicator.adaptive()),
+                      ),
                 );
               }
-              return AppBarTitle(
-                title: "Kalem Seç",
-                subtitle: widget.model.belgeNo,
+              final OlcumBelgeModel item = viewModel.olcumGirisiListesi![index];
+              return Card(
+                child: ListTile(
+                  onTap: () async {
+                    if (!item.prosesVarMi) {
+                      dialogManager.showErrorSnackBar("Bu kalemin prosesi bulunmamaktadır.");
+                    } else {
+                      Get.toNamed("/mainPage/olcumDetay", arguments: item);
+                    }
+                  },
+                  onLongPress: () async {
+                    if (yetkiController.stokKarti) {
+                      dialogManager.showStokGridViewDialog(
+                        await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
+                      );
+                    }
+                  },
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(item.stokAdi ?? "", overflow: TextOverflow.ellipsis, maxLines: 1),
+                      ColorfulBadge(
+                        label: Text("Proses ${item.prosesVarMi ? "Var" : "Yok"}"),
+                        badgeColorEnum: item.prosesVarMi ? BadgeColorEnum.basarili : BadgeColorEnum.hata,
+                      ),
+                    ],
+                  ),
+                  subtitle: CustomLayoutBuilder.divideInHalf(
+                    children: [
+                      Text("Stok Kodu: ${item.stokKodu ?? ""}"),
+                      Text("Sıra: ${item.belgeSira ?? ""}"),
+                      Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                    ],
+                  ),
+                ),
               );
             },
-          ),
-          actions: [
-            IconButton(
-              onPressed: viewModel.setSearchBar,
-              icon: Observer(
-                builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
-              ),
-            ),
-          ],
-        ),
-        body: RefreshIndicator.adaptive(
-          onRefresh: () async => viewModel.resetSayfa(),
-          child: Observer(
-            builder: (_) {
-              if (viewModel.olcumGirisiListesi == null) {
-                return const ListViewShimmer();
-              }
-              if (viewModel.olcumGirisiListesi?.isEmpty ?? false) {
-                return const Center(
-                  child: Text("Kalem bulunamadı!"),
-                );
-              }
-              return ListView.builder(
-                primary: false,
-                controller: _scrollController,
-                itemCount: viewModel.olcumGirisiListesi?.length != null ? viewModel.olcumGirisiListesi!.length + 1 : 0,
-                //musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0
-                padding: UIHelper.lowPadding,
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                itemBuilder: (context, index) {
-                  if (index == viewModel.olcumGirisiListesi?.length) {
-                    return Observer(
-                      builder: (_) => Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive())),
-                    );
-                  }
-                  final OlcumBelgeModel item = viewModel.olcumGirisiListesi![index];
-                  return Card(
-                    child: ListTile(
-                      onTap: () async {
-                        if (!item.prosesVarMi) {
-                          dialogManager.showErrorSnackBar("Bu kalemin prosesi bulunmamaktadır.");
-                        } else {
-                          Get.toNamed("/mainPage/olcumDetay", arguments: item);
-                        }
-                      },
-                      onLongPress: () async {
-                        if (yetkiController.stokKarti) {
-                          dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)));
-                        }
-                      },
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(item.stokAdi ?? "", overflow: TextOverflow.ellipsis, maxLines: 1),
-                          ColorfulBadge(
-                            label: Text("Proses ${item.prosesVarMi ? "Var" : "Yok"}"),
-                            badgeColorEnum: item.prosesVarMi ? BadgeColorEnum.basarili : BadgeColorEnum.hata,
-                          ),
-                        ],
-                      ),
-                      subtitle: CustomLayoutBuilder.divideInHalf(
-                        children: [
-                          Text("Stok Kodu: ${item.stokKodu ?? ""}"),
-                          Text("Sıra: ${item.belgeSira ?? ""}"),
-                          Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ).paddingAll(UIHelper.lowSize);
-            },
-          ),
-        ),
-      );
+          ).paddingAll(UIHelper.lowSize);
+        },
+      ),
+    ),
+  );
 }

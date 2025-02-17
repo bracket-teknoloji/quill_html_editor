@@ -12,7 +12,8 @@ part of 'kasa_listesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 KasaListesiModel _$KasaListesiModelFromJson(Map<String, dynamic> json) {
   return _KasaListesiModel.fromJson(json);
@@ -44,39 +45,37 @@ mixin _$KasaListesiModel {
   /// Create a copy of KasaListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $KasaListesiModelCopyWith<KasaListesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $KasaListesiModelCopyWith<KasaListesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $KasaListesiModelCopyWith<$Res> {
-  factory $KasaListesiModelCopyWith(
-          KasaListesiModel value, $Res Function(KasaListesiModel) then) =
+  factory $KasaListesiModelCopyWith(KasaListesiModel value, $Res Function(KasaListesiModel) then) =
       _$KasaListesiModelCopyWithImpl<$Res, KasaListesiModel>;
   @useResult
-  $Res call(
-      {String? kasaKodu,
-      String? kasaTanimi,
-      int? subeKodu,
-      String? dovizli,
-      int? dovizTipi,
-      bool? kkartKasasi,
-      double? toplamGiris,
-      double? toplamCikis,
-      double? bakiye,
-      double? devirliBakiye,
-      double? devirTutari,
-      double? dovizToplamGiris,
-      double? dovizToplamCikis,
-      double? dovizBakiye,
-      double? devirliDovizBakiye,
-      double? dovizDevirTutari,
-      String? dovizAdi});
+  $Res call({
+    String? kasaKodu,
+    String? kasaTanimi,
+    int? subeKodu,
+    String? dovizli,
+    int? dovizTipi,
+    bool? kkartKasasi,
+    double? toplamGiris,
+    double? toplamCikis,
+    double? bakiye,
+    double? devirliBakiye,
+    double? devirTutari,
+    double? dovizToplamGiris,
+    double? dovizToplamCikis,
+    double? dovizBakiye,
+    double? devirliDovizBakiye,
+    double? dovizDevirTutari,
+    String? dovizAdi,
+  });
 }
 
 /// @nodoc
-class _$KasaListesiModelCopyWithImpl<$Res, $Val extends KasaListesiModel>
-    implements $KasaListesiModelCopyWith<$Res> {
+class _$KasaListesiModelCopyWithImpl<$Res, $Val extends KasaListesiModel> implements $KasaListesiModelCopyWith<$Res> {
   _$KasaListesiModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -107,114 +106,131 @@ class _$KasaListesiModelCopyWithImpl<$Res, $Val extends KasaListesiModel>
     Object? dovizDevirTutari = freezed,
     Object? dovizAdi = freezed,
   }) {
-    return _then(_value.copyWith(
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaTanimi: freezed == kasaTanimi
-          ? _value.kasaTanimi
-          : kasaTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subeKodu: freezed == subeKodu
-          ? _value.subeKodu
-          : subeKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizli: freezed == dovizli
-          ? _value.dovizli
-          : dovizli // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kkartKasasi: freezed == kkartKasasi
-          ? _value.kkartKasasi
-          : kkartKasasi // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      toplamGiris: freezed == toplamGiris
-          ? _value.toplamGiris
-          : toplamGiris // ignore: cast_nullable_to_non_nullable
-              as double?,
-      toplamCikis: freezed == toplamCikis
-          ? _value.toplamCikis
-          : toplamCikis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      bakiye: freezed == bakiye
-          ? _value.bakiye
-          : bakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      devirliBakiye: freezed == devirliBakiye
-          ? _value.devirliBakiye
-          : devirliBakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      devirTutari: freezed == devirTutari
-          ? _value.devirTutari
-          : devirTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizToplamGiris: freezed == dovizToplamGiris
-          ? _value.dovizToplamGiris
-          : dovizToplamGiris // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizToplamCikis: freezed == dovizToplamCikis
-          ? _value.dovizToplamCikis
-          : dovizToplamCikis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizBakiye: freezed == dovizBakiye
-          ? _value.dovizBakiye
-          : dovizBakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      devirliDovizBakiye: freezed == devirliDovizBakiye
-          ? _value.devirliDovizBakiye
-          : devirliDovizBakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizDevirTutari: freezed == dovizDevirTutari
-          ? _value.dovizDevirTutari
-          : dovizDevirTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            kasaKodu:
+                freezed == kasaKodu
+                    ? _value.kasaKodu
+                    : kasaKodu // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            kasaTanimi:
+                freezed == kasaTanimi
+                    ? _value.kasaTanimi
+                    : kasaTanimi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            subeKodu:
+                freezed == subeKodu
+                    ? _value.subeKodu
+                    : subeKodu // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            dovizli:
+                freezed == dovizli
+                    ? _value.dovizli
+                    : dovizli // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            dovizTipi:
+                freezed == dovizTipi
+                    ? _value.dovizTipi
+                    : dovizTipi // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            kkartKasasi:
+                freezed == kkartKasasi
+                    ? _value.kkartKasasi
+                    : kkartKasasi // ignore: cast_nullable_to_non_nullable
+                        as bool?,
+            toplamGiris:
+                freezed == toplamGiris
+                    ? _value.toplamGiris
+                    : toplamGiris // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            toplamCikis:
+                freezed == toplamCikis
+                    ? _value.toplamCikis
+                    : toplamCikis // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            bakiye:
+                freezed == bakiye
+                    ? _value.bakiye
+                    : bakiye // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            devirliBakiye:
+                freezed == devirliBakiye
+                    ? _value.devirliBakiye
+                    : devirliBakiye // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            devirTutari:
+                freezed == devirTutari
+                    ? _value.devirTutari
+                    : devirTutari // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            dovizToplamGiris:
+                freezed == dovizToplamGiris
+                    ? _value.dovizToplamGiris
+                    : dovizToplamGiris // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            dovizToplamCikis:
+                freezed == dovizToplamCikis
+                    ? _value.dovizToplamCikis
+                    : dovizToplamCikis // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            dovizBakiye:
+                freezed == dovizBakiye
+                    ? _value.dovizBakiye
+                    : dovizBakiye // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            devirliDovizBakiye:
+                freezed == devirliDovizBakiye
+                    ? _value.devirliDovizBakiye
+                    : devirliDovizBakiye // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            dovizDevirTutari:
+                freezed == dovizDevirTutari
+                    ? _value.dovizDevirTutari
+                    : dovizDevirTutari // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            dovizAdi:
+                freezed == dovizAdi
+                    ? _value.dovizAdi
+                    : dovizAdi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$KasaListesiModelImplCopyWith<$Res>
-    implements $KasaListesiModelCopyWith<$Res> {
-  factory _$$KasaListesiModelImplCopyWith(_$KasaListesiModelImpl value,
-          $Res Function(_$KasaListesiModelImpl) then) =
+abstract class _$$KasaListesiModelImplCopyWith<$Res> implements $KasaListesiModelCopyWith<$Res> {
+  factory _$$KasaListesiModelImplCopyWith(_$KasaListesiModelImpl value, $Res Function(_$KasaListesiModelImpl) then) =
       __$$KasaListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? kasaKodu,
-      String? kasaTanimi,
-      int? subeKodu,
-      String? dovizli,
-      int? dovizTipi,
-      bool? kkartKasasi,
-      double? toplamGiris,
-      double? toplamCikis,
-      double? bakiye,
-      double? devirliBakiye,
-      double? devirTutari,
-      double? dovizToplamGiris,
-      double? dovizToplamCikis,
-      double? dovizBakiye,
-      double? devirliDovizBakiye,
-      double? dovizDevirTutari,
-      String? dovizAdi});
+  $Res call({
+    String? kasaKodu,
+    String? kasaTanimi,
+    int? subeKodu,
+    String? dovizli,
+    int? dovizTipi,
+    bool? kkartKasasi,
+    double? toplamGiris,
+    double? toplamCikis,
+    double? bakiye,
+    double? devirliBakiye,
+    double? devirTutari,
+    double? dovizToplamGiris,
+    double? dovizToplamCikis,
+    double? dovizBakiye,
+    double? devirliDovizBakiye,
+    double? dovizDevirTutari,
+    String? dovizAdi,
+  });
 }
 
 /// @nodoc
-class __$$KasaListesiModelImplCopyWithImpl<$Res>
-    extends _$KasaListesiModelCopyWithImpl<$Res, _$KasaListesiModelImpl>
+class __$$KasaListesiModelImplCopyWithImpl<$Res> extends _$KasaListesiModelCopyWithImpl<$Res, _$KasaListesiModelImpl>
     implements _$$KasaListesiModelImplCopyWith<$Res> {
-  __$$KasaListesiModelImplCopyWithImpl(_$KasaListesiModelImpl _value,
-      $Res Function(_$KasaListesiModelImpl) _then)
-      : super(_value, _then);
+  __$$KasaListesiModelImplCopyWithImpl(_$KasaListesiModelImpl _value, $Res Function(_$KasaListesiModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of KasaListesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -239,104 +255,122 @@ class __$$KasaListesiModelImplCopyWithImpl<$Res>
     Object? dovizDevirTutari = freezed,
     Object? dovizAdi = freezed,
   }) {
-    return _then(_$KasaListesiModelImpl(
-      kasaKodu: freezed == kasaKodu
-          ? _value.kasaKodu
-          : kasaKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kasaTanimi: freezed == kasaTanimi
-          ? _value.kasaTanimi
-          : kasaTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      subeKodu: freezed == subeKodu
-          ? _value.subeKodu
-          : subeKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizli: freezed == dovizli
-          ? _value.dovizli
-          : dovizli // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kkartKasasi: freezed == kkartKasasi
-          ? _value.kkartKasasi
-          : kkartKasasi // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      toplamGiris: freezed == toplamGiris
-          ? _value.toplamGiris
-          : toplamGiris // ignore: cast_nullable_to_non_nullable
-              as double?,
-      toplamCikis: freezed == toplamCikis
-          ? _value.toplamCikis
-          : toplamCikis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      bakiye: freezed == bakiye
-          ? _value.bakiye
-          : bakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      devirliBakiye: freezed == devirliBakiye
-          ? _value.devirliBakiye
-          : devirliBakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      devirTutari: freezed == devirTutari
-          ? _value.devirTutari
-          : devirTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizToplamGiris: freezed == dovizToplamGiris
-          ? _value.dovizToplamGiris
-          : dovizToplamGiris // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizToplamCikis: freezed == dovizToplamCikis
-          ? _value.dovizToplamCikis
-          : dovizToplamCikis // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizBakiye: freezed == dovizBakiye
-          ? _value.dovizBakiye
-          : dovizBakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      devirliDovizBakiye: freezed == devirliDovizBakiye
-          ? _value.devirliDovizBakiye
-          : devirliDovizBakiye // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizDevirTutari: freezed == dovizDevirTutari
-          ? _value.dovizDevirTutari
-          : dovizDevirTutari // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizAdi: freezed == dovizAdi
-          ? _value.dovizAdi
-          : dovizAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$KasaListesiModelImpl(
+        kasaKodu:
+            freezed == kasaKodu
+                ? _value.kasaKodu
+                : kasaKodu // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        kasaTanimi:
+            freezed == kasaTanimi
+                ? _value.kasaTanimi
+                : kasaTanimi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        subeKodu:
+            freezed == subeKodu
+                ? _value.subeKodu
+                : subeKodu // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        dovizli:
+            freezed == dovizli
+                ? _value.dovizli
+                : dovizli // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        dovizTipi:
+            freezed == dovizTipi
+                ? _value.dovizTipi
+                : dovizTipi // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        kkartKasasi:
+            freezed == kkartKasasi
+                ? _value.kkartKasasi
+                : kkartKasasi // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+        toplamGiris:
+            freezed == toplamGiris
+                ? _value.toplamGiris
+                : toplamGiris // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        toplamCikis:
+            freezed == toplamCikis
+                ? _value.toplamCikis
+                : toplamCikis // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        bakiye:
+            freezed == bakiye
+                ? _value.bakiye
+                : bakiye // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        devirliBakiye:
+            freezed == devirliBakiye
+                ? _value.devirliBakiye
+                : devirliBakiye // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        devirTutari:
+            freezed == devirTutari
+                ? _value.devirTutari
+                : devirTutari // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        dovizToplamGiris:
+            freezed == dovizToplamGiris
+                ? _value.dovizToplamGiris
+                : dovizToplamGiris // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        dovizToplamCikis:
+            freezed == dovizToplamCikis
+                ? _value.dovizToplamCikis
+                : dovizToplamCikis // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        dovizBakiye:
+            freezed == dovizBakiye
+                ? _value.dovizBakiye
+                : dovizBakiye // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        devirliDovizBakiye:
+            freezed == devirliDovizBakiye
+                ? _value.devirliDovizBakiye
+                : devirliDovizBakiye // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        dovizDevirTutari:
+            freezed == dovizDevirTutari
+                ? _value.dovizDevirTutari
+                : dovizDevirTutari // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        dovizAdi:
+            freezed == dovizAdi
+                ? _value.dovizAdi
+                : dovizAdi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$KasaListesiModelImpl extends _KasaListesiModel {
-  _$KasaListesiModelImpl(
-      {this.kasaKodu,
-      this.kasaTanimi,
-      this.subeKodu,
-      this.dovizli,
-      this.dovizTipi,
-      this.kkartKasasi,
-      this.toplamGiris,
-      this.toplamCikis,
-      this.bakiye,
-      this.devirliBakiye,
-      this.devirTutari,
-      this.dovizToplamGiris,
-      this.dovizToplamCikis,
-      this.dovizBakiye,
-      this.devirliDovizBakiye,
-      this.dovizDevirTutari,
-      this.dovizAdi})
-      : super._();
+  _$KasaListesiModelImpl({
+    this.kasaKodu,
+    this.kasaTanimi,
+    this.subeKodu,
+    this.dovizli,
+    this.dovizTipi,
+    this.kkartKasasi,
+    this.toplamGiris,
+    this.toplamCikis,
+    this.bakiye,
+    this.devirliBakiye,
+    this.devirTutari,
+    this.dovizToplamGiris,
+    this.dovizToplamCikis,
+    this.dovizBakiye,
+    this.devirliDovizBakiye,
+    this.dovizDevirTutari,
+    this.dovizAdi,
+  }) : super._();
 
-  factory _$KasaListesiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KasaListesiModelImplFromJson(json);
+  factory _$KasaListesiModelImpl.fromJson(Map<String, dynamic> json) => _$$KasaListesiModelImplFromJson(json);
 
   @override
   final String? kasaKodu;
@@ -379,40 +413,37 @@ class _$KasaListesiModelImpl extends _KasaListesiModel {
   @override
   @pragma('vm:prefer-inline')
   _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith =>
-      __$$KasaListesiModelImplCopyWithImpl<_$KasaListesiModelImpl>(
-          this, _$identity);
+      __$$KasaListesiModelImplCopyWithImpl<_$KasaListesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$KasaListesiModelImplToJson(
-      this,
-    );
+    return _$$KasaListesiModelImplToJson(this);
   }
 }
 
 abstract class _KasaListesiModel extends KasaListesiModel {
-  factory _KasaListesiModel(
-      {final String? kasaKodu,
-      final String? kasaTanimi,
-      final int? subeKodu,
-      final String? dovizli,
-      final int? dovizTipi,
-      final bool? kkartKasasi,
-      final double? toplamGiris,
-      final double? toplamCikis,
-      final double? bakiye,
-      final double? devirliBakiye,
-      final double? devirTutari,
-      final double? dovizToplamGiris,
-      final double? dovizToplamCikis,
-      final double? dovizBakiye,
-      final double? devirliDovizBakiye,
-      final double? dovizDevirTutari,
-      final String? dovizAdi}) = _$KasaListesiModelImpl;
+  factory _KasaListesiModel({
+    final String? kasaKodu,
+    final String? kasaTanimi,
+    final int? subeKodu,
+    final String? dovizli,
+    final int? dovizTipi,
+    final bool? kkartKasasi,
+    final double? toplamGiris,
+    final double? toplamCikis,
+    final double? bakiye,
+    final double? devirliBakiye,
+    final double? devirTutari,
+    final double? dovizToplamGiris,
+    final double? dovizToplamCikis,
+    final double? dovizBakiye,
+    final double? devirliDovizBakiye,
+    final double? dovizDevirTutari,
+    final String? dovizAdi,
+  }) = _$KasaListesiModelImpl;
   _KasaListesiModel._() : super._();
 
-  factory _KasaListesiModel.fromJson(Map<String, dynamic> json) =
-      _$KasaListesiModelImpl.fromJson;
+  factory _KasaListesiModel.fromJson(Map<String, dynamic> json) = _$KasaListesiModelImpl.fromJson;
 
   @override
   String? get kasaKodu;
@@ -453,6 +484,5 @@ abstract class _KasaListesiModel extends KasaListesiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$KasaListesiModelImplCopyWith<_$KasaListesiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

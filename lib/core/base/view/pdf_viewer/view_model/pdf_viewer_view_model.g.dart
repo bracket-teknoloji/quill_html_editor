@@ -13,12 +13,13 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
 
   @override
   String get getPageCounter =>
-      (_$getPageCounterComputed ??= Computed<String>(() => super.getPageCounter,
-              name: '_PdfViewerViewModelBase.getPageCounter'))
+      (_$getPageCounterComputed ??= Computed<String>(
+            () => super.getPageCounter,
+            name: '_PdfViewerViewModelBase.getPageCounter',
+          ))
           .value;
 
-  late final _$currentPageAtom =
-      Atom(name: '_PdfViewerViewModelBase.currentPage', context: context);
+  late final _$currentPageAtom = Atom(name: '_PdfViewerViewModelBase.currentPage', context: context);
 
   @override
   int get currentPage {
@@ -33,8 +34,7 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
     });
   }
 
-  late final _$pageCounterAtom =
-      Atom(name: '_PdfViewerViewModelBase.pageCounter', context: context);
+  late final _$pageCounterAtom = Atom(name: '_PdfViewerViewModelBase.pageCounter', context: context);
 
   @override
   int get pageCounter {
@@ -49,8 +49,7 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
     });
   }
 
-  late final _$pdfFileAtom =
-      Atom(name: '_PdfViewerViewModelBase.pdfFile', context: context);
+  late final _$pdfFileAtom = Atom(name: '_PdfViewerViewModelBase.pdfFile', context: context);
 
   @override
   File? get pdfFile {
@@ -65,8 +64,7 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
     });
   }
 
-  late final _$pdfModelAtom =
-      Atom(name: '_PdfViewerViewModelBase.pdfModel', context: context);
+  late final _$pdfModelAtom = Atom(name: '_PdfViewerViewModelBase.pdfModel', context: context);
 
   @override
   BasePdfModel? get pdfModel {
@@ -81,8 +79,7 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom =
-      Atom(name: '_PdfViewerViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(name: '_PdfViewerViewModelBase.futureController', context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -97,13 +94,16 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
     });
   }
 
-  late final _$_PdfViewerViewModelBaseActionController =
-      ActionController(name: '_PdfViewerViewModelBase', context: context);
+  late final _$_PdfViewerViewModelBaseActionController = ActionController(
+    name: '_PdfViewerViewModelBase',
+    context: context,
+  );
 
   @override
   void changePdfFile(File? value) {
     final _$actionInfo = _$_PdfViewerViewModelBaseActionController.startAction(
-        name: '_PdfViewerViewModelBase.changePdfFile');
+      name: '_PdfViewerViewModelBase.changePdfFile',
+    );
     try {
       return super.changePdfFile(value);
     } finally {
@@ -114,7 +114,8 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
   @override
   void changeCurrentPage(int value) {
     final _$actionInfo = _$_PdfViewerViewModelBaseActionController.startAction(
-        name: '_PdfViewerViewModelBase.changeCurrentPage');
+      name: '_PdfViewerViewModelBase.changeCurrentPage',
+    );
     try {
       return super.changeCurrentPage(value);
     } finally {
@@ -125,7 +126,8 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
   @override
   void setPdfModel(BasePdfModel? value) {
     final _$actionInfo = _$_PdfViewerViewModelBaseActionController.startAction(
-        name: '_PdfViewerViewModelBase.setPdfModel');
+      name: '_PdfViewerViewModelBase.setPdfModel',
+    );
     try {
       return super.setPdfModel(value);
     } finally {
@@ -136,7 +138,8 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
   @override
   void changePageCounter(int value) {
     final _$actionInfo = _$_PdfViewerViewModelBaseActionController.startAction(
-        name: '_PdfViewerViewModelBase.changePageCounter');
+      name: '_PdfViewerViewModelBase.changePageCounter',
+    );
     try {
       return super.changePageCounter(value);
     } finally {
@@ -147,7 +150,8 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
   @override
   void setFuture(bool? value) {
     final _$actionInfo = _$_PdfViewerViewModelBaseActionController.startAction(
-        name: '_PdfViewerViewModelBase.setFuture');
+      name: '_PdfViewerViewModelBase.setFuture',
+    );
     try {
       return super.setFuture(value);
     } finally {
@@ -158,7 +162,8 @@ mixin _$PdfViewerViewModel on _PdfViewerViewModelBase, Store {
   @override
   void resetFuture() {
     final _$actionInfo = _$_PdfViewerViewModelBaseActionController.startAction(
-        name: '_PdfViewerViewModelBase.resetFuture');
+      name: '_PdfViewerViewModelBase.resetFuture',
+    );
     try {
       return super.resetFuture();
     } finally {

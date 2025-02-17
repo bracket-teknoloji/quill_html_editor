@@ -4,7 +4,8 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "cari_borc_alacak_dokumu_raporu_view_model.g.dart";
 
-final class CariBorcAlacakDokumuRaporuViewModel = _CariBorcAlacakDokumuRaporuViewModelBase with _$CariBorcAlacakDokumuRaporuViewModel;
+final class CariBorcAlacakDokumuRaporuViewModel = _CariBorcAlacakDokumuRaporuViewModelBase
+    with _$CariBorcAlacakDokumuRaporuViewModel;
 
 abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
   final Map<String, String> siralaMap = {
@@ -34,7 +35,8 @@ abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
   void setSirala(String? value) => pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(sirala: value));
 
   @action
-  void setPlasiyer(String? value) => pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(plasiyerKodu: value));
+  void setPlasiyer(String? value) =>
+      pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(plasiyerKodu: value));
 
   @action
   void setBastar(String? value) => pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(bastar: value));

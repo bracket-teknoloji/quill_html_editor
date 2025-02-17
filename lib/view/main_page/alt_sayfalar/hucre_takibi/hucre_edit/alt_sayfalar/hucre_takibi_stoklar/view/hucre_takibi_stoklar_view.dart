@@ -32,32 +32,32 @@ final class _HucreTakibiStoklarViewState extends State<HucreTakibiStoklarView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Stok Rehberi"),
-        ),
-        body: Observer(
-          builder: (_) => RefreshableListView<HucreTakibiStoklarModel>(
+    appBar: AppBar(title: const AppBarTitle(title: "Stok Rehberi")),
+    body: Observer(
+      builder:
+          (_) => RefreshableListView<HucreTakibiStoklarModel>(
             onRefresh: viewModel.getData,
             items: viewModel.hucreTakibiStoklarListesi,
-            itemBuilder: (item) => Card(
-              child: ListTile(
-                onTap: () => Get.back(result: item),
-                title: Text(item.stokAdi ?? ""),
-                subtitle: CustomLayoutBuilder(
-                  splitCount: 2,
-                  children: [
-                    Text("Stok Kodu: ${item.stokKodu ?? ""}"),
-                    Text("Yap. Kod: ${item.yapkod ?? ""}"),
-                    Text("Yap. Açıklama: ${item.yapacik ?? ""}"),
-                  ],
+            itemBuilder:
+                (item) => Card(
+                  child: ListTile(
+                    onTap: () => Get.back(result: item),
+                    title: Text(item.stokAdi ?? ""),
+                    subtitle: CustomLayoutBuilder(
+                      splitCount: 2,
+                      children: [
+                        Text("Stok Kodu: ${item.stokKodu ?? ""}"),
+                        Text("Yap. Kod: ${item.yapkod ?? ""}"),
+                        Text("Yap. Açıklama: ${item.yapacik ?? ""}"),
+                      ],
+                    ),
+                    trailing: Text(
+                      item.netMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "",
+                      style: TextStyle(color: UIHelper.getColorWithValue(item.netMiktar ?? 0)),
+                    ),
+                  ),
                 ),
-                trailing: Text(
-                  item.netMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "",
-                  style: TextStyle(color: UIHelper.getColorWithValue(item.netMiktar ?? 0)),
-                ),
-              ),
-            ),
           ),
-        ),
-      );
+    ),
+  );
 }

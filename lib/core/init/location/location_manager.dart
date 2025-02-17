@@ -115,7 +115,11 @@ final class LocationManager implements InjectableInterface {
 
   // Platform'a göre konum ayarlarını alma
   LocationSettings _getLocationSettings() => switch (AccountModel.instance.platform) {
-    "ios" || "macos" => AppleSettings(showBackgroundLocationIndicator: true, distanceFilter: distanceFilterMeters, timeLimit: timeFilter),
+    "ios" || "macos" => AppleSettings(
+      showBackgroundLocationIndicator: true,
+      distanceFilter: distanceFilterMeters,
+      timeLimit: timeFilter,
+    ),
     "android" => AndroidSettings(
       foregroundNotificationConfig: const ForegroundNotificationConfig(
         notificationText: "Uygulama arka planda konumunuzu takip ediyor",
@@ -140,7 +144,12 @@ final class LocationManager implements InjectableInterface {
       return;
     }
 
-    final double distanceInMeters = Geolocator.distanceBetween(_lastPosition!.latitude, _lastPosition!.longitude, newPosition.latitude, newPosition.longitude);
+    final double distanceInMeters = Geolocator.distanceBetween(
+      _lastPosition!.latitude,
+      _lastPosition!.longitude,
+      newPosition.latitude,
+      newPosition.longitude,
+    );
 
     final Duration timeDifference = DateTime.now().difference(_lastSentTime ?? DateTime.now());
 

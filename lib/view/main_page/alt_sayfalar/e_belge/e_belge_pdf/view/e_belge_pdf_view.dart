@@ -16,7 +16,9 @@ import "../../../../../../core/components/button/elevated_buttons/footer_button.
 import "../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../../../../../../core/init/platform_implementations.dart" if (dart.library.js_interop) "package:picker/core/init/web/file_downloader.dart" show fileDownload;
+import "../../../../../../core/init/platform_implementations.dart"
+    if (dart.library.js_interop) "package:picker/core/init/web/file_downloader.dart"
+    show fileDownload;
 import "../../e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../model/e_belge_pdf_request_model.dart";
 import "../view_model/e_belge_pdf_view_model.dart";
@@ -55,52 +57,53 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar,
-        bottomNavigationBar: Observer(
-          builder: (_) => viewModel.pageCounter > 1 ? bottomAppBar : const SizedBox.shrink(),
-        ),
-        body: body(context),
-      );
+    appBar: appBar,
+    bottomNavigationBar: Observer(builder: (_) => viewModel.pageCounter > 1 ? bottomAppBar : const SizedBox.shrink()),
+    body: body(context),
+  );
 
   AppBar get appBar => AppBar(
-        title: Observer(
-          builder: (_) => AppBarTitle(title: widget.model.getTitle, subtitle: viewModel.model.resmiBelgeNo),
-        ),
-        actions: [
-          IconButton(onPressed: fileChecker, icon: const Icon(Icons.share_outlined)),
-          if (widget.model.taslakMi) IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.send_outlined)),
-          IconButton(onPressed: secenekler, icon: const Icon(Icons.more_vert_outlined)),
-        ],
-      );
+    title: Observer(builder: (_) => AppBarTitle(title: widget.model.getTitle, subtitle: viewModel.model.resmiBelgeNo)),
+    actions: [
+      IconButton(onPressed: fileChecker, icon: const Icon(Icons.share_outlined)),
+      if (widget.model.taslakMi)
+        IconButton(onPressed: () => Get.back(result: true), icon: const Icon(Icons.send_outlined)),
+      IconButton(onPressed: secenekler, icon: const Icon(Icons.more_vert_outlined)),
+    ],
+  );
 
   Observer body(BuildContext context) => Observer(
-        builder: (_) => viewModel.eBelgePdfModel != null
-            ? Observer(
-                builder: (_) => SfPdfViewer.memory(
-                  base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""),
-                  controller: pdfViewerController,
-                  onTextSelectionChanged: (details) {
-                    if (kIsWeb) {
-                      return;
-                    }
-                    if (Platform.isAndroid || Platform.isIOS) {
-                      if (details.selectedText == null && overlayEntry != null) {
-                        overlayEntry?.remove();
-                        overlayEntry = null;
-                      } else if (details.selectedText != null && overlayEntry == null) {
-                        showContextMenu(context, details);
-                      }
-                    }
-                  },
-                  onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
-                  onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
-                ),
-              )
-            : const Center(child: CircularProgressIndicator.adaptive()),
-      );
+    builder:
+        (_) =>
+            viewModel.eBelgePdfModel != null
+                ? Observer(
+                  builder:
+                      (_) => SfPdfViewer.memory(
+                        base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""),
+                        controller: pdfViewerController,
+                        onTextSelectionChanged: (details) {
+                          if (kIsWeb) {
+                            return;
+                          }
+                          if (Platform.isAndroid || Platform.isIOS) {
+                            if (details.selectedText == null && overlayEntry != null) {
+                              overlayEntry?.remove();
+                              overlayEntry = null;
+                            } else if (details.selectedText != null && overlayEntry == null) {
+                              showContextMenu(context, details);
+                            }
+                          }
+                        },
+                        onDocumentLoaded: (details) => viewModel.changePageCounter(details.document.pages.count),
+                        onPageChanged: (details) => viewModel.changeCurrentPage(details.newPageNumber - 1),
+                      ),
+                )
+                : const Center(child: CircularProgressIndicator.adaptive()),
+  );
 
   Observer get bottomAppBar => Observer(
-        builder: (_) => BottomBarWidget(
+    builder:
+        (_) => BottomBarWidget(
           isScrolledDown: viewModel.pageCounter > 1,
           children: [
             FooterButton(
@@ -110,34 +113,47 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Expanded(child: Observer(builder: (_) => Text(viewModel.getPageCounter))),
-                    FloatingActionButton.small(onPressed: () => pdfViewerController.firstPage(), child: const Icon(Icons.first_page_outlined)),
-                    FloatingActionButton.small(onPressed: () => pdfViewerController.previousPage(), child: const Icon(Icons.arrow_back_outlined)),
-                    FloatingActionButton.small(onPressed: () => pdfViewerController.nextPage(), child: const Icon(Icons.arrow_forward_outlined)),
-                    FloatingActionButton.small(onPressed: () => pdfViewerController.lastPage(), child: const Icon(Icons.last_page_outlined)),
+                    FloatingActionButton.small(
+                      onPressed: () => pdfViewerController.firstPage(),
+                      child: const Icon(Icons.first_page_outlined),
+                    ),
+                    FloatingActionButton.small(
+                      onPressed: () => pdfViewerController.previousPage(),
+                      child: const Icon(Icons.arrow_back_outlined),
+                    ),
+                    FloatingActionButton.small(
+                      onPressed: () => pdfViewerController.nextPage(),
+                      child: const Icon(Icons.arrow_forward_outlined),
+                    ),
+                    FloatingActionButton.small(
+                      onPressed: () => pdfViewerController.lastPage(),
+                      child: const Icon(Icons.last_page_outlined),
+                    ),
                   ],
                 ).marginAll(UIHelper.lowSize),
               ],
             ),
           ],
         ),
-      );
+  );
 
   void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
     final OverlayState overlayState = Overlay.of(context);
     overlayEntry = OverlayEntry(
-      builder: (context) => Positioned(
-        top: details.globalSelectedRegion!.center.dy - 55,
-        left: details.globalSelectedRegion!.bottomLeft.dx,
-        child: ElevatedButton(
-          onPressed: () {
-            Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
-            dialogManager.showSuccessSnackBar("Kopyalandı");
-            pdfViewerController.clearSelection();
-            overlayEntry?.remove();
-          },
-          child: const Text("Kopyala"),
-        ),
-      ),
+      builder:
+          (context) => Positioned(
+            top: details.globalSelectedRegion!.center.dy - 55,
+            left: details.globalSelectedRegion!.bottomLeft.dx,
+            child: ElevatedButton(
+              onPressed: () {
+                Clipboard.setData(ClipboardData(text: details.selectedText ?? ""));
+                dialogManager.showSuccessSnackBar("Kopyalandı");
+                pdfViewerController.clearSelection();
+                overlayEntry?.remove();
+              },
+              child: const Text("Kopyala"),
+            ),
+          ),
     );
     if (overlayEntry != null) {
       overlayState.insert(overlayEntry!);
@@ -147,7 +163,13 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
   void fileChecker() {
     if (viewModel.eBelgePdfModel?.fileModel?.byteData != null) {
       XFile? file;
-      if (!kIsWeb) file = XFile.fromData(base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""), mimeType: "application/pdf", name: viewModel.eBelgePdfModel?.fileModel?.dosyaAdi ?? "file");
+      if (!kIsWeb) {
+        file = XFile.fromData(
+          base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""),
+          mimeType: "application/pdf",
+          name: viewModel.eBelgePdfModel?.fileModel?.dosyaAdi ?? "file",
+        );
+      }
       Share.shareXFiles([file!], subject: "Pdf Paylaşımı");
     } else {
       dialogManager.showErrorSnackBar("Dosya bulunamadı. Lütfen tekrar deneyiniz.");
@@ -163,7 +185,12 @@ final class _EBelgePdfViewState extends BaseState<EBelgePdfView> {
           title: "PDF Görüntüle",
           iconWidget: Icons.picture_as_pdf_outlined,
           onTap: () async {
-            if (kIsWeb) return fileDownload(base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""), viewModel.eBelgePdfModel?.fileModel?.dosyaAdi ?? "pdf");
+            if (kIsWeb) {
+              return fileDownload(
+                base64Decode(viewModel.eBelgePdfModel?.fileModel?.byteData ?? ""),
+                viewModel.eBelgePdfModel?.fileModel?.dosyaAdi ?? "pdf",
+              );
+            }
             final file = await viewModel.getFile();
             if (file != null) {
               await OpenFilex.open(file.path);

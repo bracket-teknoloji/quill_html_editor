@@ -9,7 +9,10 @@ part of 'kasa_islemleri_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
-  late final _$kasaIslemleriRequestModelAtom = Atom(name: '_KasaIslemleriViewModelBase.kasaIslemleriRequestModel', context: context);
+  late final _$kasaIslemleriRequestModelAtom = Atom(
+    name: '_KasaIslemleriViewModelBase.kasaIslemleriRequestModel',
+    context: context,
+  );
 
   @override
   KasaIslemleriRequestModel get kasaIslemleriRequestModel {
@@ -24,7 +27,10 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$hesapTipiGroupValueAtom = Atom(name: '_KasaIslemleriViewModelBase.hesapTipiGroupValue', context: context);
+  late final _$hesapTipiGroupValueAtom = Atom(
+    name: '_KasaIslemleriViewModelBase.hesapTipiGroupValue',
+    context: context,
+  );
 
   @override
   String? get hesapTipiGroupValue {
@@ -99,7 +105,10 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     });
   }
 
-  late final _$kasaIslemleriListesiAtom = Atom(name: '_KasaIslemleriViewModelBase.kasaIslemleriListesi', context: context);
+  late final _$kasaIslemleriListesiAtom = Atom(
+    name: '_KasaIslemleriViewModelBase.kasaIslemleriListesi',
+    context: context,
+  );
 
   @override
   ObservableList<KasaIslemleriModel>? get kasaIslemleriListesi {
@@ -143,11 +152,16 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
-  late final _$_KasaIslemleriViewModelBaseActionController = ActionController(name: '_KasaIslemleriViewModelBase', context: context);
+  late final _$_KasaIslemleriViewModelBaseActionController = ActionController(
+    name: '_KasaIslemleriViewModelBase',
+    context: context,
+  );
 
   @override
   void setDahaVarMi(bool value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setDahaVarMi');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setDahaVarMi',
+    );
     try {
       return super.setDahaVarMi(value);
     } finally {
@@ -157,7 +171,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setIsScrollDown(bool value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setIsScrollDown');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setIsScrollDown',
+    );
     try {
       return super.setIsScrollDown(value);
     } finally {
@@ -167,7 +183,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void changeSearchBar() {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.changeSearchBar');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.changeSearchBar',
+    );
     try {
       return super.changeSearchBar();
     } finally {
@@ -177,7 +195,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setSearchText(String? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setSearchText');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setSearchText',
+    );
     try {
       return super.setSearchText(value);
     } finally {
@@ -187,7 +207,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void incrementSayfa() {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.incrementSayfa');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.incrementSayfa',
+    );
     try {
       return super.incrementSayfa();
     } finally {
@@ -197,7 +219,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void resetSayfa() {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.resetSayfa');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.resetSayfa',
+    );
     try {
       return super.resetSayfa();
     } finally {
@@ -207,7 +231,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setBaslamaTarihi(String? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setBaslamaTarihi');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setBaslamaTarihi',
+    );
     try {
       return super.setBaslamaTarihi(value);
     } finally {
@@ -217,7 +243,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setBitisTarihi(String? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setBitisTarihi');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setBitisTarihi',
+    );
     try {
       return super.setBitisTarihi(value);
     } finally {
@@ -227,7 +255,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setKasaIslemleriListesi(List<KasaIslemleriModel>? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setKasaIslemleriListesi');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setKasaIslemleriListesi',
+    );
     try {
       return super.setKasaIslemleriListesi(value);
     } finally {
@@ -237,7 +267,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void addKasaIslemleriListesi(List<KasaIslemleriModel>? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.addKasaIslemleriListesi');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.addKasaIslemleriListesi',
+    );
     try {
       return super.addKasaIslemleriListesi(value);
     } finally {
@@ -247,7 +279,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setHesapTipi(String? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setHesapTipi');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setHesapTipi',
+    );
     try {
       return super.setHesapTipi(value);
     } finally {
@@ -257,7 +291,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setKasaKodu(KasaList? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setKasaKodu');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setKasaKodu',
+    );
     try {
       return super.setKasaKodu(value);
     } finally {
@@ -267,7 +303,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setCariKodu(CariListesiModel? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setCariKodu');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -277,7 +315,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void setPlasiyerKodu(PlasiyerList? value) {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.setPlasiyerKodu');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.setPlasiyerKodu',
+    );
     try {
       return super.setPlasiyerKodu(value);
     } finally {
@@ -287,7 +327,9 @@ mixin _$KasaIslemleriViewModel on _KasaIslemleriViewModelBase, Store {
 
   @override
   void clearFilters() {
-    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(name: '_KasaIslemleriViewModelBase.clearFilters');
+    final _$actionInfo = _$_KasaIslemleriViewModelBaseActionController.startAction(
+      name: '_KasaIslemleriViewModelBase.clearFilters',
+    );
     try {
       return super.clearFilters();
     } finally {

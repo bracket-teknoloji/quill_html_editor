@@ -12,7 +12,8 @@ part of 'e_irsaliye_bilgi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EIrsaliyeBilgiModel _$EIrsaliyeBilgiModelFromJson(Map<String, dynamic> json) {
   return _EIrsaliyeBilgiModel.fromJson(json);
@@ -99,41 +100,40 @@ mixin _$EIrsaliyeBilgiModel {
   /// Create a copy of EIrsaliyeBilgiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EIrsaliyeBilgiModelCopyWith<EIrsaliyeBilgiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EIrsaliyeBilgiModelCopyWith<EIrsaliyeBilgiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EIrsaliyeBilgiModelCopyWith<$Res> {
-  factory $EIrsaliyeBilgiModelCopyWith(
-          EIrsaliyeBilgiModel value, $Res Function(EIrsaliyeBilgiModel) then) =
+  factory $EIrsaliyeBilgiModelCopyWith(EIrsaliyeBilgiModel value, $Res Function(EIrsaliyeBilgiModel) then) =
       _$EIrsaliyeBilgiModelCopyWithImpl<$Res, EIrsaliyeBilgiModel>;
   @useResult
-  $Res call(
-      {String? dorsePlaka1,
-      String? dorsePlaka2,
-      String? dorsePlaka3,
-      String? plaka,
-      DateTime? sevktar,
-      @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
-      @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
-      @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
-      @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
-      @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
-      @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
-      @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
-      @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
-      @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
-      @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
-      @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
-      @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
-      String? tasiyiciIl,
-      String? tasiyiciIlce,
-      String? tasiyiciPostakodu,
-      String? tasiyiciUlke,
-      String? tasiyiciUnvan,
-      String? tasiyiciVkn,
-      String? sablonKodu});
+  $Res call({
+    String? dorsePlaka1,
+    String? dorsePlaka2,
+    String? dorsePlaka3,
+    String? plaka,
+    DateTime? sevktar,
+    @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
+    @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
+    @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
+    @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
+    @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
+    @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
+    @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
+    @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
+    @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
+    @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
+    @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
+    @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
+    String? tasiyiciIl,
+    String? tasiyiciIlce,
+    String? tasiyiciPostakodu,
+    String? tasiyiciUlke,
+    String? tasiyiciUnvan,
+    String? tasiyiciVkn,
+    String? sablonKodu,
+  });
 }
 
 /// @nodoc
@@ -176,149 +176,178 @@ class _$EIrsaliyeBilgiModelCopyWithImpl<$Res, $Val extends EIrsaliyeBilgiModel>
     Object? tasiyiciVkn = freezed,
     Object? sablonKodu = freezed,
   }) {
-    return _then(_value.copyWith(
-      dorsePlaka1: freezed == dorsePlaka1
-          ? _value.dorsePlaka1
-          : dorsePlaka1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dorsePlaka2: freezed == dorsePlaka2
-          ? _value.dorsePlaka2
-          : dorsePlaka2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dorsePlaka3: freezed == dorsePlaka3
-          ? _value.dorsePlaka3
-          : dorsePlaka3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plaka: freezed == plaka
-          ? _value.plaka
-          : plaka // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sevktar: freezed == sevktar
-          ? _value.sevktar
-          : sevktar // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sofor1Aciklama: freezed == sofor1Aciklama
-          ? _value.sofor1Aciklama
-          : sofor1Aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor1Adi: freezed == sofor1Adi
-          ? _value.sofor1Adi
-          : sofor1Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor1KimlikNo: freezed == sofor1KimlikNo
-          ? _value.sofor1KimlikNo
-          : sofor1KimlikNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor1Soyadi: freezed == sofor1Soyadi
-          ? _value.sofor1Soyadi
-          : sofor1Soyadi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor2Aciklama: freezed == sofor2Aciklama
-          ? _value.sofor2Aciklama
-          : sofor2Aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor2Adi: freezed == sofor2Adi
-          ? _value.sofor2Adi
-          : sofor2Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor2KimlikNo: freezed == sofor2KimlikNo
-          ? _value.sofor2KimlikNo
-          : sofor2KimlikNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor2Soyadi: freezed == sofor2Soyadi
-          ? _value.sofor2Soyadi
-          : sofor2Soyadi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor3Aciklama: freezed == sofor3Aciklama
-          ? _value.sofor3Aciklama
-          : sofor3Aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor3Adi: freezed == sofor3Adi
-          ? _value.sofor3Adi
-          : sofor3Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor3KimlikNo: freezed == sofor3KimlikNo
-          ? _value.sofor3KimlikNo
-          : sofor3KimlikNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor3Soyadi: freezed == sofor3Soyadi
-          ? _value.sofor3Soyadi
-          : sofor3Soyadi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciIl: freezed == tasiyiciIl
-          ? _value.tasiyiciIl
-          : tasiyiciIl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciIlce: freezed == tasiyiciIlce
-          ? _value.tasiyiciIlce
-          : tasiyiciIlce // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciPostakodu: freezed == tasiyiciPostakodu
-          ? _value.tasiyiciPostakodu
-          : tasiyiciPostakodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciUlke: freezed == tasiyiciUlke
-          ? _value.tasiyiciUlke
-          : tasiyiciUlke // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciUnvan: freezed == tasiyiciUnvan
-          ? _value.tasiyiciUnvan
-          : tasiyiciUnvan // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciVkn: freezed == tasiyiciVkn
-          ? _value.tasiyiciVkn
-          : tasiyiciVkn // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sablonKodu: freezed == sablonKodu
-          ? _value.sablonKodu
-          : sablonKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            dorsePlaka1:
+                freezed == dorsePlaka1
+                    ? _value.dorsePlaka1
+                    : dorsePlaka1 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            dorsePlaka2:
+                freezed == dorsePlaka2
+                    ? _value.dorsePlaka2
+                    : dorsePlaka2 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            dorsePlaka3:
+                freezed == dorsePlaka3
+                    ? _value.dorsePlaka3
+                    : dorsePlaka3 // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            plaka:
+                freezed == plaka
+                    ? _value.plaka
+                    : plaka // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sevktar:
+                freezed == sevktar
+                    ? _value.sevktar
+                    : sevktar // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            sofor1Aciklama:
+                freezed == sofor1Aciklama
+                    ? _value.sofor1Aciklama
+                    : sofor1Aciklama // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor1Adi:
+                freezed == sofor1Adi
+                    ? _value.sofor1Adi
+                    : sofor1Adi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor1KimlikNo:
+                freezed == sofor1KimlikNo
+                    ? _value.sofor1KimlikNo
+                    : sofor1KimlikNo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor1Soyadi:
+                freezed == sofor1Soyadi
+                    ? _value.sofor1Soyadi
+                    : sofor1Soyadi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor2Aciklama:
+                freezed == sofor2Aciklama
+                    ? _value.sofor2Aciklama
+                    : sofor2Aciklama // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor2Adi:
+                freezed == sofor2Adi
+                    ? _value.sofor2Adi
+                    : sofor2Adi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor2KimlikNo:
+                freezed == sofor2KimlikNo
+                    ? _value.sofor2KimlikNo
+                    : sofor2KimlikNo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor2Soyadi:
+                freezed == sofor2Soyadi
+                    ? _value.sofor2Soyadi
+                    : sofor2Soyadi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor3Aciklama:
+                freezed == sofor3Aciklama
+                    ? _value.sofor3Aciklama
+                    : sofor3Aciklama // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor3Adi:
+                freezed == sofor3Adi
+                    ? _value.sofor3Adi
+                    : sofor3Adi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor3KimlikNo:
+                freezed == sofor3KimlikNo
+                    ? _value.sofor3KimlikNo
+                    : sofor3KimlikNo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sofor3Soyadi:
+                freezed == sofor3Soyadi
+                    ? _value.sofor3Soyadi
+                    : sofor3Soyadi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tasiyiciIl:
+                freezed == tasiyiciIl
+                    ? _value.tasiyiciIl
+                    : tasiyiciIl // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tasiyiciIlce:
+                freezed == tasiyiciIlce
+                    ? _value.tasiyiciIlce
+                    : tasiyiciIlce // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tasiyiciPostakodu:
+                freezed == tasiyiciPostakodu
+                    ? _value.tasiyiciPostakodu
+                    : tasiyiciPostakodu // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tasiyiciUlke:
+                freezed == tasiyiciUlke
+                    ? _value.tasiyiciUlke
+                    : tasiyiciUlke // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tasiyiciUnvan:
+                freezed == tasiyiciUnvan
+                    ? _value.tasiyiciUnvan
+                    : tasiyiciUnvan // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tasiyiciVkn:
+                freezed == tasiyiciVkn
+                    ? _value.tasiyiciVkn
+                    : tasiyiciVkn // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            sablonKodu:
+                freezed == sablonKodu
+                    ? _value.sablonKodu
+                    : sablonKodu // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$EIrsaliyeBilgiModelImplCopyWith<$Res>
-    implements $EIrsaliyeBilgiModelCopyWith<$Res> {
-  factory _$$EIrsaliyeBilgiModelImplCopyWith(_$EIrsaliyeBilgiModelImpl value,
-          $Res Function(_$EIrsaliyeBilgiModelImpl) then) =
-      __$$EIrsaliyeBilgiModelImplCopyWithImpl<$Res>;
+abstract class _$$EIrsaliyeBilgiModelImplCopyWith<$Res> implements $EIrsaliyeBilgiModelCopyWith<$Res> {
+  factory _$$EIrsaliyeBilgiModelImplCopyWith(
+    _$EIrsaliyeBilgiModelImpl value,
+    $Res Function(_$EIrsaliyeBilgiModelImpl) then,
+  ) = __$$EIrsaliyeBilgiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? dorsePlaka1,
-      String? dorsePlaka2,
-      String? dorsePlaka3,
-      String? plaka,
-      DateTime? sevktar,
-      @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
-      @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
-      @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
-      @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
-      @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
-      @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
-      @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
-      @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
-      @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
-      @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
-      @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
-      @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
-      String? tasiyiciIl,
-      String? tasiyiciIlce,
-      String? tasiyiciPostakodu,
-      String? tasiyiciUlke,
-      String? tasiyiciUnvan,
-      String? tasiyiciVkn,
-      String? sablonKodu});
+  $Res call({
+    String? dorsePlaka1,
+    String? dorsePlaka2,
+    String? dorsePlaka3,
+    String? plaka,
+    DateTime? sevktar,
+    @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
+    @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
+    @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
+    @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
+    @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
+    @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
+    @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
+    @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
+    @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
+    @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
+    @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
+    @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
+    String? tasiyiciIl,
+    String? tasiyiciIlce,
+    String? tasiyiciPostakodu,
+    String? tasiyiciUlke,
+    String? tasiyiciUnvan,
+    String? tasiyiciVkn,
+    String? sablonKodu,
+  });
 }
 
 /// @nodoc
 class __$$EIrsaliyeBilgiModelImplCopyWithImpl<$Res>
     extends _$EIrsaliyeBilgiModelCopyWithImpl<$Res, _$EIrsaliyeBilgiModelImpl>
     implements _$$EIrsaliyeBilgiModelImplCopyWith<$Res> {
-  __$$EIrsaliyeBilgiModelImplCopyWithImpl(_$EIrsaliyeBilgiModelImpl _value,
-      $Res Function(_$EIrsaliyeBilgiModelImpl) _then)
-      : super(_value, _then);
+  __$$EIrsaliyeBilgiModelImplCopyWithImpl(
+    _$EIrsaliyeBilgiModelImpl _value,
+    $Res Function(_$EIrsaliyeBilgiModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EIrsaliyeBilgiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -350,139 +379,164 @@ class __$$EIrsaliyeBilgiModelImplCopyWithImpl<$Res>
     Object? tasiyiciVkn = freezed,
     Object? sablonKodu = freezed,
   }) {
-    return _then(_$EIrsaliyeBilgiModelImpl(
-      dorsePlaka1: freezed == dorsePlaka1
-          ? _value.dorsePlaka1
-          : dorsePlaka1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dorsePlaka2: freezed == dorsePlaka2
-          ? _value.dorsePlaka2
-          : dorsePlaka2 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dorsePlaka3: freezed == dorsePlaka3
-          ? _value.dorsePlaka3
-          : dorsePlaka3 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plaka: freezed == plaka
-          ? _value.plaka
-          : plaka // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sevktar: freezed == sevktar
-          ? _value.sevktar
-          : sevktar // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      sofor1Aciklama: freezed == sofor1Aciklama
-          ? _value.sofor1Aciklama
-          : sofor1Aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor1Adi: freezed == sofor1Adi
-          ? _value.sofor1Adi
-          : sofor1Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor1KimlikNo: freezed == sofor1KimlikNo
-          ? _value.sofor1KimlikNo
-          : sofor1KimlikNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor1Soyadi: freezed == sofor1Soyadi
-          ? _value.sofor1Soyadi
-          : sofor1Soyadi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor2Aciklama: freezed == sofor2Aciklama
-          ? _value.sofor2Aciklama
-          : sofor2Aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor2Adi: freezed == sofor2Adi
-          ? _value.sofor2Adi
-          : sofor2Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor2KimlikNo: freezed == sofor2KimlikNo
-          ? _value.sofor2KimlikNo
-          : sofor2KimlikNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor2Soyadi: freezed == sofor2Soyadi
-          ? _value.sofor2Soyadi
-          : sofor2Soyadi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor3Aciklama: freezed == sofor3Aciklama
-          ? _value.sofor3Aciklama
-          : sofor3Aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor3Adi: freezed == sofor3Adi
-          ? _value.sofor3Adi
-          : sofor3Adi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor3KimlikNo: freezed == sofor3KimlikNo
-          ? _value.sofor3KimlikNo
-          : sofor3KimlikNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sofor3Soyadi: freezed == sofor3Soyadi
-          ? _value.sofor3Soyadi
-          : sofor3Soyadi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciIl: freezed == tasiyiciIl
-          ? _value.tasiyiciIl
-          : tasiyiciIl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciIlce: freezed == tasiyiciIlce
-          ? _value.tasiyiciIlce
-          : tasiyiciIlce // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciPostakodu: freezed == tasiyiciPostakodu
-          ? _value.tasiyiciPostakodu
-          : tasiyiciPostakodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciUlke: freezed == tasiyiciUlke
-          ? _value.tasiyiciUlke
-          : tasiyiciUlke // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciUnvan: freezed == tasiyiciUnvan
-          ? _value.tasiyiciUnvan
-          : tasiyiciUnvan // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tasiyiciVkn: freezed == tasiyiciVkn
-          ? _value.tasiyiciVkn
-          : tasiyiciVkn // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sablonKodu: freezed == sablonKodu
-          ? _value.sablonKodu
-          : sablonKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$EIrsaliyeBilgiModelImpl(
+        dorsePlaka1:
+            freezed == dorsePlaka1
+                ? _value.dorsePlaka1
+                : dorsePlaka1 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        dorsePlaka2:
+            freezed == dorsePlaka2
+                ? _value.dorsePlaka2
+                : dorsePlaka2 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        dorsePlaka3:
+            freezed == dorsePlaka3
+                ? _value.dorsePlaka3
+                : dorsePlaka3 // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        plaka:
+            freezed == plaka
+                ? _value.plaka
+                : plaka // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sevktar:
+            freezed == sevktar
+                ? _value.sevktar
+                : sevktar // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        sofor1Aciklama:
+            freezed == sofor1Aciklama
+                ? _value.sofor1Aciklama
+                : sofor1Aciklama // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor1Adi:
+            freezed == sofor1Adi
+                ? _value.sofor1Adi
+                : sofor1Adi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor1KimlikNo:
+            freezed == sofor1KimlikNo
+                ? _value.sofor1KimlikNo
+                : sofor1KimlikNo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor1Soyadi:
+            freezed == sofor1Soyadi
+                ? _value.sofor1Soyadi
+                : sofor1Soyadi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor2Aciklama:
+            freezed == sofor2Aciklama
+                ? _value.sofor2Aciklama
+                : sofor2Aciklama // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor2Adi:
+            freezed == sofor2Adi
+                ? _value.sofor2Adi
+                : sofor2Adi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor2KimlikNo:
+            freezed == sofor2KimlikNo
+                ? _value.sofor2KimlikNo
+                : sofor2KimlikNo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor2Soyadi:
+            freezed == sofor2Soyadi
+                ? _value.sofor2Soyadi
+                : sofor2Soyadi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor3Aciklama:
+            freezed == sofor3Aciklama
+                ? _value.sofor3Aciklama
+                : sofor3Aciklama // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor3Adi:
+            freezed == sofor3Adi
+                ? _value.sofor3Adi
+                : sofor3Adi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor3KimlikNo:
+            freezed == sofor3KimlikNo
+                ? _value.sofor3KimlikNo
+                : sofor3KimlikNo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sofor3Soyadi:
+            freezed == sofor3Soyadi
+                ? _value.sofor3Soyadi
+                : sofor3Soyadi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tasiyiciIl:
+            freezed == tasiyiciIl
+                ? _value.tasiyiciIl
+                : tasiyiciIl // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tasiyiciIlce:
+            freezed == tasiyiciIlce
+                ? _value.tasiyiciIlce
+                : tasiyiciIlce // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tasiyiciPostakodu:
+            freezed == tasiyiciPostakodu
+                ? _value.tasiyiciPostakodu
+                : tasiyiciPostakodu // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tasiyiciUlke:
+            freezed == tasiyiciUlke
+                ? _value.tasiyiciUlke
+                : tasiyiciUlke // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tasiyiciUnvan:
+            freezed == tasiyiciUnvan
+                ? _value.tasiyiciUnvan
+                : tasiyiciUnvan // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tasiyiciVkn:
+            freezed == tasiyiciVkn
+                ? _value.tasiyiciVkn
+                : tasiyiciVkn // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        sablonKodu:
+            freezed == sablonKodu
+                ? _value.sablonKodu
+                : sablonKodu // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EIrsaliyeBilgiModelImpl extends _EIrsaliyeBilgiModel {
-  _$EIrsaliyeBilgiModelImpl(
-      {this.dorsePlaka1,
-      this.dorsePlaka2,
-      this.dorsePlaka3,
-      this.plaka,
-      this.sevktar,
-      @JsonKey(name: "SOFOR_1_ACIKLAMA") this.sofor1Aciklama,
-      @JsonKey(name: "SOFOR_1_ADI") this.sofor1Adi,
-      @JsonKey(name: "SOFOR_1_KIMLIK_NO") this.sofor1KimlikNo,
-      @JsonKey(name: "SOFOR_1_SOYADI") this.sofor1Soyadi,
-      @JsonKey(name: "SOFOR_2_ACIKLAMA") this.sofor2Aciklama,
-      @JsonKey(name: "SOFOR_2_ADI") this.sofor2Adi,
-      @JsonKey(name: "SOFOR_2_KIMLIK_NO") this.sofor2KimlikNo,
-      @JsonKey(name: "SOFOR_2_SOYADI") this.sofor2Soyadi,
-      @JsonKey(name: "SOFOR_3_ACIKLAMA") this.sofor3Aciklama,
-      @JsonKey(name: "SOFOR_3_ADI") this.sofor3Adi,
-      @JsonKey(name: "SOFOR_3_KIMLIK_NO") this.sofor3KimlikNo,
-      @JsonKey(name: "SOFOR_3_SOYADI") this.sofor3Soyadi,
-      this.tasiyiciIl,
-      this.tasiyiciIlce,
-      this.tasiyiciPostakodu,
-      this.tasiyiciUlke,
-      this.tasiyiciUnvan,
-      this.tasiyiciVkn,
-      this.sablonKodu})
-      : super._();
+  _$EIrsaliyeBilgiModelImpl({
+    this.dorsePlaka1,
+    this.dorsePlaka2,
+    this.dorsePlaka3,
+    this.plaka,
+    this.sevktar,
+    @JsonKey(name: "SOFOR_1_ACIKLAMA") this.sofor1Aciklama,
+    @JsonKey(name: "SOFOR_1_ADI") this.sofor1Adi,
+    @JsonKey(name: "SOFOR_1_KIMLIK_NO") this.sofor1KimlikNo,
+    @JsonKey(name: "SOFOR_1_SOYADI") this.sofor1Soyadi,
+    @JsonKey(name: "SOFOR_2_ACIKLAMA") this.sofor2Aciklama,
+    @JsonKey(name: "SOFOR_2_ADI") this.sofor2Adi,
+    @JsonKey(name: "SOFOR_2_KIMLIK_NO") this.sofor2KimlikNo,
+    @JsonKey(name: "SOFOR_2_SOYADI") this.sofor2Soyadi,
+    @JsonKey(name: "SOFOR_3_ACIKLAMA") this.sofor3Aciklama,
+    @JsonKey(name: "SOFOR_3_ADI") this.sofor3Adi,
+    @JsonKey(name: "SOFOR_3_KIMLIK_NO") this.sofor3KimlikNo,
+    @JsonKey(name: "SOFOR_3_SOYADI") this.sofor3Soyadi,
+    this.tasiyiciIl,
+    this.tasiyiciIlce,
+    this.tasiyiciPostakodu,
+    this.tasiyiciUlke,
+    this.tasiyiciUnvan,
+    this.tasiyiciVkn,
+    this.sablonKodu,
+  }) : super._();
 
-  factory _$EIrsaliyeBilgiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EIrsaliyeBilgiModelImplFromJson(json);
+  factory _$EIrsaliyeBilgiModelImpl.fromJson(Map<String, dynamic> json) => _$$EIrsaliyeBilgiModelImplFromJson(json);
 
   @override
   String? dorsePlaka1;
@@ -551,47 +605,44 @@ class _$EIrsaliyeBilgiModelImpl extends _EIrsaliyeBilgiModel {
   @override
   @pragma('vm:prefer-inline')
   _$$EIrsaliyeBilgiModelImplCopyWith<_$EIrsaliyeBilgiModelImpl> get copyWith =>
-      __$$EIrsaliyeBilgiModelImplCopyWithImpl<_$EIrsaliyeBilgiModelImpl>(
-          this, _$identity);
+      __$$EIrsaliyeBilgiModelImplCopyWithImpl<_$EIrsaliyeBilgiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EIrsaliyeBilgiModelImplToJson(
-      this,
-    );
+    return _$$EIrsaliyeBilgiModelImplToJson(this);
   }
 }
 
 abstract class _EIrsaliyeBilgiModel extends EIrsaliyeBilgiModel {
-  factory _EIrsaliyeBilgiModel(
-      {String? dorsePlaka1,
-      String? dorsePlaka2,
-      String? dorsePlaka3,
-      String? plaka,
-      DateTime? sevktar,
-      @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
-      @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
-      @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
-      @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
-      @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
-      @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
-      @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
-      @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
-      @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
-      @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
-      @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
-      @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
-      String? tasiyiciIl,
-      String? tasiyiciIlce,
-      String? tasiyiciPostakodu,
-      String? tasiyiciUlke,
-      String? tasiyiciUnvan,
-      String? tasiyiciVkn,
-      String? sablonKodu}) = _$EIrsaliyeBilgiModelImpl;
+  factory _EIrsaliyeBilgiModel({
+    String? dorsePlaka1,
+    String? dorsePlaka2,
+    String? dorsePlaka3,
+    String? plaka,
+    DateTime? sevktar,
+    @JsonKey(name: "SOFOR_1_ACIKLAMA") String? sofor1Aciklama,
+    @JsonKey(name: "SOFOR_1_ADI") String? sofor1Adi,
+    @JsonKey(name: "SOFOR_1_KIMLIK_NO") String? sofor1KimlikNo,
+    @JsonKey(name: "SOFOR_1_SOYADI") String? sofor1Soyadi,
+    @JsonKey(name: "SOFOR_2_ACIKLAMA") String? sofor2Aciklama,
+    @JsonKey(name: "SOFOR_2_ADI") String? sofor2Adi,
+    @JsonKey(name: "SOFOR_2_KIMLIK_NO") String? sofor2KimlikNo,
+    @JsonKey(name: "SOFOR_2_SOYADI") String? sofor2Soyadi,
+    @JsonKey(name: "SOFOR_3_ACIKLAMA") String? sofor3Aciklama,
+    @JsonKey(name: "SOFOR_3_ADI") String? sofor3Adi,
+    @JsonKey(name: "SOFOR_3_KIMLIK_NO") String? sofor3KimlikNo,
+    @JsonKey(name: "SOFOR_3_SOYADI") String? sofor3Soyadi,
+    String? tasiyiciIl,
+    String? tasiyiciIlce,
+    String? tasiyiciPostakodu,
+    String? tasiyiciUlke,
+    String? tasiyiciUnvan,
+    String? tasiyiciVkn,
+    String? sablonKodu,
+  }) = _$EIrsaliyeBilgiModelImpl;
   _EIrsaliyeBilgiModel._() : super._();
 
-  factory _EIrsaliyeBilgiModel.fromJson(Map<String, dynamic> json) =
-      _$EIrsaliyeBilgiModelImpl.fromJson;
+  factory _EIrsaliyeBilgiModel.fromJson(Map<String, dynamic> json) = _$EIrsaliyeBilgiModelImpl.fromJson;
 
   @override
   String? get dorsePlaka1;
@@ -694,6 +745,5 @@ abstract class _EIrsaliyeBilgiModel extends EIrsaliyeBilgiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EIrsaliyeBilgiModelImplCopyWith<_$EIrsaliyeBilgiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EIrsaliyeBilgiModelImplCopyWith<_$EIrsaliyeBilgiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -27,12 +27,7 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
     "Tümü": null,
   };
 
-  final Map<String, String?> durumuMap = {
-    "Beklemede": "B",
-    "Ödendi": "O",
-    "Karşılıksız": "P",
-    "Tümü": null,
-  };
+  final Map<String, String?> durumuMap = {"Beklemede": "B", "Ödendi": "O", "Karşılıksız": "P", "Tümü": null};
 
   final Map<String, String?> donemTipiMap = {
     "Tümü": null,
@@ -58,7 +53,12 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<CekSenetListesiModel>? cekSenetListesiListesi;
 
   @observable
-  CekSenetListesiRequestModel cekSenetListesiRequestModel = CekSenetListesiRequestModel(ekranTipi: "L", sirala: "BELGE_NO_ZA", durum: "B", yer: "P");
+  CekSenetListesiRequestModel cekSenetListesiRequestModel = CekSenetListesiRequestModel(
+    ekranTipi: "L",
+    sirala: "BELGE_NO_ZA",
+    durum: "B",
+    yer: "P",
+  );
 
   @computed
   double get toplamTutar => cekSenetListesiListesi?.map((element) => element.tutar ?? 0).sum ?? 0;
@@ -70,13 +70,16 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   void setIsScrolledDown(bool value) => isScrollDown = value;
 
   @action
-  void setSearchText(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(searchText: value);
+  void setSearchText(String? value) =>
+      cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(searchText: value);
 
   @action
-  void setBaslangicTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(baslangicTarihi: value);
+  void setBaslangicTarihi(String? value) =>
+      cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(baslangicTarihi: value);
 
   @action
-  void setBitisTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(bitisTarihi: value);
+  void setBitisTarihi(String? value) =>
+      cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(bitisTarihi: value);
 
   @action
   void setYeri(String? value) {
@@ -87,16 +90,23 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setVerenCari(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verenKodu: value);
+  void setVerenCari(String? value) =>
+      cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verenKodu: value);
 
   @action
-  void setVerilenCari(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verilenKodu: value);
+  void setVerilenCari(String? value) =>
+      cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verilenKodu: value);
 
   @action
-  void setBanka(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verilenKodu: value);
+  void setBanka(String? value) =>
+      cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(verilenKodu: value);
 
   @action
-  void setVadeTarihi(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(donemTipi: value, tarihTipi: value != null ? "V" : null);
+  void setVadeTarihi(String? value) =>
+      cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(
+        donemTipi: value,
+        tarihTipi: value != null ? "V" : null,
+      );
 
   @action
   void setDurumu(String? value) => cekSenetListesiRequestModel = cekSenetListesiRequestModel.copyWith(durum: value);
@@ -113,7 +123,11 @@ abstract class _CekSenetListesiViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     setCekSenetListesiListesi(null);
-    final result = await networkManager.dioGet<CekSenetListesiModel>(path: ApiUrls.getCekSenetler, bodyModel: CekSenetListesiModel(), queryParameters: cekSenetListesiRequestModel.toJson());
+    final result = await networkManager.dioGet<CekSenetListesiModel>(
+      path: ApiUrls.getCekSenetler,
+      bodyModel: CekSenetListesiModel(),
+      queryParameters: cekSenetListesiRequestModel.toJson(),
+    );
     if (result.isSuccess) {
       setCekSenetListesiListesi(result.dataList);
     }

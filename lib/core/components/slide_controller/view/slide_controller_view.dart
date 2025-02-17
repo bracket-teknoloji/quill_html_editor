@@ -15,7 +15,10 @@ final class SlideControllerWidget<T> extends StatefulWidget {
     super.key,
     this.title,
     this.scroll = true,
-  }) : assert(childrenTitleList.length == childrenValueList.length, "childrenTitleList and childrenValueList length must be equal");
+  }) : assert(
+         childrenTitleList.length == childrenValueList.length,
+         "childrenTitleList and childrenValueList length must be equal",
+       );
   final String? title;
   final List<String> childrenTitleList;
   final List<T> childrenValueList;
@@ -35,7 +38,11 @@ final class _SlideControllerWidgetState extends BaseState<SlideControllerWidget>
     scrollController = ScrollController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.scroll ?? false) {
-        await scrollController.animateTo(scrollController.position.extentTotal < 30 ? scrollController.position.extentTotal : 30, duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+        await scrollController.animateTo(
+          scrollController.position.extentTotal < 30 ? scrollController.position.extentTotal : 30,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeIn,
+        );
         await scrollController.animateTo(0, duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
       }
     });
@@ -50,27 +57,33 @@ final class _SlideControllerWidgetState extends BaseState<SlideControllerWidget>
 
   @override
   Widget build(BuildContext context) => CustomWidgetWithLabel(
-        text: widget.title,
-        addPadding: false,
-        child: SizedBox(
-          height: UIHelper.midSize * 3,
-          width: double.infinity,
-          child: ListView.builder(
-            controller: scrollController,
-            scrollDirection: Axis.horizontal,
-            // itemExtent: scrollController.hasClients && scrollController.position.extentTotal < width ? scrollController.position.extentTotal / widget.childrenTitleList.length : null,
-            itemCount: widget.childrenTitleList.length,
-            itemBuilder: (context, listTileIndex) => RadioMenuButton(
+    text: widget.title,
+    addPadding: false,
+    child: SizedBox(
+      height: UIHelper.midSize * 3,
+      width: double.infinity,
+      child: ListView.builder(
+        controller: scrollController,
+        scrollDirection: Axis.horizontal,
+        // itemExtent: scrollController.hasClients && scrollController.position.extentTotal < width ? scrollController.position.extentTotal / widget.childrenTitleList.length : null,
+        itemCount: widget.childrenTitleList.length,
+        itemBuilder:
+            (context, listTileIndex) => RadioMenuButton(
               style: ButtonStyle(
                 // padding: MaterialStateProperty.all(EdgeInsets.zero),
-                shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius, side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)))),
+                shape: WidgetStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: UIHelper.midBorderRadius,
+                    side: BorderSide(color: theme.colorScheme.primary.withValues(alpha: 0.2)),
+                  ),
+                ),
               ),
               value: widget.childrenValueList[listTileIndex],
               groupValue: widget.groupValue,
               onChanged: (index) => widget.filterOnChanged(listTileIndex),
               child: Text(widget.childrenTitleList[listTileIndex]),
             ).paddingOnly(right: UIHelper.lowSize),
-          ),
-        ),
-      ).paddingAll(UIHelper.lowSize);
+      ),
+    ),
+  ).paddingAll(UIHelper.lowSize);
 }

@@ -48,7 +48,8 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
   @override
   void initState() {
     viewModel = DekontKalemEkleViewModel(
-      model: widget.model ??
+      model:
+          widget.model ??
           DekontKalemler(
             ba: "B",
             hesapTipi: "C",
@@ -62,113 +63,126 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
     _belgeNoController = TextEditingController(text: viewModel.model.belgeNo ?? "");
     _hesapController = TextEditingController(text: viewModel.model.kalemAdi ?? "");
     _dovizTipiController = TextEditingController(text: viewModel.model.dovizTipiAdi ?? mainCurrency);
-    _dovizKuruController = TextEditingController(text: viewModel.model.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    _dovizTutariController = TextEditingController(text: viewModel.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    _tutarController = TextEditingController(text: viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "");
+    _dovizKuruController = TextEditingController(
+      text: viewModel.model.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+    );
+    _dovizTutariController = TextEditingController(
+      text: viewModel.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+    );
+    _tutarController = TextEditingController(
+      text: viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "",
+    );
     _aciklamaController = TextEditingController(text: viewModel.model.aciklama ?? "");
-    _exportTipiController = TextEditingController(text: viewModel.model.exportTipi != null && viewModel.model.exportTipi != 0 ? viewModel.exportTipiList[(viewModel.model.exportTipi ?? 1) - 1] : "");
+    _exportTipiController = TextEditingController(
+      text:
+          viewModel.model.exportTipi != null && viewModel.model.exportTipi != 0
+              ? viewModel.exportTipiList[(viewModel.model.exportTipi ?? 1) - 1]
+              : "",
+    );
     _exportRefNoController = TextEditingController(text: viewModel.model.exportRefno ?? "");
-    _plasiyerController = TextEditingController(text: viewModel.model.plasiyerAdi ?? SingletonDekontIslemlerRequestModel.instance.plasiyerAdi ?? "");
+    _plasiyerController = TextEditingController(
+      text: viewModel.model.plasiyerAdi ?? SingletonDekontIslemlerRequestModel.instance.plasiyerAdi ?? "",
+    );
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (didPop, value) async {
-          if (didPop) {
-            return;
-          }
-          await dialogManager.showAreYouSureDialog(
-            Get.back,
-            title: "Çıkış Yapmak İstediğinize Emin Misiniz?",
-          );
-        },
-        // onWillPop: () async {
-        //   bool? result;
-        //   await dialogManager.showAreYouSureDialog(
-        //     () async {
-        //       result = true;
-        //     },
-        //     title: "Çıkış Yapmak İstediğinize Emin Misiniz?",
-        //   );
-        //   return result ?? false;
-        // },
-        child: BaseScaffold(
-          appBar: AppBar(
-            title: const AppBarTitle(title: "Dekont Kalem Detayı"),
-            actions: [
-              IconButton(
-                onPressed: () async {
-                  if (_formKey.currentState?.validate() ?? false) {
-                    Get.back(result: viewModel.model);
-                  }
-                },
-                icon: const Icon(Icons.save_outlined),
-              ),
-            ],
+    canPop: false,
+    onPopInvokedWithResult: (didPop, value) async {
+      if (didPop) {
+        return;
+      }
+      await dialogManager.showAreYouSureDialog(Get.back, title: "Çıkış Yapmak İstediğinize Emin Misiniz?");
+    },
+    // onWillPop: () async {
+    //   bool? result;
+    //   await dialogManager.showAreYouSureDialog(
+    //     () async {
+    //       result = true;
+    //     },
+    //     title: "Çıkış Yapmak İstediğinize Emin Misiniz?",
+    //   );
+    //   return result ?? false;
+    // },
+    child: BaseScaffold(
+      appBar: AppBar(
+        title: const AppBarTitle(title: "Dekont Kalem Detayı"),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              if (_formKey.currentState?.validate() ?? false) {
+                Get.back(result: viewModel.model);
+              }
+            },
+            icon: const Icon(Icons.save_outlined),
           ),
-          body: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  LayoutBuilder(
-                    builder: (context, constraints) => Observer(
-                      builder: (_) => ToggleButtons(
-                        constraints: BoxConstraints.expand(width: (constraints.maxWidth - 5) / viewModel.selectedHesapTipi.length),
-                        isSelected: viewModel.selectedHesapTipi,
-                        onPressed: (index) {
-                          if (widget.baseEditEnum != BaseEditEnum.ekle) {
-                            return;
-                          }
-                          if (!viewModel.selectedHesapTipi[index]) {
-                            _hesapController.clear();
-                            viewModel.setHesapKodu(null);
-                          }
-                          viewModel.setHesapTipi(index);
-                          if (!viewModel.model.stokMu) {
-                            viewModel.setDepoKodu(null);
-                            _depoController.clear();
-                          }
-                        },
-                        children: List.generate(
-                          viewModel.hesapTipiMap.values.length,
-                          (index) => Text(viewModel.hesapTipiMap.keys.toList()[index]),
-                        ),
-                      ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              LayoutBuilder(
+                builder:
+                    (context, constraints) => Observer(
+                      builder:
+                          (_) => ToggleButtons(
+                            constraints: BoxConstraints.expand(
+                              width: (constraints.maxWidth - 5) / viewModel.selectedHesapTipi.length,
+                            ),
+                            isSelected: viewModel.selectedHesapTipi,
+                            onPressed: (index) {
+                              if (widget.baseEditEnum != BaseEditEnum.ekle) {
+                                return;
+                              }
+                              if (!viewModel.selectedHesapTipi[index]) {
+                                _hesapController.clear();
+                                viewModel.setHesapKodu(null);
+                              }
+                              viewModel.setHesapTipi(index);
+                              if (!viewModel.model.stokMu) {
+                                viewModel.setDepoKodu(null);
+                                _depoController.clear();
+                              }
+                            },
+                            children: List.generate(
+                              viewModel.hesapTipiMap.values.length,
+                              (index) => Text(viewModel.hesapTipiMap.keys.toList()[index]),
+                            ),
+                          ),
                     ),
-                  ).paddingAll(UIHelper.lowSize),
-                  LayoutBuilder(
-                    builder: (context, constraints) => Observer(
-                      builder: (_) => ToggleButtons(
-                        constraints: BoxConstraints.expand(width: (constraints.maxWidth - 3) / 2),
-                        isSelected: viewModel.selectedBorcTipi,
-                        onPressed: viewModel.setBa,
-                        children: List.generate(
-                          viewModel.borcTipiMap.values.length,
-                          (index) => Text(viewModel.borcTipiMap.keys.toList()[index]),
-                        ),
-                      ),
+              ).paddingAll(UIHelper.lowSize),
+              LayoutBuilder(
+                builder:
+                    (context, constraints) => Observer(
+                      builder:
+                          (_) => ToggleButtons(
+                            constraints: BoxConstraints.expand(width: (constraints.maxWidth - 3) / 2),
+                            isSelected: viewModel.selectedBorcTipi,
+                            onPressed: viewModel.setBa,
+                            children: List.generate(
+                              viewModel.borcTipiMap.values.length,
+                              (index) => Text(viewModel.borcTipiMap.keys.toList()[index]),
+                            ),
+                          ),
                     ),
-                  ).paddingAll(UIHelper.lowSize),
-                  CustomTextField(
-                    labelText: "Belge No",
-                    controller: _belgeNoController,
-                    onChanged: viewModel.setBelgeNo,
-                  ),
-                  CustomTextField(
-                    labelText: "Hesap",
-                    controller: _hesapController,
-                    isMust: true,
-                    suffixMore: true,
-                    readOnly: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
-                    onTap: setHesap,
-                  ),
-                  Observer(
-                    builder: (_) => CustomTextField(
+              ).paddingAll(UIHelper.lowSize),
+              CustomTextField(labelText: "Belge No", controller: _belgeNoController, onChanged: viewModel.setBelgeNo),
+              CustomTextField(
+                labelText: "Hesap",
+                controller: _hesapController,
+                isMust: true,
+                suffixMore: true,
+                readOnly: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.hesapKodu ?? "")),
+                onTap: setHesap,
+              ),
+              Observer(
+                builder:
+                    (_) => CustomTextField(
                       labelText: "Depo",
                       controller: _depoController,
                       isMust: true,
@@ -177,9 +191,10 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.depoKodu.toStringIfNotNull ?? "")),
                       onTap: setDepo,
                     ).yetkiVarMi(viewModel.model.stokMu),
-                  ),
-                  Observer(
-                    builder: (_) => Row(
+              ),
+              Observer(
+                builder:
+                    (_) => Row(
                       children: [
                         Expanded(
                           child: CustomTextField(
@@ -187,7 +202,9 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                             controller: _dovizTipiController,
                             suffixMore: true,
                             readOnly: true,
-                            valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "0")),
+                            valueWidget: Observer(
+                              builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "0"),
+                            ),
                             onTap: setDovizTipi,
                           ),
                         ),
@@ -201,16 +218,21 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                             onChanged: (value) {
                               viewModel
                                 ..setDovizTutari(value.toDoubleWithFormattedString)
-                                ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
-                              _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                ..setTutar(
+                                  (viewModel.model.dovizTutari ?? 0) *
+                                      (_dovizKuruController.text.toDoubleWithFormattedString),
+                                );
+                              _tutarController.text =
+                                  viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             },
                           ),
                         ).yetkiVarMi(viewModel.model.dovizliMi),
                       ],
                     ),
-                  ),
-                  Observer(
-                    builder: (_) => Row(
+              ),
+              Observer(
+                builder:
+                    (_) => Row(
                       children: [
                         Expanded(
                           child: CustomTextField(
@@ -220,8 +242,12 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             onChanged: (value) {
                               if (_dovizKuruController.text != "") {
-                                viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                                _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                viewModel.setDovizTutari(
+                                  (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                                );
+                                _dovizTutariController.text =
+                                    viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+                                    "";
                               } else {
                                 viewModel.setDovizTutari(null);
                                 _dovizTutariController.clear();
@@ -243,8 +269,12 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                             onChanged: (value) {
                               viewModel.setTutar(value.toDoubleWithFormattedString);
                               if (viewModel.model.dovizliMi) {
-                                viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                                _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                viewModel.setDovizTutari(
+                                  (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                                );
+                                _dovizTutariController.text =
+                                    viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+                                    "";
                               } else {
                                 viewModel.setDovizTutari(null);
                                 _dovizTutariController.clear();
@@ -254,52 +284,48 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
                         ),
                       ],
                     ),
+              ),
+              CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Export Tipi",
+                      controller: _exportTipiController,
+                      suffixMore: true,
+                      readOnly: true,
+                      onClear: () {
+                        viewModel.model.exportAdi = null;
+                        viewModel.setExportTipi(null);
+                      },
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.exportTipi.toStringIfNotNull ?? "")),
+                      onTap: setExportTipi,
+                    ),
                   ),
-                  CustomTextField(
-                    labelText: "Açıklama",
-                    controller: _aciklamaController,
-                    onChanged: viewModel.setAciklama,
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Export Ref No",
+                      controller: _exportRefNoController,
+                      onChanged: viewModel.setExportRefNo,
+                    ),
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Export Tipi",
-                          controller: _exportTipiController,
-                          suffixMore: true,
-                          readOnly: true,
-                          onClear: () {
-                            viewModel.model.exportAdi = null;
-                            viewModel.setExportTipi(null);
-                          },
-                          valueWidget: Observer(builder: (_) => Text(viewModel.model.exportTipi.toStringIfNotNull ?? "")),
-                          onTap: setExportTipi,
-                        ),
-                      ),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Export Ref No",
-                          controller: _exportRefNoController,
-                          onChanged: viewModel.setExportRefNo,
-                        ),
-                      ),
-                    ],
-                  ),
-                  CustomTextField(
-                    labelText: "Plasiyer",
-                    controller: _plasiyerController,
-                    isMust: true,
-                    suffixMore: true,
-                    readOnly: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
-                    onTap: setPlasiyer,
-                  ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
                 ],
-              ).paddingAll(UIHelper.lowSize),
-            ),
-          ),
+              ),
+              CustomTextField(
+                labelText: "Plasiyer",
+                controller: _plasiyerController,
+                isMust: true,
+                suffixMore: true,
+                readOnly: true,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
+                onTap: setPlasiyer,
+              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+            ],
+          ).paddingAll(UIHelper.lowSize),
         ),
-      );
+      ),
+    ),
+  );
 
   Future<void> setExportTipi() async {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
@@ -308,7 +334,12 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
       groupValue: viewModel.model.exportTipi,
       children: List.generate(
         viewModel.exportTipiList.length,
-        (index) => BottomSheetModel(title: viewModel.exportTipiList[index], description: (index + 1).toStringIfNotNull, value: index, groupValue: index + 1),
+        (index) => BottomSheetModel(
+          title: viewModel.exportTipiList[index],
+          description: (index + 1).toStringIfNotNull,
+          value: index,
+          groupValue: index + 1,
+        ),
       ),
     );
     if (result != null) {
@@ -335,7 +366,12 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
         hesapKodu = result.cariKodu ?? "";
       }
     } else if (viewModel.model.muhasebeMi) {
-      final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.model.hesapKodu, belgeTipi: MuhasebeBelgeTipiEnum.dekont.value, hesapTipi: "M");
+      final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
+        context,
+        viewModel.model.hesapKodu,
+        belgeTipi: MuhasebeBelgeTipiEnum.dekont.value,
+        hesapTipi: "M",
+      );
       if (result != null) {
         _hesapController.text = result.hesapAdi ?? "";
         hesapKodu = result.hesapKodu ?? "";
@@ -346,7 +382,10 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
       }
     } else if (viewModel.model.bankaMi) {
       // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(context, BankaListesiRequestModel(menuKodu: "YONE_BHRE"), viewModel.model.hesapKodu);
-      final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: BankaListesiRequestModel(menuKodu: "YONE_BHRE"));
+      final result = await Get.toNamed(
+        "/mainPage/bankaListesiOzel",
+        arguments: BankaListesiRequestModel(menuKodu: "YONE_BHRE"),
+      );
       if (result is BankaListesiModel) {
         _hesapController.text = result.hesapAdi ?? "";
         hesapKodu = result.hesapKodu ?? "";
@@ -396,22 +435,26 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
         title: "Döviz Kuru",
         children: [
           BottomSheetModel(
-            title: "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effSatis,
             iconWidget: Icons.calculate_outlined,
           ),
@@ -420,10 +463,15 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
       if (result is double) {
         _dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
         if (_tutarController.text != "") {
-          viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-          _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          viewModel.setDovizTutari(
+            (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+          );
+          _dovizTutariController.text =
+              viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else if (_dovizTutariController.text != "") {
-          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+          viewModel.setTutar(
+            (viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString),
+          );
           _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         }
       }

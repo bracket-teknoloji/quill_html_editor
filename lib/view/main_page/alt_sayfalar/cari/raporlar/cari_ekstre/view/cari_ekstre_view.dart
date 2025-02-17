@@ -54,12 +54,9 @@ final class _CariEkstreViewState extends BaseState<CariEkstreView> {
 
   @override
   Widget build(BuildContext context) => Observer(
-        builder: (_) => PDFViewerView(
-          filterBottomSheet: filterBottomSheet,
-          title: "Cari Ekstre",
-          pdfData: viewModel.pdfModel,
-        ),
-      );
+    builder:
+        (_) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Cari Ekstre", pdfData: viewModel.pdfModel),
+  );
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -108,41 +105,34 @@ final class _CariEkstreViewState extends BaseState<CariEkstreView> {
               final DovizList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
                 title: "Döviz Tipi",
-                children: dovizList!
-                    .map(
-                      (e) => BottomSheetModel(
-                        title: e.isim ?? "",
-                        value: e,
-                      ),
-                    )
-                    .toList(),
+                children: dovizList!.map((e) => BottomSheetModel(title: e.isim ?? "", value: e)).toList(),
               );
               if (result != null) {
                 dovizController!.text = result.isim ?? "";
                 viewModel
-                  ..changeDovizTipi(
-                    result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0,
-                  )
+                  ..changeDovizTipi(result.isim != mainCurrency ? (result.dovizTipi ?? (result.dovizKodu ?? 0)) : 0)
                   ..changeDovizValue((result.dovizKodu ?? -1).toString());
               }
             },
           ),
           Observer(
-            builder: (_) => ElevatedButton(
-              onPressed: () {
-                if (viewModel.pdfModel.dicParams?.cariKodu == null || viewModel.pdfModel.dicParams?.dovizTipi == null) {
-                  dialogManager.showAlertDialog(
-                    "Lütfen tüm alanları doldurunuz",
-                  );
-                } else {
-                  viewModel.pdfModel.dicParams?.bastar = baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
-                  viewModel.pdfModel.dicParams?.bittar = bitisTarihiController.text != "" ? bitisTarihiController.text : null;
-                  viewModel.setFuture();
-                  Get.back();
-                }
-              },
-              child: Text(loc.generalStrings.apply),
-            ).paddingAll(UIHelper.lowSize),
+            builder:
+                (_) => ElevatedButton(
+                  onPressed: () {
+                    if (viewModel.pdfModel.dicParams?.cariKodu == null ||
+                        viewModel.pdfModel.dicParams?.dovizTipi == null) {
+                      dialogManager.showAlertDialog("Lütfen tüm alanları doldurunuz");
+                    } else {
+                      viewModel.pdfModel.dicParams?.bastar =
+                          baslangicTarihiController.text != "" ? baslangicTarihiController.text : null;
+                      viewModel.pdfModel.dicParams?.bittar =
+                          bitisTarihiController.text != "" ? bitisTarihiController.text : null;
+                      viewModel.setFuture();
+                      Get.back();
+                    }
+                  },
+                  child: Text(loc.generalStrings.apply),
+                ).paddingAll(UIHelper.lowSize),
           ),
         ],
       ),

@@ -20,7 +20,13 @@ import "../../../model/uretim_sonu_kaydi_edit_model.dart";
 import "../view_model/uretim_sonu_kaydi_edit_kalemler_view_model.dart";
 
 final class UretimSonuKaydiEditKalemlerView extends StatefulWidget {
-  const UretimSonuKaydiEditKalemlerView({required this.kalemList, required this.model, required this.requestModel, required this.onKalemListChange, super.key});
+  const UretimSonuKaydiEditKalemlerView({
+    required this.kalemList,
+    required this.model,
+    required this.requestModel,
+    required this.onKalemListChange,
+    super.key,
+  });
   final BaseEditModel<KalemModel> model;
   final UretimSonuKaydiEditModel requestModel;
   final List<KalemModel>? kalemList;
@@ -41,102 +47,100 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        floatingActionButton: !widget.model.baseEditEnum.goruntuleMi ? fab() : null,
-        body: body(),
-        bottomNavigationBar: bottomBar(),
-      );
+    floatingActionButton: !widget.model.baseEditEnum.goruntuleMi ? fab() : null,
+    body: body(),
+    bottomNavigationBar: bottomBar(),
+  );
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        isScrolledDown: true,
-        onPressed: () async {
-          final result = await Get.toNamed("mainPage/uretimSonuKaydiKalemEdit", arguments: widget.requestModel);
-          if (result is KalemModel) {
-            viewModel.addItem(result.copyWith(cikisdepoKodu: widget.requestModel.cikisDepo, girisdepoKodu: widget.requestModel.girisDepo));
-            widget.onKalemListChange.call(viewModel.observableList?.toList());
-          }
-        },
-      );
+    isScrolledDown: true,
+    onPressed: () async {
+      final result = await Get.toNamed("mainPage/uretimSonuKaydiKalemEdit", arguments: widget.requestModel);
+      if (result is KalemModel) {
+        viewModel.addItem(
+          result.copyWith(cikisdepoKodu: widget.requestModel.cikisDepo, girisdepoKodu: widget.requestModel.girisDepo),
+        );
+        widget.onKalemListChange.call(viewModel.observableList?.toList());
+      }
+    },
+  );
 
   Column body() => Column(
-        children: [
-          // CustomTextField(onTap: () {}),
-          Expanded(
-            child: Observer(
-              builder: (_) => RefreshableListView<KalemModel>(
+    children: [
+      // CustomTextField(onTap: () {}),
+      Expanded(
+        child: Observer(
+          builder:
+              (_) => RefreshableListView<KalemModel>(
                 onRefresh: () async {},
                 items: viewModel.observableList,
                 itemBuilder: kalemCard,
               ),
-            ),
-          ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 
   Card kalemCard(KalemModel item) => Card(
-        child: ListTile(
-          onTap: () async {
-            bottomSheetDialogManager.showBottomSheetDialog(
-              context,
-              title: item.stokAdi ?? "",
-              children: [
-                BottomSheetModel(
-                  title: "Stok İşlemleri",
-                  iconWidget: Icons.list_alt_outlined,
-                  onTap: () async {
-                    Get.back();
-                    dialogManager.showStokGridViewDialog(
-                      await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
-                    );
-                  },
-                ),
-              ],
-            );
-          },
-          title: Text(item.stokAdi ?? ""),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    child: ListTile(
+      onTap: () async {
+        bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: item.stokAdi ?? "",
+          children: [
+            BottomSheetModel(
+              title: "Stok İşlemleri",
+              iconWidget: Icons.list_alt_outlined,
+              onTap: () async {
+                Get.back();
+                dialogManager.showStokGridViewDialog(
+                  await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: item.stokKodu)),
+                );
+              },
+            ),
+          ],
+        );
+      },
+      title: Text(item.stokAdi ?? ""),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (widget.model.baseEditEnum.goruntuleMi)
+            Text("${item.cikisdepoKodu} (${item.cikisDepoAdi}) => ${item.girisdepoKodu} (${item.girisDepoAdi})"),
+          if (item.isemriNo != null) Text("İş Emri: ${item.isemriNo ?? ""}"),
+          CustomLayoutBuilder.divideInHalf(
             children: [
-              if (widget.model.baseEditEnum.goruntuleMi) Text("${item.cikisdepoKodu} (${item.cikisDepoAdi}) => ${item.girisdepoKodu} (${item.girisDepoAdi})"),
-              if (item.isemriNo != null) Text("İş Emri: ${item.isemriNo ?? ""}"),
-              CustomLayoutBuilder.divideInHalf(
-                children: [
-                  Text("Kodu: ${item.stokKodu}"),
-                  Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  Text("Hurda/Fire Mik: ${item.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  Text("İşlendi: ${item.stoklaraIslendi == "E" ? "Evet" : "Hayır"}"),
-                  Text("Maliyet Fiyatı: ${item.maliyetFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"),
-                  Text("BarkodSay: ${item.barkod ?? ""}"),
-                ],
-              ),
-              if (item.aciklama != null) Text(item.aciklama ?? "").paddingOnly(top: UIHelper.lowSize),
+              Text("Kodu: ${item.stokKodu}"),
+              Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              Text("Hurda/Fire Mik: ${item.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              Text("İşlendi: ${item.stoklaraIslendi == "E" ? "Evet" : "Hayır"}"),
+              Text("Maliyet Fiyatı: ${item.maliyetFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"),
+              Text("BarkodSay: ${item.barkod ?? ""}"),
             ],
           ),
-        ),
-      );
+          if (item.aciklama != null) Text(item.aciklama ?? "").paddingOnly(top: UIHelper.lowSize),
+        ],
+      ),
+    ),
+  );
 
   BottomBarWidget bottomBar() => BottomBarWidget(
-        isScrolledDown: true,
+    isScrolledDown: true,
+    children: [
+      FooterButton(
         children: [
-          FooterButton(
-            children: [
-              const Text("Toplam Miktar"),
-              Observer(
-                builder: (_) => Text(
-                  viewModel.toplamMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar),
-                ),
-              ),
-            ],
-          ),
-          FooterButton(
-            children: [
-              const Text("Maliyet Tutarı"),
-              Observer(
-                builder: (_) => Text(
-                  viewModel.toplamMaliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
-                ),
-              ),
-            ],
+          const Text("Toplam Miktar"),
+          Observer(builder: (_) => Text(viewModel.toplamMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar))),
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Maliyet Tutarı"),
+          Observer(
+            builder: (_) => Text(viewModel.toplamMaliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)),
           ),
         ],
-      );
+      ),
+    ],
+  );
 }

@@ -23,7 +23,8 @@ abstract class _StokDetayliAramaViewModelBase with Store {
   void setObservableList(List<StokDetayliAramaAlanlar>? list) => observableList = list?.asObservable();
 
   @action
-  void setKriter(int index, DetaySekliRecord sekli) => setObservableList(observableList?..[index].searchCriter = sekli.kodu);
+  void setKriter(int index, DetaySekliRecord sekli) =>
+      setObservableList(observableList?..[index].searchCriter = sekli.kodu);
 
   @action
   void setSearchText(int index, String? value) => setObservableList(observableList?..[index].searchText = value);

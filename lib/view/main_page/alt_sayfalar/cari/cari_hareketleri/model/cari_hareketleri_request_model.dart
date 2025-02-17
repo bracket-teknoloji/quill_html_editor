@@ -18,5 +18,6 @@ class CariHareketleriRequestModel with _$CariHareketleriRequestModel {
     String? ba,
   }) = _CariHareketleriRequestModel;
 
-  factory CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) => _$CariHareketleriRequestModelFromJson(json);
+  factory CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$CariHareketleriRequestModelFromJson(json);
 }

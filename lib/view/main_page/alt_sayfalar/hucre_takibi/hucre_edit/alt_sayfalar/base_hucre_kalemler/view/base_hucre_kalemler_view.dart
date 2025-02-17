@@ -59,117 +59,131 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-        child: Form(
-          child: Column(
-            children: [
-              Card(
-                child: ListTile(
-                  title: (viewModel.model.belgeModel?.cariAdi != null) ? Text("Cari Adı: ${viewModel.model.belgeModel?.cariAdi}") : null,
-                  subtitle: CustomLayoutBuilder(
-                    splitCount: 2,
-                    children: [
-                      if (viewModel.model.belgeModel?.tarih != null) Text("Tarih: ${viewModel.model.belgeModel?.tarih.toDateString}"),
-                      if (viewModel.model.belgeTuru != null) Text("Belge Tipi: ${EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == viewModel.model.belgeTuru)?.getName}"),
-                      if (viewModel.model.belgeModel?.cariKodu != null) Text("Cari Kodu: ${viewModel.model.belgeModel?.cariKodu}"),
-                    ],
-                  ),
-                ),
-              ),
-              if (!viewModel.model.paketMi)
-                CustomTextField(
-                  labelText: "Stok",
-                  readOnly: true,
-                  isMust: true,
-                  suffixMore: true,
-                  controller: stokController,
-                  suffix: IconButton(
-                    onPressed: () async {
-                      final result = await Get.toNamed("/qr");
-                      if (result is String) {
-                        final BaseStokMixin? stok = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: result));
-                        updateStok(stok);
-                      }
-                    },
-                    icon: const Icon(Icons.qr_code_scanner),
-                  ),
-                  onTap: () async {
-                    if (viewModel.model.belgeGorunsunMu) {
-                      final result = await Get.toNamed("mainPage/hucreTakibiStoklar");
-                      updateStok(result);
-                    } else {
-                      final result = await Get.toNamed("mainPage/stokListesiOzel");
-                      updateStok(result);
-                    }
-                  },
-                ),
-              CustomTextField(
-                labelText: "Paket",
-                readOnly: true,
-                isMust: true,
-                controller: paketController,
-                suffix: IconButton(
-                  onPressed: () async {
-                    final result = await Get.toNamed("/qr");
-                    if (result is String) {
-                      paketChecker(result);
-                    }
-                  },
-                  icon: const Icon(Icons.qr_code_scanner),
-                ),
-                onSubmitted: (value) async => paketChecker(value),
-              ).yetkiVarMi(viewModel.model.paketMi),
-              CustomTextField(
-                labelText: "Stok Adı",
-                readOnly: true,
-                controller: stokAdiController,
-                suffix: IconButton(
-                  onPressed: () async {
-                    if (viewModel.model.stokKodu == null) return dialogManager.showErrorSnackBar("Stok seçiniz.");
-                    dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model.stokKodu)));
-                  },
-                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
-                ),
-              ).yetkiVarMi(!viewModel.model.paketMi),
-              CustomTextField(
-                labelText: "Ölçü Birimi",
-                readOnly: true,
-                controller: olcuBirimiController,
-                // onTap: () {},
-              ).yetkiVarMi(!viewModel.model.paketMi),
-              CustomLayoutBuilder(
+    child: Form(
+      child: Column(
+        children: [
+          Card(
+            child: ListTile(
+              title:
+                  (viewModel.model.belgeModel?.cariAdi != null)
+                      ? Text("Cari Adı: ${viewModel.model.belgeModel?.cariAdi}")
+                      : null,
+              subtitle: CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
-                  CustomTextField(
-                    labelText: "Kalem Miktarı",
-                    readOnly: true,
-                    controller: kalemMiktariController,
-                  ).yetkiVarMi(viewModel.model.kalemMiktariGorunsunMu),
-                  CustomTextField(
-                    labelText: "İşlem Yapılacak Miktar",
-                    isMust: true,
-                    isFormattedString: true,
-                    controller: islemYapilacakMiktarController,
-                    onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
-                    validator: (value) {
-                      if (value case (null || "")) return "Lütfen işlem yapılacak miktarı giriniz.";
-                      if (value.toDoubleWithFormattedString > kalemMiktariController.text.toDoubleWithFormattedString) return "İşlem yapılacak miktar kalem miktarından büyük olamaz.";
-                      return null;
-                    },
-                  ),
+                  if (viewModel.model.belgeModel?.tarih != null)
+                    Text("Tarih: ${viewModel.model.belgeModel?.tarih.toDateString}"),
+                  if (viewModel.model.belgeTuru != null)
+                    Text(
+                      "Belge Tipi: ${EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == viewModel.model.belgeTuru)?.getName}",
+                    ),
+                  if (viewModel.model.belgeModel?.cariKodu != null)
+                    Text("Cari Kodu: ${viewModel.model.belgeModel?.cariKodu}"),
                 ],
-              ).yetkiVarMi(!viewModel.model.paketMi),
+              ),
+            ),
+          ),
+          if (!viewModel.model.paketMi)
+            CustomTextField(
+              labelText: "Stok",
+              readOnly: true,
+              isMust: true,
+              suffixMore: true,
+              controller: stokController,
+              suffix: IconButton(
+                onPressed: () async {
+                  final result = await Get.toNamed("/qr");
+                  if (result is String) {
+                    final BaseStokMixin? stok = await networkManager.getStokModel(
+                      StokRehberiRequestModel(stokKodu: result),
+                    );
+                    updateStok(stok);
+                  }
+                },
+                icon: const Icon(Icons.qr_code_scanner),
+              ),
+              onTap: () async {
+                if (viewModel.model.belgeGorunsunMu) {
+                  final result = await Get.toNamed("mainPage/hucreTakibiStoklar");
+                  updateStok(result);
+                } else {
+                  final result = await Get.toNamed("mainPage/stokListesiOzel");
+                  updateStok(result);
+                }
+              },
+            ),
+          CustomTextField(
+            labelText: "Paket",
+            readOnly: true,
+            isMust: true,
+            controller: paketController,
+            suffix: IconButton(
+              onPressed: () async {
+                final result = await Get.toNamed("/qr");
+                if (result is String) {
+                  paketChecker(result);
+                }
+              },
+              icon: const Icon(Icons.qr_code_scanner),
+            ),
+            onSubmitted: (value) async => paketChecker(value),
+          ).yetkiVarMi(viewModel.model.paketMi),
+          CustomTextField(
+            labelText: "Stok Adı",
+            readOnly: true,
+            controller: stokAdiController,
+            suffix: IconButton(
+              onPressed: () async {
+                if (viewModel.model.stokKodu == null) return dialogManager.showErrorSnackBar("Stok seçiniz.");
+                dialogManager.showStokGridViewDialog(
+                  await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model.stokKodu)),
+                );
+              },
+              icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+            ),
+          ).yetkiVarMi(!viewModel.model.paketMi),
+          CustomTextField(
+            labelText: "Ölçü Birimi",
+            readOnly: true,
+            controller: olcuBirimiController,
+            // onTap: () {},
+          ).yetkiVarMi(!viewModel.model.paketMi),
+          CustomLayoutBuilder(
+            splitCount: 2,
+            children: [
               CustomTextField(
-                labelText: "Hücre",
-                controller: hucreController,
-                isMust: true,
-                suffixMore: true,
+                labelText: "Kalem Miktarı",
                 readOnly: true,
-                onTap: getHucreModel,
+                controller: kalemMiktariController,
+              ).yetkiVarMi(viewModel.model.kalemMiktariGorunsunMu),
+              CustomTextField(
+                labelText: "İşlem Yapılacak Miktar",
+                isMust: true,
+                isFormattedString: true,
+                controller: islemYapilacakMiktarController,
+                onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
+                validator: (value) {
+                  if (value case (null || "")) return "Lütfen işlem yapılacak miktarı giriniz.";
+                  if (value.toDoubleWithFormattedString > kalemMiktariController.text.toDoubleWithFormattedString) {
+                    return "İşlem yapılacak miktar kalem miktarından büyük olamaz.";
+                  }
+                  return null;
+                },
               ),
             ],
+          ).yetkiVarMi(!viewModel.model.paketMi),
+          CustomTextField(
+            labelText: "Hücre",
+            controller: hucreController,
+            isMust: true,
+            suffixMore: true,
+            readOnly: true,
+            onTap: getHucreModel,
           ),
-        ),
-      ).paddingAll(UIHelper.lowSize);
+        ],
+      ),
+    ),
+  ).paddingAll(UIHelper.lowSize);
 
   void updateStok(BaseStokMixin? result) {
     if (result is BaseStokMixin) {

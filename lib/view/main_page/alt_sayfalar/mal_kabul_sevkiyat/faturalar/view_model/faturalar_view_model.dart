@@ -20,7 +20,8 @@ part "faturalar_view_model.g.dart";
 
 final class FaturalarViewModel = _FaturalarViewModelBase with _$FaturalarViewModel;
 
-abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, ScrollControllableMixin, PageableMixin {
+abstract class _FaturalarViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, ScrollControllableMixin, PageableMixin {
   _FaturalarViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {
     faturaRequestModel = faturaRequestModel.copyWith(
       pickerBelgeTuru: pickerBelgeTuru,
@@ -54,13 +55,7 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
     "Komisyoncu": "I",
   };
 
-  final Map<String, int> belgeTipiMap = <String, int>{
-    "Kapalı": 1,
-    "Açık": 2,
-    "İade": 4,
-    "Zayi İade": 5,
-    "İhracat": 6,
-  };
+  final Map<String, int> belgeTipiMap = <String, int>{"Kapalı": 1, "Açık": 2, "İade": 4, "Zayi İade": 5, "İhracat": 6};
 
   final List<String> tipiList = ["T", "H", "N", "D"];
 
@@ -71,14 +66,21 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   late EditTipiEnum editTipiEnum;
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap = {
-    "EK": CacheManager.getProfilParametre.siparisEkAlan,
-    "MİK": CacheManager.getProfilParametre.siparisMiktar,
-    "VADE": CacheManager.getProfilParametre.siparisVade,
-  }.asObservable();
+  ObservableMap<String, bool> ekstraAlanlarMap =
+      {
+        "EK": CacheManager.getProfilParametre.siparisEkAlan,
+        "MİK": CacheManager.getProfilParametre.siparisMiktar,
+        "VADE": CacheManager.getProfilParametre.siparisVade,
+      }.asObservable();
 
   @observable
-  SiparislerRequestModel faturaRequestModel = SiparislerRequestModel(sayfa: 1, siralama: "TARIH_ZA", ekranTipi: "L", iadeMi: false, faturalasmaGoster: true);
+  SiparislerRequestModel faturaRequestModel = SiparislerRequestModel(
+    sayfa: 1,
+    siralama: "TARIH_ZA",
+    ekranTipi: "L",
+    iadeMi: false,
+    faturalasmaGoster: true,
+  );
 
   @observable
   ObservableMap<String, dynamic>? paramData;
@@ -116,7 +118,9 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
 
   @action
   void resetEkstraAlanlarMap() {
-    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
+    CacheManager.setProfilParametre(
+      CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false),
+    );
     ekstraAlanlarMap = {"EK": false, "MİK": false, "VADE": false}.asObservable();
   }
 
@@ -127,40 +131,52 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   List<BaseGrupKoduModel>? grupKodList;
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod0 => grupKodList?.where((element) => element.grupNo == 0).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod0 =>
+      grupKodList?.where((element) => element.grupNo == 0).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod1 => grupKodList?.where((element) => element.grupNo == 1).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod1 =>
+      grupKodList?.where((element) => element.grupNo == 1).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod2 => grupKodList?.where((element) => element.grupNo == 2).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod2 =>
+      grupKodList?.where((element) => element.grupNo == 2).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod3 => grupKodList?.where((element) => element.grupNo == 3).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod3 =>
+      grupKodList?.where((element) => element.grupNo == 3).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod4 => grupKodList?.where((element) => element.grupNo == 4).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod4 =>
+      grupKodList?.where((element) => element.grupNo == 4).toList().asObservable();
 
   @computed
-  ObservableList<BaseGrupKoduModel>? get getGrupKod5 => grupKodList?.where((element) => element.grupNo == 5).toList().asObservable();
+  ObservableList<BaseGrupKoduModel>? get getGrupKod5 =>
+      grupKodList?.where((element) => element.grupNo == 5).toList().asObservable();
 
   @action
-  void changeArrKod0(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrGrupKodu: jsonEncode(value));
+  void changeArrKod0(List<String> value) =>
+      faturaRequestModel = faturaRequestModel.copyWith(arrGrupKodu: jsonEncode(value));
 
   @action
-  void changeArrKod1(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod1: jsonEncode(value));
+  void changeArrKod1(List<String> value) =>
+      faturaRequestModel = faturaRequestModel.copyWith(arrKod1: jsonEncode(value));
 
   @action
-  void changeArrKod2(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod2: jsonEncode(value));
+  void changeArrKod2(List<String> value) =>
+      faturaRequestModel = faturaRequestModel.copyWith(arrKod2: jsonEncode(value));
 
   @action
-  void changeArrKod3(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod3: jsonEncode(value));
+  void changeArrKod3(List<String> value) =>
+      faturaRequestModel = faturaRequestModel.copyWith(arrKod3: jsonEncode(value));
 
   @action
-  void changeArrKod4(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod4: jsonEncode(value));
+  void changeArrKod4(List<String> value) =>
+      faturaRequestModel = faturaRequestModel.copyWith(arrKod4: jsonEncode(value));
 
   @action
-  void changeArrKod5(List<String> value) => faturaRequestModel = faturaRequestModel.copyWith(arrKod5: jsonEncode(value));
+  void changeArrKod5(List<String> value) =>
+      faturaRequestModel = faturaRequestModel.copyWith(arrKod5: jsonEncode(value));
 
   @action
   void setKodlariGoster() {
@@ -171,7 +187,8 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   }
 
   @action
-  void setBelgeTipi(List<int>? value) => faturaRequestModel = faturaRequestModel.copyWith(arrBelgeTipi: jsonEncode(value));
+  void setBelgeTipi(List<int>? value) =>
+      faturaRequestModel = faturaRequestModel.copyWith(arrBelgeTipi: jsonEncode(value));
 
   @action
   void changeGrupKodList(List<BaseGrupKoduModel> value) => grupKodList = value.asObservable();
@@ -187,7 +204,11 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   }
 
   @action
-  void setParamData(Map<String, dynamic> value) => paramData = value.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+  void setParamData(Map<String, dynamic> value) =>
+      paramData =
+          value
+              .map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
+              .asObservable();
 
   @action
   void changeGrupKodlariGoster() => grupKodlariGoster = !grupKodlariGoster;
@@ -231,7 +252,8 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   void setBitisTarihi(String? value) => faturaRequestModel = faturaRequestModel.copyWith(bitisTarihi: value);
 
   @action
-  void setPlasiyerArr(List<String?> value) => faturaRequestModel = faturaRequestModel.copyWith(arrPlasiyerKodu: jsonEncode(value));
+  void setPlasiyerArr(List<String?> value) =>
+      faturaRequestModel = faturaRequestModel.copyWith(arrPlasiyerKodu: jsonEncode(value));
 
   @action
   void setProjeKodu(String? value) => faturaRequestModel = faturaRequestModel.copyWith(projeKodu: value);
@@ -261,7 +283,8 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   }
 
   @action
-  void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(
+  void resetFilter() =>
+      faturaRequestModel = faturaRequestModel.copyWith(
         searchText: null,
         ozelKod1: null,
         ozelKod2: null,
@@ -301,13 +324,19 @@ abstract class _FaturalarViewModelBase with Store, MobxNetworkMixin, ListableMix
   @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: faturaRequestModel.toJson());
+    final result = await networkManager.dioGet<BaseSiparisEditModel>(
+      path: ApiUrls.getFaturalar,
+      bodyModel: BaseSiparisEditModel(),
+      queryParameters: faturaRequestModel.toJson(),
+    );
     if (result.isSuccess) {
       if (page > 1) {
         addObservableList(result.dataList);
       } else {
         setObservableList(
-          ((CacheManager.getFaturaEditLists(editTipiEnum)?.toList().cast<BaseSiparisEditModel>() ?? <BaseSiparisEditModel>[])..mapIndexed((index, element) => element..index = index).toList()) +
+          ((CacheManager.getFaturaEditLists(editTipiEnum)?.toList().cast<BaseSiparisEditModel>() ??
+                    <BaseSiparisEditModel>[])
+                ..mapIndexed((index, element) => element..index = index).toList()) +
               result.dataList,
         );
         setParamData(result.paramData ?? {});

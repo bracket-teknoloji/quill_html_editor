@@ -13,7 +13,8 @@ final class CariAktiviteDetayViewModel = _CariAktiviteDetayViewModelBase with _$
 
 abstract class _CariAktiviteDetayViewModelBase with Store, MobxNetworkMixin {
   @observable
-  ObservableList<CariAktiviteListesiModel> aktiviteList = (SingletonModels.cariAktiviteListesi?.listDetay ?? []).asObservable();
+  ObservableList<CariAktiviteListesiModel> aktiviteList =
+      (SingletonModels.cariAktiviteListesi?.listDetay ?? []).asObservable();
 
   @action
   void addAktivite(CariAktiviteListesiModel value) {
@@ -36,6 +37,10 @@ abstract class _CariAktiviteDetayViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>?> deleteDetay(int? id) async =>
-      await networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: {"ID": id, "ISLEM_KODU": 6}, showLoading: true);
+  Future<GenericResponseModel<NetworkManagerMixin>?> deleteDetay(int? id) async => await networkManager.dioPost(
+    path: ApiUrls.saveAktivite,
+    bodyModel: CariAktiviteListesiModel(),
+    data: {"ID": id, "ISLEM_KODU": 6},
+    showLoading: true,
+  );
 }

@@ -12,9 +12,8 @@ KodDegistirModel _$KodDegistirModelFromJson(Map<String, dynamic> json) =>
       ..kaynakCari = json['KAYNAK_CARI'] as String?
       ..hedefCari = json['HEDEF_CARI'] as String?;
 
-Map<String, dynamic> _$KodDegistirModelToJson(KodDegistirModel instance) =>
-    <String, dynamic>{
-      'KAYNAK_SIL': instance.kaynakSil,
-      'KAYNAK_CARI': instance.kaynakCari,
-      'HEDEF_CARI': instance.hedefCari,
-    };
+Map<String, dynamic> _$KodDegistirModelToJson(KodDegistirModel instance) => <String, dynamic>{
+  'KAYNAK_SIL': instance.kaynakSil,
+  'KAYNAK_CARI': instance.kaynakCari,
+  'HEDEF_CARI': instance.hedefCari,
+};

@@ -17,8 +17,8 @@ class BelgeRehberiRequestModel with _$BelgeRehberiRequestModel {
   factory BelgeRehberiRequestModel.fromJson(Map<String, dynamic> json) => _$BelgeRehberiRequestModelFromJson(json);
 
   factory BelgeRehberiRequestModel.fromHucreTransferiModel(HucreTransferiModel model) => BelgeRehberiRequestModel(
-        depoKodu: model.depoKodu,
-        islemTuru: model.islemTuru,
-        pickerBelgeTuru: model.pickerBelgeTuru,
-      );
+    depoKodu: model.depoKodu,
+    islemTuru: model.islemTuru,
+    pickerBelgeTuru: model.pickerBelgeTuru,
+  );
 }

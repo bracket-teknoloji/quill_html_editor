@@ -45,52 +45,54 @@ final class _CekSenetEvrakEkleViewState extends BaseState<CekSenetEvrakEkleView>
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Evrak Ekle",
-            subtitle: widget.model.belgeNo ?? "",
-          ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                final result = await viewModel.saveData();
-                if (result.isSuccess) {
-                  Get.back(result: true);
-                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ],
+    appBar: AppBar(
+      title: AppBarTitle(title: "Evrak Ekle", subtitle: widget.model.belgeNo ?? ""),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            final result = await viewModel.saveData();
+            if (result.isSuccess) {
+              Get.back(result: true);
+              dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            IntrinsicHeight(
-              child: InkWell(
-                onTap: addImage,
-                child: Card(
-                  child: SizedBox(
-                    height: (width - UIHelper.midSize) / 2,
-                    child: Observer(
-                      builder: (_) {
-                        if (viewModel.base64Data != null) {
-                          return Image.memory(base64Decode(viewModel.base64Data ?? ""), fit: BoxFit.scaleDown);
-                        }
-                        return const Icon(Icons.camera_alt_outlined);
-                      },
-                    ).paddingAll(UIHelper.lowSize),
-                  ),
-                ),
+      ],
+    ),
+    body: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        IntrinsicHeight(
+          child: InkWell(
+            onTap: addImage,
+            child: Card(
+              child: SizedBox(
+                height: (width - UIHelper.midSize) / 2,
+                child: Observer(
+                  builder: (_) {
+                    if (viewModel.base64Data != null) {
+                      return Image.memory(base64Decode(viewModel.base64Data ?? ""), fit: BoxFit.scaleDown);
+                    }
+                    return const Icon(Icons.camera_alt_outlined);
+                  },
+                ).paddingAll(UIHelper.lowSize),
               ),
             ),
-            Center(
-              child: Observer(builder: (_) => Text("Boyut: ${((viewModel.model.boyutByte ?? 0) / 1024).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} kb")),
-            ),
-            CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+          ),
+        ),
+        Center(
+          child: Observer(
+            builder:
+                (_) => Text(
+                  "Boyut: ${((viewModel.model.boyutByte ?? 0) / 1024).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} kb",
+                ),
+          ),
+        ),
+        CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Future<void> addImage() async {
     final result = await bottomSheetDialogManager.getPhoto(context);

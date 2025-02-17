@@ -37,24 +37,31 @@ final class CariNetworkManager {
   }
 
   static Future<List<CariKosullarModel>?> getkosullar(DateTime? date) async {
-    final Map<String, String> queryParams = <String, String>{"Tarih": date.toDateString, "KisitYok": "H", "BelgeTuru": "CARI"};
-    final result = await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel(), queryParameters: queryParams);
+    final Map<String, String> queryParams = <String, String>{
+      "Tarih": date.toDateString,
+      "KisitYok": "H",
+      "BelgeTuru": "CARI",
+    };
+    final result = await networkManager.dioGet<CariKosullarModel>(
+      path: ApiUrls.getKosullar,
+      bodyModel: CariKosullarModel(),
+      queryParameters: queryParams,
+    );
     return result.dataList;
   }
 
   static Future<GenericResponseModel<NetworkManagerMixin>> getCariListesi() async {
-    final GenericResponseModel<NetworkManagerMixin> responseKosullar = await networkManager.dioGet<CariKosullarModel>(path: ApiUrls.getKosullar, bodyModel: CariKosullarModel());
+    final GenericResponseModel<NetworkManagerMixin> responseKosullar = await networkManager.dioGet<CariKosullarModel>(
+      path: ApiUrls.getKosullar,
+      bodyModel: CariKosullarModel(),
+    );
     return responseKosullar;
   }
 
   static Future<String?> getSiradakiKod({String? kod}) async {
     try {
       DialogManager().showLoadingDialog("${kod ?? ""} Kod Getiriliyor...");
-      final Map<String, String?> queryParameters2 = <String, String?>{
-        "Kod": kod,
-        "SonKoduGetir": "H",
-        "Modul": "CARI",
-      };
+      final Map<String, String?> queryParameters2 = <String, String?>{"Kod": kod, "SonKoduGetir": "H", "Modul": "CARI"};
       if (kod == null) {
         queryParameters2.addAll(<String, String?>{"Kod": kod});
       }

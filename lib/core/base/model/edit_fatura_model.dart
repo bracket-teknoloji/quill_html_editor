@@ -37,37 +37,37 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
   factory EditFaturaModel.fromJson(Map<String, Object?> json) => _$EditFaturaModelFromJson(json);
 
   factory EditFaturaModel.fromSiparislerModel(BaseSiparisEditModel model) => EditFaturaModel(
-        belgeNo: model.belgeNo,
-        pickerBelgeTuru: model.belgeTuru,
-        belgeTuru: model.belgeTuru,
-        cariKodu: model.cariKodu,
-        tempBelgeId: model.tempBelgeId,
-        islemKodu: model.islemKodu,
-        yeniBelgeNo: model.yeniBelgeNo,
-        kalemler: model.kalemList,
-        tipi: model.tipi,
-        belgeTipi: model.tipi,
-      );
+    belgeNo: model.belgeNo,
+    pickerBelgeTuru: model.belgeTuru,
+    belgeTuru: model.belgeTuru,
+    cariKodu: model.cariKodu,
+    tempBelgeId: model.tempBelgeId,
+    islemKodu: model.islemKodu,
+    yeniBelgeNo: model.yeniBelgeNo,
+    kalemler: model.kalemList,
+    tipi: model.tipi,
+    belgeTipi: model.tipi,
+  );
 
   factory EditFaturaModel.fromTalepTeklifListesiModel(TalepTeklifListesiModel model) => EditFaturaModel(
-        belgeNo: model.belgeNo,
-        pickerBelgeTuru: model.belgeTuru,
-        belgeTuru: model.belgeTuru,
-        cariKodu: model.cariKodu,
-        mevcutCariKodu: model.cariKodu,
-        mevcutBelgeNo: model.belgeNo,
-        tipi: model.tipi,
-        belgeTipi: model.tipi,
-      );
+    belgeNo: model.belgeNo,
+    pickerBelgeTuru: model.belgeTuru,
+    belgeTuru: model.belgeTuru,
+    cariKodu: model.cariKodu,
+    mevcutCariKodu: model.cariKodu,
+    mevcutBelgeNo: model.belgeNo,
+    tipi: model.tipi,
+    belgeTipi: model.tipi,
+  );
 
   factory EditFaturaModel.forIrsaliyelestir(BaseSiparisEditModel? model) => EditFaturaModel(
-        cariKodu: model?.cariKodu,
-        irsaliyedenFatura: true,
-        belgeNo: model?.belgeNo,
-        pickerBelgeTuru: model?.belgeTuru,
-        belgeTuru: model?.belgeTuru,
-        tarih: DateTime.now().dateTimeWithoutTime,
-      );
+    cariKodu: model?.cariKodu,
+    irsaliyedenFatura: true,
+    belgeNo: model?.belgeNo,
+    pickerBelgeTuru: model?.belgeTuru,
+    belgeTuru: model?.belgeTuru,
+    tarih: DateTime.now().dateTimeWithoutTime,
+  );
 
   @override
   EditFaturaModel fromJson(Map<String, dynamic> json) => _$EditFaturaModelFromJson(json);

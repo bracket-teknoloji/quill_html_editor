@@ -11,9 +11,11 @@ import "../model/is_emri_hammadde_takibi_detay_request_model.dart";
 
 part "is_emri_hammadde_takibi_detay_view_model.g.dart";
 
-final class IsEmriHammaddeTakibiDetayViewModel = _IsEmriHammaddeTakibiDetayViewModelBase with _$IsEmriHammaddeTakibiDetayViewModel;
+final class IsEmriHammaddeTakibiDetayViewModel = _IsEmriHammaddeTakibiDetayViewModelBase
+    with _$IsEmriHammaddeTakibiDetayViewModel;
 
-abstract class _IsEmriHammaddeTakibiDetayViewModelBase with Store, MobxNetworkMixin, ListableMixin<IsEmriHammaddeTakibiDetayModel> {
+abstract class _IsEmriHammaddeTakibiDetayViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<IsEmriHammaddeTakibiDetayModel> {
   _IsEmriHammaddeTakibiDetayViewModelBase({required this.model}) {
     requestModel = requestModel.copyWith(takipno: model.takipno);
   }
@@ -27,7 +29,8 @@ abstract class _IsEmriHammaddeTakibiDetayViewModelBase with Store, MobxNetworkMi
   ObservableList<IsEmriHammaddeTakibiDetayModel>? observableList;
 
   @computed
-  ObservableList<bool> get valueList => List.generate(tipiMap.length, (index) => tipiMap.values.toList()[index] == requestModel.tip).asObservable();
+  ObservableList<bool> get valueList =>
+      List.generate(tipiMap.length, (index) => tipiMap.values.toList()[index] == requestModel.tip).asObservable();
 
   @observable
   IsEmriHammaddeTakibiDetayRequestModel requestModel = IsEmriHammaddeTakibiDetayRequestModel();
@@ -46,14 +49,19 @@ abstract class _IsEmriHammaddeTakibiDetayViewModelBase with Store, MobxNetworkMi
   @action
   Future<void> getData() async {
     if (observableList != null) setObservableList(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getIsemriHammaddeTakipDetay, bodyModel: IsEmriHammaddeTakibiDetayModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getIsemriHammaddeTakipDetay,
+      bodyModel: IsEmriHammaddeTakibiDetayModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
     }
   }
 
   @action
-  Future<GenericResponseModel<IsEmriHammaddeTakibiDetayModel>> setBarkod(String stok) async => await networkManager.dioPost(
+  Future<GenericResponseModel<IsEmriHammaddeTakibiDetayModel>> setBarkod(String stok) async =>
+      await networkManager.dioPost(
         path: ApiUrls.isemriHammaddeTakipIslem,
         bodyModel: IsEmriHammaddeTakibiDetayModel(),
         showLoading: true,
@@ -77,7 +85,8 @@ abstract class _IsEmriHammaddeTakibiDetayViewModelBase with Store, MobxNetworkMi
       path: ApiUrls.isemriHammaddeTakipIslem,
       bodyModel: IsEmriHammaddeTakibiDetayModel(),
       showLoading: true,
-      queryParameters: requestModel.copyWith(barcode: model.referanslar?.firstOrNull?.id.toStringIfNotNull, islemKodu: 3).toJson(),
+      queryParameters:
+          requestModel.copyWith(barcode: model.referanslar?.firstOrNull?.id.toStringIfNotNull, islemKodu: 3).toJson(),
     );
     return result.isSuccess;
   }

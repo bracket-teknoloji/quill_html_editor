@@ -32,13 +32,15 @@ final class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView>
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(title: "Çek Senet Hareketleri (${viewModel.cekSenetHareketleriListesi?.length ?? 0})"),
-          ),
-        ),
-        body: Observer(
-          builder: (_) => ListView.builder(
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) => AppBarTitle(title: "Çek Senet Hareketleri (${viewModel.cekSenetHareketleriListesi?.length ?? 0})"),
+      ),
+    ),
+    body: Observer(
+      builder:
+          (_) => ListView.builder(
             itemCount: viewModel.cekSenetHareketleriListesi?.length ?? 0,
             itemBuilder: (context, index) {
               if (viewModel.cekSenetHareketleriListesi == null) {
@@ -62,26 +64,21 @@ final class _CekSenetHareketleriViewState extends State<CekSenetHareketleriView>
                       ],
                     ),
                     subtitle: LayoutBuilder(
-                      builder: (context, constraints) => Wrap(
-                        children: [
-                          Text("Yeri:\n${model.yerAdi}"),
-                          Text("Durumu:\n${model.durumAdi}"),
-                          Text("Kayıt Yapan Kul:\n${model.kayityapankul ?? ""}"),
-                        ]
-                            .map(
-                              (e) => SizedBox(
-                                width: constraints.maxWidth / 2,
-                                child: e,
-                              ),
-                            )
-                            .toList(),
-                      ),
+                      builder:
+                          (context, constraints) => Wrap(
+                            children:
+                                [
+                                  Text("Yeri:\n${model.yerAdi}"),
+                                  Text("Durumu:\n${model.durumAdi}"),
+                                  Text("Kayıt Yapan Kul:\n${model.kayityapankul ?? ""}"),
+                                ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
+                          ),
                     ),
                   ),
                 );
               }
             },
           ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+    ),
+  );
 }

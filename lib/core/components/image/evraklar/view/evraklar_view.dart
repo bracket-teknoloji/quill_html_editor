@@ -36,26 +36,17 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (didPop, result) {
-          if (didPop) {
-            return;
-          }
-          Get.back(result: viewModel.refresh ?? false);
-        },
-        child: BaseScaffold(
-          appBar: appBar(),
-          floatingActionButton: fab(),
-          body: body(),
-        ),
-      );
+    canPop: false,
+    onPopInvokedWithResult: (didPop, result) {
+      if (didPop) {
+        return;
+      }
+      Get.back(result: viewModel.refresh ?? false);
+    },
+    child: BaseScaffold(appBar: appBar(), floatingActionButton: fab(), body: body()),
+  );
 
-  AppBar appBar() => AppBar(
-        title: AppBarTitle(
-          title: "Evraklar",
-          subtitle: widget.model.belgeNo,
-        ),
-      );
+  AppBar appBar() => AppBar(title: AppBarTitle(title: "Evraklar", subtitle: widget.model.belgeNo));
 
   CustomFloatingActionButton? fab() {
     if (yetkiController.stokResimEkle) {
@@ -73,53 +64,57 @@ final class _EvraklarViewState extends BaseState<EvraklarView> {
     return null;
   }
 
-  Observer body() => Observer(builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: evrakCard));
+  Observer body() => Observer(
+    builder:
+        (_) =>
+            RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: evrakCard),
+  );
 
   Widget evrakCard(EvraklarModel? model) => Card(
-        child: ListTile(
-          contentPadding: UIHelper.midPadding,
-          leading: InkWell(
-            onTap: () => Get.to(ImageView(path: model?.resimUrl ?? "", title: model?.aciklama ?? "")),
-            child: SizedBox(
-              height: UIHelper.highSize * 3,
-              width: UIHelper.highSize * 3,
-              child: ImageWidget(path: model?.resimUrlKucuk),
-            ),
-          ),
-          title: Text(model?.aciklama ?? ""),
-          subtitle: Text(model?.id.toStringIfNotNull ?? ""),
-          onTap: () async => await onTap(model),
+    child: ListTile(
+      contentPadding: UIHelper.midPadding,
+      leading: InkWell(
+        onTap: () => Get.to(ImageView(path: model?.resimUrl ?? "", title: model?.aciklama ?? "")),
+        child: SizedBox(
+          height: UIHelper.highSize * 3,
+          width: UIHelper.highSize * 3,
+          child: ImageWidget(path: model?.resimUrlKucuk),
         ),
-      );
+      ),
+      title: Text(model?.aciklama ?? ""),
+      subtitle: Text(model?.id.toStringIfNotNull ?? ""),
+      onTap: () async => await onTap(model),
+    ),
+  );
 
   Future<void> onTap(EvraklarModel? model) async => await bottomSheetDialogManager.showBottomSheetDialog(
-        context,
-        title: loc.generalStrings.options,
-        children: [
-          if (yetkiController.stokResimGoster)
-            BottomSheetModel(
-              title: loc.generalStrings.view,
-              iconWidget: Icons.preview_outlined,
-              onTap: () {
-                Get.back();
-                return Get.to(ImageView(path: model?.resimUrl ?? "", title: model?.aciklama ?? ""));
-              },
-            ),
-          if (yetkiController.stokResimSil)
-            BottomSheetModel(
-              title: loc.generalStrings.delete,
-              iconWidget: Icons.delete_outline_outlined,
-              onTap: () async {
-                Get.back();
-                dialogManager.showAreYouSureDialog(() async {
-                  final result = await viewModel.deleteEvrak(model!);
-                  if (result.isSuccess) {
-                    dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
-                    await viewModel.getData();
-                  }
-                });
-              },
-            ),
-        ],
-      );
+    context,
+    title: loc.generalStrings.options,
+    children: [
+      if (yetkiController.stokResimGoster)
+        BottomSheetModel(
+          title: loc.generalStrings.view,
+          iconWidget: Icons.preview_outlined,
+          onTap: () {
+            Get.back();
+            return Get.to(ImageView(path: model?.resimUrl ?? "", title: model?.aciklama ?? ""));
+          },
+        ),
+      if (yetkiController.stokResimSil)
+        BottomSheetModel(
+          title: loc.generalStrings.delete,
+          iconWidget: Icons.delete_outline_outlined,
+          onTap: () async {
+            Get.back();
+            dialogManager.showAreYouSureDialog(() async {
+              final result = await viewModel.deleteEvrak(model!);
+              if (result.isSuccess) {
+                dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
+                await viewModel.getData();
+              }
+            });
+          },
+        ),
+    ],
+  );
 }

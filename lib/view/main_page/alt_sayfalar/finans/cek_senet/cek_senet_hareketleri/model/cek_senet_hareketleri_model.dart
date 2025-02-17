@@ -33,18 +33,18 @@ class CekSenetHareketleriModel with _$CekSenetHareketleriModel, NetworkManagerMi
 
 extension CekSenetHareketleriExtensions on CekSenetHareketleriModel {
   String get durumAdi => switch (durum) {
-        "B" => "Bekliyor",
-        "O" => "Ödendi",
-        "P" => "Karşılıksız",
-        _ => "",
-      };
+    "B" => "Bekliyor",
+    "O" => "Ödendi",
+    "P" => "Karşılıksız",
+    _ => "",
+  };
 
   String get yerAdi => switch (yeri) {
-        "P" => "Portföy",
-        "C" => "Ciro",
-        "T" => "Tahsilat",
-        "E" => "Teminat",
-        "I" => "İade",
-        _ => "",
-      };
+    "P" => "Portföy",
+    "C" => "Ciro",
+    "T" => "Tahsilat",
+    "E" => "Teminat",
+    "I" => "İade",
+    _ => "",
+  };
 }

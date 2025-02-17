@@ -17,7 +17,14 @@ part "cari_rehberi_view_model.g.dart";
 
 final class CariRehberiViewModel = _CariRehberiViewModelBase with _$CariRehberiViewModel;
 
-abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<CariListesiModel>, ScrollControllableMixin, PageableMixin, SearchableMixin {
+abstract class _CariRehberiViewModelBase
+    with
+        Store,
+        MobxNetworkMixin,
+        ListableMixin<CariListesiModel>,
+        ScrollControllableMixin,
+        PageableMixin,
+        SearchableMixin {
   final Map<String, String> siralaMap = {
     "Cari Adı (A-Z)": "AZ",
     "Cari Adı (Z-A)": "ZA",
@@ -61,9 +68,7 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   ObservableList<BaseGrupKoduModel>? grupKodlari;
 
   @observable
-  CariListesiRequestModel? cariListesiRequestModel = CariListesiRequestModel(
-    eFaturaGoster: true,
-  );
+  CariListesiRequestModel? cariListesiRequestModel = CariListesiRequestModel(eFaturaGoster: true);
   @override
   @action
   Future<void> changeScrollStatus(ScrollPosition position) async {
@@ -107,7 +112,8 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   void setBelgeTuru(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(belgeTuru: value);
 
   @action
-  void setSiparisKarsilanmaDurumu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(siparisKarsilanmaDurumu: value);
+  void setSiparisKarsilanmaDurumu(String? value) =>
+      cariListesiRequestModel = cariListesiRequestModel?.copyWith(siparisKarsilanmaDurumu: value);
 
   @action
   void changeIsScrollDown(bool value) => isScrollDown = value;
@@ -121,7 +127,8 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   void addObservableList(List<CariListesiModel>? value) => observableList = observableList?..addAll(value!);
 
   @action
-  void changeBagliCariKodu(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(bagliCariKodu: value != "" ? value : null);
+  void changeBagliCariKodu(String? value) =>
+      cariListesiRequestModel = cariListesiRequestModel?.copyWith(bagliCariKodu: value != "" ? value : null);
 
   @action
   void changeSehir(String? value) => cariListesiRequestModel = cariListesiRequestModel?.copyWith(sehir: value);
@@ -161,7 +168,10 @@ abstract class _CariRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   Future<void> getData() async {
     final result = await networkManager.dioGet<CariListesiModel>(
       path: ApiUrls.getCariler,
-      queryParameters: cariListesiRequestModel?.copyWith(sayfa: page, filterText: searchText ?? "", eFaturaGoster: parametreModel.eFaturaAktif).toJsonWithList(),
+      queryParameters:
+          cariListesiRequestModel
+              ?.copyWith(sayfa: page, filterText: searchText ?? "", eFaturaGoster: parametreModel.eFaturaAktif)
+              .toJsonWithList(),
       bodyModel: CariListesiModel(),
     );
     if (result.isSuccess) {

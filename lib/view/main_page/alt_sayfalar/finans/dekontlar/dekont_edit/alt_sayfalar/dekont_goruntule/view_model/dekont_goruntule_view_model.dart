@@ -14,13 +14,7 @@ part "dekont_goruntule_view_model.g.dart";
 final class DekontGoruntuleViewModel = _DekontGoruntuleViewModelBase with _$DekontGoruntuleViewModel;
 
 abstract class _DekontGoruntuleViewModelBase with Store, MobxNetworkMixin {
-  final List<String> titleList = [
-    "Tarih",
-    "Seri",
-    "Dekont No",
-    "Borç Toplamı",
-    "Alacak Toplamı",
-  ];
+  final List<String> titleList = ["Tarih", "Seri", "Dekont No", "Borç Toplamı", "Alacak Toplamı"];
 
   @observable
   ObservableList<DekontDuzenleRequestModel> dekontListesi = ObservableList<DekontDuzenleRequestModel>();
@@ -49,8 +43,16 @@ abstract class _DekontGoruntuleViewModelBase with Store, MobxNetworkMixin {
         "Tarih": list.firstOrNull?.tarih.toDateString,
         "Seri": list.firstOrNull?.seriNo,
         "Dekont No": list.firstOrNull?.dekontNo,
-        "Borç Toplamı": list.where((element) => element.ba == "B").map((e) => e.tutar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
-        "Alacak Toplamı": list.where((element) => element.ba == "A").map((e) => e.tutar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+        "Borç Toplamı": list
+            .where((element) => element.ba == "B")
+            .map((e) => e.tutar)
+            .sum
+            .commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+        "Alacak Toplamı": list
+            .where((element) => element.ba == "A")
+            .map((e) => e.tutar)
+            .sum
+            .commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
       });
     }
   }

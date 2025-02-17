@@ -15,16 +15,16 @@ part "kasa_islemleri_view_model.g.dart";
 final class KasaIslemleriViewModel = _KasaIslemleriViewModelBase with _$KasaIslemleriViewModel;
 
 abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
-  Map<String, dynamic> hesapTipiMap = {
-    "Tümü": null,
-    "Gelir": "G",
-    "Gider": "C",
-  };
+  Map<String, dynamic> hesapTipiMap = {"Tümü": null, "Gelir": "G", "Gider": "C"};
 
   //* Observables
   @observable
-  KasaIslemleriRequestModel kasaIslemleriRequestModel =
-      KasaIslemleriRequestModel(sayfa: 1, menuKodu: "YONE_KISL", baslamaTarihi: DateTime.now().toDateString, bitisTarihi: DateTime.now().toDateString);
+  KasaIslemleriRequestModel kasaIslemleriRequestModel = KasaIslemleriRequestModel(
+    sayfa: 1,
+    menuKodu: "YONE_KISL",
+    baslamaTarihi: DateTime.now().toDateString,
+    bitisTarihi: DateTime.now().toDateString,
+  );
 
   @observable
   ObservableMap<String, dynamic>? paramData;
@@ -49,17 +49,24 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   //* Computed
   @computed
-  ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi => searchText != null
-      ? kasaIslemleriListesi
-          ?.where(
-            (element) => (element.belgeNo?.contains(searchText ?? "") ?? false) || (element.cariAdi?.contains(searchText ?? "") ?? false) || (element.cariKodu?.contains(searchText ?? "") ?? false),
-          )
-          .toList()
-          .asObservable()
-      : kasaIslemleriListesi;
+  ObservableList<KasaIslemleriModel>? get getKasaIslemleriListesi =>
+      searchText != null
+          ? kasaIslemleriListesi
+              ?.where(
+                (element) =>
+                    (element.belgeNo?.contains(searchText ?? "") ?? false) ||
+                    (element.cariAdi?.contains(searchText ?? "") ?? false) ||
+                    (element.cariKodu?.contains(searchText ?? "") ?? false),
+              )
+              .toList()
+              .asObservable()
+          : kasaIslemleriListesi;
 
   @computed
-  bool get getAnyFilter => kasaIslemleriRequestModel.hesapKodu != null || kasaIslemleriRequestModel.plasiyerKodu != null || kasaIslemleriRequestModel.hesapTipi != null;
+  bool get getAnyFilter =>
+      kasaIslemleriRequestModel.hesapKodu != null ||
+      kasaIslemleriRequestModel.plasiyerKodu != null ||
+      kasaIslemleriRequestModel.hesapTipi != null;
 
   //* Actions
   @action
@@ -77,16 +84,19 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   @action
   void setSearchText(String? value) => searchText = value;
   @action
-  void incrementSayfa() => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(sayfa: (kasaIslemleriRequestModel.sayfa ?? 0) + 1);
+  void incrementSayfa() =>
+      kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(sayfa: (kasaIslemleriRequestModel.sayfa ?? 0) + 1);
 
   @action
   void resetSayfa() => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(sayfa: 1);
 
   @action
-  void setBaslamaTarihi(String? value) => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(baslamaTarihi: value);
+  void setBaslamaTarihi(String? value) =>
+      kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(baslamaTarihi: value);
 
   @action
-  void setBitisTarihi(String? value) => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(bitisTarihi: value);
+  void setBitisTarihi(String? value) =>
+      kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(bitisTarihi: value);
 
   @action
   void setKasaIslemleriListesi(List<KasaIslemleriModel>? value) => kasaIslemleriListesi = value?.asObservable();
@@ -101,17 +111,24 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setKasaKodu(KasaList? value) => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(kasaKodu: value?.kasaKodu);
+  void setKasaKodu(KasaList? value) =>
+      kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(kasaKodu: value?.kasaKodu);
 
   @action
-  void setCariKodu(CariListesiModel? value) => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(hesapKodu: value?.cariKodu);
+  void setCariKodu(CariListesiModel? value) =>
+      kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(hesapKodu: value?.cariKodu);
 
   @action
-  void setPlasiyerKodu(PlasiyerList? value) => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(plasiyerKodu: value?.plasiyerKodu);
+  void setPlasiyerKodu(PlasiyerList? value) =>
+      kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(plasiyerKodu: value?.plasiyerKodu);
 
   @action
   void clearFilters() {
-    kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(hesapKodu: null, plasiyerKodu: null, hesapTipi: null);
+    kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(
+      hesapKodu: null,
+      plasiyerKodu: null,
+      hesapTipi: null,
+    );
   }
 
   @action
@@ -123,12 +140,18 @@ abstract class _KasaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager
-        .dioGet<KasaIslemleriModel>(path: ApiUrls.getKasaHareketleri, bodyModel: KasaIslemleriModel(), queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())});
+    final result = await networkManager.dioGet<KasaIslemleriModel>(
+      path: ApiUrls.getKasaHareketleri,
+      bodyModel: KasaIslemleriModel(),
+      queryParameters: {"FilterModel": jsonEncode(kasaIslemleriRequestModel.toJson())},
+    );
     if (result.isSuccess) {
       final List<KasaIslemleriModel> list = result.dataList;
       if ((kasaIslemleriRequestModel.sayfa ?? 0) < 2) {
-        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+        paramData =
+            result.paramData
+                ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
+                .asObservable();
         setKasaIslemleriListesi(list);
       } else {
         addKasaIslemleriListesi(list);

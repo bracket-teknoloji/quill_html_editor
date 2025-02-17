@@ -30,88 +30,104 @@ final class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerVie
   DekontEditKalemlerViewModel viewModel = DekontEditKalemlerViewModel();
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            final result = await Get.toNamed("/mainPage/dekontKalemEkle");
-            if (result != null) {
-              viewModel.addKalemler(result);
-              widget.onChanged(viewModel.kalemler?.length ?? 0);
-            }
-          },
-          child: const Icon(Icons.add),
-        ),
-        body: Observer(
-          builder: (_) {
-            if (viewModel.kalemler.ext.isNullOrEmpty) {
-              return const Center(child: Text("Kalem Ekleyin"));
-            }
-            return ListView.builder(
-              itemCount: viewModel.kalemler?.length,
-              padding: UIHelper.lowPadding,
-              itemBuilder: (context, index) {
-                final item = viewModel.kalemler![index];
-                return Card(
-                  child: ListTile(
-                    onTap: () async => await getCardBottomSheet(item, index),
-                    title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+    floatingActionButton: FloatingActionButton(
+      onPressed: () async {
+        final result = await Get.toNamed("/mainPage/dekontKalemEkle");
+        if (result != null) {
+          viewModel.addKalemler(result);
+          widget.onChanged(viewModel.kalemler?.length ?? 0);
+        }
+      },
+      child: const Icon(Icons.add),
+    ),
+    body: Observer(
+      builder: (_) {
+        if (viewModel.kalemler.ext.isNullOrEmpty) {
+          return const Center(child: Text("Kalem Ekleyin"));
+        }
+        return ListView.builder(
+          itemCount: viewModel.kalemler?.length,
+          padding: UIHelper.lowPadding,
+          itemBuilder: (context, index) {
+            final item = viewModel.kalemler![index];
+            return Card(
+              child: ListTile(
+                onTap: () async => await getCardBottomSheet(item, index),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
-                              children: [
-                                ColorfulBadge(label: Text(item.hesapTipiAciklama ?? "")).paddingOnly(right: UIHelper.lowSize),
-                                Text(item.hesapKodu ?? ""),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                if (item.dovizliMi) const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli).paddingOnly(right: UIHelper.lowSize),
-                                Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                                ColorfulBadge(label: Text(item.ba ?? "")).paddingOnly(left: UIHelper.lowSize),
-                              ],
-                            ),
+                            ColorfulBadge(
+                              label: Text(item.hesapTipiAciklama ?? ""),
+                            ).paddingOnly(right: UIHelper.lowSize),
+                            Text(item.hesapKodu ?? ""),
                           ],
                         ),
-                        Text(item.kalemAdi ?? ""),
+                        Row(
+                          children: [
+                            if (item.dovizliMi)
+                              const ColorfulBadge(
+                                label: Text("Dövizli"),
+                                badgeColorEnum: BadgeColorEnum.dovizli,
+                              ).paddingOnly(right: UIHelper.lowSize),
+                            Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                            ColorfulBadge(label: Text(item.ba ?? "")).paddingOnly(left: UIHelper.lowSize),
+                          ],
+                        ),
                       ],
                     ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (item.aciklama != null) Text("${item.aciklama}").paddingOnly(top: UIHelper.highSize),
-                        Text("Plasiyer:\n${item.plasiyerAdi ?? item.plasiyerKodu ?? ""}").paddingOnly(top: UIHelper.highSize),
-                      ],
-                    ),
-                  ),
-                );
-              },
+                    Text(item.kalemAdi ?? ""),
+                  ],
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (item.aciklama != null) Text("${item.aciklama}").paddingOnly(top: UIHelper.highSize),
+                    Text(
+                      "Plasiyer:\n${item.plasiyerAdi ?? item.plasiyerKodu ?? ""}",
+                    ).paddingOnly(top: UIHelper.highSize),
+                  ],
+                ),
+              ),
             );
           },
-        ),
-        bottomNavigationBar: BottomBarWidget(
-          isScrolledDown: true,
+        );
+      },
+    ),
+    bottomNavigationBar: BottomBarWidget(
+      isScrolledDown: true,
+      children: [
+        FooterButton(
           children: [
-            FooterButton(
-              children: [
-                const Text("Borç"),
-                Observer(
-                  builder: (_) => Text("${viewModel.toplamBorc.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.mantis)),
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Alacak"),
-                Observer(
-                  builder: (_) => Text("${viewModel.toplamAlacak.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.persianRed)),
-                ),
-              ],
+            const Text("Borç"),
+            Observer(
+              builder:
+                  (_) => Text(
+                    "${viewModel.toplamBorc.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    style: const TextStyle(color: ColorPalette.mantis),
+                  ),
             ),
           ],
         ),
-      );
+        FooterButton(
+          children: [
+            const Text("Alacak"),
+            Observer(
+              builder:
+                  (_) => Text(
+                    "${viewModel.toplamAlacak.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    style: const TextStyle(color: ColorPalette.persianRed),
+                  ),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
 
   Future<void> getCardBottomSheet(DekontKalemler model, int index) async {
     await bottomSheetDialogManager.showBottomSheetDialog(

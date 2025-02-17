@@ -10,9 +10,11 @@ import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_
 
 part "transfer_mal_talebi_listesi_view_model.g.dart";
 
-final class TransferMalTalebiListesiViewModel = _TransferMalTalebiListesiViewModelBase with _$TransferMalTalebiListesiViewModel;
+final class TransferMalTalebiListesiViewModel = _TransferMalTalebiListesiViewModelBase
+    with _$TransferMalTalebiListesiViewModel;
 
-abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin {
+abstract class _TransferMalTalebiListesiViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin {
   @observable
   @override
   ObservableList<BaseSiparisEditModel>? observableList;
@@ -39,7 +41,11 @@ abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMix
   @action
   @override
   Future<void> getData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.getDepoTalepleri, bodyModel: BaseSiparisEditModel(), data: requestModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getDepoTalepleri,
+      bodyModel: BaseSiparisEditModel(),
+      data: requestModel.toJson(),
+    );
     setObservableList(result.dataList);
   }
 
@@ -69,17 +75,29 @@ abstract class _TransferMalTalebiListesiViewModelBase with Store, MobxNetworkMix
   void setSearchText(String? value) => searchText = value;
 
   Future<bool> deleteMalTalebi(int id) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: BaseSiparisEditModel(), data: {"ID": id, "ISLEM_KODU": 3});
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveDepoTalep,
+      bodyModel: BaseSiparisEditModel(),
+      data: {"ID": id, "ISLEM_KODU": 3},
+    );
     return result.isSuccess;
   }
 
   Future<bool> talebiAc(int id) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: BaseSiparisEditModel(), data: {"ID": id, "ISLEM_KODU": 9});
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveDepoTalep,
+      bodyModel: BaseSiparisEditModel(),
+      data: {"ID": id, "ISLEM_KODU": 9},
+    );
     return result.isSuccess;
   }
 
   Future<bool> talebiKapat(int id) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: BaseSiparisEditModel(), data: {"ID": id, "ISLEM_KODU": 10});
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveDepoTalep,
+      bodyModel: BaseSiparisEditModel(),
+      data: {"ID": id, "ISLEM_KODU": 10},
+    );
     return result.isSuccess;
   }
 }

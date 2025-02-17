@@ -32,23 +32,63 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
     final TextEditingController borcTLController = TextEditingController(text: getBorc(mainCurrency));
     final TextEditingController alacakTLController = TextEditingController(text: getAlacak(mainCurrency));
     final TextEditingController bakiyeTLController = TextEditingController(text: getBakiye(mainCurrency));
-    final TextEditingController borcToplamiController = TextEditingController(text: "${cariDetayModel?.riskBorcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController alacakToplamiController =
-        TextEditingController(text: "${cariDetayModel?.riskAlacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController bakiyeToplamiController = TextEditingController(text: "${cariDetayModel?.riskBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController riskLimitiController = TextEditingController(text: "${cariDetayModel?.riskLimiti.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController teminatController = TextEditingController(text: "${cariDetayModel?.teminatTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController senetAsilController = TextEditingController(text: "${cariDetayModel?.senetAsilRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController senetCiroController = TextEditingController(text: "${cariDetayModel?.senetCiroRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController cekAsilController = TextEditingController(text: "${cariDetayModel?.cekAsilRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController cekCiroController = TextEditingController(text: "${cariDetayModel?.cekCiroRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController siparisController = TextEditingController(text: "${cariDetayModel?.siparisRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController sevkController = TextEditingController(text: "${cariDetayModel?.sevkRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController yuklemelerController = TextEditingController(text: "${cariDetayModel?.yuklemeRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController irsaliyeController = TextEditingController(text: "${cariDetayModel?.irsaliyeRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController teminatRiskiController = TextEditingController(text: "${cariDetayModel?.teminatRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency");
-    final TextEditingController toplamRiskController =
-        TextEditingController(text: "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency");
+    final TextEditingController borcToplamiController = TextEditingController(
+      text:
+          "${cariDetayModel?.riskBorcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController alacakToplamiController = TextEditingController(
+      text:
+          "${cariDetayModel?.riskAlacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController bakiyeToplamiController = TextEditingController(
+      text: "${cariDetayModel?.riskBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController riskLimitiController = TextEditingController(
+      text: "${cariDetayModel?.riskLimiti.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController teminatController = TextEditingController(
+      text:
+          "${cariDetayModel?.teminatTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController senetAsilController = TextEditingController(
+      text:
+          "${cariDetayModel?.senetAsilRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController senetCiroController = TextEditingController(
+      text:
+          "${cariDetayModel?.senetCiroRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController cekAsilController = TextEditingController(
+      text:
+          "${cariDetayModel?.cekAsilRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController cekCiroController = TextEditingController(
+      text:
+          "${cariDetayModel?.cekCiroRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController siparisController = TextEditingController(
+      text:
+          "${cariDetayModel?.siparisRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController sevkController = TextEditingController(
+      text: "${cariDetayModel?.sevkRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController yuklemelerController = TextEditingController(
+      text:
+          "${cariDetayModel?.yuklemeRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController irsaliyeController = TextEditingController(
+      text:
+          "${cariDetayModel?.irsaliyeRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController teminatRiskiController = TextEditingController(
+      text:
+          "${cariDetayModel?.teminatRiski.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0.00"} $mainCurrency",
+    );
+    final TextEditingController toplamRiskController = TextEditingController(
+      text:
+          "${((cariDetayModel?.riskBorcToplami ?? 0) - (cariDetayModel?.riskAlacakToplami ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+    );
     return SingleChildScrollView(
       child: Form(
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -56,9 +96,7 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
           children: <Widget>[
             if (getBakiye(mainCurrency) == "")
               const Center(
-                child: Column(
-                  children: <Widget>[Icon(Icons.crisis_alert_outlined), Text("Kayıt Bulunamadı")],
-                ),
+                child: Column(children: <Widget>[Icon(Icons.crisis_alert_outlined), Text("Kayıt Bulunamadı")]),
               )
             else
               CustomWidgetWithLabel(
@@ -80,9 +118,27 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: SizedBox(
                           child: Row(
                             children: <Widget>[
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcEuroController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakEuroController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeEuroController)),
+                              Expanded(
+                                child: CustomTextField(
+                                  readOnly: true,
+                                  labelText: "Borç",
+                                  controller: borcEuroController,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextField(
+                                  readOnly: true,
+                                  labelText: "Alacak",
+                                  controller: alacakEuroController,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextField(
+                                  readOnly: true,
+                                  labelText: "Bakiye",
+                                  controller: bakiyeEuroController,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -94,9 +150,27 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: SizedBox(
                           child: Row(
                             children: <Widget>[
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcDolarController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakDolarController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeDolarController)),
+                              Expanded(
+                                child: CustomTextField(
+                                  readOnly: true,
+                                  labelText: "Borç",
+                                  controller: borcDolarController,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextField(
+                                  readOnly: true,
+                                  labelText: "Alacak",
+                                  controller: alacakDolarController,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextField(
+                                  readOnly: true,
+                                  labelText: "Bakiye",
+                                  controller: bakiyeDolarController,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -108,9 +182,23 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: SizedBox(
                           child: Row(
                             children: <Widget>[
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak", controller: alacakTLController)),
-                              Expanded(child: CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeTLController)),
+                              Expanded(
+                                child: CustomTextField(readOnly: true, labelText: "Borç", controller: borcTLController),
+                              ),
+                              Expanded(
+                                child: CustomTextField(
+                                  readOnly: true,
+                                  labelText: "Alacak",
+                                  controller: alacakTLController,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextField(
+                                  readOnly: true,
+                                  labelText: "Bakiye",
+                                  controller: bakiyeTLController,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -124,15 +212,35 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Borç Toplamı", controller: borcToplamiController)),
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Alacak Toplamı", controller: alacakToplamiController)),
+                      Expanded(
+                        child: CustomTextField(
+                          readOnly: true,
+                          labelText: "Borç Toplamı",
+                          controller: borcToplamiController,
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextField(
+                          readOnly: true,
+                          labelText: "Alacak Toplamı",
+                          controller: alacakToplamiController,
+                        ),
+                      ),
                     ],
                   ),
                   CustomTextField(readOnly: true, labelText: "Bakiye", controller: bakiyeToplamiController),
                   Row(
                     children: <Widget>[
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Risk Limiti", controller: riskLimitiController)),
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Teminat", controller: teminatController)),
+                      Expanded(
+                        child: CustomTextField(
+                          readOnly: true,
+                          labelText: "Risk Limiti",
+                          controller: riskLimitiController,
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextField(readOnly: true, labelText: "Teminat", controller: teminatController),
+                      ),
                     ],
                   ),
                   Row(
@@ -141,7 +249,8 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: CustomTextField(
                           readOnly: true,
                           labelText: "Senet Asıl Riski",
-                          valueText: "% ${CariDetayModel.instance.senetAsilRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
+                          valueText:
+                              "% ${CariDetayModel.instance.senetAsilRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
                           controller: senetAsilController,
                         ),
                       ),
@@ -149,7 +258,8 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: CustomTextField(
                           readOnly: true,
                           labelText: "Senet Ciro Riski",
-                          valueText: "% ${CariDetayModel.instance.senetCiroRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
+                          valueText:
+                              "% ${CariDetayModel.instance.senetCiroRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
                           controller: senetCiroController,
                         ),
                       ),
@@ -161,7 +271,8 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: CustomTextField(
                           readOnly: true,
                           labelText: "Çek Asıl Riski",
-                          valueText: "% ${CariDetayModel.instance.senetAsilRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
+                          valueText:
+                              "% ${CariDetayModel.instance.senetAsilRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
                           controller: cekAsilController,
                         ),
                       ),
@@ -169,7 +280,8 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                         child: CustomTextField(
                           readOnly: true,
                           labelText: "Çek Ciro Riski",
-                          valueText: "% ${CariDetayModel.instance.senetCiroRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
+                          valueText:
+                              "% ${CariDetayModel.instance.senetCiroRiskO.toIntIfDouble.toStringIfNotNull ?? ""}",
                           controller: cekCiroController,
                         ),
                       ),
@@ -177,20 +289,52 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
                   ),
                   Row(
                     children: <Widget>[
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Sipariş Riski", controller: siparisController)),
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Sevk Riski", controller: sevkController)),
+                      Expanded(
+                        child: CustomTextField(
+                          readOnly: true,
+                          labelText: "Sipariş Riski",
+                          controller: siparisController,
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextField(readOnly: true, labelText: "Sevk Riski", controller: sevkController),
+                      ),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Yükleme Riski", controller: yuklemelerController)),
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "İrsaliye Riski", controller: irsaliyeController)),
+                      Expanded(
+                        child: CustomTextField(
+                          readOnly: true,
+                          labelText: "Yükleme Riski",
+                          controller: yuklemelerController,
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextField(
+                          readOnly: true,
+                          labelText: "İrsaliye Riski",
+                          controller: irsaliyeController,
+                        ),
+                      ),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Teminat Riski", controller: teminatRiskiController)),
-                      Expanded(child: CustomTextField(readOnly: true, labelText: "Toplam Risk", controller: toplamRiskController)),
+                      Expanded(
+                        child: CustomTextField(
+                          readOnly: true,
+                          labelText: "Teminat Riski",
+                          controller: teminatRiskiController,
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextField(
+                          readOnly: true,
+                          labelText: "Toplam Risk",
+                          controller: toplamRiskController,
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -206,19 +350,31 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizAdi == null)
+                  ?.bakiye
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Dolar") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 1)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizTipi == 1)
+                  ?.bakiye
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Euro") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizTipi == 2)?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizTipi == 2)
+                  ?.bakiye
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "0";
         }
@@ -234,19 +390,31 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizAdi == null)
+                  ?.alacakToplami
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Dolar") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizAdi == "\$")
+                  ?.alacakToplami
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "0";
         }
       } else if (paraBirimi == "Euro") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.alacakToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizAdi == "€")
+                  ?.alacakToplami
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "0";
         }
@@ -262,19 +430,31 @@ final class _BaseEditCariOzetViewState extends BaseState<BaseEditCariOzetView> {
     if (bakiyeList.ext.isNotNullOrEmpty) {
       if (paraBirimi == mainCurrency) {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null) != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == null)?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizAdi == null)
+                  ?.borcToplami
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "";
         }
       } else if (paraBirimi == "Dolar") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$") != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "\$")?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizAdi == "\$")
+                  ?.borcToplami
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "";
         }
       } else if (paraBirimi == "Euro") {
         if (bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€") != null) {
-          return bakiyeList?.firstWhereOrNull((element) => element.dovizAdi == "€")?.borcToplami.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          return bakiyeList
+                  ?.firstWhereOrNull((element) => element.dovizAdi == "€")
+                  ?.borcToplami
+                  .commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+              "";
         } else {
           return "";
         }

@@ -22,7 +22,8 @@ abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
     "Teslim Tarihi (Önce Yeni)": "TESLIM_TARIHI_ZA",
   };
 
-  List<BottomSheetModel> get siralaList => _siralaMap.entries.map((e) => BottomSheetModel(title: e.key, value: e.value, groupValue: e.value)).toList();
+  List<BottomSheetModel> get siralaList =>
+      _siralaMap.entries.map((e) => BottomSheetModel(title: e.key, value: e.value, groupValue: e.value)).toList();
 
   @observable
   SiparislerRequestModel? model;
@@ -46,7 +47,8 @@ abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
   void addSelectedKalem(KalemModel value) => selectedKalemList.add(value);
 
   @action
-  void removeSelectedKalem(KalemModel value) => selectedKalemList.removeWhere((element) => element.belgeNo == value.belgeNo);
+  void removeSelectedKalem(KalemModel value) =>
+      selectedKalemList.removeWhere((element) => element.belgeNo == value.belgeNo);
 
   @action
   void addAllSelectedKalem() => selectedKalemList = kalemList?.asObservable() ?? <KalemModel>[].asObservable();
@@ -65,7 +67,11 @@ abstract class _KalemRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getFaturaKalemleri, bodyModel: KalemModel(), queryParameters: model?.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getFaturaKalemleri,
+      bodyModel: KalemModel(),
+      queryParameters: model?.toJson(),
+    );
     if (result.isSuccess) {
       setKalemList(result.dataList);
     }

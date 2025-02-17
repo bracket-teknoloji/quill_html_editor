@@ -64,11 +64,8 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Ambar Maliyet Raporu",
-        pdfData: viewModel.pdfModel,
-      );
+  Widget build(BuildContext context) =>
+      PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Ambar Maliyet Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -82,10 +79,11 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
             text: "Sıfır Tutar Hariç",
             isVertical: true,
             child: Observer(
-              builder: (_) => Switch.adaptive(
-                value: viewModel.sifirHaricValue,
-                onChanged: (value) => viewModel.setSifirHaric(value),
-              ),
+              builder:
+                  (_) => Switch.adaptive(
+                    value: viewModel.sifirHaricValue,
+                    onChanged: (value) => viewModel.setSifirHaric(value),
+                  ),
             ),
           ),
           Row(
@@ -97,10 +95,7 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    final result = await Get.toNamed(
-                      "/mainPage/stokListesi",
-                      arguments: true,
-                    );
+                    final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                     if (result != null) {
                       stokController.text = result.stokKodu ?? "";
                       viewModel.pdfModel.dicParams?.stokKodu = result.stokKodu ?? "";
@@ -198,17 +193,18 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
             ],
           ),
           Observer(
-            builder: (_) => ElevatedButton(
-              onPressed: () {
-                if (viewModel.pdfModel.dicParams?.maliyetTipi != null) {
-                  viewModel.setFuture();
-                  Get.back();
-                } else {
-                  dialogManager.showAlertDialog("Maliyet Tipi Seçiniz");
-                }
-              },
-              child: Text(loc.generalStrings.apply),
-            ).paddingAll(UIHelper.lowSize),
+            builder:
+                (_) => ElevatedButton(
+                  onPressed: () {
+                    if (viewModel.pdfModel.dicParams?.maliyetTipi != null) {
+                      viewModel.setFuture();
+                      Get.back();
+                    } else {
+                      dialogManager.showAlertDialog("Maliyet Tipi Seçiniz");
+                    }
+                  },
+                  child: Text(loc.generalStrings.apply),
+                ).paddingAll(UIHelper.lowSize),
           ),
         ],
       ),
@@ -216,23 +212,16 @@ final class _AmbarMaliyetRaporuViewState extends BaseState<AmbarMaliyetRaporuVie
     return Future.value(viewModel.futureController.value);
   }
 
-  Future<String?> getGrupKodu(
-    int grupNo,
-    TextEditingController? controller,
-  ) async {
+  Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1);
     }
-    final List<BottomSheetModel> bottomSheetList = grupKodList
-        .where((e) => e.grupNo == grupNo)
-        .toList()
-        .map(
-          (e) => BottomSheetModel(
-            title: e.grupKodu ?? "",
-            onTap: () => Get.back(result: e),
-          ),
-        )
-        .toList();
+    final List<BottomSheetModel> bottomSheetList =
+        grupKodList
+            .where((e) => e.grupNo == grupNo)
+            .toList()
+            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+            .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,

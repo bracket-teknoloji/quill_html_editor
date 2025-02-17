@@ -12,10 +12,10 @@ part of 'paketleme_listesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-PaketlemeListesiModel _$PaketlemeListesiModelFromJson(
-    Map<String, dynamic> json) {
+PaketlemeListesiModel _$PaketlemeListesiModelFromJson(Map<String, dynamic> json) {
   return _PaketlemeListesiModel.fromJson(json);
 }
 
@@ -38,32 +38,30 @@ mixin _$PaketlemeListesiModel {
   /// Create a copy of PaketlemeListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PaketlemeListesiModelCopyWith<PaketlemeListesiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PaketlemeListesiModelCopyWith<PaketlemeListesiModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PaketlemeListesiModelCopyWith<$Res> {
-  factory $PaketlemeListesiModelCopyWith(PaketlemeListesiModel value,
-          $Res Function(PaketlemeListesiModel) then) =
+  factory $PaketlemeListesiModelCopyWith(PaketlemeListesiModel value, $Res Function(PaketlemeListesiModel) then) =
       _$PaketlemeListesiModelCopyWithImpl<$Res, PaketlemeListesiModel>;
   @useResult
-  $Res call(
-      {int? id,
-      String? kodu,
-      int? kalemSayisi,
-      DateTime? kayittarihi,
-      String? kayityapankul,
-      int? depoKodu,
-      int? paketTuru,
-      String? paketTuruTanimi,
-      String? kilit,
-      String? ukey});
+  $Res call({
+    int? id,
+    String? kodu,
+    int? kalemSayisi,
+    DateTime? kayittarihi,
+    String? kayityapankul,
+    int? depoKodu,
+    int? paketTuru,
+    String? paketTuruTanimi,
+    String? kilit,
+    String? ukey,
+  });
 }
 
 /// @nodoc
-class _$PaketlemeListesiModelCopyWithImpl<$Res,
-        $Val extends PaketlemeListesiModel>
+class _$PaketlemeListesiModelCopyWithImpl<$Res, $Val extends PaketlemeListesiModel>
     implements $PaketlemeListesiModelCopyWith<$Res> {
   _$PaketlemeListesiModelCopyWithImpl(this._value, this._then);
 
@@ -88,81 +86,94 @@ class _$PaketlemeListesiModelCopyWithImpl<$Res,
     Object? kilit = freezed,
     Object? ukey = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kodu: freezed == kodu
-          ? _value.kodu
-          : kodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalemSayisi: freezed == kalemSayisi
-          ? _value.kalemSayisi
-          : kalemSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      paketTuru: freezed == paketTuru
-          ? _value.paketTuru
-          : paketTuru // ignore: cast_nullable_to_non_nullable
-              as int?,
-      paketTuruTanimi: freezed == paketTuruTanimi
-          ? _value.paketTuruTanimi
-          : paketTuruTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kilit: freezed == kilit
-          ? _value.kilit
-          : kilit // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ukey: freezed == ukey
-          ? _value.ukey
-          : ukey // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                freezed == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            kodu:
+                freezed == kodu
+                    ? _value.kodu
+                    : kodu // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            kalemSayisi:
+                freezed == kalemSayisi
+                    ? _value.kalemSayisi
+                    : kalemSayisi // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            kayittarihi:
+                freezed == kayittarihi
+                    ? _value.kayittarihi
+                    : kayittarihi // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            kayityapankul:
+                freezed == kayityapankul
+                    ? _value.kayityapankul
+                    : kayityapankul // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            depoKodu:
+                freezed == depoKodu
+                    ? _value.depoKodu
+                    : depoKodu // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            paketTuru:
+                freezed == paketTuru
+                    ? _value.paketTuru
+                    : paketTuru // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            paketTuruTanimi:
+                freezed == paketTuruTanimi
+                    ? _value.paketTuruTanimi
+                    : paketTuruTanimi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            kilit:
+                freezed == kilit
+                    ? _value.kilit
+                    : kilit // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            ukey:
+                freezed == ukey
+                    ? _value.ukey
+                    : ukey // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$PaketlemeListesiModelImplCopyWith<$Res>
-    implements $PaketlemeListesiModelCopyWith<$Res> {
+abstract class _$$PaketlemeListesiModelImplCopyWith<$Res> implements $PaketlemeListesiModelCopyWith<$Res> {
   factory _$$PaketlemeListesiModelImplCopyWith(
-          _$PaketlemeListesiModelImpl value,
-          $Res Function(_$PaketlemeListesiModelImpl) then) =
-      __$$PaketlemeListesiModelImplCopyWithImpl<$Res>;
+    _$PaketlemeListesiModelImpl value,
+    $Res Function(_$PaketlemeListesiModelImpl) then,
+  ) = __$$PaketlemeListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? id,
-      String? kodu,
-      int? kalemSayisi,
-      DateTime? kayittarihi,
-      String? kayityapankul,
-      int? depoKodu,
-      int? paketTuru,
-      String? paketTuruTanimi,
-      String? kilit,
-      String? ukey});
+  $Res call({
+    int? id,
+    String? kodu,
+    int? kalemSayisi,
+    DateTime? kayittarihi,
+    String? kayityapankul,
+    int? depoKodu,
+    int? paketTuru,
+    String? paketTuruTanimi,
+    String? kilit,
+    String? ukey,
+  });
 }
 
 /// @nodoc
 class __$$PaketlemeListesiModelImplCopyWithImpl<$Res>
-    extends _$PaketlemeListesiModelCopyWithImpl<$Res,
-        _$PaketlemeListesiModelImpl>
+    extends _$PaketlemeListesiModelCopyWithImpl<$Res, _$PaketlemeListesiModelImpl>
     implements _$$PaketlemeListesiModelImplCopyWith<$Res> {
-  __$$PaketlemeListesiModelImplCopyWithImpl(_$PaketlemeListesiModelImpl _value,
-      $Res Function(_$PaketlemeListesiModelImpl) _then)
-      : super(_value, _then);
+  __$$PaketlemeListesiModelImplCopyWithImpl(
+    _$PaketlemeListesiModelImpl _value,
+    $Res Function(_$PaketlemeListesiModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PaketlemeListesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -180,69 +191,80 @@ class __$$PaketlemeListesiModelImplCopyWithImpl<$Res>
     Object? kilit = freezed,
     Object? ukey = freezed,
   }) {
-    return _then(_$PaketlemeListesiModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kodu: freezed == kodu
-          ? _value.kodu
-          : kodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kalemSayisi: freezed == kalemSayisi
-          ? _value.kalemSayisi
-          : kalemSayisi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      kayittarihi: freezed == kayittarihi
-          ? _value.kayittarihi
-          : kayittarihi // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      kayityapankul: freezed == kayityapankul
-          ? _value.kayityapankul
-          : kayityapankul // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      paketTuru: freezed == paketTuru
-          ? _value.paketTuru
-          : paketTuru // ignore: cast_nullable_to_non_nullable
-              as int?,
-      paketTuruTanimi: freezed == paketTuruTanimi
-          ? _value.paketTuruTanimi
-          : paketTuruTanimi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      kilit: freezed == kilit
-          ? _value.kilit
-          : kilit // ignore: cast_nullable_to_non_nullable
-              as String?,
-      ukey: freezed == ukey
-          ? _value.ukey
-          : ukey // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$PaketlemeListesiModelImpl(
+        id:
+            freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        kodu:
+            freezed == kodu
+                ? _value.kodu
+                : kodu // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        kalemSayisi:
+            freezed == kalemSayisi
+                ? _value.kalemSayisi
+                : kalemSayisi // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        kayittarihi:
+            freezed == kayittarihi
+                ? _value.kayittarihi
+                : kayittarihi // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        kayityapankul:
+            freezed == kayityapankul
+                ? _value.kayityapankul
+                : kayityapankul // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        depoKodu:
+            freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        paketTuru:
+            freezed == paketTuru
+                ? _value.paketTuru
+                : paketTuru // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        paketTuruTanimi:
+            freezed == paketTuruTanimi
+                ? _value.paketTuruTanimi
+                : paketTuruTanimi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        kilit:
+            freezed == kilit
+                ? _value.kilit
+                : kilit // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        ukey:
+            freezed == ukey
+                ? _value.ukey
+                : ukey // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PaketlemeListesiModelImpl extends _PaketlemeListesiModel {
-  _$PaketlemeListesiModelImpl(
-      {this.id,
-      this.kodu,
-      this.kalemSayisi,
-      this.kayittarihi,
-      this.kayityapankul,
-      this.depoKodu,
-      this.paketTuru,
-      this.paketTuruTanimi,
-      this.kilit,
-      this.ukey})
-      : super._();
+  _$PaketlemeListesiModelImpl({
+    this.id,
+    this.kodu,
+    this.kalemSayisi,
+    this.kayittarihi,
+    this.kayityapankul,
+    this.depoKodu,
+    this.paketTuru,
+    this.paketTuruTanimi,
+    this.kilit,
+    this.ukey,
+  }) : super._();
 
-  factory _$PaketlemeListesiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PaketlemeListesiModelImplFromJson(json);
+  factory _$PaketlemeListesiModelImpl.fromJson(Map<String, dynamic> json) => _$$PaketlemeListesiModelImplFromJson(json);
 
   @override
   final int? id;
@@ -270,34 +292,31 @@ class _$PaketlemeListesiModelImpl extends _PaketlemeListesiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$PaketlemeListesiModelImplCopyWith<_$PaketlemeListesiModelImpl>
-      get copyWith => __$$PaketlemeListesiModelImplCopyWithImpl<
-          _$PaketlemeListesiModelImpl>(this, _$identity);
+  _$$PaketlemeListesiModelImplCopyWith<_$PaketlemeListesiModelImpl> get copyWith =>
+      __$$PaketlemeListesiModelImplCopyWithImpl<_$PaketlemeListesiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PaketlemeListesiModelImplToJson(
-      this,
-    );
+    return _$$PaketlemeListesiModelImplToJson(this);
   }
 }
 
 abstract class _PaketlemeListesiModel extends PaketlemeListesiModel {
-  factory _PaketlemeListesiModel(
-      {final int? id,
-      final String? kodu,
-      final int? kalemSayisi,
-      final DateTime? kayittarihi,
-      final String? kayityapankul,
-      final int? depoKodu,
-      final int? paketTuru,
-      final String? paketTuruTanimi,
-      final String? kilit,
-      final String? ukey}) = _$PaketlemeListesiModelImpl;
+  factory _PaketlemeListesiModel({
+    final int? id,
+    final String? kodu,
+    final int? kalemSayisi,
+    final DateTime? kayittarihi,
+    final String? kayityapankul,
+    final int? depoKodu,
+    final int? paketTuru,
+    final String? paketTuruTanimi,
+    final String? kilit,
+    final String? ukey,
+  }) = _$PaketlemeListesiModelImpl;
   _PaketlemeListesiModel._() : super._();
 
-  factory _PaketlemeListesiModel.fromJson(Map<String, dynamic> json) =
-      _$PaketlemeListesiModelImpl.fromJson;
+  factory _PaketlemeListesiModel.fromJson(Map<String, dynamic> json) = _$PaketlemeListesiModelImpl.fromJson;
 
   @override
   int? get id;
@@ -324,6 +343,5 @@ abstract class _PaketlemeListesiModel extends PaketlemeListesiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PaketlemeListesiModelImplCopyWith<_$PaketlemeListesiModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$PaketlemeListesiModelImplCopyWith<_$PaketlemeListesiModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

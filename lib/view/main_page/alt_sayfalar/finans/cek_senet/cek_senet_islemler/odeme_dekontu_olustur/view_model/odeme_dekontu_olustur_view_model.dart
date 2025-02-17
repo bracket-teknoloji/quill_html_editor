@@ -39,5 +39,10 @@ abstract class _OdemeDekontuOlusturViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? aciklama) => model = model.copyWith(aciklama: aciklama);
 
   Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<TahsilatRequestModel>(path: ApiUrls.saveDekont, bodyModel: TahsilatRequestModel(), showLoading: true, data: model.toJson());
+      await networkManager.dioPost<TahsilatRequestModel>(
+        path: ApiUrls.saveDekont,
+        bodyModel: TahsilatRequestModel(),
+        showLoading: true,
+        data: model.toJson(),
+      );
 }

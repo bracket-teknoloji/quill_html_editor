@@ -32,7 +32,9 @@ final class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView>
   late final TextEditingController _aciklamaController;
   @override
   void initState() {
-    viewModel = KasaHareketDetayViewModel(kasaIslemleriRequestModel: KasaIslemleriRequestModel.fromCariHareketleriModel(model));
+    viewModel = KasaHareketDetayViewModel(
+      kasaIslemleriRequestModel: KasaIslemleriRequestModel.fromCariHareketleriModel(model),
+    );
     _tarihController = TextEditingController();
     _kasaController = TextEditingController();
     _belgeNoController = TextEditingController();
@@ -46,7 +48,8 @@ final class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView>
         _kasaController.text = viewModel.kasaIslemleriModel?.kasaAdi ?? "";
         _belgeNoController.text = viewModel.kasaIslemleriModel?.belgeNo ?? "";
         _gelirGiderController.text = viewModel.kasaIslemleriModel?.gc == "G" ? "Gelir" : "Gider";
-        _tutarController.text = "${viewModel.kasaIslemleriModel?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${viewModel.kasaIslemleriModel?.dovizAdi ?? mainCurrency}";
+        _tutarController.text =
+            "${viewModel.kasaIslemleriModel?.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${viewModel.kasaIslemleriModel?.dovizAdi ?? mainCurrency}";
         _aciklamaController.text = viewModel.kasaIslemleriModel?.aciklama ?? "";
       } else {
         await dialogManager.showAlertDialog(viewModel.message ?? "Kasa hareketi bulunamadı.");
@@ -69,45 +72,39 @@ final class _KasaHareketDetayiViewState extends BaseState<KasaHareketDetayiView>
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Kasa Hareket Detayı",
-            subtitle: model.cariAdi,
-          ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
+    appBar: AppBar(title: AppBarTitle(title: "Kasa Hareket Detayı", subtitle: model.cariAdi)),
+    body: SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(labelText: "Tarih", controller: _tarihController, readOnly: true),
-                  ),
-                  Expanded(
-                    child: CustomTextField(labelText: "Kasa", controller: _kasaController, readOnly: true, valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriModel?.kasaKodu ?? ""))),
-                  ),
-                ],
+              Expanded(child: CustomTextField(labelText: "Tarih", controller: _tarihController, readOnly: true)),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Kasa",
+                  controller: _kasaController,
+                  readOnly: true,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.kasaIslemleriModel?.kasaKodu ?? "")),
+                ),
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(labelText: "Belge No", controller: _belgeNoController, readOnly: true),
-                  ),
-                  Expanded(
-                    child: CustomTextField(labelText: "Gelir/Gider", controller: _gelirGiderController, readOnly: true),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(labelText: "Tutar", controller: _tutarController, readOnly: true),
-                  ),
-                ],
-              ),
-              CustomTextField(labelText: "Açıklama", controller: _aciklamaController, readOnly: true),
             ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+          ),
+          Row(
+            children: [
+              Expanded(child: CustomTextField(labelText: "Belge No", controller: _belgeNoController, readOnly: true)),
+              Expanded(
+                child: CustomTextField(labelText: "Gelir/Gider", controller: _gelirGiderController, readOnly: true),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(child: CustomTextField(labelText: "Tutar", controller: _tutarController, readOnly: true)),
+            ],
+          ),
+          CustomTextField(labelText: "Açıklama", controller: _aciklamaController, readOnly: true),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 }

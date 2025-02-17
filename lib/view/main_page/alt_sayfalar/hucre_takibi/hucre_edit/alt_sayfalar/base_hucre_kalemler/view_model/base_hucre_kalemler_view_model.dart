@@ -17,7 +17,11 @@ abstract class _BaseHucreKalemlerViewModelBase with Store, MobxNetworkMixin {
   HucreTransferiModel model = SingletonModels.hucreTransferiModel;
 
   @observable
-  PaketlemeListesiRequestModel paketRequestModel = PaketlemeListesiRequestModel(menuKodu: "HTAK_HUCT", ekranTipi: "R", kisitYok: "E");
+  PaketlemeListesiRequestModel paketRequestModel = PaketlemeListesiRequestModel(
+    menuKodu: "HTAK_HUCT",
+    ekranTipi: "R",
+    kisitYok: "E",
+  );
 
   @action
   void setStok(BaseStokMixin? stok) {

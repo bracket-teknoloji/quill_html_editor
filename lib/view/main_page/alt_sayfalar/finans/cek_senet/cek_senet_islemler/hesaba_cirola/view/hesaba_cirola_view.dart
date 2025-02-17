@@ -53,7 +53,12 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
       _cariController = TextEditingController(text: model.verilenAdi);
     }
     _belgeNoController = TextEditingController(text: model.belgeNo);
-    _islemTarihiController = TextEditingController(text: (model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0 ? model.tarih.toDateString : DateTime.now().toDateString);
+    _islemTarihiController = TextEditingController(
+      text:
+          (model.tarih?.difference(DateTime.now()).inDays ?? 0) < 0
+              ? model.tarih.toDateString
+              : DateTime.now().toDateString,
+    );
     _projeController = TextEditingController(text: model.projeKodu);
     _plasiyerController = TextEditingController(text: model.plasiyerKodu ?? model.plasiyerKodu);
     super.initState();
@@ -97,7 +102,14 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
         child: Column(
           children: [
             CustomTextField(labelText: "Belge No", controller: _belgeNoController, readOnly: true),
-            CustomTextField(labelText: "İşlem Tarihi", controller: _islemTarihiController, isDateTime: true, isMust: true, readOnly: true, onTap: setTarih),
+            CustomTextField(
+              labelText: "İşlem Tarihi",
+              controller: _islemTarihiController,
+              isDateTime: true,
+              isMust: true,
+              readOnly: true,
+              onTap: setTarih,
+            ),
             if (widget.cirolaEnum == CirolaEnum.cari)
               CustomTextField(
                 labelText: "Cari",
@@ -105,7 +117,10 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
                 isMust: true,
                 readOnly: true,
                 suffixMore: true,
-                suffix: IconButton(onPressed: getCariIslemler, icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
+                suffix: IconButton(
+                  onPressed: getCariIslemler,
+                  icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                ),
                 valueWidget: Observer(builder: (_) => Text(viewModel.model.verilenKodu ?? "")),
                 onTap: setCari,
               ),
@@ -175,7 +190,14 @@ final class _HesabaCirolaViewState extends BaseState<HesabaCirolaView> {
     //   ,
     //   viewModel.model.verilenKodu,
     // );
-    final result = await Get.toNamed("/mainPage/bankaListesiOzel", arguments: BankaListesiRequestModel(arrHesapTipi: "[5]", belgeTipi: viewModel.model.pickerTahsilatTuru, menuKodu: "YONE_BHRE"));
+    final result = await Get.toNamed(
+      "/mainPage/bankaListesiOzel",
+      arguments: BankaListesiRequestModel(
+        arrHesapTipi: "[5]",
+        belgeTipi: viewModel.model.pickerTahsilatTuru,
+        menuKodu: "YONE_BHRE",
+      ),
+    );
     if (result is BankaListesiModel) {
       _cariController.text = result.bankaAdi ?? "";
       viewModel.setTahsilHesabi(result.hesapKodu);

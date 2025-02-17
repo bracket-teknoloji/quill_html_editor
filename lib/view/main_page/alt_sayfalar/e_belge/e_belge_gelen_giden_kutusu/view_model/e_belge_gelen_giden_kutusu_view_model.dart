@@ -12,7 +12,8 @@ import "../model/e_belge_request_model.dart";
 
 part "e_belge_gelen_giden_kutusu_view_model.g.dart";
 
-final class EBelgeGelenGidenKutusuViewModel = _EBelgeGelenGidenKutusuViewModelBase with _$EBelgeGelenGidenKutusuViewModel;
+final class EBelgeGelenGidenKutusuViewModel = _EBelgeGelenGidenKutusuViewModelBase
+    with _$EBelgeGelenGidenKutusuViewModel;
 
 abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin {
   //create constructor
@@ -29,50 +30,22 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
     "Cari Adı (Z-A)": "CARI_ADI_ZA",
   };
 
-  List<EBelgeTuruEnum> get eBelgeTuru => EBelgeTuruEnum.values.where((element) => element.gelenKutusu(eBelgeEnum)).toList();
+  List<EBelgeTuruEnum> get eBelgeTuru =>
+      EBelgeTuruEnum.values.where((element) => element.gelenKutusu(eBelgeEnum)).toList();
 
-  final Map<String, String?> taslakMap = {
-    "Tümü": null,
-    "Gönderilenler": "H",
-    "Taslak": "E",
-  };
+  final Map<String, String?> taslakMap = {"Tümü": null, "Gönderilenler": "H", "Taslak": "E"};
 
-  final Map<String, bool> tarihTuru = {
-    "Kayıt Tarihi": true,
-    "Belge Tarihi": false,
-  };
+  final Map<String, bool> tarihTuru = {"Kayıt Tarihi": true, "Belge Tarihi": false};
 
-  final Map<String, String?> senaryoMap = {
-    "Tümü": null,
-    "Temel": "TEM",
-    "Ticari": "TIC",
-  };
+  final Map<String, String?> senaryoMap = {"Tümü": null, "Temel": "TEM", "Ticari": "TIC"};
 
-  final Map<String, String?> basimMap = {
-    "Tümü": null,
-    "Basım Yapıldı": "E",
-    "Basım Yapılmadı": "H",
-  };
+  final Map<String, String?> basimMap = {"Tümü": null, "Basım Yapıldı": "E", "Basım Yapılmadı": "H"};
 
-  final Map<String, String?> onayMap = {
-    "Tümü": null,
-    "Kabul": "0",
-    "Ret": "1",
-    "Şartlı Kabul": "2",
-    "Bekliyor": "3",
-  };
+  final Map<String, String?> onayMap = {"Tümü": null, "Kabul": "0", "Ret": "1", "Şartlı Kabul": "2", "Bekliyor": "3"};
 
-  final Map<String, String?> kontrolMap = {
-    "Tümü": null,
-    "Evet": "E",
-    "Hayır": "H",
-  };
+  final Map<String, String?> kontrolMap = {"Tümü": null, "Evet": "E", "Hayır": "H"};
 
-  final Map<String, String?> netsisIslenmeMap = {
-    "Tümü": null,
-    "İşlendi": "E",
-    "Bekliyor": "H",
-  };
+  final Map<String, String?> netsisIslenmeMap = {"Tümü": null, "İşlendi": "E", "Bekliyor": "H"};
 
   @observable
   late EBelgeEnum eBelgeEnum;
@@ -160,7 +133,8 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   void changeSiralama(String siralama) => eBelgeRequestModel = eBelgeRequestModel.copyWith(sirala: siralama);
 
   @action
-  void changeSearchText(String? searchText) => eBelgeRequestModel = eBelgeRequestModel.copyWith(searchText: searchText != "" ? searchText : null);
+  void changeSearchText(String? searchText) =>
+      eBelgeRequestModel = eBelgeRequestModel.copyWith(searchText: searchText != "" ? searchText : null);
 
   @action
   void changeEBelgeTuru(String? eBelgeTuru) {
@@ -194,7 +168,10 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   void changeDigerGoster() => digerGoster = !digerGoster;
 
   @action
-  void changeSorgulanmasin() => eBelgeRequestModel = eBelgeRequestModel.copyWith(sorgulanmasin: eBelgeRequestModel.sorgulanmasin == null ? true : null);
+  void changeSorgulanmasin() =>
+      eBelgeRequestModel = eBelgeRequestModel.copyWith(
+        sorgulanmasin: eBelgeRequestModel.sorgulanmasin == null ? true : null,
+      );
 
   @action
   void changeBaslangicTarihi(String? value) {
@@ -233,8 +210,11 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
   @action
   Future<void> getData() async {
     error = null;
-    final result =
-        await networkManager.dioGet<EBelgeListesiModel>(path: ApiUrls.getEFaturalar, bodyModel: EBelgeListesiModel(), queryParameters: {"FilterModel": jsonEncode(eBelgeRequestModel.toJson())});
+    final result = await networkManager.dioGet<EBelgeListesiModel>(
+      path: ApiUrls.getEFaturalar,
+      bodyModel: EBelgeListesiModel(),
+      queryParameters: {"FilterModel": jsonEncode(eBelgeRequestModel.toJson())},
+    );
     // if (result.isSuccess) {
     //   final List<EBelgeListesiModel> eBelgeListesi = result.data as List<EBelgeListesiModel>;
     // }
@@ -246,7 +226,10 @@ abstract class _EBelgeGelenGidenKutusuViewModelBase with Store, MobxNetworkMixin
 
     if (result.isSuccess) {
       if (eBelgeRequestModel.sayfa == 1) {
-        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+        paramData =
+            result.paramData
+                ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
+                .asObservable();
       }
       final List<EBelgeListesiModel> list = result.dataList;
       if ((eBelgeRequestModel.sayfa ?? 0) < 2) {

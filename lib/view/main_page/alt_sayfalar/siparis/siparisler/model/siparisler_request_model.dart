@@ -55,20 +55,20 @@ class SiparislerRequestModel with _$SiparislerRequestModel {
   factory SiparislerRequestModel.fromJson(Map<String, dynamic> json) => _$SiparislerRequestModelFromJson(json);
 
   factory SiparislerRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => SiparislerRequestModel(
-        menuKodu: "COMM_BREH",
-        siralama: "TESLIM_TARIHI_AZ",
-        kisitYok: true,
-        miktarGetir: "E",
-        arrBelgeTipi: "[2,6]",
-        siparisDurumu: "A",
-        pickerBelgeTuru: model.belgeTuru,
-        siparisKarsilanmaDurumu: "K",
-        siparisSevkEdilenGoster: true,
-        belgeNo: model.belgeNo ?? "",
-        arrBelgeNo: model.arrBelgeNo,
-        cariKodu: model.cariKodu ?? "",
+    menuKodu: "COMM_BREH",
+    siralama: "TESLIM_TARIHI_AZ",
+    kisitYok: true,
+    miktarGetir: "E",
+    arrBelgeTipi: "[2,6]",
+    siparisDurumu: "A",
+    pickerBelgeTuru: model.belgeTuru,
+    siparisKarsilanmaDurumu: "K",
+    siparisSevkEdilenGoster: true,
+    belgeNo: model.belgeNo ?? "",
+    arrBelgeNo: model.arrBelgeNo,
+    cariKodu: model.cariKodu ?? "",
 
-        // refBelgeTuru: model.belgeTuru,
-        projeKodu: model.projeKodu,
-      );
+    // refBelgeTuru: model.belgeTuru,
+    projeKodu: model.projeKodu,
+  );
 }

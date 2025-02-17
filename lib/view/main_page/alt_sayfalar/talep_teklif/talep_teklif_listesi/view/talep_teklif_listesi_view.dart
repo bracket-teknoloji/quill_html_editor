@@ -113,78 +113,79 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        // resizeToAvoidBottomInset: true,
-        // extendBody: true,
-        // extendBodyBehindAppBar: false,
-        appBar: appBar(),
-        floatingActionButton: fab(),
-        bottomNavigationBar: bottomBar(),
-        body: body(),
-      );
+    // resizeToAvoidBottomInset: true,
+    // extendBody: true,
+    // extendBodyBehindAppBar: false,
+    appBar: appBar(),
+    floatingActionButton: fab(),
+    bottomNavigationBar: bottomBar(),
+    body: body(),
+  );
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) {
-            if (viewModel.isSearchBarOpen) {
-              return CustomAppBarTextField(
-                controller: _searchController,
-                onChanged: viewModel.setSearchText,
-                onFieldSubmitted: (value) async {
-                  viewModel
-                    ..setSearchText(value)
-                    ..resetList();
-                },
-              );
-            }
-            return AppBarTitle(title: widget.talepTeklifEnum.getName, subtitle: viewModel.observableList?.length.toStringIfNotNull);
-          },
-        ),
-        actions: [
-          Observer(
-            builder: (_) => viewModel.isSearchBarOpen
-                ? IconButton(
-                    onPressed: viewModel.changeSearchBarStatus,
-                    icon: const Icon(Icons.search_off_outlined),
-                  )
-                : IconButton(
-                    onPressed: viewModel.changeSearchBarStatus,
-                    icon: const Icon(Icons.search_outlined),
-                  ),
-          ),
-        ],
-        bottom: AppBarPreferedSizedBottom(
-          children: [
-            AppBarButton(
-              onPressed: filtreleButtonOnTap,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Observer(
-                    builder: (_) => Icon(
+    title: Observer(
+      builder: (_) {
+        if (viewModel.isSearchBarOpen) {
+          return CustomAppBarTextField(
+            controller: _searchController,
+            onChanged: viewModel.setSearchText,
+            onFieldSubmitted: (value) async {
+              viewModel
+                ..setSearchText(value)
+                ..resetList();
+            },
+          );
+        }
+        return AppBarTitle(
+          title: widget.talepTeklifEnum.getName,
+          subtitle: viewModel.observableList?.length.toStringIfNotNull,
+        );
+      },
+    ),
+    actions: [
+      Observer(
+        builder:
+            (_) =>
+                viewModel.isSearchBarOpen
+                    ? IconButton(
+                      onPressed: viewModel.changeSearchBarStatus,
+                      icon: const Icon(Icons.search_off_outlined),
+                    )
+                    : IconButton(onPressed: viewModel.changeSearchBarStatus, icon: const Icon(Icons.search_outlined)),
+      ),
+    ],
+    bottom: AppBarPreferedSizedBottom(
+      children: [
+        AppBarButton(
+          onPressed: filtreleButtonOnTap,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Observer(
+                builder:
+                    (_) => Icon(
                       Icons.filter_alt_outlined,
                       color: viewModel.hasFilter ? UIHelper.primaryColor : null,
                       size: UIHelper.midSize * 2,
                     ),
-                  ),
-                  Text(loc.generalStrings.filter),
-                ],
               ),
-            ),
-            AppBarButton(
-              icon: Icons.sort_by_alpha_outlined,
-              onPressed: siralaButtonOnTap,
-              child: Text(loc.generalStrings.sort),
-            ),
-            AppBarButton(
-              onPressed: seceneklerButtonOnTap,
-              child: const Icon(Icons.more_horiz_outlined),
-            ),
-          ],
+              Text(loc.generalStrings.filter),
+            ],
+          ),
         ),
-      );
+        AppBarButton(
+          icon: Icons.sort_by_alpha_outlined,
+          onPressed: siralaButtonOnTap,
+          child: Text(loc.generalStrings.sort),
+        ),
+        AppBarButton(onPressed: seceneklerButtonOnTap, child: const Icon(Icons.more_horiz_outlined)),
+      ],
+    ),
+  );
 
   Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(
+    builder:
+        (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             final result = await Get.toNamed(
@@ -192,7 +193,9 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
               arguments: BaseEditModel(
                 // model: widget.model,
                 baseEditEnum: BaseEditEnum.ekle,
-                editTipiEnum: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
+                  (element) => element.rawValue == widget.talepTeklifEnum.rawValue,
+                ),
               ),
             );
             if (result == true) {
@@ -200,57 +203,24 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
             }
           },
         ),
-      );
+  );
 
   Widget body() => Observer(
-        builder: (_) => RefreshableListView.pageable(
+    builder:
+        (_) => RefreshableListView.pageable(
           scrollController: _scrollController,
           onRefresh: viewModel.resetList,
           dahaVarMi: viewModel.dahaVarMi,
           items: viewModel.observableList,
-          itemBuilder: (item) => Observer(
-            builder: (_) => TalepTeklifCard(
-              model: item,
-              talepTeklifEnum: widget.talepTeklifEnum,
-              editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
-              showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
-              showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
-              showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
-              onDeleted: () async => viewModel.resetList(),
-              onUpdated: (value) async {
-                if (value) {
-                  viewModel.resetList();
-                }
-              },
-            ),
-          ),
-        ),
-      );
-
-  RefreshIndicator body2() => RefreshIndicator.adaptive(
-        onRefresh: viewModel.resetList,
-        child: Observer(
-          builder: (_) {
-            if (viewModel.observableList == null) {
-              return const ListViewShimmer();
-            } else if (viewModel.observableList!.isEmpty) {
-              return const Center(child: Text("Kayıt Bulunamadı."));
-            } else {
-              return ListView.builder(
-                controller: _scrollController,
-                primary: false,
-                padding: UIHelper.lowPadding,
-                itemCount: viewModel.observableList!.length + (viewModel.dahaVarMi ? 1 : 0),
-                itemBuilder: (_, index) {
-                  if (index == viewModel.observableList!.length) {
-                    return const Center(child: CircularProgressIndicator.adaptive());
-                  }
-                  final BaseSiparisEditModel item = viewModel.observableList![index];
-                  return Observer(
-                    builder: (_) => TalepTeklifCard(
+          itemBuilder:
+              (item) => Observer(
+                builder:
+                    (_) => TalepTeklifCard(
                       model: item,
                       talepTeklifEnum: widget.talepTeklifEnum,
-                      editTipiEnum: EditTipiEnum.values.firstWhere((element) => element.rawValue == widget.talepTeklifEnum.rawValue),
+                      editTipiEnum: EditTipiEnum.values.firstWhere(
+                        (element) => element.rawValue == widget.talepTeklifEnum.rawValue,
+                      ),
                       showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
                       showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
                       showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
@@ -261,40 +231,97 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                         }
                       },
                     ),
-                  );
-                },
-              );
-            }
-          },
+              ),
         ),
-      );
+  );
+
+  RefreshIndicator body2() => RefreshIndicator.adaptive(
+    onRefresh: viewModel.resetList,
+    child: Observer(
+      builder: (_) {
+        if (viewModel.observableList == null) {
+          return const ListViewShimmer();
+        } else if (viewModel.observableList!.isEmpty) {
+          return const Center(child: Text("Kayıt Bulunamadı."));
+        } else {
+          return ListView.builder(
+            controller: _scrollController,
+            primary: false,
+            padding: UIHelper.lowPadding,
+            itemCount: viewModel.observableList!.length + (viewModel.dahaVarMi ? 1 : 0),
+            itemBuilder: (_, index) {
+              if (index == viewModel.observableList!.length) {
+                return const Center(child: CircularProgressIndicator.adaptive());
+              }
+              final BaseSiparisEditModel item = viewModel.observableList![index];
+              return Observer(
+                builder:
+                    (_) => TalepTeklifCard(
+                      model: item,
+                      talepTeklifEnum: widget.talepTeklifEnum,
+                      editTipiEnum: EditTipiEnum.values.firstWhere(
+                        (element) => element.rawValue == widget.talepTeklifEnum.rawValue,
+                      ),
+                      showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
+                      showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
+                      showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
+                      onDeleted: () async => viewModel.resetList(),
+                      onUpdated: (value) async {
+                        if (value) {
+                          viewModel.resetList();
+                        }
+                      },
+                    ),
+              );
+            },
+          );
+        }
+      },
+    ),
+  );
 
   Observer bottomBar() => Observer(
-        builder: (_) => BottomBarWidget(
+    builder:
+        (_) => BottomBarWidget(
           isScrolledDown: viewModel.isScrollDown,
           visible: viewModel.paramData?.isNotEmpty == true,
           children: [
             FooterButton(
               children: [
                 const Text("KDV Hariç"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
               ],
             ),
             FooterButton(
               children: [
                 const Text("KDV"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
               ],
             ),
             FooterButton(
               children: [
                 const Text("KDV Dahil"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
               ],
             ),
           ],
         ),
-      );
+  );
 
   Future<void> filtreleButtonOnTap() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -346,7 +373,10 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                     _cariTipiController.clear();
                   },
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.siparislerRequestModel.cariTipi);
+                    final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(
+                      context,
+                      viewModel.siparislerRequestModel.cariTipi,
+                    );
                     if (result != null) {
                       _cariTipiController.text = result.title ?? "";
                       //😳 Bunu düzenle
@@ -369,7 +399,10 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                   onTap: () async {
                     final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
                       context,
-                      groupValues: ((jsonDecode(viewModel.siparislerRequestModel.arrPlasiyerKodu ?? "[]")) as List).map((e) => e as String).toList(),
+                      groupValues:
+                          ((jsonDecode(viewModel.siparislerRequestModel.arrPlasiyerKodu ?? "[]")) as List)
+                              .map((e) => e as String)
+                              .toList(),
                     );
                     if (result.ext.isNotNullOrEmpty) {
                       _plasiyerController.text = result!.map((e) => e.plasiyerAciklama).join(", ");
@@ -384,18 +417,25 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
           CustomWidgetWithLabel(
             isVertical: true,
             text: "Kapalı Belgeler Listelenmesin",
-            child: Observer(builder: (_) => Switch.adaptive(value: viewModel.siparislerRequestModel.kapaliBelgelerListelenmesin ?? false, onChanged: viewModel.setKapaliBelgelerListelenmesin)),
+            child: Observer(
+              builder:
+                  (_) => Switch.adaptive(
+                    value: viewModel.siparislerRequestModel.kapaliBelgelerListelenmesin ?? false,
+                    onChanged: viewModel.setKapaliBelgelerListelenmesin,
+                  ),
+            ),
           ),
           // .yetkiVarMi(parametreModel.kapali),
           Observer(
-            builder: (_) => SlideControllerWidget(
-              scroll: false,
-              title: "Teslimat Durumu",
-              childrenTitleList: viewModel.teslimatDurumu,
-              filterOnChanged: viewModel.setTeslimatDurumuGroupValue,
-              childrenValueList: viewModel.teslimatDurumuValueList,
-              groupValue: viewModel.siparislerRequestModel.siparisKarsilanmaDurumu,
-            ),
+            builder:
+                (_) => SlideControllerWidget(
+                  scroll: false,
+                  title: "Teslimat Durumu",
+                  childrenTitleList: viewModel.teslimatDurumu,
+                  filterOnChanged: viewModel.setTeslimatDurumuGroupValue,
+                  childrenValueList: viewModel.teslimatDurumuValueList,
+                  groupValue: viewModel.siparislerRequestModel.siparisKarsilanmaDurumu,
+                ),
           ),
           InkWell(
             onTap: viewModel.changeGrupKodlariGoster,
@@ -403,108 +443,145 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text("Cari Rapor Kodları"),
-                Observer(builder: (_) => Icon(viewModel.grupKodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined)),
+                Observer(
+                  builder:
+                      (_) => Icon(
+                        viewModel.grupKodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined,
+                      ),
+                ),
               ],
             ).paddingAll(UIHelper.lowSize),
           ),
           Observer(
-            builder: (_) => AnimatedContainer(
-              height: viewModel.grupKodlariGoster ? null : 0,
-              duration: const Duration(seconds: 1),
-              child: Column(
-                children: [
-                  Row(
+            builder:
+                (_) => AnimatedContainer(
+                  height: viewModel.grupKodlariGoster ? null : 0,
+                  duration: const Duration(seconds: 1),
+                  child: Column(
                     children: [
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Grup Kodu",
-                          controller: _grupKoduController,
-                          readOnly: true,
-                          suffixMore: true,
-                          onTap: () async => await grupKodlariBottomSheet(0, viewModel.siparislerRequestModel.arrGrupKodu, viewModel.getGrupKodlari0),
-                        ),
-                      ).yetkiVarMi(viewModel.getGrupKodlari0.ext.isNotNullOrEmpty),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Kod 1",
-                          controller: _kod1Controller,
-                          readOnly: true,
-                          suffixMore: true,
-                          onClear: () {
-                            viewModel.setArrKod1(null);
-                            _kod1Controller.clear();
-                          },
-                          onTap: () async => await grupKodlariBottomSheet(1, viewModel.siparislerRequestModel.arrKod1, viewModel.getGrupKodlari1),
-                        ),
-                      ).yetkiVarMi(viewModel.getGrupKodlari1.ext.isNotNullOrEmpty),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextField(
+                              labelText: "Grup Kodu",
+                              controller: _grupKoduController,
+                              readOnly: true,
+                              suffixMore: true,
+                              onTap:
+                                  () async => await grupKodlariBottomSheet(
+                                    0,
+                                    viewModel.siparislerRequestModel.arrGrupKodu,
+                                    viewModel.getGrupKodlari0,
+                                  ),
+                            ),
+                          ).yetkiVarMi(viewModel.getGrupKodlari0.ext.isNotNullOrEmpty),
+                          Expanded(
+                            child: CustomTextField(
+                              labelText: "Kod 1",
+                              controller: _kod1Controller,
+                              readOnly: true,
+                              suffixMore: true,
+                              onClear: () {
+                                viewModel.setArrKod1(null);
+                                _kod1Controller.clear();
+                              },
+                              onTap:
+                                  () async => await grupKodlariBottomSheet(
+                                    1,
+                                    viewModel.siparislerRequestModel.arrKod1,
+                                    viewModel.getGrupKodlari1,
+                                  ),
+                            ),
+                          ).yetkiVarMi(viewModel.getGrupKodlari1.ext.isNotNullOrEmpty),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextField(
+                              labelText: "Kod 2",
+                              controller: _kod2Controller,
+                              readOnly: true,
+                              suffixMore: true,
+                              onClear: () {
+                                viewModel.setArrKod2(null);
+                                _kod2Controller.clear();
+                              },
+                              onTap:
+                                  () async => await grupKodlariBottomSheet(
+                                    2,
+                                    viewModel.siparislerRequestModel.arrKod2,
+                                    viewModel.getGrupKodlari2,
+                                  ),
+                            ),
+                          ).yetkiVarMi(viewModel.getGrupKodlari2.ext.isNotNullOrEmpty),
+                          // .yetkiVarMi(viewModel.grupKodList2),
+                          Expanded(
+                            child: CustomTextField(
+                              labelText: "Kod 3",
+                              controller: _kod3Controller,
+                              readOnly: true,
+                              suffixMore: true,
+                              onClear: () {
+                                viewModel.setArrKod3(null);
+                                _kod3Controller.clear();
+                              },
+                              onTap:
+                                  () async => await grupKodlariBottomSheet(
+                                    3,
+                                    viewModel.siparislerRequestModel.arrKod3,
+                                    viewModel.getGrupKodlari3,
+                                  ),
+                            ),
+                          ).yetkiVarMi(viewModel.getGrupKodlari3.ext.isNotNullOrEmpty),
+                        ],
+                      ),
+                      Observer(
+                        builder:
+                            (_) => Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextField(
+                                    labelText: "kod 4",
+                                    controller: _kod4Controller,
+                                    readOnly: true,
+                                    suffixMore: true,
+                                    onClear: () {
+                                      viewModel.setArrKod4(null);
+                                      _kod4Controller.clear();
+                                    },
+                                    onTap:
+                                        () async => await grupKodlariBottomSheet(
+                                          4,
+                                          viewModel.siparislerRequestModel.arrKod4,
+                                          viewModel.getGrupKodlari4,
+                                        ),
+                                  ),
+                                ).yetkiVarMi(viewModel.getGrupKodlari4.ext.isNotNullOrEmpty),
+                                Expanded(
+                                  child: CustomTextField(
+                                    labelText: "kod 5",
+                                    controller: _kod5Controller,
+                                    readOnly: true,
+                                    suffixMore: true,
+                                    onClear: () {
+                                      viewModel.setArrKod5(null);
+                                      _kod5Controller.clear();
+                                    },
+                                    onTap:
+                                        () async => await grupKodlariBottomSheet(
+                                          5,
+                                          viewModel.siparislerRequestModel.arrKod5,
+                                          viewModel.getGrupKodlari5,
+                                        ),
+                                  ),
+                                ).yetkiVarMi(viewModel.getGrupKodlari5.ext.isNotNullOrEmpty),
+                              ],
+                            ),
+                      ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Kod 2",
-                          controller: _kod2Controller,
-                          readOnly: true,
-                          suffixMore: true,
-                          onClear: () {
-                            viewModel.setArrKod2(null);
-                            _kod2Controller.clear();
-                          },
-                          onTap: () async => await grupKodlariBottomSheet(2, viewModel.siparislerRequestModel.arrKod2, viewModel.getGrupKodlari2),
-                        ),
-                      ).yetkiVarMi(viewModel.getGrupKodlari2.ext.isNotNullOrEmpty),
-                      // .yetkiVarMi(viewModel.grupKodList2),
-                      Expanded(
-                        child: CustomTextField(
-                          labelText: "Kod 3",
-                          controller: _kod3Controller,
-                          readOnly: true,
-                          suffixMore: true,
-                          onClear: () {
-                            viewModel.setArrKod3(null);
-                            _kod3Controller.clear();
-                          },
-                          onTap: () async => await grupKodlariBottomSheet(3, viewModel.siparislerRequestModel.arrKod3, viewModel.getGrupKodlari3),
-                        ),
-                      ).yetkiVarMi(viewModel.getGrupKodlari3.ext.isNotNullOrEmpty),
-                    ],
-                  ),
-                  Observer(
-                    builder: (_) => Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "kod 4",
-                            controller: _kod4Controller,
-                            readOnly: true,
-                            suffixMore: true,
-                            onClear: () {
-                              viewModel.setArrKod4(null);
-                              _kod4Controller.clear();
-                            },
-                            onTap: () async => await grupKodlariBottomSheet(4, viewModel.siparislerRequestModel.arrKod4, viewModel.getGrupKodlari4),
-                          ),
-                        ).yetkiVarMi(viewModel.getGrupKodlari4.ext.isNotNullOrEmpty),
-                        Expanded(
-                          child: CustomTextField(
-                            labelText: "kod 5",
-                            controller: _kod5Controller,
-                            readOnly: true,
-                            suffixMore: true,
-                            onClear: () {
-                              viewModel.setArrKod5(null);
-                              _kod5Controller.clear();
-                            },
-                            onTap: () async => await grupKodlariBottomSheet(5, viewModel.siparislerRequestModel.arrKod5, viewModel.getGrupKodlari5),
-                          ),
-                        ).yetkiVarMi(viewModel.getGrupKodlari5.ext.isNotNullOrEmpty),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                ),
           ),
           Row(
             children: [
@@ -526,7 +603,9 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                     await viewModel.resetFilter();
                     viewModel.resetList();
                   },
-                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1)),
+                  ),
                   child: const Text("Temizle"),
                 ),
               ),
@@ -584,27 +663,30 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
               body: Column(
                 children: [
                   Observer(
-                    builder: (_) => SwitchListTile.adaptive(
-                      title: const Text("Ek Açıklamalar"),
-                      value: viewModel.ekstraAlanlarMap["EK"] ?? false,
-                      onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value),
-                    ),
+                    builder:
+                        (_) => SwitchListTile.adaptive(
+                          title: const Text("Ek Açıklamalar"),
+                          value: viewModel.ekstraAlanlarMap["EK"] ?? false,
+                          onChanged: (value) => viewModel.changeEkstraAlanlarMap("EK", value),
+                        ),
                   ),
                   Observer(
-                    builder: (_) => SwitchListTile.adaptive(
-                      title: const Text("Miktar"),
-                      value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
-                      onChanged: (value) {
-                        viewModel.changeEkstraAlanlarMap("MİK", value);
-                      },
-                    ),
+                    builder:
+                        (_) => SwitchListTile.adaptive(
+                          title: const Text("Miktar"),
+                          value: viewModel.ekstraAlanlarMap["MİK"] ?? false,
+                          onChanged: (value) {
+                            viewModel.changeEkstraAlanlarMap("MİK", value);
+                          },
+                        ),
                   ),
                   Observer(
-                    builder: (_) => SwitchListTile.adaptive(
-                      title: const Text("Vade"),
-                      value: viewModel.ekstraAlanlarMap["VADE"] ?? false,
-                      onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value),
-                    ),
+                    builder:
+                        (_) => SwitchListTile.adaptive(
+                          title: const Text("Vade"),
+                          value: viewModel.ekstraAlanlarMap["VADE"] ?? false,
+                          onChanged: (value) => viewModel.changeEkstraAlanlarMap("VADE", value),
+                        ),
                   ),
                 ],
               ),
@@ -622,11 +704,8 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
       groupValues: ((jsonDecode(groupValues ?? "[]")) as List).map((e) => e as String).toList().cast<String>(),
       children: List.generate(
         list?.length ?? 0,
-        (index) => BottomSheetModel(
-          title: list?[index].grupAdi ?? "",
-          value: list?[index],
-          groupValue: list?[index].grupKodu,
-        ),
+        (index) =>
+            BottomSheetModel(title: list?[index].grupAdi ?? "", value: list?[index], groupValue: list?[index].grupKodu),
       ),
     );
     if (result != null) {

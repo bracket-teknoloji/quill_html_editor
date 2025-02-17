@@ -13,5 +13,6 @@ class IsEmriHammaddeTakibiDetayRequestModel with _$IsEmriHammaddeTakibiDetayRequ
     String? referansStokKodu,
   }) = _IsEmriHammaddeTakibiDetayRequestModel;
 
-  factory IsEmriHammaddeTakibiDetayRequestModel.fromJson(Map<String, dynamic> json) => _$IsEmriHammaddeTakibiDetayRequestModelFromJson(json);
+  factory IsEmriHammaddeTakibiDetayRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$IsEmriHammaddeTakibiDetayRequestModelFromJson(json);
 }

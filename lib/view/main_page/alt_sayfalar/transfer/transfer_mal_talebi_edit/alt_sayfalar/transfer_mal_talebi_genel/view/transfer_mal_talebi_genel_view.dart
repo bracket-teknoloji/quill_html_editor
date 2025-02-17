@@ -42,8 +42,16 @@ final class _TransferMalTalebiGenelViewState extends BaseState<TransferMalTalebi
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       _subeController.text = CacheManager.getIsletmeSube["Şube"];
-      _girisDepoController.text = yetkiController.yetkiliDepoList?.firstWhereOrNull((element) => element.depoKodu == model.depoKodu)?.depoTanimi ?? "";
-      _karsiSubeController.text = (model.hedefSube != null) ? parametreModel.subeList?.firstWhereOrNull((element) => element.subeKodu == model.hedefSube)?.subeAdi ?? "" : "";
+      _girisDepoController.text =
+          yetkiController.yetkiliDepoList
+              ?.firstWhereOrNull((element) => element.depoKodu == model.depoKodu)
+              ?.depoTanimi ??
+          "";
+      _karsiSubeController.text =
+          (model.hedefSube != null)
+              ? parametreModel.subeList?.firstWhereOrNull((element) => element.subeKodu == model.hedefSube)?.subeAdi ??
+                  ""
+              : "";
       _isEmriController.text = model.belgeNo ?? "";
       _aciklamaController.text = model.aciklama ?? "";
     });
@@ -61,90 +69,89 @@ final class _TransferMalTalebiGenelViewState extends BaseState<TransferMalTalebi
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-        child: Column(
+    child: Column(
+      children: [
+        CustomLayoutBuilder.divideInHalf(
           children: [
-            CustomLayoutBuilder.divideInHalf(
-              children: [
-                CustomTextField(
-                  labelText: "Şubeniz",
-                  enabled: enabled,
-                  readOnly: true,
-                  valueWidget: Text(CacheManager.getVeriTabani["Şube"]?.toString() ?? ""),
-                  controller: _subeController,
-                ),
-                CustomTextField(
-                  labelText: "Giriş Depo",
-                  enabled: enabled,
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: _girisDepoController,
-                  valueWidget: Observer(
-                    builder: (_) => Text(viewModel.model.depoKodu.toStringIfNotNull ?? ""),
-                  ),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model.depoKodu);
-                    if (result case final value?) {
-                      viewModel.setDepoKodu(value);
-                      _girisDepoController.text = value.depoTanimi ?? "";
-                    }
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Karşı Şube",
-                  enabled: enabled,
-                  isMust: true,
-                  controller: _karsiSubeController,
-                  readOnly: true,
-                  suffixMore: true,
-                  valueWidget: Observer(
-                    builder: (_) => Text(viewModel.model.hedefSube.toStringIfNotNull ?? ""),
-                  ),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                      context,
-                      title: "Karşı Şube Seçiniz",
-                      groupValue: viewModel.model.hedefSube,
-                      children: List.generate(parametreModel.subeList?.length ?? 0, (index) {
-                        final item = parametreModel.subeList![index];
-                        return BottomSheetModel(
-                          title: item.subeAdi ?? "",
-                          value: item,
-                          groupValue: item.subeKodu,
-                          description: (item.subeKodu ?? 0).toStringIfNotNull,
-                        );
-                      }),
-                    );
-                    if (result case final value?) {
-                      viewModel.setHedefSube(value);
-                      _karsiSubeController.text = value.subeAdi ?? "";
-                    }
-                  },
-                ),
-              ],
-            ),
             CustomTextField(
-              labelText: "İş Emri",
+              labelText: "Şubeniz",
               enabled: enabled,
               readOnly: true,
+              valueWidget: Text(CacheManager.getVeriTabani["Şube"]?.toString() ?? ""),
+              controller: _subeController,
+            ),
+            CustomTextField(
+              labelText: "Giriş Depo",
+              enabled: enabled,
+              isMust: true,
+              readOnly: true,
               suffixMore: true,
-              controller: _isEmriController,
+              controller: _girisDepoController,
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.depoKodu.toStringIfNotNull ?? "")),
               onTap: () async {
-                final result = await Get.toNamed("mainPage/isEmriRehberiOzel");
-                if (result is IsEmirleriModel) {
-                  viewModel.setIsEmri(result);
-                  _isEmriController.text = result.isemriNo ?? "";
+                final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+                  context,
+                  viewModel.model.depoKodu,
+                );
+                if (result case final value?) {
+                  viewModel.setDepoKodu(value);
+                  _girisDepoController.text = value.depoTanimi ?? "";
                 }
               },
             ),
             CustomTextField(
-              labelText: "Açıklama",
+              labelText: "Karşı Şube",
               enabled: enabled,
-              onChanged: viewModel.setAciklama,
-              onClear: () => viewModel.setAciklama(null),
-              controller: _aciklamaController,
+              isMust: true,
+              controller: _karsiSubeController,
+              readOnly: true,
+              suffixMore: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.hedefSube.toStringIfNotNull ?? "")),
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  title: "Karşı Şube Seçiniz",
+                  groupValue: viewModel.model.hedefSube,
+                  children: List.generate(parametreModel.subeList?.length ?? 0, (index) {
+                    final item = parametreModel.subeList![index];
+                    return BottomSheetModel(
+                      title: item.subeAdi ?? "",
+                      value: item,
+                      groupValue: item.subeKodu,
+                      description: (item.subeKodu ?? 0).toStringIfNotNull,
+                    );
+                  }),
+                );
+                if (result case final value?) {
+                  viewModel.setHedefSube(value);
+                  _karsiSubeController.text = value.subeAdi ?? "";
+                }
+              },
             ),
           ],
         ),
-      ).paddingAll(UIHelper.lowSize);
+        CustomTextField(
+          labelText: "İş Emri",
+          enabled: enabled,
+          readOnly: true,
+          suffixMore: true,
+          controller: _isEmriController,
+          onTap: () async {
+            final result = await Get.toNamed("mainPage/isEmriRehberiOzel");
+            if (result is IsEmirleriModel) {
+              viewModel.setIsEmri(result);
+              _isEmriController.text = result.isemriNo ?? "";
+            }
+          },
+        ),
+        CustomTextField(
+          labelText: "Açıklama",
+          enabled: enabled,
+          onChanged: viewModel.setAciklama,
+          onClear: () => viewModel.setAciklama(null),
+          controller: _aciklamaController,
+        ),
+      ],
+    ),
+  ).paddingAll(UIHelper.lowSize);
 }

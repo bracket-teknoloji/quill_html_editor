@@ -34,10 +34,8 @@ class CariAktiviteListesiModel with _$CariAktiviteListesiModel, NetworkManagerMi
     List<CariAktiviteListesiModel>? listDetay,
   }) = _CariAktiviteListesiModel;
 
-  factory CariAktiviteListesiModel.fromCariListesiModel(CariListesiModel? model) => CariAktiviteListesiModel(
-        cariAdi: model?.cariAdi,
-        cariKodu: model?.cariKodu,
-      );
+  factory CariAktiviteListesiModel.fromCariListesiModel(CariListesiModel? model) =>
+      CariAktiviteListesiModel(cariAdi: model?.cariAdi, cariKodu: model?.cariKodu);
   CariAktiviteListesiModel._();
 
   factory CariAktiviteListesiModel.fromJson(Map<String, dynamic> json) => _$CariAktiviteListesiModelFromJson(json);

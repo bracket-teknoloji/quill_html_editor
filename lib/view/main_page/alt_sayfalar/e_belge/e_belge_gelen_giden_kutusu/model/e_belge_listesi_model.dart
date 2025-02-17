@@ -87,74 +87,74 @@ class EBelgeListesiModel with _$EBelgeListesiModel, NetworkManagerMixin {
   }) = _EBelgeListesiModel;
 
   factory EBelgeListesiModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => EBelgeListesiModel(
-        belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.getEBelgeTuruEnum?.value,
-        resmiBelgeNo: model.resmiBelgeNo,
-        islemKodu: 1,
-        tarih: model.tarih,
-      );
+    belgeTuru: model.belgeTuru,
+    ebelgeTuru: model.getEBelgeTuruEnum?.value,
+    resmiBelgeNo: model.resmiBelgeNo,
+    islemKodu: 1,
+    tarih: model.tarih,
+  );
 
   factory EBelgeListesiModel.sil(BaseSiparisEditModel model) => EBelgeListesiModel(
-        belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.getEBelgeTuruEnum?.value,
-        belgeNo: model.belgeNo,
-        resmiBelgeNo: model.resmiBelgeNo,
-        cariKodu: model.cariKodu,
-        kutuTuru: "GIK",
-        islemKodu: 8,
-      );
+    belgeTuru: model.belgeTuru,
+    ebelgeTuru: model.getEBelgeTuruEnum?.value,
+    belgeNo: model.belgeNo,
+    resmiBelgeNo: model.resmiBelgeNo,
+    cariKodu: model.cariKodu,
+    kutuTuru: "GIK",
+    islemKodu: 8,
+  );
 
   factory EBelgeListesiModel.taslakKaydet(BaseSiparisEditModel model) => EBelgeListesiModel(
-        belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.getEBelgeTuruEnum?.value,
-        belgeNo: model.belgeNo,
-        resmiBelgeNo: model.resmiBelgeNo,
-        cariKodu: model.cariKodu,
-        senaryoTipi: model.efaturaTipi,
-        kutuTuru: "GIK",
-        islemKodu: 2,
-      );
+    belgeTuru: model.belgeTuru,
+    ebelgeTuru: model.getEBelgeTuruEnum?.value,
+    belgeNo: model.belgeNo,
+    resmiBelgeNo: model.resmiBelgeNo,
+    cariKodu: model.cariKodu,
+    senaryoTipi: model.efaturaTipi,
+    kutuTuru: "GIK",
+    islemKodu: 2,
+  );
   factory EBelgeListesiModel.faturaGonder(BaseSiparisEditModel model) => EBelgeListesiModel(
-        belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.getEBelgeTuruEnum?.value,
-        belgeNo: model.belgeNo,
-        resmiBelgeNo: model.resmiBelgeNo,
-        cariKodu: model.cariKodu,
-        senaryoTipi: model.efaturaTipi,
-        kutuTuru: "GIK",
-        eirsBilgi: model.eirsBilgiModel,
-        islemKodu: 3,
-      );
+    belgeTuru: model.belgeTuru,
+    ebelgeTuru: model.getEBelgeTuruEnum?.value,
+    belgeNo: model.belgeNo,
+    resmiBelgeNo: model.resmiBelgeNo,
+    cariKodu: model.cariKodu,
+    senaryoTipi: model.efaturaTipi,
+    kutuTuru: "GIK",
+    eirsBilgi: model.eirsBilgiModel,
+    islemKodu: 3,
+  );
 
   factory EBelgeListesiModel.eBelgeEslestir(BaseSiparisEditModel model) => EBelgeListesiModel(
-        belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
-        belgeNo: model.belgeNo,
-        resmiBelgeNo: model.resmiBelgeNo,
-        cariKodu: model.cariKodu,
-        kutuTuru: "GET",
-        islemKodu: 20,
-      );
+    belgeTuru: model.belgeTuru,
+    ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
+    belgeNo: model.belgeNo,
+    resmiBelgeNo: model.resmiBelgeNo,
+    cariKodu: model.cariKodu,
+    kutuTuru: "GET",
+    islemKodu: 20,
+  );
 
   factory EBelgeListesiModel.eBelgeEslestirmeKaldir(BaseSiparisEditModel model) => EBelgeListesiModel(
-        belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
-        belgeNo: model.belgeNo,
-        resmiBelgeNo: model.resmiBelgeNo,
-        cariKodu: model.cariKodu,
-        kutuTuru: "GET",
-        islemKodu: 11,
-      );
+    belgeTuru: model.belgeTuru,
+    ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
+    belgeNo: model.belgeNo,
+    resmiBelgeNo: model.resmiBelgeNo,
+    cariKodu: model.cariKodu,
+    kutuTuru: "GET",
+    islemKodu: 11,
+  );
   factory EBelgeListesiModel.senaryoDegistir(BaseSiparisEditModel model) => EBelgeListesiModel(
-        belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
-        belgeNo: model.belgeNo,
-        resmiBelgeNo: model.resmiBelgeNo,
-        cariKodu: model.cariKodu,
-        senaryoTipi: model.efaturaSenaryo,
-        kutuTuru: "GIK",
-        islemKodu: 10,
-      );
+    belgeTuru: model.belgeTuru,
+    ebelgeTuru: model.eArsivSerisindenMi ? "AFT" : "EFT",
+    belgeNo: model.belgeNo,
+    resmiBelgeNo: model.resmiBelgeNo,
+    cariKodu: model.cariKodu,
+    senaryoTipi: model.efaturaSenaryo,
+    kutuTuru: "GIK",
+    islemKodu: 10,
+  );
   EBelgeListesiModel._();
 
   factory EBelgeListesiModel.fromJson(Map<String, dynamic> json) => _$EBelgeListesiModelFromJson(json);
@@ -202,12 +202,12 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
   }
 
   EBelgeRequestModel get durumSorgula => EBelgeRequestModel(
-        baslamaTarihi: tarih?.toDateString,
-        bitisTarihi: DateTime.now().toDateString,
-        eBelgeTuru: ebelgeTuru,
-        faturaYonu: "GIK",
-        resmiBelgeNo: resmiBelgeNo,
-      );
+    baslamaTarihi: tarih?.toDateString,
+    bitisTarihi: DateTime.now().toDateString,
+    eBelgeTuru: ebelgeTuru,
+    faturaYonu: "GIK",
+    resmiBelgeNo: resmiBelgeNo,
+  );
 
   bool get showBadge => gelen != "E" || taslak != "E";
 

@@ -16,11 +16,7 @@ import "../../../base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/siparis_teslim_raporu_view_model.dart";
 
 final class SiparisTeslimRaporuView extends StatefulWidget {
-  const SiparisTeslimRaporuView({
-    required this.editTipiEnum,
-    super.key,
-    this.baseSiparisEditModel,
-  });
+  const SiparisTeslimRaporuView({required this.editTipiEnum, super.key, this.baseSiparisEditModel});
   final EditTipiEnum editTipiEnum;
   final BaseSiparisEditModel? baseSiparisEditModel;
 
@@ -68,10 +64,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
 
   @override
   Widget build(BuildContext context) => PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "${widget.editTipiEnum.musteriMi ? "Müş. Sip." : "Sat. Sip."} Teslim Raporu",
-        pdfData: viewModel.pdfModel,
-      );
+    filterBottomSheet: filterBottomSheet,
+    title: "${widget.editTipiEnum.musteriMi ? "Müş. Sip." : "Sat. Sip."} Teslim Raporu",
+    pdfData: viewModel.pdfModel,
+  );
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -84,12 +80,8 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
           RaporFiltreDateTimeBottomSheetView(
             filterOnChanged: (value) {
               viewModel
-                ..setBaslangicTarihi(
-                  baslangicTarihiController.text != "" ? baslangicTarihiController.text : null,
-                )
-                ..setBitisTarihi(
-                  bitisTarihiController.text != "" ? bitisTarihiController.text : null,
-                );
+                ..setBaslangicTarihi(baslangicTarihiController.text != "" ? baslangicTarihiController.text : null)
+                ..setBitisTarihi(bitisTarihiController.text != "" ? bitisTarihiController.text : null);
             },
             baslangicTarihiController: baslangicTarihiController,
             bitisTarihiController: bitisTarihiController,
@@ -104,10 +96,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
               belgeNoController.clear();
             },
             onTap: () async {
-              final result = await Get.toNamed(
-                widget.editTipiEnum.getRoute,
-                arguments: true,
-              );
+              final result = await Get.toNamed(widget.editTipiEnum.getRoute, arguments: true);
               if (result is BaseSiparisEditModel) {
                 belgeNoController.text = result.belgeNo ?? "";
                 if (result.belgeNo case final belgeNo?) viewModel.setBelgeNo(belgeNo);
@@ -133,20 +122,14 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
                   dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                 }
               },
-              icon: const Icon(
-                Icons.data_exploration_outlined,
-                color: UIHelper.primaryColor,
-              ),
+              icon: const Icon(Icons.data_exploration_outlined, color: UIHelper.primaryColor),
             ),
             onClear: () {
               viewModel.setCariKodu(null);
               cariController.clear();
             },
             onTap: () async {
-              final result = await Get.toNamed(
-                "/mainPage/cariListesi",
-                arguments: true,
-              );
+              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
               if (result is CariListesiModel) {
                 cariController.text = result.cariAdi ?? "";
                 viewModel.setCariKodu(result.cariKodu);
@@ -160,7 +143,13 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
             controller: teslimCariController,
             onClear: () => viewModel.setCariKodu(null),
             onTap: () async {
-              final result = await Get.toNamed("/mainPage/cariListesiOzel", arguments: CariRequestModel(bagliCariKodu: viewModel.pdfModel.dicParams?.teslimCariKodu, teslimCari: "E"));
+              final result = await Get.toNamed(
+                "/mainPage/cariListesiOzel",
+                arguments: CariRequestModel(
+                  bagliCariKodu: viewModel.pdfModel.dicParams?.teslimCariKodu,
+                  teslimCari: "E",
+                ),
+              );
               if (result is CariListesiModel) {
                 teslimCariController.text = result.cariAdi ?? "";
                 viewModel.setTeslimCariKodu(result.cariKodu ?? "");
@@ -180,10 +169,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
                     vergiNoController.clear();
                   },
                   onTap: () async {
-                    final result = await Get.toNamed(
-                      "/mainPage/cariListesi",
-                      arguments: true,
-                    );
+                    final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result is CariListesiModel) {
                       vergiNoController.text = result.vergiNumarasi ?? "";
                       viewModel.setVergiNo(result.vergiNumarasi);
@@ -202,10 +188,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
                     stokController.clear();
                   },
                   onTap: () async {
-                    final result = await Get.toNamed(
-                      "/mainPage/stokListesi",
-                      arguments: true,
-                    );
+                    final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                     if (result is StokListesiModel) {
                       stokController.text = result.stokAdi ?? "";
                       viewModel.setStokKodu(result.stokKodu);
@@ -222,10 +205,11 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
                   text: "Kapalılar Hariç",
                   isVertical: true,
                   child: Observer(
-                    builder: (_) => Switch.adaptive(
-                      value: viewModel.kapaliMi,
-                      onChanged: (value) => viewModel.setKapali(value ? "E" : "H"),
-                    ),
+                    builder:
+                        (_) => Switch.adaptive(
+                          value: viewModel.kapaliMi,
+                          onChanged: (value) => viewModel.setKapali(value ? "E" : "H"),
+                        ),
                   ),
                 ),
               ),
@@ -234,10 +218,11 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisTeslimRaporuVie
                   text: "Sadece Kalanlar",
                   isVertical: true,
                   child: Observer(
-                    builder: (_) => Switch.adaptive(
-                      value: viewModel.durum,
-                      onChanged: (value) => viewModel.setDurum(value ? "K" : null),
-                    ),
+                    builder:
+                        (_) => Switch.adaptive(
+                          value: viewModel.durum,
+                          onChanged: (value) => viewModel.setDurum(value ? "K" : null),
+                        ),
                   ),
                 ),
               ),

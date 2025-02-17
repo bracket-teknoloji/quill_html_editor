@@ -19,30 +19,28 @@ final class _IsEmriHammaddeTakibiCardState extends BaseState<IsEmriHammaddeTakib
   IsEmriHammaddeTakibiListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(
-        child: ListTile(
-          onTap: () async {
-            await Get.toNamed("mainPage/isEmriHammaddeTakibiDetay", arguments: model);
-          },
-          leading: CircleAvatar(
-            child: Text(model.makineKodu ?? ""),
-          ),
-          title: Text("#${model.takipno ?? ""}"),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    child: ListTile(
+      onTap: () async {
+        await Get.toNamed("mainPage/isEmriHammaddeTakibiDetay", arguments: model);
+      },
+      leading: CircleAvatar(child: Text(model.makineKodu ?? "")),
+      title: Text("#${model.takipno ?? ""}"),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(model.stokAdi ?? ""),
+          Text(model.stokKodu ?? ""),
+          CustomLayoutBuilder(
+            splitCount: 2,
             children: [
-              Text(model.stokAdi ?? ""),
-              Text(model.stokKodu ?? ""),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  if (model.yapacik != null) Text("YapKod: ${model.yapkod}"),
-                  if (model.yapacik != null) Text("Yap.Açık.: ${model.yapacik}"),
-                ],
-              ),
-              if (model.isemrino != null) Text("İş Emri No: ${model.isemrino}"),
-              if (model.miktar != null) Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              if (model.yapacik != null) Text("YapKod: ${model.yapkod}"),
+              if (model.yapacik != null) Text("Yap.Açık.: ${model.yapacik}"),
             ],
           ),
-        ),
-      );
+          if (model.isemrino != null) Text("İş Emri No: ${model.isemrino}"),
+          if (model.miktar != null) Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+        ],
+      ),
+    ),
+  );
 }

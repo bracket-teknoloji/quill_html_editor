@@ -23,59 +23,62 @@ final class _CustomPieChartState extends BaseState<CustomPieChart> {
   int touchedIndex = -1;
   @override
   Widget build(BuildContext context) => AspectRatio(
-        aspectRatio: 1.8,
-        child: widget.pieChartValue != null
+    aspectRatio: 1.8,
+    child:
+        widget.pieChartValue != null
             ? (widget.pieChartValue?.sum ?? 0) > 0
                 ? Padding(
-                    padding: UIHelper.lowPadding,
-                    child: PieChart(
-                      PieChartData(
-                        pieTouchData: PieTouchData(
-                          touchCallback: (event, pieTouchResponse) {
-                            if (event.isInterestedForInteractions || pieTouchResponse == null || pieTouchResponse.touchedSection == null) {
-                              setState(() {
-                                touchedIndex = -1;
-                              });
-                              return;
-                            }
-                            touchedIndex = pieTouchResponse.touchedSection?.touchedSectionIndex ?? 0;
-                            if (touchedIndex >= 0) {
-                              dialogManager.showInfoSnackBar(
-                                "${widget.pieChartTitle?[touchedIndex] ?? widget.pieChartSelectedValue?[touchedIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ''}\n${widget.pieChartValue?[touchedIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                              );
-                            }
-                          },
-                        ),
-                        sections: List.generate(widget.pieChartValue?.length ?? 0, (index) {
-                          final bool isTouched = index == touchedIndex;
-                          final double? fontSize = isTouched ? 16.0 : null;
-                          final double radius = isTouched ? 40.0 : 35.0;
-                          return PieChartSectionData(
-                            color: Colors.primaries[index % 17],
-                            titlePositionPercentageOffset: 0.5,
-                            showTitle: true,
-                            value: widget.pieChartValue?[index] ?? 0,
-                            title:
-                                "${widget.pieChartTitle?[index] ?? widget.pieChartValue?[index].commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}\n%${(((widget.pieChartValue?[index] ?? 0) / widget.pieChartValue.sum) * 100).round().commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
-                            titleStyle: theme.textTheme.labelSmall?.copyWith(fontSize: fontSize),
-                            radius: radius,
-                          );
-                        }),
+                  padding: UIHelper.lowPadding,
+                  child: PieChart(
+                    PieChartData(
+                      pieTouchData: PieTouchData(
+                        touchCallback: (event, pieTouchResponse) {
+                          if (event.isInterestedForInteractions ||
+                              pieTouchResponse == null ||
+                              pieTouchResponse.touchedSection == null) {
+                            setState(() {
+                              touchedIndex = -1;
+                            });
+                            return;
+                          }
+                          touchedIndex = pieTouchResponse.touchedSection?.touchedSectionIndex ?? 0;
+                          if (touchedIndex >= 0) {
+                            dialogManager.showInfoSnackBar(
+                              "${widget.pieChartTitle?[touchedIndex] ?? widget.pieChartSelectedValue?[touchedIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ''}\n${widget.pieChartValue?[touchedIndex].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                            );
+                          }
+                        },
                       ),
-                      duration: DurationHelper.durationLow,
+                      sections: List.generate(widget.pieChartValue?.length ?? 0, (index) {
+                        final bool isTouched = index == touchedIndex;
+                        final double? fontSize = isTouched ? 16.0 : null;
+                        final double radius = isTouched ? 40.0 : 35.0;
+                        return PieChartSectionData(
+                          color: Colors.primaries[index % 17],
+                          titlePositionPercentageOffset: 0.5,
+                          showTitle: true,
+                          value: widget.pieChartValue?[index] ?? 0,
+                          title:
+                              "${widget.pieChartTitle?[index] ?? widget.pieChartValue?[index].commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}\n%${(((widget.pieChartValue?[index] ?? 0) / widget.pieChartValue.sum) * 100).round().commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
+                          titleStyle: theme.textTheme.labelSmall?.copyWith(fontSize: fontSize),
+                          radius: radius,
+                        );
+                      }),
                     ),
-                  )
+                    duration: DurationHelper.durationLow,
+                  ),
+                )
                 : const Card(
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.find_in_page_outlined, size: 50, color: ColorPalette.slateGray),
-                          Text("Veri bulunamadı."),
-                        ],
-                      ),
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.find_in_page_outlined, size: 50, color: ColorPalette.slateGray),
+                        Text("Veri bulunamadı."),
+                      ],
                     ),
-                  )
+                  ),
+                )
             : const Center(child: CircularProgressIndicator.adaptive()),
-      );
+  );
 }

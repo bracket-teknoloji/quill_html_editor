@@ -24,7 +24,8 @@ abstract class _BarkodTanimlaEditViewModelBase with Store, MobxNetworkMixin {
   void setBarkod(String? value) => model = model.copyWith(barkod: value);
 
   @action
-  void setBarkodTipi(BarkodTipiEnum? value) => model = model.copyWith(barkodTipi: value?.barkodTipi, barkodTipiAdi: value?.barkodAdi);
+  void setBarkodTipi(BarkodTipiEnum? value) =>
+      model = model.copyWith(barkodTipi: value?.barkodTipi, barkodTipiAdi: value?.barkodAdi);
 
   @action
   void setBirim(int? value) => model = model.copyWith(birim: value);
@@ -34,24 +35,22 @@ abstract class _BarkodTanimlaEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(
-        path: ApiUrls.saveStok,
-        bodyModel: BarkodTanimlaKayitlariModel(),
-        showLoading: true,
-        data: SaveStokModel()
+    path: ApiUrls.saveStok,
+    bodyModel: BarkodTanimlaKayitlariModel(),
+    showLoading: true,
+    data:
+        SaveStokModel()
           ..islemKodu = 4
           ..kodu = model.stokKodu
           ..requestVersion = 1
           ..stokBarkodModel = model,
-      );
+  );
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> getBarkod() async => await networkManager.dioPost(
-        path: ApiUrls.barkodUret,
-        bodyModel: StokOlcuBirimleriModel(),
-        showLoading: true,
-        data: {
-          "StokKodu": model.stokKodu,
-          "BarkodTipi": model.barkodTipi,
-        },
-      );
+    path: ApiUrls.barkodUret,
+    bodyModel: StokOlcuBirimleriModel(),
+    showLoading: true,
+    data: {"StokKodu": model.stokKodu, "BarkodTipi": model.barkodTipi},
+  );
 }

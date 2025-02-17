@@ -10,11 +10,7 @@ final class SeriGirisiViewModel = _SeriGirisiViewModelBase with _$SeriGirisiView
 
 abstract class _SeriGirisiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  SeriHareketleriModel seriHareketleriModel = SeriHareketleriModel(
-    requestVersion: 2,
-    gckod: "G",
-    islemKodu: 7,
-  );
+  SeriHareketleriModel seriHareketleriModel = SeriHareketleriModel(requestVersion: 2, gckod: "G", islemKodu: 7);
 
   @action
   void setSeriHareketleriModel(SeriHareketleriModel model) => seriHareketleriModel = model;
@@ -44,13 +40,15 @@ abstract class _SeriGirisiViewModelBase with Store, MobxNetworkMixin {
   void setMiktar(double? miktar) => seriHareketleriModel = seriHareketleriModel.copyWith(miktar: miktar);
 
   @action
-  void setHareketAciklama(String? hareketAciklama) => seriHareketleriModel = seriHareketleriModel.copyWith(haracik: hareketAciklama);
+  void setHareketAciklama(String? hareketAciklama) =>
+      seriHareketleriModel = seriHareketleriModel.copyWith(haracik: hareketAciklama);
 
   @action
   void setBelgeNo(String? belgeNo) => seriHareketleriModel = seriHareketleriModel.copyWith(belgeNo: belgeNo);
 
   @action
-  void increaseMiktar() => seriHareketleriModel = seriHareketleriModel.copyWith(miktar: (seriHareketleriModel.miktar ?? 0) + 1);
+  void increaseMiktar() =>
+      seriHareketleriModel = seriHareketleriModel.copyWith(miktar: (seriHareketleriModel.miktar ?? 0) + 1);
 
   @action
   void decreaseMiktar() {
@@ -60,7 +58,11 @@ abstract class _SeriGirisiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<bool> postData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveSeriHareketi, bodyModel: SeriHareketleriModel(), data: seriHareketleriModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveSeriHareketi,
+      bodyModel: SeriHareketleriModel(),
+      data: seriHareketleriModel.toJson(),
+    );
     return result.isSuccess;
   }
 }

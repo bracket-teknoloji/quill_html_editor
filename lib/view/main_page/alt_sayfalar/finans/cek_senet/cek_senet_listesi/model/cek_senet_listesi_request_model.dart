@@ -21,5 +21,6 @@ class CekSenetListesiRequestModel with _$CekSenetListesiRequestModel {
     String? bitisTarihi,
   }) = _CekSenetListesiRequestModel;
 
-  factory CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) => _$CekSenetListesiRequestModelFromJson(json);
+  factory CekSenetListesiRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$CekSenetListesiRequestModelFromJson(json);
 }

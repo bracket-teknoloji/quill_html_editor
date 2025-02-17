@@ -47,8 +47,14 @@ final class _DekontEditViewState extends BaseState<DekontEditView> with TickerPr
         SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
       } else if (widget.baseEditEnum == BaseEditEnum.taslak) {
         final EBelgeListesiModel model = widget.eBelgeModel!;
-        final CariListesiModel? cariModel =
-            await networkManager.getCariModel(CariRequestModel(vergiNo: model.vergiNo, plasiyerKisitiYok: true, eFaturaGoster: true, kod: [widget.eBelgeModel?.cariKodu ?? ""]));
+        final CariListesiModel? cariModel = await networkManager.getCariModel(
+          CariRequestModel(
+            vergiNo: model.vergiNo,
+            plasiyerKisitiYok: true,
+            eFaturaGoster: true,
+            kod: [widget.eBelgeModel?.cariKodu ?? ""],
+          ),
+        );
         SingletonDekontIslemlerRequestModel.instance.yeniKayit = true;
         SingletonDekontIslemlerRequestModel.instance.dekontIslemTuru = "DSG";
         SingletonDekontIslemlerRequestModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
@@ -115,81 +121,67 @@ final class _DekontEditViewState extends BaseState<DekontEditView> with TickerPr
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (didPop, value) async {
-          if (didPop) {
-            return;
-          }
-          await dialogManager.showAreYouSureDialog(Get.back);
-        },
-        child: BaseScaffold(
-          appBar: AppBar(
-            title: AppBarTitle(
-              title: "Genel Dekont",
-              subtitle: widget.baseEditEnum.getName,
-            ),
-            actions: [
-              saveButton,
-            ],
-            bottom: TabBar(
-              controller: _tabController,
-              tabs: [
-                Tab(text: loc.generalStrings.general),
-                Tab(
-                  child: Observer(
-                    builder: (_) => Text("Kalemler (${viewModel.kalemSayisi})"),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          body: TabBarView(
-            controller: _tabController,
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              Observer(
-                builder: (_) {
-                  if (!viewModel.islemTamamlandi) {
-                    return const Center(
-                      child: CircularProgressIndicator.adaptive(),
-                    );
-                  }
-                  return DekontEditGenelView(
-                    baseEditEnum: widget.baseEditEnum,
-                    onChanged: (value) {},
-                  );
-                },
-              ),
-              DekontEditKalemlerView(
-                baseEditEnum: widget.baseEditEnum,
-                onChanged: viewModel.setKalemSayisi,
-              ),
-            ],
-          ),
+    canPop: false,
+    onPopInvokedWithResult: (didPop, value) async {
+      if (didPop) {
+        return;
+      }
+      await dialogManager.showAreYouSureDialog(Get.back);
+    },
+    child: BaseScaffold(
+      appBar: AppBar(
+        title: AppBarTitle(title: "Genel Dekont", subtitle: widget.baseEditEnum.getName),
+        actions: [saveButton],
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: [
+            Tab(text: loc.generalStrings.general),
+            Tab(child: Observer(builder: (_) => Text("Kalemler (${viewModel.kalemSayisi})"))),
+          ],
         ),
-      );
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          Observer(
+            builder: (_) {
+              if (!viewModel.islemTamamlandi) {
+                return const Center(child: CircularProgressIndicator.adaptive());
+              }
+              return DekontEditGenelView(baseEditEnum: widget.baseEditEnum, onChanged: (value) {});
+            },
+          ),
+          DekontEditKalemlerView(baseEditEnum: widget.baseEditEnum, onChanged: viewModel.setKalemSayisi),
+        ],
+      ),
+    ),
+  );
 
   IconButton get saveButton => IconButton(
-        onPressed: () async {
-          if (SingletonDekontIslemlerRequestModel.instance.toplamAlacak.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) !=
-              SingletonDekontIslemlerRequestModel.instance.toplamBorc.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)) {
-            dialogManager.showErrorSnackBar("Alacak ve Borç eşit olmalıdır.");
-          } else if (SingletonDekontIslemlerRequestModel.instance.kalemler.ext.isNullOrEmpty) {
-            dialogManager.showErrorSnackBar("Kalem ekleyin.");
-            _tabController.animateTo(1);
-          } else if (SingletonDekontIslemlerRequestModel.instance.kalemler?.any((element) => element.hesapKodu == null) == true) {
-            dialogManager.showErrorSnackBar("Hesap kodu boş olan kalem var.");
-            _tabController.animateTo(1);
-          } else {
-            dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.postData();
-              if (result.isSuccess) {
-                dialogManager.showSuccessSnackBar("İşlem Başarılı");
-                Get.back();
-              }
-            });
+    onPressed: () async {
+      if (SingletonDekontIslemlerRequestModel.instance.toplamAlacak.commaSeparatedWithDecimalDigits(
+            OndalikEnum.tutar,
+          ) !=
+          SingletonDekontIslemlerRequestModel.instance.toplamBorc.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)) {
+        dialogManager.showErrorSnackBar("Alacak ve Borç eşit olmalıdır.");
+      } else if (SingletonDekontIslemlerRequestModel.instance.kalemler.ext.isNullOrEmpty) {
+        dialogManager.showErrorSnackBar("Kalem ekleyin.");
+        _tabController.animateTo(1);
+      } else if (SingletonDekontIslemlerRequestModel.instance.kalemler?.any((element) => element.hesapKodu == null) ==
+          true) {
+        dialogManager.showErrorSnackBar("Hesap kodu boş olan kalem var.");
+        _tabController.animateTo(1);
+      } else {
+        dialogManager.showAreYouSureDialog(() async {
+          final result = await viewModel.postData();
+          if (result.isSuccess) {
+            dialogManager.showSuccessSnackBar("İşlem Başarılı");
+            Get.back();
           }
-        },
-        icon: const Icon(Icons.save_outlined),
-      );
+        });
+      }
+    },
+    icon: const Icon(Icons.save_outlined),
+  );
 }

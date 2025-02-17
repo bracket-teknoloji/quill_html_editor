@@ -13,12 +13,13 @@ mixin _$GenelPdfViewModel on _GenelPdfViewModelBase, Store {
 
   @override
   String get getPageCounter =>
-      (_$getPageCounterComputed ??= Computed<String>(() => super.getPageCounter,
-              name: '_GenelPdfViewModelBase.getPageCounter'))
+      (_$getPageCounterComputed ??= Computed<String>(
+            () => super.getPageCounter,
+            name: '_GenelPdfViewModelBase.getPageCounter',
+          ))
           .value;
 
-  late final _$currentPageAtom =
-      Atom(name: '_GenelPdfViewModelBase.currentPage', context: context);
+  late final _$currentPageAtom = Atom(name: '_GenelPdfViewModelBase.currentPage', context: context);
 
   @override
   int get currentPage {
@@ -33,8 +34,7 @@ mixin _$GenelPdfViewModel on _GenelPdfViewModelBase, Store {
     });
   }
 
-  late final _$pageCounterAtom =
-      Atom(name: '_GenelPdfViewModelBase.pageCounter', context: context);
+  late final _$pageCounterAtom = Atom(name: '_GenelPdfViewModelBase.pageCounter', context: context);
 
   @override
   int get pageCounter {
@@ -49,8 +49,7 @@ mixin _$GenelPdfViewModel on _GenelPdfViewModelBase, Store {
     });
   }
 
-  late final _$pdfFileAtom =
-      Atom(name: '_GenelPdfViewModelBase.pdfFile', context: context);
+  late final _$pdfFileAtom = Atom(name: '_GenelPdfViewModelBase.pdfFile', context: context);
 
   @override
   File? get pdfFile {
@@ -65,8 +64,7 @@ mixin _$GenelPdfViewModel on _GenelPdfViewModelBase, Store {
     });
   }
 
-  late final _$futureControllerAtom =
-      Atom(name: '_GenelPdfViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(name: '_GenelPdfViewModelBase.futureController', context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -81,13 +79,16 @@ mixin _$GenelPdfViewModel on _GenelPdfViewModelBase, Store {
     });
   }
 
-  late final _$_GenelPdfViewModelBaseActionController =
-      ActionController(name: '_GenelPdfViewModelBase', context: context);
+  late final _$_GenelPdfViewModelBaseActionController = ActionController(
+    name: '_GenelPdfViewModelBase',
+    context: context,
+  );
 
   @override
   void changePdfFile(File? value) {
     final _$actionInfo = _$_GenelPdfViewModelBaseActionController.startAction(
-        name: '_GenelPdfViewModelBase.changePdfFile');
+      name: '_GenelPdfViewModelBase.changePdfFile',
+    );
     try {
       return super.changePdfFile(value);
     } finally {
@@ -98,7 +99,8 @@ mixin _$GenelPdfViewModel on _GenelPdfViewModelBase, Store {
   @override
   void changeCurrentPage(int value) {
     final _$actionInfo = _$_GenelPdfViewModelBaseActionController.startAction(
-        name: '_GenelPdfViewModelBase.changeCurrentPage');
+      name: '_GenelPdfViewModelBase.changeCurrentPage',
+    );
     try {
       return super.changeCurrentPage(value);
     } finally {
@@ -109,7 +111,8 @@ mixin _$GenelPdfViewModel on _GenelPdfViewModelBase, Store {
   @override
   void changePageCounter(int value) {
     final _$actionInfo = _$_GenelPdfViewModelBaseActionController.startAction(
-        name: '_GenelPdfViewModelBase.changePageCounter');
+      name: '_GenelPdfViewModelBase.changePageCounter',
+    );
     try {
       return super.changePageCounter(value);
     } finally {

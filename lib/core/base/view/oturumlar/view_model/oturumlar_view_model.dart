@@ -30,7 +30,10 @@ abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin, ListableMix
     } else {
       return observableList
           ?.where(
-            (element) => (element.adi?.contains(searchText ?? "") ?? false) || (element.soyadi?.contains(searchText ?? "") ?? false) || (element.kullaniciAdi?.contains(searchText ?? "") ?? false),
+            (element) =>
+                (element.adi?.contains(searchText ?? "") ?? false) ||
+                (element.soyadi?.contains(searchText ?? "") ?? false) ||
+                (element.kullaniciAdi?.contains(searchText ?? "") ?? false),
           )
           .toList()
           .asObservable();
@@ -53,10 +56,7 @@ abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin, ListableMix
   @action
   Future<void> getData() async {
     observableList = null;
-    final result = await networkManager.dioGet<AccountModel>(
-      path: ApiUrls.getOturumlar,
-      bodyModel: AccountModel(),
-    );
+    final result = await networkManager.dioGet<AccountModel>(path: ApiUrls.getOturumlar, bodyModel: AccountModel());
     if (result.isSuccess) {
       final List<AccountModel> list = result.dataList;
       observableList = list.asObservable();
@@ -69,9 +69,7 @@ abstract class _OturumlarViewModelBase with Store, MobxNetworkMixin, ListableMix
       path: ApiUrls.logoutUser,
       bodyModel: AccountModel(),
       showLoading: true,
-      queryParameters: {
-        "BaskaKullanici": user.kullaniciAdi,
-      },
+      queryParameters: {"BaskaKullanici": user.kullaniciAdi},
       data: user.toJson(),
     );
     if (result.isSuccess) {

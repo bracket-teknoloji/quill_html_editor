@@ -32,10 +32,7 @@ extension DateTimeExtensionWithTime on DateTime {
     final weekOfYearDateTime = subtract(Duration(days: weekday - 1)).add(Duration(days: weekOfYear * 7));
     final monday = weekOfYearDateTime.subtract(Duration(days: weekOfYearDateTime.weekday - 1));
     final saturday = monday.add(const Duration(days: 6));
-    return [
-      DateFormat("dd.MM.yyyy").format(monday),
-      DateFormat("dd.MM.yyyy").format(saturday),
-    ];
+    return [DateFormat("dd.MM.yyyy").format(monday), DateFormat("dd.MM.yyyy").format(saturday)];
   }
 }
 

@@ -42,71 +42,64 @@ final class _SeriRehberiViewState extends State<SeriRehberiView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body().paddingAll(UIHelper.lowSize),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body().paddingAll(UIHelper.lowSize));
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) {
-            if (viewModel.isSearchBarOpen) {
-              return CustomAppBarTextField(
-                onChanged: (value) async {
-                  viewModel.setSearchText(value);
-                },
-              );
-            }
-            return AppBarTitle(
-              title: "Seri Seç",
-              subtitle: (viewModel.filteredList?.length ?? 0).toStringIfNotNull,
-            );
-          },
+    title: Observer(
+      builder: (_) {
+        if (viewModel.isSearchBarOpen) {
+          return CustomAppBarTextField(
+            onChanged: (value) async {
+              viewModel.setSearchText(value);
+            },
+          );
+        }
+        return AppBarTitle(title: "Seri Seç", subtitle: (viewModel.filteredList?.length ?? 0).toStringIfNotNull);
+      },
+    ),
+    actions: [
+      IconButton(
+        onPressed: () => viewModel.changeSearchBarStatus(),
+        icon: Observer(
+          builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
         ),
-        actions: [
-          IconButton(
-            onPressed: () => viewModel.changeSearchBarStatus(),
-            icon: Observer(
-              builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
-            ),
-          ),
-        ],
-      );
+      ),
+    ],
+  );
 
   Column body() => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Stok Adı: ${widget.stokModel.stokAdi ?? ""}",
-            overflow: TextOverflow.ellipsis,
-          ).paddingAll(UIHelper.lowSize),
-          Text("Stok Kodu: ${widget.stokModel.stokKodu ?? ""}").paddingAll(UIHelper.lowSize),
-          Text("Depo Kodu: ${widget.stokModel.depoKodu ?? 0}").paddingAll(UIHelper.lowSize),
-          Expanded(
-            child: Observer(
-              builder: (_) => RefreshableListView(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text("Stok Adı: ${widget.stokModel.stokAdi ?? ""}", overflow: TextOverflow.ellipsis).paddingAll(UIHelper.lowSize),
+      Text("Stok Kodu: ${widget.stokModel.stokKodu ?? ""}").paddingAll(UIHelper.lowSize),
+      Text("Depo Kodu: ${widget.stokModel.depoKodu ?? 0}").paddingAll(UIHelper.lowSize),
+      Expanded(
+        child: Observer(
+          builder:
+              (_) => RefreshableListView(
                 onRefresh: viewModel.getData,
                 items: viewModel.filteredList,
-                itemBuilder: (item) => Card(
-                  child: ListTile(
-                    onTap: () async {
-                      Get.back(result: item);
-                    },
-                    title: Text(item.seriNo ?? ""),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (item.acik1 != null) Text("Açıklama 1: ${item.acik1 ?? ""}"),
-                        if (item.acik2 != null) Text("Açıklama 2: ${item.acik2 ?? ""}"),
-                        Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
-                        Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
-                      ],
+                itemBuilder:
+                    (item) => Card(
+                      child: ListTile(
+                        onTap: () async {
+                          Get.back(result: item);
+                        },
+                        title: Text(item.seriNo ?? ""),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (item.acik1 != null) Text("Açıklama 1: ${item.acik1 ?? ""}"),
+                            if (item.acik2 != null) Text("Açıklama 2: ${item.acik2 ?? ""}"),
+                            Text("Miktar: ${item.miktar.toIntIfDouble ?? ""}"),
+                            Text("Depo: ${item.depoKodu ?? ""} - ${item.depoTanimi ?? ""}"),
+                          ],
+                        ),
+                      ),
                     ),
-                  ),
-                ),
               ),
-            ),
-          ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 }

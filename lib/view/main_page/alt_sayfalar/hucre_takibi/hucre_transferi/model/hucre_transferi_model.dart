@@ -29,27 +29,31 @@ class HucreTransferiModel with _$HucreTransferiModel {
   factory HucreTransferiModel.fromJson(Map<String, dynamic> json) => _$HucreTransferiModelFromJson(json);
 
   factory HucreTransferiModel.forStok(HucreTransferiModel model) => _HucreTransferiModel(
-        depoKodu: model.depoKodu,
-        hedefHucre: model.hedefHucre,
-        hucreKodu: model.hucreKodu,
-        islemTuru: model.islemTuru,
-        miktar: model.miktar,
-        stokKodu: model.stokKodu,
-        stokAdi: model.stokAdi,
-      );
-  factory HucreTransferiModel.forPaket(HucreTransferiModel model) => _HucreTransferiModel(
-        depoKodu: model.depoKodu,
-        hedefHucre: model.hedefHucre,
-        paketKodu: model.paketKodu,
-      );
+    depoKodu: model.depoKodu,
+    hedefHucre: model.hedefHucre,
+    hucreKodu: model.hucreKodu,
+    islemTuru: model.islemTuru,
+    miktar: model.miktar,
+    stokKodu: model.stokKodu,
+    stokAdi: model.stokAdi,
+  );
+  factory HucreTransferiModel.forPaket(HucreTransferiModel model) =>
+      _HucreTransferiModel(depoKodu: model.depoKodu, hedefHucre: model.hedefHucre, paketKodu: model.paketKodu);
 }
 
 extension HucreTransferiModelExtensions on HucreTransferiModel {
-  bool get isValid => depoKodu != null && (stokKodu != null || paketKodu != null) && belgeTuru != null && miktar != null && hucreKodu != null;
+  bool get isValid =>
+      depoKodu != null &&
+      (stokKodu != null || paketKodu != null) &&
+      belgeTuru != null &&
+      miktar != null &&
+      hucreKodu != null;
 
   bool get kalemlereGidilsinMi => (depoKodu != null && belgeTuru != null) && (!belgeGorunsunMu || belgeNo != null);
 
-  bool get belgeGorunsunMu => [EditTipiEnum.belgesizIslem, EditTipiEnum.paket].every((element) => element.rawValue != belgeTuru) && belgeTuru != null;
+  bool get belgeGorunsunMu =>
+      [EditTipiEnum.belgesizIslem, EditTipiEnum.paket].every((element) => element.rawValue != belgeTuru) &&
+      belgeTuru != null;
 
   bool get paketMi => belgeTuru == "PAK";
 

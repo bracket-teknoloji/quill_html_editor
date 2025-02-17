@@ -110,7 +110,9 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body(context));
 
   AppBar appBar() => AppBar(
-    title: Observer(builder: (_) => AppBarTitle(title: "Muhtelif ${viewModel.model.tahsilatmi == true ? "Tahsilat" : "Ödeme"}")),
+    title: Observer(
+      builder: (_) => AppBarTitle(title: "Muhtelif ${viewModel.model.tahsilatmi == true ? "Tahsilat" : "Ödeme"}"),
+    ),
     actions: [
       IconButton(
         onPressed: () async {
@@ -166,7 +168,12 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         isDateTime: true,
                         readOnly: true,
                         onTap: () async {
-                          final result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
+                          final result = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(2000),
+                            lastDate: DateTime(2100),
+                          );
                           if (result != null) {
                             _tarihController.text = result.toDateString;
                             viewModel.setTarih(result.dateTimeWithoutTime);
@@ -205,7 +212,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                           if (viewModel.kasa?.dovizliMi ?? false) {
                             return;
                           }
-                          final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model.dovizTipi);
+                          final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
+                            context,
+                            viewModel.model.dovizTipi,
+                          );
                           if (result is DovizList) {
                             _dovizTipiController.text = result.isim ?? "";
                             viewModel.setDovizTipi(result.dovizTipi);
@@ -222,14 +232,20 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         isMust: true,
                         onChanged: (value) {
                           if (_dovizKuruController.text != "") {
-                            viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                            _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                            viewModel.setDovizTutari(
+                              (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                            );
+                            _dovizTutariController.text =
+                                viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
                             _dovizTutariController.clear();
                           }
                         },
-                        suffix: IconButton(onPressed: () async => await getDovizDialog(), icon: const Icon(Icons.more_horiz_outlined)),
+                        suffix: IconButton(
+                          onPressed: () async => await getDovizDialog(),
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
                       ),
                     ).yetkiVarMi(viewModel.model.dovizTipi != null && viewModel.model.dovizTipi != 0),
                   ],
@@ -250,8 +266,12 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         onChanged: (value) {
                           viewModel
                             ..setDovizTutari(value.toDoubleWithFormattedString)
-                            ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
-                          _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                            ..setTutar(
+                              (viewModel.model.dovizTutari ?? 0) *
+                                  (_dovizKuruController.text.toDoubleWithFormattedString),
+                            );
+                          _tutarController.text =
+                              viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                         },
                         // onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
                       ),
@@ -266,8 +286,11 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         onChanged: (value) {
                           viewModel.setTutar(value.toDoubleWithFormattedString);
                           if (_dovizKuruController.text != "") {
-                            viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                            _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                            viewModel.setDovizTutari(
+                              (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                            );
+                            _dovizTutariController.text =
+                                viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                           } else {
                             viewModel.setDovizTutari(null);
                             _dovizTutariController.clear();
@@ -292,7 +315,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                          final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                            context,
+                            viewModel.model.plasiyerKodu,
+                          );
                           if (result is PlasiyerList) {
                             _plasiyerController.text = result.plasiyerAciklama ?? "";
                             viewModel.setPlasiyerKodu(result);
@@ -309,7 +335,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                         suffixMore: true,
                         valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                         onTap: () async {
-                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                          final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                            context,
+                            viewModel.model.projeKodu,
+                          );
                           if (result is BaseProjeModel) {
                             _projekoduController.text = result.projeAciklama ?? result.projeKodu ?? "";
                             // viewModel.setPlasiyerKodu(result);
@@ -353,7 +382,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                             context,
                             title: "Referans Kodu",
                             groupValue: viewModel.model.refKod,
-                            children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu)).toList(),
+                            children:
+                                viewModel.muhaRefList!
+                                    .map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu))
+                                    .toList(),
                           );
                           if (result is MuhasebeReferansModel) {
                             _referansKoduController.text = result.tanimi ?? "";
@@ -365,7 +397,11 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
                   ],
                 ),
           ),
-          CustomTextField(labelText: "Kasa Har. Açıklama", controller: _aciklamaController, onChanged: (value) => viewModel.setAciklama(value)),
+          CustomTextField(
+            labelText: "Kasa Har. Açıklama",
+            controller: _aciklamaController,
+            onChanged: (value) => viewModel.setAciklama(value),
+          ),
         ],
       ).paddingAll(UIHelper.lowSize),
     ),
@@ -388,7 +424,10 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
   }
 
   Future<void> getKasa() async {
-    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context, viewModel.model.kasaKodu);
+    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(
+      context,
+      viewModel.model.kasaKodu,
+    );
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";
       viewModel.setKasaKodu(result);
@@ -416,22 +455,26 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
         title: "Döviz Kuru",
         children: [
           BottomSheetModel(
-            title: "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effSatis,
             iconWidget: Icons.calculate_outlined,
           ),
@@ -440,10 +483,15 @@ final class _MuhtelifOdemeViewState extends BaseState<MuhtelifOdemeView> {
       if (result is double) {
         _dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
         if (_tutarController.text != "") {
-          viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-          _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          viewModel.setDovizTutari(
+            (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+          );
+          _dovizTutariController.text =
+              viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else if (_dovizTutariController.text != "") {
-          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+          viewModel.setTutar(
+            (viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString),
+          );
           _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         }
       }

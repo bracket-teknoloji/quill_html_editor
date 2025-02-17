@@ -16,7 +16,14 @@ part "transferler_view_model.g.dart";
 
 final class TransferlerViewModel = _TransferlerViewModelBase with _$TransferlerViewModel;
 
-abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+abstract class _TransferlerViewModelBase
+    with
+        Store,
+        MobxNetworkMixin,
+        ListableMixin<BaseSiparisEditModel>,
+        SearchableMixin,
+        ScrollControllableMixin,
+        PageableMixin {
   _TransferlerViewModelBase({required String pickerBelgeTuru, required this.editTipiEnum}) {
     faturaRequestModel = faturaRequestModel.copyWith(
       pickerBelgeTuru: pickerBelgeTuru,
@@ -37,11 +44,7 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
     "Vade Günü (Z-A)": "VADE_GUNU_ZA",
   };
 
-  final Map<String, String?> transferTipiMap = {
-    "Tümü": null,
-    "Lokal": "E",
-    "Şube": "H",
-  };
+  final Map<String, String?> transferTipiMap = {"Tümü": null, "Lokal": "E", "Şube": "H"};
 
   @observable
   late EditTipiEnum editTipiEnum;
@@ -54,11 +57,12 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
   bool isSearchBarOpen = false;
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap = {
-    "EK": CacheManager.getProfilParametre.siparisEkAlan,
-    "MİK": CacheManager.getProfilParametre.siparisMiktar,
-    "VADE": CacheManager.getProfilParametre.siparisVade,
-  }.asObservable();
+  ObservableMap<String, bool> ekstraAlanlarMap =
+      {
+        "EK": CacheManager.getProfilParametre.siparisEkAlan,
+        "MİK": CacheManager.getProfilParametre.siparisMiktar,
+        "VADE": CacheManager.getProfilParametre.siparisVade,
+      }.asObservable();
 
   @override
   @observable
@@ -69,7 +73,12 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
   String? searchText;
 
   @observable
-  SiparislerRequestModel faturaRequestModel = SiparislerRequestModel(siralama: "TARIH_ZA", ekranTipi: "L", iadeMi: false, faturalasmaGoster: true);
+  SiparislerRequestModel faturaRequestModel = SiparislerRequestModel(
+    siralama: "TARIH_ZA",
+    ekranTipi: "L",
+    iadeMi: false,
+    faturalasmaGoster: true,
+  );
 
   @override
   @action
@@ -102,7 +111,9 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
 
   @action
   void resetEkstraAlanlarMap() {
-    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
+    CacheManager.setProfilParametre(
+      CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false),
+    );
     ekstraAlanlarMap = {"EK": false, "MİK": false, "VADE": false}.asObservable();
   }
 
@@ -162,7 +173,13 @@ abstract class _TransferlerViewModelBase with Store, MobxNetworkMixin, ListableM
   void setOzelKod2(String? value) => faturaRequestModel = faturaRequestModel.copyWith(ozelKod2: value);
 
   @action
-  void resetFilter() => faturaRequestModel = faturaRequestModel.copyWith(baslamaTarihi: null, bitisTarihi: null, ozelKod2: null, lokalDAT: null);
+  void resetFilter() =>
+      faturaRequestModel = faturaRequestModel.copyWith(
+        baslamaTarihi: null,
+        bitisTarihi: null,
+        ozelKod2: null,
+        lokalDAT: null,
+      );
 
   @override
   @action

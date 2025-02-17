@@ -14,7 +14,14 @@ part "masraf_kodu_rehberi_view_model.g.dart";
 
 final class MasrafKoduRehberiViewModel = _MasrafKoduRehberiViewModelBase with _$MasrafKoduRehberiViewModel;
 
-abstract class _MasrafKoduRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<MasrafKoduRehberiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+abstract class _MasrafKoduRehberiViewModelBase
+    with
+        Store,
+        MobxNetworkMixin,
+        ListableMixin<MasrafKoduRehberiModel>,
+        SearchableMixin,
+        ScrollControllableMixin,
+        PageableMixin {
   @override
   @observable
   ObservableList<MasrafKoduRehberiModel>? observableList;
@@ -85,8 +92,11 @@ abstract class _MasrafKoduRehberiViewModelBase with Store, MobxNetworkMixin, Lis
   @override
   @action
   Future<void> getData() async {
-    final result =
-        await networkManager.dioGet(path: ApiUrls.getMasrafKodlari, bodyModel: MasrafKoduRehberiModel(), queryParameters: requestModel.copyWith(sayfa: page, searchText: searchText).toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getMasrafKodlari,
+      bodyModel: MasrafKoduRehberiModel(),
+      queryParameters: requestModel.copyWith(sayfa: page, searchText: searchText).toJson(),
+    );
     if (result.isSuccess) {
       if (page > 1) {
         addObservableList(result.dataList);

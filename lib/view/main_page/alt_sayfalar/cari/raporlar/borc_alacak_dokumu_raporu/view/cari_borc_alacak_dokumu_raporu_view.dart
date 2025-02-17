@@ -45,8 +45,13 @@ final class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlaca
 
   @override
   Widget build(BuildContext context) => Observer(
-        builder: (_) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Borç / Alacak Dökümü", pdfData: viewModel.pdfModel),
-      );
+    builder:
+        (_) => PDFViewerView(
+          filterBottomSheet: filterBottomSheet,
+          title: "Borç / Alacak Dökümü",
+          pdfData: viewModel.pdfModel,
+        ),
+  );
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -76,7 +81,10 @@ final class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlaca
                     suffixMore: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.pdfModel.dicParams?.plasiyerKodu ?? "")),
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
+                      final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                        context,
+                        viewModel.pdfModel.dicParams?.plasiyerKodu,
+                      );
                       if (result != null) {
                         _plasiyerController.text = result.plasiyerAciklama ?? result.plasiyerKodu ?? "";
                         viewModel.setPlasiyer(result.plasiyerKodu);

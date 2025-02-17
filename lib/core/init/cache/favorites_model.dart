@@ -7,15 +7,7 @@ part "favorites_model.g.dart";
 
 @HiveType(typeId: 24)
 final class FavoritesModel {
-  FavoritesModel({
-    this.name,
-    this.title,
-    this.icon,
-    this.onTap,
-    this.color,
-    this.arguments,
-    this.menuTipi,
-  });
+  FavoritesModel({this.name, this.title, this.icon, this.onTap, this.color, this.arguments, this.menuTipi});
   @HiveField(0)
   String? name;
   @HiveField(1)
@@ -46,5 +38,6 @@ final class FavoritesModel {
   }
 
   @override
-  String toString() => "FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}";
+  String toString() =>
+      "FavoritesModel{name: $name, title: $title, icon: $icon, onTap: $onTap, color: $color, arguments: $arguments}";
 }

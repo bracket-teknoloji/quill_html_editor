@@ -39,16 +39,16 @@ class SaveCekSenetModel with _$SaveCekSenetModel, NetworkManagerMixin {
   factory SaveCekSenetModel.fromJson(Map<String, dynamic> json) => _$SaveCekSenetModelFromJson(json);
 
   factory SaveCekSenetModel.fromCekSenetListesiModel(CekSenetListesiModel model) => SaveCekSenetModel(
-        cariKodu: model.cariKodu,
-        plasiyerKodu: model.plasiyerKodu,
-        tarih: model.tarih,
-        yeniKayit: true,
-        tag: "TahsilatModel",
-        projeKodu: model.projeKodu,
-        ceksenNo: model.belgeNo,
-        pickerBelgeTuru: model.belgeTipi,
-        tutar: model.tutar,
-      );
+    cariKodu: model.cariKodu,
+    plasiyerKodu: model.plasiyerKodu,
+    tarih: model.tarih,
+    yeniKayit: true,
+    tag: "TahsilatModel",
+    projeKodu: model.projeKodu,
+    ceksenNo: model.belgeNo,
+    pickerBelgeTuru: model.belgeTipi,
+    tutar: model.tutar,
+  );
 
   @override
   SaveCekSenetModel fromJson(Map<String, dynamic> json) => SaveCekSenetModel.fromJson(json);
@@ -103,9 +103,12 @@ extension CekSenetExtensions on CekSenetKalemlerModel {
 }
 
 extension CekSenetExtensions2 on CekSenetListesiModel {
-  CekSenetListesiEnum get cekSenetListesiEnum => CekSenetListesiEnum.values.firstWhereOrNull((element) => element.belgeTipi == belgeTipi) ?? CekSenetListesiEnum.cekBorc;
+  CekSenetListesiEnum get cekSenetListesiEnum =>
+      CekSenetListesiEnum.values.firstWhereOrNull((element) => element.belgeTipi == belgeTipi) ??
+      CekSenetListesiEnum.cekBorc;
 }
 
 extension CekSenetExtensions3 on SaveCekSenetModel {
-  CekSenetListesiEnum? get cekSenetListesiEnum => CekSenetListesiEnum.values.firstWhereOrNull((element) => element.belgeTipi == pickerBelgeTuru);
+  CekSenetListesiEnum? get cekSenetListesiEnum =>
+      CekSenetListesiEnum.values.firstWhereOrNull((element) => element.belgeTipi == pickerBelgeTuru);
 }

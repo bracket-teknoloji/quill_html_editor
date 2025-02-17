@@ -34,12 +34,12 @@ class StokRehberiRequestModel with _$StokRehberiRequestModel {
   factory StokRehberiRequestModel.fromJson(Map<String, dynamic> json) => _$StokRehberiRequestModelFromJson(json);
 
   factory StokRehberiRequestModel.fromKalemModel(KalemModel model) => StokRehberiRequestModel(
-        belgeNo: model.belgeNo,
-        belgeTarihi: model.tarih.toDateString,
-        kisitYok: true,
-        menuKodu: "COMM_FKDE",
-        belgeTipi: model.belgeTipi,
-        cariKodu: model.cariKodu,
-        stokKodu: model.stokKodu,
-      );
+    belgeNo: model.belgeNo,
+    belgeTarihi: model.tarih.toDateString,
+    kisitYok: true,
+    menuKodu: "COMM_FKDE",
+    belgeTipi: model.belgeTipi,
+    cariKodu: model.cariKodu,
+    stokKodu: model.stokKodu,
+  );
 }

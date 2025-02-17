@@ -13,15 +13,11 @@ import "../shimmer/list_view_shimmer.dart";
 ///* Bu widget'ın State'ini yönetmek için `Observer` widget'ı kullanınız.
 final class RefreshableListView<T extends NetworkManagerMixin> extends StatelessWidget {
   /// Tek istekle bütün verilerin geldiği durumda bunu kullanınız.
-  const RefreshableListView({
-    required this.onRefresh,
-    required this.items,
-    required this.itemBuilder,
-    super.key,
-  })  : _isPageable = false,
-        dahaVarMi = false,
-        _isSliver = false,
-        scrollController = null;
+  const RefreshableListView({required this.onRefresh, required this.items, required this.itemBuilder, super.key})
+    : _isPageable = false,
+      dahaVarMi = false,
+      _isSliver = false,
+      scrollController = null;
 
   /// Eğer ihtiyaç olunan veriler tek bir istek ile gelmiyorsa bunu kullanınız.
   /// Sayfalama özelliklerini kullanacağınız durumlarda işinize yarayacaktır.
@@ -34,8 +30,8 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
     required this.items,
     required this.itemBuilder,
     super.key,
-  })  : _isPageable = true,
-        _isSliver = false;
+  }) : _isPageable = true,
+       _isSliver = false;
 
   @Deprecated("Sliver versiyonları daha bitmedi.")
   const RefreshableListView.withSliver({
@@ -43,10 +39,10 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
     required this.items,
     required this.itemBuilder,
     super.key,
-  })  : _isPageable = false,
-        dahaVarMi = false,
-        _isSliver = true,
-        scrollController = null;
+  }) : _isPageable = false,
+       dahaVarMi = false,
+       _isSliver = true,
+       scrollController = null;
 
   @Deprecated("Sliver versiyonları daha bitmedi.")
   const RefreshableListView.pageableWithSliver({
@@ -56,8 +52,8 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
     required this.items,
     required this.itemBuilder,
     super.key,
-  })  : _isPageable = true,
-        _isSliver = true;
+  }) : _isPageable = true,
+       _isSliver = true;
 
   /// Refresh işlemleri için gerekli fonksiyon
   final Future<void> Function() onRefresh;
@@ -87,10 +83,8 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
   ///Bu widget adaptive olarak çalışmaktadır.
   ///Padding'i önden tanımlanmıştır.
   @override
-  Widget build(BuildContext context) => RefreshIndicator.adaptive(
-        onRefresh: onRefresh,
-        child: body(context),
-      ).paddingAll(UIHelper.lowSize);
+  Widget build(BuildContext context) =>
+      RefreshIndicator.adaptive(onRefresh: onRefresh, child: body(context)).paddingAll(UIHelper.lowSize);
 
   Widget body(BuildContext context) {
     if (items == null) return const ListViewShimmer();
@@ -116,10 +110,7 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
         child: Center(
           child: const Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(Icons.travel_explore_outlined),
-              Text("Liste bulunamadı."),
-            ],
+            children: [Icon(Icons.travel_explore_outlined), Text("Liste bulunamadı.")],
           ).paddingSymmetric(vertical: MediaQuery.sizeOf(context).height * 0.4),
         ),
       );
@@ -135,15 +126,13 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
       }
       return SliverFixedExtentList(
         itemExtent: (items?.length ?? 0).toDouble(),
-        delegate: SliverChildBuilderDelegate(
-          (context, index) => itemBuilder(items![index]),
-          childCount: items!.length,
-        ),
+        delegate: SliverChildBuilderDelegate((context, index) => itemBuilder(items![index]), childCount: items!.length),
       );
     } else {
       if (!_isPageable) {
         return ListView.builder(
-          itemCount: items!.length, primary: false,
+          itemCount: items!.length,
+          primary: false,
           physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           // items nullcheck yapıldığı için ünlem koyabiliriz.
           itemBuilder: (context, index) => itemBuilder(items![index]),
@@ -151,7 +140,8 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
       }
 
       return ListView.builder(
-        controller: scrollController, primary: false,
+        controller: scrollController,
+        primary: false,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
 
         // DahaVarMi [true] ise [CircularProgressIndicator] görünür.
@@ -159,10 +149,7 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
         itemCount: dahaVarMi ? items!.length + 1 : items!.length,
         itemBuilder: (context, index) {
           if (index == items!.length) {
-            return Visibility(
-              visible: dahaVarMi,
-              child: const Center(child: CircularProgressIndicator.adaptive()),
-            );
+            return Visibility(visible: dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive()));
           }
           return itemBuilder(items![index]);
         },

@@ -25,7 +25,15 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) => Drawer(
-    shape: kIsWeb ? null : const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(UIHelper.highSize), bottomLeft: Radius.circular(UIHelper.highSize))),
+    shape:
+        kIsWeb
+            ? null
+            : const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(UIHelper.highSize),
+                bottomLeft: Radius.circular(UIHelper.highSize),
+              ),
+            ),
     child: SafeArea(
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
@@ -41,14 +49,28 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                 child: Column(
                   children: [
                     Assets.lotties.personLottie.lottie(height: height * 0.2).paddingAll(UIHelper.lowSize),
-                    Text(loc.rightDrawer.profile, style: theme.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold)).marginOnly(top: UIHelper.lowSize),
+                    Text(
+                      loc.rightDrawer.profile,
+                      style: theme.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
+                    ).marginOnly(top: UIHelper.lowSize),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        if (userModel.admin) const Icon(Icons.local_police_outlined, color: UIHelper.primaryColor, size: 20).marginOnly(right: UIHelper.lowSize),
+                        if (userModel.admin)
+                          const Icon(
+                            Icons.local_police_outlined,
+                            color: UIHelper.primaryColor,
+                            size: 20,
+                          ).marginOnly(right: UIHelper.lowSize),
                         Text(
                           CacheManager.getAnaVeri!.userModel?.profilAdi ?? loc.rightDrawer.executiveUser,
-                          style: userModel.admin ? theme.textTheme.bodyMedium?.copyWith(color: UIHelper.primaryColor, fontWeight: FontWeight.bold) : theme.textTheme.bodySmall,
+                          style:
+                              userModel.admin
+                                  ? theme.textTheme.bodyMedium?.copyWith(
+                                    color: UIHelper.primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                  : theme.textTheme.bodySmall,
                         ),
                       ],
                     ).marginOnly(bottom: UIHelper.midSize),
@@ -83,7 +105,10 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                     title: Text(items[index].title, style: theme.textTheme.bodyMedium),
                     // horizontalTitleGap: 0,
                     leading: Icon(item.iconWidget, size: 20, color: theme.colorScheme.primary),
-                    trailing: item.trailingIcon != null ? Icon(item.trailingIcon, size: 20, color: theme.colorScheme.primary) : null,
+                    trailing:
+                        item.trailingIcon != null
+                            ? Icon(item.trailingIcon, size: 20, color: theme.colorScheme.primary)
+                            : null,
                   ),
                 );
               },
@@ -104,7 +129,11 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                 child: DecoratedBox(
                   decoration: BoxDecoration(border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1))),
                   child: TextButton(
-                    style: ButtonStyle(shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius))),
+                    style: ButtonStyle(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
+                      ),
+                    ),
                     onPressed: () {
                       widget.scaffoldKey.currentState!.closeEndDrawer();
                       Get.toNamed("/entryCompany", arguments: false);
@@ -113,8 +142,21 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         // Icon(Icons.rule_s)
-                        IconHelper.smallIcon("sirket_degistir", color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
-                        Flexible(child: Center(child: Text(loc.rightDrawer.changeCompany, style: theme.textTheme.bodySmall, maxLines: 2, overflow: TextOverflow.ellipsis))),
+                        IconHelper.smallIcon(
+                          "sirket_degistir",
+                          color: UIHelper.primaryColor,
+                          size: 24,
+                        ).marginOnly(right: UIHelper.midSize),
+                        Flexible(
+                          child: Center(
+                            child: Text(
+                              loc.rightDrawer.changeCompany,
+                              style: theme.textTheme.bodySmall,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ),
                       ],
                     ).paddingOnly(bottom: UIHelper.lowSize),
                   ),
@@ -122,9 +164,18 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
               ),
               Flexible(
                 child: DecoratedBox(
-                  decoration: BoxDecoration(border: Border(top: BorderSide(color: theme.dividerColor, width: 0.1), left: BorderSide(color: theme.dividerColor, width: 0.1))),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      top: BorderSide(color: theme.dividerColor, width: 0.1),
+                      left: BorderSide(color: theme.dividerColor, width: 0.1),
+                    ),
+                  ),
                   child: TextButton(
-                    style: ButtonStyle(shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius))),
+                    style: ButtonStyle(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
+                      ),
+                    ),
                     onPressed: () {
                       // Navigator.pop(context);
                       widget.scaffoldKey.currentState!.closeEndDrawer();
@@ -133,7 +184,11 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(Icons.logout_outlined, color: UIHelper.primaryColor, size: 24).marginOnly(right: UIHelper.midSize),
+                        const Icon(
+                          Icons.logout_outlined,
+                          color: UIHelper.primaryColor,
+                          size: 24,
+                        ).marginOnly(right: UIHelper.midSize),
                         Center(child: Text(loc.rightDrawer.exit, style: theme.textTheme.bodySmall)),
                       ],
                     ).paddingOnly(bottom: UIHelper.lowSize),
@@ -148,7 +203,10 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
   );
 
   List<DrawerModel> get items => [
-    DrawerModel(title: "${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})", iconWidget: Icons.storage_outlined),
+    DrawerModel(
+      title: "${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})",
+      iconWidget: Icons.storage_outlined,
+    ),
     DrawerModel(title: CacheManager.getIsletmeSube["İşletme"], iconWidget: Icons.home_outlined),
     // DrawerModel(
     //   title: "${CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "")?.wsWan}",
@@ -172,7 +230,9 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
         final result = await bottomSheetDialogManager.showBaglantiSekliBottomSheetDialog(context, account);
         if (result == null) return;
         widget.scaffoldKey.currentState?.closeEndDrawer();
-        dialogManager.showSuccessSnackBar("Bağlantı yöntemi ${result ? "Uzaktan" : "Yerel"} olarak başarıyla güncellendi.");
+        dialogManager.showSuccessSnackBar(
+          "Bağlantı yöntemi ${result ? "Uzaktan" : "Yerel"} olarak başarıyla güncellendi.",
+        );
       },
     ),
     DrawerModel(
@@ -184,9 +244,24 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
           title: loc.rightDrawer.themeChange,
           groupValue: CacheManager.getProfilParametre.temaModu,
           children: [
-            BottomSheetModel(title: "Sistem Varsayılanı", iconWidget: Icons.wb_twilight_outlined, groupValue: ThemeMode.system, value: ThemeMode.system),
-            BottomSheetModel(title: "Açık", iconWidget: Icons.wb_sunny_outlined, groupValue: ThemeMode.light, value: ThemeMode.light),
-            BottomSheetModel(title: "Koyu", iconWidget: Icons.dark_mode_outlined, groupValue: ThemeMode.dark, value: ThemeMode.dark),
+            BottomSheetModel(
+              title: "Sistem Varsayılanı",
+              iconWidget: Icons.wb_twilight_outlined,
+              groupValue: ThemeMode.system,
+              value: ThemeMode.system,
+            ),
+            BottomSheetModel(
+              title: "Açık",
+              iconWidget: Icons.wb_sunny_outlined,
+              groupValue: ThemeMode.light,
+              value: ThemeMode.light,
+            ),
+            BottomSheetModel(
+              title: "Koyu",
+              iconWidget: Icons.dark_mode_outlined,
+              groupValue: ThemeMode.dark,
+              value: ThemeMode.dark,
+            ),
           ],
         );
         if (result == null) return;

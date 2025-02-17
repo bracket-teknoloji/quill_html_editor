@@ -148,15 +148,25 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
             },
           );
         }
-        return AppBarTitle(title: widget.editTipiEnum.getName, subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "");
+        return AppBarTitle(
+          title: widget.editTipiEnum.getName,
+          subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "",
+        );
       },
     ),
     actions: <Widget>[
-      IconButton(onPressed: () async => await viewModel.changeSearchBar(), icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined))),
+      IconButton(
+        onPressed: () async => await viewModel.changeSearchBar(),
+        icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+      ),
     ],
     bottom: AppBarPreferedSizedBottom(
       children: [
-        AppBarButton(icon: Icons.filter_alt_outlined, onPressed: () async => await filtrele(), child: Text(loc.generalStrings.filter)),
+        AppBarButton(
+          icon: Icons.filter_alt_outlined,
+          onPressed: () async => await filtrele(),
+          child: Text(loc.generalStrings.filter),
+        ),
         AppBarButton(
           icon: Icons.sort_by_alpha_outlined,
           child: Text(loc.generalStrings.sort),
@@ -167,7 +177,11 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               groupValue: viewModel.faturaRequestModel.siralama,
               children: List.generate(
                 viewModel.siralaMap.length,
-                (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index], groupValue: viewModel.siralaMap.values.toList()[index]),
+                (index) => BottomSheetModel(
+                  title: viewModel.siralaMap.keys.toList()[index],
+                  value: viewModel.siralaMap.values.toList()[index],
+                  groupValue: viewModel.siralaMap.values.toList()[index],
+                ),
               ),
             );
             if (result != null) {
@@ -239,7 +253,10 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrollDown,
             onPressed: () async {
-              final result = await Get.toNamed("/mainPage/faturaEdit", arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum));
+              final result = await Get.toNamed(
+                "/mainPage/faturaEdit",
+                arguments: BaseEditModel(baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.editTipiEnum),
+              );
               if (result is BaseSiparisEditModel) {
                 await resetPage(result);
               }
@@ -287,16 +304,34 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
             FooterButton(
               children: <Widget>[
                 const Text("KDV Hariç"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
               ],
             ),
             FooterButton(
-              children: <Widget>[const Text("KDV"), Observer(builder: (_) => Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))],
+              children: <Widget>[
+                const Text("KDV"),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
+              ],
             ),
             FooterButton(
               children: <Widget>[
                 const Text("KDV Dahil"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
               ],
             ),
           ],
@@ -324,7 +359,11 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               text: "Kapalı belgeler listelenmesin",
               isVertical: true,
               child: Observer(
-                builder: (_) => Switch.adaptive(value: viewModel.faturaRequestModel.kapaliBelgelerListelenmesin ?? false, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value)),
+                builder:
+                    (_) => Switch.adaptive(
+                      value: viewModel.faturaRequestModel.kapaliBelgelerListelenmesin ?? false,
+                      onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value),
+                    ),
               ),
             ),
             if (widget.editTipiEnum.irsaliyeMi)
@@ -332,7 +371,11 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                 text: "Faturalananları göster",
                 isVertical: true,
                 child: Observer(
-                  builder: (_) => Switch.adaptive(value: viewModel.faturaRequestModel.faturalanmisIrsaliyelerGelsin ?? false, onChanged: (value) => viewModel.setFaturalasmaGoster(value)),
+                  builder:
+                      (_) => Switch.adaptive(
+                        value: viewModel.faturaRequestModel.faturalanmisIrsaliyelerGelsin ?? false,
+                        onChanged: (value) => viewModel.setFaturalasmaGoster(value),
+                      ),
                 ),
               ),
           ],
@@ -353,7 +396,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                       await dialogManager.showAlertDialog("Cari Seçiniz");
                     } else {
                       Get.back();
-                      dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.faturaRequestModel.cariKodu);
+                      dialogManager.showCariGridViewDialog(
+                        CariListesiModel()..cariKodu = viewModel.faturaRequestModel.cariKodu,
+                      );
                     }
                   },
                   icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
@@ -375,7 +420,10 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                 valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.teslimCariKodu ?? "")),
                 onClear: () => viewModel.setTeslimCari(null),
                 onTap: () async {
-                  final result = await Get.toNamed("/mainPage/cariListesiOzel", arguments: CariRequestModel(bagliCariKodu: viewModel.faturaRequestModel.cariKodu, teslimCari: "E"));
+                  final result = await Get.toNamed(
+                    "/mainPage/cariListesiOzel",
+                    arguments: CariRequestModel(bagliCariKodu: viewModel.faturaRequestModel.cariKodu, teslimCari: "E"),
+                  );
                   if (result is CariListesiModel) {
                     _teslimCariController.text = result.cariAdi ?? "";
                     viewModel.setTeslimCari(result.cariKodu ?? "");
@@ -393,7 +441,13 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                   final result = await bottomSheetDialogManager.showBottomSheetDialog(
                     context,
                     title: "Cari Tipi",
-                    children: List.generate(viewModel.tipiMap.length, (index) => BottomSheetModel(title: viewModel.tipiMap.keys.toList()[index], value: viewModel.tipiMap.entries.toList()[index])),
+                    children: List.generate(
+                      viewModel.tipiMap.length,
+                      (index) => BottomSheetModel(
+                        title: viewModel.tipiMap.keys.toList()[index],
+                        value: viewModel.tipiMap.entries.toList()[index],
+                      ),
+                    ),
                   );
                   if (result != null) {
                     _cariTipiController.text = result.key;
@@ -409,10 +463,11 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                 controller: _plasiyerController,
                 onClear: () => viewModel.setPlasiyerArr([]),
                 onTap: () async {
-                  final List<PlasiyerList?>? result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
-                    context,
-                    groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? "[]"),
-                  );
+                  final List<PlasiyerList?>? result = await bottomSheetDialogManager
+                      .showPlasiyerListesiBottomSheetDialog(
+                        context,
+                        groupValues: jsonDecode(viewModel.faturaRequestModel.arrPlasiyerKodu ?? "[]"),
+                      );
                   if (result != null) {
                     _plasiyerController.text = result.map((e) => e?.plasiyerAciklama).join(", ");
                     viewModel.setPlasiyerArr(result.map((e) => e?.plasiyerKodu).toList());
@@ -427,7 +482,10 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                 controller: _projeController,
                 onClear: () => viewModel.setProjeKodu(null),
                 onTap: () async {
-                  final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.faturaRequestModel.projeKodu);
+                  final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                    context,
+                    viewModel.faturaRequestModel.projeKodu,
+                  );
                   if (result != null) {
                     _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                     viewModel.setProjeKodu(result.projeKodu ?? "");
@@ -445,7 +503,10 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                   final result = await bottomSheetDialogManager.showBottomSheetDialog(
                     context,
                     title: "Özel Kod Seçiniz",
-                    children: List.generate(viewModel.tipiList.length, (index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index])),
+                    children: List.generate(
+                      viewModel.tipiList.length,
+                      (index) => BottomSheetModel(title: viewModel.tipiList[index], value: viewModel.tipiList[index]),
+                    ),
                   );
                   if (result != null) {
                     _ozelKod1Controller.text = result;
@@ -462,7 +523,10 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
               onClear: () => viewModel.setOzelKod2(null),
               suffix: IconButton(
                 onPressed: () async {
-                  final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.faturaRequestModel.ozelKod2);
+                  final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(
+                    context,
+                    viewModel.faturaRequestModel.ozelKod2,
+                  );
                   if (result != null) {
                     _ozelKod2Controller.text = result.kod ?? "";
                     viewModel.setOzelKod2(result.kod);
@@ -504,7 +568,12 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
           onTap: () => viewModel.setKodlariGoster(),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[const Text("Cari Rapor Kodları"), Observer(builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
+            children: <Widget>[
+              const Text("Cari Rapor Kodları"),
+              Observer(
+                builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down),
+              ),
+            ],
           ),
         ).paddingAll(UIHelper.lowSize),
         Observer(
@@ -524,19 +593,25 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                               suffixMore: true,
                               onClear: () => viewModel.changeArrKod0([]),
                               onTap: () async {
-                                final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                  context,
-                                  title: "Kod Seçiniz",
-                                  groupValues: jsonDecode(viewModel.faturaRequestModel.arrGrupKodu ?? "[]"),
-                                  children: List.generate(
-                                    viewModel.getGrupKod0?.length ?? 0,
-                                    (index) =>
-                                        BottomSheetModel(title: viewModel.getGrupKod0?[index].grupAdi ?? "", value: viewModel.getGrupKod0?[index], groupValue: viewModel.getGrupKod0?[index].grupKodu),
-                                  ),
-                                );
+                                final result = await bottomSheetDialogManager
+                                    .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                      context,
+                                      title: "Kod Seçiniz",
+                                      groupValues: jsonDecode(viewModel.faturaRequestModel.arrGrupKodu ?? "[]"),
+                                      children: List.generate(
+                                        viewModel.getGrupKod0?.length ?? 0,
+                                        (index) => BottomSheetModel(
+                                          title: viewModel.getGrupKod0?[index].grupAdi ?? "",
+                                          value: viewModel.getGrupKod0?[index],
+                                          groupValue: viewModel.getGrupKod0?[index].grupKodu,
+                                        ),
+                                      ),
+                                    );
                                 if (result != null) {
                                   final List<BaseGrupKoduModel> list = result;
-                                  viewModel.changeArrKod0(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                  viewModel.changeArrKod0(
+                                    list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList(),
+                                  );
                                   _kod0Controller.text = list.map((e) => e.grupAdi).join(", ");
                                   await viewModel.resetList();
                                 }
@@ -552,19 +627,25 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                               suffixMore: true,
                               onClear: () => viewModel.changeArrKod1([]),
                               onTap: () async {
-                                final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                  context,
-                                  title: "Kod Seçiniz",
-                                  groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod1 ?? "[]"),
-                                  children: List.generate(
-                                    viewModel.getGrupKod1?.length ?? 0,
-                                    (index) =>
-                                        BottomSheetModel(title: viewModel.getGrupKod1?[index].grupAdi ?? "", value: viewModel.getGrupKod1?[index], groupValue: viewModel.getGrupKod1?[index].grupKodu),
-                                  ),
-                                );
+                                final result = await bottomSheetDialogManager
+                                    .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                      context,
+                                      title: "Kod Seçiniz",
+                                      groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod1 ?? "[]"),
+                                      children: List.generate(
+                                        viewModel.getGrupKod1?.length ?? 0,
+                                        (index) => BottomSheetModel(
+                                          title: viewModel.getGrupKod1?[index].grupAdi ?? "",
+                                          value: viewModel.getGrupKod1?[index],
+                                          groupValue: viewModel.getGrupKod1?[index].grupKodu,
+                                        ),
+                                      ),
+                                    );
                                 if (result != null) {
                                   final List<BaseGrupKoduModel> list = result;
-                                  viewModel.changeArrKod1(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                  viewModel.changeArrKod1(
+                                    list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList(),
+                                  );
                                   _kod1Controller.text = list.map((e) => e.grupAdi).join(", ");
                                   await viewModel.resetList();
                                 }
@@ -583,19 +664,25 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             onClear: () => viewModel.changeArrKod2([]),
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                context,
-                                title: "Kod Seçiniz",
-                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod2 ?? "[]"),
-                                children: List.generate(
-                                  viewModel.getGrupKod2?.length ?? 0,
-                                  (index) =>
-                                      BottomSheetModel(title: viewModel.getGrupKod2?[index].grupAdi ?? "", value: viewModel.getGrupKod2?[index], groupValue: viewModel.getGrupKod2?[index].grupKodu),
-                                ),
-                              );
+                              final result = await bottomSheetDialogManager
+                                  .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                    context,
+                                    title: "Kod Seçiniz",
+                                    groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod2 ?? "[]"),
+                                    children: List.generate(
+                                      viewModel.getGrupKod2?.length ?? 0,
+                                      (index) => BottomSheetModel(
+                                        title: viewModel.getGrupKod2?[index].grupAdi ?? "",
+                                        value: viewModel.getGrupKod2?[index],
+                                        groupValue: viewModel.getGrupKod2?[index].grupKodu,
+                                      ),
+                                    ),
+                                  );
                               if (result != null) {
                                 final List<BaseGrupKoduModel> list = result;
-                                viewModel.changeArrKod2(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                viewModel.changeArrKod2(
+                                  list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList(),
+                                );
                                 _kod2Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
@@ -610,19 +697,25 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             suffixMore: true,
                             onClear: () => viewModel.changeArrKod3([]),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                context,
-                                title: "Kod Seçiniz",
-                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod3 ?? "[]"),
-                                children: List.generate(
-                                  viewModel.getGrupKod3?.length ?? 0,
-                                  (index) =>
-                                      BottomSheetModel(title: viewModel.getGrupKod3?[index].grupAdi ?? "", value: viewModel.getGrupKod3?[index], groupValue: viewModel.getGrupKod3?[index].grupKodu),
-                                ),
-                              );
+                              final result = await bottomSheetDialogManager
+                                  .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                    context,
+                                    title: "Kod Seçiniz",
+                                    groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod3 ?? "[]"),
+                                    children: List.generate(
+                                      viewModel.getGrupKod3?.length ?? 0,
+                                      (index) => BottomSheetModel(
+                                        title: viewModel.getGrupKod3?[index].grupAdi ?? "",
+                                        value: viewModel.getGrupKod3?[index],
+                                        groupValue: viewModel.getGrupKod3?[index].grupKodu,
+                                      ),
+                                    ),
+                                  );
                               if (result != null) {
                                 final List<BaseGrupKoduModel> list = result;
-                                viewModel.changeArrKod3(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                viewModel.changeArrKod3(
+                                  list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList(),
+                                );
                                 _kod3Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
@@ -641,19 +734,25 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             suffixMore: true,
                             onClear: () => viewModel.changeArrKod4([]),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                context,
-                                title: "Kod Seçiniz",
-                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod4 ?? "[]"),
-                                children: List.generate(
-                                  viewModel.getGrupKod4?.length ?? 0,
-                                  (index) =>
-                                      BottomSheetModel(title: viewModel.getGrupKod4?[index].grupAdi ?? "", value: viewModel.getGrupKod4?[index], groupValue: viewModel.getGrupKod4?[index].grupKodu),
-                                ),
-                              );
+                              final result = await bottomSheetDialogManager
+                                  .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                    context,
+                                    title: "Kod Seçiniz",
+                                    groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod4 ?? "[]"),
+                                    children: List.generate(
+                                      viewModel.getGrupKod4?.length ?? 0,
+                                      (index) => BottomSheetModel(
+                                        title: viewModel.getGrupKod4?[index].grupAdi ?? "",
+                                        value: viewModel.getGrupKod4?[index],
+                                        groupValue: viewModel.getGrupKod4?[index].grupKodu,
+                                      ),
+                                    ),
+                                  );
                               if (result != null) {
                                 final List<BaseGrupKoduModel> list = result;
-                                viewModel.changeArrKod4(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                viewModel.changeArrKod4(
+                                  list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList(),
+                                );
                                 _kod4Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
@@ -668,19 +767,25 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                             onClear: () => viewModel.changeArrKod5([]),
                             suffixMore: true,
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                context,
-                                title: "Kod Seçiniz",
-                                groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod5 ?? "[]"),
-                                children: List.generate(
-                                  viewModel.getGrupKod5?.length ?? 0,
-                                  (index) =>
-                                      BottomSheetModel(title: viewModel.getGrupKod5?[index].grupAdi ?? "", value: viewModel.getGrupKod5?[index], groupValue: viewModel.getGrupKod5?[index].grupKodu),
-                                ),
-                              );
+                              final result = await bottomSheetDialogManager
+                                  .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                    context,
+                                    title: "Kod Seçiniz",
+                                    groupValues: jsonDecode(viewModel.faturaRequestModel.arrKod5 ?? "[]"),
+                                    children: List.generate(
+                                      viewModel.getGrupKod5?.length ?? 0,
+                                      (index) => BottomSheetModel(
+                                        title: viewModel.getGrupKod5?[index].grupAdi ?? "",
+                                        value: viewModel.getGrupKod5?[index],
+                                        groupValue: viewModel.getGrupKod5?[index].grupKodu,
+                                      ),
+                                    ),
+                                  );
                               if (result != null) {
                                 final List<BaseGrupKoduModel> list = result;
-                                viewModel.changeArrKod5(list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList());
+                                viewModel.changeArrKod5(
+                                  list.where((element) => element.grupKodu != null).map((e) => e.grupKodu!).toList(),
+                                );
                                 _kod5Controller.text = list.map((e) => e.grupAdi).join(", ");
                                 await viewModel.resetList();
                               }
@@ -704,7 +809,9 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
                     ..resetFilter()
                     ..resetList();
                 },
-                style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1)),
+                ),
                 child: const Text("Temizle"),
               ),
             ),
@@ -744,7 +851,11 @@ final class _FaturalarViewState extends BaseState<FaturalarView> {
   Future<void> resetPage(BaseSiparisEditModel item) async {
     await viewModel.resetList();
     if (widget.editTipiEnum.otoPDFGor) {
-      final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, null, editTipi: widget.editTipiEnum);
+      final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
+        context,
+        null,
+        editTipi: widget.editTipiEnum,
+      );
       if (dizayn == null) {
         return;
       }

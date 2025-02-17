@@ -46,12 +46,7 @@ abstract class _IrsaliyeFaturalastirViewModelBase with Store, MobxNetworkMixin {
     final result = await networkManager.dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getSiradakiBelgeNo,
       bodyModel: BaseSiparisEditModel(),
-      queryParameters: {
-        "Seri": seri,
-        "BelgeTipi": value.rawValue,
-        "EIrsaliye": "E",
-        "CariKodu": model?.cariKodu ?? "",
-      },
+      queryParameters: {"Seri": seri, "BelgeTipi": value.rawValue, "EIrsaliye": "E", "CariKodu": model?.cariKodu ?? ""},
       showLoading: true,
     );
     if (result.isSuccess) {
@@ -64,9 +59,9 @@ abstract class _IrsaliyeFaturalastirViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendFatura() async => await networkManager.dioPost(
-        path: ApiUrls.saveIrsaliyedenFatura,
-        bodyModel: requestModel,
-        data: requestModel.toJson(),
-        showLoading: true,
-      );
+    path: ApiUrls.saveIrsaliyedenFatura,
+    bodyModel: requestModel,
+    data: requestModel.toJson(),
+    showLoading: true,
+  );
 }

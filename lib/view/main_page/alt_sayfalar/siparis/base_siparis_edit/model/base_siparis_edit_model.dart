@@ -271,63 +271,61 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   factory BaseSiparisEditModel.fromJson(String json) => _$BaseSiparisEditModelFromJson(jsonDecode(json));
 
   factory BaseSiparisEditModel.fromEBelgeListesiModel(EBelgeListesiModel model) => BaseSiparisEditModel(
-        belgeNo: model.belgeNo,
-        belgeTuru: model.belgeTuru,
-        cariKodu: model.cariKodu,
-        cariAdi: model.cariAdi,
-        tarih: model.tarih,
-        genelToplam: model.genelToplam,
-        dovizTutari: model.dovizTutari,
-        dovizTipi: model.dovizTipi,
-        dovizAdi: model.dovizAdi,
-        cariDovizli: model.dovizliMi,
-        kdvDahilMi: model.kdvTutari != null,
-        kdvDahil: model.kdvTutari != null ? "E" : "H",
-        aciklama: model.aciklama,
-        efaturaSenaryo: model.senaryoTipi,
-      );
+    belgeNo: model.belgeNo,
+    belgeTuru: model.belgeTuru,
+    cariKodu: model.cariKodu,
+    cariAdi: model.cariAdi,
+    tarih: model.tarih,
+    genelToplam: model.genelToplam,
+    dovizTutari: model.dovizTutari,
+    dovizTipi: model.dovizTipi,
+    dovizAdi: model.dovizAdi,
+    cariDovizli: model.dovizliMi,
+    kdvDahilMi: model.kdvTutari != null,
+    kdvDahil: model.kdvTutari != null ? "E" : "H",
+    aciklama: model.aciklama,
+    efaturaSenaryo: model.senaryoTipi,
+  );
 
   factory BaseSiparisEditModel.cariKoduDegistir(BaseSiparisEditModel model) => BaseSiparisEditModel(
-        cariKodu: model.cariKodu,
-        belgeNo: model.belgeNo,
-        tipi: model.tipi,
-        belgeTuru: model.belgeTuru,
-        islemKodu: 3,
-        pickerBelgeTuru: model.pickerBelgeTuru,
-        tag: "FaturaModel",
-        paramMap: {
-          "TESLIM_CARI_DEGISMESIN": "H",
-        },
-      );
+    cariKodu: model.cariKodu,
+    belgeNo: model.belgeNo,
+    tipi: model.tipi,
+    belgeTuru: model.belgeTuru,
+    islemKodu: 3,
+    pickerBelgeTuru: model.pickerBelgeTuru,
+    tag: "FaturaModel",
+    paramMap: {"TESLIM_CARI_DEGISMESIN": "H"},
+  );
 
   factory BaseSiparisEditModel.belgeNoDegistir(BaseSiparisEditModel model) => BaseSiparisEditModel(
-        cariKodu: model.cariKodu,
-        belgeNo: model.belgeNo,
-        tipi: model.tipi,
-        belgeTuru: model.belgeTuru,
-        belgeTipi: model.belgeTipi,
-        islemKodu: 10,
-        pickerBelgeTuru: model.pickerBelgeTuru,
-        yeniBelgeNo: model.yeniBelgeNo,
-        resmiBelgeNo: model.resmiBelgeNo,
-        tag: "FaturaModel",
-      );
+    cariKodu: model.cariKodu,
+    belgeNo: model.belgeNo,
+    tipi: model.tipi,
+    belgeTuru: model.belgeTuru,
+    belgeTipi: model.belgeTipi,
+    islemKodu: 10,
+    pickerBelgeTuru: model.pickerBelgeTuru,
+    yeniBelgeNo: model.yeniBelgeNo,
+    resmiBelgeNo: model.resmiBelgeNo,
+    tag: "FaturaModel",
+  );
 
   factory BaseSiparisEditModel.fromCariListesiModel(CariListesiModel model) => BaseSiparisEditModel(
-        cariKodu: model.cariKodu,
-        cariAdi: model.cariAdi,
-        dovizAdi: model.dovizAdi,
-        cariDovizli: model.dovizli,
-        plasiyerAciklama: model.plasiyerAciklama,
-        plasiyerKodu: model.plasiyerKodu,
-      );
+    cariKodu: model.cariKodu,
+    cariAdi: model.cariAdi,
+    dovizAdi: model.dovizAdi,
+    cariDovizli: model.dovizli,
+    plasiyerAciklama: model.plasiyerAciklama,
+    plasiyerKodu: model.plasiyerKodu,
+  );
 
   factory BaseSiparisEditModel.fromOlcumBelgeModel(OlcumBelgeModel model) => BaseSiparisEditModel(
-        cariKodu: model.cariKodu,
-        belgeNo: model.belgeNo,
-        belgeTuru: model.belgeTuru,
-        pickerBelgeTuru: model.belgeTuru,
-      );
+    cariKodu: model.cariKodu,
+    belgeNo: model.belgeNo,
+    belgeTuru: model.belgeTuru,
+    pickerBelgeTuru: model.belgeTuru,
+  );
   //singleton
   static BaseSiparisEditModel? _instance;
 
@@ -369,24 +367,24 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   String? findFiyatGrubu(int index) => switch (index) {
-        1 => acik1,
-        2 => acik2,
-        3 => acik3,
-        4 => acik4,
-        5 => acik5,
-        6 => acik6,
-        7 => acik7,
-        8 => acik8,
-        9 => acik9,
-        10 => acik10,
-        11 => acik11,
-        12 => acik12,
-        13 => acik13,
-        14 => acik14,
-        15 => acik15,
-        16 => acik16,
-        _ => null,
-      };
+    1 => acik1,
+    2 => acik2,
+    3 => acik3,
+    4 => acik4,
+    5 => acik5,
+    6 => acik6,
+    7 => acik7,
+    8 => acik8,
+    9 => acik9,
+    10 => acik10,
+    11 => acik11,
+    12 => acik12,
+    13 => acik13,
+    14 => acik14,
+    15 => acik15,
+    16 => acik16,
+    _ => null,
+  };
 
   @HiveField(0)
   DateTime? duzeltmetarihi;
@@ -884,7 +882,9 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   bool get eIrsaliyeIslemleriYapilabilirMi => _yetkiController.eIrsaliyeAktif && eIrsaliyeMi;
 
   bool get eBelgeIslemlerGorunsunMu =>
-      _yetkiController.eFaturaAktif && (eBelgeSerisinden || eBelgeMi || eBelgeEslestirmeIslemiYapilabilirMi) && ((getEditTipiEnum?.faturaMi ?? false) || eIrsaliyeIslemleriYapilabilirMi);
+      _yetkiController.eFaturaAktif &&
+      (eBelgeSerisinden || eBelgeMi || eBelgeEslestirmeIslemiYapilabilirMi) &&
+      ((getEditTipiEnum?.faturaMi ?? false) || eIrsaliyeIslemleriYapilabilirMi);
 
   bool get isTempBelge => remoteTempBelge == true || (tempKayitTipi ?? 0) > 0;
 
@@ -1065,7 +1065,8 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
 
   EditTipiEnum? get getEditTipiEnum => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == belgeTuru);
 
-  EBelgeTuruEnum? get getEBelgeTuruEnum => EBelgeTuruEnum.values.firstWhereOrNull((element) => element.value == faturaTipi);
+  EBelgeTuruEnum? get getEBelgeTuruEnum =>
+      EBelgeTuruEnum.values.firstWhereOrNull((element) => element.value == faturaTipi);
 
   // bool get muhtelifCariMi => cariKodu ;
 
@@ -1080,9 +1081,9 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   bool get silinebilirMi => switch (efaturaDurumu) {
-        "TMM" || "BEK" || "TAS" => false,
-        _ => true,
-      };
+    "TMM" || "BEK" || "TAS" => false,
+    _ => true,
+  };
 
   double get genelDovizliToplamTutar {
     dovizTutari = kalemList?.map((e) => e.dovizAdi != null ? e.dovizBrutTutar : 0).sum.toDouble() ?? 0;
@@ -1099,7 +1100,9 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     return kdv ?? 0;
   }
 
-  double get dovizliKdv => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizliMi ? e.dovizKdvTutari : 0).sum.toDouble() ?? 0.0);
+  double get dovizliKdv => dovizliIskontoCheckerEkMaliyetsiz(
+    kalemList?.map((e) => e.dovizliMi ? e.dovizKdvTutari : 0).sum.toDouble() ?? 0.0,
+  );
 
   double get getDovizTutari {
     dovizTutari = kalemList?.map((e) => e.dovizliMi ? e.dovizBrutTutar : 0).sum.toDouble() ?? 0;
@@ -1153,7 +1156,8 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get satirIskonto => kalemList?.map((e) => e.iskontoTutari).sum ?? 0;
   double get satirDovizIskonto => kalemList?.map((e) => e.dovizIskontoTutari).sum ?? 0;
-  int toplamKalemMiktari([bool miktar2EklensinMi = false]) => kalemList?.map((e) => e.toplamKalemMiktari(miktar2EklensinMi).toInt()).sum ?? 0;
+  int toplamKalemMiktari([bool miktar2EklensinMi = false]) =>
+      kalemList?.map((e) => e.toplamKalemMiktari(miktar2EklensinMi).toInt()).sum ?? 0;
   double get toplamAgirlik => kalemList?.map((e) => e.kalemAgirlik).sum ?? 0;
   double get toplamBrutTutar => kalemList?.map((e) => e.brutTutar).sum ?? 0;
   double get toplamAraToplam => kalemList?.map((e) => e.araToplamTutari).sum ?? 0;
@@ -1182,7 +1186,9 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
   }
 
   double get getAraToplam {
-    araToplam = iskontoChecker(kalemList?.map((e) => e.araToplamTutari).sum ?? 0) - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
+    araToplam =
+        iskontoChecker(kalemList?.map((e) => e.araToplamTutari).sum ?? 0) -
+        ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
     return araToplam ?? 0;
   }
 
@@ -1191,9 +1197,12 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get getDovizliOTVToplam => iskontoChecker(kalemList?.map((e) => e.dovizliOTVTutar).sum ?? 0);
 
-  double get getDovizliAraToplam => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAraToplamTutari).sum ?? 0) - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizliKdv : 0);
+  double get getDovizliAraToplam =>
+      dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizAraToplamTutari).sum ?? 0) -
+      ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? dovizliKdv : 0);
 
-  double get getDovizliToplamTutar => dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizGenelToplamTutari).sum ?? 0);
+  double get getDovizliToplamTutar =>
+      dovizliIskontoCheckerEkMaliyetsiz(kalemList?.map((e) => e.dovizGenelToplamTutari).sum ?? 0);
 
   double get getAraToplam2 => (genelToplam ?? 0) - (kdv ?? 0);
 
@@ -1242,7 +1251,8 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
 
   double get getToplamEkMaliyet => (ekMaliyet1Tutari ?? 0) + (ekMaliyet2Tutari ?? 0) + (ekMaliyet3Tutari ?? 0);
 
-  double get getToplamIskonto => toplamBrutTutar - getAraToplam - ((kdvDahilMi ?? false) ? kdvTutari : 0) + getToplamEkMaliyet;
+  double get getToplamIskonto =>
+      toplamBrutTutar - getAraToplam - ((kdvDahilMi ?? false) ? kdvTutari : 0) + getToplamEkMaliyet;
 
   double get getDovizliToplamIskonto => (getToplamIskonto / dovizKuru).toNotNaN;
 
@@ -1438,74 +1448,76 @@ final class KalemModel with NetworkManagerMixin {
     this.kayityapankul,
   });
 
-  factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) => KalemModel(
-        siparisNo: model.belgeNo,
-        siparisSira: model.sira,
-        depoKodu: model.depoKodu,
-        stokKodu: model.stokKodu,
-      );
+  factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) =>
+      KalemModel(siparisNo: model.belgeNo, siparisSira: model.sira, depoKodu: model.depoKodu, stokKodu: model.stokKodu);
   factory KalemModel.fromOlcumBelgeModel(OlcumBelgeModel? model) => KalemModel(
-        stokAdi: model?.stokAdi,
-        stokKodu: model?.stokKodu,
-        miktar: model?.miktar,
-        cariAdi: model?.cariAdi,
-        cariKodu: model?.cariKodu,
-      );
+    stokAdi: model?.stokAdi,
+    stokKodu: model?.stokKodu,
+    miktar: model?.miktar,
+    cariAdi: model?.cariAdi,
+    cariKodu: model?.cariKodu,
+  );
   factory KalemModel.fromUSKReceteModel(UskReceteModel? model) => KalemModel(
-        stokAdi: model?.stokAdi,
-        stokKodu: model?.stokKodu,
-        miktar: model?.miktar,
-        isUsk: true,
-        sira: 0,
-        gc: "G",
-        seriList: model?.seriList,
-        seriMiktarKadarSor: model?.seriMiktarKadar == "E",
-      );
+    stokAdi: model?.stokAdi,
+    stokKodu: model?.stokKodu,
+    miktar: model?.miktar,
+    isUsk: true,
+    sira: 0,
+    gc: "G",
+    seriList: model?.seriList,
+    seriMiktarKadarSor: model?.seriMiktarKadar == "E",
+  );
 
-  factory KalemModel.forUretimSonuKaydiEdit(KalemModel model) => model.copyWith(cikisdepoKodu: model.cikisDepo, girisdepoKodu: model.girisDepo);
+  factory KalemModel.forUretimSonuKaydiEdit(KalemModel model) =>
+      model.copyWith(cikisdepoKodu: model.cikisDepo, girisdepoKodu: model.girisDepo);
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 
   factory KalemModel.fromStokList(StokList model) => KalemModel(
-        brutFiyat: model.bulunanFiyat,
-        stokAlisKdv: model.alisKdv,
-        stokSatisKdv: model.satisKdv,
-        stokKodu: model.stokKodu,
-        stokAdi: model.stokAdi,
-        paketMi: model.paketMi,
-        koliBilesenMiktari: model.koliBilesenMiktari,
-        koliBilesenOrani: model.koliBilesenOrani,
-        koliBilesenFiyatorandan: model.koliBilesenFiyatorandan,
-        koliBilesenKolikdv: model.koliBilesenKolikdv,
-      );
+    brutFiyat: model.bulunanFiyat,
+    stokAlisKdv: model.alisKdv,
+    stokSatisKdv: model.satisKdv,
+    stokKodu: model.stokKodu,
+    stokAdi: model.stokAdi,
+    paketMi: model.paketMi,
+    koliBilesenMiktari: model.koliBilesenMiktari,
+    koliBilesenOrani: model.koliBilesenOrani,
+    koliBilesenFiyatorandan: model.koliBilesenFiyatorandan,
+    koliBilesenKolikdv: model.koliBilesenKolikdv,
+  );
   factory KalemModel.fromStokListesiModel(StokListesiModel model) => KalemModel(
-        brutFiyat: model.bulunanFiyat,
-        stokAlisKdv: model.alisKdv,
-        stokSatisKdv: model.satisKdv,
-        stokKodu: model.stokKodu,
-        stokAdi: model.stokAdi,
-        paketMi: model.paketMi,
-        seriGirislerdeAcik: model.seriGirislerdeAcik,
-        seriCikislardaAcik: model.seriCikislardaAcik,
-        seriMiktarKadarSor: model.seriMiktarKadarSor,
-      );
+    brutFiyat: model.bulunanFiyat,
+    stokAlisKdv: model.alisKdv,
+    stokSatisKdv: model.satisKdv,
+    stokKodu: model.stokKodu,
+    stokAdi: model.stokAdi,
+    paketMi: model.paketMi,
+    seriGirislerdeAcik: model.seriGirislerdeAcik,
+    seriCikislardaAcik: model.seriCikislardaAcik,
+    seriMiktarKadarSor: model.seriMiktarKadarSor,
+  );
   factory KalemModel.fromBarkodModel(StokListesiModel model) {
-    final BarkodList newBarkod = BarkodList(barkod: model.okutulanBarkod, miktar: model.bulunanMiktar ?? model.varsayilanMiktar, miktar2: model.miktar2);
-    final KalemModel kalemModel = KalemModel.fromStokListesiModel(model)
-      ..barkodList = [newBarkod]
-      ..dovizTipi = model.bulunanDovizTipi
-      ..dovizKodu = model.bulunanDovizTipi
-      ..seriGirislerdeAcik = model.seriGirislerdeAcik
-      ..seriCikislardaAcik = model.seriCikislardaAcik
-      ..dovizFiyati = model.bulunanDovizFiyati
-      ..dovizliFiyat = model.bulunanDovizFiyati
-      ..ekalan1 = model.bulunanEkalan1
-      ..ekalan2 = model.bulunanEkalan2
-      ..isemriNo = model.bulunanIsemri
-      ..miktar = model.bulunanMiktar ?? model.varsayilanMiktar
-      ..depoKodu = model.bulunanDepo
-      ..brutFiyat = model.bulunanFiyat
-      ..barkod = model.okutulanBarkod;
+    final BarkodList newBarkod = BarkodList(
+      barkod: model.okutulanBarkod,
+      miktar: model.bulunanMiktar ?? model.varsayilanMiktar,
+      miktar2: model.miktar2,
+    );
+    final KalemModel kalemModel =
+        KalemModel.fromStokListesiModel(model)
+          ..barkodList = [newBarkod]
+          ..dovizTipi = model.bulunanDovizTipi
+          ..dovizKodu = model.bulunanDovizTipi
+          ..seriGirislerdeAcik = model.seriGirislerdeAcik
+          ..seriCikislardaAcik = model.seriCikislardaAcik
+          ..dovizFiyati = model.bulunanDovizFiyati
+          ..dovizliFiyat = model.bulunanDovizFiyati
+          ..ekalan1 = model.bulunanEkalan1
+          ..ekalan2 = model.bulunanEkalan2
+          ..isemriNo = model.bulunanIsemri
+          ..miktar = model.bulunanMiktar ?? model.varsayilanMiktar
+          ..depoKodu = model.bulunanDepo
+          ..brutFiyat = model.bulunanFiyat
+          ..barkod = model.okutulanBarkod;
     final SeriList newSeri = SeriList(
       miktar: model.bulunanMiktar ?? model.varsayilanMiktar,
       sonKullanmaTarihi: model.bulunanSeriSkt,
@@ -1869,7 +1881,11 @@ final class KalemModel with NetworkManagerMixin {
 
   bool get kalemEBelgedenMi => stokKodu == "EFATURA_STOK";
 
-  bool get seriliMi => (BaseSiparisEditModel._instance?.getEditTipiEnum?.satisMi == true ? seriCikislardaAcik == true : seriGirislerdeAcik == true) || seriList.ext.isNotNullOrEmpty;
+  bool get seriliMi =>
+      (BaseSiparisEditModel._instance?.getEditTipiEnum?.satisMi == true
+          ? seriCikislardaAcik == true
+          : seriGirislerdeAcik == true) ||
+      seriList.ext.isNotNullOrEmpty;
   bool get seriTamamMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) == miktar;
 
   bool get seriEksikMi => seriliMi && (seriList?.map((e) => e.miktar).sum ?? 0) < (miktar ?? 0);
@@ -1879,13 +1895,15 @@ final class KalemModel with NetworkManagerMixin {
   String get faturaKalemAciklama {
     String value = "";
     if (seriliMi && BaseSiparisEditModel.instance.getEditTipiEnum?.siparisMi == false) {
-      value = "$value\nSeriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).sum).toIntIfDouble ?? 0}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
+      value =
+          "$value\nSeriler(${seriList?.length ?? 0}) (Miktar: ${(seriList?.map((e) => e.miktar).sum).toIntIfDouble ?? 0}) : ${seriList?.firstOrNull?.seriNo ?? ""}";
     }
     if (siparisNo != null) {
       value = "$value\nSipariş ${siparisNo ?? ""}  (${siparisSira ?? 0})";
     }
     if (teklifNo != null) {
-      value = "$value\n${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "Satış" : "Alış"} Teklifi $teklifNo  (${teklifKalemSira ?? 0})";
+      value =
+          "$value\n${BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true ? "Satış" : "Alış"} Teklifi $teklifNo  (${teklifKalemSira ?? 0})";
     }
     return value;
   }
@@ -1913,9 +1931,15 @@ final class KalemModel with NetworkManagerMixin {
   bool get isKoli => koliMi ?? kalemList.ext.isNotNullOrEmpty;
 
   double toplamKalemMiktari([bool miktar2EklensinMi = false]) =>
-      ((miktar != null ? (miktar ?? 0) / ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!) : (miktar2EklensinMi ? miktar2 : null)) ?? 0) + (malfazIskAdedi ?? 0);
+      ((miktar != null
+              ? (miktar ?? 0) / ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!)
+              : (miktar2EklensinMi ? miktar2 : null)) ??
+          0) +
+      (malfazIskAdedi ?? 0);
 
-  double? get getSelectedMiktar => ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) / ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!);
+  double? get getSelectedMiktar =>
+      ((isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0)) /
+      ((olcuBirimCarpani == 0 || olcuBirimCarpani == null) ? 1 : olcuBirimCarpani!);
 
   double get getSelectedMalFazlasizMiktar => (isKoli ? miktar2 : miktar) ?? 0 - (malfazIskAdedi ?? 0);
 
@@ -1925,28 +1949,38 @@ final class KalemModel with NetworkManagerMixin {
 
   double get dovizliOTVTutar => dovizliMi ? (otvTutar ?? 0) / (dovizKuru ?? 1) : 0;
 
-  double get dovizliBrutTutar => ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? 0) + dovizliOTVTutar;
+  double get dovizliBrutTutar =>
+      ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? 0) + dovizliOTVTutar;
 
-  double get koliTutar => (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false) ? brutTutar : kalemList?.map((e) => e.brutTutar + e.kdvTutari).sum ?? 0;
+  double get koliTutar =>
+      (kalemList?.every((element) => element.koliBilesenFiyatorandan == "E") ?? false)
+          ? brutTutar
+          : kalemList?.map((e) => e.brutTutar + e.kdvTutari).sum ?? 0;
 
   double get toplamTutar => (isKoli ? koliTutar : brutTutar) + (otvTutar ?? 0);
 
   double get araToplamTutari => brutTutar - iskontoTutari - mfTutari;
 
-  double get otvliAraToplamTutari => araToplamTutari + (CacheManager.getAnaVeri?.paramModel?.netsisOzelParamFaturaOzelIletisimVergisi == true ? 0 : (otvTutar ?? 0));
+  double get otvliAraToplamTutari =>
+      araToplamTutari +
+      (CacheManager.getAnaVeri?.paramModel?.netsisOzelParamFaturaOzelIletisimVergisi == true ? 0 : (otvTutar ?? 0));
 
-  double get getAraToplamTutari => araToplamTutari - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
+  double get getAraToplamTutari =>
+      araToplamTutari - ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? kdvTutari : 0);
 
   double get araToplamNetTutari => ((getSelectedMiktar ?? 0) * (netFiyat ?? 0)) - iskontoTutari;
 
   double get kalemToplamTutari => araToplamTutari + (otvTutar ?? 0);
 
-  double get genelToplamTutari => araToplamTutari + ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? 0 : kdvTutari) + (otvTutar ?? 0);
+  double get genelToplamTutari =>
+      araToplamTutari + ((BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? 0 : kdvTutari) + (otvTutar ?? 0);
 
   double get mfTutari => (malfazIskAdedi ?? 0) * (brutFiyat ?? 0);
 
   double get kdvTutari =>
-      (BaseSiparisEditModel.instance.kdvDahilMi ?? false) ? otvliAraToplamTutari - (otvliAraToplamTutari * 100 / ((kdvOrani ?? 0) + 100)) : otvliAraToplamTutari * ((kdvOrani ?? 0) / 100);
+      (BaseSiparisEditModel.instance.kdvDahilMi ?? false)
+          ? otvliAraToplamTutari - (otvliAraToplamTutari * 100 / ((kdvOrani ?? 0) + 100))
+          : otvliAraToplamTutari * ((kdvOrani ?? 0) / 100);
 
   double get dovizKdvTutari => !dovizliMi ? 0 : kdvTutari / (dovizKuru ?? 1);
 
@@ -2004,7 +2038,10 @@ final class KalemModel with NetworkManagerMixin {
     return ((getSelectedMiktar ?? 0) * (dovizliFiyat ?? 0)) - result;
   }
 
-  double get dovizBrutTutar => !dovizliMi ? 0 : ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1)));
+  double get dovizBrutTutar =>
+      !dovizliMi
+          ? 0
+          : ((getSelectedMiktar ?? 0) + (malfazIskAdedi ?? 0)) * (dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1)));
   double get getDovizBrutTutar {
     if (!dovizliMi) return 0;
     return brutTutar / (dovizKuru ?? 1);
@@ -2012,7 +2049,8 @@ final class KalemModel with NetworkManagerMixin {
 
   double get dovizAraToplamTutari => !dovizliMi ? 0 : araToplamTutari / (dovizKuru ?? 1);
   double get getKdvsizDovizAraToplamTutari => getAraToplamTutari / (dovizKuru ?? 1);
-  double get getDovizAraToplamTutari => !dovizliMi ? 0 : ((dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari);
+  double get getDovizAraToplamTutari =>
+      !dovizliMi ? 0 : ((dovizliFiyat ?? (brutTutar / (dovizKuru ?? 1))) - dovizIskontoTutari);
 
   double get dovizGenelToplamTutari => !dovizliMi ? 0 : genelToplamTutari / (dovizKuru ?? 1);
 
@@ -2027,11 +2065,7 @@ final class KalemModel with NetworkManagerMixin {
 @JsonSerializable()
 @HiveType(typeId: 18)
 class BarkodList {
-  BarkodList({
-    this.barkod,
-    this.miktar,
-    this.miktar2,
-  });
+  BarkodList({this.barkod, this.miktar, this.miktar2});
 
   factory BarkodList.fromJson(Map<String, dynamic> json) => _$BarkodListFromJson(json);
   @HiveField(0)

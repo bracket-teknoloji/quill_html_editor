@@ -26,11 +26,7 @@ class SurumYenilikleriModel with _$SurumYenilikleriModel, NetworkManagerMixin {
 
 @freezed
 class ValueList with _$ValueList {
-  const factory ValueList({
-    int? id,
-    String? aciklama,
-    bool? talepEden,
-  }) = _ValueList;
+  const factory ValueList({int? id, String? aciklama, bool? talepEden}) = _ValueList;
 
   factory ValueList.fromJson(Map<String, dynamic> json) => _$ValueListFromJson(json);
 }

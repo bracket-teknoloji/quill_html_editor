@@ -18,20 +18,14 @@ final class _OperatorEkleViewState extends BaseState<OperatorEkleView> {
   final OperatorEkleViewModel viewModel = OperatorEkleViewModel();
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(),
-        body: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                CustomTextField(
-                  labelText: "",
-                  isMust: true,
-                  onChanged: (value) {},
-                ),
-              ],
-            ).paddingAll(UIHelper.lowSize),
-          ),
-        ),
-      );
+    appBar: AppBar(),
+    body: SingleChildScrollView(
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [CustomTextField(labelText: "", isMust: true, onChanged: (value) {})],
+        ).paddingAll(UIHelper.lowSize),
+      ),
+    ),
+  );
 }

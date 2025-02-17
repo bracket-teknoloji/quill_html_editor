@@ -20,7 +20,14 @@ part "talep_teklif_listesi_view_model.g.dart";
 
 final class TalepTeklifListesiViewModel = _TalepTeklifListesiViewModelBase with _$TalepTeklifListesiViewModel;
 
-abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<BaseSiparisEditModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+abstract class _TalepTeklifListesiViewModelBase
+    with
+        Store,
+        MobxNetworkMixin,
+        ListableMixin<BaseSiparisEditModel>,
+        SearchableMixin,
+        ScrollControllableMixin,
+        PageableMixin {
   final Map<String, String> siralaMap = {
     "Belge No (A-Z)": "BELGE_NO_AZ",
     "Belge No (Z-A)": "BELGE_NO_ZA",
@@ -38,11 +45,12 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
   List<String?> teslimatDurumuValueList = const [null, "K", "B"];
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap = {
-    "EK": CacheManager.getProfilParametre.siparisEkAlan,
-    "MİK": CacheManager.getProfilParametre.siparisMiktar,
-    "VADE": CacheManager.getProfilParametre.siparisVade,
-  }.asObservable();
+  ObservableMap<String, bool> ekstraAlanlarMap =
+      {
+        "EK": CacheManager.getProfilParametre.siparisEkAlan,
+        "MİK": CacheManager.getProfilParametre.siparisMiktar,
+        "VADE": CacheManager.getProfilParametre.siparisVade,
+      }.asObservable();
 
   @observable
   bool grupKodlariGoster = false;
@@ -56,7 +64,14 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
   String? searchText;
 
   @observable
-  SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(sayfa: 1, faturalasmaGoster: true, miktarGetir: "E", ekranTipi: "L", iadeMi: false, siralama: "TARIH_ZA");
+  SiparislerRequestModel siparislerRequestModel = SiparislerRequestModel(
+    sayfa: 1,
+    faturalasmaGoster: true,
+    miktarGetir: "E",
+    ekranTipi: "L",
+    iadeMi: false,
+    siralama: "TARIH_ZA",
+  );
 
   @override
   @observable
@@ -137,12 +152,10 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
 
   @action
   void resetEkstraAlanlarMap() {
-    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
-    ekstraAlanlarMap = {
-      "EK": false,
-      "MİK": false,
-      "VADE": false,
-    }.asObservable();
+    CacheManager.setProfilParametre(
+      CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false),
+    );
+    ekstraAlanlarMap = {"EK": false, "MİK": false, "VADE": false}.asObservable();
   }
 
   @override
@@ -163,7 +176,8 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
   void setIsScrolledDown(bool value) => isScrollDown = value;
 
   @action
-  void setPickerBelgeTuru(String value) => siparislerRequestModel = siparislerRequestModel.copyWith(pickerBelgeTuru: value);
+  void setPickerBelgeTuru(String value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(pickerBelgeTuru: value);
 
   @action
   void setSiralama(String value) => siparislerRequestModel = siparislerRequestModel.copyWith(siralama: value);
@@ -177,25 +191,32 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
   void addObservableList(List<BaseSiparisEditModel>? list) => setObservableList(observableList?..addAll(list!));
 
   @action
-  void setArrPlasiyerKodu(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrPlasiyerKodu: jsonEncode(value));
+  void setArrPlasiyerKodu(List<String>? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(arrPlasiyerKodu: jsonEncode(value));
 
   @action
-  void setArrKod0(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrGrupKodu: jsonEncode(value));
+  void setArrKod0(List<String>? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(arrGrupKodu: jsonEncode(value));
 
   @action
-  void setArrKod1(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrKod1: jsonEncode(value));
+  void setArrKod1(List<String>? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(arrKod1: jsonEncode(value));
 
   @action
-  void setArrKod2(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrKod2: jsonEncode(value));
+  void setArrKod2(List<String>? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(arrKod2: jsonEncode(value));
 
   @action
-  void setArrKod3(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrKod3: jsonEncode(value));
+  void setArrKod3(List<String>? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(arrKod3: jsonEncode(value));
 
   @action
-  void setArrKod4(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrKod4: jsonEncode(value));
+  void setArrKod4(List<String>? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(arrKod4: jsonEncode(value));
 
   @action
-  void setArrKod5(List<String>? value) => siparislerRequestModel = siparislerRequestModel.copyWith(arrKod5: jsonEncode(value));
+  void setArrKod5(List<String>? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(arrKod5: jsonEncode(value));
 
   @action
   void setCariKodu(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(cariKodu: value);
@@ -204,16 +225,22 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
   void setCariTipi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(cariTipi: value);
 
   @action
-  void setTeslimatDurumuGroupValue(int? value) => siparislerRequestModel = siparislerRequestModel.copyWith(siparisKarsilanmaDurumu: teslimatDurumuValueList[value ?? 0]);
+  void setTeslimatDurumuGroupValue(int? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(
+        siparisKarsilanmaDurumu: teslimatDurumuValueList[value ?? 0],
+      );
 
   @action
   void setKapaliBelgelerListelenmesin(bool? value) {
     siparislerRequestModel = siparislerRequestModel.copyWith(kapaliBelgelerListelenmesin: value);
-    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(kapaliBelgelerListelenmesinMi: value ?? false));
+    CacheManager.setProfilParametre(
+      CacheManager.getProfilParametre.copyWith(kapaliBelgelerListelenmesinMi: value ?? false),
+    );
   }
 
   @action
-  void setBaslamaTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(baslamaTarihi: value);
+  void setBaslamaTarihi(String? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(baslamaTarihi: value);
 
   @action
   void setBitisTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(bitisTarihi: value);
@@ -269,7 +296,11 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
   @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: siparislerRequestModel.copyWith(sayfa: page).toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getFaturalar,
+      bodyModel: BaseSiparisEditModel(),
+      queryParameters: siparislerRequestModel.copyWith(sayfa: page).toJson(),
+    );
     if (result.isSuccess) {
       final List<BaseSiparisEditModel> list = result.dataList;
       if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
@@ -280,7 +311,10 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
       }
       if (observableList == null) {
         setObservableList(
-          ((CacheManager.getTaltekEditLists(list.firstOrNull?.getEditTipiEnum ?? EditTipiEnum.satisTeklifi)?.toList().cast<BaseSiparisEditModel>() ?? <BaseSiparisEditModel>[])
+          ((CacheManager.getTaltekEditLists(
+                      list.firstOrNull?.getEditTipiEnum ?? EditTipiEnum.satisTeklifi,
+                    )?.toList().cast<BaseSiparisEditModel>() ??
+                    <BaseSiparisEditModel>[])
                 ..mapIndexed((index, element) => element..index = index).toList()) +
               result.dataList,
         );
@@ -288,7 +322,11 @@ abstract class _TalepTeklifListesiViewModelBase with Store, MobxNetworkMixin, Li
         addObservableList(list);
       }
       if (!(result.paramData?.values.contains("0") ?? true)) {
-        final Map<String, dynamic> paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")))).cast<String, dynamic>() ?? {};
+        final Map<String, dynamic> paramData =
+            result.paramData
+                ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", "."))))
+                .cast<String, dynamic>() ??
+            {};
         setParamData(paramData);
       }
     }

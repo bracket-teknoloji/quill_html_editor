@@ -53,113 +53,116 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body().paddingAll(UIHelper.lowSize),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body().paddingAll(UIHelper.lowSize));
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) => viewModel.isSearchBarOpen
-              ? CustomAppBarTextField(
-                  controller: searchController,
-                  onChanged: viewModel.setSearchText,
-                )
-              : AppBarTitle(title: "Hızlı Tahsilat Kayıtları", subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "0"),
+    title: Observer(
+      builder:
+          (_) =>
+              viewModel.isSearchBarOpen
+                  ? CustomAppBarTextField(controller: searchController, onChanged: viewModel.setSearchText)
+                  : AppBarTitle(
+                    title: "Hızlı Tahsilat Kayıtları",
+                    subtitle: viewModel.observableList?.length.toStringIfNotNull ?? "0",
+                  ),
+    ),
+    actions: [
+      IconButton(
+        onPressed: viewModel.changeSearchBarStatus,
+        icon: Observer(
+          builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
         ),
-        actions: [
-          IconButton(
-            onPressed: viewModel.changeSearchBarStatus,
-            icon: Observer(
-              builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
-            ),
-          ),
-        ],
-      );
+      ),
+    ],
+  );
 
   Column body() => Column(
-        children: [
-          RaporFiltreDateTimeBottomSheetView(
-            filterOnChanged: (index) async {
-              viewModel
-                ..setBaslangicTarihi(baslangicTarihiController.text)
-                ..setBitisTarihi(bitisTarihiController.text);
-              await viewModel.resetList();
-            },
-            baslangicTarihiController: baslangicTarihiController,
-            bitisTarihiController: bitisTarihiController,
-          ),
-          Expanded(
-            child: Observer(
-              builder: (_) => RefreshableListView(
+    children: [
+      RaporFiltreDateTimeBottomSheetView(
+        filterOnChanged: (index) async {
+          viewModel
+            ..setBaslangicTarihi(baslangicTarihiController.text)
+            ..setBitisTarihi(bitisTarihiController.text);
+          await viewModel.resetList();
+        },
+        baslangicTarihiController: baslangicTarihiController,
+        bitisTarihiController: bitisTarihiController,
+      ),
+      Expanded(
+        child: Observer(
+          builder:
+              (_) => RefreshableListView(
                 onRefresh: viewModel.resetList,
                 items: viewModel.filteredObservableList,
                 itemBuilder: hizliTahsilatKayitlariCard,
               ),
-            ),
-          ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 
   Widget hizliTahsilatKayitlariCard(BankaHareketleriModel item) => Card(
-        child: ListTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    child: ListTile(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(item.tarih?.toDateString ?? ""),
+          //TODO döviz tipinin attribute'unu sor.
+          Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+        ],
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(item.cariAdi ?? ""),
+          if (item.belgeNo != null) Text("Belge no: ${item.belgeNo}"),
+          CustomLayoutBuilder.divideInHalf(
             children: [
-              Text(item.tarih?.toDateString ?? ""),
-              //TODO döviz tipinin attribute'unu sor.
-              Text("${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+              Text("Cari kodu: ${item.cariKodu}"),
+              Text("Kasa kodu: ${item.kasaKodu}"),
+              Text("Nakit/KK: ${item.nakitmi == "E" ? "Nakit" : "KK"}"),
+              // Text("Cari kodu: ${item.na}"),
+              if (yetkiController.projeUygulamasiAcikMi && item.projeKodu != null)
+                Text("Proje kodu: ${item.projeKodu}"),
+              // Text("Döviz tipi: ${item.dovizTipi}"),
             ],
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(item.cariAdi ?? ""),
-              if (item.belgeNo != null) Text("Belge no: ${item.belgeNo}"),
-              CustomLayoutBuilder.divideInHalf(
-                children: [
-                  Text("Cari kodu: ${item.cariKodu}"),
-                  Text("Kasa kodu: ${item.kasaKodu}"),
-                  Text("Nakit/KK: ${item.nakitmi == "E" ? "Nakit" : "KK"}"),
-                  // Text("Cari kodu: ${item.na}"),
-                  if (yetkiController.projeUygulamasiAcikMi && item.projeKodu != null) Text("Proje kodu: ${item.projeKodu}"),
-                  // Text("Döviz tipi: ${item.dovizTipi}"),
-                ],
+          Text(item.aciklama ?? ""),
+        ],
+      ),
+      onTap: () async {
+        await bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: item.cariAdi ?? item.cariKodu ?? "",
+          children: [
+            if (yetkiController.hizliTahsilatSil)
+              BottomSheetModel(
+                title: loc.generalStrings.delete,
+                iconWidget: Icons.delete_outline_outlined,
+                onTap: () async {
+                  Get.back();
+                  dialogManager.showAreYouSureDialog(() async {
+                    final result = await viewModel.deleteHizliTahsilat(item.inckeyno!);
+                    if (result.isSuccess) {
+                      await viewModel.resetList();
+                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                    }
+                  });
+                },
               ),
-              Text(item.aciklama ?? ""),
-            ],
-          ),
-          onTap: () async {
-            await bottomSheetDialogManager.showBottomSheetDialog(
-              context,
-              title: item.cariAdi ?? item.cariKodu ?? "",
-              children: [
-                if (yetkiController.hizliTahsilatSil)
-                  BottomSheetModel(
-                    title: loc.generalStrings.delete,
-                    iconWidget: Icons.delete_outline_outlined,
-                    onTap: () async {
-                      Get.back();
-                      dialogManager.showAreYouSureDialog(() async {
-                        final result = await viewModel.deleteHizliTahsilat(item.inckeyno!);
-                        if (result.isSuccess) {
-                          await viewModel.resetList();
-                          dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                        }
-                      });
-                    },
-                  ),
-                BottomSheetModel(
-                  title: "Cari İşlemleri",
-                  iconWidget: Icons.person_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    return dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [item.cariKodu ?? ""])));
-                  },
-                ),
-              ],
-            );
-          },
-        ),
-      );
+            BottomSheetModel(
+              title: "Cari İşlemleri",
+              iconWidget: Icons.person_outline_outlined,
+              onTap: () async {
+                Get.back();
+                return dialogManager.showCariIslemleriGridViewDialog(
+                  await networkManager.getCariModel(CariRequestModel(kod: [item.cariKodu ?? ""])),
+                );
+              },
+            ),
+          ],
+        );
+      },
+    ),
+  );
 }

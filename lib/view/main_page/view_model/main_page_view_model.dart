@@ -11,10 +11,7 @@ final class MainPageViewModel = _MainPageViewModelBase with _$MainPageViewModel;
 
 abstract class _MainPageViewModelBase with Store {
   @observable
-  ObservableList<String> titleList = ObservableList.of([
-    if (kIsWeb) "Picker Web Beta",
-    if (!kIsWeb) "Picker",
-  ]);
+  ObservableList<String> titleList = ObservableList.of([if (kIsWeb) "Picker Web Beta", if (!kIsWeb) "Picker"]);
 
   @action
   void addTitle(String value) => titleList.add(value);

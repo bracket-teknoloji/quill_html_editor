@@ -11,7 +11,8 @@ part "kasa_listesi_view_model.g.dart";
 
 final class KasaListesiViewModel = _KasaListesiViewModelBase with _$KasaListesiViewModel;
 
-abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<KasaListesiModel>, SearchableMixin {
+abstract class _KasaListesiViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<KasaListesiModel>, SearchableMixin {
   final Map<String, String> siralaMap = {
     "Kasa Kodu (A-Z)": "KOD_AZ",
     "Kasa Kodu (Z-A)": "KOD_ZA",
@@ -19,12 +20,7 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin, ListableM
     "Kasa Adı (Z-A)": "ADI_ZA",
   };
 
-  final Map<String, String> filtreleMap = {
-    "Tümü": "T",
-    "Bakiyeli": "B",
-    "Eksi": "E",
-    "Artı": "A",
-  };
+  final Map<String, String> filtreleMap = {"Tümü": "T", "Bakiyeli": "B", "Eksi": "E", "Artı": "A"};
   //* Observables
 
   @override
@@ -80,7 +76,10 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   ObservableList<KasaListesiModel>? get getKasaListesi {
     // Arama çubuğuna yazılan değere göre filtreleme yapar
     if (searchText.ext.isNotNullOrNoEmpty) {
-      return observableList?.where((element) => element.kasaTanimi?.toLowerCase().contains(searchText!.toLowerCase()) ?? false).toList().asObservable();
+      return observableList
+          ?.where((element) => element.kasaTanimi?.toLowerCase().contains(searchText!.toLowerCase()) ?? false)
+          .toList()
+          .asObservable();
     }
     return observableList;
   }
@@ -114,8 +113,11 @@ abstract class _KasaListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   @override
   @action
   Future<void> getData() async {
-    final result = await networkManager
-        .dioGet<KasaListesiModel>(path: ApiUrls.getKasalar, bodyModel: KasaListesiModel(), queryParameters: {"MenuKodu": "YONE_KASA", "Sirala": sirala, "Bakiye": filtreGroupValue});
+    final result = await networkManager.dioGet<KasaListesiModel>(
+      path: ApiUrls.getKasalar,
+      bodyModel: KasaListesiModel(),
+      queryParameters: {"MenuKodu": "YONE_KASA", "Sirala": sirala, "Bakiye": filtreGroupValue},
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
     }

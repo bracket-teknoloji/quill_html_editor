@@ -18,8 +18,6 @@ class CekSenetEvrakEkleModel with _$CekSenetEvrakEkleModel {
 
   factory CekSenetEvrakEkleModel.fromJson(Map<String, dynamic> json) => _$CekSenetEvrakEkleModelFromJson(json);
 
-  factory CekSenetEvrakEkleModel.fromCekSenetListesiModel(CekSenetListesiModel model) => CekSenetEvrakEkleModel(
-        belgeNo: model.belgeNo,
-        belgeTipi: model.belgeTipi,
-      );
+  factory CekSenetEvrakEkleModel.fromCekSenetListesiModel(CekSenetListesiModel model) =>
+      CekSenetEvrakEkleModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi);
 }

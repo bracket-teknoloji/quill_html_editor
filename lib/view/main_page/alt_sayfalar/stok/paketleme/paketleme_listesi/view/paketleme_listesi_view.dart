@@ -43,62 +43,63 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => viewModel.isSearchBarOpen
-                ? CustomAppBarTextField(
-                    controller: searchController,
-                    onChanged: viewModel.setSearchText,
-                  )
-                : AppBarTitle(
-                    title: "Paketleme",
-                    subtitle: viewModel.filteredPaketlemeListesi?.length.toStringIfNotNull,
-                  ),
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) =>
+                viewModel.isSearchBarOpen
+                    ? CustomAppBarTextField(controller: searchController, onChanged: viewModel.setSearchText)
+                    : AppBarTitle(
+                      title: "Paketleme",
+                      subtitle: viewModel.filteredPaketlemeListesi?.length.toStringIfNotNull,
+                    ),
+      ),
+      actions: [
+        IconButton(
+          onPressed: viewModel.changeSearchBarStatus,
+          icon: Observer(
+            builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
           ),
-          actions: [
-            IconButton(
-              onPressed: viewModel.changeSearchBarStatus,
-              icon: Observer(
-                builder: (_) => Icon(viewModel.isSearchBarOpen ? Icons.search_off_outlined : Icons.search_outlined),
-              ),
-            ),
-          ],
         ),
-        body: Observer(
-          builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.filteredPaketlemeListesi, itemBuilder: card),
-        ),
-      );
+      ],
+    ),
+    body: Observer(
+      builder:
+          (_) => RefreshableListView(
+            onRefresh: viewModel.getData,
+            items: viewModel.filteredPaketlemeListesi,
+            itemBuilder: card,
+          ),
+    ),
+  );
 
   Card card(PaketlemeListesiModel item) => Card(
-        child: ListTile(
-          onTap: () => bottomSheet(item),
-          title: Text(item.kodu ?? ""),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    child: ListTile(
+      onTap: () => bottomSheet(item),
+      title: Text(item.kodu ?? ""),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  if (item.kilit == "E")
-                    const ColorfulBadge(
-                      label: Text("Kilitli"),
-                      badgeColorEnum: BadgeColorEnum.kilitli,
-                    ),
-                ],
-              ),
-              if (item.paketTuruTanimi != null) Text("Paket Türü: ${item.paketTuruTanimi}"),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  if (item.kalemSayisi != null) Text("Kalem Adedi: ${item.kalemSayisi ?? 0}"),
-                  if (item.depoKodu != null) Text("Depo Kodu: ${item.depoKodu}"),
-                ],
-              ),
-              if (item.kayityapankul != null) Text("Kaydeden: ${item.kayityapankul}"),
-              if (item.kayittarihi != null) Text("Kaydeden: ${item.kayittarihi?.toDateString}"),
+              if (item.kilit == "E")
+                const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
             ],
           ),
-        ),
-      );
+          if (item.paketTuruTanimi != null) Text("Paket Türü: ${item.paketTuruTanimi}"),
+          CustomLayoutBuilder(
+            splitCount: 2,
+            children: [
+              if (item.kalemSayisi != null) Text("Kalem Adedi: ${item.kalemSayisi ?? 0}"),
+              if (item.depoKodu != null) Text("Depo Kodu: ${item.depoKodu}"),
+            ],
+          ),
+          if (item.kayityapankul != null) Text("Kaydeden: ${item.kayityapankul}"),
+          if (item.kayittarihi != null) Text("Kaydeden: ${item.kayittarihi?.toDateString}"),
+        ],
+      ),
+    ),
+  );
 
   Future<void> bottomSheet(PaketlemeListesiModel item) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -114,7 +115,8 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
               ..toNamed("/mainPage/paketIcerigi", arguments: item);
           },
         ),
-        if (yetkiController.stokPaketlemeEkle && item.kilit != "E") BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
+        if (yetkiController.stokPaketlemeEkle && item.kilit != "E")
+          BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
         if (yetkiController.stokPaketlemeSil && item.kilit != "E")
           BottomSheetModel(
             title: loc.generalStrings.delete,

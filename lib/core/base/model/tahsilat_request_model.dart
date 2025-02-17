@@ -62,11 +62,11 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
   factory TahsilatRequestModel.fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
 
   factory TahsilatRequestModel.fromCekSenetListesiModel(CekSenetListesiModel model) => TahsilatRequestModel(
-        belgeNo: model.belgeNo,
-        plasiyerKodu: model.plasiyerKodu,
-        tarih: model.tarih,
-        projeKodu: model.projeKodu,
-      );
+    belgeNo: model.belgeNo,
+    plasiyerKodu: model.plasiyerKodu,
+    tarih: model.tarih,
+    projeKodu: model.projeKodu,
+  );
 
   @override
   TahsilatRequestModel fromJson(Map<String, dynamic> json) => _$TahsilatRequestModelFromJson(json);
@@ -118,31 +118,31 @@ class DekontKalemler with _$DekontKalemler, NetworkManagerMixin {
   }) = _DekontKalemler;
 
   factory DekontKalemler.fromDekontDuzenleModel(DekontDuzenleRequestModel model) => DekontKalemler(
-        aciklama: model.aciklama,
-        ba: model.ba,
-        dovizTipi: model.dovizTipi,
-        dovizTutari: model.dovizTutari,
-        exportTipi: model.exportTipi != 0 ? model.exportTipi : null,
-        hesapKodu: model.hesapKodu,
-        hesapTipi: model.hesapTipi,
-        plasiyerKodu: model.plasiyerKodu,
-        tarih: model.tarih,
-        kalemAdi: model.hesapAdi,
-        tutar: model.tutar,
-        depoKodu: model.depoKodu,
-        inckeyno: model.inckeyno,
-        seriNo: model.seriNo,
-        dekontNo: model.dekontNo,
-        siraNo: model.siraNo,
-        hesapTipiAciklama: model.hesapTipiAciklama,
-        hesapAdi: model.hesapAdi,
-        dovizAdi: model.dovizAdi,
-        plasiyerAciklama: model.plasiyerAciklama,
-        muhasebeHesapTipi: model.muhasebeHesapTipi,
-        belgeNo: model.belgeNo,
-        plasiyerAdi: model.plasiyerAciklama,
-        dovizTipiAdi: model.dovizAdi,
-      );
+    aciklama: model.aciklama,
+    ba: model.ba,
+    dovizTipi: model.dovizTipi,
+    dovizTutari: model.dovizTutari,
+    exportTipi: model.exportTipi != 0 ? model.exportTipi : null,
+    hesapKodu: model.hesapKodu,
+    hesapTipi: model.hesapTipi,
+    plasiyerKodu: model.plasiyerKodu,
+    tarih: model.tarih,
+    kalemAdi: model.hesapAdi,
+    tutar: model.tutar,
+    depoKodu: model.depoKodu,
+    inckeyno: model.inckeyno,
+    seriNo: model.seriNo,
+    dekontNo: model.dekontNo,
+    siraNo: model.siraNo,
+    hesapTipiAciklama: model.hesapTipiAciklama,
+    hesapAdi: model.hesapAdi,
+    dovizAdi: model.dovizAdi,
+    plasiyerAciklama: model.plasiyerAciklama,
+    muhasebeHesapTipi: model.muhasebeHesapTipi,
+    belgeNo: model.belgeNo,
+    plasiyerAdi: model.plasiyerAciklama,
+    dovizTipiAdi: model.dovizAdi,
+  );
   DekontKalemler._();
 
   factory DekontKalemler.fromJson(Map<String, dynamic> json) => _$DekontKalemlerFromJson(json);
@@ -165,12 +165,12 @@ extension DekontKalemlerExtensions on DekontKalemler {
   bool get stokMu => hesapTipi == "S";
 
   String get hesapAdi => switch (hesapTipi) {
-        "C" => "Cari",
-        "M" => "Muhasebe",
-        "B" => "Banka",
-        "S" => "Stok",
-        _ => "",
-      };
+    "C" => "Cari",
+    "M" => "Muhasebe",
+    "B" => "Banka",
+    "S" => "Stok",
+    _ => "",
+  };
 
   double get dovizKuru => (dovizTutari ?? 0) / (tutar ?? 1);
 

@@ -24,52 +24,67 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
   CariListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => MouseRightClickListener(
-        onRightClick: onLongPress,
-        child: Card(
-          child: ListTile(
-            onTap: () => widget.onPressed != null ? widget.onPressed!(model) : Get.back(result: widget.model),
-            onLongPress: onLongPress,
-            leading: CircleAvatar(
-              backgroundColor: UIHelper.getColorWithValue(model.bakiye ?? 0.0),
-              foregroundColor: Colors.white,
-              child: Text(model.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
-            ),
-            title: Text(model.cariAdi ?? ""),
-            subtitle: Wrap(
-              direction: Axis.vertical,
-              alignment: WrapAlignment.spaceBetween,
-              children: [
-                Text("${model.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
-                if (model.cariIl != null)
-                  Text("${model.cariIl ?? ""}/${model.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)))
-                else
-                  const SizedBox.shrink(),
-                Row(
-                  children: [
-                    if (model.efaturaMi == true) const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),
-                    if (model.dovizli == true) ColorfulBadge(label: Text("Dövizli ${model.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
-                    if (model.boylam != null) const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
-                    if (model.kilit == "E") const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
-                  ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
-                ),
-              ],
-            ),
-            trailing: bakiyeGorunsunMu(model)
-                ? Wrap(
-                    children: [
-                      Text(
-                        (model.bakiye == null
-                            ? "0.00 $mainCurrency"
-                            : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
-                                "\n"),
-                        style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
-                      ),
-                    ],
-                  )
-                : null,
-          ),
+    onRightClick: onLongPress,
+    child: Card(
+      child: ListTile(
+        onTap: () => widget.onPressed != null ? widget.onPressed!(model) : Get.back(result: widget.model),
+        onLongPress: onLongPress,
+        leading: CircleAvatar(
+          backgroundColor: UIHelper.getColorWithValue(model.bakiye ?? 0.0),
+          foregroundColor: Colors.white,
+          child: Text(model.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
         ),
-      );
+        title: Text(model.cariAdi ?? ""),
+        subtitle: Wrap(
+          direction: Axis.vertical,
+          alignment: WrapAlignment.spaceBetween,
+          children: [
+            Text(
+              "${model.cariKodu}",
+              style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)),
+            ),
+            if (model.cariIl != null)
+              Text(
+                "${model.cariIl ?? ""}/${model.cariIlce ?? ""}",
+                style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)),
+              )
+            else
+              const SizedBox.shrink(),
+            Row(
+              children:
+                  [
+                    if (model.efaturaMi == true)
+                      const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),
+                    if (model.dovizli == true)
+                      ColorfulBadge(
+                        label: Text("Dövizli ${model.dovizAdi ?? ""}"),
+                        badgeColorEnum: BadgeColorEnum.dovizli,
+                      ),
+                    if (model.boylam != null)
+                      const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
+                    if (model.kilit == "E")
+                      const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
+                  ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
+            ),
+          ],
+        ),
+        trailing:
+            bakiyeGorunsunMu(model)
+                ? Wrap(
+                  children: [
+                    Text(
+                      (model.bakiye == null
+                          ? "0.00 $mainCurrency"
+                          : "${model.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"
+                              "\n"),
+                      style: TextStyle(color: UIHelper.getColorWithValue(model.bakiye ?? 0.0)),
+                    ),
+                  ],
+                )
+                : null,
+      ),
+    ),
+  );
 
   void onLongPress() => dialogManager.showCariGridViewDialog(model);
 

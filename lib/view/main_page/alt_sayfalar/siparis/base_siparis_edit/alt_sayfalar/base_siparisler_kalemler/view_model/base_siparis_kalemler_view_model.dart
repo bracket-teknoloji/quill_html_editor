@@ -20,10 +20,13 @@ abstract class _BaseSiparisKalemlerViewModelBase with Store {
 
   @action
   void updateKalemList() {
-    if (!(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false)) BaseSiparisEditModel.instance.kalemlerOTVHesapla();
-    kalemList = List.generate(
-      BaseSiparisEditModel.instance.kalemList?.length ?? 0,
-      (index) => BaseSiparisEditModel.instance.kalemList![index]..sira = index + 1,
-    ).asObservable();
+    if (!(BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false)) {
+      BaseSiparisEditModel.instance.kalemlerOTVHesapla();
+    }
+    kalemList =
+        List.generate(
+          BaseSiparisEditModel.instance.kalemList?.length ?? 0,
+          (index) => BaseSiparisEditModel.instance.kalemList![index]..sira = index + 1,
+        ).asObservable();
   }
 }

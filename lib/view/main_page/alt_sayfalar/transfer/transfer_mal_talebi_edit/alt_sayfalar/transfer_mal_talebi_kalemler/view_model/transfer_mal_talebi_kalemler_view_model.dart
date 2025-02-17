@@ -5,7 +5,8 @@ import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/mod
 
 part "transfer_mal_talebi_kalemler_view_model.g.dart";
 
-final class TransferMalTalebiKalemlerViewModel = _TransferMalTalebiKalemlerViewModelBase with _$TransferMalTalebiKalemlerViewModel;
+final class TransferMalTalebiKalemlerViewModel = _TransferMalTalebiKalemlerViewModelBase
+    with _$TransferMalTalebiKalemlerViewModel;
 
 abstract class _TransferMalTalebiKalemlerViewModelBase with Store, MobxNetworkMixin {
   @observable
@@ -26,10 +27,7 @@ abstract class _TransferMalTalebiKalemlerViewModelBase with Store, MobxNetworkMi
       path: ApiUrls.saveDepoTalep,
       bodyModel: KalemModel(),
       showLoading: true,
-      data: {
-        "ID": value.id,
-        "ISLEM_KODU": 6,
-      },
+      data: {"ID": value.id, "ISLEM_KODU": 6},
     );
     if (result.isSuccess) setKalemList(kalemList.where((element) => element.id != value.id).toList());
     return result.isSuccess;
@@ -49,12 +47,7 @@ abstract class _TransferMalTalebiKalemlerViewModelBase with Store, MobxNetworkMi
       path: ApiUrls.saveDepoTalep,
       bodyModel: KalemModel(),
       showLoading: true,
-      data: model
-          .copyWith(
-            islemKodu: 4,
-            talepId: BaseSiparisEditModel.instance.id,
-          )
-          .toJson(),
+      data: model.copyWith(islemKodu: 4, talepId: BaseSiparisEditModel.instance.id).toJson(),
     );
     if (result.isSuccess) setKalemList([...kalemList, model.copyWith(id: result.paramData?["OLUSAN_ID"])]);
     return result.isSuccess;

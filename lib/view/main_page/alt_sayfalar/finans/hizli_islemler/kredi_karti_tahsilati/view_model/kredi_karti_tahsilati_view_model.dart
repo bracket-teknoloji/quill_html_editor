@@ -44,7 +44,14 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   bool? showReferansKodu = false;
 
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(tahsilatmi: true, yeniKayit: true, gc: "G", tag: "TahsilatModel", pickerBelgeTuru: "KKT", hesapTipi: "T");
+  TahsilatRequestModel model = TahsilatRequestModel(
+    tahsilatmi: true,
+    yeniKayit: true,
+    gc: "G",
+    tag: "TahsilatModel",
+    pickerBelgeTuru: "KKT",
+    hesapTipi: "T",
+  );
 
   @computed
   String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
@@ -146,8 +153,12 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getBankaSozlesmesi() async {
-    final result = await networkManager
-        .dioGet<BankaSozlesmesiModel>(path: ApiUrls.getBankaSozlesmeleri, bodyModel: BankaSozlesmesiModel(), showLoading: true, queryParameters: {"Tarih": model.tarih.toDateString, "EkranTipi": "R"});
+    final result = await networkManager.dioGet<BankaSozlesmesiModel>(
+      path: ApiUrls.getBankaSozlesmeleri,
+      bodyModel: BankaSozlesmesiModel(),
+      showLoading: true,
+      queryParameters: {"Tarih": model.tarih.toDateString, "EkranTipi": "R"},
+    );
     if (result.isSuccess) {
       setBankaSozlesmesiList(result.dataList);
     }
@@ -155,7 +166,11 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getMuhaRefList() async {
-    final result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    final result = await networkManager.dioGet<MuhasebeReferansModel>(
+      path: ApiUrls.getMuhaRefList,
+      bodyModel: MuhasebeReferansModel(),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       setMuhaRefList(result.dataList);
     }
@@ -171,7 +186,10 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getBankaHesaplari() async {
-    final result = await networkManager.dioGet<BankaListesiModel>(path: ApiUrls.getBankaHesaplari, bodyModel: BankaListesiModel());
+    final result = await networkManager.dioGet<BankaListesiModel>(
+      path: ApiUrls.getBankaHesaplari,
+      bodyModel: BankaListesiModel(),
+    );
     if (result.isSuccess) {
       setBankaHesaplariList(result.dataList);
     }
@@ -179,7 +197,12 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<KasaList?> getKasalar(String? kasaKodu) async {
-    final result = await networkManager.dioGet<KasaList>(path: ApiUrls.getKasalar, bodyModel: KasaList(), showLoading: true, queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu});
+    final result = await networkManager.dioGet<KasaList>(
+      path: ApiUrls.getKasalar,
+      bodyModel: KasaList(),
+      showLoading: true,
+      queryParameters: {"KisitYok": true, "KasaKodu": kasaKodu},
+    );
     if (result.isSuccess) {
       return result.dataList.firstOrNull as KasaList;
     }
@@ -187,6 +210,10 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveTahsilat, bodyModel: DovizKurlariModel(), showLoading: true, data: (model..guid = const Uuid().v4()).toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
+    path: ApiUrls.saveTahsilat,
+    bodyModel: DovizKurlariModel(),
+    showLoading: true,
+    data: (model..guid = const Uuid().v4()).toJson(),
+  );
 }

@@ -8,7 +8,8 @@ import "../../../../../../../../core/init/network/login/api_urls.dart";
 
 part "barkod_tanimla_kayitlari_view_model.g.dart";
 
-final class BarkodTanimlaKayitlariViewModel = _BarkodTanimlaKayitlariViewModelBase with _$BarkodTanimlaKayitlariViewModel;
+final class BarkodTanimlaKayitlariViewModel = _BarkodTanimlaKayitlariViewModelBase
+    with _$BarkodTanimlaKayitlariViewModel;
 
 abstract class _BarkodTanimlaKayitlariViewModelBase with Store, MobxNetworkMixin {
   @observable
@@ -21,18 +22,28 @@ abstract class _BarkodTanimlaKayitlariViewModelBase with Store, MobxNetworkMixin
   void setStokKodu(String? stokKodu) => requestModel = requestModel.copyWith(stokKodu: stokKodu);
 
   @action
-  void setBarkodTanimlaKayitlari(List<BarkodTanimlaKayitlariModel>? list) => barkodTanimlaKayitlari = list?.asObservable();
+  void setBarkodTanimlaKayitlari(List<BarkodTanimlaKayitlariModel>? list) =>
+      barkodTanimlaKayitlari = list?.asObservable();
 
   @action
   Future<bool> deleteItem(BarkodTanimlaKayitlariModel model) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveStok, showLoading: true, bodyModel: BarkodTanimlaKayitlariModel(), data: SaveStokModel.forDeleteBarkodModel(model));
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveStok,
+      showLoading: true,
+      bodyModel: BarkodTanimlaKayitlariModel(),
+      data: SaveStokModel.forDeleteBarkodModel(model),
+    );
     return result.isSuccess;
   }
 
   @action
   Future<void> getData() async {
     setBarkodTanimlaKayitlari(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getBarkodlar, bodyModel: BarkodTanimlaKayitlariModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getBarkodlar,
+      bodyModel: BarkodTanimlaKayitlariModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setBarkodTanimlaKayitlari(result.dataList);
     }

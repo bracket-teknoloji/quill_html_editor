@@ -12,7 +12,8 @@ part of 'dekont_islemler_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 DekontIslemlerModel _$DekontIslemlerModelFromJson(Map<String, dynamic> json) {
   return _DekontIslemlerModel.fromJson(json);
@@ -69,38 +70,37 @@ mixin _$DekontIslemlerModel {
   /// Create a copy of DekontIslemlerModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DekontIslemlerModelCopyWith<DekontIslemlerModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $DekontIslemlerModelCopyWith<DekontIslemlerModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DekontIslemlerModelCopyWith<$Res> {
-  factory $DekontIslemlerModelCopyWith(
-          DekontIslemlerModel value, $Res Function(DekontIslemlerModel) then) =
+  factory $DekontIslemlerModelCopyWith(DekontIslemlerModel value, $Res Function(DekontIslemlerModel) then) =
       _$DekontIslemlerModelCopyWithImpl<$Res, DekontIslemlerModel>;
   @useResult
-  $Res call(
-      {int? inckeyno,
-      DateTime? tarih,
-      String? seriNo,
-      int? dekontNo,
-      int? siraNo,
-      String? ba,
-      String? hesapTipi,
-      String? hesapTipiAciklama,
-      String? hesapKodu,
-      String? hesapAdi,
-      double? tutar,
-      int? dovizTipi,
-      int? dovizTutari,
-      String? aciklama,
-      String? plasiyerKodu,
-      String? refkey,
-      String? cariAdi,
-      String? plasiyerAciklama,
-      int? depoKodu,
-      int? exportTipi,
-      String? muhasebeHesapTipi});
+  $Res call({
+    int? inckeyno,
+    DateTime? tarih,
+    String? seriNo,
+    int? dekontNo,
+    int? siraNo,
+    String? ba,
+    String? hesapTipi,
+    String? hesapTipiAciklama,
+    String? hesapKodu,
+    String? hesapAdi,
+    double? tutar,
+    int? dovizTipi,
+    int? dovizTutari,
+    String? aciklama,
+    String? plasiyerKodu,
+    String? refkey,
+    String? cariAdi,
+    String? plasiyerAciklama,
+    int? depoKodu,
+    int? exportTipi,
+    String? muhasebeHesapTipi,
+  });
 }
 
 /// @nodoc
@@ -140,134 +140,160 @@ class _$DekontIslemlerModelCopyWithImpl<$Res, $Val extends DekontIslemlerModel>
     Object? exportTipi = freezed,
     Object? muhasebeHesapTipi = freezed,
   }) {
-    return _then(_value.copyWith(
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dekontNo: freezed == dekontNo
-          ? _value.dekontNo
-          : dekontNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      siraNo: freezed == siraNo
-          ? _value.siraNo
-          : siraNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ba: freezed == ba
-          ? _value.ba
-          : ba // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapTipi: freezed == hesapTipi
-          ? _value.hesapTipi
-          : hesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapTipiAciklama: freezed == hesapTipiAciklama
-          ? _value.hesapTipiAciklama
-          : hesapTipiAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapKodu: freezed == hesapKodu
-          ? _value.hesapKodu
-          : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapAdi: freezed == hesapAdi
-          ? _value.hesapAdi
-          : hesapAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tutar: freezed == tutar
-          ? _value.tutar
-          : tutar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizTutari: freezed == dovizTutari
-          ? _value.dovizTutari
-          : dovizTutari // ignore: cast_nullable_to_non_nullable
-              as int?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refkey: freezed == refkey
-          ? _value.refkey
-          : refkey // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerAciklama: freezed == plasiyerAciklama
-          ? _value.plasiyerAciklama
-          : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      exportTipi: freezed == exportTipi
-          ? _value.exportTipi
-          : exportTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      muhasebeHesapTipi: freezed == muhasebeHesapTipi
-          ? _value.muhasebeHesapTipi
-          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            inckeyno:
+                freezed == inckeyno
+                    ? _value.inckeyno
+                    : inckeyno // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            tarih:
+                freezed == tarih
+                    ? _value.tarih
+                    : tarih // ignore: cast_nullable_to_non_nullable
+                        as DateTime?,
+            seriNo:
+                freezed == seriNo
+                    ? _value.seriNo
+                    : seriNo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            dekontNo:
+                freezed == dekontNo
+                    ? _value.dekontNo
+                    : dekontNo // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            siraNo:
+                freezed == siraNo
+                    ? _value.siraNo
+                    : siraNo // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            ba:
+                freezed == ba
+                    ? _value.ba
+                    : ba // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            hesapTipi:
+                freezed == hesapTipi
+                    ? _value.hesapTipi
+                    : hesapTipi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            hesapTipiAciklama:
+                freezed == hesapTipiAciklama
+                    ? _value.hesapTipiAciklama
+                    : hesapTipiAciklama // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            hesapKodu:
+                freezed == hesapKodu
+                    ? _value.hesapKodu
+                    : hesapKodu // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            hesapAdi:
+                freezed == hesapAdi
+                    ? _value.hesapAdi
+                    : hesapAdi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tutar:
+                freezed == tutar
+                    ? _value.tutar
+                    : tutar // ignore: cast_nullable_to_non_nullable
+                        as double?,
+            dovizTipi:
+                freezed == dovizTipi
+                    ? _value.dovizTipi
+                    : dovizTipi // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            dovizTutari:
+                freezed == dovizTutari
+                    ? _value.dovizTutari
+                    : dovizTutari // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            aciklama:
+                freezed == aciklama
+                    ? _value.aciklama
+                    : aciklama // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            plasiyerKodu:
+                freezed == plasiyerKodu
+                    ? _value.plasiyerKodu
+                    : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            refkey:
+                freezed == refkey
+                    ? _value.refkey
+                    : refkey // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            cariAdi:
+                freezed == cariAdi
+                    ? _value.cariAdi
+                    : cariAdi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            plasiyerAciklama:
+                freezed == plasiyerAciklama
+                    ? _value.plasiyerAciklama
+                    : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            depoKodu:
+                freezed == depoKodu
+                    ? _value.depoKodu
+                    : depoKodu // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            exportTipi:
+                freezed == exportTipi
+                    ? _value.exportTipi
+                    : exportTipi // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            muhasebeHesapTipi:
+                freezed == muhasebeHesapTipi
+                    ? _value.muhasebeHesapTipi
+                    : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$DekontIslemlerModelImplCopyWith<$Res>
-    implements $DekontIslemlerModelCopyWith<$Res> {
-  factory _$$DekontIslemlerModelImplCopyWith(_$DekontIslemlerModelImpl value,
-          $Res Function(_$DekontIslemlerModelImpl) then) =
-      __$$DekontIslemlerModelImplCopyWithImpl<$Res>;
+abstract class _$$DekontIslemlerModelImplCopyWith<$Res> implements $DekontIslemlerModelCopyWith<$Res> {
+  factory _$$DekontIslemlerModelImplCopyWith(
+    _$DekontIslemlerModelImpl value,
+    $Res Function(_$DekontIslemlerModelImpl) then,
+  ) = __$$DekontIslemlerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int? inckeyno,
-      DateTime? tarih,
-      String? seriNo,
-      int? dekontNo,
-      int? siraNo,
-      String? ba,
-      String? hesapTipi,
-      String? hesapTipiAciklama,
-      String? hesapKodu,
-      String? hesapAdi,
-      double? tutar,
-      int? dovizTipi,
-      int? dovizTutari,
-      String? aciklama,
-      String? plasiyerKodu,
-      String? refkey,
-      String? cariAdi,
-      String? plasiyerAciklama,
-      int? depoKodu,
-      int? exportTipi,
-      String? muhasebeHesapTipi});
+  $Res call({
+    int? inckeyno,
+    DateTime? tarih,
+    String? seriNo,
+    int? dekontNo,
+    int? siraNo,
+    String? ba,
+    String? hesapTipi,
+    String? hesapTipiAciklama,
+    String? hesapKodu,
+    String? hesapAdi,
+    double? tutar,
+    int? dovizTipi,
+    int? dovizTutari,
+    String? aciklama,
+    String? plasiyerKodu,
+    String? refkey,
+    String? cariAdi,
+    String? plasiyerAciklama,
+    int? depoKodu,
+    int? exportTipi,
+    String? muhasebeHesapTipi,
+  });
 }
 
 /// @nodoc
 class __$$DekontIslemlerModelImplCopyWithImpl<$Res>
     extends _$DekontIslemlerModelCopyWithImpl<$Res, _$DekontIslemlerModelImpl>
     implements _$$DekontIslemlerModelImplCopyWith<$Res> {
-  __$$DekontIslemlerModelImplCopyWithImpl(_$DekontIslemlerModelImpl _value,
-      $Res Function(_$DekontIslemlerModelImpl) _then)
-      : super(_value, _then);
+  __$$DekontIslemlerModelImplCopyWithImpl(
+    _$DekontIslemlerModelImpl _value,
+    $Res Function(_$DekontIslemlerModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DekontIslemlerModel
   /// with the given fields replaced by the non-null parameter values.
@@ -296,124 +322,146 @@ class __$$DekontIslemlerModelImplCopyWithImpl<$Res>
     Object? exportTipi = freezed,
     Object? muhasebeHesapTipi = freezed,
   }) {
-    return _then(_$DekontIslemlerModelImpl(
-      inckeyno: freezed == inckeyno
-          ? _value.inckeyno
-          : inckeyno // ignore: cast_nullable_to_non_nullable
-              as int?,
-      tarih: freezed == tarih
-          ? _value.tarih
-          : tarih // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      seriNo: freezed == seriNo
-          ? _value.seriNo
-          : seriNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      dekontNo: freezed == dekontNo
-          ? _value.dekontNo
-          : dekontNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      siraNo: freezed == siraNo
-          ? _value.siraNo
-          : siraNo // ignore: cast_nullable_to_non_nullable
-              as int?,
-      ba: freezed == ba
-          ? _value.ba
-          : ba // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapTipi: freezed == hesapTipi
-          ? _value.hesapTipi
-          : hesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapTipiAciklama: freezed == hesapTipiAciklama
-          ? _value.hesapTipiAciklama
-          : hesapTipiAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapKodu: freezed == hesapKodu
-          ? _value.hesapKodu
-          : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapAdi: freezed == hesapAdi
-          ? _value.hesapAdi
-          : hesapAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tutar: freezed == tutar
-          ? _value.tutar
-          : tutar // ignore: cast_nullable_to_non_nullable
-              as double?,
-      dovizTipi: freezed == dovizTipi
-          ? _value.dovizTipi
-          : dovizTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dovizTutari: freezed == dovizTutari
-          ? _value.dovizTutari
-          : dovizTutari // ignore: cast_nullable_to_non_nullable
-              as int?,
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerKodu: freezed == plasiyerKodu
-          ? _value.plasiyerKodu
-          : plasiyerKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      refkey: freezed == refkey
-          ? _value.refkey
-          : refkey // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cariAdi: freezed == cariAdi
-          ? _value.cariAdi
-          : cariAdi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      plasiyerAciklama: freezed == plasiyerAciklama
-          ? _value.plasiyerAciklama
-          : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      depoKodu: freezed == depoKodu
-          ? _value.depoKodu
-          : depoKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-      exportTipi: freezed == exportTipi
-          ? _value.exportTipi
-          : exportTipi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      muhasebeHesapTipi: freezed == muhasebeHesapTipi
-          ? _value.muhasebeHesapTipi
-          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$DekontIslemlerModelImpl(
+        inckeyno:
+            freezed == inckeyno
+                ? _value.inckeyno
+                : inckeyno // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        tarih:
+            freezed == tarih
+                ? _value.tarih
+                : tarih // ignore: cast_nullable_to_non_nullable
+                    as DateTime?,
+        seriNo:
+            freezed == seriNo
+                ? _value.seriNo
+                : seriNo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        dekontNo:
+            freezed == dekontNo
+                ? _value.dekontNo
+                : dekontNo // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        siraNo:
+            freezed == siraNo
+                ? _value.siraNo
+                : siraNo // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        ba:
+            freezed == ba
+                ? _value.ba
+                : ba // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        hesapTipi:
+            freezed == hesapTipi
+                ? _value.hesapTipi
+                : hesapTipi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        hesapTipiAciklama:
+            freezed == hesapTipiAciklama
+                ? _value.hesapTipiAciklama
+                : hesapTipiAciklama // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        hesapKodu:
+            freezed == hesapKodu
+                ? _value.hesapKodu
+                : hesapKodu // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        hesapAdi:
+            freezed == hesapAdi
+                ? _value.hesapAdi
+                : hesapAdi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tutar:
+            freezed == tutar
+                ? _value.tutar
+                : tutar // ignore: cast_nullable_to_non_nullable
+                    as double?,
+        dovizTipi:
+            freezed == dovizTipi
+                ? _value.dovizTipi
+                : dovizTipi // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        dovizTutari:
+            freezed == dovizTutari
+                ? _value.dovizTutari
+                : dovizTutari // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        aciklama:
+            freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        plasiyerKodu:
+            freezed == plasiyerKodu
+                ? _value.plasiyerKodu
+                : plasiyerKodu // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        refkey:
+            freezed == refkey
+                ? _value.refkey
+                : refkey // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        cariAdi:
+            freezed == cariAdi
+                ? _value.cariAdi
+                : cariAdi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        plasiyerAciklama:
+            freezed == plasiyerAciklama
+                ? _value.plasiyerAciklama
+                : plasiyerAciklama // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        depoKodu:
+            freezed == depoKodu
+                ? _value.depoKodu
+                : depoKodu // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        exportTipi:
+            freezed == exportTipi
+                ? _value.exportTipi
+                : exportTipi // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        muhasebeHesapTipi:
+            freezed == muhasebeHesapTipi
+                ? _value.muhasebeHesapTipi
+                : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DekontIslemlerModelImpl extends _DekontIslemlerModel {
-  _$DekontIslemlerModelImpl(
-      {this.inckeyno,
-      this.tarih,
-      this.seriNo,
-      this.dekontNo,
-      this.siraNo,
-      this.ba,
-      this.hesapTipi,
-      this.hesapTipiAciklama,
-      this.hesapKodu,
-      this.hesapAdi,
-      this.tutar,
-      this.dovizTipi,
-      this.dovizTutari,
-      this.aciklama,
-      this.plasiyerKodu,
-      this.refkey,
-      this.cariAdi,
-      this.plasiyerAciklama,
-      this.depoKodu,
-      this.exportTipi,
-      this.muhasebeHesapTipi})
-      : super._();
+  _$DekontIslemlerModelImpl({
+    this.inckeyno,
+    this.tarih,
+    this.seriNo,
+    this.dekontNo,
+    this.siraNo,
+    this.ba,
+    this.hesapTipi,
+    this.hesapTipiAciklama,
+    this.hesapKodu,
+    this.hesapAdi,
+    this.tutar,
+    this.dovizTipi,
+    this.dovizTutari,
+    this.aciklama,
+    this.plasiyerKodu,
+    this.refkey,
+    this.cariAdi,
+    this.plasiyerAciklama,
+    this.depoKodu,
+    this.exportTipi,
+    this.muhasebeHesapTipi,
+  }) : super._();
 
-  factory _$DekontIslemlerModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$DekontIslemlerModelImplFromJson(json);
+  factory _$DekontIslemlerModelImpl.fromJson(Map<String, dynamic> json) => _$$DekontIslemlerModelImplFromJson(json);
 
   @override
   int? inckeyno;
@@ -464,44 +512,41 @@ class _$DekontIslemlerModelImpl extends _DekontIslemlerModel {
   @override
   @pragma('vm:prefer-inline')
   _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith =>
-      __$$DekontIslemlerModelImplCopyWithImpl<_$DekontIslemlerModelImpl>(
-          this, _$identity);
+      __$$DekontIslemlerModelImplCopyWithImpl<_$DekontIslemlerModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DekontIslemlerModelImplToJson(
-      this,
-    );
+    return _$$DekontIslemlerModelImplToJson(this);
   }
 }
 
 abstract class _DekontIslemlerModel extends DekontIslemlerModel {
-  factory _DekontIslemlerModel(
-      {int? inckeyno,
-      DateTime? tarih,
-      String? seriNo,
-      int? dekontNo,
-      int? siraNo,
-      String? ba,
-      String? hesapTipi,
-      String? hesapTipiAciklama,
-      String? hesapKodu,
-      String? hesapAdi,
-      double? tutar,
-      int? dovizTipi,
-      int? dovizTutari,
-      String? aciklama,
-      String? plasiyerKodu,
-      String? refkey,
-      String? cariAdi,
-      String? plasiyerAciklama,
-      int? depoKodu,
-      int? exportTipi,
-      String? muhasebeHesapTipi}) = _$DekontIslemlerModelImpl;
+  factory _DekontIslemlerModel({
+    int? inckeyno,
+    DateTime? tarih,
+    String? seriNo,
+    int? dekontNo,
+    int? siraNo,
+    String? ba,
+    String? hesapTipi,
+    String? hesapTipiAciklama,
+    String? hesapKodu,
+    String? hesapAdi,
+    double? tutar,
+    int? dovizTipi,
+    int? dovizTutari,
+    String? aciklama,
+    String? plasiyerKodu,
+    String? refkey,
+    String? cariAdi,
+    String? plasiyerAciklama,
+    int? depoKodu,
+    int? exportTipi,
+    String? muhasebeHesapTipi,
+  }) = _$DekontIslemlerModelImpl;
   _DekontIslemlerModel._() : super._();
 
-  factory _DekontIslemlerModel.fromJson(Map<String, dynamic> json) =
-      _$DekontIslemlerModelImpl.fromJson;
+  factory _DekontIslemlerModel.fromJson(Map<String, dynamic> json) = _$DekontIslemlerModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -571,6 +616,5 @@ abstract class _DekontIslemlerModel extends DekontIslemlerModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DekontIslemlerModelImplCopyWith<_$DekontIslemlerModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

@@ -22,33 +22,32 @@ final class _DekontlarCardState extends BaseState<DekontlarCard> {
   DekontListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(
-        child: ListTile(
-          onTap: () async => dekontBottomSheet(model),
-          title: Row(
-            children: [
-              Text(model.title),
-              const Spacer(),
-              Text(model.tarih.toDateString),
-            ],
-          ),
-          subtitle: LayoutBuilder(
-            builder: (context, constraints) => Column(
+    child: ListTile(
+      onTap: () async => dekontBottomSheet(model),
+      title: Row(children: [Text(model.title), const Spacer(), Text(model.tarih.toDateString)]),
+      subtitle: LayoutBuilder(
+        builder:
+            (context, constraints) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(model.seriAdi ?? ""),
                 Wrap(
-                  children: [
-                    Text("Tutar:\n${(model.borcToplami ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                    Text("Kalem Sayısı:\n${model.kalemSayisi ?? "0"}"),
-                  ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
+                  children:
+                      [
+                        Text(
+                          "Tutar:\n${(model.borcToplami ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        ),
+                        Text("Kalem Sayısı:\n${model.kalemSayisi ?? "0"}"),
+                      ].map((e) => SizedBox(width: constraints.maxWidth / 2, child: e)).toList(),
                 ),
               ],
             ),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 
-  Future<void> dekontBottomSheet(DekontListesiModel? model) async => await bottomSheetDialogManager.showBottomSheetDialog(
+  Future<void> dekontBottomSheet(DekontListesiModel? model) async =>
+      await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: model?.title ?? "",
         children: [
@@ -74,7 +73,12 @@ final class _DekontlarCardState extends BaseState<DekontlarCard> {
   Future<void> deleteDekont() async {
     Get.back();
     dialogManager.showAreYouSureDialog(() async {
-      final result = await networkManager.dioPost(path: ApiUrls.deleteDekont, showLoading: true, bodyModel: DekontListesiModel(), queryParameters: {"DekontNo": model.dekontNo, "Seri": model.seri});
+      final result = await networkManager.dioPost(
+        path: ApiUrls.deleteDekont,
+        showLoading: true,
+        bodyModel: DekontListesiModel(),
+        queryParameters: {"DekontNo": model.dekontNo, "Seri": model.seri},
+      );
       if (result.isSuccess) {
         dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
         widget.onSelected.call(true);

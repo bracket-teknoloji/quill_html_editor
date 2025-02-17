@@ -42,36 +42,36 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
   }) = _CariRequestModel;
 
   factory CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel model) => CariRequestModel(
-        kod: [model.cariKodu ?? ""],
-        sayfa: 1,
-        eFaturaGoster: true,
-        plasiyerKisitiYok: true,
-        belgeTuru: model.belgeTuru,
-      );
+    kod: [model.cariKodu ?? ""],
+    sayfa: 1,
+    eFaturaGoster: true,
+    plasiyerKisitiYok: true,
+    belgeTuru: model.belgeTuru,
+  );
 
   factory CariRequestModel.fromCariListesiModel(CariListesiModel model) => CariRequestModel(
-        kod: [model.cariKodu ?? ""],
-        // sayfa: 1,
-        eFaturaGoster: true,
-        plasiyerKisitiYok: true,
-        // belgeTuru: model,
-      );
+    kod: [model.cariKodu ?? ""],
+    // sayfa: 1,
+    eFaturaGoster: true,
+    plasiyerKisitiYok: true,
+    // belgeTuru: model,
+  );
 
   factory CariRequestModel.fromTahsilatRequestModel(TahsilatRequestModel model) => CariRequestModel(
-        kod: [model.hesapKodu ?? ""],
-        // sayfa: 1,
-        eFaturaGoster: true,
-        plasiyerKisitiYok: true,
-        // belgeTuru: model,
-      );
+    kod: [model.hesapKodu ?? ""],
+    // sayfa: 1,
+    eFaturaGoster: true,
+    plasiyerKisitiYok: true,
+    // belgeTuru: model,
+  );
 
   factory CariRequestModel.fromSaveCekSenetModel(SaveCekSenetModel model) => CariRequestModel(
-        kod: [model.cariKodu ?? ""],
-        // sayfa: 1,
-        eFaturaGoster: true,
-        plasiyerKisitiYok: true,
-        // belgeTuru: model,
-      );
+    kod: [model.cariKodu ?? ""],
+    // sayfa: 1,
+    eFaturaGoster: true,
+    plasiyerKisitiYok: true,
+    // belgeTuru: model,
+  );
   CariRequestModel._();
 
   factory CariRequestModel.fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);

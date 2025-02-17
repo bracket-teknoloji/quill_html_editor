@@ -71,7 +71,12 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), floatingActionButton: fab(), body: body().paddingAll(UIHelper.lowSize), bottomNavigationBar: bottomBar());
+  Widget build(BuildContext context) => BaseScaffold(
+    appBar: appBar(),
+    floatingActionButton: fab(),
+    body: body().paddingAll(UIHelper.lowSize),
+    bottomNavigationBar: bottomBar(),
+  );
 
   AppBar appBar() => AppBar(
     title: Text("${widget.cekSenetListesiEnum.title} Tahsilatı"),
@@ -130,7 +135,14 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
       key: _formKey,
       child: Column(
         children: [
-          CustomTextField(labelText: "Giriş Tarihi", controller: _girisTarihiController, isDateTime: true, isMust: true, readOnly: true, onTap: getTarih),
+          CustomTextField(
+            labelText: "Giriş Tarihi",
+            controller: _girisTarihiController,
+            isDateTime: true,
+            isMust: true,
+            readOnly: true,
+            onTap: getTarih,
+          ),
           CustomTextField(
             labelText: "Cari",
             controller: _cariController,
@@ -138,7 +150,10 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
             readOnly: true,
             suffixMore: true,
             valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
-            suffix: IconButton(onPressed: getCariIslemleri, icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor)),
+            suffix: IconButton(
+              onPressed: getCariIslemleri,
+              icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+            ),
             onTap: getCari,
           ),
           Row(
@@ -173,7 +188,9 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
           Observer(
             builder: (_) {
               if (viewModel.model.kalemler.ext.isNullOrEmpty) {
-                return const Column(children: [Icon(Icons.refresh_outlined), Text("Bordroya Belge Eklemek İçin Artı Butonunu Kullanın.")]).paddingOnly(top: UIHelper.highSize * 5);
+                return const Column(
+                  children: [Icon(Icons.refresh_outlined), Text("Bordroya Belge Eklemek İçin Artı Butonunu Kullanın.")],
+                ).paddingOnly(top: UIHelper.highSize * 5);
               } else {
                 return ListView.builder(
                   primary: false,
@@ -187,14 +204,21 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Tutar: ${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-                            Text("Vade Günü: ${item.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays} (${item.vadeTarihi.toDateString})"),
+                            Text(
+                              "Tutar: ${item.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                            ),
+                            Text(
+                              "Vade Günü: ${item.vadeTarihi.dateTimeWithoutTime?.difference(DateTime.now().dateTimeWithoutTime!).inDays} (${item.vadeTarihi.toDateString})",
+                            ),
                           ],
                         ),
                         subtitle: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [Text("Asıl/Ciro: ${item.ciroTipi == "C" ? "Ciro" : "Asıl"}"), if (item.cekBanka != null) Text(item.cekBanka ?? "")],
+                          children: [
+                            Text("Asıl/Ciro: ${item.ciroTipi == "C" ? "Ciro" : "Asıl"}"),
+                            if (item.cekBanka != null) Text(item.cekBanka ?? ""),
+                          ],
                         ),
                         onTap:
                             () async => await bottomSheetDialogManager.showBottomSheetDialog(
@@ -236,7 +260,16 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
     isScrolledDown: true,
     children: [
       FooterButton(children: [Observer(builder: (_) => Text("Kalem Adedi: ${viewModel.model.kalemler?.length ?? 0}"))]),
-      FooterButton(children: [Observer(builder: (_) => Text("Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))]),
+      FooterButton(
+        children: [
+          Observer(
+            builder:
+                (_) => Text(
+                  "Tutar: ${viewModel.toplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                ),
+          ),
+        ],
+      ),
       FooterButton(children: [Observer(builder: (_) => Text("Ort. Vade: ${viewModel.ortalamaVadeGunu.round()}"))]),
     ],
   );
@@ -288,7 +321,11 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
     if (viewModel.cariListesiModel != null) {
       final result = await Get.toNamed(
         widget.cekSenetListesiEnum.tahsilatEkleRoute,
-        arguments: CekSenetKalemlerModel(refKodSorulsunMu: yetkiController.referansKodu(viewModel.cariListesiModel?.muhHesapTipi) && viewModel.cariListesiModel?.muhKodu != null),
+        arguments: CekSenetKalemlerModel(
+          refKodSorulsunMu:
+              yetkiController.referansKodu(viewModel.cariListesiModel?.muhHesapTipi) &&
+              viewModel.cariListesiModel?.muhKodu != null,
+        ),
       );
       if (result is CekSenetKalemlerModel) {
         viewModel.addCekSenetKalemlerModel(result);

@@ -587,15 +587,7 @@ final class DepoList {
 
 @JsonSerializable(createFactory: true)
 final class DovizList {
-  DovizList({
-    this.dovizKodu,
-    this.dovizTipi,
-    this.isim,
-    this.alis,
-    this.satis,
-    this.efAlis,
-    this.efSatis,
-  });
+  DovizList({this.dovizKodu, this.dovizTipi, this.isim, this.alis, this.satis, this.efAlis, this.efSatis});
 
   factory DovizList.fromJson(Map<String, dynamic> json) => _$DovizListFromJson(json);
   @JsonKey(name: "DOVIZ_KODU")
@@ -772,7 +764,8 @@ final class MapCariKullSahalar {
 final class MapKdvSifirBelgeTipiOzelKod2 {
   MapKdvSifirBelgeTipiOzelKod2();
 
-  factory MapKdvSifirBelgeTipiOzelKod2.fromJson(Map<String, dynamic> json) => _$MapKdvSifirBelgeTipiOzelKod2FromJson(json);
+  factory MapKdvSifirBelgeTipiOzelKod2.fromJson(Map<String, dynamic> json) =>
+      _$MapKdvSifirBelgeTipiOzelKod2FromJson(json);
 
   String? dc;
   String? ac;
@@ -860,7 +853,8 @@ final class MustahsilParam {
 final class NetFectDizaynList {
   NetFectDizaynList();
 
-  factory NetFectDizaynList.fromJson(Map<dynamic, dynamic> json) => _$NetFectDizaynListFromJson(json as Map<String, dynamic>);
+  factory NetFectDizaynList.fromJson(Map<dynamic, dynamic> json) =>
+      _$NetFectDizaynListFromJson(json as Map<String, dynamic>);
 
   @HiveField(0)
   int? id;
@@ -910,10 +904,7 @@ final class NetsisOndalikResponseModel {
 
 @JsonSerializable(createFactory: true)
 final class PlasiyerList {
-  PlasiyerList({
-    this.plasiyerKodu,
-    this.plasiyerAciklama,
-  });
+  PlasiyerList({this.plasiyerKodu, this.plasiyerAciklama});
 
   factory PlasiyerList.fromJson(Map<String, dynamic> json) => _$PlasiyerListFromJson(json);
 

@@ -21,7 +21,12 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   KalemModel? model;
 
   @observable
-  UretimSonuKaydiEditModel requestModel = UretimSonuKaydiEditModel(kalemList: [KalemModel()], ekAlanlar: EkAlanlar(), yeniKayit: true, guid: const Uuid().v4());
+  UretimSonuKaydiEditModel requestModel = UretimSonuKaydiEditModel(
+    kalemList: [KalemModel()],
+    ekAlanlar: EkAlanlar(),
+    yeniKayit: true,
+    guid: const Uuid().v4(),
+  );
 
   @observable
   ObservableList<KalemModel>? kalemList;
@@ -30,7 +35,8 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   ObservableList<EkAlanlarModel>? ekAlanlarList;
 
   @computed
-  UretimSonuKaydiListesiRequestModel get kalemlerRequestModel => UretimSonuKaydiListesiRequestModel(belgeNo: requestModel.belgeNo, ekranTipi: "D");
+  UretimSonuKaydiListesiRequestModel get kalemlerRequestModel =>
+      UretimSonuKaydiListesiRequestModel(belgeNo: requestModel.belgeNo, ekranTipi: "D");
 
   @action
   void setBelgeNo(String? belgeNo) => requestModel = requestModel.copyWith(belgeNo: belgeNo);
@@ -49,7 +55,12 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getKalemler() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getUSKKalemleri, bodyModel: KalemModel(), showLoading: true, queryParameters: kalemlerRequestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getUSKKalemleri,
+      bodyModel: KalemModel(),
+      showLoading: true,
+      queryParameters: kalemlerRequestModel.toJson(),
+    );
     if (result.isSuccess) {
       final KalemModel? item = result.dataList.lastOrNull;
       setRequestModel(
@@ -58,14 +69,26 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
           ..girisDepoAdi = item?.girisDepoAdi
           ..projeKodu = item?.projeKodu,
       );
-      setModel(model?.copyWith(cikisDepoAdi: item?.cikisDepoAdi, girisDepoAdi: item?.girisDepoAdi, girisdepoKodu: item?.girisDepo, cikisdepoKodu: item?.cikisDepo));
+      setModel(
+        model?.copyWith(
+          cikisDepoAdi: item?.cikisDepoAdi,
+          girisDepoAdi: item?.girisDepoAdi,
+          girisdepoKodu: item?.girisDepo,
+          cikisdepoKodu: item?.cikisDepo,
+        ),
+      );
       setKalemList(result.dataList);
     }
   }
 
   @action
   Future<void> getEkAlanlar() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getEkAlanlar, bodyModel: EkAlanlarModel(), showLoading: true, queryParameters: {"TabloAdi": "TBLSTOKURSEK"});
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getEkAlanlar,
+      bodyModel: EkAlanlarModel(),
+      showLoading: true,
+      queryParameters: {"TabloAdi": "TBLSTOKURSEK"},
+    );
     if (result.isSuccess) setEkAlanlarList(result.dataList);
   }
 
@@ -73,7 +96,11 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setModel(KalemModel? item) {
     model = item;
     if (item != null) {
-      requestModel = requestModel.copyWith(kalemList: [item], depoOnceligi: item.depoOnceligi ?? "H", projeKodu: item.projeKodu);
+      requestModel = requestModel.copyWith(
+        kalemList: [item],
+        depoOnceligi: item.depoOnceligi ?? "H",
+        projeKodu: item.projeKodu,
+      );
       if (item.girisdepoKodu != null) {
         requestModel = requestModel.copyWith(girisDepo: item.girisdepoKodu);
         requestModel = requestModel.copyWith(cikisDepo: item.cikisdepoKodu);
@@ -85,6 +112,10 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setEkAlanlarList(List<EkAlanlarModel>? dataList) => ekAlanlarList = dataList?.asObservable();
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveUSK() async =>
-      networkManager.dioPost(path: ApiUrls.saveUSK, bodyModel: UretimSonuKaydiEditModel(), data: requestModel.copyWith(guid: const Uuid().v4()).toJson(), showLoading: true);
+  Future<GenericResponseModel<NetworkManagerMixin>> saveUSK() async => networkManager.dioPost(
+    path: ApiUrls.saveUSK,
+    bodyModel: UretimSonuKaydiEditModel(),
+    data: requestModel.copyWith(guid: const Uuid().v4()).toJson(),
+    showLoading: true,
+  );
 }

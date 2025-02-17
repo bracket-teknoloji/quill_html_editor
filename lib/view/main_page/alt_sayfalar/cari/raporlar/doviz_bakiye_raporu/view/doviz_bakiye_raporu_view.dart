@@ -70,7 +70,8 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Döviz Bakiye Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) =>
+      PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Döviz Bakiye Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     {
@@ -82,12 +83,13 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Observer(
-              builder: (_) => SlideControllerWidget(
-                childrenTitleList: viewModel.bakiyeDurumuTitleList,
-                filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
-                childrenValueList: viewModel.bakiyeDurumuValueList,
-                groupValue: viewModel.bakiyeDurumuGroupValue,
-              ),
+              builder:
+                  (_) => SlideControllerWidget(
+                    childrenTitleList: viewModel.bakiyeDurumuTitleList,
+                    filterOnChanged: (index) => viewModel.changeBakiyeDurumu(index),
+                    childrenValueList: viewModel.bakiyeDurumuValueList,
+                    groupValue: viewModel.bakiyeDurumuGroupValue,
+                  ),
             ),
             CustomTextField(
               labelText: "Cari",
@@ -113,7 +115,10 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                       onTap: () async {
                         final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                         if (plasiyerList != null) {
-                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
+                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                            context,
+                            viewModel.pdfModel.dicParams?.plasiyerKodu,
+                          );
                           if (result != null) {
                             plasiyerController.text = result.plasiyerAciklama ?? "";
                             viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
@@ -130,7 +135,11 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                     readOnly: true,
                     suffixMore: true,
                     onTap: () async {
-                      final String? result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc.generalStrings.sort, children: viewModel.siralaBottomSheetList);
+                      final String? result = await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: loc.generalStrings.sort,
+                        children: viewModel.siralaBottomSheetList,
+                      );
                       if (result != null) {
                         siralaController.text = result;
                         viewModel.pdfModel.dicParams?.sirala = result;
@@ -143,21 +152,67 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
             Row(
               children: [
                 Expanded(
-                  child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController)),
+                  child: CustomTextField(
+                    labelText: "Grup Kodu",
+                    controller: grupKoduController,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(0, grupKoduController),
+                  ),
                 ),
-                Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller))),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 1",
+                    controller: kod1Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(1, kod1Controller),
+                  ),
+                ),
               ],
             ),
             Row(
               children: [
-                Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
-                Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller))),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 2",
+                    controller: kod2Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(2, kod2Controller),
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 3",
+                    controller: kod3Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(3, kod3Controller),
+                  ),
+                ),
               ],
             ),
             Row(
               children: [
-                Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
-                Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller))),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 4",
+                    controller: kod4Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(4, kod4Controller),
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Kod 5",
+                    controller: kod5Controller,
+                    readOnly: true,
+                    suffixMore: true,
+                    onTap: () async => await getGrupKodu(5, kod5Controller),
+                  ),
+                ),
               ],
             ),
             ElevatedButton(
@@ -179,9 +234,17 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1);
     }
     final List<BottomSheetModel> bottomSheetList =
-        grupKodList.where((e) => e.grupNo == grupNo).toList().map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e))).toList();
+        grupKodList
+            .where((e) => e.grupNo == grupNo)
+            .toList()
+            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", onTap: () => Get.back(result: e)))
+            .toList();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Grup Kodu",
+      children: bottomSheetList,
+    );
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {

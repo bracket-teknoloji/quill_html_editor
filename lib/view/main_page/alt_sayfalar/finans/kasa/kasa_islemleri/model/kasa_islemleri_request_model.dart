@@ -24,9 +24,6 @@ class KasaIslemleriRequestModel with _$KasaIslemleriRequestModel {
 
   factory KasaIslemleriRequestModel.fromJson(Map<String, dynamic> json) => _$KasaIslemleriRequestModelFromJson(json);
 
-  factory KasaIslemleriRequestModel.fromCariHareketleriModel(CariHareketleriModel model) => KasaIslemleriRequestModel(
-        refKey: model.refkey,
-        kisitYok: true,
-        menuKodu: "KASA_HARD",
-      );
+  factory KasaIslemleriRequestModel.fromCariHareketleriModel(CariHareketleriModel model) =>
+      KasaIslemleriRequestModel(refKey: model.refkey, kisitYok: true, menuKodu: "KASA_HARD");
 }

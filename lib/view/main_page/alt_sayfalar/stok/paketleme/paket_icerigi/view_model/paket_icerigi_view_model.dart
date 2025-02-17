@@ -37,7 +37,11 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin, Listable
   @action
   Future<void> getData() async {
     setObservableList(null);
-    final result = await networkManager.dioPost(path: ApiUrls.getPaketKalemleri, bodyModel: PaketIcerigiModel(), data: requestModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getPaketKalemleri,
+      bodyModel: PaketIcerigiModel(),
+      data: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
     }
@@ -49,7 +53,12 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin, Listable
       path: ApiUrls.savePaket,
       bodyModel: PaketIcerigiModel(),
       showLoading: true,
-      data: PaketlemeEditRequestModel(islemKodu: PaketIslemlerEnum.paketIcerigiSil.islemKodu, kalemId: id, paketId: paketID).toJson(),
+      data:
+          PaketlemeEditRequestModel(
+            islemKodu: PaketIslemlerEnum.paketIcerigiSil.islemKodu,
+            kalemId: id,
+            paketId: paketID,
+          ).toJson(),
     );
     return result;
   }

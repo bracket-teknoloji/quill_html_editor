@@ -11,7 +11,12 @@ final class HucreAraViewModel = _HucreAraViewModelBase with _$HucreAraViewModel;
 
 abstract class _HucreAraViewModelBase with Store, MobxNetworkMixin {
   //* observable olmasına gerek yok çünkü view ile alakası yok
-  final HucreAraRequestModel requestModel = HucreAraRequestModel(menuKodu: "HTAK_HUCA", filtreKodu: 3, ekranTipi: "L", hucreMiktarArray: {});
+  final HucreAraRequestModel requestModel = HucreAraRequestModel(
+    menuKodu: "HTAK_HUCA",
+    filtreKodu: 3,
+    ekranTipi: "L",
+    hucreMiktarArray: {},
+  );
 
   @observable
   ObservableList<HucreTakibiStoklarModel>? stokList;
@@ -26,7 +31,11 @@ abstract class _HucreAraViewModelBase with Store, MobxNetworkMixin {
     if (stokList != null) {
       setStokList(null);
     }
-    final result = await networkManager.dioPost(path: ApiUrls.getHucreBakiyeListesi, bodyModel: HucreTakibiStoklarModel(), data: requestModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getHucreBakiyeListesi,
+      bodyModel: HucreTakibiStoklarModel(),
+      data: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setStokList(result.dataList);
     }

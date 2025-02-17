@@ -13,9 +13,7 @@ class CariSehirlerModelAdapter extends TypeAdapter<CariSehirlerModel> {
   @override
   CariSehirlerModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
+    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
     return CariSehirlerModel()..sehirAdi = fields[0] as String?;
   }
 
@@ -33,9 +31,7 @@ class CariSehirlerModelAdapter extends TypeAdapter<CariSehirlerModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CariSehirlerModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is CariSehirlerModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
@@ -45,7 +41,6 @@ class CariSehirlerModelAdapter extends TypeAdapter<CariSehirlerModel> {
 CariSehirlerModel _$CariSehirlerModelFromJson(Map<String, dynamic> json) =>
     CariSehirlerModel()..sehirAdi = json['SEHIR_ADI'] as String?;
 
-Map<String, dynamic> _$CariSehirlerModelToJson(CariSehirlerModel instance) =>
-    <String, dynamic>{
-      if (instance.sehirAdi case final value?) 'SEHIR_ADI': value,
-    };
+Map<String, dynamic> _$CariSehirlerModelToJson(CariSehirlerModel instance) => <String, dynamic>{
+  if (instance.sehirAdi case final value?) 'SEHIR_ADI': value,
+};

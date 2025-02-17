@@ -25,7 +25,10 @@ abstract class _DekontEditGenelViewModelBase with Store {
 
   @action
   void setSeri(SeriModel? value) {
-    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(dekontSeri: value?.seriNo, seriAdi: value?.aciklama);
+    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(
+      dekontSeri: value?.seriNo,
+      seriAdi: value?.aciklama,
+    );
     setSingleton();
   }
 
@@ -34,7 +37,10 @@ abstract class _DekontEditGenelViewModelBase with Store {
     dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(
       plasiyerKodu: value?.plasiyerKodu,
       plasiyerAdi: value?.plasiyerAciklama,
-      kalemler: dekontIslemlerRequestModel.kalemler?.map((e) => e.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAdi: value?.plasiyerAciklama)).toList(),
+      kalemler:
+          dekontIslemlerRequestModel.kalemler
+              ?.map((e) => e.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAdi: value?.plasiyerAciklama))
+              .toList(),
     );
     setSingleton();
   }
@@ -44,14 +50,10 @@ abstract class _DekontEditGenelViewModelBase with Store {
     dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(
       projeKodu: value?.projeKodu,
       projeAdi: value?.projeAciklama,
-      kalemler: dekontIslemlerRequestModel.kalemler
-          ?.map(
-            (e) => e.copyWith(
-              projeKodu: value?.projeKodu,
-              projeAdi: value?.projeAciklama,
-            ),
-          )
-          .toList(),
+      kalemler:
+          dekontIslemlerRequestModel.kalemler
+              ?.map((e) => e.copyWith(projeKodu: value?.projeKodu, projeAdi: value?.projeAciklama))
+              .toList(),
     );
     setSingleton();
   }

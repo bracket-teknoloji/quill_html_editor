@@ -107,7 +107,16 @@ final class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
           children: [
             Row(
               children: [
-                Expanded(child: CustomTextField(labelText: "Tarih", controller: _tarihController, isDateTime: true, isMust: true, readOnly: true, onTap: setTarih)),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Tarih",
+                    controller: _tarihController,
+                    isDateTime: true,
+                    isMust: true,
+                    readOnly: true,
+                    onTap: setTarih,
+                  ),
+                ),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Kasa",
@@ -131,7 +140,14 @@ final class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
             ),
             Row(
               children: [
-                Expanded(child: CustomTextField(labelText: "Tutar", controller: _tutarController, isMust: true, readOnly: true)),
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Tutar",
+                    controller: _tutarController,
+                    isMust: true,
+                    readOnly: true,
+                  ),
+                ),
                 if (yetkiController.plasiyerUygulamasiAcikMi)
                   Expanded(
                     child: CustomTextField(
@@ -174,7 +190,11 @@ final class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
                   ),
               ],
             ),
-            CustomTextField(labelText: "Kasa Har. Açıklama", controller: _kasaHarAciklamaController, onChanged: viewModel.setKasaHarAciklama),
+            CustomTextField(
+              labelText: "Kasa Har. Açıklama",
+              controller: _kasaHarAciklamaController,
+              onChanged: viewModel.setKasaHarAciklama,
+            ),
           ],
         ).paddingAll(UIHelper.lowSize),
       ),

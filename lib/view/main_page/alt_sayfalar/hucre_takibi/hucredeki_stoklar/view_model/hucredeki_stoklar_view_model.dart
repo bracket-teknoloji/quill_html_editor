@@ -23,7 +23,13 @@ abstract class _HucredekiStoklarViewModelBase with Store, MobxNetworkMixin, List
 
   @computed
   List<HucredekiStoklarModel>? get filteredStoklarListesi =>
-      observableList?.where((e) => <String?>[e.stokKodu, e.stokAdi].map((e) => e?.toLowerCase() ?? false).any((element) => (element as String?)?.contains(searchText.toLowerCase()) ?? false)).toList();
+      observableList
+          ?.where(
+            (e) => <String?>[e.stokKodu, e.stokAdi]
+                .map((e) => e?.toLowerCase() ?? false)
+                .any((element) => (element as String?)?.contains(searchText.toLowerCase()) ?? false),
+          )
+          .toList();
 
   @action
   void setSearchText(String value) => searchText = value;

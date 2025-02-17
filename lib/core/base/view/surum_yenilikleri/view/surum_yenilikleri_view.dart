@@ -41,59 +41,68 @@ final class _SurumYenilikleriViewState extends BaseState<SurumYenilikleriView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => viewModel.searchBar
-                ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
-                : AppBarTitle(title: "Sürüm Yenilikleri", subtitle: "Versiyon Kodunuz: ${AppInfoModel.instance.version}"),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                viewModel.changeSearchBar();
-                if (!viewModel.searchBar) {
-                  _searchController.clear();
-                  viewModel.setSearchText(null);
-                }
-              },
-              icon: Observer(
-                builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
-              ),
-            ),
-          ],
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) =>
+                viewModel.searchBar
+                    ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
+                    : AppBarTitle(
+                      title: "Sürüm Yenilikleri",
+                      subtitle: "Versiyon Kodunuz: ${AppInfoModel.instance.version}",
+                    ),
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            viewModel.changeSearchBar();
+            if (!viewModel.searchBar) {
+              _searchController.clear();
+              viewModel.setSearchText(null);
+            }
+          },
+          icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
         ),
-        body: Observer(
-          builder: (_) => RefreshableListView(
+      ],
+    ),
+    body: Observer(
+      builder:
+          (_) => RefreshableListView(
             onRefresh: viewModel.getData,
             items: viewModel.getSurumYenilikleriModelList,
-            itemBuilder: (item) => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            itemBuilder:
+                (item) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(item.versiyon ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                    Text(item.tarih?.add(Duration(minutes: AccountModel.instance.cihazTimeZoneDakika ?? 0)).toDateString ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(item.versiyon ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+                        Text(
+                          item.tarih
+                                  ?.add(Duration(minutes: AccountModel.instance.cihazTimeZoneDakika ?? 0))
+                                  .toDateString ??
+                              "",
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ).paddingSymmetric(horizontal: UIHelper.lowSize),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      padding: UIHelper.zeroPadding,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: item.liste?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final ValueList? newItem = item.liste?[index];
+                        return Card(
+                          // elevation: 0,
+                          child: ListTile(title: Text("• ${newItem?.aciklama ?? ""}")),
+                        );
+                      },
+                    ),
                   ],
-                ).paddingSymmetric(horizontal: UIHelper.lowSize),
-                ListView.builder(
-                  shrinkWrap: true,
-                  padding: UIHelper.zeroPadding,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: item.liste?.length ?? 0,
-                  itemBuilder: (context, index) {
-                    final ValueList? newItem = item.liste?[index];
-                    return Card(
-                      // elevation: 0,
-                      child: ListTile(
-                        title: Text("• ${newItem?.aciklama ?? ""}"),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ).paddingAll(UIHelper.lowSize),
+                ).paddingAll(UIHelper.lowSize),
           ),
-        ),
-      );
+    ),
+  );
 }

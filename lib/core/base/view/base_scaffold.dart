@@ -1,9 +1,7 @@
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 
 final class BaseScaffold extends Scaffold {
-  BaseScaffold({
+  const BaseScaffold({
     super.body,
     AppBar? super.appBar,
     final Color? backgroundColor,
@@ -35,7 +33,7 @@ final class BaseScaffold extends Scaffold {
          extendBody: true,
          extendBodyBehindAppBar: false,
          // primary: bottomNavigationBar != null,
-        //  backgroundColor: (kIsWeb && (Get.context?.isLandscape ?? false) ? Colors.transparent : null),
+         //  backgroundColor: (kIsWeb && (Get.context?.isLandscape ?? false) ? Colors.transparent : null),
          // floatingActionButton: floatingActionButton?.paddingOnly(right: (kIsWeb && (Get.context?.isLandscape ?? false)) ? Get.width * 0.17 : 0),
          // floatingActionButtonLocation: (kIsWeb && (Get.context?.isLandscape ?? false) ? FloatingActionButtonLocation.miniCenterDocked : null),
          resizeToAvoidBottomInset: bottomNavigationBar == null,

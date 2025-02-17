@@ -58,7 +58,9 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     _sozlesmeController = TextEditingController();
     _seriController = TextEditingController();
     _hesapController = TextEditingController();
-    _tutarController = TextEditingController(text: widget.cariListesiModel?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    _tutarController = TextEditingController(
+      text: widget.cariListesiModel?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+    );
     _krediKartiNoController = TextEditingController();
     _referansKoduController = TextEditingController();
     _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");
@@ -66,7 +68,9 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (userModel.kullaniciYetki?.kkartiTahsilatYontemi == null && !AccountModel.instance.adminMi) {
-        await dialogManager.showAlertDialog("Tahsilat yöntemi belirsiz.\nNetfect > Picker > Kullanıcı Özel Yetkilendirme ekranından kredi kartı tahsilatı yöntemi belirleyin.");
+        await dialogManager.showAlertDialog(
+          "Tahsilat yöntemi belirsiz.\nNetfect > Picker > Kullanıcı Özel Yetkilendirme ekranından kredi kartı tahsilatı yöntemi belirleyin.",
+        );
         Get.back();
         return;
       }
@@ -88,7 +92,12 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         viewModel
           ..setHesapKodu(widget.cariListesiModel!.cariKodu)
           ..setCariKodu(widget.cariListesiModel!.cariKodu)
-          ..setPlasiyerKodu(PlasiyerList(plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama, plasiyerKodu: widget.cariListesiModel!.plasiyerKodu));
+          ..setPlasiyerKodu(
+            PlasiyerList(
+              plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama,
+              plasiyerKodu: widget.cariListesiModel!.plasiyerKodu,
+            ),
+          );
       } else {
         await getCari();
       }
@@ -199,7 +208,12 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
             isDateTime: true,
             readOnly: true,
             onTap: () async {
-              final result = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
+              final result = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+              );
               if (result != null) {
                 _tarihController.text = result.toDateString;
                 viewModel.setTarih(result.dateTimeWithoutTime);
@@ -217,7 +231,9 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
             suffix: IconButton(
               onPressed: () async {
                 if (viewModel.model.hesapKodu != null) {
-                  final result = await networkManager.getCariModel(CariRequestModel.fromTahsilatRequestModel(viewModel.model));
+                  final result = await networkManager.getCariModel(
+                    CariRequestModel.fromTahsilatRequestModel(viewModel.model),
+                  );
                   dialogManager.showCariIslemleriGridViewDialog(result);
                 } else {
                   dialogManager.showErrorSnackBar("Cari seçiniz");
@@ -229,8 +245,11 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
           Observer(
             builder:
                 (_) => Text(
-                  (viewModel.getCariBakiye ?? "") + ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
-                  style: TextStyle(color: (viewModel.cariBakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed),
+                  (viewModel.getCariBakiye ?? "") +
+                      ((viewModel.cariBakiye ?? 0) > 0 ? " (Tahsil Edilecek)" : " (Ödenecek)"),
+                  style: TextStyle(
+                    color: (viewModel.cariBakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed,
+                  ),
                 ).paddingAll(UIHelper.lowSize).yetkiVarMi(viewModel.getCariBakiye != null),
           ),
           Observer(
@@ -325,7 +344,10 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                     suffixMore: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                      final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                        context,
+                        viewModel.model.plasiyerKodu,
+                      );
                       if (result is PlasiyerList) {
                         _plasiyerController.text = result.plasiyerAciklama ?? "";
                         viewModel.setPlasiyerKodu(result);
@@ -347,7 +369,10 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                     suffixMore: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                      final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                        context,
+                        viewModel.model.projeKodu,
+                      );
                       if (result is BaseProjeModel) {
                         _projekoduController.text = result.projeAciklama ?? result.projeKodu ?? "";
                         viewModel.setProjekodu(result.projeKodu);
@@ -372,7 +397,10 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                         context,
                         title: "Referans Kodu",
                         groupValue: viewModel.model.refKod,
-                        children: viewModel.muhaRefList!.map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu)).toList(),
+                        children:
+                            viewModel.muhaRefList!
+                                .map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu))
+                                .toList(),
                       );
                       if (result is MuhasebeReferansModel) {
                         _referansKoduController.text = result.tanimi ?? "";
@@ -413,7 +441,11 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: "Tahsilat Yöntemi",
-      children: [BottomSheetModel(title: "Hızlı Tahsilat Modülü", value: "Hızlı Tahsilat Modülü"), BottomSheetModel(title: "Dekont", value: "Dekont"), BottomSheetModel(title: "Kasa", value: "Kasa")],
+      children: [
+        BottomSheetModel(title: "Hızlı Tahsilat Modülü", value: "Hızlı Tahsilat Modülü"),
+        BottomSheetModel(title: "Dekont", value: "Dekont"),
+        BottomSheetModel(title: "Kasa", value: "Kasa"),
+      ],
     );
     if (result != null) {
       viewModel
@@ -423,7 +455,10 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
   }
 
   Future<void> getKasa() async {
-    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(context, viewModel.model.kasaKodu);
+    final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(
+      context,
+      viewModel.model.kasaKodu,
+    );
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";
       viewModel.setKasaKodu(result.kasaKodu);
@@ -438,7 +473,17 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
       context,
       title: "Banka Sözleşmesi",
       groupValue: viewModel.model.sozlesmeKodu,
-      children: viewModel.bankaSozlesmesiList!.map((e) => BottomSheetModel(title: e.sozlesmeAdi ?? "", description: e.bankaTanimi, value: e, groupValue: e.sozlesmeKodu)).toList(),
+      children:
+          viewModel.bankaSozlesmesiList!
+              .map(
+                (e) => BottomSheetModel(
+                  title: e.sozlesmeAdi ?? "",
+                  description: e.bankaTanimi,
+                  value: e,
+                  groupValue: e.sozlesmeKodu,
+                ),
+              )
+              .toList(),
     );
     if (result is BankaSozlesmesiModel) {
       _sozlesmeController.text = result.sozlesmeAdi ?? "";
@@ -455,7 +500,17 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         context,
         title: "Banka Hesapları",
         groupValue: viewModel.model.hesapKodu,
-        children: viewModel.bankaHesaplariList!.map((e) => BottomSheetModel(title: e.hesapAdi ?? "", description: e.hesapKodu, value: e, groupValue: e.hesapKodu)).toList(),
+        children:
+            viewModel.bankaHesaplariList!
+                .map(
+                  (e) => BottomSheetModel(
+                    title: e.hesapAdi ?? "",
+                    description: e.hesapKodu,
+                    value: e,
+                    groupValue: e.hesapKodu,
+                  ),
+                )
+                .toList(),
       );
       if (result is BankaListesiModel) {
         _hesapController.text = result.hesapAdi ?? "";
@@ -476,7 +531,13 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         context,
         title: "Seri",
         groupValue: viewModel.model.dekontSeri,
-        children: viewModel.seriList!.map((e) => BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e, groupValue: e.seriNo)).toList(),
+        children:
+            viewModel.seriList!
+                .map(
+                  (e) =>
+                      BottomSheetModel(title: e.aciklama ?? "", description: e.seriNo, value: e, groupValue: e.seriNo),
+                )
+                .toList(),
       );
       if (result != null) {
         _seriController.text = result.aciklama ?? "";

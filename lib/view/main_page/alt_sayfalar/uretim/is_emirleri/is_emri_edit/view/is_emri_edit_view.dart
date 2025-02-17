@@ -69,7 +69,9 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
     teslimTarihiController = TextEditingController(text: viewModel.model?.teslimTarihi.toDateString);
     belgeNoController = TextEditingController(text: viewModel.model?.isemriNo);
     stokKoduController = TextEditingController(text: viewModel.model?.stokKodu);
-    miktarController = TextEditingController(text: viewModel.model?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar));
+    miktarController = TextEditingController(
+      text: viewModel.model?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar),
+    );
     projeController = TextEditingController(text: viewModel.model?.projeKodu);
     girisDepoController = TextEditingController(text: viewModel.model?.girisDepoAdi);
     cikisDepoController = TextEditingController(text: viewModel.model?.cikisDepoAdi);
@@ -111,7 +113,9 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                 final result = await viewModel.sendData();
                 if (result.isSuccess) {
                   Get.back(result: true);
-                  dialogManager.showSuccessSnackBar(result.message ?? "${viewModel.model?.isemriNo} başarıyla kaydedildi.");
+                  dialogManager.showSuccessSnackBar(
+                    result.message ?? "${viewModel.model?.isemriNo} başarıyla kaydedildi.",
+                  );
                 }
               });
             },
@@ -181,7 +185,10 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                 readOnly: true,
                 valueWidget: Observer(builder: (_) => Text(viewModel.model?.stokAdi ?? "")),
                 onTap: () async {
-                  final result = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true));
+                  final result = await Get.toNamed(
+                    "mainPage/stokListesiOzel",
+                    arguments: StokBottomSheetModel(receteliStoklar: true, menuKodu: "STOK_SREH", okutuldu: true),
+                  );
                   if (result is StokListesiModel) {
                     stokKoduController.text = result.stokKodu ?? "";
                     viewModel.setStok(result);
@@ -201,7 +208,13 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
             Row(
               children: [
                 Expanded(
-                  child: CustomTextField(labelText: "Miktar", controller: miktarController, enabled: isEnabled, keyboardType: const TextInputType.numberWithOptions(decimal: true), isMust: true),
+                  child: CustomTextField(
+                    labelText: "Miktar",
+                    controller: miktarController,
+                    enabled: isEnabled,
+                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                    isMust: true,
+                  ),
                 ),
                 if (yetkiController.projeUygulamasiAcikMi)
                   Expanded(
@@ -214,7 +227,10 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                       readOnly: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model?.projeKodu ?? "")),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model?.projeKodu);
+                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                          context,
+                          viewModel.model?.projeKodu,
+                        );
                         if (result is BaseProjeModel) {
                           projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                           viewModel.setProje(result);
@@ -236,7 +252,10 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                     readOnly: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model?.girisDepo.toStringIfNotNull ?? "")),
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model?.girisDepo);
+                      final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+                        context,
+                        viewModel.model?.girisDepo,
+                      );
                       if (result is DepoList) {
                         girisDepoController.text = result.depoTanimi ?? "";
                         viewModel.setGirisDepo(result);
@@ -254,7 +273,10 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                     readOnly: true,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model?.cikisDepo.toStringIfNotNull ?? "")),
                     onTap: () async {
-                      final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.model?.cikisDepo);
+                      final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+                        context,
+                        viewModel.model?.cikisDepo,
+                      );
                       if (result is DepoList) {
                         cikisDepoController.text = result.depoTanimi ?? "";
                         viewModel.setCikisDepo(result);
@@ -281,27 +303,47 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
                     }
                   },
                 ),
-                if (kDebugMode) CustomTextField(labelText: "Sipariş", controller: siparisController, enabled: isEnabled, suffixMore: true),
+                if (kDebugMode)
+                  CustomTextField(
+                    labelText: "Sipariş",
+                    controller: siparisController,
+                    enabled: isEnabled,
+                    suffixMore: true,
+                  ),
               ],
             ),
             CustomLayoutBuilder.divideInHalf(
               children: [
                 Observer(
                   builder:
-                      (_) =>
-                          CustomWidgetWithLabel(text: "Kapalı", isVertical: true, child: Switch.adaptive(value: viewModel.model?.kapali == "E", onChanged: !isEnabled ? null : viewModel.setKapaliMi)),
+                      (_) => CustomWidgetWithLabel(
+                        text: "Kapalı",
+                        isVertical: true,
+                        child: Switch.adaptive(
+                          value: viewModel.model?.kapali == "E",
+                          onChanged: !isEnabled ? null : viewModel.setKapaliMi,
+                        ),
+                      ),
                 ),
                 Observer(
                   builder:
                       (_) => CustomWidgetWithLabel(
                         text: "Rework İş Emri",
                         isVertical: true,
-                        child: Switch.adaptive(value: viewModel.model?.rework == "E", onChanged: !isEnabled ? null : viewModel.setReworkMu),
+                        child: Switch.adaptive(
+                          value: viewModel.model?.rework == "E",
+                          onChanged: !isEnabled ? null : viewModel.setReworkMu,
+                        ),
                       ),
                 ),
               ],
             ),
-            CustomTextField(labelText: "Açıklama", controller: aciklamaController, enabled: isEnabled, onChanged: viewModel.setAciklama),
+            CustomTextField(
+              labelText: "Açıklama",
+              controller: aciklamaController,
+              enabled: isEnabled,
+              onChanged: viewModel.setAciklama,
+            ),
           ],
         ).paddingAll(UIHelper.lowSize),
       ),

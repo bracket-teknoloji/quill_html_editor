@@ -51,49 +51,64 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        // backgroundColor: Colors.transparent,
-        extendBodyBehindAppBar: true,
-        floatingActionButton: Text.rich(
-          TextSpan(
+    // backgroundColor: Colors.transparent,
+    extendBodyBehindAppBar: true,
+    floatingActionButton: Text.rich(
+      TextSpan(
+        children: [
+          TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withValues(alpha: 0.8))),
+          const TextSpan(text: "Bracket Teknoloji", style: TextStyle(fontWeight: FontWeight.bold)),
+        ],
+      ),
+    ),
+    appBar: AppBar(
+      backgroundColor: Colors.transparent,
+      systemOverlayStyle: theme.appBarTheme.systemOverlayStyle?.copyWith(
+        systemNavigationBarColor: theme.colorScheme.surfaceContainer,
+        systemNavigationBarDividerColor: theme.colorScheme.surfaceContainer,
+      ),
+    ),
+    floatingActionButtonLocation:
+        context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
+    body: Stack(
+      children: [
+        const LoginWaveWidget(),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            direction: Axis.vertical,
             children: [
-              TextSpan(text: "Powered by ", style: TextStyle(color: theme.colorScheme.primary.withValues(alpha: 0.8))),
-              const TextSpan(text: "Bracket Teknoloji", style: TextStyle(fontWeight: FontWeight.bold)),
-            ],
-          ),
-        ),
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          systemOverlayStyle: theme.appBarTheme.systemOverlayStyle?.copyWith(
-            systemNavigationBarColor: theme.colorScheme.surfaceContainer,
-            systemNavigationBarDividerColor: theme.colorScheme.surfaceContainer,
-          ),
-        ),
-        floatingActionButtonLocation: context.isLandscape ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.centerFloat,
-        body: Stack(
-          children: [
-            const LoginWaveWidget(),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                direction: Axis.vertical,
-                children: [
-                  Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize))),
-                  SizedBox(
-                    width: kIsWeb
+              Observer(
+                builder:
+                    (_) => Visibility(
+                      visible: !viewModel.isError,
+                      child: const CircularProgressIndicator.adaptive().paddingAll(UIHelper.lowSize),
+                    ),
+              ),
+              SizedBox(
+                width:
+                    kIsWeb
                         ? context.isLandscape
                             ? MediaQuery.sizeOf(context).width * 0.4
                             : MediaQuery.sizeOf(context).width * 0.6
                         : Platform.isLinux || Platform.isWindows || Platform.isMacOS
-                            ? context.isLandscape
-                                ? MediaQuery.sizeOf(context).width * 0.4
-                                : MediaQuery.sizeOf(context).width * 0.6
-                            : null,
-                    child: Observer(builder: (_) => Visibility(visible: !viewModel.isError, child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center))),
-                  ),
-                  Observer(
-                    builder: (_) => Visibility(
+                        ? context.isLandscape
+                            ? MediaQuery.sizeOf(context).width * 0.4
+                            : MediaQuery.sizeOf(context).width * 0.6
+                        : null,
+                child: Observer(
+                  builder:
+                      (_) => Visibility(
+                        visible: !viewModel.isError,
+                        child: Text(viewModel.title, maxLines: 10, textAlign: TextAlign.center),
+                      ),
+                ),
+              ),
+              Observer(
+                builder:
+                    (_) => Visibility(
                       visible: viewModel.isError,
                       child: Row(
                         children: [
@@ -111,52 +126,75 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
                         ],
                       ),
                     ),
-                  ),
-                ],
-              ).paddingOnly(bottom: UIHelper.highSize * 7).paddingOnly(bottom: UIHelper.midSize),
-            ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              ),
+            ],
+          ).paddingOnly(bottom: UIHelper.highSize * 7).paddingOnly(bottom: UIHelper.midSize),
+        ),
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Observer(
+                builder:
+                    (_) =>
+                        viewModel.accountResponseModel?.karsilamaMesaji != null
+                            ? SizedBox(
+                              width: width * 0.7,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Image.network(
+                                    viewModel.accountResponseModel?.karsilamaResimUrl ?? "",
+                                    errorBuilder:
+                                        (context, error, stackTrace) => const Icon(Icons.error_outline_outlined),
+                                  ),
+                                  Text(
+                                    viewModel.accountResponseModel?.karsilamaMesaji ?? "",
+                                    textAlign: TextAlign.justify,
+                                    textHeightBehavior: const TextHeightBehavior(
+                                      applyHeightToFirstAscent: false,
+                                      applyHeightToLastDescent: false,
+                                    ),
+                                  ).paddingAll(20),
+                                ],
+                              ),
+                            )
+                            : const SizedBox.shrink(),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Observer(
-                    builder: (_) => viewModel.accountResponseModel?.karsilamaMesaji != null
-                        ? SizedBox(
-                            width: width * 0.7,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Image.network(viewModel.accountResponseModel?.karsilamaResimUrl ?? "", errorBuilder: (context, error, stackTrace) => const Icon(Icons.error_outline_outlined)),
-                                Text(
-                                  viewModel.accountResponseModel?.karsilamaMesaji ?? "",
-                                  textAlign: TextAlign.justify,
-                                  textHeightBehavior: const TextHeightBehavior(applyHeightToFirstAscent: false, applyHeightToLastDescent: false),
-                                ).paddingAll(20),
-                              ],
-                            ),
-                          )
-                        : const SizedBox.shrink(),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Assets.appIcon.pickerLogoBeyaz.svg(height: height * 0.1),
-                      const Text("Picker\nVeri Toplama Çözümleri", overflow: TextOverflow.ellipsis, maxLines: 3, textAlign: TextAlign.center).paddingAll(UIHelper.lowSize),
-                      Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize),
-                    ],
-                  ),
-                  Observer(
-                    builder: (_) => Visibility(
-                      visible: viewModel.isError,
-                      child: SizedBox(width: width * 0.6, child: Text(viewModel.title, overflow: TextOverflow.ellipsis, maxLines: 10, textAlign: TextAlign.center)),
-                    ),
-                  ),
+                  Assets.appIcon.pickerLogoBeyaz.svg(height: height * 0.1),
+                  const Text(
+                    "Picker\nVeri Toplama Çözümleri",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 3,
+                    textAlign: TextAlign.center,
+                  ).paddingAll(UIHelper.lowSize),
+                  Text(AppInfoModel.instance.version ?? "").paddingOnly(bottom: UIHelper.highSize),
                 ],
               ),
-            ),
-          ],
+              Observer(
+                builder:
+                    (_) => Visibility(
+                      visible: viewModel.isError,
+                      child: SizedBox(
+                        width: width * 0.6,
+                        child: Text(
+                          viewModel.title,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 10,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+              ),
+            ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 
   Future<void> login() async {
     viewModel.setIsError(false);
@@ -164,11 +202,16 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
       Get.offAllNamed("/login");
     } else if (CacheManager.getLogout == true) {
       viewModel.setTitle("Lisans bilgileri alınıyor...");
-      final lisansResponse = await networkManager.getUyeBilgileri(CacheManager.getVerifiedUser.account?.email ?? "", password: CacheManager.getVerifiedUser.account?.parola);
+      final lisansResponse = await networkManager.getUyeBilgileri(
+        CacheManager.getVerifiedUser.account?.email ?? "",
+        password: CacheManager.getVerifiedUser.account?.parola,
+      );
       viewModel.setAccountResponseModel(lisansResponse.dataList.firstOrNull);
       if (!CacheManager.getIsLicenseVerified(CacheManager.getVerifiedUser.account?.email ?? "")) {
         viewModel
-          ..setTitle("${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.")
+          ..setTitle(
+            "${lisansResponse.message}\n ${lisansResponse.ex?["Message"]}\nLisans bilgileri alınamadı. Lütfen internet bağlantınızı kontrol edin.",
+          )
           ..setIsError(true);
         return;
       }
@@ -177,7 +220,9 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
         await Future.delayed(Duration(seconds: viewModel.accountResponseModel?.karsilamaSaniye ?? 3));
       }
 
-      AccountModel.setFromAccountResponseModel(CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? ""));
+      AccountModel.setFromAccountResponseModel(
+        CacheManager.getAccounts(CacheManager.getVerifiedUser.account?.email ?? ""),
+      );
       // await dialogManager.showLocationDialog();
       // await AccountModel.instance.getLocation();
       viewModel.setTitle("Giriş Yapılıyor...");
@@ -210,7 +255,9 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
         }
       } else {
         viewModel
-          ..setTitle("\n\n${response?.errorDescription ?? response?.error ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin."}")
+          ..setTitle(
+            "\n\n${response?.errorDescription ?? response?.error ?? "Bağlantı kurulamadı. Lütfen internet bağlantınızı kontrol edin."}",
+          )
           ..setIsError(true);
       }
     } else {

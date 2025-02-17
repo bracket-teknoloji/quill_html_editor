@@ -33,7 +33,8 @@ final class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Aylık Mizan Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) =>
+      PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Aylık Mizan Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -52,8 +53,11 @@ final class _AylikMizanRaporuViewState extends BaseState<AylikMizanRaporuView> {
               readOnly: true,
               suffixMore: true,
               onTap: () async {
-                final result =
-                    await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(context, viewModel.pdfModel.dicParams?.muhasebeKodu, belgeTipi: MuhasebeBelgeTipiEnum.aylikMizan.value);
+                final result = await bottomSheetDialogManager.showMuhasebeMuhasebeKoduBottomSheetDialog(
+                  context,
+                  viewModel.pdfModel.dicParams?.muhasebeKodu,
+                  belgeTipi: MuhasebeBelgeTipiEnum.aylikMizan.value,
+                );
                 if (result is StokMuhasebeKoduModel) {
                   viewModel.changeMuhasebeKodu(result.hesapKodu);
                   muhasebeKoduController.text = result.hesapAdi ?? result.hesapKodu ?? "";

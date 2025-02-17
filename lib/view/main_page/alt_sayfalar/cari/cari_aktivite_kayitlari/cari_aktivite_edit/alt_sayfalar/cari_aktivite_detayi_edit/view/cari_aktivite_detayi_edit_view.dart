@@ -58,102 +58,107 @@ final class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayi
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Aktivite Detayı"),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.save_outlined),
-              onPressed: () async {
-                GenericResponseModel<NetworkManagerMixin>? result;
-                if (formKey.currentState?.validate() == true) {
-                  dialogManager.showAreYouSureDialog(() async {
-                    viewModel.model.kayittarihi = DateTime.now();
-                    if (widget.model?.baseEditEnum?.duzenleMi == true) {
-                      result = await viewModel.getData();
-                    }
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Aktivite Detayı"),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.save_outlined),
+          onPressed: () async {
+            GenericResponseModel<NetworkManagerMixin>? result;
+            if (formKey.currentState?.validate() == true) {
+              dialogManager.showAreYouSureDialog(() async {
+                viewModel.model.kayittarihi = DateTime.now();
+                if (widget.model?.baseEditEnum?.duzenleMi == true) {
+                  result = await viewModel.getData();
+                }
 
-                    if ((result?.isSuccess ?? false) || (widget.model?.baseEditEnum?.ekleMi == true)) {
-                      Get.back(result: viewModel.model..kayittarihi = DateTime.now());
-                      dialogManager.showSuccessSnackBar(loc.generalStrings.success);
-                    }
-                  });
+                if ((result?.isSuccess ?? false) || (widget.model?.baseEditEnum?.ekleMi == true)) {
+                  Get.back(result: viewModel.model..kayittarihi = DateTime.now());
+                  dialogManager.showSuccessSnackBar(loc.generalStrings.success);
+                }
+              });
+            }
+          },
+        ),
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            CustomTextField(
+              labelText: "Tarih",
+              isDateTime: true,
+              isMust: true,
+              readOnly: true,
+              controller: tarihController,
+              onTap: () async {
+                final result = await dialogManager.showDateTimePicker();
+                if (result != null) {
+                  tarihController.text = result.toDateString;
+                  viewModel.setTarih(result);
                 }
               },
             ),
+            CustomTextField(
+              labelText: "Aktivite Tipi",
+              isMust: true,
+              readOnly: true,
+              suffixMore: true,
+              controller: aktiviteTipiController,
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.aktiviteTipi.toStringIfNotNull ?? "")),
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showCariAktiviteTipiBottomSheetDialog(
+                  context,
+                  viewModel.model.aktiviteTipi,
+                );
+                if (result != null) {
+                  aktiviteTipiController.text = result.aktiviteAdi ?? "";
+                  viewModel.setAktiviteTipi(result);
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Bölüm/Departman",
+              controller: bolumController,
+              onChanged: viewModel.setBolum,
+              suffix: IconButton(
+                onPressed: () async {
+                  final result = await bottomSheetDialogManager.showCariAktiviteBolumlerBottomSheetDialog(
+                    context,
+                    viewModel.model.bolum,
+                  );
+                  if (result != null) {
+                    bolumController.text = result.adi ?? "";
+                    viewModel.setBolum(result.kodu);
+                  }
+                },
+                icon: const Icon(Icons.more_horiz_outlined),
+              ),
+            ),
+            CustomTextField(
+              labelText: "İlgili Kişi",
+              controller: ilgiliKisiController,
+              onChanged: viewModel.setIlgiliKisi,
+              suffix: IconButton(
+                onPressed: () async {
+                  final result = await bottomSheetDialogManager.showIlgiliKisilerBottomSheetDialog(
+                    context,
+                    viewModel.model.ilgiliKisi,
+                  );
+                  if (result != null) {
+                    ilgiliKisiController.text = result.adi ?? "";
+                    viewModel.setIlgiliKisi(result.kodu);
+                  }
+                },
+                icon: const Icon(Icons.more_horiz_outlined),
+              ),
+            ),
+            CustomTextField(labelText: "Açıklama", controller: aciklamaController, onChanged: viewModel.setAciklama),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                CustomTextField(
-                  labelText: "Tarih",
-                  isDateTime: true,
-                  isMust: true,
-                  readOnly: true,
-                  controller: tarihController,
-                  onTap: () async {
-                    final result = await dialogManager.showDateTimePicker();
-                    if (result != null) {
-                      tarihController.text = result.toDateString;
-                      viewModel.setTarih(result);
-                    }
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Aktivite Tipi",
-                  isMust: true,
-                  readOnly: true,
-                  suffixMore: true,
-                  controller: aktiviteTipiController,
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.aktiviteTipi.toStringIfNotNull ?? "")),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showCariAktiviteTipiBottomSheetDialog(context, viewModel.model.aktiviteTipi);
-                    if (result != null) {
-                      aktiviteTipiController.text = result.aktiviteAdi ?? "";
-                      viewModel.setAktiviteTipi(result);
-                    }
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Bölüm/Departman",
-                  controller: bolumController,
-                  onChanged: viewModel.setBolum,
-                  suffix: IconButton(
-                    onPressed: () async {
-                      final result = await bottomSheetDialogManager.showCariAktiviteBolumlerBottomSheetDialog(context, viewModel.model.bolum);
-                      if (result != null) {
-                        bolumController.text = result.adi ?? "";
-                        viewModel.setBolum(result.kodu);
-                      }
-                    },
-                    icon: const Icon(Icons.more_horiz_outlined),
-                  ),
-                ),
-                CustomTextField(
-                  labelText: "İlgili Kişi",
-                  controller: ilgiliKisiController,
-                  onChanged: viewModel.setIlgiliKisi,
-                  suffix: IconButton(
-                    onPressed: () async {
-                      final result = await bottomSheetDialogManager.showIlgiliKisilerBottomSheetDialog(context, viewModel.model.ilgiliKisi);
-                      if (result != null) {
-                        ilgiliKisiController.text = result.adi ?? "";
-                        viewModel.setIlgiliKisi(result.kodu);
-                      }
-                    },
-                    icon: const Icon(Icons.more_horiz_outlined),
-                  ),
-                ),
-                CustomTextField(
-                  labelText: "Açıklama",
-                  controller: aciklamaController,
-                  onChanged: viewModel.setAciklama,
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
+      ),
+    ),
+  );
 }

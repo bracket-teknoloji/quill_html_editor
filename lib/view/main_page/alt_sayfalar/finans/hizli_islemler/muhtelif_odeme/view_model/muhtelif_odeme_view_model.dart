@@ -48,7 +48,13 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   ObservableList<MuhasebeReferansModel>? muhaRefList;
 
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(yeniKayit: true, gc: "C", tag: "TahsilatModel", pickerBelgeTuru: "MUO", hesapTipi: "M");
+  TahsilatRequestModel model = TahsilatRequestModel(
+    yeniKayit: true,
+    gc: "C",
+    tag: "TahsilatModel",
+    pickerBelgeTuru: "MUO",
+    hesapTipi: "M",
+  );
 
   @observable
   String? showReferansKodu;
@@ -87,7 +93,12 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   void setTutar(double? value) => model = model.copyWith(tutar: value);
 
   @action
-  void setTahsilatMi(bool? value) => model = model.copyWith(tahsilatmi: value, gc: value == true ? "G" : "C", pickerBelgeTuru: value == true ? "MUT" : "MUO");
+  void setTahsilatMi(bool? value) =>
+      model = model.copyWith(
+        tahsilatmi: value,
+        gc: value == true ? "G" : "C",
+        pickerBelgeTuru: value == true ? "MUT" : "MUO",
+      );
 
   @action
   void setPlasiyerKodu(PlasiyerList? value) => model = model.copyWith(plasiyerKodu: value?.plasiyerKodu);
@@ -119,7 +130,11 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getMuhaRefList() async {
-    final result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    final result = await networkManager.dioGet<MuhasebeReferansModel>(
+      path: ApiUrls.getMuhaRefList,
+      bodyModel: MuhasebeReferansModel(),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       setMuhaRefList(result.dataList);
     }
@@ -152,6 +167,10 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveTahsilat, bodyModel: DovizKurlariModel(), showLoading: true, data: (model..guid = const Uuid().v4()).toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
+    path: ApiUrls.saveTahsilat,
+    bodyModel: DovizKurlariModel(),
+    showLoading: true,
+    data: (model..guid = const Uuid().v4()).toJson(),
+  );
 }

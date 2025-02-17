@@ -19,13 +19,22 @@ final class CariHavaleEftViewModel = _CariHavaleEftViewModelBase with _$CariHava
 
 abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TahsilatRequestModel model = TahsilatRequestModel(yeniKayit: true, tag: "DekontModel", dekontIslemTuru: "DCE", islemModulu: "B");
+  TahsilatRequestModel model = TahsilatRequestModel(
+    yeniKayit: true,
+    tag: "DekontModel",
+    dekontIslemTuru: "DCE",
+    islemModulu: "B",
+  );
 
   @observable
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
 
   @observable
-  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DCE", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel bankaListesiRequestModel = BankaListesiRequestModel(
+    belgeTipi: "DCE",
+    menuKodu: "YONE_BHRE",
+    arrHesapTipi: jsonEncode([0, 7, 14]),
+  );
 
   @observable
   CariListesiModel? cariModel;
@@ -76,10 +85,12 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   void setMasrafTutari(double? masrafTutari) => model = model.copyWith(masrafTutari: masrafTutari);
 
   @action
-  void setMasrafMuhKodu(String? masrafMuhKodu) => model = model.copyWith(masrafMuhKodu: masrafMuhKodu != "" ? masrafMuhKodu : null);
+  void setMasrafMuhKodu(String? masrafMuhKodu) =>
+      model = model.copyWith(masrafMuhKodu: masrafMuhKodu != "" ? masrafMuhKodu : null);
 
   @action
-  void setPlasiyerKodu(String? plasiyerKodu) => model = model.copyWith(plasiyerKodu: plasiyerKodu != "" ? plasiyerKodu : null);
+  void setPlasiyerKodu(String? plasiyerKodu) =>
+      model = model.copyWith(plasiyerKodu: plasiyerKodu != "" ? plasiyerKodu : null);
 
   @action
   void setProjeKodu(String? projeKodu) => model = model.copyWith(projeKodu: projeKodu != "" ? projeKodu : null);
@@ -88,10 +99,12 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? aciklama) => model = model.copyWith(aciklama: aciklama != "" ? aciklama : null);
 
   @action
-  void setTCMBBankaKodu(String? tcmbBankaKodu) => model = model.copyWith(tcmbBankaKodu: tcmbBankaKodu != "" ? tcmbBankaKodu : null);
+  void setTCMBBankaKodu(String? tcmbBankaKodu) =>
+      model = model.copyWith(tcmbBankaKodu: tcmbBankaKodu != "" ? tcmbBankaKodu : null);
 
   @action
-  void setTCMBSubeKodu(String? tcmbSubeKodu) => model = model.copyWith(tcmbSubeKodu: tcmbSubeKodu != "" ? tcmbSubeKodu : null);
+  void setTCMBSubeKodu(String? tcmbSubeKodu) =>
+      model = model.copyWith(tcmbSubeKodu: tcmbSubeKodu != "" ? tcmbSubeKodu : null);
 
   @action
   void setIBAN(String? iban) => model = model.copyWith(iban: iban != "" ? iban : null);
@@ -119,6 +132,10 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
     }
   }
 
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<DovizKurlariModel>(path: ApiUrls.saveDekont, bodyModel: DovizKurlariModel(), showLoading: true, data: model.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
+    path: ApiUrls.saveDekont,
+    bodyModel: DovizKurlariModel(),
+    showLoading: true,
+    data: model.toJson(),
+  );
 }

@@ -28,11 +28,12 @@ abstract class _SiparislerViewModelBase with Store {
   final List<String> teslimatDurumu = const ["Tümü", "Beklemede", "Tamamlandı"];
 
   @observable
-  ObservableMap<String, bool> ekstraAlanlarMap = {
-    "EK": CacheManager.getProfilParametre.siparisEkAlan,
-    "MİK": CacheManager.getProfilParametre.siparisMiktar,
-    "VADE": CacheManager.getProfilParametre.siparisVade,
-  }.asObservable();
+  ObservableMap<String, bool> ekstraAlanlarMap =
+      {
+        "EK": CacheManager.getProfilParametre.siparisEkAlan,
+        "MİK": CacheManager.getProfilParametre.siparisMiktar,
+        "VADE": CacheManager.getProfilParametre.siparisVade,
+      }.asObservable();
   @action
   void changeEkstraAlanlarMap(String key, bool value) {
     ekstraAlanlarMap.remove(key);
@@ -52,12 +53,10 @@ abstract class _SiparislerViewModelBase with Store {
 
   @action
   void resetEkstraAlanlarMap() {
-    CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false));
-    ekstraAlanlarMap = {
-      "EK": false,
-      "MİK": false,
-      "VADE": false,
-    }.asObservable();
+    CacheManager.setProfilParametre(
+      CacheManager.getProfilParametre.copyWith(siparisEkAlan: false, siparisMiktar: false, siparisVade: false),
+    );
+    ekstraAlanlarMap = {"EK": false, "MİK": false, "VADE": false}.asObservable();
   }
 
   @observable
@@ -162,7 +161,8 @@ abstract class _SiparislerViewModelBase with Store {
   @action
   void setSiparislerList(List<BaseSiparisEditModel>? value) => musteriSiparisleriList = value?.asObservable();
   @action
-  void addSiparislerList(List<BaseSiparisEditModel>? value) => musteriSiparisleriList = musteriSiparisleriList?..addAll(value!);
+  void addSiparislerList(List<BaseSiparisEditModel>? value) =>
+      musteriSiparisleriList = musteriSiparisleriList?..addAll(value!);
   @action
   void removeSiparislerList(int index) {
     musteriSiparisleriList = musteriSiparisleriList?..removeAt(index);
@@ -170,31 +170,31 @@ abstract class _SiparislerViewModelBase with Store {
 
   //*for model
   SiparislerRequestModel get musteriSiparisleriRequestModel => SiparislerRequestModel(
-        pickerBelgeTuru: pickerBelgeTuru,
-        kapaliBelgelerListelenmesin: kapaliBelgelerListelenmesin,
-        sayfa: sayfa,
-        siralama: siralama,
-        searchText: searchText,
-        projeKodu: projeKodu,
-        arrPlasiyerKodu: getPlasiyer,
-        arrGrupKodu: getGrupKodlari,
-        arrKod1: getKod1,
-        arrKod2: getKod2,
-        arrKod3: getKod3,
-        arrKod4: getKod4,
-        arrKod5: getKod5,
-        ozelKod1: ozelKod1,
-        ozelKod2: ozelKod2,
-        cariKodu: cariKodu ?? "",
-        ekranTipi: "L",
-        cariTipi: cariTipi,
-        baslamaTarihi: baslamaTarihi,
-        bitisTarihi: bitisTarihi,
-        iadeMi: false,
-        siparisKarsilanmaDurumu: teslimatDurumuGroupValue,
-        faturalasmaGoster: true,
-        miktarGetir: (ekstraAlanlarMap["MİK"] ?? false) ? "E" : "H",
-      );
+    pickerBelgeTuru: pickerBelgeTuru,
+    kapaliBelgelerListelenmesin: kapaliBelgelerListelenmesin,
+    sayfa: sayfa,
+    siralama: siralama,
+    searchText: searchText,
+    projeKodu: projeKodu,
+    arrPlasiyerKodu: getPlasiyer,
+    arrGrupKodu: getGrupKodlari,
+    arrKod1: getKod1,
+    arrKod2: getKod2,
+    arrKod3: getKod3,
+    arrKod4: getKod4,
+    arrKod5: getKod5,
+    ozelKod1: ozelKod1,
+    ozelKod2: ozelKod2,
+    cariKodu: cariKodu ?? "",
+    ekranTipi: "L",
+    cariTipi: cariTipi,
+    baslamaTarihi: baslamaTarihi,
+    bitisTarihi: bitisTarihi,
+    iadeMi: false,
+    siparisKarsilanmaDurumu: teslimatDurumuGroupValue,
+    faturalasmaGoster: true,
+    miktarGetir: (ekstraAlanlarMap["MİK"] ?? false) ? "E" : "H",
+  );
 
   final String? pickerBelgeTuru;
 

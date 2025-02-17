@@ -54,7 +54,6 @@ enum EditTipiEnum {
   paket,
   @HiveField(20)
   belgesizIslem,
-  ;
 }
 
 extension NullableEditTipiEnumExtension on EditTipiEnum? {
@@ -101,7 +100,10 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
   bool get kalemSecilecekMi {
     if (this == null) return false;
     return switch (this!) {
-      EditTipiEnum.satisFatura || EditTipiEnum.satisIrsaliye || EditTipiEnum.alisFatura || EditTipiEnum.alisIrsaliye => true,
+      EditTipiEnum.satisFatura ||
+      EditTipiEnum.satisIrsaliye ||
+      EditTipiEnum.alisFatura ||
+      EditTipiEnum.alisIrsaliye => true,
       _ => false,
     };
   }
@@ -109,9 +111,17 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
   int get kademeliIskontoSayisi {
     if (this == null) return 0;
     return switch (this!) {
-      EditTipiEnum.satici || EditTipiEnum.alisFatura || EditTipiEnum.alisIrsaliye || EditTipiEnum.ambarGirisi => YetkiController().alisKademeliIskontoSayisi,
-      EditTipiEnum.musteri || EditTipiEnum.satisFatura || EditTipiEnum.satisIrsaliye || EditTipiEnum.ambarCikisi => YetkiController().satisKademeliIskontoSayisi,
-      EditTipiEnum.alisTalebi || EditTipiEnum.satisTeklifi || EditTipiEnum.satisTalebi => YetkiController().talTekSatirKademeliIskontoSayisi(this?.rawValue ?? ""),
+      EditTipiEnum.satici ||
+      EditTipiEnum.alisFatura ||
+      EditTipiEnum.alisIrsaliye ||
+      EditTipiEnum.ambarGirisi => YetkiController().alisKademeliIskontoSayisi,
+      EditTipiEnum.musteri ||
+      EditTipiEnum.satisFatura ||
+      EditTipiEnum.satisIrsaliye ||
+      EditTipiEnum.ambarCikisi => YetkiController().satisKademeliIskontoSayisi,
+      EditTipiEnum.alisTalebi ||
+      EditTipiEnum.satisTeklifi ||
+      EditTipiEnum.satisTalebi => YetkiController().talTekSatirKademeliIskontoSayisi(this?.rawValue ?? ""),
       EditTipiEnum.depoTransferi ||
       EditTipiEnum.olcumdenDepoTransferi ||
       EditTipiEnum.cari ||
@@ -121,8 +131,7 @@ extension NullableEditTipiEnumExtension on EditTipiEnum? {
       EditTipiEnum.uretimSonuKaydi ||
       EditTipiEnum.uretim ||
       EditTipiEnum.paket ||
-      EditTipiEnum.belgesizIslem =>
-        0,
+      EditTipiEnum.belgesizIslem => 0,
     };
   }
 }
@@ -131,73 +140,73 @@ extension EditTipiEnumExtension on EditTipiEnum {
   static YetkiController yetkiController = YetkiController();
 
   String get rawValue => switch (this) {
-        EditTipiEnum.musteri => "MS",
-        EditTipiEnum.satici => "SS",
-        EditTipiEnum.satisFatura => "SF",
-        EditTipiEnum.satisIrsaliye => "SI",
-        EditTipiEnum.alisFatura => "AF",
-        EditTipiEnum.alisIrsaliye => "AI",
-        EditTipiEnum.satisTeklifi => "STEK",
-        EditTipiEnum.alisTalebi => "ATAL",
-        EditTipiEnum.satisTalebi => "STAL",
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "DC",
-        EditTipiEnum.ambarGirisi => "AG",
-        EditTipiEnum.ambarCikisi => "AC",
-        EditTipiEnum.isEmri => "IE",
-        EditTipiEnum.altIsEmri => "AIE",
-        EditTipiEnum.isEmriTakip => "TKP",
-        EditTipiEnum.uretimSonuKaydi || EditTipiEnum.uretim => "USK",
-        EditTipiEnum.cari => "",
+    EditTipiEnum.musteri => "MS",
+    EditTipiEnum.satici => "SS",
+    EditTipiEnum.satisFatura => "SF",
+    EditTipiEnum.satisIrsaliye => "SI",
+    EditTipiEnum.alisFatura => "AF",
+    EditTipiEnum.alisIrsaliye => "AI",
+    EditTipiEnum.satisTeklifi => "STEK",
+    EditTipiEnum.alisTalebi => "ATAL",
+    EditTipiEnum.satisTalebi => "STAL",
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "DC",
+    EditTipiEnum.ambarGirisi => "AG",
+    EditTipiEnum.ambarCikisi => "AC",
+    EditTipiEnum.isEmri => "IE",
+    EditTipiEnum.altIsEmri => "AIE",
+    EditTipiEnum.isEmriTakip => "TKP",
+    EditTipiEnum.uretimSonuKaydi || EditTipiEnum.uretim => "USK",
+    EditTipiEnum.cari => "",
 
-        //? Bu ikisinin değeri elle girildi. Gerçek bir değer değil.
-        EditTipiEnum.paket => "PAK",
-        EditTipiEnum.belgesizIslem => "BI"
-      };
+    //? Bu ikisinin değeri elle girildi. Gerçek bir değer değil.
+    EditTipiEnum.paket => "PAK",
+    EditTipiEnum.belgesizIslem => "BI",
+  };
 
   String get getName => switch (this) {
-        EditTipiEnum.musteri => "Müşteri Siparişi",
-        EditTipiEnum.satici => "Satıcı Siparişi",
-        EditTipiEnum.satisFatura => "Satış Faturası",
-        EditTipiEnum.satisIrsaliye => "Satış İrsaliyesi",
-        EditTipiEnum.alisFatura => "Alış Faturası",
-        EditTipiEnum.alisIrsaliye => "Alış İrsaliyesi",
-        EditTipiEnum.satisTeklifi => "Satış Teklifi",
-        EditTipiEnum.alisTalebi => "Alış Talebi",
-        EditTipiEnum.satisTalebi => "Satış Talebi",
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "Depo Transferi",
-        EditTipiEnum.ambarGirisi => "Ambar Giriş Fişi",
-        EditTipiEnum.ambarCikisi => "Ambar Çıkış Fişi",
-        EditTipiEnum.isEmri => "İş Emri",
-        EditTipiEnum.altIsEmri => "Alt İş Emri",
-        EditTipiEnum.isEmriTakip => "İş Emri Takibi",
-        EditTipiEnum.uretimSonuKaydi => "Üretim Sonu Kaydı",
-        EditTipiEnum.cari => "Cari",
-        EditTipiEnum.uretim => "Üretim",
-        EditTipiEnum.paket => "Paket",
-        EditTipiEnum.belgesizIslem => "Belgesiz İşlem"
-      };
+    EditTipiEnum.musteri => "Müşteri Siparişi",
+    EditTipiEnum.satici => "Satıcı Siparişi",
+    EditTipiEnum.satisFatura => "Satış Faturası",
+    EditTipiEnum.satisIrsaliye => "Satış İrsaliyesi",
+    EditTipiEnum.alisFatura => "Alış Faturası",
+    EditTipiEnum.alisIrsaliye => "Alış İrsaliyesi",
+    EditTipiEnum.satisTeklifi => "Satış Teklifi",
+    EditTipiEnum.alisTalebi => "Alış Talebi",
+    EditTipiEnum.satisTalebi => "Satış Talebi",
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "Depo Transferi",
+    EditTipiEnum.ambarGirisi => "Ambar Giriş Fişi",
+    EditTipiEnum.ambarCikisi => "Ambar Çıkış Fişi",
+    EditTipiEnum.isEmri => "İş Emri",
+    EditTipiEnum.altIsEmri => "Alt İş Emri",
+    EditTipiEnum.isEmriTakip => "İş Emri Takibi",
+    EditTipiEnum.uretimSonuKaydi => "Üretim Sonu Kaydı",
+    EditTipiEnum.cari => "Cari",
+    EditTipiEnum.uretim => "Üretim",
+    EditTipiEnum.paket => "Paket",
+    EditTipiEnum.belgesizIslem => "Belgesiz İşlem",
+  };
 
   String? get ozelKod1 => switch (this) {
-        EditTipiEnum.musteri => yetkiController.siparisMSOzelKod1Degeri,
-        EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod1Degeri,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeOzelKod1Degeri,
-        EditTipiEnum.satisTalebi => yetkiController.satisTalebiOzelKod1Degeri,
-        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifOzelKod1Degeri,
-        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOzelKod1Degeri,
-        EditTipiEnum.ambarCikisi => yetkiController.transferACOzelKod1Degeri,
-        _ => null,
-      };
+    EditTipiEnum.musteri => yetkiController.siparisMSOzelKod1Degeri,
+    EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod1Degeri,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeOzelKod1Degeri,
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiOzelKod1Degeri,
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifOzelKod1Degeri,
+    EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOzelKod1Degeri,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACOzelKod1Degeri,
+    _ => null,
+  };
 
   String? get ozelKod2 => switch (this) {
-        EditTipiEnum.musteri => yetkiController.siparisMSOzelKod2Degeri,
-        EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod2Degeri,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeOzelKod2Degeri,
-        EditTipiEnum.satisTalebi => yetkiController.satisTalebiOzelKod2Degeri,
-        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifOzelKod2Degeri,
-        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOzelKod2Degeri,
-        EditTipiEnum.ambarCikisi => yetkiController.transferACOzelKod2Degeri,
-        _ => null,
-      };
+    EditTipiEnum.musteri => yetkiController.siparisMSOzelKod2Degeri,
+    EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod2Degeri,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeOzelKod2Degeri,
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiOzelKod2Degeri,
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifOzelKod2Degeri,
+    EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOzelKod2Degeri,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACOzelKod2Degeri,
+    _ => null,
+  };
 
   bool get rehberdenStokSecilsin {
     if (!barkodluUrunGirisi) return true;
@@ -206,24 +215,25 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsRehberdenStokSecilsin,
       EditTipiEnum.alisFatura => yetkiController.alisFatRehberdenStokSecilsin,
       EditTipiEnum.alisIrsaliye => yetkiController.alisIrsRehberdenStokSecilsin,
-      EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatRehberdenStokSecilsin,
+      EditTipiEnum.depoTransferi ||
+      EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatRehberdenStokSecilsin,
       EditTipiEnum.ambarGirisi => yetkiController.transferAGRehberdenStokSecilsin,
       EditTipiEnum.ambarCikisi => yetkiController.transferACRehberdenStokSecilsin,
-      _ => false
+      _ => false,
     };
   }
 
   bool get otoPDFGor => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sevkiyatSatFatOtomatikPDFGor,
-        EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsOtomatikPDFGor,
-        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOtomatikPDFGor,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatOtomatikPDFGor,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAgOtomatikPDFGor,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcOtomatikPDFGor,
-        EditTipiEnum.musteri => yetkiController.siparisMSOtomatikPDFGor,
-        EditTipiEnum.satici => yetkiController.siparisSSOtomatikPDFGor,
-        _ => false
-      };
+    EditTipiEnum.satisFatura => yetkiController.sevkiyatSatFatOtomatikPDFGor,
+    EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsOtomatikPDFGor,
+    EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOtomatikPDFGor,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatOtomatikPDFGor,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgOtomatikPDFGor,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcOtomatikPDFGor,
+    EditTipiEnum.musteri => yetkiController.siparisMSOtomatikPDFGor,
+    EditTipiEnum.satici => yetkiController.siparisSSOtomatikPDFGor,
+    _ => false,
+  };
 
   bool get kalemlerKlavyeAcilmasin {
     if (!barkodluUrunGirisi) return true;
@@ -232,82 +242,83 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsKalemKlavyeAcilmasin,
       EditTipiEnum.alisFatura => yetkiController.alisFatKalemKlavyeAcilmasin,
       EditTipiEnum.alisIrsaliye => yetkiController.alisIrsKalemKlavyeAcilmasin,
-      EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatKalemKlavyeAcilmasin,
+      EditTipiEnum.depoTransferi ||
+      EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatKalemKlavyeAcilmasin,
       EditTipiEnum.ambarGirisi => yetkiController.transferAGKalemKlavyeAcilmasin,
       EditTipiEnum.ambarCikisi => yetkiController.transferACKalemKlavyeAcilmasin,
-      _ => false
+      _ => false,
     };
   }
 
   bool get maxIskontoUygula => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxIskontoUygula,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxIskontoUygula,
-        EditTipiEnum.musteri => yetkiController.msMaxIskontoUygula,
-        _ => false,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxIskontoUygula,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxIskontoUygula,
+    EditTipiEnum.musteri => yetkiController.msMaxIskontoUygula,
+    _ => false,
+  };
 
   double? get maxGenelIskonto1 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto1,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto1,
-        EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto1,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto1,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto1,
+    EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto1,
+    _ => null,
+  };
 
   double? get maxGenelIskonto2 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto2,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto2,
-        EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto2,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto2,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto2,
+    EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto2,
+    _ => null,
+  };
 
   double? get maxGenelIskonto3 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto3,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto3,
-        EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto3,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxGenelIskonto3,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxGenelIskonto3,
+    EditTipiEnum.musteri => yetkiController.msMaxGenelIskonto3,
+    _ => null,
+  };
 
   double? get maxSatirIskonto1 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto1,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto1,
-        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto1,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto1,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto1,
+    EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto1,
+    _ => null,
+  };
 
   double? get maxSatirIskonto2 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto2,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto2,
-        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto2,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto2,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto2,
+    EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto2,
+    _ => null,
+  };
 
   double? get maxSatirIskonto3 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto3,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto3,
-        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto3,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto3,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto3,
+    EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto3,
+    _ => null,
+  };
 
   double? get maxSatirIskonto4 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto4,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto4,
-        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto4,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto4,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto4,
+    EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto4,
+    _ => null,
+  };
 
   double? get maxSatirIskonto5 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto5,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto5,
-        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto5,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto5,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto5,
+    EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto5,
+    _ => null,
+  };
 
   double? get maxSatirIskonto6 => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto6,
-        EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto6,
-        EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto6,
-        _ => null,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sfMaxSatirIskonto6,
+    EditTipiEnum.satisIrsaliye => yetkiController.siMaxSatirIskonto6,
+    EditTipiEnum.musteri => yetkiController.msMaxSatirIskonto6,
+    _ => null,
+  };
 
   bool get urunOtomatikEklensin {
     if (!barkodluUrunGirisi) return true;
@@ -316,10 +327,11 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBarkodUrunOtomatikEkle,
       EditTipiEnum.alisFatura => yetkiController.alisFatBarkodUrunOtomatikEkle,
       EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBarkodUrunOtomatikEkle,
-      EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBarkodUrunOtomatikEkle,
+      EditTipiEnum.depoTransferi ||
+      EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBarkodUrunOtomatikEkle,
       EditTipiEnum.ambarGirisi => yetkiController.transferAGBarkodUrunOtomatikEkle,
       EditTipiEnum.ambarCikisi => yetkiController.transferACBarkodUrunOtomatikEkle,
-      _ => false
+      _ => false,
     };
   }
 
@@ -333,292 +345,300 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatKalemDuzeltilsin,
       EditTipiEnum.ambarGirisi => yetkiController.transferAGKalemDuzeltilsin,
       EditTipiEnum.ambarCikisi => yetkiController.transferACKalemDuzeltilsin,
-      _ => false
+      _ => false,
     };
   }
 
   bool get barkod2Sor => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDATBarkod2Sor,
-        _ => false,
-      };
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDATBarkod2Sor,
+    _ => false,
+  };
 
   bool get barkodluUrunGirisi => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.satisFatBarkodUrunGirisi,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBarkodUrunGirisi,
-        EditTipiEnum.alisFatura => yetkiController.alisFatBarkodUrunGirisi,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBarkodUrunGirisi,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBarkodUrunGirisi,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAGBarkodUrunGirisi,
-        EditTipiEnum.ambarCikisi => yetkiController.transferACBarkodUrunGirisi,
-        _ => false
-      };
+    EditTipiEnum.satisFatura => yetkiController.satisFatBarkodUrunGirisi,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBarkodUrunGirisi,
+    EditTipiEnum.alisFatura => yetkiController.alisFatBarkodUrunGirisi,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBarkodUrunGirisi,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBarkodUrunGirisi,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAGBarkodUrunGirisi,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACBarkodUrunGirisi,
+    _ => false,
+  };
 
   bool get birim1denGelsin => switch (this) {
-        EditTipiEnum.musteri => yetkiController.siparisMSBirim1denKaydet,
-        EditTipiEnum.satici => yetkiController.siparisSSBirim1denKaydet,
-        EditTipiEnum.satisFatura => yetkiController.satisFatBirim1denKaydet,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBirim1denKaydet,
-        EditTipiEnum.alisFatura => yetkiController.alisFatBirim1denKaydet,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBirim1denKaydet,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAGBirim1Kaydet,
-        EditTipiEnum.ambarCikisi => yetkiController.transferACBirim1Kaydet,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBirim1Kaydet,
-        _ => false
-      };
+    EditTipiEnum.musteri => yetkiController.siparisMSBirim1denKaydet,
+    EditTipiEnum.satici => yetkiController.siparisSSBirim1denKaydet,
+    EditTipiEnum.satisFatura => yetkiController.satisFatBirim1denKaydet,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBirim1denKaydet,
+    EditTipiEnum.alisFatura => yetkiController.alisFatBirim1denKaydet,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBirim1denKaydet,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAGBirim1Kaydet,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACBirim1Kaydet,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatBirim1Kaydet,
+    _ => false,
+  };
 
   String get getPrintValue => switch (this) {
-        EditTipiEnum.musteri => "MusteriSiparisi",
-        EditTipiEnum.satici => "SaticiSiparisi",
-        EditTipiEnum.satisFatura => "SatisFaturasi",
-        EditTipiEnum.satisIrsaliye => "SatisIrsaliyesi",
-        EditTipiEnum.alisFatura => "AlisFaturasi",
-        EditTipiEnum.alisIrsaliye => "AlisIrsaliyesi",
-        EditTipiEnum.satisTeklifi => "SatisTeklifi",
-        EditTipiEnum.alisTalebi => "AlisTalebi",
-        EditTipiEnum.satisTalebi => "SatisTalebi",
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "DepoTransferi",
-        //TODO Aşağıdaki veriler yalnız onları düzelt.
-        EditTipiEnum.ambarGirisi => "AmbarGirisi",
-        EditTipiEnum.ambarCikisi => "AmbarCikisi",
-        //TODO
-        EditTipiEnum.isEmri ||
-        EditTipiEnum.altIsEmri ||
-        EditTipiEnum.isEmriTakip ||
-        EditTipiEnum.uretimSonuKaydi ||
-        EditTipiEnum.cari ||
-        EditTipiEnum.uretim ||
-        EditTipiEnum.paket ||
-        EditTipiEnum.belgesizIslem =>
-          ""
-      };
+    EditTipiEnum.musteri => "MusteriSiparisi",
+    EditTipiEnum.satici => "SaticiSiparisi",
+    EditTipiEnum.satisFatura => "SatisFaturasi",
+    EditTipiEnum.satisIrsaliye => "SatisIrsaliyesi",
+    EditTipiEnum.alisFatura => "AlisFaturasi",
+    EditTipiEnum.alisIrsaliye => "AlisIrsaliyesi",
+    EditTipiEnum.satisTeklifi => "SatisTeklifi",
+    EditTipiEnum.alisTalebi => "AlisTalebi",
+    EditTipiEnum.satisTalebi => "SatisTalebi",
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "DepoTransferi",
+    //TODO Aşağıdaki veriler yalnız onları düzelt.
+    EditTipiEnum.ambarGirisi => "AmbarGirisi",
+    EditTipiEnum.ambarCikisi => "AmbarCikisi",
+    //TODO
+    EditTipiEnum.isEmri ||
+    EditTipiEnum.altIsEmri ||
+    EditTipiEnum.isEmriTakip ||
+    EditTipiEnum.uretimSonuKaydi ||
+    EditTipiEnum.cari ||
+    EditTipiEnum.uretim ||
+    EditTipiEnum.paket ||
+    EditTipiEnum.belgesizIslem => "",
+  };
 
   bool get yazdirilsinMi => switch (this) {
-        EditTipiEnum.musteri => yetkiController.yazdirmaMusSip,
-        EditTipiEnum.satici => yetkiController.yazdirmaSaticiSip,
-        EditTipiEnum.satisFatura => yetkiController.yazdirmaSatisFat,
-        EditTipiEnum.satisIrsaliye => yetkiController.yazdirmaSatisIrs,
-        EditTipiEnum.alisFatura => yetkiController.yazdirmaAlisFat,
-        EditTipiEnum.alisIrsaliye => yetkiController.yazdirmaAlisIrs,
-        EditTipiEnum.satisTeklifi => yetkiController.yazdirmaSatisTeklifi,
-        EditTipiEnum.satisTalebi => yetkiController.yazdirmaSatisTalebi,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.yazdirmaDepoTransferi,
-        EditTipiEnum.ambarGirisi => yetkiController.yazdirmaAmbarGirisi,
-        EditTipiEnum.ambarCikisi => yetkiController.yazdirmaAmbarCikisi,
-        _ => false,
-      };
+    EditTipiEnum.musteri => yetkiController.yazdirmaMusSip,
+    EditTipiEnum.satici => yetkiController.yazdirmaSaticiSip,
+    EditTipiEnum.satisFatura => yetkiController.yazdirmaSatisFat,
+    EditTipiEnum.satisIrsaliye => yetkiController.yazdirmaSatisIrs,
+    EditTipiEnum.alisFatura => yetkiController.yazdirmaAlisFat,
+    EditTipiEnum.alisIrsaliye => yetkiController.yazdirmaAlisIrs,
+    EditTipiEnum.satisTeklifi => yetkiController.yazdirmaSatisTeklifi,
+    EditTipiEnum.satisTalebi => yetkiController.yazdirmaSatisTalebi,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.yazdirmaDepoTransferi,
+    EditTipiEnum.ambarGirisi => yetkiController.yazdirmaAmbarGirisi,
+    EditTipiEnum.ambarCikisi => yetkiController.yazdirmaAmbarCikisi,
+    _ => false,
+  };
 
   bool degistirilmeyecekAlanlar(String value) => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatDegistirilmeyecekAlanlar(value),
-        EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgDegistirilmeyecekAlanlar(value),
-        EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcDegistirilmeyecekAlanlar(value),
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDegistirilmeyecekAlanlar(value),
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsDegistirilmeyecekAlanlar(value),
-        EditTipiEnum.satisFatura => yetkiController.satisFatDegistirilmeyecekAlanlar(value),
-        EditTipiEnum.alisFatura => yetkiController.alisFatDegistirilmeyecekAlanlar(value),
-        _ => false
-      };
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.satisFatura => yetkiController.satisFatDegistirilmeyecekAlanlar(value),
+    EditTipiEnum.alisFatura => yetkiController.alisFatDegistirilmeyecekAlanlar(value),
+    _ => false,
+  };
 
-  bool get cariDovizTipiniKullan => satisMi ? yetkiController.satisCariDovizTipiniKullan : yetkiController.alisCariDovizTipiniKullan;
+  bool get cariDovizTipiniKullan =>
+      satisMi ? yetkiController.satisCariDovizTipiniKullan : yetkiController.alisCariDovizTipiniKullan;
 
   bool bosGecilmeyecekAlanlar(String value) => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatBosGecilmeyecekAlanlar(value),
-        EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgBosGecilmeyecekAlanlar(value),
-        EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcBosGecilmeyecekAlanlar(value),
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBosGecilmeyecekAlanlar(value),
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBosGecilmeyecekAlanlar(value),
-        EditTipiEnum.satisFatura => yetkiController.satisFatBosGecilmeyecekAlanlar(value),
-        EditTipiEnum.alisFatura => yetkiController.alisFatBosGecilmeyecekAlanlar(value),
-        _ => false
-      };
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.satisFatura => yetkiController.satisFatBosGecilmeyecekAlanlar(value),
+    EditTipiEnum.alisFatura => yetkiController.alisFatBosGecilmeyecekAlanlar(value),
+    _ => false,
+  };
 
   bool gizlenecekAlanlar(String value) => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatGizlenecekAlanlar(value),
-        EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgGizlenecekAlanlar(value),
-        EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcGizlenecekAlanlar(value),
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsGizlenecekAlanlar(value),
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsGizlenecekAlanlar(value),
-        EditTipiEnum.satisFatura => yetkiController.satisFatGizlenecekAlanlar(value),
-        EditTipiEnum.alisFatura => yetkiController.alisFatGizlenecekAlanlar(value),
-        _ => false
-      };
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatGizlenecekAlanlar(value),
+    EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgGizlenecekAlanlar(value),
+    EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcGizlenecekAlanlar(value),
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsGizlenecekAlanlar(value),
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsGizlenecekAlanlar(value),
+    EditTipiEnum.satisFatura => yetkiController.satisFatGizlenecekAlanlar(value),
+    EditTipiEnum.alisFatura => yetkiController.alisFatGizlenecekAlanlar(value),
+    _ => false,
+  };
 
   bool aciklamalarGorunecekMi(int value) => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatAciklamaAlanlari(value),
-        EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgAciklamaAlanlari(value),
-        EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcAciklamaAlanlari(value),
-        EditTipiEnum.satisFatura => yetkiController.satisFaturaAciklamaAlanlari(value),
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeAciklamaAlanlari(value),
-        EditTipiEnum.alisFatura => yetkiController.alisFaturaAciklamaAlanlari(value),
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyeAciklamaAlanlari(value),
-        EditTipiEnum.musteri => yetkiController.siparisMSAciklamaAlanlari(value),
-        EditTipiEnum.satisTeklifi => yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(value),
-        EditTipiEnum.alisTalebi => yetkiController.talepTeklifAlisTalebiAciklamaAlanlari(value),
-        EditTipiEnum.satici => true,
-        _ => false
-      };
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatAciklamaAlanlari(value),
+    EditTipiEnum.ambarGirisi => yetkiController.transferLokalAgAciklamaAlanlari(value),
+    EditTipiEnum.ambarCikisi => yetkiController.transferLokalAcAciklamaAlanlari(value),
+    EditTipiEnum.satisFatura => yetkiController.satisFaturaAciklamaAlanlari(value),
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyeAciklamaAlanlari(value),
+    EditTipiEnum.alisFatura => yetkiController.alisFaturaAciklamaAlanlari(value),
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyeAciklamaAlanlari(value),
+    EditTipiEnum.musteri => yetkiController.siparisMSAciklamaAlanlari(value),
+    EditTipiEnum.satisTeklifi => yetkiController.talepTeklifSatisTeklifiAciklamaAlanlari(value),
+    EditTipiEnum.alisTalebi => yetkiController.talepTeklifAlisTalebiAciklamaAlanlari(value),
+    EditTipiEnum.satici => true,
+    _ => false,
+  };
 
   bool get kopyalanabilirMi => switch (this) {
-        EditTipiEnum.musteri => yetkiController.kopyalaMusSip,
-        EditTipiEnum.alisTalebi => yetkiController.kopyalaAlisTalebi,
-        EditTipiEnum.ambarGirisi => yetkiController.kopyalaAmbarGirisi,
-        EditTipiEnum.ambarCikisi => yetkiController.kopyalaAmbarCikisi,
-        EditTipiEnum.cari ||
-        EditTipiEnum.satisFatura ||
-        EditTipiEnum.satisIrsaliye ||
-        EditTipiEnum.satisTeklifi ||
-        EditTipiEnum.satisTalebi ||
-        EditTipiEnum.depoTransferi ||
-        EditTipiEnum.olcumdenDepoTransferi ||
-        EditTipiEnum.satici ||
-        EditTipiEnum.alisFatura ||
-        EditTipiEnum.alisIrsaliye ||
-        EditTipiEnum.isEmri ||
-        EditTipiEnum.altIsEmri ||
-        EditTipiEnum.isEmriTakip ||
-        EditTipiEnum.uretimSonuKaydi ||
-        EditTipiEnum.uretim ||
-        EditTipiEnum.paket ||
-        EditTipiEnum.belgesizIslem =>
-          false
-      };
+    EditTipiEnum.musteri => yetkiController.kopyalaMusSip,
+    EditTipiEnum.alisTalebi => yetkiController.kopyalaAlisTalebi,
+    EditTipiEnum.ambarGirisi => yetkiController.kopyalaAmbarGirisi,
+    EditTipiEnum.ambarCikisi => yetkiController.kopyalaAmbarCikisi,
+    EditTipiEnum.cari ||
+    EditTipiEnum.satisFatura ||
+    EditTipiEnum.satisIrsaliye ||
+    EditTipiEnum.satisTeklifi ||
+    EditTipiEnum.satisTalebi ||
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi ||
+    EditTipiEnum.satici ||
+    EditTipiEnum.alisFatura ||
+    EditTipiEnum.alisIrsaliye ||
+    EditTipiEnum.isEmri ||
+    EditTipiEnum.altIsEmri ||
+    EditTipiEnum.isEmriTakip ||
+    EditTipiEnum.uretimSonuKaydi ||
+    EditTipiEnum.uretim ||
+    EditTipiEnum.paket ||
+    EditTipiEnum.belgesizIslem => false,
+  };
 
   bool get aciklamaDuzenlensinMi => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatAciklamaDuzenle,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAgAciklamaDuzenle,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcAciklamaDuzenle,
-        EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFaturaAciklamaDuzenle,
-        EditTipiEnum.alisFatura => yetkiController.malKabulAlisFaturaAciklamaDuzenle,
-        EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsaliyesiAciklamaDuzenle,
-        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsaliyesiAciklamaDuzenle,
-        _ => false
-      };
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatAciklamaDuzenle,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgAciklamaDuzenle,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcAciklamaDuzenle,
+    EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFaturaAciklamaDuzenle,
+    EditTipiEnum.alisFatura => yetkiController.malKabulAlisFaturaAciklamaDuzenle,
+    EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsaliyesiAciklamaDuzenle,
+    EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsaliyesiAciklamaDuzenle,
+    _ => false,
+  };
 
   bool get cariKoduDegisirMi => switch (this) {
-        EditTipiEnum.musteri => yetkiController.cariKoduDegistirMusSip,
-        EditTipiEnum.satici => yetkiController.cariKoduDegistirSaticiSip,
-        EditTipiEnum.satisFatura => yetkiController.cariKoduDegistirSaticiSip,
-        EditTipiEnum.satisIrsaliye => yetkiController.cariKoduDegistirSatisIrs,
-        EditTipiEnum.alisFatura => yetkiController.cariKoduDegistirAlisFat,
-        EditTipiEnum.alisIrsaliye => yetkiController.cariKoduDegistirAlisIrs,
-        EditTipiEnum.satisTeklifi => yetkiController.cariKoduDegistirSatisTeklifi,
-        EditTipiEnum.alisTalebi => yetkiController.cariKoduDegistirAlisTalebi,
-        EditTipiEnum.satisTalebi => yetkiController.cariKoduDegistirSatisTalebi,
-        _ => false,
-      };
+    EditTipiEnum.musteri => yetkiController.cariKoduDegistirMusSip,
+    EditTipiEnum.satici => yetkiController.cariKoduDegistirSaticiSip,
+    EditTipiEnum.satisFatura => yetkiController.cariKoduDegistirSaticiSip,
+    EditTipiEnum.satisIrsaliye => yetkiController.cariKoduDegistirSatisIrs,
+    EditTipiEnum.alisFatura => yetkiController.cariKoduDegistirAlisFat,
+    EditTipiEnum.alisIrsaliye => yetkiController.cariKoduDegistirAlisIrs,
+    EditTipiEnum.satisTeklifi => yetkiController.cariKoduDegistirSatisTeklifi,
+    EditTipiEnum.alisTalebi => yetkiController.cariKoduDegistirAlisTalebi,
+    EditTipiEnum.satisTalebi => yetkiController.cariKoduDegistirSatisTalebi,
+    _ => false,
+  };
 
   bool get belgeKapatabilirMi => switch (this) {
-        EditTipiEnum.musteri => yetkiController.belgeKapatMusSip,
-        EditTipiEnum.satici => yetkiController.belgeKapatSaticiSip,
-        _ => false,
-      };
+    EditTipiEnum.musteri => yetkiController.belgeKapatMusSip,
+    EditTipiEnum.satici => yetkiController.belgeKapatSaticiSip,
+    _ => false,
+  };
 
   bool get fiyatGrubuGorunsunMu => switch (this) {
-        EditTipiEnum.musteri => true,
-        EditTipiEnum.satisFatura => true,
-        EditTipiEnum.satisIrsaliye => true,
-        _ => false,
-      };
+    EditTipiEnum.musteri => true,
+    EditTipiEnum.satisFatura => true,
+    EditTipiEnum.satisIrsaliye => true,
+    _ => false,
+  };
 
   MasrafKoduRehberiModel? get varsayilanMasrafKodu => switch (this) {
-        EditTipiEnum.ambarGirisi => yetkiController.transferAgMasrafKodu,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcMasrafKodu,
-        _ => null,
-      };
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgMasrafKodu,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcMasrafKodu,
+    _ => null,
+  };
   bool get satisMi => switch (this) {
-        EditTipiEnum.musteri ||
-        EditTipiEnum.satisFatura ||
-        EditTipiEnum.satisIrsaliye ||
-        EditTipiEnum.satisTeklifi ||
-        EditTipiEnum.satisTalebi ||
-        EditTipiEnum.depoTransferi ||
-        EditTipiEnum.olcumdenDepoTransferi ||
-        EditTipiEnum.ambarCikisi =>
-          true,
-        EditTipiEnum.satici ||
-        EditTipiEnum.alisFatura ||
-        EditTipiEnum.alisIrsaliye ||
-        EditTipiEnum.alisTalebi ||
-        EditTipiEnum.ambarGirisi ||
-        EditTipiEnum.cari ||
-        EditTipiEnum.isEmri ||
-        EditTipiEnum.altIsEmri ||
-        EditTipiEnum.isEmriTakip ||
-        EditTipiEnum.uretimSonuKaydi ||
-        EditTipiEnum.uretim ||
-        EditTipiEnum.paket ||
-        EditTipiEnum.belgesizIslem =>
-          false
-      };
+    EditTipiEnum.musteri ||
+    EditTipiEnum.satisFatura ||
+    EditTipiEnum.satisIrsaliye ||
+    EditTipiEnum.satisTeklifi ||
+    EditTipiEnum.satisTalebi ||
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi ||
+    EditTipiEnum.ambarCikisi => true,
+    EditTipiEnum.satici ||
+    EditTipiEnum.alisFatura ||
+    EditTipiEnum.alisIrsaliye ||
+    EditTipiEnum.alisTalebi ||
+    EditTipiEnum.ambarGirisi ||
+    EditTipiEnum.cari ||
+    EditTipiEnum.isEmri ||
+    EditTipiEnum.altIsEmri ||
+    EditTipiEnum.isEmriTakip ||
+    EditTipiEnum.uretimSonuKaydi ||
+    EditTipiEnum.uretim ||
+    EditTipiEnum.paket ||
+    EditTipiEnum.belgesizIslem => false,
+  };
 
   bool get eIrsaliyeIsaretleyemesin => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatEIrsaliyeIsaretleyemesin,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcEIrsaliyeIsaretleyemesin,
-        _ => false
-      };
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatEIrsaliyeIsaretleyemesin,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcEIrsaliyeIsaretleyemesin,
+    _ => false,
+  };
 
-  bool get talepTeklifMi => switch (this) { EditTipiEnum.satisTeklifi || EditTipiEnum.alisTalebi || EditTipiEnum.satisTalebi => true, _ => false };
+  bool get talepTeklifMi => switch (this) {
+    EditTipiEnum.satisTeklifi || EditTipiEnum.alisTalebi || EditTipiEnum.satisTalebi => true,
+    _ => false,
+  };
 
   bool get fiyatDegistirilmesin => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFatFiyatDegistirilmesin,
-        EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatFiyatDegistirilmesin,
-        EditTipiEnum.alisFatura || EditTipiEnum.alisIrsaliye => yetkiController.malKabulFiyatDegistirilmesin,
-        EditTipiEnum.musteri || EditTipiEnum.satici => yetkiController.siparisFiyatDegistirilmesin(this),
-        EditTipiEnum.satisTalebi => yetkiController.satisTalebiFiyatDegistirilmesin,
-        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiFiyatDegistirilmesin,
-        _ => false,
-      };
+    EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFatFiyatDegistirilmesin,
+    EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatFiyatDegistirilmesin,
+    EditTipiEnum.alisFatura || EditTipiEnum.alisIrsaliye => yetkiController.malKabulFiyatDegistirilmesin,
+    EditTipiEnum.musteri || EditTipiEnum.satici => yetkiController.siparisFiyatDegistirilmesin(this),
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiFiyatDegistirilmesin,
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiFiyatDegistirilmesin,
+    _ => false,
+  };
 
   bool get fiyatGor => switch (this) {
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsFiyatGor,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsFiyatGor,
-        EditTipiEnum.depoTransferi => yetkiController.transferDatFiyatGor,
-        EditTipiEnum.ambarGirisi => yetkiController.transferACFiyatGor,
-        EditTipiEnum.ambarCikisi => yetkiController.transferACFiyatGor,
-        _ => true,
-      };
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsFiyatGor,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsFiyatGor,
+    EditTipiEnum.depoTransferi => yetkiController.transferDatFiyatGor,
+    EditTipiEnum.ambarGirisi => yetkiController.transferACFiyatGor,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACFiyatGor,
+    _ => true,
+  };
 
   bool get digerSekmesiGoster => switch (this) {
-        EditTipiEnum.musteri || EditTipiEnum.satici => yetkiController.siparisDigerSekmesiGoster(this == EditTipiEnum.musteri),
-        EditTipiEnum.satisFatura => yetkiController.satisFatDigerSekmesiGelsin,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDigerSekmesiGelsin,
-        EditTipiEnum.alisFatura => yetkiController.alisFatDigerSekmesiGelsin,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsDigerSekmesiGelsin,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatDigerSekmesiGoster,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAgDigerSekmesiGoster,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcDigerSekmesiGoster,
-        _ => true
-      };
+    EditTipiEnum.musteri ||
+    EditTipiEnum.satici => yetkiController.siparisDigerSekmesiGoster(this == EditTipiEnum.musteri),
+    EditTipiEnum.satisFatura => yetkiController.satisFatDigerSekmesiGelsin,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDigerSekmesiGelsin,
+    EditTipiEnum.alisFatura => yetkiController.alisFatDigerSekmesiGelsin,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsDigerSekmesiGelsin,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatDigerSekmesiGoster,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgDigerSekmesiGoster,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcDigerSekmesiGoster,
+    _ => true,
+  };
 
   bool get siparisBaglantisiCokluSecim => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.satisFaturasiFaturaSiparisBaglantisiCokluSecim,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyesiFaturaSiparisBaglantisiCokluSecim,
-        EditTipiEnum.alisFatura => yetkiController.alisFaturasiFaturaSiparisBaglantisiCokluSecim,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyesiFaturaSiparisBaglantisiCokluSecim,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSiparisBaglantisiCokluSecim,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiCokluSecim,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiCokluSecim,
-        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
-        _ => true,
-      };
+    EditTipiEnum.satisFatura => yetkiController.satisFaturasiFaturaSiparisBaglantisiCokluSecim,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyesiFaturaSiparisBaglantisiCokluSecim,
+    EditTipiEnum.alisFatura => yetkiController.alisFaturasiFaturaSiparisBaglantisiCokluSecim,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyesiFaturaSiparisBaglantisiCokluSecim,
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSiparisBaglantisiCokluSecim,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiCokluSecim,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiCokluSecim,
+    EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
+    _ => true,
+  };
 
   bool get siparisBaglantisiTumuSeciliGelsin => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.satisFaturasiSiparisBaglantisiTamamiSeciliGelsin,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin,
-        EditTipiEnum.alisFatura => yetkiController.alisFaturasiSiparisBaglantisiTamamiSeciliGelsin,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSiparisBaglantisiTamamiSeciliGelsin,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiTamamiSeciliGelsin,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiTamamiSeciliGelsin,
-        _ => false,
-      };
+    EditTipiEnum.satisFatura => yetkiController.satisFaturasiSiparisBaglantisiTamamiSeciliGelsin,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin,
+    EditTipiEnum.alisFatura => yetkiController.alisFaturasiSiparisBaglantisiTamamiSeciliGelsin,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin,
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSiparisBaglantisiTamamiSeciliGelsin,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiTamamiSeciliGelsin,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiTamamiSeciliGelsin,
+    _ => false,
+  };
   bool get siparisBaglantisiGoster => switch (this) {
-        EditTipiEnum.depoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,
-        EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisi,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisi,
-        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
-        _ => true,
-      };
+    EditTipiEnum.depoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatSiparisBaglantisi,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisi,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisi,
+    EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
+    _ => true,
+  };
 
   bool get siparisBaglantisiVarMi {
     if (transferMi) {
@@ -642,12 +662,13 @@ extension EditTipiEnumExtension on EditTipiEnum {
   }
 
   bool get siparisBaglantisiOpsiyonelMi => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatSiparisBaglantisiOpsiyonelMi,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiOpsiyonelMi,
-        EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiOpsiyonelMi,
-        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
-        _ => true
-      };
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferLokalDatSiparisBaglantisiOpsiyonelMi,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAgSiparisBaglantisiOpsiyonelMi,
+    EditTipiEnum.ambarCikisi => yetkiController.transferAcSiparisBaglantisiOpsiyonelMi,
+    EditTipiEnum.isEmri || EditTipiEnum.altIsEmri => true,
+    _ => true,
+  };
 
   bool get ekAlan1GorunsunMu {
     if (talepTeklifMi) {
@@ -672,73 +693,94 @@ extension EditTipiEnumExtension on EditTipiEnum {
   }
 
   bool belgeTipleriVarMi(int value) => switch (this) {
-        EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFatBelgeTipleri(value),
-        EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsBelgeTipleri(value),
-        EditTipiEnum.alisFatura => yetkiController.malKabulAlisFatBelgeTipleri(value),
-        EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsBelgeTipleri(value),
-        _ => false
-      };
+    EditTipiEnum.satisFatura => yetkiController.sevkiyatSatisFatBelgeTipleri(value),
+    EditTipiEnum.satisIrsaliye => yetkiController.sevkiyatSatisIrsBelgeTipleri(value),
+    EditTipiEnum.alisFatura => yetkiController.malKabulAlisFatBelgeTipleri(value),
+    EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsBelgeTipleri(value),
+    _ => false,
+  };
 
   bool get eklensinMi => switch (this) {
-        EditTipiEnum.musteri => yetkiController.siparisMSKaydet,
-        EditTipiEnum.satici => yetkiController.siparisSSKaydet,
-        EditTipiEnum.satisFatura => yetkiController.satisFatEkle,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsEkle,
-        EditTipiEnum.alisFatura => yetkiController.alisFatEkle,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsEkle,
-        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiEkle,
-        EditTipiEnum.alisTalebi => yetkiController.alisTalebiEkle,
-        EditTipiEnum.satisTalebi => yetkiController.satisTalebiEkle,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatEkle,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAGEkle,
-        EditTipiEnum.ambarCikisi => yetkiController.transferACEkle,
-        EditTipiEnum.cari => yetkiController.cariKartiYeniKayit, //TODO
-        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri || EditTipiEnum.isEmriTakip || EditTipiEnum.uretimSonuKaydi || EditTipiEnum.uretim || EditTipiEnum.paket || EditTipiEnum.belgesizIslem => false,
-      };
+    EditTipiEnum.musteri => yetkiController.siparisMSKaydet,
+    EditTipiEnum.satici => yetkiController.siparisSSKaydet,
+    EditTipiEnum.satisFatura => yetkiController.satisFatEkle,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsEkle,
+    EditTipiEnum.alisFatura => yetkiController.alisFatEkle,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsEkle,
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiEkle,
+    EditTipiEnum.alisTalebi => yetkiController.alisTalebiEkle,
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiEkle,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatEkle,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAGEkle,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACEkle,
+    EditTipiEnum.cari => yetkiController.cariKartiYeniKayit, //TODO
+    EditTipiEnum.isEmri ||
+    EditTipiEnum.altIsEmri ||
+    EditTipiEnum.isEmriTakip ||
+    EditTipiEnum.uretimSonuKaydi ||
+    EditTipiEnum.uretim ||
+    EditTipiEnum.paket ||
+    EditTipiEnum.belgesizIslem => false,
+  };
 
   bool get duzenlensinMi => switch (this) {
-        EditTipiEnum.musteri => yetkiController.siparisMSDuzelt,
-        EditTipiEnum.satici => yetkiController.siparisSSDuzelt,
-        EditTipiEnum.satisFatura => yetkiController.satisFatDuzenle,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDuzenle,
-        EditTipiEnum.alisFatura => yetkiController.alisFatDuzenle,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsDuzenle,
-        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiDuzenle,
-        EditTipiEnum.alisTalebi => yetkiController.alisTalebiDuzenle,
-        EditTipiEnum.satisTalebi => yetkiController.satisTalebiDuzenle,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatDuzenle,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAGDuzenle,
-        EditTipiEnum.ambarCikisi => yetkiController.transferACDuzenle,
-        EditTipiEnum.cari => yetkiController.cariKartiDuzenleme,
-        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri || EditTipiEnum.isEmriTakip || EditTipiEnum.uretimSonuKaydi || EditTipiEnum.uretim || EditTipiEnum.paket || EditTipiEnum.belgesizIslem => false
-      };
+    EditTipiEnum.musteri => yetkiController.siparisMSDuzelt,
+    EditTipiEnum.satici => yetkiController.siparisSSDuzelt,
+    EditTipiEnum.satisFatura => yetkiController.satisFatDuzenle,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsDuzenle,
+    EditTipiEnum.alisFatura => yetkiController.alisFatDuzenle,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsDuzenle,
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiDuzenle,
+    EditTipiEnum.alisTalebi => yetkiController.alisTalebiDuzenle,
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiDuzenle,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatDuzenle,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAGDuzenle,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACDuzenle,
+    EditTipiEnum.cari => yetkiController.cariKartiDuzenleme,
+    EditTipiEnum.isEmri ||
+    EditTipiEnum.altIsEmri ||
+    EditTipiEnum.isEmriTakip ||
+    EditTipiEnum.uretimSonuKaydi ||
+    EditTipiEnum.uretim ||
+    EditTipiEnum.paket ||
+    EditTipiEnum.belgesizIslem => false,
+  };
 
   bool get silinsinMi => switch (this) {
-        EditTipiEnum.musteri => yetkiController.siparisMSSil,
-        EditTipiEnum.satici => yetkiController.siparisSSSil,
-        EditTipiEnum.satisFatura => yetkiController.satisFatSil,
-        EditTipiEnum.satisIrsaliye => yetkiController.satisIrsSil,
-        EditTipiEnum.alisFatura => yetkiController.alisFatSil,
-        EditTipiEnum.alisIrsaliye => yetkiController.alisIrsSil,
-        EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiSil,
-        EditTipiEnum.alisTalebi => yetkiController.alisTalebiSil,
-        EditTipiEnum.satisTalebi => yetkiController.satisTalebiSil,
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSil,
-        EditTipiEnum.ambarGirisi => yetkiController.transferAGSil,
-        EditTipiEnum.ambarCikisi => yetkiController.transferACSil,
-        EditTipiEnum.cari => yetkiController.cariKartiSilme,
-        EditTipiEnum.isEmri || EditTipiEnum.altIsEmri || EditTipiEnum.isEmriTakip || EditTipiEnum.uretimSonuKaydi || EditTipiEnum.uretim || EditTipiEnum.paket || EditTipiEnum.belgesizIslem => false,
-      };
+    EditTipiEnum.musteri => yetkiController.siparisMSSil,
+    EditTipiEnum.satici => yetkiController.siparisSSSil,
+    EditTipiEnum.satisFatura => yetkiController.satisFatSil,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsSil,
+    EditTipiEnum.alisFatura => yetkiController.alisFatSil,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsSil,
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiSil,
+    EditTipiEnum.alisTalebi => yetkiController.alisTalebiSil,
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiSil,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatSil,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAGSil,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACSil,
+    EditTipiEnum.cari => yetkiController.cariKartiSilme,
+    EditTipiEnum.isEmri ||
+    EditTipiEnum.altIsEmri ||
+    EditTipiEnum.isEmriTakip ||
+    EditTipiEnum.uretimSonuKaydi ||
+    EditTipiEnum.uretim ||
+    EditTipiEnum.paket ||
+    EditTipiEnum.belgesizIslem => false,
+  };
 
   bool get transferMi => switch (this) {
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi || EditTipiEnum.ambarGirisi || EditTipiEnum.ambarCikisi => true,
-        _ => false,
-      };
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi ||
+    EditTipiEnum.ambarGirisi ||
+    EditTipiEnum.ambarCikisi => true,
+    _ => false,
+  };
 
   bool get siparisMi => switch (this) {
-        EditTipiEnum.musteri || EditTipiEnum.satici => true,
-        _ => false,
-      };
+    EditTipiEnum.musteri || EditTipiEnum.satici => true,
+    _ => false,
+  };
 
   int? get varsayilanBelgeTipi {
     final profilYetki = CacheManager.getAnaVeri?.userModel?.profilYetki;
@@ -747,23 +789,28 @@ extension EditTipiEnumExtension on EditTipiEnum {
     }
     const exceptionList = [0, null];
     return switch (this) {
-      EditTipiEnum.satisFatura => exceptionList.contains(profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi) ? 2 : profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi,
-      EditTipiEnum.satisIrsaliye => exceptionList.contains(profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi) ? 2 : profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi,
+      EditTipiEnum.satisFatura =>
+        exceptionList.contains(profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi)
+            ? 2
+            : profilYetki?.sevkiyatSatisFatVarsayilanBelgeTipi,
+      EditTipiEnum.satisIrsaliye =>
+        exceptionList.contains(profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi)
+            ? 2
+            : profilYetki?.sevkiyatSatisIrsVarsayilanBelgeTipi,
       _ => 2,
     };
   }
 
   bool get faturaMi => switch (this) {
-        EditTipiEnum.satisFatura ||
-        EditTipiEnum.satisIrsaliye ||
-        EditTipiEnum.alisFatura ||
-        EditTipiEnum.alisIrsaliye ||
-        EditTipiEnum.ambarGirisi ||
-        EditTipiEnum.ambarCikisi ||
-        EditTipiEnum.cari =>
-          true,
-        _ => false,
-      };
+    EditTipiEnum.satisFatura ||
+    EditTipiEnum.satisIrsaliye ||
+    EditTipiEnum.alisFatura ||
+    EditTipiEnum.alisIrsaliye ||
+    EditTipiEnum.ambarGirisi ||
+    EditTipiEnum.ambarCikisi ||
+    EditTipiEnum.cari => true,
+    _ => false,
+  };
 
   void setEditModel() {
     switch (this) {
@@ -826,40 +873,43 @@ extension EditTipiEnumExtension on EditTipiEnum {
   }
 
   String get getRoute => switch (this) {
-        EditTipiEnum.musteri => "/mainPage/siparisMusteriSiparisi",
-        EditTipiEnum.satici => "/mainPage/siparisSaticiSiparisi",
-        _ => "/mainPage/siparisSaticiSiparisi",
-      };
+    EditTipiEnum.musteri => "/mainPage/siparisMusteriSiparisi",
+    EditTipiEnum.satici => "/mainPage/siparisSaticiSiparisi",
+    _ => "/mainPage/siparisSaticiSiparisi",
+  };
 
   String get getListRoute => switch (this) {
-        EditTipiEnum.satisFatura => "/mainPage/sevkiyatSatisFaturasi",
-        EditTipiEnum.satisIrsaliye => "/mainPage/sevkiyatSatisIrsaliyesi",
-        EditTipiEnum.alisFatura => "/mainPage/malKabulAlisFaturasi",
-        EditTipiEnum.alisIrsaliye => "/mainPage/malKabulAlisIrsaliyesi",
-        _ => "",
-      };
+    EditTipiEnum.satisFatura => "/mainPage/sevkiyatSatisFaturasi",
+    EditTipiEnum.satisIrsaliye => "/mainPage/sevkiyatSatisIrsaliyesi",
+    EditTipiEnum.alisFatura => "/mainPage/malKabulAlisFaturasi",
+    EditTipiEnum.alisIrsaliye => "/mainPage/malKabulAlisIrsaliyesi",
+    _ => "",
+  };
 
   String get aciklamaDuzenleRoute => switch (this) {
-        EditTipiEnum.satisFatura => "/mainPage/faturaSatisFaturasiAciklamaDuzenle",
-        EditTipiEnum.satisIrsaliye => "/mainPage/faturaSatisIrsaliyesiAciklamaDuzenle",
-        EditTipiEnum.alisFatura => "/mainPage/faturaAlisFaturasiAciklamaDuzenle",
-        EditTipiEnum.alisIrsaliye => "/mainPage/faturaAlisIrsaliyesiAciklamaDuzenle",
-        EditTipiEnum.satisTeklifi => "/mainPage/talTekSatisTeklifAciklamaDuzenle",
-        EditTipiEnum.alisTalebi => "/mainPage/talTekAlisTalepAciklamaDuzenle",
-        EditTipiEnum.satisTalebi => "/mainPage/talTekSatisTalepAciklamaDuzenle",
-        EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "/mainPage/transferDepoAciklamaDuzenle",
-        EditTipiEnum.ambarGirisi => "/mainPage/transferAmbarGirisiAciklamaDuzenle",
-        EditTipiEnum.ambarCikisi => "/mainPage/transferAmbarCikisiAciklamaDuzenle",
-        _ => throw Exception("Açıklama düzenleme route bulunamadı"),
-      };
+    EditTipiEnum.satisFatura => "/mainPage/faturaSatisFaturasiAciklamaDuzenle",
+    EditTipiEnum.satisIrsaliye => "/mainPage/faturaSatisIrsaliyesiAciklamaDuzenle",
+    EditTipiEnum.alisFatura => "/mainPage/faturaAlisFaturasiAciklamaDuzenle",
+    EditTipiEnum.alisIrsaliye => "/mainPage/faturaAlisIrsaliyesiAciklamaDuzenle",
+    EditTipiEnum.satisTeklifi => "/mainPage/talTekSatisTeklifAciklamaDuzenle",
+    EditTipiEnum.alisTalebi => "/mainPage/talTekAlisTalepAciklamaDuzenle",
+    EditTipiEnum.satisTalebi => "/mainPage/talTekSatisTalepAciklamaDuzenle",
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "/mainPage/transferDepoAciklamaDuzenle",
+    EditTipiEnum.ambarGirisi => "/mainPage/transferAmbarGirisiAciklamaDuzenle",
+    EditTipiEnum.ambarCikisi => "/mainPage/transferAmbarCikisiAciklamaDuzenle",
+    _ => throw Exception("Açıklama düzenleme route bulunamadı"),
+  };
 
-  EditTipiEnum? getEditTipiEnumWithRawValue(String? rawValue) => EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
+  EditTipiEnum? getEditTipiEnumWithRawValue(String? rawValue) =>
+      EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == rawValue);
 
   String aciklamaLabel(int value) {
     final ParamModel? paramModel = CacheManager.getAnaVeri?.paramModel;
     String? label;
     if (talepTeklifMi) {
-      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == rawValue);
+      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhereOrNull(
+        (element) => element.belgeTipi == rawValue,
+      );
       switch (value) {
         case 1:
           label = talTekParam?.aciklar1;

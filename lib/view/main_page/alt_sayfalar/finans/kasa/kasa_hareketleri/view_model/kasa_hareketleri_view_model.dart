@@ -17,7 +17,8 @@ part "kasa_hareketleri_view_model.g.dart";
 
 final class KasaHareketleriViewModel = _KasaHareketleriViewModelBase with _$KasaHareketleriViewModel;
 
-abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin, ListableMixin<KasaIslemleriModel>, ScrollControllableMixin, PageableMixin {
+abstract class _KasaHareketleriViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<KasaIslemleriModel>, ScrollControllableMixin, PageableMixin {
   //* Observables
   @observable
   KasaIslemleriRequestModel kasaIslemleriRequestModel = KasaIslemleriRequestModel(menuKodu: "KASA_KHAR");
@@ -47,7 +48,8 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
   void setIsScrollDown(bool value) => isScrollDown = value;
 
   @action
-  void incrementSayfa() => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(sayfa: (kasaIslemleriRequestModel.sayfa ?? 0) + 1);
+  void incrementSayfa() =>
+      kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(sayfa: (kasaIslemleriRequestModel.sayfa ?? 0) + 1);
 
   @action
   void setKasaKodu(String? value) => kasaIslemleriRequestModel = kasaIslemleriRequestModel.copyWith(kasaKodu: value);
@@ -80,7 +82,11 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
   @action
   // return GenericResponseModel(success: true);
   Future<GenericResponseModel<NetworkManagerMixin>> deleteData(int? inckeyNo) async =>
-      await networkManager.dioPost<KasaIslemleriModel>(path: ApiUrls.deleteKasaHareket, bodyModel: KasaIslemleriModel(), queryParameters: {"INCKEYNO": inckeyNo});
+      await networkManager.dioPost<KasaIslemleriModel>(
+        path: ApiUrls.deleteKasaHareket,
+        bodyModel: KasaIslemleriModel(),
+        queryParameters: {"INCKEYNO": inckeyNo},
+      );
 
   @override
   @action
@@ -95,7 +101,10 @@ abstract class _KasaHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
         addObservableList(result.dataList);
       } else {
         setObservableList(result.dataList);
-        paramData = result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).asObservable();
+        paramData =
+            result.paramData
+                ?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value))
+                .asObservable();
       }
       if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {
         setDahaVarMi(true);

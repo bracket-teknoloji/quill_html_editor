@@ -49,43 +49,45 @@ final class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(
-              title: "Seri Bakiyeleri",
-              subtitle: (viewModel.seriList?.length ?? 0).toStringIfNotNull,
-            ),
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) => AppBarTitle(title: "Seri Bakiyeleri", subtitle: (viewModel.seriList?.length ?? 0).toStringIfNotNull),
+      ),
+    ),
+    body: Column(
+      children: [
+        CustomTextField(
+          labelText: "Stok",
+          controller: stokKoduController,
+          readOnly: true,
+          suffixMore: true,
+          onTap: () async {
+            final result = await Get.toNamed(
+              "/mainPage/stokListesiOzel",
+              arguments: StokBottomSheetModel(seriTakibiVar: "E"),
+            );
+            if (result is StokListesiModel) {
+              stokKoduController.text = result.stokKodu ?? "";
+              viewModel.setStokKodu(result.stokKodu ?? "");
+              await viewModel.getData();
+            }
+          },
+          suffix: IconButton(
+            onPressed: () async {
+              final result = await Get.toNamed("/qr");
+              if (result is String) {
+                stokKoduController.text = result;
+                viewModel.setStokKodu(result);
+                await viewModel.getData();
+              }
+            },
+            icon: const Icon(Icons.qr_code_scanner),
           ),
         ),
-        body: Column(
-          children: [
-            CustomTextField(
-              labelText: "Stok",
-              controller: stokKoduController,
-              readOnly: true,
-              suffixMore: true,
-              onTap: () async {
-                final result = await Get.toNamed("/mainPage/stokListesiOzel", arguments: StokBottomSheetModel(seriTakibiVar: "E"));
-                if (result is StokListesiModel) {
-                  stokKoduController.text = result.stokKodu ?? "";
-                  viewModel.setStokKodu(result.stokKodu ?? "");
-                  await viewModel.getData();
-                }
-              },
-              suffix: IconButton(
-                onPressed: () async {
-                  final result = await Get.toNamed("/qr");
-                  if (result is String) {
-                    stokKoduController.text = result;
-                    viewModel.setStokKodu(result);
-                    await viewModel.getData();
-                  }
-                },
-                icon: const Icon(Icons.qr_code_scanner),
-              ),
-            ),
-            Observer(
-              builder: (_) => SlideControllerWidget(
+        Observer(
+          builder:
+              (_) => SlideControllerWidget(
                 groupValue: viewModel.requestModel.bakiyeDurumu,
                 childrenTitleList: viewModel.bakiyeDurumuMap.keys.toList(),
                 childrenValueList: viewModel.bakiyeDurumuMap.values.toList(),
@@ -94,60 +96,62 @@ final class _SeriBakiyeleriViewState extends BaseState<SeriBakiyeleriView> {
                   await viewModel.getData();
                 },
               ),
-            ),
-            Expanded(
-              child: RefreshIndicator.adaptive(
-                onRefresh: viewModel.getData,
-                child: Observer(
-                  builder: (_) {
-                    if (viewModel.seriList == null) {
-                      return const ListViewShimmer();
-                    } else if (viewModel.seriList.ext.isNullOrEmpty) {
-                      return const Center(
-                        child: Text("Seri Bakiyeleri Bulunmamaktadır"),
-                      );
-                    }
-                    return ListView.builder(
-                      primary: false,
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      itemCount: viewModel.seriList?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        final SeriList seriModel = viewModel.seriList![index];
-                        return Card(
-                          color: UIHelper.getColorWithValue(seriModel.miktar ?? 0).withValues(alpha: 0.5),
-                          child: ListTile(
-                            title: Text(seriModel.seriNo ?? ""),
-                            subtitle: CustomLayoutBuilder(
-                              splitCount: 2,
-                              children: [
+        ),
+        Expanded(
+          child: RefreshIndicator.adaptive(
+            onRefresh: viewModel.getData,
+            child: Observer(
+              builder: (_) {
+                if (viewModel.seriList == null) {
+                  return const ListViewShimmer();
+                } else if (viewModel.seriList.ext.isNullOrEmpty) {
+                  return const Center(child: Text("Seri Bakiyeleri Bulunmamaktadır"));
+                }
+                return ListView.builder(
+                  primary: false,
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  itemCount: viewModel.seriList?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final SeriList seriModel = viewModel.seriList![index];
+                    return Card(
+                      color: UIHelper.getColorWithValue(seriModel.miktar ?? 0).withValues(alpha: 0.5),
+                      child: ListTile(
+                        title: Text(seriModel.seriNo ?? ""),
+                        subtitle: CustomLayoutBuilder(
+                          splitCount: 2,
+                          children:
+                              [
                                 if (seriModel.seri1 != null) Text("Seri 1: ${seriModel.seri1}"),
                                 if (seriModel.seri2 != null) Text("Seri 2: ${seriModel.seri2}"),
                                 if (seriModel.depoTanimi != null) Text("Depo: ${seriModel.depoTanimi}"),
                                 if (seriModel.hucreKodu != null) Text("Hücre: ${seriModel.hucreKodu}"),
                                 if (seriModel.miktar != null) Text("Miktar: ${seriModel.miktar.toIntIfDouble}"),
                               ].where((element) => element is! SizedBox).toList(),
-                            ),
-                          ),
-                        );
-                      },
+                        ),
+                      ),
                     );
                   },
-                ),
-              ),
+                );
+              },
             ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-        bottomNavigationBar: BottomBarWidget(
-          isScrolledDown: true,
+          ),
+        ),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+    bottomNavigationBar: BottomBarWidget(
+      isScrolledDown: true,
+      children: [
+        FooterButton(
           children: [
-            FooterButton(
-              children: [
-                Observer(
-                  builder: (_) => Text("Toplam Miktar: ${viewModel.seriList?.map((element) => element.miktar ?? 0).sum.toIntIfDouble ?? 0}"),
-                ),
-              ],
+            Observer(
+              builder:
+                  (_) => Text(
+                    "Toplam Miktar: ${viewModel.seriList?.map((element) => element.miktar ?? 0).sum.toIntIfDouble ?? 0}",
+                  ),
             ),
           ],
         ),
-      );
+      ],
+    ),
+  );
 }

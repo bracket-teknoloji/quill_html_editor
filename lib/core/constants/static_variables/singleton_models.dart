@@ -17,7 +17,12 @@ final class SingletonModels {
   //* Sayım PrintModel
   static PrintModel? _sayimPrintModel;
 
-  static PrintModel get sayimPrintModel => _sayimPrintModel ?? PrintModel(raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi, dicParams: DicParams(belgeTipi: "SAYI", belgeNo: ""));
+  static PrintModel get sayimPrintModel =>
+      _sayimPrintModel ??
+      PrintModel(
+        raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
+        dicParams: DicParams(belgeTipi: "SAYI", belgeNo: ""),
+      );
 
   static set sayimPrintModel(PrintModel? value) => _sayimPrintModel = value;
 

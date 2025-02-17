@@ -10,15 +10,13 @@ part "evraklar_request_model.g.dart";
 @unfreezed
 class EvraklarRequestModel with _$EvraklarRequestModel, NetworkManagerMixin {
   @JsonSerializable(fieldRename: FieldRename.pascal)
-  factory EvraklarRequestModel({
-    String? belgeTipi,
-    String? urlGetir,
-    String? belgeNo,
-  }) = _EvraklarRequestModel;
+  factory EvraklarRequestModel({String? belgeTipi, String? urlGetir, String? belgeNo}) = _EvraklarRequestModel;
 
-  factory EvraklarRequestModel.fromCekSenetListesiModel(CekSenetListesiModel model) => EvraklarRequestModel(belgeTipi: model.belgeTipi, urlGetir: "E", belgeNo: model.belgeNo);
+  factory EvraklarRequestModel.fromCekSenetListesiModel(CekSenetListesiModel model) =>
+      EvraklarRequestModel(belgeTipi: model.belgeTipi, urlGetir: "E", belgeNo: model.belgeNo);
 
-  factory EvraklarRequestModel.fromStokModel(BaseStokMixin model) => EvraklarRequestModel(belgeTipi: "STOK", urlGetir: "E", belgeNo: model.stokKodu);
+  factory EvraklarRequestModel.fromStokModel(BaseStokMixin model) =>
+      EvraklarRequestModel(belgeTipi: "STOK", urlGetir: "E", belgeNo: model.stokKodu);
   EvraklarRequestModel._();
 
   factory EvraklarRequestModel.fromJson(Map<String, dynamic> json) => _$EvraklarRequestModelFromJson(json);

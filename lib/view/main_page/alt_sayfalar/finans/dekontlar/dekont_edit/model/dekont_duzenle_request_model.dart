@@ -46,8 +46,8 @@ extension DekontDuzenleRequestModelExtensions on DekontDuzenleRequestModel {
 
   double get dovizKuru => (dovizTutari ?? 0) / (tutar ?? 1);
 
-// String? get shortPlasiyerAciklama => plasiyerAciklama?.split(" ").
-// create a shortPlasiyerAciklama string from plasiyerAciklama, first letter of each word without last word and last name
+  // String? get shortPlasiyerAciklama => plasiyerAciklama?.split(" ").
+  // create a shortPlasiyerAciklama string from plasiyerAciklama, first letter of each word without last word and last name
 
   // String? get shortPlasiyerAciklama => "${plasiyerAciklama?.split(" ").map((e) => e[0]).toList().join("")} ${plasiyerAciklama?.split(" ").last}";
 }

@@ -12,7 +12,12 @@ mixin _$MusteriSiparisiDurumRaporuViewModel on _MusteriSiparisiDurumRaporuViewMo
   Computed<PdfModel>? _$pdfModelComputed;
 
   @override
-  PdfModel get pdfModel => (_$pdfModelComputed ??= Computed<PdfModel>(() => super.pdfModel, name: '_MusteriSiparisiDurumRaporuViewModelBase.pdfModel')).value;
+  PdfModel get pdfModel =>
+      (_$pdfModelComputed ??= Computed<PdfModel>(
+            () => super.pdfModel,
+            name: '_MusteriSiparisiDurumRaporuViewModelBase.pdfModel',
+          ))
+          .value;
 
   late final _$dicParamsAtom = Atom(name: '_MusteriSiparisiDurumRaporuViewModelBase.dicParams', context: context);
 
@@ -29,7 +34,10 @@ mixin _$MusteriSiparisiDurumRaporuViewModel on _MusteriSiparisiDurumRaporuViewMo
     });
   }
 
-  late final _$futureControllerAtom = Atom(name: '_MusteriSiparisiDurumRaporuViewModelBase.futureController', context: context);
+  late final _$futureControllerAtom = Atom(
+    name: '_MusteriSiparisiDurumRaporuViewModelBase.futureController',
+    context: context,
+  );
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -44,11 +52,16 @@ mixin _$MusteriSiparisiDurumRaporuViewModel on _MusteriSiparisiDurumRaporuViewMo
     });
   }
 
-  late final _$_MusteriSiparisiDurumRaporuViewModelBaseActionController = ActionController(name: '_MusteriSiparisiDurumRaporuViewModelBase', context: context);
+  late final _$_MusteriSiparisiDurumRaporuViewModelBaseActionController = ActionController(
+    name: '_MusteriSiparisiDurumRaporuViewModelBase',
+    context: context,
+  );
 
   @override
   void setStokKodu(String? value) {
-    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(name: '_MusteriSiparisiDurumRaporuViewModelBase.setStokKodu');
+    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(
+      name: '_MusteriSiparisiDurumRaporuViewModelBase.setStokKodu',
+    );
     try {
       return super.setStokKodu(value);
     } finally {
@@ -58,7 +71,9 @@ mixin _$MusteriSiparisiDurumRaporuViewModel on _MusteriSiparisiDurumRaporuViewMo
 
   @override
   void setCariKodu(String? value) {
-    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(name: '_MusteriSiparisiDurumRaporuViewModelBase.setCariKodu');
+    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(
+      name: '_MusteriSiparisiDurumRaporuViewModelBase.setCariKodu',
+    );
     try {
       return super.setCariKodu(value);
     } finally {
@@ -68,7 +83,9 @@ mixin _$MusteriSiparisiDurumRaporuViewModel on _MusteriSiparisiDurumRaporuViewMo
 
   @override
   void setBelgeNo(String? value) {
-    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(name: '_MusteriSiparisiDurumRaporuViewModelBase.setBelgeNo');
+    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(
+      name: '_MusteriSiparisiDurumRaporuViewModelBase.setBelgeNo',
+    );
     try {
       return super.setBelgeNo(value);
     } finally {
@@ -78,7 +95,9 @@ mixin _$MusteriSiparisiDurumRaporuViewModel on _MusteriSiparisiDurumRaporuViewMo
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(name: '_MusteriSiparisiDurumRaporuViewModelBase.setFuture');
+    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(
+      name: '_MusteriSiparisiDurumRaporuViewModelBase.setFuture',
+    );
     try {
       return super.setFuture();
     } finally {
@@ -88,7 +107,9 @@ mixin _$MusteriSiparisiDurumRaporuViewModel on _MusteriSiparisiDurumRaporuViewMo
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(name: '_MusteriSiparisiDurumRaporuViewModelBase.resetFuture');
+    final _$actionInfo = _$_MusteriSiparisiDurumRaporuViewModelBaseActionController.startAction(
+      name: '_MusteriSiparisiDurumRaporuViewModelBase.resetFuture',
+    );
     try {
       return super.resetFuture();
     } finally {

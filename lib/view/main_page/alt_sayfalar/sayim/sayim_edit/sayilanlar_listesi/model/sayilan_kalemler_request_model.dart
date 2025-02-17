@@ -17,13 +17,14 @@ class SayilanKalemlerRequestModel with _$SayilanKalemlerRequestModel {
     @JsonKey(name: "ID") int? id,
   }) = _SayilanKalemlerRequestModel;
 
-  factory SayilanKalemlerRequestModel.fromJson(Map<String, dynamic> json) => _$SayilanKalemlerRequestModelFromJson(json);
+  factory SayilanKalemlerRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$SayilanKalemlerRequestModelFromJson(json);
 
   factory SayilanKalemlerRequestModel.fromSayimListesiModel(SayimListesiModel model) => SayilanKalemlerRequestModel(
-        depoKodu: model.depoList?.firstOrNull,
-        kullaniciAdi: model.kullanicilar,
-        filtreKodu: 3,
-        belgeNo: model.fisno,
-        id: model.id,
-      );
+    depoKodu: model.depoList?.firstOrNull,
+    kullaniciAdi: model.kullanicilar,
+    filtreKodu: 3,
+    belgeNo: model.fisno,
+    id: model.id,
+  );
 }

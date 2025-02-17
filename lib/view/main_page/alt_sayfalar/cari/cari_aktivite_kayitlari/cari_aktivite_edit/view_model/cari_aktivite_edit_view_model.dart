@@ -19,6 +19,11 @@ abstract class _CariAktiviteEditViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> saveCariAktivite() async {
     SingletonModels.setCariAktiviteListesi = SingletonModels.cariAktiviteListesi?..islemKodu = baseEditEnum.islemKodu;
-    return networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: SingletonModels.cariAktiviteListesi?.toJson(), showLoading: true);
+    return networkManager.dioPost(
+      path: ApiUrls.saveAktivite,
+      bodyModel: CariAktiviteListesiModel(),
+      data: SingletonModels.cariAktiviteListesi?.toJson(),
+      showLoading: true,
+    );
   }
 }

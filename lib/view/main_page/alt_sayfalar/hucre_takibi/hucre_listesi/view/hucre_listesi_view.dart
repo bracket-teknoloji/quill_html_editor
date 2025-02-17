@@ -43,73 +43,76 @@ final class _HucreListesiViewState extends BaseState<HucreListesiView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) => AppBarTitle(
               title: "Hücre Listesi",
               subtitle: (viewModel.filteredHucreListesi?.length ?? 0).toStringIfNotNull,
             ),
+      ),
+    ),
+    body: Column(
+      children: [
+        CustomTextField(
+          labelText: "Hücre giriniz",
+          controller: searchController,
+          onChanged: viewModel.setSearchText,
+          suffix: IconButton(
+            onPressed: () async {
+              final result = await Get.toNamed("qr");
+              if (result is String) {
+                searchController.text = result;
+                viewModel.setSearchText(result);
+              }
+            },
+            icon: const Icon(Icons.qr_code_scanner_outlined),
           ),
         ),
-        body: Column(
-          children: [
-            CustomTextField(
-              labelText: "Hücre giriniz",
-              controller: searchController,
-              onChanged: viewModel.setSearchText,
-              suffix: IconButton(
-                onPressed: () async {
-                  final result = await Get.toNamed("qr");
-                  if (result is String) {
-                    searchController.text = result;
-                    viewModel.setSearchText(result);
-                  }
-                },
-                icon: const Icon(Icons.qr_code_scanner_outlined),
-              ),
-            ),
-            Expanded(
-              child: Observer(
-                builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.filteredHucreListesi, itemBuilder: hucreCard),
-              ),
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+        Expanded(
+          child: Observer(
+            builder:
+                (_) => RefreshableListView(
+                  onRefresh: viewModel.getData,
+                  items: viewModel.filteredHucreListesi,
+                  itemBuilder: hucreCard,
+                ),
+          ),
+        ),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Card hucreCard(HucreListesiModel item) => Card(
-        child: ListTile(
-          onTap: () async {
-            if (widget.depoKodu != null) return Get.back(result: item);
-            if (yetkiController.yazdirmaHucre) {
-              await bottomSheetDialogManager.showBottomSheetDialog(
-                context,
-                title: item.hucreKodu ?? "",
-                children: [
-                  BottomSheetModel(
-                    title: loc.generalStrings.print,
-                    iconWidget: Icons.print_outlined,
-                    onTap: () {
-                      Get.back();
-                      return Get.toNamed("/mainPage/hucreYazdir", arguments: item);
-                    },
-                  ),
-                ],
-              );
-            }
-          },
-          title: Text(item.hucreKodu ?? ""),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    child: ListTile(
+      onTap: () async {
+        if (widget.depoKodu != null) return Get.back(result: item);
+        if (yetkiController.yazdirmaHucre) {
+          await bottomSheetDialogManager.showBottomSheetDialog(
+            context,
+            title: item.hucreKodu ?? "",
             children: [
-              Text("${item.depoKodu} - ${item.depoTanimi}"),
-              if (item.eksiyeDusebilir == true)
-                const Text(
-                  "Eksiye düşebilen hücre",
-                  style: TextStyle(color: ColorPalette.persianRed),
-                ),
+              BottomSheetModel(
+                title: loc.generalStrings.print,
+                iconWidget: Icons.print_outlined,
+                onTap: () {
+                  Get.back();
+                  return Get.toNamed("/mainPage/hucreYazdir", arguments: item);
+                },
+              ),
             ],
-          ),
-        ),
-      );
+          );
+        }
+      },
+      title: Text(item.hucreKodu ?? ""),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("${item.depoKodu} - ${item.depoTanimi}"),
+          if (item.eksiyeDusebilir == true)
+            const Text("Eksiye düşebilen hücre", style: TextStyle(color: ColorPalette.persianRed)),
+        ],
+      ),
+    ),
+  );
 }

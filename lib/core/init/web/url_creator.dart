@@ -5,15 +5,8 @@ final class XDPathUrlStrategy extends HashUrlStrategy {
   ///
   /// The [PlatformLocation] parameter is useful for testing to mock out browser
   /// interactions.
-  XDPathUrlStrategy([
-    super.platformLocation,
-  ]) : _basePath = stripTrailingSlash(
-          extractPathname(
-            checkBaseHref(
-              platformLocation.getBaseHref(),
-            ),
-          ),
-        );
+  XDPathUrlStrategy([super.platformLocation])
+    : _basePath = stripTrailingSlash(extractPathname(checkBaseHref(platformLocation.getBaseHref())));
 
   final String _basePath;
 

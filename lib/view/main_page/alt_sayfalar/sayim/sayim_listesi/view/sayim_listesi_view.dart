@@ -59,55 +59,46 @@ final class _SayimListesiViewState extends BaseState<SayimListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        floatingActionButton: fab(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), floatingActionButton: fab(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) => AppBarTitle(
-            title: "Sayım",
-            subtitle: (viewModel.sayimList?.length ?? 0).toString(),
-          ),
-        ),
-      );
+    title: Observer(
+      builder: (_) => AppBarTitle(title: "Sayım", subtitle: (viewModel.sayimList?.length ?? 0).toString()),
+    ),
+  );
 
   CustomFloatingActionButton? fab() {
     if (yetkiController.sayimEkle) {
-      return CustomFloatingActionButton(
-        isScrolledDown: true,
-        onPressed: filterBottomSheet,
-      );
+      return CustomFloatingActionButton(isScrolledDown: true, onPressed: filterBottomSheet);
     }
     return null;
   }
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: viewModel.getData,
-        child: Observer(
-          builder: (_) {
-            if (viewModel.sayimList == null) {
-              return const ListViewShimmer();
-            }
-            if (viewModel.sayimList?.isEmpty == true) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.dashboard_outlined, size: 100, color: Colors.grey.shade300),
-                    //TODO Bunları da refreshable list'e ekle
-                    const Text("Kayıt bulunamadı."),
-                    const Text("Size atanmış sayım yok veya Sayım emri oluşturulmamış"),
-                  ],
-                ),
-              );
-            }
-            return ListView.builder(
-              itemCount: viewModel.sayimList?.length ?? 0,
-              padding: UIHelper.lowPadding,
-              itemBuilder: (context, index) => SayimlarCard(
+    onRefresh: viewModel.getData,
+    child: Observer(
+      builder: (_) {
+        if (viewModel.sayimList == null) {
+          return const ListViewShimmer();
+        }
+        if (viewModel.sayimList?.isEmpty == true) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.dashboard_outlined, size: 100, color: Colors.grey.shade300),
+                //TODO Bunları da refreshable list'e ekle
+                const Text("Kayıt bulunamadı."),
+                const Text("Size atanmış sayım yok veya Sayım emri oluşturulmamış"),
+              ],
+            ),
+          );
+        }
+        return ListView.builder(
+          itemCount: viewModel.sayimList?.length ?? 0,
+          padding: UIHelper.lowPadding,
+          itemBuilder:
+              (context, index) => SayimlarCard(
                 model: viewModel.sayimList![index],
                 onChanged: (value) async {
                   if (value) {
@@ -115,10 +106,10 @@ final class _SayimListesiViewState extends BaseState<SayimListesiView> {
                   }
                 },
               ),
-            );
-          },
-        ),
-      );
+        );
+      },
+    ),
+  );
 
   Future<void> filterBottomSheet() async {
     if (viewModel.grupKoduList.ext.isNullOrEmpty) {

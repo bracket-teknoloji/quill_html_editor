@@ -12,10 +12,18 @@ final class CariVirmanViewModel = _CariVirmanViewModelBase with _$CariVirmanView
 
 abstract class _CariVirmanViewModelBase with Store, MobxNetworkMixin {
   @observable
-  TahsilatRequestModel requestModel = TahsilatRequestModel(yeniKayit: true, islemModulu: "B", tag: "DekontModel", dekontIslemTuru: "DCV");
+  TahsilatRequestModel requestModel = TahsilatRequestModel(
+    yeniKayit: true,
+    islemModulu: "B",
+    tag: "DekontModel",
+    dekontIslemTuru: "DCV",
+  );
 
   @computed
-  DateTime? get vadeGunu => requestModel.cariKodu == null && requestModel.vadeGunu != null ? null : DateTime.now().add(Duration(days: requestModel.vadeGunu ?? 0));
+  DateTime? get vadeGunu =>
+      requestModel.cariKodu == null && requestModel.vadeGunu != null
+          ? null
+          : DateTime.now().add(Duration(days: requestModel.vadeGunu ?? 0));
 
   @action
   void setTarih(DateTime? time) => requestModel = requestModel.copyWith(tarih: time);
@@ -54,6 +62,10 @@ abstract class _CariVirmanViewModelBase with Store, MobxNetworkMixin {
   void setHedefAciklama(String? aciklama) => requestModel = requestModel.copyWith(hedefAciklama: aciklama);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async =>
-      await networkManager.dioPost(path: ApiUrls.saveDekont, bodyModel: TahsilatRequestModel(), showLoading: true, data: requestModel.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(
+    path: ApiUrls.saveDekont,
+    bodyModel: TahsilatRequestModel(),
+    showLoading: true,
+    data: requestModel.toJson(),
+  );
 }

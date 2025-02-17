@@ -4,7 +4,8 @@ import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.da
 
 part "hareket_detayli_yapilandirma_raporu_view_model.g.dart";
 
-final class HareketDetayliYaslandirmaRaporuViewModel = _HareketDetayliYaslandirmaRaporuViewModelBase with _$HareketDetayliYaslandirmaRaporuViewModel;
+final class HareketDetayliYaslandirmaRaporuViewModel = _HareketDetayliYaslandirmaRaporuViewModelBase
+    with _$HareketDetayliYaslandirmaRaporuViewModel;
 
 abstract class _HareketDetayliYaslandirmaRaporuViewModelBase with Store {
   final List<String> bakiyeDurumuTitleList = ["Tahsil Edilecek", "Ödenecek"];

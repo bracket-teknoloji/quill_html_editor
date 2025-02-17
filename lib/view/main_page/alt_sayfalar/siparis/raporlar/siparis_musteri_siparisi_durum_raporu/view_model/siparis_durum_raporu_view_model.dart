@@ -23,12 +23,7 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
     "Stok Kodu (Artan)": "STOK_KODU_AZ",
     "Stok Kodu (Azalan)": "STOK_KODU_ZA",
   };
-  final Map<String, bool> gorunecekAlanlarMap = {
-    "Stok": true,
-    "Cari": true,
-    "Belge No": true,
-    "Tarih": true,
-  };
+  final Map<String, bool> gorunecekAlanlarMap = {"Stok": true, "Cari": true, "Belge No": true, "Tarih": true};
   final List<String?> karsilamaValueList = [null, "K", "A"];
   final List<String?> siparisValueList = [null, "K", "B"];
   late final EditTipiEnum editTipiEnum;
@@ -49,9 +44,7 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   @action
   void setKarsilanmaGroupValue(int value) {
     karsilanmaGroupValue = value + 1;
-    siparislerRequestModel = siparislerRequestModel.copyWith(
-      siparisKarsilanmaDurumu: karsilamaValueList[value],
-    );
+    siparislerRequestModel = siparislerRequestModel.copyWith(siparisKarsilanmaDurumu: karsilamaValueList[value]);
   }
 
   @observable
@@ -76,18 +69,18 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   ObservableList<KalemModel?>? kalemList;
 
   @computed
-  ObservableList<KalemModel?>? get kalemListComputed => kalemList
-      ?.where(
-        (element) => element?.stokAdi?.toUpperCase().contains(searchKey?.toUpperCase() ?? "") ?? false,
-      )
-      .toList()
-      .asObservable();
+  ObservableList<KalemModel?>? get kalemListComputed =>
+      kalemList
+          ?.where((element) => element?.stokAdi?.toUpperCase().contains(searchKey?.toUpperCase() ?? "") ?? false)
+          .toList()
+          .asObservable();
 
   @action
   void setKalemList(List<KalemModel?>? value) => kalemList = value?.asObservable();
 
   @action
-  void addKalemList(List<KalemModel?>? value) => kalemList = ((kalemList ?? []) + (value ?? [])).cast<KalemModel?>().asObservable();
+  void addKalemList(List<KalemModel?>? value) =>
+      kalemList = ((kalemList ?? []) + (value ?? [])).cast<KalemModel?>().asObservable();
 
   @action
   void setSiralama(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(siralama: value);
@@ -96,15 +89,18 @@ abstract class _SiparisDurumRaporuViewModelBase with Store {
   @action
   void setCariKodu(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(cariKodu: value);
   @action
-  void setTeslimCariKodu(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(teslimCariKodu: value);
+  void setTeslimCariKodu(String? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(teslimCariKodu: value);
   @action
   void setBelgeNo(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(belgeNo: value);
   @action
-  void setBaslamaTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(baslamaTarihi: value);
+  void setBaslamaTarihi(String? value) =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(baslamaTarihi: value);
   @action
   void setBitisTarihi(String? value) => siparislerRequestModel = siparislerRequestModel.copyWith(bitisTarihi: value);
   @action
-  void increaseSayfa() => siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: siparislerRequestModel.sayfa! + 1);
+  void increaseSayfa() =>
+      siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: siparislerRequestModel.sayfa! + 1);
   @action
   void resetSayfa() => siparislerRequestModel = siparislerRequestModel.copyWith(sayfa: 1);
 }

@@ -40,7 +40,8 @@ final class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Kasa Ekstre Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) =>
+      PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Kasa Ekstre Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -70,7 +71,10 @@ final class _KasaEkstreRaporuViewState extends BaseState<KasaEkstreRaporuView> {
               final result = await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
                 title: "Kasa Seçiniz",
-                children: List.generate(kasaList?.length ?? 0, (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index])),
+                children: List.generate(
+                  kasaList?.length ?? 0,
+                  (index) => BottomSheetModel(title: kasaList?[index].kasaTanimi ?? "", value: kasaList?[index]),
+                ),
               );
               if (result is KasaList) {
                 viewModel.setKasaKodu(result.kasaKodu);

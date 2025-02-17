@@ -68,10 +68,10 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
 
   @override
   Widget build(BuildContext context) => PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Lokal Depo Bakiye Raporu",
-        pdfData: viewModel.pdfModel,
-      );
+    filterBottomSheet: filterBottomSheet,
+    title: "Lokal Depo Bakiye Raporu",
+    pdfData: viewModel.pdfModel,
+  );
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -85,10 +85,11 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
             text: "Sıfır Tutar Hariç",
             isVertical: true,
             child: Observer(
-              builder: (_) => Switch.adaptive(
-                value: viewModel.sifirHaricValue,
-                onChanged: (value) => viewModel.setSifirHaric(value),
-              ),
+              builder:
+                  (_) => Switch.adaptive(
+                    value: viewModel.sifirHaricValue,
+                    onChanged: (value) => viewModel.setSifirHaric(value),
+                  ),
             ),
           ),
           Row(
@@ -100,10 +101,7 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    final result = await Get.toNamed(
-                      "/mainPage/stokListesi",
-                      arguments: true,
-                    );
+                    final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                     if (result != null) {
                       stokController.text = result.stokKodu ?? "";
                       viewModel.pdfModel.dicParams?.stokKodu = result.stokKodu ?? "";
@@ -135,19 +133,13 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
           CustomTextField(
             labelText: "Hariç Stok Grup Kodları",
             controller: haricStokGrupKodlariController,
-            suffix: IconButton(
-              icon: const Icon(Icons.info_outline),
-              onPressed: infoDialog,
-            ),
+            suffix: IconButton(icon: const Icon(Icons.info_outline), onPressed: infoDialog),
             onChanged: (p0) => viewModel.pdfModel.dicParams?.haricStokGrupKodlari = p0,
           ),
           CustomTextField(
             labelText: "Hariç Stok Kodları",
             controller: haricStokKodlariController,
-            suffix: IconButton(
-              icon: const Icon(Icons.info_outline),
-              onPressed: infoDialog,
-            ),
+            suffix: IconButton(icon: const Icon(Icons.info_outline), onPressed: infoDialog),
             onChanged: (p0) => viewModel.pdfModel.dicParams?.haricStokKodlari = p0,
           ),
           Row(
@@ -230,25 +222,18 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
   }
 
   void infoDialog() => dialogManager.showInfoDialog(
-        "Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03",
-      );
+    "Kodları noktalı Virgül (' ; ') ile ayırarak, aralarında boşluk bırakmadan yazınız.\nÖrnek: 01;02;03",
+  );
 
-  Future<String?> getGrupKodu(
-    int grupNo,
-    TextEditingController? controller,
-  ) async {
+  Future<String?> getGrupKodu(int grupNo, TextEditingController? controller) async {
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: -1);
     }
-    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList
-        .where((e) => e.grupNo == grupNo)
-        .map(
-          (e) => BottomSheetModel(
-            title: e.grupKodu ?? "",
-            value: e,
-          ),
-        )
-        .toList();
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList =
+        grupKodList
+            .where((e) => e.grupNo == grupNo)
+            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e))
+            .toList();
     // ignore: use_build_context_synchronously
     final result = await bottomSheetDialogManager.showBottomSheetDialog<BaseGrupKoduModel>(
       context,

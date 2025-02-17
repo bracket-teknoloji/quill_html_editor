@@ -5,7 +5,8 @@ import "package:picker/view/main_page/model/param_model.dart";
 
 part "transfer_mal_talebi_genel_view_model.g.dart";
 
-final class TransferMalTalebiGenelViewModel = _TransferMalTalebiGenelViewModelBase with _$TransferMalTalebiGenelViewModel;
+final class TransferMalTalebiGenelViewModel = _TransferMalTalebiGenelViewModelBase
+    with _$TransferMalTalebiGenelViewModel;
 
 abstract class _TransferMalTalebiGenelViewModelBase with Store {
   @observable
@@ -24,7 +25,8 @@ abstract class _TransferMalTalebiGenelViewModelBase with Store {
   void setHedefSube(SubeList? value) => setModel(model.copyWith(hedefSube: value?.subeKodu));
 
   @action
-  void setDepoKodu(DepoList? value) => setModel(model.copyWith(depoKodu: value?.depoKodu, depoTanimi: value?.depoTanimi));
+  void setDepoKodu(DepoList? value) =>
+      setModel(model.copyWith(depoKodu: value?.depoKodu, depoTanimi: value?.depoTanimi));
 
   @action
   void setIsEmri(IsEmirleriModel? value) => setModel(model.copyWith(belgeNo: value?.isemriNo));

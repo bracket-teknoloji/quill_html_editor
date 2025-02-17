@@ -18,7 +18,6 @@ mixin ScrollControllableMixin<T extends NetworkManagerMixin> on ListableMixin<T>
   set isScrollDown(bool value);
 
   @mustCallSuper
-
   /// Bu metod ile [ScrollController]'dan gelen [ScrollPosition] bilgisi alınır.
   /// [ScrollPosition] bilgisi ile [isScrollDown] değişkeni güncellenmektedir.
   /// Eğer bu metodu override edecekseniz, [super.changeScrollStatus] çağrısının yapılması gerekmektedir.

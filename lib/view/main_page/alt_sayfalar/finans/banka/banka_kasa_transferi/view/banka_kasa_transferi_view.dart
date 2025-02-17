@@ -123,7 +123,9 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                         (context, constraints) => Observer(
                           builder:
                               (_) => ToggleButtons(
-                                constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 4) / 2),
+                                constraints: BoxConstraints.expand(
+                                  width: (constraints.maxWidth - UIHelper.midSize - 4) / 2,
+                                ),
                                 isSelected: [viewModel.model.gc == "C", viewModel.model.gc == "G"],
                                 onPressed: (index) {
                                   final bool value = index == 0;
@@ -167,7 +169,9 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                     readOnly: true,
                     isMust: true,
                     onTap: () async {
-                      final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
+                      final DateTime? result = await dialogManager.showDateTimePicker(
+                        initialDate: viewModel.model.tarih,
+                      );
                       if (result != null) {
                         _tarihController.text = result.toDateString;
                         viewModel.setTarih(result);
@@ -198,7 +202,14 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             if (viewModel.model.dovizliMi || viewModel.bankaDovizliMi)
-                              Expanded(child: CustomTextField(labelText: "Döviz Tipi", controller: _dovizTipiController, readOnly: true, isMust: true)),
+                              Expanded(
+                                child: CustomTextField(
+                                  labelText: "Döviz Tipi",
+                                  controller: _dovizTipiController,
+                                  readOnly: true,
+                                  isMust: true,
+                                ),
+                              ),
                             if (viewModel.model.dovizliMi)
                               Expanded(
                                 child: CustomTextField(
@@ -210,8 +221,12 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                                   onChanged: (value) {
                                     viewModel
                                       ..setDovizTutari(value.toDoubleWithFormattedString)
-                                      ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
-                                    _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                      ..setTutar(
+                                        (viewModel.model.dovizTutari ?? 0) *
+                                            (_dovizKuruController.text.toDoubleWithFormattedString),
+                                      );
+                                    _tutarController.text =
+                                        viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                                   },
                                 ),
                               ),
@@ -231,14 +246,21 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             onChanged: (value) {
                               if (_dovizKuruController.text != "") {
-                                viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                                _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                viewModel.setDovizTutari(
+                                  (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                                );
+                                _dovizTutariController.text =
+                                    viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+                                    "";
                               } else {
                                 viewModel.setDovizTutari(null);
                                 _dovizTutariController.clear();
                               }
                             },
-                            suffix: IconButton(onPressed: () async => await getDovizDialog(), icon: const Icon(Icons.more_horiz_outlined)),
+                            suffix: IconButton(
+                              onPressed: () async => await getDovizDialog(),
+                              icon: const Icon(Icons.more_horiz_outlined),
+                            ),
                           ),
                         ),
                       Expanded(
@@ -251,8 +273,11 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                           onChanged: (value) {
                             viewModel.setTutar(value.toDoubleWithFormattedString);
                             if (viewModel.model.dovizliMi) {
-                              viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                              _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                              viewModel.setDovizTutari(
+                                (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                              );
+                              _dovizTutariController.text =
+                                  viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             } else {
                               viewModel.setDovizTutari(null);
                               _dovizTutariController.clear();
@@ -271,7 +296,15 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                           controller: _vadeGunuController,
                           keyboardType: TextInputType.number,
                           valueWidget: Observer(
-                            builder: (_) => viewModel.model.vadeGunu != null ? Text(DateTime.now().add(Duration(days: viewModel.model.vadeGunu ?? 0)).toDateString) : const SizedBox.shrink(),
+                            builder:
+                                (_) =>
+                                    viewModel.model.vadeGunu != null
+                                        ? Text(
+                                          DateTime.now()
+                                              .add(Duration(days: viewModel.model.vadeGunu ?? 0))
+                                              .toDateString,
+                                        )
+                                        : const SizedBox.shrink(),
                           ),
                           onChanged: (value) => viewModel.setVadeGunu(int.tryParse(value)),
                         ),
@@ -286,7 +319,10 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                             suffixMore: true,
                             valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                                context,
+                                viewModel.model.plasiyerKodu,
+                              );
                               if (result != null) {
                                 _plasiyerController.text = result.plasiyerAciklama ?? "";
                                 viewModel.setPlasiyerKodu(result.plasiyerKodu);
@@ -305,7 +341,10 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                       suffixMore: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                          context,
+                          viewModel.model.projeKodu,
+                        );
                         if (result != null) {
                           _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                           viewModel.setProjeKodu(result.projeKodu);
@@ -332,22 +371,26 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
         title: "Döviz Kuru",
         children: [
           BottomSheetModel(
-            title: "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effSatis,
             iconWidget: Icons.calculate_outlined,
           ),
@@ -356,10 +399,15 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
       if (result is double) {
         _dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
         if (_tutarController.text != "") {
-          viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-          _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+          viewModel.setDovizTutari(
+            (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+          );
+          _dovizTutariController.text =
+              viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         } else if (_dovizTutariController.text != "") {
-          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+          viewModel.setTutar(
+            (viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString),
+          );
           _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         }
       }
@@ -385,14 +433,22 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
   Future<void> getKasaListesi() async {
     final List<KasaList> list =
         parametreModel.kasaList
-            ?.where((element) => CacheManager.getAnaVeri?.userModel?.adminMi ?? CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.yetkiliKasalar?.contains(element.kasaKodu) ?? false)
+            ?.where(
+              (element) =>
+                  CacheManager.getAnaVeri?.userModel?.adminMi ??
+                  CacheManager.getAnaVeri?.userModel?.kullaniciYetki?.yetkiliKasalar?.contains(element.kasaKodu) ??
+                  false,
+            )
             .toList() ??
         [];
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Kasa Seçiniz",
       groupValue: viewModel.model.kasaKodu,
-      children: list.map((e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu)).toList(),
+      children:
+          list
+              .map((e) => BottomSheetModel(title: e.kasaTanimi ?? e.kasaKodu ?? "", value: e, groupValue: e.kasaKodu))
+              .toList(),
     );
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";

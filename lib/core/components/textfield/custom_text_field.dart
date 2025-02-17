@@ -59,13 +59,13 @@ final class CustomTextField extends StatefulWidget {
     this.onChanged,
     this.onClear,
     this.obscureText = false,
-  })  : isDateTime = true,
-        isFormattedString = false,
-        keyboardType = null,
-        maxLength = null,
-        suffixMore = false,
-        onSubmitted = null,
-        isTime = false;
+  }) : isDateTime = true,
+       isFormattedString = false,
+       keyboardType = null,
+       maxLength = null,
+       suffixMore = false,
+       onSubmitted = null,
+       isTime = false;
   final TextEditingController? controller;
   final String? labelText;
   final String? valueText;
@@ -116,167 +116,178 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
   Widget build(BuildContext context) => textFormField;
 
   Widget get textFormField => TextFieldTapRegion(
-        onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-        onTapInside: (event) {
-          //select all
+    onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+    onTapInside: (event) {
+      //select all
+    },
+    child: MouseRegion(
+      // onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
+      child: TextFormField(
+        maxLengthEnforcement: widget.maxLength != null ? MaxLengthEnforcement.truncateAfterCompositionEnds : null,
+        autofillHints: [
+          if (widget.keyboardType == TextInputType.emailAddress) AutofillHints.email,
+          if (widget.keyboardType == TextInputType.name) AutofillHints.name,
+          if (widget.keyboardType == TextInputType.visiblePassword) AutofillHints.password,
+          if (widget.keyboardType == TextInputType.phone) AutofillHints.telephoneNumber,
+          if (widget.keyboardType == TextInputType.streetAddress) AutofillHints.streetAddressLine1,
+          if (widget.keyboardType == TextInputType.url) AutofillHints.url,
+        ],
+        textInputAction: TextInputAction.next,
+        keyboardType: widget.keyboardType,
+        focusNode: widget.focusNode,
+        // autovalidateMode: AutovalidateMode.onUnfocus,
+        onTap: () async {
+          if (widget.onDateChange != null) {
+            widget.onDateChange!.call(
+              await dialogManager.showDateTimePicker(initialDate: widget.controller?.text.toDateTimeDDMMYYYY()),
+            );
+          }
+          if (widget.onTap != null) {
+            widget.onTap!();
+          } else {
+            //TODO Selection düzelt
+            if (widget.readOnly != true) {
+              // if (controller.selection.affinity == TextAffinity.upstream) {
+              //   controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.text.length, affinity: TextAffinity.downstream);
+              // } else {
+              //   controller.selection = TextSelection.collapsed(
+              //     offset: controller.text.length,
+              //   );
+              //   // controller.selection = controller.selection.copyWith(baseOffset: 0, extentOffset: controller.text.length);
+              // }
+            }
+          }
+          // FocusScope.of(context).requestFocus(widget.focusNode);
         },
-        child: MouseRegion(
-          // onExit: (PointerExitEvent event) => FocusManager.instance.primaryFocus?.unfocus(),
-          child: TextFormField(
-            maxLengthEnforcement: widget.maxLength != null ? MaxLengthEnforcement.truncateAfterCompositionEnds : null,
-            autofillHints: [
-              if (widget.keyboardType == TextInputType.emailAddress) AutofillHints.email,
-              if (widget.keyboardType == TextInputType.name) AutofillHints.name,
-              if (widget.keyboardType == TextInputType.visiblePassword) AutofillHints.password,
-              if (widget.keyboardType == TextInputType.phone) AutofillHints.telephoneNumber,
-              if (widget.keyboardType == TextInputType.streetAddress) AutofillHints.streetAddressLine1,
-              if (widget.keyboardType == TextInputType.url) AutofillHints.url,
-            ],
-            textInputAction: TextInputAction.next,
-            keyboardType: widget.keyboardType,
-            focusNode: widget.focusNode,
-            // autovalidateMode: AutovalidateMode.onUnfocus,
-            onTap: () async {
-              if (widget.onDateChange != null) {
-                widget.onDateChange!.call(await dialogManager.showDateTimePicker(initialDate: widget.controller?.text.toDateTimeDDMMYYYY()));
-              }
-              if (widget.onTap != null) {
-                widget.onTap!();
-              } else {
-                //TODO Selection düzelt
-                if (widget.readOnly != true) {
-                  // if (controller.selection.affinity == TextAffinity.upstream) {
-                  //   controller.selection = TextSelection(baseOffset: 0, extentOffset: controller.text.length, affinity: TextAffinity.downstream);
-                  // } else {
-                  //   controller.selection = TextSelection.collapsed(
-                  //     offset: controller.text.length,
-                  //   );
-                  //   // controller.selection = controller.selection.copyWith(baseOffset: 0, extentOffset: controller.text.length);
-                  // }
-                }
-              }
-              // FocusScope.of(context).requestFocus(widget.focusNode);
-            },
-            onChanged: widget.onChanged,
-            onFieldSubmitted: widget.onSubmitted,
-            inputFormatters: widget.isFormattedString == true ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter] : widget.inputFormatter,
-            // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
-            maxLength: widget.maxLength,
-            validator: (widget.enabled != false ? validator : null),
-            controller: controller,
-            obscureText: widget.obscureText,
-            readOnly: widget.readOnly ?? false,
-            decoration: InputDecoration(
-              enabled: widget.enabled ?? true,
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              errorStyle: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
-              errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: UIHelper.primaryColor.withValues(alpha: 0.7),
-                  width: 2,
-                ),
-                borderRadius: UIHelper.midBorderRadius,
-                gapPadding: 0,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: UIHelper.highBorderRadius,
-              ),
-              // border: ,
-              suffixIcon: widget.suffix != null || widget.isDateTime == true || widget.isTime == true || widget.suffixMore == true
+        onChanged: widget.onChanged,
+        onFieldSubmitted: widget.onSubmitted,
+        inputFormatters:
+            widget.isFormattedString == true
+                ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter]
+                : widget.inputFormatter,
+        // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
+        maxLength: widget.maxLength,
+        validator: (widget.enabled != false ? validator : null),
+        controller: controller,
+        obscureText: widget.obscureText,
+        readOnly: widget.readOnly ?? false,
+        decoration: InputDecoration(
+          enabled: widget.enabled ?? true,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          errorStyle: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: UIHelper.primaryColor.withValues(alpha: 0.7), width: 2),
+            borderRadius: UIHelper.midBorderRadius,
+            gapPadding: 0,
+          ),
+          border: OutlineInputBorder(borderRadius: UIHelper.highBorderRadius),
+          // border: ,
+          suffixIcon:
+              widget.suffix != null || widget.isDateTime == true || widget.isTime == true || widget.suffixMore == true
                   ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        if (widget.suffix != null) widget.suffix!,
-                        if (widget.onClear != null)
-                          Observer(
-                            builder: (_) => Visibility(
-                              visible: (viewModel.showClearButton) && (widget.isMust != true),
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      if (widget.suffix != null) widget.suffix!,
+                      if (widget.onClear != null)
+                        Observer(
+                          builder:
+                              (_) => Visibility(
+                                visible: (viewModel.showClearButton) && (widget.isMust != true),
+                                child: IconButton(
+                                  style: ButtonStyle(
+                                    padding: WidgetStateProperty.all(EdgeInsets.zero),
+                                    splashFactory: NoSplash.splashFactory,
+                                  ),
+                                  padding: EdgeInsets.zero,
+                                  constraints: const BoxConstraints(),
+                                  onPressed: () {
+                                    controller.clear();
+                                    widget.onClear!();
+                                    // viewModel.setShowClearButton(false);
+                                  },
+                                  icon: const Icon(Icons.close),
+                                ),
+                              ),
+                        ),
+                      if (widget.isDateTime == true)
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                          onPressed: widget.onTap,
+                          icon: const Icon(Icons.date_range_outlined),
+                          style: ButtonStyle(
+                            padding: WidgetStateProperty.all(EdgeInsets.zero),
+                            splashFactory: NoSplash.splashFactory,
+                          ),
+                        ),
+                      if (widget.isTime == true)
+                        IconButton(
+                          padding: EdgeInsets.zero,
+                          constraints: const BoxConstraints(),
+                          onPressed: widget.onTap,
+                          icon: const Icon(Icons.access_time_outlined),
+                          style: ButtonStyle(
+                            padding: WidgetStateProperty.all(EdgeInsets.zero),
+                            splashFactory: NoSplash.splashFactory,
+                          ),
+                        ),
+                      Observer(
+                        builder:
+                            (_) => Visibility(
+                              visible:
+                                  ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null) &&
+                                  widget.suffixMore == true,
                               child: IconButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: widget.onTap,
+                                icon: const Icon(Icons.more_horiz_outlined),
                                 style: ButtonStyle(
                                   padding: WidgetStateProperty.all(EdgeInsets.zero),
                                   splashFactory: NoSplash.splashFactory,
                                 ),
-                                padding: EdgeInsets.zero,
-                                constraints: const BoxConstraints(),
-                                onPressed: () {
-                                  controller.clear();
-                                  widget.onClear!();
-                                  // viewModel.setShowClearButton(false);
-                                },
-                                icon: const Icon(Icons.close),
                               ),
                             ),
-                          ),
-                        if (widget.isDateTime == true)
-                          IconButton(
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
-                            onPressed: widget.onTap,
-                            icon: const Icon(Icons.date_range_outlined),
-                            style: ButtonStyle(
-                              padding: WidgetStateProperty.all(EdgeInsets.zero),
-                              splashFactory: NoSplash.splashFactory,
-                            ),
-                          ),
-                        if (widget.isTime == true)
-                          IconButton(
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
-                            onPressed: widget.onTap,
-                            icon: const Icon(Icons.access_time_outlined),
-                            style: ButtonStyle(
-                              padding: WidgetStateProperty.all(EdgeInsets.zero),
-                              splashFactory: NoSplash.splashFactory,
-                            ),
-                          ),
-                        Observer(
-                          builder: (_) => Visibility(
-                            visible: ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null) && widget.suffixMore == true,
-                            child: IconButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: widget.onTap,
-                              icon: const Icon(Icons.more_horiz_outlined),
-                              style: ButtonStyle(
-                                padding: WidgetStateProperty.all(EdgeInsets.zero),
-                                splashFactory: NoSplash.splashFactory,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
+                      ),
+                    ],
+                  )
                   : null,
-              label: widget.labelText != null
+          label:
+              widget.labelText != null
                   ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text.rich(
-                          TextSpan(
-                            children: [
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(
+                              text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
+                              style:
+                                  (widget.enabled != false ? (widget.isMust ?? false) : false)
+                                      ? const TextStyle(color: UIHelper.primaryColor)
+                                      : ((widget.controller?.text == "")
+                                          ? TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.6))
+                                          : TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8))),
+                            ),
+                            if (widget.valueText != null)
                               TextSpan(
-                                text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
-                                style: (widget.enabled != false ? (widget.isMust ?? false) : false)
-                                    ? const TextStyle(color: UIHelper.primaryColor)
-                                    : ((widget.controller?.text == "")
-                                        ? TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.6))
-                                        : TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8))),
+                                text: " ${widget.valueText ?? ""}",
+                                style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.3), fontSize: 12),
                               ),
-                              if (widget.valueText != null) TextSpan(text: " ${widget.valueText ?? ""}", style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.3), fontSize: 12)),
-                              if (widget.descriptionWidget != null) widget.descriptionWidget!,
-                            ],
-                          ),
-                          // style: const TextStyle(fontSize: 15),
+                            if (widget.descriptionWidget != null) widget.descriptionWidget!,
+                          ],
                         ),
-                        // if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
-                        if (widget.valueWidget != null) Flexible(child: widget.valueWidget!),
-                      ],
-                    )
+                        // style: const TextStyle(fontSize: 15),
+                      ),
+                      // if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
+                      if (widget.valueWidget != null) Flexible(child: widget.valueWidget!),
+                    ],
+                  )
                   : null,
-            ),
-          ).paddingAll(UIHelper.lowSize),
         ),
-      );
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 
   String? validator(String? p0) {
     if (widget.validator != null) return widget.validator?.call(p0);

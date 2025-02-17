@@ -39,11 +39,7 @@ class UretimSonuKaydiEditModel with _$UretimSonuKaydiEditModel, NetworkManagerMi
 
 @unfreezed
 class EkAlanlar with _$EkAlanlar {
-  factory EkAlanlar({
-    String? ktAlan1,
-    String? ktAlan3,
-    String? ktAlan4,
-  }) = _EkAlanlar;
+  factory EkAlanlar({String? ktAlan1, String? ktAlan3, String? ktAlan4}) = _EkAlanlar;
   EkAlanlar._();
 
   factory EkAlanlar.fromJson(Map<String, dynamic> json) => _$EkAlanlarFromJson(json);

@@ -28,13 +28,16 @@ abstract class _DepoFarkRaporuViewModelBase with Store, MobxNetworkMixin {
   SayilanKalemlerRequestModel requestModel = SayilanKalemlerRequestModel();
 
   @computed
-  ObservableList<SayimListesiModel>? get filteredSayimListesi => sayimListesi
-      ?.where((element) => element.filtrele(filtreTuru))
-      .where(
-        (element) => element.stokAdi?.toLowerCase().contains(searchText.toLowerCase()) == true || element.stokKodu?.toLowerCase().contains(searchText.toLowerCase()) == true,
-      )
-      .toList()
-      .asObservable();
+  ObservableList<SayimListesiModel>? get filteredSayimListesi =>
+      sayimListesi
+          ?.where((element) => element.filtrele(filtreTuru))
+          .where(
+            (element) =>
+                element.stokAdi?.toLowerCase().contains(searchText.toLowerCase()) == true ||
+                element.stokKodu?.toLowerCase().contains(searchText.toLowerCase()) == true,
+          )
+          .toList()
+          .asObservable();
 
   @computed
   double get toplamDepoMiktari => filteredSayimListesi?.map((element) => element.stokBakiye ?? 0).sum ?? 0;
@@ -71,7 +74,11 @@ abstract class _DepoFarkRaporuViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     setSayimListesi(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getSayimKalemleri, bodyModel: SayimListesiModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getSayimKalemleri,
+      bodyModel: SayimListesiModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setSayimListesi(result.dataList);
     }

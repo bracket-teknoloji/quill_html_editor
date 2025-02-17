@@ -5,7 +5,8 @@ import "../../../../../siparis/base_siparis_edit/model/base_siparis_edit_model.d
 
 part "base_talep_teklif_kalemler_view_model.g.dart";
 
-final class BaseTalepTeklifKalemlerViewModel = BaseTalepTeklifKalemlerViewModelBase with _$BaseTalepTeklifKalemlerViewModel;
+final class BaseTalepTeklifKalemlerViewModel = BaseTalepTeklifKalemlerViewModelBase
+    with _$BaseTalepTeklifKalemlerViewModel;
 
 abstract class BaseTalepTeklifKalemlerViewModelBase with Store {
   @observable
@@ -20,9 +21,10 @@ abstract class BaseTalepTeklifKalemlerViewModelBase with Store {
 
   @action
   void updateKalemList() {
-    kalemList = List.generate(
-      BaseSiparisEditModel.instance.kalemList?.length ?? 0,
-      (index) => BaseSiparisEditModel.instance.kalemList?[index]?..sira = index + 1,
-    ).nullCheckWithGeneric.asObservable();
+    kalemList =
+        List.generate(
+          BaseSiparisEditModel.instance.kalemList?.length ?? 0,
+          (index) => BaseSiparisEditModel.instance.kalemList?[index]?..sira = index + 1,
+        ).nullCheckWithGeneric.asObservable();
   }
 }

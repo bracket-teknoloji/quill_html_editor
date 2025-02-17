@@ -33,84 +33,85 @@ final class _OturumlarViewState extends BaseState<OturumlarView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
+    appBar: AppBar(
+      title: Observer(
+        builder: (_) {
+          if (viewModel.isSearchBarOpen) {
+            return CustomAppBarTextField(onChanged: viewModel.setSearchText);
+          }
+          return AppBarTitle(title: "Oturumlar", subtitle: viewModel.filteredList?.length.toString() ?? "");
+        },
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            viewModel.changeSearchBarStatus();
+            if (!viewModel.isSearchBarOpen) {
+              viewModel.setSearchText("");
+            }
+          },
+          icon: Observer(
             builder: (_) {
-              if (viewModel.isSearchBarOpen) {
-                return CustomAppBarTextField(onChanged: viewModel.setSearchText);
-              }
-              return AppBarTitle(
-                title: "Oturumlar",
-                subtitle: viewModel.filteredList?.length.toString() ?? "",
-              );
+              if (viewModel.isSearchBarOpen) return const Icon(Icons.search_off_outlined);
+              return const Icon(Icons.search_outlined);
             },
           ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                viewModel.changeSearchBarStatus();
-                if (!viewModel.isSearchBarOpen) {
-                  viewModel.setSearchText("");
-                }
-              },
-              icon: Observer(
-                builder: (_) {
-                  if (viewModel.isSearchBarOpen) return const Icon(Icons.search_off_outlined);
-                  return const Icon(Icons.search_outlined);
-                },
-              ),
-            ),
-          ],
         ),
-        body: Observer(
-          builder: (_) => RefreshableListView(
+      ],
+    ),
+    body: Observer(
+      builder:
+          (_) => RefreshableListView(
             onRefresh: viewModel.getData,
             items: viewModel.filteredList,
-            itemBuilder: (item) => Card(
-              child: ListTile(
-                onTap: () async {
-                  await bottomSheetDialogManager.showBottomSheetDialog(
-                    context,
-                    title: item.kullaniciAdi ?? "",
-                    children: [
-                      BottomSheetModel(
-                        title: "Oturumu Kapat",
-                        iconWidget: Icons.logout_outlined,
-                        onTap: () async {
-                          Get.back();
-                          dialogManager.showAreYouSureDialog(() async {
-                            viewModel.logout(item);
-                            await viewModel.getData();
-                          });
-                        },
+            itemBuilder:
+                (item) => Card(
+                  child: ListTile(
+                    onTap: () async {
+                      await bottomSheetDialogManager.showBottomSheetDialog(
+                        context,
+                        title: item.kullaniciAdi ?? "",
+                        children: [
+                          BottomSheetModel(
+                            title: "Oturumu Kapat",
+                            iconWidget: Icons.logout_outlined,
+                            onTap: () async {
+                              Get.back();
+                              dialogManager.showAreYouSureDialog(() async {
+                                viewModel.logout(item);
+                                await viewModel.getData();
+                              });
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                    title: Text(
+                      "${item.kullaniciAdi ?? ""} (${item.adi ?? ""} ${item.soyadi ?? ""})",
+                      style: TextStyle(
+                        color: item.cihazKimligi == AccountModel.instance.cihazKimligi ? UIHelper.primaryColor : null,
                       ),
-                    ],
-                  );
-                },
-                title: Text(
-                  "${item.kullaniciAdi ?? ""} (${item.adi ?? ""} ${item.soyadi ?? ""})",
-                  style: TextStyle(color: item.cihazKimligi == AccountModel.instance.cihazKimligi ? UIHelper.primaryColor : null),
-                ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Kayıt Tarihi: ${item.girisTarihi?.toDateString}"),
-                    Text("Son Giriş Tarihi: ${item.sonKullanimTarihi?.toDateString}"),
-                    CustomLayoutBuilder(
-                      splitCount: 2,
-                      children: [
-                        Text("Marka: ${item.cihazMarkasi ?? ""}"),
-                        Text("Model: ${item.cihazModeli ?? ""}"),
-                        Text("Şirket: ${item.aktifVeritabani ?? ""}"),
-                        Text("Şube: ${item.aktifSubeKodu ?? "0"}"),
-                        Text("Uyg.Rev No: ${item.uygulamaSurumKodu ?? ""}"),
-                      ],
                     ),
-                  ],
-                ).paddingOnly(top: UIHelper.lowSize),
-              ),
-            ),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Kayıt Tarihi: ${item.girisTarihi?.toDateString}"),
+                        Text("Son Giriş Tarihi: ${item.sonKullanimTarihi?.toDateString}"),
+                        CustomLayoutBuilder(
+                          splitCount: 2,
+                          children: [
+                            Text("Marka: ${item.cihazMarkasi ?? ""}"),
+                            Text("Model: ${item.cihazModeli ?? ""}"),
+                            Text("Şirket: ${item.aktifVeritabani ?? ""}"),
+                            Text("Şube: ${item.aktifSubeKodu ?? "0"}"),
+                            Text("Uyg.Rev No: ${item.uygulamaSurumKodu ?? ""}"),
+                          ],
+                        ),
+                      ],
+                    ).paddingOnly(top: UIHelper.lowSize),
+                  ),
+                ),
           ),
-        ),
-      );
+    ),
+  );
 }

@@ -32,7 +32,8 @@ final class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuV
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Finansal Durum Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) =>
+      PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Finansal Durum Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -70,13 +71,14 @@ final class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuV
             },
           ),
           Observer(
-            builder: (_) => ElevatedButton(
-              onPressed: () {
-                viewModel.setFuture();
-                Get.back();
-              },
-              child: Text(loc.generalStrings.apply),
-            ).paddingAll(UIHelper.lowSize),
+            builder:
+                (_) => ElevatedButton(
+                  onPressed: () {
+                    viewModel.setFuture();
+                    Get.back();
+                  },
+                  child: Text(loc.generalStrings.apply),
+                ).paddingAll(UIHelper.lowSize),
           ),
         ],
       ),

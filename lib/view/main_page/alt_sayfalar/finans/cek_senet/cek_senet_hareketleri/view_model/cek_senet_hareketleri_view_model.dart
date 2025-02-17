@@ -20,12 +20,16 @@ abstract class _CekSenetHareketleriViewModelBase with Store, MobxNetworkMixin {
   void setCekSenetListesiModel(CekSenetListesiModel model) => cekSenetListesiModel = model;
 
   @action
-  void setCekSenetHareketleriListesi(List<CekSenetHareketleriModel> list) => cekSenetHareketleriListesi = list.asObservable();
+  void setCekSenetHareketleriListesi(List<CekSenetHareketleriModel> list) =>
+      cekSenetHareketleriListesi = list.asObservable();
 
   @action
   Future<void> getData() async {
-    final result = await networkManager
-        .dioGet(path: ApiUrls.getCekSenetLoglari, bodyModel: CekSenetHareketleriModel(), queryParameters: {"BelgeTipi": cekSenetListesiModel?.belgeTipi, "BelgeNo": cekSenetListesiModel?.belgeNo});
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getCekSenetLoglari,
+      bodyModel: CekSenetHareketleriModel(),
+      queryParameters: {"BelgeTipi": cekSenetListesiModel?.belgeTipi, "BelgeNo": cekSenetListesiModel?.belgeNo},
+    );
     if (result.isSuccess) {
       setCekSenetHareketleriListesi(result.dataList);
     }

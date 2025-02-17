@@ -6,11 +6,7 @@ part "genel_rehber_model.g.dart";
 
 @unfreezed
 class GenelRehberModel with _$GenelRehberModel, NetworkManagerMixin {
-  factory GenelRehberModel({
-    String? kodu,
-    String? aciklama,
-    String? adi,
-  }) = _GenelRehberModel;
+  factory GenelRehberModel({String? kodu, String? aciklama, String? adi}) = _GenelRehberModel;
   GenelRehberModel._();
 
   factory GenelRehberModel.fromJson(Map<String, dynamic> json) => _$GenelRehberModelFromJson(json);

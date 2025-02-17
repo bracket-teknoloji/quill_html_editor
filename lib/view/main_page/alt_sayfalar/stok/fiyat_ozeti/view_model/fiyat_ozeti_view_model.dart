@@ -20,7 +20,9 @@ abstract class _FiyatOzetiViewModelBase with Store, MobxNetworkMixin {
   List<String?>? get grupList => stokFiyatOzetiListesi?.map((e) => e.grup).toSet().toList();
 
   @computed
-  Map<String, List<StokFiyatOzetiModel>> get grupMap => {for (final group in grupList ?? []) group: stokFiyatOzetiListesi!.where((e) => e.grup == group).toList()};
+  Map<String, List<StokFiyatOzetiModel>> get grupMap => {
+    for (final group in grupList ?? []) group: stokFiyatOzetiListesi!.where((e) => e.grup == group).toList(),
+  };
 
   @action
   void setStokFiyatOzetiListesi(List<StokFiyatOzetiModel>? list) => stokFiyatOzetiListesi = list?.asObservable();
@@ -30,7 +32,11 @@ abstract class _FiyatOzetiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getStokFiyatOzeti, bodyModel: const StokFiyatOzetiModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getStokFiyatOzeti,
+      bodyModel: const StokFiyatOzetiModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (!result.isSuccess) return;
     setStokFiyatOzetiListesi(result.dataList);
   }

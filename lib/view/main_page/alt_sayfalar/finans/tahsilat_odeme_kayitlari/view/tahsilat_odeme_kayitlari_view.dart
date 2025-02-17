@@ -81,41 +81,42 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        // resizeToAvoidBottomInset: true,
-        // extendBody: true,
-        // extendBodyBehindAppBar: false,
-        appBar: appBar(),
-        floatingActionButton: fab(),
-        body: body(),
-        bottomNavigationBar: bottomAppBar(),
-      );
+    // resizeToAvoidBottomInset: true,
+    // extendBody: true,
+    // extendBodyBehindAppBar: false,
+    appBar: appBar(),
+    floatingActionButton: fab(),
+    body: body(),
+    bottomNavigationBar: bottomAppBar(),
+  );
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) {
-            if (viewModel.searchBar) {
-              return CustomAppBarTextField(
-                onChanged: (value) => viewModel.setSearchText(value),
-              );
-            } else {
-              return AppBarTitle(title: "Kayıtlar", subtitle: "${viewModel.getCariHareketleriListesi?.length ?? 0}");
-            }
-          },
+    title: Observer(
+      builder: (_) {
+        if (viewModel.searchBar) {
+          return CustomAppBarTextField(onChanged: (value) => viewModel.setSearchText(value));
+        } else {
+          return AppBarTitle(title: "Kayıtlar", subtitle: "${viewModel.getCariHareketleriListesi?.length ?? 0}");
+        }
+      },
+    ),
+    actions: [
+      IconButton(
+        onPressed: () => viewModel.changeSearchBar(),
+        icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+      ),
+      IconButton(
+        onPressed: filter,
+        icon: Observer(
+          builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? UIHelper.primaryColor : null),
         ),
-        actions: [
-          IconButton(
-            onPressed: () => viewModel.changeSearchBar(),
-            icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
-          ),
-          IconButton(
-            onPressed: filter,
-            icon: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.getAnyFilter ? UIHelper.primaryColor : null)),
-          ),
-        ],
-      );
+      ),
+    ],
+  );
 
   Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(
+    builder:
+        (_) => CustomFloatingActionButton(
           isScrolledDown: viewModel.isScrollDown,
           onPressed: () async {
             await dialogManager.showOdemeTahsilatGridViewDialog(
@@ -127,59 +128,66 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
             );
           },
         ),
-      );
+  );
 
   Column body() => Column(
-        children: [
-          RaporFiltreDateTimeBottomSheetView(
-            showBugunFirst: true,
-            filterOnChanged: (index) async {
-              viewModel
-                ..setBaslamaTarihi(baslangicTarihiController.text)
-                ..setBitisTarihi(bitisTarihiController.text);
-              await viewModel.resetPage();
-            },
-            baslangicTarihiController: baslangicTarihiController,
-            bitisTarihiController: bitisTarihiController,
-          ).paddingSymmetric(horizontal: UIHelper.lowSize),
-          Expanded(
-            child: RefreshIndicator.adaptive(
-              onRefresh: () async => await viewModel.resetPage(),
-              child: Observer(
-                builder: (_) => viewModel.getCariHareketleriListesi == null
-                    ? const Center(child: CircularProgressIndicator.adaptive())
-                    : viewModel.getCariHareketleriListesi.ext.isNullOrEmpty
+    children: [
+      RaporFiltreDateTimeBottomSheetView(
+        showBugunFirst: true,
+        filterOnChanged: (index) async {
+          viewModel
+            ..setBaslamaTarihi(baslangicTarihiController.text)
+            ..setBitisTarihi(bitisTarihiController.text);
+          await viewModel.resetPage();
+        },
+        baslangicTarihiController: baslangicTarihiController,
+        bitisTarihiController: bitisTarihiController,
+      ).paddingSymmetric(horizontal: UIHelper.lowSize),
+      Expanded(
+        child: RefreshIndicator.adaptive(
+          onRefresh: () async => await viewModel.resetPage(),
+          child: Observer(
+            builder:
+                (_) =>
+                    viewModel.getCariHareketleriListesi == null
+                        ? const Center(child: CircularProgressIndicator.adaptive())
+                        : viewModel.getCariHareketleriListesi.ext.isNullOrEmpty
                         ? const Center(child: Text("Veri bulunamadı"))
                         : ListView.builder(
-                            padding: UIHelper.lowPadding,
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            controller: _scrollController,
-                            itemCount: viewModel.getCariHareketleriListesi?.length,
-                            itemBuilder: (context, index) {
-                              final CariHareketleriModel item = viewModel.getCariHareketleriListesi![index];
-                              return TahsilatOdemeKayitlariCard(
-                                cariHareketleriModel: item,
-                                update: (value) async {
-                                  await viewModel.resetPage();
-                                },
-                              );
-                            },
-                          ),
-              ),
-            ),
+                          padding: UIHelper.lowPadding,
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          controller: _scrollController,
+                          itemCount: viewModel.getCariHareketleriListesi?.length,
+                          itemBuilder: (context, index) {
+                            final CariHareketleriModel item = viewModel.getCariHareketleriListesi![index];
+                            return TahsilatOdemeKayitlariCard(
+                              cariHareketleriModel: item,
+                              update: (value) async {
+                                await viewModel.resetPage();
+                              },
+                            );
+                          },
+                        ),
           ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 
   Observer bottomAppBar() => Observer(
-        builder: (_) => BottomBarWidget(
+    builder:
+        (_) => BottomBarWidget(
           isScrolledDown: viewModel.isScrollDown,
           children: [
             FooterButton(
               children: [
                 const Text("Tahsilat"),
                 Observer(
-                  builder: (_) => Text("${viewModel.toplamTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency", style: const TextStyle(color: ColorPalette.mantis)),
+                  builder:
+                      (_) => Text(
+                        "${viewModel.toplamTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        style: const TextStyle(color: ColorPalette.mantis),
+                      ),
                 ),
               ],
               onPressed: () {
@@ -195,10 +203,11 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
               children: [
                 const Text("Ödeme"),
                 Observer(
-                  builder: (_) => Text(
-                    "${viewModel.toplamOdeme.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                    style: const TextStyle(color: ColorPalette.persianRed),
-                  ),
+                  builder:
+                      (_) => Text(
+                        "${viewModel.toplamOdeme.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                        style: const TextStyle(color: ColorPalette.persianRed),
+                      ),
                 ),
               ],
               onPressed: () {
@@ -212,105 +221,109 @@ final class _TahsilatOdemeKayitlariViewState extends BaseState<TahsilatOdemeKayi
             ),
           ],
         ),
-      );
+  );
 
   Future<void> filter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc.generalStrings.filter, body: filterBody);
   }
 
   Widget get filterBody => Column(
-        children: [
-          Observer(
-            builder: (_) => SlideControllerWidget(
+    children: [
+      Observer(
+        builder:
+            (_) => SlideControllerWidget(
               childrenTitleList: viewModel.hesapTipiMap.keys.toList(),
               filterOnChanged: viewModel.setIslemTuru,
               childrenValueList: viewModel.hesapTipiMap.values.toList(),
               groupValue: viewModel.cariHareketleriRequestModel.ba,
             ),
-          ),
-          CustomTextField(
-            labelText: "Cari",
-            controller: cariController,
-            suffixMore: true,
-            readOnly: true,
-            valueWidget: Observer(
-              builder: (_) => Text(viewModel.cariHareketleriRequestModel.cariKodu ?? ""),
+      ),
+      CustomTextField(
+        labelText: "Cari",
+        controller: cariController,
+        suffixMore: true,
+        readOnly: true,
+        valueWidget: Observer(builder: (_) => Text(viewModel.cariHareketleriRequestModel.cariKodu ?? "")),
+        onTap: () async {
+          final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+          if (result is CariListesiModel) {
+            cariController.text = result.cariAdi ?? "";
+            viewModel.setCariKodu(result.cariKodu);
+          }
+        },
+      ),
+      CustomTextField(
+        labelText: "Hareket Türü",
+        controller: hareketTuruController,
+        suffixMore: true,
+        readOnly: true,
+        onTap: () async {
+          final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, String>>(
+            context,
+            title: "Hareket Türü",
+            groupValues: jsonDecode(viewModel.cariHareketleriRequestModel.arrHareketTuru ?? "[]"),
+            children: List.generate(
+              viewModel.hareketTuruMap.length,
+              (index) => BottomSheetModel(
+                title: viewModel.hareketTuruMap.keys.toList()[index],
+                value: viewModel.hareketTuruMap.entries.toList()[index],
+                groupValue: viewModel.hareketTuruMap.values.toList()[index],
+              ),
             ),
-            onTap: () async {
-              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-              if (result is CariListesiModel) {
-                cariController.text = result.cariAdi ?? "";
-                viewModel.setCariKodu(result.cariKodu);
-              }
-            },
-          ),
-          CustomTextField(
-            labelText: "Hareket Türü",
-            controller: hareketTuruController,
-            suffixMore: true,
-            readOnly: true,
-            onTap: () async {
-              final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, String>>(
-                context,
-                title: "Hareket Türü",
-                groupValues: jsonDecode(viewModel.cariHareketleriRequestModel.arrHareketTuru ?? "[]"),
-                children: List.generate(
-                  viewModel.hareketTuruMap.length,
-                  (index) => BottomSheetModel(
-                    title: viewModel.hareketTuruMap.keys.toList()[index],
-                    value: viewModel.hareketTuruMap.entries.toList()[index],
-                    groupValue: viewModel.hareketTuruMap.values.toList()[index],
-                  ),
-                ),
-              );
-              if (result != null) {
-                hareketTuruController.text = result.map((e) => e.key).toList().nullCheckWithGeneric.join(", ");
-                viewModel.setHareketTuru(result.map((e) => e.value).toList().nullCheckWithGeneric);
-              }
-            },
-          ),
-          if (yetkiController.plasiyerUygulamasiAcikMi)
-            CustomTextField(
-              labelText: "Plasiyer",
-              controller: plasiyerController,
-              suffixMore: true,
-              readOnly: true,
-              onTap: () async {
-                final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: jsonDecode(viewModel.cariHareketleriRequestModel.arrPlasiyerKodu ?? "[]"));
-                if (result != null) {
-                  plasiyerController.text = result.map((e) => e.plasiyerAciklama).toList().nullCheckWithGeneric.join(", ");
-                  viewModel.setPlasiyerKodu(result.map((e) => e.plasiyerKodu).toList().nullCheckWithGeneric);
-                }
+          );
+          if (result != null) {
+            hareketTuruController.text = result.map((e) => e.key).toList().nullCheckWithGeneric.join(", ");
+            viewModel.setHareketTuru(result.map((e) => e.value).toList().nullCheckWithGeneric);
+          }
+        },
+      ),
+      if (yetkiController.plasiyerUygulamasiAcikMi)
+        CustomTextField(
+          labelText: "Plasiyer",
+          controller: plasiyerController,
+          suffixMore: true,
+          readOnly: true,
+          onTap: () async {
+            final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
+              context,
+              groupValues: jsonDecode(viewModel.cariHareketleriRequestModel.arrPlasiyerKodu ?? "[]"),
+            );
+            if (result != null) {
+              plasiyerController.text = result.map((e) => e.plasiyerAciklama).toList().nullCheckWithGeneric.join(", ");
+              viewModel.setPlasiyerKodu(result.map((e) => e.plasiyerKodu).toList().nullCheckWithGeneric);
+            }
+          },
+        ),
+      Row(
+        children: [
+          Expanded(
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1)),
+              ),
+              onPressed: () {
+                viewModel.clearFilters();
+                plasiyerController.clear();
+                cariController.clear();
+                hareketTuruController.clear();
+                Get.back();
+                viewModel.resetPage();
               },
+              child: const Text("Temizle"),
             ),
-          Row(
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
-                  onPressed: () {
-                    viewModel.clearFilters();
-                    plasiyerController.clear();
-                    cariController.clear();
-                    hareketTuruController.clear();
-                    Get.back();
-                    viewModel.resetPage();
-                  },
-                  child: const Text("Temizle"),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.back();
-                    viewModel.resetPage();
-                  },
-                  child: Text(loc.generalStrings.apply),
-                ),
-              ),
-            ],
-          ).paddingAll(UIHelper.lowSize),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: ElevatedButton(
+              onPressed: () {
+                Get.back();
+                viewModel.resetPage();
+              },
+              child: Text(loc.generalStrings.apply),
+            ),
+          ),
         ],
-      ).paddingAll(UIHelper.lowSize);
+      ).paddingAll(UIHelper.lowSize),
+    ],
+  ).paddingAll(UIHelper.lowSize);
 }

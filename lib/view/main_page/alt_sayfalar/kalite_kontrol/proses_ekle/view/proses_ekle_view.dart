@@ -70,38 +70,42 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Proses ${widget.model.baseEditEnum?.getName}",
-            subtitle: "ID ${widget.model.model!.id.toStringIfNotNull}",
-          ),
-          actions: [
-            if (widget.model.model!.olculecekMi && !(widget.model.baseEditEnum?.goruntuleMi ?? false))
-              IconButton(
-                onPressed: () async {
-                  if (formKey.currentState!.validate()) {
-                    if (viewModel.ekleModel.olcumler
-                            ?.every((element) => ((element.deger ?? 0) >= (widget.model.model!.altSinir ?? 0)) && ((element.deger ?? 0) <= (widget.model.model!.ustSinir ?? 0))) ??
-                        false) {
-                      Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
-                      dialogManager.showSuccessSnackBar("Başarılı");
-                    } else {
-                      final result = await showOlcumSonucBilgileri();
-                      if (result != null) {
-                        Get.back(result: result);
-                      }
-                    }
+    appBar: AppBar(
+      title: AppBarTitle(
+        title: "Proses ${widget.model.baseEditEnum?.getName}",
+        subtitle: "ID ${widget.model.model!.id.toStringIfNotNull}",
+      ),
+      actions: [
+        if (widget.model.model!.olculecekMi && !(widget.model.baseEditEnum?.goruntuleMi ?? false))
+          IconButton(
+            onPressed: () async {
+              if (formKey.currentState!.validate()) {
+                if (viewModel.ekleModel.olcumler?.every(
+                      (element) =>
+                          ((element.deger ?? 0) >= (widget.model.model!.altSinir ?? 0)) &&
+                          ((element.deger ?? 0) <= (widget.model.model!.ustSinir ?? 0)),
+                    ) ??
+                    false) {
+                  Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler, sonuc: "K"));
+                  dialogManager.showSuccessSnackBar("Başarılı");
+                } else {
+                  final result = await showOlcumSonucBilgileri();
+                  if (result != null) {
+                    Get.back(result: result);
                   }
-                },
-                icon: const Icon(Icons.save_outlined),
-              ),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Observer(
-              builder: (_) => Column(
+                }
+              }
+            },
+            icon: const Icon(Icons.save_outlined),
+          ),
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        key: formKey,
+        child: Observer(
+          builder:
+              (_) => Column(
                 children: [
                   Card(
                     child: ListTile(
@@ -112,8 +116,14 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                           if (widget.model.model!.tolerans != null) Text("Tolerans: ${widget.model.model!.tolerans}"),
                           if (widget.model.model!.tur != null) Text("Tür: ${widget.model.model!.tur}"),
                           if (widget.model.model!.ekipman != null) Text("Ekipman: ${widget.model.model!.ekipman}"),
-                          if (widget.model.model!.altSinir != null) Text("Alt Sınır: ${widget.model.model!.altSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                          if (widget.model.model!.ustSinir != null) Text("Üst Sınır: ${widget.model.model!.ustSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                          if (widget.model.model!.altSinir != null)
+                            Text(
+                              "Alt Sınır: ${widget.model.model!.altSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
+                          if (widget.model.model!.ustSinir != null)
+                            Text(
+                              "Üst Sınır: ${widget.model.model!.ustSinir.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                            ),
                         ],
                       ),
                     ),
@@ -124,17 +134,26 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Observer(
-                            builder: (_) => CustomLayoutBuilder(
-                              splitCount: 2,
-                              children: [
-                                Text("Numune Sayısı: ${widget.model.model!.numuneMiktari}"),
-                                Text("Ortalama: ${viewModel.ortalamaDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                                Text("En Küçük: ${viewModel.enKucukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                                Text("En Büyük: ${viewModel.enBuyukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                              ],
-                            ),
+                            builder:
+                                (_) => CustomLayoutBuilder(
+                                  splitCount: 2,
+                                  children: [
+                                    Text("Numune Sayısı: ${widget.model.model!.numuneMiktari}"),
+                                    Text(
+                                      "Ortalama: ${viewModel.ortalamaDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                                    ),
+                                    Text(
+                                      "En Küçük: ${viewModel.enKucukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                                    ),
+                                    Text(
+                                      "En Büyük: ${viewModel.enBuyukDeger.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                                    ),
+                                  ],
+                                ),
                           ),
-                          Text("Açıklama: ${widget.model.model?.aciklama}").yetkiVarMi(widget.model.model?.aciklama != null),
+                          Text(
+                            "Açıklama: ${widget.model.model?.aciklama}",
+                          ).yetkiVarMi(widget.model.model?.aciklama != null),
                         ],
                       ),
                     ),
@@ -143,70 +162,94 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                   if (!widget.model.model!.olculecekMi) switchButton(),
                 ],
               ).paddingAll(UIHelper.lowSize),
-            ),
-          ),
         ),
-      );
+      ),
+    ),
+  );
 
   List<Widget> buildFormFields() => List.generate(
-        viewModel.ekleModel.numuneMiktari ?? 0,
-        (index) => CustomTextField(
-          labelText: "Numune ${index + 1}",
-          enabled: !(widget.model.baseEditEnum?.goruntuleMi ?? false),
-          controller: numuneControllers[index],
-          valueWidget: Observer(
-            builder: (_) {
-              final OlcumEkleDetayModel? olcum = viewModel.olcumler?[index];
-              return Text(
-                olcum?.deger == null || ((olcum?.deger ?? 0) >= (widget.model.model?.altSinir ?? 0) && (olcum?.deger ?? 0) <= (widget.model.model?.ustSinir ?? 0)) ? "" : "Aralık Dışında",
-                style: const TextStyle(color: ColorPalette.persianRed),
-              );
-            },
-          ),
-          isMust: true,
-          isFormattedString: true,
-          onChanged: (value) => viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: value.toDoubleWithFormattedString)),
-          keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
-        ),
-      );
+    viewModel.ekleModel.numuneMiktari ?? 0,
+    (index) => CustomTextField(
+      labelText: "Numune ${index + 1}",
+      enabled: !(widget.model.baseEditEnum?.goruntuleMi ?? false),
+      controller: numuneControllers[index],
+      valueWidget: Observer(
+        builder: (_) {
+          final OlcumEkleDetayModel? olcum = viewModel.olcumler?[index];
+          return Text(
+            olcum?.deger == null ||
+                    ((olcum?.deger ?? 0) >= (widget.model.model?.altSinir ?? 0) &&
+                        (olcum?.deger ?? 0) <= (widget.model.model?.ustSinir ?? 0))
+                ? ""
+                : "Aralık Dışında",
+            style: const TextStyle(color: ColorPalette.persianRed),
+          );
+        },
+      ),
+      isMust: true,
+      isFormattedString: true,
+      onChanged:
+          (value) => viewModel.setIndexedItem(index, OlcumEkleDetayModel(deger: value.toDoubleWithFormattedString)),
+      keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+    ),
+  );
 
   Row switchButton() => Row(
-        children: [
-          Expanded(
-            child: ElevatedButton(
-              onPressed: widget.model.baseEditEnum?.goruntuleMi == true
+    children: [
+      Expanded(
+        child: ElevatedButton(
+          onPressed:
+              widget.model.baseEditEnum?.goruntuleMi == true
                   ? () {}
                   : () {
-                      Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(), sonuc: "K"));
-                    },
-              style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorPalette.mantis)),
-              child: const Text("Onay"),
-            ).paddingAll(UIHelper.lowSize),
-          ).yetkiVarMi(!widget.model.isGoruntule || (widget.model.isGoruntule && viewModel.ekleModel.olcumler?.firstOrNull?.deger == 1)),
-          Expanded(
-            child: ElevatedButton(
-              onPressed: widget.model.baseEditEnum?.goruntuleMi == true
+                    Get.back(
+                      result: widget.model.model!.copyWith(
+                        olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 1).toList(),
+                        sonuc: "K",
+                      ),
+                    );
+                  },
+          style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorPalette.mantis)),
+          child: const Text("Onay"),
+        ).paddingAll(UIHelper.lowSize),
+      ).yetkiVarMi(
+        !widget.model.isGoruntule ||
+            (widget.model.isGoruntule && viewModel.ekleModel.olcumler?.firstOrNull?.deger == 1),
+      ),
+      Expanded(
+        child: ElevatedButton(
+          onPressed:
+              widget.model.baseEditEnum?.goruntuleMi == true
                   ? () {}
                   : () {
-                      Get.back(result: widget.model.model!.copyWith(olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(), sonuc: "R"));
-                    },
-              style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorPalette.persianRed)),
-              child: const Text("Ret"),
-            ).paddingAll(UIHelper.lowSize),
-          ).yetkiVarMi(!widget.model.isGoruntule || (widget.model.isGoruntule && viewModel.ekleModel.olcumler?.firstOrNull?.deger == 0)),
-        ],
-      );
+                    Get.back(
+                      result: widget.model.model!.copyWith(
+                        olcumler: viewModel.ekleModel.olcumler?.map((e) => e..deger = 0).toList(),
+                        sonuc: "R",
+                      ),
+                    );
+                  },
+          style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(ColorPalette.persianRed)),
+          child: const Text("Ret"),
+        ).paddingAll(UIHelper.lowSize),
+      ).yetkiVarMi(
+        !widget.model.isGoruntule ||
+            (widget.model.isGoruntule && viewModel.ekleModel.olcumler?.firstOrNull?.deger == 0),
+      ),
+    ],
+  );
 
   Future showOlcumSonucBilgileri() async => await bottomSheetDialogManager.showBottomSheetDialog(
-        context,
-        title: "Ölçüm Sonuç Bilgileri",
-        body: Form(
-          key: olcumSonucFormKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Observer(
-                builder: (_) => SlideControllerWidget(
+    context,
+    title: "Ölçüm Sonuç Bilgileri",
+    body: Form(
+      key: olcumSonucFormKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Observer(
+            builder:
+                (_) => SlideControllerWidget(
                   scroll: false,
                   title: "Sonuç Türü",
                   childrenTitleList: viewModel.sonucTuruTitleList,
@@ -219,30 +262,37 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                     }
                   },
                 ),
-              ),
-              CustomTextField(
-                labelText: "Operatör",
-                controller: operatorController,
-                readOnly: true,
-                isMust: true,
-                suffixMore: true,
-                onTap: () async {
-                  final result = await bottomSheetDialogManager.showOlcumOperatorBottomSheetDialog(context, viewModel.ekleModel.kayitOperator);
-                  if (result != null) {
-                    viewModel.setOperator(result.sicilno);
-                    operatorController.text = result.adiSoyadi ?? "";
-                  }
-                },
-              ),
-              Observer(
-                builder: (_) => CustomTextField(
+          ),
+          CustomTextField(
+            labelText: "Operatör",
+            controller: operatorController,
+            readOnly: true,
+            isMust: true,
+            suffixMore: true,
+            onTap: () async {
+              final result = await bottomSheetDialogManager.showOlcumOperatorBottomSheetDialog(
+                context,
+                viewModel.ekleModel.kayitOperator,
+              );
+              if (result != null) {
+                viewModel.setOperator(result.sicilno);
+                operatorController.text = result.adiSoyadi ?? "";
+              }
+            },
+          ),
+          Observer(
+            builder:
+                (_) => CustomTextField(
                   labelText: "Şartlı Kabul Türü",
                   controller: sartliKabulTuruController,
                   isMust: true,
                   readOnly: true,
                   suffixMore: true,
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showOlcumSartliKabullerBottomSheetDialog(context, viewModel.ekleModel.sartliKabulNedeni);
+                    final result = await bottomSheetDialogManager.showOlcumSartliKabullerBottomSheetDialog(
+                      context,
+                      viewModel.ekleModel.sartliKabulNedeni,
+                    );
                     if (result != null) {
                       viewModel.ekleModel.sartliKabulNedeniAciklama = result.tanimi ?? result.kodu;
                       viewModel.setSartliKabul(result.kodu);
@@ -250,23 +300,19 @@ final class _ProsesEkleViewState extends BaseState<ProsesEkleView> {
                     }
                   },
                 ).yetkiVarMi(viewModel.sartliKabulMu),
-              ),
-              CustomTextField(
-                labelText: "Açıklama",
-                controller: aciklamaController,
-                onChanged: viewModel.setAciklama,
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  if (olcumSonucFormKey.currentState?.validate() ?? false) {
-                    Get.back(result: viewModel.ekleModel..sonuc = viewModel.sonucTuruGroupValue);
-                    dialogManager.showSuccessSnackBar(loc.generalStrings.success);
-                  }
-                },
-                child: Text(loc.generalStrings.apply),
-              ),
-            ],
           ),
-        ),
-      );
+          CustomTextField(labelText: "Açıklama", controller: aciklamaController, onChanged: viewModel.setAciklama),
+          ElevatedButton(
+            onPressed: () async {
+              if (olcumSonucFormKey.currentState?.validate() ?? false) {
+                Get.back(result: viewModel.ekleModel..sonuc = viewModel.sonucTuruGroupValue);
+                dialogManager.showSuccessSnackBar(loc.generalStrings.success);
+              }
+            },
+            child: Text(loc.generalStrings.apply),
+          ),
+        ],
+      ),
+    ),
+  );
 }

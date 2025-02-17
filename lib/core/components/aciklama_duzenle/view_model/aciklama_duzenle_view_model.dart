@@ -67,5 +67,10 @@ abstract class AciklamaDuzenleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
-      await networkManager.dioPost<BaseSiparisEditModel>(path: ApiUrls.saveFatura, bodyModel: BaseSiparisEditModel(), data: editModel?.toJson(), showLoading: true);
+      await networkManager.dioPost<BaseSiparisEditModel>(
+        path: ApiUrls.saveFatura,
+        bodyModel: BaseSiparisEditModel(),
+        data: editModel?.toJson(),
+        showLoading: true,
+      );
 }

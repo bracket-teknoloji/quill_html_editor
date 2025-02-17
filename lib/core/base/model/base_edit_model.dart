@@ -2,13 +2,7 @@ import "../../constants/enum/base_edit_enum.dart";
 import "../../constants/enum/edit_tipi_enum.dart";
 
 final class BaseEditModel<T> {
-  BaseEditModel({
-    this.model,
-    this.baseEditEnum,
-    this.siradakiKod,
-    this.editTipiEnum,
-    this.belgeNo,
-  });
+  BaseEditModel({this.model, this.baseEditEnum, this.siradakiKod, this.editTipiEnum, this.belgeNo});
   T? model;
   BaseEditEnum? baseEditEnum;
   String? siradakiKod;

@@ -55,9 +55,7 @@ final class S {
 final class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   const AppLocalizationDelegate();
 
-  List<Locale> get supportedLocales => const <Locale>[
-        Locale.fromSubtags(languageCode: "en"),
-      ];
+  List<Locale> get supportedLocales => const <Locale>[Locale.fromSubtags(languageCode: "en")];
 
   @override
   bool isSupported(Locale locale) => _isSupported(locale);

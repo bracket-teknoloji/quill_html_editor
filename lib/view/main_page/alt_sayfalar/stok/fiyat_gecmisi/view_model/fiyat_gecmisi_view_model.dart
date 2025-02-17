@@ -29,10 +29,8 @@ abstract class _FiyatGecmisiViewModelBase with Store {
   void setDizaynId(int? value) => printModel = printModel.copyWith(dizaynId: value);
 
   @action
-  void setYaziciAdi(YaziciList? value) => printModel = printModel.copyWith(
-        yaziciAdi: value?.yaziciAdi,
-        yaziciTipi: value?.yaziciTipi,
-      );
+  void setYaziciAdi(YaziciList? value) =>
+      printModel = printModel.copyWith(yaziciAdi: value?.yaziciAdi, yaziciTipi: value?.yaziciTipi);
 
   @action
   void setDicParams(DicParams? value) => printModel = printModel.copyWith(dicParams: value);
@@ -42,12 +40,15 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     if (value.ext.isNullOrEmpty) {
       filteredModelList = modelList;
     } else {
-      filteredModelList = modelList
-          ?.where(
-            (element) => (element.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) || (element.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false),
-          )
-          .toList()
-          .asObservable();
+      filteredModelList =
+          modelList
+              ?.where(
+                (element) =>
+                    (element.stokAdi?.toLowerCase().contains(value.toLowerCase()) ?? false) ||
+                    (element.stokKodu?.toLowerCase().contains(value.toLowerCase()) ?? false),
+              )
+              .toList()
+              .asObservable();
     }
   }
 
@@ -80,14 +81,8 @@ abstract class _FiyatGecmisiViewModelBase with Store {
   final List<BottomSheetModel<String>> siralaTitleList = [
     BottomSheetModel(title: "Kayıt Tarihi (A-Z)", value: "TARIH_AZ"),
     BottomSheetModel(title: "Kayıt Tarihi (Z-A)", value: "TARIH_ZA"),
-    BottomSheetModel(
-      title: "Yazdırma Tarihi (A-Z)",
-      value: "YAZDIRMA_TARIHI_AZ",
-    ),
-    BottomSheetModel(
-      title: "Yazdırma Tarihi (Z-A)",
-      value: "YAZDIRMA_TARIHI_ZA",
-    ),
+    BottomSheetModel(title: "Yazdırma Tarihi (A-Z)", value: "YAZDIRMA_TARIHI_AZ"),
+    BottomSheetModel(title: "Yazdırma Tarihi (Z-A)", value: "YAZDIRMA_TARIHI_ZA"),
     BottomSheetModel(title: "Stok Kodu (A-Z)", value: "STOK_KODU_AZ"),
     BottomSheetModel(title: "Stok Kodu (Z-A)", value: "STOK_KODU_ZA"),
     BottomSheetModel(title: "Stok Adı (A-Z)", value: "STOK_ADI_AZ"),
@@ -102,11 +97,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     model.alisSatis = alisSatisDurumuMap.values.toList()[value];
   }
 
-  final Map<String, dynamic> alisSatisDurumuMap = {
-    "Tümü": "",
-    "Alış": "A",
-    "Satış": "S",
-  };
+  final Map<String, dynamic> alisSatisDurumuMap = {"Tümü": "", "Alış": "A", "Satış": "S"};
 
   @observable
   String yazdirmaGroupValue = "";
@@ -117,11 +108,7 @@ abstract class _FiyatGecmisiViewModelBase with Store {
     model.yazdirildi = yazdirmaDurumuMap.values.toList()[value];
   }
 
-  final Map<String, dynamic> yazdirmaDurumuMap = {
-    "Tümü": "",
-    "Yazdırılmış": "E",
-    "Yazdırılmadı": "H",
-  };
+  final Map<String, dynamic> yazdirmaDurumuMap = {"Tümü": "", "Yazdırılmış": "E", "Yazdırılmadı": "H"};
   @observable
   String fiyatTipiGroupValue = "";
 

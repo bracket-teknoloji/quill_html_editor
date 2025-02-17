@@ -9,9 +9,11 @@ import "package:picker/view/main_page/alt_sayfalar/finans/hizli_tahsilat_kayitla
 
 part "hizli_tahsilat_kayitlari_view_model.g.dart";
 
-final class HizliTahsilatKayitlariViewModel = _HizliTahsilatKayitlariViewModelBase with _$HizliTahsilatKayitlariViewModel;
+final class HizliTahsilatKayitlariViewModel = _HizliTahsilatKayitlariViewModelBase
+    with _$HizliTahsilatKayitlariViewModel;
 
-abstract class _HizliTahsilatKayitlariViewModelBase with Store, MobxNetworkMixin, ListableMixin<BankaHareketleriModel>, SearchableMixin {
+abstract class _HizliTahsilatKayitlariViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<BankaHareketleriModel>, SearchableMixin {
   @override
   @observable
   ObservableList<BankaHareketleriModel>? observableList;
@@ -25,15 +27,16 @@ abstract class _HizliTahsilatKayitlariViewModelBase with Store, MobxNetworkMixin
   bool isSearchBarOpen = false;
 
   @computed
-  ObservableList<BankaHareketleriModel>? get filteredObservableList => observableList
-      ?.where(
-        (element) =>
-            (element.cariAdi?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
-            (element.cariKodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
-            (element.belgeNo?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
-      )
-      .toList()
-      .asObservable();
+  ObservableList<BankaHareketleriModel>? get filteredObservableList =>
+      observableList
+          ?.where(
+            (element) =>
+                (element.cariAdi?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
+                (element.cariKodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
+                (element.belgeNo?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
+          )
+          .toList()
+          .asObservable();
 
   @override
   @action
@@ -68,7 +71,11 @@ abstract class _HizliTahsilatKayitlariViewModelBase with Store, MobxNetworkMixin
 
   @override
   Future<void> getData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.getHizliTahsilatlar, bodyModel: BankaHareketleriModel(), data: requestModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getHizliTahsilatlar,
+      bodyModel: BankaHareketleriModel(),
+      data: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
     }
@@ -76,7 +83,12 @@ abstract class _HizliTahsilatKayitlariViewModelBase with Store, MobxNetworkMixin
 
   @action
   Future<GenericResponseModel<BankaHareketleriModel>> deleteHizliTahsilat(int id) async {
-    final result = await networkManager.dioPost(path: ApiUrls.deleteHizliTahsilat, showLoading: true, bodyModel: BankaHareketleriModel(), data: {"ID": id});
+    final result = await networkManager.dioPost(
+      path: ApiUrls.deleteHizliTahsilat,
+      showLoading: true,
+      bodyModel: BankaHareketleriModel(),
+      data: {"ID": id},
+    );
     return result;
   }
 }

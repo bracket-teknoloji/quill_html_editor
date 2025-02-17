@@ -6,10 +6,7 @@ part "teklif_iste_model.g.dart";
 
 @freezed
 class TeklifIsteModel with _$TeklifIsteModel, NetworkManagerMixin {
-  const factory TeklifIsteModel({
-    String? tip,
-    String? mesaj,
-  }) = _TeklifIsteModel;
+  const factory TeklifIsteModel({String? tip, String? mesaj}) = _TeklifIsteModel;
 
   const TeklifIsteModel._();
 

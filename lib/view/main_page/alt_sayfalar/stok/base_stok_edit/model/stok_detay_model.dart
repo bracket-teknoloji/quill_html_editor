@@ -85,11 +85,8 @@ class SeriList extends HiveObject with _$SeriList, NetworkManagerMixin {
     @HiveField(24) String? aciklama1,
   }) = _SeriList;
 
-  factory SeriList.fromOlcumDatResponseModel(OlcumDatResponseModel model) => SeriList(
-        seriNo: model.seriNo,
-        stokKodu: model.stokKodu,
-        miktar: model.miktar,
-      );
+  factory SeriList.fromOlcumDatResponseModel(OlcumDatResponseModel model) =>
+      SeriList(seriNo: model.seriNo, stokKodu: model.stokKodu, miktar: model.miktar);
   @JsonSerializable(explicitToJson: true)
   SeriList._();
   factory SeriList.fromJson(Map<String, dynamic> json) => _$SeriListFromJson(json);

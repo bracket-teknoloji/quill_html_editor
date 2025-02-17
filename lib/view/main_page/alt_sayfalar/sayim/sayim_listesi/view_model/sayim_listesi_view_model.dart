@@ -36,7 +36,12 @@ abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<bool> postData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveSayim, bodyModel: SayimListesiModel(), data: filtreModel.toJson(), showLoading: true);
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveSayim,
+      bodyModel: SayimListesiModel(),
+      data: filtreModel.toJson(),
+      showLoading: true,
+    );
     return result.isSuccess;
   }
 
@@ -47,8 +52,16 @@ abstract class _SayimListesiViewModelBase with Store, MobxNetworkMixin {
     }
   }
 
-  List<BottomSheetModel<BaseGrupKoduModel>>? bottomSheetChildren<T>(int value) => grupKoduList
-      ?.where((element) => element.grupNo == value)
-      .map((e) => BottomSheetModel<BaseGrupKoduModel>(title: e.grupAdi ?? "", description: e.grupKodu, value: e, groupValue: e.grupKodu))
-      .toList();
+  List<BottomSheetModel<BaseGrupKoduModel>>? bottomSheetChildren<T>(int value) =>
+      grupKoduList
+          ?.where((element) => element.grupNo == value)
+          .map(
+            (e) => BottomSheetModel<BaseGrupKoduModel>(
+              title: e.grupAdi ?? "",
+              description: e.grupKodu,
+              value: e,
+              groupValue: e.grupKodu,
+            ),
+          )
+          .toList();
 }

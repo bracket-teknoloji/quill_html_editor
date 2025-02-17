@@ -88,127 +88,139 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
+    title: Observer(
+      builder: (_) {
+        if (viewModel.searchBar) {
+          return CustomTextField(
+            labelText: "Ara",
+            controller: searchBarController,
+            onChanged: (p0) => viewModel.setSearchKey(p0),
+            focusNode: focusNode,
+          );
+        }
+        return AppBarTitle(title: "${widget.editTipiEnum.getName} (${viewModel.kalemListComputed?.length ?? 0})");
+      },
+    ),
+    actions: [
+      IconButton(
+        onPressed: () {
+          viewModel.setSearchBar();
+          if (!viewModel.searchBar) {
+            viewModel.setSearchKey(null);
+            searchBarController.clear();
+          } else {
+            focusNode.requestFocus();
+          }
+        },
+        icon: Observer(
           builder: (_) {
             if (viewModel.searchBar) {
-              return CustomTextField(labelText: "Ara", controller: searchBarController, onChanged: (p0) => viewModel.setSearchKey(p0), focusNode: focusNode);
+              return const Icon(Icons.search_off_outlined);
             }
-            return AppBarTitle(title: "${widget.editTipiEnum.getName} (${viewModel.kalemListComputed?.length ?? 0})");
+            return const Icon(Icons.search_outlined);
           },
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              viewModel.setSearchBar();
-              if (!viewModel.searchBar) {
-                viewModel.setSearchKey(null);
-                searchBarController.clear();
-              } else {
-                focusNode.requestFocus();
-              }
-            },
-            icon: Observer(
-              builder: (_) {
-                if (viewModel.searchBar) {
-                  return const Icon(Icons.search_off_outlined);
-                }
-                return const Icon(Icons.search_outlined);
-              },
-            ),
-          ),
-        ],
-        bottom: AppBarPreferedSizedBottom(
-          children: [
-            AppBarButton(
-              onPressed: filterBottomSheet,
-              child: Text(loc.generalStrings.filter),
-            ),
-            AppBarButton(
-              child: Text(loc.generalStrings.sort),
-              onPressed: () async {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: loc.generalStrings.sort,
-                  children: List.generate(viewModel.siralaMap.length, (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index])),
-                );
-                if (result != null) {
-                  viewModel
-                    ..setSiralama(result)
-                    ..resetSayfa()
-                    ..setKalemList(null);
-                  getData();
-                }
-              },
-            ),
-            AppBarButton(
-              child: Text(loc.generalStrings.refresh),
-              onPressed: () {
-                viewModel.setKalemList(null);
-                getData();
-              },
-            ),
-          ],
+      ),
+    ],
+    bottom: AppBarPreferedSizedBottom(
+      children: [
+        AppBarButton(onPressed: filterBottomSheet, child: Text(loc.generalStrings.filter)),
+        AppBarButton(
+          child: Text(loc.generalStrings.sort),
+          onPressed: () async {
+            final result = await bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: loc.generalStrings.sort,
+              children: List.generate(
+                viewModel.siralaMap.length,
+                (index) => BottomSheetModel(
+                  title: viewModel.siralaMap.keys.toList()[index],
+                  value: viewModel.siralaMap.values.toList()[index],
+                ),
+              ),
+            );
+            if (result != null) {
+              viewModel
+                ..setSiralama(result)
+                ..resetSayfa()
+                ..setKalemList(null);
+              getData();
+            }
+          },
         ),
-      );
+        AppBarButton(
+          child: Text(loc.generalStrings.refresh),
+          onPressed: () {
+            viewModel.setKalemList(null);
+            getData();
+          },
+        ),
+      ],
+    ),
+  );
 
   Widget body() => RefreshIndicator.adaptive(
-        onRefresh: () async {
-          viewModel
-            ..setKalemList(null)
-            ..resetSayfa();
-          getData();
-        },
-        child: Observer(
-          builder: (_) => viewModel.kalemListComputed.ext.isNullOrEmpty
-              ? viewModel.kalemListComputed != null
-                  ? const Center(child: Text("Sonuç Bulunamadı."))
-                  : const Center(child: CircularProgressIndicator.adaptive())
-              : ListView.builder(
-                  itemCount: (viewModel.kalemListComputed?.length ?? 0) + 1,
-                  itemBuilder: (context, index) {
-                    if (index != viewModel.kalemListComputed?.length) {
-                      final KalemModel? kalemModel = viewModel.kalemListComputed?[index];
-                      return siparisDurumListTile(kalemModel, context);
-                    }
-                    return Observer(builder: (_) => Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive())));
-                  },
-                ),
-        ),
-      );
+    onRefresh: () async {
+      viewModel
+        ..setKalemList(null)
+        ..resetSayfa();
+      getData();
+    },
+    child: Observer(
+      builder:
+          (_) =>
+              viewModel.kalemListComputed.ext.isNullOrEmpty
+                  ? viewModel.kalemListComputed != null
+                      ? const Center(child: Text("Sonuç Bulunamadı."))
+                      : const Center(child: CircularProgressIndicator.adaptive())
+                  : ListView.builder(
+                    itemCount: (viewModel.kalemListComputed?.length ?? 0) + 1,
+                    itemBuilder: (context, index) {
+                      if (index != viewModel.kalemListComputed?.length) {
+                        final KalemModel? kalemModel = viewModel.kalemListComputed?[index];
+                        return siparisDurumListTile(kalemModel, context);
+                      }
+                      return Observer(
+                        builder:
+                            (_) => Visibility(
+                              visible: viewModel.dahaVarMi,
+                              child: const Center(child: CircularProgressIndicator.adaptive()),
+                            ),
+                      );
+                    },
+                  ),
+    ),
+  );
 
   Card siparisDurumListTile(KalemModel? kalemModel, BuildContext context) => Card(
-        child: ListTile(
-          title: Column(
-            children: [
-              Text(kalemModel?.stokAdi ?? ""),
-            ],
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(kalemModel?.cariAdi ?? ""),
-              if (viewModel.gorunecekAlanlarMap["Belge No"] ?? false) Text(kalemModel?.belgeNo ?? ""),
-              if (viewModel.gorunecekAlanlarMap["Stok"] ?? false) Text("Stok kodu: ${kalemModel?.stokKodu ?? ""}"),
-              Text(kalemModel?.cariKodu ?? ""),
-              Wrap(
-                children: [
+    child: ListTile(
+      title: Column(children: [Text(kalemModel?.stokAdi ?? "")]),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(kalemModel?.cariAdi ?? ""),
+          if (viewModel.gorunecekAlanlarMap["Belge No"] ?? false) Text(kalemModel?.belgeNo ?? ""),
+          if (viewModel.gorunecekAlanlarMap["Stok"] ?? false) Text("Stok kodu: ${kalemModel?.stokKodu ?? ""}"),
+          Text(kalemModel?.cariKodu ?? ""),
+          Wrap(
+            children:
+                [
                   if (viewModel.gorunecekAlanlarMap["Cari"] ?? false) Text("Cari kodu: ${kalemModel?.cariKodu ?? ""}"),
-                  if (_fiyatGor) Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                  if (_fiyatGor)
+                    Text("Net tutar: ${kalemModel?.netFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                   Text("Miktar: ${kalemModel?.miktar.toIntIfDouble ?? "0"}"),
                   Text("Kalan miktar: ${kalemModel?.kalan.toIntIfDouble ?? "0"}"),
                   Text("Döviz kuru: ${kalemModel?.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
                   Text("Döviz cinsi: ${(kalemModel?.miktar ?? 0) - (kalemModel?.kalan ?? 0)}"),
                 ].map((e) => SizedBox(width: width / 2.4, child: e)).toList(),
-              ),
-            ],
           ),
-          onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+        ],
+      ),
+      onTap:
+          () async => await bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: loc.generalStrings.options,
             children: [
@@ -219,25 +231,34 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
                   Get.back();
                   return Get.toNamed(
                     "mainPage/siparisEdit",
-                    arguments: BaseEditModel(model: SiparisEditRequestModel.fromKalemModel(kalemModel!), baseEditEnum: BaseEditEnum.goruntule, editTipiEnum: widget.editTipiEnum),
+                    arguments: BaseEditModel(
+                      model: SiparisEditRequestModel.fromKalemModel(kalemModel!),
+                      baseEditEnum: BaseEditEnum.goruntule,
+                      editTipiEnum: widget.editTipiEnum,
+                    ),
                   );
                 },
               ),
               BottomSheetModel(
                 title: "Stok İşlemleri",
                 iconWidget: Icons.list_alt_outlined,
-                onTap: () => dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemModel?.stokKodu ?? ""),
+                onTap:
+                    () =>
+                        dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = kalemModel?.stokKodu ?? ""),
               ),
               BottomSheetModel(
                 title: "Cari İşlemleri",
                 iconWidget: Icons.person_2_outlined,
-                onTap: () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
+                onTap:
+                    () =>
+                        dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
               ),
             ],
           ),
-          onLongPress: () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
-        ),
-      );
+      onLongPress:
+          () => dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = kalemModel?.cariKodu ?? ""),
+    ),
+  );
 
   Future filterBottomSheet() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -298,7 +319,9 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
                 suffix: IconButton(
                   onPressed: () {
                     if (viewModel.siparislerRequestModel.cariKodu case (null || "")) {
-                      dialogManager.showCariGridViewDialog(CariListesiModel()..cariKodu = viewModel.siparislerRequestModel.cariKodu);
+                      dialogManager.showCariGridViewDialog(
+                        CariListesiModel()..cariKodu = viewModel.siparislerRequestModel.cariKodu,
+                      );
                     } else {
                       dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                     }
@@ -325,7 +348,13 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
                 valueWidget: Observer(builder: (_) => Text(viewModel.siparislerRequestModel.teslimCariKodu ?? "")),
                 onClear: () => viewModel.setTeslimCariKodu(null),
                 onTap: () async {
-                  final result = await Get.toNamed("/mainPage/cariListesiOzel", arguments: CariRequestModel(bagliCariKodu: viewModel.siparislerRequestModel.teslimCariKodu, teslimCari: "E"));
+                  final result = await Get.toNamed(
+                    "/mainPage/cariListesiOzel",
+                    arguments: CariRequestModel(
+                      bagliCariKodu: viewModel.siparislerRequestModel.teslimCariKodu,
+                      teslimCari: "E",
+                    ),
+                  );
                   if (result is CariListesiModel) {
                     teslimCariController.text = result.cariAdi ?? "";
                     viewModel.setTeslimCariKodu(result.cariKodu ?? "");
@@ -344,7 +373,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
                     groupValues: viewModel.gorunecekAlanlarMap.values.toList(),
                     children: List.generate(
                       viewModel.gorunecekAlanlarMap.length,
-                      (index) => BottomSheetModel(title: viewModel.gorunecekAlanlarMap.keys.toList()[index], value: viewModel.gorunecekAlanlarMap.keys.toList()[index]),
+                      (index) => BottomSheetModel(
+                        title: viewModel.gorunecekAlanlarMap.keys.toList()[index],
+                        value: viewModel.gorunecekAlanlarMap.keys.toList()[index],
+                      ),
                     ),
                   );
                   if (result != null) {
@@ -366,22 +398,24 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
             ],
           ),
           Observer(
-            builder: (_) => SlideControllerWidget(
-              title: "Karşılanma Durumu",
-              groupValue: viewModel.karsilanmaGroupValue,
-              childrenTitleList: const ["Tümü", "Kalanlar", "Tamamlananlar"],
-              childrenValueList: const [1, 2, 3],
-              filterOnChanged: (index) => viewModel.setKarsilanmaGroupValue(index ?? 0),
-            ),
+            builder:
+                (_) => SlideControllerWidget(
+                  title: "Karşılanma Durumu",
+                  groupValue: viewModel.karsilanmaGroupValue,
+                  childrenTitleList: const ["Tümü", "Kalanlar", "Tamamlananlar"],
+                  childrenValueList: const [1, 2, 3],
+                  filterOnChanged: (index) => viewModel.setKarsilanmaGroupValue(index ?? 0),
+                ),
           ),
           Observer(
-            builder: (_) => SlideControllerWidget(
-              title: "Sipariş Durumu",
-              groupValue: viewModel.durumGroupValue,
-              childrenTitleList: const ["Tümü", "Açık", "Kapalı"],
-              childrenValueList: const [1, 2, 3],
-              filterOnChanged: (index) => viewModel.setDurumGroupValue(index ?? 0),
-            ),
+            builder:
+                (_) => SlideControllerWidget(
+                  title: "Sipariş Durumu",
+                  groupValue: viewModel.durumGroupValue,
+                  childrenTitleList: const ["Tümü", "Açık", "Kapalı"],
+                  childrenValueList: const [1, 2, 3],
+                  filterOnChanged: (index) => viewModel.setDurumGroupValue(index ?? 0),
+                ),
           ),
           ElevatedButton(
             onPressed: () {
@@ -397,7 +431,11 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisDurumRaporuView
   }
 
   Future<void> getData() async {
-    final result = await networkManager.dioGet<KalemModel>(path: ApiUrls.getFaturaKalemleri, bodyModel: KalemModel(), queryParameters: viewModel.siparislerRequestModel.toJson());
+    final result = await networkManager.dioGet<KalemModel>(
+      path: ApiUrls.getFaturaKalemleri,
+      bodyModel: KalemModel(),
+      queryParameters: viewModel.siparislerRequestModel.toJson(),
+    );
     if (result.isSuccess) {
       final List<KalemModel?> kalemList = result.dataList;
       if (viewModel.siparislerRequestModel.sayfa == 1) {

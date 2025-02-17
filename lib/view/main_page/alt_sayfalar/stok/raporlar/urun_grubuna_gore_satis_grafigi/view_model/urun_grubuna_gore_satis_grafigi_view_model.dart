@@ -15,7 +15,8 @@ import "../model/urun_grubuna_gore_satis_grafigi_request_model.dart";
 
 part "urun_grubuna_gore_satis_grafigi_view_model.g.dart";
 
-final class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase with _$UrunGrubunaGoreSatisGrafigiViewModel;
+final class UrunGrubunaGoreSatisGrafigiViewModel = _UrunGrubunaGoreSatisGrafigiViewModelBase
+    with _$UrunGrubunaGoreSatisGrafigiViewModel;
 
 abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetworkMixin {
   final List<String> donemTipiList = [
@@ -30,29 +31,17 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetwork
     "GECEN_YIL",
     "OZEL",
   ];
-  final Map<String, String> raporTipi = {
-    "Tutara Göre": "T",
-    "Miktara Göre": "M",
-  };
+  final Map<String, String> raporTipi = {"Tutara Göre": "T", "Miktara Göre": "M"};
 
-  final List<BottomSheetModel> grupNoBottomSheetList = [
-    "Stok Grup Kodu",
-    "Stok Kod 1",
-    "Stok Kod 2",
-    "Stok Kod 3",
-    "Stok Kod 4",
-    "Stok Kod 5",
-  ]
-      .mapIndexed(
-        (index, element) => BottomSheetModel(
-          title: element,
-          onTap: () => Get.back(result: element),
-        ),
-      )
-      .toList();
+  final List<BottomSheetModel> grupNoBottomSheetList =
+      ["Stok Grup Kodu", "Stok Kod 1", "Stok Kod 2", "Stok Kod 3", "Stok Kod 4", "Stok Kod 5"]
+          .mapIndexed((index, element) => BottomSheetModel(title: element, onTap: () => Get.back(result: element)))
+          .toList();
   @observable
-  UrunGrubunaGoreSatisGrafigiRequestModel model =
-      UrunGrubunaGoreSatisGrafigiRequestModel(tipi: CacheManager.getProfilParametre.urunGrubunaGoreSatisRaporTipi, grupla: CacheManager.getProfilParametre.urunGrubunaGoreGruplansin ? "E" : "H");
+  UrunGrubunaGoreSatisGrafigiRequestModel model = UrunGrubunaGoreSatisGrafigiRequestModel(
+    tipi: CacheManager.getProfilParametre.urunGrubunaGoreSatisRaporTipi,
+    grupla: CacheManager.getProfilParametre.urunGrubunaGoreGruplansin ? "E" : "H",
+  );
 
   @observable
   List<BaseProjeModel>? projeList;
@@ -70,10 +59,12 @@ abstract class _UrunGrubunaGoreSatisGrafigiViewModelBase with Store, MobxNetwork
   void setProje(BaseProjeModel? proje) => model = model.copyWith(projeKodu: proje?.projeKodu);
 
   @computed
-  String get toplamMiktar => modelList?.map((e) => e.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "0";
+  String get toplamMiktar =>
+      modelList?.map((e) => e.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "0";
 
   @computed
-  String get toplamNetTutar => modelList?.map((e) => e.netTutar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0";
+  String get toplamNetTutar =>
+      modelList?.map((e) => e.netTutar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "0";
 
   @observable
   bool irsDahilValue = false;

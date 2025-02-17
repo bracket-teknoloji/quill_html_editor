@@ -19,9 +19,10 @@ abstract class BaseTransferKalemlerViewModelBase with Store {
 
   @action
   void updateKalemList() {
-    kalemList = List.generate(
-      BaseSiparisEditModel.instance.kalemList?.length ?? 0,
-      (index) => BaseSiparisEditModel.instance.kalemList![index]..sira = index + 1,
-    ).asObservable();
+    kalemList =
+        List.generate(
+          BaseSiparisEditModel.instance.kalemList?.length ?? 0,
+          (index) => BaseSiparisEditModel.instance.kalemList![index]..sira = index + 1,
+        ).asObservable();
   }
 }

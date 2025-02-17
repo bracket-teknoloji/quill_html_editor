@@ -45,34 +45,39 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Firmalar"),
-          centerTitle: false,
-          actions: [
-            IconButton(onPressed: () async => await _getQR(context), icon: const Icon(Icons.qr_code_scanner)),
-            IconButton(onPressed: loginMethod, icon: const Icon(Icons.save_outlined)),
-          ],
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: UIHelper.lowPadding,
-            child: AutofillGroup(
-              onDisposeAction: AutofillContextAction.cancel,
-              child: Form(
-                key: formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    CustomWidgetWithLabel(
-                      text: "Firma E-Posta Adresi",
-                      child: CustomTextField(controller: emailController, keyboardType: TextInputType.emailAddress, isMust: true),
-                    ),
-                    Padding(
-                      padding: UIHelper.lowPaddingVertical,
-                      child: CustomWidgetWithLabel(
-                        text: "Şifre",
-                        child: Observer(
-                          builder: (_) => CustomTextField(
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Firmalar"),
+      centerTitle: false,
+      actions: [
+        IconButton(onPressed: () async => await _getQR(context), icon: const Icon(Icons.qr_code_scanner)),
+        IconButton(onPressed: loginMethod, icon: const Icon(Icons.save_outlined)),
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Padding(
+        padding: UIHelper.lowPadding,
+        child: AutofillGroup(
+          onDisposeAction: AutofillContextAction.cancel,
+          child: Form(
+            key: formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                CustomWidgetWithLabel(
+                  text: "Firma E-Posta Adresi",
+                  child: CustomTextField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    isMust: true,
+                  ),
+                ),
+                Padding(
+                  padding: UIHelper.lowPaddingVertical,
+                  child: CustomWidgetWithLabel(
+                    text: "Şifre",
+                    child: Observer(
+                      builder:
+                          (_) => CustomTextField(
                             keyboardType: TextInputType.visiblePassword,
                             obscureText: viewModel.obscurePassword,
                             controller: passwordController,
@@ -81,28 +86,34 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
                             suffix: IconButton(
                               onPressed: viewModel.togglePassword,
                               icon: Observer(
-                                builder: (_) => Icon(viewModel.obscurePassword ? Icons.visibility : Icons.visibility_off),
+                                builder:
+                                    (_) => Icon(viewModel.obscurePassword ? Icons.visibility : Icons.visibility_off),
                               ),
                             ),
                           ),
-                        ),
-                      ),
                     ),
-                    Row(
-                      children: [
-                        Icon(Icons.info_outline_rounded, color: theme.colorScheme.primary),
-                        Expanded(
-                          child: const Text("Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.", softWrap: true, style: TextStyle(fontSize: 13), maxLines: 2).paddingOnly(left: UIHelper.lowSize),
-                        ),
-                      ],
-                    ).paddingAll(UIHelper.lowSize),
-                  ],
+                  ),
                 ),
-              ),
+                Row(
+                  children: [
+                    Icon(Icons.info_outline_rounded, color: theme.colorScheme.primary),
+                    Expanded(
+                      child: const Text(
+                        "Bilgileri girerken büyük-küçük uyumuna dikkat ediniz.",
+                        softWrap: true,
+                        style: TextStyle(fontSize: 13),
+                        maxLines: 2,
+                      ).paddingOnly(left: UIHelper.lowSize),
+                    ),
+                  ],
+                ).paddingAll(UIHelper.lowSize),
+              ],
             ),
           ),
         ),
-      );
+      ),
+    ),
+  );
 
   Future<void> loginMethod() async {
     if (formKey.currentState?.validate() ?? false) {
@@ -112,7 +123,11 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
       AccountModel.instance
         ..uyeEmail = emailController.text
         ..uyeSifre = encodedPassword;
-      final response = await networkManager.getUyeBilgileri(emailController.text, password: encodedPassword, getFromCache: false);
+      final response = await networkManager.getUyeBilgileri(
+        emailController.text,
+        password: encodedPassword,
+        getFromCache: false,
+      );
       dialogManager.hideAlertDialog;
       if (response.isSuccess) {
         for (final AccountResponseModel item in response.dataList) {
@@ -146,7 +161,9 @@ final class _AddAccountViewState extends BaseState<AddAccountView> {
       //   path: ApiUrls.getUyeBilgileri,
       // );
       if (response.isSuccess) {
-        final String encodedPassword = passwordDecoder(utf8.decode(base64.decode(response.dataList.firstOrNull?.parola ?? "")));
+        final String encodedPassword = passwordDecoder(
+          utf8.decode(base64.decode(response.dataList.firstOrNull?.parola ?? "")),
+        );
         AccountModel.instance.uyeEmail = response.dataList.firstOrNull?.email;
         AccountModel.instance.uyeSifre = encodedPassword;
         AccountModel.instance.qrData = null;

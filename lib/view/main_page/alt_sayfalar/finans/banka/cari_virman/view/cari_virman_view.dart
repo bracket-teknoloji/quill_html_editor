@@ -49,8 +49,12 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
     _seriController = TextEditingController();
     _tahsilatiYapilacakCariController = TextEditingController();
     _odemesiYapilacakCariController = TextEditingController();
-    _tutarController = TextEditingController(text: widget.model?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    _vadeGunuController = TextEditingController(text: viewModel.requestModel.tarih?.difference(DateTime.now().dateTimeWithoutTime!).inDays.toString());
+    _tutarController = TextEditingController(
+      text: widget.model?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+    );
+    _vadeGunuController = TextEditingController(
+      text: viewModel.requestModel.tarih?.difference(DateTime.now().dateTimeWithoutTime!).inDays.toString(),
+    );
     _plasiyerController = TextEditingController();
     _projeController = TextEditingController();
     _tahsilatYapilanCariAciklamaController = TextEditingController();
@@ -153,7 +157,9 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
                     dialogManager.showAlertDialog("Önce Cari Seçiniz");
                     return;
                   }
-                  await dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.requestModel.cariKodu ?? ""])));
+                  await dialogManager.showCariIslemleriGridViewDialog(
+                    await networkManager.getCariModel(CariRequestModel(kod: [viewModel.requestModel.cariKodu ?? ""])),
+                  );
                 },
                 icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.primary),
               ),
@@ -173,7 +179,11 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
                     dialogManager.showAlertDialog("Önce Hedef Cari Seçiniz");
                     return;
                   }
-                  await dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.requestModel.hedefCariKodu ?? ""])));
+                  await dialogManager.showCariIslemleriGridViewDialog(
+                    await networkManager.getCariModel(
+                      CariRequestModel(kod: [viewModel.requestModel.hedefCariKodu ?? ""]),
+                    ),
+                  );
                 },
                 icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.primary),
               ),
@@ -215,7 +225,10 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
                       readOnly: true,
                       suffixMore: true,
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.requestModel.plasiyerKodu);
+                        final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                          context,
+                          viewModel.requestModel.plasiyerKodu,
+                        );
                         if (result is PlasiyerList) {
                           _plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.setPlasiyer(result.plasiyerKodu);
@@ -233,7 +246,10 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
                       readOnly: true,
                       suffixMore: true,
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.requestModel.projeKodu);
+                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                          context,
+                          viewModel.requestModel.projeKodu,
+                        );
                         if (result is BaseProjeModel) {
                           _projeController.text = result.projeAciklama ?? "";
                           viewModel.setProjeKodu(result.projeKodu);
@@ -243,8 +259,16 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
                   ),
               ],
             ),
-            CustomTextField(labelText: "Tahsilat Yapılan Cari Hareketi Açıklama", controller: _tahsilatYapilanCariAciklamaController, onChanged: viewModel.setAciklama),
-            CustomTextField(labelText: "Ödeme Yapılan Cari Hareketi Açıklama", controller: _odemeYapilanCariAciklamaController, onChanged: viewModel.setHedefAciklama),
+            CustomTextField(
+              labelText: "Tahsilat Yapılan Cari Hareketi Açıklama",
+              controller: _tahsilatYapilanCariAciklamaController,
+              onChanged: viewModel.setAciklama,
+            ),
+            CustomTextField(
+              labelText: "Ödeme Yapılan Cari Hareketi Açıklama",
+              controller: _odemeYapilanCariAciklamaController,
+              onChanged: viewModel.setHedefAciklama,
+            ),
           ],
         ).paddingAll(UIHelper.lowSize),
       ),
@@ -252,7 +276,10 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
   );
 
   Future<void> seriBottomSheet() async {
-    final result = await bottomSheetDialogManager.showSeriKodBottomSheetDialog(context, viewModel.requestModel.dekontSeri);
+    final result = await bottomSheetDialogManager.showSeriKodBottomSheetDialog(
+      context,
+      viewModel.requestModel.dekontSeri,
+    );
     if (result is SeriModel) {
       viewModel.setSeri(result.seriNo);
       _seriController.text = result.aciklama ?? "";
@@ -267,7 +294,10 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
       context,
       groupValue: null,
       title: widget.model?.cariAdi ?? "",
-      children: [BottomSheetModel(title: "Tahsilat Yap", value: true), BottomSheetModel(title: "Ödeme Yap", value: false)],
+      children: [
+        BottomSheetModel(title: "Tahsilat Yap", value: true),
+        BottomSheetModel(title: "Ödeme Yap", value: false),
+      ],
     );
     if (result == false) {
       viewModel

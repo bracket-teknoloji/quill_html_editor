@@ -62,81 +62,80 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(
-              title: "Aktivite Kayıtları",
-              subtitle: (viewModel.filteredList?.length ?? 0).toString(),
-            ),
-          ),
-          actions: [
-            IconButton(
-              onPressed: getFilter,
-              icon: const Icon(Icons.filter_alt_outlined),
-            ),
-          ],
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) => AppBarTitle(title: "Aktivite Kayıtları", subtitle: (viewModel.filteredList?.length ?? 0).toString()),
+      ),
+      actions: [IconButton(onPressed: getFilter, icon: const Icon(Icons.filter_alt_outlined))],
+    ),
+    floatingActionButton: yetkiController.cariAktiviteYeniKayit ? fab() : null,
+    body: Column(
+      children: [
+        CustomTextField(
+          labelText: "Ara...",
+          controller: searchController,
+          onClear: () async {
+            viewModel.setSearchText(null);
+            await viewModel.getData();
+          },
+          onSubmitted: (value) async {
+            viewModel.setSearchText(value);
+            await viewModel.getData();
+          },
         ),
-        floatingActionButton: yetkiController.cariAktiviteYeniKayit ? fab() : null,
-        body: Column(
-          children: [
-            CustomTextField(
-              labelText: "Ara...",
-              controller: searchController,
-              onClear: () async {
-                viewModel.setSearchText(null);
-                await viewModel.getData();
-              },
-              onSubmitted: (value) async {
-                viewModel.setSearchText(value);
-                await viewModel.getData();
-              },
-            ),
-            RaporFiltreDateTimeBottomSheetView(
-              filterOnChanged: (value) async {
-                viewModel
-                  ..setBaslangicTarihi(baslangicTarihiController.text.toDateTimeDDMMYYYY())
-                  ..setBitisTarihi(bitisTarihiController.text.toDateTimeDDMMYYYY());
-                await viewModel.getData();
-              },
-              baslangicTarihiController: baslangicTarihiController,
-              bitisTarihiController: bitisTarihiController,
-            ),
-            Expanded(
-              child: Observer(
-                builder: (_) => RefreshableListView(
+        RaporFiltreDateTimeBottomSheetView(
+          filterOnChanged: (value) async {
+            viewModel
+              ..setBaslangicTarihi(baslangicTarihiController.text.toDateTimeDDMMYYYY())
+              ..setBitisTarihi(bitisTarihiController.text.toDateTimeDDMMYYYY());
+            await viewModel.getData();
+          },
+          baslangicTarihiController: baslangicTarihiController,
+          bitisTarihiController: bitisTarihiController,
+        ),
+        Expanded(
+          child: Observer(
+            builder:
+                (_) => RefreshableListView(
                   onRefresh: viewModel.getData,
                   items: viewModel.filteredList,
-                  itemBuilder: (item) => CariAktiviteCard(
-                    model: item,
-                    onRefresh: (value) async {
-                      if (value) {
-                        await viewModel.getData();
-                      }
-                    },
-                    updatedModel: () async => await viewModel.getNewItem(item.id),
-                  ),
+                  itemBuilder:
+                      (item) => CariAktiviteCard(
+                        model: item,
+                        onRefresh: (value) async {
+                          if (value) {
+                            await viewModel.getData();
+                          }
+                        },
+                        updatedModel: () async => await viewModel.getNewItem(item.id),
+                      ),
                 ),
-              ),
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+          ),
+        ),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        isScrolledDown: true,
-        onPressed: () async {
-          final result = await Get.toNamed(
-            "/mainPage/cariAktiviteEdit",
-            arguments: BaseEditModel<CariAktiviteListesiModel>(
-              baseEditEnum: BaseEditEnum.ekle,
-              model: CariAktiviteListesiModel(cariKodu: widget.cariModel?.cariKodu, cariAdi: cariController.text, kullaniciAdi: kullaniciController.text),
-            ),
-          );
-          if (result == true) {
-            await viewModel.getData();
-          }
-        },
+    isScrolledDown: true,
+    onPressed: () async {
+      final result = await Get.toNamed(
+        "/mainPage/cariAktiviteEdit",
+        arguments: BaseEditModel<CariAktiviteListesiModel>(
+          baseEditEnum: BaseEditEnum.ekle,
+          model: CariAktiviteListesiModel(
+            cariKodu: widget.cariModel?.cariKodu,
+            cariAdi: cariController.text,
+            kullaniciAdi: kullaniciController.text,
+          ),
+        ),
       );
+      if (result == true) {
+        await viewModel.getData();
+      }
+    },
+  );
 
   Future<void> getFilter() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -146,14 +145,15 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Observer(
-            builder: (_) => SlideControllerWidget(
-              childrenTitleList: CariAktiviteDurumEnum.values.map((e) => e.value).toList(),
-              childrenValueList: CariAktiviteDurumEnum.values,
-              groupValue: viewModel.durum,
-              filterOnChanged: (index) async {
-                viewModel.setDurum(CariAktiviteDurumEnum.values[index ?? 0]);
-              },
-            ),
+            builder:
+                (_) => SlideControllerWidget(
+                  childrenTitleList: CariAktiviteDurumEnum.values.map((e) => e.value).toList(),
+                  childrenValueList: CariAktiviteDurumEnum.values,
+                  groupValue: viewModel.durum,
+                  filterOnChanged: (index) async {
+                    viewModel.setDurum(CariAktiviteDurumEnum.values[index ?? 0]);
+                  },
+                ),
           ),
           CustomTextField(
             labelText: "Cari",
@@ -168,16 +168,15 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
                   dialogManager.showAlertDialog("Lütfen bir cari seçiniz.");
                   return;
                 } else {
-                  final result = await networkManager.getCariModel(CariRequestModel(kod: [viewModel.requestModel.cariKodu ?? ""]));
+                  final result = await networkManager.getCariModel(
+                    CariRequestModel(kod: [viewModel.requestModel.cariKodu ?? ""]),
+                  );
                   if (result is CariListesiModel) {
                     dialogManager.showCariIslemleriGridViewDialog(result);
                   }
                 }
               },
-              icon: const Icon(
-                Icons.open_in_new_outlined,
-                color: UIHelper.primaryColor,
-              ),
+              icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
             ),
             onTap: () async {
               final result = await Get.toNamed("mainPage/cariListesiOzel");
@@ -195,7 +194,10 @@ final class _CariAktiviteViewState extends BaseState<CariAktiviteView> {
             valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.kullanici ?? "")),
             onClear: () => viewModel.setKullanici(null),
             onTap: () async {
-              final result = await bottomSheetDialogManager.showKullanicilarBottomSheetDialog(context, viewModel.requestModel.kullanici);
+              final result = await bottomSheetDialogManager.showKullanicilarBottomSheetDialog(
+                context,
+                viewModel.requestModel.kullanici,
+              );
               if (result is KullanicilarModel) {
                 kullaniciController.text = result.adi ?? "";
                 viewModel.setKullanici(result.kodu);

@@ -19,14 +19,15 @@ abstract class _BaseStokEditSerilerViewModelBase with Store {
   ];
   CariListesiModel? cariListesiModel = CariListesiModel.instance;
   @observable
-  ObservableList<bool> switchValueList = [
-    StokDetayModel.instance.stokList?.firstOrNull?.seriGirislerdeAcik ?? false,
-    StokDetayModel.instance.stokList?.firstOrNull?.seriGiristeOtomatikMi ?? false,
-    StokDetayModel.instance.stokList?.firstOrNull?.seriCikislardaAcik ?? false,
-    StokDetayModel.instance.stokList?.firstOrNull?.seriCikistaOtomatikMi ?? false,
-    StokDetayModel.instance.stokList?.firstOrNull?.seriBakiyeKontrolu ?? false,
-    StokDetayModel.instance.stokList?.firstOrNull?.seriMiktarKadarSor ?? false,
-  ].asObservable();
+  ObservableList<bool> switchValueList =
+      [
+        StokDetayModel.instance.stokList?.firstOrNull?.seriGirislerdeAcik ?? false,
+        StokDetayModel.instance.stokList?.firstOrNull?.seriGiristeOtomatikMi ?? false,
+        StokDetayModel.instance.stokList?.firstOrNull?.seriCikislardaAcik ?? false,
+        StokDetayModel.instance.stokList?.firstOrNull?.seriCikistaOtomatikMi ?? false,
+        StokDetayModel.instance.stokList?.firstOrNull?.seriBakiyeKontrolu ?? false,
+        StokDetayModel.instance.stokList?.firstOrNull?.seriMiktarKadarSor ?? false,
+      ].asObservable();
 
   @action
   void changeSwitchValue(int index) {

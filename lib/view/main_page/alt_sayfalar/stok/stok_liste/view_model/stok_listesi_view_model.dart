@@ -19,7 +19,14 @@ part "stok_listesi_view_model.g.dart";
 
 final class StokListesiViewModel = _StokListesiViewModelBase with _$StokListesiViewModel;
 
-abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<StokListesiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+abstract class _StokListesiViewModelBase
+    with
+        Store,
+        MobxNetworkMixin,
+        ListableMixin<StokListesiModel>,
+        SearchableMixin,
+        ScrollControllableMixin,
+        PageableMixin {
   final List<String> selectedList = ["Tümü", "Artı", "Eksi", "Sıfır", "Bakiyeli"];
 
   @observable
@@ -65,7 +72,8 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   }
 
   @action
-  void setSearchList(List<StokDetayliAramaAlanlar>? value) => bottomSheetModel = bottomSheetModel.copyWith(searchList: value);
+  void setSearchList(List<StokDetayliAramaAlanlar>? value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(searchList: value);
 
   @override
   @action
@@ -134,68 +142,76 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   List<BaseGrupKoduModel>? get grupKodu => bottomSheetModel.arrGrupKodu;
 
   @action
-  void changeArrGrupKodu(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: value);
+  void changeArrGrupKodu(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrGrupKodu: value);
 
   @action
-  void changeArrGrupKoduTemp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrGrupKodu: value);
+  void changeArrGrupKoduTemp(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrGrupKodu: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod1 => bottomSheetModel.arrKod1;
 
   @action
-  void changeArrKod1(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value ?? []);
+  void changeArrKod1(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod1: value ?? []);
 
   @action
-  void changeArrKod1Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod1: value);
+  void changeArrKod1Temp(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod1: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod2 => bottomSheetModel.arrKod2;
 
   @action
-  void changeArrKod2(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value ?? []);
+  void changeArrKod2(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod2: value ?? []);
 
   @action
-  void changeArrKod2Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod2: value);
+  void changeArrKod2Temp(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod2: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod3 => bottomSheetModel.arrKod3;
 
   @action
-  void changeArrKod3(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value ?? []);
+  void changeArrKod3(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod3: value ?? []);
 
   @action
-  void changeArrKod3Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod3: value);
+  void changeArrKod3Temp(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod3: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod4 => bottomSheetModel.arrKod4;
 
   @action
-  void changeArrKod4(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value ?? []);
+  void changeArrKod4(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod4: value ?? []);
 
   @action
-  void changeArrKod4Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod4: value);
+  void changeArrKod4Temp(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod4: value);
 
   @computed
   List<BaseGrupKoduModel>? get kod5 => bottomSheetModel.arrKod5;
 
   @action
-  void changeArrKod5(List<BaseGrupKoduModel>? value) => bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value ?? []);
+  void changeArrKod5(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModel = bottomSheetModel.copyWith(arrKod5: value ?? []);
 
   @action
-  void changeArrKod5Temp(List<BaseGrupKoduModel>? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod5: value);
+  void changeArrKod5Temp(List<BaseGrupKoduModel>? value) =>
+      bottomSheetModelTemp = bottomSheetModelTemp.copyWith(arrKod5: value);
 
   @action
   void setResimleriGoster() {
     if (resimleriGoster == "H") {
       resimleriGoster = "E";
-      CacheManager.setProfilParametre(
-        CacheManager.getProfilParametre.copyWith(stokResimleriGoster: true),
-      );
+      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokResimleriGoster: true));
     } else {
       resimleriGoster = "H";
-      CacheManager.setProfilParametre(
-        CacheManager.getProfilParametre.copyWith(stokResimleriGoster: false),
-      );
+      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(stokResimleriGoster: false));
     }
   }
 
@@ -229,7 +245,8 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   void changeBakiyeDurumu(String? value) => bottomSheetModel = bottomSheetModel.copyWith(bakiyeDurumu: value);
 
   @action
-  void changeBakiyeDurumuTemp(int? value) => bottomSheetModelTemp = bottomSheetModelTemp.copyWith(bakiyeDurumu: selectedList[value ?? 0].substring(0, 1));
+  void changeBakiyeDurumuTemp(int? value) =>
+      bottomSheetModelTemp = bottomSheetModelTemp.copyWith(bakiyeDurumu: selectedList[value ?? 0].substring(0, 1));
 
   @action
   void setKategoriMi(bool value) => kategoriMi = value;
@@ -257,11 +274,23 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
   }
 
   @action
-  Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: kategoriMi));
+  Future<void> getGrupKodlari() async => setGrupKodlari(
+    await networkManager.getGrupKod(
+      name: GrupKoduEnum.stok,
+      grupNo: grupNo,
+      kullanimda: true,
+      kategoriModuMu: kategoriMi,
+    ),
+  );
 
   @action
   Future<void> getKategoriGrupKodlari() async {
-    final result = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: true);
+    final result = await networkManager.getGrupKod(
+      name: GrupKoduEnum.stok,
+      grupNo: grupNo,
+      kullanimda: true,
+      kategoriModuMu: true,
+    );
     if (result.isNotEmpty) {
       setKategoriGrupKodlari(result);
     }
@@ -280,7 +309,15 @@ abstract class _StokListesiViewModelBase with Store, MobxNetworkMixin, ListableM
     final result = await networkManager.dioPost<StokListesiModel>(
       path: ApiUrls.getStoklar,
       bodyModel: StokListesiModel(),
-      data: bottomSheetModel.copyWith(resimGoster: resimleriGoster, menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK", searchText: searchText, sayfa: page).toJsonWithList(),
+      data:
+          bottomSheetModel
+              .copyWith(
+                resimGoster: resimleriGoster,
+                menuKodu: isGetData ? "STOK_SREH" : "STOK_STOK",
+                searchText: searchText,
+                sayfa: page,
+              )
+              .toJsonWithList(),
     );
     if (result.isSuccess) {
       if (page > 1) {

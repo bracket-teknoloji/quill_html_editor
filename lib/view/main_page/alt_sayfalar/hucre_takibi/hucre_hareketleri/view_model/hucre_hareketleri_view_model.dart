@@ -18,10 +18,12 @@ abstract class _HucreHareketleriViewModelBase with Store, MobxNetworkMixin {
   HucreHareketleriRequestModel requestModel = HucreHareketleriRequestModel(ekranTipi: "L", filtreKodu: 2);
 
   @computed
-  int get toplamGiris => hucreHareketleriListesi?.map((element) => (element.gc == "G" ? element.netMiktar : 0) ?? 0).sum ?? 0;
+  int get toplamGiris =>
+      hucreHareketleriListesi?.map((element) => (element.gc == "G" ? element.netMiktar : 0) ?? 0).sum ?? 0;
 
   @computed
-  int get toplamCikis => hucreHareketleriListesi?.map((element) => (element.gc == "C" ? element.netMiktar : 0) ?? 0).sum ?? 0;
+  int get toplamCikis =>
+      hucreHareketleriListesi?.map((element) => (element.gc == "C" ? element.netMiktar : 0) ?? 0).sum ?? 0;
 
   @computed
   int get bakiye => toplamGiris - toplamCikis;
@@ -30,12 +32,17 @@ abstract class _HucreHareketleriViewModelBase with Store, MobxNetworkMixin {
   void setStokKodu(String? value) => requestModel = requestModel.copyWith(stokKodu: value);
 
   @action
-  void setHucreHareketleriListesi(List<HucreHareketleriModel>? value) => hucreHareketleriListesi = value?.asObservable();
+  void setHucreHareketleriListesi(List<HucreHareketleriModel>? value) =>
+      hucreHareketleriListesi = value?.asObservable();
 
   @action
   Future<void> getData() async {
     setHucreHareketleriListesi(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getHucreHareketleri, bodyModel: HucreHareketleriModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getHucreHareketleri,
+      bodyModel: HucreHareketleriModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setHucreHareketleriListesi(result.dataList);
     }

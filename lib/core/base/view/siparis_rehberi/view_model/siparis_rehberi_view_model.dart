@@ -50,7 +50,8 @@ abstract class _SiparisRehberiViewModelBase with Store, MobxNetworkMixin {
   void addSelectedSiparis(BaseSiparisEditModel value) => selectedSiparisList.add(value);
 
   @action
-  void removeSelectedSiparis(BaseSiparisEditModel value) => selectedSiparisList.removeWhere((element) => element.belgeNo == value.belgeNo);
+  void removeSelectedSiparis(BaseSiparisEditModel value) =>
+      selectedSiparisList.removeWhere((element) => element.belgeNo == value.belgeNo);
 
   @action
   Future<void> resetPage() async {
@@ -61,7 +62,11 @@ abstract class _SiparisRehberiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getFaturalar,
+      bodyModel: BaseSiparisEditModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       final List<BaseSiparisEditModel> list = result.dataList;
       if (siparisList == null) {

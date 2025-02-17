@@ -47,83 +47,88 @@ final class _FinansOzetRaporViewState extends BaseState<FinansOzetRaporView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Özet Rapor"),
-          centerTitle: false,
-          actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.filter_alt_outlined)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
-          ],
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Özet Rapor"),
+      centerTitle: false,
+      actions: [
+        IconButton(onPressed: () {}, icon: const Icon(Icons.filter_alt_outlined)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
+      ],
+    ),
+    body: Column(
+      children: [
+        RaporFiltreDateTimeBottomSheetView(
+          filterOnChanged: (value) async {
+            viewModel
+              ..setBaslangicTarihi(baslangicTarihiController.text)
+              ..setBitisTarihi(bitisTarihiController.text);
+            await viewModel.getGunSonuRaporu();
+          },
+          baslangicTarihiController: baslangicTarihiController,
+          bitisTarihiController: bitisTarihiController,
         ),
-        body: Column(
-          children: [
-            RaporFiltreDateTimeBottomSheetView(
-              filterOnChanged: (value) async {
-                viewModel
-                  ..setBaslangicTarihi(baslangicTarihiController.text)
-                  ..setBitisTarihi(bitisTarihiController.text);
-                await viewModel.getGunSonuRaporu();
-              },
-              baslangicTarihiController: baslangicTarihiController,
-              bitisTarihiController: bitisTarihiController,
-            ),
-            Expanded(
-              child: RefreshIndicator.adaptive(
-                onRefresh: () async => await viewModel.getGunSonuRaporu(),
-                child: Observer(
-                  builder: (_) {
-                    if (viewModel.gunSonuRaporuList == null) {
-                      return const ListViewShimmer();
-                    } else if (viewModel.gunSonuRaporuList!.isEmpty) {
-                      return const Center(child: Text("Veri bulunamadı"));
+        Expanded(
+          child: RefreshIndicator.adaptive(
+            onRefresh: () async => await viewModel.getGunSonuRaporu(),
+            child: Observer(
+              builder: (_) {
+                if (viewModel.gunSonuRaporuList == null) {
+                  return const ListViewShimmer();
+                } else if (viewModel.gunSonuRaporuList!.isEmpty) {
+                  return const Center(child: Text("Veri bulunamadı"));
+                }
+                return ReorderableListView.builder(
+                  itemCount: viewModel.raporlarList.length,
+                  onReorder: (oldIndex, newIndex) {
+                    if (oldIndex < newIndex) {
+                      newIndex -= 1;
                     }
-                    return ReorderableListView.builder(
-                      itemCount: viewModel.raporlarList.length,
-                      onReorder: (oldIndex, newIndex) {
-                        if (oldIndex < newIndex) {
-                          newIndex -= 1;
-                        }
 
-                        // CacheManager.setFinansOzetOrder(viewModel.raporlarList[oldIndex], newIndex);
-                        //create a new list and add the item at the new index
-                        final List<String> newList = [];
-                        for (int i = 0; i < newIndex; i++) {
-                          newList.add(viewModel.raporlarList[i]);
-                        }
-                        newList.add(viewModel.raporlarList[oldIndex]);
-                        for (int i = newIndex; i < viewModel.raporlarList.length; i++) {
-                          newList.add(viewModel.raporlarList[i]);
-                        }
-                        // print(viewModel.raporlarList[newIndex]);
-                        // print(viewModel.raporlarList[oldIndex]);
-                        CacheManager.setFinansOzetOrder(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[oldIndex])], newIndex);
-                        if (oldIndex < newIndex) {
-                          CacheManager.setFinansOzetOrder(viewModel.raporlarList[newIndex], newIndex - 1);
-                        } else {
-                          CacheManager.setFinansOzetOrder(viewModel.raporlarList[newIndex], newIndex + 1);
-                        }
-                      },
-                      itemBuilder: (context, index) => Card(
-                        key: Key(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
+                    // CacheManager.setFinansOzetOrder(viewModel.raporlarList[oldIndex], newIndex);
+                    //create a new list and add the item at the new index
+                    final List<String> newList = [];
+                    for (int i = 0; i < newIndex; i++) {
+                      newList.add(viewModel.raporlarList[i]);
+                    }
+                    newList.add(viewModel.raporlarList[oldIndex]);
+                    for (int i = newIndex; i < viewModel.raporlarList.length; i++) {
+                      newList.add(viewModel.raporlarList[i]);
+                    }
+                    // print(viewModel.raporlarList[newIndex]);
+                    // print(viewModel.raporlarList[oldIndex]);
+                    CacheManager.setFinansOzetOrder(
+                      viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[oldIndex])],
+                      newIndex,
+                    );
+                    if (oldIndex < newIndex) {
+                      CacheManager.setFinansOzetOrder(viewModel.raporlarList[newIndex], newIndex - 1);
+                    } else {
+                      CacheManager.setFinansOzetOrder(viewModel.raporlarList[newIndex], newIndex + 1);
+                    }
+                  },
+                  itemBuilder:
+                      (context, index) => Card(
+                        key: Key(
+                          viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])],
+                        ),
                         child: ListTile(
-                          title: Text(viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])]),
+                          title: Text(
+                            viewModel.raporlarList[CacheManager.getFinansOzetOrder(viewModel.raporlarList[index])],
+                          ),
                           subtitle: Text("s" * index),
                         ),
                       ),
-                    );
-                  },
-                ),
-              ),
+                );
+              },
             ),
-          ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 
   Card customCard(int index) => Card(
-        key: Key(index.toString()),
-        child: ListTile(
-          title: Text(index.toStringIfNotNull ?? ""),
-          subtitle: const Text("a"),
-        ),
-      );
+    key: Key(index.toString()),
+    child: ListTile(title: Text(index.toStringIfNotNull ?? ""), subtitle: const Text("a")),
+  );
 }

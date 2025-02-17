@@ -32,7 +32,11 @@ abstract class _SeriRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   bool isSearchBarOpen = false;
 
   @computed
-  ObservableList<SeriList>? get filteredList => observableList?.where((element) => element.seriNo?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? true).toList().asObservable();
+  ObservableList<SeriList>? get filteredList =>
+      observableList
+          ?.where((element) => element.seriNo?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? true)
+          .toList()
+          .asObservable();
   @override
   @action
   void setObservableList(List<SeriList>? list) => observableList = list?.asObservable();
@@ -57,7 +61,11 @@ abstract class _SeriRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
     if (observableList != null) {
       setObservableList(null);
     }
-    final result = await networkManager.dioPost(path: ApiUrls.getSeriler, bodyModel: SeriList(), data: requestModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getSeriler,
+      bodyModel: SeriList(),
+      data: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
     }

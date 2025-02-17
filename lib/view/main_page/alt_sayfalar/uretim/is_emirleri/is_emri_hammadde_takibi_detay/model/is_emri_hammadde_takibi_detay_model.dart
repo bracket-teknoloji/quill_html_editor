@@ -15,7 +15,8 @@ class IsEmriHammaddeTakibiDetayModel with _$IsEmriHammaddeTakibiDetayModel, Netw
   }) = _IsEmriHammaddeTakibiDetayModel;
   IsEmriHammaddeTakibiDetayModel._();
 
-  factory IsEmriHammaddeTakibiDetayModel.fromJson(Map<String, dynamic> json) => _$IsEmriHammaddeTakibiDetayModelFromJson(json);
+  factory IsEmriHammaddeTakibiDetayModel.fromJson(Map<String, dynamic> json) =>
+      _$IsEmriHammaddeTakibiDetayModelFromJson(json);
 
   @override
   IsEmriHammaddeTakibiDetayModel fromJson(Map<String, dynamic> json) => _$IsEmriHammaddeTakibiDetayModelFromJson(json);

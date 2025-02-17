@@ -243,9 +243,7 @@ final class AccountModel with NetworkManagerMixin {
         cihazKimligi = base64Encode(utf8.encode(ozelCihazKimligi.toString()));
         log("ozelCihazKimligi: ${base64Encode(utf8.encode(ozelCihazKimligi!))}");
       } else {
-        cihazKimligi = base64Encode(
-          utf8.encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"),
-        );
+        cihazKimligi = base64Encode(utf8.encode("$cihazMarkasi:$cihazModeli:${androidInfo.serialNumber}:"));
       }
       // androidInfo.serialNumber;
     }

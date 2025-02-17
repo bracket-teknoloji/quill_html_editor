@@ -13,5 +13,6 @@ class HizliTahsilatKayitlariRequestModel with _$HizliTahsilatKayitlariRequestMod
     @Default(1) int? sayfa,
   }) = _HizliTahsilatKayitlariRequestModel;
 
-  factory HizliTahsilatKayitlariRequestModel.fromJson(Map<String, dynamic> json) => _$HizliTahsilatKayitlariRequestModelFromJson(json);
+  factory HizliTahsilatKayitlariRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$HizliTahsilatKayitlariRequestModelFromJson(json);
 }

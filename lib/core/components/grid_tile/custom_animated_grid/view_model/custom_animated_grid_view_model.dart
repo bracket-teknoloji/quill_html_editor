@@ -17,7 +17,8 @@ abstract class _CustomAnimatedGridViewModelBase with Store {
   void setGridItemModel(List<GridItemModel> value) => gridItemModelList = value.asObservable();
 
   @action
-  void addReturnGridItemModel(List<GridItemModel>? value) => returnGridItemModel.add(value?.asObservable() ?? ObservableList.of([]));
+  void addReturnGridItemModel(List<GridItemModel>? value) =>
+      returnGridItemModel.add(value?.asObservable() ?? ObservableList.of([]));
 
   @action
   void deleteLastReturnGridItemModel() => returnGridItemModel.removeLast();

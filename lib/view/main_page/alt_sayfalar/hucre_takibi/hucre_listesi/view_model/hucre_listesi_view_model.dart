@@ -10,7 +10,8 @@ part "hucre_listesi_view_model.g.dart";
 
 final class HucreListesiViewModel = _HucreListesiViewModelBase with _$HucreListesiViewModel;
 
-abstract class _HucreListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<HucreListesiModel>, SearchableMixin {
+abstract class _HucreListesiViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<HucreListesiModel>, SearchableMixin {
   @observable
   HucreListesiRequestModel requestModel = HucreListesiRequestModel();
 
@@ -26,7 +27,10 @@ abstract class _HucreListesiViewModelBase with Store, MobxNetworkMixin, Listable
   ObservableList<HucreListesiModel>? get filteredHucreListesi {
     if (observableList == null) return null;
     if (searchText == null) return observableList;
-    return observableList!.where((element) => element.hucreKodu?.toLowerCase().contains((searchText ?? "").toLowerCase()) ?? false).toList().asObservable();
+    return observableList!
+        .where((element) => element.hucreKodu?.toLowerCase().contains((searchText ?? "").toLowerCase()) ?? false)
+        .toList()
+        .asObservable();
   }
 
   @override
@@ -49,7 +53,11 @@ abstract class _HucreListesiViewModelBase with Store, MobxNetworkMixin, Listable
   @action
   Future<void> getData() async {
     setObservableList(null);
-    final result = await networkManager.dioGet(path: ApiUrls.getHucreListesi, queryParameters: requestModel.toJson(), bodyModel: HucreListesiModel());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getHucreListesi,
+      queryParameters: requestModel.toJson(),
+      bodyModel: HucreListesiModel(),
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
     }

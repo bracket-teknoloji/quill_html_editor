@@ -38,15 +38,9 @@ final class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepA
             ),
           );
         } else {
-          child = const Card(
-            elevation: 0,
-            child: Icon(Icons.camera_alt_outlined),
-          );
+          child = const Card(elevation: 0, child: Icon(Icons.camera_alt_outlined));
         }
-        return AnimatedSwitcher(
-          duration: const Duration(milliseconds: 500),
-          child: child,
-        );
+        return AnimatedSwitcher(duration: const Duration(milliseconds: 500), child: child);
       },
     );
   }

@@ -6,7 +6,8 @@ import "../model/ortalama_vade_tarihi_model.dart";
 
 part "ortalama_vade_tarihi_hesaplama_view_model.g.dart";
 
-final class OrtalamaVadeTarihiHesaplamaViewModel = _OrtalamaVadeTarihiHesaplamaViewModelBase with _$OrtalamaVadeTarihiHesaplamaViewModel;
+final class OrtalamaVadeTarihiHesaplamaViewModel = _OrtalamaVadeTarihiHesaplamaViewModelBase
+    with _$OrtalamaVadeTarihiHesaplamaViewModel;
 
 abstract class _OrtalamaVadeTarihiHesaplamaViewModelBase with Store {
   @observable
@@ -24,7 +25,8 @@ abstract class _OrtalamaVadeTarihiHesaplamaViewModelBase with Store {
     double toplamVadeTarihi = 0;
     for (final item in ortalamaVadeTarihiListesi) {
       toplamTutar += item.tutar ?? 0;
-      toplamVadeTarihi += (item.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0) * (item.tutar ?? 0);
+      toplamVadeTarihi +=
+          (item.vadeTarihi?.difference(DateTime.now().dateTimeWithoutTime!).inDays ?? 0) * (item.tutar ?? 0);
     }
     return toplamVadeTarihi / toplamTutar;
   }

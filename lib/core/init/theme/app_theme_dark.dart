@@ -11,16 +11,26 @@ final class AppThemeDark extends AppTheme {
   AppThemeDark._init();
   static AppThemeDark? _instance;
   static AppThemeDark? get instance => _instance ??= AppThemeDark._init();
-  ColorScheme colorManager = ColorScheme.fromSeed(seedColor: UIHelper.primaryColor.withValues(alpha: 0.2), brightness: Brightness.dark);
+  ColorScheme colorManager = ColorScheme.fromSeed(
+    seedColor: UIHelper.primaryColor.withValues(alpha: 0.2),
+    brightness: Brightness.dark,
+  );
   @override
   ThemeData get theme => ThemeData(
     cupertinoOverrideTheme: const CupertinoThemeData(primaryColor: UIHelper.primaryColor, applyThemeToAll: true),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.highBorderRadius)),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      shape: RoundedRectangleBorder(borderRadius: UIHelper.highBorderRadius),
+    ),
     platform: GetPlatform.isIOS ? TargetPlatform.iOS : TargetPlatform.android,
     datePickerTheme: DatePickerThemeData(shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius)),
-    radioTheme: RadioThemeData(fillColor: WidgetStateProperty.all(UIHelper.primaryColor), overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1))),
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.all(UIHelper.primaryColor),
+      overlayColor: WidgetStateProperty.all(UIHelper.primaryColor.withValues(alpha: 0.1)),
+    ),
     colorScheme: colorManager,
-    pageTransitionsTheme: const PageTransitionsTheme(builders: {TargetPlatform.android: FadeForwardsPageTransitionsBuilder()}),
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {TargetPlatform.android: FadeForwardsPageTransitionsBuilder()},
+    ),
     actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
     tabBarTheme: const TabBarTheme(
       indicatorColor: UIHelper.primaryColor,
@@ -41,7 +51,11 @@ final class AppThemeDark extends AppTheme {
     ),
     toggleButtonsTheme: ToggleButtonsThemeData(borderRadius: UIHelper.lowBorderRadius),
     brightness: Brightness.dark,
-    textTheme: GoogleFonts.dmSansTextTheme().apply(bodyColor: colorManager.onSecondaryContainer, displayColor: colorManager.onSecondaryContainer, decorationColor: colorManager.onSecondaryContainer),
+    textTheme: GoogleFonts.dmSansTextTheme().apply(
+      bodyColor: colorManager.onSecondaryContainer,
+      displayColor: colorManager.onSecondaryContainer,
+      decorationColor: colorManager.onSecondaryContainer,
+    ),
     // .apply(bodyColor: ColorScheme.fromSeed(seedColor: UIHelper.primaryColor, brightness: Brightness.dark).onPrimaryContainer)
     // .copyWith(bodySmall: TextStyle(color: colorManager.onPrimaryContainer)),
     splashFactory: InkRipple.splashFactory,
@@ -62,8 +76,19 @@ final class AppThemeDark extends AppTheme {
       }),
       // trackOutlineColor: WidgetStatePropertyAll(colorManager.onPrimaryFixedVariant),
     ),
-    dividerTheme: DividerThemeData(space: 0, thickness: 1, color: colorManager.onPrimaryContainer.withValues(alpha: 0.2), endIndent: UIHelper.midSize, indent: UIHelper.midSize),
-    progressIndicatorTheme: const ProgressIndicatorThemeData(color: UIHelper.primaryColor, linearTrackColor: Colors.transparent, circularTrackColor: Colors.transparent, linearMinHeight: 2),
+    dividerTheme: DividerThemeData(
+      space: 0,
+      thickness: 1,
+      color: colorManager.onPrimaryContainer.withValues(alpha: 0.2),
+      endIndent: UIHelper.midSize,
+      indent: UIHelper.midSize,
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      color: UIHelper.primaryColor,
+      linearTrackColor: Colors.transparent,
+      circularTrackColor: Colors.transparent,
+      linearMinHeight: 2,
+    ),
     dropdownMenuTheme: DropdownMenuThemeData(
       menuStyle: const MenuStyle(),
       inputDecorationTheme: InputDecorationTheme(
@@ -75,7 +100,10 @@ final class AppThemeDark extends AppTheme {
       ),
     ),
     applyElevationOverlayColor: true,
-    bottomSheetTheme: const BottomSheetThemeData(elevation: 1, shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(UIHelper.highSize)))),
+    bottomSheetTheme: const BottomSheetThemeData(
+      elevation: 1,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(UIHelper.highSize))),
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         splashFactory: InkRipple.splashFactory,
@@ -84,7 +112,13 @@ final class AppThemeDark extends AppTheme {
         shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
       ),
     ),
-    outlinedButtonTheme: OutlinedButtonThemeData(style: OutlinedButton.styleFrom(elevation: 0.4, splashFactory: InkRipple.splashFactory, side: BorderSide(color: colorManager.secondary))),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        elevation: 0.4,
+        splashFactory: InkRipple.splashFactory,
+        side: BorderSide(color: colorManager.secondary),
+      ),
+    ),
     iconTheme: IconThemeData(color: colorManager.primary, size: 30),
     dialogTheme: DialogTheme(
       shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
@@ -93,8 +127,17 @@ final class AppThemeDark extends AppTheme {
       contentTextStyle: const TextStyle(fontSize: 16),
       // elevation: 0,
     ),
-    cardTheme: CardTheme(elevation: 0.4, color: colorManager.surfaceContainer, shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
-    listTileTheme: ListTileThemeData(style: ListTileStyle.list, visualDensity: const VisualDensity(vertical: -2), shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius), dense: true),
+    cardTheme: CardTheme(
+      elevation: 0.4,
+      color: colorManager.surfaceContainer,
+      shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+    ),
+    listTileTheme: ListTileThemeData(
+      style: ListTileStyle.list,
+      visualDensity: const VisualDensity(vertical: -2),
+      shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
+      dense: true,
+    ),
     drawerTheme: DrawerThemeData(
       endShape: RoundedRectangleBorder(borderRadius: UIHelper.zeroBorderRadius),
       // elevation: 0,
@@ -120,9 +163,15 @@ final class AppThemeDark extends AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.symmetric(horizontal: UIHelper.midSize, vertical: UIHelper.midSize),
       isCollapsed: true,
-      enabledBorder: OutlineInputBorder(borderRadius: UIHelper.lowBorderRadius, borderSide: BorderSide(color: colorManager.onSurface.withValues(alpha: 0.3))),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: UIHelper.lowBorderRadius,
+        borderSide: BorderSide(color: colorManager.onSurface.withValues(alpha: 0.3)),
+      ),
       border: OutlineInputBorder(borderRadius: UIHelper.lowBorderRadius),
-      focusedBorder: OutlineInputBorder(borderRadius: UIHelper.lowBorderRadius, borderSide: const BorderSide(color: UIHelper.primaryColor)),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: UIHelper.lowBorderRadius,
+        borderSide: const BorderSide(color: UIHelper.primaryColor),
+      ),
     ),
 
     appBarTheme: AppBarTheme(
@@ -144,7 +193,12 @@ final class AppThemeDark extends AppTheme {
       // backgroundColor: colorManager.surfaceDim,
       centerTitle: false,
       iconTheme: IconThemeData(color: colorManager.primary),
-      titleTextStyle: TextStyle(color: colorManager.primary, fontSize: 18, fontWeight: FontWeight.bold, fontFamily: GoogleFonts.dmSans().fontFamily),
+      titleTextStyle: TextStyle(
+        color: colorManager.primary,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        fontFamily: GoogleFonts.dmSans().fontFamily,
+      ),
       // scrolledUnderElevation: 0,
       // elevation: 0,
     ),

@@ -51,7 +51,11 @@ final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevk
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "${widget.editTipiEnum.getName} Kalemler Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) => PDFViewerView(
+    filterBottomSheet: filterBottomSheet,
+    title: "${widget.editTipiEnum.getName} Kalemler Raporu",
+    pdfData: viewModel.pdfModel,
+  );
 
   Future<bool> filterBottomSheet() async {
     {
@@ -102,7 +106,11 @@ final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevk
                     dialogManager.showAlertDialog("Cari Seçiniz.");
                     return;
                   }
-                  dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.pdfModel.dicParams?.cariKodu ?? ""])));
+                  dialogManager.showCariIslemleriGridViewDialog(
+                    await networkManager.getCariModel(
+                      CariRequestModel(kod: [viewModel.pdfModel.dicParams?.cariKodu ?? ""]),
+                    ),
+                  );
                 },
                 icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
@@ -122,7 +130,10 @@ final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevk
                 onTap: () async {
                   final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                   if (plasiyerList != null) {
-                    final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
+                    final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                      context,
+                      viewModel.pdfModel.dicParams?.plasiyerKodu,
+                    );
                     if (result != null) {
                       plasiyerController.text = result.plasiyerAciklama ?? "";
                       viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";

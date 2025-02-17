@@ -37,12 +37,12 @@ class SeriHareketleriModel with _$SeriHareketleriModel, NetworkManagerMixin {
   factory SeriHareketleriModel.fromJson(Map<String, dynamic> json) => _$SeriHareketleriModelFromJson(json);
 
   factory SeriHareketleriModel.ekle(StokListesiModel model) => SeriHareketleriModel(
-        stokKodu: model.stokKodu,
-        stokAdi: model.stokAdi,
-        gckod: "G",
-        islemKodu: 7,
-        requestVersion: 2,
-      );
+    stokKodu: model.stokKodu,
+    stokAdi: model.stokAdi,
+    gckod: "G",
+    islemKodu: 7,
+    requestVersion: 2,
+  );
 
   @override
   SeriHareketleriModel fromJson(Map<String, dynamic> json) => SeriHareketleriModel.fromJson(json);

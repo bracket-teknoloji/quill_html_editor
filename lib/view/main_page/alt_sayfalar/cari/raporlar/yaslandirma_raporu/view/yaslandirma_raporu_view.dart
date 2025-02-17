@@ -74,7 +74,8 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) =>
+      PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Yaşlandırma Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -85,20 +86,22 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Observer(
-            builder: (_) => SlideControllerWidget(
-              childrenTitleList: viewModel.sureAraligiList,
-              filterOnChanged: (index) => viewModel.changeSureAraligi(index),
-              childrenValueList: viewModel.sureAraligivalue,
-              groupValue: viewModel.sureAraligiGroupValue,
-            ),
+            builder:
+                (_) => SlideControllerWidget(
+                  childrenTitleList: viewModel.sureAraligiList,
+                  filterOnChanged: (index) => viewModel.changeSureAraligi(index),
+                  childrenValueList: viewModel.sureAraligivalue,
+                  groupValue: viewModel.sureAraligiGroupValue,
+                ),
           ),
           Observer(
-            builder: (_) => SlideControllerWidget(
-              childrenTitleList: viewModel.odemeTipiList,
-              filterOnChanged: (index) => viewModel.changeOdemeTipi(index),
-              childrenValueList: viewModel.odemeTipiValue,
-              groupValue: viewModel.odemeTipiGroupValue,
-            ),
+            builder:
+                (_) => SlideControllerWidget(
+                  childrenTitleList: viewModel.odemeTipiList,
+                  filterOnChanged: (index) => viewModel.changeOdemeTipi(index),
+                  childrenValueList: viewModel.odemeTipiValue,
+                  groupValue: viewModel.odemeTipiGroupValue,
+                ),
           ),
           CustomTextField(
             labelText: "Cari",
@@ -124,7 +127,9 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                   isDateTime: true,
                   // suffix: const Icon(Icons.calendar_today_outlined),
                   onTap: () async {
-                    final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.pdfModel.dicParams?.refTarih?.toDateTimeDDMMYYYY());
+                    final DateTime? result = await dialogManager.showDateTimePicker(
+                      initialDate: viewModel.pdfModel.dicParams?.refTarih?.toDateTimeDDMMYYYY(),
+                    );
                     if (result != null) {
                       referansTarihController.text = result.toDateString;
                       viewModel.pdfModel.dicParams?.refTarih = result.toDateString;
@@ -144,7 +149,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                         final PlasiyerList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                           context,
                           title: "Plasiyer",
-                          children: plasiyerList.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e)).toList(),
+                          children:
+                              plasiyerList
+                                  .map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", value: e))
+                                  .toList(),
                         );
                         if (result != null) {
                           plasiyerController.text = result.plasiyerAciklama ?? "";
@@ -186,20 +194,68 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
           ),
           Row(
             children: [
-              Expanded(child: CustomTextField(labelText: "Grup Kodu", controller: grupKoduController, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(0, grupKoduController))),
-              Expanded(child: CustomTextField(labelText: "Kod 1", controller: kod1Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(1, kod1Controller))),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Grup Kodu",
+                  controller: grupKoduController,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async => await getGrupKodu(0, grupKoduController),
+                ),
+              ),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Kod 1",
+                  controller: kod1Controller,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async => await getGrupKodu(1, kod1Controller),
+                ),
+              ),
             ],
           ),
           Row(
             children: [
-              Expanded(child: CustomTextField(labelText: "Kod 2", controller: kod2Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(2, kod2Controller))),
-              Expanded(child: CustomTextField(labelText: "Kod 3", controller: kod3Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(3, kod3Controller))),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Kod 2",
+                  controller: kod2Controller,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async => await getGrupKodu(2, kod2Controller),
+                ),
+              ),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Kod 3",
+                  controller: kod3Controller,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async => await getGrupKodu(3, kod3Controller),
+                ),
+              ),
             ],
           ),
           Row(
             children: [
-              Expanded(child: CustomTextField(labelText: "Kod 4", controller: kod4Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(4, kod4Controller))),
-              Expanded(child: CustomTextField(labelText: "Kod 5", controller: kod5Controller, readOnly: true, suffixMore: true, onTap: () async => await getGrupKodu(5, kod5Controller))),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Kod 4",
+                  controller: kod4Controller,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async => await getGrupKodu(4, kod4Controller),
+                ),
+              ),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Kod 5",
+                  controller: kod5Controller,
+                  readOnly: true,
+                  suffixMore: true,
+                  onTap: () async => await getGrupKodu(5, kod5Controller),
+                ),
+              ),
             ],
           ),
           ElevatedButton(
@@ -223,9 +279,17 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
     if (grupKodList.isEmptyOrNull) {
       grupKodList = await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1);
     }
-    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList = grupKodList.where((e) => e.grupNo == grupNo).map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e)).toList();
+    final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList =
+        grupKodList
+            .where((e) => e.grupNo == grupNo)
+            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e))
+            .toList();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Grup Kodu", children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+      context,
+      title: "Grup Kodu",
+      children: bottomSheetList,
+    );
     if (result != null) {
       controller?.text = result.grupKodu ?? "";
       switch (grupNo) {

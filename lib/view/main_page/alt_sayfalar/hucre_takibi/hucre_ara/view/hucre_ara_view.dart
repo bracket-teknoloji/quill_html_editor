@@ -42,65 +42,60 @@ final class _HucreAraViewState extends BaseState<HucreAraView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(
-              title: "Hücre Ara",
-              subtitle: viewModel.stokList?.length.toStringIfNotNull,
-            ),
-          ),
-        ),
-        body: Column(
-          children: [
-            CustomTextField(
-              labelText: "Hücre/Stok giriniz.",
-              controller: barkodController,
-              onChanged: viewModel.setBarkod,
-              focusNode: focusNode,
-              suffix: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.qr_code_scanner),
-                    onPressed: () async {
-                      final result = await Get.toNamed("/qr");
-                      if (result != null) {
-                        barkodController.text = result ?? "";
-                        final stok = await networkManager.getStokModel(
-                          StokRehberiRequestModel(
-                            menuKodu: "STOK_FGOR",
-                            stokKodu: barkodController.text,
-                          ),
-                        );
-                        await setStok(stok);
-                      }
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.more_horiz_outlined),
-                    onPressed: () async {
-                      final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
-                      if (result is BaseStokMixin) {
-                        await setStok(result);
-                      }
-                    },
-                  ),
-                ],
+    appBar: AppBar(
+      title: Observer(
+        builder: (_) => AppBarTitle(title: "Hücre Ara", subtitle: viewModel.stokList?.length.toStringIfNotNull),
+      ),
+    ),
+    body: Column(
+      children: [
+        CustomTextField(
+          labelText: "Hücre/Stok giriniz.",
+          controller: barkodController,
+          onChanged: viewModel.setBarkod,
+          focusNode: focusNode,
+          suffix: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.qr_code_scanner),
+                onPressed: () async {
+                  final result = await Get.toNamed("/qr");
+                  if (result != null) {
+                    barkodController.text = result ?? "";
+                    final stok = await networkManager.getStokModel(
+                      StokRehberiRequestModel(menuKodu: "STOK_FGOR", stokKodu: barkodController.text),
+                    );
+                    await setStok(stok);
+                  }
+                },
               ),
-              onSubmitted: (value) => viewModel.getData(),
-            ),
-            Expanded(
-              child: Observer(
-                builder: (_) => RefreshableListView(
+              IconButton(
+                icon: const Icon(Icons.more_horiz_outlined),
+                onPressed: () async {
+                  final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
+                  if (result is BaseStokMixin) {
+                    await setStok(result);
+                  }
+                },
+              ),
+            ],
+          ),
+          onSubmitted: (value) => viewModel.getData(),
+        ),
+        Expanded(
+          child: Observer(
+            builder:
+                (_) => RefreshableListView(
                   onRefresh: viewModel.getData,
                   items: viewModel.stokList,
                   itemBuilder: (item) => HucreAraCard(model: item),
                 ),
-              ),
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+          ),
+        ),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Future<void> setStok(BaseStokMixin? stok) async {
     viewModel.setBarkod(stok?.stokKodu);

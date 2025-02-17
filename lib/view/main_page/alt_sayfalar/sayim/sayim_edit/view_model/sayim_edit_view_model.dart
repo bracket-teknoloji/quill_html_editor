@@ -28,8 +28,12 @@ abstract class _SayimEditViewModelBase with Store, MobxNetworkMixin {
   void setTabIndex(int value) => tabIndex = value;
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData(int depoKodu) async =>
-      await networkManager.dioPost(path: ApiUrls.saveSayim, bodyModel: SayimListesiModel(), data: SingletonModels.sayimListesi?.filtre?.copyWith(depoKodu: depoKodu).toJson(), showLoading: true);
+  Future<GenericResponseModel<NetworkManagerMixin>> sendData(int depoKodu) async => await networkManager.dioPost(
+    path: ApiUrls.saveSayim,
+    bodyModel: SayimListesiModel(),
+    data: SingletonModels.sayimListesi?.filtre?.copyWith(depoKodu: depoKodu).toJson(),
+    showLoading: true,
+  );
 
   @action
   Future<bool> sayimiBitir() async {

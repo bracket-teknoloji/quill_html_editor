@@ -90,7 +90,8 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   void setAciklama3(String? value) => model = model.copyWith(aciklama3: value);
 
   @action
-  void setReferans(MuhasebeReferansModel? value) => model = model.copyWith(refKod: value?.kodu, refTanimi: value?.tanimi);
+  void setReferans(MuhasebeReferansModel? value) =>
+      model = model.copyWith(refKod: value?.kodu, refTanimi: value?.tanimi);
 
   @action
   void setPhotoFront(String? value) => model = model.copyWith(gorsel1: value);
@@ -103,7 +104,11 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getMuhaRefList() async {
-    final result = await networkManager.dioGet<MuhasebeReferansModel>(path: ApiUrls.getMuhaRefList, bodyModel: MuhasebeReferansModel(), showLoading: true);
+    final result = await networkManager.dioGet<MuhasebeReferansModel>(
+      path: ApiUrls.getMuhaRefList,
+      bodyModel: MuhasebeReferansModel(),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       setMuhaRefList(result.dataList);
     }

@@ -14,16 +14,23 @@ part "is_emri_rehberi_view_model.g.dart";
 
 final class IsEmriRehberiViewModel = _IsEmriRehberiViewModelBase with _$IsEmriRehberiViewModel;
 
-abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<IsEmirleriModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+abstract class _IsEmriRehberiViewModelBase
+    with
+        Store,
+        MobxNetworkMixin,
+        ListableMixin<IsEmirleriModel>,
+        SearchableMixin,
+        ScrollControllableMixin,
+        PageableMixin {
   SiparislerRequestModel get requestModel => SiparislerRequestModel(
-        menuKodu: "URET_ISEM",
-        sayfa: page,
-        searchText: searchText,
-        stokKodu: stokKodu,
-        cariKodu: null,
-        ekranTipi: null,
-        belgeNo: null,
-      );
+    menuKodu: "URET_ISEM",
+    sayfa: page,
+    searchText: searchText,
+    stokKodu: stokKodu,
+    cariKodu: null,
+    ekranTipi: null,
+    belgeNo: null,
+  );
 
   @override
   @observable
@@ -90,7 +97,11 @@ abstract class _IsEmriRehberiViewModelBase with Store, MobxNetworkMixin, Listabl
   @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getIsEmirleri, bodyModel: IsEmirleriModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getIsEmirleri,
+      bodyModel: IsEmirleriModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       if (page > 1) {
         addObservableList(result.dataList);

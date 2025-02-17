@@ -8,31 +8,13 @@ part "doviz_bakiye_raporu_view_model.g.dart";
 final class DovizBakiyeRaporuViewModel = _DovizBakiyeRaporuViewModelBase with _$DovizBakiyeRaporuViewModel;
 
 abstract class _DovizBakiyeRaporuViewModelBase with Store {
-  final List<String> bakiyeDurumuTitleList = [
-    "Tümü",
-    "Eksi",
-    "Artı",
-    "Sıfır",
-    "Bakiyeli",
-  ];
+  final List<String> bakiyeDurumuTitleList = ["Tümü", "Eksi", "Artı", "Sıfır", "Bakiyeli"];
   final List<String> bakiyeDurumuValueList = ["T", "E", "A", "S", "B"];
   final List<BottomSheetModel<String>> siralaBottomSheetList = [
-    BottomSheetModel(
-      title: "Cari Adı (A-Z)",
-      value: "ADI",
-    ),
-    BottomSheetModel(
-      title: "Cari Adı (Z-A)",
-      value: "ADI_DESC",
-    ),
-    BottomSheetModel(
-      title: "Cari Adı (A-Z)",
-      value: "KODU",
-    ),
-    BottomSheetModel(
-      title: "Cari Adı (Z-A)",
-      value: "KODU_DESC",
-    ),
+    BottomSheetModel(title: "Cari Adı (A-Z)", value: "ADI"),
+    BottomSheetModel(title: "Cari Adı (Z-A)", value: "ADI_DESC"),
+    BottomSheetModel(title: "Cari Adı (A-Z)", value: "KODU"),
+    BottomSheetModel(title: "Cari Adı (Z-A)", value: "KODU_DESC"),
   ];
   @observable
   String _bakiyeDurumuGroupValue = "T";

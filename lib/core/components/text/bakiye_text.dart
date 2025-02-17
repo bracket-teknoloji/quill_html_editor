@@ -11,9 +11,7 @@ final class BakiyeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-        "Bakiye: ${value?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} (${(value ?? 0) < 0 ? "Ödenecek" : "Tahsil Edilecek"})",
-        style: TextStyle(
-          color: UIHelper.getColorWithValue(value ?? 0),
-        ),
-      ).paddingAll(UIHelper.lowSize);
+    "Bakiye: ${value?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} (${(value ?? 0) < 0 ? "Ödenecek" : "Tahsil Edilecek"})",
+    style: TextStyle(color: UIHelper.getColorWithValue(value ?? 0)),
+  ).paddingAll(UIHelper.lowSize);
 }

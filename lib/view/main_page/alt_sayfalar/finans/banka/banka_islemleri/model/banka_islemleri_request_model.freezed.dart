@@ -12,10 +12,10 @@ part of 'banka_islemleri_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
-BankaIslemleriRequestModel _$BankaIslemleriRequestModelFromJson(
-    Map<String, dynamic> json) {
+BankaIslemleriRequestModel _$BankaIslemleriRequestModelFromJson(Map<String, dynamic> json) {
   return _BankaIslemleriRequestModel.fromJson(json);
 }
 
@@ -38,28 +38,21 @@ mixin _$BankaIslemleriRequestModel {
   /// Create a copy of BankaIslemleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BankaIslemleriRequestModelCopyWith<BankaIslemleriRequestModel>
-      get copyWith => throw _privateConstructorUsedError;
+  $BankaIslemleriRequestModelCopyWith<BankaIslemleriRequestModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaIslemleriRequestModelCopyWith<$Res> {
-  factory $BankaIslemleriRequestModelCopyWith(BankaIslemleriRequestModel value,
-          $Res Function(BankaIslemleriRequestModel) then) =
-      _$BankaIslemleriRequestModelCopyWithImpl<$Res,
-          BankaIslemleriRequestModel>;
+  factory $BankaIslemleriRequestModelCopyWith(
+    BankaIslemleriRequestModel value,
+    $Res Function(BankaIslemleriRequestModel) then,
+  ) = _$BankaIslemleriRequestModelCopyWithImpl<$Res, BankaIslemleriRequestModel>;
   @useResult
-  $Res call(
-      {String? baslamaTarihi,
-      String? bitisTarihi,
-      String? menuKodu,
-      String? hesapTipi,
-      String? hesapKodu});
+  $Res call({String? baslamaTarihi, String? bitisTarihi, String? menuKodu, String? hesapTipi, String? hesapKodu});
 }
 
 /// @nodoc
-class _$BankaIslemleriRequestModelCopyWithImpl<$Res,
-        $Val extends BankaIslemleriRequestModel>
+class _$BankaIslemleriRequestModelCopyWithImpl<$Res, $Val extends BankaIslemleriRequestModel>
     implements $BankaIslemleriRequestModelCopyWith<$Res> {
   _$BankaIslemleriRequestModelCopyWithImpl(this._value, this._then);
 
@@ -79,57 +72,58 @@ class _$BankaIslemleriRequestModelCopyWithImpl<$Res,
     Object? hesapTipi = freezed,
     Object? hesapKodu = freezed,
   }) {
-    return _then(_value.copyWith(
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapTipi: freezed == hesapTipi
-          ? _value.hesapTipi
-          : hesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapKodu: freezed == hesapKodu
-          ? _value.hesapKodu
-          : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            baslamaTarihi:
+                freezed == baslamaTarihi
+                    ? _value.baslamaTarihi
+                    : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            bitisTarihi:
+                freezed == bitisTarihi
+                    ? _value.bitisTarihi
+                    : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            menuKodu:
+                freezed == menuKodu
+                    ? _value.menuKodu
+                    : menuKodu // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            hesapTipi:
+                freezed == hesapTipi
+                    ? _value.hesapTipi
+                    : hesapTipi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            hesapKodu:
+                freezed == hesapKodu
+                    ? _value.hesapKodu
+                    : hesapKodu // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$BankaIslemleriRequestModelImplCopyWith<$Res>
-    implements $BankaIslemleriRequestModelCopyWith<$Res> {
+abstract class _$$BankaIslemleriRequestModelImplCopyWith<$Res> implements $BankaIslemleriRequestModelCopyWith<$Res> {
   factory _$$BankaIslemleriRequestModelImplCopyWith(
-          _$BankaIslemleriRequestModelImpl value,
-          $Res Function(_$BankaIslemleriRequestModelImpl) then) =
-      __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>;
+    _$BankaIslemleriRequestModelImpl value,
+    $Res Function(_$BankaIslemleriRequestModelImpl) then,
+  ) = __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? baslamaTarihi,
-      String? bitisTarihi,
-      String? menuKodu,
-      String? hesapTipi,
-      String? hesapKodu});
+  $Res call({String? baslamaTarihi, String? bitisTarihi, String? menuKodu, String? hesapTipi, String? hesapKodu});
 }
 
 /// @nodoc
 class __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>
-    extends _$BankaIslemleriRequestModelCopyWithImpl<$Res,
-        _$BankaIslemleriRequestModelImpl>
+    extends _$BankaIslemleriRequestModelCopyWithImpl<$Res, _$BankaIslemleriRequestModelImpl>
     implements _$$BankaIslemleriRequestModelImplCopyWith<$Res> {
   __$$BankaIslemleriRequestModelImplCopyWithImpl(
-      _$BankaIslemleriRequestModelImpl _value,
-      $Res Function(_$BankaIslemleriRequestModelImpl) _then)
-      : super(_value, _then);
+    _$BankaIslemleriRequestModelImpl _value,
+    $Res Function(_$BankaIslemleriRequestModelImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of BankaIslemleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -142,28 +136,35 @@ class __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>
     Object? hesapTipi = freezed,
     Object? hesapKodu = freezed,
   }) {
-    return _then(_$BankaIslemleriRequestModelImpl(
-      baslamaTarihi: freezed == baslamaTarihi
-          ? _value.baslamaTarihi
-          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      bitisTarihi: freezed == bitisTarihi
-          ? _value.bitisTarihi
-          : bitisTarihi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      menuKodu: freezed == menuKodu
-          ? _value.menuKodu
-          : menuKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapTipi: freezed == hesapTipi
-          ? _value.hesapTipi
-          : hesapTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      hesapKodu: freezed == hesapKodu
-          ? _value.hesapKodu
-          : hesapKodu // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$BankaIslemleriRequestModelImpl(
+        baslamaTarihi:
+            freezed == baslamaTarihi
+                ? _value.baslamaTarihi
+                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        bitisTarihi:
+            freezed == bitisTarihi
+                ? _value.bitisTarihi
+                : bitisTarihi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        menuKodu:
+            freezed == menuKodu
+                ? _value.menuKodu
+                : menuKodu // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        hesapTipi:
+            freezed == hesapTipi
+                ? _value.hesapTipi
+                : hesapTipi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        hesapKodu:
+            freezed == hesapKodu
+                ? _value.hesapKodu
+                : hesapKodu // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -171,15 +172,15 @@ class __$$BankaIslemleriRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$BankaIslemleriRequestModelImpl implements _BankaIslemleriRequestModel {
-  _$BankaIslemleriRequestModelImpl(
-      {this.baslamaTarihi,
-      this.bitisTarihi,
-      this.menuKodu,
-      this.hesapTipi,
-      this.hesapKodu});
+  _$BankaIslemleriRequestModelImpl({
+    this.baslamaTarihi,
+    this.bitisTarihi,
+    this.menuKodu,
+    this.hesapTipi,
+    this.hesapKodu,
+  });
 
-  factory _$BankaIslemleriRequestModelImpl.fromJson(
-          Map<String, dynamic> json) =>
+  factory _$BankaIslemleriRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BankaIslemleriRequestModelImplFromJson(json);
 
   @override
@@ -198,29 +199,25 @@ class _$BankaIslemleriRequestModelImpl implements _BankaIslemleriRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl>
-      get copyWith => __$$BankaIslemleriRequestModelImplCopyWithImpl<
-          _$BankaIslemleriRequestModelImpl>(this, _$identity);
+  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl> get copyWith =>
+      __$$BankaIslemleriRequestModelImplCopyWithImpl<_$BankaIslemleriRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BankaIslemleriRequestModelImplToJson(
-      this,
-    );
+    return _$$BankaIslemleriRequestModelImplToJson(this);
   }
 }
 
-abstract class _BankaIslemleriRequestModel
-    implements BankaIslemleriRequestModel {
-  factory _BankaIslemleriRequestModel(
-      {String? baslamaTarihi,
-      String? bitisTarihi,
-      String? menuKodu,
-      String? hesapTipi,
-      String? hesapKodu}) = _$BankaIslemleriRequestModelImpl;
+abstract class _BankaIslemleriRequestModel implements BankaIslemleriRequestModel {
+  factory _BankaIslemleriRequestModel({
+    String? baslamaTarihi,
+    String? bitisTarihi,
+    String? menuKodu,
+    String? hesapTipi,
+    String? hesapKodu,
+  }) = _$BankaIslemleriRequestModelImpl;
 
-  factory _BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) =
-      _$BankaIslemleriRequestModelImpl.fromJson;
+  factory _BankaIslemleriRequestModel.fromJson(Map<String, dynamic> json) = _$BankaIslemleriRequestModelImpl.fromJson;
 
   @override
   String? get baslamaTarihi;
@@ -242,6 +239,6 @@ abstract class _BankaIslemleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$BankaIslemleriRequestModelImplCopyWith<_$BankaIslemleriRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

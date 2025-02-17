@@ -19,14 +19,18 @@ abstract class _DekontEditKalemlerViewModelBase with Store {
   List<DekontKalemler>? get kalemler => dekontIslemlerRequestModel.kalemler;
 
   @computed
-  double get toplamBorc => kalemler?.where((element) => element.ba == "B").map((element) => element.tutar ?? 0).sum ?? 0;
+  double get toplamBorc =>
+      kalemler?.where((element) => element.ba == "B").map((element) => element.tutar ?? 0).sum ?? 0;
 
   @computed
-  double get toplamAlacak => kalemler?.where((element) => element.ba == "A").map((element) => element.tutar ?? 0).sum ?? 0;
+  double get toplamAlacak =>
+      kalemler?.where((element) => element.ba == "A").map((element) => element.tutar ?? 0).sum ?? 0;
 
   @action
   void addKalemler(DekontKalemler? model) {
-    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(kalemler: [...?kalemler, if (model != null) model]);
+    dekontIslemlerRequestModel = dekontIslemlerRequestModel.copyWith(
+      kalemler: [...?kalemler, if (model != null) model],
+    );
     setSingleton();
   }
 

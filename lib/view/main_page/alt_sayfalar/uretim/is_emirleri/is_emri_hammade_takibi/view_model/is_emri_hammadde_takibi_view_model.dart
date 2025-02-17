@@ -10,7 +10,8 @@ part "is_emri_hammadde_takibi_view_model.g.dart";
 
 final class IsEmriHammaddeTakibiViewModel = _IsEmriHammaddeTakibiViewModelBase with _$IsEmriHammaddeTakibiViewModel;
 
-abstract class _IsEmriHammaddeTakibiViewModelBase with Store, MobxNetworkMixin, ListableMixin<IsEmriHammaddeTakibiListesiModel>, SearchableMixin {
+abstract class _IsEmriHammaddeTakibiViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<IsEmriHammaddeTakibiListesiModel>, SearchableMixin {
   @override
   @observable
   String? searchText;
@@ -25,12 +26,15 @@ abstract class _IsEmriHammaddeTakibiViewModelBase with Store, MobxNetworkMixin, 
   void setSearchText(String? value) => searchText = value;
 
   @computed
-  ObservableList<IsEmriHammaddeTakibiListesiModel>? get getList => observableList
-      ?.where(
-        (element) => (element.stokKodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) || (element.isemrino?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
-      )
-      .toList()
-      .asObservable();
+  ObservableList<IsEmriHammaddeTakibiListesiModel>? get getList =>
+      observableList
+          ?.where(
+            (element) =>
+                (element.stokKodu?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false) ||
+                (element.isemrino?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false),
+          )
+          .toList()
+          .asObservable();
   @override
   @action
   void changeSearchBarStatus() {
@@ -50,7 +54,10 @@ abstract class _IsEmriHammaddeTakibiViewModelBase with Store, MobxNetworkMixin, 
     if (observableList != null) {
       setObservableList(null);
     }
-    final result = await networkManager.dioGet(path: ApiUrls.getIsemriHammaddeTakipListe, bodyModel: IsEmriHammaddeTakibiListesiModel());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getIsemriHammaddeTakipListe,
+      bodyModel: IsEmriHammaddeTakibiListesiModel(),
+    );
     if (result.isSuccess) {
       setObservableList(result.dataList);
     }

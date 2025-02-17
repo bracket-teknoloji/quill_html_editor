@@ -14,10 +14,8 @@ extension WidgetExtension on Widget {
   Widget yetkiVarMi(bool yetki) => yetki ? this : const SizedBox.shrink();
   // Widget? get sizedBoxMi => this is SizedBox ? null : this;
 
-  Widget wrapWithHero(dynamic tag) => InkWell(
-        onTap: () => Get.to(() => HeroWidget(tag: tag, child: this)),
-        child: this,
-      );
+  Widget wrapWithHero(dynamic tag) =>
+      InkWell(onTap: () => Get.to(() => HeroWidget(tag: tag, child: this)), child: this);
 
   Future<BitmapDescriptor> toBitmapDescriptor({
     Size? logicalSize,
@@ -42,13 +40,16 @@ extension WidgetExtension on Widget {
       imageSize: imageSize,
     );
 
-    return BitmapDescriptor.bytes(
-      pngBytes,
-      imagePixelRatio: view.devicePixelRatio,
-    );
+    return BitmapDescriptor.bytes(pngBytes, imagePixelRatio: view.devicePixelRatio);
   }
 
-  Future<Uint8List> createImageFromWidget(Widget widget, {required Duration waitToRender, required ui.FlutterView view, Size? logicalSize, Size? imageSize}) async {
+  Future<Uint8List> createImageFromWidget(
+    Widget widget, {
+    required Duration waitToRender,
+    required ui.FlutterView view,
+    Size? logicalSize,
+    Size? imageSize,
+  }) async {
     final RenderRepaintBoundary repaintBoundary = RenderRepaintBoundary();
     logicalSize ??= view.physicalSize / view.devicePixelRatio;
     imageSize ??= view.physicalSize;

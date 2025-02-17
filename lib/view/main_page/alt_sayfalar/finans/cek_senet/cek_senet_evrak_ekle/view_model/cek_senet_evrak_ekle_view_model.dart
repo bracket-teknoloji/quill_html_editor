@@ -34,5 +34,6 @@ abstract class _CekSenetEvrakEkleViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? aciklama) => model = model.copyWith(aciklama: aciklama);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveData() async => await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: CekSenetListesiModel(), data: model.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> saveData() async =>
+      await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: CekSenetListesiModel(), data: model.toJson());
 }

@@ -39,7 +39,11 @@ abstract class _DepoTalepMalToplamaViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<bool> saveKalem(KalemModel kalem) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: KalemModel(), data: kalem.copyWith(islemKodu: 7, talepId: model?.id).toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveDepoTalep,
+      bodyModel: KalemModel(),
+      data: kalem.copyWith(islemKodu: 7, talepId: model?.id).toJson(),
+    );
     return result.isSuccess;
   }
 }

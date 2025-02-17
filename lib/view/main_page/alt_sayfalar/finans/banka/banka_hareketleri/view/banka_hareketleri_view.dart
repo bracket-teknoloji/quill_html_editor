@@ -36,102 +36,106 @@ final class _BankaHareketleriViewState extends BaseState<BankaHareketleriView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar,
-        body: body,
-        bottomNavigationBar: bottomBar,
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar, body: body, bottomNavigationBar: bottomBar);
 
   AppBar get appBar => AppBar(
-        title: Observer(
-          builder: (_) => AppBarTitle(
+    title: Observer(
+      builder:
+          (_) => AppBarTitle(
             title: "Banka Hareketleri (${viewModel.bankaHareketleriListesi?.length ?? 0})",
             subtitle: widget.model.hesapKodu,
           ),
-        ),
-      );
+    ),
+  );
 
   RefreshIndicator get body => RefreshIndicator.adaptive(
-        onRefresh: viewModel.getData,
-        child: Observer(
-          builder: (_) {
-            if (viewModel.bankaHareketleriListesi == null) {
-              return const ListViewShimmer();
-            } else if ((viewModel.bankaHareketleriListesi?.length ?? 0) < 1) {
-              return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
-            }
-            return ListView.builder(
-              itemCount: viewModel.bankaHareketleriListesi?.length ?? 0,
-              itemBuilder: (context, index) {
-                final BankaHareketleriModel model = viewModel.bankaHareketleriListesi![index];
-                return Card(
-                  child: ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    onRefresh: viewModel.getData,
+    child: Observer(
+      builder: (_) {
+        if (viewModel.bankaHareketleriListesi == null) {
+          return const ListViewShimmer();
+        } else if ((viewModel.bankaHareketleriListesi?.length ?? 0) < 1) {
+          return const Center(child: Text("Veri bulunamadı", textAlign: TextAlign.center));
+        }
+        return ListView.builder(
+          itemCount: viewModel.bankaHareketleriListesi?.length ?? 0,
+          itemBuilder: (context, index) {
+            final BankaHareketleriModel model = viewModel.bankaHareketleriListesi![index];
+            return Card(
+              child: ListTile(
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(model.tarih.toDateString),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text(model.tarih.toDateString),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                              style: TextStyle(color: UIHelper.getColorWithValue(model.ba == "B" ? 1 : -1)),
-                            ),
-                            if (model.dovizAdi != null) Text("${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi ?? mainCurrency}"),
-                          ],
+                        Text(
+                          "${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                          style: TextStyle(color: UIHelper.getColorWithValue(model.ba == "B" ? 1 : -1)),
                         ),
+                        if (model.dovizAdi != null)
+                          Text(
+                            "${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizAdi ?? mainCurrency}",
+                          ),
                       ],
                     ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                  ],
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:
+                      [
                         Text(model.hareketAciklama ?? "", style: const TextStyle(color: UIHelper.primaryColor)),
                         if (model.belgeno != null) Text(model.belgeno ?? ""),
                         Text(model.aciklama ?? "", style: const TextStyle(fontStyle: FontStyle.italic)),
                       ].where((element) => element is! SizedBox).toList(),
-                    ),
-                  ),
-                );
-              },
-            ).paddingAll(UIHelper.lowSize);
+                ),
+              ),
+            );
           },
-        ),
-      );
+        ).paddingAll(UIHelper.lowSize);
+      },
+    ),
+  );
 
   BottomBarWidget get bottomBar => BottomBarWidget(
-        isScrolledDown: true,
+    isScrolledDown: true,
+    children: [
+      FooterButton(
         children: [
-          FooterButton(
-            children: [
-              const Text("Gelir"),
-              Observer(
-                builder: (_) => Text(
+          const Text("Gelir"),
+          Observer(
+            builder:
+                (_) => Text(
                   "${(widget.model.dovizAdi != null ? viewModel.dovizGelenTutar : viewModel.gelenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
                 ),
-              ),
-            ],
           ),
-          FooterButton(
-            children: [
-              const Text("Gider"),
-              Observer(
-                builder: (_) => Text(
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Gider"),
+          Observer(
+            builder:
+                (_) => Text(
                   "${(widget.model.dovizAdi != null ? viewModel.dovizGidenTutar : viewModel.gidenTutar).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
                 ),
-              ),
-            ],
           ),
-          FooterButton(
-            children: [
-              const Text("Bakiye"),
-              Observer(
-                builder: (_) => Text(
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Bakiye"),
+          Observer(
+            builder:
+                (_) => Text(
                   "${(widget.model.dovizAdi != null ? viewModel.dovizBakiye : viewModel.bakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${widget.model.dovizAdi ?? mainCurrency}",
                   style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye)),
                 ),
-              ),
-            ],
           ),
         ],
-      );
+      ),
+    ],
+  );
 }

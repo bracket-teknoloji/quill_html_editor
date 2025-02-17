@@ -7,13 +7,8 @@ part "olcum_pdf_model.g.dart";
 
 @freezed
 class OlcumPdfModel with _$OlcumPdfModel, NetworkManagerMixin {
-  factory OlcumPdfModel({
-    String? stokKodu,
-    String? yapkod,
-    String? revno,
-    DateTime? revtar,
-    String? tur,
-  }) = _OlcumPdfModel;
+  factory OlcumPdfModel({String? stokKodu, String? yapkod, String? revno, DateTime? revtar, String? tur}) =
+      _OlcumPdfModel;
   OlcumPdfModel._();
 
   factory OlcumPdfModel.fromJson(Map<String, dynamic> json) => _$OlcumPdfModelFromJson(json);

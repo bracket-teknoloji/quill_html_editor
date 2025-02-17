@@ -40,128 +40,142 @@ final class _KalemRehberiViewState extends BaseState<KalemRehberiView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) => AppBarTitle(
               title: "Kalem Rehberi (${viewModel.kalemList?.length ?? 0})",
-              subtitle: EditTipiEnum.values.firstWhereOrNull((element) => element.rawValue == viewModel.model?.pickerBelgeTuru)?.getName ?? "",
+              subtitle:
+                  EditTipiEnum.values
+                      .firstWhereOrNull((element) => element.rawValue == viewModel.model?.pickerBelgeTuru)
+                      ?.getName ??
+                  "",
             ),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                if (viewModel.selectedKalemList.isEmpty) {
-                  dialogManager.showErrorSnackBar("Lütfen en az bir kalem seçiniz");
-                } else {
-                  if (EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).faturaMi ||
-                      EditTipiEnum.satisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).siparisMi) {
-                    Get.back(
-                      result: viewModel.selectedKalemList
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            if (viewModel.selectedKalemList.isEmpty) {
+              dialogManager.showErrorSnackBar("Lütfen en az bir kalem seçiniz");
+            } else {
+              if (EditTipiEnum.alisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).faturaMi ||
+                  EditTipiEnum.satisFatura.getEditTipiEnumWithRawValue(viewModel.model?.pickerBelgeTuru).siparisMi) {
+                Get.back(
+                  result:
+                      viewModel.selectedKalemList
                           .map(
-                            (e) => e
-                              ..siparisNo = widget.model.belgeNo
-                              ..belgeNo = null
-                              ..siparisSira = viewModel.selectedKalemList.indexOf(e) + 1,
+                            (e) =>
+                                e
+                                  ..siparisNo = widget.model.belgeNo
+                                  ..belgeNo = null
+                                  ..siparisSira = viewModel.selectedKalemList.indexOf(e) + 1,
                           )
                           .toList(),
-                    );
-                    return;
-                  }
-                  Get.back(result: viewModel.selectedKalemList);
-                }
-              },
-              icon: const Icon(
-                Icons.check_circle,
-                color: UIHelper.primaryColor,
-              ),
-            ),
-            IconButton(
-              onPressed: () async {
-                final result =
-                    await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: loc.generalStrings.sort, groupValue: viewModel.model?.siralama, children: viewModel.siralaList);
-                if (result != null) {
-                  viewModel.setSiralama(result);
-                  await viewModel.resetPage();
-                }
-              },
-              icon: const Icon(Icons.sort_by_alpha_outlined),
-            ),
-          ],
-        ),
-        body: Observer(
-          builder: (_) {
-            if (viewModel.kalemList == null) {
-              return const ListViewShimmer();
-            } else if (viewModel.kalemList!.isEmpty) {
-              return const Center(child: Text("Kayıt bulunamadı"));
+                );
+                return;
+              }
+              Get.back(result: viewModel.selectedKalemList);
             }
-            return ListView.builder(
-              padding: UIHelper.lowPadding,
-              itemCount: viewModel.kalemList?.length ?? 0,
-              itemBuilder: (context, index) {
-                //checkBox listTile
-                final KalemModel model = viewModel.kalemList?[index] ?? KalemModel();
-                return Card(
-                  child: ListTile(
-                    onTap: () => changeCheckBox(!viewModel.selectedKalemList.any((element) => element.belgeNo == model.belgeNo && element.sira == model.sira), model),
-                    visualDensity: VisualDensity.compact,
-                    leading: Observer(
-                      builder: (_) => Checkbox(
+          },
+          icon: const Icon(Icons.check_circle, color: UIHelper.primaryColor),
+        ),
+        IconButton(
+          onPressed: () async {
+            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              title: loc.generalStrings.sort,
+              groupValue: viewModel.model?.siralama,
+              children: viewModel.siralaList,
+            );
+            if (result != null) {
+              viewModel.setSiralama(result);
+              await viewModel.resetPage();
+            }
+          },
+          icon: const Icon(Icons.sort_by_alpha_outlined),
+        ),
+      ],
+    ),
+    body: Observer(
+      builder: (_) {
+        if (viewModel.kalemList == null) {
+          return const ListViewShimmer();
+        } else if (viewModel.kalemList!.isEmpty) {
+          return const Center(child: Text("Kayıt bulunamadı"));
+        }
+        return ListView.builder(
+          padding: UIHelper.lowPadding,
+          itemCount: viewModel.kalemList?.length ?? 0,
+          itemBuilder: (context, index) {
+            //checkBox listTile
+            final KalemModel model = viewModel.kalemList?[index] ?? KalemModel();
+            return Card(
+              child: ListTile(
+                onTap:
+                    () => changeCheckBox(
+                      !viewModel.selectedKalemList.any(
+                        (element) => element.belgeNo == model.belgeNo && element.sira == model.sira,
+                      ),
+                      model,
+                    ),
+                visualDensity: VisualDensity.compact,
+                leading: Observer(
+                  builder:
+                      (_) => Checkbox(
                         visualDensity: VisualDensity.compact,
-                        value: viewModel.selectedKalemList.any((element) => element.belgeNo == model.belgeNo && element.sira == model.sira),
+                        value: viewModel.selectedKalemList.any(
+                          (element) => element.belgeNo == model.belgeNo && element.sira == model.sira,
+                        ),
                         onChanged: (value) => changeCheckBox(value, model),
                       ),
-                    ),
-                    title: Text(
-                      model.kalemAdi ?? model.stokAdi ?? "",
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+                title: Text(model.kalemAdi ?? model.stokAdi ?? "", overflow: TextOverflow.ellipsis),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (model.paketMi == "K")
+                      const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli),
+                    Text("Stok Kodu: ${model.stokKodu ?? ""}", overflow: TextOverflow.ellipsis),
+                    CustomLayoutBuilder(
+                      splitCount: 2,
                       children: [
-                        if (model.paketMi == "K") const ColorfulBadge(label: Text("Karma Koli"), badgeColorEnum: BadgeColorEnum.karmaKoli),
-                        Text("Stok Kodu: ${model.stokKodu ?? ""}", overflow: TextOverflow.ellipsis),
-                        CustomLayoutBuilder(
-                          splitCount: 2,
-                          children: [
-                            Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            Text("Miktar 2: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            Text("Teslim Miktarı: ${model.teslimMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            Text("Kalan Miktar: ${model.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                            Text("Teslim Tarihi: ${model.teslimTarihi.toDateString}"),
-                            Text("Sıra: ${model.sira ?? ""}"),
-                          ],
+                        Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        Text("Miktar 2: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        Text(
+                          "Teslim Miktarı: ${model.teslimMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
                         ),
+                        Text("Kalan Miktar: ${model.kalan.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        Text("Teslim Tarihi: ${model.teslimTarihi.toDateString}"),
+                        Text("Sıra: ${model.sira ?? ""}"),
                       ],
                     ),
-                  ),
-                );
-              },
+                  ],
+                ),
+              ),
             );
           },
-        ),
-        bottomNavigationBar: BottomAppBar(
-          padding: UIHelper.midPadding,
-          child: Row(
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: viewModel.removeAllSelectedKalem,
-                  style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
-                  child: const Text("Tümünü Bırak"),
-                ),
+        );
+      },
+    ),
+    bottomNavigationBar: BottomAppBar(
+      padding: UIHelper.midPadding,
+      child: Row(
+        children: [
+          Expanded(
+            child: ElevatedButton(
+              onPressed: viewModel.removeAllSelectedKalem,
+              style: ButtonStyle(
+                backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1)),
               ),
-              const SizedBox(width: UIHelper.lowSize),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: viewModel.addAllSelectedKalem,
-                  child: const Text("Tümünü Seç"),
-                ),
-              ),
-            ],
+              child: const Text("Tümünü Bırak"),
+            ),
           ),
-        ),
-      );
+          const SizedBox(width: UIHelper.lowSize),
+          Expanded(child: ElevatedButton(onPressed: viewModel.addAllSelectedKalem, child: const Text("Tümünü Seç"))),
+        ],
+      ),
+    ),
+  );
 
   void changeCheckBox(bool? value, KalemModel model) {
     if (value == true) {

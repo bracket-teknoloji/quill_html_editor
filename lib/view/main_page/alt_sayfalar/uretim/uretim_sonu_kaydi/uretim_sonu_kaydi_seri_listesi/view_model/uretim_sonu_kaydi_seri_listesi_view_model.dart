@@ -9,7 +9,8 @@ import "../model/uretim_sonu_kaydi_recete_model.dart";
 
 part "uretim_sonu_kaydi_seri_listesi_view_model.g.dart";
 
-final class UretimSonuKaydiSeriListesiViewModel = _UretimSonuKaydiSeriListesiViewModelBase with _$UretimSonuKaydiSeriListesiViewModel;
+final class UretimSonuKaydiSeriListesiViewModel = _UretimSonuKaydiSeriListesiViewModelBase
+    with _$UretimSonuKaydiSeriListesiViewModel;
 
 abstract class _UretimSonuKaydiSeriListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<UskReceteModel> {
   @observable
@@ -47,9 +48,16 @@ abstract class _UretimSonuKaydiSeriListesiViewModelBase with Store, MobxNetworkM
   @action
   @override
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getRecete, bodyModel: UskReceteModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getRecete,
+      bodyModel: UskReceteModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
-      setObservableList(result.dataList.map((e) => e.copyWith(miktar: (e.miktar ?? 0) * (kalemModel?.miktar ?? 0))).toList()..insert(0, UskReceteModel.fromKalemModel(kalemModel!)));
+      setObservableList(
+        result.dataList.map((e) => e.copyWith(miktar: (e.miktar ?? 0) * (kalemModel?.miktar ?? 0))).toList()
+          ..insert(0, UskReceteModel.fromKalemModel(kalemModel!)),
+      );
     }
   }
 }

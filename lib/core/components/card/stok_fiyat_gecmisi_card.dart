@@ -27,61 +27,61 @@ final class StokFiyatGecmisiCard extends StatefulWidget {
 final class StokFiyatGecmisiCardState extends BaseState<StokFiyatGecmisiCard> {
   @override
   Widget build(BuildContext context) => Card(
-        color: widget.model?.yazdirildi == "E" ? ColorPalette.mantisWithOpacity : null,
-        child: ListTile(
-          onTap: () {
-            widget.onTap?.call();
-            dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = widget.model?.stokKodu ?? "");
-          },
-          onLongPress: () {},
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(child: Text(widget.model?.stokAdi ?? "", overflow: TextOverflow.ellipsis)),
-              IconButton(
-                icon: const Icon(Icons.print_outlined, color: UIHelper.primaryColor),
-                onPressed: () async {
-                  widget.onPrint?.call();
-                  // var result = await Get.toNamed("/qr");
-                  // if (result != null) {
-                  //   controller.text = result.toString();
-                  // }
-                  // getData();
-                },
-              ),
-            ],
+    color: widget.model?.yazdirildi == "E" ? ColorPalette.mantisWithOpacity : null,
+    child: ListTile(
+      onTap: () {
+        widget.onTap?.call();
+        dialogManager.showStokGridViewDialog(StokListesiModel()..stokKodu = widget.model?.stokKodu ?? "");
+      },
+      onLongPress: () {},
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(child: Text(widget.model?.stokAdi ?? "", overflow: TextOverflow.ellipsis)),
+          IconButton(
+            icon: const Icon(Icons.print_outlined, color: UIHelper.primaryColor),
+            onPressed: () async {
+              widget.onPrint?.call();
+              // var result = await Get.toNamed("/qr");
+              // if (result != null) {
+              //   controller.text = result.toString();
+              // }
+              // getData();
+            },
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        ],
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (widget.model?.dovizAdi != null)
+            ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli),
+          CustomLayoutBuilder.divideInHalf(
             children: [
-              if (widget.model?.dovizAdi != null) ColorfulBadge(label: Text("Dövizli ${widget.model?.dovizAdi}"), badgeColorEnum: BadgeColorEnum.dovizli),
-              CustomLayoutBuilder.divideInHalf(
+              Wrap(
+                direction: Axis.vertical,
+                children: [Text("Stok Kodu", style: TextStyleHelper.captionWhite), Text(widget.model?.stokKodu ?? "")],
+              ),
+              Wrap(
+                direction: Axis.vertical,
                 children: [
-                  Wrap(
-                    direction: Axis.vertical,
-                    children: [
-                      Text("Stok Kodu", style: TextStyleHelper.captionWhite),
-                      Text(widget.model?.stokKodu ?? ""),
-                    ],
+                  Text("Satış Fiyatı (${widget.model?.fiyatSirasi})", style: TextStyleHelper.captionWhite),
+                  Text(
+                    "${widget.model?.fiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${widget.model?.dovizAdi ?? mainCurrency}",
                   ),
-                  Wrap(
-                    direction: Axis.vertical,
-                    children: [
-                      Text("Satış Fiyatı (${widget.model?.fiyatSirasi})", style: TextStyleHelper.captionWhite),
-                      Text("${widget.model?.fiyat?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${widget.model?.dovizAdi ?? mainCurrency}"),
-                    ],
-                  ),
-                  Wrap(
-                    direction: Axis.vertical,
-                    children: [
-                      Text("Fiyat Tarihi", style: TextStyleHelper.captionWhite),
-                      Text(widget.model?.tarih?.toDateString ?? ""),
-                    ],
-                  ),
+                ],
+              ),
+              Wrap(
+                direction: Axis.vertical,
+                children: [
+                  Text("Fiyat Tarihi", style: TextStyleHelper.captionWhite),
+                  Text(widget.model?.tarih?.toDateString ?? ""),
                 ],
               ),
             ],
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }

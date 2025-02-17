@@ -21,8 +21,10 @@ class UrunGrubunaGoreSatisGrafigiRequestModel with _$UrunGrubunaGoreSatisGrafigi
   }) = _UrunGrubunaGoreSatisGrafigiRequestModel;
   UrunGrubunaGoreSatisGrafigiRequestModel._();
 
-  factory UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(Map<String, dynamic> json) => _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(json);
+  factory UrunGrubunaGoreSatisGrafigiRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(json);
 
   @override
-  UrunGrubunaGoreSatisGrafigiRequestModel fromJson(Map<String, dynamic> json) => _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(json);
+  UrunGrubunaGoreSatisGrafigiRequestModel fromJson(Map<String, dynamic> json) =>
+      _$UrunGrubunaGoreSatisGrafigiRequestModelFromJson(json);
 }

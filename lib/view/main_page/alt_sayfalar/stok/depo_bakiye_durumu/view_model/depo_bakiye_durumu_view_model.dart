@@ -21,13 +21,16 @@ abstract class _DepoBakiyeDurumuViewModelBase with Store, MobxNetworkMixin {
   List<String>? get subeAdiList => depoBakiyeDurumuList?.map((e) => e.subeAdi ?? "").toSet().toList();
 
   @computed
-  double get toplamGiris => depoBakiyeDurumuList?.where((element) => element.depoKodu == 0).map((element) => element.giris).sum ?? 0;
+  double get toplamGiris =>
+      depoBakiyeDurumuList?.where((element) => element.depoKodu == 0).map((element) => element.giris).sum ?? 0;
 
   @computed
-  double get toplamCikis => depoBakiyeDurumuList?.where((element) => element.depoKodu == 0).map((element) => element.cikis).sum ?? 0;
+  double get toplamCikis =>
+      depoBakiyeDurumuList?.where((element) => element.depoKodu == 0).map((element) => element.cikis).sum ?? 0;
 
   @computed
-  double get toplamBakiye => depoBakiyeDurumuList?.where((element) => element.depoKodu == 0).map((element) => element.bakiye).sum ?? 0;
+  double get toplamBakiye =>
+      depoBakiyeDurumuList?.where((element) => element.depoKodu == 0).map((element) => element.bakiye).sum ?? 0;
 
   @action
   void setSifirHaric(bool? sifirHaric) => dicParams = dicParams.copyWith(sifirHaric: sifirHaric == true ? "E" : "H");

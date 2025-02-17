@@ -17,10 +17,10 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
     required this.itemBuilder,
     required this.crossAxisCount,
     super.key,
-  })  : _isPageable = false,
-        dahaVarMi = false,
-        // _isSliver = false,
-        scrollController = null;
+  }) : _isPageable = false,
+       dahaVarMi = false,
+       // _isSliver = false,
+       scrollController = null;
 
   /// Eğer ihtiyaç olunan veriler tek bir istek ile gelmiyorsa bunu kullanınız.
   /// Sayfalama özelliklerini kullanacağınız durumlarda işinize yarayacaktır.
@@ -63,10 +63,8 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
   // _isSliver = false;
 
   @override
-  Widget build(BuildContext context) => RefreshIndicator.adaptive(
-        onRefresh: onRefresh,
-        child: body(),
-      ).paddingAll(UIHelper.lowSize);
+  Widget build(BuildContext context) =>
+      RefreshIndicator.adaptive(onRefresh: onRefresh, child: body()).paddingAll(UIHelper.lowSize);
 
   Widget body() {
     if (items == null) return GridViewShimmer(gridDelegate: gridDelegate());
@@ -89,7 +87,8 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
   GridView _gridView() {
     if (_isPageable) {
       return GridView.builder(
-        controller: scrollController, primary: false,
+        controller: scrollController,
+        primary: false,
         gridDelegate: gridDelegate(),
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
 
@@ -101,19 +100,15 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
             return const SizedBox.shrink();
           }
           if (index == items!.length + 1) {
-            return Center(
-              child: Visibility(
-                visible: dahaVarMi,
-                child: const CircularProgressIndicator.adaptive(),
-              ),
-            );
+            return Center(child: Visibility(visible: dahaVarMi, child: const CircularProgressIndicator.adaptive()));
           }
           return itemBuilder(items![index]);
         },
       );
     }
     return GridView.builder(
-      itemCount: items!.length, primary: false,
+      itemCount: items!.length,
+      primary: false,
       gridDelegate: gridDelegate(),
       physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       // items nullcheck yapıldığı için ünlem koyabiliriz.
@@ -122,11 +117,12 @@ final class RefreshableGridView<T extends NetworkManagerMixin> extends Stateless
   }
 
   SliverGridDelegateWithFixedCrossAxisCount gridDelegate() => SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: crossAxisCount,
-        childAspectRatio: crossAxisCount == 1
+    crossAxisCount: crossAxisCount,
+    childAspectRatio:
+        crossAxisCount == 1
             ? 1.3
             : crossAxisCount == 2
-                ? 0.6
-                : 0.5,
-      );
+            ? 0.6
+            : 0.5,
+  );
 }

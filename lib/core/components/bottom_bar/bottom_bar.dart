@@ -32,7 +32,10 @@ final class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
 
   @override
   Widget build(BuildContext context) => Container(
-    constraints: kIsWeb && (Get.context?.isLandscape ?? false) ? const BoxConstraints(maxHeight: kBottomNavigationBarHeight * 1.2) : null,
+    constraints:
+        kIsWeb && (Get.context?.isLandscape ?? false)
+            ? const BoxConstraints(maxHeight: kBottomNavigationBarHeight * 1.2)
+            : null,
     child: ScrollableWidget(
       isScrolledDown: kIsWeb ? true : widget.isScrolledDown,
       child: Container(

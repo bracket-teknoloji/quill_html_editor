@@ -14,36 +14,15 @@ final class SerbestRaporResponseModel with NetworkManagerMixin {
   String? aciklama;
   Map<String, dynamic>? paramMap;
 
-  bool get plasiyerKoduMu => [
-        "PLASIYER",
-        "PLASIYERKOD",
-        "PLASIYER_KOD",
-        "PLASIYERKODU",
-        "PLASIYER_KODU",
-      ].contains(rehberTipi);
+  bool get plasiyerKoduMu =>
+      ["PLASIYER", "PLASIYERKOD", "PLASIYER_KOD", "PLASIYERKODU", "PLASIYER_KODU"].contains(rehberTipi);
 
-  bool get secmeliPlasiyerMi => [
-        "PLASIYERLER",
-      ].contains(rehberTipi);
+  bool get secmeliPlasiyerMi => ["PLASIYERLER"].contains(rehberTipi);
 
-  bool get cariKoduMu => [
-        "CARI",
-        "CARIKOD",
-        "CARI_KOD",
-        "CARIKODU",
-        "CARI_KODU",
-      ].contains(rehberTipi);
-  bool get projeKoduMu => [
-        "PROJE_KODU",
-      ].contains(rehberTipi);
+  bool get cariKoduMu => ["CARI", "CARIKOD", "CARI_KOD", "CARIKODU", "CARI_KODU"].contains(rehberTipi);
+  bool get projeKoduMu => ["PROJE_KODU"].contains(rehberTipi);
 
-  bool get stokKoduMu => [
-        "STOK",
-        "STOKKOD",
-        "STOK_KOD",
-        "STOKKODU",
-        "STOK_KODU",
-      ].contains(rehberTipi);
+  bool get stokKoduMu => ["STOK", "STOKKOD", "STOK_KOD", "STOKKODU", "STOK_KODU"].contains(rehberTipi);
 
   bool get dovizTipiMi => rehberTipi == "DOVIZ_TIPI";
 
@@ -61,7 +40,7 @@ final class SerbestRaporResponseModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$SerbestRaporResponseModelToJson(this);
 
   bool get cokluMu => switch (rehberTipi) {
-        "PLASIYERLER" => true,
-        _ => false,
-      };
+    "PLASIYERLER" => true,
+    _ => false,
+  };
 }

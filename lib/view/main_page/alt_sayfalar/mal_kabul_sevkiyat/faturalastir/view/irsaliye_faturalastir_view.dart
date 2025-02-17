@@ -65,114 +65,90 @@ final class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalasti
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "İrsaliye Faturalaştır",
-            subtitle: model.getEditTipiEnum?.getName,
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {
-                if (formKey.currentState?.validate() != true) {
-                  return;
-                }
-                dialogManager.showAreYouSureDialog(() async {
-                  final result = await viewModel.sendFatura();
-                  if (result.isSuccess) {
-                    Get.back(result: true);
-                    dialogManager.showSuccessSnackBar(
-                      result.message ?? loc.generalStrings.success,
-                    );
-                  }
-                });
-              },
-              icon: const Icon(Icons.save_outlined),
+    appBar: AppBar(
+      title: AppBarTitle(title: "İrsaliye Faturalaştır", subtitle: model.getEditTipiEnum?.getName),
+      actions: [
+        IconButton(
+          onPressed: () {
+            if (formKey.currentState?.validate() != true) {
+              return;
+            }
+            dialogManager.showAreYouSureDialog(() async {
+              final result = await viewModel.sendFatura();
+              if (result.isSuccess) {
+                Get.back(result: true);
+                dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+              }
+            });
+          },
+          icon: const Icon(Icons.save_outlined),
+        ),
+      ],
+    ),
+    body: SingleChildScrollView(
+      child: Form(
+        key: formKey,
+        child: Column(
+          children: [
+            if (widget.model.model?.eBelgeMi == true)
+              const Card(
+                child: ListTile(leading: Icon(Icons.info_outlined), title: Text("Cari E-Fatura Mükellefidir.")),
+              ),
+            CustomTextField(
+              labelText: "Cari",
+              readOnly: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.model?.cariKodu ?? "")),
+              controller: cariController,
             ),
+            CustomTextField(labelText: "İrsaliye No", readOnly: true, controller: irsaliyeNoController),
+            CustomTextField(labelText: "İrsaliye Tarihi", readOnly: true, controller: irsaliyeTarihiController),
+            CustomTextField(
+              labelText: "Fatura Tarihi",
+              isMust: true,
+              readOnly: true,
+              isDateTime: true,
+              controller: faturaTarihiController,
+              onTap: () async {
+                final result = await dialogManager.showDateTimePicker(initialDate: viewModel.model?.tarih);
+                if (result is DateTime) {
+                  viewModel.setFaturaTarihi(result);
+                  faturaTarihiController.text = result.toDateString;
+                }
+              },
+            ),
+            CustomTextField(
+              labelText: "Fatura No",
+              isMust: true,
+              maxLength: 15,
+              controller: faturaNoController,
+              suffix: IconButton(
+                onPressed: () async => await getSiradakiKod(),
+                icon: const Icon(Icons.format_list_numbered_rtl_outlined),
+              ),
+              onChanged: viewModel.setFaturaNo,
+            ),
+            CustomTextField(
+              labelText: "Resmi Fatura No",
+              isMust: true,
+              maxLength: 16,
+              controller: resmiFaturaNoController,
+              onChanged: viewModel.setResmiFaturaNo,
+            ),
+            CustomTextField(
+              labelText: "İstisna Kodu",
+              controller: istisnaKoduNoController,
+              onTap: () {},
+            ).yetkiVarMi(false),
           ],
-        ),
-        body: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              children: [
-                if (widget.model.model?.eBelgeMi == true)
-                  const Card(
-                    child: ListTile(
-                      leading: Icon(Icons.info_outlined),
-                      title: Text("Cari E-Fatura Mükellefidir."),
-                    ),
-                  ),
-                CustomTextField(
-                  labelText: "Cari",
-                  readOnly: true,
-                  valueWidget: Observer(
-                    builder: (_) => Text(
-                      viewModel.model?.cariKodu ?? "",
-                    ),
-                  ),
-                  controller: cariController,
-                ),
-                CustomTextField(
-                  labelText: "İrsaliye No",
-                  readOnly: true,
-                  controller: irsaliyeNoController,
-                ),
-                CustomTextField(
-                  labelText: "İrsaliye Tarihi",
-                  readOnly: true,
-                  controller: irsaliyeTarihiController,
-                ),
-                CustomTextField(
-                  labelText: "Fatura Tarihi",
-                  isMust: true,
-                  readOnly: true,
-                  isDateTime: true,
-                  controller: faturaTarihiController,
-                  onTap: () async {
-                    final result = await dialogManager.showDateTimePicker(
-                      initialDate: viewModel.model?.tarih,
-                    );
-                    if (result is DateTime) {
-                      viewModel.setFaturaTarihi(result);
-                      faturaTarihiController.text = result.toDateString;
-                    }
-                  },
-                ),
-                CustomTextField(
-                  labelText: "Fatura No",
-                  isMust: true,
-                  maxLength: 15,
-                  controller: faturaNoController,
-                  suffix: IconButton(
-                    onPressed: () async => await getSiradakiKod(),
-                    icon: const Icon(Icons.format_list_numbered_rtl_outlined),
-                  ),
-                  onChanged: viewModel.setFaturaNo,
-                ),
-                CustomTextField(
-                  labelText: "Resmi Fatura No",
-                  isMust: true,
-                  maxLength: 16,
-                  controller: resmiFaturaNoController,
-                  onChanged: viewModel.setResmiFaturaNo,
-                ),
-                CustomTextField(
-                  labelText: "İstisna Kodu",
-                  controller: istisnaKoduNoController,
-                  onTap: () {},
-                ).yetkiVarMi(false),
-              ],
-            ).paddingAll(UIHelper.lowSize),
-          ),
-        ),
-      );
+        ).paddingAll(UIHelper.lowSize),
+      ),
+    ),
+  );
   Future<void> getSiradakiKod() async {
     final result = await viewModel.getSiradakiBelgeNo(widget.model.editTipiEnum!, faturaNoController.text);
     if (result case ("" || null)) {
       faturaNoController.text = result ?? "";
-      viewModel.setResmiFaturaNo(
-        result?.belgeNoToResmiBelgeNo(result, viewModel.model?.tarih),
-      );
+      viewModel.setResmiFaturaNo(result?.belgeNoToResmiBelgeNo(result, viewModel.model?.tarih));
       resmiFaturaNoController.text = viewModel.requestModel.resmiBelgeNo ?? "";
     }
   }

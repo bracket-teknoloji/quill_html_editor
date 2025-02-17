@@ -30,57 +30,66 @@ final class TahsilatOdemeKayitlariCard extends StatefulWidget {
 final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayitlariCard> {
   @override
   Widget build(BuildContext context) => Card(
-        child: ListTile(
-          onTap: () async => await onTap(widget.cariHareketleriModel),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    child: ListTile(
+      onTap: () async => await onTap(widget.cariHareketleriModel),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Row(
+              children: [
+                Text(widget.cariHareketleriModel.tarih.toDateString).paddingOnly(right: UIHelper.lowSize),
+                Expanded(
+                  child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "", overflow: TextOverflow.ellipsis),
+                ),
+              ],
+            ),
+          ),
+          Text(
+            "${widget.cariHareketleriModel.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+            style: TextStyle(color: UIHelper.getColorWithValue(widget.cariHareketleriModel.tutar)),
+          ),
+        ],
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              if (widget.cariHareketleriModel.alacakMi)
+                const ColorfulBadge(label: Text("Tahsilat"), badgeColorEnum: BadgeColorEnum.basarili),
+              if (!widget.cariHareketleriModel.alacakMi)
+                const ColorfulBadge(label: Text("Ödeme"), badgeColorEnum: BadgeColorEnum.uyari),
+            ],
+          ),
+          Row(
             children: [
               Expanded(
-                child: Row(
-                  children: [
-                    Text(widget.cariHareketleriModel.tarih.toDateString).paddingOnly(right: UIHelper.lowSize),
-                    Expanded(child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "", overflow: TextOverflow.ellipsis)),
-                  ],
+                child: Text(
+                  widget.cariHareketleriModel.cariAdi ?? "",
+                  overflow: TextOverflow.ellipsis,
+                ).paddingOnly(right: UIHelper.lowSize),
+              ),
+              if (widget.cariHareketleriModel.dovizliMi)
+                Text(
+                  "${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.cariHareketleriModel.dovizAdi ?? ""}",
                 ),
-              ),
-              Text(
-                "${widget.cariHareketleriModel.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                style: TextStyle(color: UIHelper.getColorWithValue(widget.cariHareketleriModel.tutar)),
-              ),
             ],
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  if (widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Tahsilat"), badgeColorEnum: BadgeColorEnum.basarili),
-                  if (!widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Ödeme"), badgeColorEnum: BadgeColorEnum.uyari),
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(child: Text(widget.cariHareketleriModel.cariAdi ?? "", overflow: TextOverflow.ellipsis).paddingOnly(right: UIHelper.lowSize)),
-                  if (widget.cariHareketleriModel.dovizliMi)
-                    Text("${widget.cariHareketleriModel.dovizBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${widget.cariHareketleriModel.dovizAdi ?? ""}"),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(widget.cariHareketleriModel.belgeNo ?? widget.cariHareketleriModel.hareketAciklama ?? ""),
-                  ColorfulBadge(
-                    label: Text(widget.cariHareketleriModel.hareketAciklama ?? ""),
-                  ),
-                ],
-              ).paddingSymmetric(vertical: UIHelper.lowSize),
-
-              Text(widget.cariHareketleriModel.aciklama ?? ""),
-              // Text(widget.cariHareketleriModel.kasaAdi),
+              Text(widget.cariHareketleriModel.belgeNo ?? widget.cariHareketleriModel.hareketAciklama ?? ""),
+              ColorfulBadge(label: Text(widget.cariHareketleriModel.hareketAciklama ?? "")),
             ],
-          ),
-        ),
-      );
+          ).paddingSymmetric(vertical: UIHelper.lowSize),
+
+          Text(widget.cariHareketleriModel.aciklama ?? ""),
+          // Text(widget.cariHareketleriModel.kasaAdi),
+        ],
+      ),
+    ),
+  );
 
   Future<void> onTap(CariHareketleriModel model) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -215,20 +224,17 @@ final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayi
 
   Future<void> deleteData() async {
     Get.back();
-    await dialogManager.showAreYouSureDialog(
-      () async {
-        final result = await networkManager.dioPost<KasaIslemleriModel>(
-          path: ApiUrls.deleteKasaHareket,
-          bodyModel: KasaIslemleriModel(),
-          queryParameters: {"REFKEY": widget.cariHareketleriModel.refkey},
-          showLoading: true,
-        );
-        if (result.isSuccess) {
-          widget.update.call(widget.cariHareketleriModel.refkey);
-          dialogManager.showSuccessSnackBar(result.message ?? "");
-        }
-      },
-      title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",
-    );
+    await dialogManager.showAreYouSureDialog(() async {
+      final result = await networkManager.dioPost<KasaIslemleriModel>(
+        path: ApiUrls.deleteKasaHareket,
+        bodyModel: KasaIslemleriModel(),
+        queryParameters: {"REFKEY": widget.cariHareketleriModel.refkey},
+        showLoading: true,
+      );
+      if (result.isSuccess) {
+        widget.update.call(widget.cariHareketleriModel.refkey);
+        dialogManager.showSuccessSnackBar(result.message ?? "");
+      }
+    }, title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",);
   }
 }

@@ -50,10 +50,7 @@ abstract class _DovizKurlariViewModelBase with Store, MobxNetworkMixin, Listable
     final result = await networkManager.dioGet<DovizKurlariModel>(
       path: ApiUrls.getDovizKurlari,
       bodyModel: DovizKurlariModel(),
-      queryParameters: {
-        "EkranTipi": "L",
-        "SabitTarih": tarih.toDateString,
-      },
+      queryParameters: {"EkranTipi": "L", "SabitTarih": tarih.toDateString},
     );
     if (result.isSuccess) {
       setObservableList(result.dataList);

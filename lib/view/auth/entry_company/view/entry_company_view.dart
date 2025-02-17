@@ -86,18 +86,15 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       context,
       title: "Şube Seçiniz",
       groupValue: viewModel.selected["Şube"],
-      children: List.generate(
-        list?.length ?? 0,
-        (index) {
-          final item = list?[index];
-          return BottomSheetModel(
-            title: item?.subeAdi ?? "",
-            value: item,
-            description: item?.subeKodu.toStringIfNotNull,
-            groupValue: item?.subeKodu,
-          );
-        },
-      ),
+      children: List.generate(list?.length ?? 0, (index) {
+        final item = list?[index];
+        return BottomSheetModel(
+          title: item?.subeAdi ?? "",
+          value: item,
+          description: item?.subeKodu.toStringIfNotNull,
+          groupValue: item?.subeKodu,
+        );
+      }),
     );
     if (result is IsletmeModel) {
       subeController.text = "${result.subeKodu} - ${result.subeAdi}";
@@ -119,20 +116,23 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
       context,
       title: "Şirket Seçiniz",
       groupValue: viewModel.selected["Şirket"],
-      children: List.generate(
-        viewModel.sirketList?.length ?? 0,
-        (index) {
-          final CompanyModel? model = viewModel.sirketList?[index];
-          return BottomSheetModel(
-            iconWidget: Icons.storage_outlined,
-            title: model?.company ?? "",
-            description: "${model?.year}",
-            descriptionWidget: model?.isDevredilmis == true ? ColorfulBadge(label: Text("Devredildi (${model?.devSirket})"), badgeColorEnum: BadgeColorEnum.kapali) : null,
-            value: model,
-            groupValue: model?.company,
-          );
-        },
-      ),
+      children: List.generate(viewModel.sirketList?.length ?? 0, (index) {
+        final CompanyModel? model = viewModel.sirketList?[index];
+        return BottomSheetModel(
+          iconWidget: Icons.storage_outlined,
+          title: model?.company ?? "",
+          description: "${model?.year}",
+          descriptionWidget:
+              model?.isDevredilmis == true
+                  ? ColorfulBadge(
+                    label: Text("Devredildi (${model?.devSirket})"),
+                    badgeColorEnum: BadgeColorEnum.kapali,
+                  )
+                  : null,
+          value: model,
+          groupValue: model?.company,
+        );
+      }),
     );
     if (result is CompanyModel) {
       first = false;
@@ -152,7 +152,8 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   Future isletmeDialog(BuildContext context, {bool isTapOnIsletme = false}) async {
     if (viewModel.isletmeList?.length == 1 && !isTapOnIsletme) {
-      isletmeController.text = "${viewModel.isletmeList?[0].isletmeKodu} - ${viewModel.isletmeList?[0].isletmeAdi ?? ""}";
+      isletmeController.text =
+          "${viewModel.isletmeList?[0].isletmeKodu} - ${viewModel.isletmeList?[0].isletmeAdi ?? ""}";
       viewModel.selectedIsletme(viewModel.isletmeList?[0]);
       await subeDialog(context);
       return;
@@ -181,50 +182,51 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {
-              if (widget.isSplash ?? false) {
-                Get.offAndToNamed("/login");
+    appBar: AppBar(
+      leading: IconButton(
+        onPressed: () {
+          if (widget.isSplash ?? false) {
+            Get.offAndToNamed("/login");
+          } else {
+            Get.back();
+          }
+        },
+        icon: const Icon(Icons.arrow_back_outlined),
+      ),
+      title: const AppBarTitle(title: "Şirkete Giriş"),
+      actions: [
+        if (AccountModel.instance.adminMi)
+          IconButton(
+            onPressed: () async {
+              if (sirketController.text.isEmpty) {
+                dialogManager.showErrorSnackBar("Şirket seçiniz.");
+                return;
+              }
+              final result = await networkManager.dbUpdate(sirketController.text);
+              if (result.isSuccess) {
+                dialogManager.showInfoDialog("Veritabanı güncellendi\n${result.message ?? ""}");
               } else {
-                Get.back();
+                dialogManager.showErrorSnackBar("Veritabanı güncellenemedi.");
               }
             },
-            icon: const Icon(Icons.arrow_back_outlined),
+            icon: const Icon(Icons.cloud_upload_outlined),
           ),
-          title: const AppBarTitle(title: "Şirkete Giriş"),
-          actions: [
-            if (AccountModel.instance.adminMi)
-              IconButton(
-                onPressed: () async {
-                  if (sirketController.text.isEmpty) {
-                    dialogManager.showErrorSnackBar("Şirket seçiniz.");
-                    return;
-                  }
-                  final result = await networkManager.dbUpdate(sirketController.text);
-                  if (result.isSuccess) {
-                    dialogManager.showInfoDialog("Veritabanı güncellendi\n${result.message ?? ""}");
-                  } else {
-                    dialogManager.showErrorSnackBar("Veritabanı güncellenemedi.");
-                  }
-                },
-                icon: const Icon(Icons.cloud_upload_outlined),
-              ),
-          ],
-        ),
-        body: Observer(
-          builder: (_) {
-            if (viewModel.sirketList.ext.isNotNullOrEmpty) {
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: UIHelper.midPadding,
-                  child: Center(
-                    child: Container(
-                      constraints: const BoxConstraints(maxWidth: 500),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
+      ],
+    ),
+    body: Observer(
+      builder: (_) {
+        if (viewModel.sirketList.ext.isNotNullOrEmpty) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: UIHelper.midPadding,
+              child: Center(
+                child: Container(
+                  constraints: const BoxConstraints(maxWidth: 500),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children:
+                        [
                           CustomWidgetWithLabel(
                             text: "Şirket",
                             child: CustomTextField(
@@ -235,37 +237,40 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                             ),
                           ),
                           Observer(
-                            builder: (_) => CustomWidgetWithLabel(
-                              text: "İşletme Kodu",
-                              child: CustomTextField(
-                                suffixMore: true,
-                                enabled: viewModel.isletmeList.ext.isNotNullOrEmpty,
-                                controller: isletmeController,
-                                readOnly: true,
-                                onTap: () async => await isletmeDialog(context, isTapOnIsletme: true),
-                              ),
-                            ),
+                            builder:
+                                (_) => CustomWidgetWithLabel(
+                                  text: "İşletme Kodu",
+                                  child: CustomTextField(
+                                    suffixMore: true,
+                                    enabled: viewModel.isletmeList.ext.isNotNullOrEmpty,
+                                    controller: isletmeController,
+                                    readOnly: true,
+                                    onTap: () async => await isletmeDialog(context, isTapOnIsletme: true),
+                                  ),
+                                ),
                           ),
                           CustomWidgetWithLabel(
                             text: "Şube Kodu",
                             child: Observer(
-                              builder: (_) => CustomTextField(
-                                suffixMore: true,
-                                enabled: viewModel.subeList.ext.isNotNullOrEmpty,
-                                controller: subeController,
-                                readOnly: true,
-                                onTap: () async => await subeDialog(context),
-                              ),
+                              builder:
+                                  (_) => CustomTextField(
+                                    suffixMore: true,
+                                    enabled: viewModel.subeList.ext.isNotNullOrEmpty,
+                                    controller: subeController,
+                                    readOnly: true,
+                                    onTap: () async => await subeDialog(context),
+                                  ),
                             ),
                           ),
                           ElevatedButton(
                             onPressed: () async {
                               if (!viewModel.selected.values.contains(null)) {
-                                final model = AccountModel.instance
-                                  ..aktifVeritabani = viewModel.selected["Şirket"]
-                                  ..aktifIsletmeKodu = viewModel.selected["İşletme"]
-                                  ..aktifSubeKodu = viewModel.selected["Şube"]
-                                  ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
+                                final model =
+                                    AccountModel.instance
+                                      ..aktifVeritabani = viewModel.selected["Şirket"]
+                                      ..aktifIsletmeKodu = viewModel.selected["İşletme"]
+                                      ..aktifSubeKodu = viewModel.selected["Şube"]
+                                      ..admin = CacheManager.getHesapBilgileri?.admin ?? "H";
                                 final token = await networkManager.getToken(
                                   queryParameters: {
                                     "deviceInfos": jsonEncode(
@@ -311,9 +316,14 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                                   Get.offAllNamed("/mainPage");
                                   final account = CacheManager.getAccounts(AccountModel.instance.uyeEmail ?? "");
                                   if (account?.karsilamaMesaji != null) {
-                                    dialogManager.showInfoSnackBar(account?.karsilamaMesaji ?? "", duration: Duration(seconds: account?.karsilamaSaniye ?? 0));
+                                    dialogManager.showInfoSnackBar(
+                                      account?.karsilamaMesaji ?? "",
+                                      duration: Duration(seconds: account?.karsilamaSaniye ?? 0),
+                                    );
                                   }
-                                  if (response.message.ext.isNotNullOrNoEmpty) dialogManager.showInfoDialog(response.message ?? "");
+                                  if (response.message.ext.isNotNullOrNoEmpty) {
+                                    dialogManager.showInfoDialog(response.message ?? "");
+                                  }
                                 }
                               } else {
                                 dialogManager.showErrorSnackBar("Boş bırakmayınız.");
@@ -321,32 +331,25 @@ final class _EntryCompanyViewState extends BaseState<EntryCompanyView> {
                             },
                             child: const Text("Giriş"),
                           ).paddingAll(UIHelper.lowSize).paddingOnly(top: UIHelper.lowSize),
-                        ]
-                            .map(
-                              (widget) => Padding(
-                                padding: context.padding.onlyBottomLow,
-                                child: widget,
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    ),
+                        ].map((widget) => Padding(padding: context.padding.onlyBottomLow, child: widget)).toList(),
                   ),
                 ),
-              );
-            } else {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const CircularProgressIndicator.adaptive(),
-                    context.sized.emptySizedHeightBoxLow,
-                    Text("Şirketler yükleniyor.", style: theme.textTheme.bodySmall),
-                  ],
-                ),
-              );
-            }
-          },
-        ),
-      );
+              ),
+            ),
+          );
+        } else {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const CircularProgressIndicator.adaptive(),
+                context.sized.emptySizedHeightBoxLow,
+                Text("Şirketler yükleniyor.", style: theme.textTheme.bodySmall),
+              ],
+            ),
+          );
+        }
+      },
+    ),
+  );
 }

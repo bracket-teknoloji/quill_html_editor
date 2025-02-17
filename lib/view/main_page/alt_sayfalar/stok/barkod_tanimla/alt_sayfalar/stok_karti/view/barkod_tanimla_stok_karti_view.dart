@@ -51,51 +51,37 @@ final class BarkodTanimlaStokKartiViewState extends BaseState<BarkodTanimlaStokK
 
   @override
   Widget build(BuildContext context) => ListView(
-        physics: const ClampingScrollPhysics(),
-        children: [
-          if (yetkiController.stokBarkodGorunecekAlanlar("B1"))
-            CustomTextField(
-              labelText: "Barkod 1",
-              maxLength: 35,
-              controller: barkod1Controller,
-              suffix: Row(
-                children: [
-                  barkodUretSuffix(1),
-                  qrSuffix(1),
-                ],
-              ),
-              onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod1: value)),
-            ),
-          if (yetkiController.stokBarkodGorunecekAlanlar("B2"))
-            CustomTextField(
-              labelText: "Barkod 2",
-              maxLength: 35,
-              controller: barkod2Controller,
-              suffix: Row(
-                children: [
-                  barkodUretSuffix(2),
-                  qrSuffix(2),
-                ],
-              ),
-              onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod2: value)),
-            ),
-          if (yetkiController.stokBarkodGorunecekAlanlar("B3"))
-            CustomTextField(
-              labelText: "Barkod 3",
-              maxLength: 35,
-              controller: barkod3Controller,
-              suffix: Row(
-                children: [
-                  barkodUretSuffix(3),
-                  qrSuffix(3),
-                ],
-              ),
-              onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod3: value)),
-            ),
-        ],
-      );
+    physics: const ClampingScrollPhysics(),
+    children: [
+      if (yetkiController.stokBarkodGorunecekAlanlar("B1"))
+        CustomTextField(
+          labelText: "Barkod 1",
+          maxLength: 35,
+          controller: barkod1Controller,
+          suffix: Row(children: [barkodUretSuffix(1), qrSuffix(1)]),
+          onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod1: value)),
+        ),
+      if (yetkiController.stokBarkodGorunecekAlanlar("B2"))
+        CustomTextField(
+          labelText: "Barkod 2",
+          maxLength: 35,
+          controller: barkod2Controller,
+          suffix: Row(children: [barkodUretSuffix(2), qrSuffix(2)]),
+          onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod2: value)),
+        ),
+      if (yetkiController.stokBarkodGorunecekAlanlar("B3"))
+        CustomTextField(
+          labelText: "Barkod 3",
+          maxLength: 35,
+          controller: barkod3Controller,
+          suffix: Row(children: [barkodUretSuffix(3), qrSuffix(3)]),
+          onChanged: (value) => widget.onChanged.call(widget.model?.copyWith(barkod3: value)),
+        ),
+    ],
+  );
 
-  Widget qrSuffix(int index) => IconButton(onPressed: () => getQR(index), icon: const Icon(Icons.qr_code_scanner_outlined));
+  Widget qrSuffix(int index) =>
+      IconButton(onPressed: () => getQR(index), icon: const Icon(Icons.qr_code_scanner_outlined));
 
   Future<void> getQR(int index) async {
     final result = await Get.toNamed("qr");
@@ -114,10 +100,16 @@ final class BarkodTanimlaStokKartiViewState extends BaseState<BarkodTanimlaStokK
     }
   }
 
-  Widget barkodUretSuffix(int index) => IconButton(onPressed: () => barkodUret(index), icon: const Icon(Icons.format_list_numbered_rtl_outlined));
+  Widget barkodUretSuffix(int index) =>
+      IconButton(onPressed: () => barkodUret(index), icon: const Icon(Icons.format_list_numbered_rtl_outlined));
 
   Future<void> barkodUret(int index) async {
-    final result = await networkManager.dioPost(path: ApiUrls.barkodUret, bodyModel: StokOlcuBirimleriModel(), data: {"BarkodSira": index}, showLoading: true);
+    final result = await networkManager.dioPost(
+      path: ApiUrls.barkodUret,
+      bodyModel: StokOlcuBirimleriModel(),
+      data: {"BarkodSira": index},
+      showLoading: true,
+    );
     if (result.isSuccess) {
       final String barkod = result.paramData?["URETILEN_BARKOD"];
       switch (index) {

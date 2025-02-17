@@ -10,30 +10,12 @@ final class CariStokSatisOzetiViewModel = _CariStokSatisOzetiViewModelBase with 
 
 abstract class _CariStokSatisOzetiViewModelBase with Store {
   final List<BottomSheetModel<String>> bottomSheetModelList = <BottomSheetModel<String>>[
-    BottomSheetModel(
-      title: "Tarih (Artan)",
-      value: "TARIH_AZ",
-    ),
-    BottomSheetModel(
-      title: "Tarih (Azalan)",
-      value: "TARIH_ZA",
-    ),
-    BottomSheetModel(
-      title: "Stok Kodu (A-Z)",
-      value: "STOK_KODU_AZ",
-    ),
-    BottomSheetModel(
-      title: "Stok Kodu (Z-A)",
-      value: "STOK_KODU_ZA",
-    ),
-    BottomSheetModel(
-      title: "Stok Adı (A-Z)",
-      value: "STOK_ADI_AZ",
-    ),
-    BottomSheetModel(
-      title: "Stok Adı (Z-A)",
-      value: "STOK_ADI_ZA",
-    ),
+    BottomSheetModel(title: "Tarih (Artan)", value: "TARIH_AZ"),
+    BottomSheetModel(title: "Tarih (Azalan)", value: "TARIH_ZA"),
+    BottomSheetModel(title: "Stok Kodu (A-Z)", value: "STOK_KODU_AZ"),
+    BottomSheetModel(title: "Stok Kodu (Z-A)", value: "STOK_KODU_ZA"),
+    BottomSheetModel(title: "Stok Adı (A-Z)", value: "STOK_ADI_AZ"),
+    BottomSheetModel(title: "Stok Adı (Z-A)", value: "STOK_ADI_ZA"),
   ];
 
   final List<String> donemTipiList = [
@@ -70,12 +52,15 @@ abstract class _CariStokSatisOzetiViewModelBase with Store {
   String searchText = "";
 
   @computed
-  ObservableList<CariStokSatisOzetiModel>? get filteredList => modelList
-      ?.where(
-        (element) => element.stokAdi?.toLowerCase().contains(searchText.toLowerCase()) == true || element.stokKodu?.toLowerCase().contains(searchText.toLowerCase()) == true,
-      )
-      .toList()
-      .asObservable();
+  ObservableList<CariStokSatisOzetiModel>? get filteredList =>
+      modelList
+          ?.where(
+            (element) =>
+                element.stokAdi?.toLowerCase().contains(searchText.toLowerCase()) == true ||
+                element.stokKodu?.toLowerCase().contains(searchText.toLowerCase()) == true,
+          )
+          .toList()
+          .asObservable();
 
   @action
   void setIrsDahil(bool value) => irsDahil = value;

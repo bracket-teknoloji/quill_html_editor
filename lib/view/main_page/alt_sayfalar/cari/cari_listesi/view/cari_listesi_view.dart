@@ -120,111 +120,121 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(context),
-        floatingActionButton: fab(),
-        body: body(),
-        bottomNavigationBar: yetkiController.cariToplamGorunmesin ? null : bottomButtonBar(),
-      );
+    appBar: appBar(context),
+    floatingActionButton: fab(),
+    body: body(),
+    bottomNavigationBar: yetkiController.cariToplamGorunmesin ? null : bottomButtonBar(),
+  );
 
   AppBar appBar(BuildContext context) => AppBar(
-        title: Observer(
-          builder: (_) => (viewModel.searchBar
-              ? CustomAppBarTextField(
-                  onFieldSubmitted: (value) async {
-                    viewModel
-                      ..changeFilterText(value)
-                      ..resetList();
-                  },
-                )
-              : AppBarTitle(
-                  title: widget.isGetData ? "Cari Seçiniz" : "Cari Listesi",
-                  subtitle: "${viewModel.observableList?.length ?? ""}",
-                )),
-        ),
-        leading: IconButton(
-          onPressed: () {
-            if (viewModel.searchBar) {
-              viewModel
-                ..changeSearchBar()
-                ..changeArama("")
-                ..changeFilterText(null);
-            } else {
-              Get.back();
-            }
-          },
-          icon: const Icon(Icons.arrow_back),
-        ),
-        bottom: AppBarPreferedSizedBottom(
-          children: [
-            AppBarButton(
-              iconWidget: Observer(builder: (_) => Icon(Icons.filter_alt_outlined, size: 20, fill: 1, color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null)),
-              onPressed: () async {
-                await filtreleDialog(context);
-                // if (filterData == null) {
-                //   dialogManager.showLoadingDialog("Filtreler yükleniyor");
-                //   var responseSehir = await CariNetworkManager.getFilterData();
-                //   var responseKod = await CariNetworkManager.getKod();
-                //   // filterData = {"sehir": responseSehir.data, "kod": responseKod.data};
-                //   dialogManager.hideAlertDialog;
-                // }
-                // // ignore: use_build_context_synchronously
-                // var result = await bottomSheetDialogManager.showFilterBottomSheetDialog(context, request: filterData);
-                // if (result != null && result is BottomSheetResponseModel) {
-                //   bottomSheetResponseModel = result;
-                //   viewModel.resetList();
-                // }
-              },
-              child: Text(loc.generalStrings.filter),
-            ),
-            AppBarButton(
-              icon: Icons.sort_by_alpha_outlined,
-              onPressed: () async => await siralaDialog(context),
-              child: Text(loc.generalStrings.sort),
-            ),
-            AppBarButton(
-              onPressed: () async {
-                await bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: loc.generalStrings.options,
-                  children: [
-                    BottomSheetModel(
-                      title: "Cari Haritası",
-                      iconWidget: Icons.map_outlined,
-                      onTap: () {
-                        Get
-                          ..back()
-                          ..toNamed("mainPage/cariHaritasi");
-                      },
-                    ),
-                    BottomSheetModel(
-                      title: "Raporlar",
-                      iconWidget: Icons.area_chart_outlined,
-                      onTap: () {
-                        Get.back();
-                        dialogManager.showCariRaporlarGridViewDialog();
-                      },
-                    ),
-                  ],
-                );
-              },
-              child: const Icon(Icons.more_horiz_outlined),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              viewModel.changeSearchBar();
-              if (!viewModel.searchBar) {
-                viewModel
-                  ..changeFilterText(null)
-                  ..resetList();
-              }
-            },
-            icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+    title: Observer(
+      builder:
+          (_) =>
+              (viewModel.searchBar
+                  ? CustomAppBarTextField(
+                    onFieldSubmitted: (value) async {
+                      viewModel
+                        ..changeFilterText(value)
+                        ..resetList();
+                    },
+                  )
+                  : AppBarTitle(
+                    title: widget.isGetData ? "Cari Seçiniz" : "Cari Listesi",
+                    subtitle: "${viewModel.observableList?.length ?? ""}",
+                  )),
+    ),
+    leading: IconButton(
+      onPressed: () {
+        if (viewModel.searchBar) {
+          viewModel
+            ..changeSearchBar()
+            ..changeArama("")
+            ..changeFilterText(null);
+        } else {
+          Get.back();
+        }
+      },
+      icon: const Icon(Icons.arrow_back),
+    ),
+    bottom: AppBarPreferedSizedBottom(
+      children: [
+        AppBarButton(
+          iconWidget: Observer(
+            builder:
+                (_) => Icon(
+                  Icons.filter_alt_outlined,
+                  size: 20,
+                  fill: 1,
+                  color: viewModel.hasAnyFilters ? UIHelper.primaryColor : null,
+                ),
           ),
-        ],
-      );
+          onPressed: () async {
+            await filtreleDialog(context);
+            // if (filterData == null) {
+            //   dialogManager.showLoadingDialog("Filtreler yükleniyor");
+            //   var responseSehir = await CariNetworkManager.getFilterData();
+            //   var responseKod = await CariNetworkManager.getKod();
+            //   // filterData = {"sehir": responseSehir.data, "kod": responseKod.data};
+            //   dialogManager.hideAlertDialog;
+            // }
+            // // ignore: use_build_context_synchronously
+            // var result = await bottomSheetDialogManager.showFilterBottomSheetDialog(context, request: filterData);
+            // if (result != null && result is BottomSheetResponseModel) {
+            //   bottomSheetResponseModel = result;
+            //   viewModel.resetList();
+            // }
+          },
+          child: Text(loc.generalStrings.filter),
+        ),
+        AppBarButton(
+          icon: Icons.sort_by_alpha_outlined,
+          onPressed: () async => await siralaDialog(context),
+          child: Text(loc.generalStrings.sort),
+        ),
+        AppBarButton(
+          onPressed: () async {
+            await bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: loc.generalStrings.options,
+              children: [
+                BottomSheetModel(
+                  title: "Cari Haritası",
+                  iconWidget: Icons.map_outlined,
+                  onTap: () {
+                    Get
+                      ..back()
+                      ..toNamed("mainPage/cariHaritasi");
+                  },
+                ),
+                BottomSheetModel(
+                  title: "Raporlar",
+                  iconWidget: Icons.area_chart_outlined,
+                  onTap: () {
+                    Get.back();
+                    dialogManager.showCariRaporlarGridViewDialog();
+                  },
+                ),
+              ],
+            );
+          },
+          child: const Icon(Icons.more_horiz_outlined),
+        ),
+      ],
+    ),
+    actions: [
+      IconButton(
+        onPressed: () async {
+          viewModel.changeSearchBar();
+          if (!viewModel.searchBar) {
+            viewModel
+              ..changeFilterText(null)
+              ..resetList();
+          }
+        },
+        icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+      ),
+    ],
+  );
 
   Future<void> siralaDialog(BuildContext context) async {
     final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
@@ -248,7 +258,8 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   Widget fab() => Observer(
-        builder: (_) => Visibility(
+    builder:
+        (_) => Visibility(
           visible: viewModel.observableList != null && yetkiController.cariKartiYeniKayit,
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrollDown,
@@ -266,91 +277,115 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
             },
           ),
         ),
-      );
+  );
   Widget body() => Observer(
-        builder: (_) => RefreshableListView.pageable(
+    builder:
+        (_) => RefreshableListView.pageable(
           scrollController: _scrollController,
           onRefresh: viewModel.resetList,
           dahaVarMi: viewModel.dahaVarMi,
           items: viewModel.observableList,
           itemBuilder: cariListesiCard,
         ),
-      );
+  );
 
   Widget cariListesiCard(CariListesiModel item) => MouseRightClickListener(
-        onRightClick: () => showCariGrid(item),
-        child: Card(
-          child: ListTile(
-            onLongPress: () => showCariGrid(item),
-            onTap: () {
-              if (widget.isGetData) {
-                Get.back(result: item);
-              } else {
-                cariBottomSheet(context, item);
-              }
-            },
-            // isThreeLine: true,
-            // contentPadding: UIHelper.midPadding,
-            leading: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  backgroundColor: UIHelper.getColorWithValue(item.bakiye ?? 0.0),
-                  foregroundColor: Colors.white,
-                  child: Text(item.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
-                ),
-              ],
+    onRightClick: () => showCariGrid(item),
+    child: Card(
+      child: ListTile(
+        onLongPress: () => showCariGrid(item),
+        onTap: () {
+          if (widget.isGetData) {
+            Get.back(result: item);
+          } else {
+            cariBottomSheet(context, item);
+          }
+        },
+        // isThreeLine: true,
+        // contentPadding: UIHelper.midPadding,
+        leading: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundColor: UIHelper.getColorWithValue(item.bakiye ?? 0.0),
+              foregroundColor: Colors.white,
+              child: Text(item.cariAdi?.substring(0, 1) ?? "", style: const TextStyle(color: Colors.white)),
             ),
-            title: Text(item.cariAdi ?? ""),
-            subtitle: Wrap(
-              direction: Axis.vertical,
-              alignment: WrapAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    if (item.efaturaMi == true) const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),
-                    if (item.dovizli == true) ColorfulBadge(label: Text("Dövizli ${item.dovizAdi ?? ""}"), badgeColorEnum: BadgeColorEnum.dovizli),
-                    if (item.boylam != null) const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
-                    if (item.kilit == "E") const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
+          ],
+        ),
+        title: Text(item.cariAdi ?? ""),
+        subtitle: Wrap(
+          direction: Axis.vertical,
+          alignment: WrapAlignment.spaceBetween,
+          children: [
+            Row(
+              children:
+                  [
+                    if (item.efaturaMi == true)
+                      const ColorfulBadge(label: Text("E-Fatura"), badgeColorEnum: BadgeColorEnum.fatura),
+                    if (item.dovizli == true)
+                      ColorfulBadge(
+                        label: Text("Dövizli ${item.dovizAdi ?? ""}"),
+                        badgeColorEnum: BadgeColorEnum.dovizli,
+                      ),
+                    if (item.boylam != null)
+                      const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
+                    if (item.kilit == "E")
+                      const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
                     // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox.shrink(),
                     // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox.shrink(),
                   ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
-                ),
-                Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
-                if (yetkiController.plasiyerUygulamasiAcikMi && item.plasiyerAciklama != null)
-                  Text("Plasiyer Adı: ${item.plasiyerAciklama}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
-                if (item.cariIl != null)
-                  Text("${item.cariIl ?? ""}/${item.cariIlce ?? ""}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)))
-                else
-                  const SizedBox.shrink(),
-              ],
             ),
-            trailing: bakiyeGorunsunMu(item)
-                ? Wrap(
-                    children: [
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: item.bakiye == null ? "0,00 $mainCurrency\n" : "${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
-                              style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye ?? 0.0)),
-                            ),
-                            if (item.bakiye != null) TextSpan(text: "${((item.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n", style: const TextStyle(fontStyle: FontStyle.italic)),
-                            if (item.dovizli == true && item.dovBakiye != null)
-                              TextSpan(
-                                text: "${item.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${item.dovizAdi ?? ""}",
-                                style: TextStyle(color: UIHelper.getColorWithValue(item.dovBakiye ?? 0.0)),
-                              ),
-                          ],
-                        ),
-                        textAlign: TextAlign.right,
-                      ),
-                    ],
-                  )
-                : null,
-          ),
+            Text("${item.cariKodu}", style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5))),
+            if (yetkiController.plasiyerUygulamasiAcikMi && item.plasiyerAciklama != null)
+              Text(
+                "Plasiyer Adı: ${item.plasiyerAciklama}",
+                style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)),
+              ),
+            if (item.cariIl != null)
+              Text(
+                "${item.cariIl ?? ""}/${item.cariIlce ?? ""}",
+                style: TextStyle(color: theme.textTheme.bodySmall?.color?.withValues(alpha: 0.5)),
+              )
+            else
+              const SizedBox.shrink(),
+          ],
         ),
-      );
+        trailing:
+            bakiyeGorunsunMu(item)
+                ? Wrap(
+                  children: [
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text:
+                                item.bakiye == null
+                                    ? "0,00 $mainCurrency\n"
+                                    : "${item.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency\n",
+                            style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye ?? 0.0)),
+                          ),
+                          if (item.bakiye != null)
+                            TextSpan(
+                              text: "${((item.bakiye ?? 0) > 0) ? "Tahsil Edilecek" : "Ödenecek"}\n",
+                              style: const TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                          if (item.dovizli == true && item.dovBakiye != null)
+                            TextSpan(
+                              text:
+                                  "${item.dovBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${item.dovizAdi ?? ""}",
+                              style: TextStyle(color: UIHelper.getColorWithValue(item.dovBakiye ?? 0.0)),
+                            ),
+                        ],
+                      ),
+                      textAlign: TextAlign.right,
+                    ),
+                  ],
+                )
+                : null,
+      ),
+    ),
+  );
 
   Future<void> showCariGrid(CariListesiModel object) async {
     await dialogManager.showCariGridViewDialog(
@@ -363,17 +398,19 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   Widget? bottomButtonBar() => Observer(
-        builder: (_) => BottomBarWidget(
+    builder:
+        (_) => BottomBarWidget(
           isScrolledDown: viewModel.isScrollDown,
           children: [
             FooterButton(
               children: [
                 const Text("Tahsil Edilecek"),
                 Observer(
-                  builder: (_) => Text(
-                    "${(viewModel.paramData?["TAHSIL_EDILECEK"] as double?)?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} $mainCurrency",
-                    style: const TextStyle(color: ColorPalette.mantis),
-                  ),
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["TAHSIL_EDILECEK"] as double?)?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} $mainCurrency",
+                        style: const TextStyle(color: ColorPalette.mantis),
+                      ),
                 ),
               ],
               onPressed: () async {
@@ -395,10 +432,11 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               children: [
                 const Text("Ödenecek"),
                 Observer(
-                  builder: (_) => Text(
-                    "${(viewModel.paramData?["ODENECEK"] as double?)?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} $mainCurrency",
-                    style: const TextStyle(color: ColorPalette.persianRed),
-                  ),
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["ODENECEK"] as double?)?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} $mainCurrency",
+                        style: const TextStyle(color: ColorPalette.persianRed),
+                      ),
                 ),
               ],
               onPressed: () async {
@@ -418,7 +456,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
             ),
           ],
         ),
-      );
+  );
 
   String getPaymentInfo(double bakiye) {
     if (bakiye > 0) {
@@ -439,19 +477,13 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
           BottomSheetModel(
             title: loc.generalStrings.view,
             iconWidget: Icons.preview_outlined,
-            value: CariSeceneklerModel(
-              path: "/mainPage/cariEdit",
-              baseEditEnum: BaseEditEnum.goruntule,
-            ),
+            value: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.goruntule),
           ),
         if (yetkiController.cariKartiDuzenleme)
           BottomSheetModel(
             title: loc.generalStrings.edit,
             iconWidget: Icons.edit_outlined,
-            value: CariSeceneklerModel(
-              path: "/mainPage/cariEdit",
-              baseEditEnum: BaseEditEnum.duzenle,
-            ),
+            value: CariSeceneklerModel(path: "/mainPage/cariEdit", baseEditEnum: BaseEditEnum.duzenle),
           ),
         if (yetkiController.cariKartiSilme)
           BottomSheetModel(
@@ -476,7 +508,12 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               });
             },
           ),
-        if (yetkiController.cariHareketleri) BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: () => Get.back(result: "/mainPage/cariHareketleri")),
+        if (yetkiController.cariHareketleri)
+          BottomSheetModel(
+            title: "Hareketler",
+            iconWidget: Icons.sync_alt_outlined,
+            onTap: () => Get.back(result: "/mainPage/cariHareketleri"),
+          ),
         BottomSheetModel(
           title: loc.generalStrings.actions,
           iconWidget: Icons.list_alt_outlined,
@@ -490,9 +527,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                 ?.altMenuler
                 ?.firstWhereOrNull((element) => element.title == "Raporlar")
                 ?.altMenuler
-                ?.where(
-                  (element) => element.yetkiKontrol,
-                )
+                ?.where((element) => element.yetkiKontrol)
                 .toList()
                 .ext
                 .isNotNullOrEmpty ??
@@ -502,7 +537,13 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
             iconWidget: Icons.area_chart_outlined,
             onTap: () {
               Get.back();
-              dialogManager.showGridViewDialog(CustomAnimatedGridView(cariListesiModel: object, islemTipi: IslemTipiEnum.cariRapor, title: object.cariAdi ?? object.cariKodu));
+              dialogManager.showGridViewDialog(
+                CustomAnimatedGridView(
+                  cariListesiModel: object,
+                  islemTipi: IslemTipiEnum.cariRapor,
+                  title: object.cariAdi ?? object.cariKodu,
+                ),
+              );
             },
           ),
       ],
@@ -527,371 +568,411 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
   }
 
   Future<dynamic> filtreleDialog(BuildContext context) async => await bottomSheetDialogManager.showBottomSheetDialog(
-        context,
-        title: loc.generalStrings.filter,
-        body: Column(
-          children: [
-            CustomWidgetWithLabel(
-              text: "Bakiye Durumu",
-              child: Observer(
-                builder: (_) => SlideControllerWidget(
+    context,
+    title: loc.generalStrings.filter,
+    body: Column(
+      children: [
+        CustomWidgetWithLabel(
+          text: "Bakiye Durumu",
+          child: Observer(
+            builder:
+                (_) => SlideControllerWidget(
                   childrenTitleList: viewModel.bakiyeMap.keys.toList(),
-                  filterOnChanged: (index) => viewModel.changeFilterBakiyeTemp(viewModel.bakiyeMap.values.toList()[index ?? 0]),
+                  filterOnChanged:
+                      (index) => viewModel.changeFilterBakiyeTemp(viewModel.bakiyeMap.values.toList()[index ?? 0]),
                   childrenValueList: viewModel.bakiyeMap.values.toList(),
                   groupValue: viewModel.cariRequestModelTemp.filterBakiye,
                 ),
+          ),
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: CustomTextField(
+                labelText: "Plasiyer",
+                controller: plasiyerController,
+                suffixMore: true,
+                readOnly: true,
+                onClear: () {
+                  plasiyerController.clear();
+                  viewModel.changeArrPlasiyerKoduTemp(null);
+                },
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
+                    context,
+                    groupValues: viewModel.cariRequestModelTemp.arrPlasiyerKodu,
+                  );
+                  if (result != null) {
+                    viewModel.changeArrPlasiyerKoduTemp(
+                      result.map((e) => e.plasiyerKodu).toList().nullCheckWithGeneric,
+                    );
+                    plasiyerController.text = result.map((e) => e.plasiyerAciklama).join(", ");
+                  }
+                },
+              ),
+            ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+            Expanded(
+              child: CustomTextField(
+                labelText: "Şehir",
+                controller: sehirController,
+                readOnly: true,
+                suffixMore: true,
+                onClear: () {
+                  sehirController.clear();
+                  viewModel.changeArrSehirTemp(null);
+                },
+                onTap: () async {
+                  if (viewModel.sehirler == null) {
+                    await viewModel.getFilterData();
+                  }
+                  // ignore: use_build_context_synchronously
+                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<CariSehirlerModel>(
+                    context,
+                    title: "Şehirler",
+                    groupValues: viewModel.cariRequestModelTemp.arrSehir,
+                    children: List.generate(
+                      viewModel.sehirler?.length ?? 0,
+                      (index) => BottomSheetModel(
+                        title: viewModel.sehirler?[index].sehirAdi ?? "",
+                        value: viewModel.sehirler?[index],
+                        groupValue: viewModel.sehirler?[index].sehirAdi,
+                      ),
+                    ),
+                  );
+                  if (result != null) {
+                    final List<CariSehirlerModel?> list = result.cast<CariSehirlerModel?>().toList();
+                    viewModel.changeArrSehirTemp(list.map((e) => e?.sehirAdi).toList().nullCheckWithGeneric);
+                    sehirController.text = list.map((e) => e?.sehirAdi).join(", ");
+                  }
+                },
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Plasiyer",
-                    controller: plasiyerController,
-                    suffixMore: true,
-                    readOnly: true,
-                    onClear: () {
-                      plasiyerController.clear();
-                      viewModel.changeArrPlasiyerKoduTemp(null);
-                    },
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(context, groupValues: viewModel.cariRequestModelTemp.arrPlasiyerKodu);
-                      if (result != null) {
-                        viewModel.changeArrPlasiyerKoduTemp(result.map((e) => e.plasiyerKodu).toList().nullCheckWithGeneric);
-                        plasiyerController.text = result.map((e) => e.plasiyerAciklama).join(", ");
-                      }
-                    },
-                  ),
-                ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Şehir",
-                    controller: sehirController,
-                    readOnly: true,
-                    suffixMore: true,
-                    onClear: () {
-                      sehirController.clear();
-                      viewModel.changeArrSehirTemp(null);
-                    },
-                    onTap: () async {
-                      if (viewModel.sehirler == null) {
-                        await viewModel.getFilterData();
-                      }
-                      // ignore: use_build_context_synchronously
-                      final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<CariSehirlerModel>(
-                        context,
-                        title: "Şehirler",
-                        groupValues: viewModel.cariRequestModelTemp.arrSehir,
-                        children: List.generate(
-                          viewModel.sehirler?.length ?? 0,
-                          (index) => BottomSheetModel(
-                            title: viewModel.sehirler?[index].sehirAdi ?? "",
-                            value: viewModel.sehirler?[index],
-                            groupValue: viewModel.sehirler?[index].sehirAdi,
-                          ),
-                        ),
-                      );
-                      if (result != null) {
-                        final List<CariSehirlerModel?> list = result.cast<CariSehirlerModel?>().toList();
-                        viewModel.changeArrSehirTemp(list.map((e) => e?.sehirAdi).toList().nullCheckWithGeneric);
-                        sehirController.text = list.map((e) => e?.sehirAdi).join(", ");
-                      }
-                    },
-                  ),
-                ),
-              ],
+          ],
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: CustomTextField(
+                labelText: "İlçe",
+                controller: ilceController,
+                onChanged: viewModel.changeIlceTemp,
+              ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "İlçe",
-                    controller: ilceController,
-                    onChanged: viewModel.changeIlceTemp,
-                  ),
-                ),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Tipi",
-                    controller: tipiController,
-                    suffixMore: true,
-                    readOnly: true,
-                    onClear: () {
-                      tipiController.clear();
-                      viewModel.changeCariTipiTemp(null);
-                    },
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.cariRequestModelTemp.cariTipi);
-                      if (result != null) {
-                        tipiController.text = result.title ?? "";
-                        viewModel.changeCariTipiTemp(result.value);
-                      }
-                    },
-                  ),
-                ),
-              ],
+            Expanded(
+              child: CustomTextField(
+                labelText: "Tipi",
+                controller: tipiController,
+                suffixMore: true,
+                readOnly: true,
+                onClear: () {
+                  tipiController.clear();
+                  viewModel.changeCariTipiTemp(null);
+                },
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(
+                    context,
+                    viewModel.cariRequestModelTemp.cariTipi,
+                  );
+                  if (result != null) {
+                    tipiController.text = result.title ?? "";
+                    viewModel.changeCariTipiTemp(result.value);
+                  }
+                },
+              ),
             ),
-            if (yetkiController.cariKartiRotasUygulamasiAcikMi)
-              Card(
-                child: Observer(
-                  builder: (_) => SwitchListTile.adaptive(
+          ],
+        ),
+        if (yetkiController.cariKartiRotasUygulamasiAcikMi)
+          Card(
+            child: Observer(
+              builder:
+                  (_) => SwitchListTile.adaptive(
                     value: viewModel.getRota,
                     onChanged: (value) {
                       viewModel.setRota(value);
-                      CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(rotaDisiGorunsunMu: value));
+                      CacheManager.setProfilParametre(
+                        CacheManager.getProfilParametre.copyWith(rotaDisiGorunsunMu: value),
+                      );
                     },
                     title: const Text("Rota Dışı"),
                   ),
+            ),
+          ),
+        InkWell(
+          onTap: viewModel.changeKodlariGoster,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text("Cari Rapor Kodları"),
+              Observer(
+                builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down),
+              ),
+            ],
+          ),
+        ).paddingAll(UIHelper.lowSize),
+        AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          child: Observer(
+            builder:
+                (_) =>
+                    viewModel.kodlariGoster
+                        ? Wrap(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextField(
+                                    labelText: "Grup Kodu",
+                                    controller: kod0Controller,
+                                    readOnly: true,
+                                    suffixMore: true,
+                                    onTap: () async {
+                                      final result = await bottomSheetDialogManager
+                                          .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                            context,
+                                            title: "Kod Seçiniz",
+                                            groupValues: viewModel.cariRequestModelTemp.arrGrupKodu,
+                                            children: List.generate(
+                                              viewModel.getGrupKod0?.length ?? 0,
+                                              (index) => BottomSheetModel(
+                                                title: viewModel.getGrupKod0?[index].grupAdi ?? "",
+                                                value: viewModel.getGrupKod0?[index],
+                                                groupValue: viewModel.getGrupKod0?[index].grupKodu,
+                                              ),
+                                            ),
+                                          );
+                                      if (result != null) {
+                                        final List<BaseGrupKoduModel> list = result;
+                                        viewModel.changeArrKod0Temp(
+                                          list.map((e) => e.grupKodu).toList().nullCheckWithGeneric,
+                                        );
+                                        kod0Controller.text = list.map((e) => e.grupAdi).join(", ");
+                                      }
+                                    },
+                                  ),
+                                ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 0) ?? false),
+                                Expanded(
+                                  child: CustomTextField(
+                                    labelText: "Kod 1",
+                                    controller: kod1Controller,
+                                    readOnly: true,
+                                    suffixMore: true,
+                                    onTap: () async {
+                                      final result = await bottomSheetDialogManager
+                                          .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                            context,
+                                            title: "Kod Seçiniz",
+                                            groupValues: viewModel.cariRequestModelTemp.arrKod1,
+                                            children: List.generate(
+                                              viewModel.getGrupKod1?.length ?? 0,
+                                              (index) => BottomSheetModel(
+                                                title: viewModel.getGrupKod1?[index].grupAdi ?? "",
+                                                value: viewModel.getGrupKod1?[index],
+                                                groupValue: viewModel.getGrupKod1?[index].grupKodu,
+                                              ),
+                                            ),
+                                          );
+                                      if (result != null) {
+                                        final List<BaseGrupKoduModel> list = result;
+                                        viewModel.changeArrKod1Temp(
+                                          list.map((e) => e.grupKodu).toList().nullCheckWithGeneric,
+                                        );
+                                        kod1Controller.text = list.map((e) => e.grupAdi).join(", ");
+                                      }
+                                    },
+                                  ),
+                                ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 1) ?? false),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextField(
+                                    labelText: "Kod 2",
+                                    controller: kod2Controller,
+                                    readOnly: true,
+                                    suffixMore: true,
+                                    onTap: () async {
+                                      final result = await bottomSheetDialogManager
+                                          .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                            context,
+                                            title: "Kod Seçiniz",
+                                            groupValues: viewModel.cariRequestModelTemp.arrKod2,
+                                            children: List.generate(
+                                              viewModel.getGrupKod2?.length ?? 0,
+                                              (index) => BottomSheetModel(
+                                                title: viewModel.getGrupKod2?[index].grupAdi ?? "",
+                                                value: viewModel.getGrupKod2?[index],
+                                                groupValue: viewModel.getGrupKod2?[index].grupKodu,
+                                              ),
+                                            ),
+                                          );
+                                      if (result != null) {
+                                        final List<BaseGrupKoduModel> list = result;
+                                        viewModel.changeArrKod2Temp(
+                                          list.map((e) => e.grupKodu).toList().nullCheckWithGeneric,
+                                        );
+                                        kod2Controller.text = list.map((e) => e.grupAdi).join(", ");
+                                      }
+                                    },
+                                  ),
+                                ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 2) ?? false),
+                                Expanded(
+                                  child: CustomTextField(
+                                    labelText: "Kod 3",
+                                    controller: kod3Controller,
+                                    readOnly: true,
+                                    suffixMore: true,
+                                    onTap: () async {
+                                      final result = await bottomSheetDialogManager
+                                          .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                            context,
+                                            title: "Kod Seçiniz",
+                                            groupValues: viewModel.cariRequestModelTemp.arrKod3,
+                                            children: List.generate(
+                                              viewModel.getGrupKod3?.length ?? 0,
+                                              (index) => BottomSheetModel(
+                                                title: viewModel.getGrupKod3?[index].grupAdi ?? "",
+                                                value: viewModel.getGrupKod3?[index],
+                                                groupValue: viewModel.getGrupKod3?[index].grupKodu,
+                                              ),
+                                            ),
+                                          );
+                                      if (result != null) {
+                                        final List<BaseGrupKoduModel> list = result;
+                                        viewModel.changeArrKod3Temp(
+                                          list.map((e) => e.grupKodu).toList().nullCheckWithGeneric,
+                                        );
+                                        kod3Controller.text = list.map((e) => e.grupAdi).join(", ");
+                                      }
+                                    },
+                                  ),
+                                ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 3) ?? false),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextField(
+                                    labelText: "Kod 4",
+                                    controller: kod4Controller,
+                                    readOnly: true,
+                                    suffixMore: true,
+                                    onTap: () async {
+                                      final result = await bottomSheetDialogManager
+                                          .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                            context,
+                                            title: "Kod Seçiniz",
+                                            groupValues: viewModel.cariRequestModelTemp.arrKod4,
+                                            children: List.generate(
+                                              viewModel.getGrupKod4?.length ?? 0,
+                                              (index) => BottomSheetModel(
+                                                title: viewModel.getGrupKod4?[index].grupAdi ?? "",
+                                                value: viewModel.getGrupKod4?[index],
+                                                groupValue: viewModel.getGrupKod4?[index].grupKodu,
+                                              ),
+                                            ),
+                                          );
+                                      if (result != null) {
+                                        final List<BaseGrupKoduModel> list = result;
+                                        viewModel.changeArrKod4Temp(
+                                          list.map((e) => e.grupKodu).toList().nullCheckWithGeneric,
+                                        );
+                                        kod4Controller.text = list.map((e) => e.grupAdi).join(", ");
+                                      }
+                                    },
+                                  ),
+                                ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 4) ?? false),
+                                Expanded(
+                                  child: CustomTextField(
+                                    labelText: "Kod 5",
+                                    controller: kod5Controller,
+                                    readOnly: true,
+                                    suffixMore: true,
+                                    onTap: () async {
+                                      final result = await bottomSheetDialogManager
+                                          .showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
+                                            context,
+                                            title: "Kod Seçiniz",
+                                            groupValues: viewModel.cariRequestModelTemp.arrKod5,
+                                            children: List.generate(
+                                              viewModel.getGrupKod5?.length ?? 0,
+                                              (index) => BottomSheetModel(
+                                                title: viewModel.getGrupKod5?[index].grupAdi ?? "",
+                                                value: viewModel.getGrupKod5?[index],
+                                                groupValue: viewModel.getGrupKod5?[index].grupKodu,
+                                              ),
+                                            ),
+                                          );
+                                      if (result != null) {
+                                        final List<BaseGrupKoduModel> list = result;
+                                        viewModel.changeArrKod5Temp(
+                                          list.map((e) => e.grupKodu).toList().nullCheckWithGeneric,
+                                        );
+                                        kod5Controller.text = list.map((e) => e.grupAdi).join(", ");
+                                      }
+                                    },
+                                  ),
+                                ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 5) ?? false),
+                              ],
+                            ),
+                          ],
+                        )
+                        : const SizedBox.shrink(),
+          ),
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1)),
                 ),
-              ),
-            InkWell(
-              onTap: viewModel.changeKodlariGoster,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [const Text("Cari Rapor Kodları"), Observer(builder: (_) => Icon(viewModel.kodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down))],
-              ),
-            ).paddingAll(UIHelper.lowSize),
-            AnimatedSwitcher(
-              duration: const Duration(milliseconds: 500),
-              child: Observer(
-                builder: (_) => viewModel.kodlariGoster
-                    ? Wrap(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Grup Kodu",
-                                  controller: kod0Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async {
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod Seçiniz",
-                                      groupValues: viewModel.cariRequestModelTemp.arrGrupKodu,
-                                      children: List.generate(
-                                        viewModel.getGrupKod0?.length ?? 0,
-                                        (index) => BottomSheetModel(
-                                          title: viewModel.getGrupKod0?[index].grupAdi ?? "",
-                                          value: viewModel.getGrupKod0?[index],
-                                          groupValue: viewModel.getGrupKod0?[index].grupKodu,
-                                        ),
-                                      ),
-                                    );
-                                    if (result != null) {
-                                      final List<BaseGrupKoduModel> list = result;
-                                      viewModel.changeArrKod0Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
-                                      kod0Controller.text = list.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 0) ?? false),
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 1",
-                                  controller: kod1Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async {
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod Seçiniz",
-                                      groupValues: viewModel.cariRequestModelTemp.arrKod1,
-                                      children: List.generate(
-                                        viewModel.getGrupKod1?.length ?? 0,
-                                        (index) => BottomSheetModel(
-                                          title: viewModel.getGrupKod1?[index].grupAdi ?? "",
-                                          value: viewModel.getGrupKod1?[index],
-                                          groupValue: viewModel.getGrupKod1?[index].grupKodu,
-                                        ),
-                                      ),
-                                    );
-                                    if (result != null) {
-                                      final List<BaseGrupKoduModel> list = result;
-                                      viewModel.changeArrKod1Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
-                                      kod1Controller.text = list.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 1) ?? false),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 2",
-                                  controller: kod2Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async {
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod Seçiniz",
-                                      groupValues: viewModel.cariRequestModelTemp.arrKod2,
-                                      children: List.generate(
-                                        viewModel.getGrupKod2?.length ?? 0,
-                                        (index) => BottomSheetModel(
-                                          title: viewModel.getGrupKod2?[index].grupAdi ?? "",
-                                          value: viewModel.getGrupKod2?[index],
-                                          groupValue: viewModel.getGrupKod2?[index].grupKodu,
-                                        ),
-                                      ),
-                                    );
-                                    if (result != null) {
-                                      final List<BaseGrupKoduModel> list = result;
-                                      viewModel.changeArrKod2Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
-                                      kod2Controller.text = list.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 2) ?? false),
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 3",
-                                  controller: kod3Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async {
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod Seçiniz",
-                                      groupValues: viewModel.cariRequestModelTemp.arrKod3,
-                                      children: List.generate(
-                                        viewModel.getGrupKod3?.length ?? 0,
-                                        (index) => BottomSheetModel(
-                                          title: viewModel.getGrupKod3?[index].grupAdi ?? "",
-                                          value: viewModel.getGrupKod3?[index],
-                                          groupValue: viewModel.getGrupKod3?[index].grupKodu,
-                                        ),
-                                      ),
-                                    );
-                                    if (result != null) {
-                                      final List<BaseGrupKoduModel> list = result;
-                                      viewModel.changeArrKod3Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
-                                      kod3Controller.text = list.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 3) ?? false),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 4",
-                                  controller: kod4Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async {
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod Seçiniz",
-                                      groupValues: viewModel.cariRequestModelTemp.arrKod4,
-                                      children: List.generate(
-                                        viewModel.getGrupKod4?.length ?? 0,
-                                        (index) => BottomSheetModel(
-                                          title: viewModel.getGrupKod4?[index].grupAdi ?? "",
-                                          value: viewModel.getGrupKod4?[index],
-                                          groupValue: viewModel.getGrupKod4?[index].grupKodu,
-                                        ),
-                                      ),
-                                    );
-                                    if (result != null) {
-                                      final List<BaseGrupKoduModel> list = result;
-                                      viewModel.changeArrKod4Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
-                                      kod4Controller.text = list.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 4) ?? false),
-                              Expanded(
-                                child: CustomTextField(
-                                  labelText: "Kod 5",
-                                  controller: kod5Controller,
-                                  readOnly: true,
-                                  suffixMore: true,
-                                  onTap: () async {
-                                    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
-                                      context,
-                                      title: "Kod Seçiniz",
-                                      groupValues: viewModel.cariRequestModelTemp.arrKod5,
-                                      children: List.generate(
-                                        viewModel.getGrupKod5?.length ?? 0,
-                                        (index) => BottomSheetModel(
-                                          title: viewModel.getGrupKod5?[index].grupAdi ?? "",
-                                          value: viewModel.getGrupKod5?[index],
-                                          groupValue: viewModel.getGrupKod5?[index].grupKodu,
-                                        ),
-                                      ),
-                                    );
-                                    if (result != null) {
-                                      final List<BaseGrupKoduModel> list = result;
-                                      viewModel.changeArrKod5Temp(list.map((e) => e.grupKodu).toList().nullCheckWithGeneric);
-                                      kod5Controller.text = list.map((e) => e.grupAdi).join(", ");
-                                    }
-                                  },
-                                ),
-                              ).yetkiVarMi(viewModel.grupKodlari?.any((element) => element.grupNo == 5) ?? false),
-                            ],
-                          ),
-                        ],
-                      )
-                    : const SizedBox.shrink(),
+                onPressed: () {
+                  Get.back();
+                  viewModel.resetFilter();
+                  plasiyerController.clear();
+                  sehirController.clear();
+                  ilceController.clear();
+                  tipiController.clear();
+                  kod0Controller.clear();
+                  kod1Controller.clear();
+                  kod2Controller.clear();
+                  kod3Controller.clear();
+                  kod4Controller.clear();
+                  kod5Controller.clear();
+                  viewModel.resetList();
+                },
+                child: const Text("Filtreyi Temizle"),
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
-                    onPressed: () {
-                      Get.back();
-                      viewModel.resetFilter();
-                      plasiyerController.clear();
-                      sehirController.clear();
-                      ilceController.clear();
-                      tipiController.clear();
-                      kod0Controller.clear();
-                      kod1Controller.clear();
-                      kod2Controller.clear();
-                      kod3Controller.clear();
-                      kod4Controller.clear();
-                      kod5Controller.clear();
-                      viewModel.resetList();
-                    },
-                    child: const Text("Filtreyi Temizle"),
-                  ),
-                ),
-                const SizedBox(width: UIHelper.midSize),
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      Get.back();
-                      viewModel
-                        ..changeArrKod0(viewModel.cariRequestModelTemp.arrGrupKodu)
-                        ..changeArrKod1(viewModel.cariRequestModelTemp.arrKod1)
-                        ..changeArrKod2(viewModel.cariRequestModelTemp.arrKod2)
-                        ..changeArrKod3(viewModel.cariRequestModelTemp.arrKod3)
-                        ..changeArrKod4(viewModel.cariRequestModelTemp.arrKod4)
-                        ..changeArrKod5(viewModel.cariRequestModelTemp.arrKod5)
-                        ..changeArrSehir(viewModel.cariRequestModelTemp.arrSehir)
-                        ..changeArrPlasiyerKodu(viewModel.cariRequestModelTemp.arrPlasiyerKodu)
-                        ..changeCariTipi(viewModel.cariRequestModelTemp.cariTipi)
-                        ..changeFilterBakiye(viewModel.cariRequestModelTemp.filterBakiye)
-                        ..changeIlce(viewModel.cariRequestModelTemp.ilce)
-                        ..resetList();
-                    },
-                    child: Text(loc.generalStrings.apply),
-                  ),
-                ),
-              ],
-            ).paddingAll(UIHelper.lowSize),
+            const SizedBox(width: UIHelper.midSize),
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () async {
+                  Get.back();
+                  viewModel
+                    ..changeArrKod0(viewModel.cariRequestModelTemp.arrGrupKodu)
+                    ..changeArrKod1(viewModel.cariRequestModelTemp.arrKod1)
+                    ..changeArrKod2(viewModel.cariRequestModelTemp.arrKod2)
+                    ..changeArrKod3(viewModel.cariRequestModelTemp.arrKod3)
+                    ..changeArrKod4(viewModel.cariRequestModelTemp.arrKod4)
+                    ..changeArrKod5(viewModel.cariRequestModelTemp.arrKod5)
+                    ..changeArrSehir(viewModel.cariRequestModelTemp.arrSehir)
+                    ..changeArrPlasiyerKodu(viewModel.cariRequestModelTemp.arrPlasiyerKodu)
+                    ..changeCariTipi(viewModel.cariRequestModelTemp.cariTipi)
+                    ..changeFilterBakiye(viewModel.cariRequestModelTemp.filterBakiye)
+                    ..changeIlce(viewModel.cariRequestModelTemp.ilce)
+                    ..resetList();
+                },
+                child: Text(loc.generalStrings.apply),
+              ),
+            ),
           ],
-        ),
-      );
+        ).paddingAll(UIHelper.lowSize),
+      ],
+    ),
+  );
 
   bool bakiyeGorunsunMu(CariListesiModel model) {
     if (widget.isGetData && !yetkiController.adminMi && !yetkiController.cariListesi) return false;

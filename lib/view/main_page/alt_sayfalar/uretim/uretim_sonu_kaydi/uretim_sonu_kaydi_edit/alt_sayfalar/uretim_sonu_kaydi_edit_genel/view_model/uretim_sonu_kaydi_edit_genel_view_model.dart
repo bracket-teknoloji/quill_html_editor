@@ -16,7 +16,8 @@ part "uretim_sonu_kaydi_edit_genel_view_model.g.dart";
 
 typedef DepoOnceligiRecord = ({String name, String value});
 
-final class UretimSonuKaydiEditGenelViewModel = _UretimSonuKaydiEditViewModelBase with _$UretimSonuKaydiEditGenelViewModel;
+final class UretimSonuKaydiEditGenelViewModel = _UretimSonuKaydiEditViewModelBase
+    with _$UretimSonuKaydiEditGenelViewModel;
 
 abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   bool kalemliMi = false;
@@ -57,10 +58,12 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setCikisDepo(DepoList? depo) => setRequestModel(requestModel.copyWith(cikisDepo: depo?.depoKodu, cikisDepoAdi: depo?.depoTanimi));
+  void setCikisDepo(DepoList? depo) =>
+      setRequestModel(requestModel.copyWith(cikisDepo: depo?.depoKodu, cikisDepoAdi: depo?.depoTanimi));
 
   @action
-  void setGirisDepo(DepoList? depo) => setRequestModel(requestModel.copyWith(girisDepo: depo?.depoKodu, girisDepoAdi: depo?.depoTanimi));
+  void setGirisDepo(DepoList? depo) =>
+      setRequestModel(requestModel.copyWith(girisDepo: depo?.depoKodu, girisDepoAdi: depo?.depoTanimi));
 
   @action
   void setRequestModel(UretimSonuKaydiEditModel model) {
@@ -101,7 +104,8 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setStokModel(StokListesiModel? stok) => stokModel = stok;
 
   @action
-  void setOlcuBirimi(OlcuBirimiRecord? olcuBirimi) => setModel(kalem?.copyWith(olcuBirimKodu: olcuBirimi?.kodu, olcuBirimAdi: olcuBirimi?.adi));
+  void setOlcuBirimi(OlcuBirimiRecord? olcuBirimi) =>
+      setModel(kalem?.copyWith(olcuBirimKodu: olcuBirimi?.kodu, olcuBirimAdi: olcuBirimi?.adi));
 
   @action
   void setProje(BaseProjeModel? proje) {
@@ -110,7 +114,8 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setDepoOnceligi(DepoOnceligiRecord? depoOnceligi) => setRequestModel(requestModel.copyWith(depoOnceligi: depoOnceligi?.value ?? "H"));
+  void setDepoOnceligi(DepoOnceligiRecord? depoOnceligi) =>
+      setRequestModel(requestModel.copyWith(depoOnceligi: depoOnceligi?.value ?? "H"));
 
   @action
   void setMamulKodu(StokListesiModel? stok) {
@@ -149,11 +154,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.getSiradakiKod,
       bodyModel: BaseEditSiradakiKodModel(),
       showLoading: true,
-      queryParameters: {
-        "SonKoduGetir": "H",
-        "Kod": kod != null || kod != "" ? kod : null,
-        "Modul": "USK",
-      },
+      queryParameters: {"SonKoduGetir": "H", "Kod": kod != null || kod != "" ? kod : null, "Modul": "USK"},
     );
     if (result.isSuccess) {
       setRequestModel(requestModel.copyWith(belgeNo: result.paramData?["SIRADAKI_NO"]));

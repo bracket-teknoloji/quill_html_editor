@@ -24,7 +24,10 @@ abstract class _KullaniciHaritasiViewModelBase with Store, MobxNetworkMixin {
   void setKullaniciHaritasiList(List<KullaniciHaritasiModel> value) => kullaniciHaritasiList = value.asObservable();
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.getKullaniciHaritasi, bodyModel: KullaniciHaritasiModel());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getKullaniciHaritasi,
+      bodyModel: KullaniciHaritasiModel(),
+    );
     if (result.isSuccess) {
       setKullaniciHaritasiList(result.dataList);
     }

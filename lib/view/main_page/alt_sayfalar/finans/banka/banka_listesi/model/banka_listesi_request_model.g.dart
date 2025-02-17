@@ -6,8 +6,7 @@ part of 'banka_listesi_request_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BankaListesiRequestModelImpl _$$BankaListesiRequestModelImplFromJson(
-        Map<String, dynamic> json) =>
+_$BankaListesiRequestModelImpl _$$BankaListesiRequestModelImplFromJson(Map<String, dynamic> json) =>
     _$BankaListesiRequestModelImpl(
       bakiye: json['Bakiye'] as String?,
       arrHesapTipi: json['ArrHesapTipi'] as String?,
@@ -20,13 +19,11 @@ _$BankaListesiRequestModelImpl _$$BankaListesiRequestModelImplFromJson(
       islemModulu: json['IslemModulu'] as String?,
     );
 
-Map<String, dynamic> _$$BankaListesiRequestModelImplToJson(
-        _$BankaListesiRequestModelImpl instance) =>
+Map<String, dynamic> _$$BankaListesiRequestModelImplToJson(_$BankaListesiRequestModelImpl instance) =>
     <String, dynamic>{
       if (instance.bakiye case final value?) 'Bakiye': value,
       if (instance.arrHesapTipi case final value?) 'ArrHesapTipi': value,
-      if (instance.haricHesaplarArray case final value?)
-        'HaricHesaplarArray': value,
+      if (instance.haricHesaplarArray case final value?) 'HaricHesaplarArray': value,
       if (instance.sirala case final value?) 'Sirala': value,
       if (instance.ekranTipi case final value?) 'EkranTipi': value,
       if (instance.menuKodu case final value?) 'MenuKodu': value,

@@ -21,8 +21,10 @@ class IsEmriHammaddeTakibiListesiModel with _$IsEmriHammaddeTakibiListesiModel, 
   }) = _IsEmriHammaddeTakibiListesiModel;
   IsEmriHammaddeTakibiListesiModel._();
 
-  factory IsEmriHammaddeTakibiListesiModel.fromJson(Map<String, dynamic> json) => _$IsEmriHammaddeTakibiListesiModelFromJson(json);
+  factory IsEmriHammaddeTakibiListesiModel.fromJson(Map<String, dynamic> json) =>
+      _$IsEmriHammaddeTakibiListesiModelFromJson(json);
 
   @override
-  IsEmriHammaddeTakibiListesiModel fromJson(Map<String, dynamic> json) => _$IsEmriHammaddeTakibiListesiModelFromJson(json);
+  IsEmriHammaddeTakibiListesiModel fromJson(Map<String, dynamic> json) =>
+      _$IsEmriHammaddeTakibiListesiModelFromJson(json);
 }

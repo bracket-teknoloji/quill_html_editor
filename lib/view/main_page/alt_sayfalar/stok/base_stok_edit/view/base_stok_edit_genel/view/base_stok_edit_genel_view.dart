@@ -78,23 +78,53 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     stokKoduController = TextEditingController(text: stokModel.stokKodu);
     stokAdiController = TextEditingController(text: stokModel.stokAdi);
     depoController = TextEditingController(
-      text: CacheManager.getAnaVeri?.paramModel?.depoList?.firstWhereOrNull((element) => element.depoKodu == (firstStokList?.depoKodu ?? stokModel.depoKodu))?.depoTanimi ?? "",
+      text:
+          CacheManager.getAnaVeri?.paramModel?.depoList
+              ?.firstWhereOrNull((element) => element.depoKodu == (firstStokList?.depoKodu ?? stokModel.depoKodu))
+              ?.depoTanimi ??
+          "",
     );
     muhasebeDetayKoduController = TextEditingController(text: firstStokList?.muhdetayAdi ?? stokModel.muhdetayAdi);
     olcuBirimi1Controller = TextEditingController(text: firstStokList?.olcuBirimi ?? stokModel.olcuBirimi);
     olcuBirimi2Controller = TextEditingController(text: firstStokList?.olcuBirimi2 ?? stokModel.olcuBirimi2);
-    olcuBirimi2PayController = TextEditingController(text: (firstStokList?.olcuBirimi2Pay ?? stokModel.olcuBirimi2Pay).commaSeparatedWithDecimalDigits(OndalikEnum.oran));
-    olcuBirimi2PaydaController = TextEditingController(text: (firstStokList?.olcuBirimi2Payda ?? stokModel.olcuBirimi2Payda).commaSeparatedWithDecimalDigits(OndalikEnum.oran));
+    olcuBirimi2PayController = TextEditingController(
+      text: (firstStokList?.olcuBirimi2Pay ?? stokModel.olcuBirimi2Pay).commaSeparatedWithDecimalDigits(
+        OndalikEnum.oran,
+      ),
+    );
+    olcuBirimi2PaydaController = TextEditingController(
+      text: (firstStokList?.olcuBirimi2Payda ?? stokModel.olcuBirimi2Payda).commaSeparatedWithDecimalDigits(
+        OndalikEnum.oran,
+      ),
+    );
     olcuBirimi3Controller = TextEditingController(text: firstStokList?.olcuBirimi3 ?? stokModel.olcuBirimi3);
-    olcuBirimi3PayController = TextEditingController(text: (firstStokList?.olcuBirimi3Pay ?? stokModel.olcuBirimi3Pay).commaSeparatedWithDecimalDigits(OndalikEnum.oran));
-    olcuBirimi3PaydaController = TextEditingController(text: (firstStokList?.olcuBirimi3Payda ?? stokModel.olcuBirimi3Payda).commaSeparatedWithDecimalDigits(OndalikEnum.oran));
+    olcuBirimi3PayController = TextEditingController(
+      text: (firstStokList?.olcuBirimi3Pay ?? stokModel.olcuBirimi3Pay).commaSeparatedWithDecimalDigits(
+        OndalikEnum.oran,
+      ),
+    );
+    olcuBirimi3PaydaController = TextEditingController(
+      text: (firstStokList?.olcuBirimi3Payda ?? stokModel.olcuBirimi3Payda).commaSeparatedWithDecimalDigits(
+        OndalikEnum.oran,
+      ),
+    );
     barkod1Controller = TextEditingController(text: firstStokList?.barkod1 ?? stokModel.barkod1);
     barkod2Controller = TextEditingController(text: firstStokList?.barkod2 ?? stokModel.barkod2);
     barkod3Controller = TextEditingController(text: firstStokList?.barkod3 ?? stokModel.barkod3);
     subeController = TextEditingController(
-      text: subeList.ext.isNotNullOrEmpty ? subeList.where((element) => element.subeKodu == firstStokList?.subeKodu || element.subeKodu == stokModel.subeKodu).firstOrNull?.subeAdi : null,
+      text:
+          subeList.ext.isNotNullOrEmpty
+              ? subeList
+                  .where(
+                    (element) => element.subeKodu == firstStokList?.subeKodu || element.subeKodu == stokModel.subeKodu,
+                  )
+                  .firstOrNull
+                  ?.subeAdi
+              : null,
     ); //text: model?.stokAdi
-    ureticiKoduController = TextEditingController(text: firstStokList?.ureticiKodu ?? stokModel.ureticiKodu); //text: model?.stokAdi
+    ureticiKoduController = TextEditingController(
+      text: firstStokList?.ureticiKodu ?? stokModel.ureticiKodu,
+    ); //text: model?.stokAdi
     grupKoduController = TextEditingController(text: firstStokList?.grupKodu ?? stokModel.grupKodu);
     kod1Controller = TextEditingController(text: firstStokList?.kod1 ?? stokModel.kod1);
     kod2Controller = TextEditingController(text: firstStokList?.kod2 ?? stokModel.kod2);
@@ -146,35 +176,50 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
 
   @override
   Widget build(BuildContext context) => Form(
-        key: StaticVariables.instance.stokKartiGenelFormKey,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              IntrinsicHeight(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    if (stokModel.resimBase64 != null || widget.model.ekleMi)
-                      Expanded(
-                        child: Observer(
-                          builder: (_) => InkWell(
-                            child: stokModel.resimBase64 != null
-                                ? SizedBox(
-                                    height: kTextTabBarHeight,
-                                    child: Image.memory(
-                                      base64Decode(stokModel.resimBase64 ?? ""),
-                                      fit: BoxFit.fitHeight,
-                                    ).paddingAll(UIHelper.lowSize),
-                                  )
-                                : const Center(child: Icon(Icons.add)),
+    key: StaticVariables.instance.stokKartiGenelFormKey,
+    child: SingleChildScrollView(
+      child: Column(
+        children: [
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                if (stokModel.resimBase64 != null || widget.model.ekleMi)
+                  Expanded(
+                    child: Observer(
+                      builder:
+                          (_) => InkWell(
+                            child:
+                                stokModel.resimBase64 != null
+                                    ? SizedBox(
+                                      height: kTextTabBarHeight,
+                                      child: Image.memory(
+                                        base64Decode(stokModel.resimBase64 ?? ""),
+                                        fit: BoxFit.fitHeight,
+                                      ).paddingAll(UIHelper.lowSize),
+                                    )
+                                    : const Center(child: Icon(Icons.add)),
                             onTap: () async {
                               final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
                                 context,
                                 title: "Kaynak tipi",
                                 children: [
-                                  BottomSheetModel(title: "Galeri", iconWidget: Icons.photo_library_outlined, value: ImageSource.gallery),
-                                  BottomSheetModel(title: "Kamera", iconWidget: Icons.camera_alt_outlined, value: ImageSource.camera),
-                                  if (stokModel.resimBase64 != null) BottomSheetModel(title: "Fotoğrafı Kaldır", iconWidget: Icons.delete_forever_outlined, value: ""),
+                                  BottomSheetModel(
+                                    title: "Galeri",
+                                    iconWidget: Icons.photo_library_outlined,
+                                    value: ImageSource.gallery,
+                                  ),
+                                  BottomSheetModel(
+                                    title: "Kamera",
+                                    iconWidget: Icons.camera_alt_outlined,
+                                    value: ImageSource.camera,
+                                  ),
+                                  if (stokModel.resimBase64 != null)
+                                    BottomSheetModel(
+                                      title: "Fotoğrafı Kaldır",
+                                      iconWidget: Icons.delete_forever_outlined,
+                                      value: "",
+                                    ),
                                 ],
                               );
                               if (sourceType is ImageSource) {
@@ -186,530 +231,589 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                               }
                             },
                           ),
-                        ),
-                      ),
-                    Expanded(
-                      flex: 4,
-                      child: CustomTextField(
-                        enabled: enable && (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala),
-                        labelText: "Kodu",
-                        isMust: true,
-                        controller: stokKoduController,
-                        onChanged: (value) {
-                          stokModel.stokKodu = value;
-                        },
-                        suffix: Wrap(
-                          children: [
+                    ),
+                  ),
+                Expanded(
+                  flex: 4,
+                  child: CustomTextField(
+                    enabled: enable && (widget.model == BaseEditEnum.ekle || widget.model == BaseEditEnum.kopyala),
+                    labelText: "Kodu",
+                    isMust: true,
+                    controller: stokKoduController,
+                    onChanged: (value) {
+                      stokModel.stokKodu = value;
+                    },
+                    suffix: Wrap(
+                      children:
+                          [
                             IconButton(
-                              onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
-                                context,
-                                title: loc.generalStrings.options,
-                                children: [
-                                  BottomSheetModel(
-                                    title: "Kodu Rehberden Seç",
-                                    iconWidget: Icons.list_alt_outlined,
-                                    onTap: () async {
-                                      Get.back();
-                                      final result = await Get.toNamed("/mainPage/stokListesiOzel");
-                                      if (result != null) {
-                                        stokKoduController.text = result.stokKodu;
-                                        stokModel.stokKodu = stokKoduController.text;
-                                      }
-                                    },
+                              onPressed:
+                                  () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                                    context,
+                                    title: loc.generalStrings.options,
+                                    children: [
+                                      BottomSheetModel(
+                                        title: "Kodu Rehberden Seç",
+                                        iconWidget: Icons.list_alt_outlined,
+                                        onTap: () async {
+                                          Get.back();
+                                          final result = await Get.toNamed("/mainPage/stokListesiOzel");
+                                          if (result != null) {
+                                            stokKoduController.text = result.stokKodu;
+                                            stokModel.stokKodu = stokKoduController.text;
+                                          }
+                                        },
+                                      ),
+                                      BottomSheetModel(
+                                        title: "${stokKoduController.text} ile Başlayan Son Kodu Getir",
+                                        iconWidget: Icons.add,
+                                        onTap: () async {
+                                          Get.back();
+                                          stokKoduController.text =
+                                              await getSiradakiKod(
+                                                kod: stokKoduController.text,
+                                                isOnBuild: true,
+                                                sonKoduGetir: true,
+                                              ) ??
+                                              "";
+                                          stokModel.stokKodu = stokKoduController.text;
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                  BottomSheetModel(
-                                    title: "${stokKoduController.text} ile Başlayan Son Kodu Getir",
-                                    iconWidget: Icons.add,
-                                    onTap: () async {
-                                      Get.back();
-                                      stokKoduController.text = await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true, sonKoduGetir: true) ?? "";
-                                      stokModel.stokKodu = stokKoduController.text;
-                                    },
-                                  ),
-                                ],
-                              ),
                               icon: const Icon(Icons.more_horiz_outlined),
                             ),
                             IconButton(
                               onPressed: () async {
-                                stokKoduController.text = await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true) ?? "";
+                                stokKoduController.text =
+                                    await getSiradakiKod(kod: stokKoduController.text, isOnBuild: true) ?? "";
                                 stokModel.stokKodu = stokKoduController.text;
                               },
                               icon: const Icon(Icons.add),
                             ),
                           ].map((e) => SizedBox(width: 35, child: e)).toList(),
-                        ),
-                      ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              CustomTextField(enabled: enable, labelText: "Adı", controller: stokAdiController, onChanged: (p0) => stokModel.stokAdi = p0),
-              CustomTextField(
-                labelText: "Depo",
-                enabled: enable,
-                readOnly: true,
-                valueWidget: Observer(
-                  builder: (_) => Text(stokModel.depoKodu.toStringIfNotNull ?? ""),
-                ),
-                onClear: () => viewModel.setDepoKodu(null),
-                onTap: () async {
-                  final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, 4);
-                  if (result != null) {
-                    depoController.text = result.depoTanimi ?? "";
-                    viewModel.setDepoKodu(result.depoKodu);
-                  }
-                },
-                suffixMore: true,
-                controller: depoController,
-              ),
-              CustomTextField(
-                enabled: enable,
-                readOnly: true,
-                labelText: "Muhasebe Detay Kodu",
-                controller: muhasebeDetayKoduController,
-                valueWidget: Observer(
-                  builder: (_) => Text(stokModel.muhdetayKodu.toStringIfNotNull ?? ""),
-                ),
-                suffixMore: true,
-                onTap: () async {
-                  final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(context, groupValue: stokModel.muhdetayKodu, stokMu: true);
-                  if (result != null) {
-                    muhasebeDetayKoduController.text = result.adi ?? result.muhKodu.toStringIfNotNull ?? "";
-                    viewModel.setMuhasebeKodu(result);
-                  }
-                },
-              ),
-              CustomTextField(
-                labelText: "Ölçü Birimi 1",
-                enabled: enable,
-                // suffixMore: true,
-                onChanged: (p0) => stokModel.olcuBirimi = p0,
-                // onTap: () => baseOlcuBirimleriController(controller: 1),
+              ],
+            ),
+          ),
+          CustomTextField(
+            enabled: enable,
+            labelText: "Adı",
+            controller: stokAdiController,
+            onChanged: (p0) => stokModel.stokAdi = p0,
+          ),
+          CustomTextField(
+            labelText: "Depo",
+            enabled: enable,
+            readOnly: true,
+            valueWidget: Observer(builder: (_) => Text(stokModel.depoKodu.toStringIfNotNull ?? "")),
+            onClear: () => viewModel.setDepoKodu(null),
+            onTap: () async {
+              final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, 4);
+              if (result != null) {
+                depoController.text = result.depoTanimi ?? "";
+                viewModel.setDepoKodu(result.depoKodu);
+              }
+            },
+            suffixMore: true,
+            controller: depoController,
+          ),
+          CustomTextField(
+            enabled: enable,
+            readOnly: true,
+            labelText: "Muhasebe Detay Kodu",
+            controller: muhasebeDetayKoduController,
+            valueWidget: Observer(builder: (_) => Text(stokModel.muhdetayKodu.toStringIfNotNull ?? "")),
+            suffixMore: true,
+            onTap: () async {
+              final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(
+                context,
+                groupValue: stokModel.muhdetayKodu,
+                stokMu: true,
+              );
+              if (result != null) {
+                muhasebeDetayKoduController.text = result.adi ?? result.muhKodu.toStringIfNotNull ?? "";
+                viewModel.setMuhasebeKodu(result);
+              }
+            },
+          ),
+          CustomTextField(
+            labelText: "Ölçü Birimi 1",
+            enabled: enable,
+            // suffixMore: true,
+            onChanged: (p0) => stokModel.olcuBirimi = p0,
 
-                onClear: () => stokModel.olcuBirimi = null,
-                controller: olcuBirimi1Controller,
-                suffix: IconButton(onPressed: () => baseOlcuBirimleriController(controller: 1), icon: const Icon(Icons.more_horiz_outlined)),
-              ),
-              CustomTextField(
-                labelText: "Ölçü Birimi 2",
-                enabled: enable,
-                // suffixMore: true,
-                onClear: () => stokModel.olcuBirimi2 = null,
-                onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi2 = p0,
-                suffix: IconButton(onPressed: () => baseOlcuBirimleriController(controller: 2), icon: const Icon(Icons.more_horiz_outlined)),
+            // onTap: () => baseOlcuBirimleriController(controller: 1),
+            onClear: () => stokModel.olcuBirimi = null,
+            controller: olcuBirimi1Controller,
+            suffix: IconButton(
+              onPressed: () => baseOlcuBirimleriController(controller: 1),
+              icon: const Icon(Icons.more_horiz_outlined),
+            ),
+          ),
+          CustomTextField(
+            labelText: "Ölçü Birimi 2",
+            enabled: enable,
+            // suffixMore: true,
+            onClear: () => stokModel.olcuBirimi2 = null,
+            onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi2 = p0,
+            suffix: IconButton(
+              onPressed: () => baseOlcuBirimleriController(controller: 2),
+              icon: const Icon(Icons.more_horiz_outlined),
+            ),
 
-                controller: olcuBirimi2Controller,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      enabled: enable,
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      labelText: "Ölçü Br.2 Pay",
-                      isFormattedString: true,
-                      controller: olcuBirimi2PayController,
-                      onChanged: (p0) => stokModel.olcuBirimi2Pay = p0.toDoubleWithFormattedString,
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      enabled: enable,
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      labelText: "Ölçü Br.2 Payda",
-                      isFormattedString: true,
-                      controller: olcuBirimi2PaydaController,
-                      onChanged: (p0) => stokModel.olcuBirimi2Payda = p0.toDoubleWithFormattedString,
-                    ),
-                  ),
-                ],
-              ),
-              CustomTextField(
-                labelText: "Ölçü Birimi 3",
-                enabled: enable,
-                // suffixMore: true,
-                onClear: () => stokModel.olcuBirimi3 = null,
-                onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi3 = p0,
-                // onTap: () {
-                //   baseOlcuBirimleriController(controller: 3);
-                // },
-                suffix: IconButton(onPressed: () => baseOlcuBirimleriController(controller: 3), icon: const Icon(Icons.more_horiz_outlined)),
-
-                controller: olcuBirimi3Controller,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      enabled: enable,
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      labelText: "Ölçü Br.3 Pay",
-                      isFormattedString: true,
-                      controller: olcuBirimi3PayController,
-                      onChanged: (p0) => stokModel.olcuBirimi3Pay = p0.toDoubleWithFormattedString,
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      enabled: enable,
-                      keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                      labelText: "Ölçü Br.3 Payda",
-                      isFormattedString: true,
-                      controller: olcuBirimi3PaydaController,
-                      onChanged: (p0) => stokModel.olcuBirimi3Payda = p0.toDoubleWithFormattedString,
-                    ),
-                  ),
-                ],
-              ),
-              CustomWidgetWithLabel(
-                text: "Barkod",
-                child: Wrap(
-                  children: [
-                    CustomTextField(
-                      enabled: enable,
-                      labelText: "Barkod 1",
-                      maxLength: 35,
-                      controller: barkod1Controller,
-                      onChanged: (value) => stokModel.barkod1 = value,
-                      suffix: Wrap(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              baseBarkodUretController(controller: 1);
-                            },
-                            icon: const Icon(Icons.add),
-                          ),
-                          IconButton(
-                            onPressed: () async {
-                              final result = await Get.toNamed("qr");
-                              if (result case ("" || null)) return;
-                              barkod1Controller.text = result;
-                              stokModel.barkod1 = result;
-                            },
-                            icon: const Icon(Icons.qr_code_scanner),
-                          ),
-                        ],
-                      ),
-                    ),
-                    CustomTextField(
-                      enabled: enable,
-                      labelText: "Barkod 2",
-                      controller: barkod2Controller,
-                      maxLength: 35,
-                      onChanged: (value) => stokModel.barkod2 = value,
-                      suffix: Wrap(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              baseBarkodUretController(controller: 2);
-                            },
-                            icon: const Icon(Icons.add),
-                          ),
-                          IconButton(
-                            onPressed: () async {
-                              final result = await Get.toNamed("qr");
-                              if (result case ("" || null)) return;
-                              barkod2Controller.text = result;
-                              stokModel.barkod2 = result;
-                            },
-                            icon: const Icon(Icons.qr_code_scanner),
-                          ),
-                        ],
-                      ),
-                    ),
-                    CustomTextField(
-                      enabled: enable,
-                      labelText: "Barkod 3",
-                      controller: barkod3Controller,
-                      maxLength: 35,
-                      onChanged: (value) => stokModel.barkod3 = value,
-                      suffix: Wrap(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              baseBarkodUretController(controller: 3);
-                            },
-                            icon: const Icon(Icons.add),
-                          ),
-                          IconButton(
-                            onPressed: () async {
-                              final result = await Get.toNamed("qr");
-                              if (result case ("" || null)) return;
-                              barkod3Controller.text = result;
-                              stokModel.barkod3 = result;
-                            },
-                            icon: const Icon(Icons.qr_code_scanner),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              CustomWidgetWithLabel(
-                text: loc.generalStrings.other,
+            controller: olcuBirimi2Controller,
+          ),
+          Row(
+            children: [
+              Expanded(
                 child: CustomTextField(
-                  // valueText: stokModel?.subeKodu.toStringIfNotNull,
-                  readOnly: true,
-                  enabled: (enable && subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi == "E") || widget.model == BaseEditEnum.ekle,
-                  labelText: "Şube",
-                  isMust: true,
-                  controller: subeController,
-                  valueWidget: Observer(
-                    builder: (_) => Text(stokModel.subeKodu.toStringIfNotNull ?? ""),
-                  ),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                      context,
-                      groupValue: stokModel.subeKodu,
-                      title: "Şube",
-                      children: subeList.map((e) => BottomSheetModel(title: "${e.subeAdi}", description: e.subeKodu.toStringIfNotNull, value: e, groupValue: e.subeKodu)).toList(),
-                    );
-                    if (result != null) {
-                      subeController.text = "${result.subeAdi} ${result.subeKodu}";
-                      viewModel.setSube(result);
-                    }
-                  },
-                  suffixMore: true,
+                  enabled: enable,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  labelText: "Ölçü Br.2 Pay",
+                  isFormattedString: true,
+                  controller: olcuBirimi2PayController,
+                  onChanged: (p0) => stokModel.olcuBirimi2Pay = p0.toDoubleWithFormattedString,
                 ),
               ),
-              CustomWidgetWithLabel(
-                text: "Rapor Kodları",
-                child: Wrap(
-                  children: [
-                    CustomTextField(
-                      enabled: enable,
-                      labelText: "Üretici Kodu",
-                      onChanged: (p0) => stokModel.ureticiKodu = p0,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextField(
-                            enabled: enable,
-                            controller: grupKoduController,
-                            readOnly: true,
-                            suffixMore: true,
-                            onTap: () async {
-                              if (!(viewModel.grupKodlariMap?.containsKey(0) ?? false)) {
-                                dialogManager.showLoadingDialog("Grup Kodları Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(0, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 0));
-                                dialogManager.hideAlertDialog;
-                              }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                title: "Grup Kodu",
-                                groupValue: stokModel.grupKodu,
-                                children: viewModel.grupKodlariMap?[0]
-                                        ?.map(
-                                          (e) => BottomSheetModel(
-                                            title: "${e.grupAdi}",
-                                            description: e.grupKodu,
-                                            groupValue: e.grupKodu,
-                                            value: e,
-                                          ),
-                                        )
-                                        .toList() ??
-                                    [],
-                              );
-                              if (result == null) return;
-                              grupKoduController.text = result.grupAdi ?? "";
-                              stokModel.grupKodu = result.grupKodu;
-                            },
-                            labelText: "Grup Kodu",
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextField(
-                            enabled: enable,
-                            controller: kod1Controller,
-                            readOnly: true,
-                            onTap: () async {
-                              if (!(viewModel.grupKodlariMap?.containsKey(1) ?? false)) {
-                                dialogManager.showLoadingDialog("Kod 1 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(1, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 1));
-                                dialogManager.hideAlertDialog;
-                              }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                title: "Kod 1",
-                                groupValue: stokModel.kod1,
-                                children: viewModel.grupKodlariMap?[1]
-                                        ?.map(
-                                          (e) => BottomSheetModel(
-                                            title: "${e.grupAdi}",
-                                            description: e.grupKodu,
-                                            groupValue: e.grupKodu,
-                                            value: e,
-                                          ),
-                                        )
-                                        .toList() ??
-                                    [],
-                              );
-                              if (result == null) return;
-                              kod1Controller.text = result.grupKodu ?? "";
-                              stokModel.kod1 = result.grupAdi;
-                            },
-                            suffixMore: true,
-                            labelText: "Kod1",
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextField(
-                            enabled: enable,
-                            controller: kod2Controller,
-                            readOnly: true,
-                            onTap: () async {
-                              if (!(viewModel.grupKodlariMap?.containsKey(2) ?? false)) {
-                                dialogManager.showLoadingDialog("Kod 2 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(2, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 2));
-                                dialogManager.hideAlertDialog;
-                              }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                title: "Kod 2",
-                                groupValue: stokModel.kod2,
-                                children: viewModel.grupKodlariMap?[2]
-                                        ?.map(
-                                          (e) => BottomSheetModel(
-                                            title: "${e.grupAdi}",
-                                            description: e.grupKodu,
-                                            groupValue: e.grupKodu,
-                                            value: e,
-                                          ),
-                                        )
-                                        .toList() ??
-                                    [],
-                              );
-
-                              if (result == null) return;
-                              kod2Controller.text = result.grupKodu ?? "";
-                              stokModel.kod2 = result.grupAdi;
-                            },
-                            suffixMore: true,
-                            labelText: "Kod2",
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextField(
-                            enabled: enable,
-                            controller: kod3Controller,
-                            readOnly: true,
-                            onTap: () async {
-                              if (!(viewModel.grupKodlariMap?.containsKey(3) ?? false)) {
-                                dialogManager.showLoadingDialog("Kod 3 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(3, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 3));
-                                dialogManager.hideAlertDialog;
-                              }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                title: "Kod 3",
-                                groupValue: stokModel.kod3,
-                                children: viewModel.grupKodlariMap?[3]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList(),
-                              );
-                              if (result == null) return;
-                              kod3Controller.text = result.grupKodu ?? "";
-                              stokModel.kod3 = result.grupAdi;
-                            },
-                            suffixMore: true,
-                            labelText: "Kod3",
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CustomTextField(
-                            enabled: enable,
-                            readOnly: true,
-                            onTap: () async {
-                              if (!(viewModel.grupKodlariMap?.containsKey(4) ?? false)) {
-                                dialogManager.showLoadingDialog("Kod 4 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(4, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 4));
-                                dialogManager.hideAlertDialog;
-                              }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                title: "Kod 4",
-                                groupValue: stokModel.kod4,
-                                children: viewModel.grupKodlariMap?[4]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList(),
-                              );
-                              if (result == null) return;
-                              kod4Controller.text = result.grupKodu ?? "";
-                              stokModel.kod4 = result.grupAdi;
-                            },
-                            suffixMore: true,
-                            controller: kod4Controller,
-                            labelText: "Kod4",
-                          ),
-                        ),
-                        Expanded(
-                          child: CustomTextField(
-                            enabled: enable,
-                            controller: kod5Controller,
-                            readOnly: true,
-                            onTap: () async {
-                              if (!(viewModel.grupKodlariMap?.containsKey(5) ?? false)) {
-                                dialogManager.showLoadingDialog("Kod 5 Yükleniyor...");
-                                viewModel.changeGrupKoduListesi(5, await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 5));
-                                dialogManager.hideAlertDialog;
-                              }
-                              final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                title: "Kod 5",
-                                groupValue: stokModel.kod5,
-                                children: viewModel.grupKodlariMap?[5]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList(),
-                              );
-                              if (result == null) return;
-                              kod5Controller.text = result.grupKodu ?? "";
-                              stokModel.kod5 = result.grupAdi;
-                            },
-                            suffixMore: true,
-                            labelText: "Kod5",
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+              Expanded(
+                child: CustomTextField(
+                  enabled: enable,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  labelText: "Ölçü Br.2 Payda",
+                  isFormattedString: true,
+                  controller: olcuBirimi2PaydaController,
+                  onChanged: (p0) => stokModel.olcuBirimi2Payda = p0.toDoubleWithFormattedString,
                 ),
               ),
             ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+          ),
+          CustomTextField(
+            labelText: "Ölçü Birimi 3",
+            enabled: enable,
+            // suffixMore: true,
+            onClear: () => stokModel.olcuBirimi3 = null,
+            onChanged: (p0) => viewModel.stokListesiModel.olcuBirimi3 = p0,
+            // onTap: () {
+            //   baseOlcuBirimleriController(controller: 3);
+            // },
+            suffix: IconButton(
+              onPressed: () => baseOlcuBirimleriController(controller: 3),
+              icon: const Icon(Icons.more_horiz_outlined),
+            ),
+
+            controller: olcuBirimi3Controller,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  enabled: enable,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  labelText: "Ölçü Br.3 Pay",
+                  isFormattedString: true,
+                  controller: olcuBirimi3PayController,
+                  onChanged: (p0) => stokModel.olcuBirimi3Pay = p0.toDoubleWithFormattedString,
+                ),
+              ),
+              Expanded(
+                child: CustomTextField(
+                  enabled: enable,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  labelText: "Ölçü Br.3 Payda",
+                  isFormattedString: true,
+                  controller: olcuBirimi3PaydaController,
+                  onChanged: (p0) => stokModel.olcuBirimi3Payda = p0.toDoubleWithFormattedString,
+                ),
+              ),
+            ],
+          ),
+          CustomWidgetWithLabel(
+            text: "Barkod",
+            child: Wrap(
+              children: [
+                CustomTextField(
+                  enabled: enable,
+                  labelText: "Barkod 1",
+                  maxLength: 35,
+                  controller: barkod1Controller,
+                  onChanged: (value) => stokModel.barkod1 = value,
+                  suffix: Wrap(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          baseBarkodUretController(controller: 1);
+                        },
+                        icon: const Icon(Icons.add),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          final result = await Get.toNamed("qr");
+                          if (result case ("" || null)) return;
+                          barkod1Controller.text = result;
+                          stokModel.barkod1 = result;
+                        },
+                        icon: const Icon(Icons.qr_code_scanner),
+                      ),
+                    ],
+                  ),
+                ),
+                CustomTextField(
+                  enabled: enable,
+                  labelText: "Barkod 2",
+                  controller: barkod2Controller,
+                  maxLength: 35,
+                  onChanged: (value) => stokModel.barkod2 = value,
+                  suffix: Wrap(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          baseBarkodUretController(controller: 2);
+                        },
+                        icon: const Icon(Icons.add),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          final result = await Get.toNamed("qr");
+                          if (result case ("" || null)) return;
+                          barkod2Controller.text = result;
+                          stokModel.barkod2 = result;
+                        },
+                        icon: const Icon(Icons.qr_code_scanner),
+                      ),
+                    ],
+                  ),
+                ),
+                CustomTextField(
+                  enabled: enable,
+                  labelText: "Barkod 3",
+                  controller: barkod3Controller,
+                  maxLength: 35,
+                  onChanged: (value) => stokModel.barkod3 = value,
+                  suffix: Wrap(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          baseBarkodUretController(controller: 3);
+                        },
+                        icon: const Icon(Icons.add),
+                      ),
+                      IconButton(
+                        onPressed: () async {
+                          final result = await Get.toNamed("qr");
+                          if (result case ("" || null)) return;
+                          barkod3Controller.text = result;
+                          stokModel.barkod3 = result;
+                        },
+                        icon: const Icon(Icons.qr_code_scanner),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          CustomWidgetWithLabel(
+            text: loc.generalStrings.other,
+            child: CustomTextField(
+              // valueText: stokModel?.subeKodu.toStringIfNotNull,
+              readOnly: true,
+              enabled:
+                  (enable &&
+                      subeList.firstWhereOrNull((element) => element.subeKodu == veriTabani["Şube"])?.merkezmi ==
+                          "E") ||
+                  widget.model == BaseEditEnum.ekle,
+              labelText: "Şube",
+              isMust: true,
+              controller: subeController,
+              valueWidget: Observer(builder: (_) => Text(stokModel.subeKodu.toStringIfNotNull ?? "")),
+              onTap: () async {
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  groupValue: stokModel.subeKodu,
+                  title: "Şube",
+                  children:
+                      subeList
+                          .map(
+                            (e) => BottomSheetModel(
+                              title: "${e.subeAdi}",
+                              description: e.subeKodu.toStringIfNotNull,
+                              value: e,
+                              groupValue: e.subeKodu,
+                            ),
+                          )
+                          .toList(),
+                );
+                if (result != null) {
+                  subeController.text = "${result.subeAdi} ${result.subeKodu}";
+                  viewModel.setSube(result);
+                }
+              },
+              suffixMore: true,
+            ),
+          ),
+          CustomWidgetWithLabel(
+            text: "Rapor Kodları",
+            child: Wrap(
+              children: [
+                CustomTextField(
+                  enabled: enable,
+                  labelText: "Üretici Kodu",
+                  onChanged: (p0) => stokModel.ureticiKodu = p0,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        enabled: enable,
+                        controller: grupKoduController,
+                        readOnly: true,
+                        suffixMore: true,
+                        onTap: () async {
+                          if (!(viewModel.grupKodlariMap?.containsKey(0) ?? false)) {
+                            dialogManager.showLoadingDialog("Grup Kodları Yükleniyor...");
+                            viewModel.changeGrupKoduListesi(
+                              0,
+                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 0),
+                            );
+                            dialogManager.hideAlertDialog;
+                          }
+                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Grup Kodu",
+                            groupValue: stokModel.grupKodu,
+                            children:
+                                viewModel.grupKodlariMap?[0]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        value: e,
+                                      ),
+                                    )
+                                    .toList() ??
+                                [],
+                          );
+                          if (result == null) return;
+                          grupKoduController.text = result.grupAdi ?? "";
+                          stokModel.grupKodu = result.grupKodu;
+                        },
+                        labelText: "Grup Kodu",
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        enabled: enable,
+                        controller: kod1Controller,
+                        readOnly: true,
+                        onTap: () async {
+                          if (!(viewModel.grupKodlariMap?.containsKey(1) ?? false)) {
+                            dialogManager.showLoadingDialog("Kod 1 Yükleniyor...");
+                            viewModel.changeGrupKoduListesi(
+                              1,
+                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 1),
+                            );
+                            dialogManager.hideAlertDialog;
+                          }
+                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Kod 1",
+                            groupValue: stokModel.kod1,
+                            children:
+                                viewModel.grupKodlariMap?[1]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        value: e,
+                                      ),
+                                    )
+                                    .toList() ??
+                                [],
+                          );
+                          if (result == null) return;
+                          kod1Controller.text = result.grupKodu ?? "";
+                          stokModel.kod1 = result.grupAdi;
+                        },
+                        suffixMore: true,
+                        labelText: "Kod1",
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        enabled: enable,
+                        controller: kod2Controller,
+                        readOnly: true,
+                        onTap: () async {
+                          if (!(viewModel.grupKodlariMap?.containsKey(2) ?? false)) {
+                            dialogManager.showLoadingDialog("Kod 2 Yükleniyor...");
+                            viewModel.changeGrupKoduListesi(
+                              2,
+                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 2),
+                            );
+                            dialogManager.hideAlertDialog;
+                          }
+                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Kod 2",
+                            groupValue: stokModel.kod2,
+                            children:
+                                viewModel.grupKodlariMap?[2]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        value: e,
+                                      ),
+                                    )
+                                    .toList() ??
+                                [],
+                          );
+
+                          if (result == null) return;
+                          kod2Controller.text = result.grupKodu ?? "";
+                          stokModel.kod2 = result.grupAdi;
+                        },
+                        suffixMore: true,
+                        labelText: "Kod2",
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        enabled: enable,
+                        controller: kod3Controller,
+                        readOnly: true,
+                        onTap: () async {
+                          if (!(viewModel.grupKodlariMap?.containsKey(3) ?? false)) {
+                            dialogManager.showLoadingDialog("Kod 3 Yükleniyor...");
+                            viewModel.changeGrupKoduListesi(
+                              3,
+                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 3),
+                            );
+                            dialogManager.hideAlertDialog;
+                          }
+                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Kod 3",
+                            groupValue: stokModel.kod3,
+                            children:
+                                viewModel.grupKodlariMap?[3]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        value: e,
+                                      ),
+                                    )
+                                    .toList(),
+                          );
+                          if (result == null) return;
+                          kod3Controller.text = result.grupKodu ?? "";
+                          stokModel.kod3 = result.grupAdi;
+                        },
+                        suffixMore: true,
+                        labelText: "Kod3",
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                        enabled: enable,
+                        readOnly: true,
+                        onTap: () async {
+                          if (!(viewModel.grupKodlariMap?.containsKey(4) ?? false)) {
+                            dialogManager.showLoadingDialog("Kod 4 Yükleniyor...");
+                            viewModel.changeGrupKoduListesi(
+                              4,
+                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 4),
+                            );
+                            dialogManager.hideAlertDialog;
+                          }
+                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Kod 4",
+                            groupValue: stokModel.kod4,
+                            children:
+                                viewModel.grupKodlariMap?[4]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        value: e,
+                                      ),
+                                    )
+                                    .toList(),
+                          );
+                          if (result == null) return;
+                          kod4Controller.text = result.grupKodu ?? "";
+                          stokModel.kod4 = result.grupAdi;
+                        },
+                        suffixMore: true,
+                        controller: kod4Controller,
+                        labelText: "Kod4",
+                      ),
+                    ),
+                    Expanded(
+                      child: CustomTextField(
+                        enabled: enable,
+                        controller: kod5Controller,
+                        readOnly: true,
+                        onTap: () async {
+                          if (!(viewModel.grupKodlariMap?.containsKey(5) ?? false)) {
+                            dialogManager.showLoadingDialog("Kod 5 Yükleniyor...");
+                            viewModel.changeGrupKoduListesi(
+                              5,
+                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 5),
+                            );
+                            dialogManager.hideAlertDialog;
+                          }
+                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Kod 5",
+                            groupValue: stokModel.kod5,
+                            children:
+                                viewModel.grupKodlariMap?[5]
+                                    ?.map(
+                                      (e) => BottomSheetModel(
+                                        title: "${e.grupAdi}",
+                                        description: e.grupKodu,
+                                        groupValue: e.grupKodu,
+                                        value: e,
+                                      ),
+                                    )
+                                    .toList(),
+                          );
+                          if (result == null) return;
+                          kod5Controller.text = result.grupKodu ?? "";
+                          stokModel.kod5 = result.grupAdi;
+                        },
+                        suffixMore: true,
+                        labelText: "Kod5",
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 
   Future<String?> imageCompresser(ImageSource sourceType) async {
     final ImagePicker picker = ImagePicker();
@@ -725,7 +829,12 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
           quality: 30,
         );
       } catch (e) {
-        compressedImage = await FlutterImageCompress.compressWithFile(result.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true);
+        compressedImage = await FlutterImageCompress.compressWithFile(
+          result.path,
+          format: CompressFormat.heic,
+          numberOfRetries: 10,
+          keepExif: true,
+        );
       }
       final base64 = base64Encode(compressedImage!.toList());
       viewModel.setImage(base64);
@@ -745,15 +854,16 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
       groupValue: stokModel.olcuBirimiSelector(controller),
       context,
       title: "Ölçü Birimi $controller",
-      children: filteredList
-          ?.map(
-            (e) => BottomSheetModel(
-              title: e.olcuBirimi ?? "",
-              groupValue: e.olcuBirimi,
-              onTap: () => Get.back(result: e.olcuBirimi),
-            ),
-          )
-          .toList(),
+      children:
+          filteredList
+              ?.map(
+                (e) => BottomSheetModel(
+                  title: e.olcuBirimi ?? "",
+                  groupValue: e.olcuBirimi,
+                  onTap: () => Get.back(result: e.olcuBirimi),
+                ),
+              )
+              .toList(),
     );
     if (result != null) {
       if (controller == 1) {
@@ -814,7 +924,10 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
   }
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari() async {
-    final result = await networkManager.dioGet<StokMuhasebeKoduModel>(path: ApiUrls.getStokMuhasebeKodlari, bodyModel: StokMuhasebeKoduModel());
+    final result = await networkManager.dioGet<StokMuhasebeKoduModel>(
+      path: ApiUrls.getStokMuhasebeKodlari,
+      bodyModel: StokMuhasebeKoduModel(),
+    );
     return result.dataList;
   }
 
@@ -846,7 +959,11 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
     final GenericResponseModel result = await networkManager.dioPost<StokOlcuBirimleriModel>(
       path: ApiUrls.barkodUret,
       bodyModel: StokOlcuBirimleriModel(),
-      data: {"BarkodSira": controller.toStringIfNotNull, "StokKodu": viewModel.stokDetayModel.stokKodu ?? stokKoduController.text, "Seri": seriValue},
+      data: {
+        "BarkodSira": controller.toStringIfNotNull,
+        "StokKodu": viewModel.stokDetayModel.stokKodu ?? stokKoduController.text,
+        "Seri": seriValue,
+      },
     );
     return result.paramData!["URETILEN_BARKOD"];
   }

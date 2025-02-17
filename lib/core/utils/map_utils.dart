@@ -16,7 +16,9 @@ final class MapUtils {
     if (await canLaunchUrl(mapsUri)) {
       await launchUrl(mapsUri);
     } else {
-      throw Exception("Harita bağlantısı açılamadı. Lütfen uygulamayı güncelleyin ya da Uygulama konum izinlerinizi gözden geçirin.");
+      throw Exception(
+        "Harita bağlantısı açılamadı. Lütfen uygulamayı güncelleyin ya da Uygulama konum izinlerinizi gözden geçirin.",
+      );
     }
   }
 }

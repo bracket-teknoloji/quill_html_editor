@@ -93,7 +93,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
               context,
               title: "Giriş/Çıkış seçiniz",
               groupValue: viewModel.model.cariyiBorclandir != true,
-              children: [BottomSheetModel(title: "Bankaya Para Girişi", value: 0, groupValue: 0), BottomSheetModel(title: "Bankadan Para Çıkışı", value: 1, groupValue: 1)],
+              children: [
+                BottomSheetModel(title: "Bankaya Para Girişi", value: 0, groupValue: 0),
+                BottomSheetModel(title: "Bankadan Para Çıkışı", value: 1, groupValue: 1),
+              ],
             ) ??
             0,
       );
@@ -160,7 +163,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           builder:
                               (_) => ToggleButtons(
                                 constraints: BoxConstraints.expand(width: constraints.maxWidth / 2 - 2),
-                                isSelected: [(viewModel.model.cariyiBorclandir == null), viewModel.model.cariyiBorclandir ?? false],
+                                isSelected: [
+                                  (viewModel.model.cariyiBorclandir == null),
+                                  viewModel.model.cariyiBorclandir ?? false,
+                                ],
                                 onPressed: setGirisCikis,
                                 children: const [Text("Bankaya Para Girişi"), Text("Bankadan Para Çıkışı")],
                               ),
@@ -212,7 +218,13 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           },
                         ),
                       ),
-                      Expanded(child: CustomTextField(labelText: "Dekont No", controller: _dekontNoController, onChanged: viewModel.setDekontNo)),
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Dekont No",
+                          controller: _dekontNoController,
+                          onChanged: viewModel.setDekontNo,
+                        ),
+                      ),
                     ],
                   ),
                   CustomTextField(
@@ -253,7 +265,13 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                                       : (viewModel.cariModel?.bakiye ?? 0) < 0
                                       ? "(Ödenecek)"
                                       : ""}",
-                                  style: TextStyle(color: (viewModel.cariModel?.bakiye ?? 0) > 0 ? ColorPalette.mantis : ColorPalette.persianRed, fontWeight: FontWeight.bold),
+                                  style: TextStyle(
+                                    color:
+                                        (viewModel.cariModel?.bakiye ?? 0) > 0
+                                            ? ColorPalette.mantis
+                                            : ColorPalette.persianRed,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ).paddingAll(UIHelper.lowSize)
                                 : const SizedBox.shrink(),
                   ),
@@ -269,7 +287,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             // valueWidget: Observer(builder: (_) => Text(viewModel.model.tcmbBankaKodu ?? "")),
                             suffix: IconButton(
                               onPressed: () async {
-                                final result = await bottomSheetDialogManager.showTcmbBankalarBottomSheetDialog(context, viewModel.model.tcmbBankaKodu);
+                                final result = await bottomSheetDialogManager.showTcmbBankalarBottomSheetDialog(
+                                  context,
+                                  viewModel.model.tcmbBankaKodu,
+                                );
                                 if (result != null) {
                                   _tcmbBankaKoduController.text = result.bankakodu ?? "";
                                   viewModel.setTCMBBankaKodu(result.bankakodu);
@@ -292,7 +313,11 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                                   dialogManager.showErrorSnackBar("TCMB Banka Kodu seçiniz.");
                                   return;
                                 }
-                                final result = await bottomSheetDialogManager.showTcmbSubelerBottomSheetDialog(context, viewModel.model.tcmbBankaKodu, viewModel.model.tcmbSubeKodu);
+                                final result = await bottomSheetDialogManager.showTcmbSubelerBottomSheetDialog(
+                                  context,
+                                  viewModel.model.tcmbBankaKodu,
+                                  viewModel.model.tcmbSubeKodu,
+                                );
                                 if (result != null) {
                                   _tcmbSubeKoduController.text = result.subekodu ?? "";
                                   viewModel.setTCMBSubeKodu(result.subekodu);
@@ -304,8 +329,14 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                         ),
                       ],
                     ),
-                  if (viewModel.model.cariyiBorclandir ?? false) CustomTextField(labelText: "Banka Hesap No", controller: _bankaHesapNoController, onChanged: viewModel.setBankaHesapNo),
-                  if (viewModel.model.cariyiBorclandir ?? false) CustomTextField(labelText: "IBAN", controller: _ibanController, onChanged: viewModel.setIBAN),
+                  if (viewModel.model.cariyiBorclandir ?? false)
+                    CustomTextField(
+                      labelText: "Banka Hesap No",
+                      controller: _bankaHesapNoController,
+                      onChanged: viewModel.setBankaHesapNo,
+                    ),
+                  if (viewModel.model.cariyiBorclandir ?? false)
+                    CustomTextField(labelText: "IBAN", controller: _ibanController, onChanged: viewModel.setIBAN),
                   Row(
                     children: [
                       if (viewModel.cariModel?.dovizli == true)
@@ -316,9 +347,14 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             isMust: true,
                             readOnly: true,
                             suffixMore: true,
-                            valueWidget: Observer(builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? "")),
+                            valueWidget: Observer(
+                              builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? ""),
+                            ),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(context, viewModel.model.dovizTipi);
+                              final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
+                                context,
+                                viewModel.model.dovizTipi,
+                              );
                               if (result != null) {
                                 if (result.dovizKodu != viewModel.model.dovizTipi) {
                                   _dovizTipiController.text = result.isim ?? "";
@@ -340,8 +376,12 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             onChanged: (value) {
                               viewModel
                                 ..setDovizTutari(value.toDoubleWithFormattedString)
-                                ..setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
-                              _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                ..setTutar(
+                                  (viewModel.model.dovizTutari ?? 0) *
+                                      (_dovizKuruController.text.toDoubleWithFormattedString),
+                                );
+                              _tutarController.text =
+                                  viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             },
                           ),
                         ),
@@ -359,14 +399,21 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             onChanged: (value) {
                               if (_dovizKuruController.text != "") {
-                                viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                                _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                                viewModel.setDovizTutari(
+                                  (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                                );
+                                _dovizTutariController.text =
+                                    viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+                                    "";
                               } else {
                                 viewModel.setDovizTutari(null);
                                 _dovizTutariController.clear();
                               }
                             },
-                            suffix: IconButton(onPressed: () async => await getDovizDialog(), icon: const Icon(Icons.more_horiz_outlined)),
+                            suffix: IconButton(
+                              onPressed: () async => await getDovizDialog(),
+                              icon: const Icon(Icons.more_horiz_outlined),
+                            ),
                           ),
                         ),
                       Expanded(
@@ -379,8 +426,11 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           onChanged: (value) {
                             viewModel.setTutar(value.toDoubleWithFormattedString);
                             if (viewModel.model.dovizliMi) {
-                              viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-                              _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
+                              viewModel.setDovizTutari(
+                                (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+                              );
+                              _dovizTutariController.text =
+                                  viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
                             } else {
                               viewModel.setDovizTutari(null);
                               _dovizTutariController.clear();
@@ -452,7 +502,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             suffixMore: true,
                             valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                              final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                                context,
+                                viewModel.model.plasiyerKodu,
+                              );
                               if (result != null) {
                                 _plasiyerController.text = result.plasiyerAciklama ?? "";
                                 viewModel.setPlasiyerKodu(result.plasiyerKodu);
@@ -471,7 +524,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                       suffixMore: true,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                        final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                          context,
+                          viewModel.model.projeKodu,
+                        );
                         if (result != null) {
                           _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                           viewModel.setProjeKodu(result.projeKodu);
@@ -539,22 +595,26 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
         title: "Döviz Kuru",
         children: [
           BottomSheetModel(
-            title: "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.dovSatis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Alış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effAlis,
             iconWidget: Icons.calculate_outlined,
           ),
           BottomSheetModel(
-            title: "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
+            title:
+                "Efektif Satış: ${viewModel.dovizKurlariListesi?.firstOrNull?.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati) ?? ""}",
             value: viewModel.dovizKurlariListesi?.firstOrNull?.effSatis,
             iconWidget: Icons.calculate_outlined,
           ),
@@ -563,10 +623,15 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
       if (result is double) {
         _dovizKuruController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati);
         if (_tutarController.text != "") {
-          viewModel.setDovizTutari((viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString);
-          _dovizTutariController.text = viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? "";
+          viewModel.setDovizTutari(
+            (viewModel.model.tutar ?? 0) / _dovizKuruController.text.toDoubleWithFormattedString,
+          );
+          _dovizTutariController.text =
+              viewModel.model.dovizTutari?.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari) ?? "";
         } else if (_dovizTutariController.text != "") {
-          viewModel.setTutar((viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString));
+          viewModel.setTutar(
+            (viewModel.model.dovizTutari ?? 0) * (_dovizKuruController.text.toDoubleWithFormattedString),
+          );
           _tutarController.text = viewModel.model.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? "";
         }
       }

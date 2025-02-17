@@ -32,7 +32,8 @@ final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
     _seriController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.seriAdi ?? "");
     _plasiyerController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.plasiyerAdi ?? "");
     _projeController = TextEditingController(text: viewModel.dekontIslemlerRequestModel.projeAdi ?? "");
-    if ((widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak) && viewModel.dekontIslemlerRequestModel.seriAdi == null) {
+    if ((widget.baseEditEnum == BaseEditEnum.ekle || widget.baseEditEnum == BaseEditEnum.taslak) &&
+        viewModel.dekontIslemlerRequestModel.seriAdi == null) {
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
         if (viewModel.dekontIslemlerRequestModel.tarih == null) {
           viewModel.setTarih(DateTime.now().dateTimeWithoutTime);

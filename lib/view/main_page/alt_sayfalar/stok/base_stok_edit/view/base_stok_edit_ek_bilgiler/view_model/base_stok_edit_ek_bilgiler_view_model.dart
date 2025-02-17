@@ -3,7 +3,8 @@ import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_li
 
 part "base_stok_edit_ek_bilgiler_view_model.g.dart";
 
-final class BaseStokEditEkBilgilerViewModel = _BaseStokEditEkBilgilerViewModelBase with _$BaseStokEditEkBilgilerViewModel;
+final class BaseStokEditEkBilgilerViewModel = _BaseStokEditEkBilgilerViewModelBase
+    with _$BaseStokEditEkBilgilerViewModel;
 
 abstract class _BaseStokEditEkBilgilerViewModelBase with Store {
   @observable

@@ -36,43 +36,40 @@ final class _HucredekiStoklarViewState extends State<HucredekiStoklarView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "Hücredeki Stoklar",
-            subtitle: "Hücre: ${widget.model.hucreKodu}",
+    appBar: AppBar(title: AppBarTitle(title: "Hücredeki Stoklar", subtitle: "Hücre: ${widget.model.hucreKodu}")),
+    body: Column(
+      children: [
+        CustomTextField(labelText: "Ara", onChanged: viewModel.setSearchText),
+        Expanded(
+          child: Observer(
+            builder:
+                (_) => RefreshableListView(
+                  onRefresh: viewModel.getData,
+                  items: viewModel.observableList,
+                  itemBuilder: hucredekiStoklarCard,
+                ),
           ),
         ),
-        body: Column(
-          children: [
-            CustomTextField(
-              labelText: "Ara",
-              onChanged: viewModel.setSearchText,
-            ),
-            Expanded(
-              child: Observer(
-                builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: hucredekiStoklarCard),
-              ),
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Card hucredekiStoklarCard(HucredekiStoklarModel item) => Card(
-        child: ListTile(
-          onTap: () => Get.back(result: item),
-          title: Text(item.stokAdi ?? ""),
-          subtitle: CustomLayoutBuilder(
-            splitCount: 2,
-            children: [
-              Text("Stok Kodu: ${item.stokKodu ?? ""}"),
-              Text("Yap. Kod: ${item.yapkod ?? ""}"),
-              Text("Yap. Açıklama: ${item.yapacik ?? ""}"),
-            ],
-          ),
-          trailing: Text(
-            item.netMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "",
-            style: TextStyle(color: UIHelper.getColorWithValue(item.netMiktar ?? 0)),
-          ),
-        ),
-      );
+    child: ListTile(
+      onTap: () => Get.back(result: item),
+      title: Text(item.stokAdi ?? ""),
+      subtitle: CustomLayoutBuilder(
+        splitCount: 2,
+        children: [
+          Text("Stok Kodu: ${item.stokKodu ?? ""}"),
+          Text("Yap. Kod: ${item.yapkod ?? ""}"),
+          Text("Yap. Açıklama: ${item.yapacik ?? ""}"),
+        ],
+      ),
+      trailing: Text(
+        item.netMiktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "",
+        style: TextStyle(color: UIHelper.getColorWithValue(item.netMiktar ?? 0)),
+      ),
+    ),
+  );
 }

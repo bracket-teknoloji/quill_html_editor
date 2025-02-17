@@ -66,14 +66,38 @@ final class NetworkManager {
         onError: (e, handler) {
           switch (e.type) {
             case DioExceptionType.connectionError:
-              handler.next(DioException(requestOptions: RequestOptions(), message: "İnternet bağlantınızı kontrol ediniz. ${e.error ?? e.message}"));
+              handler.next(
+                DioException(
+                  requestOptions: RequestOptions(),
+                  message: "İnternet bağlantınızı kontrol ediniz. ${e.error ?? e.message}",
+                ),
+              );
             case DioExceptionType.unknown:
-              handler.next(DioException(requestOptions: RequestOptions(), message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e"));
+              handler.next(
+                DioException(
+                  requestOptions: RequestOptions(),
+                  message: "\nBilinmeyen bir hata oluştu. Lütfen internet bağlantınızı kontrol ediniz.\n $e",
+                ),
+              );
             case DioExceptionType.receiveTimeout || DioExceptionType.sendTimeout || DioExceptionType.connectionTimeout:
-              handler.resolve(Response(requestOptions: RequestOptions(), data: {"error": "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."}));
+              handler.resolve(
+                Response(
+                  requestOptions: RequestOptions(),
+                  data: {
+                    "error":
+                        "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz.",
+                  },
+                ),
+              );
             default:
-              handler
-                  .next(DioException(requestOptions: RequestOptions(), type: e.type, message: "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz."));
+              handler.next(
+                DioException(
+                  requestOptions: RequestOptions(),
+                  type: e.type,
+                  message:
+                      "Bağlantı zaman aşımına uğradı.\nLütfen bağlantı yönteminizi ve internet bağlantınızı kontrol ediniz.",
+                ),
+              );
           }
         },
       ),
@@ -96,30 +120,34 @@ final class NetworkManager {
   final Dio _dio = Dio();
 
   BaseOptions get _dioOptions => BaseOptions(
-        baseUrl: getBaseUrl,
-        preserveHeaderCase: true,
-        followRedirects: false,
-        validateStatus: (status) => status! < 500,
-        receiveTimeout: const Duration(minutes: 2),
-        connectTimeout: const Duration(seconds: 20),
-        sendTimeout: const Duration(minutes: 2),
-        receiveDataWhenStatusError: true,
-        persistentConnection: true,
-        contentType: Headers.jsonContentType,
-      );
+    baseUrl: getBaseUrl,
+    preserveHeaderCase: true,
+    followRedirects: false,
+    validateStatus: (status) => status! < 500,
+    receiveTimeout: const Duration(minutes: 2),
+    connectTimeout: const Duration(seconds: 20),
+    sendTimeout: const Duration(minutes: 2),
+    receiveDataWhenStatusError: true,
+    persistentConnection: true,
+    contentType: Headers.jsonContentType,
+  );
 
   BaseOptions get _eBelgeDioOptions => BaseOptions(
-        baseUrl: getBaseUrl,
-        preserveHeaderCase: true,
-        followRedirects: false,
-        validateStatus: (status) => status! < 500,
-        receiveTimeout: const Duration(minutes: 2),
-        receiveDataWhenStatusError: true,
-        persistentConnection: true,
-        contentType: Headers.jsonContentType,
-      );
+    baseUrl: getBaseUrl,
+    preserveHeaderCase: true,
+    followRedirects: false,
+    validateStatus: (status) => status! < 500,
+    receiveTimeout: const Duration(minutes: 2),
+    receiveDataWhenStatusError: true,
+    persistentConnection: true,
+    contentType: Headers.jsonContentType,
+  );
 
-  Future<TokenModel?> getToken({Map<String, dynamic>? headers, dynamic data, Map<String, dynamic>? queryParameters}) async {
+  Future<TokenModel?> getToken({
+    Map<String, dynamic>? headers,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     // final FormData formData = FormData.fromMap(data);
     _dio.options.baseUrl = getBaseUrl;
     log(AccountModel.instance.toString());
@@ -130,7 +158,11 @@ final class NetworkManager {
         queryParameters: queryParameters,
         cancelToken: CancelToken(),
         options: Options(
-          headers: {"Access-Control-Allow-Origin": "*", "Platform": AccountModel.instance.platform, "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept"},
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Platform": AccountModel.instance.platform,
+            "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Accept",
+          },
           contentType: Headers.formUrlEncodedContentType,
           method: HttpTypes.POST,
         ),
@@ -178,10 +210,7 @@ final class NetworkManager {
         path,
         queryParameters: queries,
         cancelToken: CancelToken(),
-        options: Options(
-          headers: head,
-          contentType: Headers.jsonContentType,
-        ),
+        options: Options(headers: head, contentType: Headers.jsonContentType),
         data: data,
       );
       responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
@@ -248,10 +277,7 @@ final class NetworkManager {
         path,
         queryParameters: queries,
         cancelToken: CancelToken(),
-        options: Options(
-          headers: head,
-          contentType: kIsWeb ? null : Headers.jsonContentType,
-        ),
+        options: Options(headers: head, contentType: kIsWeb ? null : Headers.jsonContentType),
         data: data,
       );
       responseModel = GenericResponseModel<T>.fromJson(response.data ?? {}, bodyModel);
@@ -281,7 +307,13 @@ final class NetworkManager {
   }
 
   Future<GenericResponseModel> deleteFatura(EditFaturaModel model, {bool showError = true, bool showLoading = true}) =>
-      dioPost<EditFaturaModel>(path: ApiUrls.deleteFatura, bodyModel: EditFaturaModel(), data: model.toJson(), showError: showError, showLoading: showLoading);
+      dioPost<EditFaturaModel>(
+        path: ApiUrls.deleteFatura,
+        bodyModel: EditFaturaModel(),
+        data: model.toJson(),
+        showError: showError,
+        showLoading: showLoading,
+      );
 
   Future<MemoryImage?> getImage(String? path) async {
     if (path == null) {
@@ -306,7 +338,11 @@ final class NetworkManager {
     if (path == null) {
       return null;
     }
-    final response = await dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: {"BelgeNo": belgeNo, "BelgeTipi": "STOK", "UrlGetir": "E"});
+    final response = await dioGet(
+      path: ApiUrls.getEvraklar,
+      bodyModel: EvraklarModel(),
+      queryParameters: {"BelgeNo": belgeNo, "BelgeTipi": "STOK", "UrlGetir": "E"},
+    );
 
     if (response.isSuccess) {
       return response.dataList;
@@ -327,30 +363,64 @@ final class NetworkManager {
 
   Future<GenericResponseModel<BasePdfModel>> getPDF(PdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dioPost<BasePdfModel>(path: ApiUrls.print, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.toJsonWithDicParamsMap());
+    final response = await dioPost<BasePdfModel>(
+      path: ApiUrls.print,
+      bodyModel: BasePdfModel(),
+      showLoading: true,
+      headers: head,
+      data: model.toJsonWithDicParamsMap(),
+    );
     return response;
   }
 
   Future<GenericResponseModel<BasePdfModel>> getTeknikResimPdf(OlcumPdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dioPost<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "T").toJson());
+    final response = await dioPost<BasePdfModel>(
+      path: ApiUrls.getBelge,
+      bodyModel: BasePdfModel(),
+      showLoading: true,
+      headers: head,
+      data: model.copyWith(tur: "T").toJson(),
+    );
     return response;
   }
 
   Future<GenericResponseModel<BasePdfModel>> getKontrolPlaniPdf(OlcumPdfModel model) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dioPost<BasePdfModel>(path: ApiUrls.getBelge, bodyModel: BasePdfModel(), showLoading: true, headers: head, data: model.copyWith(tur: "K").toJson());
+    final response = await dioPost<BasePdfModel>(
+      path: ApiUrls.getBelge,
+      bodyModel: BasePdfModel(),
+      showLoading: true,
+      headers: head,
+      data: model.copyWith(tur: "K").toJson(),
+    );
     return response;
   }
 
   Future<GenericResponseModel> dbUpdate(String veriTabani) async {
     final Map<String, String> head = getStandardHeader(true, true, true);
-    final response = await dioPost<BasePdfModel>(path: ApiUrls.dbUpdate, bodyModel: BasePdfModel(), headers: head, showLoading: true, data: {"Veritabani": veriTabani});
+    final response = await dioPost<BasePdfModel>(
+      path: ApiUrls.dbUpdate,
+      bodyModel: BasePdfModel(),
+      headers: head,
+      showLoading: true,
+      data: {"Veritabani": veriTabani},
+    );
     return response;
   }
 
-  Future<List<BaseGrupKoduModel>> getGrupKod({required GrupKoduEnum name, int? grupNo, bool? kullanimda, bool? kategoriModuMu}) async {
-    final queryParams = {"Modul": name.module, "GrupNo": grupNo, "Kullanimda": kullanimda, "KategoriModu": kategoriModuMu == true ? "E" : null};
+  Future<List<BaseGrupKoduModel>> getGrupKod({
+    required GrupKoduEnum name,
+    int? grupNo,
+    bool? kullanimda,
+    bool? kategoriModuMu,
+  }) async {
+    final queryParams = {
+      "Modul": name.module,
+      "GrupNo": grupNo,
+      "Kullanimda": kullanimda,
+      "KategoriModu": kategoriModuMu == true ? "E" : null,
+    };
     log(queryParams.toString());
     final responseKod = await dioGet<BaseGrupKoduModel>(
       path: ApiUrls.getGrupKodlari,
@@ -363,7 +433,11 @@ final class NetworkManager {
     return [];
   }
 
-  Map<String, String> getStandardHeader(bool addTokenKey, [bool headerSirketBilgileri = false, bool headerCKey = false]) {
+  Map<String, String> getStandardHeader(
+    bool addTokenKey, [
+    bool headerSirketBilgileri = false,
+    bool headerCKey = false,
+  ]) {
     final Map<String, String> header = {};
     if (addTokenKey) {
       final String token = CacheManager.getToken();
@@ -384,7 +458,11 @@ final class NetworkManager {
     if (headerCKey) {
       const uuid = Uuid();
       final timeZoneMinutes = DateTime.now().timeZoneOffset.inMinutes;
-      final String baseEncoded = base64Encode(utf8.encode('{\n  "GUID": "${uuid.v4()}",\n  "TZ_MINUTES": $timeZoneMinutes,\n  "ZAMAN": "${DateTime.now().toDateTimeString()}"\n}'));
+      final String baseEncoded = base64Encode(
+        utf8.encode(
+          '{\n  "GUID": "${uuid.v4()}",\n  "TZ_MINUTES": $timeZoneMinutes,\n  "ZAMAN": "${DateTime.now().toDateTimeString()}"\n}',
+        ),
+      );
       header.addAll({"CKEY": baseEncoded});
     }
     return header;
@@ -404,15 +482,28 @@ final class NetworkManager {
   }
 
   Future<List<double>?> getKDVOrani() async {
-    final result = await dioGet<BaseEmptyModel>(path: ApiUrls.getStokDigerBilgi, showLoading: true, bodyModel: BaseEmptyModel(), queryParameters: {"BilgiTipi": "KDVGRUP"});
+    final result = await dioGet<BaseEmptyModel>(
+      path: ApiUrls.getStokDigerBilgi,
+      showLoading: true,
+      bodyModel: BaseEmptyModel(),
+      queryParameters: {"BilgiTipi": "KDVGRUP"},
+    );
     return (jsonDecode(result.paramData?["STOK_KDVGRUP_JSON"]) as List).map((e) => e as double).toList();
   }
 
-  Future<GenericResponseModel<AccountResponseModel>> getUyeBilgileri(String? email, {String? password, bool getFromCache = true, bool? isDebug}) async {
+  Future<GenericResponseModel<AccountResponseModel>> getUyeBilgileri(
+    String? email, {
+    String? password,
+    bool getFromCache = true,
+    bool? isDebug,
+  }) async {
     if (email == "demo@netfect.com") {
       return GenericResponseModel(success: true);
     }
-    final data2 = getFromCache ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi) : AccountModel.instance;
+    final data2 =
+        getFromCache
+            ? (CacheManager.getHesapBilgileri?..cihazKimligi = AccountModel.instance.cihazKimligi)
+            : AccountModel.instance;
     data2?.cihazTarihi = DateTime.now().toDateTimeString();
     data2?.konumTarihi = DateTime.now().toDateTimeString();
     final result = await dioPost<AccountResponseModel>(
@@ -433,7 +524,9 @@ final class NetworkManager {
       if (getFromCache) {
         final List<AccountResponseModel> list = result.dataList;
         if (list.firstOrNull != null) {
-          CacheManager.setAccounts(list.firstOrNull!..parola = password ?? CacheManager.getVerifiedUser.account?.parola ?? "");
+          CacheManager.setAccounts(
+            list.firstOrNull!..parola = password ?? CacheManager.getVerifiedUser.account?.parola ?? "",
+          );
         }
       }
     } else {
@@ -446,10 +539,17 @@ final class NetworkManager {
 
   //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
   //Sadece succes döndürüyor.
-  Future<GenericResponseModel> postPrint({required PrintModel model}) async =>
-      await dioPost<SiradakiBelgeNoModel>(path: ApiUrls.print, bodyModel: SiradakiBelgeNoModel(), data: model.toJson(), showLoading: true);
+  Future<GenericResponseModel> postPrint({required PrintModel model}) async => await dioPost<SiradakiBelgeNoModel>(
+    path: ApiUrls.print,
+    bodyModel: SiradakiBelgeNoModel(),
+    data: model.toJson(),
+    showLoading: true,
+  );
 
-  Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari({Map<String, dynamic>? queryParams, bool? stokMu = true}) async {
+  Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari({
+    Map<String, dynamic>? queryParams,
+    bool? stokMu = true,
+  }) async {
     final GenericResponseModel<StokMuhasebeKoduModel> result = await dioGet<StokMuhasebeKoduModel>(
       path: stokMu == true ? ApiUrls.getStokMuhasebeKodlari : ApiUrls.getMuhasebeMuhasebeKodlari,
       bodyModel: StokMuhasebeKoduModel(),
@@ -460,7 +560,11 @@ final class NetworkManager {
   }
 
   Future<String?> getSiradakiBelgeNo(SiradakiBelgeNoModel model) async {
-    final result = await dioGet<SiradakiBelgeNoModel>(path: ApiUrls.getSiradakiBelgeNo, bodyModel: SiradakiBelgeNoModel(), data: (model..belgeNo = null).toJson());
+    final result = await dioGet<SiradakiBelgeNoModel>(
+      path: ApiUrls.getSiradakiBelgeNo,
+      bodyModel: SiradakiBelgeNoModel(),
+      data: (model..belgeNo = null).toJson(),
+    );
     if (result.isSuccess) {
       return result.dataList.firstOrNull?.belgeNo;
     }
@@ -620,7 +724,8 @@ final class NetworkManager {
         return await BottomSheetDialogManager().showBottomSheetDialog(
           context,
           title: "Fatura Seçiniz",
-          children: list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e)).toList(),
+          children:
+              list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e)).toList(),
         );
       }
     }
@@ -644,7 +749,8 @@ final class NetworkManager {
         return await BottomSheetDialogManager().showBottomSheetDialog(
           context,
           title: "Fatura Seçiniz",
-          children: list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e)).toList(),
+          children:
+              list.map((e) => BottomSheetModel(title: e.cariAdi ?? "", description: e.belgeNo, value: e)).toList(),
         );
       }
     }
@@ -669,7 +775,11 @@ final class NetworkManager {
       path: ApiUrls.getDovizKurlari,
       bodyModel: DovizKurlariModel(),
       showLoading: true,
-      queryParameters: {"EkranTipi": "D", "DovizKodu": dovizKodu, "tarih": tarih?.toDateString ?? DateTime.now().toDateString},
+      queryParameters: {
+        "EkranTipi": "D",
+        "DovizKodu": dovizKodu,
+        "tarih": tarih?.toDateString ?? DateTime.now().toDateString,
+      },
     );
     if (result.isSuccess) {
       return result.dataList;

@@ -14,7 +14,8 @@ part "cari_hareketleri_view_model.g.dart";
 
 final class CariHareketleriViewModel = _CariHareketleriViewModelBase with _$CariHareketleriViewModel;
 
-abstract class _CariHareketleriViewModelBase with Store, MobxNetworkMixin, ListableMixin<CariHareketleriModel>, SearchableMixin {
+abstract class _CariHareketleriViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<CariHareketleriModel>, SearchableMixin {
   @observable
   CariListesiModel? cariListesiModel;
   @observable
@@ -65,11 +66,7 @@ abstract class _CariHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
     final data = observableList?.where((element) => element.borc != null);
     if (data?.isNotEmpty ?? false) {
       if (cariListesiModel?.dovizKodu != null) {
-        return data!
-            .map(
-              (e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizBorc ?? 0 : 0.0,
-            )
-            .sum;
+        return data!.map((e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizBorc ?? 0 : 0.0).sum;
       } else {
         return data!.map((e) => e.borc ?? 0).sum;
       }
@@ -83,11 +80,7 @@ abstract class _CariHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
     final data = observableList?.where((element) => element.alacak != null);
     if (data?.isNotEmpty ?? false) {
       if (cariListesiModel?.dovizKodu != null) {
-        return data!
-            .map(
-              (e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizAlacak ?? 0 : 0.0,
-            )
-            .sum;
+        return data!.map((e) => e.dovizTuru == cariListesiModel?.dovizKodu ? e.dovizAlacak ?? 0 : 0.0).sum;
       } else {
         return data!.map((e) => e.alacak ?? 0).sum;
       }
@@ -98,15 +91,16 @@ abstract class _CariHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
 
   @computed
   double get toplamBakiye {
-    final CariHareketleriModel? model = filteredCariHareketleriList
-        ?.where(
-          (element) =>
-              element.tarih ==
-              filteredCariHareketleriList?.map((e) => e.tarih).reduce(
-                    (value, element) => value!.isAfter(element!) ? value : element,
-                  ),
-        )
-        .firstOrNull;
+    final CariHareketleriModel? model =
+        filteredCariHareketleriList
+            ?.where(
+              (element) =>
+                  element.tarih ==
+                  filteredCariHareketleriList
+                      ?.map((e) => e.tarih)
+                      .reduce((value, element) => value!.isAfter(element!) ? value : element),
+            )
+            .firstOrNull;
     if (cariListesiModel?.dovizKodu != null) {
       return model?.dovYuruyenBakiye ?? 0.0;
     } else {
@@ -131,7 +125,10 @@ abstract class _CariHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
     if (searchText.ext.isNullOrEmpty) {
       return observableList;
     } else {
-      return observableList?.where((element) => element.aciklama?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false).toList().asObservable();
+      return observableList
+          ?.where((element) => element.aciklama?.toLowerCase().contains(searchText?.toLowerCase() ?? "") ?? false)
+          .toList()
+          .asObservable();
     }
   }
 
@@ -145,7 +142,12 @@ abstract class _CariHareketleriViewModelBase with Store, MobxNetworkMixin, Lista
     final result = await networkManager.dioGet<CariHareketleriModel>(
       path: ApiUrls.getCariHareketleri,
       bodyModel: CariHareketleriModel(),
-      queryParameters: CariHareketleriRequestModel(siralama: siralama, ekranTipi: "L", cariKodu: cariListesiModel?.cariKodu).toJson(),
+      queryParameters:
+          CariHareketleriRequestModel(
+            siralama: siralama,
+            ekranTipi: "L",
+            cariKodu: cariListesiModel?.cariKodu,
+          ).toJson(),
     );
     if (result.isSuccess) {
       setObservableList(result.dataList);

@@ -14,7 +14,15 @@ part "base_cari_genel_edit_view_model.g.dart";
 final class BaseCariGenelEditViewModel = _BaseCariGenelEditViewModelBase with _$BaseCariGenelEditViewModel;
 
 abstract class _BaseCariGenelEditViewModelBase with Store, MobxNetworkMixin {
-  final Map<String, String> cariTipiMap = <String, String>{"Alıcı": "A", "Satıcı": "S", "Toptancı": "T", "Kefil": "K", "Müstahsil": "M", "Diğer": "D", "Komisyoncu": "I"};
+  final Map<String, String> cariTipiMap = <String, String>{
+    "Alıcı": "A",
+    "Satıcı": "S",
+    "Toptancı": "T",
+    "Kefil": "K",
+    "Müstahsil": "M",
+    "Diğer": "D",
+    "Komisyoncu": "I",
+  };
 
   @observable
   CariSaveRequestModel? model;

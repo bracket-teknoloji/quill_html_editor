@@ -37,119 +37,97 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
   CekSenetListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(
-        child: ListTile(
-          onLongPress: () async {
-            final result = await dialogManager.showCekSenetGridViewDialog(model);
-            if (result != null) {
-              widget.onUpdate?.call(true);
-            }
-          },
-          onTap: () async {
-            final result = await bottomSheetDialogManager.showBottomSheetDialog(
-              context,
-              title: model.belgeNo ?? "",
-              children: bottomSheetItems.where((element) => element.onTap != null).toList(),
-            );
-            if (result != null) {
-              widget.onUpdate?.call(true);
-            }
-          },
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    child: ListTile(
+      onLongPress: () async {
+        final result = await dialogManager.showCekSenetGridViewDialog(model);
+        if (result != null) {
+          widget.onUpdate?.call(true);
+        }
+      },
+      onTap: () async {
+        final result = await bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: model.belgeNo ?? "",
+          children: bottomSheetItems.where((element) => element.onTap != null).toList(),
+        );
+        if (result != null) {
+          widget.onUpdate?.call(true);
+        }
+      },
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: UIHelper.lowSize,
                 children: [
-                  Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    spacing: UIHelper.lowSize,
-                    children: [
-                      Text(model.belgeNo ?? ""),
-                      if ((model.evrakSayisi ?? 0) > 0)
-                        const Icon(
-                          Icons.camera_alt_outlined,
-                          size: UIHelper.highSize,
-                        ),
-                    ],
-                  ),
-                  Text(model.yerAciklamaDurum, style: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold)),
+                  Text(model.belgeNo ?? ""),
+                  if ((model.evrakSayisi ?? 0) > 0) const Icon(Icons.camera_alt_outlined, size: UIHelper.highSize),
                 ],
               ),
-              if (model.dovizKodu != null)
-                const Row(
-                  children: [
-                    ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
-                  ],
-                ),
-              Text(model.cariKodu ?? ""),
-              Text(model.cariAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-              LayoutBuilder(
-                builder: (context, constraints) => Wrap(
-                  children: [
-                    if (model.dovizTutari != null) Text("Döviz Tutarı: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu}"),
-                    Text("Tutar: ${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-                    Text("İşlem Tarihi: ${model.tarih.toDateString}"),
-                    Text("Vade Tarihi: ${model.vadeTarihi.toDateString}"),
-                    if (!widget.cekSenetListesiEnum.borcMu) Text("Asıl/Ciro: ${model.ciroTipiString}"),
-                    if (widget.cekSenetListesiEnum.cekMi) Text("Seri No: ${model.seriNo ?? ""}"),
-                  ]
-                      .map(
-                        (e) => e is! SizedBox
-                            ? SizedBox(
-                                width: constraints.maxWidth / 2,
-                                child: e,
-                              )
-                            : null,
-                      )
-                      .toList()
-                      .nullCheckWithGeneric,
-                ),
+              Text(
+                model.yerAciklamaDurum,
+                style: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
               ),
-              if (model.getCekBankaAdi != null || model.getCekSubeAdi != null) Text("${model.getCekBankaAdi} ${model.getCekSubeAdi ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize),
-              Text(model.aciklamalar, style: const TextStyle(color: ColorPalette.slateGray)),
             ],
           ),
-        ),
-      );
+          if (model.dovizKodu != null)
+            const Row(children: [ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli)]),
+          Text(model.cariKodu ?? ""),
+          Text(model.cariAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
+          LayoutBuilder(
+            builder:
+                (context, constraints) => Wrap(
+                  children:
+                      [
+                            if (model.dovizTutari != null)
+                              Text(
+                                "Döviz Tutarı: ${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu}",
+                              ),
+                            Text("Tutar: ${model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
+                            Text("İşlem Tarihi: ${model.tarih.toDateString}"),
+                            Text("Vade Tarihi: ${model.vadeTarihi.toDateString}"),
+                            if (!widget.cekSenetListesiEnum.borcMu) Text("Asıl/Ciro: ${model.ciroTipiString}"),
+                            if (widget.cekSenetListesiEnum.cekMi) Text("Seri No: ${model.seriNo ?? ""}"),
+                          ]
+                          .map((e) => e is! SizedBox ? SizedBox(width: constraints.maxWidth / 2, child: e) : null)
+                          .toList()
+                          .nullCheckWithGeneric,
+                ),
+          ),
+          if (model.getCekBankaAdi != null || model.getCekSubeAdi != null)
+            Text("${model.getCekBankaAdi} ${model.getCekSubeAdi ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize),
+          Text(model.aciklamalar, style: const TextStyle(color: ColorPalette.slateGray)),
+        ],
+      ),
+    ),
+  );
 
   List<BottomSheetModel> get bottomSheetItems => [
-        BottomSheetModel(
-          title: loc.generalStrings.view,
-          iconWidget: Icons.preview_outlined,
-          onTap: goruntuleCekSenet,
-        ),
-        if (widget.cekSenetListesiEnum.silebilirMi)
-          BottomSheetModel(
-            title: loc.generalStrings.delete,
-            iconWidget: Icons.delete_outline_outlined,
-            onTap: deleteCekSenet,
-          ),
-        BottomSheetModel(
-          title: loc.generalStrings.actions,
-          iconWidget: Icons.list_alt_outlined,
-          onTap: () async {
-            Get.back();
-            await dialogManager.showCekSenetGridViewDialog(model, onSelected: widget.onUpdate);
-          },
-        ),
-        if (widget.cekSenetListesiEnum.hareketlerGorulebilirMi)
-          BottomSheetModel(
-            title: "Hareketler",
-            iconWidget: Icons.sync_alt_outlined,
-            onTap: hareketlerCekSenet,
-          ),
-        BottomSheetModel(
-          title: "Evraklar",
-          iconWidget: Icons.description_outlined,
-          onTap: evraklarCekSenet,
-        ),
-        BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),
-        BottomSheetModel(
-          title: "Cari İşlemleri",
-          iconWidget: Icons.person_outline_outlined,
-          onTap: cariIslemleri,
-        ),
-      ];
+    BottomSheetModel(title: loc.generalStrings.view, iconWidget: Icons.preview_outlined, onTap: goruntuleCekSenet),
+    if (widget.cekSenetListesiEnum.silebilirMi)
+      BottomSheetModel(
+        title: loc.generalStrings.delete,
+        iconWidget: Icons.delete_outline_outlined,
+        onTap: deleteCekSenet,
+      ),
+    BottomSheetModel(
+      title: loc.generalStrings.actions,
+      iconWidget: Icons.list_alt_outlined,
+      onTap: () async {
+        Get.back();
+        await dialogManager.showCekSenetGridViewDialog(model, onSelected: widget.onUpdate);
+      },
+    ),
+    if (widget.cekSenetListesiEnum.hareketlerGorulebilirMi)
+      BottomSheetModel(title: "Hareketler", iconWidget: Icons.sync_alt_outlined, onTap: hareketlerCekSenet),
+    BottomSheetModel(title: "Evraklar", iconWidget: Icons.description_outlined, onTap: evraklarCekSenet),
+    BottomSheetModel(title: "Tahsilat Makbuzu", iconWidget: Icons.receipt_long_outlined, onTap: showTahsilatMakbuzu),
+    BottomSheetModel(title: "Cari İşlemleri", iconWidget: Icons.person_outline_outlined, onTap: cariIslemleri),
+  ];
 
   Future<void> cariIslemleri() async {
     Get.back();
@@ -157,7 +135,14 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
       path: ApiUrls.getCariler,
       bodyModel: CariListesiModel(),
       showLoading: true,
-      queryParameters: {"filterText": "", "Kod": model.verenKodu, "EFaturaGoster": true, "KisitYok": true, "BelgeTuru": model.belgeTipi, "PlasiyerKisitiYok": true},
+      queryParameters: {
+        "filterText": "",
+        "Kod": model.verenKodu,
+        "EFaturaGoster": true,
+        "KisitYok": true,
+        "BelgeTuru": model.belgeTipi,
+        "PlasiyerKisitiYok": true,
+      },
     );
     if (result.isSuccess) {
       dialogManager.showCariGridViewDialog(result.dataList.firstOrNull);
@@ -188,7 +173,14 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
         path: ApiUrls.deleteCekSenet,
         bodyModel: EditFaturaModel(),
         showLoading: true,
-        data: DeleteCekSenetModel(belgeNo: model.belgeNo, belgeTipi: model.belgeTipi, islemKodu: 5, pickerTahsilatTuru: model.belgeTipi, tag: "CekSenetBordroModel").toJson(),
+        data:
+            DeleteCekSenetModel(
+              belgeNo: model.belgeNo,
+              belgeTipi: model.belgeTipi,
+              islemKodu: 5,
+              pickerTahsilatTuru: model.belgeTipi,
+              tag: "CekSenetBordroModel",
+            ).toJson(),
       );
       if (result.isSuccess) {
         dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
@@ -201,7 +193,8 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
     Get.back();
     final PdfModel pdfModel = PdfModel(raporOzelKod: "TahsilatMakbuzu", dicParams: DicParams(belgeNo: model.belgeNo!));
     final anaVeri = CacheManager.getAnaVeri;
-    final result = anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
+    final result =
+        anaVeri?.paramModel?.netFectDizaynList?.where((element) => element.ozelKod == "TahsilatMakbuzu").toList();
     NetFectDizaynList? dizaynList;
     if (result.ext.isNotNullOrEmpty) {
       pdfModel.dicParams?.caharInckey = "0";
@@ -215,15 +208,7 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
           context,
           title: "Dizayn Seçiniz",
           groupValue: pdfModel.dizaynId,
-          children: result
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.dizaynAdi ?? "",
-                  value: e,
-                  groupValue: e.id,
-                ),
-              )
-              .toList(),
+          children: result.map((e) => BottomSheetModel(title: e.dizaynAdi ?? "", value: e, groupValue: e.id)).toList(),
         );
         pdfModel.dizaynId = dizaynList?.id;
       }

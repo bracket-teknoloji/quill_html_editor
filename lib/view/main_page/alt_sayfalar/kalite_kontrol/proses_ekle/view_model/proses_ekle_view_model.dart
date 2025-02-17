@@ -8,16 +8,10 @@ part "proses_ekle_view_model.g.dart";
 final class ProsesEkleViewModel = _ProsesEkleViewModelBase with _$ProsesEkleViewModel;
 
 abstract class _ProsesEkleViewModelBase with Store {
-  final List<String> sonucTuruTitleList = [
-    "Şartlı Kabul",
-    "Ret",
-  ];
+  final List<String> sonucTuruTitleList = ["Şartlı Kabul", "Ret"];
 
   @observable
-  ObservableList<String> sonucTuruValueList = [
-    "S",
-    "R",
-  ].asObservable();
+  ObservableList<String> sonucTuruValueList = ["S", "R"].asObservable();
 
   @observable
   String sonucTuruGroupValue = "S";
@@ -26,7 +20,8 @@ abstract class _ProsesEkleViewModelBase with Store {
   OlcumProsesModel ekleModel = OlcumProsesModel(sonuc: "S");
 
   @computed
-  double get ortalamaDeger => (ekleModel.olcumler?.map((element) => element.deger ?? 0).sum ?? 0) / (ekleModel.olcumler?.length ?? 1);
+  double get ortalamaDeger =>
+      (ekleModel.olcumler?.map((element) => element.deger ?? 0).sum ?? 0) / (ekleModel.olcumler?.length ?? 1);
 
   @computed
   double get enKucukDeger => ekleModel.olcumler?.map((element) => element.deger ?? 0).min ?? 0;

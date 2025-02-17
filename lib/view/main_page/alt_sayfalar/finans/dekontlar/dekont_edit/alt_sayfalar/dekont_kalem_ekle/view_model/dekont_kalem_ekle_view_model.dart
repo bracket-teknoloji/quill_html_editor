@@ -14,17 +14,9 @@ final class DekontKalemEkleViewModel = _DekontKalemEkleViewModelBase with _$Deko
 abstract class _DekontKalemEkleViewModelBase with Store, MobxNetworkMixin {
   _DekontKalemEkleViewModelBase({required this.model});
 
-  final Map<String, String> hesapTipiMap = {
-    "Cari": "C",
-    "Muhasabe": "M",
-    "Banka": "B",
-    "Stok": "S",
-  };
+  final Map<String, String> hesapTipiMap = {"Cari": "C", "Muhasabe": "M", "Banka": "B", "Stok": "S"};
 
-  final Map<String, String> borcTipiMap = {
-    "Borç": "B",
-    "Alacak": "A",
-  };
+  final Map<String, String> borcTipiMap = {"Borç": "B", "Alacak": "A"};
 
   final List<String> exportTipiList = [
     "Mal Bedeli",
@@ -67,10 +59,12 @@ abstract class _DekontKalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setModel(DekontKalemler value) => model = value;
 
   @computed
-  List<bool> get selectedBorcTipi => List.generate(borcTipiMap.length, (index) => model.ba == borcTipiMap.values.toList()[index]);
+  List<bool> get selectedBorcTipi =>
+      List.generate(borcTipiMap.length, (index) => model.ba == borcTipiMap.values.toList()[index]);
 
   @computed
-  List<bool> get selectedHesapTipi => List.generate(hesapTipiMap.length, (index) => model.hesapTipi == hesapTipiMap.values.toList()[index]);
+  List<bool> get selectedHesapTipi =>
+      List.generate(hesapTipiMap.length, (index) => model.hesapTipi == hesapTipiMap.values.toList()[index]);
 
   @action
   void setBa(int value) => model = model.copyWith(ba: borcTipiMap.values.toList()[value]);
@@ -109,7 +103,8 @@ abstract class _DekontKalemEkleViewModelBase with Store, MobxNetworkMixin {
   void setExportRefNo(String? value) => model = model.copyWith(exportRefno: value);
 
   @action
-  void setPlasiyerKodu(PlasiyerList? value) => model = model.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAdi: value?.plasiyerAciklama);
+  void setPlasiyerKodu(PlasiyerList? value) =>
+      model = model.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAdi: value?.plasiyerAciklama);
 
   @action
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) => dovizKurlariListesi = value?.asObservable();

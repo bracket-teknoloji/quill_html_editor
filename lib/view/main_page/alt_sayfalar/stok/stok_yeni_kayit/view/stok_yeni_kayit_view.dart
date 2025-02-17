@@ -28,17 +28,40 @@ final class StokYeniKayitView extends StatefulWidget {
 }
 
 final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
-  late StokYeniKayitViewModel viewModel = StokYeniKayitViewModel()..isSelected = (widget.model?.cikisIslemi ?? false) ? [false, true].asObservable() : ([true, false]).asObservable();
+  late StokYeniKayitViewModel viewModel =
+      StokYeniKayitViewModel()
+        ..isSelected =
+            (widget.model?.cikisIslemi ?? false) ? [false, true].asObservable() : ([true, false]).asObservable();
   late final TextEditingController stokKoduController = TextEditingController(text: widget.model?.stokKodu ?? "");
-  late final TextEditingController tarihController = TextEditingController(text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString);
-  late final TextEditingController belgeNoController = TextEditingController(text: widget.model?.fisno ?? viewModel.model.belgeNo);
-  late final TextEditingController hareketTuruController = TextEditingController(text: widget.model?.hareketTuruAciklama ?? viewModel.model.hareketTuru);
-  late final TextEditingController fiyatController = TextEditingController(text: widget.model?.stharNf.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? viewModel.model.fiyat.toStringIfNotNull);
-  late final TextEditingController depoController = TextEditingController(text: widget.model?.depoKodu.toStringIfNotNull ?? viewModel.model.depoKodu.toStringIfNotNull);
-  late final TextEditingController miktarController = TextEditingController(text: widget.model?.stharGcmik.toStringIfNotNull ?? viewModel.model.miktar.toStringIfNotNull);
-  late final TextEditingController aciklamaController = TextEditingController(text: widget.model?.aciklama ?? viewModel.model.aciklama);
-  late final TextEditingController plasiyerController = TextEditingController(text: widget.model?.plasiyerAciklama ?? viewModel.model.plasiyerKodu);
-  late final TextEditingController projeController = TextEditingController(text: widget.model?.projeKodu ?? viewModel.model.projeKodu);
+  late final TextEditingController tarihController = TextEditingController(
+    text: widget.model?.stharTarih?.toDateString ?? viewModel.model.tarih.toDateString,
+  );
+  late final TextEditingController belgeNoController = TextEditingController(
+    text: widget.model?.fisno ?? viewModel.model.belgeNo,
+  );
+  late final TextEditingController hareketTuruController = TextEditingController(
+    text: widget.model?.hareketTuruAciklama ?? viewModel.model.hareketTuru,
+  );
+  late final TextEditingController fiyatController = TextEditingController(
+    text:
+        widget.model?.stharNf.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ??
+        viewModel.model.fiyat.toStringIfNotNull,
+  );
+  late final TextEditingController depoController = TextEditingController(
+    text: widget.model?.depoKodu.toStringIfNotNull ?? viewModel.model.depoKodu.toStringIfNotNull,
+  );
+  late final TextEditingController miktarController = TextEditingController(
+    text: widget.model?.stharGcmik.toStringIfNotNull ?? viewModel.model.miktar.toStringIfNotNull,
+  );
+  late final TextEditingController aciklamaController = TextEditingController(
+    text: widget.model?.aciklama ?? viewModel.model.aciklama,
+  );
+  late final TextEditingController plasiyerController = TextEditingController(
+    text: widget.model?.plasiyerAciklama ?? viewModel.model.plasiyerKodu,
+  );
+  late final TextEditingController projeController = TextEditingController(
+    text: widget.model?.projeKodu ?? viewModel.model.projeKodu,
+  );
   final GlobalKey key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) => BaseScaffold(
@@ -52,7 +75,11 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
               dialogManager.showAreYouSureDialog(() async {
                 dialogManager.showLoadingDialog("Kaydediliyor");
                 viewModel.setStokKodu(stokKoduController.text);
-                final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(path: ApiUrls.saveStokHareket, bodyModel: StokYeniKayitModel(), data: viewModel.model.toJson());
+                final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
+                  path: ApiUrls.saveStokHareket,
+                  bodyModel: StokYeniKayitModel(),
+                  data: viewModel.model.toJson(),
+                );
                 dialogManager.hideAlertDialog;
                 if (result.isSuccess) {
                   dialogManager.showSuccessSnackBar("Kayıt başarılı");
@@ -88,7 +115,13 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                         ),
                   ),
                 ),
-                CustomTextField(labelText: "Stok", valueText: widget.model?.stokKodu ?? "", readOnly: true, isMust: true, controller: stokKoduController),
+                CustomTextField(
+                  labelText: "Stok",
+                  valueText: widget.model?.stokKodu ?? "",
+                  readOnly: true,
+                  isMust: true,
+                  controller: stokKoduController,
+                ),
                 CustomTextField(
                   labelText: "Tarih",
                   isMust: true,
@@ -96,7 +129,12 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                   controller: tarihController,
                   isDateTime: true,
                   onTap: () {
-                    showDatePicker(context: context, initialDate: viewModel.model.tarih ?? DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100)).then((value) {
+                    showDatePicker(
+                      context: context,
+                      initialDate: viewModel.model.tarih ?? DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    ).then((value) {
                       if (value != null) {
                         viewModel.model.tarih = value;
                         tarihController.text = viewModel.model.tarih.toDateString;
@@ -123,7 +161,10 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     final MapEntry? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "Hareket Türü",
-                      children: viewModel.hareketTurMap.entries.map((e) => BottomSheetModel(title: e.key, description: e.value, value: e)).toList(),
+                      children:
+                          viewModel.hareketTurMap.entries
+                              .map((e) => BottomSheetModel(title: e.key, description: e.value, value: e))
+                              .toList(),
                     );
                     if (result != null) {
                       hareketTuruController.text = result.key;
@@ -152,7 +193,16 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     final DepoList? result = await bottomSheetDialogManager.showBottomSheetDialog(
                       context,
                       title: "Depo",
-                      children: viewModel.anaVeri?.paramModel?.depoList?.map((e) => BottomSheetModel(title: e.depoTanimi ?? "", description: e.depoKodu.toStringIfNotNull, value: e)).toList(),
+                      children:
+                          viewModel.anaVeri?.paramModel?.depoList
+                              ?.map(
+                                (e) => BottomSheetModel(
+                                  title: e.depoTanimi ?? "",
+                                  description: e.depoKodu.toStringIfNotNull,
+                                  value: e,
+                                ),
+                              )
+                              .toList(),
                     );
                     if (result != null) {
                       depoController.text = result.depoTanimi ?? "";
@@ -189,7 +239,11 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                     ],
                   ),
                 ),
-                CustomTextField(labelText: "Açıklama", controller: aciklamaController, onSubmitted: (p0) => viewModel.model.aciklama = p0),
+                CustomTextField(
+                  labelText: "Açıklama",
+                  controller: aciklamaController,
+                  onSubmitted: (p0) => viewModel.model.aciklama = p0,
+                ),
                 if (yetkiController.plasiyerUygulamasiAcikMi)
                   CustomTextField(
                     labelText: "Plasiyer",
@@ -240,7 +294,16 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                         final BaseProjeModel? dialogResult = await bottomSheetDialogManager.showBottomSheetDialog(
                           context,
                           title: "Proje (${result.length})",
-                          children: result.map((e) => BottomSheetModel(title: e.projeKodu ?? "", description: e.projeAciklama ?? "", value: e)).toList(),
+                          children:
+                              result
+                                  .map(
+                                    (e) => BottomSheetModel(
+                                      title: e.projeKodu ?? "",
+                                      description: e.projeAciklama ?? "",
+                                      value: e,
+                                    ),
+                                  )
+                                  .toList(),
                         );
                         if (dialogResult != null) {
                           projeController.text = dialogResult.projeAciklama ?? dialogResult.projeKodu ?? "";

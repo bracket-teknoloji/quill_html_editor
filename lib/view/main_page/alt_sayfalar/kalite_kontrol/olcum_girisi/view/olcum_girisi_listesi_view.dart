@@ -41,7 +41,9 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
     belgeTipiController = TextEditingController(text: CacheManager.getProfilParametre.olcumGirisiBelgeTipi.getName);
-    durumController = TextEditingController(text: viewModel.durumList.indexed.where((element) => element.$1 == viewModel.requestModel.durum).first.$2);
+    durumController = TextEditingController(
+      text: viewModel.durumList.indexed.where((element) => element.$1 == viewModel.requestModel.durum).first.$2,
+    );
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await filterBottomSheet();
       _scrollController.addListener(() async {
@@ -64,87 +66,80 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) {
-            if (viewModel.searchBar) {
-              return CustomAppBarTextField(
-                onFieldSubmitted: (value) async {
-                  viewModel.setSearchText(value);
-                  await viewModel.resetSayfa();
-                },
-              );
-            }
-            return AppBarTitle(
-              title: "Ölçüm Girişi",
-              subtitle: viewModel.appBarTitle != null ? "${viewModel.appBarTitle} (${viewModel.olcumList?.length ?? 0})" : null,
+    title: Observer(
+      builder: (_) {
+        if (viewModel.searchBar) {
+          return CustomAppBarTextField(
+            onFieldSubmitted: (value) async {
+              viewModel.setSearchText(value);
+              await viewModel.resetSayfa();
+            },
+          );
+        }
+        return AppBarTitle(
+          title: "Ölçüm Girişi",
+          subtitle:
+              viewModel.appBarTitle != null ? "${viewModel.appBarTitle} (${viewModel.olcumList?.length ?? 0})" : null,
+        );
+      },
+    ),
+    actions: [
+      IconButton(
+        onPressed: viewModel.setSearchBar,
+        icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+      ),
+    ],
+    bottom: AppBarPreferedSizedBottom(
+      children: [
+        AppBarButton(icon: Icons.qr_code_scanner_outlined, onPressed: scanQrCode, child: const Text("Barkod")),
+        AppBarButton(
+          icon: Icons.filter_alt_outlined,
+          onPressed: filterBottomSheet,
+          child: Text(loc.generalStrings.filter),
+        ),
+        AppBarButton(
+          icon: Icons.sort_by_alpha_outlined,
+          child: Text(loc.generalStrings.sort),
+          onPressed: () async {
+            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              title: loc.generalStrings.sort,
+              groupValue: viewModel.requestModel.siralama,
+              children: List.generate(
+                viewModel.siralaMap.length,
+                (index) => BottomSheetModel(
+                  title: viewModel.siralaMap.keys.toList()[index],
+                  value: viewModel.siralaMap.entries.toList()[index],
+                  groupValue: viewModel.siralaMap.values.toList()[index],
+                ),
+              ),
             );
+            if (result != null) {
+              viewModel.requestModel.siralama = result.value;
+              await viewModel.resetSayfa();
+            }
           },
         ),
-        actions: [
-          IconButton(
-            onPressed: viewModel.setSearchBar,
-            icon: Observer(
-              builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
-            ),
-          ),
-        ],
-        bottom: AppBarPreferedSizedBottom(
-          children: [
-            AppBarButton(
-              icon: Icons.qr_code_scanner_outlined,
-              onPressed: scanQrCode,
-              child: const Text("Barkod"),
-            ),
-            AppBarButton(
-              icon: Icons.filter_alt_outlined,
-              onPressed: filterBottomSheet,
-              child: Text(loc.generalStrings.filter),
-            ),
-            AppBarButton(
-              icon: Icons.sort_by_alpha_outlined,
-              child: Text(loc.generalStrings.sort),
-              onPressed: () async {
-                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                  context,
-                  title: loc.generalStrings.sort,
-                  groupValue: viewModel.requestModel.siralama,
-                  children: List.generate(
-                    viewModel.siralaMap.length,
-                    (index) => BottomSheetModel(
-                      title: viewModel.siralaMap.keys.toList()[index],
-                      value: viewModel.siralaMap.entries.toList()[index],
-                      groupValue: viewModel.siralaMap.values.toList()[index],
-                    ),
-                  ),
-                );
-                if (result != null) {
-                  viewModel.requestModel.siralama = result.value;
-                  await viewModel.resetSayfa();
-                }
-              },
-            ),
-            // AppBarButton(
-            //   icon: Icons.more_horiz_outlined,
-            //   onPressed: () {},
-            // ),
-          ],
-        ),
-      );
+        // AppBarButton(
+        //   icon: Icons.more_horiz_outlined,
+        //   onPressed: () {},
+        // ),
+      ],
+    ),
+  );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: viewModel.resetSayfa,
-        child: Observer(
-          builder: (_) {
-            if (viewModel.olcumList == null) return const ListViewShimmer();
-            if (viewModel.olcumList?.isEmpty == true) return const Center(child: Text("Ölçüm Girişi bulunamadı."));
-            return Observer(
-              builder: (_) => ListView.builder(
+    onRefresh: viewModel.resetSayfa,
+    child: Observer(
+      builder: (_) {
+        if (viewModel.olcumList == null) return const ListViewShimmer();
+        if (viewModel.olcumList?.isEmpty == true) return const Center(child: Text("Ölçüm Girişi bulunamadı."));
+        return Observer(
+          builder:
+              (_) => ListView.builder(
                 controller: _scrollController,
                 itemCount: viewModel.olcumList?.length != null ? viewModel.olcumList!.length + 1 : 0,
                 //musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0
@@ -154,7 +149,11 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
                 itemBuilder: (context, index) {
                   if (index == viewModel.olcumList?.length) {
                     return Observer(
-                      builder: (_) => Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive())),
+                      builder:
+                          (_) => Visibility(
+                            visible: viewModel.dahaVarMi,
+                            child: const Center(child: CircularProgressIndicator.adaptive()),
+                          ),
                     );
                   }
                   return OlcumGirisiListesiCard(
@@ -167,10 +166,10 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
                   );
                 },
               ),
-            );
-          },
-        ),
-      );
+        );
+      },
+    ),
+  );
 
   Future<void> filterBottomSheet() async {
     final result = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -232,11 +231,7 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
                   groupValue: viewModel.requestModel.durum,
                   children: List.generate(viewModel.durumList.length, (index) {
                     final String value = viewModel.durumList[index];
-                    return BottomSheetModel(
-                      title: value,
-                      groupValue: index,
-                      value: (value, index),
-                    );
+                    return BottomSheetModel(title: value, groupValue: index, value: (value, index));
                   }),
                 );
                 if (result is (String, int)) {
@@ -286,11 +281,17 @@ final class _OlcumGirisiListesiViewState extends BaseState<OlcumGirisiListesiVie
         context,
         title: "Ölçüm Seçiniz",
         groupValue: 0,
-        children: viewModel.qrOlcumList
-            ?.map(
-              (element) => BottomSheetModel(title: element.belgeNo ?? "", value: element, description: element.belgeTipi ?? "", groupValue: ""),
-            )
-            .toList(),
+        children:
+            viewModel.qrOlcumList
+                ?.map(
+                  (element) => BottomSheetModel(
+                    title: element.belgeNo ?? "",
+                    value: element,
+                    description: element.belgeTipi ?? "",
+                    groupValue: "",
+                  ),
+                )
+                .toList(),
       );
     }
     if (selectedOlcumModel == null) return;

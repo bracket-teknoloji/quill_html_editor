@@ -20,26 +20,30 @@ final class _HucreAraCardState extends BaseState<HucreAraCard> {
   HucreTakibiStoklarModel get model => widget.model;
   @override
   Widget build(BuildContext context) => Card(
-        child: ListTile(
-          onTap: () async {
-            dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: model.stokKodu)));
-          },
-          title: Text(model.stokAdi ?? ""),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    child: ListTile(
+      onTap: () async {
+        dialogManager.showStokGridViewDialog(
+          await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: model.stokKodu)),
+        );
+      },
+      title: Text(model.stokAdi ?? ""),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (model.eksiyeDusebilir ?? false)
+            const Text("Eksiye Düşebilen Hücre", style: TextStyle(color: UIHelper.primaryColor)),
+          if (model.paketKodu case final value?)
+            ColorfulBadge(label: Text(value), badgeColorEnum: BadgeColorEnum.primaryColor),
+          CustomLayoutBuilder(
+            splitCount: 2,
             children: [
-              if (model.eksiyeDusebilir ?? false) const Text("Eksiye Düşebilen Hücre", style: TextStyle(color: UIHelper.primaryColor)),
-              if (model.paketKodu case final value?) ColorfulBadge(label: Text(value), badgeColorEnum: BadgeColorEnum.primaryColor),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  Text("Hücre: ${model.hucreKodu}"),
-                  Text("Stok Kodu: ${model.stokKodu}"),
-                  Text("Depo: ${model.depoKodu}-${model.depoTanimi}"),
-                ],
-              ),
+              Text("Hücre: ${model.hucreKodu}"),
+              Text("Stok Kodu: ${model.stokKodu}"),
+              Text("Depo: ${model.depoKodu}-${model.depoTanimi}"),
             ],
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }

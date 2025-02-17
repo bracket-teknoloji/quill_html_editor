@@ -59,7 +59,9 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
     belgeNoController = TextEditingController(text: model?.belgeNo);
     aciklamaController = TextEditingController(text: model?.aciklama);
     vadeTarihiController = TextEditingController(text: viewModel.model.vadeTarihi?.toDateString);
-    tutarController = TextEditingController(text: (model?.borc ?? model?.alacak).commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
+    tutarController = TextEditingController(
+      text: (model?.borc ?? model?.alacak).commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+    );
     plasiyerController = TextEditingController(text: model?.plasiyerAciklama);
     projeController = TextEditingController(text: model?.projeAciklama);
     if (widget.model?.baseEditEnum != BaseEditEnum.ekle) {
@@ -115,10 +117,19 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   isSelected: viewModel.isSelected,
                   constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
                   children: viewModel.toggleButtonLabelList.map(Text.new).toList(),
-                  onPressed: (index) => widget.model?.baseEditEnum.goruntuleMi ?? false ? null : viewModel.setIsSelected(index),
+                  onPressed:
+                      (index) =>
+                          widget.model?.baseEditEnum.goruntuleMi ?? false ? null : viewModel.setIsSelected(index),
                 ),
           ).paddingSymmetric(vertical: UIHelper.lowSize),
-          CustomTextField(enabled: enable, labelText: "Cari", valueText: viewModel.model.cariKodu, readOnly: true, isMust: true, controller: cariKoduController),
+          CustomTextField(
+            enabled: enable,
+            labelText: "Cari",
+            valueText: viewModel.model.cariKodu,
+            readOnly: true,
+            isMust: true,
+            controller: cariKoduController,
+          ),
           CustomTextField(
             enabled: enable,
             labelText: "Tarih",
@@ -128,7 +139,12 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
             isDateTime: true,
             // suffix: const Icon(Icons.calendar_month_outlined),
             onTap: () {
-              showDatePicker(context: context, initialDate: viewModel.model.tarih ?? DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100)).then((value) {
+              showDatePicker(
+                context: context,
+                initialDate: viewModel.model.tarih ?? DateTime.now(),
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+              ).then((value) {
                 if (value != null) {
                   viewModel.model.tarih = value;
                   tarihController.text = value.toDateString;
@@ -151,7 +167,11 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       context,
                       title: "Hareket Türü",
                       children: [
-                        BottomSheetModel(title: "Devir", description: "A", onTap: () => Get.back(result: {"title": "Devir", "value": "A"})),
+                        BottomSheetModel(
+                          title: "Devir",
+                          description: "A",
+                          onTap: () => Get.back(result: {"title": "Devir", "value": "A"}),
+                        ),
                       ],
                     );
                     if (result != null) {
@@ -161,8 +181,18 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   },
                 ),
           ),
-          CustomTextField(enabled: enable, labelText: "Belge No", controller: belgeNoController, onChanged: (value) => viewModel.model.belgeNo = value),
-          CustomTextField(enabled: enable, labelText: "Açıklama", controller: aciklamaController, onChanged: (value) => viewModel.model.aciklama = value),
+          CustomTextField(
+            enabled: enable,
+            labelText: "Belge No",
+            controller: belgeNoController,
+            onChanged: (value) => viewModel.model.belgeNo = value,
+          ),
+          CustomTextField(
+            enabled: enable,
+            labelText: "Açıklama",
+            controller: aciklamaController,
+            onChanged: (value) => viewModel.model.aciklama = value,
+          ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -176,7 +206,12 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   isDateTime: true,
                   // suffix: const Icon(Icons.calendar_month_outlined),
                   onTap: () {
-                    showDatePicker(context: context, initialDate: viewModel.model.vadeTarihi ?? DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100)).then((value) {
+                    showDatePicker(
+                      context: context,
+                      initialDate: viewModel.model.vadeTarihi ?? DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    ).then((value) {
                       if (value != null) {
                         viewModel.model.vadeTarihi = value;
                         vadeTarihiController.text = value.toDateString;
@@ -193,7 +228,11 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                   isFormattedString: true,
                   controller: tutarController,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (value) => viewModel.model.borc == null ? viewModel.model.alacak = double.tryParse(value) : viewModel.model.borc = double.tryParse(value),
+                  onChanged:
+                      (value) =>
+                          viewModel.model.borc == null
+                              ? viewModel.model.alacak = double.tryParse(value)
+                              : viewModel.model.borc = double.tryParse(value),
                 ),
               ),
             ],
@@ -216,7 +255,13 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                         title: "Plasiyer",
                         children:
                             mainPageModel?.paramModel?.plasiyerList
-                                ?.map((e) => BottomSheetModel(title: e.plasiyerAciklama ?? "", description: e.plasiyerKodu, onTap: () => Get.back(result: e)))
+                                ?.map(
+                                  (e) => BottomSheetModel(
+                                    title: e.plasiyerAciklama ?? "",
+                                    description: e.plasiyerKodu,
+                                    onTap: () => Get.back(result: e),
+                                  ),
+                                )
                                 .toList(),
                       );
                       if (result is PlasiyerList) {
@@ -243,7 +288,16 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                       final result = await bottomSheetDialogManager.showBottomSheetDialog(
                         context,
                         title: "Projeler",
-                        children: viewModel.projeList.map((e) => BottomSheetModel(title: e.projeAciklama ?? "", description: e.projeKodu, value: e)).toList(),
+                        children:
+                            viewModel.projeList
+                                .map(
+                                  (e) => BottomSheetModel(
+                                    title: e.projeAciklama ?? "",
+                                    description: e.projeKodu,
+                                    value: e,
+                                  ),
+                                )
+                                .toList(),
                       );
                       if (result is BaseProjeModel) {
                         projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
@@ -260,7 +314,12 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
   );
 
   Future<void> postData() async {
-    final result = await networkManager.dioPost<CariHareketleriModel>(path: ApiUrls.saveCariHareket, bodyModel: CariHareketleriModel(), showLoading: true, data: viewModel.model.toJson());
+    final result = await networkManager.dioPost<CariHareketleriModel>(
+      path: ApiUrls.saveCariHareket,
+      bodyModel: CariHareketleriModel(),
+      showLoading: true,
+      data: viewModel.model.toJson(),
+    );
     if (result.isSuccess) {
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       Get.back(result: false);

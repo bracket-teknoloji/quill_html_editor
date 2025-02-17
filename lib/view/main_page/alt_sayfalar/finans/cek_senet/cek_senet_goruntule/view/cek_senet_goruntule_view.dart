@@ -22,153 +22,109 @@ final class _CekSenetGoruntuleViewState extends BaseState<CekSenetGoruntuleView>
   CekSenetListesiModel get model => widget.model;
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: loc.generalStrings.view,
-            subtitle: model.belgeNo ?? "",
+    appBar: AppBar(title: AppBarTitle(title: loc.generalStrings.view, subtitle: model.belgeNo ?? "")),
+    body: SingleChildScrollView(
+      child: Column(
+        children: [
+          CustomTextField(
+            labelText: "Cari",
+            valueWidget: Text(model.cariKodu ?? ""),
+            controllerText: model.cariAdi ?? "",
+            readOnly: true,
           ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
+          CustomTextField(labelText: "Asıl Borçlu", controllerText: model.asilCari, readOnly: true),
+          CustomTextField(labelText: "Çek Seri No", controllerText: model.seriNo, readOnly: true),
+          CustomTextField(labelText: "Çekin Bankası", controllerText: model.getCekBankaAdi, readOnly: true),
+          CustomTextField(labelText: "IBAN", controllerText: model.belgeNo, readOnly: true),
+          Row(
             children: [
-              CustomTextField(
-                labelText: "Cari",
-                valueWidget: Text(model.cariKodu ?? ""),
-                controllerText: model.cariAdi ?? "",
-                readOnly: true,
+              Expanded(
+                child: CustomTextField(labelText: "Asıl/Ciro", controllerText: model.ciroTipiString, readOnly: true),
               ),
-              CustomTextField(
-                labelText: "Asıl Borçlu",
-                controllerText: model.asilCari,
-                readOnly: true,
-              ),
-              CustomTextField(
-                labelText: "Çek Seri No",
-                controllerText: model.seriNo,
-                readOnly: true,
-              ),
-              CustomTextField(
-                labelText: "Çekin Bankası",
-                controllerText: model.getCekBankaAdi,
-                readOnly: true,
-              ),
-              CustomTextField(
-                labelText: "IBAN",
-                controllerText: model.belgeNo,
-                readOnly: true,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Asıl/Ciro",
-                      controllerText: model.ciroTipiString,
-                      readOnly: true,
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Yeri",
-                      controllerText: model.yerAciklama,
-                      readOnly: true,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Durum",
-                      controllerText: model.durumString,
-                      readOnly: true,
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Tutar",
-                      controllerText: model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
-                      readOnly: true,
-                    ),
-                  ),
-                ],
-              ),
-              if (model.dovizTutari != null)
-                CustomTextField(
-                  labelText: "Döviz Tutarı",
-                  controllerText: "${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu ?? mainCurrency}",
+              Expanded(child: CustomTextField(labelText: "Yeri", controllerText: model.yerAciklama, readOnly: true)),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(child: CustomTextField(labelText: "Durum", controllerText: model.durumString, readOnly: true)),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Tutar",
+                  controllerText: model.tutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
                   readOnly: true,
                 ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Giriş Tarihi",
-                      controllerText: model.tarih.toDateString,
-                      readOnly: true,
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Vade Tarihi",
-                      controllerText: model.vadeTarihi.toDateString,
-                      readOnly: true,
-                    ),
-                  ),
-                ],
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Çıkış Tarihi",
-                      controllerText: model.cikisTarihi.toDateString,
-                      readOnly: true,
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Ödeme Tarihi",
-                      controllerText: model.odemeTarihi.toDateString,
-                      readOnly: true,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  if (model.raporKodu != null)
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Rapor Kodu",
-                        controllerText: model.raporKodu,
-                        readOnly: true,
-                      ),
-                    ),
-                  if (model.cariRaporKodu != null)
-                    Expanded(
-                      child: CustomTextField(
-                        labelText: "Cari Rapor Kodu",
-                        controllerText: model.odemeTarihi.toDateString,
-                        readOnly: true,
-                      ),
-                    ),
-                ],
-              ),
-              CustomTextField(
-                labelText: "Alınan Bordro No",
-                controllerText: model.alinanBordroNo,
-                readOnly: true,
-              ),
-              if (yetkiController.plasiyerUygulamasiAcikMi)
-                CustomTextField(
-                  labelText: "Plasiyer",
-                  valueWidget: Text(model.plasiyerKodu ?? ""),
-                  controllerText: model.plasiyerKodu,
+            ],
+          ),
+          if (model.dovizTutari != null)
+            CustomTextField(
+              labelText: "Döviz Tutarı",
+              controllerText:
+                  "${model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)} ${model.dovizKodu ?? mainCurrency}",
+              readOnly: true,
+            ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Giriş Tarihi",
+                  controllerText: model.tarih.toDateString,
                   readOnly: true,
+                ),
+              ),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Vade Tarihi",
+                  controllerText: model.vadeTarihi.toDateString,
+                  readOnly: true,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Çıkış Tarihi",
+                  controllerText: model.cikisTarihi.toDateString,
+                  readOnly: true,
+                ),
+              ),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Ödeme Tarihi",
+                  controllerText: model.odemeTarihi.toDateString,
+                  readOnly: true,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              if (model.raporKodu != null)
+                Expanded(
+                  child: CustomTextField(labelText: "Rapor Kodu", controllerText: model.raporKodu, readOnly: true),
+                ),
+              if (model.cariRaporKodu != null)
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Cari Rapor Kodu",
+                    controllerText: model.odemeTarihi.toDateString,
+                    readOnly: true,
+                  ),
                 ),
             ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+          ),
+          CustomTextField(labelText: "Alınan Bordro No", controllerText: model.alinanBordroNo, readOnly: true),
+          if (yetkiController.plasiyerUygulamasiAcikMi)
+            CustomTextField(
+              labelText: "Plasiyer",
+              valueWidget: Text(model.plasiyerKodu ?? ""),
+              controllerText: model.plasiyerKodu,
+              readOnly: true,
+            ),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 }

@@ -64,7 +64,10 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
             } else if (model.kasaMi) {
               await Get.toNamed("/mainPage/kasaHareketDetayi", arguments: model);
             } else {
-              await Get.toNamed("/mainPage/cariYeniKayit", arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: model));
+              await Get.toNamed(
+                "/mainPage/cariYeniKayit",
+                arguments: BaseEditModel<CariHareketleriModel>(baseEditEnum: BaseEditEnum.goruntule, model: model),
+              );
             }
           },
           icon: Icons.route_outlined,
@@ -89,7 +92,9 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
           child: Slidable(
             groupTag: 1,
             controller: _slidableController,
-            enabled: widget.cariHareketleriModel.hareketAciklama != "Dekont" && yetkiController.cariHareketleriHarDetayGorsun,
+            enabled:
+                widget.cariHareketleriModel.hareketAciklama != "Dekont" &&
+                yetkiController.cariHareketleriHarDetayGorsun,
             endActionPane: ActionPane(motion: const StretchMotion(), children: slidableList),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -101,10 +106,13 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
                       if (_slidableController.closing) {
                         _slidableController.close();
                       } else {
-                        _slidableController.openEndActionPane;
+                        _slidableController.openEndActionPane();
                       }
                     },
-                    child: Container(width: UIHelper.lowSize, decoration: const BoxDecoration(color: UIHelper.primaryColor)),
+                    child: Container(
+                      width: UIHelper.lowSize,
+                      decoration: const BoxDecoration(color: UIHelper.primaryColor),
+                    ),
                   ),
               ],
             ),
@@ -124,14 +132,22 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.alacakBorcHarf}) "),
-              Text(widget.cariHareketleriModel.hareketAciklama ?? "", style: TextStyle(color: theme.colorScheme.primary)),
+              Text(
+                "${widget.cariHareketleriModel.tarih?.toDateString ?? ""} (${widget.cariHareketleriModel.alacakBorcHarf}) ",
+              ),
+              Text(
+                widget.cariHareketleriModel.hareketAciklama ?? "",
+                style: TextStyle(color: theme.colorScheme.primary),
+              ),
               Row(
                 children:
                     [
-                      if (widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Alacak"), badgeColorEnum: BadgeColorEnum.basarili),
-                      if (!widget.cariHareketleriModel.alacakMi) const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata),
-                      if (widget.cariHareketleriModel.dovizAlacak != null || widget.cariHareketleriModel.dovizBorc != null)
+                      if (widget.cariHareketleriModel.alacakMi)
+                        const ColorfulBadge(label: Text("Alacak"), badgeColorEnum: BadgeColorEnum.basarili),
+                      if (!widget.cariHareketleriModel.alacakMi)
+                        const ColorfulBadge(label: Text("Borç"), badgeColorEnum: BadgeColorEnum.hata),
+                      if (widget.cariHareketleriModel.dovizAlacak != null ||
+                          widget.cariHareketleriModel.dovizBorc != null)
                         const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),
                     ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
               ),
@@ -160,13 +176,23 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
         children: [
           Row(
             children: [
-              Expanded(child: CustomWidgetWithLabel(addPadding: false, isVertical: true, text: "Belge No", child: Text(widget.cariHareketleriModel.belgeNo ?? "", overflow: TextOverflow.ellipsis))),
+              Expanded(
+                child: CustomWidgetWithLabel(
+                  addPadding: false,
+                  isVertical: true,
+                  text: "Belge No",
+                  child: Text(widget.cariHareketleriModel.belgeNo ?? "", overflow: TextOverflow.ellipsis),
+                ),
+              ),
               Expanded(
                 child: CustomWidgetWithLabel(
                   addPadding: false,
                   isVertical: true,
                   text: "Vade Tarihi",
-                  child: Text(widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "", overflow: TextOverflow.ellipsis),
+                  child: Text(
+                    widget.cariHareketleriModel.vadeTarihi?.toDateString ?? "",
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ),
             ],
@@ -174,8 +200,22 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
           Row(
             children: [
               if (yetkiController.plasiyerUygulamasiAcikMi)
-                Expanded(child: CustomWidgetWithLabel(addPadding: false, isVertical: true, text: "Plasiyer", child: SizedBox(child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")))),
-              Expanded(child: CustomWidgetWithLabel(addPadding: false, isVertical: true, text: "Şube", child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis))),
+                Expanded(
+                  child: CustomWidgetWithLabel(
+                    addPadding: false,
+                    isVertical: true,
+                    text: "Plasiyer",
+                    child: SizedBox(child: Text(widget.cariHareketleriModel.plasiyerAciklama ?? "")),
+                  ),
+                ),
+              Expanded(
+                child: CustomWidgetWithLabel(
+                  addPadding: false,
+                  isVertical: true,
+                  text: "Şube",
+                  child: Text("${widget.cariHareketleriModel.subeKodu ?? 0}", overflow: TextOverflow.ellipsis),
+                ),
+              ),
             ],
           ),
           const Divider(endIndent: 0, indent: 0).paddingOnly(top: UIHelper.midSize),
@@ -192,7 +232,10 @@ final class _CariHareketlerCardState extends BaseState<CariHareketlerCard> with 
                   overflow: TextOverflow.ellipsis,
                   softWrap: true,
                   maxLines: 3,
-                  style: theme.textTheme.bodySmall?.copyWith(color: ColorPalette.slateGray, fontStyle: FontStyle.italic),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: ColorPalette.slateGray,
+                    fontStyle: FontStyle.italic,
+                  ),
                 ),
               ),
               //YuruyenBakiye

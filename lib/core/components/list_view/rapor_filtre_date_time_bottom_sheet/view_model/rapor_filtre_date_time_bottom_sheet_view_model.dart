@@ -2,7 +2,8 @@ import "package:mobx/mobx.dart";
 
 part "rapor_filtre_date_time_bottom_sheet_view_model.g.dart";
 
-final class RaporFiltreDateTimeBottomSheetViewModel = _RaporFiltreDateTimeBottomSheetViewModelBase with _$RaporFiltreDateTimeBottomSheetViewModel;
+final class RaporFiltreDateTimeBottomSheetViewModel = _RaporFiltreDateTimeBottomSheetViewModelBase
+    with _$RaporFiltreDateTimeBottomSheetViewModel;
 
 abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
   static int getGroupValue = 0;
@@ -17,15 +18,22 @@ abstract class _RaporFiltreDateTimeBottomSheetViewModelBase with Store {
   void resetGroupValue() => getGroupValue = 0;
 
   @observable
-  ObservableList<bool> selectedValueList = ObservableList.of(
-    [true, false, false, false, false, false, false, false, false, false],
-  );
+  ObservableList<bool> selectedValueList = ObservableList.of([
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
 
   @action
   void changeSelectedValue(int index) {
-    selectedValueList = ObservableList.of(
-      [false, false, false, false, false, false, false, false, false, false],
-    );
+    selectedValueList = ObservableList.of([false, false, false, false, false, false, false, false, false, false]);
     if (!selectedValueList[index]) {
       selectedValueList[index] = true;
     } else {

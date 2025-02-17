@@ -17,7 +17,11 @@ abstract class _DepoTalepToplananlarViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getKalemler(int id) async {
     setKalemList(null);
-    final result = await networkManager.dioPost(path: ApiUrls.getDepoTalepToplananlar, bodyModel: KalemModel(), data: {"DetayID": id});
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getDepoTalepToplananlar,
+      bodyModel: KalemModel(),
+      data: {"DetayID": id},
+    );
     if (result.isSuccess) {
       setKalemList(result.dataList);
     }
@@ -25,7 +29,12 @@ abstract class _DepoTalepToplananlarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<bool> deleteKalem(int id) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveDepoTalep, bodyModel: KalemModel(), data: {"ID": id, "ISLEM_KODU": 8}, showLoading: true);
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveDepoTalep,
+      bodyModel: KalemModel(),
+      data: {"ID": id, "ISLEM_KODU": 8},
+      showLoading: true,
+    );
     return result.isSuccess;
   }
 }

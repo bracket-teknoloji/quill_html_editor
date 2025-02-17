@@ -28,43 +28,46 @@ final class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCar
 
   @override
   Widget build(BuildContext context) => Card(
-        child: ListTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    child: ListTile(
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [Text(model.belgeNo ?? ""), Text(model.tarih.toDateString)],
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
             children: [
-              Text(model.belgeNo ?? ""),
-              Text(model.tarih.toDateString),
+              if (model.olcumAdedi case (!= null && != 0 && != 0.0))
+                ColorfulBadge(
+                  label: Text("Ölçüm Miktarı: ${model.olcumAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  badgeColorEnum: BadgeColorEnum.esYap,
+                ),
             ],
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          if (model.cariKodu != null) Text("${model.cariAdi ?? ""} - ${model.cariKodu ?? ""}"),
+          if (model.stokKodu != null) Text("${model.stokAdi ?? model.yapacik ?? ""} - ${model.stokKodu ?? ""}"),
+          CustomLayoutBuilder(
+            splitCount: 2,
             children: [
-              Row(
-                children: [
-                  if (model.olcumAdedi case (!= null && != 0 && != 0.0))
-                    ColorfulBadge(
-                      label: Text("Ölçüm Miktarı: ${model.olcumAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                      badgeColorEnum: BadgeColorEnum.esYap,
-                    ),
-                ],
-              ),
-              if (model.cariKodu != null) Text("${model.cariAdi ?? ""} - ${model.cariKodu ?? ""}"),
-              if (model.stokKodu != null) Text("${model.stokAdi ?? model.yapacik ?? ""} - ${model.stokKodu ?? ""}"),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  if (model.belgeSira != null) Text("Sıra: ${model.belgeSira.toStringIfNotNull ?? ""}"),
-                  if (model.miktar != null) Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  if (model.kabulAdet != null) Text("Kabul Miktarı: ${model.kabulAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  if (model.kalemAdedi != null) Text("Kalem Miktarı: ${model.kalemAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  if (model.retAdet != null) Text("Ret Miktarı: ${model.retAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  if (model.sartliAdet != null) Text("Şartlı Miktar: ${model.sartliAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                  if (model.yapkod != null) Text("Yapılandırma Kodu: ${model.yapkod}"),
-                ],
-              ),
+              if (model.belgeSira != null) Text("Sıra: ${model.belgeSira.toStringIfNotNull ?? ""}"),
+              if (model.miktar != null)
+                Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              if (model.kabulAdet != null)
+                Text("Kabul Miktarı: ${model.kabulAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              if (model.kalemAdedi != null)
+                Text("Kalem Miktarı: ${model.kalemAdedi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              if (model.retAdet != null)
+                Text("Ret Miktarı: ${model.retAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              if (model.sartliAdet != null)
+                Text("Şartlı Miktar: ${model.sartliAdet.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              if (model.yapkod != null) Text("Yapılandırma Kodu: ${model.yapkod}"),
             ],
           ),
-          onTap: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+        ],
+      ),
+      onTap:
+          () async => await bottomSheetDialogManager.showBottomSheetDialog(
             context,
             title: widget.model.belgeNo ?? "Ölçüm Detayı",
             children: [
@@ -90,13 +93,17 @@ final class _OlcumGirisiListesiCardState extends BaseState<OlcumGirisiListesiCar
               // BottomSheetModel(title: loc.generalStrings.edit, iconWidget: Icons.edit_outlined),
             ],
           ),
-          onLongPress: () async {
-            if (widget.model.getEditTipiEnum.kalemSecilecekMi && yetkiController.cariListesi) {
-              dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [widget.model.cariKodu ?? ""])));
-            } else if (yetkiController.stokListesi) {
-              dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model.stokKodu)));
-            }
-          },
-        ),
-      );
+      onLongPress: () async {
+        if (widget.model.getEditTipiEnum.kalemSecilecekMi && yetkiController.cariListesi) {
+          dialogManager.showCariIslemleriGridViewDialog(
+            await networkManager.getCariModel(CariRequestModel(kod: [widget.model.cariKodu ?? ""])),
+          );
+        } else if (yetkiController.stokListesi) {
+          dialogManager.showStokGridViewDialog(
+            await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: widget.model.stokKodu)),
+          );
+        }
+      },
+    ),
+  );
 }

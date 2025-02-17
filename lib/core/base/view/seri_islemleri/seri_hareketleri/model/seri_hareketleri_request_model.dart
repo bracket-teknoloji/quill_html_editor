@@ -15,5 +15,6 @@ class SeriHareketleriRequestModel with _$SeriHareketleriRequestModel {
     @JsonKey(name: "TempGetir") String? tempGetir,
   }) = _SeriHareketleriRequestModel;
 
-  factory SeriHareketleriRequestModel.fromJson(Map<String, dynamic> json) => _$SeriHareketleriRequestModelFromJson(json);
+  factory SeriHareketleriRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$SeriHareketleriRequestModelFromJson(json);
 }

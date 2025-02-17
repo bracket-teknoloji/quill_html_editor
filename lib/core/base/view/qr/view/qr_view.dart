@@ -67,25 +67,24 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "QR Kod Okuyucu"),
-          actions: [
-            if (!kIsWeb)
-              Observer(
-                builder: (_) => IconButton(
+    appBar: AppBar(
+      title: const AppBarTitle(title: "QR Kod Okuyucu"),
+      actions: [
+        if (!kIsWeb)
+          Observer(
+            builder:
+                (_) => IconButton(
                   onPressed: () {
                     viewModel.changeFlash();
                     qrViewController.toggleTorch();
                   },
-                  icon: Icon(
-                    Icons.flash_on,
-                    color: viewModel.isFlashOpen ? ColorPalette.gamboge : null,
-                  ),
+                  icon: Icon(Icons.flash_on, color: viewModel.isFlashOpen ? ColorPalette.gamboge : null),
                 ),
-              ),
-            if (!kIsWeb)
-              Observer(
-                builder: (_) => IconButton(
+          ),
+        if (!kIsWeb)
+          Observer(
+            builder:
+                (_) => IconButton(
                   isSelected: false,
                   onPressed: () {
                     if (viewModel.isFlashOpen) {
@@ -95,35 +94,18 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
                     viewModel.changeCameraReverse();
                     qrViewController.switchCamera();
                   },
-                  icon: Icon(
-                    Icons.flip_camera_ios,
-                    color: viewModel.isCameraReverse ? ColorPalette.gamboge : null,
-                  ),
+                  icon: Icon(Icons.flip_camera_ios, color: viewModel.isCameraReverse ? ColorPalette.gamboge : null),
                 ),
-              ),
-          ],
-        ),
-        body: Stack(
-          children: [
-            Stack(
-              fit: StackFit.expand,
-              children: [
-                buildQrView(context),
-                buildResult(),
-              ],
-            ),
-            Center(
-              child: CustomPaint(
-                painter: BorderPainter(),
-                child: SizedBox(
-                  width: width * 0.7,
-                  height: width * 0.7,
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
+          ),
+      ],
+    ),
+    body: Stack(
+      children: [
+        Stack(fit: StackFit.expand, children: [buildQrView(context), buildResult()]),
+        Center(child: CustomPaint(painter: BorderPainter(), child: SizedBox(width: width * 0.7, height: width * 0.7))),
+      ],
+    ),
+  );
 
   Widget buildQrView(BuildContext context) => MobileScanner(controller: qrViewController, onDetect: _onQRViewCreated);
   Future<void> _onQRViewCreated(BarcodeCapture barcode) async {
@@ -149,25 +131,21 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
   }
 
   Widget buildResult() => Container(
-        alignment: Alignment.bottomCenter,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: <Color>[
-              Colors.black.withAlpha(0),
-              Colors.black12,
-              Colors.black45,
-            ],
-          ),
-        ),
-        child: SafeArea(
-          child: Text(
-            "QR Kodu Okutunuz",
-            style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white),
-          ),
-        ),
-      );
+    alignment: Alignment.bottomCenter,
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: <Color>[Colors.black.withAlpha(0), Colors.black12, Colors.black45],
+      ),
+    ),
+    child: SafeArea(
+      child: Text(
+        "QR Kodu Okutunuz",
+        style: context.general.appTheme.textTheme.titleLarge!.copyWith(color: Colors.white),
+      ),
+    ),
+  );
 }
 
 final class BorderPainter extends CustomPainter {
@@ -176,43 +154,19 @@ final class BorderPainter extends CustomPainter {
     const width = UIHelper.lowSize;
     const radius = UIHelper.highSize;
     const tRadius = 2 * radius;
-    final rect = Rect.fromLTWH(
-      width,
-      width,
-      size.width - 2 * width,
-      size.height - 2 * width,
-    );
+    final rect = Rect.fromLTWH(width, width, size.width - 2 * width, size.height - 2 * width);
     final rrect = RRect.fromRectAndRadius(rect, const Radius.circular(radius));
-    const clippingRect0 = Rect.fromLTWH(
-      0,
-      0,
-      tRadius,
-      tRadius,
-    );
-    final clippingRect1 = Rect.fromLTWH(
-      size.width - tRadius,
-      0,
-      tRadius,
-      tRadius,
-    );
-    final clippingRect2 = Rect.fromLTWH(
-      0,
-      size.height - tRadius,
-      tRadius,
-      tRadius,
-    );
-    final clippingRect3 = Rect.fromLTWH(
-      size.width - tRadius,
-      size.height - tRadius,
-      tRadius,
-      tRadius,
-    );
+    const clippingRect0 = Rect.fromLTWH(0, 0, tRadius, tRadius);
+    final clippingRect1 = Rect.fromLTWH(size.width - tRadius, 0, tRadius, tRadius);
+    final clippingRect2 = Rect.fromLTWH(0, size.height - tRadius, tRadius, tRadius);
+    final clippingRect3 = Rect.fromLTWH(size.width - tRadius, size.height - tRadius, tRadius, tRadius);
 
-    final path = Path()
-      ..addRect(clippingRect0)
-      ..addRect(clippingRect1)
-      ..addRect(clippingRect2)
-      ..addRect(clippingRect3);
+    final path =
+        Path()
+          ..addRect(clippingRect0)
+          ..addRect(clippingRect1)
+          ..addRect(clippingRect2)
+          ..addRect(clippingRect3);
 
     canvas
       ..clipPath(path)

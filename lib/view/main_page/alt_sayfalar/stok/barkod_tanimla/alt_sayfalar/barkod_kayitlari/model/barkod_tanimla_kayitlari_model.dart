@@ -22,7 +22,8 @@ class BarkodTanimlaKayitlariModel with _$BarkodTanimlaKayitlariModel, NetworkMan
   }) = _BarkodTanimlaKayitlariModel;
   BarkodTanimlaKayitlariModel._();
 
-  factory BarkodTanimlaKayitlariModel.fromJson(Map<String, dynamic> json) => _$BarkodTanimlaKayitlariModelFromJson(json);
+  factory BarkodTanimlaKayitlariModel.fromJson(Map<String, dynamic> json) =>
+      _$BarkodTanimlaKayitlariModelFromJson(json);
 
   @override
   BarkodTanimlaKayitlariModel fromJson(Map<String, dynamic> json) => _$BarkodTanimlaKayitlariModelFromJson(json);

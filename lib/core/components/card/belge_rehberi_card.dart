@@ -12,23 +12,23 @@ final class BelgeRehberiCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
-        child: ListTile(
-          onTap: () => Get.back(result: model),
-          title: Text(model.belgeNo ?? ""),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    child: ListTile(
+      onTap: () => Get.back(result: model),
+      title: Text(model.belgeNo ?? ""),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("Cari Kodu: ${model.cariKodu ?? ""}"),
+          CustomLayoutBuilder(
+            splitCount: 2,
             children: [
-              Text("Cari Kodu: ${model.cariKodu ?? ""}"),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  Text("Tarih: ${model.tarih.toDateString}"),
-                  Text("Depo: ${model.depoKodu}-${model.depoTanimi}"),
-                  Text("Kalem Adedi: ${model.kalemSayisi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                ],
-              ),
+              Text("Tarih: ${model.tarih.toDateString}"),
+              Text("Depo: ${model.depoKodu}-${model.depoTanimi}"),
+              Text("Kalem Adedi: ${model.kalemSayisi.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
             ],
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }

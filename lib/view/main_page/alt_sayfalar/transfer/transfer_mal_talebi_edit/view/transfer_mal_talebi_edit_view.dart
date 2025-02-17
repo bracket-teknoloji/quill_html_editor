@@ -20,7 +20,8 @@ final class TransferMalTalebiEditView extends StatefulWidget {
   State<TransferMalTalebiEditView> createState() => _TransferMalTalebiEditViewState();
 }
 
-final class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiEditView> with SingleTickerProviderStateMixin {
+final class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiEditView>
+    with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
   final TransferMalTalebiEditViewModel viewModel = TransferMalTalebiEditViewModel();
@@ -50,63 +51,56 @@ final class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiE
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body());
 
   AppBar appBar() => AppBar(
-        title: AppBarTitle(
-          title: "Depo Talep Detayı",
-          subtitle: widget.model.baseEditEnum?.getName,
+    title: AppBarTitle(title: "Depo Talep Detayı", subtitle: widget.model.baseEditEnum?.getName),
+    actions: [
+      if (widget.model.baseEditEnum?.goruntuleMi != true)
+        IconButton(
+          onPressed: () async {
+            if (BaseSiparisEditModel.instance.kalemler.isEmptyOrNull) {
+              dialogManager.showErrorSnackBar("En az bir kalem eklemelisiniz");
+              return;
+            }
+            if (BaseSiparisEditModel.instance.hedefSube == null) {
+              dialogManager.showErrorSnackBar("Karşı şube seçmelisiniz");
+              return;
+            }
+            if (BaseSiparisEditModel.instance.depoKodu == null) {
+              dialogManager.showErrorSnackBar("Giriş depo seçmelisiniz");
+              return;
+            }
+            dialogManager.showAreYouSureDialog(() async {
+              final result = await viewModel.save(widget.model.isEkle);
+              if (result) {
+                Get.back(result: true);
+                dialogManager.showSuccessSnackBar("İşlem başarılı");
+              }
+            });
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        actions: [
-          if (widget.model.baseEditEnum?.goruntuleMi != true)
-            IconButton(
-              onPressed: () async {
-                if (BaseSiparisEditModel.instance.kalemler.isEmptyOrNull) {
-                  dialogManager.showErrorSnackBar("En az bir kalem eklemelisiniz");
-                  return;
-                }
-                if (BaseSiparisEditModel.instance.hedefSube == null) {
-                  dialogManager.showErrorSnackBar("Karşı şube seçmelisiniz");
-                  return;
-                }
-                if (BaseSiparisEditModel.instance.depoKodu == null) {
-                  dialogManager.showErrorSnackBar("Giriş depo seçmelisiniz");
-                  return;
-                }
-                dialogManager.showAreYouSureDialog(
-                  () async {
-                    final result = await viewModel.save(widget.model.isEkle);
-                    if (result) {
-                      Get.back(result: true);
-                      dialogManager.showSuccessSnackBar("İşlem başarılı");
-                    }
-                  },
-                );
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-        ],
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: [
-            Tab(text: loc.generalStrings.general),
-            const Tab(text: "Kalemler"),
-          ],
-        ),
-      );
+    ],
+    bottom: TabBar(
+      controller: _tabController,
+      tabs: [Tab(text: loc.generalStrings.general), const Tab(text: "Kalemler")],
+    ),
+  );
 
   TabBarView body() => TabBarView(
-        controller: _tabController,
-        children: [
-          Observer(
-            builder: (_) => viewModel.model != null ? TransferMalTalebiGenelView(model: widget.model) : const Center(child: CircularProgressIndicator.adaptive()),
-          ),
-          Observer(
-            builder: (_) => TransferMalTalebiKalemlerView(model: widget.model..model = BaseSiparisEditModel.instance),
-          ),
-        ],
-      );
+    controller: _tabController,
+    children: [
+      Observer(
+        builder:
+            (_) =>
+                viewModel.model != null
+                    ? TransferMalTalebiGenelView(model: widget.model)
+                    : const Center(child: CircularProgressIndicator.adaptive()),
+      ),
+      Observer(
+        builder: (_) => TransferMalTalebiKalemlerView(model: widget.model..model = BaseSiparisEditModel.instance),
+      ),
+    ],
+  );
 }

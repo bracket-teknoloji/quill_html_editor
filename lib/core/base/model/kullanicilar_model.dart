@@ -7,10 +7,7 @@ part "kullanicilar_model.g.dart";
 
 @freezed
 class KullanicilarModel with _$KullanicilarModel, NetworkManagerMixin {
-  const factory KullanicilarModel({
-    String? kodu,
-    String? adi,
-  }) = _KullanicilarModel;
+  const factory KullanicilarModel({String? kodu, String? adi}) = _KullanicilarModel;
   const KullanicilarModel._();
 
   factory KullanicilarModel.fromJson(Map<String, dynamic> json) => _$KullanicilarModelFromJson(json);

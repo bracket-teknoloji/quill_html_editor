@@ -40,7 +40,11 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   //* Observables
   @observable
-  BankaIslemleriRequestModel bankaIslemleriRequestModel = BankaIslemleriRequestModel(menuKodu: "YONE_BISL", baslamaTarihi: DateTime.now().toDateString, bitisTarihi: DateTime.now().toDateString);
+  BankaIslemleriRequestModel bankaIslemleriRequestModel = BankaIslemleriRequestModel(
+    menuKodu: "YONE_BISL",
+    baslamaTarihi: DateTime.now().toDateString,
+    bitisTarihi: DateTime.now().toDateString,
+  );
 
   @observable
   bool isScrollDown = true;
@@ -56,15 +60,24 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   //* Computed
 
   @computed
-  double get gelenTutar => bankaIslemleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).sum ?? 0;
+  double get gelenTutar =>
+      bankaIslemleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
-  double get gidenTutar => bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).sum ?? 0;
+  double get gidenTutar =>
+      bankaIslemleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
-  ObservableList<BankaHareketleriModel>? get getBankaIslemleriListesi => (searchText != null && searchText != "")
-      ? bankaIslemleriListesi?.where((element) => element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase())).toList().asObservable()
-      : bankaIslemleriListesi;
+  ObservableList<BankaHareketleriModel>? get getBankaIslemleriListesi =>
+      (searchText != null && searchText != "")
+          ? bankaIslemleriListesi
+              ?.where(
+                (element) =>
+                    element.belgeno != null && element.belgeno!.toLowerCase().contains(searchText!.toLowerCase()),
+              )
+              .toList()
+              .asObservable()
+          : bankaIslemleriListesi;
 
   //* Actions
   @action
@@ -79,10 +92,12 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   @action
   void setSearchText(String? value) => searchText = value;
   @action
-  void setBaslamaTarihi(String? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(baslamaTarihi: value);
+  void setBaslamaTarihi(String? value) =>
+      bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(baslamaTarihi: value);
 
   @action
-  void setBitisTarihi(String? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(bitisTarihi: value);
+  void setBitisTarihi(String? value) =>
+      bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(bitisTarihi: value);
 
   @action
   void setBankaIslemleriListesi(List<BankaHareketleriModel>? value) => bankaIslemleriListesi = value?.asObservable();
@@ -96,10 +111,12 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setHesapKodu(String? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(hesapKodu: value);
+  void setHesapKodu(String? value) =>
+      bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(hesapKodu: value);
 
   @action
-  void setHesapTipi(List<int>? value) => bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(hesapTipi: jsonEncode(value));
+  void setHesapTipi(List<int>? value) =>
+      bankaIslemleriRequestModel = bankaIslemleriRequestModel.copyWith(hesapTipi: jsonEncode(value));
 
   @action
   Future<void> resetPage() async {
@@ -109,7 +126,11 @@ abstract class _BankaIslemleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet<BankaHareketleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaHareketleriModel(), queryParameters: bankaIslemleriRequestModel.toJson());
+    final result = await networkManager.dioGet<BankaHareketleriModel>(
+      path: ApiUrls.getBankaHareketleri,
+      bodyModel: BankaHareketleriModel(),
+      queryParameters: bankaIslemleriRequestModel.toJson(),
+    );
     if (result.isSuccess) {
       setBankaIslemleriListesi(result.dataList);
     }

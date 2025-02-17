@@ -35,56 +35,49 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(title: "Görsel Seçiniz"),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (viewModel.image != null) {
-                  final result = await viewModel.uploadEvrak();
-                  if (result.isSuccess) {
-                    dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                    Get.back(result: true);
-                  }
-                } else {
-                  dialogManager.showErrorSnackBar("Lütfen bir görsel seçiniz.");
-                }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ],
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Görsel Seçiniz"),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            if (viewModel.image != null) {
+              final result = await viewModel.uploadEvrak();
+              if (result.isSuccess) {
+                dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                Get.back(result: true);
+              }
+            } else {
+              dialogManager.showErrorSnackBar("Lütfen bir görsel seçiniz.");
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              flex: 3,
-              child: Observer(
-                builder: (_) => InkWell(
+      ],
+    ),
+    body: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Expanded(
+          flex: 3,
+          child: Observer(
+            builder:
+                (_) => InkWell(
                   onTap: selectPhoto,
                   child: Card(
-                    child: viewModel.image != null
-                        ? viewModel.isProcessing
-                            ? const Center(child: CircularProgressIndicator.adaptive())
-                            : Image.memory(viewModel.image!)
-                        : Icon(
-                            Icons.preview_outlined,
-                            size: width * 0.3,
-                          ),
+                    child:
+                        viewModel.image != null
+                            ? viewModel.isProcessing
+                                ? const Center(child: CircularProgressIndicator.adaptive())
+                                : Image.memory(viewModel.image!)
+                            : Icon(Icons.preview_outlined, size: width * 0.3),
                   ),
                 ),
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: CustomTextField(
-                labelText: "Açıklama",
-                onChanged: viewModel.setAciklama,
-              ),
-            ),
-          ],
-        ).paddingAll(UIHelper.lowSize),
-      );
+          ),
+        ),
+        Expanded(flex: 2, child: CustomTextField(labelText: "Açıklama", onChanged: viewModel.setAciklama)),
+      ],
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Future<void> selectPhoto() async {
     final sourceType = await bottomSheetDialogManager.showBottomSheetDialog(
@@ -117,7 +110,12 @@ final class _ImagePickerViewState extends BaseState<ImagePickerView> {
           quality: 30,
         );
       } catch (e) {
-        compressedImage = await FlutterImageCompress.compressWithFile(result.path, format: CompressFormat.heic, numberOfRetries: 10, keepExif: true);
+        compressedImage = await FlutterImageCompress.compressWithFile(
+          result.path,
+          format: CompressFormat.heic,
+          numberOfRetries: 10,
+          keepExif: true,
+        );
       }
       final list = compressedImage!.toList();
       final base64 = base64Encode(list);

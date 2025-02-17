@@ -71,10 +71,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
 
   @override
   Widget build(BuildContext context) => PDFViewerView(
-        filterBottomSheet: filterBottomSheet,
-        title: "Sipariş Karlılık Raporu",
-        pdfData: viewModel.pdfModel,
-      );
+    filterBottomSheet: filterBottomSheet,
+    title: "Sipariş Karlılık Raporu",
+    pdfData: viewModel.pdfModel,
+  );
 
   Future<bool> filterBottomSheet() async {
     viewModel.resetFuture();
@@ -105,10 +105,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
                 belgeNoController.clear();
               },
               onTap: () async {
-                final result = await Get.toNamed(
-                  "/mainPage/siparisMusteriSiparisi",
-                  arguments: true,
-                );
+                final result = await Get.toNamed("/mainPage/siparisMusteriSiparisi", arguments: true);
                 if (result is BaseSiparisEditModel) {
                   belgeNoController.text = result.belgeNo ?? "";
                   if (result.belgeNo case final belgeNo?) viewModel.setBelgeNo(belgeNo);
@@ -134,20 +131,14 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
                     dialogManager.showAlertDialog("Cari Kodu Boş Olamaz");
                   }
                 },
-                icon: const Icon(
-                  Icons.data_exploration_outlined,
-                  color: UIHelper.primaryColor,
-                ),
+                icon: const Icon(Icons.data_exploration_outlined, color: UIHelper.primaryColor),
               ),
               onClear: () {
                 viewModel.setCariKodu(null);
                 cariController.clear();
               },
               onTap: () async {
-                final result = await Get.toNamed(
-                  "/mainPage/cariListesi",
-                  arguments: true,
-                );
+                final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result is CariListesiModel) {
                   cariController.text = result.cariAdi ?? "";
                   viewModel.setCariKodu(result.cariKodu);
@@ -161,7 +152,13 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
               controller: teslimCariController,
               onClear: () => viewModel.setTeslimCariKodu(null),
               onTap: () async {
-                final result = await Get.toNamed("/mainPage/cariListesiOzel", arguments: CariRequestModel(bagliCariKodu: viewModel.pdfModel.dicParams?.teslimCariKodu, teslimCari: "E"));
+                final result = await Get.toNamed(
+                  "/mainPage/cariListesiOzel",
+                  arguments: CariRequestModel(
+                    bagliCariKodu: viewModel.pdfModel.dicParams?.teslimCariKodu,
+                    teslimCari: "E",
+                  ),
+                );
                 if (result is CariListesiModel) {
                   teslimCariController.text = result.cariAdi ?? "";
                   viewModel.setTeslimCariKodu(result.cariKodu ?? "");
@@ -183,7 +180,10 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
                         plasiyerController.clear();
                       },
                       onTap: () async {
-                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
+                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                          context,
+                          viewModel.pdfModel.dicParams?.plasiyerKodu,
+                        );
                         if (result != null) {
                           plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.setPlasiyer(result.plasiyerKodu);
@@ -222,13 +222,11 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
             CustomTextField(
               labelText: "Hariç Stok Grup Kodları",
               suffix: IconButton(
-                onPressed: () => dialogManager.showInfoDialog(
-                  "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",
-                ),
-                icon: const Icon(
-                  Icons.info_outline,
-                  color: UIHelper.primaryColor,
-                ),
+                onPressed:
+                    () => dialogManager.showInfoDialog(
+                      "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",
+                    ),
+                icon: const Icon(Icons.info_outline, color: UIHelper.primaryColor),
               ),
               controller: haricStokGrupKodlariController,
             ),
@@ -236,10 +234,11 @@ final class _YaslandirmaRaporuViewState extends BaseState<SiparisKarlilikRaporuV
               text: "Üretim Fiyatı Dahil",
               isVertical: true,
               child: Observer(
-                builder: (_) => Switch.adaptive(
-                  value: viewModel.uretimFiyatiDahilMi,
-                  onChanged: (value) => viewModel.setUretimFiyatiDahilMi(value ? "E" : "H"),
-                ),
+                builder:
+                    (_) => Switch.adaptive(
+                      value: viewModel.uretimFiyatiDahilMi,
+                      onChanged: (value) => viewModel.setUretimFiyatiDahilMi(value ? "E" : "H"),
+                    ),
               ),
             ),
             ElevatedButton(

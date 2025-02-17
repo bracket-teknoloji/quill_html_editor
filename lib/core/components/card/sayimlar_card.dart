@@ -33,35 +33,43 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
 
   @override
   Widget build(BuildContext context) => Card(
-        color: model.miktarSifirdanBuyukMu && model.serbestMi ? ColorPalette.persianRedWithOpacity : null,
-        child: ListTile(
-          onTap: bottomSheet,
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(model.fisno ?? ""),
-              Row(
-                children: [
-                  if (model.serbestMi) const ColorfulBadge(label: Text("Serbest"), badgeColorEnum: BadgeColorEnum.kapali),
-                  if (model.filtreliMi) const ColorfulBadge(label: Text("Filtre"), badgeColorEnum: BadgeColorEnum.kapali),
+    color: model.miktarSifirdanBuyukMu && model.serbestMi ? ColorPalette.persianRedWithOpacity : null,
+    child: ListTile(
+      onTap: bottomSheet,
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(model.fisno ?? ""),
+          Row(
+            children:
+                [
+                  if (model.serbestMi)
+                    const ColorfulBadge(label: Text("Serbest"), badgeColorEnum: BadgeColorEnum.kapali),
+                  if (model.filtreliMi)
+                    const ColorfulBadge(label: Text("Filtre"), badgeColorEnum: BadgeColorEnum.kapali),
                 ].map((e) => e.paddingOnly(right: UIHelper.lowSize)).toList(),
-              ),
-            ],
           ),
-          subtitle: CustomLayoutBuilder(
-            splitCount: 2,
-            children: [
-              if (model.baslangicTarihi != null) Text("Başlama Tarihi: ${model.baslangicTarihi?.toDateString ?? ""}"),
-              if (model.bitisTarihi != null) Text("Bitiş Tarihi: ${model.bitisTarihi?.toDateString ?? ""}"),
-              if (model.depoList != null) Text("Depolar: ${model.depoList?.any((element) => element == -1) == true ? "Tümü" : model.depoList?.first}"),
-              if (model.kullanicilar != null) Text("Kullanıcı: ${model.kullanicilar}"),
-              if (model.serbestMi) Text("Miktar: ${model.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}"),
-              if (model.serbestMi) Text("Depo Miktarı: ${model.depoMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}"),
-              if (model.serbestMi) Text("Fark: ${model.fark.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-            ],
-          ),
-        ),
-      );
+        ],
+      ),
+      subtitle: CustomLayoutBuilder(
+        splitCount: 2,
+        children: [
+          if (model.baslangicTarihi != null) Text("Başlama Tarihi: ${model.baslangicTarihi?.toDateString ?? ""}"),
+          if (model.bitisTarihi != null) Text("Bitiş Tarihi: ${model.bitisTarihi?.toDateString ?? ""}"),
+          if (model.depoList != null)
+            Text(
+              "Depolar: ${model.depoList?.any((element) => element == -1) == true ? "Tümü" : model.depoList?.first}",
+            ),
+          if (model.kullanicilar != null) Text("Kullanıcı: ${model.kullanicilar}"),
+          if (model.serbestMi)
+            Text("Miktar: ${model.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}"),
+          if (model.serbestMi)
+            Text("Depo Miktarı: ${model.depoMiktari?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}"),
+          if (model.serbestMi) Text("Fark: ${model.fark.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+        ],
+      ),
+    ),
+  );
 
   Future<void> bottomSheet() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -74,8 +82,13 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
           onTap: () async {
             Get.back();
             final SayimListesiModel model = widget.model;
-            if (model.depoList?.any((element) => !(yetkiController.yetkiliDepoList?.map((e) => e.depoKodu).contains(element) ?? false)) ?? false) {
-              dialogManager.showAlertDialog("Gösterilecek depo yok. Sayım yönetiminden depoları kontrol edin veya profilinizdeki yetkili olduğunuz depoları kontrol edin.");
+            if (model.depoList?.any(
+                  (element) => !(yetkiController.yetkiliDepoList?.map((e) => e.depoKodu).contains(element) ?? false),
+                ) ??
+                false) {
+              dialogManager.showAlertDialog(
+                "Gösterilecek depo yok. Sayım yönetiminden depoları kontrol edin veya profilinizdeki yetkili olduğunuz depoları kontrol edin.",
+              );
               return;
             }
             if (widget.model.tumDepolarMi) {
@@ -97,10 +110,7 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
               final result = await networkManager.dioPost(
                 path: ApiUrls.saveSayim,
                 bodyModel: SayimListesiModel(),
-                data: SayimFiltreModel(
-                  islemKodu: 8,
-                  belgeNo: widget.model.fisno,
-                ).toJson(),
+                data: SayimFiltreModel(islemKodu: 8, belgeNo: widget.model.fisno).toJson(),
               );
               if (result.isSuccess) {
                 Get.back();
@@ -119,10 +129,7 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
                   path: ApiUrls.saveSayim,
                   bodyModel: SayimListesiModel(),
                   showLoading: true,
-                  data: SayimFiltreModel(
-                    islemKodu: 5,
-                    belgeNo: widget.model.fisno,
-                  ).toJson(),
+                  data: SayimFiltreModel(islemKodu: 5, belgeNo: widget.model.fisno).toJson(),
                 );
                 if (result.isSuccess) {
                   widget.onChanged(true);
@@ -136,22 +143,16 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
             iconWidget: Icons.delete_outline_outlined,
             onTap: () async {
               Get.back();
-              dialogManager.showAreYouSureDialog(
-                () async {
-                  final result = await networkManager.dioPost(
-                    path: ApiUrls.saveSayim,
-                    bodyModel: SayimListesiModel(),
-                    data: SayimFiltreModel(
-                      islemKodu: 3,
-                      belgeNo: widget.model.fisno,
-                    ).toJson(),
-                  );
-                  if (result.isSuccess) {
-                    widget.onChanged(true);
-                  }
-                },
-                title: "Sayıma ait tüm bilgiler silinir. Bu işlem geri alınamaz. Kayıt silinsin mi?",
-              );
+              dialogManager.showAreYouSureDialog(() async {
+                final result = await networkManager.dioPost(
+                  path: ApiUrls.saveSayim,
+                  bodyModel: SayimListesiModel(),
+                  data: SayimFiltreModel(islemKodu: 3, belgeNo: widget.model.fisno).toJson(),
+                );
+                if (result.isSuccess) {
+                  widget.onChanged(true);
+                }
+              }, title: "Sayıma ait tüm bilgiler silinir. Bu işlem geri alınamaz. Kayıt silinsin mi?",);
             },
           ),
         if (yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi)
@@ -172,16 +173,14 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
               final PdfModel pdfModel = PdfModel(
                 etiketSayisi: 1,
                 raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
-                dicParams: DicParams(
-                  belgeNo: widget.model.fisno ?? "",
-                ),
+                dicParams: DicParams(belgeNo: widget.model.fisno ?? ""),
               );
-              final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
-                context,
-                "",
-              );
+              final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(context, "");
               if (sayimFiltre == null) return;
-              pdfModel.dicParams?.filtre = DepoFarkRaporuFiltreEnum.values.indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi).toStringIfNotNull;
+              pdfModel.dicParams?.filtre =
+                  DepoFarkRaporuFiltreEnum.values
+                      .indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi)
+                      .toStringIfNotNull;
               // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
               final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
                 context,
@@ -206,10 +205,7 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
                 context,
                 PrintModel(
                   raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
-                  dicParams: DicParams(
-                    belgeNo: widget.model.fisno ?? "",
-                    belgeTipi: "SAYI",
-                  ),
+                  dicParams: DicParams(belgeNo: widget.model.fisno ?? "", belgeTipi: "SAYI"),
                 ),
                 true,
                 true,

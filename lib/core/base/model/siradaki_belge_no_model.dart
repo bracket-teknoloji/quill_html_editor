@@ -6,13 +6,7 @@ part "siradaki_belge_no_model.g.dart";
 
 @JsonSerializable(fieldRename: FieldRename.pascal, createFactory: true)
 final class SiradakiBelgeNoModel with NetworkManagerMixin {
-  SiradakiBelgeNoModel({
-    this.seri,
-    this.belgeTipi,
-    this.eIrsaliye,
-    this.cariKodu,
-    this.belgeNo,
-  });
+  SiradakiBelgeNoModel({this.seri, this.belgeTipi, this.eIrsaliye, this.cariKodu, this.belgeNo});
   String? seri;
   String? belgeTipi;
   String? eIrsaliye;

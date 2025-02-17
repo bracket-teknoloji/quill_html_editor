@@ -39,56 +39,50 @@ final class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
 
   @override
   Widget build(BuildContext context) => Column(
-        children: [
-          CustomTextField(
-            labelText: "Ara",
-            onChanged: viewModel.setFilterText,
-          ),
-          Expanded(
-            child: Observer(
-              builder: (_) => RefreshableListView(
+    children: [
+      CustomTextField(labelText: "Ara", onChanged: viewModel.setFilterText),
+      Expanded(
+        child: Observer(
+          builder:
+              (_) => RefreshableListView(
                 onRefresh: viewModel.getData,
                 items: viewModel.sayimListesi,
                 itemBuilder: sayilanlarCard,
               ),
-            ),
-          ),
-        ],
-      ).paddingAll(UIHelper.lowSize);
+        ),
+      ),
+    ],
+  ).paddingAll(UIHelper.lowSize);
 
   Card sayilanlarCard(SayimFiltreModel sayimModel) => Card(
-        child: ListTile(
-          onTap: () {
-            bottomSheet(sayimModel);
-          },
-          title: Row(
+    child: ListTile(
+      onTap: () {
+        bottomSheet(sayimModel);
+      },
+      title: Row(
+        children: [
+          Text(sayimModel.kayittarihi?.toDateTimeString() ?? ""),
+          const Spacer(),
+          Text("Kayıt No ${sayimModel.id}"),
+        ],
+      ),
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("${sayimModel.stokAdi}"),
+          CustomLayoutBuilder(
+            splitCount: 2,
             children: [
-              Text(sayimModel.kayittarihi?.toDateTimeString() ?? ""),
-              const Spacer(),
-              Text("Kayıt No ${sayimModel.id}"),
+              Text("Stok Kodu: ${sayimModel.stokKodu}"),
+              Text("Miktar: ${sayimModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              Text("Depo: ${sayimModel.depoKodu} (${sayimModel.depoTanimi})"),
+              Text("Kullanıcı: ${sayimModel.kayityapankul}"),
             ],
           ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("${sayimModel.stokAdi}"),
-              CustomLayoutBuilder(
-                splitCount: 2,
-                children: [
-                  Text("Stok Kodu: ${sayimModel.stokKodu}"),
-                  Text(
-                    "Miktar: ${sayimModel.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
-                  ),
-                  Text(
-                    "Depo: ${sayimModel.depoKodu} (${sayimModel.depoTanimi})",
-                  ),
-                  Text("Kullanıcı: ${sayimModel.kayityapankul}"),
-                ],
-              ),
-            ],
-          ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 
   void bottomSheet(SayimFiltreModel model) {
     bottomSheetDialogManager.showBottomSheetDialog(
@@ -146,9 +140,7 @@ final class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
           onTap: () async {
             Get.back();
             dialogManager.showStokGridViewDialog(
-              await networkManager.getStokModel(
-                StokRehberiRequestModel(stokKodu: model.stokKodu),
-              ),
+              await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: model.stokKodu)),
             );
           },
         ),

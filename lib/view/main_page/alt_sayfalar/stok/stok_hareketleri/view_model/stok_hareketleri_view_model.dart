@@ -37,17 +37,20 @@ abstract class _StokHareketleriViewModelBase with Store {
   }
 
   @computed
-  String get getIsSelected => isSelectedGroupValue == 0
-      ? ""
-      : isSelectedGroupValue == 1
+  String get getIsSelected =>
+      isSelectedGroupValue == 0
+          ? ""
+          : isSelectedGroupValue == 1
           ? "G"
           : "C";
 
   @computed
-  double get toplamGiris => stokHareketleri!.where((element) => element.cikisIslemi != true).map((e) => e.stharGcmik).sum;
+  double get toplamGiris =>
+      stokHareketleri!.where((element) => element.cikisIslemi != true).map((e) => e.stharGcmik).sum;
 
   @computed
-  double get toplamCikis => stokHareketleri!.where((element) => element.cikisIslemi == true).map((e) => e.stharGcmik).sum;
+  double get toplamCikis =>
+      stokHareketleri!.where((element) => element.cikisIslemi == true).map((e) => e.stharGcmik).sum;
 
   @computed
   double get toplamBakiye => toplamGiris - toplamCikis;
@@ -124,9 +127,7 @@ abstract class _StokHareketleriViewModelBase with Store {
   List<StokHareketleriModel>? filteredStokHareketleri = [];
 
   @action
-  void filterStokHareketleri(String value) => filteredStokHareketleri = stokHareketleri
-      ?.where(
-        (element) => element.fisno!.toLowerCase().contains(value.toLowerCase()),
-      )
-      .toList();
+  void filterStokHareketleri(String value) =>
+      filteredStokHareketleri =
+          stokHareketleri?.where((element) => element.fisno!.toLowerCase().contains(value.toLowerCase())).toList();
 }

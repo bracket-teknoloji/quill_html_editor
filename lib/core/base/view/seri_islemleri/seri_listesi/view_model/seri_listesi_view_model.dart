@@ -37,13 +37,17 @@ abstract class _SeriListesiViewModelBase with Store, MobxNetworkMixin {
   void updateSeriList(SeriList model, String seri1) {
     final SeriList? newSeriList = kalemModel.seriList?.firstWhere((element) => element.seri1 == seri1);
     if (newSeriList != null) {
-      kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList?.map((element) => element.seri1 == seri1 ? model : element).toList());
+      kalemModel = kalemModel.copyWith(
+        seriList: kalemModel.seriList?.map((element) => element.seri1 == seri1 ? model : element).toList(),
+      );
     }
   }
 
   @action
   void removeSeriList(String seri1) {
-    kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList?.where((element) => element.seri1 != seri1).toList());
+    kalemModel = kalemModel.copyWith(
+      seriList: kalemModel.seriList?.where((element) => element.seri1 != seri1).toList(),
+    );
   }
 
   @action
@@ -56,7 +60,11 @@ abstract class _SeriListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<SeriUretModel?> seriNoUret() async {
-    final result = await networkManager.dioPost(path: ApiUrls.seriNoUret, bodyModel: SeriUretModel(), queryParameters: {"StokKodu": stokModel?.stokKodu});
+    final result = await networkManager.dioPost(
+      path: ApiUrls.seriNoUret,
+      bodyModel: SeriUretModel(),
+      queryParameters: {"StokKodu": stokModel?.stokKodu},
+    );
     if (result.isSuccess) {
       return result.dataList.firstOrNull;
     }

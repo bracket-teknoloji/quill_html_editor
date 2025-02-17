@@ -19,7 +19,11 @@ abstract class _HucreTransferiViewModelBase with Store, MobxNetworkMixin {
   bool isStok = true;
 
   @observable
-  PaketlemeListesiRequestModel paketRequestModel = PaketlemeListesiRequestModel(menuKodu: "HTAK_HUCT", ekranTipi: "R", kisitYok: "E");
+  PaketlemeListesiRequestModel paketRequestModel = PaketlemeListesiRequestModel(
+    menuKodu: "HTAK_HUCT",
+    ekranTipi: "R",
+    kisitYok: "E",
+  );
 
   @computed
   List<bool> get isStokList => [isStok, !isStok];

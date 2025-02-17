@@ -69,8 +69,13 @@ final class DialogManager {
     ScaffoldMessenger.of(context).showSnackBar(_snackBarSuccess(message));
   }
 
-  Future<DateTime?> showDateTimePicker({DateTime? initialDate}) async =>
-      await showDatePicker(context: context, locale: Get.locale, initialDate: initialDate ?? DateTime.now(), firstDate: DateTime(2000), lastDate: DateTime(2100));
+  Future<DateTime?> showDateTimePicker({DateTime? initialDate}) async => await showDatePicker(
+    context: context,
+    locale: Get.locale,
+    initialDate: initialDate ?? DateTime.now(),
+    firstDate: DateTime(2000),
+    lastDate: DateTime(2100),
+  );
   Future<TimeOfDay?> showSaatPicker() async => await showTimePicker(context: context, initialTime: TimeOfDay.now());
 
   Future<void> showAlertDialog(String message) async =>
@@ -85,15 +90,25 @@ final class DialogManager {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Padding(padding: EdgeInsets.only(bottom: UIHelper.midSize), child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16))),
-                    Padding(padding: UIHelper.midPaddingHorizontal, child: SelectableText(message, textAlign: TextAlign.center)),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: UIHelper.midSize),
+                      child: Text("Uyarı", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    ),
+                    Padding(
+                      padding: UIHelper.midPaddingHorizontal,
+                      child: SelectableText(message, textAlign: TextAlign.center),
+                    ),
                   ],
                 ),
               ),
             ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8), fontSize: 12), textAlign: TextAlign.center),
+              child: Text(
+                getAppData,
+                style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8), fontSize: 12),
+                textAlign: TextAlign.center,
+              ),
             ).paddingOnly(top: UIHelper.highSize),
           ],
         ),
@@ -105,7 +120,13 @@ final class DialogManager {
       "\nVersion: ${AppInfoModel.instance.version}+${AppInfoModel.instance.buildNumber}\nKullanıcı: ${CacheManager.getHesapBilgileri?.kullaniciAdi}\nTarih: ${DateTime.now().toDateTimeString()}\nŞirket: ${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
 
   Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) =>
-      _baseDialog(dialogType: DialogType.error, title: "Eksik var", btnOkText: "Tamam", desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ", onOk: onOk ?? () {}).show();
+      _baseDialog(
+        dialogType: DialogType.error,
+        title: "Eksik var",
+        btnOkText: "Tamam",
+        desc: "${values.toList().join(", ")}\nLütfen zorunlu alanları doldurunuz. ",
+        onOk: onOk ?? () {},
+      ).show();
 
   void internetConnectionDialog() =>
       _baseDialog(
@@ -114,10 +135,17 @@ final class DialogManager {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Padding(padding: EdgeInsets.only(bottom: UIHelper.midSize), child: Text("Uyarı")),
-            const Padding(padding: UIHelper.midPaddingHorizontal, child: Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center)),
+            const Padding(
+              padding: UIHelper.midPaddingHorizontal,
+              child: Text("İnternet bağlantınızı kontrol edin.", textAlign: TextAlign.center),
+            ),
             Padding(
               padding: UIHelper.midPaddingHorizontal,
-              child: Text(getAppData, style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8)), textAlign: TextAlign.center),
+              child: Text(
+                getAppData,
+                style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8)),
+                textAlign: TextAlign.center,
+              ),
             ).paddingOnly(top: UIHelper.highSize),
           ],
         ),
@@ -125,13 +153,34 @@ final class DialogManager {
 
   void showLoadingDialog(String loadText) =>
       _baseDialog(
-        body: Center(child: Column(children: [const CircularProgressIndicator.adaptive(), context.sized.emptySizedHeightBoxLow, Text(loadText, style: context.theme.textTheme.labelSmall)])),
+        body: Center(
+          child: Column(
+            children: [
+              const CircularProgressIndicator.adaptive(),
+              context.sized.emptySizedHeightBoxLow,
+              Text(loadText, style: context.theme.textTheme.labelSmall),
+            ],
+          ),
+        ),
       ).show();
-  Future showAreYouSureDialog(void Function() onYes, {String? title, String? yesButtonText}) async => await _areYouSureDialog(onYes, title, yesButtonText: yesButtonText).show();
+  Future showAreYouSureDialog(void Function() onYes, {String? title, String? yesButtonText}) async =>
+      await _areYouSureDialog(onYes, title, yesButtonText: yesButtonText).show();
 
-  void showSuccesDialog(String? description) => _baseDialog(dialogType: DialogType.success, btnOkText: "Tamam", body: Text(description ?? "", textAlign: TextAlign.center), onOk: () {}).show();
+  void showSuccesDialog(String? description) =>
+      _baseDialog(
+        dialogType: DialogType.success,
+        btnOkText: "Tamam",
+        body: Text(description ?? "", textAlign: TextAlign.center),
+        onOk: () {},
+      ).show();
 
-  void showInfoDialog(String? description) => _baseDialog(dialogType: DialogType.info, btnOkText: "Tamam", body: Text(description ?? "", textAlign: TextAlign.center), onOk: () {}).show();
+  void showInfoDialog(String? description) =>
+      _baseDialog(
+        dialogType: DialogType.info,
+        btnOkText: "Tamam",
+        body: Text(description ?? "", textAlign: TextAlign.center),
+        onOk: () {},
+      ).show();
 
   Future showStokKayitliDialog(StokListesiModel model) async {
     bool result = false;
@@ -147,13 +196,31 @@ final class DialogManager {
   }
 
   Future<void> showDialog({required Widget body, void Function()? onYes}) async =>
-      await _baseDialog(body: body, onOk: onYes, onCancel: () {}, btnCancelText: "Hayır", btnOkText: onYes != null ? "Evet" : null, dialogType: DialogType.question).show();
+      await _baseDialog(
+        body: body,
+        onOk: onYes,
+        onCancel: () {},
+        btnCancelText: "Hayır",
+        btnOkText: onYes != null ? "Evet" : null,
+        dialogType: DialogType.question,
+      ).show();
 
-  void showGridViewDialog(Widget body) => _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+  void showGridViewDialog(Widget body) =>
+      _baseDialog(body: body, onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
 
-  Future<void> showCariGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected, IslemTipiEnum islemTipi = IslemTipiEnum.cari}) async =>
+  Future<void> showCariGridViewDialog(
+    CariListesiModel? model, {
+    Function(bool)? onSelected,
+    IslemTipiEnum islemTipi = IslemTipiEnum.cari,
+  }) async =>
       _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: islemTipi, title: model?.cariAdi ?? model?.cariKodu, onSelected: onSelected),
+        body: CustomAnimatedGridView<CariListesiModel>(
+          cariListesiModel: model,
+          model: model,
+          islemTipi: islemTipi,
+          title: model?.cariAdi ?? model?.cariKodu,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -165,7 +232,13 @@ final class DialogManager {
     }
     if (_yetkiController.cariListesi) {
       return _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(cariListesiModel: model, model: model, islemTipi: IslemTipiEnum.cariIslemleri, title: model.cariAdi ?? model.cariKodu, onSelected: onselected),
+        body: CustomAnimatedGridView<CariListesiModel>(
+          cariListesiModel: model,
+          model: model,
+          islemTipi: IslemTipiEnum.cariIslemleri,
+          title: model.cariAdi ?? model.cariKodu,
+          onSelected: onselected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -173,7 +246,12 @@ final class DialogManager {
     }
   }
 
-  Future<dynamic> showEBelgeGridViewDialog({required BaseSiparisEditModel model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+  Future<dynamic> showEBelgeGridViewDialog({
+    required BaseSiparisEditModel model,
+    IslemTipiEnum? tip,
+    EditTipiEnum? siparisTipi,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
         body: CustomAnimatedGridView<BaseSiparisEditModel>(
           model: model,
@@ -187,9 +265,18 @@ final class DialogManager {
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showCekSenetGridViewDialog(CekSenetListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async =>
+  Future<dynamic> showCekSenetGridViewDialog(
+    CekSenetListesiModel? model, {
+    IslemTipiEnum? tip,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<CekSenetListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.cekSenet, title: model?.cariAdi ?? model?.cariKodu, onSelected: onSelected),
+        body: CustomAnimatedGridView<CekSenetListesiModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.cekSenet,
+          title: model?.cariAdi ?? model?.cariKodu,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -197,69 +284,158 @@ final class DialogManager {
 
   Future<void> showCariHareketleriGridViewDialog(CariListesiModel? model, {Function(bool)? onSelected}) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<CariListesiModel>(model: model, title: model?.cariAdi, islemTipi: IslemTipiEnum.cariHareketleri, onSelected: onSelected),
+        body: CustomAnimatedGridView<CariListesiModel>(
+          model: model,
+          title: model?.cariAdi,
+          islemTipi: IslemTipiEnum.cariHareketleri,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showTalepTeklifGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+  Future<dynamic> showTalepTeklifGridViewDialog({
+    BaseSiparisEditModel? model,
+    IslemTipiEnum? tip,
+    EditTipiEnum? siparisTipi,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.talepTeklif, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
+        body: CustomAnimatedGridView<BaseSiparisEditModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.talepTeklif,
+          siparisTipi: siparisTipi,
+          title: model?.belgeNo,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showFaturaGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+  Future<dynamic> showFaturaGridViewDialog({
+    BaseSiparisEditModel? model,
+    IslemTipiEnum? tip,
+    EditTipiEnum? siparisTipi,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.fatura, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
+        body: CustomAnimatedGridView<BaseSiparisEditModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.fatura,
+          siparisTipi: siparisTipi,
+          title: model?.belgeNo,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showTransferGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+  Future<dynamic> showTransferGridViewDialog({
+    BaseSiparisEditModel? model,
+    IslemTipiEnum? tip,
+    EditTipiEnum? siparisTipi,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.depoTransferi, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
+        body: CustomAnimatedGridView<BaseSiparisEditModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.depoTransferi,
+          siparisTipi: siparisTipi,
+          title: model?.belgeNo,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showKasaGridViewDialog(KasaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async =>
+  Future<dynamic> showKasaGridViewDialog(
+    KasaListesiModel? model, {
+    IslemTipiEnum? tip,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<KasaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.kasa, title: "Kasa İşlemleri", onSelected: onSelected),
+        body: CustomAnimatedGridView<KasaListesiModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.kasa,
+          title: "Kasa İşlemleri",
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showBankaIslemleriGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async =>
+  Future<dynamic> showBankaIslemleriGridViewDialog(
+    BankaListesiModel? model, {
+    IslemTipiEnum? tip,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.bankaIslemleri, title: "Banka İşlemleri", onSelected: onSelected),
+        body: CustomAnimatedGridView<BankaListesiModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.bankaIslemleri,
+          title: "Banka İşlemleri",
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
-  Future<dynamic> showBankaGridViewDialog(BankaListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async =>
+  Future<dynamic> showBankaGridViewDialog(
+    BankaListesiModel? model, {
+    IslemTipiEnum? tip,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<BankaListesiModel>(model: model, islemTipi: tip ?? IslemTipiEnum.banka, title: "Banka İşlemleri", onSelected: onSelected),
+        body: CustomAnimatedGridView<BankaListesiModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.banka,
+          title: "Banka İşlemleri",
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
 
   void showCariRaporlarGridViewDialog({CariListesiModel? model}) =>
-      _baseDialog(body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.cariRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+      _baseDialog(
+        body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.cariRapor),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
 
   void showStokRaporlarGridViewDialog({StokListesiModel? model}) =>
-      _baseDialog(body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.stokRapor), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+      _baseDialog(
+        body: CustomAnimatedGridView(title: "Raporlar", model: model, islemTipi: IslemTipiEnum.stokRapor),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
   void showCariSerbestRaporlarGridViewDialog() =>
-      _baseDialog(body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest), onOk: () {}, btnOkText: "İptal", dialogType: DialogType.noHeader).show();
+      _baseDialog(
+        body: const CustomAnimatedGridView(title: "Serbest Raporlar", islemTipi: IslemTipiEnum.cariSerbest),
+        onOk: () {},
+        btnOkText: "İptal",
+        dialogType: DialogType.noHeader,
+      ).show();
 
-  Future<dynamic> showStokGridViewDialog(StokListesiModel? model, {IslemTipiEnum? tip, Function(bool)? onSelected}) async {
+  Future<dynamic> showStokGridViewDialog(
+    StokListesiModel? model, {
+    IslemTipiEnum? tip,
+    Function(bool)? onSelected,
+  }) async {
     if (_yetkiController.stokListesi) {
       return await _baseDialog(
-        body: CustomAnimatedGridView<StokListesiModel>(model: model, title: model?.stokAdi, islemTipi: tip ?? IslemTipiEnum.stok, onSelected: onSelected),
+        body: CustomAnimatedGridView<StokListesiModel>(
+          model: model,
+          title: model?.stokAdi,
+          islemTipi: tip ?? IslemTipiEnum.stok,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -267,16 +443,38 @@ final class DialogManager {
     }
   }
 
-  Future<dynamic> showSiparisGridViewDialog({BaseSiparisEditModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+  Future<dynamic> showSiparisGridViewDialog({
+    BaseSiparisEditModel? model,
+    IslemTipiEnum? tip,
+    EditTipiEnum? siparisTipi,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<BaseSiparisEditModel>(model: model, islemTipi: tip ?? IslemTipiEnum.siparis, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
+        body: CustomAnimatedGridView<BaseSiparisEditModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.siparis,
+          siparisTipi: siparisTipi,
+          title: model?.belgeNo,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
       ).show();
-  Future<dynamic> showOdemeTahsilatGridViewDialog({CariHareketleriModel? model, IslemTipiEnum? tip, EditTipiEnum? siparisTipi, Function(bool)? onSelected}) async =>
+  Future<dynamic> showOdemeTahsilatGridViewDialog({
+    CariHareketleriModel? model,
+    IslemTipiEnum? tip,
+    EditTipiEnum? siparisTipi,
+    Function(bool)? onSelected,
+  }) async =>
       await _baseDialog(
-        body: CustomAnimatedGridView<CariHareketleriModel>(model: model, islemTipi: tip ?? IslemTipiEnum.tahsilatOdeme, siparisTipi: siparisTipi, title: model?.belgeNo, onSelected: onSelected),
+        body: CustomAnimatedGridView<CariHareketleriModel>(
+          model: model,
+          islemTipi: tip ?? IslemTipiEnum.tahsilatOdeme,
+          siparisTipi: siparisTipi,
+          title: model?.belgeNo,
+          onSelected: onSelected,
+        ),
         onOk: () {},
         btnOkText: "İptal",
         dialogType: DialogType.noHeader,
@@ -289,7 +487,12 @@ final class DialogManager {
         dialogType: DialogType.question,
         onOk: () async {
           DIManager.delete<LocationManager>();
-          final response = await NetworkManager().dioPost<LogoutModel>(path: ApiUrls.logoutUser, bodyModel: LogoutModel(), data: AccountModel.instance.toJson(), showLoading: true);
+          final response = await NetworkManager().dioPost<LogoutModel>(
+            path: ApiUrls.logoutUser,
+            bodyModel: LogoutModel(),
+            data: AccountModel.instance.toJson(),
+            showLoading: true,
+          );
           if (response.isSuccess) {
             showLoadingDialog("Çıkış yapılıyor...");
             hideMaterialBanner();
@@ -315,13 +518,17 @@ final class DialogManager {
         onOk: () async {
           final result = await location.requestPermission();
           if (result != PermissionStatus.granted || result != PermissionStatus.grantedLimited) {
-            await showSettingsDialog("Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.");
+            await showSettingsDialog(
+              "Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.",
+            );
           }
         },
         onCancel: () {},
       ).show();
     } else {
-      await showSettingsDialog("Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.");
+      await showSettingsDialog(
+        "Eğer konum işlemlerine ulaşmak isterseniz 'Uygulama Ayarları' üzerinden konumu aktifleştirmeniz gerekmektedir.",
+      );
     }
     //  _baseDialog(
     //   customHeader: Assets.lotties.locationLottie.lottie(),
@@ -342,31 +549,53 @@ final class DialogManager {
         onCancel: () {},
       ).show();
 
-  ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBanner(String message, {String? desc}) => ScaffoldMessenger.of(context).showMaterialBanner(
+  ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBanner(
+    String message, {
+    String? desc,
+  }) => ScaffoldMessenger.of(context).showMaterialBanner(
     MaterialBanner(
       leading: const Icon(Icons.warning_outlined),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [Text(message, style: const TextStyle(fontWeight: FontWeight.bold)), if (desc != null) TextScroll(desc)],
+        children: [
+          Text(message, style: const TextStyle(fontWeight: FontWeight.bold)),
+          if (desc != null) TextScroll(desc),
+        ],
       ),
-      actions: [if (desc != null) IconButton(icon: const Icon(Icons.chevron_right_outlined), onPressed: () => showInfoDialog(desc)) else const SizedBox.shrink()],
+      actions: [
+        if (desc != null)
+          IconButton(icon: const Icon(Icons.chevron_right_outlined), onPressed: () => showInfoDialog(desc))
+        else
+          const SizedBox.shrink(),
+      ],
     ),
   );
 
-  ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBannerWithAction(String message, {String? desc, void Function()? onAction}) =>
-      ScaffoldMessenger.of(context).showMaterialBanner(
-        MaterialBanner(
-          leading: const Icon(Icons.warning_outlined),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [Text(message, style: const TextStyle(fontWeight: FontWeight.bold)), if (desc != null) TextScroll(desc)],
-          ),
+  ScaffoldFeatureController<MaterialBanner, MaterialBannerClosedReason> showInfoMaterialBannerWithAction(
+    String message, {
+    String? desc,
+    void Function()? onAction,
+  }) => ScaffoldMessenger.of(context).showMaterialBanner(
+    MaterialBanner(
+      leading: const Icon(Icons.warning_outlined),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(message, style: const TextStyle(fontWeight: FontWeight.bold)),
+          if (desc != null) TextScroll(desc),
+        ],
+      ),
 
-          actions: [if (desc != null) IconButton(icon: const Icon(Icons.chevron_right_outlined), onPressed: onAction ?? () {}) else const SizedBox.shrink()],
-        ),
-      );
+      actions: [
+        if (desc != null)
+          IconButton(icon: const Icon(Icons.chevron_right_outlined), onPressed: onAction ?? () {})
+        else
+          const SizedBox.shrink(),
+      ],
+    ),
+  );
 
   void hideMaterialBanner() => ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
 
@@ -403,7 +632,14 @@ final class DialogManager {
               subtitle: Text(box.getAt(index).kullanici.toString()),
               leading: IconHelper.smallIcon("User-Account"),
               onTap: () {
-                Get.back(result: {"company": title, "user": preferences.get(title)?[1] ?? "", "password": preferences.get(title)?[2] ?? ""}, closeOverlays: true);
+                Get.back(
+                  result: {
+                    "company": title,
+                    "user": preferences.get(title)?[1] ?? "",
+                    "password": preferences.get(title)?[2] ?? "",
+                  },
+                  closeOverlays: true,
+                );
               },
             );
           }),
@@ -442,14 +678,26 @@ final class DialogManager {
 
   double _snackBarWidth() => kIsWeb ? Get.width * 0.5 : double.maxFinite;
 
-  SnackBar _snackBarColorful(String message, Color color) =>
-      SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.floating, backgroundColor: color, width: _snackBarWidth());
+  SnackBar _snackBarColorful(String message, Color color) => SnackBar(
+    content: Text(message, style: const TextStyle(color: Colors.white)),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: color,
+    width: _snackBarWidth(),
+  );
 
-  SnackBar _snackBarError(String message) =>
-      SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.floating, backgroundColor: ColorPalette.persianRed, width: _snackBarWidth());
+  SnackBar _snackBarError(String message) => SnackBar(
+    content: Text(message, style: const TextStyle(color: Colors.white)),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: ColorPalette.persianRed,
+    width: _snackBarWidth(),
+  );
 
-  SnackBar _snackBarSuccess(String message) =>
-      SnackBar(content: Text(message, style: const TextStyle(color: Colors.white)), behavior: SnackBarBehavior.floating, backgroundColor: ColorPalette.mantis, width: _snackBarWidth());
+  SnackBar _snackBarSuccess(String message) => SnackBar(
+    content: Text(message, style: const TextStyle(color: Colors.white)),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: ColorPalette.mantis,
+    width: _snackBarWidth(),
+  );
 
   SnackBar _snackBarInfo(String message, {Duration? duration}) => SnackBar(
     content: Text(message, style: const TextStyle(color: Colors.white)),
@@ -507,7 +755,11 @@ final class DialogManager {
               leading: IconHelper.smallIcon("User-Account"),
               onTap: () {
                 Get.back(
-                  result: LoginDialogModel(account: CacheManager.accountsBox.getAt(index), username: preferences.get(title)?[1] ?? "", password: preferences.get(title)?[2] ?? ""),
+                  result: LoginDialogModel(
+                    account: CacheManager.accountsBox.getAt(index),
+                    username: preferences.get(title)?[1] ?? "",
+                    password: preferences.get(title)?[2] ?? "",
+                  ),
                   closeOverlays: true,
                 );
               },

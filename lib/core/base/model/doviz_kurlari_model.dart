@@ -7,11 +7,7 @@ part "doviz_kurlari_model.g.dart";
 
 @unfreezed
 abstract class DovizKurlariModel with _$DovizKurlariModel, NetworkManagerMixin {
-  @JsonSerializable(
-    createFactory: true,
-    explicitToJson: true,
-    createToJson: true,
-  )
+  @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true)
   factory DovizKurlariModel({
     DateTime? tarih,
     int? sira,
@@ -33,12 +29,7 @@ abstract class DovizKurlariModel with _$DovizKurlariModel, NetworkManagerMixin {
 
 @unfreezed
 abstract class DovizKurlariRequestModel with _$DovizKurlariRequestModel, NetworkManagerMixin {
-  @JsonSerializable(
-    createFactory: true,
-    explicitToJson: true,
-    createToJson: true,
-    fieldRename: FieldRename.pascal,
-  )
+  @JsonSerializable(createFactory: true, explicitToJson: true, createToJson: true, fieldRename: FieldRename.pascal)
   factory DovizKurlariRequestModel({
     DateTime? tarih,
     int? sira,
@@ -51,19 +42,16 @@ abstract class DovizKurlariRequestModel with _$DovizKurlariRequestModel, Network
   }) = _DovizKurlariRequestModel;
   DovizKurlariRequestModel._();
   factory DovizKurlariRequestModel.fromJson(Map<String, dynamic> json) => _$DovizKurlariRequestModelFromJson(json);
-  factory DovizKurlariRequestModel.fromDovizKurlariModel(
-    DovizKurlariModel model,
-  ) =>
-      DovizKurlariRequestModel(
-        alis: model.dovAlis,
-        satis: model.dovSatis,
-        dovizAdi: model.dovizAdi,
-        dovizTipi: model.dovizTipi,
-        eFAlis: model.effAlis,
-        eFSatis: model.effSatis,
-        sira: model.sira,
-        tarih: model.tarih,
-      );
+  factory DovizKurlariRequestModel.fromDovizKurlariModel(DovizKurlariModel model) => DovizKurlariRequestModel(
+    alis: model.dovAlis,
+    satis: model.dovSatis,
+    dovizAdi: model.dovizAdi,
+    dovizTipi: model.dovizTipi,
+    eFAlis: model.effAlis,
+    eFSatis: model.effSatis,
+    sira: model.sira,
+    tarih: model.tarih,
+  );
   @override
   DovizKurlariRequestModel fromJson(Map<String, dynamic> json) => _$DovizKurlariRequestModelFromJson(json);
 

@@ -22,10 +22,18 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
   TahsilatRequestModel model = TahsilatRequestModel(tag: "DekontModel", yeniKayit: true, islemModulu: "B");
 
   @observable
-  BankaListesiRequestModel cikisBankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHV", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel cikisBankaListesiRequestModel = BankaListesiRequestModel(
+    belgeTipi: "DHV",
+    menuKodu: "YONE_BHRE",
+    arrHesapTipi: jsonEncode([0, 7, 14]),
+  );
 
   @observable
-  BankaListesiRequestModel girisBankaListesiRequestModel = BankaListesiRequestModel(belgeTipi: "DHV", menuKodu: "YONE_BHRE", arrHesapTipi: jsonEncode([0, 7, 14]));
+  BankaListesiRequestModel girisBankaListesiRequestModel = BankaListesiRequestModel(
+    belgeTipi: "DHV",
+    menuKodu: "YONE_BHRE",
+    arrHesapTipi: jsonEncode([0, 7, 14]),
+  );
 
   @observable
   ObservableList<DovizKurlariModel>? dovizKurlariListesi;
@@ -59,12 +67,15 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
     if (model.dekontIslemTuru == "DHV") {
       girisBankaListesiRequestModel = girisBankaListesiRequestModel.copyWith(bankaKodu: bankaListesiModel?.bankaKodu);
     }
-    girisBankaListesiRequestModel = girisBankaListesiRequestModel.copyWith(haricHesaplarArray: jsonEncode([bankaListesiModel?.hesapKodu]));
+    girisBankaListesiRequestModel = girisBankaListesiRequestModel.copyWith(
+      haricHesaplarArray: jsonEncode([bankaListesiModel?.hesapKodu]),
+    );
     setBankaDovizliMi(bankaListesiModel?.dovizAdi != null);
   }
 
   @action
-  void setGirisHesabi(BankaListesiModel? bankaListesiModel) => model = model.copyWith(hedefHesapKodu: bankaListesiModel?.hesapKodu);
+  void setGirisHesabi(BankaListesiModel? bankaListesiModel) =>
+      model = model.copyWith(hedefHesapKodu: bankaListesiModel?.hesapKodu);
 
   @action
   void setDovizTipi(int? dovizTipi) => model = model.copyWith(dovizTipi: dovizTipi != 0 ? dovizTipi : null);
@@ -114,5 +125,10 @@ abstract class _HesaplarArasiIslemViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> saveTahsilat() async =>
-      await networkManager.dioPost<BankaListesiModel>(path: ApiUrls.saveDekont, bodyModel: BankaListesiModel(), data: model.toJson(), showLoading: true);
+      await networkManager.dioPost<BankaListesiModel>(
+        path: ApiUrls.saveDekont,
+        bodyModel: BankaListesiModel(),
+        data: model.toJson(),
+        showLoading: true,
+      );
 }

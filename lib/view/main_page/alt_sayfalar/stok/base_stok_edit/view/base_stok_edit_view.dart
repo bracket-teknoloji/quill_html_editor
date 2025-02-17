@@ -76,96 +76,84 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (didPop, value) async {
-          if (didPop) {
-            return;
-          }
-          if (widget.model?.baseEditEnum.goruntuleMi ?? false) {
-            Get.back(result: true);
-            return;
-          }
-          await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
-        },
-        child: DefaultTabController(
-          length: tabLength,
-          child: BaseScaffold(
-            appBar: AppBar(
-              title: AppBarTitle(title: widget.appBarTitle ?? "Stok Detayları", subtitle: widget.appBarSubtitle ?? widget.model?.model?.stokAdi ?? ""),
-              actions: [
-                Visibility(
-                  visible: kaydetButonuYetki,
-                  child: IconButton(
-                    onPressed: () async {
-                      if (validate.isEmpty) {
-                        dialogManager.showAreYouSureDialog(postData);
-                      } else {
-                        dialogManager.showEmptyFieldDialog(
-                          validate.keys,
-                          onOk: () => _tabController.animateTo(validate.values.first),
-                        );
-                      }
-                    },
-                    icon: const Icon(Icons.save_outlined),
-                  ),
-                ),
-              ],
-              bottom: TabBar(
-                controller: _tabController,
-                tabs: tabs,
+    canPop: false,
+    onPopInvokedWithResult: (didPop, value) async {
+      if (didPop) {
+        return;
+      }
+      if (widget.model?.baseEditEnum.goruntuleMi ?? false) {
+        Get.back(result: true);
+        return;
+      }
+      await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
+    },
+    child: DefaultTabController(
+      length: tabLength,
+      child: BaseScaffold(
+        appBar: AppBar(
+          title: AppBarTitle(
+            title: widget.appBarTitle ?? "Stok Detayları",
+            subtitle: widget.appBarSubtitle ?? widget.model?.model?.stokAdi ?? "",
+          ),
+          actions: [
+            Visibility(
+              visible: kaydetButonuYetki,
+              child: IconButton(
+                onPressed: () async {
+                  if (validate.isEmpty) {
+                    dialogManager.showAreYouSureDialog(postData);
+                  } else {
+                    dialogManager.showEmptyFieldDialog(
+                      validate.keys,
+                      onOk: () => _tabController.animateTo(validate.values.first),
+                    );
+                  }
+                },
+                icon: const Icon(Icons.save_outlined),
               ),
             ),
-            body: TabBarView(
-              controller: _tabController,
-              children: tabPages,
-            ),
-          ),
+          ],
+          bottom: TabBar(controller: _tabController, tabs: tabs),
         ),
-      );
+        body: TabBarView(controller: _tabController, children: tabPages),
+      ),
+    ),
+  );
 
   List<Widget> get tabPages => [
-        Observer(
-          builder: (_) {
-            if (viewModel.isSuccess) {
-              return BaseStokEditGenelView(model: widget.model?.baseEditEnum);
-            } else {
-              return const Center(child: CircularProgressIndicator.adaptive());
-            }
-          },
-        ),
-        if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala) const BaseStokEditFiyatListesiView(),
-        if (yetkiController.stokFiyatGoster) BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
-        if (parametreModel.mapStokKullSahalar != null) BaseStokEditEkBilgilerView(model: widget.model?.baseEditEnum),
-        BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
-      ];
+    Observer(
+      builder: (_) {
+        if (viewModel.isSuccess) {
+          return BaseStokEditGenelView(model: widget.model?.baseEditEnum);
+        } else {
+          return const Center(child: CircularProgressIndicator.adaptive());
+        }
+      },
+    ),
+    if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala)
+      const BaseStokEditFiyatListesiView(),
+    if (yetkiController.stokFiyatGoster) BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
+    if (parametreModel.mapStokKullSahalar != null) BaseStokEditEkBilgilerView(model: widget.model?.baseEditEnum),
+    BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
+  ];
 
   List<Widget> get tabs => [
-        Tab(child: Text(loc.generalStrings.general)),
-        if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala)
-          const Tab(
-            child: Text(
-              "Fiyat Listesi",
-              maxLines: 2,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        if (yetkiController.stokFiyatGoster) const Tab(child: Text("Fiyat")),
-        if (parametreModel.mapStokKullSahalar != null)
-          const Tab(
-            child: Text(
-              "Ek Bilgiler",
-              maxLines: 2,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        const Tab(child: Text("Seriler")),
-      ];
+    Tab(child: Text(loc.generalStrings.general)),
+    if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala)
+      const Tab(child: Text("Fiyat Listesi", maxLines: 2, textAlign: TextAlign.center)),
+    if (yetkiController.stokFiyatGoster) const Tab(child: Text("Fiyat")),
+    if (parametreModel.mapStokKullSahalar != null)
+      const Tab(child: Text("Ek Bilgiler", maxLines: 2, textAlign: TextAlign.center)),
+    const Tab(child: Text("Seriler")),
+  ];
 
   Future<void> postData() async {
     final StokListesiModel model = StokListesiModel.instance;
-    final SaveStokModel saveStokModel = SaveStokModel.fromStokListesiModel(model)
-      ..requestVersion = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2
-      ..yeniKayit = widget.model?.baseEditEnum == BaseEditEnum.ekle || widget.model?.baseEditEnum == BaseEditEnum.kopyala;
+    final SaveStokModel saveStokModel =
+        SaveStokModel.fromStokListesiModel(model)
+          ..requestVersion = widget.model?.baseEditEnum == BaseEditEnum.ekle ? 1 : 2
+          ..yeniKayit =
+              widget.model?.baseEditEnum == BaseEditEnum.ekle || widget.model?.baseEditEnum == BaseEditEnum.kopyala;
     if (widget.model?.baseEditEnum == BaseEditEnum.ekle) {
       saveStokModel.islemKodu = 1;
     }
@@ -197,7 +185,10 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
   bool get kaydetButonuYetki {
     if (widget.model?.baseEditEnum.goruntuleMi ?? false) return false;
     return switch (widget.model?.baseEditEnum) {
-      BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => yetkiController.stokKartiYeniKayit,
+      BaseEditEnum.ekle ||
+      BaseEditEnum.kopyala ||
+      BaseEditEnum.revize ||
+      BaseEditEnum.taslak => yetkiController.stokKartiYeniKayit,
       BaseEditEnum.duzenle => yetkiController.stokKartiDuzenleme,
       _ => false,
     };

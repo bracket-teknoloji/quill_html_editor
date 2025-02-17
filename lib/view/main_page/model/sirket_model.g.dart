@@ -13,9 +13,7 @@ class SirketModelAdapter extends TypeAdapter<SirketModel> {
   @override
   SirketModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
+    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
     return SirketModel()
       ..sirket = fields[0] as String?
       ..devsirket = fields[1] as String?
@@ -43,25 +41,23 @@ class SirketModelAdapter extends TypeAdapter<SirketModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is SirketModelAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
+      other is SirketModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-SirketModel _$SirketModelFromJson(Map<String, dynamic> json) => SirketModel()
-  ..sirket = json['SIRKET'] as String?
-  ..devsirket = json['DEVSIRKET'] as String?
-  ..yil = (json['YIL'] as num?)?.toInt()
-  ..isDevredilmis = json['isDevredilmis'] as bool?;
+SirketModel _$SirketModelFromJson(Map<String, dynamic> json) =>
+    SirketModel()
+      ..sirket = json['SIRKET'] as String?
+      ..devsirket = json['DEVSIRKET'] as String?
+      ..yil = (json['YIL'] as num?)?.toInt()
+      ..isDevredilmis = json['isDevredilmis'] as bool?;
 
-Map<String, dynamic> _$SirketModelToJson(SirketModel instance) =>
-    <String, dynamic>{
-      if (instance.sirket case final value?) 'SIRKET': value,
-      if (instance.devsirket case final value?) 'DEVSIRKET': value,
-      if (instance.yil case final value?) 'YIL': value,
-      if (instance.isDevredilmis case final value?) 'isDevredilmis': value,
-    };
+Map<String, dynamic> _$SirketModelToJson(SirketModel instance) => <String, dynamic>{
+  if (instance.sirket case final value?) 'SIRKET': value,
+  if (instance.devsirket case final value?) 'DEVSIRKET': value,
+  if (instance.yil case final value?) 'YIL': value,
+  if (instance.isDevredilmis case final value?) 'isDevredilmis': value,
+};

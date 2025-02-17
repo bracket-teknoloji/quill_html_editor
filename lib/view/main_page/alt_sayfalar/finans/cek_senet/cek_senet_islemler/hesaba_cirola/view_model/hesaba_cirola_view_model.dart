@@ -43,6 +43,10 @@ abstract class _HesabaCirolaViewModelBase with Store, MobxNetworkMixin {
   void setPlasiyerKodu(String? value) => model = model.copyWith(plasiyerKodu: value);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveData() async =>
-      await networkManager.dioPost(path: ApiUrls.saveCekSenetler, showLoading: true, bodyModel: SaveCekSenetModel(), data: model.toJson());
+  Future<GenericResponseModel<NetworkManagerMixin>> saveData() async => await networkManager.dioPost(
+    path: ApiUrls.saveCekSenetler,
+    showLoading: true,
+    bodyModel: SaveCekSenetModel(),
+    data: model.toJson(),
+  );
 }

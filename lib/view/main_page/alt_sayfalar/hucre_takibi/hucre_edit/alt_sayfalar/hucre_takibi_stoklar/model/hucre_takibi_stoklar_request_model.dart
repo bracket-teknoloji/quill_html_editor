@@ -17,9 +17,11 @@ class HucreTakibiStoklarRequestModel with _$HucreTakibiStoklarRequestModel {
     String? belgeNo,
   }) = _HucreTakibiStoklarRequestModel;
 
-  factory HucreTakibiStoklarRequestModel.fromJson(Map<String, dynamic> json) => _$HucreTakibiStoklarRequestModelFromJson(json);
+  factory HucreTakibiStoklarRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$HucreTakibiStoklarRequestModelFromJson(json);
 
-  factory HucreTakibiStoklarRequestModel.fromHucreTransferiModel(HucreTransferiModel model) => HucreTakibiStoklarRequestModel(
+  factory HucreTakibiStoklarRequestModel.fromHucreTransferiModel(HucreTransferiModel model) =>
+      HucreTakibiStoklarRequestModel(
         depoKodu: model.depoKodu,
         islemTuru: model.islemTuru,
         cariKodu: model.belgeModel?.cariKodu,

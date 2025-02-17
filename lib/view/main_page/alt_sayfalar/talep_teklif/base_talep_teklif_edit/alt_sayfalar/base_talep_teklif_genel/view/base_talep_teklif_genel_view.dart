@@ -42,7 +42,8 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala || siparisModel.isRevize;
   bool get enable => widget.model.enable;
-  TalTekParam? get taltekParam => parametreModel.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == model.belgeTuru);
+  TalTekParam? get taltekParam =>
+      parametreModel.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == model.belgeTuru);
 
   late final TextEditingController _belgeNoController;
   late final TextEditingController _resmiBelgeNoController;
@@ -79,12 +80,20 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
     _teslimCariController = TextEditingController(text: model.teslimCariAdi);
     _projeController = TextEditingController(text: model.projeAciklama ?? model.projeKodu);
     _plasiyerController = TextEditingController(text: model.plasiyerAciklama);
-    _belgeTipiController = TextEditingController(text: viewModel.belgeTipi.keys.firstWhereOrNull((element) => viewModel.belgeTipi[element] == model.tipi));
+    _belgeTipiController = TextEditingController(
+      text: viewModel.belgeTipi.keys.firstWhereOrNull((element) => viewModel.belgeTipi[element] == model.tipi),
+    );
     _belgeTipiController.text = (model.tipi ?? 0) < 6 ? "Yurtiçi" : "Yurtdışı";
     _tarihController = TextEditingController(text: model.tarih.toDateString);
     _topluDepoController = TextEditingController(text: model.depoTanimi ?? model.topluDepo.toStringIfNotNull);
     _ozelKod2Controller = TextEditingController(
-      text: parametreModel.listOzelKodTum?.firstWhereOrNull((element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2)?.aciklama ?? model.ozelKod2,
+      text:
+          parametreModel.listOzelKodTum
+              ?.firstWhereOrNull(
+                (element) => element.belgeTipi == "S" && element.fiyatSirasi == 0 && element.kod == model.ozelKod2,
+              )
+              ?.aciklama ??
+          model.ozelKod2,
     );
     _aciklama1Controller = TextEditingController(text: model.acik1);
     _aciklama2Controller = TextEditingController(text: model.acik2);
@@ -188,7 +197,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                     ),
               ),
               onTap: () async {
-                final cariModel = await Get.toNamed("mainPage/cariRehberi", arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue));
+                final cariModel = await Get.toNamed(
+                  "mainPage/cariRehberi",
+                  arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
+                );
                 if (cariModel == null) return;
                 final result = await networkManager.getCariModel(
                   CariRequestModel.fromCariListesiModel(cariModel)
@@ -209,7 +221,9 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                   viewModel
                     ..setCariAdi(result.cariAdi)
                     ..setCariKodu(result.cariKodu)
-                    ..setPlasiyer(PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu));
+                    ..setPlasiyer(
+                      PlasiyerList(plasiyerAciklama: result.plasiyerAciklama, plasiyerKodu: result.plasiyerKodu),
+                    );
                   viewModel.model.vadeGunu = result.vadeGunu;
                   viewModel.model.efaturaTipi = result.efaturaTipi;
                   _belgeNoController.clear();
@@ -219,7 +233,8 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
             ),
             Row(
               children: <Widget>[
-                if (yetkiController.projeUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false))
+                if (yetkiController.projeUygulamasiAcikMi &&
+                    !(model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false))
                   Expanded(
                     child: CustomTextField(
                       labelText: "Proje",
@@ -230,7 +245,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                       enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("proje") ?? false),
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.projeKodu ?? "")),
                       onTap: () async {
-                        final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.model.projeKodu);
+                        final BaseProjeModel? result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                          context,
+                          viewModel.model.projeKodu,
+                        );
                         if (result is BaseProjeModel) {
                           _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                           viewModel.setProje(result);
@@ -238,7 +256,8 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                       },
                     ),
                   ),
-                if (yetkiController.plasiyerUygulamasiAcikMi && !(model.getEditTipiEnum?.gizlenecekAlanlar("plasiyer") ?? false))
+                if (yetkiController.plasiyerUygulamasiAcikMi &&
+                    !(model.getEditTipiEnum?.gizlenecekAlanlar("plasiyer") ?? false))
                   Expanded(
                     child: CustomTextField(
                       labelText: "Plasiyer",
@@ -249,7 +268,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                       enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("plasiyer") ?? false),
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.plasiyerKodu ?? "")),
                       onTap: () async {
-                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.model.plasiyerKodu);
+                        final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                          context,
+                          viewModel.model.plasiyerKodu,
+                        );
                         if (result != null) {
                           _plasiyerController.text = result.plasiyerAciklama ?? "";
                           viewModel.setPlasiyer(result);
@@ -273,7 +295,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                       enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("belge_tipi") ?? false),
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.tipi.toStringIfNotNull ?? "")),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(context, model.tipi);
+                        final result = await bottomSheetDialogManager.showBelgeTipiBottomSheetDialog(
+                          context,
+                          model.tipi,
+                        );
                         if (result is BelgeTipiModel) {
                           _belgeTipiController.text = result.belgeTipi ?? "";
                           viewModel.setBelgeTipi(result.belgeTipiId);
@@ -290,7 +315,9 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                     controller: _tarihController,
                     enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("teslim_cari") ?? false),
                     onTap: () async {
-                      final DateTime? result = await dialogManager.showDateTimePicker(initialDate: viewModel.model.tarih);
+                      final DateTime? result = await dialogManager.showDateTimePicker(
+                        initialDate: viewModel.model.tarih,
+                      );
                       if (result != null) {
                         _tarihController.text = result.toDateString;
                         viewModel.setTarih(result);
@@ -303,7 +330,8 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false) && (yetkiController.topluDepoKullan(model.getEditTipiEnum)))
+                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("toplu_depo") ?? false) &&
+                    (yetkiController.topluDepoKullan(model.getEditTipiEnum)))
                   Expanded(
                     child: CustomTextField(
                       labelText: "Toplu Depo",
@@ -315,7 +343,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                       onClear: () => viewModel.setTopluDepoKodu(null),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(context, viewModel.model.topluDepo);
+                        final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(
+                          context,
+                          viewModel.model.topluDepo,
+                        );
                         if (result != null) {
                           _topluDepoController.text = result.depoTanimi ?? "";
                           viewModel.setTopluDepoKodu(result.depoKodu);
@@ -333,7 +364,10 @@ final class BaseTalepTeklifGenelViewState extends BaseState<BaseTalepTeklifGenel
                   builder:
                       (_) => Switch.adaptive(
                         value: viewModel.kdvDahil,
-                        onChanged: (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false)) ? (value) => viewModel.changeKdvDahil(value) : null,
+                        onChanged:
+                            (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false))
+                                ? (value) => viewModel.changeKdvDahil(value)
+                                : null,
                       ),
                 ),
               ),

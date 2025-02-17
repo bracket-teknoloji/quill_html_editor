@@ -44,43 +44,49 @@ final class _BelgeRehberiViewState extends State<BelgeRehberiView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) => AppBarTitle(
               title: "Belge Rehberi (${viewModel.belgeRehberiList?.length ?? 0})",
-              subtitle: EditTipiEnum.values.where((element) => element.rawValue == widget.model.pickerBelgeTuru).firstOrNull?.getName,
+              subtitle:
+                  EditTipiEnum.values
+                      .where((element) => element.rawValue == widget.model.pickerBelgeTuru)
+                      .firstOrNull
+                      ?.getName,
             ),
+      ),
+    ),
+    body: Column(
+      children: [
+        CustomTextField(
+          labelText: "Belge No",
+          controller: searchController,
+          onChanged: viewModel.setSearchText,
+          onSubmitted: (value) => viewModel.getData(),
+          suffix: IconButton(
+            onPressed: () async {
+              final result = await Get.toNamed("qr");
+              if (result is String) {
+                searchController.text = result;
+                viewModel.setSearchText(result);
+                await viewModel.getData();
+              }
+            },
+            icon: const Icon(Icons.qr_code_scanner_outlined),
           ),
-        ),
-        body: Column(
-          children: [
-            CustomTextField(
-              labelText: "Belge No",
-              controller: searchController,
-              onChanged: viewModel.setSearchText,
-              onSubmitted: (value) => viewModel.getData(),
-              suffix: IconButton(
-                onPressed: () async {
-                  final result = await Get.toNamed("qr");
-                  if (result is String) {
-                    searchController.text = result;
-                    viewModel.setSearchText(result);
-                    await viewModel.getData();
-                  }
-                },
-                icon: const Icon(Icons.qr_code_scanner_outlined),
-              ),
-            ).paddingAll(UIHelper.lowSize),
-            Expanded(
-              child: Observer(
-                builder: (_) => RefreshableListView<BelgeRehberiModel>(
+        ).paddingAll(UIHelper.lowSize),
+        Expanded(
+          child: Observer(
+            builder:
+                (_) => RefreshableListView<BelgeRehberiModel>(
                   onRefresh: viewModel.getData,
                   items: viewModel.belgeRehberiList,
                   itemBuilder: (item) => BelgeRehberiCard(model: item),
                 ),
-              ),
-            ),
-          ],
+          ),
         ),
-      );
+      ],
+    ),
+  );
 }

@@ -13,10 +13,5 @@ final class HeroWidget extends StatefulWidget {
 
 final class _HeroWidgetState extends BaseState<HeroWidget> {
   @override
-  Widget build(BuildContext context) => Column(
-        children: [
-          widget.child,
-          const Text("Deneme"),
-        ],
-      );
+  Widget build(BuildContext context) => Column(children: [widget.child, const Text("Deneme")]);
 }

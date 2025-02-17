@@ -23,10 +23,8 @@ abstract class _ImagePickerViewModelBase with Store, MobxNetworkMixin {
   Uint8List? image;
 
   @action
-  void setRequestModel(EvraklarRequestModel? model) => requestModel = EvrakEditModel(
-        belgeNo: model?.belgeNo,
-        belgeTipi: model?.belgeTipi,
-      );
+  void setRequestModel(EvraklarRequestModel? model) =>
+      requestModel = EvrakEditModel(belgeNo: model?.belgeNo, belgeTipi: model?.belgeTipi);
 
   @action
   void setImage(Uint8List? value) => image = value;
@@ -44,6 +42,10 @@ abstract class _ImagePickerViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? value) => requestModel = requestModel?.copyWith(aciklama: value);
 
   @action
-  Future<GenericResponseModel<EvraklarRequestModel>> uploadEvrak() async =>
-      await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: EvraklarRequestModel(), showLoading: true, data: requestModel?.copyWith(islemKodu: 1).toJson());
+  Future<GenericResponseModel<EvraklarRequestModel>> uploadEvrak() async => await networkManager.dioPost(
+    path: ApiUrls.saveEvrak,
+    bodyModel: EvraklarRequestModel(),
+    showLoading: true,
+    data: requestModel?.copyWith(islemKodu: 1).toJson(),
+  );
 }

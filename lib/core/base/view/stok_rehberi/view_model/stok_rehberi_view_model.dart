@@ -21,7 +21,14 @@ part "stok_rehberi_view_model.g.dart";
 
 final class StokRehberiViewModel = _StokRehberiViewModelBase with _$StokRehberiViewModel;
 
-abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableMixin<StokListesiModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+abstract class _StokRehberiViewModelBase
+    with
+        Store,
+        MobxNetworkMixin,
+        ListableMixin<StokListesiModel>,
+        SearchableMixin,
+        ScrollControllableMixin,
+        PageableMixin {
   @override
   void changeSearchBarStatus() {}
 
@@ -56,22 +63,28 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   void changeIsScrolledDown(bool value) => isScrollDown = value;
 
   @action
-  void changeArrKod1(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod1: value ?? []);
+  void changeArrKod1(List<BaseGrupKoduModel>? value) =>
+      stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod1: value ?? []);
 
   @action
-  void changeArrKod2(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod2: value ?? []);
+  void changeArrKod2(List<BaseGrupKoduModel>? value) =>
+      stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod2: value ?? []);
 
   @action
-  void changeArrKod3(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod3: value ?? []);
+  void changeArrKod3(List<BaseGrupKoduModel>? value) =>
+      stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod3: value ?? []);
 
   @action
-  void changeArrKod4(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod4: value ?? []);
+  void changeArrKod4(List<BaseGrupKoduModel>? value) =>
+      stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod4: value ?? []);
 
   @action
-  void changeArrKod5(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod5: value ?? []);
+  void changeArrKod5(List<BaseGrupKoduModel>? value) =>
+      stokBottomSheetModel = stokBottomSheetModel.copyWith(arrKod5: value ?? []);
 
   @action
-  void setSearchList(List<StokDetayliAramaAlanlar>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(searchList: value);
+  void setSearchList(List<StokDetayliAramaAlanlar>? value) =>
+      stokBottomSheetModel = stokBottomSheetModel.copyWith(searchList: value);
 
   @override
   @observable
@@ -106,7 +119,8 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   @action
   void setSearchText(String? value) => searchText = value;
   @action
-  void setGrupKodu(List<BaseGrupKoduModel>? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(arrGrupKodu: value);
+  void setGrupKodu(List<BaseGrupKoduModel>? value) =>
+      stokBottomSheetModel = stokBottomSheetModel.copyWith(arrGrupKodu: value);
 
   @action
   void setFiyatGrubu(String? value) => stokBottomSheetModel = stokBottomSheetModel.copyWith(fiyatGrubu: value);
@@ -159,7 +173,11 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioPost<StokListesiModel>(path: ApiUrls.getStoklar, data: getRequestModel.toJsonWithList(), bodyModel: StokListesiModel());
+    final result = await networkManager.dioPost<StokListesiModel>(
+      path: ApiUrls.getStoklar,
+      data: getRequestModel.toJsonWithList(),
+      bodyModel: StokListesiModel(),
+    );
     if (result.isSuccess) {
       if (result.dataList.any((element) => element.otvUygula != null)) {
         debugPrint(result.dataList.firstWhereOrNull((element) => element.otvUygula != null)?.stokAdi);
@@ -179,11 +197,23 @@ abstract class _StokRehberiViewModelBase with Store, MobxNetworkMixin, ListableM
   }
 
   @action
-  Future<void> getGrupKodlari() async => setGrupKodlari(await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: kategoriMi));
+  Future<void> getGrupKodlari() async => setGrupKodlari(
+    await networkManager.getGrupKod(
+      name: GrupKoduEnum.stok,
+      grupNo: grupNo,
+      kullanimda: true,
+      kategoriModuMu: kategoriMi,
+    ),
+  );
 
   @action
   Future<void> getKategoriGrupKodlari() async {
-    final result = await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: grupNo, kullanimda: true, kategoriModuMu: true);
+    final result = await networkManager.getGrupKod(
+      name: GrupKoduEnum.stok,
+      grupNo: grupNo,
+      kullanimda: true,
+      kategoriModuMu: true,
+    );
     if (result.isNotEmpty) {
       setKategoriGrupKodlari(result);
     }

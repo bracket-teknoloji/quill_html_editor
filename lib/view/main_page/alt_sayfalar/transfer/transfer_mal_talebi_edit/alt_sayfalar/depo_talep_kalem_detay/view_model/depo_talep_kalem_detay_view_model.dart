@@ -26,7 +26,8 @@ abstract class _DepoTalepKalemDetayViewModelBase with Store, MobxNetworkMixin {
   void setModel(KalemModel value) => model = value;
 
   @action
-  void setOlcuBirimi(OlcuBirimiRecord value) => model = model.copyWith(olcuBirimKodu: value.kodu, olcuBirimiAdi: value.adi);
+  void setOlcuBirimi(OlcuBirimiRecord value) =>
+      model = model.copyWith(olcuBirimKodu: value.kodu, olcuBirimiAdi: value.adi);
 
   @action
   void setMiktar(double? value) => model = model.copyWith(miktar: value, miktar2: value);
@@ -43,12 +44,7 @@ abstract class _DepoTalepKalemDetayViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.getDepoTalepKalemleri,
       bodyModel: KalemModel(),
       showLoading: true,
-      data: model
-          .copyWith(
-            islemKodu: 4,
-            talepId: BaseSiparisEditModel.instance.id,
-          )
-          .toJson(),
+      data: model.copyWith(islemKodu: 4, talepId: BaseSiparisEditModel.instance.id).toJson(),
     );
     return result.isSuccess;
   }

@@ -33,13 +33,13 @@ class UskReceteModel with _$UskReceteModel, NetworkManagerMixin, BaseStokMixin {
   factory UskReceteModel.fromJson(Map<String, dynamic> json) => _$UskReceteModelFromJson(json);
 
   factory UskReceteModel.fromKalemModel(KalemModel model) => UskReceteModel(
-        stokKodu: model.stokKodu,
-        stokAdi: model.stokAdi,
-        seriList: model.seriList,
-        miktar: model.miktar,
-        sira: model.sira.toStringIfNotNull ?? "0",
-        seriMiktarKadar: model.seriMiktarKadarSor == true ? "E" : "H",
-      );
+    stokKodu: model.stokKodu,
+    stokAdi: model.stokAdi,
+    seriList: model.seriList,
+    miktar: model.miktar,
+    sira: model.sira.toStringIfNotNull ?? "0",
+    seriMiktarKadar: model.seriMiktarKadarSor == true ? "E" : "H",
+  );
 
   @override
   UskReceteModel fromJson(Map<String, dynamic> json) => _$UskReceteModelFromJson(json);

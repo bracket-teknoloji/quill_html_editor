@@ -34,87 +34,84 @@ final class _HucreHareketleriViewState extends State<HucreHareketleriView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) => AppBarTitle(
               title: "Hücre Hareketleri (${viewModel.hucreHareketleriListesi?.length ?? 0})",
               subtitle: widget.model.stokKodu,
             ),
-          ),
-        ),
-        bottomNavigationBar: BottomBarWidget(
-          isScrolledDown: true,
+      ),
+    ),
+    bottomNavigationBar: BottomBarWidget(
+      isScrolledDown: true,
+      children: [
+        FooterButton(children: [const Text("Giriş"), Observer(builder: (_) => Text(viewModel.toplamGiris.toString()))]),
+        FooterButton(children: [const Text("Çıkış"), Observer(builder: (_) => Text(viewModel.toplamCikis.toString()))]),
+        FooterButton(
           children: [
-            FooterButton(
-              children: [
-                const Text("Giriş"),
-                Observer(
-                  builder: (_) => Text(viewModel.toplamGiris.toString()),
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Çıkış"),
-                Observer(
-                  builder: (_) => Text(viewModel.toplamCikis.toString()),
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Bakiye"),
-                Observer(
-                  builder: (_) => Text(viewModel.bakiye.toString(), style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye.toDouble()))),
-                ),
-              ],
+            const Text("Bakiye"),
+            Observer(
+              builder:
+                  (_) => Text(
+                    viewModel.bakiye.toString(),
+                    style: TextStyle(color: UIHelper.getColorWithValue(viewModel.bakiye.toDouble())),
+                  ),
             ),
           ],
         ),
-        body: body(),
-      );
+      ],
+    ),
+    body: body(),
+  );
 
   RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: viewModel.getData,
-        child: Observer(
-          builder: (_) {
-            if (viewModel.hucreHareketleriListesi == null) return const ListViewShimmer();
-            if (viewModel.hucreHareketleriListesi!.isEmpty) return const Center(child: Text("Hücre hareketi bulunamadı!"));
-            return ListView.builder(
-              itemCount: viewModel.hucreHareketleriListesi!.length,
-              itemBuilder: (context, index) {
-                final item = viewModel.hucreHareketleriListesi![index];
-                return Card(
-                  child: ListTile(
-                    title: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+    onRefresh: viewModel.getData,
+    child: Observer(
+      builder: (_) {
+        if (viewModel.hucreHareketleriListesi == null) return const ListViewShimmer();
+        if (viewModel.hucreHareketleriListesi!.isEmpty) return const Center(child: Text("Hücre hareketi bulunamadı!"));
+        return ListView.builder(
+          itemCount: viewModel.hucreHareketleriListesi!.length,
+          itemBuilder: (context, index) {
+            final item = viewModel.hucreHareketleriListesi![index];
+            return Card(
+              child: ListTile(
+                title: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: Text(item.kayittarihi?.toDateTimeString() ?? "")),
+                    Column(
                       children: [
-                        Expanded(child: Text(item.kayittarihi?.toDateTimeString() ?? "")),
-                        Column(
-                          children: [
-                            Text("${item.netMiktar} AD", style: TextStyle(color: UIHelper.getColorWithValue(item.gc == "G" ? 1 : -1))),
-                            Icon(item.gc == "G" ? Icons.arrow_back : Icons.arrow_forward, color: UIHelper.getColorWithValue(item.gc == "G" ? 1 : -1)),
-                          ],
+                        Text(
+                          "${item.netMiktar} AD",
+                          style: TextStyle(color: UIHelper.getColorWithValue(item.gc == "G" ? 1 : -1)),
+                        ),
+                        Icon(
+                          item.gc == "G" ? Icons.arrow_back : Icons.arrow_forward,
+                          color: UIHelper.getColorWithValue(item.gc == "G" ? 1 : -1),
                         ),
                       ],
                     ),
-                    subtitle: CustomLayoutBuilder.divideInHalf(
-                      children: [
-                        if (item.stharFisno != null) Text("Belge No: ${item.stharFisno}"),
-                        if (item.stokKodu != null) Text("Stok Kodu: ${item.stokKodu}"),
-                        if (item.yapkod != null) Text("YapKod: ${item.yapkod}"),
-                        if (item.hucreKodu != null) Text("Hücre: ${item.hucreKodu}"),
-                        if (item.depoTanimi != null) Text("Depo: ${item.depoTanimi}"),
-                        if (item.hareketTuru != null) Text("Hareket Türü: ${item.hareketTuru}"),
-                        if (item.kayityapankul != null) Text("Kaydeden: ${item.kayityapankul}"),
-                        if (item.inckeyno != null) Text("Kayıt No: ${item.inckeyno}"),
-                      ],
-                    ),
-                  ),
-                );
-              },
+                  ],
+                ),
+                subtitle: CustomLayoutBuilder.divideInHalf(
+                  children: [
+                    if (item.stharFisno != null) Text("Belge No: ${item.stharFisno}"),
+                    if (item.stokKodu != null) Text("Stok Kodu: ${item.stokKodu}"),
+                    if (item.yapkod != null) Text("YapKod: ${item.yapkod}"),
+                    if (item.hucreKodu != null) Text("Hücre: ${item.hucreKodu}"),
+                    if (item.depoTanimi != null) Text("Depo: ${item.depoTanimi}"),
+                    if (item.hareketTuru != null) Text("Hareket Türü: ${item.hareketTuru}"),
+                    if (item.kayityapankul != null) Text("Kaydeden: ${item.kayityapankul}"),
+                    if (item.inckeyno != null) Text("Kayıt No: ${item.inckeyno}"),
+                  ],
+                ),
+              ),
             );
           },
-        ),
-      );
+        );
+      },
+    ),
+  );
 }

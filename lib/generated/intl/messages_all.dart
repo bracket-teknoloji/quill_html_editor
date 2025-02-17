@@ -19,14 +19,12 @@ import "package:intl/src/intl_helpers.dart";
 import "messages_en.dart" as messages_en;
 
 typedef Future<dynamic> LibraryLoader();
-Map<String, LibraryLoader> _deferredLibraries = {
-  "en": () => new SynchronousFuture(null),
-};
+Map<String, LibraryLoader> _deferredLibraries = {"en": () => new SynchronousFuture(null)};
 
 MessageLookupByLibrary? _findExact(String localeName) => switch (localeName) {
-      "en" => messages_en.messages,
-      _ => null,
-    };
+  "en" => messages_en.messages,
+  _ => null,
+};
 
 /// User programs should call this before using [localeName] for messages.
 Future<bool> initializeMessages(String localeName) {

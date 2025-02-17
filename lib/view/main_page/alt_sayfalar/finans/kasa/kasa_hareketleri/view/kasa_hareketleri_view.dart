@@ -55,59 +55,69 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        // resizeToAvoidBottomInset: true,
-        // extendBody: true,
-        // extendBodyBehindAppBar: false,
-        appBar: appBar(),
-        bottomNavigationBar: bottomBar(),
-        body: body(),
-      );
+    // resizeToAvoidBottomInset: true,
+    // extendBody: true,
+    // extendBodyBehindAppBar: false,
+    appBar: appBar(),
+    bottomNavigationBar: bottomBar(),
+    body: body(),
+  );
 
   AppBar appBar() => AppBar(
-        title: Observer(builder: (_) => AppBarTitle(title: "Kasa Hareketleri (${viewModel.observableList?.length ?? 0})", subtitle: widget.model?.kasaKodu)),
-      );
+    title: Observer(
+      builder:
+          (_) => AppBarTitle(
+            title: "Kasa Hareketleri (${viewModel.observableList?.length ?? 0})",
+            subtitle: widget.model?.kasaKodu,
+          ),
+    ),
+  );
 
   Widget body() => Observer(
-        builder: (_) => RefreshableListView.pageable(
+    builder:
+        (_) => RefreshableListView.pageable(
           scrollController: _scrollController,
           onRefresh: viewModel.getData,
           dahaVarMi: viewModel.dahaVarMi,
           items: viewModel.observableList,
           itemBuilder: kasaHareketleriCard,
         ),
-      );
+  );
 
   Column body2() => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Card(
-            child: Observer(
-              builder: (_) => Text(
+    crossAxisAlignment: CrossAxisAlignment.stretch,
+    children: [
+      Card(
+        child: Observer(
+          builder:
+              (_) => Text(
                 "Devir Tutarı: ${(widget.model?.dovizli == "E" ? widget.model?.dovizDevirTutari : widget.model?.devirTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
               ).paddingAll(UIHelper.lowSize).paddingOnly(left: UIHelper.midSize),
-            ),
-          ).paddingSymmetric(horizontal: UIHelper.lowSize),
-          Expanded(
-            child: RefreshIndicator.adaptive(
-              onRefresh: () async => await viewModel.resetList(),
-              child: Observer(
-                builder: (_) {
-                  if (viewModel.observableList.ext.isNullOrEmpty) {
-                    if (viewModel.observableList != null) {
-                      return const Center(child: Text("Kasa hareketi bulunamadı."));
-                    } else {
-                      return const ListViewShimmer();
-                    }
-                  }
-                  return Observer(
-                    builder: (_) => ListView.builder(
+        ),
+      ).paddingSymmetric(horizontal: UIHelper.lowSize),
+      Expanded(
+        child: RefreshIndicator.adaptive(
+          onRefresh: () async => await viewModel.resetList(),
+          child: Observer(
+            builder: (_) {
+              if (viewModel.observableList.ext.isNullOrEmpty) {
+                if (viewModel.observableList != null) {
+                  return const Center(child: Text("Kasa hareketi bulunamadı."));
+                } else {
+                  return const ListViewShimmer();
+                }
+              }
+              return Observer(
+                builder:
+                    (_) => ListView.builder(
                       padding: UIHelper.lowPadding,
                       primary: false,
                       controller: _scrollController,
-                      physics: const BouncingScrollPhysics(
-                        parent: AlwaysScrollableScrollPhysics(),
-                      ),
-                      itemCount: viewModel.observableList != null ? ((viewModel.observableList?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0)) : 0,
+                      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                      itemCount:
+                          viewModel.observableList != null
+                              ? ((viewModel.observableList?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0))
+                              : 0,
                       itemBuilder: (context, index) {
                         if (index == (viewModel.observableList?.length ?? 0)) {
                           return const Center(child: CircularProgressIndicator.adaptive());
@@ -116,74 +126,74 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                         return kasaHareketleriCard(item);
                       },
                     ),
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
-      );
-
-  Card kasaHareketleriCard(KasaIslemleriModel? item) => Card(
-        child: ListTile(
-          onTap: () async {
-            await bottomSheetDialogManager.showBottomSheetDialog(
-              context,
-              title: item?.tipAciklama ?? "",
-              children: [
-                BottomSheetModel(
-                  title: loc.generalStrings.delete,
-                  iconWidget: Icons.delete_outline_outlined,
-                  onTap: () {
-                    Get.back();
-                    dialogManager.showAreYouSureDialog(() async {
-                      final result = await viewModel.deleteData(item?.inckeyno);
-                      if (result.isSuccess) {
-                        dialogManager.showSuccessSnackBar("${(result.message) ?? "Başarılı"} ${item?.inckeyno}");
-                        viewModel.observableList?.remove(item);
-                      } else {
-                        dialogManager.showErrorSnackBar(result.message ?? "Başarısız");
-                      }
-                    });
-                  },
-                ),
-              ],
-            );
-          },
-          title: Column(
-            children: [
-              Row(
-                children: [
-                  Text("${item?.tarih.toDateString ?? ""} "),
-                  if (item?.tipAciklama != null)
-                    ColorfulBadge(
-                      label: Text(item?.tipAciklama ?? ""),
-                      badgeColorEnum: BadgeColorEnum.tipAciklama,
-                    ),
-                ],
-              ),
-            ],
-          ),
-          subtitle: CustomLayoutBuilder.divideInHalf(
-            children: [
-              if (item?.kasaKodu != null) Text("Kasa: ${item?.kasaKodu ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)),
-              if (item?.belgeNo != null) Text("Belge No: ${item?.belgeNo ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)),
-              if (item?.cariKodu != null) Text("Hesap Kodu: ${item?.cariKodu ?? ""}"),
-              if (item?.cariAdi != null) Text("Hesap Adı: ${item?.cariAdi ?? ""}"),
-              if (item?.projeKodu != null) Text("Proje: ${item?.projeKodu ?? ""}"),
-              if (item?.plasiyerKodu != null) Text("Plasiyer: ${item?.plasiyerKodu ?? ""}"),
-              if (item?.aciklama != null) Text("Açıklama: ${item?.aciklama ?? ""}"),
-            ],
-          ),
-          trailing: Text(
-            "${item?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${viewModel.dovizAdi}",
-            style: TextStyle(color: item?.gc == "G" ? ColorPalette.mantis : ColorPalette.persianRed),
+              );
+            },
           ),
         ),
-      );
+      ),
+    ],
+  );
+
+  Card kasaHareketleriCard(KasaIslemleriModel? item) => Card(
+    child: ListTile(
+      onTap: () async {
+        await bottomSheetDialogManager.showBottomSheetDialog(
+          context,
+          title: item?.tipAciklama ?? "",
+          children: [
+            BottomSheetModel(
+              title: loc.generalStrings.delete,
+              iconWidget: Icons.delete_outline_outlined,
+              onTap: () {
+                Get.back();
+                dialogManager.showAreYouSureDialog(() async {
+                  final result = await viewModel.deleteData(item?.inckeyno);
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar("${(result.message) ?? "Başarılı"} ${item?.inckeyno}");
+                    viewModel.observableList?.remove(item);
+                  } else {
+                    dialogManager.showErrorSnackBar(result.message ?? "Başarısız");
+                  }
+                });
+              },
+            ),
+          ],
+        );
+      },
+      title: Column(
+        children: [
+          Row(
+            children: [
+              Text("${item?.tarih.toDateString ?? ""} "),
+              if (item?.tipAciklama != null)
+                ColorfulBadge(label: Text(item?.tipAciklama ?? ""), badgeColorEnum: BadgeColorEnum.tipAciklama),
+            ],
+          ),
+        ],
+      ),
+      subtitle: CustomLayoutBuilder.divideInHalf(
+        children: [
+          if (item?.kasaKodu != null)
+            Text("Kasa: ${item?.kasaKodu ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)),
+          if (item?.belgeNo != null)
+            Text("Belge No: ${item?.belgeNo ?? ""}", style: const TextStyle(color: ColorPalette.slateGray)),
+          if (item?.cariKodu != null) Text("Hesap Kodu: ${item?.cariKodu ?? ""}"),
+          if (item?.cariAdi != null) Text("Hesap Adı: ${item?.cariAdi ?? ""}"),
+          if (item?.projeKodu != null) Text("Proje: ${item?.projeKodu ?? ""}"),
+          if (item?.plasiyerKodu != null) Text("Plasiyer: ${item?.plasiyerKodu ?? ""}"),
+          if (item?.aciklama != null) Text("Açıklama: ${item?.aciklama ?? ""}"),
+        ],
+      ),
+      trailing: Text(
+        "${item?.tutar?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""} ${viewModel.dovizAdi}",
+        style: TextStyle(color: item?.gc == "G" ? ColorPalette.mantis : ColorPalette.persianRed),
+      ),
+    ),
+  );
 
   Observer bottomBar() => Observer(
-        builder: (_) => BottomBarWidget(
+    builder:
+        (_) => BottomBarWidget(
           isScrolledDown: viewModel.isScrollDown,
           children: [
             FooterButton(
@@ -230,14 +240,22 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
               children: [
                 const Text("Bakiye"),
                 Observer(
-                  builder: (_) => Text(
-                    "${(widget.model?.dovizli == "E" ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
-                    style: TextStyle(color: UIHelper.getColorWithValue((widget.model?.dovizli == "E" ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye) ?? 0)),
-                  ),
+                  builder:
+                      (_) => Text(
+                        "${(widget.model?.dovizli == "E" ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
+                        style: TextStyle(
+                          color: UIHelper.getColorWithValue(
+                            (widget.model?.dovizli == "E"
+                                    ? widget.model?.devirliDovizBakiye
+                                    : widget.model?.devirliBakiye) ??
+                                0,
+                          ),
+                        ),
+                      ),
                 ),
               ],
             ),
           ],
         ),
-      );
+  );
 }

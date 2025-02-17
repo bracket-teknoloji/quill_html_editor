@@ -33,16 +33,16 @@ class EBelgeIslemModel with _$EBelgeIslemModel {
   factory EBelgeIslemModel.fromJson(Map<String, dynamic> json) => _$EBelgeIslemModelFromJson(json);
 
   factory EBelgeIslemModel.fromEBelgeListesiModel(EBelgeListesiModel model) => EBelgeIslemModel(
-        aciklama: model.kontrolAciklama,
-        belgeTuru: model.belgeTuru,
-        ebelgeTuru: model.ebelgeTuru,
-        inckeyno: model.inckeyno,
-        islemKodu: model.cevapKodu,
-        resmiBelgeNo: model.resmiBelgeNo,
-        senaryoTipi: model.senaryo,
-        zarfid: model.zarfid,
-        belgeNo: model.belgeNo,
-        cariKodu: model.cariKodu,
-        iptalTarihi: model.iptalTarihi,
-      );
+    aciklama: model.kontrolAciklama,
+    belgeTuru: model.belgeTuru,
+    ebelgeTuru: model.ebelgeTuru,
+    inckeyno: model.inckeyno,
+    islemKodu: model.cevapKodu,
+    resmiBelgeNo: model.resmiBelgeNo,
+    senaryoTipi: model.senaryo,
+    zarfid: model.zarfid,
+    belgeNo: model.belgeNo,
+    cariKodu: model.cariKodu,
+    iptalTarihi: model.iptalTarihi,
+  );
 }

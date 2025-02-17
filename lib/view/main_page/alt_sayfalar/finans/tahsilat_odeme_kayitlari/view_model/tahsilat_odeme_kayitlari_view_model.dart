@@ -11,14 +11,11 @@ import "../../../cari/cari_hareketleri/model/cari_hareketleri_request_model.dart
 
 part "tahsilat_odeme_kayitlari_view_model.g.dart";
 
-final class TahsilatOdemeKayitlariViewModel = _TahsilatOdemeKayitlariViewModelBase with _$TahsilatOdemeKayitlariViewModel;
+final class TahsilatOdemeKayitlariViewModel = _TahsilatOdemeKayitlariViewModelBase
+    with _$TahsilatOdemeKayitlariViewModel;
 
 abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin {
-  final Map<String, dynamic> hesapTipiMap = {
-    "Tümü": null,
-    "Tahsilat": "A",
-    "Ödeme": "B",
-  };
+  final Map<String, dynamic> hesapTipiMap = {"Tümü": null, "Tahsilat": "A", "Ödeme": "B"};
 
   final Map<String, String> hareketTuruMap = {
     "Kasa": "D",
@@ -33,7 +30,11 @@ abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin
 
   //* Observables
   @observable
-  CariHareketleriRequestModel cariHareketleriRequestModel = CariHareketleriRequestModel(ekranTipi: "L", siralama: "AZ", sadeceTahsilatlarOdemeler: true);
+  CariHareketleriRequestModel cariHareketleriRequestModel = CariHareketleriRequestModel(
+    ekranTipi: "L",
+    siralama: "AZ",
+    sadeceTahsilatlarOdemeler: true,
+  );
 
   @observable
   String? hesapTipiGroupValue;
@@ -58,14 +59,18 @@ abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin
 
   //* Computed
   @computed
-  ObservableList<CariHareketleriModel>? get getCariHareketleriListesi => searchText != null
-      ? cariHareketleriListesi
-          ?.where(
-            (element) => (element.belgeNo?.contains(searchText ?? "") ?? false) || (element.cariAdi?.contains(searchText ?? "") ?? false) || (element.cariKodu?.contains(searchText ?? "") ?? false),
-          )
-          .toList()
-          .asObservable()
-      : cariHareketleriListesi;
+  ObservableList<CariHareketleriModel>? get getCariHareketleriListesi =>
+      searchText != null
+          ? cariHareketleriListesi
+              ?.where(
+                (element) =>
+                    (element.belgeNo?.contains(searchText ?? "") ?? false) ||
+                    (element.cariAdi?.contains(searchText ?? "") ?? false) ||
+                    (element.cariKodu?.contains(searchText ?? "") ?? false),
+              )
+              .toList()
+              .asObservable()
+          : cariHareketleriListesi;
 
   @computed
   bool get getAnyFilter =>
@@ -89,22 +94,28 @@ abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin
   void setSearchText(String? value) => searchText = value;
 
   @action
-  void setBaslamaTarihi(String? value) => cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(baslamaTarihi: value);
+  void setBaslamaTarihi(String? value) =>
+      cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(baslamaTarihi: value);
 
   @action
-  void setBitisTarihi(String? value) => cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(bitisTarihi: value);
+  void setBitisTarihi(String? value) =>
+      cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(bitisTarihi: value);
 
   @action
-  void setIslemTuru(int? value) => cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(ba: hesapTipiMap.values.toList()[value ?? 0]);
+  void setIslemTuru(int? value) =>
+      cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(ba: hesapTipiMap.values.toList()[value ?? 0]);
 
   @action
-  void setCariKodu(String? value) => cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(cariKodu: value);
+  void setCariKodu(String? value) =>
+      cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(cariKodu: value);
 
   @action
-  void setHareketTuru(List<String>? value) => cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(arrHareketTuru: jsonEncode(value));
+  void setHareketTuru(List<String>? value) =>
+      cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(arrHareketTuru: jsonEncode(value));
 
   @action
-  void setPlasiyerKodu(List<String>? value) => cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(arrPlasiyerKodu: jsonEncode(value));
+  void setPlasiyerKodu(List<String>? value) =>
+      cariHareketleriRequestModel = cariHareketleriRequestModel.copyWith(arrPlasiyerKodu: jsonEncode(value));
 
   @action
   void clearFilters() {
@@ -127,7 +138,11 @@ abstract class _TahsilatOdemeKayitlariViewModelBase with Store, MobxNetworkMixin
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet<CariHareketleriModel>(path: ApiUrls.getCariHareketleri, bodyModel: CariHareketleriModel(), queryParameters: cariHareketleriRequestModel.toJson());
+    final result = await networkManager.dioGet<CariHareketleriModel>(
+      path: ApiUrls.getCariHareketleri,
+      bodyModel: CariHareketleriModel(),
+      queryParameters: cariHareketleriRequestModel.toJson(),
+    );
     if (result.isSuccess) {
       final List<CariHareketleriModel> list = result.dataList;
       setcariHareketleriListesi(list);

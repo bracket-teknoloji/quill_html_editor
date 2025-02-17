@@ -10,13 +10,7 @@ part "base_talep_teklif_genel_view_model.g.dart";
 final class BaseTalepTeklifGenelViewModel = _BaseTalepTeklifGenelViewModelBase with _$BaseTalepTeklifGenelViewModel;
 
 abstract class _BaseTalepTeklifGenelViewModelBase with Store {
-  final Map<String, int> belgeTipi = <String, int>{
-    "Kapalı": 1,
-    "Açık": 2,
-    "İade": 3,
-    "Zayi İade": 4,
-    "İhracat": 5,
-  };
+  final Map<String, int> belgeTipi = <String, int>{"Kapalı": 1, "Açık": 2, "İade": 3, "Zayi İade": 4, "İhracat": 5};
 
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;

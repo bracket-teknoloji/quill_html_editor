@@ -19,16 +19,20 @@ abstract class _BankaHareketleriViewModelBase with Store, MobxNetworkMixin {
   ObservableList<BankaHareketleriModel>? bankaHareketleriListesi;
 
   @computed
-  double get gelenTutar => bankaHareketleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).sum ?? 0;
+  double get gelenTutar =>
+      bankaHareketleriListesi?.where((element) => element.ba == "B").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
-  double get dovizGelenTutar => bankaHareketleriListesi?.where((element) => element.ba == "B").map((e) => e.dovizTutari ?? 0).sum ?? 0;
+  double get dovizGelenTutar =>
+      bankaHareketleriListesi?.where((element) => element.ba == "B").map((e) => e.dovizTutari ?? 0).sum ?? 0;
 
   @computed
-  double get gidenTutar => bankaHareketleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).sum ?? 0;
+  double get gidenTutar =>
+      bankaHareketleriListesi?.where((element) => element.ba == "A").map((e) => e.tutar ?? 0).sum ?? 0;
 
   @computed
-  double get dovizGidenTutar => bankaHareketleriListesi?.where((element) => element.ba == "A").map((e) => e.dovizTutari ?? 0).sum ?? 0;
+  double get dovizGidenTutar =>
+      bankaHareketleriListesi?.where((element) => element.ba == "A").map((e) => e.dovizTutari ?? 0).sum ?? 0;
 
   @computed
   double get bakiye => gelenTutar - gidenTutar;
@@ -40,12 +44,17 @@ abstract class _BankaHareketleriViewModelBase with Store, MobxNetworkMixin {
   void setHesapKodu(String? value) => requestModel = requestModel.copyWith(hesapKodu: value);
 
   @action
-  void setBankaHareketleriListesi(List<BankaHareketleriModel>? value) => bankaHareketleriListesi = value?.asObservable();
+  void setBankaHareketleriListesi(List<BankaHareketleriModel>? value) =>
+      bankaHareketleriListesi = value?.asObservable();
 
   @action
   Future<void> getData() async {
     setBankaHareketleriListesi(null);
-    final result = await networkManager.dioGet<BankaHareketleriModel>(path: ApiUrls.getBankaHareketleri, bodyModel: BankaHareketleriModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet<BankaHareketleriModel>(
+      path: ApiUrls.getBankaHareketleri,
+      bodyModel: BankaHareketleriModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setBankaHareketleriListesi(result.dataList);
     } else {

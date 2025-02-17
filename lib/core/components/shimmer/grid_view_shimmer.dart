@@ -19,51 +19,41 @@ final class GridViewShimmer extends StatefulWidget {
 final class _GridViewShimmerState extends BaseState<GridViewShimmer> {
   @override
   Widget build(BuildContext context) => GridView(
-        gridDelegate: widget.gridDelegate,
-        physics: const NeverScrollableScrollPhysics(),
-        children: List.generate(
-          10 * widget.gridDelegate.crossAxisCount,
-          (index) => Shimmer.fromColors(
-            baseColor: ColorPalette.slateGray.withValues(alpha: 0.1),
-            highlightColor: ColorPalette.slateGray.withValues(alpha: 0.2),
-            child: card(),
-          ),
-        ),
-      );
+    gridDelegate: widget.gridDelegate,
+    physics: const NeverScrollableScrollPhysics(),
+    children: List.generate(
+      10 * widget.gridDelegate.crossAxisCount,
+      (index) => Shimmer.fromColors(
+        baseColor: ColorPalette.slateGray.withValues(alpha: 0.1),
+        highlightColor: ColorPalette.slateGray.withValues(alpha: 0.2),
+        child: card(),
+      ),
+    ),
+  );
 
   Card card() => Card(
-        elevation: 0,
-        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-        child: GridTile(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Expanded(
-                child: Center(
-                  child: Icon(Icons.account_circle_outlined, size: UIHelper.midSize * 5),
-                ),
-              ),
-              Container(
-                width: containerWidth,
-                height: UIHelper.midSize,
-                decoration: BoxDecoration(
-                  borderRadius: UIHelper.lowBorderRadius,
-                  color: Colors.white,
-                ),
-              ).paddingSymmetric(vertical: UIHelper.lowSize),
-              Container(
-                width: containerWidth,
-                height: UIHelper.midSize,
-                decoration: BoxDecoration(
-                  borderRadius: UIHelper.lowBorderRadius,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+    elevation: 0,
+    color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
+    child: GridTile(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Expanded(child: Center(child: Icon(Icons.account_circle_outlined, size: UIHelper.midSize * 5))),
+          Container(
+            width: containerWidth,
+            height: UIHelper.midSize,
+            decoration: BoxDecoration(borderRadius: UIHelper.lowBorderRadius, color: Colors.white),
+          ).paddingSymmetric(vertical: UIHelper.lowSize),
+          Container(
+            width: containerWidth,
+            height: UIHelper.midSize,
+            decoration: BoxDecoration(borderRadius: UIHelper.lowBorderRadius, color: Colors.white),
+          ),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 
   double get containerWidth {
     while (true) {

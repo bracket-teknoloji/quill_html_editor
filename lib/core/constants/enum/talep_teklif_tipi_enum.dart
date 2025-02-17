@@ -4,58 +4,56 @@ import "../../../view/main_page/model/param_model.dart";
 import "../../init/cache/cache_manager.dart";
 import "../yetki_controller/yetki_controller.dart";
 
-enum TalepTeklifEnum {
-  satisTalep,
-  satisTeklif,
-  alisTalep,
-}
+enum TalepTeklifEnum { satisTalep, satisTeklif, alisTalep }
 
 extension TalepTeklifEnumExtension on TalepTeklifEnum {
   String get rawValue => switch (this) {
-        TalepTeklifEnum.satisTalep => "STAL",
-        TalepTeklifEnum.satisTeklif => "STEK",
-        TalepTeklifEnum.alisTalep => "ATAL",
-      };
+    TalepTeklifEnum.satisTalep => "STAL",
+    TalepTeklifEnum.satisTeklif => "STEK",
+    TalepTeklifEnum.alisTalep => "ATAL",
+  };
 
   String get getName => switch (this) {
-        TalepTeklifEnum.satisTalep => "Satış Talebi",
-        TalepTeklifEnum.satisTeklif => "Satış Teklifi",
-        TalepTeklifEnum.alisTalep => "Alış Talebi",
-      };
+    TalepTeklifEnum.satisTalep => "Satış Talebi",
+    TalepTeklifEnum.satisTeklif => "Satış Teklifi",
+    TalepTeklifEnum.alisTalep => "Alış Talebi",
+  };
 
   String get getPrintValue => switch (this) {
-        TalepTeklifEnum.satisTalep => "SatisTalebi",
-        TalepTeklifEnum.satisTeklif => "SatisTeklifi",
-        TalepTeklifEnum.alisTalep => "AlisTalebi",
-      };
+    TalepTeklifEnum.satisTalep => "SatisTalebi",
+    TalepTeklifEnum.satisTeklif => "SatisTeklifi",
+    TalepTeklifEnum.alisTalep => "AlisTalebi",
+  };
 
   bool get satisMi => switch (this) {
-        TalepTeklifEnum.satisTalep || TalepTeklifEnum.satisTeklif => true,
-        TalepTeklifEnum.alisTalep => false,
-      };
+    TalepTeklifEnum.satisTalep || TalepTeklifEnum.satisTeklif => true,
+    TalepTeklifEnum.alisTalep => false,
+  };
 
   bool get alisMi => switch (this) {
-        TalepTeklifEnum.satisTalep || TalepTeklifEnum.satisTeklif => false,
-        TalepTeklifEnum.alisTalep => true,
-      };
+    TalepTeklifEnum.satisTalep || TalepTeklifEnum.satisTeklif => false,
+    TalepTeklifEnum.alisTalep => true,
+  };
 
   String get aciklamaDuzenleRoute => switch (this) {
-        TalepTeklifEnum.satisTalep => "/mainPage/talTekSatisTalepAciklamaDuzenle",
-        TalepTeklifEnum.satisTeklif => "/mainPage/talTekSatisTeklifAciklamaDuzenle",
-        TalepTeklifEnum.alisTalep => "/mainPage/talTekAlisTalepAciklamaDuzenle",
-      };
+    TalepTeklifEnum.satisTalep => "/mainPage/talTekSatisTalepAciklamaDuzenle",
+    TalepTeklifEnum.satisTeklif => "/mainPage/talTekSatisTeklifAciklamaDuzenle",
+    TalepTeklifEnum.alisTalep => "/mainPage/talTekAlisTalepAciklamaDuzenle",
+  };
 
   bool get silinebilirMi => switch (this) {
-        TalepTeklifEnum.satisTalep => YetkiController().satisTalebiSil,
-        TalepTeklifEnum.satisTeklif => YetkiController().satisTeklifiSil,
-        TalepTeklifEnum.alisTalep => YetkiController().alisTalebiSil,
-      };
+    TalepTeklifEnum.satisTalep => YetkiController().satisTalebiSil,
+    TalepTeklifEnum.satisTeklif => YetkiController().satisTeklifiSil,
+    TalepTeklifEnum.alisTalep => YetkiController().alisTalebiSil,
+  };
 
   String aciklamaLabel(int index) {
     final ParamModel? paramModel = CacheManager.getAnaVeri?.paramModel;
     String? label;
     if (satisMi) {
-      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhereOrNull((element) => element.belgeTipi == rawValue);
+      final TalTekParam? talTekParam = paramModel?.talTekParam?.firstWhereOrNull(
+        (element) => element.belgeTipi == rawValue,
+      );
       switch (index) {
         case 1:
           label = talTekParam?.aciklar1;

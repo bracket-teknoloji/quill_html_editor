@@ -21,10 +21,7 @@ final class EBelgeGonderViewModel = _EBelgeGonderViewModelBase with _$EBelgeGond
 abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   _EBelgeGonderViewModelBase({required this.model, required this.siparisEditModel});
 
-  final Map<String, String> senaryoMap = {
-    "Temel": "TEM",
-    "Ticari": "TIC",
-  };
+  final Map<String, String> senaryoMap = {"Temel": "TEM", "Ticari": "TIC"};
 
   @observable
   EBelgeListesiModel model;
@@ -80,10 +77,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.getDizaynlar,
       bodyModel: DizaynModel(),
       showLoading: true,
-      queryParameters: DizaynRequestModel(
-        modulId: siparisEditModel.getModulID,
-        erpDizaynlari: true,
-      ).toJson(),
+      queryParameters: DizaynRequestModel(modulId: siparisEditModel.getModulID, erpDizaynlari: true).toJson(),
       //  {
       //   "ModulID": siparisEditModel.getModulID,
       //   "ERPDizaynlari": true,
@@ -97,7 +91,8 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<CariListesiModel?> getCari() async => cariModel = await networkManager.getCariModel(
+  Future<CariListesiModel?> getCari() async =>
+      cariModel = await networkManager.getCariModel(
         CariRequestModel(
           kod: [model.cariKodu ?? ""],
           belgeTuru: model.belgeTuru,
@@ -114,7 +109,12 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
     } else {
       newModel.eirsBilgi = null;
     }
-    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: newModel.toJson(), showLoading: true);
+    final result = await networkManager.dioPost(
+      path: ApiUrls.eBelgeIslemi,
+      bodyModel: model,
+      data: newModel.toJson(),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       log("EBelge gönderildi");
     } else {
@@ -125,8 +125,12 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendSenaryo() async {
-    final result =
-        await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: EBelgeListesiModel.senaryoDegistir(BaseSiparisEditModel.fromEBelgeListesiModel(model)), showLoading: true);
+    final result = await networkManager.dioPost(
+      path: ApiUrls.eBelgeIslemi,
+      bodyModel: model,
+      data: EBelgeListesiModel.senaryoDegistir(BaseSiparisEditModel.fromEBelgeListesiModel(model)),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       log("EBelge gönderildi");
     } else {
@@ -137,7 +141,12 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> sendEBelge() async {
-    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.eBelgeGonder.copyWith(eirsBilgi: null).toJson(), showLoading: true);
+    final result = await networkManager.dioPost(
+      path: ApiUrls.eBelgeIslemi,
+      bodyModel: model,
+      data: model.eBelgeGonder.copyWith(eirsBilgi: null).toJson(),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       log("EBelge gönderildi");
     } else {
@@ -148,7 +157,12 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> deleteTaslak() async {
-    final result = await networkManager.dioPost(path: ApiUrls.eBelgeIslemi, bodyModel: model, data: model.taslakSil.copyWith(eirsBilgi: null).toJson(), showLoading: true);
+    final result = await networkManager.dioPost(
+      path: ApiUrls.eBelgeIslemi,
+      bodyModel: model,
+      data: model.taslakSil.copyWith(eirsBilgi: null).toJson(),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       log("EBelge silindi");
     } else {

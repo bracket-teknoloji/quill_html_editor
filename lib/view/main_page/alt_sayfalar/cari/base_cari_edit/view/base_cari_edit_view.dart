@@ -37,24 +37,33 @@ final class BaseCariEditingView extends StatefulWidget {
 }
 
 final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with TickerProviderStateMixin {
-  bool get goruntulenecekMi => widget.model?.baseEditEnum != BaseEditEnum.ekle && widget.model?.baseEditEnum != null && widget.model?.baseEditEnum != BaseEditEnum.kopyala;
+  bool get goruntulenecekMi =>
+      widget.model?.baseEditEnum != BaseEditEnum.ekle &&
+      widget.model?.baseEditEnum != null &&
+      widget.model?.baseEditEnum != BaseEditEnum.kopyala;
   BaseCariEditViewModel viewModel = BaseCariEditViewModel();
   late final TabController tabController;
   List<Tab> get tabs => [
-        Tab(child: Text(loc.generalStrings.general)),
-        Tab(child: Text(loc.generalStrings.other)),
-        if (goruntulenecekMi) const Tab(child: Text("Özet")),
-        if (goruntulenecekMi) const Tab(child: Text("Banka")),
-        if (goruntulenecekMi) const Tab(child: Text("İletişim")),
-      ];
+    Tab(child: Text(loc.generalStrings.general)),
+    Tab(child: Text(loc.generalStrings.other)),
+    if (goruntulenecekMi) const Tab(child: Text("Özet")),
+    if (goruntulenecekMi) const Tab(child: Text("Banka")),
+    if (goruntulenecekMi) const Tab(child: Text("İletişim")),
+  ];
 
   List<Widget> get views => <Widget>[
-        Observer(builder: (_) => viewModel.isDownloadCompletedSuccesfully == true ? BaseEditCariGenelView(model: widget.model) : Center(child: Text(viewModel.message ?? ""))),
-        CariEditDigerView(model: widget.model),
-        if (goruntulenecekMi) const BaseEditCariOzetView(),
-        if (goruntulenecekMi) const BaseCariEditBankaView(),
-        if (goruntulenecekMi) const BaseCariEditIletisimView(),
-      ];
+    Observer(
+      builder:
+          (_) =>
+              viewModel.isDownloadCompletedSuccesfully == true
+                  ? BaseEditCariGenelView(model: widget.model)
+                  : Center(child: Text(viewModel.message ?? "")),
+    ),
+    CariEditDigerView(model: widget.model),
+    if (goruntulenecekMi) const BaseEditCariOzetView(),
+    if (goruntulenecekMi) const BaseCariEditBankaView(),
+    if (goruntulenecekMi) const BaseCariEditIletisimView(),
+  ];
   @override
   void initState() {
     tabController = TabController(length: goruntulenecekMi ? 5 : 2, vsync: this);
@@ -80,15 +89,22 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
         if (result.isSuccess && result.dataList.isNotEmpty) {
           CariDetayModel.setInstance(result.dataList.first);
           CariListesiModel.setInstance(result.dataList.first.cariList?.firstOrNull);
-          CariSaveRequestModel.setInstance(CariSaveRequestModel.instance.fromCariListesiModel(CariDetayModel.instance.cariList?.first));
+          CariSaveRequestModel.setInstance(
+            CariSaveRequestModel.instance.fromCariListesiModel(CariDetayModel.instance.cariList?.first),
+          );
           if (widget.model?.baseEditEnum == BaseEditEnum.kopyala) {
             final String? kod = await CariNetworkManager.getSiradakiKod(kod: "");
             CariSaveRequestModel.instance.kodu = kod;
           }
           final List<CariKosullarModel>? kosulList = await CariNetworkManager.getkosullar(null);
-          CariSaveRequestModel.instance.kosulKoduAciklama = kosulList?.firstWhereOrNull((element) => element.kosulKodu == CariSaveRequestModel.instance.kosulKodu)?.kosulSabitAdi;
+          CariSaveRequestModel.instance.kosulKoduAciklama =
+              kosulList
+                  ?.firstWhereOrNull((element) => element.kosulKodu == CariSaveRequestModel.instance.kosulKodu)
+                  ?.kosulSabitAdi;
         } else {
-          await dialogManager.showAlertDialog(result.message ?? result.messageDetail ?? result.errorDetails ?? "Bilinmeyen bir hata oluştu");
+          await dialogManager.showAlertDialog(
+            result.message ?? result.messageDetail ?? result.errorDetails ?? "Bilinmeyen bir hata oluştu",
+          );
           Get.back(result: true);
         }
         viewModel.changeIsDownloadCompletedSuccesfully(result.isSuccess);
@@ -115,52 +131,49 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
 
   @override
   Widget build(BuildContext context) => PopScope(
-        canPop: false,
-        onPopInvokedWithResult: (didPop, value) async {
-          if (didPop) {
-            return;
-          }
-          if (widget.model?.baseEditEnum.goruntuleMi ?? false) {
-            Get.back(result: false);
-            return;
-          }
-          await dialogManager.showAreYouSureDialog(() => Get.back(result: false));
-        },
-        child: BaseScaffold(
-          // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text(loc.generalStrings.general)), Tab(child: Text(loc.generalStrings.general))]),
-          appBar: AppBar(
-            title: AppBarTitle(
-              title: widget.appBarTitle ?? "Cari Kartı",
-              subtitle: (widget.model?.baseEditEnum ?? BaseEditEnum.ekle).getName,
-              isSubTitleSmall: widget.isSubTitleSmall,
-            ),
-            actions: <Widget>[
-              if (kaydetButonuYetki)
-                IconButton(
-                  onPressed: () async {
-                    if (validate.isEmpty) {
-                      final result = await vergiNoChecker();
-                      if (result) {
-                        await dialogManager.showAreYouSureDialog(() async => await postData());
-                      }
-                    } else {
-                      await dialogManager.showEmptyFieldDialog(validate.keys.toList(), onOk: () => tabController.animateTo(validate.values.first));
-                    }
-                  },
-                  icon: const Icon(Icons.save_outlined),
-                ),
-            ],
-            bottom: TabBar(
-              tabs: tabs,
-              controller: tabController,
-            ),
-          ),
-          body: TabBarView(
-            controller: tabController,
-            children: views,
-          ).paddingAll(UIHelper.midSize),
+    canPop: false,
+    onPopInvokedWithResult: (didPop, value) async {
+      if (didPop) {
+        return;
+      }
+      if (widget.model?.baseEditEnum.goruntuleMi ?? false) {
+        Get.back(result: false);
+        return;
+      }
+      await dialogManager.showAreYouSureDialog(() => Get.back(result: false));
+    },
+    child: BaseScaffold(
+      // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text(loc.generalStrings.general)), Tab(child: Text(loc.generalStrings.general))]),
+      appBar: AppBar(
+        title: AppBarTitle(
+          title: widget.appBarTitle ?? "Cari Kartı",
+          subtitle: (widget.model?.baseEditEnum ?? BaseEditEnum.ekle).getName,
+          isSubTitleSmall: widget.isSubTitleSmall,
         ),
-      );
+        actions: <Widget>[
+          if (kaydetButonuYetki)
+            IconButton(
+              onPressed: () async {
+                if (validate.isEmpty) {
+                  final result = await vergiNoChecker();
+                  if (result) {
+                    await dialogManager.showAreYouSureDialog(() async => await postData());
+                  }
+                } else {
+                  await dialogManager.showEmptyFieldDialog(
+                    validate.keys.toList(),
+                    onOk: () => tabController.animateTo(validate.values.first),
+                  );
+                }
+              },
+              icon: const Icon(Icons.save_outlined),
+            ),
+        ],
+        bottom: TabBar(tabs: tabs, controller: tabController),
+      ),
+      body: TabBarView(controller: tabController, children: views).paddingAll(UIHelper.midSize),
+    ),
+  );
 
   Future<void> postData() async {
     final GenericResponseModel<NetworkManagerMixin> response = await networkManager.dioPost<CariListesiModel>(
@@ -203,7 +216,8 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
         await dialogManager.showAlertDialog("TC Kimlik 11 haneli olmalıdır");
         tabController.animateTo(0);
         return false;
-      } else if (CariSaveRequestModel.instance.sahisFirmasi != true && CariSaveRequestModel.instance.vergiNo!.length != 10) {
+      } else if (CariSaveRequestModel.instance.sahisFirmasi != true &&
+          CariSaveRequestModel.instance.vergiNo!.length != 10) {
         await dialogManager.showAlertDialog("Vergi No 10 haneli olmalıdır");
         tabController.animateTo(0);
         return false;
@@ -217,7 +231,10 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
   bool get kaydetButonuYetki {
     if (widget.model?.baseEditEnum.goruntuleMi ?? false) return false;
     return switch (widget.model?.baseEditEnum) {
-      BaseEditEnum.ekle || BaseEditEnum.kopyala || BaseEditEnum.revize || BaseEditEnum.taslak => widget.model?.editTipiEnum?.eklensinMi ?? false,
+      BaseEditEnum.ekle ||
+      BaseEditEnum.kopyala ||
+      BaseEditEnum.revize ||
+      BaseEditEnum.taslak => widget.model?.editTipiEnum?.eklensinMi ?? false,
       BaseEditEnum.duzenle => widget.model?.editTipiEnum?.duzenlensinMi ?? false,
       _ => false,
     };

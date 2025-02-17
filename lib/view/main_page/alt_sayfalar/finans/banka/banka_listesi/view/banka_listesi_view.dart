@@ -61,34 +61,29 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body());
 
   AppBar appBar() => AppBar(
-        title: Observer(
-          builder: (_) => viewModel.searchBar
-              ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
-              : AppBarTitle(
-                  title: "Banka Listesi",
-                  subtitle: viewModel.bankaListesi?.length.toStringIfNotNull,
-                ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: viewModel.setSearchBar,
-            icon: Observer(
-              builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
-            ),
-          ),
-        ],
-        bottom: AppBarPreferedSizedBottom(
-          children: [
-            AppBarButton(
-              icon: Icons.filter_alt_outlined,
-              child: Text(loc.generalStrings.filter),
-              onPressed: () async => await bottomSheetDialogManager.showBottomSheetDialog(
+    title: Observer(
+      builder:
+          (_) =>
+              viewModel.searchBar
+                  ? CustomAppBarTextField(controller: _searchController, onChanged: viewModel.setSearchText)
+                  : AppBarTitle(title: "Banka Listesi", subtitle: viewModel.bankaListesi?.length.toStringIfNotNull),
+    ),
+    actions: [
+      IconButton(
+        onPressed: viewModel.setSearchBar,
+        icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+      ),
+    ],
+    bottom: AppBarPreferedSizedBottom(
+      children: [
+        AppBarButton(
+          icon: Icons.filter_alt_outlined,
+          child: Text(loc.generalStrings.filter),
+          onPressed:
+              () async => await bottomSheetDialogManager.showBottomSheetDialog(
                 context,
                 title: loc.generalStrings.filter,
                 body: Column(
@@ -97,12 +92,14 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
                     CustomWidgetWithLabel(
                       text: "Bakiye",
                       child: Observer(
-                        builder: (_) => SlideControllerWidget(
-                          childrenTitleList: viewModel.filtreleMap.keys.toList(),
-                          filterOnChanged: (value) => viewModel.setBakiye(viewModel.filtreleMap.values.toList()[value ?? 0]),
-                          childrenValueList: viewModel.filtreleMap.values.toList(),
-                          groupValue: viewModel.model.bakiye,
-                        ),
+                        builder:
+                            (_) => SlideControllerWidget(
+                              childrenTitleList: viewModel.filtreleMap.keys.toList(),
+                              filterOnChanged:
+                                  (value) => viewModel.setBakiye(viewModel.filtreleMap.values.toList()[value ?? 0]),
+                              childrenValueList: viewModel.filtreleMap.values.toList(),
+                              groupValue: viewModel.model.bakiye,
+                            ),
                       ),
                     ),
                     CustomTextField(
@@ -130,7 +127,9 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
                         );
                         if (result != null) {
                           if (result.isNotEmpty) {
-                            _hesapTipiController.text = viewModel.hesapTipiList.whereIndexed((index, element) => result.contains(index)).join(", ");
+                            _hesapTipiController.text = viewModel.hesapTipiList
+                                .whereIndexed((index, element) => result.contains(index))
+                                .join(", ");
                             viewModel.setHesapTipi(result.toList().cast<int>());
                           } else {
                             _hesapTipiController.clear();
@@ -149,136 +148,148 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
                   ],
                 ),
               ),
-            ),
-            AppBarButton(
-              icon: Icons.sort_by_alpha_outlined,
-              child: Text(loc.generalStrings.sort),
-              onPressed: () async {
-                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                  context,
-                  title: "Sıralama",
-                  groupValue: viewModel.model.sirala,
-                  children: List.generate(
-                    viewModel.siralaMap.length,
-                    (index) => BottomSheetModel(
-                      title: viewModel.siralaMap.keys.toList()[index],
-                      value: viewModel.siralaMap.values.toList()[index],
-                      groupValue: viewModel.siralaMap.values.toList()[index],
-                    ),
-                  ),
-                );
-                if (result != null) {
-                  viewModel
-                    ..setSiralama(result)
-                    ..resetPage();
-                }
-              },
-            ),
-            AppBarButton(
-              icon: Icons.refresh_outlined,
-              child: Text(loc.generalStrings.refresh),
-              onPressed: () async => await viewModel.resetPage(),
-            ),
-          ],
         ),
-      );
-
-  RefreshIndicator body() => RefreshIndicator.adaptive(
-        onRefresh: viewModel.resetPage,
-        child: Observer(
-          builder: (_) {
-            if (viewModel.bankaListesi == null) {
-              return const ListViewShimmer();
-            } else if (viewModel.bankaListesi!.isEmpty) {
-              return Center(child: Text(viewModel.errorText ?? "Banka bulunamadı.", textAlign: TextAlign.center));
-            } else {
-              return ListView.builder(
-                itemCount: viewModel.groupedWithHesapTipiAdiList.length,
-                itemBuilder: (context, index) {
-                  final List<BankaListesiModel> itemList = viewModel.groupedWithHesapTipiAdiList[index];
-                  final double total = itemList.fold<double>(0, (previousValue, element) => previousValue + (element.bakiye));
-                  // final double totalDovizsiz = itemList.where((element) => element.dovizAdi == null).fold<double>(0, (previousValue, element) => previousValue + (element.bakiyeDovizli));
-                  // final double totalDovizLi = itemList.where((element) => element.dovizAdi != null).fold<double>(0, (previousValue, element) => previousValue + (element.bakiyeDovizli));
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(itemList.firstOrNull?.hesapTipiAdi ?? "", style: const TextStyle(fontWeight: FontWeight.bold)),
-                              Text(
-                                "${total.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                style: const TextStyle(color: ColorPalette.slateGray),
-                              ),
-                            ],
-                          ),
-                          if (itemList.any((element) => element.dovizAdi != null))
-                            Row(
-                              children: List.generate(
-                                itemList.bakiyeMap(mainCurrency).length,
-                                (index) => Text(
-                                  "${itemList.bakiyeMap(mainCurrency).values.toList()[index].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${itemList.bakiyeMap(mainCurrency).keys.toList()[index]})  ",
-                                  style: const TextStyle(color: ColorPalette.slateGray),
-                                ),
-                              ),
-                            ),
-                        ],
-                      ).paddingAll(UIHelper.lowSize),
-                      ListView.builder(
-                        itemCount: itemList.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          final BankaListesiModel item = itemList[index];
-                          return Card(
-                            elevation: 0,
-                            child: ListTile(
-                              onTap: () async => widget.isGetData == true ? Get.back(result: item) : await dialogManager.showBankaGridViewDialog(item),
-                              leading: CircleAvatar(
-                                foregroundColor: Colors.white,
-                                backgroundColor: UIHelper.getColorWithValue(item.bakiye),
-                                child: Text(item.hesapAdi?[0] ?? ""),
-                              ),
-                              title: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(item.hesapAdi ?? ""),
-                                ],
-                              ),
-                              subtitle: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    children: [
-                                      if ((item.dovizTipi ?? 0) > 1) ColorfulBadge(badgeColorEnum: BadgeColorEnum.dovizli, label: Text("Dövizli ${item.dovizAdi ?? ""}")),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(item.hesapKodu ?? ""),
-                                      Text(
-                                        "${item.bakiyeDovizli.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
-                                        style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye), fontSize: 12),
-                                      ),
-                                    ],
-                                  ),
-                                  Text(item.subeAdi ?? ""),
-                                  Text(item.bankaAdi ?? ""),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  );
-                },
-              );
+        AppBarButton(
+          icon: Icons.sort_by_alpha_outlined,
+          child: Text(loc.generalStrings.sort),
+          onPressed: () async {
+            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+              context,
+              title: "Sıralama",
+              groupValue: viewModel.model.sirala,
+              children: List.generate(
+                viewModel.siralaMap.length,
+                (index) => BottomSheetModel(
+                  title: viewModel.siralaMap.keys.toList()[index],
+                  value: viewModel.siralaMap.values.toList()[index],
+                  groupValue: viewModel.siralaMap.values.toList()[index],
+                ),
+              ),
+            );
+            if (result != null) {
+              viewModel
+                ..setSiralama(result)
+                ..resetPage();
             }
           },
-        ).paddingAll(UIHelper.lowSize),
-      );
+        ),
+        AppBarButton(
+          icon: Icons.refresh_outlined,
+          child: Text(loc.generalStrings.refresh),
+          onPressed: () async => await viewModel.resetPage(),
+        ),
+      ],
+    ),
+  );
+
+  RefreshIndicator body() => RefreshIndicator.adaptive(
+    onRefresh: viewModel.resetPage,
+    child: Observer(
+      builder: (_) {
+        if (viewModel.bankaListesi == null) {
+          return const ListViewShimmer();
+        } else if (viewModel.bankaListesi!.isEmpty) {
+          return Center(child: Text(viewModel.errorText ?? "Banka bulunamadı.", textAlign: TextAlign.center));
+        } else {
+          return ListView.builder(
+            itemCount: viewModel.groupedWithHesapTipiAdiList.length,
+            itemBuilder: (context, index) {
+              final List<BankaListesiModel> itemList = viewModel.groupedWithHesapTipiAdiList[index];
+              final double total = itemList.fold<double>(
+                0,
+                (previousValue, element) => previousValue + (element.bakiye),
+              );
+              // final double totalDovizsiz = itemList.where((element) => element.dovizAdi == null).fold<double>(0, (previousValue, element) => previousValue + (element.bakiyeDovizli));
+              // final double totalDovizLi = itemList.where((element) => element.dovizAdi != null).fold<double>(0, (previousValue, element) => previousValue + (element.bakiyeDovizli));
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            itemList.firstOrNull?.hesapTipiAdi ?? "",
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "${total.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                            style: const TextStyle(color: ColorPalette.slateGray),
+                          ),
+                        ],
+                      ),
+                      if (itemList.any((element) => element.dovizAdi != null))
+                        Row(
+                          children: List.generate(
+                            itemList.bakiyeMap(mainCurrency).length,
+                            (index) => Text(
+                              "${itemList.bakiyeMap(mainCurrency).values.toList()[index].commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} (${itemList.bakiyeMap(mainCurrency).keys.toList()[index]})  ",
+                              style: const TextStyle(color: ColorPalette.slateGray),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ).paddingAll(UIHelper.lowSize),
+                  ListView.builder(
+                    itemCount: itemList.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final BankaListesiModel item = itemList[index];
+                      return Card(
+                        elevation: 0,
+                        child: ListTile(
+                          onTap:
+                              () async =>
+                                  widget.isGetData == true
+                                      ? Get.back(result: item)
+                                      : await dialogManager.showBankaGridViewDialog(item),
+                          leading: CircleAvatar(
+                            foregroundColor: Colors.white,
+                            backgroundColor: UIHelper.getColorWithValue(item.bakiye),
+                            child: Text(item.hesapAdi?[0] ?? ""),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [Text(item.hesapAdi ?? "")],
+                          ),
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  if ((item.dovizTipi ?? 0) > 1)
+                                    ColorfulBadge(
+                                      badgeColorEnum: BadgeColorEnum.dovizli,
+                                      label: Text("Dövizli ${item.dovizAdi ?? ""}"),
+                                    ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(item.hesapKodu ?? ""),
+                                  Text(
+                                    "${item.bakiyeDovizli.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
+                                    style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye), fontSize: 12),
+                                  ),
+                                ],
+                              ),
+                              Text(item.subeAdi ?? ""),
+                              Text(item.bankaAdi ?? ""),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        }
+      },
+    ).paddingAll(UIHelper.lowSize),
+  );
 }

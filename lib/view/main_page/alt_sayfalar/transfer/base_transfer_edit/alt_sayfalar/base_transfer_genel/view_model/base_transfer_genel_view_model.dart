@@ -148,13 +148,22 @@ abstract class _BaseTransferGenelViewModelBase with Store {
 
   @action
   void setTopluGirisDepoKodu(DepoList? value) {
-    model = model.copyWith(girisDepoKodu: value?.depoKodu, topluGirisDepoTanimi: value?.depoTanimi, hedefDepo: value?.depoKodu, hedefDepoAdi: value?.depoTanimi);
+    model = model.copyWith(
+      girisDepoKodu: value?.depoKodu,
+      topluGirisDepoTanimi: value?.depoTanimi,
+      hedefDepo: value?.depoKodu,
+      hedefDepoAdi: value?.depoTanimi,
+    );
     BaseSiparisEditModel.setInstance(model);
   }
 
   @action
   void setTopluCikisDepoKodu(DepoList? value) {
-    model = model.copyWith(cikisDepoKodu: value?.depoKodu, topluCikisDepoTanimi: value?.depoTanimi, topluDepo: value?.depoKodu);
+    model = model.copyWith(
+      cikisDepoKodu: value?.depoKodu,
+      topluCikisDepoTanimi: value?.depoTanimi,
+      topluDepo: value?.depoKodu,
+    );
     BaseSiparisEditModel.setInstance(model);
   }
 

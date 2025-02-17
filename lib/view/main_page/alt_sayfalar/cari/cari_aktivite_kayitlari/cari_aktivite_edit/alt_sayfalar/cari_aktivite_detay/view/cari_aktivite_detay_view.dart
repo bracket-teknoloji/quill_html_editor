@@ -26,47 +26,50 @@ final class _CariAktiviteDetayViewState extends State<CariAktiviteDetayView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        floatingActionButton: !widget.baseEditEnum.goruntuleMi ? fab() : null,
-        body: Observer(
-          builder: (_) {
-            if (viewModel.aktiviteList.isEmpty) {
-              return const Center(child: Text("Aktivite Bulunamadı"));
-            } else {
-              return ListView.builder(
-                padding: UIHelper.lowPadding,
-                itemCount: viewModel.aktiviteList.length,
-                itemBuilder: (_, index) {
-                  final item = viewModel.aktiviteList[index];
-                  return CariAktiviteDetayCard(
-                    model: item,
-                    baseEditEnum: widget.baseEditEnum,
-                    onAktiviteSil: () async {
-                      GenericResponseModel<NetworkManagerMixin>? result;
-                      if (widget.baseEditEnum.duzenleMi) {
-                        result = await viewModel.deleteDetay(item.id);
-                      }
-                      if ((result?.isSuccess ?? false) || (widget.baseEditEnum.ekleMi)) {
-                        viewModel.deleteAktivite(item);
-                      }
-                    },
-                    onAktiviteDuzenle: (value) async {
-                      viewModel.replaceAktivite(item, value);
-                    },
-                  );
+    floatingActionButton: !widget.baseEditEnum.goruntuleMi ? fab() : null,
+    body: Observer(
+      builder: (_) {
+        if (viewModel.aktiviteList.isEmpty) {
+          return const Center(child: Text("Aktivite Bulunamadı"));
+        } else {
+          return ListView.builder(
+            padding: UIHelper.lowPadding,
+            itemCount: viewModel.aktiviteList.length,
+            itemBuilder: (_, index) {
+              final item = viewModel.aktiviteList[index];
+              return CariAktiviteDetayCard(
+                model: item,
+                baseEditEnum: widget.baseEditEnum,
+                onAktiviteSil: () async {
+                  GenericResponseModel<NetworkManagerMixin>? result;
+                  if (widget.baseEditEnum.duzenleMi) {
+                    result = await viewModel.deleteDetay(item.id);
+                  }
+                  if ((result?.isSuccess ?? false) || (widget.baseEditEnum.ekleMi)) {
+                    viewModel.deleteAktivite(item);
+                  }
+                },
+                onAktiviteDuzenle: (value) async {
+                  viewModel.replaceAktivite(item, value);
                 },
               );
-            }
-          },
-        ),
-      );
+            },
+          );
+        }
+      },
+    ),
+  );
 
   CustomFloatingActionButton fab() => CustomFloatingActionButton(
-        isScrolledDown: true,
-        onPressed: () async {
-          final result = await Get.toNamed("/mainPage/cariAktiviteDetayiEdit", arguments: BaseEditModel<CariAktiviteListesiModel>(baseEditEnum: widget.baseEditEnum));
-          if (result is CariAktiviteListesiModel) {
-            viewModel.addAktivite(result);
-          }
-        },
+    isScrolledDown: true,
+    onPressed: () async {
+      final result = await Get.toNamed(
+        "/mainPage/cariAktiviteDetayiEdit",
+        arguments: BaseEditModel<CariAktiviteListesiModel>(baseEditEnum: widget.baseEditEnum),
       );
+      if (result is CariAktiviteListesiModel) {
+        viewModel.addAktivite(result);
+      }
+    },
+  );
 }

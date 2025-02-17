@@ -14,11 +14,14 @@ import "../model/uretim_sonu_kaydi_listesi_request_model.dart";
 
 part "uretim_sonu_kaydi_listesi_view_model.g.dart";
 
-final class UretimSonuKaydiListesiViewModel = _UretimSonuKaydiListesiViewModelBase with _$UretimSonuKaydiListesiViewModel;
+final class UretimSonuKaydiListesiViewModel = _UretimSonuKaydiListesiViewModelBase
+    with _$UretimSonuKaydiListesiViewModel;
 
-abstract class _UretimSonuKaydiListesiViewModelBase with Store, MobxNetworkMixin, ListableMixin<KalemModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
+abstract class _UretimSonuKaydiListesiViewModelBase
+    with Store, MobxNetworkMixin, ListableMixin<KalemModel>, SearchableMixin, ScrollControllableMixin, PageableMixin {
   /// İsteği atarken data'ları güncel olarak alsın diye getter fonksiyon olarak ayarlandı.
-  UretimSonuKaydiListesiRequestModel get requestModel => UretimSonuKaydiListesiRequestModel(ekranTipi: "L", sayfa: page, searchText: searchText);
+  UretimSonuKaydiListesiRequestModel get requestModel =>
+      UretimSonuKaydiListesiRequestModel(ekranTipi: "L", sayfa: page, searchText: searchText);
 
   @override
   @observable
@@ -74,13 +77,21 @@ abstract class _UretimSonuKaydiListesiViewModelBase with Store, MobxNetworkMixin
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(KalemModel item) async =>
-      await networkManager.dioPost(path: ApiUrls.deleteUSK, bodyModel: KalemModel(), showLoading: true, queryParameters: {"BelgeNo": item.belgeNo});
+  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(KalemModel item) async => await networkManager.dioPost(
+    path: ApiUrls.deleteUSK,
+    bodyModel: KalemModel(),
+    showLoading: true,
+    queryParameters: {"BelgeNo": item.belgeNo},
+  );
 
   @override
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getUSKListesi, bodyModel: KalemModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getUSKListesi,
+      bodyModel: KalemModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       if (page > 1) {
         addObservableList(result.dataList);

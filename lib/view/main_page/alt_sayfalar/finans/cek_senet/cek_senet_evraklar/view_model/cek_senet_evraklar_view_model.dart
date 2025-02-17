@@ -32,19 +32,31 @@ abstract class _CekSenetEvraklarViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(EvraklarModel model) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: EvraklarModel(), data: EvraklarModel.forDelete(model).toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveEvrak,
+      bodyModel: EvraklarModel(),
+      data: EvraklarModel.forDelete(model).toJson(),
+    );
     return result;
   }
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> uploadEvrak(EvraklarModel model) async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: EvraklarModel(), data: EvraklarModel.forDelete(model).toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveEvrak,
+      bodyModel: EvraklarModel(),
+      data: EvraklarModel.forDelete(model).toJson(),
+    );
     return result;
   }
 
   @action
   Future<void> getData() async {
-    final result = await networkManager.dioGet(path: ApiUrls.getEvraklar, bodyModel: EvraklarModel(), queryParameters: requestModel.toJson());
+    final result = await networkManager.dioGet(
+      path: ApiUrls.getEvraklar,
+      bodyModel: EvraklarModel(),
+      queryParameters: requestModel.toJson(),
+    );
     if ((result.isSuccess) && result.isSuccess) {
       setEvraklarListesi(result.dataList);
     }

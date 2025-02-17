@@ -10,11 +10,11 @@ final class MouseRightClickListener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Listener(
-        onPointerDown: (event) {
-          if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
-            onRightClick();
-          }
-        },
-        child: child,
-      );
+    onPointerDown: (event) {
+      if (event.kind == PointerDeviceKind.mouse && event.buttons == 2) {
+        onRightClick();
+      }
+    },
+    child: child,
+  );
 }

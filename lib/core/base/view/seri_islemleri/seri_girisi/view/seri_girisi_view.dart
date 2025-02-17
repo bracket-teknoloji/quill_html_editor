@@ -44,7 +44,9 @@ final class _SeriGirisiViewState extends BaseState<SeriGirisiView> {
     _seri2Controller = TextEditingController(text: viewModel.seriHareketleriModel.seri2);
     _aciklama1Controller = TextEditingController(text: viewModel.seriHareketleriModel.acik1);
     _aciklama2Controller = TextEditingController(text: viewModel.seriHareketleriModel.acik2);
-    _miktarController = TextEditingController(text: viewModel.seriHareketleriModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar));
+    _miktarController = TextEditingController(
+      text: viewModel.seriHareketleriModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar),
+    );
     _hareketAciklamaController = TextEditingController(text: viewModel.seriHareketleriModel.haracik);
     _belgeNoController = TextEditingController(text: viewModel.seriHareketleriModel.belgeNo);
     super.initState();
@@ -65,170 +67,165 @@ final class _SeriGirisiViewState extends BaseState<SeriGirisiView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        body: body(context),
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body(context));
 
   AppBar appBar() => AppBar(
-        title: const AppBarTitle(title: "Seri Girişi"),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.save_outlined),
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                dialogManager.showAreYouSureDialog(() async {
-                  final result = await viewModel.postData();
-                  if (result) {
-                    Get.back(result: true);
-                    dialogManager.showSuccessSnackBar("İşlem başarılı");
-                  }
-                });
+    title: const AppBarTitle(title: "Seri Girişi"),
+    actions: [
+      IconButton(
+        icon: const Icon(Icons.save_outlined),
+        onPressed: () async {
+          if (_formKey.currentState!.validate()) {
+            dialogManager.showAreYouSureDialog(() async {
+              final result = await viewModel.postData();
+              if (result) {
+                Get.back(result: true);
+                dialogManager.showSuccessSnackBar("İşlem başarılı");
+              }
+            });
+          }
+        },
+      ),
+    ],
+  );
+
+  SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
+    child: Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          LayoutBuilder(
+            builder:
+                (context, constraints) => Observer(
+                  builder:
+                      (_) => ToggleButtons(
+                        constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 2) / 2),
+                        isSelected: viewModel.seriHareketleriModel.gckod == "C" ? [false, true] : [true, false],
+                        onPressed: (index) => viewModel.setGcKod(index == 0 ? "G" : "C"),
+                        children: const [Text("Giriş"), Text("Çıkış")],
+                      ),
+                ),
+          ).paddingSymmetric(vertical: UIHelper.lowSize),
+          CustomTextField(
+            labelText: "Stok",
+            controller: _stokController,
+            isMust: true,
+            readOnly: true,
+            suffixMore: true,
+            valueWidget: Observer(builder: (_) => Text(viewModel.seriHareketleriModel.stokKodu ?? "")),
+            onTap: () async {
+              await getStok();
+            },
+            suffix: IconButton(
+              onPressed: () async {
+                final result = await getQrData();
+                if (result is String) {
+                  _stokController.text = result;
+                  viewModel.setStokKodu(result);
+                }
+              },
+              icon: const Icon(Icons.qr_code_scanner),
+            ),
+          ),
+          CustomTextField(
+            labelText: "Depo",
+            controller: _depoController,
+            isMust: true,
+            readOnly: true,
+            suffixMore: true,
+            valueWidget: Observer(
+              builder: (_) => Text(viewModel.seriHareketleriModel.depoKodu.toStringIfNotNull ?? ""),
+            ),
+            onTap: () async {
+              final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+                context,
+                viewModel.seriHareketleriModel.depoKodu,
+              );
+              if (result != null) {
+                _depoController.text = result.depoTanimi ?? "";
+                viewModel.setDepoKodu(result.depoKodu);
               }
             },
           ),
-        ],
-      );
-
-  SingleChildScrollView body(BuildContext context) => SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
+          CustomTextField(
+            labelText: "Seri 1",
+            controller: _seri1Controller,
+            isMust: true,
+            onChanged: (value) => viewModel.setSeri1(value),
+            suffix: IconButton(
+              onPressed: () async {
+                final result = await getQrData();
+                if (result is String) {
+                  _seri1Controller.text = result;
+                  viewModel.setSeri1(result);
+                }
+              },
+              icon: const Icon(Icons.qr_code_scanner),
+            ),
+          ),
+          CustomTextField(
+            labelText: "Seri 2",
+            controller: _seri2Controller,
+            onChanged: (value) => viewModel.setSeri2(value),
+            suffix: IconButton(
+              onPressed: () async {
+                final result = await getQrData();
+                if (result is String) {
+                  _seri2Controller.text = result;
+                  viewModel.setSeri2(result);
+                }
+              },
+              icon: const Icon(Icons.qr_code_scanner),
+            ),
+          ),
+          Row(
             children: [
-              LayoutBuilder(
-                builder: (context, constraints) => Observer(
-                  builder: (_) => ToggleButtons(
-                    constraints: BoxConstraints.expand(width: (constraints.maxWidth - UIHelper.midSize - 2) / 2),
-                    isSelected: viewModel.seriHareketleriModel.gckod == "C" ? [false, true] : [true, false],
-                    onPressed: (index) => viewModel.setGcKod(index == 0 ? "G" : "C"),
-                    children: const [
-                      Text("Giriş"),
-                      Text("Çıkış"),
-                    ],
-                  ),
-                ),
-              ).paddingSymmetric(vertical: UIHelper.lowSize),
-              CustomTextField(
-                labelText: "Stok",
-                controller: _stokController,
-                isMust: true,
-                readOnly: true,
-                suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.seriHareketleriModel.stokKodu ?? "")),
-                onTap: () async {
-                  await getStok();
-                },
-                suffix: IconButton(
-                  onPressed: () async {
-                    final result = await getQrData();
-                    if (result is String) {
-                      _stokController.text = result;
-                      viewModel.setStokKodu(result);
-                    }
-                  },
-                  icon: const Icon(Icons.qr_code_scanner),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Açıklama 1",
+                  controller: _aciklama1Controller,
+                  onChanged: (value) => viewModel.setAciklama1(value),
                 ),
               ),
-              CustomTextField(
-                labelText: "Depo",
-                controller: _depoController,
-                isMust: true,
-                readOnly: true,
-                suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.seriHareketleriModel.depoKodu.toStringIfNotNull ?? "")),
-                onTap: () async {
-                  final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.seriHareketleriModel.depoKodu);
-                  if (result != null) {
-                    _depoController.text = result.depoTanimi ?? "";
-                    viewModel.setDepoKodu(result.depoKodu);
-                  }
-                },
-              ),
-              CustomTextField(
-                labelText: "Seri 1",
-                controller: _seri1Controller,
-                isMust: true,
-                onChanged: (value) => viewModel.setSeri1(value),
-                suffix: IconButton(
-                  onPressed: () async {
-                    final result = await getQrData();
-                    if (result is String) {
-                      _seri1Controller.text = result;
-                      viewModel.setSeri1(result);
-                    }
-                  },
-                  icon: const Icon(Icons.qr_code_scanner),
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Açıklama 2",
+                  controller: _aciklama2Controller,
+                  onChanged: (value) => viewModel.setAciklama2(value),
                 ),
-              ),
-              CustomTextField(
-                labelText: "Seri 2",
-                controller: _seri2Controller,
-                onChanged: (value) => viewModel.setSeri2(value),
-                suffix: IconButton(
-                  onPressed: () async {
-                    final result = await getQrData();
-                    if (result is String) {
-                      _seri2Controller.text = result;
-                      viewModel.setSeri2(result);
-                    }
-                  },
-                  icon: const Icon(Icons.qr_code_scanner),
-                ),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Açıklama 1",
-                      controller: _aciklama1Controller,
-                      onChanged: (value) => viewModel.setAciklama1(value),
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTextField(
-                      labelText: "Açıklama 2",
-                      controller: _aciklama2Controller,
-                      onChanged: (value) => viewModel.setAciklama2(value),
-                    ),
-                  ),
-                ],
-              ),
-              CustomTextField(
-                labelText: "Miktar",
-                controller: _miktarController,
-                isFormattedString: true,
-                keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                isMust: true,
-                onChanged: (value) {
-                  viewModel.seriHareketleriModel.miktar = value.toDoubleWithFormattedString;
-                },
-                suffix: Wrap(
-                  children: [
-                    IconButton(
-                      onPressed: () => updateMiktar(false),
-                      icon: const Icon(Icons.remove),
-                    ),
-                    IconButton(
-                      onPressed: () => updateMiktar(true),
-                      icon: const Icon(Icons.add),
-                    ),
-                  ],
-                ),
-              ),
-              CustomTextField(
-                labelText: "Hareket Açıklama",
-                controller: _hareketAciklamaController,
-                onChanged: (value) => viewModel.setHareketAciklama(value),
-              ),
-              CustomTextField(
-                labelText: "Belge No",
-                controller: _belgeNoController,
-                onChanged: (value) => viewModel.setBelgeNo(value),
               ),
             ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+          ),
+          CustomTextField(
+            labelText: "Miktar",
+            controller: _miktarController,
+            isFormattedString: true,
+            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+            isMust: true,
+            onChanged: (value) {
+              viewModel.seriHareketleriModel.miktar = value.toDoubleWithFormattedString;
+            },
+            suffix: Wrap(
+              children: [
+                IconButton(onPressed: () => updateMiktar(false), icon: const Icon(Icons.remove)),
+                IconButton(onPressed: () => updateMiktar(true), icon: const Icon(Icons.add)),
+              ],
+            ),
+          ),
+          CustomTextField(
+            labelText: "Hareket Açıklama",
+            controller: _hareketAciklamaController,
+            onChanged: (value) => viewModel.setHareketAciklama(value),
+          ),
+          CustomTextField(
+            labelText: "Belge No",
+            controller: _belgeNoController,
+            onChanged: (value) => viewModel.setBelgeNo(value),
+          ),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 
   Future<String?> getQrData() async {
     final result = await Get.toNamed("/qr");

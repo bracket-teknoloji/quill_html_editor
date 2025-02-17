@@ -52,7 +52,10 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   @override
   void initState() {
     BaseSiparisEditModel.setInstance(widget.model..kdvDahil = (widget.model.kdvDahilMi ?? false) ? "E" : "H");
-    viewModel = EBelgeGonderViewModel(model: EBelgeListesiModel.faturaGonder(widget.model), siparisEditModel: widget.model);
+    viewModel = EBelgeGonderViewModel(
+      model: EBelgeListesiModel.faturaGonder(widget.model),
+      siparisEditModel: widget.model,
+    );
     // if (widget.model.eirsBilgiModel != null && widget.model.eIrsaliyeSerisindenMi) {
     //   viewModel.setEIrsaliyeModel(widget.model.eirsBilgiModel);
     //   viewModel.siparisEditModel.eirsBilgiModel = null;
@@ -61,11 +64,21 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     _belgeNoController = TextEditingController(text: widget.model.belgeNo);
     _resmiBelgeNoController = TextEditingController(text: widget.model.resmiBelgeNo);
     _dovizTipiController = TextEditingController(text: widget.model.dovizAdi);
-    _araToplamController = TextEditingController(text: widget.model.eBelgeGonderAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    _kdvTutariController = TextEditingController(text: widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    _genelToplamController = TextEditingController(text: widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar));
-    _dovizliToplamController = TextEditingController(text: widget.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari));
-    _senaryoController = TextEditingController(text: viewModel.senaryoMap.entries.firstWhereOrNull((element) => element.value == widget.model.efaturaTipi)?.key);
+    _araToplamController = TextEditingController(
+      text: widget.model.eBelgeGonderAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+    );
+    _kdvTutariController = TextEditingController(
+      text: widget.model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+    );
+    _genelToplamController = TextEditingController(
+      text: widget.model.genelToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+    );
+    _dovizliToplamController = TextEditingController(
+      text: widget.model.dovizTutari.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari),
+    );
+    _senaryoController = TextEditingController(
+      text: viewModel.senaryoMap.entries.firstWhereOrNull((element) => element.value == widget.model.efaturaTipi)?.key,
+    );
     _dizaynController = TextEditingController();
     _gonderimSekliController = TextEditingController();
     _cariEPostaController = TextEditingController();
@@ -97,45 +110,46 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: "${widget.model.getTitle(widget.model.belgeNo)} Gönder",
-            subtitle: widget.model.belgeNo,
+    appBar: AppBar(
+      title: AppBarTitle(
+        title: "${widget.model.getTitle(widget.model.belgeNo)} Gönder",
+        subtitle: widget.model.belgeNo,
+      ),
+    ),
+    body: SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          CustomTextField(
+            labelText: "Cari",
+            controller: _cariController,
+            readOnly: true,
+            valueWidget: Text(model.cariKodu ?? ""),
+            suffix: IconButton(
+              onPressed: () async {
+                dialogManager.showCariIslemleriGridViewDialog(CariListesiModel.fromSiparisModel(widget.model));
+              },
+              icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+            ),
           ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              CustomTextField(
-                labelText: "Cari",
-                controller: _cariController,
-                readOnly: true,
-                valueWidget: Text(model.cariKodu ?? ""),
-                suffix: IconButton(
-                  onPressed: () async {
-                    dialogManager.showCariIslemleriGridViewDialog(CariListesiModel.fromSiparisModel(widget.model));
-                  },
-                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
-                ),
-              ),
-              CustomTextField(
-                labelText: "Belge No",
-                controller: _belgeNoController,
-                readOnly: true,
-                suffix: IconButton(
-                  onPressed: () async {
-                    dialogManager.showSiparisGridViewDialog(model: widget.model);
-                  },
-                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
-                ),
-              ),
-              CustomTextField(
-                labelText: "Resmi Belge No",
-                controller: _resmiBelgeNoController,
-                readOnly: true,
-                suffix: IconButton(
-                  onPressed: () async => await Get.toNamed(
+          CustomTextField(
+            labelText: "Belge No",
+            controller: _belgeNoController,
+            readOnly: true,
+            suffix: IconButton(
+              onPressed: () async {
+                dialogManager.showSiparisGridViewDialog(model: widget.model);
+              },
+              icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+            ),
+          ),
+          CustomTextField(
+            labelText: "Resmi Belge No",
+            controller: _resmiBelgeNoController,
+            readOnly: true,
+            suffix: IconButton(
+              onPressed:
+                  () async => await Get.toNamed(
                     "/mainPage/faturaEdit",
                     arguments: BaseEditModel(
                       model: widget.model,
@@ -143,34 +157,19 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       editTipiEnum: widget.model.getEditTipiEnum,
                     ),
                   ),
-                  icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
-                ),
-              ),
-              Observer(
-                builder: (_) => CustomLayoutBuilder(
+              icon: Icon(Icons.open_in_new_outlined, color: theme.colorScheme.inversePrimary),
+            ),
+          ),
+          Observer(
+            builder:
+                (_) => CustomLayoutBuilder(
                   splitCount: 2,
                   children: [
                     if (widget.model.dovizliMi)
-                      CustomTextField(
-                        labelText: "Döviz Tipi",
-                        controller: _dovizTipiController,
-                        readOnly: true,
-                      ),
-                    CustomTextField(
-                      labelText: "Ara Toplam",
-                      controller: _araToplamController,
-                      readOnly: true,
-                    ),
-                    CustomTextField(
-                      labelText: "KDV Tutarı",
-                      controller: _kdvTutariController,
-                      readOnly: true,
-                    ),
-                    CustomTextField(
-                      labelText: "Genel Toplam",
-                      controller: _genelToplamController,
-                      readOnly: true,
-                    ),
+                      CustomTextField(labelText: "Döviz Tipi", controller: _dovizTipiController, readOnly: true),
+                    CustomTextField(labelText: "Ara Toplam", controller: _araToplamController, readOnly: true),
+                    CustomTextField(labelText: "KDV Tutarı", controller: _kdvTutariController, readOnly: true),
+                    CustomTextField(labelText: "Genel Toplam", controller: _genelToplamController, readOnly: true),
                     if (widget.model.dovizliMi)
                       CustomTextField(
                         labelText: "Dövizli Toplam",
@@ -179,37 +178,39 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       ),
                     if (widget.model.eFaturaSerisindenMi)
                       Observer(
-                        builder: (_) => CustomTextField(
-                          labelText: "Senaryo",
-                          controller: _senaryoController,
-                          readOnly: true,
-                          enabled: !viewModel.siparisEditModel.taslakMi,
-                          suffixMore: true,
-                          valueWidget: Observer(builder: (_) => Text(model.senaryoTipi ?? "")),
-                          onTap: () async {
-                            final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<MapEntry<String, String>>(
-                              context,
-                              title: "Senaryo Seçiniz",
-                              groupValue: model.senaryoTipi,
-                              children: List.generate(
-                                viewModel.senaryoMap.length,
-                                (index) => BottomSheetModel(
-                                  title: viewModel.senaryoMap.entries.elementAt(index).key,
-                                  groupValue: viewModel.senaryoMap.entries.elementAt(index).value,
-                                  value: viewModel.senaryoMap.entries.elementAt(index),
-                                ),
-                              ),
-                            );
-                            if (result != null) {
-                              viewModel.setSenaryo(result.value);
-                              _senaryoController.text = result.key;
-                              final result2 = await viewModel.sendSenaryo();
-                              if (result2.isSuccess) {
-                                dialogManager.showSuccessSnackBar(result2.message ?? "Başarılı");
-                              }
-                            }
-                          },
-                        ),
+                        builder:
+                            (_) => CustomTextField(
+                              labelText: "Senaryo",
+                              controller: _senaryoController,
+                              readOnly: true,
+                              enabled: !viewModel.siparisEditModel.taslakMi,
+                              suffixMore: true,
+                              valueWidget: Observer(builder: (_) => Text(model.senaryoTipi ?? "")),
+                              onTap: () async {
+                                final result = await bottomSheetDialogManager
+                                    .showRadioBottomSheetDialog<MapEntry<String, String>>(
+                                      context,
+                                      title: "Senaryo Seçiniz",
+                                      groupValue: model.senaryoTipi,
+                                      children: List.generate(
+                                        viewModel.senaryoMap.length,
+                                        (index) => BottomSheetModel(
+                                          title: viewModel.senaryoMap.entries.elementAt(index).key,
+                                          groupValue: viewModel.senaryoMap.entries.elementAt(index).value,
+                                          value: viewModel.senaryoMap.entries.elementAt(index),
+                                        ),
+                                      ),
+                                    );
+                                if (result != null) {
+                                  viewModel.setSenaryo(result.value);
+                                  _senaryoController.text = result.key;
+                                  final result2 = await viewModel.sendSenaryo();
+                                  if (result2.isSuccess) {
+                                    dialogManager.showSuccessSnackBar(result2.message ?? "Başarılı");
+                                  }
+                                }
+                              },
+                            ),
                       ),
                     if (!viewModel.siparisEditModel.taslakMi)
                       CustomTextField(
@@ -223,26 +224,29 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                       ),
                   ],
                 ),
-              ),
-              if (!viewModel.siparisEditModel.taslakMi)
-                Column(
-                  children: [
-                    if (widget.model.dovizliMi)
-                      Observer(
-                        builder: (_) => SwitchListTile.adaptive(
+          ),
+          if (!viewModel.siparisEditModel.taslakMi)
+            Column(
+              children: [
+                if (widget.model.dovizliMi)
+                  Observer(
+                    builder:
+                        (_) => SwitchListTile.adaptive(
                           value: model.dovizliOlustur ?? false,
                           onChanged: viewModel.setDovizOlustur,
                           title: const Text("Dövizli Oluştur"),
                         ),
-                      ),
-                    if (!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eArsivSerisindenMi)
-                      Observer(
-                        builder: (_) => SwitchListTile.adaptive(
+                  ),
+                if (!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eArsivSerisindenMi)
+                  Observer(
+                    builder:
+                        (_) => SwitchListTile.adaptive(
                           value: model.gonderimSekliEPosta ?? false,
                           onChanged: (value) async {
                             viewModel.setGonderimSekliEposta(value);
                             if (value) {
-                              _cariEPostaController.text = await viewModel.getCariModel.then((cariModel) => cariModel?.email ?? "") ?? "";
+                              _cariEPostaController.text =
+                                  await viewModel.getCariModel.then((cariModel) => cariModel?.email ?? "") ?? "";
                               viewModel.setEPosta(_cariEPostaController.text);
                             } else {
                               _cariEPostaController.clear();
@@ -251,150 +255,189 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                           },
                           title: const Text("Gönderim Şekli E-Posta"),
                         ),
-                      ),
-                    if (!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eArsivSerisindenMi)
-                      Observer(
-                        builder: (_) => SwitchListTile.adaptive(
+                  ),
+                if (!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eArsivSerisindenMi)
+                  Observer(
+                    builder:
+                        (_) => SwitchListTile.adaptive(
                           value: model.internetFaturasi ?? false,
                           onChanged: viewModel.setInternetFaturasi,
                           title: const Text("İnternet Tipli"),
                         ),
-                      ),
-                  ],
-                ),
-              Observer(
-                builder: (_) => Visibility(
-                  visible: model.gonderimSekliEPosta ?? false,
-                  child: CustomTextField(
-                    labelText: "Cari E-Posta",
-                    controller: _cariEPostaController,
-                    readOnly: true,
                   ),
+              ],
+            ),
+          Observer(
+            builder:
+                (_) => Visibility(
+                  visible: model.gonderimSekliEPosta ?? false,
+                  child: CustomTextField(labelText: "Cari E-Posta", controller: _cariEPostaController, readOnly: true),
                 ),
-              ),
-              Observer(
-                builder: (_) => Row(
+          ),
+          Observer(
+            builder:
+                (_) => Row(
                   children: [
                     if (!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eIrsaliyeSerisindenMi)
                       Expanded(
                         child: Observer(
-                          builder: (_) => ElevatedButton.icon(
-                            onPressed: () async => await getEIrsaliyeBilgiler(),
-                            label: const Text("E-İrsaliye Bilgileri"),
-                            icon: const Icon(Icons.save_outlined),
-                          ).paddingAll(UIHelper.lowSize),
+                          builder:
+                              (_) => ElevatedButton.icon(
+                                onPressed: () async => await getEIrsaliyeBilgiler(),
+                                label: const Text("E-İrsaliye Bilgileri"),
+                                icon: const Icon(Icons.save_outlined),
+                              ).paddingAll(UIHelper.lowSize),
                         ),
                       ),
                     Expanded(
                       child: Observer(
-                        builder: (_) => !viewModel.siparisEditModel.taslakMi
-                            ? ElevatedButton.icon(
-                                onPressed: () async {
-                                  if ((viewModel.model.gonderimSekliEPosta ?? false) && (viewModel.model.ePosta?.ext.isNullOrEmpty ?? false)) {
-                                    dialogManager.showAlertDialog("Cari E-Posta alanı boş olamaz. Lütfen Cari Karttan E-Posta bilgisini giriniz.");
-                                    return;
-                                  }
-                                  if (viewModel.siparisEditModel.eirsBilgiModel?.sevktar == null && viewModel.siparisEditModel.eIrsaliyeSerisindenMi) {
-                                    bool isOk = false;
-                                    await dialogManager.showAreYouSureDialog(() => isOk = true, title: "E-İrsaliye Bilgisi girilmemiş. E-İrsaliye bilgilerini girmek istiyor musunuz?");
-                                    if (isOk) {
-                                      await getEIrsaliyeBilgiler();
-                                    }
-                                  }
-                                  dialogManager.showAreYouSureDialog(() async {
-                                    final result = await viewModel.sendTaslak();
-                                    if (result.isSuccess) {
-                                      final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
-                                      if (siparisModel != null) {
-                                        viewModel
-                                          ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
-                                          ..setSiparisModel(siparisModel);
-                                        dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                                      }
-                                    }
-                                  });
-                                },
-                                label: const Text("Taslak Oluştur"),
-                                icon: const Icon(Icons.add),
-                              ).paddingAll(UIHelper.lowSize)
-                            : const SizedBox.shrink(),
+                        builder:
+                            (_) =>
+                                !viewModel.siparisEditModel.taslakMi
+                                    ? ElevatedButton.icon(
+                                      onPressed: () async {
+                                        if ((viewModel.model.gonderimSekliEPosta ?? false) &&
+                                            (viewModel.model.ePosta?.ext.isNullOrEmpty ?? false)) {
+                                          dialogManager.showAlertDialog(
+                                            "Cari E-Posta alanı boş olamaz. Lütfen Cari Karttan E-Posta bilgisini giriniz.",
+                                          );
+                                          return;
+                                        }
+                                        if (viewModel.siparisEditModel.eirsBilgiModel?.sevktar == null &&
+                                            viewModel.siparisEditModel.eIrsaliyeSerisindenMi) {
+                                          bool isOk = false;
+                                          await dialogManager.showAreYouSureDialog(
+                                            () => isOk = true,
+                                            title:
+                                                "E-İrsaliye Bilgisi girilmemiş. E-İrsaliye bilgilerini girmek istiyor musunuz?",
+                                          );
+                                          if (isOk) {
+                                            await getEIrsaliyeBilgiler();
+                                          }
+                                        }
+                                        dialogManager.showAreYouSureDialog(() async {
+                                          final result = await viewModel.sendTaslak();
+                                          if (result.isSuccess) {
+                                            final BaseSiparisEditModel? siparisModel = await networkManager
+                                                .getBaseSiparisEditModel(
+                                                  SiparisEditRequestModel.fromSiparislerModel(
+                                                    viewModel.siparisEditModel,
+                                                  ),
+                                                );
+                                            if (siparisModel != null) {
+                                              viewModel
+                                                ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
+                                                ..setSiparisModel(siparisModel);
+                                              dialogManager.showSuccessSnackBar(
+                                                result.message ?? loc.generalStrings.success,
+                                              );
+                                            }
+                                          }
+                                        });
+                                      },
+                                      label: const Text("Taslak Oluştur"),
+                                      icon: const Icon(Icons.add),
+                                    ).paddingAll(UIHelper.lowSize)
+                                    : const SizedBox.shrink(),
                       ),
                     ),
                   ],
                 ),
-              ),
-              Observer(
-                builder: (_) => !viewModel.siparisEditModel.taslakMi
-                    ? const SizedBox.shrink()
-                    : Row(
-                        children: [
-                          if (_taslakSil)
-                            ElevatedButton(
-                              onPressed: () async {
-                                dialogManager.showAreYouSureDialog(() async {
-                                  final result = await viewModel.deleteTaslak();
-                                  if (result.isSuccess) {
-                                    final BaseSiparisEditModel? siparisModel = await networkManager.getBaseSiparisEditModel(SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel));
-                                    if (siparisModel != null) {
-                                      dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                                      viewModel
-                                        ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
-                                        ..setSiparisModel(siparisModel);
+          ),
+          Observer(
+            builder:
+                (_) =>
+                    !viewModel.siparisEditModel.taslakMi
+                        ? const SizedBox.shrink()
+                        : Row(
+                          children:
+                              [
+                                if (_taslakSil)
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      dialogManager.showAreYouSureDialog(() async {
+                                        final result = await viewModel.deleteTaslak();
+                                        if (result.isSuccess) {
+                                          final BaseSiparisEditModel? siparisModel = await networkManager
+                                              .getBaseSiparisEditModel(
+                                                SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel),
+                                              );
+                                          if (siparisModel != null) {
+                                            dialogManager.showSuccessSnackBar(
+                                              result.message ?? loc.generalStrings.success,
+                                            );
+                                            viewModel
+                                              ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
+                                              ..setSiparisModel(siparisModel);
+                                          }
+                                        }
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPalette.persianRed,
+                                      foregroundColor: Colors.white,
+                                      padding: UIHelper.lowPaddingVertical,
+                                    ),
+                                    child: const Column(
+                                      children: [Icon(Icons.delete_outline_outlined), Text("Taslak Sil")],
+                                    ),
+                                  ),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    final result = await Get.toNamed(
+                                      "/mainPage/eBelgePdf",
+                                      arguments: model.copyWith(taslak: "E"),
+                                    );
+                                    if (result == true) {
+                                      dialogManager.showAreYouSureDialog(() async {
+                                        final result = await viewModel.sendEBelge();
+                                        if (result.isSuccess) {
+                                          dialogManager.showSuccessSnackBar(
+                                            result.message ?? loc.generalStrings.success,
+                                          );
+
+                                          Get.back(result: true);
+                                        }
+                                      });
                                     }
-                                  }
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.persianRed, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
-                              child: const Column(
-                                children: [
-                                  Icon(Icons.delete_outline_outlined),
-                                  Text("Taslak Sil"),
-                                ],
-                              ),
-                            ),
-                          ElevatedButton(
-                            onPressed: () async {
-                              final result = await Get.toNamed("/mainPage/eBelgePdf", arguments: model.copyWith(taslak: "E"));
-                              if (result == true) {
-                                dialogManager.showAreYouSureDialog(() async {
-                                  final result = await viewModel.sendEBelge();
-                                  if (result.isSuccess) {
-                                    dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: ColorPalette.outerSpace,
+                                    foregroundColor: Colors.white,
+                                    padding: UIHelper.lowPaddingVertical,
+                                  ),
+                                  child: Column(
+                                    children: [const Icon(Icons.preview_outlined), Text(loc.generalStrings.view)],
+                                  ),
+                                ),
+                                if (_canSendEBelge)
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      dialogManager.showAreYouSureDialog(() async {
+                                        final result = await viewModel.sendEBelge();
+                                        if (result.isSuccess) {
+                                          dialogManager.showSuccessSnackBar(
+                                            result.message ?? loc.generalStrings.success,
+                                          );
 
-                                    Get.back(result: true);
-                                  }
-                                });
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.outerSpace, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
-                            child: Column(
-                              children: [const Icon(Icons.preview_outlined), Text(loc.generalStrings.view)],
-                            ),
-                          ),
-                          if (_canSendEBelge)
-                            ElevatedButton(
-                              onPressed: () async {
-                                dialogManager.showAreYouSureDialog(() async {
-                                  final result = await viewModel.sendEBelge();
-                                  if (result.isSuccess) {
-                                    dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-
-                                    Get.back(result: true);
-                                  }
-                                });
-                              },
-                              style: ElevatedButton.styleFrom(backgroundColor: ColorPalette.mantis, foregroundColor: Colors.white, padding: UIHelper.lowPaddingVertical),
-                              child: const Column(
-                                children: [Icon(Icons.send_outlined), Text("Gönder")],
-                              ),
-                            ),
-                        ].map((e) => Expanded(child: e.paddingAll(UIHelper.lowSize))).toList(),
-                      ),
-              ),
-            ],
-          ).paddingAll(UIHelper.lowSize),
-        ),
-      );
+                                          Get.back(result: true);
+                                        }
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: ColorPalette.mantis,
+                                      foregroundColor: Colors.white,
+                                      padding: UIHelper.lowPaddingVertical,
+                                    ),
+                                    child: const Column(children: [Icon(Icons.send_outlined), Text("Gönder")]),
+                                  ),
+                              ].map((e) => Expanded(child: e.paddingAll(UIHelper.lowSize))).toList(),
+                        ),
+          ),
+        ],
+      ).paddingAll(UIHelper.lowSize),
+    ),
+  );
 
   Future<void> getEIrsaliyeBilgiler() async {
     if (viewModel.eIrsaliyeModel?.sevktar == null) {
@@ -402,7 +445,11 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     }
     final result = await Get.toNamed(
       "mainPage/eIrsaliyeEkBilgiler",
-      arguments: viewModel.eIrsaliyeModel ?? (viewModel.siparisEditModel.eirsBilgiModel?.sevktar != null ? viewModel.siparisEditModel.eirsBilgiModel : null),
+      arguments:
+          viewModel.eIrsaliyeModel ??
+          (viewModel.siparisEditModel.eirsBilgiModel?.sevktar != null
+              ? viewModel.siparisEditModel.eirsBilgiModel
+              : null),
     );
     if (result is EIrsaliyeBilgiModel) {
       viewModel.setEIrsaliyeModel(result);
@@ -428,7 +475,12 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
         groupValue: viewModel.model.dizaynNo,
         children: List.generate(result.length, (index) {
           final DizaynModel dizaynModel = result[index];
-          return BottomSheetModel(title: dizaynModel.dizaynTamAd, description: dizaynModel.id.toStringIfNotNull, groupValue: dizaynModel.id, value: dizaynModel);
+          return BottomSheetModel(
+            title: dizaynModel.dizaynTamAd,
+            description: dizaynModel.id.toStringIfNotNull,
+            groupValue: dizaynModel.id,
+            value: dizaynModel,
+          );
         }),
       );
       if (selectedDizaynModel is DizaynModel) {

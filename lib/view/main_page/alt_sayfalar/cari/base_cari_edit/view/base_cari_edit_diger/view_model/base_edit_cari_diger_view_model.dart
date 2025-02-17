@@ -16,12 +16,13 @@ part "base_edit_cari_diger_view_model.g.dart";
 final class BaseEditCariDigerViewModel = _BaseEditCariDigerViewModelBase with _$BaseEditCariDigerViewModel;
 
 abstract class _BaseEditCariDigerViewModelBase with Store, MobxNetworkMixin {
-  final Map<String, String> kilitMap = <String, String>{"Kilitli Değil": "H", "Kilitli (Fatura)": "F", "Kilitli (Tüm İşlemler)": "T"};
-
-  final Map<String, String> senaryoMap = {
-    "Temel": "TEM",
-    "Ticari": "TIC",
+  final Map<String, String> kilitMap = <String, String>{
+    "Kilitli Değil": "H",
+    "Kilitli (Fatura)": "F",
+    "Kilitli (Tüm İşlemler)": "T",
   };
+
+  final Map<String, String> senaryoMap = {"Temel": "TEM", "Ticari": "TIC"};
 
   @observable
   CariSaveRequestModel? model;
@@ -210,7 +211,12 @@ abstract class _BaseEditCariDigerViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<GenericResponseModel<NetworkManagerMixin>> postFaturaTipi() async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveCari, bodyModel: CariListesiModel(), data: CariSaveRequestModel.mukellefiyetDegistir(model), showLoading: true);
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveCari,
+      bodyModel: CariListesiModel(),
+      data: CariSaveRequestModel.mukellefiyetDegistir(model),
+      showLoading: true,
+    );
     if (result.isSuccess) {
       changeEfaturaMi();
     }

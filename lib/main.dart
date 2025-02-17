@@ -14,7 +14,8 @@ import "app/picker_app.dart";
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";
-import "core/init/platform_implementations.dart" if (dart.library.js_interop) "package:picker/core/init/web/url_creator.dart";
+import "core/init/platform_implementations.dart"
+    if (dart.library.js_interop) "package:picker/core/init/web/url_creator.dart";
 import "firebase_options.dart";
 // import "generated/codegen_loader.g.dart";
 import "view/add_company/model/account_model.dart";
@@ -35,7 +36,11 @@ void main() async {
   } else {
     //* Screen Orientation
     await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp, DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft]);
+    await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
   }
   runApp(const PickerApp());
   //* Network Dependency Injection (Uygulamanın internet bağlantısı olup olmadığını kontrol ediyoruz.)
@@ -51,7 +56,10 @@ Future<void> firebaseInitialized() async {
   final FirebaseMessaging messaging = FirebaseMessaging.instance;
   await messaging.requestPermission();
   await messaging.setAutoInitEnabled(true);
-  AccountModel.instance.fcmToken = await messaging.getToken(vapidKey: !kIsWeb ? null : "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE");
+  AccountModel.instance.fcmToken = await messaging.getToken(
+    vapidKey:
+        !kIsWeb ? null : "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE",
+  );
   log("fcmToken: ${AccountModel.instance.fcmToken}");
   if (kIsWeb || await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
     FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
@@ -59,7 +67,9 @@ Future<void> firebaseInitialized() async {
     await FirebaseCrashlytics.instance.setUserIdentifier(AccountModel.instance.ozelCihazKimligi ?? "");
     FlutterError.onError = (errorDetails) => FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     PlatformDispatcher.instance.onError = (error, stack) {
-      AccountModel.instance.toJson().forEach((key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null);
+      AccountModel.instance.toJson().forEach(
+        (key, value) => value != null ? FirebaseCrashlytics.instance.setCustomKey(key, value) : null,
+      );
       FirebaseCrashlytics.instance.setCustomKey("new version", AppInfoModel.instance.version ?? "");
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;

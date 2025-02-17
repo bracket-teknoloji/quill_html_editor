@@ -36,10 +36,7 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
   final Location _locationTracker = Location();
   // final Completer<GoogleMapController> _controller = Completer<GoogleMapController>();
   BitmapDescriptor markerIcon = BitmapDescriptor.defaultMarker;
-  CameraPosition myLocation = const CameraPosition(
-    target: LatLng(0, 0),
-    zoom: 14.4746,
-  );
+  CameraPosition myLocation = const CameraPosition(target: LatLng(0, 0), zoom: 14.4746);
   @override
   void initState() {
     // setMarker();
@@ -80,33 +77,33 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: Observer(
-            builder: (_) => AppBarTitle(
+    appBar: AppBar(
+      title: Observer(
+        builder:
+            (_) => AppBarTitle(
               title: "Cari Haritası",
               subtitle: viewModel.cariList?.length.toStringIfNotNull,
               // subtitle: viewModel.currentPosition?.latitude.toIntIfDouble.toStringIfNotNull,
             ),
+      ),
+      actions: [
+        if (widget.isGetData == true)
+          IconButton(
+            onPressed: () async => Get.back(result: viewModel.currentPosition),
+            icon: const Icon(Icons.save_outlined),
           ),
-          actions: [
-            if (widget.isGetData == true)
-              IconButton(
-                onPressed: () async => Get.back(result: viewModel.currentPosition),
-                icon: const Icon(Icons.save_outlined),
-              ),
-          ],
-        ),
-        body: Observer(
-          builder: (_) {
-            if (viewModel.cariList == null && widget.isGetData == null) {
-              return const Center(
-                child: CircularProgressIndicator.adaptive(),
-              );
-            }
-            return Stack(
-              children: [
-                Observer(
-                  builder: (_) => GoogleMap(
+      ],
+    ),
+    body: Observer(
+      builder: (_) {
+        if (viewModel.cariList == null && widget.isGetData == null) {
+          return const Center(child: CircularProgressIndicator.adaptive());
+        }
+        return Stack(
+          children: [
+            Observer(
+              builder:
+                  (_) => GoogleMap(
                     style: googleMapsStyle(),
                     clusterManagers: {
                       ClusterManager(
@@ -155,24 +152,26 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
                     },
                     myLocationEnabled: true,
                     markers: viewModel.markerSet,
-                    onCameraMove: widget.isGetData != true
-                        ? null
-                        : (position) {
-                            viewModel.setCurrentPosition(position.target);
-                          },
+                    onCameraMove:
+                        widget.isGetData != true
+                            ? null
+                            : (position) {
+                              viewModel.setCurrentPosition(position.target);
+                            },
                   ),
-                ),
-                if (widget.isGetData == true) Center(child: Assets.lotties.locationLottie.lottie()).paddingOnly(bottom: UIHelper.midSize * 3),
-              ],
-            );
-          },
-        ),
-        // floatingActionButton: FloatingActionButton.extended(
-        //   onPressed: _goToTheLake,
-        //   label: const Text("To the lake!"),
-        //   icon: const Icon(Icons.directions_boat),
-        // ),
-      );
+            ),
+            if (widget.isGetData == true)
+              Center(child: Assets.lotties.locationLottie.lottie()).paddingOnly(bottom: UIHelper.midSize * 3),
+          ],
+        );
+      },
+    ),
+    // floatingActionButton: FloatingActionButton.extended(
+    //   onPressed: _goToTheLake,
+    //   label: const Text("To the lake!"),
+    //   icon: const Icon(Icons.directions_boat),
+    // ),
+  );
 
   String googleMapsStyle() {
     if (theme.brightness == Brightness.dark) {
@@ -630,47 +629,36 @@ final class CariHaritasiViewState extends BaseState<CariHaritasiView> {
   }
 
   Future<BitmapDescriptor> setMarker(CariListesiModel? model) => Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: width * 0.9),
-            child: ElevatedButton(
-              onPressed: () => dialogManager.showCariIslemleriGridViewDialog(model),
-              style: theme.elevatedButtonTheme.style?.copyWith(elevation: const WidgetStatePropertyAll(10)),
-              child: Text(
-                model?.cariAdi ?? "",
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 24,
-                ),
-                maxLines: 2,
-              ).paddingAll(UIHelper.lowSize),
-            ),
-          ),
-          Assets.splash.mapMarker.image(height: 50).paddingOnly(top: UIHelper.lowSize),
-        ],
-      ).toBitmapDescriptor(logicalSize: Size(width * 1.9, height * 1.5));
+    mainAxisAlignment: MainAxisAlignment.end,
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: width * 0.9),
+        child: ElevatedButton(
+          onPressed: () => dialogManager.showCariIslemleriGridViewDialog(model),
+          style: theme.elevatedButtonTheme.style?.copyWith(elevation: const WidgetStatePropertyAll(10)),
+          child: Text(
+            model?.cariAdi ?? "",
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 24),
+            maxLines: 2,
+          ).paddingAll(UIHelper.lowSize),
+        ),
+      ),
+      Assets.splash.mapMarker.image(height: 50).paddingOnly(top: UIHelper.lowSize),
+    ],
+  ).toBitmapDescriptor(logicalSize: Size(width * 1.9, height * 1.5));
 
   Future<void> setCameraPosition() async {
     try {
       if (widget.konum case final value?) {
-        myLocation = CameraPosition(
-          target: LatLng(value.enlem ?? 0, value.boylam ?? 0),
-          zoom: 15.5,
-        );
+        myLocation = CameraPosition(target: LatLng(value.enlem ?? 0, value.boylam ?? 0), zoom: 15.5);
       } else if (widget.model case final value?) {
-        myLocation = CameraPosition(
-          target: LatLng(value.enlem ?? 0, value.boylam ?? 0),
-          zoom: 15.5,
-        );
+        myLocation = CameraPosition(target: LatLng(value.enlem ?? 0, value.boylam ?? 0), zoom: 15.5);
       } else {
         final location = await _locationTracker.getLocation();
-        myLocation = CameraPosition(
-          target: LatLng(location.latitude ?? 0, location.longitude ?? 0),
-          zoom: 15.5,
-        );
+        myLocation = CameraPosition(target: LatLng(location.latitude ?? 0, location.longitude ?? 0), zoom: 15.5);
       }
       _controller?.animateCamera(CameraUpdate.newCameraPosition(myLocation));
     } catch (e) {

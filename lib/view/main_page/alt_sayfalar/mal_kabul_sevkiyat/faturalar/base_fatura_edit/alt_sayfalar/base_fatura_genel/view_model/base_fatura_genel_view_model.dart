@@ -22,7 +22,8 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
     "İhracat": 6,
   };
 
-  List<MapEntry<String, int>> get belgeTipi => _belgeTipi.entries.where((element) => model.getEditTipiEnum?.belgeTipleriVarMi(element.value) ?? false).toList();
+  List<MapEntry<String, int>> get belgeTipi =>
+      _belgeTipi.entries.where((element) => model.getEditTipiEnum?.belgeTipleriVarMi(element.value) ?? false).toList();
 
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahil == "E" ? true : false;

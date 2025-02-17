@@ -52,123 +52,110 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar,
-        body: body,
-        bottomNavigationBar: bottomAppBar,
-      );
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar, body: body, bottomNavigationBar: bottomAppBar);
 
   AppBar get appBar => AppBar(
-        title: Observer(
-          builder: (_) => viewModel.searchBar
-              ? CustomAppBarTextField(
-                  controller: searchTextController,
-                  onChanged: viewModel.setSearchText,
-                )
-              : AppBarTitle(
-                  title: "Depo Fark Raporu",
-                  subtitle: widget.model.fisno,
-                ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              viewModel.setSearchBar(!viewModel.searchBar);
-              if (!viewModel.searchBar) {
-                searchTextController.clear();
-              }
-            },
-            icon: Observer(
-              builder: (_) => Icon(
-                viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined,
-              ),
-            ),
-          ),
-          IconButton(
-            onPressed: filterBottomSheetDialog,
-            icon: Observer(
-              builder: (_) => const Icon(Icons.more_vert_outlined),
-            ),
-          ),
-        ],
-      );
+    title: Observer(
+      builder:
+          (_) =>
+              viewModel.searchBar
+                  ? CustomAppBarTextField(controller: searchTextController, onChanged: viewModel.setSearchText)
+                  : AppBarTitle(title: "Depo Fark Raporu", subtitle: widget.model.fisno),
+    ),
+    actions: [
+      IconButton(
+        onPressed: () {
+          viewModel.setSearchBar(!viewModel.searchBar);
+          if (!viewModel.searchBar) {
+            searchTextController.clear();
+          }
+        },
+        icon: Observer(builder: (_) => Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined)),
+      ),
+      IconButton(
+        onPressed: filterBottomSheetDialog,
+        icon: Observer(builder: (_) => const Icon(Icons.more_vert_outlined)),
+      ),
+    ],
+  );
 
   BottomBarWidget get bottomAppBar => BottomBarWidget(
-        isScrolledDown: true,
+    isScrolledDown: true,
+    children: [
+      FooterButton(
         children: [
-          FooterButton(
-            children: [
-              const Text("Kayıt Sayısı"),
-              Observer(
-                builder: (_) => Text(viewModel.filteredSayimListesi?.length.toString() ?? "0"),
-              ),
-            ],
-          ),
-          FooterButton(
-            children: [
-              const Text("Depo Mik."),
-              Observer(
-                builder: (_) => Text(viewModel.toplamDepoMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
-              ),
-            ],
-          ),
-          FooterButton(
-            children: [
-              const Text("Sayım Mik."),
-              Observer(
-                builder: (_) => Text(viewModel.toplamSayimMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
-              ),
-            ],
-          ),
-          FooterButton(
-            children: [
-              const Text("Fark"),
-              Observer(
-                builder: (_) => Text(viewModel.toplamFarkMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
-              ),
-            ],
+          const Text("Kayıt Sayısı"),
+          Observer(builder: (_) => Text(viewModel.filteredSayimListesi?.length.toString() ?? "0")),
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Depo Mik."),
+          Observer(
+            builder: (_) => Text(viewModel.toplamDepoMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
           ),
         ],
-      );
+      ),
+      FooterButton(
+        children: [
+          const Text("Sayım Mik."),
+          Observer(
+            builder: (_) => Text(viewModel.toplamSayimMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
+          ),
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Fark"),
+          Observer(
+            builder: (_) => Text(viewModel.toplamFarkMiktari.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)),
+          ),
+        ],
+      ),
+    ],
+  );
 
   RefreshIndicator get body => RefreshIndicator.adaptive(
-        onRefresh: () async {
-          viewModel.setSayimListesi(null);
-          await viewModel.getData();
-        },
-        child: Observer(
-          builder: (_) {
-            if (viewModel.filteredSayimListesi == null) return const ListViewShimmer();
-            if (viewModel.filteredSayimListesi!.isEmpty) return const Center(child: Text("Depo Fark Raporları Bulunamadı."));
-            return ListView.builder(
-              itemCount: viewModel.filteredSayimListesi?.length ?? 0,
-              itemBuilder: (context, index) {
-                final SayimListesiModel item = viewModel.filteredSayimListesi![index];
-                return Card(
-                  color: (item.miktar ?? 0) <= 0 ? ColorPalette.persianRedWithOpacity : null,
-                  child: ListTile(
-                    title: Text(item.stokAdi ?? ""),
-                    subtitle: CustomLayoutBuilder(
-                      splitCount: 2,
-                      children: [
-                        Text("Stok Kodu: ${item.stokKodu}"),
-                        if (item.seriNo != null) Text("Seri 1: ${item.seriNo}"),
-                        if (item.seri2 != null) Text("Seri 2: ${item.seri2}"),
-                        if (item.seri3 != null) Text("Seri 3: ${item.seri3}"),
-                        if (item.seri4 != null) Text("Seri 4: ${item.seri4}"),
-                        if (item.sonKullanmaTarihi?.toDateString != null) Text("Son Kul. Tarihi: ${item.sonKullanmaTarihi.toDateString}"),
-                        Text("Depo Miktarı: ${item.stokBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                        Text("Sayım Miktarı: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                        Text("Fark: ${item.depoFark.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                      ],
-                    ),
-                  ),
-                );
-              },
+    onRefresh: () async {
+      viewModel.setSayimListesi(null);
+      await viewModel.getData();
+    },
+    child: Observer(
+      builder: (_) {
+        if (viewModel.filteredSayimListesi == null) return const ListViewShimmer();
+        if (viewModel.filteredSayimListesi!.isEmpty) {
+          return const Center(child: Text("Depo Fark Raporları Bulunamadı."));
+        }
+        return ListView.builder(
+          itemCount: viewModel.filteredSayimListesi?.length ?? 0,
+          itemBuilder: (context, index) {
+            final SayimListesiModel item = viewModel.filteredSayimListesi![index];
+            return Card(
+              color: (item.miktar ?? 0) <= 0 ? ColorPalette.persianRedWithOpacity : null,
+              child: ListTile(
+                title: Text(item.stokAdi ?? ""),
+                subtitle: CustomLayoutBuilder(
+                  splitCount: 2,
+                  children: [
+                    Text("Stok Kodu: ${item.stokKodu}"),
+                    if (item.seriNo != null) Text("Seri 1: ${item.seriNo}"),
+                    if (item.seri2 != null) Text("Seri 2: ${item.seri2}"),
+                    if (item.seri3 != null) Text("Seri 3: ${item.seri3}"),
+                    if (item.seri4 != null) Text("Seri 4: ${item.seri4}"),
+                    if (item.sonKullanmaTarihi?.toDateString != null)
+                      Text("Son Kul. Tarihi: ${item.sonKullanmaTarihi.toDateString}"),
+                    Text("Depo Miktarı: ${item.stokBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                    Text("Sayım Miktarı: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                    Text("Fark: ${item.depoFark.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                  ],
+                ),
+              ),
             );
           },
-        ).paddingAll(UIHelper.lowSize),
-      );
+        );
+      },
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Future<void> filterBottomSheetDialog() async {
     await bottomSheetDialogManager.showBottomSheetDialog(
@@ -184,7 +171,10 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
             readOnly: true,
             suffixMore: true,
             onTap: () async {
-              final result = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(context, viewModel.filtreTuru);
+              final result = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
+                context,
+                viewModel.filtreTuru,
+              );
               if (result is DepoFarkRaporuFiltreEnum) {
                 viewModel.setFiltreTuru(result);
                 filtreController.text = result.filtreAdi;
@@ -193,7 +183,12 @@ final class _DepoFarkRaporuViewState extends BaseState<DepoFarkRaporuView> {
           ),
           Card(
             child: Observer(
-              builder: (_) => SwitchListTile.adaptive(title: const Text("Seri Bazında Mı?"), value: viewModel.requestModel.seriBazinda == "E", onChanged: viewModel.setSeriBazindaMi),
+              builder:
+                  (_) => SwitchListTile.adaptive(
+                    title: const Text("Seri Bazında Mı?"),
+                    value: viewModel.requestModel.seriBazinda == "E",
+                    onChanged: viewModel.setSeriBazindaMi,
+                  ),
             ),
           ),
           ElevatedButton(

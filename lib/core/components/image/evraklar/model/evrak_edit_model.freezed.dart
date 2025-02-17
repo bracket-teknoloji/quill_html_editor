@@ -12,7 +12,8 @@ part of 'evrak_edit_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EvrakEditModel _$EvrakEditModelFromJson(Map<String, dynamic> json) {
   return _EvrakEditModel.fromJson(json);
@@ -39,28 +40,19 @@ mixin _$EvrakEditModel {
   /// Create a copy of EvrakEditModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EvrakEditModelCopyWith<EvrakEditModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $EvrakEditModelCopyWith<EvrakEditModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EvrakEditModelCopyWith<$Res> {
-  factory $EvrakEditModelCopyWith(
-          EvrakEditModel value, $Res Function(EvrakEditModel) then) =
+  factory $EvrakEditModelCopyWith(EvrakEditModel value, $Res Function(EvrakEditModel) then) =
       _$EvrakEditModelCopyWithImpl<$Res, EvrakEditModel>;
   @useResult
-  $Res call(
-      {String? aciklama,
-      String? base64Data,
-      String? belgeNo,
-      String? belgeTipi,
-      int? boyutByte,
-      int? islemKodu});
+  $Res call({String? aciklama, String? base64Data, String? belgeNo, String? belgeTipi, int? boyutByte, int? islemKodu});
 }
 
 /// @nodoc
-class _$EvrakEditModelCopyWithImpl<$Res, $Val extends EvrakEditModel>
-    implements $EvrakEditModelCopyWith<$Res> {
+class _$EvrakEditModelCopyWithImpl<$Res, $Val extends EvrakEditModel> implements $EvrakEditModelCopyWith<$Res> {
   _$EvrakEditModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -80,59 +72,58 @@ class _$EvrakEditModelCopyWithImpl<$Res, $Val extends EvrakEditModel>
     Object? boyutByte = freezed,
     Object? islemKodu = freezed,
   }) {
-    return _then(_value.copyWith(
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      base64Data: freezed == base64Data
-          ? _value.base64Data
-          : base64Data // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      boyutByte: freezed == boyutByte
-          ? _value.boyutByte
-          : boyutByte // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            aciklama:
+                freezed == aciklama
+                    ? _value.aciklama
+                    : aciklama // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            base64Data:
+                freezed == base64Data
+                    ? _value.base64Data
+                    : base64Data // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            belgeNo:
+                freezed == belgeNo
+                    ? _value.belgeNo
+                    : belgeNo // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            belgeTipi:
+                freezed == belgeTipi
+                    ? _value.belgeTipi
+                    : belgeTipi // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            boyutByte:
+                freezed == boyutByte
+                    ? _value.boyutByte
+                    : boyutByte // ignore: cast_nullable_to_non_nullable
+                        as int?,
+            islemKodu:
+                freezed == islemKodu
+                    ? _value.islemKodu
+                    : islemKodu // ignore: cast_nullable_to_non_nullable
+                        as int?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
-abstract class _$$EvrakEditModelImplCopyWith<$Res>
-    implements $EvrakEditModelCopyWith<$Res> {
-  factory _$$EvrakEditModelImplCopyWith(_$EvrakEditModelImpl value,
-          $Res Function(_$EvrakEditModelImpl) then) =
+abstract class _$$EvrakEditModelImplCopyWith<$Res> implements $EvrakEditModelCopyWith<$Res> {
+  factory _$$EvrakEditModelImplCopyWith(_$EvrakEditModelImpl value, $Res Function(_$EvrakEditModelImpl) then) =
       __$$EvrakEditModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? aciklama,
-      String? base64Data,
-      String? belgeNo,
-      String? belgeTipi,
-      int? boyutByte,
-      int? islemKodu});
+  $Res call({String? aciklama, String? base64Data, String? belgeNo, String? belgeTipi, int? boyutByte, int? islemKodu});
 }
 
 /// @nodoc
-class __$$EvrakEditModelImplCopyWithImpl<$Res>
-    extends _$EvrakEditModelCopyWithImpl<$Res, _$EvrakEditModelImpl>
+class __$$EvrakEditModelImplCopyWithImpl<$Res> extends _$EvrakEditModelCopyWithImpl<$Res, _$EvrakEditModelImpl>
     implements _$$EvrakEditModelImplCopyWith<$Res> {
-  __$$EvrakEditModelImplCopyWithImpl(
-      _$EvrakEditModelImpl _value, $Res Function(_$EvrakEditModelImpl) _then)
-      : super(_value, _then);
+  __$$EvrakEditModelImplCopyWithImpl(_$EvrakEditModelImpl _value, $Res Function(_$EvrakEditModelImpl) _then)
+    : super(_value, _then);
 
   /// Create a copy of EvrakEditModel
   /// with the given fields replaced by the non-null parameter values.
@@ -146,49 +137,50 @@ class __$$EvrakEditModelImplCopyWithImpl<$Res>
     Object? boyutByte = freezed,
     Object? islemKodu = freezed,
   }) {
-    return _then(_$EvrakEditModelImpl(
-      aciklama: freezed == aciklama
-          ? _value.aciklama
-          : aciklama // ignore: cast_nullable_to_non_nullable
-              as String?,
-      base64Data: freezed == base64Data
-          ? _value.base64Data
-          : base64Data // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeNo: freezed == belgeNo
-          ? _value.belgeNo
-          : belgeNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-      belgeTipi: freezed == belgeTipi
-          ? _value.belgeTipi
-          : belgeTipi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      boyutByte: freezed == boyutByte
-          ? _value.boyutByte
-          : boyutByte // ignore: cast_nullable_to_non_nullable
-              as int?,
-      islemKodu: freezed == islemKodu
-          ? _value.islemKodu
-          : islemKodu // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+    return _then(
+      _$EvrakEditModelImpl(
+        aciklama:
+            freezed == aciklama
+                ? _value.aciklama
+                : aciklama // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        base64Data:
+            freezed == base64Data
+                ? _value.base64Data
+                : base64Data // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        belgeNo:
+            freezed == belgeNo
+                ? _value.belgeNo
+                : belgeNo // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        belgeTipi:
+            freezed == belgeTipi
+                ? _value.belgeTipi
+                : belgeTipi // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        boyutByte:
+            freezed == boyutByte
+                ? _value.boyutByte
+                : boyutByte // ignore: cast_nullable_to_non_nullable
+                    as int?,
+        islemKodu:
+            freezed == islemKodu
+                ? _value.islemKodu
+                : islemKodu // ignore: cast_nullable_to_non_nullable
+                    as int?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$EvrakEditModelImpl extends _EvrakEditModel {
-  _$EvrakEditModelImpl(
-      {this.aciklama,
-      this.base64Data,
-      this.belgeNo,
-      this.belgeTipi,
-      this.boyutByte,
-      this.islemKodu})
-      : super._();
+  _$EvrakEditModelImpl({this.aciklama, this.base64Data, this.belgeNo, this.belgeTipi, this.boyutByte, this.islemKodu})
+    : super._();
 
-  factory _$EvrakEditModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EvrakEditModelImplFromJson(json);
+  factory _$EvrakEditModelImpl.fromJson(Map<String, dynamic> json) => _$$EvrakEditModelImplFromJson(json);
 
   @override
   String? aciklama;
@@ -209,29 +201,26 @@ class _$EvrakEditModelImpl extends _EvrakEditModel {
   @override
   @pragma('vm:prefer-inline')
   _$$EvrakEditModelImplCopyWith<_$EvrakEditModelImpl> get copyWith =>
-      __$$EvrakEditModelImplCopyWithImpl<_$EvrakEditModelImpl>(
-          this, _$identity);
+      __$$EvrakEditModelImplCopyWithImpl<_$EvrakEditModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EvrakEditModelImplToJson(
-      this,
-    );
+    return _$$EvrakEditModelImplToJson(this);
   }
 }
 
 abstract class _EvrakEditModel extends EvrakEditModel {
-  factory _EvrakEditModel(
-      {String? aciklama,
-      String? base64Data,
-      String? belgeNo,
-      String? belgeTipi,
-      int? boyutByte,
-      int? islemKodu}) = _$EvrakEditModelImpl;
+  factory _EvrakEditModel({
+    String? aciklama,
+    String? base64Data,
+    String? belgeNo,
+    String? belgeTipi,
+    int? boyutByte,
+    int? islemKodu,
+  }) = _$EvrakEditModelImpl;
   _EvrakEditModel._() : super._();
 
-  factory _EvrakEditModel.fromJson(Map<String, dynamic> json) =
-      _$EvrakEditModelImpl.fromJson;
+  factory _EvrakEditModel.fromJson(Map<String, dynamic> json) = _$EvrakEditModelImpl.fromJson;
 
   @override
   String? get aciklama;
@@ -256,6 +245,5 @@ abstract class _EvrakEditModel extends EvrakEditModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EvrakEditModelImplCopyWith<_$EvrakEditModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$EvrakEditModelImplCopyWith<_$EvrakEditModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

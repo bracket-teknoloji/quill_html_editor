@@ -12,10 +12,7 @@ part "seri_hareketleri_view_model.g.dart";
 final class SeriHareketleriViewModel = _SeriHareketleriViewModelBase with _$SeriHareketleriViewModel;
 
 abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
-  final Map<String, String> siralaMap = {
-    "Tarih (A-Z)": "TARIH_AZ",
-    "Tarih (Z-A)": "TARIH_ZA",
-  };
+  final Map<String, String> siralaMap = {"Tarih (A-Z)": "TARIH_AZ", "Tarih (Z-A)": "TARIH_ZA"};
   @observable
   bool isSearchBarOpened = false;
 
@@ -39,7 +36,8 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
     if (searchQuery.isEmpty) return seriHareketleriList;
     return seriHareketleriList
         ?.where(
-          (element) => searchQuery == "" ? true : element.seriNo?.toLowerCase().contains(searchQuery.toLowerCase()) ?? false,
+          (element) =>
+              searchQuery == "" ? true : element.seriNo?.toLowerCase().contains(searchQuery.toLowerCase()) ?? false,
         )
         .toList()
         .asObservable();
@@ -52,7 +50,9 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   void setSearchQuery(String query) => searchQuery = query;
 
   @action
-  void onActionTypeChanged(int? index) => selectedActionType = selectedActionType.mapIndexed((index2, e) => index == index2 ? true : false).toList().asObservable();
+  void onActionTypeChanged(int? index) =>
+      selectedActionType =
+          selectedActionType.mapIndexed((index2, e) => index == index2 ? true : false).toList().asObservable();
 
   @action
   void setIsSearchBarOpened() => isSearchBarOpened = !isSearchBarOpened;
@@ -75,7 +75,11 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   @action
   Future<void> getData() async {
     setSerihareketleriList(null);
-    final result = await networkManager.dioPost(path: ApiUrls.getSeriHareketleri, bodyModel: SeriHareketleriModel(), data: requestModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.getSeriHareketleri,
+      bodyModel: SeriHareketleriModel(),
+      data: requestModel.toJson(),
+    );
     if (result.isSuccess) {
       setSerihareketleriList(result.dataList);
     }
@@ -83,7 +87,12 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<bool> deleteSeriHareket(SeriHareketleriModel? model) async {
-    final result = await networkManager.dioPost(path: ApiUrls.deleteSeriHareketi, bodyModel: SeriHareketleriModel(), showLoading: true, data: model?.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.deleteSeriHareketi,
+      bodyModel: SeriHareketleriModel(),
+      showLoading: true,
+      data: model?.toJson(),
+    );
 
     return result.isSuccess;
   }

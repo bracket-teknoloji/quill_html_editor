@@ -27,7 +27,9 @@ final class _BaseHucreEditViewState extends BaseState<BaseHucreEditView> with Ti
     SingletonModels.hucreTransferiModel.islemTuru = widget.islemTuru.kodu;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       tabController.addListener(() {
-        if (tabController.indexIsChanging && tabController.index == 1 && !SingletonModels.hucreTransferiModel.kalemlereGidilsinMi) {
+        if (tabController.indexIsChanging &&
+            tabController.index == 1 &&
+            !SingletonModels.hucreTransferiModel.kalemlereGidilsinMi) {
           dialogManager.showAlertDialog("Gerekli alanları doldurunuz");
           tabController.animateTo(0);
         }
@@ -45,39 +47,30 @@ final class _BaseHucreEditViewState extends BaseState<BaseHucreEditView> with Ti
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: AppBarTitle(
-            title: widget.islemTuru.getName,
-          ),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                if (!SingletonModels.hucreTransferiModel.isValid) return dialogManager.showAlertDialog("Lütfen formu eksiksiz doldurunuz!");
-                final result = await viewModel.sendData();
-                if (result) {
-                  SingletonModels.hucreTransferiModel = HucreTransferiModel(islemTuru: widget.islemTuru.kodu);
-                  tabController.animateTo(0);
-                  dialogManager.showSuccessSnackBar("İşlem başarıyla gerçekleştirildi");
-                }
-              },
-              icon: const Icon(Icons.save_outlined),
-            ),
-          ],
-          bottom: TabBar(
-            controller: tabController,
-            tabs: const [
-              Tab(text: "Genel"),
-              Tab(text: "Kalemler"),
-            ],
-          ),
+    appBar: AppBar(
+      title: AppBarTitle(title: widget.islemTuru.getName),
+      actions: [
+        IconButton(
+          onPressed: () async {
+            if (!SingletonModels.hucreTransferiModel.isValid) {
+              return dialogManager.showAlertDialog("Lütfen formu eksiksiz doldurunuz!");
+            }
+            final result = await viewModel.sendData();
+            if (result) {
+              SingletonModels.hucreTransferiModel = HucreTransferiModel(islemTuru: widget.islemTuru.kodu);
+              tabController.animateTo(0);
+              dialogManager.showSuccessSnackBar("İşlem başarıyla gerçekleştirildi");
+            }
+          },
+          icon: const Icon(Icons.save_outlined),
         ),
-        body: TabBarView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: tabController,
-          children: [
-            BaseHucreGenelView(tabController: tabController),
-            const BaseHucreKalemlerView(),
-          ],
-        ),
-      );
+      ],
+      bottom: TabBar(controller: tabController, tabs: const [Tab(text: "Genel"), Tab(text: "Kalemler")]),
+    ),
+    body: TabBarView(
+      physics: const NeverScrollableScrollPhysics(),
+      controller: tabController,
+      children: [BaseHucreGenelView(tabController: tabController), const BaseHucreKalemlerView()],
+    ),
+  );
 }

@@ -48,7 +48,11 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), floatingActionButton: (yetkiController.genelDovizEkle) ? fab(context) : null, body: body().paddingAll(UIHelper.lowSize));
+  Widget build(BuildContext context) => BaseScaffold(
+    appBar: appBar(),
+    floatingActionButton: (yetkiController.genelDovizEkle) ? fab(context) : null,
+    body: body().paddingAll(UIHelper.lowSize),
+  );
 
   AppBar appBar() => AppBar(title: const AppBarTitle(title: "Döviz Kurları"));
 
@@ -63,11 +67,21 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
             iconWidget: Icons.add,
             onTap: () async {
               if (setDovizBottomSheetList.ext.isNotNullOrEmpty) {
-                final result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Döviz Tipi", children: setDovizBottomSheetList);
+                final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                  context,
+                  title: "Döviz Tipi",
+                  children: setDovizBottomSheetList,
+                );
                 if (result != null && result is DovizList) {
                   Get.back();
                   await Get.to(
-                    () => DovizKuruGirisiView(dovizKurlariModel: DovizKurlariModel(tarih: DateTime.now(), dovizTipi: result.dovizTipi, dovizAdi: result.isim ?? result.dovizKodu.toStringIfNotNull)),
+                    () => DovizKuruGirisiView(
+                      dovizKurlariModel: DovizKurlariModel(
+                        tarih: DateTime.now(),
+                        dovizTipi: result.dovizTipi,
+                        dovizAdi: result.isim ?? result.dovizKodu.toStringIfNotNull,
+                      ),
+                    ),
                   );
                   await viewModel.getData();
                 }
@@ -135,7 +149,16 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
       ).paddingAll(UIHelper.lowSize),
       Text("Kurlar", style: theme.textTheme.headlineMedium).paddingOnly(top: UIHelper.midSize, left: UIHelper.midSize),
       const Divider().paddingSymmetric(vertical: UIHelper.lowSize),
-      Expanded(child: Observer(builder: (_) => RefreshableListView(onRefresh: viewModel.getData, items: viewModel.observableList, itemBuilder: dovizKurlariCard))),
+      Expanded(
+        child: Observer(
+          builder:
+              (_) => RefreshableListView(
+                onRefresh: viewModel.getData,
+                items: viewModel.observableList,
+                itemBuilder: dovizKurlariCard,
+              ),
+        ),
+      ),
     ],
   );
 
@@ -143,17 +166,40 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
     child: ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [Text(item.dovizAdi ?? ""), Text(item.tarih.toDateString, style: const TextStyle(color: ColorPalette.slateGray))],
+        children: [
+          Text(item.dovizAdi ?? ""),
+          Text(item.tarih.toDateString, style: const TextStyle(color: ColorPalette.slateGray)),
+        ],
       ).paddingOnly(bottom: UIHelper.highSize),
       subtitle: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children:
             [
-              CustomWidgetWithLabel(isVertical: true, addPadding: false, text: "Alış", child: Text(item.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
-              CustomWidgetWithLabel(isVertical: true, addPadding: false, text: "Satış", child: Text(item.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
-              CustomWidgetWithLabel(isVertical: true, addPadding: false, text: "Ef. Alış", child: Text(item.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
-              CustomWidgetWithLabel(isVertical: true, addPadding: false, text: "Ef. Satış", child: Text(item.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati))),
+              CustomWidgetWithLabel(
+                isVertical: true,
+                addPadding: false,
+                text: "Alış",
+                child: Text(item.dovAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
+              ),
+              CustomWidgetWithLabel(
+                isVertical: true,
+                addPadding: false,
+                text: "Satış",
+                child: Text(item.dovSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
+              ),
+              CustomWidgetWithLabel(
+                isVertical: true,
+                addPadding: false,
+                text: "Ef. Alış",
+                child: Text(item.effAlis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
+              ),
+              CustomWidgetWithLabel(
+                isVertical: true,
+                addPadding: false,
+                text: "Ef. Satış",
+                child: Text(item.effSatis.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)),
+              ),
             ].map((e) => Expanded(child: e)).toList(),
       ),
       onTap: () async {
@@ -231,7 +277,13 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
     final List<BottomSheetModel> bottomSheetList = [];
     for (final DovizList item in dovizList?.where((element) => element.dovizTipi != 0).toList() ?? []) {
       if (viewModel.observableList?.any((element) => element.dovizTipi != item.dovizTipi) ?? false) {
-        bottomSheetList.add(BottomSheetModel(title: item.isim ?? item.dovizTipi.toStringIfNotNull ?? "", iconWidget: Icons.add, value: item));
+        bottomSheetList.add(
+          BottomSheetModel(
+            title: item.isim ?? item.dovizTipi.toStringIfNotNull ?? "",
+            iconWidget: Icons.add,
+            value: item,
+          ),
+        );
       }
     }
     return bottomSheetList;

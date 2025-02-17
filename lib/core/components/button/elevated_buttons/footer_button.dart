@@ -8,16 +8,13 @@ final class FooterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElevatedButton(
-        style: ButtonStyle(
-          elevation: WidgetStateProperty.all(0),
-          padding: WidgetStateProperty.all(EdgeInsets.zero),
-          backgroundColor: WidgetStateProperty.all(color ?? AppBarTheme.of(context).systemOverlayStyle?.statusBarColor),
-          foregroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.onSurface),
-        ),
-        onPressed: onPressed,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: children,
-        ),
-      );
+    style: ButtonStyle(
+      elevation: WidgetStateProperty.all(0),
+      padding: WidgetStateProperty.all(EdgeInsets.zero),
+      backgroundColor: WidgetStateProperty.all(color ?? AppBarTheme.of(context).systemOverlayStyle?.statusBarColor),
+      foregroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.onSurface),
+    ),
+    onPressed: onPressed,
+    child: Column(mainAxisAlignment: MainAxisAlignment.center, children: children),
+  );
 }

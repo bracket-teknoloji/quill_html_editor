@@ -19,5 +19,6 @@ class PaketlemeListesiRequestModel with _$PaketlemeListesiRequestModel {
     @JsonKey(name: "PaketID") int? paketId,
   }) = _PaketlemeListesiRequestModel;
 
-  factory PaketlemeListesiRequestModel.fromJson(Map<String, dynamic> json) => _$PaketlemeListesiRequestModelFromJson(json);
+  factory PaketlemeListesiRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$PaketlemeListesiRequestModelFromJson(json);
 }

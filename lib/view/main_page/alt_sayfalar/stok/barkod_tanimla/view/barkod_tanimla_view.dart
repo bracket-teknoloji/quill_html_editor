@@ -34,7 +34,9 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
     stokController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (tabLength == 0) {
-        await dialogManager.showAlertDialog("Barkod alanlarına yetkili değilsiniz. Profil tanımlama ekranından görünecek alanlara yetki vermelisiniz.");
+        await dialogManager.showAlertDialog(
+          "Barkod alanlarına yetkili değilsiniz. Profil tanımlama ekranından görünecek alanlara yetki vermelisiniz.",
+        );
         Get.back();
       }
     });
@@ -51,29 +53,26 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: AppBar(
-          title: const AppBarTitle(
-            title: "Barkod Tanımla",
-          ),
-          actions: [
-            if (yetkiController.stokBarkodStokKartiGorunsun && yetkiController.stokBarkodEkle)
-              IconButton(
-                onPressed: saveStok,
-                icon: const Icon(Icons.save_outlined),
-              ),
-          ],
-          bottom: yetkiController.stokBarkodStokKartiGorunsun
+    appBar: AppBar(
+      title: const AppBarTitle(title: "Barkod Tanımla"),
+      actions: [
+        if (yetkiController.stokBarkodStokKartiGorunsun && yetkiController.stokBarkodEkle)
+          IconButton(onPressed: saveStok, icon: const Icon(Icons.save_outlined)),
+      ],
+      bottom:
+          yetkiController.stokBarkodStokKartiGorunsun
               ? TabBar(
-                  controller: tabController,
-                  tabs: [
-                    if (yetkiController.stokBarkodStokKartiGorunsun) const Tab(text: "Stok Kartı"),
-                    if (yetkiController.stokBarkodKayitlari) const Tab(text: "Barkod Kayıtları"),
-                  ],
-                )
+                controller: tabController,
+                tabs: [
+                  if (yetkiController.stokBarkodStokKartiGorunsun) const Tab(text: "Stok Kartı"),
+                  if (yetkiController.stokBarkodKayitlari) const Tab(text: "Barkod Kayıtları"),
+                ],
+              )
               : null,
-        ),
-        body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) => [
+    ),
+    body: NestedScrollView(
+      headerSliverBuilder:
+          (context, innerBoxIsScrolled) => [
             SliverToBoxAdapter(
               child: CustomTextField(
                 labelText: "Stok Kodu/Barkod",
@@ -123,25 +122,22 @@ final class _BarkodTanimlaViewState extends BaseState<BarkodTanimlaView> with Ti
               ),
             ),
           ],
-          body: TabBarView(
-            controller: tabController,
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
+      body: TabBarView(
+        controller: tabController,
+        physics: const NeverScrollableScrollPhysics(),
+        children:
+            [
               if (yetkiController.stokBarkodStokKartiGorunsun)
                 Observer(
-                  builder: (_) => BarkodTanimlaStokKartiView(
-                    model: viewModel.stokModel,
-                    onChanged: viewModel.setStokModel,
-                  ),
+                  builder:
+                      (_) => BarkodTanimlaStokKartiView(model: viewModel.stokModel, onChanged: viewModel.setStokModel),
                 ),
               if (yetkiController.stokBarkodKayitlari)
-                Observer(
-                  builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel),
-                ),
+                Observer(builder: (_) => BarkodTanimlaKayitlariView(model: viewModel.stokModel)),
             ].where((element) => element is! SizedBox).toList(),
-          ),
-        ).paddingAll(UIHelper.lowSize),
-      );
+      ),
+    ).paddingAll(UIHelper.lowSize),
+  );
 
   Future<void> saveStok() async {
     if (viewModel.stokModel == null) {

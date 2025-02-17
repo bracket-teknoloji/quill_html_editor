@@ -16,7 +16,10 @@ final class CariAktiviteDetayiViewModel = _CariAktiviteDetayiViewModelBase with 
 
 abstract class _CariAktiviteDetayiViewModelBase with Store, MobxNetworkMixin {
   @observable
-  CariAktiviteListesiModel model = CariAktiviteListesiModel(kayityapankul: CacheManager.getAnaVeri?.userModel?.kuladi, aktiviteId: SingletonModels.cariAktiviteListesi?.id);
+  CariAktiviteListesiModel model = CariAktiviteListesiModel(
+    kayityapankul: CacheManager.getAnaVeri?.userModel?.kuladi,
+    aktiviteId: SingletonModels.cariAktiviteListesi?.id,
+  );
 
   @action
   void setModel(CariAktiviteListesiModel value) => model = value;
@@ -25,7 +28,8 @@ abstract class _CariAktiviteDetayiViewModelBase with Store, MobxNetworkMixin {
   void setTarih(DateTime? value) => model = model.copyWith(tarih: value?.dateTimeWithoutTime);
 
   @action
-  void setAktiviteTipi(CariAktiviteTipleri? value) => model = model.copyWith(aktiviteAdi: value?.aktiviteAdi, aktiviteTipi: value?.aktiviteTipi);
+  void setAktiviteTipi(CariAktiviteTipleri? value) =>
+      model = model.copyWith(aktiviteAdi: value?.aktiviteAdi, aktiviteTipi: value?.aktiviteTipi);
 
   @action
   void setBolum(String? value) => model = model.copyWith(bolum: value);
@@ -37,6 +41,10 @@ abstract class _CariAktiviteDetayiViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> getData() async =>
-      networkManager.dioPost(path: ApiUrls.saveAktivite, bodyModel: CariAktiviteListesiModel(), data: {"DETAY_MODEL": model.toJson(), "ISLEM_KODU": 4}, showLoading: true);
+  Future<GenericResponseModel<NetworkManagerMixin>> getData() async => networkManager.dioPost(
+    path: ApiUrls.saveAktivite,
+    bodyModel: CariAktiviteListesiModel(),
+    data: {"DETAY_MODEL": model.toJson(), "ISLEM_KODU": 4},
+    showLoading: true,
+  );
 }

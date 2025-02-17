@@ -9,12 +9,30 @@ import "../../../core/init/cache/cache_manager.dart";
 import "user_model/user_model.dart";
 
 final class GridItemModel {
-  GridItemModel.anamenu({required MenuItemsEnum? name, required this.title, required this.color, required this.altMenuler, this.icon, this.iconData, this.yetkiListesi})
-    : menuTipi = "A",
-      name = name?.yetkiName;
+  GridItemModel.anamenu({
+    required MenuItemsEnum? name,
+    required this.title,
+    required this.color,
+    required this.altMenuler,
+    this.icon,
+    this.iconData,
+    this.yetkiListesi,
+  }) : menuTipi = "A",
+       name = name?.yetkiName;
 
-  GridItemModel.altmenu({required this.name, required this.title, required this.altMenuler, this.icon, this.iconData}) : menuTipi = "S";
-  GridItemModel.item({required this.name, required this.title, this.icon, this.color, this.onTap, this.route, this.arguments, this.siparisTipi, this.yetkiListesi}) : menuTipi = "I" {
+  GridItemModel.altmenu({required this.name, required this.title, required this.altMenuler, this.icon, this.iconData})
+    : menuTipi = "S";
+  GridItemModel.item({
+    required this.name,
+    required this.title,
+    this.icon,
+    this.color,
+    this.onTap,
+    this.route,
+    this.arguments,
+    this.siparisTipi,
+    this.yetkiListesi,
+  }) : menuTipi = "I" {
     if (onTap == null) {
       if (route == null) {
         onTap ??= () async => DialogManager().showInfoSnackBar("Yapım Aşamasında");
@@ -61,7 +79,9 @@ final class GridItemModel {
       if (name == null) {
         return altMenuVarMi;
       }
-      if ((_menuList?.contains(name) ?? false) && altMenuVarMi && (yetkiListesi != null ? !(yetkiListesi?.any((element) => !element) ?? false) : true)) {
+      if ((_menuList?.contains(name) ?? false) &&
+          altMenuVarMi &&
+          (yetkiListesi != null ? !(yetkiListesi?.any((element) => !element) ?? false) : true)) {
         for (final element in altMenuler!) {
           if (element.yetkiKontrol) {
             sayac++;
@@ -102,7 +122,9 @@ final class GridItemModel {
 
   bool get altMenuVarMi {
     if (menuTipi == "A" || menuTipi == "S") {
-      return altMenuler.ext.isNotNullOrEmpty && (altMenuler?.any((element) => element.yetkiKontrol) ?? false); //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
+      return altMenuler.ext.isNotNullOrEmpty &&
+          (altMenuler?.any((element) => element.yetkiKontrol) ??
+              false); //&& altMenuler!.any((element) => element.altMenuler?.isNotEmpty ?? false);
     } else {
       return false;
     }

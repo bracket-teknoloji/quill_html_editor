@@ -4,8 +4,10 @@ import "../../view/main_page/model/param_model.dart";
 import "../init/cache/cache_manager.dart";
 
 abstract final class OndalikUtils {
-  static List<NetsisOndalikResponseModel>? get _ondalikResponseList => CacheManager.getAnaVeri?.paramModel?.netsisOndalikResponseModel;
-  static NetsisOndalikResponseModel? get baseModel => _ondalikResponseList?.firstWhereOrNull((element) => element.modul == "T");
+  static List<NetsisOndalikResponseModel>? get _ondalikResponseList =>
+      CacheManager.getAnaVeri?.paramModel?.netsisOndalikResponseModel;
+  static NetsisOndalikResponseModel? get baseModel =>
+      _ondalikResponseList?.firstWhereOrNull((element) => element.modul == "T");
 
   static int get baseMiktar => baseModel?.miktar ?? 2;
   static int get baseFiyat => baseModel?.fiyat ?? 4;
@@ -16,24 +18,16 @@ abstract final class OndalikUtils {
   static int get baseDovizFiyati => baseModel?.dovizFiyati ?? 4;
 }
 
-enum OndalikEnum {
-  miktar,
-  fiyat,
-  tutar,
-  kur,
-  oran,
-  dovizTutari,
-  dovizFiyati,
-}
+enum OndalikEnum { miktar, fiyat, tutar, kur, oran, dovizTutari, dovizFiyati }
 
 extension OndalikEnumExtension on OndalikEnum {
   int get ondalik => switch (this) {
-        OndalikEnum.miktar => OndalikUtils.baseMiktar,
-        OndalikEnum.fiyat => OndalikUtils.baseFiyat,
-        OndalikEnum.tutar => OndalikUtils.baseTutar,
-        OndalikEnum.kur => OndalikUtils.baseKur,
-        OndalikEnum.oran => OndalikUtils.baseOran,
-        OndalikEnum.dovizTutari => OndalikUtils.baseDovizTutari,
-        OndalikEnum.dovizFiyati => OndalikUtils.baseDovizFiyati
-      };
+    OndalikEnum.miktar => OndalikUtils.baseMiktar,
+    OndalikEnum.fiyat => OndalikUtils.baseFiyat,
+    OndalikEnum.tutar => OndalikUtils.baseTutar,
+    OndalikEnum.kur => OndalikUtils.baseKur,
+    OndalikEnum.oran => OndalikUtils.baseOran,
+    OndalikEnum.dovizTutari => OndalikUtils.baseDovizTutari,
+    OndalikEnum.dovizFiyati => OndalikUtils.baseDovizFiyati,
+  };
 }

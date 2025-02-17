@@ -17,5 +17,6 @@ class FinansOzetRaporRequestModel with _$FinansOzetRaporRequestModel {
     String? iadeDurumu,
   }) = _FinansOzetRaporRequestModel;
 
-  factory FinansOzetRaporRequestModel.fromJson(Map<String, dynamic> json) => _$FinansOzetRaporRequestModelFromJson(json);
+  factory FinansOzetRaporRequestModel.fromJson(Map<String, dynamic> json) =>
+      _$FinansOzetRaporRequestModelFromJson(json);
 }

@@ -74,161 +74,160 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
 
   @override
   Widget build(BuildContext context) => BaseScaffold(
-        appBar: appBar(),
-        floatingActionButton: Observer(
-          builder: (_) => viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet ? fab() : const SizedBox.shrink(),
-        ),
-        body: body(),
-      );
+    appBar: appBar(),
+    floatingActionButton: Observer(
+      builder:
+          (_) => viewModel.belgeModel != null && yetkiController.sigmaOlcumKaydet ? fab() : const SizedBox.shrink(),
+    ),
+    body: body(),
+  );
 
   AppBar appBar() => AppBar(
-        title: AppBarTitle(
-          title: "Ölçüm Detayı",
-          subtitle: widget.model.belgeNo,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () async {
-              if (viewModel.model?.belge?.firstOrNull?.stokKodu != null) {
-                bottomSheetDialogManager.showBottomSheetDialog(
-                  context,
-                  title: widget.model.belgeNo ?? "",
-                  children: [
-                    if (viewModel.model?.belge?.firstOrNull?.teknikResimVarmi == "E" && yetkiController.sigmaTeknikResim)
-                      BottomSheetModel(
-                        title: "Teknik Resimleri Görüntüle",
-                        iconWidget: Icons.picture_as_pdf_outlined,
-                        onTap: () async {
-                          Get.back();
-                          final result = await networkManager.dioPost(
-                            path: ApiUrls.getBelgeler,
-                            bodyModel: OlcumPdfModel(),
-                            showLoading: true,
-                            data: viewModel.model?.belge?.firstOrNull?.forTeknikResim,
+    title: AppBarTitle(title: "Ölçüm Detayı", subtitle: widget.model.belgeNo),
+    actions: [
+      IconButton(
+        onPressed: () async {
+          if (viewModel.model?.belge?.firstOrNull?.stokKodu != null) {
+            bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: widget.model.belgeNo ?? "",
+              children: [
+                if (viewModel.model?.belge?.firstOrNull?.teknikResimVarmi == "E" && yetkiController.sigmaTeknikResim)
+                  BottomSheetModel(
+                    title: "Teknik Resimleri Görüntüle",
+                    iconWidget: Icons.picture_as_pdf_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await networkManager.dioPost(
+                        path: ApiUrls.getBelgeler,
+                        bodyModel: OlcumPdfModel(),
+                        showLoading: true,
+                        data: viewModel.model?.belge?.firstOrNull?.forTeknikResim,
+                      );
+                      if (result.isSuccess) {
+                        OlcumPdfModel? selectedItem;
+                        final List<OlcumPdfModel> list = result.dataList;
+                        if (list.length == 1) {
+                          selectedItem = list.first;
+                        } else {
+                          selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            groupValue: null,
+                            title: "Teknik Resim Seçiniz",
+                            children: List.generate(list.length, (index) {
+                              final OlcumPdfModel item = list[index];
+                              return BottomSheetModel(title: item.revno ?? "", value: item);
+                            }),
                           );
-                          if (result.isSuccess) {
-                            OlcumPdfModel? selectedItem;
-                            final List<OlcumPdfModel> list = result.dataList;
-                            if (list.length == 1) {
-                              selectedItem = list.first;
-                            } else {
-                              selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                groupValue: null,
-                                title: "Teknik Resim Seçiniz",
-                                children: List.generate(list.length, (index) {
-                                  final OlcumPdfModel item = list[index];
-                                  return BottomSheetModel(title: item.revno ?? "", value: item);
-                                }),
-                              );
-                            }
-                            if (selectedItem != null) {
-                              final pdfData = await networkManager.getTeknikResimPdf(selectedItem);
-                              if (pdfData.isSuccess) {
-                                Get.to(() => GenelPdfView(model: pdfData.dataItem));
-                              }
-                            }
+                        }
+                        if (selectedItem != null) {
+                          final pdfData = await networkManager.getTeknikResimPdf(selectedItem);
+                          if (pdfData.isSuccess) {
+                            Get.to(() => GenelPdfView(model: pdfData.dataItem));
                           }
-                        },
-                      ),
-                    if (viewModel.model?.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani)
-                      BottomSheetModel(
-                        title: "Kontrol Planlarını Görüntüle",
-                        iconWidget: Icons.picture_as_pdf_outlined,
-                        onTap: () async {
-                          Get.back();
-                          final result = await networkManager.dioPost(
-                            path: ApiUrls.getBelgeler,
-                            bodyModel: OlcumPdfModel(),
-                            showLoading: true,
-                            data: viewModel.model?.belge?.firstOrNull?.forKontrolPlani,
+                        }
+                      }
+                    },
+                  ),
+                if (viewModel.model?.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani)
+                  BottomSheetModel(
+                    title: "Kontrol Planlarını Görüntüle",
+                    iconWidget: Icons.picture_as_pdf_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final result = await networkManager.dioPost(
+                        path: ApiUrls.getBelgeler,
+                        bodyModel: OlcumPdfModel(),
+                        showLoading: true,
+                        data: viewModel.model?.belge?.firstOrNull?.forKontrolPlani,
+                      );
+                      if (result.isSuccess) {
+                        OlcumPdfModel? selectedItem;
+                        final List<OlcumPdfModel> list = result.dataList;
+                        if (list.length == 1) {
+                          selectedItem = list.first;
+                        } else {
+                          selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            groupValue: null,
+                            title: "Kontrol Planı Seçiniz",
+                            children: List.generate(list.length, (index) {
+                              final OlcumPdfModel item = list[index];
+                              return BottomSheetModel(title: item.revno ?? "", value: item);
+                            }),
                           );
-                          if (result.isSuccess) {
-                            OlcumPdfModel? selectedItem;
-                            final List<OlcumPdfModel> list = result.dataList;
-                            if (list.length == 1) {
-                              selectedItem = list.first;
-                            } else {
-                              selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                context,
-                                groupValue: null,
-                                title: "Kontrol Planı Seçiniz",
-                                children: List.generate(list.length, (index) {
-                                  final OlcumPdfModel item = list[index];
-                                  return BottomSheetModel(title: item.revno ?? "", value: item);
-                                }),
-                              );
-                            }
-                            if (selectedItem != null) {
-                              final pdfData = await networkManager.getKontrolPlaniPdf(selectedItem);
-                              if (pdfData.isSuccess) {
-                                Get.to(() => GenelPdfView(model: pdfData.dataItem));
-                              }
-                            }
+                        }
+                        if (selectedItem != null) {
+                          final pdfData = await networkManager.getKontrolPlaniPdf(selectedItem);
+                          if (pdfData.isSuccess) {
+                            Get.to(() => GenelPdfView(model: pdfData.dataItem));
                           }
-                        },
-                      ),
-                    if (yetkiController.stokListesi)
-                      BottomSheetModel(
-                        title: "Stok İşlemleri",
-                        iconWidget: Icons.list_alt_outlined,
-                        onTap: () async {
-                          Get.back();
-                          dialogManager.showStokGridViewDialog(await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: viewModel.model?.belge?.firstOrNull?.stokKodu)));
-                        },
-                      ),
-                    if (yetkiController.transferDatEkle)
-                      BottomSheetModel(
-                        title: "Depo Transferi Yap",
-                        iconWidget: Icons.add_outlined,
-                        onTap: depoTransferiEkleOnTap,
-                      ),
-                    if (((viewModel.belgeModel?.datAdedi ?? 0) > 0) && yetkiController.transferDatGoruntule)
-                      BottomSheetModel(
-                        title: "Depo Transferlerini Görüntüle",
-                        iconWidget: Icons.transform_outlined,
-                        onTap: () async {
-                          Get.back();
-                          final bool result = await viewModel.getOlcumDatListesi();
-                          if (result) {
-                            final selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                              context,
-                              title: "Depo Transferi Listesi",
-                              groupValue: "",
-                              children: List.generate(
-                                viewModel.olcumDatListesi?.length ?? 0,
-                                (index) {
-                                  final item = viewModel.olcumDatListesi![index];
-                                  return BottomSheetModel(
-                                    title: item.belgeNo ?? "",
-                                    description: item.cariKodu,
-                                    groupValue: item.belgeNo,
-                                    value: item,
-                                  );
-                                },
-                              ),
+                        }
+                      }
+                    },
+                  ),
+                if (yetkiController.stokListesi)
+                  BottomSheetModel(
+                    title: "Stok İşlemleri",
+                    iconWidget: Icons.list_alt_outlined,
+                    onTap: () async {
+                      Get.back();
+                      dialogManager.showStokGridViewDialog(
+                        await networkManager.getStokModel(
+                          StokRehberiRequestModel(stokKodu: viewModel.model?.belge?.firstOrNull?.stokKodu),
+                        ),
+                      );
+                    },
+                  ),
+                if (yetkiController.transferDatEkle)
+                  BottomSheetModel(
+                    title: "Depo Transferi Yap",
+                    iconWidget: Icons.add_outlined,
+                    onTap: depoTransferiEkleOnTap,
+                  ),
+                if (((viewModel.belgeModel?.datAdedi ?? 0) > 0) && yetkiController.transferDatGoruntule)
+                  BottomSheetModel(
+                    title: "Depo Transferlerini Görüntüle",
+                    iconWidget: Icons.transform_outlined,
+                    onTap: () async {
+                      Get.back();
+                      final bool result = await viewModel.getOlcumDatListesi();
+                      if (result) {
+                        final selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                          context,
+                          title: "Depo Transferi Listesi",
+                          groupValue: "",
+                          children: List.generate(viewModel.olcumDatListesi?.length ?? 0, (index) {
+                            final item = viewModel.olcumDatListesi![index];
+                            return BottomSheetModel(
+                              title: item.belgeNo ?? "",
+                              description: item.cariKodu,
+                              groupValue: item.belgeNo,
+                              value: item,
                             );
-                            if (selectedItem is OlcumBelgeModel) {
-                              await Get.toNamed(
-                                "/mainPage/transferEdit",
-                                arguments: BaseEditModel<BaseSiparisEditModel>(
-                                  baseEditEnum: BaseEditEnum.goruntule,
-                                  editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
-                                  model: BaseSiparisEditModel.fromOlcumBelgeModel(selectedItem),
-                                ),
-                              );
-                            }
-                          }
-                        },
-                      ),
-                  ],
-                );
-              }
-            },
-            icon: const Icon(Icons.more_vert_outlined),
-          ),
-        ],
-      );
+                          }),
+                        );
+                        if (selectedItem is OlcumBelgeModel) {
+                          await Get.toNamed(
+                            "/mainPage/transferEdit",
+                            arguments: BaseEditModel<BaseSiparisEditModel>(
+                              baseEditEnum: BaseEditEnum.goruntule,
+                              editTipiEnum: EditTipiEnum.olcumdenDepoTransferi,
+                              model: BaseSiparisEditModel.fromOlcumBelgeModel(selectedItem),
+                            ),
+                          );
+                        }
+                      }
+                    },
+                  ),
+              ],
+            );
+          }
+        },
+        icon: const Icon(Icons.more_vert_outlined),
+      ),
+    ],
+  );
 
   Future<void> depoTransferiEkleOnTap() async {
     Get.back();
@@ -236,7 +235,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
       dialogManager.showAlertDialog("Ölçüm giriniz.");
       return;
     }
-    if (viewModel.belgeModel?.seriSorulsunmu == "E" && yetkiController.seriUygulamasiAcikMi && (viewModel.model?.karisikMi == false)) {
+    if (viewModel.belgeModel?.seriSorulsunmu == "E" &&
+        yetkiController.seriUygulamasiAcikMi &&
+        (viewModel.model?.karisikMi == false)) {
       final depoValidation = await bottomSheetDialogManager.showBottomSheetDialog(
         context,
         title: "Depo Giriniz",
@@ -251,7 +252,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 readOnly: true,
                 isMust: true,
                 suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.girisDepo.toStringIfNotNull ?? "")),
+                valueWidget: Observer(
+                  builder: (_) => Text(viewModel.seriRequestModel.girisDepo.toStringIfNotNull ?? ""),
+                ),
                 onTap: girisDepoOnTap,
               ),
               CustomTextField(
@@ -260,7 +263,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 readOnly: true,
                 isMust: true,
                 suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.cikisDepo.toStringIfNotNull ?? "")),
+                valueWidget: Observer(
+                  builder: (_) => Text(viewModel.seriRequestModel.cikisDepo.toStringIfNotNull ?? ""),
+                ),
                 onTap: cikisDepoOnTap,
               ),
               ElevatedButton(
@@ -287,7 +292,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 readOnly: true,
                 isMust: true,
                 suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.kabulGirisDepo.toStringIfNotNull ?? "")),
+                valueWidget: Observer(
+                  builder: (_) => Text(viewModel.seriRequestModel.kabulGirisDepo.toStringIfNotNull ?? ""),
+                ),
                 onTap: () async => await girisDepoOnTap(kabulMu: true),
               ),
               CustomTextField(
@@ -296,7 +303,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 readOnly: true,
                 isMust: true,
                 suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.redGirisDepo.toStringIfNotNull ?? "")),
+                valueWidget: Observer(
+                  builder: (_) => Text(viewModel.seriRequestModel.redGirisDepo.toStringIfNotNull ?? ""),
+                ),
                 onTap: () async => await girisDepoOnTap(kabulMu: false),
               ),
               CustomTextField(
@@ -305,7 +314,9 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                 readOnly: true,
                 isMust: true,
                 suffixMore: true,
-                valueWidget: Observer(builder: (_) => Text(viewModel.seriRequestModel.cikisDepo.toStringIfNotNull ?? "")),
+                valueWidget: Observer(
+                  builder: (_) => Text(viewModel.seriRequestModel.cikisDepo.toStringIfNotNull ?? ""),
+                ),
                 onTap: cikisDepoOnTap,
               ),
               ElevatedButton(
@@ -337,7 +348,16 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
             ..kabulMu = true
             ..miktar = viewModel.model?.olcumler?.where((element) => !element.retMi).length.toDouble() ?? 0.0
             ..seriList =
-                viewModel.olcumDatResponseListesi?.where((element) => viewModel.model?.olcumler?.where((element2) => !element2.retMi).map((e) => e.seriNo).contains(element.seriNo) ?? false).toList()
+                viewModel.olcumDatResponseListesi
+                    ?.where(
+                      (element) =>
+                          viewModel.model?.olcumler
+                              ?.where((element2) => !element2.retMi)
+                              .map((e) => e.seriNo)
+                              .contains(element.seriNo) ??
+                          false,
+                    )
+                    .toList()
             ..seriCikislardaAcik = viewModel.seriRequestModel.kabulGirisDepo != null,
         )
         ..add(
@@ -347,10 +367,18 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
             ..sira = 2
             ..miktar = viewModel.model?.olcumler?.where((element) => element.retMi).length.toDouble() ?? 0.0
             ..kabulMu = false
-            ..seriList = viewModel.olcumDatResponseListesi
-                ?.where((element) => viewModel.model?.olcumler?.where((element2) => element2.retMi).map((e) => e.seriNo).contains(element.seriNo) ?? false)
-                .toList()
-                .toList()
+            ..seriList =
+                viewModel.olcumDatResponseListesi
+                    ?.where(
+                      (element) =>
+                          viewModel.model?.olcumler
+                              ?.where((element2) => element2.retMi)
+                              .map((e) => e.seriNo)
+                              .contains(element.seriNo) ??
+                          false,
+                    )
+                    .toList()
+                    .toList()
             ..seriCikislardaAcik = viewModel.seriRequestModel.redGirisDepo != null,
         );
     }
@@ -366,7 +394,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
           topluGirisDepoTanimi: girisDepoController.text,
           topluCikisDepoTanimi: cikisDepoController.text,
           kalemList: kalemListesi.map((e) => e..miktar = e.seriList?.map((e) => e.miktar).sum).toList(),
-          olcumBelgeRefKey: "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
+          olcumBelgeRefKey:
+              "${viewModel.model?.belge?.firstOrNull?.belgeTipi}.${viewModel.model?.belge?.firstOrNull?.belgeNo}.${viewModel.model?.belge?.firstOrNull?.sira}",
         ),
       ),
     );
@@ -402,7 +431,10 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   }
 
   Future<void> cikisDepoOnTap() async {
-    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, viewModel.seriRequestModel.cikisDepo);
+    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+      context,
+      viewModel.seriRequestModel.cikisDepo,
+    );
     if (result is DepoList) {
       if (result.depoKodu != null) {
         cikisDepoController.text = result.depoTanimi ?? "";
@@ -430,185 +462,216 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
   }
 
   Observer fab() => Observer(
-        builder: (_) => CustomFloatingActionButton(
+    builder:
+        (_) => CustomFloatingActionButton(
           isScrolledDown: true,
           onPressed: () async {
-            if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) return dialogManager.showAlertDialog("Proses bulunmamaktadır.");
+            if (viewModel.model?.prosesler.ext.isNullOrEmpty == true) {
+              return dialogManager.showAlertDialog("Proses bulunmamaktadır.");
+            }
             final result = await Get.toNamed(
               "/mainPage/olcumEkle",
-              arguments: viewModel.model?.copyWith(yapkod: widget.model.yapkod, opkodu: widget.model.opkodu, belge: [viewModel.model!.olcumModel!.copyWith(belgeSira: widget.model.sira)]),
+              arguments: viewModel.model?.copyWith(
+                yapkod: widget.model.yapkod,
+                opkodu: widget.model.opkodu,
+                belge: [viewModel.model!.olcumModel!.copyWith(belgeSira: widget.model.sira)],
+              ),
             );
             if (result != null) {
               await viewModel.getData();
             }
           },
         ),
-      );
+  );
 
   Observer body() => Observer(
-        builder: (_) {
-          if (viewModel.model == null) {
-            return const Center(
-              child: CircularProgressIndicator.adaptive(),
-            );
-          }
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Card(
-                child: ListTile(
-                  title: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      if (viewModel.belgeModel?.stokAdi != null) Text("${viewModel.belgeModel?.stokAdi}"),
-                      if (viewModel.belgeModel?.datAdedi != null)
-                        ColorfulBadge(
-                          label: Text("DAT Kaydı (${viewModel.belgeModel?.datAdedi})"),
-                          badgeColorEnum: BadgeColorEnum.cari,
-                        ),
-                    ],
-                  ),
-                  subtitle: CustomLayoutBuilder(
-                    splitCount: 2,
-                    children: [
-                      if (viewModel.belgeModel?.belgeTipi != null) Text("Belge Tipi: ${viewModel.belgeModel?.belgeTipi}"),
-                      if (viewModel.belgeModel?.stokKodu != null) Text("Stok Kodu: ${viewModel.belgeModel?.stokKodu}"),
-                      if (viewModel.belgeModel?.tarih != null) Text("Tarih: ${viewModel.belgeModel?.tarih.toDateString}"),
-                      if (viewModel.belgeModel?.miktar != null) Text("Miktar: ${viewModel.belgeModel?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                    ],
-                  ),
-                ),
+    builder: (_) {
+      if (viewModel.model == null) {
+        return const Center(child: CircularProgressIndicator.adaptive());
+      }
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Card(
+            child: ListTile(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  if (viewModel.belgeModel?.stokAdi != null) Text("${viewModel.belgeModel?.stokAdi}"),
+                  if (viewModel.belgeModel?.datAdedi != null)
+                    ColorfulBadge(
+                      label: Text("DAT Kaydı (${viewModel.belgeModel?.datAdedi})"),
+                      badgeColorEnum: BadgeColorEnum.cari,
+                    ),
+                ],
               ),
-              if (viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false) const Text("Ölçümler").paddingAll(UIHelper.lowSize),
-              Expanded(
-                flex: 7,
-                child: RefreshIndicator.adaptive(
-                  onRefresh: () async {
-                    viewModel.getOlcumler();
-                  },
-                  child: Observer(
-                    builder: (_) => viewModel.model?.olcumler?.isEmptyOrNull == true
-                        ? viewModel.model?.olcumler != null
-                            ? const Center(
-                                child: Text("Ölçüm kaydı bulunamadı"),
-                              )
-                            : const ListViewShimmer()
-                        : ListView.builder(
-                            itemCount: viewModel.model?.olcumler?.length ?? 0,
-                            itemBuilder: (context, index) {
-                              final item = viewModel.model?.olcumler?[index];
-                              final String title = "Ölçüm ${index + 1}";
-                              return Card(
-                                color: (widget.model.seriNo == item?.seriNo) && widget.model.seriNo != null ? ColorPalette.mantisWithOpacity : null,
-                                child: viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false
-                                    ? ListTile(
-                                        onTap: () async {
-                                          bottomSheetDialogManager.showBottomSheetDialog(
-                                            context,
-                                            title: title,
-                                            children: [
-                                              if (yetkiController.sigmaOlcumGirisi)
-                                                BottomSheetModel(
-                                                  title: loc.generalStrings.view,
-                                                  iconWidget: Icons.preview_outlined,
-                                                  onTap: () async {
-                                                    Get.back();
-                                                    final newModel = await viewModel.getProsesler(item?.id);
-                                                    if (!newModel.isEmptyOrNull) {
-                                                      Get.toNamed(
-                                                        "/mainPage/olcumGoruntule",
-                                                        arguments: viewModel.model?.copyWith(
-                                                          prosesler: newModel,
-                                                          yapkod: widget.model.yapkod,
-                                                          opkodu: widget.model.opkodu,
-                                                          kayitOperator: item?.kayitOperator,
-                                                          kayitOperatorKodu: item?.kayitOperatorKodu,
-                                                          seriNo: item?.seriNo,
-                                                        ),
-                                                      );
-                                                    }
-                                                  },
-                                                ),
-                                              if (yetkiController.sigmaOlcumDuzelt)
-                                                BottomSheetModel(
-                                                  title: loc.generalStrings.edit,
-                                                  iconWidget: Icons.edit_outlined,
-                                                  onTap: () async {
-                                                    Get.back();
-                                                    final newModel = await viewModel.getProsesler(item?.id);
-                                                    if (!newModel.isEmptyOrNull) {
-                                                      final result = await Get.toNamed(
-                                                        "/mainPage/olcumDuzenle",
-                                                        arguments: viewModel.model?.copyWith(
-                                                          prosesler: newModel,
-                                                          yapkod: widget.model.yapkod,
-                                                          opkodu: widget.model.opkodu,
-                                                          kayitOperator: item?.kayitOperator,
-                                                          kayitOperatorKodu: item?.kayitOperatorKodu,
-                                                          seriNo: item?.seriNo,
-                                                          olcumler: [if (item != null) item],
-                                                        ),
-                                                      );
-                                                      if (result != null) {
-                                                        await viewModel.getData();
-                                                      }
-                                                    }
-                                                  },
-                                                ),
-                                              if (yetkiController.sigmaOlcumGirSil)
-                                                BottomSheetModel(
-                                                  title: loc.generalStrings.delete,
-                                                  iconWidget: Icons.delete_outline_outlined,
-                                                  onTap: () async {
-                                                    Get.back();
-                                                    dialogManager.showAreYouSureDialog(() async {
-                                                      final result = await viewModel.deleteOlcum(item?.id);
-                                                      if (result.isSuccess) {
-                                                        dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                                                        await viewModel.getData();
-                                                      }
-                                                    });
-                                                  },
-                                                ),
-                                            ],
-                                          );
-                                        },
-                                        title: Row(
-                                          children: [
-                                            Expanded(child: Text(title)),
-                                            if (item?.tamamlandi == "H")
-                                              const ColorfulBadge(label: Text("Devam ediyor"), badgeColorEnum: BadgeColorEnum.uyari)
-                                            else
-                                              Row(
+              subtitle: CustomLayoutBuilder(
+                splitCount: 2,
+                children: [
+                  if (viewModel.belgeModel?.belgeTipi != null) Text("Belge Tipi: ${viewModel.belgeModel?.belgeTipi}"),
+                  if (viewModel.belgeModel?.stokKodu != null) Text("Stok Kodu: ${viewModel.belgeModel?.stokKodu}"),
+                  if (viewModel.belgeModel?.tarih != null) Text("Tarih: ${viewModel.belgeModel?.tarih.toDateString}"),
+                  if (viewModel.belgeModel?.miktar != null)
+                    Text("Miktar: ${viewModel.belgeModel?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                ],
+              ),
+            ),
+          ),
+          if (viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false)
+            const Text("Ölçümler").paddingAll(UIHelper.lowSize),
+          Expanded(
+            flex: 7,
+            child: RefreshIndicator.adaptive(
+              onRefresh: () async {
+                viewModel.getOlcumler();
+              },
+              child: Observer(
+                builder:
+                    (_) =>
+                        viewModel.model?.olcumler?.isEmptyOrNull == true
+                            ? viewModel.model?.olcumler != null
+                                ? const Center(child: Text("Ölçüm kaydı bulunamadı"))
+                                : const ListViewShimmer()
+                            : ListView.builder(
+                              itemCount: viewModel.model?.olcumler?.length ?? 0,
+                              itemBuilder: (context, index) {
+                                final item = viewModel.model?.olcumler?[index];
+                                final String title = "Ölçüm ${index + 1}";
+                                return Card(
+                                  color:
+                                      (widget.model.seriNo == item?.seriNo) && widget.model.seriNo != null
+                                          ? ColorPalette.mantisWithOpacity
+                                          : null,
+                                  child:
+                                      viewModel.model?.olcumler.ext.isNotNullOrEmpty ?? false
+                                          ? ListTile(
+                                            onTap: () async {
+                                              bottomSheetDialogManager.showBottomSheetDialog(
+                                                context,
+                                                title: title,
                                                 children: [
-                                                  if ((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) <= 0) const ColorfulBadge(label: Text("Kabul"), badgeColorEnum: BadgeColorEnum.basarili),
-                                                  if ((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) > 0) const ColorfulBadge(label: Text("Şartlı Kabul"), badgeColorEnum: BadgeColorEnum.uyari),
-                                                  if ((item?.retAdet ?? 0) > 0) const ColorfulBadge(label: Text("Ret"), badgeColorEnum: BadgeColorEnum.hata),
+                                                  if (yetkiController.sigmaOlcumGirisi)
+                                                    BottomSheetModel(
+                                                      title: loc.generalStrings.view,
+                                                      iconWidget: Icons.preview_outlined,
+                                                      onTap: () async {
+                                                        Get.back();
+                                                        final newModel = await viewModel.getProsesler(item?.id);
+                                                        if (!newModel.isEmptyOrNull) {
+                                                          Get.toNamed(
+                                                            "/mainPage/olcumGoruntule",
+                                                            arguments: viewModel.model?.copyWith(
+                                                              prosesler: newModel,
+                                                              yapkod: widget.model.yapkod,
+                                                              opkodu: widget.model.opkodu,
+                                                              kayitOperator: item?.kayitOperator,
+                                                              kayitOperatorKodu: item?.kayitOperatorKodu,
+                                                              seriNo: item?.seriNo,
+                                                            ),
+                                                          );
+                                                        }
+                                                      },
+                                                    ),
+                                                  if (yetkiController.sigmaOlcumDuzelt)
+                                                    BottomSheetModel(
+                                                      title: loc.generalStrings.edit,
+                                                      iconWidget: Icons.edit_outlined,
+                                                      onTap: () async {
+                                                        Get.back();
+                                                        final newModel = await viewModel.getProsesler(item?.id);
+                                                        if (!newModel.isEmptyOrNull) {
+                                                          final result = await Get.toNamed(
+                                                            "/mainPage/olcumDuzenle",
+                                                            arguments: viewModel.model?.copyWith(
+                                                              prosesler: newModel,
+                                                              yapkod: widget.model.yapkod,
+                                                              opkodu: widget.model.opkodu,
+                                                              kayitOperator: item?.kayitOperator,
+                                                              kayitOperatorKodu: item?.kayitOperatorKodu,
+                                                              seriNo: item?.seriNo,
+                                                              olcumler: [if (item != null) item],
+                                                            ),
+                                                          );
+                                                          if (result != null) {
+                                                            await viewModel.getData();
+                                                          }
+                                                        }
+                                                      },
+                                                    ),
+                                                  if (yetkiController.sigmaOlcumGirSil)
+                                                    BottomSheetModel(
+                                                      title: loc.generalStrings.delete,
+                                                      iconWidget: Icons.delete_outline_outlined,
+                                                      onTap: () async {
+                                                        Get.back();
+                                                        dialogManager.showAreYouSureDialog(() async {
+                                                          final result = await viewModel.deleteOlcum(item?.id);
+                                                          if (result.isSuccess) {
+                                                            dialogManager.showSuccessSnackBar(
+                                                              result.message ?? loc.generalStrings.success,
+                                                            );
+                                                            await viewModel.getData();
+                                                          }
+                                                        });
+                                                      },
+                                                    ),
                                                 ],
-                                              ),
-                                          ],
-                                        ),
-                                        subtitle: CustomLayoutBuilder(
-                                          splitCount: 2,
-                                          children: [
-                                            if (item?.kayityapankul != null) Text("Kaydeden: ${item?.kayityapankul}"),
-                                            if (item?.seriNo != null) Text("Seri No: ${item?.seriNo}"),
-                                            if (item?.kayittarihi != null) Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}"),
-                                            if (item?.kayitOperator != null) Text("Operatör: ${item?.kayitOperator}"),
-                                          ],
-                                        ),
-                                      )
-                                    : const SizedBox.shrink(),
-                              );
-                            },
-                          ),
-                  ),
-                ),
+                                              );
+                                            },
+                                            title: Row(
+                                              children: [
+                                                Expanded(child: Text(title)),
+                                                if (item?.tamamlandi == "H")
+                                                  const ColorfulBadge(
+                                                    label: Text("Devam ediyor"),
+                                                    badgeColorEnum: BadgeColorEnum.uyari,
+                                                  )
+                                                else
+                                                  Row(
+                                                    children: [
+                                                      if ((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) <= 0)
+                                                        const ColorfulBadge(
+                                                          label: Text("Kabul"),
+                                                          badgeColorEnum: BadgeColorEnum.basarili,
+                                                        ),
+                                                      if ((item?.retAdet ?? 0) <= 0 && (item?.sartliAdet ?? 0) > 0)
+                                                        const ColorfulBadge(
+                                                          label: Text("Şartlı Kabul"),
+                                                          badgeColorEnum: BadgeColorEnum.uyari,
+                                                        ),
+                                                      if ((item?.retAdet ?? 0) > 0)
+                                                        const ColorfulBadge(
+                                                          label: Text("Ret"),
+                                                          badgeColorEnum: BadgeColorEnum.hata,
+                                                        ),
+                                                    ],
+                                                  ),
+                                              ],
+                                            ),
+                                            subtitle: CustomLayoutBuilder(
+                                              splitCount: 2,
+                                              children: [
+                                                if (item?.kayityapankul != null)
+                                                  Text("Kaydeden: ${item?.kayityapankul}"),
+                                                if (item?.seriNo != null) Text("Seri No: ${item?.seriNo}"),
+                                                if (item?.kayittarihi != null)
+                                                  Text("Kayıt Tarihi: ${item?.kayittarihi?.toDateString}"),
+                                                if (item?.kayitOperator != null)
+                                                  Text("Operatör: ${item?.kayitOperator}"),
+                                              ],
+                                            ),
+                                          )
+                                          : const SizedBox.shrink(),
+                                );
+                              },
+                            ),
               ),
-            ],
-          ).paddingAll(UIHelper.lowSize);
-        },
-      );
+            ),
+          ),
+        ],
+      ).paddingAll(UIHelper.lowSize);
+    },
+  );
 
   Future<void> showDatBottomSheetDialog(BuildContext context) async {
     await bottomSheetDialogManager.showRadioBottomSheetDialog(context, title: "DAT Listesi", groupValue: null);

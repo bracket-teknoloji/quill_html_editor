@@ -39,7 +39,12 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
     belgeNoController = TextEditingController();
     cariController = TextEditingController();
     plasiyerController = TextEditingController();
-    maliyetTipiController = TextEditingController(text: viewModel.maliyetTipiList.firstWhereOrNull((element) => element.value?.value == viewModel.pdfModel.dicParams?.maliyetTipi)?.title);
+    maliyetTipiController = TextEditingController(
+      text:
+          viewModel.maliyetTipiList
+              .firstWhereOrNull((element) => element.value?.value == viewModel.pdfModel.dicParams?.maliyetTipi)
+              ?.title,
+    );
     baslangicController = TextEditingController();
     bitisController = TextEditingController();
     super.initState();
@@ -57,7 +62,8 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
   }
 
   @override
-  Widget build(BuildContext context) => PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Fatura Karlılık Raporu", pdfData: viewModel.pdfModel);
+  Widget build(BuildContext context) =>
+      PDFViewerView(filterBottomSheet: filterBottomSheet, title: "Fatura Karlılık Raporu", pdfData: viewModel.pdfModel);
 
   Future<bool> filterBottomSheet() async {
     {
@@ -111,7 +117,11 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                         dialogManager.showAlertDialog("Cari Seçiniz.");
                         return;
                       }
-                      dialogManager.showCariIslemleriGridViewDialog(await networkManager.getCariModel(CariRequestModel(kod: [viewModel.pdfModel.dicParams?.cariKodu ?? ""])));
+                      dialogManager.showCariIslemleriGridViewDialog(
+                        await networkManager.getCariModel(
+                          CariRequestModel(kod: [viewModel.pdfModel.dicParams?.cariKodu ?? ""]),
+                        ),
+                      );
                     },
                     icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                   ),
@@ -133,7 +143,10 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                       onTap: () async {
                         final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                         if (plasiyerList != null) {
-                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, viewModel.pdfModel.dicParams?.plasiyerKodu);
+                          final PlasiyerList? result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+                            context,
+                            viewModel.pdfModel.dicParams?.plasiyerKodu,
+                          );
                           if (result != null) {
                             plasiyerController.text = result.plasiyerAciklama ?? "";
                             viewModel.pdfModel.dicParams?.plasiyerKodu = result.plasiyerKodu ?? "";
@@ -158,7 +171,9 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                       if (result != null) {
                         maliyetTipiController.text = result.title;
                         viewModel.pdfModel.dicParams?.maliyetTipi = result.value;
-                        CacheManager.setProfilParametre(CacheManager.getProfilParametre.copyWith(faturaKarlilikMaliyetTipi: result.value));
+                        CacheManager.setProfilParametre(
+                          CacheManager.getProfilParametre.copyWith(faturaKarlilikMaliyetTipi: result.value),
+                        );
                       }
                     },
                   ),
@@ -168,17 +183,22 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                 children: [
                   Card(
                     child: Observer(
-                      builder: (_) => SwitchListTile.adaptive(
-                        value: viewModel.pdfModel.dicParams?.irsDahil == "E",
-                        onChanged: viewModel.setIrsaliyeDahil,
-                        title: const Text("İrsaliye Hariç"),
-                      ),
+                      builder:
+                          (_) => SwitchListTile.adaptive(
+                            value: viewModel.pdfModel.dicParams?.irsDahil == "E",
+                            onChanged: viewModel.setIrsaliyeDahil,
+                            title: const Text("İrsaliye Hariç"),
+                          ),
                     ),
                   ),
                   Card(
                     child: Observer(
-                      builder: (_) =>
-                          SwitchListTile.adaptive(value: viewModel.pdfModel.dicParams?.uretimFiyatiDahil == "E", onChanged: viewModel.setUretimFiyatiDahil, title: const Text("Üretim Fiyatı Dahil")),
+                      builder:
+                          (_) => SwitchListTile.adaptive(
+                            value: viewModel.pdfModel.dicParams?.uretimFiyatiDahil == "E",
+                            onChanged: viewModel.setUretimFiyatiDahil,
+                            title: const Text("Üretim Fiyatı Dahil"),
+                          ),
                     ),
                   ),
                 ],
@@ -187,7 +207,10 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                 labelText: "Hariç Stok Grup Kodları",
                 onChanged: (value) => viewModel.pdfModel.dicParams?.haricStokGrupKodlari = value,
                 suffix: IconButton(
-                  onPressed: () async => dialogManager.showInfoDialog("Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02"),
+                  onPressed:
+                      () async => dialogManager.showInfoDialog(
+                        "Kodları noktalı virgül (;) ile ayırarak, aralaında boşluk bırakmadan yazınız.\n\nÖrnek: 01;02;02",
+                      ),
                   icon: const Icon(Icons.info_outline),
                 ),
               ),

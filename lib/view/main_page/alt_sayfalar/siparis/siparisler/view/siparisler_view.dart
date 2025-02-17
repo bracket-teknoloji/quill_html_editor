@@ -149,7 +149,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                       getData();
                     },
                   )
-                  : AppBarTitle(title: "${widget.widgetModel.editTipiEnum.musteriMi ? "Müşteri" : "Satıcı"} Siparişleri", subtitle: viewModel.musteriSiparisleriList?.length.toString()),
+                  : AppBarTitle(
+                    title: "${widget.widgetModel.editTipiEnum.musteriMi ? "Müşteri" : "Satıcı"} Siparişleri",
+                    subtitle: viewModel.musteriSiparisleriList?.length.toString(),
+                  ),
     ),
     //*Actions
     actions: [
@@ -158,7 +161,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
           viewModel.changeSearchBar();
           getData();
         },
-        icon: Observer(builder: (_) => viewModel.searchBar ? const Icon(Icons.search_off_outlined) : const Icon(Icons.search_outlined)),
+        icon: Observer(
+          builder:
+              (_) => viewModel.searchBar ? const Icon(Icons.search_off_outlined) : const Icon(Icons.search_outlined),
+        ),
       ),
     ],
     //*Bottom
@@ -168,7 +174,14 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
           iconWidget: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Observer(builder: (_) => Icon(Icons.filter_alt_outlined, color: viewModel.hasFilter ? UIHelper.primaryColor : null, size: UIHelper.midSize * 2)),
+              Observer(
+                builder:
+                    (_) => Icon(
+                      Icons.filter_alt_outlined,
+                      color: viewModel.hasFilter ? UIHelper.primaryColor : null,
+                      size: UIHelper.midSize * 2,
+                    ),
+              ),
               Text(loc.generalStrings.filter),
             ],
           ),
@@ -214,7 +227,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                             readOnly: true,
                             onClear: () => viewModel.setCariTipi(null),
                             onTap: () async {
-                              final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(context, viewModel.cariTipi);
+                              final result = await bottomSheetDialogManager.showCariTipiBottomSheetDialog(
+                                context,
+                                viewModel.cariTipi,
+                              );
                               if (result != null) {
                                 cariTipiController.text = result.title ?? "";
                                 //😳 Bunu düzenle
@@ -238,12 +254,19 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                               onTap: () async {
                                 final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
                                   context,
-                                  groupValues: ((jsonDecode(viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu ?? "[]")) as List).map((e) => e as String).toList().cast<String>(),
+                                  groupValues:
+                                      ((jsonDecode(viewModel.musteriSiparisleriRequestModel.arrPlasiyerKodu ?? "[]"))
+                                              as List)
+                                          .map((e) => e as String)
+                                          .toList()
+                                          .cast<String>(),
                                 );
                                 if (result.ext.isNotNullOrEmpty) {
                                   plasiyerController.text = result!.map((e) => e.plasiyerAciklama).join(", ");
 
-                                  viewModel.setArrPlasiyerKodu(result.map((e) => e.plasiyerKodu.toString()).toList().cast<String>());
+                                  viewModel.setArrPlasiyerKodu(
+                                    result.map((e) => e.plasiyerKodu.toString()).toList().cast<String>(),
+                                  );
                                 }
                               },
                             ),
@@ -257,7 +280,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                               readOnly: true,
                               onClear: () => viewModel.setProjeKodu(null),
                               onTap: () async {
-                                final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.projeKodu);
+                                final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+                                  context,
+                                  viewModel.projeKodu,
+                                );
                                 if (result != null) {
                                   projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
                                   viewModel.setProjeKodu(result.projeKodu);
@@ -278,7 +304,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                               onChanged: (value) => viewModel.setOzelKod1(value),
                               suffix: IconButton(
                                 onPressed: () async {
-                                  final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(context, viewModel.ozelKod1);
+                                  final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
+                                    context,
+                                    viewModel.ozelKod1,
+                                  );
                                   if (result != null) {
                                     ozelKod1Controller.text = result.aciklama ?? "";
                                     viewModel.setOzelKod1(result.kod);
@@ -297,7 +326,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                               onChanged: (value) => viewModel.setOzelKod2(value),
                               suffix: IconButton(
                                 onPressed: () async {
-                                  final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.ozelKod2);
+                                  final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(
+                                    context,
+                                    viewModel.ozelKod2,
+                                  );
                                   if (result != null) {
                                     ozelKod2Controller.text = result.aciklama ?? "";
                                     viewModel.setOzelKod2(result.kod);
@@ -312,7 +344,13 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                     CustomWidgetWithLabel(
                       isVertical: true,
                       text: "Kapalı Belgeler Listelenmesin",
-                      child: Observer(builder: (_) => Switch.adaptive(value: viewModel.kapaliBelgelerListelenmesin, onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value))),
+                      child: Observer(
+                        builder:
+                            (_) => Switch.adaptive(
+                              value: viewModel.kapaliBelgelerListelenmesin,
+                              onChanged: (value) => viewModel.setKapaliBelgelerListelenmesin(value),
+                            ),
+                      ),
                     ),
                     Observer(
                       builder:
@@ -328,13 +366,25 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                     InkWell(
                       onTap: () async {
                         if (viewModel.grupKodList.ext.isNullOrEmpty) {
-                          viewModel.changeGrupKodList(await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1));
+                          viewModel.changeGrupKodList(
+                            await networkManager.getGrupKod(name: GrupKoduEnum.cari, grupNo: -1),
+                          );
                         }
                         viewModel.changeGrupKodlariGoster();
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [const Text("Cari Rapor Kodları"), Observer(builder: (_) => Icon(viewModel.grupKodlariGoster ? Icons.arrow_drop_up_outlined : Icons.arrow_drop_down_outlined))],
+                        children: [
+                          const Text("Cari Rapor Kodları"),
+                          Observer(
+                            builder:
+                                (_) => Icon(
+                                  viewModel.grupKodlariGoster
+                                      ? Icons.arrow_drop_up_outlined
+                                      : Icons.arrow_drop_down_outlined,
+                                ),
+                          ),
+                        ],
                       ).paddingAll(UIHelper.lowSize),
                     ),
                     // viewModel.musteriSiparisleriList.firstOrNull?.o
@@ -440,7 +490,11 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                               getData();
                               Get.back();
                             },
-                            style: ButtonStyle(backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1))),
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStateProperty.all(
+                                theme.colorScheme.onSurface.withValues(alpha: 0.1),
+                              ),
+                            ),
                             child: const Text("Temizle"),
                           ),
                         ),
@@ -473,7 +527,11 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
               groupValue: viewModel.siralama,
               children: List.generate(
                 viewModel.siralaMap.length,
-                (index) => BottomSheetModel(title: viewModel.siralaMap.keys.toList()[index], value: viewModel.siralaMap.values.toList()[index], groupValue: viewModel.siralaMap.values.toList()[index]),
+                (index) => BottomSheetModel(
+                  title: viewModel.siralaMap.keys.toList()[index],
+                  value: viewModel.siralaMap.values.toList()[index],
+                  groupValue: viewModel.siralaMap.values.toList()[index],
+                ),
               ),
             );
             if (result != null) {
@@ -553,13 +611,19 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
   Observer fab() => Observer(
     builder:
         (_) => Visibility(
-          visible: viewModel.musteriSiparisleriList != null && yetkiController.siparisKaydet(widget.widgetModel.editTipiEnum),
+          visible:
+              viewModel.musteriSiparisleriList != null &&
+              yetkiController.siparisKaydet(widget.widgetModel.editTipiEnum),
           child: CustomFloatingActionButton(
             isScrolledDown: viewModel.isScrolledDown,
             onPressed: () async {
               final result = await Get.toNamed(
                 "mainPage/siparisEdit",
-                arguments: BaseEditModel(model: SiparisEditRequestModel(), baseEditEnum: BaseEditEnum.ekle, editTipiEnum: widget.widgetModel.editTipiEnum),
+                arguments: BaseEditModel(
+                  model: SiparisEditRequestModel(),
+                  baseEditEnum: BaseEditEnum.ekle,
+                  editTipiEnum: widget.widgetModel.editTipiEnum,
+                ),
               );
               if (result is BaseSiparisEditModel) {
                 await resetPage(result);
@@ -593,7 +657,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                           itemCount: musteriSiparisleriList?.length != null ? musteriSiparisleriList!.length + 1 : 0,
                           itemBuilder: (context, index) {
                             if (index == viewModel.musteriSiparisleriList?.length) {
-                              return Visibility(visible: viewModel.dahaVarMi, child: const Center(child: CircularProgressIndicator.adaptive()));
+                              return Visibility(
+                                visible: viewModel.dahaVarMi,
+                                child: const Center(child: CircularProgressIndicator.adaptive()),
+                              );
                             }
                             return Observer(
                               builder:
@@ -628,14 +695,34 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
             FooterButton(
               children: [
                 const Text("KDV Hariç"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["ARA_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
               ],
             ),
-            FooterButton(children: [const Text("KDV"), Observer(builder: (_) => Text("${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"))]),
+            FooterButton(
+              children: [
+                const Text("KDV"),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["KDV"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
+              ],
+            ),
             FooterButton(
               children: [
                 const Text("KDV Dahil"),
-                Observer(builder: (_) => Text("${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency")),
+                Observer(
+                  builder:
+                      (_) => Text(
+                        "${(viewModel.paramData?["GENEL_TOPLAM"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                      ),
+                ),
               ],
             ),
           ],
@@ -644,12 +731,23 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
 
   Future<void> getData() async {
     viewModel.setDahaVarMi(false);
-    final result = await networkManager.dioGet<BaseSiparisEditModel>(path: ApiUrls.getFaturalar, bodyModel: BaseSiparisEditModel(), queryParameters: viewModel.musteriSiparisleriRequestModel.toJson());
+    final result = await networkManager.dioGet<BaseSiparisEditModel>(
+      path: ApiUrls.getFaturalar,
+      bodyModel: BaseSiparisEditModel(),
+      queryParameters: viewModel.musteriSiparisleriRequestModel.toJson(),
+    );
     if (result.isSuccess) {
       if (viewModel.sayfa == 1) {
         viewModel
           ..setSiparislerList(CacheManager.getSiparisEditLists(widget.widgetModel.editTipiEnum)?.toList())
-          ..setParamData(result.paramData?.map((key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value)).cast<String, dynamic>() ?? {});
+          ..setParamData(
+            result.paramData
+                    ?.map(
+                      (key, value) => MapEntry(key, double.tryParse((value as String).replaceAll(",", ".")) ?? value),
+                    )
+                    .cast<String, dynamic>() ??
+                {},
+          );
       }
       final List<BaseSiparisEditModel> list = result.dataList;
       if (list.length < parametreModel.sabitSayfalamaOgeSayisi) {
@@ -676,7 +774,12 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
             .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e.grupKodu, groupValue: e.grupKodu))
             .toList();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(context, title: "Grup Kodu $grupNo", groupValues: grupKodList(grupNo), children: bottomSheetList);
+    final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<String>(
+      context,
+      title: "Grup Kodu $grupNo",
+      groupValues: grupKodList(grupNo),
+      children: bottomSheetList,
+    );
     if (result != null) {
       controller?.text = result.join(", ");
       switch (grupNo) {
@@ -731,7 +834,11 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
       ..resetSayfa();
     await getData();
     if (widget.widgetModel.editTipiEnum.otoPDFGor) {
-      final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, null, editTipi: widget.widgetModel.editTipiEnum);
+      final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
+        context,
+        null,
+        editTipi: widget.widgetModel.editTipiEnum,
+      );
       if (dizayn == null) {
         return;
       }

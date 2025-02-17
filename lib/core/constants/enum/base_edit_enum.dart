@@ -12,15 +12,15 @@ extension ToString on BaseEditEnum? {
   bool get siparistenKopyalaMi => this == BaseEditEnum.siparistenKopyala;
 
   String? _getName(BaseEditEnum? baseEditEnum) => switch (baseEditEnum) {
-        BaseEditEnum.ekle => "Yeni Kayıt",
-        BaseEditEnum.duzenle => "Düzenle",
-        BaseEditEnum.goruntule => "Görüntüle",
-        BaseEditEnum.kopyala || BaseEditEnum.siparistenKopyala => "Kopyala",
-        BaseEditEnum.revize => "Revize",
-        BaseEditEnum.taslak => "Yeni Kayıt",
-        BaseEditEnum.bitir => "Kaydı Tamamla",
-        _ => ""
-      };
+    BaseEditEnum.ekle => "Yeni Kayıt",
+    BaseEditEnum.duzenle => "Düzenle",
+    BaseEditEnum.goruntule => "Görüntüle",
+    BaseEditEnum.kopyala || BaseEditEnum.siparistenKopyala => "Kopyala",
+    BaseEditEnum.revize => "Revize",
+    BaseEditEnum.taslak => "Yeni Kayıt",
+    BaseEditEnum.bitir => "Kaydı Tamamla",
+    _ => "",
+  };
 
   int get islemKodu {
     if (this == BaseEditEnum.ekle) return 1;

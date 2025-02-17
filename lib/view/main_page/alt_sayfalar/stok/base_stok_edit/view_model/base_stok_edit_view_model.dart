@@ -31,9 +31,7 @@ abstract class _BaseStokEditingViewModelBase with Store, MobxNetworkMixin {
       path: ApiUrls.getStokDetay,
       bodyModel: StokDetayModel(),
       showLoading: true,
-      queryParameters: {
-        "stokKodu": stokListesiModel?.stokKodu ?? "",
-      },
+      queryParameters: {"stokKodu": stokListesiModel?.stokKodu ?? ""},
     );
     if (result.isSuccess) {
       StokDetayModel.setInstance(result.dataList.firstOrNull as StokDetayModel);
