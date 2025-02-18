@@ -29,7 +29,7 @@ final class AppThemeDark extends AppTheme {
     ),
     colorScheme: colorManager,
     pageTransitionsTheme: const PageTransitionsTheme(
-      builders: {TargetPlatform.android: FadeForwardsPageTransitionsBuilder()},
+      builders: {TargetPlatform.android: FadeForwardsPageTransitionsBuilder(backgroundColor: UIHelper.primaryColor)},
     ),
     actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
     tabBarTheme: const TabBarTheme(
