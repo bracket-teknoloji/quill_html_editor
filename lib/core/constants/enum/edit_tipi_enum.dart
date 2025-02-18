@@ -723,6 +723,29 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.belgesizIslem => false,
   };
 
+  bool get goruntulensinMi => switch (this) {
+    EditTipiEnum.musteri => yetkiController.siparisMSGoruntule,
+    EditTipiEnum.satici => yetkiController.siparisSSGoruntule,
+    EditTipiEnum.satisFatura => yetkiController.satisFatGoruntule,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsGoruntule,
+    EditTipiEnum.alisFatura => yetkiController.alisFatGoruntule,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsGoruntule,
+    EditTipiEnum.satisTeklifi => yetkiController.satisTeklifiGoruntule,
+    EditTipiEnum.alisTalebi => yetkiController.alisTalebiGoruntule,
+    EditTipiEnum.satisTalebi => yetkiController.satisTalebiGoruntule,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatGoruntule,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAGGoruntule,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACGoruntule,
+    EditTipiEnum.cari => yetkiController.cariKartiGoruntuleme,
+    EditTipiEnum.isEmri ||
+    EditTipiEnum.altIsEmri ||
+    EditTipiEnum.isEmriTakip ||
+    EditTipiEnum.uretimSonuKaydi ||
+    EditTipiEnum.uretim ||
+    EditTipiEnum.paket ||
+    EditTipiEnum.belgesizIslem => true,
+  };
+
   bool get duzenlensinMi => switch (this) {
     EditTipiEnum.musteri => yetkiController.siparisMSDuzelt,
     EditTipiEnum.satici => yetkiController.siparisSSDuzelt,

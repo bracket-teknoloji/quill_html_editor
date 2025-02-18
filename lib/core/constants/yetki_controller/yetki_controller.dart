@@ -1264,4 +1264,17 @@ final class YetkiController {
 
   //! Hücre
   bool get hucreHareketleri => _isTrue(_yetkiModel?.hucreHareketleri);
+
+  //! Görüntüle
+
+  bool get siparisMSGoruntule => _isTrue(_yetkiModel?.siparisMusteriSiparisi);
+  bool get siparisSSGoruntule => _isTrue(_yetkiModel?.siparisSaticiSiparisi);
+  bool get satisFatGoruntule => _isTrue(_yetkiModel?.sevkiyatSatisFat);
+  bool get satisIrsGoruntule => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesi);
+  bool get alisFatGoruntule => _isTrue(_yetkiModel?.malKabulAlisFaturasi);
+  bool get alisIrsGoruntule => _isTrue(_yetkiModel?.malKabulSatinAlma);
+  bool get satisTeklifiGoruntule => _isTrue(_yetkiModel?.taltekStek);
+  bool get alisTalebiGoruntule => _isTrue(_yetkiModel?.taltekAtal);
+  bool get satisTalebiGoruntule => _isTrue(_yetkiModel?.taltekStal);
+  bool get cariKartiGoruntuleme => _isTrue(_yetkiModel?.cariCariKarti);
 }
