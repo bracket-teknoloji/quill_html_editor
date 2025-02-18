@@ -2,6 +2,7 @@ import "package:copy_with_extension/copy_with_extension.dart";
 import "package:hive/hive.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/kalem_ekle/model/stok_fiyati_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/base_stok_mixin.dart";
@@ -297,6 +298,26 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   }
 
   static StokListesiModel? _instance;
+
+  Map<String, StokFiyatiModel> getFiyatlar(bool alisMi) => alisMi ? _getAlisFiyatlar() : _getSatisFiyatlar();
+
+  Map<String, StokFiyatiModel> _getAlisFiyatlar() => {
+    if (alisFiat1 != null) "alis_fiyat1": StokFiyatiModel(fiyat: alisFiat1, yer: "Alış Fiyatı 1"),
+    if (alisFiat2 != null) "alis_fiyat2": StokFiyatiModel(fiyat: alisFiat2, yer: "Alış Fiyatı 2"),
+    if (alisFiat3 != null) "alis_fiyat3": StokFiyatiModel(fiyat: alisFiat3, yer: "Alış Fiyatı 3"),
+    if (alisFiat4 != null) "alis_fiyat4": StokFiyatiModel(fiyat: alisFiat4, yer: "Alış Fiyatı 4"),
+    if (dovAlisFiat != null)
+      "alis_doviz_fiyati": StokFiyatiModel(fiyat: dovAlisFiat, yer: "Alış Döviz Fiyatı", stokKodu: stokKodu),
+  };
+
+  Map<String, StokFiyatiModel> _getSatisFiyatlar() => {
+    if (satisFiat1 != null) "satis_fiyat1": StokFiyatiModel(fiyat: satisFiat1, yer: "Satış Fiyatı 1"),
+    if (satisFiat2 != null) "satis_fiyat2": StokFiyatiModel(fiyat: satisFiat2, yer: "Satış Fiyatı 2"),
+    if (satisFiat3 != null) "satis_fiyat3": StokFiyatiModel(fiyat: satisFiat3, yer: "Satış Fiyatı 3"),
+    if (satisFiat4 != null) "satis_fiyat4": StokFiyatiModel(fiyat: satisFiat4, yer: "Satış Fiyatı 4"),
+    if (dovSatisFiat != null)
+      "satis_doviz_fiyati": StokFiyatiModel(fiyat: dovSatisFiat, yer: "Satış Döviz Fiyatı", stokKodu: stokKodu),
+  };
 
   bool get kilitliMi =>
       kilitGenel == "E" || kilitSaticisip == "E" || kilitMussip == "E" || kilitAlis == "E" || kilitSatis == "E";
