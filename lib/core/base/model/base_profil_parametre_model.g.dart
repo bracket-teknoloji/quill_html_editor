@@ -69,6 +69,13 @@ _$BaseProfilParametreModelImpl _$$BaseProfilParametreModelImplFromJson(
               json['DEPO_TALEP_DEPO_LIST'] as Map<String, dynamic>),
       faturaKarlilikMaliyetTipi:
           json['FATURA_KARLILIK_MALIYET_TIPI'] as String? ?? "SGF",
+      stokhareketleriDovizliGoster:
+          json['STOKHAREKETLERI_DOVIZLI_GOSTER'] as bool? ?? false,
+      stokhareketleriGizlenecekAlanlar:
+          (json['STOKHAREKETLERI_GIZLENECEK_ALANLAR'] as List<dynamic>?)
+                  ?.map((e) => e as String)
+                  .toList() ??
+              const [],
     );
 
 Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
@@ -113,6 +120,9 @@ Map<String, dynamic> _$$BaseProfilParametreModelImplToJson(
       if (instance.depoTalepDepoList?.toJson() case final value?)
         'DEPO_TALEP_DEPO_LIST': value,
       'FATURA_KARLILIK_MALIYET_TIPI': instance.faturaKarlilikMaliyetTipi,
+      'STOKHAREKETLERI_DOVIZLI_GOSTER': instance.stokhareketleriDovizliGoster,
+      'STOKHAREKETLERI_GIZLENECEK_ALANLAR':
+          instance.stokhareketleriGizlenecekAlanlar,
     };
 
 const _$ThemeModeEnumMap = {

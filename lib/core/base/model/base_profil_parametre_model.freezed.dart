@@ -63,6 +63,9 @@ mixin _$BaseProfilParametreModel {
   bool get eIrsaliyeSeciliGelsin => throw _privateConstructorUsedError;
   DepoList? get depoTalepDepoList => throw _privateConstructorUsedError;
   String get faturaKarlilikMaliyetTipi => throw _privateConstructorUsedError;
+  bool get stokhareketleriDovizliGoster => throw _privateConstructorUsedError;
+  List<String> get stokhareketleriGizlenecekAlanlar =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this BaseProfilParametreModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -111,7 +114,9 @@ abstract class $BaseProfilParametreModelCopyWith<$Res> {
       bool irsFaturalasanIrsaliyelerGelsin,
       bool eIrsaliyeSeciliGelsin,
       DepoList? depoTalepDepoList,
-      String faturaKarlilikMaliyetTipi});
+      String faturaKarlilikMaliyetTipi,
+      bool stokhareketleriDovizliGoster,
+      List<String> stokhareketleriGizlenecekAlanlar});
 }
 
 /// @nodoc
@@ -161,6 +166,8 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
     Object? eIrsaliyeSeciliGelsin = null,
     Object? depoTalepDepoList = freezed,
     Object? faturaKarlilikMaliyetTipi = null,
+    Object? stokhareketleriDovizliGoster = null,
+    Object? stokhareketleriGizlenecekAlanlar = null,
   }) {
     return _then(_value.copyWith(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -287,6 +294,14 @@ class _$BaseProfilParametreModelCopyWithImpl<$Res,
           ? _value.faturaKarlilikMaliyetTipi
           : faturaKarlilikMaliyetTipi // ignore: cast_nullable_to_non_nullable
               as String,
+      stokhareketleriDovizliGoster: null == stokhareketleriDovizliGoster
+          ? _value.stokhareketleriDovizliGoster
+          : stokhareketleriDovizliGoster // ignore: cast_nullable_to_non_nullable
+              as bool,
+      stokhareketleriGizlenecekAlanlar: null == stokhareketleriGizlenecekAlanlar
+          ? _value.stokhareketleriGizlenecekAlanlar
+          : stokhareketleriGizlenecekAlanlar // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -331,7 +346,9 @@ abstract class _$$BaseProfilParametreModelImplCopyWith<$Res>
       bool irsFaturalasanIrsaliyelerGelsin,
       bool eIrsaliyeSeciliGelsin,
       DepoList? depoTalepDepoList,
-      String faturaKarlilikMaliyetTipi});
+      String faturaKarlilikMaliyetTipi,
+      bool stokhareketleriDovizliGoster,
+      List<String> stokhareketleriGizlenecekAlanlar});
 }
 
 /// @nodoc
@@ -380,6 +397,8 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
     Object? eIrsaliyeSeciliGelsin = null,
     Object? depoTalepDepoList = freezed,
     Object? faturaKarlilikMaliyetTipi = null,
+    Object? stokhareketleriDovizliGoster = null,
+    Object? stokhareketleriGizlenecekAlanlar = null,
   }) {
     return _then(_$BaseProfilParametreModelImpl(
       siparisYeniKaydaHazirla: null == siparisYeniKaydaHazirla
@@ -506,6 +525,14 @@ class __$$BaseProfilParametreModelImplCopyWithImpl<$Res>
           ? _value.faturaKarlilikMaliyetTipi
           : faturaKarlilikMaliyetTipi // ignore: cast_nullable_to_non_nullable
               as String,
+      stokhareketleriDovizliGoster: null == stokhareketleriDovizliGoster
+          ? _value.stokhareketleriDovizliGoster
+          : stokhareketleriDovizliGoster // ignore: cast_nullable_to_non_nullable
+              as bool,
+      stokhareketleriGizlenecekAlanlar: null == stokhareketleriGizlenecekAlanlar
+          ? _value._stokhareketleriGizlenecekAlanlar
+          : stokhareketleriGizlenecekAlanlar // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -545,8 +572,11 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
       this.irsFaturalasanIrsaliyelerGelsin = false,
       this.eIrsaliyeSeciliGelsin = false,
       this.depoTalepDepoList = null,
-      this.faturaKarlilikMaliyetTipi = "SGF"})
+      this.faturaKarlilikMaliyetTipi = "SGF",
+      this.stokhareketleriDovizliGoster = false,
+      final List<String> stokhareketleriGizlenecekAlanlar = const []})
       : _stokGorunecekEkstraAlanlar = stokGorunecekEkstraAlanlar,
+        _stokhareketleriGizlenecekAlanlar = stokhareketleriGizlenecekAlanlar,
         super._();
 
   factory _$BaseProfilParametreModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -655,6 +685,18 @@ class _$BaseProfilParametreModelImpl extends _BaseProfilParametreModel {
   @override
   @JsonKey()
   final String faturaKarlilikMaliyetTipi;
+  @override
+  @JsonKey()
+  final bool stokhareketleriDovizliGoster;
+  final List<String> _stokhareketleriGizlenecekAlanlar;
+  @override
+  @JsonKey()
+  List<String> get stokhareketleriGizlenecekAlanlar {
+    if (_stokhareketleriGizlenecekAlanlar is EqualUnmodifiableListView)
+      return _stokhareketleriGizlenecekAlanlar;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_stokhareketleriGizlenecekAlanlar);
+  }
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
@@ -705,7 +747,10 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
       final bool irsFaturalasanIrsaliyelerGelsin,
       final bool eIrsaliyeSeciliGelsin,
       final DepoList? depoTalepDepoList,
-      final String faturaKarlilikMaliyetTipi}) = _$BaseProfilParametreModelImpl;
+      final String faturaKarlilikMaliyetTipi,
+      final bool stokhareketleriDovizliGoster,
+      final List<String>
+          stokhareketleriGizlenecekAlanlar}) = _$BaseProfilParametreModelImpl;
   const _BaseProfilParametreModel._() : super._();
 
   factory _BaseProfilParametreModel.fromJson(Map<String, dynamic> json) =
@@ -778,6 +823,10 @@ abstract class _BaseProfilParametreModel extends BaseProfilParametreModel {
   DepoList? get depoTalepDepoList;
   @override
   String get faturaKarlilikMaliyetTipi;
+  @override
+  bool get stokhareketleriDovizliGoster;
+  @override
+  List<String> get stokhareketleriGizlenecekAlanlar;
 
   /// Create a copy of BaseProfilParametreModel
   /// with the given fields replaced by the non-null parameter values.
