@@ -231,13 +231,19 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                           ),
                           // itemSnapping: true,
                           // shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius)),
-                          children: [satislarChart(), alislarChart(), siparislerChart(), tahsilatlarChart()],
+                          children: [
+                            satislarChart(), alislarChart(), siparislerChart(),
+                            // , if (0  0) tahsilatlarChart()
+                          ],
                         ),
                       )
                     else
                       Expanded(
                         child: ListView(
-                          children: <Widget>[satislarChart(), alislarChart(), siparislerChart(), tahsilatlarChart()],
+                          children: <Widget>[
+                            satislarChart(), alislarChart(), siparislerChart(),
+                            //  tahsilatlarChart()
+                          ],
                         ).paddingAll(UIHelper.lowSize),
                       ),
                   ],
@@ -247,7 +253,29 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
   Card tahsilatlarChart() => Card(
     child: Column(
       children: <Widget>[
-        const Text("Tahsilatlar", style: TextStyleHelper.title),
+        Row(
+          children: [
+            const Expanded(child: Text("Tahsilatlar", style: TextStyleHelper.title)),
+            OutlinedButton.icon(
+              onPressed: () async {
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  groupValue: viewModel.tahsilatDonemKodu,
+                  title: "Dönem",
+                  children:
+                      viewModel.aylar
+                          .map((e) => BottomSheetModel(title: e, value: e, groupValue: viewModel.aylar.indexOf(e) + 1))
+                          .toList(),
+                );
+                if (result != null) {
+                  viewModel.setTahtsilatDonemKodu(viewModel.aylar.indexOf(result) + 1);
+                }
+              },
+              label: Observer(builder: (_) => Text(viewModel.tahsilatDonem)),
+              icon: const Icon(Icons.more_horiz_outlined),
+            ),
+          ],
+        ).paddingAll(UIHelper.lowSize),
         Observer(
           builder:
               (_) => ListTile(

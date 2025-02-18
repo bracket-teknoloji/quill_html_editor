@@ -72,11 +72,20 @@ abstract class _TemsilciProfilViewModelBase with Store {
   @computed
   String get donem => aylar[donemKodu - 1];
 
+  @computed
+  String get tahsilatDonem => aylar[tahsilatDonemKodu - 1];
+
   @observable
   int donemKodu = DateTime.now().month;
 
+  @observable
+  int tahsilatDonemKodu = DateTime.now().month;
+
   @action
   void setDonemKodu(int value) => donemKodu = value;
+
+  @action
+  void setTahtsilatDonemKodu(int value) => tahsilatDonemKodu = value;
 
   @action
   void setAciklama(String? value) => aciklama = value;
