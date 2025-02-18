@@ -1,0 +1,2 @@
+/Users/bracketteknoloji/Desktop/development/Picker/android/app/.cxx/Debug/4o4y2a2n/x86/CMakeFiles/edit_cache.dir
+/Users/bracketteknoloji/Desktop/development/Picker/android/app/.cxx/Debug/4o4y2a2n/x86/CMakeFiles/rebuild_cache.dir

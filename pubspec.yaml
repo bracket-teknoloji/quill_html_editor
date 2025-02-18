@@ -93,7 +93,9 @@ dependencies:
   url_launcher: ^6.3.0
   # url_strategy: ^0.3.0
   syncfusion_localizations: ^28.1.39
-  open_filex: ^4.5.0
+  open_filex:
+    git:
+        url: https://github.com/mufassalhussain/open_filex
   animated_text_kit: ^4.2.2
   text_scroll: ^0.2.0
   package_info_plus: ^8.1.0
