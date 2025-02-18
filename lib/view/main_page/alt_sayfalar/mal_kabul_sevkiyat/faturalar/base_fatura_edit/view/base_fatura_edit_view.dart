@@ -155,7 +155,6 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
         if (result.isSuccess) {
           BaseSiparisEditModel.setInstance(result.dataList.first);
           BaseSiparisEditModel.instance.tag = "FaturaModel";
-          // BaseSiparisEditModel.instance.teslimTarihi = null;
           // BaseSiparisEditModel.instance.istenilenTeslimTarihi = null;
           BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
           BaseSiparisEditModel.instance.isNew = false;
@@ -279,6 +278,8 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
         BaseSiparisEditModel.resetInstance();
         viewModel.setCariKodu(CariListesiModel()..cariKodu = widget.model.model?.cariKodu);
         BaseSiparisEditModel.instance
+          ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
+          ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
           ..plasiyerKodu = yetkiController.varsayilanPlasiyer?.plasiyerKodu
           ..plasiyerAciklama = yetkiController.varsayilanPlasiyer?.plasiyerAciklama;
         if (yetkiController.kontrolluBelgeAktarimAktif) {
@@ -351,9 +352,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           ..projeAciklama ??= yetkiController.varsayilanProje?.projeAciklama
           ..projeKodu ??= yetkiController.varsayilanProje?.projeKodu
           ..pickerBelgeTuru = widget.model.editTipiEnum?.rawValue
-          ..ozelKod1 = widget.model.editTipiEnum?.ozelKod1
           ..cariAdi ??= widget.model.model?.cariAdi
-          ..ozelKod2 = widget.model.editTipiEnum?.ozelKod2
           ..ebelgeCheckbox = CacheManager.getProfilParametre.eIrsaliyeSeciliGelsin ? "E" : null;
       }
 
@@ -961,7 +960,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                   if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.dovizliMi) ?? false) {
                     dialogManager.showAreYouSureDialog(() async {
                       await dovizGuncelle();
-                    }, title: "Döviz Kurları Güncellensin mi?",);
+                    }, title: "Döviz Kurları Güncellensin mi?");
                   } else {
                     dialogManager.showInfoSnackBar("Güncellenecek dövizli kalem bulunamadı.");
                   }
