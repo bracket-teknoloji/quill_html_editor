@@ -71,7 +71,6 @@ final class PickerMaterialApp extends StatelessWidget {
       },
     ),
     opaqueRoute: false,
-    defaultTransition: kIsWeb ? Transition.fadeIn : null,
     theme: AppThemeLight.instance?.theme,
     darkTheme: AppThemeDark.instance?.theme,
     themeMode: CacheManager.getProfilParametre.temaModu,
