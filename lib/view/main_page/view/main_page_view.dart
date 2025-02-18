@@ -83,7 +83,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
     },
     child: Row(
       children: [
-        if (kIsWeb && context.isLandscape) Expanded(child: LeftDrawer(scaffoldKey: scaffoldKey)),
+        if (kIsWeb || context.isLandscape) Expanded(child: LeftDrawer(scaffoldKey: scaffoldKey)),
         Expanded(
           flex: (context.isLandscape) ? 3 : 1,
           child: Observer(
@@ -92,8 +92,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                   appBar: appBar(scaffoldKey, context),
                   key: scaffoldKey,
                   drawerEnableOpenDragGesture: viewModel.lastItems.isEmpty,
-                  drawer:
-                      (kIsWeb && context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
+                  drawer: (context.isLandscape) ? null : SafeArea(child: LeftDrawer(scaffoldKey: scaffoldKey)),
                   endDrawer:
                       (kIsWeb && context.isLandscape) ? null : SafeArea(child: EndDrawer(scaffoldKey: scaffoldKey)),
                   body: body(context),

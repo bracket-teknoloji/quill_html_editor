@@ -11,7 +11,7 @@ final class CustomFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AnimatedSlide(
     duration: DurationHelper.durationLow,
-    offset: Offset.zero,
+    offset: kIsWeb || isScrolledDown ? Offset.zero : const Offset(1, 2),
     // offset: kIsWeb || isScrolledDown ? Offset.zero : const Offset(1, 2),
     child: AnimatedScale(
       duration: DurationHelper.durationLow,
