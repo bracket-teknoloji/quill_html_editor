@@ -27,10 +27,18 @@ final class PickerApp extends StatelessWidget {
       ),
     ),
     alignment: Alignment.center,
-    child: Container(
-      constraints: BoxConstraints(maxWidth: context.isLandscape ? getWidth(context) : double.infinity),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(UIHelper.highSize)),
-      child: const PickerMaterialApp(),
+    child: ClipRRect(
+      borderRadius:
+          context.isLandscape
+              ? const BorderRadius.only(
+                topLeft: Radius.circular(UIHelper.highSize),
+                topRight: Radius.circular(UIHelper.highSize),
+              )
+              : BorderRadius.zero,
+      child: Container(
+        constraints: BoxConstraints(maxWidth: context.isLandscape ? getWidth(context) : double.infinity),
+        child: const PickerMaterialApp(),
+      ),
     ),
   );
 }
