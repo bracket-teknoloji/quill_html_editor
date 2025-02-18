@@ -12,10 +12,10 @@ part of 'yapilandirma_rehberi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-YapilandirmaRehberiModel _$YapilandirmaRehberiModelFromJson(Map<String, dynamic> json) {
+YapilandirmaRehberiModel _$YapilandirmaRehberiModelFromJson(
+    Map<String, dynamic> json) {
   return _YapilandirmaRehberiModel.fromJson(json);
 }
 
@@ -42,29 +42,29 @@ mixin _$YapilandirmaRehberiModel {
   /// Create a copy of YapilandirmaRehberiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $YapilandirmaRehberiModelCopyWith<YapilandirmaRehberiModel> get copyWith => throw _privateConstructorUsedError;
+  $YapilandirmaRehberiModelCopyWith<YapilandirmaRehberiModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $YapilandirmaRehberiModelCopyWith<$Res> {
-  factory $YapilandirmaRehberiModelCopyWith(
-    YapilandirmaRehberiModel value,
-    $Res Function(YapilandirmaRehberiModel) then,
-  ) = _$YapilandirmaRehberiModelCopyWithImpl<$Res, YapilandirmaRehberiModel>;
+  factory $YapilandirmaRehberiModelCopyWith(YapilandirmaRehberiModel value,
+          $Res Function(YapilandirmaRehberiModel) then) =
+      _$YapilandirmaRehberiModelCopyWithImpl<$Res, YapilandirmaRehberiModel>;
   @useResult
-  $Res call({
-    String? yapkod,
-    String? yapacik,
-    String? kod,
-    String? kodAciklama,
-    String? deger,
-    String? degerAciklama,
-    int? ozellikSira,
-  });
+  $Res call(
+      {String? yapkod,
+      String? yapacik,
+      String? kod,
+      String? kodAciklama,
+      String? deger,
+      String? degerAciklama,
+      int? ozellikSira});
 }
 
 /// @nodoc
-class _$YapilandirmaRehberiModelCopyWithImpl<$Res, $Val extends YapilandirmaRehberiModel>
+class _$YapilandirmaRehberiModelCopyWithImpl<$Res,
+        $Val extends YapilandirmaRehberiModel>
     implements $YapilandirmaRehberiModelCopyWith<$Res> {
   _$YapilandirmaRehberiModelCopyWithImpl(this._value, this._then);
 
@@ -86,76 +86,67 @@ class _$YapilandirmaRehberiModelCopyWithImpl<$Res, $Val extends YapilandirmaRehb
     Object? degerAciklama = freezed,
     Object? ozellikSira = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            yapkod:
-                freezed == yapkod
-                    ? _value.yapkod
-                    : yapkod // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            yapacik:
-                freezed == yapacik
-                    ? _value.yapacik
-                    : yapacik // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            kod:
-                freezed == kod
-                    ? _value.kod
-                    : kod // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            kodAciklama:
-                freezed == kodAciklama
-                    ? _value.kodAciklama
-                    : kodAciklama // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            deger:
-                freezed == deger
-                    ? _value.deger
-                    : deger // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            degerAciklama:
-                freezed == degerAciklama
-                    ? _value.degerAciklama
-                    : degerAciklama // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            ozellikSira:
-                freezed == ozellikSira
-                    ? _value.ozellikSira
-                    : ozellikSira // ignore: cast_nullable_to_non_nullable
-                        as int?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yapacik: freezed == yapacik
+          ? _value.yapacik
+          : yapacik // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kod: freezed == kod
+          ? _value.kod
+          : kod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kodAciklama: freezed == kodAciklama
+          ? _value.kodAciklama
+          : kodAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deger: freezed == deger
+          ? _value.deger
+          : deger // ignore: cast_nullable_to_non_nullable
+              as String?,
+      degerAciklama: freezed == degerAciklama
+          ? _value.degerAciklama
+          : degerAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozellikSira: freezed == ozellikSira
+          ? _value.ozellikSira
+          : ozellikSira // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$YapilandirmaRehberiModelImplCopyWith<$Res> implements $YapilandirmaRehberiModelCopyWith<$Res> {
+abstract class _$$YapilandirmaRehberiModelImplCopyWith<$Res>
+    implements $YapilandirmaRehberiModelCopyWith<$Res> {
   factory _$$YapilandirmaRehberiModelImplCopyWith(
-    _$YapilandirmaRehberiModelImpl value,
-    $Res Function(_$YapilandirmaRehberiModelImpl) then,
-  ) = __$$YapilandirmaRehberiModelImplCopyWithImpl<$Res>;
+          _$YapilandirmaRehberiModelImpl value,
+          $Res Function(_$YapilandirmaRehberiModelImpl) then) =
+      __$$YapilandirmaRehberiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? yapkod,
-    String? yapacik,
-    String? kod,
-    String? kodAciklama,
-    String? deger,
-    String? degerAciklama,
-    int? ozellikSira,
-  });
+  $Res call(
+      {String? yapkod,
+      String? yapacik,
+      String? kod,
+      String? kodAciklama,
+      String? deger,
+      String? degerAciklama,
+      int? ozellikSira});
 }
 
 /// @nodoc
 class __$$YapilandirmaRehberiModelImplCopyWithImpl<$Res>
-    extends _$YapilandirmaRehberiModelCopyWithImpl<$Res, _$YapilandirmaRehberiModelImpl>
+    extends _$YapilandirmaRehberiModelCopyWithImpl<$Res,
+        _$YapilandirmaRehberiModelImpl>
     implements _$$YapilandirmaRehberiModelImplCopyWith<$Res> {
   __$$YapilandirmaRehberiModelImplCopyWithImpl(
-    _$YapilandirmaRehberiModelImpl _value,
-    $Res Function(_$YapilandirmaRehberiModelImpl) _then,
-  ) : super(_value, _then);
+      _$YapilandirmaRehberiModelImpl _value,
+      $Res Function(_$YapilandirmaRehberiModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of YapilandirmaRehberiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -170,60 +161,51 @@ class __$$YapilandirmaRehberiModelImplCopyWithImpl<$Res>
     Object? degerAciklama = freezed,
     Object? ozellikSira = freezed,
   }) {
-    return _then(
-      _$YapilandirmaRehberiModelImpl(
-        yapkod:
-            freezed == yapkod
-                ? _value.yapkod
-                : yapkod // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        yapacik:
-            freezed == yapacik
-                ? _value.yapacik
-                : yapacik // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        kod:
-            freezed == kod
-                ? _value.kod
-                : kod // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        kodAciklama:
-            freezed == kodAciklama
-                ? _value.kodAciklama
-                : kodAciklama // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        deger:
-            freezed == deger
-                ? _value.deger
-                : deger // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        degerAciklama:
-            freezed == degerAciklama
-                ? _value.degerAciklama
-                : degerAciklama // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        ozellikSira:
-            freezed == ozellikSira
-                ? _value.ozellikSira
-                : ozellikSira // ignore: cast_nullable_to_non_nullable
-                    as int?,
-      ),
-    );
+    return _then(_$YapilandirmaRehberiModelImpl(
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yapacik: freezed == yapacik
+          ? _value.yapacik
+          : yapacik // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kod: freezed == kod
+          ? _value.kod
+          : kod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kodAciklama: freezed == kodAciklama
+          ? _value.kodAciklama
+          : kodAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deger: freezed == deger
+          ? _value.deger
+          : deger // ignore: cast_nullable_to_non_nullable
+              as String?,
+      degerAciklama: freezed == degerAciklama
+          ? _value.degerAciklama
+          : degerAciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ozellikSira: freezed == ozellikSira
+          ? _value.ozellikSira
+          : ozellikSira // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$YapilandirmaRehberiModelImpl extends _YapilandirmaRehberiModel {
-  _$YapilandirmaRehberiModelImpl({
-    this.yapkod,
-    this.yapacik,
-    this.kod,
-    this.kodAciklama,
-    this.deger,
-    this.degerAciklama,
-    this.ozellikSira,
-  }) : super._();
+  _$YapilandirmaRehberiModelImpl(
+      {this.yapkod,
+      this.yapacik,
+      this.kod,
+      this.kodAciklama,
+      this.deger,
+      this.degerAciklama,
+      this.ozellikSira})
+      : super._();
 
   factory _$YapilandirmaRehberiModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$YapilandirmaRehberiModelImplFromJson(json);
@@ -248,28 +230,31 @@ class _$YapilandirmaRehberiModelImpl extends _YapilandirmaRehberiModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$YapilandirmaRehberiModelImplCopyWith<_$YapilandirmaRehberiModelImpl> get copyWith =>
-      __$$YapilandirmaRehberiModelImplCopyWithImpl<_$YapilandirmaRehberiModelImpl>(this, _$identity);
+  _$$YapilandirmaRehberiModelImplCopyWith<_$YapilandirmaRehberiModelImpl>
+      get copyWith => __$$YapilandirmaRehberiModelImplCopyWithImpl<
+          _$YapilandirmaRehberiModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$YapilandirmaRehberiModelImplToJson(this);
+    return _$$YapilandirmaRehberiModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _YapilandirmaRehberiModel extends YapilandirmaRehberiModel {
-  factory _YapilandirmaRehberiModel({
-    String? yapkod,
-    String? yapacik,
-    String? kod,
-    String? kodAciklama,
-    String? deger,
-    String? degerAciklama,
-    int? ozellikSira,
-  }) = _$YapilandirmaRehberiModelImpl;
+  factory _YapilandirmaRehberiModel(
+      {String? yapkod,
+      String? yapacik,
+      String? kod,
+      String? kodAciklama,
+      String? deger,
+      String? degerAciklama,
+      int? ozellikSira}) = _$YapilandirmaRehberiModelImpl;
   _YapilandirmaRehberiModel._() : super._();
 
-  factory _YapilandirmaRehberiModel.fromJson(Map<String, dynamic> json) = _$YapilandirmaRehberiModelImpl.fromJson;
+  factory _YapilandirmaRehberiModel.fromJson(Map<String, dynamic> json) =
+      _$YapilandirmaRehberiModelImpl.fromJson;
 
   @override
   String? get yapkod;
@@ -297,6 +282,6 @@ abstract class _YapilandirmaRehberiModel extends YapilandirmaRehberiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$YapilandirmaRehberiModelImplCopyWith<_$YapilandirmaRehberiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$YapilandirmaRehberiModelImplCopyWith<_$YapilandirmaRehberiModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

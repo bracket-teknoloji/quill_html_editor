@@ -12,8 +12,7 @@ part of 'tcmb_bankalar_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TcmbBankalarModel _$TcmbBankalarModelFromJson(Map<String, dynamic> json) {
   return _TcmbBankalarModel.fromJson(json);
@@ -38,15 +37,22 @@ mixin _$TcmbBankalarModel {
   /// Create a copy of TcmbBankalarModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TcmbBankalarModelCopyWith<TcmbBankalarModel> get copyWith => throw _privateConstructorUsedError;
+  $TcmbBankalarModelCopyWith<TcmbBankalarModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TcmbBankalarModelCopyWith<$Res> {
-  factory $TcmbBankalarModelCopyWith(TcmbBankalarModel value, $Res Function(TcmbBankalarModel) then) =
+  factory $TcmbBankalarModelCopyWith(
+          TcmbBankalarModel value, $Res Function(TcmbBankalarModel) then) =
       _$TcmbBankalarModelCopyWithImpl<$Res, TcmbBankalarModel>;
   @useResult
-  $Res call({String? bankakodu, String? bankaadi, String? subekodu, String? subeadi, String? sehiradi});
+  $Res call(
+      {String? bankakodu,
+      String? bankaadi,
+      String? subekodu,
+      String? subeadi,
+      String? sehiradi});
 }
 
 /// @nodoc
@@ -70,53 +76,54 @@ class _$TcmbBankalarModelCopyWithImpl<$Res, $Val extends TcmbBankalarModel>
     Object? subeadi = freezed,
     Object? sehiradi = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            bankakodu:
-                freezed == bankakodu
-                    ? _value.bankakodu
-                    : bankakodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            bankaadi:
-                freezed == bankaadi
-                    ? _value.bankaadi
-                    : bankaadi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            subekodu:
-                freezed == subekodu
-                    ? _value.subekodu
-                    : subekodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            subeadi:
-                freezed == subeadi
-                    ? _value.subeadi
-                    : subeadi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            sehiradi:
-                freezed == sehiradi
-                    ? _value.sehiradi
-                    : sehiradi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      bankakodu: freezed == bankakodu
+          ? _value.bankakodu
+          : bankakodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaadi: freezed == bankaadi
+          ? _value.bankaadi
+          : bankaadi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subekodu: freezed == subekodu
+          ? _value.subekodu
+          : subekodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subeadi: freezed == subeadi
+          ? _value.subeadi
+          : subeadi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sehiradi: freezed == sehiradi
+          ? _value.sehiradi
+          : sehiradi // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$TcmbBankalarModelImplCopyWith<$Res> implements $TcmbBankalarModelCopyWith<$Res> {
-  factory _$$TcmbBankalarModelImplCopyWith(_$TcmbBankalarModelImpl value, $Res Function(_$TcmbBankalarModelImpl) then) =
+abstract class _$$TcmbBankalarModelImplCopyWith<$Res>
+    implements $TcmbBankalarModelCopyWith<$Res> {
+  factory _$$TcmbBankalarModelImplCopyWith(_$TcmbBankalarModelImpl value,
+          $Res Function(_$TcmbBankalarModelImpl) then) =
       __$$TcmbBankalarModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? bankakodu, String? bankaadi, String? subekodu, String? subeadi, String? sehiradi});
+  $Res call(
+      {String? bankakodu,
+      String? bankaadi,
+      String? subekodu,
+      String? subeadi,
+      String? sehiradi});
 }
 
 /// @nodoc
-class __$$TcmbBankalarModelImplCopyWithImpl<$Res> extends _$TcmbBankalarModelCopyWithImpl<$Res, _$TcmbBankalarModelImpl>
+class __$$TcmbBankalarModelImplCopyWithImpl<$Res>
+    extends _$TcmbBankalarModelCopyWithImpl<$Res, _$TcmbBankalarModelImpl>
     implements _$$TcmbBankalarModelImplCopyWith<$Res> {
-  __$$TcmbBankalarModelImplCopyWithImpl(_$TcmbBankalarModelImpl _value, $Res Function(_$TcmbBankalarModelImpl) _then)
-    : super(_value, _then);
+  __$$TcmbBankalarModelImplCopyWithImpl(_$TcmbBankalarModelImpl _value,
+      $Res Function(_$TcmbBankalarModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of TcmbBankalarModel
   /// with the given fields replaced by the non-null parameter values.
@@ -129,44 +136,44 @@ class __$$TcmbBankalarModelImplCopyWithImpl<$Res> extends _$TcmbBankalarModelCop
     Object? subeadi = freezed,
     Object? sehiradi = freezed,
   }) {
-    return _then(
-      _$TcmbBankalarModelImpl(
-        bankakodu:
-            freezed == bankakodu
-                ? _value.bankakodu
-                : bankakodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        bankaadi:
-            freezed == bankaadi
-                ? _value.bankaadi
-                : bankaadi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        subekodu:
-            freezed == subekodu
-                ? _value.subekodu
-                : subekodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        subeadi:
-            freezed == subeadi
-                ? _value.subeadi
-                : subeadi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        sehiradi:
-            freezed == sehiradi
-                ? _value.sehiradi
-                : sehiradi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$TcmbBankalarModelImpl(
+      bankakodu: freezed == bankakodu
+          ? _value.bankakodu
+          : bankakodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaadi: freezed == bankaadi
+          ? _value.bankaadi
+          : bankaadi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subekodu: freezed == subekodu
+          ? _value.subekodu
+          : subekodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subeadi: freezed == subeadi
+          ? _value.subeadi
+          : subeadi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sehiradi: freezed == sehiradi
+          ? _value.sehiradi
+          : sehiradi // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TcmbBankalarModelImpl extends _TcmbBankalarModel {
-  _$TcmbBankalarModelImpl({this.bankakodu, this.bankaadi, this.subekodu, this.subeadi, this.sehiradi}) : super._();
+  _$TcmbBankalarModelImpl(
+      {this.bankakodu,
+      this.bankaadi,
+      this.subekodu,
+      this.subeadi,
+      this.sehiradi})
+      : super._();
 
-  factory _$TcmbBankalarModelImpl.fromJson(Map<String, dynamic> json) => _$$TcmbBankalarModelImplFromJson(json);
+  factory _$TcmbBankalarModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TcmbBankalarModelImplFromJson(json);
 
   @override
   String? bankakodu;
@@ -185,25 +192,28 @@ class _$TcmbBankalarModelImpl extends _TcmbBankalarModel {
   @override
   @pragma('vm:prefer-inline')
   _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith =>
-      __$$TcmbBankalarModelImplCopyWithImpl<_$TcmbBankalarModelImpl>(this, _$identity);
+      __$$TcmbBankalarModelImplCopyWithImpl<_$TcmbBankalarModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TcmbBankalarModelImplToJson(this);
+    return _$$TcmbBankalarModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _TcmbBankalarModel extends TcmbBankalarModel {
-  factory _TcmbBankalarModel({
-    String? bankakodu,
-    String? bankaadi,
-    String? subekodu,
-    String? subeadi,
-    String? sehiradi,
-  }) = _$TcmbBankalarModelImpl;
+  factory _TcmbBankalarModel(
+      {String? bankakodu,
+      String? bankaadi,
+      String? subekodu,
+      String? subeadi,
+      String? sehiradi}) = _$TcmbBankalarModelImpl;
   _TcmbBankalarModel._() : super._();
 
-  factory _TcmbBankalarModel.fromJson(Map<String, dynamic> json) = _$TcmbBankalarModelImpl.fromJson;
+  factory _TcmbBankalarModel.fromJson(Map<String, dynamic> json) =
+      _$TcmbBankalarModelImpl.fromJson;
 
   @override
   String? get bankakodu;
@@ -225,5 +235,6 @@ abstract class _TcmbBankalarModel extends TcmbBankalarModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$TcmbBankalarModelImplCopyWith<_$TcmbBankalarModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

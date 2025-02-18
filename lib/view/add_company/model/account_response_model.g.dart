@@ -13,7 +13,9 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
   @override
   AccountResponseModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read()};
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
     return AccountResponseModel()
       ..firma = fields[0] as String?
       ..email = fields[1] as String?
@@ -116,14 +118,17 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is AccountResponseModelAdapter && runtimeType == other.runtimeType && typeId == other.typeId;
+      other is AccountResponseModelAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
 }
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AccountResponseModel _$AccountResponseModelFromJson(Map<String, dynamic> json) =>
+AccountResponseModel _$AccountResponseModelFromJson(
+        Map<String, dynamic> json) =>
     AccountResponseModel()
       ..firma = json['FIRMA'] as String?
       ..email = json['EMAIL'] as String?
@@ -136,7 +141,8 @@ AccountResponseModel _$AccountResponseModelFromJson(Map<String, dynamic> json) =
       ..kullaniciSayisi = (json['KULLANICI_SAYISI'] as num?)?.toInt()
       ..firmaKisaAdi = json['FIRMA_KISA_ADI'] as String?
       ..sozlesmeBitisTarihi = json['SOZLESME_BITIS_TARIHI']
-      ..sozlesmeBitisKalanGun = (json['SOZLESME_BITIS_KALAN_GUN'] as num?)?.toInt()
+      ..sozlesmeBitisKalanGun =
+          (json['SOZLESME_BITIS_KALAN_GUN'] as num?)?.toInt()
       ..karsilamaMesaji = json['KARSILAMA_MESAJI'] as String?
       ..karsilamaResimUrl = json['KARSILAMA_RESIM_URL'] as String?
       ..karsilamaSaniye = (json['KARSILAMA_SANIYE'] as num?)?.toInt()
@@ -155,34 +161,44 @@ AccountResponseModel _$AccountResponseModelFromJson(Map<String, dynamic> json) =
       ..karsilamaBaslik = json['KARSILAMA_BASLIK'] as String?
       ..sozlesmeTeklifGoster = json['SOZLESME_TEKLIF_GOSTER'] as bool?;
 
-Map<String, dynamic> _$AccountResponseModelToJson(AccountResponseModel instance) => <String, dynamic>{
-  if (instance.firma case final value?) 'FIRMA': value,
-  if (instance.email case final value?) 'EMAIL': value,
-  if (instance.parola case final value?) 'PAROLA': value,
-  if (instance.pickerLisansiVar case final value?) 'PICKER_LISANSI_VAR': value,
-  if (instance.wsLan case final value?) 'WS_LAN': value,
-  if (instance.wsWan case final value?) 'WS_WAN': value,
-  if (instance.webServis case final value?) 'WEB_SERVIS': value,
-  if (instance.lisansBitisTarihi case final value?) 'LISANS_BITIS_TARIHI': value,
-  if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
-  if (instance.firmaKisaAdi case final value?) 'FIRMA_KISA_ADI': value,
-  if (instance.sozlesmeBitisTarihi case final value?) 'SOZLESME_BITIS_TARIHI': value,
-  if (instance.sozlesmeBitisKalanGun case final value?) 'SOZLESME_BITIS_KALAN_GUN': value,
-  if (instance.karsilamaMesaji case final value?) 'KARSILAMA_MESAJI': value,
-  if (instance.karsilamaResimUrl case final value?) 'KARSILAMA_RESIM_URL': value,
-  if (instance.karsilamaSaniye case final value?) 'KARSILAMA_SANIYE': value,
-  if (instance.guncellemeVarmi case final value?) 'GUNCELLEME_VARMI': value,
-  if (instance.maxApkVersion case final value?) 'MAX_APK_VERSION': value,
-  if (instance.maxWsVersion case final value?) 'MAX_WS_VERSION': value,
-  if (instance.demoBitisTarihi case final value?) 'DEMO_BITIS_TARIHI': value,
-  if (instance.uzaktanMi case final value?) 'UZAKTAN_MI': value,
-  if (instance.serviceDebug case final value?) 'SERVICE_DEBUG': value,
-  if (instance.bayiKodu case final value?) 'BAYI_KODU': value,
-  if (instance.bayiEmail case final value?) 'BAYI_EMAIL': value,
-  if (instance.bayiUnvan case final value?) 'BAYI_UNVAN': value,
-  if (instance.bracketCihazi case final value?) 'BRACKET_CIHAZI': value,
-  if (instance.sozlesmeUyarisi case final value?) 'SOZLESME_UYARISI': value,
-  if (instance.sozlesmeUyarisiGoster case final value?) 'SOZLESME_UYARISI_GOSTER': value,
-  if (instance.karsilamaBaslik case final value?) 'KARSILAMA_BASLIK': value,
-  if (instance.sozlesmeTeklifGoster case final value?) 'SOZLESME_TEKLIF_GOSTER': value,
-};
+Map<String, dynamic> _$AccountResponseModelToJson(
+        AccountResponseModel instance) =>
+    <String, dynamic>{
+      if (instance.firma case final value?) 'FIRMA': value,
+      if (instance.email case final value?) 'EMAIL': value,
+      if (instance.parola case final value?) 'PAROLA': value,
+      if (instance.pickerLisansiVar case final value?)
+        'PICKER_LISANSI_VAR': value,
+      if (instance.wsLan case final value?) 'WS_LAN': value,
+      if (instance.wsWan case final value?) 'WS_WAN': value,
+      if (instance.webServis case final value?) 'WEB_SERVIS': value,
+      if (instance.lisansBitisTarihi case final value?)
+        'LISANS_BITIS_TARIHI': value,
+      if (instance.kullaniciSayisi case final value?) 'KULLANICI_SAYISI': value,
+      if (instance.firmaKisaAdi case final value?) 'FIRMA_KISA_ADI': value,
+      if (instance.sozlesmeBitisTarihi case final value?)
+        'SOZLESME_BITIS_TARIHI': value,
+      if (instance.sozlesmeBitisKalanGun case final value?)
+        'SOZLESME_BITIS_KALAN_GUN': value,
+      if (instance.karsilamaMesaji case final value?) 'KARSILAMA_MESAJI': value,
+      if (instance.karsilamaResimUrl case final value?)
+        'KARSILAMA_RESIM_URL': value,
+      if (instance.karsilamaSaniye case final value?) 'KARSILAMA_SANIYE': value,
+      if (instance.guncellemeVarmi case final value?) 'GUNCELLEME_VARMI': value,
+      if (instance.maxApkVersion case final value?) 'MAX_APK_VERSION': value,
+      if (instance.maxWsVersion case final value?) 'MAX_WS_VERSION': value,
+      if (instance.demoBitisTarihi case final value?)
+        'DEMO_BITIS_TARIHI': value,
+      if (instance.uzaktanMi case final value?) 'UZAKTAN_MI': value,
+      if (instance.serviceDebug case final value?) 'SERVICE_DEBUG': value,
+      if (instance.bayiKodu case final value?) 'BAYI_KODU': value,
+      if (instance.bayiEmail case final value?) 'BAYI_EMAIL': value,
+      if (instance.bayiUnvan case final value?) 'BAYI_UNVAN': value,
+      if (instance.bracketCihazi case final value?) 'BRACKET_CIHAZI': value,
+      if (instance.sozlesmeUyarisi case final value?) 'SOZLESME_UYARISI': value,
+      if (instance.sozlesmeUyarisiGoster case final value?)
+        'SOZLESME_UYARISI_GOSTER': value,
+      if (instance.karsilamaBaslik case final value?) 'KARSILAMA_BASLIK': value,
+      if (instance.sozlesmeTeklifGoster case final value?)
+        'SOZLESME_TEKLIF_GOSTER': value,
+    };

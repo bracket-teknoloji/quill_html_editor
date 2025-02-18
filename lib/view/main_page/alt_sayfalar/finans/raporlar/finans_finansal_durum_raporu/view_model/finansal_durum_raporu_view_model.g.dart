@@ -8,8 +8,10 @@ part of 'finansal_durum_raporu_view_model.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$FinansalDurumRaporuViewModel on _FinansalDurumRaporuViewModelBase, Store {
-  late final _$pdfModelAtom = Atom(name: '_FinansalDurumRaporuViewModelBase.pdfModel', context: context);
+mixin _$FinansalDurumRaporuViewModel
+    on _FinansalDurumRaporuViewModelBase, Store {
+  late final _$pdfModelAtom = Atom(
+      name: '_FinansalDurumRaporuViewModelBase.pdfModel', context: context);
 
   @override
   PdfModel get pdfModel {
@@ -25,9 +27,8 @@ mixin _$FinansalDurumRaporuViewModel on _FinansalDurumRaporuViewModelBase, Store
   }
 
   late final _$futureControllerAtom = Atom(
-    name: '_FinansalDurumRaporuViewModelBase.futureController',
-    context: context,
-  );
+      name: '_FinansalDurumRaporuViewModelBase.futureController',
+      context: context);
 
   @override
   ObservableFuture<bool?> get futureController {
@@ -42,44 +43,44 @@ mixin _$FinansalDurumRaporuViewModel on _FinansalDurumRaporuViewModelBase, Store
     });
   }
 
-  late final _$_FinansalDurumRaporuViewModelBaseActionController = ActionController(
-    name: '_FinansalDurumRaporuViewModelBase',
-    context: context,
-  );
+  late final _$_FinansalDurumRaporuViewModelBaseActionController =
+      ActionController(
+          name: '_FinansalDurumRaporuViewModelBase', context: context);
 
   @override
   void setFuture() {
-    final _$actionInfo = _$_FinansalDurumRaporuViewModelBaseActionController.startAction(
-      name: '_FinansalDurumRaporuViewModelBase.setFuture',
-    );
+    final _$actionInfo = _$_FinansalDurumRaporuViewModelBaseActionController
+        .startAction(name: '_FinansalDurumRaporuViewModelBase.setFuture');
     try {
       return super.setFuture();
     } finally {
-      _$_FinansalDurumRaporuViewModelBaseActionController.endAction(_$actionInfo);
+      _$_FinansalDurumRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void resetFuture() {
-    final _$actionInfo = _$_FinansalDurumRaporuViewModelBaseActionController.startAction(
-      name: '_FinansalDurumRaporuViewModelBase.resetFuture',
-    );
+    final _$actionInfo = _$_FinansalDurumRaporuViewModelBaseActionController
+        .startAction(name: '_FinansalDurumRaporuViewModelBase.resetFuture');
     try {
       return super.resetFuture();
     } finally {
-      _$_FinansalDurumRaporuViewModelBaseActionController.endAction(_$actionInfo);
+      _$_FinansalDurumRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 
   @override
   void changeGorunecekAlanlar(String? value) {
-    final _$actionInfo = _$_FinansalDurumRaporuViewModelBaseActionController.startAction(
-      name: '_FinansalDurumRaporuViewModelBase.changeGorunecekAlanlar',
-    );
+    final _$actionInfo =
+        _$_FinansalDurumRaporuViewModelBaseActionController.startAction(
+            name: '_FinansalDurumRaporuViewModelBase.changeGorunecekAlanlar');
     try {
       return super.changeGorunecekAlanlar(value);
     } finally {
-      _$_FinansalDurumRaporuViewModelBaseActionController.endAction(_$actionInfo);
+      _$_FinansalDurumRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
     }
   }
 

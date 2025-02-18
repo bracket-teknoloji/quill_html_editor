@@ -12,8 +12,7 @@ part of 'print_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PrintModel _$PrintModelFromJson(Map<String, dynamic> json) {
   return _PrintModel.fromJson(json);
@@ -36,30 +35,32 @@ mixin _$PrintModel {
   /// Create a copy of PrintModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $PrintModelCopyWith<PrintModel> get copyWith => throw _privateConstructorUsedError;
+  $PrintModelCopyWith<PrintModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PrintModelCopyWith<$Res> {
-  factory $PrintModelCopyWith(PrintModel value, $Res Function(PrintModel) then) =
+  factory $PrintModelCopyWith(
+          PrintModel value, $Res Function(PrintModel) then) =
       _$PrintModelCopyWithImpl<$Res, PrintModel>;
   @useResult
-  $Res call({
-    String raporOzelKod,
-    int? dizaynId,
-    int? etiketSayisi,
-    bool? yazdir,
-    String? yaziciAdi,
-    String? yaziciTipi,
-    DicParams? dicParams,
-    bool? standart,
-  });
+  $Res call(
+      {String raporOzelKod,
+      int? dizaynId,
+      int? etiketSayisi,
+      bool? yazdir,
+      String? yaziciAdi,
+      String? yaziciTipi,
+      DicParams? dicParams,
+      bool? standart});
 
   $DicParamsCopyWith<$Res>? get dicParams;
 }
 
 /// @nodoc
-class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel> implements $PrintModelCopyWith<$Res> {
+class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
+    implements $PrintModelCopyWith<$Res> {
   _$PrintModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -81,51 +82,40 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel> implements $PrintM
     Object? dicParams = freezed,
     Object? standart = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            raporOzelKod:
-                null == raporOzelKod
-                    ? _value.raporOzelKod
-                    : raporOzelKod // ignore: cast_nullable_to_non_nullable
-                        as String,
-            dizaynId:
-                freezed == dizaynId
-                    ? _value.dizaynId
-                    : dizaynId // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            etiketSayisi:
-                freezed == etiketSayisi
-                    ? _value.etiketSayisi
-                    : etiketSayisi // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            yazdir:
-                freezed == yazdir
-                    ? _value.yazdir
-                    : yazdir // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-            yaziciAdi:
-                freezed == yaziciAdi
-                    ? _value.yaziciAdi
-                    : yaziciAdi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            yaziciTipi:
-                freezed == yaziciTipi
-                    ? _value.yaziciTipi
-                    : yaziciTipi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            dicParams:
-                freezed == dicParams
-                    ? _value.dicParams
-                    : dicParams // ignore: cast_nullable_to_non_nullable
-                        as DicParams?,
-            standart:
-                freezed == standart
-                    ? _value.standart
-                    : standart // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      raporOzelKod: null == raporOzelKod
+          ? _value.raporOzelKod
+          : raporOzelKod // ignore: cast_nullable_to_non_nullable
+              as String,
+      dizaynId: freezed == dizaynId
+          ? _value.dizaynId
+          : dizaynId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      etiketSayisi: freezed == etiketSayisi
+          ? _value.etiketSayisi
+          : etiketSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yazdir: freezed == yazdir
+          ? _value.yazdir
+          : yazdir // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      yaziciAdi: freezed == yaziciAdi
+          ? _value.yaziciAdi
+          : yaziciAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yaziciTipi: freezed == yaziciTipi
+          ? _value.yaziciTipi
+          : yaziciTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dicParams: freezed == dicParams
+          ? _value.dicParams
+          : dicParams // ignore: cast_nullable_to_non_nullable
+              as DicParams?,
+      standart: freezed == standart
+          ? _value.standart
+          : standart // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ) as $Val);
   }
 
   /// Create a copy of PrintModel
@@ -144,30 +134,34 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel> implements $PrintM
 }
 
 /// @nodoc
-abstract class _$$PrintModelImplCopyWith<$Res> implements $PrintModelCopyWith<$Res> {
-  factory _$$PrintModelImplCopyWith(_$PrintModelImpl value, $Res Function(_$PrintModelImpl) then) =
+abstract class _$$PrintModelImplCopyWith<$Res>
+    implements $PrintModelCopyWith<$Res> {
+  factory _$$PrintModelImplCopyWith(
+          _$PrintModelImpl value, $Res Function(_$PrintModelImpl) then) =
       __$$PrintModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String raporOzelKod,
-    int? dizaynId,
-    int? etiketSayisi,
-    bool? yazdir,
-    String? yaziciAdi,
-    String? yaziciTipi,
-    DicParams? dicParams,
-    bool? standart,
-  });
+  $Res call(
+      {String raporOzelKod,
+      int? dizaynId,
+      int? etiketSayisi,
+      bool? yazdir,
+      String? yaziciAdi,
+      String? yaziciTipi,
+      DicParams? dicParams,
+      bool? standart});
 
   @override
   $DicParamsCopyWith<$Res>? get dicParams;
 }
 
 /// @nodoc
-class __$$PrintModelImplCopyWithImpl<$Res> extends _$PrintModelCopyWithImpl<$Res, _$PrintModelImpl>
+class __$$PrintModelImplCopyWithImpl<$Res>
+    extends _$PrintModelCopyWithImpl<$Res, _$PrintModelImpl>
     implements _$$PrintModelImplCopyWith<$Res> {
-  __$$PrintModelImplCopyWithImpl(_$PrintModelImpl _value, $Res Function(_$PrintModelImpl) _then) : super(_value, _then);
+  __$$PrintModelImplCopyWithImpl(
+      _$PrintModelImpl _value, $Res Function(_$PrintModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of PrintModel
   /// with the given fields replaced by the non-null parameter values.
@@ -183,68 +177,59 @@ class __$$PrintModelImplCopyWithImpl<$Res> extends _$PrintModelCopyWithImpl<$Res
     Object? dicParams = freezed,
     Object? standart = freezed,
   }) {
-    return _then(
-      _$PrintModelImpl(
-        raporOzelKod:
-            null == raporOzelKod
-                ? _value.raporOzelKod
-                : raporOzelKod // ignore: cast_nullable_to_non_nullable
-                    as String,
-        dizaynId:
-            freezed == dizaynId
-                ? _value.dizaynId
-                : dizaynId // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        etiketSayisi:
-            freezed == etiketSayisi
-                ? _value.etiketSayisi
-                : etiketSayisi // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        yazdir:
-            freezed == yazdir
-                ? _value.yazdir
-                : yazdir // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-        yaziciAdi:
-            freezed == yaziciAdi
-                ? _value.yaziciAdi
-                : yaziciAdi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        yaziciTipi:
-            freezed == yaziciTipi
-                ? _value.yaziciTipi
-                : yaziciTipi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        dicParams:
-            freezed == dicParams
-                ? _value.dicParams
-                : dicParams // ignore: cast_nullable_to_non_nullable
-                    as DicParams?,
-        standart:
-            freezed == standart
-                ? _value.standart
-                : standart // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-      ),
-    );
+    return _then(_$PrintModelImpl(
+      raporOzelKod: null == raporOzelKod
+          ? _value.raporOzelKod
+          : raporOzelKod // ignore: cast_nullable_to_non_nullable
+              as String,
+      dizaynId: freezed == dizaynId
+          ? _value.dizaynId
+          : dizaynId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      etiketSayisi: freezed == etiketSayisi
+          ? _value.etiketSayisi
+          : etiketSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yazdir: freezed == yazdir
+          ? _value.yazdir
+          : yazdir // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      yaziciAdi: freezed == yaziciAdi
+          ? _value.yaziciAdi
+          : yaziciAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yaziciTipi: freezed == yaziciTipi
+          ? _value.yaziciTipi
+          : yaziciTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dicParams: freezed == dicParams
+          ? _value.dicParams
+          : dicParams // ignore: cast_nullable_to_non_nullable
+              as DicParams?,
+      standart: freezed == standart
+          ? _value.standart
+          : standart // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$PrintModelImpl extends _PrintModel {
-  _$PrintModelImpl({
-    required this.raporOzelKod,
-    this.dizaynId,
-    this.etiketSayisi,
-    this.yazdir = true,
-    this.yaziciAdi,
-    this.yaziciTipi,
-    this.dicParams,
-    this.standart,
-  }) : super._();
+  _$PrintModelImpl(
+      {required this.raporOzelKod,
+      this.dizaynId,
+      this.etiketSayisi,
+      this.yazdir = true,
+      this.yaziciAdi,
+      this.yaziciTipi,
+      this.dicParams,
+      this.standart})
+      : super._();
 
-  factory _$PrintModelImpl.fromJson(Map<String, dynamic> json) => _$$PrintModelImplFromJson(json);
+  factory _$PrintModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PrintModelImplFromJson(json);
 
   @override
   final String raporOzelKod;
@@ -274,24 +259,26 @@ class _$PrintModelImpl extends _PrintModel {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PrintModelImplToJson(this);
+    return _$$PrintModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _PrintModel extends PrintModel {
-  factory _PrintModel({
-    required final String raporOzelKod,
-    final int? dizaynId,
-    final int? etiketSayisi,
-    final bool? yazdir,
-    final String? yaziciAdi,
-    final String? yaziciTipi,
-    final DicParams? dicParams,
-    final bool? standart,
-  }) = _$PrintModelImpl;
+  factory _PrintModel(
+      {required final String raporOzelKod,
+      final int? dizaynId,
+      final int? etiketSayisi,
+      final bool? yazdir,
+      final String? yaziciAdi,
+      final String? yaziciTipi,
+      final DicParams? dicParams,
+      final bool? standart}) = _$PrintModelImpl;
   _PrintModel._() : super._();
 
-  factory _PrintModel.fromJson(Map<String, dynamic> json) = _$PrintModelImpl.fromJson;
+  factory _PrintModel.fromJson(Map<String, dynamic> json) =
+      _$PrintModelImpl.fromJson;
 
   @override
   String get raporOzelKod;
@@ -314,5 +301,6 @@ abstract class _PrintModel extends PrintModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$PrintModelImplCopyWith<_$PrintModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

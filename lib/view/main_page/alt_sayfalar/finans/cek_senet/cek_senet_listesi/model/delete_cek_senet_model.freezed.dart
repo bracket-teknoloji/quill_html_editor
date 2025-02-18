@@ -12,8 +12,7 @@ part of 'delete_cek_senet_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DeleteCekSenetModel _$DeleteCekSenetModelFromJson(Map<String, dynamic> json) {
   return _DeleteCekSenetModel.fromJson(json);
@@ -34,21 +33,22 @@ mixin _$DeleteCekSenetModel {
   /// Create a copy of DeleteCekSenetModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $DeleteCekSenetModelCopyWith<DeleteCekSenetModel> get copyWith => throw _privateConstructorUsedError;
+  $DeleteCekSenetModelCopyWith<DeleteCekSenetModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DeleteCekSenetModelCopyWith<$Res> {
-  factory $DeleteCekSenetModelCopyWith(DeleteCekSenetModel value, $Res Function(DeleteCekSenetModel) then) =
+  factory $DeleteCekSenetModelCopyWith(
+          DeleteCekSenetModel value, $Res Function(DeleteCekSenetModel) then) =
       _$DeleteCekSenetModelCopyWithImpl<$Res, DeleteCekSenetModel>;
   @useResult
-  $Res call({
-    String? belgeNo,
-    String? belgeTipi,
-    int? islemKodu,
-    @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
-    String? tag,
-  });
+  $Res call(
+      {String? belgeNo,
+      String? belgeTipi,
+      int? islemKodu,
+      @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
+      String? tag});
 }
 
 /// @nodoc
@@ -72,64 +72,54 @@ class _$DeleteCekSenetModelCopyWithImpl<$Res, $Val extends DeleteCekSenetModel>
     Object? pickerTahsilatTuru = freezed,
     Object? tag = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            belgeNo:
-                freezed == belgeNo
-                    ? _value.belgeNo
-                    : belgeNo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            belgeTipi:
-                freezed == belgeTipi
-                    ? _value.belgeTipi
-                    : belgeTipi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            islemKodu:
-                freezed == islemKodu
-                    ? _value.islemKodu
-                    : islemKodu // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            pickerTahsilatTuru:
-                freezed == pickerTahsilatTuru
-                    ? _value.pickerTahsilatTuru
-                    : pickerTahsilatTuru // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            tag:
-                freezed == tag
-                    ? _value.tag
-                    : tag // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pickerTahsilatTuru: freezed == pickerTahsilatTuru
+          ? _value.pickerTahsilatTuru
+          : pickerTahsilatTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tag: freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$DeleteCekSenetModelImplCopyWith<$Res> implements $DeleteCekSenetModelCopyWith<$Res> {
-  factory _$$DeleteCekSenetModelImplCopyWith(
-    _$DeleteCekSenetModelImpl value,
-    $Res Function(_$DeleteCekSenetModelImpl) then,
-  ) = __$$DeleteCekSenetModelImplCopyWithImpl<$Res>;
+abstract class _$$DeleteCekSenetModelImplCopyWith<$Res>
+    implements $DeleteCekSenetModelCopyWith<$Res> {
+  factory _$$DeleteCekSenetModelImplCopyWith(_$DeleteCekSenetModelImpl value,
+          $Res Function(_$DeleteCekSenetModelImpl) then) =
+      __$$DeleteCekSenetModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? belgeNo,
-    String? belgeTipi,
-    int? islemKodu,
-    @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
-    String? tag,
-  });
+  $Res call(
+      {String? belgeNo,
+      String? belgeTipi,
+      int? islemKodu,
+      @JsonKey(name: "PickerTahsilatTuru") String? pickerTahsilatTuru,
+      String? tag});
 }
 
 /// @nodoc
 class __$$DeleteCekSenetModelImplCopyWithImpl<$Res>
     extends _$DeleteCekSenetModelCopyWithImpl<$Res, _$DeleteCekSenetModelImpl>
     implements _$$DeleteCekSenetModelImplCopyWith<$Res> {
-  __$$DeleteCekSenetModelImplCopyWithImpl(
-    _$DeleteCekSenetModelImpl _value,
-    $Res Function(_$DeleteCekSenetModelImpl) _then,
-  ) : super(_value, _then);
+  __$$DeleteCekSenetModelImplCopyWithImpl(_$DeleteCekSenetModelImpl _value,
+      $Res Function(_$DeleteCekSenetModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of DeleteCekSenetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -142,50 +132,43 @@ class __$$DeleteCekSenetModelImplCopyWithImpl<$Res>
     Object? pickerTahsilatTuru = freezed,
     Object? tag = freezed,
   }) {
-    return _then(
-      _$DeleteCekSenetModelImpl(
-        belgeNo:
-            freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        belgeTipi:
-            freezed == belgeTipi
-                ? _value.belgeTipi
-                : belgeTipi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        islemKodu:
-            freezed == islemKodu
-                ? _value.islemKodu
-                : islemKodu // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        pickerTahsilatTuru:
-            freezed == pickerTahsilatTuru
-                ? _value.pickerTahsilatTuru
-                : pickerTahsilatTuru // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        tag:
-            freezed == tag
-                ? _value.tag
-                : tag // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$DeleteCekSenetModelImpl(
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islemKodu: freezed == islemKodu
+          ? _value.islemKodu
+          : islemKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pickerTahsilatTuru: freezed == pickerTahsilatTuru
+          ? _value.pickerTahsilatTuru
+          : pickerTahsilatTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tag: freezed == tag
+          ? _value.tag
+          : tag // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
-  const _$DeleteCekSenetModelImpl({
-    this.belgeNo,
-    this.belgeTipi,
-    this.islemKodu,
-    @JsonKey(name: "PickerTahsilatTuru") this.pickerTahsilatTuru,
-    this.tag,
-  });
+  const _$DeleteCekSenetModelImpl(
+      {this.belgeNo,
+      this.belgeTipi,
+      this.islemKodu,
+      @JsonKey(name: "PickerTahsilatTuru") this.pickerTahsilatTuru,
+      this.tag});
 
-  factory _$DeleteCekSenetModelImpl.fromJson(Map<String, dynamic> json) => _$$DeleteCekSenetModelImplFromJson(json);
+  factory _$DeleteCekSenetModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DeleteCekSenetModelImplFromJson(json);
 
   @override
   final String? belgeNo;
@@ -205,8 +188,10 @@ class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
         (other.runtimeType == runtimeType &&
             other is _$DeleteCekSenetModelImpl &&
             (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo) &&
-            (identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi) &&
-            (identical(other.islemKodu, islemKodu) || other.islemKodu == islemKodu) &&
+            (identical(other.belgeTipi, belgeTipi) ||
+                other.belgeTipi == belgeTipi) &&
+            (identical(other.islemKodu, islemKodu) ||
+                other.islemKodu == islemKodu) &&
             (identical(other.pickerTahsilatTuru, pickerTahsilatTuru) ||
                 other.pickerTahsilatTuru == pickerTahsilatTuru) &&
             (identical(other.tag, tag) || other.tag == tag));
@@ -214,7 +199,8 @@ class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, belgeNo, belgeTipi, islemKodu, pickerTahsilatTuru, tag);
+  int get hashCode => Object.hash(
+      runtimeType, belgeNo, belgeTipi, islemKodu, pickerTahsilatTuru, tag);
 
   /// Create a copy of DeleteCekSenetModel
   /// with the given fields replaced by the non-null parameter values.
@@ -222,24 +208,27 @@ class _$DeleteCekSenetModelImpl implements _DeleteCekSenetModel {
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith =>
-      __$$DeleteCekSenetModelImplCopyWithImpl<_$DeleteCekSenetModelImpl>(this, _$identity);
+      __$$DeleteCekSenetModelImplCopyWithImpl<_$DeleteCekSenetModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$DeleteCekSenetModelImplToJson(this);
+    return _$$DeleteCekSenetModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _DeleteCekSenetModel implements DeleteCekSenetModel {
-  const factory _DeleteCekSenetModel({
-    final String? belgeNo,
-    final String? belgeTipi,
-    final int? islemKodu,
-    @JsonKey(name: "PickerTahsilatTuru") final String? pickerTahsilatTuru,
-    final String? tag,
-  }) = _$DeleteCekSenetModelImpl;
+  const factory _DeleteCekSenetModel(
+      {final String? belgeNo,
+      final String? belgeTipi,
+      final int? islemKodu,
+      @JsonKey(name: "PickerTahsilatTuru") final String? pickerTahsilatTuru,
+      final String? tag}) = _$DeleteCekSenetModelImpl;
 
-  factory _DeleteCekSenetModel.fromJson(Map<String, dynamic> json) = _$DeleteCekSenetModelImpl.fromJson;
+  factory _DeleteCekSenetModel.fromJson(Map<String, dynamic> json) =
+      _$DeleteCekSenetModelImpl.fromJson;
 
   @override
   String? get belgeNo;
@@ -257,5 +246,6 @@ abstract class _DeleteCekSenetModel implements DeleteCekSenetModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$DeleteCekSenetModelImplCopyWith<_$DeleteCekSenetModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

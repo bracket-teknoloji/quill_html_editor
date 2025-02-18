@@ -12,10 +12,10 @@ part of 'olcum_girisi_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-OlcumGirisiRequestModel _$OlcumGirisiRequestModelFromJson(Map<String, dynamic> json) {
+OlcumGirisiRequestModel _$OlcumGirisiRequestModelFromJson(
+    Map<String, dynamic> json) {
   return _OlcumGirisiRequestModel.fromJson(json);
 }
 
@@ -48,28 +48,30 @@ mixin _$OlcumGirisiRequestModel {
   /// Create a copy of OlcumGirisiRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $OlcumGirisiRequestModelCopyWith<OlcumGirisiRequestModel> get copyWith => throw _privateConstructorUsedError;
+  $OlcumGirisiRequestModelCopyWith<OlcumGirisiRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $OlcumGirisiRequestModelCopyWith<$Res> {
-  factory $OlcumGirisiRequestModelCopyWith(OlcumGirisiRequestModel value, $Res Function(OlcumGirisiRequestModel) then) =
+  factory $OlcumGirisiRequestModelCopyWith(OlcumGirisiRequestModel value,
+          $Res Function(OlcumGirisiRequestModel) then) =
       _$OlcumGirisiRequestModelCopyWithImpl<$Res, OlcumGirisiRequestModel>;
   @useResult
-  $Res call({
-    int? durum,
-    String? belgeTipi,
-    String? bastar,
-    String? bittar,
-    String? siralama,
-    String? qrstring,
-    @JsonKey(name: "SearchText") String? searchText,
-    @JsonKey(name: "Sayfa") int? sayfa,
-  });
+  $Res call(
+      {int? durum,
+      String? belgeTipi,
+      String? bastar,
+      String? bittar,
+      String? siralama,
+      String? qrstring,
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa});
 }
 
 /// @nodoc
-class _$OlcumGirisiRequestModelCopyWithImpl<$Res, $Val extends OlcumGirisiRequestModel>
+class _$OlcumGirisiRequestModelCopyWithImpl<$Res,
+        $Val extends OlcumGirisiRequestModel>
     implements $OlcumGirisiRequestModelCopyWith<$Res> {
   _$OlcumGirisiRequestModelCopyWithImpl(this._value, this._then);
 
@@ -92,82 +94,72 @@ class _$OlcumGirisiRequestModelCopyWithImpl<$Res, $Val extends OlcumGirisiReques
     Object? searchText = freezed,
     Object? sayfa = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            durum:
-                freezed == durum
-                    ? _value.durum
-                    : durum // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            belgeTipi:
-                freezed == belgeTipi
-                    ? _value.belgeTipi
-                    : belgeTipi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            bastar:
-                freezed == bastar
-                    ? _value.bastar
-                    : bastar // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            bittar:
-                freezed == bittar
-                    ? _value.bittar
-                    : bittar // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            siralama:
-                freezed == siralama
-                    ? _value.siralama
-                    : siralama // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            qrstring:
-                freezed == qrstring
-                    ? _value.qrstring
-                    : qrstring // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            searchText:
-                freezed == searchText
-                    ? _value.searchText
-                    : searchText // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            sayfa:
-                freezed == sayfa
-                    ? _value.sayfa
-                    : sayfa // ignore: cast_nullable_to_non_nullable
-                        as int?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      durum: freezed == durum
+          ? _value.durum
+          : durum // ignore: cast_nullable_to_non_nullable
+              as int?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bastar: freezed == bastar
+          ? _value.bastar
+          : bastar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bittar: freezed == bittar
+          ? _value.bittar
+          : bittar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      siralama: freezed == siralama
+          ? _value.siralama
+          : siralama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      qrstring: freezed == qrstring
+          ? _value.qrstring
+          : qrstring // ignore: cast_nullable_to_non_nullable
+              as String?,
+      searchText: freezed == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sayfa: freezed == sayfa
+          ? _value.sayfa
+          : sayfa // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$OlcumGirisiRequestModelImplCopyWith<$Res> implements $OlcumGirisiRequestModelCopyWith<$Res> {
+abstract class _$$OlcumGirisiRequestModelImplCopyWith<$Res>
+    implements $OlcumGirisiRequestModelCopyWith<$Res> {
   factory _$$OlcumGirisiRequestModelImplCopyWith(
-    _$OlcumGirisiRequestModelImpl value,
-    $Res Function(_$OlcumGirisiRequestModelImpl) then,
-  ) = __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>;
+          _$OlcumGirisiRequestModelImpl value,
+          $Res Function(_$OlcumGirisiRequestModelImpl) then) =
+      __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int? durum,
-    String? belgeTipi,
-    String? bastar,
-    String? bittar,
-    String? siralama,
-    String? qrstring,
-    @JsonKey(name: "SearchText") String? searchText,
-    @JsonKey(name: "Sayfa") int? sayfa,
-  });
+  $Res call(
+      {int? durum,
+      String? belgeTipi,
+      String? bastar,
+      String? bittar,
+      String? siralama,
+      String? qrstring,
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa});
 }
 
 /// @nodoc
 class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
-    extends _$OlcumGirisiRequestModelCopyWithImpl<$Res, _$OlcumGirisiRequestModelImpl>
+    extends _$OlcumGirisiRequestModelCopyWithImpl<$Res,
+        _$OlcumGirisiRequestModelImpl>
     implements _$$OlcumGirisiRequestModelImplCopyWith<$Res> {
   __$$OlcumGirisiRequestModelImplCopyWithImpl(
-    _$OlcumGirisiRequestModelImpl _value,
-    $Res Function(_$OlcumGirisiRequestModelImpl) _then,
-  ) : super(_value, _then);
+      _$OlcumGirisiRequestModelImpl _value,
+      $Res Function(_$OlcumGirisiRequestModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of OlcumGirisiRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -183,66 +175,55 @@ class __$$OlcumGirisiRequestModelImplCopyWithImpl<$Res>
     Object? searchText = freezed,
     Object? sayfa = freezed,
   }) {
-    return _then(
-      _$OlcumGirisiRequestModelImpl(
-        durum:
-            freezed == durum
-                ? _value.durum
-                : durum // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        belgeTipi:
-            freezed == belgeTipi
-                ? _value.belgeTipi
-                : belgeTipi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        bastar:
-            freezed == bastar
-                ? _value.bastar
-                : bastar // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        bittar:
-            freezed == bittar
-                ? _value.bittar
-                : bittar // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        siralama:
-            freezed == siralama
-                ? _value.siralama
-                : siralama // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        qrstring:
-            freezed == qrstring
-                ? _value.qrstring
-                : qrstring // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        searchText:
-            freezed == searchText
-                ? _value.searchText
-                : searchText // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        sayfa:
-            freezed == sayfa
-                ? _value.sayfa
-                : sayfa // ignore: cast_nullable_to_non_nullable
-                    as int?,
-      ),
-    );
+    return _then(_$OlcumGirisiRequestModelImpl(
+      durum: freezed == durum
+          ? _value.durum
+          : durum // ignore: cast_nullable_to_non_nullable
+              as int?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bastar: freezed == bastar
+          ? _value.bastar
+          : bastar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bittar: freezed == bittar
+          ? _value.bittar
+          : bittar // ignore: cast_nullable_to_non_nullable
+              as String?,
+      siralama: freezed == siralama
+          ? _value.siralama
+          : siralama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      qrstring: freezed == qrstring
+          ? _value.qrstring
+          : qrstring // ignore: cast_nullable_to_non_nullable
+              as String?,
+      searchText: freezed == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sayfa: freezed == sayfa
+          ? _value.sayfa
+          : sayfa // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
-  _$OlcumGirisiRequestModelImpl({
-    this.durum,
-    this.belgeTipi,
-    this.bastar,
-    this.bittar,
-    this.siralama,
-    this.qrstring,
-    @JsonKey(name: "SearchText") this.searchText,
-    @JsonKey(name: "Sayfa") this.sayfa,
-  });
+  _$OlcumGirisiRequestModelImpl(
+      {this.durum,
+      this.belgeTipi,
+      this.bastar,
+      this.bittar,
+      this.siralama,
+      this.qrstring,
+      @JsonKey(name: "SearchText") this.searchText,
+      @JsonKey(name: "Sayfa") this.sayfa});
 
   factory _$OlcumGirisiRequestModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OlcumGirisiRequestModelImplFromJson(json);
@@ -271,28 +252,31 @@ class _$OlcumGirisiRequestModelImpl implements _OlcumGirisiRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl> get copyWith =>
-      __$$OlcumGirisiRequestModelImplCopyWithImpl<_$OlcumGirisiRequestModelImpl>(this, _$identity);
+  _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl>
+      get copyWith => __$$OlcumGirisiRequestModelImplCopyWithImpl<
+          _$OlcumGirisiRequestModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OlcumGirisiRequestModelImplToJson(this);
+    return _$$OlcumGirisiRequestModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
-  factory _OlcumGirisiRequestModel({
-    int? durum,
-    String? belgeTipi,
-    String? bastar,
-    String? bittar,
-    String? siralama,
-    String? qrstring,
-    @JsonKey(name: "SearchText") String? searchText,
-    @JsonKey(name: "Sayfa") int? sayfa,
-  }) = _$OlcumGirisiRequestModelImpl;
+  factory _OlcumGirisiRequestModel(
+      {int? durum,
+      String? belgeTipi,
+      String? bastar,
+      String? bittar,
+      String? siralama,
+      String? qrstring,
+      @JsonKey(name: "SearchText") String? searchText,
+      @JsonKey(name: "Sayfa") int? sayfa}) = _$OlcumGirisiRequestModelImpl;
 
-  factory _OlcumGirisiRequestModel.fromJson(Map<String, dynamic> json) = _$OlcumGirisiRequestModelImpl.fromJson;
+  factory _OlcumGirisiRequestModel.fromJson(Map<String, dynamic> json) =
+      _$OlcumGirisiRequestModelImpl.fromJson;
 
   @override
   int? get durum;
@@ -327,6 +311,6 @@ abstract class _OlcumGirisiRequestModel implements OlcumGirisiRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OlcumGirisiRequestModelImplCopyWith<_$OlcumGirisiRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

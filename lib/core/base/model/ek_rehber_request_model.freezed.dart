@@ -12,8 +12,7 @@ part of 'ek_rehber_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 EkRehberRequestModel _$EkRehberRequestModelFromJson(Map<String, dynamic> json) {
   return _EkRehberRequestModel.fromJson(json);
@@ -41,30 +40,32 @@ mixin _$EkRehberRequestModel {
   /// Create a copy of EkRehberRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EkRehberRequestModelCopyWith<EkRehberRequestModel> get copyWith => throw _privateConstructorUsedError;
+  $EkRehberRequestModelCopyWith<EkRehberRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EkRehberRequestModelCopyWith<$Res> {
-  factory $EkRehberRequestModelCopyWith(EkRehberRequestModel value, $Res Function(EkRehberRequestModel) then) =
+  factory $EkRehberRequestModelCopyWith(EkRehberRequestModel value,
+          $Res Function(EkRehberRequestModel) then) =
       _$EkRehberRequestModelCopyWithImpl<$Res, EkRehberRequestModel>;
   @useResult
-  $Res call({
-    String? belgeNo,
-    DateTime? belgeTarihi,
-    String? belgeTipi,
-    String? cariKodu,
-    String? stokKodu,
-    @JsonKey(name: "ID") int? id,
-    int? rehberKodu,
-    String? yapkod,
-    @JsonKey(name: "PARAMS") Map<String, dynamic>? params,
-    @JsonKey(includeToJson: false, includeFromJson: false) String? baslik,
-  });
+  $Res call(
+      {String? belgeNo,
+      DateTime? belgeTarihi,
+      String? belgeTipi,
+      String? cariKodu,
+      String? stokKodu,
+      @JsonKey(name: "ID") int? id,
+      int? rehberKodu,
+      String? yapkod,
+      @JsonKey(name: "PARAMS") Map<String, dynamic>? params,
+      @JsonKey(includeToJson: false, includeFromJson: false) String? baslik});
 }
 
 /// @nodoc
-class _$EkRehberRequestModelCopyWithImpl<$Res, $Val extends EkRehberRequestModel>
+class _$EkRehberRequestModelCopyWithImpl<$Res,
+        $Val extends EkRehberRequestModel>
     implements $EkRehberRequestModelCopyWith<$Res> {
   _$EkRehberRequestModelCopyWithImpl(this._value, this._then);
 
@@ -89,94 +90,79 @@ class _$EkRehberRequestModelCopyWithImpl<$Res, $Val extends EkRehberRequestModel
     Object? params = freezed,
     Object? baslik = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            belgeNo:
-                freezed == belgeNo
-                    ? _value.belgeNo
-                    : belgeNo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            belgeTarihi:
-                freezed == belgeTarihi
-                    ? _value.belgeTarihi
-                    : belgeTarihi // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            belgeTipi:
-                freezed == belgeTipi
-                    ? _value.belgeTipi
-                    : belgeTipi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            cariKodu:
-                freezed == cariKodu
-                    ? _value.cariKodu
-                    : cariKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            stokKodu:
-                freezed == stokKodu
-                    ? _value.stokKodu
-                    : stokKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            id:
-                freezed == id
-                    ? _value.id
-                    : id // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            rehberKodu:
-                freezed == rehberKodu
-                    ? _value.rehberKodu
-                    : rehberKodu // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            yapkod:
-                freezed == yapkod
-                    ? _value.yapkod
-                    : yapkod // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            params:
-                freezed == params
-                    ? _value.params
-                    : params // ignore: cast_nullable_to_non_nullable
-                        as Map<String, dynamic>?,
-            baslik:
-                freezed == baslik
-                    ? _value.baslik
-                    : baslik // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTarihi: freezed == belgeTarihi
+          ? _value.belgeTarihi
+          : belgeTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rehberKodu: freezed == rehberKodu
+          ? _value.rehberKodu
+          : rehberKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      params: freezed == params
+          ? _value.params
+          : params // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      baslik: freezed == baslik
+          ? _value.baslik
+          : baslik // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$EkRehberRequestModelImplCopyWith<$Res> implements $EkRehberRequestModelCopyWith<$Res> {
-  factory _$$EkRehberRequestModelImplCopyWith(
-    _$EkRehberRequestModelImpl value,
-    $Res Function(_$EkRehberRequestModelImpl) then,
-  ) = __$$EkRehberRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$EkRehberRequestModelImplCopyWith<$Res>
+    implements $EkRehberRequestModelCopyWith<$Res> {
+  factory _$$EkRehberRequestModelImplCopyWith(_$EkRehberRequestModelImpl value,
+          $Res Function(_$EkRehberRequestModelImpl) then) =
+      __$$EkRehberRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? belgeNo,
-    DateTime? belgeTarihi,
-    String? belgeTipi,
-    String? cariKodu,
-    String? stokKodu,
-    @JsonKey(name: "ID") int? id,
-    int? rehberKodu,
-    String? yapkod,
-    @JsonKey(name: "PARAMS") Map<String, dynamic>? params,
-    @JsonKey(includeToJson: false, includeFromJson: false) String? baslik,
-  });
+  $Res call(
+      {String? belgeNo,
+      DateTime? belgeTarihi,
+      String? belgeTipi,
+      String? cariKodu,
+      String? stokKodu,
+      @JsonKey(name: "ID") int? id,
+      int? rehberKodu,
+      String? yapkod,
+      @JsonKey(name: "PARAMS") Map<String, dynamic>? params,
+      @JsonKey(includeToJson: false, includeFromJson: false) String? baslik});
 }
 
 /// @nodoc
 class __$$EkRehberRequestModelImplCopyWithImpl<$Res>
     extends _$EkRehberRequestModelCopyWithImpl<$Res, _$EkRehberRequestModelImpl>
     implements _$$EkRehberRequestModelImplCopyWith<$Res> {
-  __$$EkRehberRequestModelImplCopyWithImpl(
-    _$EkRehberRequestModelImpl _value,
-    $Res Function(_$EkRehberRequestModelImpl) _then,
-  ) : super(_value, _then);
+  __$$EkRehberRequestModelImplCopyWithImpl(_$EkRehberRequestModelImpl _value,
+      $Res Function(_$EkRehberRequestModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EkRehberRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -194,60 +180,48 @@ class __$$EkRehberRequestModelImplCopyWithImpl<$Res>
     Object? params = freezed,
     Object? baslik = freezed,
   }) {
-    return _then(
-      _$EkRehberRequestModelImpl(
-        belgeNo:
-            freezed == belgeNo
-                ? _value.belgeNo
-                : belgeNo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        belgeTarihi:
-            freezed == belgeTarihi
-                ? _value.belgeTarihi
-                : belgeTarihi // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        belgeTipi:
-            freezed == belgeTipi
-                ? _value.belgeTipi
-                : belgeTipi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        cariKodu:
-            freezed == cariKodu
-                ? _value.cariKodu
-                : cariKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        stokKodu:
-            freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        id:
-            freezed == id
-                ? _value.id
-                : id // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        rehberKodu:
-            freezed == rehberKodu
-                ? _value.rehberKodu
-                : rehberKodu // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        yapkod:
-            freezed == yapkod
-                ? _value.yapkod
-                : yapkod // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        params:
-            freezed == params
-                ? _value._params
-                : params // ignore: cast_nullable_to_non_nullable
-                    as Map<String, dynamic>?,
-        baslik:
-            freezed == baslik
-                ? _value.baslik
-                : baslik // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$EkRehberRequestModelImpl(
+      belgeNo: freezed == belgeNo
+          ? _value.belgeNo
+          : belgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      belgeTarihi: freezed == belgeTarihi
+          ? _value.belgeTarihi
+          : belgeTarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cariKodu: freezed == cariKodu
+          ? _value.cariKodu
+          : cariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      rehberKodu: freezed == rehberKodu
+          ? _value.rehberKodu
+          : rehberKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+      params: freezed == params
+          ? _value._params
+          : params // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      baslik: freezed == baslik
+          ? _value.baslik
+          : baslik // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -255,20 +229,21 @@ class __$$EkRehberRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$EkRehberRequestModelImpl implements _EkRehberRequestModel {
-  const _$EkRehberRequestModelImpl({
-    this.belgeNo,
-    this.belgeTarihi,
-    this.belgeTipi,
-    this.cariKodu,
-    this.stokKodu,
-    @JsonKey(name: "ID") this.id,
-    this.rehberKodu,
-    this.yapkod,
-    @JsonKey(name: "PARAMS") final Map<String, dynamic>? params,
-    @JsonKey(includeToJson: false, includeFromJson: false) this.baslik,
-  }) : _params = params;
+  const _$EkRehberRequestModelImpl(
+      {this.belgeNo,
+      this.belgeTarihi,
+      this.belgeTipi,
+      this.cariKodu,
+      this.stokKodu,
+      @JsonKey(name: "ID") this.id,
+      this.rehberKodu,
+      this.yapkod,
+      @JsonKey(name: "PARAMS") final Map<String, dynamic>? params,
+      @JsonKey(includeToJson: false, includeFromJson: false) this.baslik})
+      : _params = params;
 
-  factory _$EkRehberRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$EkRehberRequestModelImplFromJson(json);
+  factory _$EkRehberRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EkRehberRequestModelImplFromJson(json);
 
   @override
   final String? belgeNo;
@@ -308,12 +283,17 @@ class _$EkRehberRequestModelImpl implements _EkRehberRequestModel {
         (other.runtimeType == runtimeType &&
             other is _$EkRehberRequestModelImpl &&
             (identical(other.belgeNo, belgeNo) || other.belgeNo == belgeNo) &&
-            (identical(other.belgeTarihi, belgeTarihi) || other.belgeTarihi == belgeTarihi) &&
-            (identical(other.belgeTipi, belgeTipi) || other.belgeTipi == belgeTipi) &&
-            (identical(other.cariKodu, cariKodu) || other.cariKodu == cariKodu) &&
-            (identical(other.stokKodu, stokKodu) || other.stokKodu == stokKodu) &&
+            (identical(other.belgeTarihi, belgeTarihi) ||
+                other.belgeTarihi == belgeTarihi) &&
+            (identical(other.belgeTipi, belgeTipi) ||
+                other.belgeTipi == belgeTipi) &&
+            (identical(other.cariKodu, cariKodu) ||
+                other.cariKodu == cariKodu) &&
+            (identical(other.stokKodu, stokKodu) ||
+                other.stokKodu == stokKodu) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.rehberKodu, rehberKodu) || other.rehberKodu == rehberKodu) &&
+            (identical(other.rehberKodu, rehberKodu) ||
+                other.rehberKodu == rehberKodu) &&
             (identical(other.yapkod, yapkod) || other.yapkod == yapkod) &&
             const DeepCollectionEquality().equals(other._params, _params) &&
             (identical(other.baslik, baslik) || other.baslik == baslik));
@@ -322,48 +302,52 @@ class _$EkRehberRequestModelImpl implements _EkRehberRequestModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-    runtimeType,
-    belgeNo,
-    belgeTarihi,
-    belgeTipi,
-    cariKodu,
-    stokKodu,
-    id,
-    rehberKodu,
-    yapkod,
-    const DeepCollectionEquality().hash(_params),
-    baslik,
-  );
+      runtimeType,
+      belgeNo,
+      belgeTarihi,
+      belgeTipi,
+      cariKodu,
+      stokKodu,
+      id,
+      rehberKodu,
+      yapkod,
+      const DeepCollectionEquality().hash(_params),
+      baslik);
 
   /// Create a copy of EkRehberRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$EkRehberRequestModelImplCopyWith<_$EkRehberRequestModelImpl> get copyWith =>
-      __$$EkRehberRequestModelImplCopyWithImpl<_$EkRehberRequestModelImpl>(this, _$identity);
+  _$$EkRehberRequestModelImplCopyWith<_$EkRehberRequestModelImpl>
+      get copyWith =>
+          __$$EkRehberRequestModelImplCopyWithImpl<_$EkRehberRequestModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EkRehberRequestModelImplToJson(this);
+    return _$$EkRehberRequestModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _EkRehberRequestModel implements EkRehberRequestModel {
-  const factory _EkRehberRequestModel({
-    final String? belgeNo,
-    final DateTime? belgeTarihi,
-    final String? belgeTipi,
-    final String? cariKodu,
-    final String? stokKodu,
-    @JsonKey(name: "ID") final int? id,
-    final int? rehberKodu,
-    final String? yapkod,
-    @JsonKey(name: "PARAMS") final Map<String, dynamic>? params,
-    @JsonKey(includeToJson: false, includeFromJson: false) final String? baslik,
-  }) = _$EkRehberRequestModelImpl;
+  const factory _EkRehberRequestModel(
+      {final String? belgeNo,
+      final DateTime? belgeTarihi,
+      final String? belgeTipi,
+      final String? cariKodu,
+      final String? stokKodu,
+      @JsonKey(name: "ID") final int? id,
+      final int? rehberKodu,
+      final String? yapkod,
+      @JsonKey(name: "PARAMS") final Map<String, dynamic>? params,
+      @JsonKey(includeToJson: false, includeFromJson: false)
+      final String? baslik}) = _$EkRehberRequestModelImpl;
 
-  factory _EkRehberRequestModel.fromJson(Map<String, dynamic> json) = _$EkRehberRequestModelImpl.fromJson;
+  factory _EkRehberRequestModel.fromJson(Map<String, dynamic> json) =
+      _$EkRehberRequestModelImpl.fromJson;
 
   @override
   String? get belgeNo;
@@ -393,5 +377,6 @@ abstract class _EkRehberRequestModel implements EkRehberRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EkRehberRequestModelImplCopyWith<_$EkRehberRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$EkRehberRequestModelImplCopyWith<_$EkRehberRequestModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

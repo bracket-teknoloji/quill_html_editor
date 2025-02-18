@@ -12,8 +12,7 @@ part of 'e_belge_request_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 EBelgeRequestModel _$EBelgeRequestModelFromJson(Map<String, dynamic> json) {
   return _EBelgeRequestModel.fromJson(json);
@@ -60,32 +59,33 @@ mixin _$EBelgeRequestModel {
   /// Create a copy of EBelgeRequestModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $EBelgeRequestModelCopyWith<EBelgeRequestModel> get copyWith => throw _privateConstructorUsedError;
+  $EBelgeRequestModelCopyWith<EBelgeRequestModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $EBelgeRequestModelCopyWith<$Res> {
-  factory $EBelgeRequestModelCopyWith(EBelgeRequestModel value, $Res Function(EBelgeRequestModel) then) =
+  factory $EBelgeRequestModelCopyWith(
+          EBelgeRequestModel value, $Res Function(EBelgeRequestModel) then) =
       _$EBelgeRequestModelCopyWithImpl<$Res, EBelgeRequestModel>;
   @useResult
-  $Res call({
-    String? basimDurumu,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    String? eBelgeTuru,
-    String? islendi,
-    bool? kayitTarihineGore,
-    String? kontrolEdildi,
-    String? faturaYonu,
-    String? onayDurumu,
-    int? sayfa,
-    String? senaryo,
-    String? sirala,
-    bool? sorgulanmasin,
-    String? searchText,
-    String? taslak,
-    String? resmiBelgeNo,
-  });
+  $Res call(
+      {String? basimDurumu,
+      String? baslamaTarihi,
+      String? bitisTarihi,
+      String? eBelgeTuru,
+      String? islendi,
+      bool? kayitTarihineGore,
+      String? kontrolEdildi,
+      String? faturaYonu,
+      String? onayDurumu,
+      int? sayfa,
+      String? senaryo,
+      String? sirala,
+      bool? sorgulanmasin,
+      String? searchText,
+      String? taslak,
+      String? resmiBelgeNo});
 }
 
 /// @nodoc
@@ -120,128 +120,109 @@ class _$EBelgeRequestModelCopyWithImpl<$Res, $Val extends EBelgeRequestModel>
     Object? taslak = freezed,
     Object? resmiBelgeNo = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            basimDurumu:
-                freezed == basimDurumu
-                    ? _value.basimDurumu
-                    : basimDurumu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            baslamaTarihi:
-                freezed == baslamaTarihi
-                    ? _value.baslamaTarihi
-                    : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            bitisTarihi:
-                freezed == bitisTarihi
-                    ? _value.bitisTarihi
-                    : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eBelgeTuru:
-                freezed == eBelgeTuru
-                    ? _value.eBelgeTuru
-                    : eBelgeTuru // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            islendi:
-                freezed == islendi
-                    ? _value.islendi
-                    : islendi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            kayitTarihineGore:
-                freezed == kayitTarihineGore
-                    ? _value.kayitTarihineGore
-                    : kayitTarihineGore // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-            kontrolEdildi:
-                freezed == kontrolEdildi
-                    ? _value.kontrolEdildi
-                    : kontrolEdildi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            faturaYonu:
-                freezed == faturaYonu
-                    ? _value.faturaYonu
-                    : faturaYonu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            onayDurumu:
-                freezed == onayDurumu
-                    ? _value.onayDurumu
-                    : onayDurumu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            sayfa:
-                freezed == sayfa
-                    ? _value.sayfa
-                    : sayfa // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            senaryo:
-                freezed == senaryo
-                    ? _value.senaryo
-                    : senaryo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            sirala:
-                freezed == sirala
-                    ? _value.sirala
-                    : sirala // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            sorgulanmasin:
-                freezed == sorgulanmasin
-                    ? _value.sorgulanmasin
-                    : sorgulanmasin // ignore: cast_nullable_to_non_nullable
-                        as bool?,
-            searchText:
-                freezed == searchText
-                    ? _value.searchText
-                    : searchText // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            taslak:
-                freezed == taslak
-                    ? _value.taslak
-                    : taslak // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            resmiBelgeNo:
-                freezed == resmiBelgeNo
-                    ? _value.resmiBelgeNo
-                    : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      basimDurumu: freezed == basimDurumu
+          ? _value.basimDurumu
+          : basimDurumu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      baslamaTarihi: freezed == baslamaTarihi
+          ? _value.baslamaTarihi
+          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bitisTarihi: freezed == bitisTarihi
+          ? _value.bitisTarihi
+          : bitisTarihi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eBelgeTuru: freezed == eBelgeTuru
+          ? _value.eBelgeTuru
+          : eBelgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islendi: freezed == islendi
+          ? _value.islendi
+          : islendi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitTarihineGore: freezed == kayitTarihineGore
+          ? _value.kayitTarihineGore
+          : kayitTarihineGore // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      kontrolEdildi: freezed == kontrolEdildi
+          ? _value.kontrolEdildi
+          : kontrolEdildi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      faturaYonu: freezed == faturaYonu
+          ? _value.faturaYonu
+          : faturaYonu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      onayDurumu: freezed == onayDurumu
+          ? _value.onayDurumu
+          : onayDurumu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sayfa: freezed == sayfa
+          ? _value.sayfa
+          : sayfa // ignore: cast_nullable_to_non_nullable
+              as int?,
+      senaryo: freezed == senaryo
+          ? _value.senaryo
+          : senaryo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sirala: freezed == sirala
+          ? _value.sirala
+          : sirala // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sorgulanmasin: freezed == sorgulanmasin
+          ? _value.sorgulanmasin
+          : sorgulanmasin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      searchText: freezed == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taslak: freezed == taslak
+          ? _value.taslak
+          : taslak // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resmiBelgeNo: freezed == resmiBelgeNo
+          ? _value.resmiBelgeNo
+          : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$EBelgeRequestModelImplCopyWith<$Res> implements $EBelgeRequestModelCopyWith<$Res> {
-  factory _$$EBelgeRequestModelImplCopyWith(
-    _$EBelgeRequestModelImpl value,
-    $Res Function(_$EBelgeRequestModelImpl) then,
-  ) = __$$EBelgeRequestModelImplCopyWithImpl<$Res>;
+abstract class _$$EBelgeRequestModelImplCopyWith<$Res>
+    implements $EBelgeRequestModelCopyWith<$Res> {
+  factory _$$EBelgeRequestModelImplCopyWith(_$EBelgeRequestModelImpl value,
+          $Res Function(_$EBelgeRequestModelImpl) then) =
+      __$$EBelgeRequestModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? basimDurumu,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    String? eBelgeTuru,
-    String? islendi,
-    bool? kayitTarihineGore,
-    String? kontrolEdildi,
-    String? faturaYonu,
-    String? onayDurumu,
-    int? sayfa,
-    String? senaryo,
-    String? sirala,
-    bool? sorgulanmasin,
-    String? searchText,
-    String? taslak,
-    String? resmiBelgeNo,
-  });
+  $Res call(
+      {String? basimDurumu,
+      String? baslamaTarihi,
+      String? bitisTarihi,
+      String? eBelgeTuru,
+      String? islendi,
+      bool? kayitTarihineGore,
+      String? kontrolEdildi,
+      String? faturaYonu,
+      String? onayDurumu,
+      int? sayfa,
+      String? senaryo,
+      String? sirala,
+      bool? sorgulanmasin,
+      String? searchText,
+      String? taslak,
+      String? resmiBelgeNo});
 }
 
 /// @nodoc
 class __$$EBelgeRequestModelImplCopyWithImpl<$Res>
     extends _$EBelgeRequestModelCopyWithImpl<$Res, _$EBelgeRequestModelImpl>
     implements _$$EBelgeRequestModelImplCopyWith<$Res> {
-  __$$EBelgeRequestModelImplCopyWithImpl(_$EBelgeRequestModelImpl _value, $Res Function(_$EBelgeRequestModelImpl) _then)
-    : super(_value, _then);
+  __$$EBelgeRequestModelImplCopyWithImpl(_$EBelgeRequestModelImpl _value,
+      $Res Function(_$EBelgeRequestModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of EBelgeRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -265,90 +246,72 @@ class __$$EBelgeRequestModelImplCopyWithImpl<$Res>
     Object? taslak = freezed,
     Object? resmiBelgeNo = freezed,
   }) {
-    return _then(
-      _$EBelgeRequestModelImpl(
-        basimDurumu:
-            freezed == basimDurumu
-                ? _value.basimDurumu
-                : basimDurumu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        baslamaTarihi:
-            freezed == baslamaTarihi
-                ? _value.baslamaTarihi
-                : baslamaTarihi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        bitisTarihi:
-            freezed == bitisTarihi
-                ? _value.bitisTarihi
-                : bitisTarihi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eBelgeTuru:
-            freezed == eBelgeTuru
-                ? _value.eBelgeTuru
-                : eBelgeTuru // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        islendi:
-            freezed == islendi
-                ? _value.islendi
-                : islendi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        kayitTarihineGore:
-            freezed == kayitTarihineGore
-                ? _value.kayitTarihineGore
-                : kayitTarihineGore // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-        kontrolEdildi:
-            freezed == kontrolEdildi
-                ? _value.kontrolEdildi
-                : kontrolEdildi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        faturaYonu:
-            freezed == faturaYonu
-                ? _value.faturaYonu
-                : faturaYonu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        onayDurumu:
-            freezed == onayDurumu
-                ? _value.onayDurumu
-                : onayDurumu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        sayfa:
-            freezed == sayfa
-                ? _value.sayfa
-                : sayfa // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        senaryo:
-            freezed == senaryo
-                ? _value.senaryo
-                : senaryo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        sirala:
-            freezed == sirala
-                ? _value.sirala
-                : sirala // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        sorgulanmasin:
-            freezed == sorgulanmasin
-                ? _value.sorgulanmasin
-                : sorgulanmasin // ignore: cast_nullable_to_non_nullable
-                    as bool?,
-        searchText:
-            freezed == searchText
-                ? _value.searchText
-                : searchText // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        taslak:
-            freezed == taslak
-                ? _value.taslak
-                : taslak // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        resmiBelgeNo:
-            freezed == resmiBelgeNo
-                ? _value.resmiBelgeNo
-                : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$EBelgeRequestModelImpl(
+      basimDurumu: freezed == basimDurumu
+          ? _value.basimDurumu
+          : basimDurumu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      baslamaTarihi: freezed == baslamaTarihi
+          ? _value.baslamaTarihi
+          : baslamaTarihi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bitisTarihi: freezed == bitisTarihi
+          ? _value.bitisTarihi
+          : bitisTarihi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eBelgeTuru: freezed == eBelgeTuru
+          ? _value.eBelgeTuru
+          : eBelgeTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      islendi: freezed == islendi
+          ? _value.islendi
+          : islendi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayitTarihineGore: freezed == kayitTarihineGore
+          ? _value.kayitTarihineGore
+          : kayitTarihineGore // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      kontrolEdildi: freezed == kontrolEdildi
+          ? _value.kontrolEdildi
+          : kontrolEdildi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      faturaYonu: freezed == faturaYonu
+          ? _value.faturaYonu
+          : faturaYonu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      onayDurumu: freezed == onayDurumu
+          ? _value.onayDurumu
+          : onayDurumu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sayfa: freezed == sayfa
+          ? _value.sayfa
+          : sayfa // ignore: cast_nullable_to_non_nullable
+              as int?,
+      senaryo: freezed == senaryo
+          ? _value.senaryo
+          : senaryo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sirala: freezed == sirala
+          ? _value.sirala
+          : sirala // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sorgulanmasin: freezed == sorgulanmasin
+          ? _value.sorgulanmasin
+          : sorgulanmasin // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      searchText: freezed == searchText
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String?,
+      taslak: freezed == taslak
+          ? _value.taslak
+          : taslak // ignore: cast_nullable_to_non_nullable
+              as String?,
+      resmiBelgeNo: freezed == resmiBelgeNo
+          ? _value.resmiBelgeNo
+          : resmiBelgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -356,26 +319,27 @@ class __$$EBelgeRequestModelImplCopyWithImpl<$Res>
 
 @JsonSerializable(fieldRename: FieldRename.pascal)
 class _$EBelgeRequestModelImpl extends _EBelgeRequestModel {
-  _$EBelgeRequestModelImpl({
-    this.basimDurumu,
-    this.baslamaTarihi,
-    this.bitisTarihi,
-    this.eBelgeTuru,
-    this.islendi,
-    this.kayitTarihineGore,
-    this.kontrolEdildi,
-    this.faturaYonu,
-    this.onayDurumu,
-    this.sayfa,
-    this.senaryo,
-    this.sirala,
-    this.sorgulanmasin,
-    this.searchText,
-    this.taslak,
-    this.resmiBelgeNo,
-  }) : super._();
+  _$EBelgeRequestModelImpl(
+      {this.basimDurumu,
+      this.baslamaTarihi,
+      this.bitisTarihi,
+      this.eBelgeTuru,
+      this.islendi,
+      this.kayitTarihineGore,
+      this.kontrolEdildi,
+      this.faturaYonu,
+      this.onayDurumu,
+      this.sayfa,
+      this.senaryo,
+      this.sirala,
+      this.sorgulanmasin,
+      this.searchText,
+      this.taslak,
+      this.resmiBelgeNo})
+      : super._();
 
-  factory _$EBelgeRequestModelImpl.fromJson(Map<String, dynamic> json) => _$$EBelgeRequestModelImplFromJson(json);
+  factory _$EBelgeRequestModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EBelgeRequestModelImplFromJson(json);
 
   @override
   String? basimDurumu;
@@ -416,36 +380,39 @@ class _$EBelgeRequestModelImpl extends _EBelgeRequestModel {
   @override
   @pragma('vm:prefer-inline')
   _$$EBelgeRequestModelImplCopyWith<_$EBelgeRequestModelImpl> get copyWith =>
-      __$$EBelgeRequestModelImplCopyWithImpl<_$EBelgeRequestModelImpl>(this, _$identity);
+      __$$EBelgeRequestModelImplCopyWithImpl<_$EBelgeRequestModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EBelgeRequestModelImplToJson(this);
+    return _$$EBelgeRequestModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _EBelgeRequestModel extends EBelgeRequestModel {
-  factory _EBelgeRequestModel({
-    String? basimDurumu,
-    String? baslamaTarihi,
-    String? bitisTarihi,
-    String? eBelgeTuru,
-    String? islendi,
-    bool? kayitTarihineGore,
-    String? kontrolEdildi,
-    String? faturaYonu,
-    String? onayDurumu,
-    int? sayfa,
-    String? senaryo,
-    String? sirala,
-    bool? sorgulanmasin,
-    String? searchText,
-    String? taslak,
-    String? resmiBelgeNo,
-  }) = _$EBelgeRequestModelImpl;
+  factory _EBelgeRequestModel(
+      {String? basimDurumu,
+      String? baslamaTarihi,
+      String? bitisTarihi,
+      String? eBelgeTuru,
+      String? islendi,
+      bool? kayitTarihineGore,
+      String? kontrolEdildi,
+      String? faturaYonu,
+      String? onayDurumu,
+      int? sayfa,
+      String? senaryo,
+      String? sirala,
+      bool? sorgulanmasin,
+      String? searchText,
+      String? taslak,
+      String? resmiBelgeNo}) = _$EBelgeRequestModelImpl;
   _EBelgeRequestModel._() : super._();
 
-  factory _EBelgeRequestModel.fromJson(Map<String, dynamic> json) = _$EBelgeRequestModelImpl.fromJson;
+  factory _EBelgeRequestModel.fromJson(Map<String, dynamic> json) =
+      _$EBelgeRequestModelImpl.fromJson;
 
   @override
   String? get basimDurumu;
@@ -500,5 +467,6 @@ abstract class _EBelgeRequestModel extends EBelgeRequestModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EBelgeRequestModelImplCopyWith<_$EBelgeRequestModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$EBelgeRequestModelImplCopyWith<_$EBelgeRequestModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

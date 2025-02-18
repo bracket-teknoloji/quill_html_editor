@@ -12,10 +12,10 @@ part of 'yapilandirma_profil_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-YapilandirmaProfilModel _$YapilandirmaProfilModelFromJson(Map<String, dynamic> json) {
+YapilandirmaProfilModel _$YapilandirmaProfilModelFromJson(
+    Map<String, dynamic> json) {
   return _YapilandirmaProfilModel.fromJson(json);
 }
 
@@ -27,8 +27,10 @@ mixin _$YapilandirmaProfilModel {
   set ozellikKodu(String? value) => throw _privateConstructorUsedError;
   String? get aciklama => throw _privateConstructorUsedError;
   set aciklama(String? value) => throw _privateConstructorUsedError;
-  List<YapilandirmaRehberiModel?>? get deger => throw _privateConstructorUsedError;
-  set deger(List<YapilandirmaRehberiModel?>? value) => throw _privateConstructorUsedError;
+  List<YapilandirmaRehberiModel?>? get deger =>
+      throw _privateConstructorUsedError;
+  set deger(List<YapilandirmaRehberiModel?>? value) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this YapilandirmaProfilModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,19 +38,26 @@ mixin _$YapilandirmaProfilModel {
   /// Create a copy of YapilandirmaProfilModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $YapilandirmaProfilModelCopyWith<YapilandirmaProfilModel> get copyWith => throw _privateConstructorUsedError;
+  $YapilandirmaProfilModelCopyWith<YapilandirmaProfilModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $YapilandirmaProfilModelCopyWith<$Res> {
-  factory $YapilandirmaProfilModelCopyWith(YapilandirmaProfilModel value, $Res Function(YapilandirmaProfilModel) then) =
+  factory $YapilandirmaProfilModelCopyWith(YapilandirmaProfilModel value,
+          $Res Function(YapilandirmaProfilModel) then) =
       _$YapilandirmaProfilModelCopyWithImpl<$Res, YapilandirmaProfilModel>;
   @useResult
-  $Res call({int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger});
+  $Res call(
+      {int? sira,
+      String? ozellikKodu,
+      String? aciklama,
+      List<YapilandirmaRehberiModel?>? deger});
 }
 
 /// @nodoc
-class _$YapilandirmaProfilModelCopyWithImpl<$Res, $Val extends YapilandirmaProfilModel>
+class _$YapilandirmaProfilModelCopyWithImpl<$Res,
+        $Val extends YapilandirmaProfilModel>
     implements $YapilandirmaProfilModelCopyWith<$Res> {
   _$YapilandirmaProfilModelCopyWithImpl(this._value, this._then);
 
@@ -67,53 +76,52 @@ class _$YapilandirmaProfilModelCopyWithImpl<$Res, $Val extends YapilandirmaProfi
     Object? aciklama = freezed,
     Object? deger = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            sira:
-                freezed == sira
-                    ? _value.sira
-                    : sira // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            ozellikKodu:
-                freezed == ozellikKodu
-                    ? _value.ozellikKodu
-                    : ozellikKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            aciklama:
-                freezed == aciklama
-                    ? _value.aciklama
-                    : aciklama // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            deger:
-                freezed == deger
-                    ? _value.deger
-                    : deger // ignore: cast_nullable_to_non_nullable
-                        as List<YapilandirmaRehberiModel?>?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      sira: freezed == sira
+          ? _value.sira
+          : sira // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ozellikKodu: freezed == ozellikKodu
+          ? _value.ozellikKodu
+          : ozellikKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      aciklama: freezed == aciklama
+          ? _value.aciklama
+          : aciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deger: freezed == deger
+          ? _value.deger
+          : deger // ignore: cast_nullable_to_non_nullable
+              as List<YapilandirmaRehberiModel?>?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$YapilandirmaProfilModelImplCopyWith<$Res> implements $YapilandirmaProfilModelCopyWith<$Res> {
+abstract class _$$YapilandirmaProfilModelImplCopyWith<$Res>
+    implements $YapilandirmaProfilModelCopyWith<$Res> {
   factory _$$YapilandirmaProfilModelImplCopyWith(
-    _$YapilandirmaProfilModelImpl value,
-    $Res Function(_$YapilandirmaProfilModelImpl) then,
-  ) = __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>;
+          _$YapilandirmaProfilModelImpl value,
+          $Res Function(_$YapilandirmaProfilModelImpl) then) =
+      __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? sira, String? ozellikKodu, String? aciklama, List<YapilandirmaRehberiModel?>? deger});
+  $Res call(
+      {int? sira,
+      String? ozellikKodu,
+      String? aciklama,
+      List<YapilandirmaRehberiModel?>? deger});
 }
 
 /// @nodoc
 class __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>
-    extends _$YapilandirmaProfilModelCopyWithImpl<$Res, _$YapilandirmaProfilModelImpl>
+    extends _$YapilandirmaProfilModelCopyWithImpl<$Res,
+        _$YapilandirmaProfilModelImpl>
     implements _$$YapilandirmaProfilModelImplCopyWith<$Res> {
   __$$YapilandirmaProfilModelImplCopyWithImpl(
-    _$YapilandirmaProfilModelImpl _value,
-    $Res Function(_$YapilandirmaProfilModelImpl) _then,
-  ) : super(_value, _then);
+      _$YapilandirmaProfilModelImpl _value,
+      $Res Function(_$YapilandirmaProfilModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of YapilandirmaProfilModel
   /// with the given fields replaced by the non-null parameter values.
@@ -125,37 +133,33 @@ class __$$YapilandirmaProfilModelImplCopyWithImpl<$Res>
     Object? aciklama = freezed,
     Object? deger = freezed,
   }) {
-    return _then(
-      _$YapilandirmaProfilModelImpl(
-        sira:
-            freezed == sira
-                ? _value.sira
-                : sira // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        ozellikKodu:
-            freezed == ozellikKodu
-                ? _value.ozellikKodu
-                : ozellikKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        aciklama:
-            freezed == aciklama
-                ? _value.aciklama
-                : aciklama // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        deger:
-            freezed == deger
-                ? _value.deger
-                : deger // ignore: cast_nullable_to_non_nullable
-                    as List<YapilandirmaRehberiModel?>?,
-      ),
-    );
+    return _then(_$YapilandirmaProfilModelImpl(
+      sira: freezed == sira
+          ? _value.sira
+          : sira // ignore: cast_nullable_to_non_nullable
+              as int?,
+      ozellikKodu: freezed == ozellikKodu
+          ? _value.ozellikKodu
+          : ozellikKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      aciklama: freezed == aciklama
+          ? _value.aciklama
+          : aciklama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deger: freezed == deger
+          ? _value.deger
+          : deger // ignore: cast_nullable_to_non_nullable
+              as List<YapilandirmaRehberiModel?>?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$YapilandirmaProfilModelImpl extends _YapilandirmaProfilModel {
-  _$YapilandirmaProfilModelImpl({this.sira, this.ozellikKodu, this.aciklama, this.deger}) : super._();
+  _$YapilandirmaProfilModelImpl(
+      {this.sira, this.ozellikKodu, this.aciklama, this.deger})
+      : super._();
 
   factory _$YapilandirmaProfilModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$YapilandirmaProfilModelImplFromJson(json);
@@ -174,25 +178,28 @@ class _$YapilandirmaProfilModelImpl extends _YapilandirmaProfilModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl> get copyWith =>
-      __$$YapilandirmaProfilModelImplCopyWithImpl<_$YapilandirmaProfilModelImpl>(this, _$identity);
+  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl>
+      get copyWith => __$$YapilandirmaProfilModelImplCopyWithImpl<
+          _$YapilandirmaProfilModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$YapilandirmaProfilModelImplToJson(this);
+    return _$$YapilandirmaProfilModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
-  factory _YapilandirmaProfilModel({
-    int? sira,
-    String? ozellikKodu,
-    String? aciklama,
-    List<YapilandirmaRehberiModel?>? deger,
-  }) = _$YapilandirmaProfilModelImpl;
+  factory _YapilandirmaProfilModel(
+      {int? sira,
+      String? ozellikKodu,
+      String? aciklama,
+      List<YapilandirmaRehberiModel?>? deger}) = _$YapilandirmaProfilModelImpl;
   _YapilandirmaProfilModel._() : super._();
 
-  factory _YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) = _$YapilandirmaProfilModelImpl.fromJson;
+  factory _YapilandirmaProfilModel.fromJson(Map<String, dynamic> json) =
+      _$YapilandirmaProfilModelImpl.fromJson;
 
   @override
   int? get sira;
@@ -211,6 +218,6 @@ abstract class _YapilandirmaProfilModel extends YapilandirmaProfilModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$YapilandirmaProfilModelImplCopyWith<_$YapilandirmaProfilModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,8 +12,7 @@ part of 'banka_listesi_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BankaListesiModel _$BankaListesiModelFromJson(Map<String, dynamic> json) {
   return _BankaListesiModel.fromJson(json);
@@ -66,35 +65,36 @@ mixin _$BankaListesiModel {
   /// Create a copy of BankaListesiModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BankaListesiModelCopyWith<BankaListesiModel> get copyWith => throw _privateConstructorUsedError;
+  $BankaListesiModelCopyWith<BankaListesiModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $BankaListesiModelCopyWith<$Res> {
-  factory $BankaListesiModelCopyWith(BankaListesiModel value, $Res Function(BankaListesiModel) then) =
+  factory $BankaListesiModelCopyWith(
+          BankaListesiModel value, $Res Function(BankaListesiModel) then) =
       _$BankaListesiModelCopyWithImpl<$Res, BankaListesiModel>;
   @useResult
-  $Res call({
-    String? bankaKodu,
-    String? bankasubeKodu,
-    String? hesapKodu,
-    String? hesapAdi,
-    String? muhasebeHesapTipi,
-    String? hesapNo,
-    String? ibanNo,
-    String? kilit,
-    int? hesapTipi,
-    String? hesapTipiAdi,
-    int? dovizTipi,
-    double? borcToplami,
-    double? alacakToplami,
-    double? dovizborcToplami,
-    double? dovizalacakToplami,
-    String? dovizAdi,
-    String? bankaAdi,
-    String? subeAdi,
-    String? baglihesapKodu,
-  });
+  $Res call(
+      {String? bankaKodu,
+      String? bankasubeKodu,
+      String? hesapKodu,
+      String? hesapAdi,
+      String? muhasebeHesapTipi,
+      String? hesapNo,
+      String? ibanNo,
+      String? kilit,
+      int? hesapTipi,
+      String? hesapTipiAdi,
+      int? dovizTipi,
+      double? borcToplami,
+      double? alacakToplami,
+      double? dovizborcToplami,
+      double? dovizalacakToplami,
+      String? dovizAdi,
+      String? bankaAdi,
+      String? subeAdi,
+      String? baglihesapKodu});
 }
 
 /// @nodoc
@@ -132,143 +132,124 @@ class _$BankaListesiModelCopyWithImpl<$Res, $Val extends BankaListesiModel>
     Object? subeAdi = freezed,
     Object? baglihesapKodu = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            bankaKodu:
-                freezed == bankaKodu
-                    ? _value.bankaKodu
-                    : bankaKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            bankasubeKodu:
-                freezed == bankasubeKodu
-                    ? _value.bankasubeKodu
-                    : bankasubeKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            hesapKodu:
-                freezed == hesapKodu
-                    ? _value.hesapKodu
-                    : hesapKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            hesapAdi:
-                freezed == hesapAdi
-                    ? _value.hesapAdi
-                    : hesapAdi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            muhasebeHesapTipi:
-                freezed == muhasebeHesapTipi
-                    ? _value.muhasebeHesapTipi
-                    : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            hesapNo:
-                freezed == hesapNo
-                    ? _value.hesapNo
-                    : hesapNo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            ibanNo:
-                freezed == ibanNo
-                    ? _value.ibanNo
-                    : ibanNo // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            kilit:
-                freezed == kilit
-                    ? _value.kilit
-                    : kilit // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            hesapTipi:
-                freezed == hesapTipi
-                    ? _value.hesapTipi
-                    : hesapTipi // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            hesapTipiAdi:
-                freezed == hesapTipiAdi
-                    ? _value.hesapTipiAdi
-                    : hesapTipiAdi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            dovizTipi:
-                freezed == dovizTipi
-                    ? _value.dovizTipi
-                    : dovizTipi // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            borcToplami:
-                freezed == borcToplami
-                    ? _value.borcToplami
-                    : borcToplami // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            alacakToplami:
-                freezed == alacakToplami
-                    ? _value.alacakToplami
-                    : alacakToplami // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            dovizborcToplami:
-                freezed == dovizborcToplami
-                    ? _value.dovizborcToplami
-                    : dovizborcToplami // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            dovizalacakToplami:
-                freezed == dovizalacakToplami
-                    ? _value.dovizalacakToplami
-                    : dovizalacakToplami // ignore: cast_nullable_to_non_nullable
-                        as double?,
-            dovizAdi:
-                freezed == dovizAdi
-                    ? _value.dovizAdi
-                    : dovizAdi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            bankaAdi:
-                freezed == bankaAdi
-                    ? _value.bankaAdi
-                    : bankaAdi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            subeAdi:
-                freezed == subeAdi
-                    ? _value.subeAdi
-                    : subeAdi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            baglihesapKodu:
-                freezed == baglihesapKodu
-                    ? _value.baglihesapKodu
-                    : baglihesapKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      bankaKodu: freezed == bankaKodu
+          ? _value.bankaKodu
+          : bankaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankasubeKodu: freezed == bankasubeKodu
+          ? _value.bankasubeKodu
+          : bankasubeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapKodu: freezed == hesapKodu
+          ? _value.hesapKodu
+          : hesapKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapAdi: freezed == hesapAdi
+          ? _value.hesapAdi
+          : hesapAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      muhasebeHesapTipi: freezed == muhasebeHesapTipi
+          ? _value.muhasebeHesapTipi
+          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapNo: freezed == hesapNo
+          ? _value.hesapNo
+          : hesapNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ibanNo: freezed == ibanNo
+          ? _value.ibanNo
+          : ibanNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kilit: freezed == kilit
+          ? _value.kilit
+          : kilit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapTipi: freezed == hesapTipi
+          ? _value.hesapTipi
+          : hesapTipi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      hesapTipiAdi: freezed == hesapTipiAdi
+          ? _value.hesapTipiAdi
+          : hesapTipiAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dovizTipi: freezed == dovizTipi
+          ? _value.dovizTipi
+          : dovizTipi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      borcToplami: freezed == borcToplami
+          ? _value.borcToplami
+          : borcToplami // ignore: cast_nullable_to_non_nullable
+              as double?,
+      alacakToplami: freezed == alacakToplami
+          ? _value.alacakToplami
+          : alacakToplami // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dovizborcToplami: freezed == dovizborcToplami
+          ? _value.dovizborcToplami
+          : dovizborcToplami // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dovizalacakToplami: freezed == dovizalacakToplami
+          ? _value.dovizalacakToplami
+          : dovizalacakToplami // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaAdi: freezed == bankaAdi
+          ? _value.bankaAdi
+          : bankaAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subeAdi: freezed == subeAdi
+          ? _value.subeAdi
+          : subeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      baglihesapKodu: freezed == baglihesapKodu
+          ? _value.baglihesapKodu
+          : baglihesapKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$BankaListesiModelImplCopyWith<$Res> implements $BankaListesiModelCopyWith<$Res> {
-  factory _$$BankaListesiModelImplCopyWith(_$BankaListesiModelImpl value, $Res Function(_$BankaListesiModelImpl) then) =
+abstract class _$$BankaListesiModelImplCopyWith<$Res>
+    implements $BankaListesiModelCopyWith<$Res> {
+  factory _$$BankaListesiModelImplCopyWith(_$BankaListesiModelImpl value,
+          $Res Function(_$BankaListesiModelImpl) then) =
       __$$BankaListesiModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    String? bankaKodu,
-    String? bankasubeKodu,
-    String? hesapKodu,
-    String? hesapAdi,
-    String? muhasebeHesapTipi,
-    String? hesapNo,
-    String? ibanNo,
-    String? kilit,
-    int? hesapTipi,
-    String? hesapTipiAdi,
-    int? dovizTipi,
-    double? borcToplami,
-    double? alacakToplami,
-    double? dovizborcToplami,
-    double? dovizalacakToplami,
-    String? dovizAdi,
-    String? bankaAdi,
-    String? subeAdi,
-    String? baglihesapKodu,
-  });
+  $Res call(
+      {String? bankaKodu,
+      String? bankasubeKodu,
+      String? hesapKodu,
+      String? hesapAdi,
+      String? muhasebeHesapTipi,
+      String? hesapNo,
+      String? ibanNo,
+      String? kilit,
+      int? hesapTipi,
+      String? hesapTipiAdi,
+      int? dovizTipi,
+      double? borcToplami,
+      double? alacakToplami,
+      double? dovizborcToplami,
+      double? dovizalacakToplami,
+      String? dovizAdi,
+      String? bankaAdi,
+      String? subeAdi,
+      String? baglihesapKodu});
 }
 
 /// @nodoc
-class __$$BankaListesiModelImplCopyWithImpl<$Res> extends _$BankaListesiModelCopyWithImpl<$Res, _$BankaListesiModelImpl>
+class __$$BankaListesiModelImplCopyWithImpl<$Res>
+    extends _$BankaListesiModelCopyWithImpl<$Res, _$BankaListesiModelImpl>
     implements _$$BankaListesiModelImplCopyWith<$Res> {
-  __$$BankaListesiModelImplCopyWithImpl(_$BankaListesiModelImpl _value, $Res Function(_$BankaListesiModelImpl) _then)
-    : super(_value, _then);
+  __$$BankaListesiModelImplCopyWithImpl(_$BankaListesiModelImpl _value,
+      $Res Function(_$BankaListesiModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of BankaListesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -295,134 +276,114 @@ class __$$BankaListesiModelImplCopyWithImpl<$Res> extends _$BankaListesiModelCop
     Object? subeAdi = freezed,
     Object? baglihesapKodu = freezed,
   }) {
-    return _then(
-      _$BankaListesiModelImpl(
-        bankaKodu:
-            freezed == bankaKodu
-                ? _value.bankaKodu
-                : bankaKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        bankasubeKodu:
-            freezed == bankasubeKodu
-                ? _value.bankasubeKodu
-                : bankasubeKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        hesapKodu:
-            freezed == hesapKodu
-                ? _value.hesapKodu
-                : hesapKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        hesapAdi:
-            freezed == hesapAdi
-                ? _value.hesapAdi
-                : hesapAdi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        muhasebeHesapTipi:
-            freezed == muhasebeHesapTipi
-                ? _value.muhasebeHesapTipi
-                : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        hesapNo:
-            freezed == hesapNo
-                ? _value.hesapNo
-                : hesapNo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        ibanNo:
-            freezed == ibanNo
-                ? _value.ibanNo
-                : ibanNo // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        kilit:
-            freezed == kilit
-                ? _value.kilit
-                : kilit // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        hesapTipi:
-            freezed == hesapTipi
-                ? _value.hesapTipi
-                : hesapTipi // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        hesapTipiAdi:
-            freezed == hesapTipiAdi
-                ? _value.hesapTipiAdi
-                : hesapTipiAdi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        dovizTipi:
-            freezed == dovizTipi
-                ? _value.dovizTipi
-                : dovizTipi // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        borcToplami:
-            freezed == borcToplami
-                ? _value.borcToplami
-                : borcToplami // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        alacakToplami:
-            freezed == alacakToplami
-                ? _value.alacakToplami
-                : alacakToplami // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        dovizborcToplami:
-            freezed == dovizborcToplami
-                ? _value.dovizborcToplami
-                : dovizborcToplami // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        dovizalacakToplami:
-            freezed == dovizalacakToplami
-                ? _value.dovizalacakToplami
-                : dovizalacakToplami // ignore: cast_nullable_to_non_nullable
-                    as double?,
-        dovizAdi:
-            freezed == dovizAdi
-                ? _value.dovizAdi
-                : dovizAdi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        bankaAdi:
-            freezed == bankaAdi
-                ? _value.bankaAdi
-                : bankaAdi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        subeAdi:
-            freezed == subeAdi
-                ? _value.subeAdi
-                : subeAdi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        baglihesapKodu:
-            freezed == baglihesapKodu
-                ? _value.baglihesapKodu
-                : baglihesapKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$BankaListesiModelImpl(
+      bankaKodu: freezed == bankaKodu
+          ? _value.bankaKodu
+          : bankaKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankasubeKodu: freezed == bankasubeKodu
+          ? _value.bankasubeKodu
+          : bankasubeKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapKodu: freezed == hesapKodu
+          ? _value.hesapKodu
+          : hesapKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapAdi: freezed == hesapAdi
+          ? _value.hesapAdi
+          : hesapAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      muhasebeHesapTipi: freezed == muhasebeHesapTipi
+          ? _value.muhasebeHesapTipi
+          : muhasebeHesapTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapNo: freezed == hesapNo
+          ? _value.hesapNo
+          : hesapNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ibanNo: freezed == ibanNo
+          ? _value.ibanNo
+          : ibanNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kilit: freezed == kilit
+          ? _value.kilit
+          : kilit // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hesapTipi: freezed == hesapTipi
+          ? _value.hesapTipi
+          : hesapTipi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      hesapTipiAdi: freezed == hesapTipiAdi
+          ? _value.hesapTipiAdi
+          : hesapTipiAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      dovizTipi: freezed == dovizTipi
+          ? _value.dovizTipi
+          : dovizTipi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      borcToplami: freezed == borcToplami
+          ? _value.borcToplami
+          : borcToplami // ignore: cast_nullable_to_non_nullable
+              as double?,
+      alacakToplami: freezed == alacakToplami
+          ? _value.alacakToplami
+          : alacakToplami // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dovizborcToplami: freezed == dovizborcToplami
+          ? _value.dovizborcToplami
+          : dovizborcToplami // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dovizalacakToplami: freezed == dovizalacakToplami
+          ? _value.dovizalacakToplami
+          : dovizalacakToplami // ignore: cast_nullable_to_non_nullable
+              as double?,
+      dovizAdi: freezed == dovizAdi
+          ? _value.dovizAdi
+          : dovizAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bankaAdi: freezed == bankaAdi
+          ? _value.bankaAdi
+          : bankaAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      subeAdi: freezed == subeAdi
+          ? _value.subeAdi
+          : subeAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      baglihesapKodu: freezed == baglihesapKodu
+          ? _value.baglihesapKodu
+          : baglihesapKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$BankaListesiModelImpl extends _BankaListesiModel {
-  _$BankaListesiModelImpl({
-    this.bankaKodu,
-    this.bankasubeKodu,
-    this.hesapKodu,
-    this.hesapAdi,
-    this.muhasebeHesapTipi,
-    this.hesapNo,
-    this.ibanNo,
-    this.kilit,
-    this.hesapTipi,
-    this.hesapTipiAdi,
-    this.dovizTipi,
-    this.borcToplami,
-    this.alacakToplami,
-    this.dovizborcToplami,
-    this.dovizalacakToplami,
-    this.dovizAdi,
-    this.bankaAdi,
-    this.subeAdi,
-    this.baglihesapKodu,
-  }) : super._();
+  _$BankaListesiModelImpl(
+      {this.bankaKodu,
+      this.bankasubeKodu,
+      this.hesapKodu,
+      this.hesapAdi,
+      this.muhasebeHesapTipi,
+      this.hesapNo,
+      this.ibanNo,
+      this.kilit,
+      this.hesapTipi,
+      this.hesapTipiAdi,
+      this.dovizTipi,
+      this.borcToplami,
+      this.alacakToplami,
+      this.dovizborcToplami,
+      this.dovizalacakToplami,
+      this.dovizAdi,
+      this.bankaAdi,
+      this.subeAdi,
+      this.baglihesapKodu})
+      : super._();
 
-  factory _$BankaListesiModelImpl.fromJson(Map<String, dynamic> json) => _$$BankaListesiModelImplFromJson(json);
+  factory _$BankaListesiModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BankaListesiModelImplFromJson(json);
 
   @override
   String? bankaKodu;
@@ -469,39 +430,42 @@ class _$BankaListesiModelImpl extends _BankaListesiModel {
   @override
   @pragma('vm:prefer-inline')
   _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith =>
-      __$$BankaListesiModelImplCopyWithImpl<_$BankaListesiModelImpl>(this, _$identity);
+      __$$BankaListesiModelImplCopyWithImpl<_$BankaListesiModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BankaListesiModelImplToJson(this);
+    return _$$BankaListesiModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _BankaListesiModel extends BankaListesiModel {
-  factory _BankaListesiModel({
-    String? bankaKodu,
-    String? bankasubeKodu,
-    String? hesapKodu,
-    String? hesapAdi,
-    String? muhasebeHesapTipi,
-    String? hesapNo,
-    String? ibanNo,
-    String? kilit,
-    int? hesapTipi,
-    String? hesapTipiAdi,
-    int? dovizTipi,
-    double? borcToplami,
-    double? alacakToplami,
-    double? dovizborcToplami,
-    double? dovizalacakToplami,
-    String? dovizAdi,
-    String? bankaAdi,
-    String? subeAdi,
-    String? baglihesapKodu,
-  }) = _$BankaListesiModelImpl;
+  factory _BankaListesiModel(
+      {String? bankaKodu,
+      String? bankasubeKodu,
+      String? hesapKodu,
+      String? hesapAdi,
+      String? muhasebeHesapTipi,
+      String? hesapNo,
+      String? ibanNo,
+      String? kilit,
+      int? hesapTipi,
+      String? hesapTipiAdi,
+      int? dovizTipi,
+      double? borcToplami,
+      double? alacakToplami,
+      double? dovizborcToplami,
+      double? dovizalacakToplami,
+      String? dovizAdi,
+      String? bankaAdi,
+      String? subeAdi,
+      String? baglihesapKodu}) = _$BankaListesiModelImpl;
   _BankaListesiModel._() : super._();
 
-  factory _BankaListesiModel.fromJson(Map<String, dynamic> json) = _$BankaListesiModelImpl.fromJson;
+  factory _BankaListesiModel.fromJson(Map<String, dynamic> json) =
+      _$BankaListesiModelImpl.fromJson;
 
   @override
   String? get bankaKodu;
@@ -565,5 +529,6 @@ abstract class _BankaListesiModel extends BankaListesiModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$BankaListesiModelImplCopyWith<_$BankaListesiModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

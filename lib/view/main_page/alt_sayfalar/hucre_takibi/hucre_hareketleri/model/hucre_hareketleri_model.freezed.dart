@@ -12,10 +12,10 @@ part of 'hucre_hareketleri_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-HucreHareketleriModel _$HucreHareketleriModelFromJson(Map<String, dynamic> json) {
+HucreHareketleriModel _$HucreHareketleriModelFromJson(
+    Map<String, dynamic> json) {
   return _HucreHareketleriModel.fromJson(json);
 }
 
@@ -26,7 +26,8 @@ mixin _$HucreHareketleriModel {
   String? get stokAdi => throw _privateConstructorUsedError;
   String? get gc => throw _privateConstructorUsedError;
   String? get hucreKodu => throw _privateConstructorUsedError;
-  DateTime? get tarih => throw _privateConstructorUsedError; //TODO Double olacak
+  DateTime? get tarih =>
+      throw _privateConstructorUsedError; //TODO Double olacak
   int? get netMiktar => throw _privateConstructorUsedError;
   String? get belgeTipi => throw _privateConstructorUsedError;
   String? get hareketTuru => throw _privateConstructorUsedError;
@@ -47,39 +48,41 @@ mixin _$HucreHareketleriModel {
   /// Create a copy of HucreHareketleriModel
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $HucreHareketleriModelCopyWith<HucreHareketleriModel> get copyWith => throw _privateConstructorUsedError;
+  $HucreHareketleriModelCopyWith<HucreHareketleriModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HucreHareketleriModelCopyWith<$Res> {
-  factory $HucreHareketleriModelCopyWith(HucreHareketleriModel value, $Res Function(HucreHareketleriModel) then) =
+  factory $HucreHareketleriModelCopyWith(HucreHareketleriModel value,
+          $Res Function(HucreHareketleriModel) then) =
       _$HucreHareketleriModelCopyWithImpl<$Res, HucreHareketleriModel>;
   @useResult
-  $Res call({
-    int? inckeyno,
-    String? stokKodu,
-    String? stokAdi,
-    String? gc,
-    String? hucreKodu,
-    DateTime? tarih,
-    int? netMiktar,
-    String? belgeTipi,
-    String? hareketTuru,
-    String? hareketAdi,
-    String? kayityapankul,
-    DateTime? kayittarihi,
-    int? depoKodu,
-    String? depoTanimi,
-    String? eksiBakiye,
-    String? stokOlcuBirimi,
-    String? stharFisno,
-    int? stharInc,
-    String? yapkod,
-  });
+  $Res call(
+      {int? inckeyno,
+      String? stokKodu,
+      String? stokAdi,
+      String? gc,
+      String? hucreKodu,
+      DateTime? tarih,
+      int? netMiktar,
+      String? belgeTipi,
+      String? hareketTuru,
+      String? hareketAdi,
+      String? kayityapankul,
+      DateTime? kayittarihi,
+      int? depoKodu,
+      String? depoTanimi,
+      String? eksiBakiye,
+      String? stokOlcuBirimi,
+      String? stharFisno,
+      int? stharInc,
+      String? yapkod});
 }
 
 /// @nodoc
-class _$HucreHareketleriModelCopyWithImpl<$Res, $Val extends HucreHareketleriModel>
+class _$HucreHareketleriModelCopyWithImpl<$Res,
+        $Val extends HucreHareketleriModel>
     implements $HucreHareketleriModelCopyWith<$Res> {
   _$HucreHareketleriModelCopyWithImpl(this._value, this._then);
 
@@ -113,148 +116,126 @@ class _$HucreHareketleriModelCopyWithImpl<$Res, $Val extends HucreHareketleriMod
     Object? stharInc = freezed,
     Object? yapkod = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            inckeyno:
-                freezed == inckeyno
-                    ? _value.inckeyno
-                    : inckeyno // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            stokKodu:
-                freezed == stokKodu
-                    ? _value.stokKodu
-                    : stokKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            stokAdi:
-                freezed == stokAdi
-                    ? _value.stokAdi
-                    : stokAdi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            gc:
-                freezed == gc
-                    ? _value.gc
-                    : gc // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            hucreKodu:
-                freezed == hucreKodu
-                    ? _value.hucreKodu
-                    : hucreKodu // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            tarih:
-                freezed == tarih
-                    ? _value.tarih
-                    : tarih // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            netMiktar:
-                freezed == netMiktar
-                    ? _value.netMiktar
-                    : netMiktar // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            belgeTipi:
-                freezed == belgeTipi
-                    ? _value.belgeTipi
-                    : belgeTipi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            hareketTuru:
-                freezed == hareketTuru
-                    ? _value.hareketTuru
-                    : hareketTuru // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            hareketAdi:
-                freezed == hareketAdi
-                    ? _value.hareketAdi
-                    : hareketAdi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            kayityapankul:
-                freezed == kayityapankul
-                    ? _value.kayityapankul
-                    : kayityapankul // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            kayittarihi:
-                freezed == kayittarihi
-                    ? _value.kayittarihi
-                    : kayittarihi // ignore: cast_nullable_to_non_nullable
-                        as DateTime?,
-            depoKodu:
-                freezed == depoKodu
-                    ? _value.depoKodu
-                    : depoKodu // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            depoTanimi:
-                freezed == depoTanimi
-                    ? _value.depoTanimi
-                    : depoTanimi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            eksiBakiye:
-                freezed == eksiBakiye
-                    ? _value.eksiBakiye
-                    : eksiBakiye // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            stokOlcuBirimi:
-                freezed == stokOlcuBirimi
-                    ? _value.stokOlcuBirimi
-                    : stokOlcuBirimi // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            stharFisno:
-                freezed == stharFisno
-                    ? _value.stharFisno
-                    : stharFisno // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            stharInc:
-                freezed == stharInc
-                    ? _value.stharInc
-                    : stharInc // ignore: cast_nullable_to_non_nullable
-                        as int?,
-            yapkod:
-                freezed == yapkod
-                    ? _value.yapkod
-                    : yapkod // ignore: cast_nullable_to_non_nullable
-                        as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      inckeyno: freezed == inckeyno
+          ? _value.inckeyno
+          : inckeyno // ignore: cast_nullable_to_non_nullable
+              as int?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokAdi: freezed == stokAdi
+          ? _value.stokAdi
+          : stokAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gc: freezed == gc
+          ? _value.gc
+          : gc // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hucreKodu: freezed == hucreKodu
+          ? _value.hucreKodu
+          : hucreKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tarih: freezed == tarih
+          ? _value.tarih
+          : tarih // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      netMiktar: freezed == netMiktar
+          ? _value.netMiktar
+          : netMiktar // ignore: cast_nullable_to_non_nullable
+              as int?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hareketTuru: freezed == hareketTuru
+          ? _value.hareketTuru
+          : hareketTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hareketAdi: freezed == hareketAdi
+          ? _value.hareketAdi
+          : hareketAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayityapankul: freezed == kayityapankul
+          ? _value.kayityapankul
+          : kayityapankul // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayittarihi: freezed == kayittarihi
+          ? _value.kayittarihi
+          : kayittarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eksiBakiye: freezed == eksiBakiye
+          ? _value.eksiBakiye
+          : eksiBakiye // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokOlcuBirimi: freezed == stokOlcuBirimi
+          ? _value.stokOlcuBirimi
+          : stokOlcuBirimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stharFisno: freezed == stharFisno
+          ? _value.stharFisno
+          : stharFisno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stharInc: freezed == stharInc
+          ? _value.stharInc
+          : stharInc // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$HucreHareketleriModelImplCopyWith<$Res> implements $HucreHareketleriModelCopyWith<$Res> {
+abstract class _$$HucreHareketleriModelImplCopyWith<$Res>
+    implements $HucreHareketleriModelCopyWith<$Res> {
   factory _$$HucreHareketleriModelImplCopyWith(
-    _$HucreHareketleriModelImpl value,
-    $Res Function(_$HucreHareketleriModelImpl) then,
-  ) = __$$HucreHareketleriModelImplCopyWithImpl<$Res>;
+          _$HucreHareketleriModelImpl value,
+          $Res Function(_$HucreHareketleriModelImpl) then) =
+      __$$HucreHareketleriModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({
-    int? inckeyno,
-    String? stokKodu,
-    String? stokAdi,
-    String? gc,
-    String? hucreKodu,
-    DateTime? tarih,
-    int? netMiktar,
-    String? belgeTipi,
-    String? hareketTuru,
-    String? hareketAdi,
-    String? kayityapankul,
-    DateTime? kayittarihi,
-    int? depoKodu,
-    String? depoTanimi,
-    String? eksiBakiye,
-    String? stokOlcuBirimi,
-    String? stharFisno,
-    int? stharInc,
-    String? yapkod,
-  });
+  $Res call(
+      {int? inckeyno,
+      String? stokKodu,
+      String? stokAdi,
+      String? gc,
+      String? hucreKodu,
+      DateTime? tarih,
+      int? netMiktar,
+      String? belgeTipi,
+      String? hareketTuru,
+      String? hareketAdi,
+      String? kayityapankul,
+      DateTime? kayittarihi,
+      int? depoKodu,
+      String? depoTanimi,
+      String? eksiBakiye,
+      String? stokOlcuBirimi,
+      String? stharFisno,
+      int? stharInc,
+      String? yapkod});
 }
 
 /// @nodoc
 class __$$HucreHareketleriModelImplCopyWithImpl<$Res>
-    extends _$HucreHareketleriModelCopyWithImpl<$Res, _$HucreHareketleriModelImpl>
+    extends _$HucreHareketleriModelCopyWithImpl<$Res,
+        _$HucreHareketleriModelImpl>
     implements _$$HucreHareketleriModelImplCopyWith<$Res> {
-  __$$HucreHareketleriModelImplCopyWithImpl(
-    _$HucreHareketleriModelImpl _value,
-    $Res Function(_$HucreHareketleriModelImpl) _then,
-  ) : super(_value, _then);
+  __$$HucreHareketleriModelImplCopyWithImpl(_$HucreHareketleriModelImpl _value,
+      $Res Function(_$HucreHareketleriModelImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of HucreHareketleriModel
   /// with the given fields replaced by the non-null parameter values.
@@ -281,134 +262,114 @@ class __$$HucreHareketleriModelImplCopyWithImpl<$Res>
     Object? stharInc = freezed,
     Object? yapkod = freezed,
   }) {
-    return _then(
-      _$HucreHareketleriModelImpl(
-        inckeyno:
-            freezed == inckeyno
-                ? _value.inckeyno
-                : inckeyno // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        stokKodu:
-            freezed == stokKodu
-                ? _value.stokKodu
-                : stokKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        stokAdi:
-            freezed == stokAdi
-                ? _value.stokAdi
-                : stokAdi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        gc:
-            freezed == gc
-                ? _value.gc
-                : gc // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        hucreKodu:
-            freezed == hucreKodu
-                ? _value.hucreKodu
-                : hucreKodu // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        tarih:
-            freezed == tarih
-                ? _value.tarih
-                : tarih // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        netMiktar:
-            freezed == netMiktar
-                ? _value.netMiktar
-                : netMiktar // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        belgeTipi:
-            freezed == belgeTipi
-                ? _value.belgeTipi
-                : belgeTipi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        hareketTuru:
-            freezed == hareketTuru
-                ? _value.hareketTuru
-                : hareketTuru // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        hareketAdi:
-            freezed == hareketAdi
-                ? _value.hareketAdi
-                : hareketAdi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        kayityapankul:
-            freezed == kayityapankul
-                ? _value.kayityapankul
-                : kayityapankul // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        kayittarihi:
-            freezed == kayittarihi
-                ? _value.kayittarihi
-                : kayittarihi // ignore: cast_nullable_to_non_nullable
-                    as DateTime?,
-        depoKodu:
-            freezed == depoKodu
-                ? _value.depoKodu
-                : depoKodu // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        depoTanimi:
-            freezed == depoTanimi
-                ? _value.depoTanimi
-                : depoTanimi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        eksiBakiye:
-            freezed == eksiBakiye
-                ? _value.eksiBakiye
-                : eksiBakiye // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        stokOlcuBirimi:
-            freezed == stokOlcuBirimi
-                ? _value.stokOlcuBirimi
-                : stokOlcuBirimi // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        stharFisno:
-            freezed == stharFisno
-                ? _value.stharFisno
-                : stharFisno // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        stharInc:
-            freezed == stharInc
-                ? _value.stharInc
-                : stharInc // ignore: cast_nullable_to_non_nullable
-                    as int?,
-        yapkod:
-            freezed == yapkod
-                ? _value.yapkod
-                : yapkod // ignore: cast_nullable_to_non_nullable
-                    as String?,
-      ),
-    );
+    return _then(_$HucreHareketleriModelImpl(
+      inckeyno: freezed == inckeyno
+          ? _value.inckeyno
+          : inckeyno // ignore: cast_nullable_to_non_nullable
+              as int?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokAdi: freezed == stokAdi
+          ? _value.stokAdi
+          : stokAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gc: freezed == gc
+          ? _value.gc
+          : gc // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hucreKodu: freezed == hucreKodu
+          ? _value.hucreKodu
+          : hucreKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tarih: freezed == tarih
+          ? _value.tarih
+          : tarih // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      netMiktar: freezed == netMiktar
+          ? _value.netMiktar
+          : netMiktar // ignore: cast_nullable_to_non_nullable
+              as int?,
+      belgeTipi: freezed == belgeTipi
+          ? _value.belgeTipi
+          : belgeTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hareketTuru: freezed == hareketTuru
+          ? _value.hareketTuru
+          : hareketTuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hareketAdi: freezed == hareketAdi
+          ? _value.hareketAdi
+          : hareketAdi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayityapankul: freezed == kayityapankul
+          ? _value.kayityapankul
+          : kayityapankul // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kayittarihi: freezed == kayittarihi
+          ? _value.kayittarihi
+          : kayittarihi // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      depoKodu: freezed == depoKodu
+          ? _value.depoKodu
+          : depoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
+      depoTanimi: freezed == depoTanimi
+          ? _value.depoTanimi
+          : depoTanimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      eksiBakiye: freezed == eksiBakiye
+          ? _value.eksiBakiye
+          : eksiBakiye // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stokOlcuBirimi: freezed == stokOlcuBirimi
+          ? _value.stokOlcuBirimi
+          : stokOlcuBirimi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stharFisno: freezed == stharFisno
+          ? _value.stharFisno
+          : stharFisno // ignore: cast_nullable_to_non_nullable
+              as String?,
+      stharInc: freezed == stharInc
+          ? _value.stharInc
+          : stharInc // ignore: cast_nullable_to_non_nullable
+              as int?,
+      yapkod: freezed == yapkod
+          ? _value.yapkod
+          : yapkod // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$HucreHareketleriModelImpl extends _HucreHareketleriModel {
-  _$HucreHareketleriModelImpl({
-    this.inckeyno,
-    this.stokKodu,
-    this.stokAdi,
-    this.gc,
-    this.hucreKodu,
-    this.tarih,
-    this.netMiktar,
-    this.belgeTipi,
-    this.hareketTuru,
-    this.hareketAdi,
-    this.kayityapankul,
-    this.kayittarihi,
-    this.depoKodu,
-    this.depoTanimi,
-    this.eksiBakiye,
-    this.stokOlcuBirimi,
-    this.stharFisno,
-    this.stharInc,
-    this.yapkod,
-  }) : super._();
+  _$HucreHareketleriModelImpl(
+      {this.inckeyno,
+      this.stokKodu,
+      this.stokAdi,
+      this.gc,
+      this.hucreKodu,
+      this.tarih,
+      this.netMiktar,
+      this.belgeTipi,
+      this.hareketTuru,
+      this.hareketAdi,
+      this.kayityapankul,
+      this.kayittarihi,
+      this.depoKodu,
+      this.depoTanimi,
+      this.eksiBakiye,
+      this.stokOlcuBirimi,
+      this.stharFisno,
+      this.stharInc,
+      this.yapkod})
+      : super._();
 
-  factory _$HucreHareketleriModelImpl.fromJson(Map<String, dynamic> json) => _$$HucreHareketleriModelImplFromJson(json);
+  factory _$HucreHareketleriModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HucreHareketleriModelImplFromJson(json);
 
   @override
   final int? inckeyno;
@@ -422,7 +383,7 @@ class _$HucreHareketleriModelImpl extends _HucreHareketleriModel {
   final String? hucreKodu;
   @override
   final DateTime? tarih;
-  //TODO Double olacak
+//TODO Double olacak
   @override
   final int? netMiktar;
   @override
@@ -455,40 +416,43 @@ class _$HucreHareketleriModelImpl extends _HucreHareketleriModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$HucreHareketleriModelImplCopyWith<_$HucreHareketleriModelImpl> get copyWith =>
-      __$$HucreHareketleriModelImplCopyWithImpl<_$HucreHareketleriModelImpl>(this, _$identity);
+  _$$HucreHareketleriModelImplCopyWith<_$HucreHareketleriModelImpl>
+      get copyWith => __$$HucreHareketleriModelImplCopyWithImpl<
+          _$HucreHareketleriModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$HucreHareketleriModelImplToJson(this);
+    return _$$HucreHareketleriModelImplToJson(
+      this,
+    );
   }
 }
 
 abstract class _HucreHareketleriModel extends HucreHareketleriModel {
-  factory _HucreHareketleriModel({
-    final int? inckeyno,
-    final String? stokKodu,
-    final String? stokAdi,
-    final String? gc,
-    final String? hucreKodu,
-    final DateTime? tarih,
-    final int? netMiktar,
-    final String? belgeTipi,
-    final String? hareketTuru,
-    final String? hareketAdi,
-    final String? kayityapankul,
-    final DateTime? kayittarihi,
-    final int? depoKodu,
-    final String? depoTanimi,
-    final String? eksiBakiye,
-    final String? stokOlcuBirimi,
-    final String? stharFisno,
-    final int? stharInc,
-    final String? yapkod,
-  }) = _$HucreHareketleriModelImpl;
+  factory _HucreHareketleriModel(
+      {final int? inckeyno,
+      final String? stokKodu,
+      final String? stokAdi,
+      final String? gc,
+      final String? hucreKodu,
+      final DateTime? tarih,
+      final int? netMiktar,
+      final String? belgeTipi,
+      final String? hareketTuru,
+      final String? hareketAdi,
+      final String? kayityapankul,
+      final DateTime? kayittarihi,
+      final int? depoKodu,
+      final String? depoTanimi,
+      final String? eksiBakiye,
+      final String? stokOlcuBirimi,
+      final String? stharFisno,
+      final int? stharInc,
+      final String? yapkod}) = _$HucreHareketleriModelImpl;
   _HucreHareketleriModel._() : super._();
 
-  factory _HucreHareketleriModel.fromJson(Map<String, dynamic> json) = _$HucreHareketleriModelImpl.fromJson;
+  factory _HucreHareketleriModel.fromJson(Map<String, dynamic> json) =
+      _$HucreHareketleriModelImpl.fromJson;
 
   @override
   int? get inckeyno;
@@ -533,5 +497,6 @@ abstract class _HucreHareketleriModel extends HucreHareketleriModel {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HucreHareketleriModelImplCopyWith<_$HucreHareketleriModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$HucreHareketleriModelImplCopyWith<_$HucreHareketleriModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
