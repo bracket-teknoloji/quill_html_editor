@@ -35,7 +35,7 @@ void main() async {
     setUrl();
   } else {
     //* Screen Orientation
-    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    // await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
       DeviceOrientation.portraitUp,
       DeviceOrientation.landscapeRight,

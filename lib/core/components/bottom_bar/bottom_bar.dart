@@ -1,6 +1,5 @@
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 
 import "../../base/state/base_state.dart";
 import "../button/elevated_buttons/footer_button.dart";
@@ -32,10 +31,7 @@ final class _BottomBarWidgetState extends BaseState<BottomBarWidget> {
 
   @override
   Widget build(BuildContext context) => Container(
-    constraints:
-        kIsWeb && (Get.context?.isLandscape ?? false)
-            ? const BoxConstraints(maxHeight: kBottomNavigationBarHeight * 1.2)
-            : null,
+    constraints: const BoxConstraints(maxHeight: kBottomNavigationBarHeight * 1.2),
     child: ScrollableWidget(
       isScrolledDown: kIsWeb ? true : widget.isScrolledDown,
       child: Container(
