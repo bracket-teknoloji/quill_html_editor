@@ -1,10 +1,13 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/constants/extensions/iterable_extensions.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../cari/cari_listesi/model/cari_listesi_model.dart";
 import "../model/stok_hareketleri_model.dart";
 
 part "stok_hareketleri_view_model.g.dart";
+
+typedef GizlenecekAlanlar = ({String name, String value});
 
 final class StokHareketleriViewModel = _StokHareketleriViewModelBase with _$StokHareketleriViewModel;
 
@@ -72,10 +75,28 @@ abstract class _StokHareketleriViewModelBase with Store {
     "Zayi İade Fatura": "M",
   };
 
+  final List<GizlenecekAlanlar> gizlenecekAlanlar = [
+    (name: "Belge No", value: "BN"),
+    (name: "Cari/Stok Adı", value: "CSA"),
+    (name: "Depo", value: "D"),
+    (name: "Fiyat", value: "F"),
+    (name: "Tutar", value: "T"),
+    (name: "KDV", value: "K"),
+    (name: "Hareket Türü", value: "HT"),
+    (name: "Plasiyer", value: "P"),
+    (name: "Yapılandırma", value: "Y"),
+  ];
+
+  @observable
+  List<GizlenecekAlanlar> gizlenecekAlanlarList = [];
+
   @observable
   List<String> hareketYonuList = ["Tümü", "Giriş", "Çıkış"];
   @observable
   List<String>? arrHareketTuru = [];
+
+  @action
+  void setGizlenecekAlanlar(List<GizlenecekAlanlar> list) => gizlenecekAlanlarList = list;
 
   @action
   void addArrHareketTuru(String value) => arrHareketTuru?.add(value);
@@ -86,11 +107,14 @@ abstract class _StokHareketleriViewModelBase with Store {
   @action
   void clearArrHareketTuru() => arrHareketTuru = [];
   @observable
-  bool dovizliFiyat = false;
+  bool dovizliFiyat = CacheManager.getProfilParametre.stokhareketleriDovizliGoster;
 
   @action
   void changeDovizliFiyat() {
     dovizliFiyat = !dovizliFiyat;
+    CacheManager.setProfilParametre(
+      CacheManager.getProfilParametre.copyWith(stokhareketleriDovizliGoster: dovizliFiyat),
+    );
   }
 
   @observable

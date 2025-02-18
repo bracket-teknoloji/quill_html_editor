@@ -111,6 +111,24 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
     });
   }
 
+  late final _$gizlenecekAlanlarListAtom = Atom(
+      name: '_StokHareketleriViewModelBase.gizlenecekAlanlarList',
+      context: context);
+
+  @override
+  List<({String name, String value})> get gizlenecekAlanlarList {
+    _$gizlenecekAlanlarListAtom.reportRead();
+    return super.gizlenecekAlanlarList;
+  }
+
+  @override
+  set gizlenecekAlanlarList(List<({String name, String value})> value) {
+    _$gizlenecekAlanlarListAtom.reportWrite(value, super.gizlenecekAlanlarList,
+        () {
+      super.gizlenecekAlanlarList = value;
+    });
+  }
+
   late final _$hareketYonuListAtom = Atom(
       name: '_StokHareketleriViewModelBase.hareketYonuList', context: context);
 
@@ -267,6 +285,18 @@ mixin _$StokHareketleriViewModel on _StokHareketleriViewModelBase, Store {
   }
 
   @override
+  void setGizlenecekAlanlar(List<({String name, String value})> list) {
+    final _$actionInfo =
+        _$_StokHareketleriViewModelBaseActionController.startAction(
+            name: '_StokHareketleriViewModelBase.setGizlenecekAlanlar');
+    try {
+      return super.setGizlenecekAlanlar(list);
+    } finally {
+      _$_StokHareketleriViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void addArrHareketTuru(String value) {
     final _$actionInfo = _$_StokHareketleriViewModelBaseActionController
         .startAction(name: '_StokHareketleriViewModelBase.addArrHareketTuru');
@@ -385,6 +415,7 @@ cariListesiModel: ${cariListesiModel},
 isSelected: ${isSelected},
 isSelectedGroupValue: ${isSelectedGroupValue},
 hareketTuruMap: ${hareketTuruMap},
+gizlenecekAlanlarList: ${gizlenecekAlanlarList},
 hareketYonuList: ${hareketYonuList},
 arrHareketTuru: ${arrHareketTuru},
 dovizliFiyat: ${dovizliFiyat},

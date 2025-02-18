@@ -7,6 +7,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/bottom_bar/bottom_bar.dart";
 import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -55,6 +56,11 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
     _hareketTuruController = TextEditingController();
     _cariController = TextEditingController();
     super.initState();
+    viewModel.setGizlenecekAlanlar(
+      viewModel.gizlenecekAlanlar
+          .where((element) => CacheManager.getProfilParametre.stokhareketleriGizlenecekAlanlar.contains(element.value))
+          .toList(),
+    );
     if (widget.cariModel != null) {
       viewModel.setCariListesiModel(widget.cariModel);
     }
@@ -98,20 +104,6 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                   : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? widget.stokKodu ?? ""),
     ),
     actions: [
-      //😳 IconButton(
-      //😳     onPressed: () async {
-      //😳       await bottomSheetDialogManager.showBottomSheetDialog(context, title: loc.generalStrings.options, children: [
-      //😳         BottomSheetModel(
-      //😳             iconWidget: viewModel.dovizliFiyat ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
-      //😳             title: "Dövizli Fiyat Göster",
-      //😳             onTap: () {
-      //😳               viewModel.changeDovizliFiyat();
-      //😳               Get.back();
-      //😳             }),
-      //😳         BottomSheetModel(iconWidget: Icons.visibility_off_outlined, title: "Gizlenecek Alanlar", onTap: () async {}),
-      //😳       ]);
-      //😳     },
-      //😳     icon: const Icon(Icons.more_vert_outlined)),
       Observer(
         builder:
             (_) => IconButton(
@@ -123,6 +115,24 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
               },
               icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
             ),
+      ),
+      IconButton(
+        onPressed: () async {
+          final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+            context,
+            groupValues: viewModel.gizlenecekAlanlarList.map((e) => e.value).toList(),
+            title: "Gizlenecek Alanlar",
+            children: List.generate(viewModel.gizlenecekAlanlar.length, (index) {
+              final item = viewModel.gizlenecekAlanlar[index];
+              return BottomSheetModel(title: item.name, value: item, groupValue: item.value);
+            }),
+          );
+          if (result case final value?) {
+            viewModel.setGizlenecekAlanlar(value);
+            getData();
+          }
+        },
+        icon: const Icon(Icons.more_vert_outlined),
       ),
     ],
     bottom: AppBarPreferedSizedBottom(
@@ -300,13 +310,12 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                   viewModel.stokHareketleri.ext.isNullOrEmpty
                       ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
                       : RefreshIndicator.adaptive(
-                        onRefresh: () async {
-                          viewModel.setStokHareketleri((await getData()) ?? []);
-                        },
+                        onRefresh: () async => getData(),
                         child: SlidableAutoCloseBehavior(
                           child: ListView.builder(
                             primary: false,
                             padding: UIHelper.lowPadding,
+                            physics: const AlwaysScrollableScrollPhysics(),
                             itemCount: viewModel.stokHareketleri?.length ?? 0,
                             itemBuilder: (context, index) {
                               final StokHareketleriModel model = viewModel.stokHareketleri![index];
@@ -361,17 +370,24 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 children2.add(
                                   SlidableAction(
                                     onPressed: (context) async {
-                                      await Get.toNamed(
-                                        "mainPage/faturaEdit",
-                                        arguments: BaseEditModel<SiparisEditRequestModel>(
-                                          baseEditEnum: BaseEditEnum.goruntule,
-                                          model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                          editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
-                                            (element) => element.getName == model.belgeTipiAciklama,
+                                      if (EditTipiEnum.values
+                                              .firstWhereOrNull((element) => element.getName == model.belgeTipiAciklama)
+                                              ?.goruntulensinMi ??
+                                          false) {
+                                        await Get.toNamed(
+                                          "mainPage/faturaEdit",
+                                          arguments: BaseEditModel<SiparisEditRequestModel>(
+                                            baseEditEnum: BaseEditEnum.goruntule,
+                                            model: SiparisEditRequestModel.fromStokHareketleriModel(model),
+                                            editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
+                                              (element) => element.getName == model.belgeTipiAciklama,
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                      viewModel.setStokHareketleri(await getData()!);
+                                        );
+                                        viewModel.setStokHareketleri(await getData()!);
+                                      } else {
+                                        dialogManager.showErrorSnackBar("Bu belge tipi için yetkiniz bulunmamaktadır.");
+                                      }
                                     },
                                     icon: Icons.directions_walk_outlined,
                                     backgroundColor: theme.colorScheme.onPrimary,
@@ -448,41 +464,34 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
     },
   );
 
-  Widget bottomButtonBar() => Observer(
-    builder:
-        (_) => BottomBarWidget(
-          isScrolledDown: true,
-          children: [
-            FooterButton(
-              children: [
-                const Text("Giriş"),
-                Observer(
-                  builder: (_) => Text(viewModel.toplamGiris.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)),
+  Widget bottomButtonBar() => BottomBarWidget(
+    isScrolledDown: true,
+    children: [
+      FooterButton(
+        children: [
+          const Text("Giriş"),
+          Observer(builder: (_) => Text(viewModel.toplamGiris.commaSeparatedWithDecimalDigits(OndalikEnum.tutar))),
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Çıkış"),
+          Observer(builder: (_) => Text(viewModel.toplamCikis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar))),
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Kalan"),
+          Observer(
+            builder:
+                (_) => Text(
+                  viewModel.toplamBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+                  style: TextStyle(color: UIHelper.getColorWithValue(viewModel.toplamBakiye)),
                 ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Çıkış"),
-                Observer(
-                  builder: (_) => Text(viewModel.toplamCikis.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)),
-                ),
-              ],
-            ),
-            FooterButton(
-              children: [
-                const Text("Kalan"),
-                Observer(
-                  builder:
-                      (_) => Text(
-                        viewModel.toplamBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
-                        style: TextStyle(color: UIHelper.getColorWithValue(viewModel.toplamBakiye)),
-                      ),
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
+      ),
+    ],
   );
 
   Expanded listTile(StokHareketleriModel model) => Expanded(
@@ -503,7 +512,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
               ],
             ),
           ),
-          Text(model.fisno ?? ""),
+          if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("BN")) Text(model.fisno ?? ""),
           Icon(
             model.cikisIslemi ?? false ? Icons.chevron_right_outlined : Icons.chevron_left_sharp,
             color: model.cikisIslemi ?? false ? ColorPalette.persianRed : ColorPalette.mantis,
@@ -513,7 +522,8 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (model.cariAdi != null) Text(model.cariAdi ?? ""),
+          if (model.cariAdi != null && !viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("CSA"))
+            Text(model.cariAdi ?? ""),
           Text.rich(
             TextSpan(
               children: [
@@ -531,40 +541,80 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
           Row(
             children: [
               Expanded(child: Text("Miktar: ${model.stharGcmik?.toInt() ?? 0}")),
-              if (yetkiController.lokalDepoUygulamasiAcikMi)
+              if (yetkiController.lokalDepoUygulamasiAcikMi &&
+                  !viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("D"))
                 Expanded(child: Text("Depo: ${model.depoKodu ?? ""} (${model.depoAdi ?? ""})")),
             ],
           ),
           Row(
             children: [
-              Expanded(child: Text("Plasiyer: ${model.plasiyerAciklama ?? ""}")),
-              Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
+              if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("P"))
+                Expanded(child: Text("Plasiyer: ${model.plasiyerAciklama ?? ""}")),
+              if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("K"))
+                Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
             ],
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Text("Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-              ),
-              Expanded(
-                child: Text("Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}"),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Text(
-                  "Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+          if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("F"))
+            Row(
+              children: [
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                        ),
+                        TextSpan(text: "(${model.dovizFiyati})"),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Text(
-                  "Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text:
+                              "Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                        ),
+                        if ((model.dovizTipi ?? 0) > 0)
+                          TextSpan(
+                            text:
+                                " (${model.dovizFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${parametreModel.dovizList?.firstWhereOrNull((element) => element.dovizTipi == model.dovizTipi)?.isim})",
+                          ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
+          if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("T"))
+            Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    "Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                  ),
+                ),
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text:
+                              "Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                        ),
+                        if ((model.dovizTipi ?? 0) > 0)
+                          TextSpan(
+                            text:
+                                " (${((model.dovizFiyati ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${parametreModel.dovizList?.firstWhereOrNull((element) => element.dovizTipi == model.dovizTipi)?.isim})",
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
         ],
       ),
     ).paddingOnly(bottom: UIHelper.highSize),
