@@ -118,19 +118,40 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
       ),
       IconButton(
         onPressed: () async {
-          final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+          await bottomSheetDialogManager.showBottomSheetDialog(
             context,
-            groupValues: viewModel.gizlenecekAlanlarList.map((e) => e.value).toList(),
-            title: "Gizlenecek Alanlar",
-            children: List.generate(viewModel.gizlenecekAlanlar.length, (index) {
-              final item = viewModel.gizlenecekAlanlar[index];
-              return BottomSheetModel(title: item.name, value: item, groupValue: item.value);
-            }),
+            title: loc.generalStrings.options,
+            children: [
+              BottomSheetModel(
+                iconWidget: viewModel.dovizliFiyat ? Icons.check_box_outlined : Icons.check_box_outline_blank_outlined,
+                title: "Dövizli Fiyat Göster",
+                onTap: () {
+                  viewModel.changeDovizliFiyat();
+                  Get.back();
+                  getData();
+                },
+              ),
+              BottomSheetModel(
+                iconWidget: Icons.visibility_off_outlined,
+                title: "Gizlenecek Alanlar",
+                onTap: () async {
+                  final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                    context,
+                    groupValues: viewModel.gizlenecekAlanlarList.map((e) => e.value).toList(),
+                    title: "Gizlenecek Alanlar",
+                    children: List.generate(viewModel.gizlenecekAlanlar.length, (index) {
+                      final item = viewModel.gizlenecekAlanlar[index];
+                      return BottomSheetModel(title: item.name, value: item, groupValue: item.value);
+                    }),
+                  );
+                  if (result case final value?) {
+                    viewModel.setGizlenecekAlanlar(value);
+                    getData();
+                  }
+                },
+              ),
+            ],
           );
-          if (result case final value?) {
-            viewModel.setGizlenecekAlanlar(value);
-            getData();
-          }
         },
         icon: const Icon(Icons.more_vert_outlined),
       ),
@@ -364,18 +385,16 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                   ),
                                 );
                               }
-                              if ((model.hareketTuruAciklama == "İrsaliye" ||
-                                      model.hareketTuruAciklama == "Açık Fatura") &&
-                                  !yetkiController.stokHareketDetayiniGizle) {
+                              if (!yetkiController.stokHareketDetayiniGizle) {
                                 children2.add(
                                   SlidableAction(
                                     onPressed: (context) async {
-                                      if (EditTipiEnum.values
-                                              .firstWhereOrNull((element) => element.getName == model.belgeTipiAciklama)
-                                              ?.goruntulensinMi ??
-                                          false) {
+                                      final editTipi = EditTipiEnum.values.firstWhereOrNull(
+                                        (element) => element.getName == model.belgeTipiAciklama,
+                                      );
+                                      if (editTipi?.goruntulensinMi ?? false) {
                                         await Get.toNamed(
-                                          "mainPage/faturaEdit",
+                                          editTipi?.getEditRoute ?? "",
                                           arguments: BaseEditModel<SiparisEditRequestModel>(
                                             baseEditEnum: BaseEditEnum.goruntule,
                                             model: SiparisEditRequestModel.fromStokHareketleriModel(model),
@@ -408,17 +427,26 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                             title: "Belgeyi Görüntüle",
                                             iconWidget: Icons.preview_outlined,
                                             onTap: () async {
-                                              await Get.toNamed(
-                                                "mainPage/faturaEdit",
-                                                arguments: BaseEditModel<SiparisEditRequestModel>(
-                                                  baseEditEnum: BaseEditEnum.goruntule,
-                                                  model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                                  editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
-                                                    (element) => element.getName == model.belgeTipiAciklama,
-                                                  ),
-                                                ),
+                                              final editTipi = EditTipiEnum.values.firstWhereOrNull(
+                                                (element) => element.getName == model.belgeTipiAciklama,
                                               );
-                                              viewModel.setStokHareketleri(await getData() ?? []);
+                                              if (editTipi?.goruntulensinMi ?? false) {
+                                                await Get.toNamed(
+                                                  "mainPage/faturaEdit",
+                                                  arguments: BaseEditModel<SiparisEditRequestModel>(
+                                                    baseEditEnum: BaseEditEnum.goruntule,
+                                                    model: SiparisEditRequestModel.fromStokHareketleriModel(model),
+                                                    editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
+                                                      (element) => element.getName == model.belgeTipiAciklama,
+                                                    ),
+                                                  ),
+                                                );
+                                                viewModel.setStokHareketleri(await getData() ?? []);
+                                              } else {
+                                                dialogManager.showErrorSnackBar(
+                                                  "Bu belge tipi için yetkiniz bulunmamaktadır.",
+                                                );
+                                              }
                                             },
                                           ),
                                         BottomSheetModel(
@@ -564,7 +592,11 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                         TextSpan(
                           text: "Net Fiyat: ${(model.stharNf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
                         ),
-                        TextSpan(text: "(${model.dovizFiyati})"),
+                        if ((model.dovizTipi ?? 0) > 0 && viewModel.dovizliFiyat)
+                          TextSpan(
+                            text:
+                                " (${model.dovizliNetFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${parametreModel.dovizList?.firstWhereOrNull((element) => element.dovizTipi == model.dovizTipi)?.isim})",
+                          ),
                       ],
                     ),
                   ),
@@ -577,7 +609,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           text:
                               "Brüt Fiyat: ${(model.stharBf ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
                         ),
-                        if ((model.dovizTipi ?? 0) > 0)
+                        if ((model.dovizTipi ?? 0) > 0 && viewModel.dovizliFiyat)
                           TextSpan(
                             text:
                                 " (${model.dovizFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${parametreModel.dovizList?.firstWhereOrNull((element) => element.dovizTipi == model.dovizTipi)?.isim})",
@@ -592,8 +624,20 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
             Row(
               children: [
                 Expanded(
-                  child: Text(
-                    "Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                  child: Text.rich(
+                    TextSpan(
+                      children: [
+                        TextSpan(
+                          text:
+                              "Net Tutar: ${((model.stharNf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                        ),
+                        if ((model.dovizTipi ?? 0) > 0 && viewModel.dovizliFiyat)
+                          TextSpan(
+                            text:
+                                " (${model.dovizliNetTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${parametreModel.dovizList?.firstWhereOrNull((element) => element.dovizTipi == model.dovizTipi)?.isim})",
+                          ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
@@ -604,7 +648,7 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                           text:
                               "Brüt Tutar: ${((model.stharBf ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
                         ),
-                        if ((model.dovizTipi ?? 0) > 0)
+                        if ((model.dovizTipi ?? 0) > 0 && viewModel.dovizliFiyat)
                           TextSpan(
                             text:
                                 " (${((model.dovizFiyati ?? 0) * (model.stharGcmik ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${parametreModel.dovizList?.firstWhereOrNull((element) => element.dovizTipi == model.dovizTipi)?.isim})",

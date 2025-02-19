@@ -901,6 +901,20 @@ extension EditTipiEnumExtension on EditTipiEnum {
     _ => "/mainPage/siparisSaticiSiparisi",
   };
 
+  String get getEditRoute => switch (this) {
+    EditTipiEnum.musteri || EditTipiEnum.satici => "/mainPage/siparisEdit",
+    EditTipiEnum.satisFatura ||
+    EditTipiEnum.alisFatura ||
+    EditTipiEnum.alisIrsaliye ||
+    EditTipiEnum.satisIrsaliye => "/mainPage/faturaEdit",
+    EditTipiEnum.satisTeklifi || EditTipiEnum.alisTalebi || EditTipiEnum.satisTalebi => "/mainPage/talTekEdit",
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi ||
+    EditTipiEnum.ambarGirisi ||
+    EditTipiEnum.ambarCikisi => "/mainPage/transferEdit",
+    _ => throw Exception("Edit route bulunamadı"),
+  };
+
   String get getListRoute => switch (this) {
     EditTipiEnum.satisFatura => "/mainPage/sevkiyatSatisFaturasi",
     EditTipiEnum.satisIrsaliye => "/mainPage/sevkiyatSatisIrsaliyesi",

@@ -41,6 +41,9 @@ final class StokHareketleriModel with NetworkManagerMixin {
   @override
   Map<String, dynamic> toJson() => _$StokHareketleriModelToJson(this);
 
+  double? get dovizKuru => (stharBf ?? 0) / (dovizFiyati ?? 0);
 
-  double? get dovizKuru => (stharNf?? 0) / (stharGcmik ?? 0);
+  double? get dovizliNetFiyat => (stharNf ?? 0) / (dovizKuru ?? 0);
+
+  double? get dovizliNetTutar => (dovizliNetFiyat ?? 0) * (stharGcmik ?? 0);
 }
