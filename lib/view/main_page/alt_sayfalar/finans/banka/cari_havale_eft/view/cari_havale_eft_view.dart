@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -51,7 +52,6 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
 
   @override
   void initState() {
-    viewModel.setCariModel(widget.cariListesiModel);
     // viewModel.setGc(false);
     _tarihController = TextEditingController();
     _dekontNoController = TextEditingController();
@@ -72,6 +72,9 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _projeController = TextEditingController();
     _aciklamaController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      viewModel.setCariModel(
+        await networkManager.getCariModel(CariRequestModel(kod: [widget.cariListesiModel?.cariKodu ?? ""])),
+      );
       // viewModel.setTutar(widget.cariListesiModel?.bakiye?.abs());
       viewModel.setTarih(await dialogManager.showDateTimePicker());
       _tarihController.text = viewModel.model.tarih.toDateString;

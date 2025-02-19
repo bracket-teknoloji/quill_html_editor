@@ -43,7 +43,10 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   bool bankaDovizliMi = false;
 
   @action
-  void setCariModel(CariListesiModel? model) => cariModel = model;
+  void setCariModel(CariListesiModel? model) {
+    cariModel = model;
+    this.model = this.model.copyWith(hedefHesapReferansKodu: model?.muhKodu, kaynakHesapReferansKodu: model?.muhKodu);
+  }
 
   @action
   void setBankaDovizliMi(bool value) => bankaDovizliMi = value;

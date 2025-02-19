@@ -121,6 +121,11 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                 cariListesiModel: widget.cari,
                 islemTipi: IslemTipiEnum.cari,
                 title: widget.cari?.cariAdi,
+                onSelected: (value) async {
+                  if (value) {
+                    await viewModel.getData();
+                  }
+                },
               ),
             );
           },
