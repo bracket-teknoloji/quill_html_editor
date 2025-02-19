@@ -117,6 +117,12 @@ mixin _$TahsilatRequestModel {
   set tahsilatBakiye(double? value) => throw _privateConstructorUsedError;
   double? get odemeBakiye => throw _privateConstructorUsedError;
   set odemeBakiye(double? value) => throw _privateConstructorUsedError;
+  String? get hedefHesapReferansKodu => throw _privateConstructorUsedError;
+  set hedefHesapReferansKodu(String? value) =>
+      throw _privateConstructorUsedError;
+  String? get kaynakHesapReferansKodu => throw _privateConstructorUsedError;
+  set kaynakHesapReferansKodu(String? value) =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this TahsilatRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -180,7 +186,9 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
       List<DekontKalemler>? kalemler,
       String? hedefCariKodu,
       double? tahsilatBakiye,
-      double? odemeBakiye});
+      double? odemeBakiye,
+      String? hedefHesapReferansKodu,
+      String? kaynakHesapReferansKodu});
 }
 
 /// @nodoc
@@ -245,6 +253,8 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
     Object? hedefCariKodu = freezed,
     Object? tahsilatBakiye = freezed,
     Object? odemeBakiye = freezed,
+    Object? hedefHesapReferansKodu = freezed,
+    Object? kaynakHesapReferansKodu = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -431,6 +441,14 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
           ? _value.odemeBakiye
           : odemeBakiye // ignore: cast_nullable_to_non_nullable
               as double?,
+      hedefHesapReferansKodu: freezed == hedefHesapReferansKodu
+          ? _value.hedefHesapReferansKodu
+          : hedefHesapReferansKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kaynakHesapReferansKodu: freezed == kaynakHesapReferansKodu
+          ? _value.kaynakHesapReferansKodu
+          : kaynakHesapReferansKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -489,7 +507,9 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
       List<DekontKalemler>? kalemler,
       String? hedefCariKodu,
       double? tahsilatBakiye,
-      double? odemeBakiye});
+      double? odemeBakiye,
+      String? hedefHesapReferansKodu,
+      String? kaynakHesapReferansKodu});
 }
 
 /// @nodoc
@@ -551,6 +571,8 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
     Object? hedefCariKodu = freezed,
     Object? tahsilatBakiye = freezed,
     Object? odemeBakiye = freezed,
+    Object? hedefHesapReferansKodu = freezed,
+    Object? kaynakHesapReferansKodu = freezed,
   }) {
     return _then(_$TahsilatRequestModelImpl(
       aciklama: freezed == aciklama
@@ -737,6 +759,14 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
           ? _value.odemeBakiye
           : odemeBakiye // ignore: cast_nullable_to_non_nullable
               as double?,
+      hedefHesapReferansKodu: freezed == hedefHesapReferansKodu
+          ? _value.hedefHesapReferansKodu
+          : hedefHesapReferansKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kaynakHesapReferansKodu: freezed == kaynakHesapReferansKodu
+          ? _value.kaynakHesapReferansKodu
+          : kaynakHesapReferansKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -790,7 +820,9 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
       this.kalemler,
       this.hedefCariKodu,
       this.tahsilatBakiye,
-      this.odemeBakiye})
+      this.odemeBakiye,
+      this.hedefHesapReferansKodu,
+      this.kaynakHesapReferansKodu})
       : super._();
 
   factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -890,6 +922,10 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   double? tahsilatBakiye;
   @override
   double? odemeBakiye;
+  @override
+  String? hedefHesapReferansKodu;
+  @override
+  String? kaynakHesapReferansKodu;
 
   /// Create a copy of TahsilatRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -956,7 +992,9 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       List<DekontKalemler>? kalemler,
       String? hedefCariKodu,
       double? tahsilatBakiye,
-      double? odemeBakiye}) = _$TahsilatRequestModelImpl;
+      double? odemeBakiye,
+      String? hedefHesapReferansKodu,
+      String? kaynakHesapReferansKodu}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
   factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
@@ -1104,6 +1142,12 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   @override
   double? get odemeBakiye;
   set odemeBakiye(double? value);
+  @override
+  String? get hedefHesapReferansKodu;
+  set hedefHesapReferansKodu(String? value);
+  @override
+  String? get kaynakHesapReferansKodu;
+  set kaynakHesapReferansKodu(String? value);
 
   /// Create a copy of TahsilatRequestModel
   /// with the given fields replaced by the non-null parameter values.

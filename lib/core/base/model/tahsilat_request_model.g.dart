@@ -59,6 +59,8 @@ _$TahsilatRequestModelImpl _$$TahsilatRequestModelImplFromJson(
       hedefCariKodu: json['HEDEF_CARI_KODU'] as String?,
       tahsilatBakiye: (json['TAHSILAT_BAKIYE'] as num?)?.toDouble(),
       odemeBakiye: (json['ODEME_BAKIYE'] as num?)?.toDouble(),
+      hedefHesapReferansKodu: json['HEDEF_HESAP_REFERANS_KODU'] as String?,
+      kaynakHesapReferansKodu: json['KAYNAK_HESAP_REFERANS_KODU'] as String?,
     );
 
 Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
@@ -113,6 +115,10 @@ Map<String, dynamic> _$$TahsilatRequestModelImplToJson(
       if (instance.hedefCariKodu case final value?) 'HEDEF_CARI_KODU': value,
       if (instance.tahsilatBakiye case final value?) 'TAHSILAT_BAKIYE': value,
       if (instance.odemeBakiye case final value?) 'ODEME_BAKIYE': value,
+      if (instance.hedefHesapReferansKodu case final value?)
+        'HEDEF_HESAP_REFERANS_KODU': value,
+      if (instance.kaynakHesapReferansKodu case final value?)
+        'KAYNAK_HESAP_REFERANS_KODU': value,
     };
 
 _$DekontKalemlerImpl _$$DekontKalemlerImplFromJson(Map<String, dynamic> json) =>
