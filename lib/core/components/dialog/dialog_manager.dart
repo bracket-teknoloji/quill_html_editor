@@ -105,7 +105,7 @@ final class DialogManager {
             Padding(
               padding: UIHelper.midPaddingHorizontal,
               child: Text(
-                getAppData,
+                getAppInfo,
                 style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8), fontSize: 12),
                 textAlign: TextAlign.center,
               ),
@@ -116,8 +116,14 @@ final class DialogManager {
         onOk: () {},
       ).show();
 
-  String get getAppData =>
-      "\nVersion: ${AppInfoModel.instance.version}+${AppInfoModel.instance.buildNumber}\nKullanıcı: ${CacheManager.getHesapBilgileri?.kullaniciAdi}\nTarih: ${DateTime.now().toDateTimeString()}\nŞirket: ${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})\nE-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}";
+  String get getAppInfo => [
+    "Version: ${AppInfoModel.instance.version}+${AppInfoModel.instance.buildNumber}",
+    if (CacheManager.getHesapBilgileri?.kullaniciAdi case final value?) "Kullanıcı: $value",
+    "Tarih: ${DateTime.now().toDateTimeString()}",
+    if (CacheManager.getVeriTabani["Şirket"] != null)
+      "Şirket: ${CacheManager.getVeriTabani["Şirket"]} (${CacheManager.getVeriTabani["Şube"]})",
+    "E-mail: ${CacheManager.getHesapBilgileri?.uyeEmail ?? ""}",
+  ].join("\n");
 
   Future showEmptyFieldDialog(Iterable values, {void Function()? onOk}) =>
       _baseDialog(
@@ -142,7 +148,7 @@ final class DialogManager {
             Padding(
               padding: UIHelper.midPaddingHorizontal,
               child: Text(
-                getAppData,
+                getAppInfo,
                 style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8)),
                 textAlign: TextAlign.center,
               ),
