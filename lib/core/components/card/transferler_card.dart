@@ -152,7 +152,7 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                     Get.back();
                     final result = await Get.toNamed(widget.editTipiEnum.aciklamaDuzenleRoute, arguments: widget.model);
                     if (result != null) {
-                      widget.onUpdated?.call(result);
+                      widget.onUpdated?.call(widget.model);
                     }
                   },
                 ),

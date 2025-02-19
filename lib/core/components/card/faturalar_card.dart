@@ -158,7 +158,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                         Get.back();
                         final result = await Get.toNamed(widget.editTipiEnum.aciklamaDuzenleRoute, arguments: model);
                         if (result != null) {
-                          widget.onUpdated?.call(result);
+                          widget.onUpdated?.call(widget.model);
                         }
                       },
                     ),
