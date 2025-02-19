@@ -48,7 +48,20 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(UIHelper.midSize)),
                 child: Column(
                   children: [
-                    Assets.lotties.personLottie.lottie(height: height * 0.2).paddingAll(UIHelper.lowSize),
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(500),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(255, 86, 86, 86).withAlpha(60),
+                            blurRadius: 30.0,
+
+                            offset: const Offset(0.0, 3.0),
+                          ),
+                        ],
+                      ),
+                      child: Assets.lotties.personLottie.lottie(height: height * 0.2).paddingAll(UIHelper.lowSize),
+                    ),
                     Text(
                       loc.rightDrawer.profile,
                       style: theme.textTheme.bodySmall?.copyWith(fontWeight: FontWeight.bold),
