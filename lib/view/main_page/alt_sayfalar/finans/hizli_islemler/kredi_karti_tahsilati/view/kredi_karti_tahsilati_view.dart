@@ -59,7 +59,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     _seriController = TextEditingController();
     _hesapController = TextEditingController();
     _tutarController = TextEditingController(
-      text: widget.cariListesiModel?.bakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+      text: widget.cariListesiModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
     );
     _krediKartiNoController = TextEditingController();
     _referansKoduController = TextEditingController();
@@ -75,7 +75,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         return;
       }
       viewModel
-        ..setTutar(widget.cariListesiModel?.bakiye)
+        ..setTutar(widget.cariListesiModel?.bakiye?.abs())
         ..setKktYontemi(userModel.kullaniciYetki?.kkartiTahsilatYontemi);
       if (AccountModel.instance.adminMi) {
         await tahsilatYontemiDialog();
@@ -333,7 +333,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) => viewModel.setTutar(value.toDoubleWithFormattedString),
                 ),
-              ).yetkiVarMi(false),
+              ),
               if (yetkiController.plasiyerUygulamasiAcikMi)
                 Expanded(
                   child: CustomTextField(
@@ -380,7 +380,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                     },
                   ),
                 ),
-              if (yetkiController.referansKodu(viewModel.model.refKod))
+              if (yetkiController.referansKoduSorulsun(true))
                 Expanded(
                   child: CustomTextField(
                     labelText: "Referans Kodu",
