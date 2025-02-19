@@ -85,7 +85,7 @@ abstract class _TemsilciProfilViewModelBase with Store {
   void setDonemKodu(int value) => donemKodu = value;
 
   @action
-  void setTahtsilatDonemKodu(int value) => tahsilatDonemKodu = value;
+  void setTahsilatDonemKodu(int value) => tahsilatDonemKodu = value;
 
   @action
   void setAciklama(String? value) => aciklama = value;
@@ -219,6 +219,61 @@ abstract class _TemsilciProfilViewModelBase with Store {
           .map((e) => e.tutar)
           .sum ??
       0;
+
+  @computed
+  double get getNakitTahsilat =>
+      temsilciProfilList
+          ?.where(
+            (element) =>
+                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "D",
+          )
+          .map((e) => e.tutar)
+          .sum ??
+      0;
+  @computed
+  double get getKrediKartiTahsilat =>
+      temsilciProfilList
+          ?.where(
+            (element) =>
+                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "|",
+          )
+          .map((e) => e.tutar)
+          .sum ??
+      0;
+  @computed
+  double get getCekTahsilat =>
+      temsilciProfilList
+          ?.where(
+            (element) =>
+                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "G",
+          )
+          .map((e) => e.tutar)
+          .sum ??
+      0;
+  @computed
+  double get getSenetTahsilat =>
+      temsilciProfilList
+          ?.where(
+            (element) =>
+                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "E",
+          )
+          .map((e) => e.tutar)
+          .sum ??
+      0;
+  @computed
+  double get getDekontTahsilat =>
+      temsilciProfilList
+          ?.where(
+            (element) =>
+                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "K",
+          )
+          .map((e) => e.tutar)
+          .sum ??
+      0;
+
+  @computed
+  double get getToplamTahsilat =>
+      getNakitTahsilat + getKrediKartiTahsilat + getCekTahsilat + getSenetTahsilat + getDekontTahsilat;
   @computed
   double get getBuYilSatis =>
       temsilciProfilList

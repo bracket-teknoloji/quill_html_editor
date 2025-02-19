@@ -231,19 +231,13 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                           ),
                           // itemSnapping: true,
                           // shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: radius, bottomRight: radius)),
-                          children: [
-                            satislarChart(), alislarChart(), siparislerChart(),
-                            // , if (0  0) tahsilatlarChart()
-                          ],
+                          children: [satislarChart(), alislarChart(), siparislerChart(), tahsilatlarChart()],
                         ),
                       )
                     else
                       Expanded(
                         child: ListView(
-                          children: <Widget>[
-                            satislarChart(), alislarChart(), siparislerChart(),
-                            //  tahsilatlarChart()
-                          ],
+                          children: <Widget>[satislarChart(), alislarChart(), siparislerChart(), tahsilatlarChart()],
                         ).paddingAll(UIHelper.lowSize),
                       ),
                   ],
@@ -268,11 +262,11 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                           .toList(),
                 );
                 if (result != null) {
-                  viewModel.setTahtsilatDonemKodu(viewModel.aylar.indexOf(result) + 1);
+                  viewModel.setTahsilatDonemKodu(viewModel.aylar.indexOf(result) + 1);
                 }
               },
-              label: Observer(builder: (_) => Text(viewModel.tahsilatDonem)),
               icon: const Icon(Icons.more_horiz_outlined),
+              label: Observer(builder: (_) => Text(viewModel.tahsilatDonem)),
             ),
           ],
         ).paddingAll(UIHelper.lowSize),
@@ -281,7 +275,7 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
               (_) => ListTile(
                 title: const Text("Nakit"),
                 trailing: Text(
-                  "${viewModel.getGecenAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  "${viewModel.getNakitTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                 ),
               ),
         ),
@@ -290,7 +284,7 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
               (_) => ListTile(
                 title: const Text("Kredi Kartı"),
                 trailing: Text(
-                  "${viewModel.getGecenAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  "${viewModel.getKrediKartiTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                 ),
               ),
         ),
@@ -299,7 +293,7 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
               (_) => ListTile(
                 title: const Text("Çek"),
                 trailing: Text(
-                  "${viewModel.getGecenAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  "${viewModel.getCekTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                 ),
               ),
         ),
@@ -308,7 +302,7 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
               (_) => ListTile(
                 title: const Text("Senet"),
                 trailing: Text(
-                  "${viewModel.getGecenAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  "${viewModel.getSenetTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                 ),
               ),
         ),
@@ -317,7 +311,7 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
               (_) => ListTile(
                 title: const Text("Dekont"),
                 trailing: Text(
-                  "${viewModel.getGecenAyTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  "${viewModel.getDekontTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                 ),
               ),
         ),
@@ -326,7 +320,7 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
               (_) => ListTile(
                 title: const Text("Toplam"),
                 trailing: Text(
-                  "${viewModel.getBuYilTahsilatlar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                  "${viewModel.getToplamTahsilat.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
                 ),
               ),
         ),
