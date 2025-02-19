@@ -924,11 +924,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             keyboardType: const TextInputType.numberWithOptions(decimal: true),
                             isFormattedString: true,
                             suffix:
-                                fiyatRehberiGorebilir() && viewModel.kalemModel.dovizliMi
-                                    ? IconButton(
-                                      onPressed: _fiyatListesi,
-                                      icon: const Icon(Icons.more_horiz_outlined),
-                                    )
+                                fiyatRehberiGorebilir() && (viewModel.model?.dovizliMi ?? false)
+                                    ? IconButton(onPressed: _fiyatListesi, icon: const Icon(Icons.more_horiz_outlined))
                                     : null,
                             onChanged: (p0) {
                               viewModel
@@ -992,11 +989,8 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             isMust: editTipi?.bosGecilmeyecekAlanlar("fiyat"),
                             isFormattedString: true,
                             suffix:
-                                fiyatRehberiGorebilir() && !viewModel.kalemModel.dovizliMi
-                                    ? IconButton(
-                                      onPressed: _fiyatListesi,
-                                      icon: const Icon(Icons.more_horiz_outlined),
-                                    )
+                                fiyatRehberiGorebilir() && !(viewModel.model?.dovizliMi ?? false)
+                                    ? IconButton(onPressed: _fiyatListesi, icon: const Icon(Icons.more_horiz_outlined))
                                     : null,
                             onChanged: (p0) {
                               viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
@@ -1846,53 +1840,45 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   Future<void> _fiyatListesi() async {
-                                        List<StokFiyatiModel>? siraList;
-                                        if (parametreModel.ozelFiyatSistemi ?? false) {
-                                          siraList = await viewModel.getStokFiyatlari();
-                                        } else {
-                                          siraList = [];
-                                          viewModel.model?.getFiyatlar(!(editTipi?.satisMi ?? false)).entries.every((
-                                            mapEntry,
-                                          ) {
-                                            if (yetkiController.stokFiyatGorEkraniGorunecekAlanlar(mapEntry.key)) {
-                                              siraList?.add(mapEntry.value);
-                                            }
-                                            return true;
-                                          });
-                                        }
+    List<StokFiyatiModel>? siraList;
+    if (parametreModel.ozelFiyatSistemi ?? false) {
+      siraList = await viewModel.getStokFiyatlari();
+    } else {
+      siraList = [];
+      viewModel.model?.getFiyatlar(!(editTipi?.satisMi ?? false)).entries.every((mapEntry) {
+        if (yetkiController.stokFiyatGorEkraniGorunecekAlanlar(mapEntry.key)) {
+          siraList?.add(mapEntry.value);
+        }
+        return true;
+      });
+    }
 
-                                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                                          groupValue: dovizFiyatiController.text.toDoubleWithFormattedString,
-                                          context,
-                                          title: "Fiyat seçiniz",
-                                          children: List.generate(siraList?.length ?? 0, (index) {
-                                            final item = siraList![index];
-                                            return BottomSheetModel(
-                                              title:
-                                                  index == siraList.length -1  && viewModel.kalemModel.dovizliMi
-                                                      ? "Döviz Fiyatı"
-                                                      : "${++index}. Fiyat",
-                                              description: item.fiyat.commaSeparatedWithDecimalDigits(
-                                                OndalikEnum.fiyat,
-                                              ),
-                                              groupValue: item.fiyat,
-                                              value: item,
-                                            );
-                                          }),
-                                        );
-                                        if (result != null) {
-                                          viewModel.setBrutFiyat(result.fiyat);
-                                          fiyatController.text = result.fiyat.commaSeparatedWithDecimalDigits(
-                                            OndalikEnum.fiyat,
-                                          );
-                                          if (viewModel.model?.dovizliMi ?? false) {
-                                            viewModel.setDovizFiyati(
-                                              (viewModel.kalemModel.brutFiyat ?? 0) /
-                                                  (viewModel.kalemModel.dovizKuru ?? 1),
-                                            );
-                                            dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat
-                                                .commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
-                                          }
-                                        }
-                                      }
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+      groupValue: dovizFiyatiController.text.toDoubleWithFormattedString,
+      context,
+      title: "Fiyat seçiniz",
+      children: List.generate(siraList?.length ?? 0, (index) {
+        final item = siraList![index];
+        return BottomSheetModel(
+          title:
+              index == siraList.length - 1 && (viewModel.model?.dovizliMi ?? false)
+                  ? "Döviz Fiyatı"
+                  : "${++index}. Fiyat",
+          description: item.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat),
+          groupValue: item.fiyat,
+          value: item,
+        );
+      }),
+    );
+    if (result != null) {
+      viewModel.setBrutFiyat(result.fiyat);
+      fiyatController.text = result.fiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
+      if (viewModel.model?.dovizliMi ?? false) {
+        viewModel.setDovizFiyati((viewModel.kalemModel.brutFiyat ?? 0) / (viewModel.kalemModel.dovizKuru ?? 1));
+        dovizFiyatiController.text = viewModel.kalemModel.dovizliFiyat.commaSeparatedWithDecimalDigits(
+          OndalikEnum.fiyat,
+        );
+      }
+    }
+  }
 }
