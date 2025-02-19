@@ -62,7 +62,7 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
   late final TextEditingController kod3Controller;
   late final TextEditingController kod4Controller;
   late final TextEditingController kod5Controller;
-  late SiparislerViewModel viewModel;
+  late final SiparislerViewModel viewModel;
   List<BaseSiparisEditModel?>? get musteriSiparisleriList => viewModel.musteriSiparisleriList;
 
   @override
