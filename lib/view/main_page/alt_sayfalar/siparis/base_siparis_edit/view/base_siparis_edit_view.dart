@@ -393,8 +393,9 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
                     onPressed: () async {
                       dialogManager.showAreYouSureDialog(() async {
                         if (await postData()) {
-                          await CacheManager.removeSiparisEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                          Get.back(result: BaseSiparisEditModel.instance);
+                          final BaseSiparisEditModel instance = BaseSiparisEditModel.instance;
+                          await CacheManager.removeSiparisEditListWithUuid(instance.uuid);
+                          Get.back(result: instance);
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
                             BaseSiparisEditModel.resetInstance();
                             BaseSiparisEditModel.instance.isNew = true;
