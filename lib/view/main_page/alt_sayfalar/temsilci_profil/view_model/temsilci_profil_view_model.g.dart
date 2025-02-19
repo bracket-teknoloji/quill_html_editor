@@ -15,6 +15,13 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   String get donem => (_$donemComputed ??= Computed<String>(() => super.donem,
           name: '_TemsilciProfilViewModelBase.donem'))
       .value;
+  Computed<String>? _$tahsilatDonemComputed;
+
+  @override
+  String get tahsilatDonem =>
+      (_$tahsilatDonemComputed ??= Computed<String>(() => super.tahsilatDonem,
+              name: '_TemsilciProfilViewModelBase.tahsilatDonem'))
+          .value;
   Computed<double>? _$getBugunSatisComputed;
 
   @override
@@ -98,6 +105,48 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   double get getGecenAyTahsilatlar => (_$getGecenAyTahsilatlarComputed ??=
           Computed<double>(() => super.getGecenAyTahsilatlar,
               name: '_TemsilciProfilViewModelBase.getGecenAyTahsilatlar'))
+      .value;
+  Computed<double>? _$getNakitTahsilatComputed;
+
+  @override
+  double get getNakitTahsilat => (_$getNakitTahsilatComputed ??=
+          Computed<double>(() => super.getNakitTahsilat,
+              name: '_TemsilciProfilViewModelBase.getNakitTahsilat'))
+      .value;
+  Computed<double>? _$getKrediKartiTahsilatComputed;
+
+  @override
+  double get getKrediKartiTahsilat => (_$getKrediKartiTahsilatComputed ??=
+          Computed<double>(() => super.getKrediKartiTahsilat,
+              name: '_TemsilciProfilViewModelBase.getKrediKartiTahsilat'))
+      .value;
+  Computed<double>? _$getCekTahsilatComputed;
+
+  @override
+  double get getCekTahsilat =>
+      (_$getCekTahsilatComputed ??= Computed<double>(() => super.getCekTahsilat,
+              name: '_TemsilciProfilViewModelBase.getCekTahsilat'))
+          .value;
+  Computed<double>? _$getSenetTahsilatComputed;
+
+  @override
+  double get getSenetTahsilat => (_$getSenetTahsilatComputed ??=
+          Computed<double>(() => super.getSenetTahsilat,
+              name: '_TemsilciProfilViewModelBase.getSenetTahsilat'))
+      .value;
+  Computed<double>? _$getDekontTahsilatComputed;
+
+  @override
+  double get getDekontTahsilat => (_$getDekontTahsilatComputed ??=
+          Computed<double>(() => super.getDekontTahsilat,
+              name: '_TemsilciProfilViewModelBase.getDekontTahsilat'))
+      .value;
+  Computed<double>? _$getToplamTahsilatComputed;
+
+  @override
+  double get getToplamTahsilat => (_$getToplamTahsilatComputed ??=
+          Computed<double>(() => super.getToplamTahsilat,
+              name: '_TemsilciProfilViewModelBase.getToplamTahsilat'))
       .value;
   Computed<double>? _$getBuYilSatisComputed;
 
@@ -285,6 +334,22 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
     });
   }
 
+  late final _$tahsilatDonemKoduAtom = Atom(
+      name: '_TemsilciProfilViewModelBase.tahsilatDonemKodu', context: context);
+
+  @override
+  int get tahsilatDonemKodu {
+    _$tahsilatDonemKoduAtom.reportRead();
+    return super.tahsilatDonemKodu;
+  }
+
+  @override
+  set tahsilatDonemKodu(int value) {
+    _$tahsilatDonemKoduAtom.reportWrite(value, super.tahsilatDonemKodu, () {
+      super.tahsilatDonemKodu = value;
+    });
+  }
+
   late final _$plasiyerAtom =
       Atom(name: '_TemsilciProfilViewModelBase.plasiyer', context: context);
 
@@ -378,6 +443,17 @@ mixin _$TemsilciProfilViewModel on _TemsilciProfilViewModelBase, Store {
   }
 
   @override
+  void setTahsilatDonemKodu(int value) {
+    final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
+        .startAction(name: '_TemsilciProfilViewModelBase.setTahsilatDonemKodu');
+    try {
+      return super.setTahsilatDonemKodu(value);
+    } finally {
+      _$_TemsilciProfilViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setAciklama(String? value) {
     final _$actionInfo = _$_TemsilciProfilViewModelBaseActionController
         .startAction(name: '_TemsilciProfilViewModelBase.setAciklama');
@@ -421,9 +497,11 @@ donemValueList: ${donemValueList},
 temsilciProfilRequestModel: ${temsilciProfilRequestModel},
 aciklama: ${aciklama},
 donemKodu: ${donemKodu},
+tahsilatDonemKodu: ${tahsilatDonemKodu},
 plasiyer: ${plasiyer},
 temsilciProfilList: ${temsilciProfilList},
 donem: ${donem},
+tahsilatDonem: ${tahsilatDonem},
 getBugunSatis: ${getBugunSatis},
 getBugunAlis: ${getBugunAlis},
 getBugunSiparis: ${getBugunSiparis},
@@ -436,6 +514,12 @@ getGecenAySatis: ${getGecenAySatis},
 getGecenAyAlis: ${getGecenAyAlis},
 getGecenAySiparis: ${getGecenAySiparis},
 getGecenAyTahsilatlar: ${getGecenAyTahsilatlar},
+getNakitTahsilat: ${getNakitTahsilat},
+getKrediKartiTahsilat: ${getKrediKartiTahsilat},
+getCekTahsilat: ${getCekTahsilat},
+getSenetTahsilat: ${getSenetTahsilat},
+getDekontTahsilat: ${getDekontTahsilat},
+getToplamTahsilat: ${getToplamTahsilat},
 getBuYilSatis: ${getBuYilSatis},
 getBuYilAlis: ${getBuYilAlis},
 getBuYilSiparis: ${getBuYilSiparis},
