@@ -558,7 +558,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                         Expanded(
                           child: CustomTextField(
                             labelText: "Muh. Ref. Kodu",
-                            valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.yapkod ?? "")),
+                            valueWidget: Observer(builder: (_) => Text(viewModel.kalemModel.muhRefKodu ?? "")),
                             isMust: true,
                             readOnly: true,
                             suffixMore: true,
@@ -925,7 +925,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             isFormattedString: true,
                             suffix:
                                 fiyatRehberiGorebilir() && (viewModel.model?.dovizliMi ?? false)
-                                    ? IconButton(onPressed: _fiyatListesi, icon: const Icon(Icons.more_horiz_outlined))
+                                    ? IconButton(
+                                      onPressed: () => _fiyatListesi(true),
+                                      icon: const Icon(Icons.more_horiz_outlined),
+                                    )
                                     : null,
                             onChanged: (p0) {
                               viewModel
@@ -990,7 +993,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                             isFormattedString: true,
                             suffix:
                                 fiyatRehberiGorebilir() && !(viewModel.model?.dovizliMi ?? false)
-                                    ? IconButton(onPressed: _fiyatListesi, icon: const Icon(Icons.more_horiz_outlined))
+                                    ? IconButton(
+                                      onPressed: () => _fiyatListesi(false),
+                                      icon: const Icon(Icons.more_horiz_outlined),
+                                    )
                                     : null,
                             onChanged: (p0) {
                               viewModel.setBrutFiyat(p0.toDoubleWithFormattedString);
@@ -1529,6 +1535,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       }
       if (yetkiController.muhRefSorulsun(editTipi) && widget.stokListesiModel != null) {
         viewModel.setMuhasebeReferansKodu(yetkiController.varsayilanMuhRefKodu?.hesapKodu);
+        muhRefKoduController.text = yetkiController.varsayilanMuhRefKodu?.hesapAdi ?? "";
       }
       viewModel
         ..setFiyat(fiyatController.text.toDoubleWithFormattedString)
@@ -1839,7 +1846,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     }
   }
 
-  Future<void> _fiyatListesi() async {
+  Future<void> _fiyatListesi(bool dovizliMi) async {
     List<StokFiyatiModel>? siraList;
     if (parametreModel.ozelFiyatSistemi ?? false) {
       siraList = await viewModel.getStokFiyatlari();
