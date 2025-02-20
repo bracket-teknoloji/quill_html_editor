@@ -40,12 +40,14 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   CariListesiModel? cariModel;
 
   @observable
+  BankaListesiModel? bankaModel;
+
+  @observable
   bool bankaDovizliMi = false;
 
   @action
   void setCariModel(CariListesiModel? model) {
     cariModel = model;
-    this.model = this.model.copyWith(hedefHesapReferansKodu: model?.muhKodu, kaynakHesapReferansKodu: model?.muhKodu);
   }
 
   @action
@@ -65,6 +67,7 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setHesapNo(BankaListesiModel? hesapNo) {
+    bankaModel = hesapNo;
     model = model.copyWith(hesapKodu: hesapNo?.hesapKodu != "" ? hesapNo?.hesapKodu : null);
     setBankaDovizliMi(hesapNo?.dovizAdi != null);
     if (!model.dovizliMi) {
@@ -117,6 +120,10 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) => dovizKurlariListesi = value?.asObservable();
+
+  @action
+  void setReferansKodu(String? referansKodu) =>
+      model = model.copyWith(hedefHesapReferansKodu: referansKodu, kaynakHesapReferansKodu: referansKodu);
 
   @action
   Future<void> getDovizler() async {

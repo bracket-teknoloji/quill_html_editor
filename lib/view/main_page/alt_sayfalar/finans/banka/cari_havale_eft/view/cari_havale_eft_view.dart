@@ -48,6 +48,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   late final TextEditingController _plasiyerController;
   late final TextEditingController _projeController;
   late final TextEditingController _aciklamaController;
+  late final TextEditingController _referansKoduController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -71,12 +72,13 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _plasiyerController = TextEditingController();
     _projeController = TextEditingController();
     _aciklamaController = TextEditingController();
+    _referansKoduController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      viewModel.setCariModel(
-        await networkManager.getCariModel(CariRequestModel(kod: [widget.cariListesiModel?.cariKodu ?? ""])),
-      );
-      // viewModel.setTutar(widget.cariListesiModel?.bakiye?.abs());
-      viewModel.setTarih(await dialogManager.showDateTimePicker());
+      viewModel
+        ..setCariModel(
+          await networkManager.getCariModel(CariRequestModel(kod: [widget.cariListesiModel?.cariKodu ?? ""])),
+        )
+        ..setTarih(await dialogManager.showDateTimePicker());
       _tarihController.text = viewModel.model.tarih.toDateString;
       if (widget.cariListesiModel != null) {
         viewModel
@@ -127,6 +129,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _plasiyerController.dispose();
     _projeController.dispose();
     _aciklamaController.dispose();
+    _referansKoduController.dispose();
     super.dispose();
   }
 
@@ -469,7 +472,8 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     ),
                   Row(
                     children: [
-                      if (parametreModel.finansBankaIslemModulu == "B" && parametreModel.muhasebeEntegre == true)
+                      if (yetkiController.referansKodu("B") ||
+                          parametreModel.finansBankaIslemModulu == "B" && parametreModel.muhasebeEntegre == true)
                         Expanded(
                           child: CustomTextField(
                             labelText: "Masraf Muh. Kodu",
@@ -537,7 +541,60 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                         }
                       },
                     ),
-                  CustomTextField(labelText: "Açıklama", controller: _aciklamaController),
+                  CustomTextField(
+                    labelText: "Açıklama",
+                    controller: _aciklamaController,
+                    onChanged: viewModel.setAciklama,
+                  ),
+
+                  if (yetkiController.adminMi)
+                    Observer(
+                      builder: (_) {
+                        if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) &&
+                            yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi)) {
+                          if (viewModel.model.cariyiBorclandir ?? false) {
+                            if (!yetkiController.referansKodu("") && !yetkiController.referansKoduSorulsun(false)) {
+                              return CustomTextField(
+                                labelText: "Referans Kodu",
+                                controller: _referansKoduController,
+                                isMust: true,
+                                readOnly: true,
+                                onTap: () async {
+                                  final result = await bottomSheetDialogManager.showReferansKodBottomSheetDialog(
+                                    context,
+                                    viewModel.model.hedefHesapReferansKodu,
+                                  );
+                                  if (result != null) {
+                                    _referansKoduController.text = result.tanimi ?? "";
+                                    viewModel.setReferansKodu(result.kodu);
+                                  }
+                                },
+                              );
+                            } else {
+                              return const SizedBox.shrink();
+                            }
+                          }
+                        }
+                        return CustomTextField(
+                          labelText: "Referans Kodu",
+                          controller: _referansKoduController,
+                          isMust: true,
+                          readOnly: true,
+                          suffixMore: true,
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.hedefHesapReferansKodu ?? "")),
+                          onTap: () async {
+                            final result = await bottomSheetDialogManager.showReferansKodBottomSheetDialog(
+                              context,
+                              viewModel.model.hedefHesapReferansKodu,
+                            );
+                            if (result != null) {
+                              _referansKoduController.text = result.tanimi ?? "";
+                              viewModel.setReferansKodu(result.kodu);
+                            }
+                          },
+                        );
+                      },
+                    ),
                 ],
               ).paddingAll(UIHelper.lowSize),
         ),
