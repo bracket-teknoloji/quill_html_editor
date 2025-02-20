@@ -506,23 +506,16 @@ final class YetkiController {
   bool get hizliTahsilatSil => _isTrue(_yetkiModel?.finansHizliTahsilatKayitlariSil);
   bool referansKoduSorulsun(bool tahsilatMi) => tahsilatMi ? tahsilatReferansKoduSorulsun : odemeReferansKoduSorulsun;
   bool referansKodu(String? hesapTipi) {
-    if ((_paramModel?.muhasebeEntegre ?? false) &&
-        (_paramModel?.muhFislerdeRefKodSorulsun ?? false) &&
-        hesapTipi != null) {
-      if (hesapTipi == "A") {
-        return _isTrue(_paramModel?.muhFislerdeRefKodSorulsunAktif);
-      } else if (hesapTipi == "P") {
-        return _isTrue(_paramModel?.muhFislerdeRefKodSorulsunPasif);
-      } else if (hesapTipi == "G") {
-        return _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGelir);
-      } else if (hesapTipi == "I") {
-        return _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGider);
-      } else if (hesapTipi == "N") {
-        return _isTrue(_paramModel?.muhFislerdeRefKodSorulsunNazim);
-      }
-      return false;
-    }
-    return false;
+    if (!(_paramModel?.muhasebeEntegre ?? false)) return false;
+    if (!(_paramModel?.muhFislerdeRefKodSorulsun ?? false)) return false;
+    return switch (hesapTipi) {
+      "A" => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunAktif, skipAdmin: true),
+      "P" => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunPasif, skipAdmin: true),
+      "G" => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGelir, skipAdmin: true),
+      "I" => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGider, skipAdmin: true),
+      "N" => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunNazim, skipAdmin: true),
+      _ => false,
+    };
   }
 
   //* Kasa
