@@ -258,11 +258,11 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                   title: "Dönem",
                   children:
                       viewModel.aylar
-                          .map((e) => BottomSheetModel(title: e, value: e, groupValue: viewModel.aylar.indexOf(e) + 1))
+                          .map((e) => BottomSheetModel(title: e.name, value: e, groupValue: e.value))
                           .toList(),
                 );
                 if (result != null) {
-                  viewModel.setTahsilatDonemKodu(viewModel.aylar.indexOf(result) + 1);
+                  viewModel.setTahsilatDonemKodu(result.value);
                 }
               },
               icon: const Icon(Icons.more_horiz_outlined),
@@ -510,11 +510,11 @@ final class _TemsilciProfilViewState extends BaseState<TemsilciProfilView> {
                   title: "Dönem",
                   children:
                       viewModel.aylar
-                          .map((e) => BottomSheetModel(title: e, value: e, groupValue: viewModel.aylar.indexOf(e) + 1))
+                          .map((e) => BottomSheetModel(title: e.name, value: e, groupValue: e.value))
                           .toList(),
                 );
                 if (result != null) {
-                  viewModel.setDonemKodu(viewModel.aylar.indexOf(result) + 1);
+                  viewModel.setDonemKodu(result.value);
                 }
               },
               icon: const Icon(Icons.more_horiz_outlined),

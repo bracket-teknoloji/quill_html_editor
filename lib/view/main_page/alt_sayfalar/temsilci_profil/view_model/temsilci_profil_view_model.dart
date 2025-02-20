@@ -9,6 +9,8 @@ import "../model/temsilci_profil_request_model.dart";
 
 part "temsilci_profil_view_model.g.dart";
 
+typedef Donem = ({String name, int value});
+
 final class TemsilciProfilViewModel = _TemsilciProfilViewModelBase with _$TemsilciProfilViewModel;
 
 abstract class _TemsilciProfilViewModelBase with Store {
@@ -70,10 +72,17 @@ abstract class _TemsilciProfilViewModelBase with Store {
   String? aciklama;
 
   @computed
-  String get donem => aylar[donemKodu - 1];
+  String get donem => aylar.firstWhere((element) => element.value == donemKodu).name;
+
+  int? selectedDonem(int value) {
+    if (value == 14) return DateTime.now().month;
+    if (value == 15) return DateTime.now().month - 1;
+    if (value == 0) return null;
+    return value;
+  }
 
   @computed
-  String get tahsilatDonem => aylar[tahsilatDonemKodu - 1];
+  String get tahsilatDonem => aylar.firstWhere((element) => element.value == tahsilatDonemKodu).name;
 
   @observable
   int donemKodu = DateTime.now().month;
@@ -225,7 +234,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
       temsilciProfilList
           ?.where(
             (element) =>
-                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "D",
+                selectedDonem(tahsilatDonemKodu) == null
+                    ? tahsilatDonemKodu != 13
+                    : element.tabloTipi == "TAHSILAT" &&
+                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                        element.kayitTipi == "D",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -235,7 +248,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
       temsilciProfilList
           ?.where(
             (element) =>
-                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "|",
+                selectedDonem(tahsilatDonemKodu) == null
+                    ? tahsilatDonemKodu != 13
+                    : element.tabloTipi == "TAHSILAT" &&
+                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                        element.kayitTipi == "|",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -245,7 +262,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
       temsilciProfilList
           ?.where(
             (element) =>
-                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "G",
+                selectedDonem(tahsilatDonemKodu) == null
+                    ? tahsilatDonemKodu != 13
+                    : element.tabloTipi == "TAHSILAT" &&
+                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                        element.kayitTipi == "G",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -255,7 +276,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
       temsilciProfilList
           ?.where(
             (element) =>
-                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "E",
+                selectedDonem(tahsilatDonemKodu) == null
+                    ? tahsilatDonemKodu != 13
+                    : element.tabloTipi == "TAHSILAT" &&
+                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                        element.kayitTipi == "E",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -265,7 +290,11 @@ abstract class _TemsilciProfilViewModelBase with Store {
       temsilciProfilList
           ?.where(
             (element) =>
-                element.tabloTipi == "TAHSILAT" && element.ayKodu == tahsilatDonemKodu && element.kayitTipi == "K",
+                selectedDonem(tahsilatDonemKodu) == null
+                    ? tahsilatDonemKodu != 13
+                    : element.tabloTipi == "TAHSILAT" &&
+                        element.ayKodu == selectedDonem(tahsilatDonemKodu) &&
+                        element.kayitTipi == "K",
           )
           .map((e) => e.tutar)
           .sum ??
@@ -309,18 +338,24 @@ abstract class _TemsilciProfilViewModelBase with Store {
   List<double> get getPlasiyerToplam {
     //her plasiyerin toplam satışı
     final Set<String> uniquePlasiyer = <String>{};
-    for (final TemsilciProfilModel element in temsilciProfilList ?? []) {
-      if (element.plasiyerAciklama != null && element.kayitTipi == "SF" && element.ayKodu == donemKodu) {
+    for (final element in temsilciProfilList ?? []) {
+      if (element.plasiyerAciklama != null &&
+          element.kayitTipi == "SF" &&
+          (selectedDonem(donemKodu) == null ? donemKodu != 13 : element.ayKodu == selectedDonem(donemKodu))) {
         uniquePlasiyer.add(element.plasiyerAciklama!);
       }
     }
     final List<double> list = List.generate(uniquePlasiyer.length, (index) => 0);
     if (list.ext.isNotNullOrEmpty) {
-      temsilciProfilList?.where((element) => element.ayKodu == donemKodu && element.kayitTipi == "SF").forEach((
-        element,
-      ) {
-        list[uniquePlasiyer.toList().indexOf(element.plasiyerAciklama ?? "")] += element.tutar ?? 0;
-      });
+      temsilciProfilList
+          ?.where(
+            (element) =>
+                (selectedDonem(donemKodu) == null ? donemKodu != 13 : element.ayKodu == selectedDonem(donemKodu)) &&
+                element.kayitTipi == "SF",
+          )
+          .forEach((element) {
+            list[uniquePlasiyer.toList().indexOf(element.plasiyerAciklama ?? "")] += element.tutar ?? 0;
+          });
     }
     log(list.toString());
     return list;
@@ -331,7 +366,9 @@ abstract class _TemsilciProfilViewModelBase with Store {
     if (temsilciProfilList.ext.isNotNullOrEmpty) {
       final Set<String> uniquePlasiyer = <String>{};
       for (final TemsilciProfilModel element in temsilciProfilList ?? []) {
-        if (element.plasiyerAciklama != null && element.kayitTipi == "SF" && element.ayKodu == donemKodu) {
+        if (element.plasiyerAciklama != null &&
+            element.kayitTipi == "SF" &&
+            (selectedDonem(donemKodu) == null ? donemKodu != 13 : element.ayKodu == selectedDonem(donemKodu))) {
           uniquePlasiyer.add(element.plasiyerAciklama ?? "");
         }
       }
@@ -465,25 +502,22 @@ abstract class _TemsilciProfilViewModelBase with Store {
     return list;
   }
 
-  final List<String> aylar = [
-    "Ocak",
-    "Şubat",
-    "Mart",
-    "Nisan",
-    "Mayıs",
-    "Haziran",
-    "Temmuz",
-    "Ağustos",
-    "Eylül",
-    "Ekim",
-    "Kasım",
-    "Aralık",
+  final List<Donem> aylar = [
+    (name: "Bugün", value: 13),
+    (name: "Bu ay", value: 14),
+    (name: "Geçen ay", value: 15),
+    (name: "Bu yıl", value: 0),
+    (name: "Ocak", value: 1),
+    (name: "Şubat", value: 2),
+    (name: "Mart", value: 3),
+    (name: "Nisan", value: 4),
+    (name: "Mayıs", value: 5),
+    (name: "Haziran", value: 6),
+    (name: "Temmuz", value: 7),
+    (name: "Ağustos", value: 8),
+    (name: "Eylül", value: 9),
+    (name: "Ekim", value: 10),
+    (name: "Kasım", value: 11),
+    (name: "Aralık", value: 12),
   ];
-
-  double get getTahsilatNakit =>
-      temsilciProfilList
-          ?.where((element) => element.tabloTipi == "TAHSILAT" && element.ayKodu == donemKodu)
-          .map((e) => e.tutar)
-          .sum ??
-      0;
 }
