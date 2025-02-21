@@ -502,30 +502,37 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Özel Kod 1",
-                    readOnly: true,
-                    suffixMore: true,
-                    isMust: true,
-                    controller: _ozelKod1Controller,
-                    enabled: enable,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
-                        context,
-                        viewModel.model.ozelKod1,
-                      );
-                      if (result != null) {
-                        _ozelKod1Controller.text = result.aciklama ?? "";
-                        viewModel.setOzelKod1(result.kod);
-                      }
-                    },
+                if (yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
+                    widget.model.baseEditEnum != BaseEditEnum.taslak)
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Özel Kod 1",
+                      readOnly: true,
+                      suffixMore: true,
+                      isMust: true,
+                      controller: _ozelKod1Controller,
+                      enabled: enable,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
+                          context,
+                          viewModel.model.ozelKod1,
+                        );
+                        if (result != null) {
+                          _ozelKod1Controller.text = result.aciklama ?? "";
+                          viewModel.setOzelKod1(result.kod);
+                          if (model.kalemList.ext.isNotNullOrEmpty) {
+                            await dialogManager.showAreYouSureDialog(() async {
+                              final isSuccess = await viewModel.fiyatGuncelle();
+                              if (isSuccess) {
+                                dialogManager.showSuccesDialog("Fiyatlar Güncellendi");
+                              }
+                            }, title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?");
+                          }
+                        }
+                      },
+                    ),
                   ),
-                ).yetkiVarMi(
-                  yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false) &&
-                      widget.model.baseEditEnum != BaseEditEnum.taslak,
-                ),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Özel Kod 2",

@@ -1,6 +1,8 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../../../core/constants/enum/edit_tipi_enum.dart";
@@ -12,7 +14,7 @@ part "base_fatura_genel_view_model.g.dart";
 
 final class BaseFaturaGenelViewModel = _BaseFaturaGenelViewModelBase with _$BaseFaturaGenelViewModel;
 
-abstract class _BaseFaturaGenelViewModelBase with Store {
+abstract class _BaseFaturaGenelViewModelBase with Store, MobxNetworkMixin {
   final Map<String, int> _belgeTipi = <String, int>{
     "Kapalı": 1,
     "Açık": 2,
@@ -171,5 +173,21 @@ abstract class _BaseFaturaGenelViewModelBase with Store {
       default:
     }
     BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  Future<bool> fiyatGuncelle() async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveFatura,
+      bodyModel: BaseSiparisEditModel(),
+      showLoading: true,
+      data: BaseSiparisEditModel.forOzelKod1FiyatGuncelleme(model),
+    );
+    if (result.isSuccess) {
+      model.kalemList = result.dataList.firstOrNull?.kalemList;
+      BaseSiparisEditModel.setInstance(model);
+      return true;
+    }
+    return false;
   }
 }

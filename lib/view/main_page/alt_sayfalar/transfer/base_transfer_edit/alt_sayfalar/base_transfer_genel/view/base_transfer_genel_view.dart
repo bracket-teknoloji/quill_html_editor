@@ -2,6 +2,7 @@ import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:kartal/kartal.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
@@ -42,7 +43,7 @@ final class BaseTransferGenelView extends StatefulWidget {
 
 final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> {
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
-  BaseTransferGenelViewModel viewModel = BaseTransferGenelViewModel();
+  final BaseTransferGenelViewModel viewModel = BaseTransferGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala || siparisModel.isRevize;
   bool get enable => widget.model.enable;
@@ -275,66 +276,67 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
             //     }
             //   },
             // ),
-            Observer(
-              builder:
-                  (_) => CustomTextField(
-                    labelText: "Cari",
-                    readOnly: true,
-                    isMust: viewModel.model.lokalDat != "E",
-                    suffixMore: true,
-                    controller: _cariController,
-                    enabled: isEkle,
-                    valueWidget: Observer(
-                      builder:
-                          (_) => Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: viewModel.model.cariKodu ?? ""),
-                                const TextSpan(text: "  "),
-                                TextSpan(
-                                  text: viewModel.model.cariTitle,
-                                  style: const TextStyle(color: ColorPalette.mantis),
-                                ),
-                              ],
+            if (!(widget.model.editTipiEnum?.ambarGirisiMi ?? false))
+              Observer(
+                builder:
+                    (_) => CustomTextField(
+                      labelText: "Cari",
+                      readOnly: true,
+                      isMust: viewModel.model.lokalDat != "E",
+                      suffixMore: true,
+                      controller: _cariController,
+                      enabled: isEkle,
+                      valueWidget: Observer(
+                        builder:
+                            (_) => Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(text: viewModel.model.cariKodu ?? ""),
+                                  const TextSpan(text: "  "),
+                                  TextSpan(
+                                    text: viewModel.model.cariTitle,
+                                    style: const TextStyle(color: ColorPalette.mantis),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
+                      ),
+                      onTap: () async {
+                        final cariModel = await Get.toNamed(
+                          "mainPage/cariRehberi",
+                          arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
+                        );
+                        if (cariModel == null) return;
+                        final result = await networkManager.getCariModel(
+                          CariRequestModel.fromCariListesiModel(cariModel)
+                            ..secildi = "E"
+                            ..kisitYok = true
+                            ..teslimCari = "E"
+                            ..eFaturaGoster = true,
+                        );
+                        if (result is CariListesiModel) {
+                          _cariController.text = result.cariAdi ?? "";
+                          viewModel.model.cariTitle =
+                              result.efaturaCarisi == "E"
+                                  ? "E-Fatura"
+                                  : result.efaturaCarisi == "H"
+                                  ? "E-Arşiv"
+                                  : null;
+                          //TODO DEPO KODUNU ZEKİ ABİYE SOR
+                          // if (yetkiController.transferDatCarininDepoGetir) {
+                          //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
+                          // }
+                          viewModel
+                            ..setCariAdi(result.cariAdi)
+                            ..setCariKodu(result.cariKodu);
+                          viewModel.model.vadeGunu = result.vadeGunu;
+                          viewModel.model.efaturaTipi = result.efaturaTipi;
+                          // _belgeNoController.clear();
+                          // await getBelgeNo();
+                        }
+                      },
                     ),
-                    onTap: () async {
-                      final cariModel = await Get.toNamed(
-                        "mainPage/cariRehberi",
-                        arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
-                      );
-                      if (cariModel == null) return;
-                      final result = await networkManager.getCariModel(
-                        CariRequestModel.fromCariListesiModel(cariModel)
-                          ..secildi = "E"
-                          ..kisitYok = true
-                          ..teslimCari = "E"
-                          ..eFaturaGoster = true,
-                      );
-                      if (result is CariListesiModel) {
-                        _cariController.text = result.cariAdi ?? "";
-                        viewModel.model.cariTitle =
-                            result.efaturaCarisi == "E"
-                                ? "E-Fatura"
-                                : result.efaturaCarisi == "H"
-                                ? "E-Arşiv"
-                                : null;
-                        //TODO DEPO KODUNU ZEKİ ABİYE SOR
-                        // if (yetkiController.transferDatCarininDepoGetir) {
-                        //   viewModel.setTopluGirisDepoKodu(DepoList()..depoKodu = result.depoKodlari?.firstOrNull);
-                        // }
-                        viewModel
-                          ..setCariAdi(result.cariAdi)
-                          ..setCariKodu(result.cariKodu);
-                        viewModel.model.vadeGunu = result.vadeGunu;
-                        viewModel.model.efaturaTipi = result.efaturaTipi;
-                        // _belgeNoController.clear();
-                        // await getBelgeNo();
-                      }
-                    },
-                  ).yetkiVarMi(!(widget.model.editTipiEnum?.ambarGirisiMi ?? false)),
-            ),
+              ),
             Row(
               children: [
                 if (yetkiController.lokalDepoUygulamasiAcikMi && (model.getEditTipiEnum?.depoTransferiMi ?? false))
@@ -346,7 +348,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         builder:
                             (_) => Switch.adaptive(
                               value: viewModel.model.lokalDat == "E",
-                              onChanged: enable ? (value) => viewModel.setLokalDepo(value) : null,
+                              onChanged: enable ? viewModel.setLokalDepo : null,
                             ),
                       ),
                     ),
@@ -361,7 +363,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         builder:
                             (_) => Switch.adaptive(
                               value: viewModel.kdvDahil,
-                              onChanged: enable ? (value) => viewModel.changeKdvDahil(value) : null,
+                              onChanged: enable ? viewModel.changeKdvDahil : null,
                             ),
                       ),
                     ),
@@ -529,139 +531,145 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                 ),
               ],
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Masraf Kodu",
-                    controller: _masrafKoduController,
-                    readOnly: true,
-                    suffixMore: true,
-                    enabled: enable,
-                    isMust: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.masrafKodu ?? "")),
-                    onTap: () async {
-                      final result = await Get.toNamed(
-                        "mainPage/masrafKoduRehberi",
-                        arguments: viewModel.model.masrafKoduTipi ?? -1,
-                      );
-                      if (result is MasrafKoduRehberiModel) {
-                        _masrafKoduController.text = result.masrafAdi ?? result.masrafKodu ?? "";
-                        viewModel.changeMasrafKodu(result);
-                      }
-                    },
+            if (!(model.getEditTipiEnum?.depoTransferiMi ?? false))
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Masraf Kodu",
+                      controller: _masrafKoduController,
+                      readOnly: true,
+                      suffixMore: true,
+                      enabled: enable,
+                      isMust: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.masrafKodu ?? "")),
+                      onTap: () async {
+                        final result = await Get.toNamed(
+                          "mainPage/masrafKoduRehberi",
+                          arguments: viewModel.model.masrafKoduTipi ?? -1,
+                        );
+                        if (result is MasrafKoduRehberiModel) {
+                          _masrafKoduController.text = result.masrafAdi ?? result.masrafKodu ?? "";
+                          viewModel.changeMasrafKodu(result);
+                        }
+                      },
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Çıkış Yeri",
-                    controller: _cikisYeriController,
-                    readOnly: true,
-                    enabled: enable,
-                    suffixMore: true,
-                    isMust: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisYeri ?? "")),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                        context,
-                        title: "Çıkış Yeri",
-                        groupValue: viewModel.model.cikisYeri,
-                        children: List.generate(
-                          viewModel.cikisYeriMap.length,
-                          (index) => BottomSheetModel(
-                            title: viewModel.cikisYeriMap.entries.toList()[index].key,
-                            value: viewModel.cikisYeriMap.entries.toList()[index],
-                            description: viewModel.cikisYeriMap.entries.toList()[index].value,
-                            groupValue: viewModel.cikisYeriMap.entries.toList()[index].value,
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Çıkış Yeri",
+                      controller: _cikisYeriController,
+                      readOnly: true,
+                      enabled: enable,
+                      suffixMore: true,
+                      isMust: true,
+                      valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisYeri ?? "")),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                          context,
+                          title: "Çıkış Yeri",
+                          groupValue: viewModel.model.cikisYeri,
+                          children: List.generate(
+                            viewModel.cikisYeriMap.length,
+                            (index) => BottomSheetModel(
+                              title: viewModel.cikisYeriMap.entries.toList()[index].key,
+                              value: viewModel.cikisYeriMap.entries.toList()[index],
+                              description: viewModel.cikisYeriMap.entries.toList()[index].value,
+                              groupValue: viewModel.cikisYeriMap.entries.toList()[index].value,
+                            ),
                           ),
-                        ),
-                      );
-                      if (result != null) {
-                        viewModel
-                          ..changeCikisYeri(result.value)
-                          ..setMasrafKoduTipi(
-                            viewModel.cikisYeriMap.entries.indexed
-                                    .firstWhereOrNull((element) => element.$2.value == viewModel.model.cikisYeri)
-                                    ?.$1 ??
-                                -1,
-                          );
+                        );
+                        if (result != null) {
+                          viewModel
+                            ..changeCikisYeri(result.value)
+                            ..setMasrafKoduTipi(
+                              viewModel.cikisYeriMap.entries.indexed
+                                      .firstWhereOrNull((element) => element.$2.value == viewModel.model.cikisYeri)
+                                      ?.$1 ??
+                                  -1,
+                            );
 
-                        _cikisYeriController.text = result.key;
-                      }
-                    },
+                          _cikisYeriController.text = result.key;
+                        }
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ).yetkiVarMi(!(model.getEditTipiEnum?.depoTransferiMi ?? false)),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Toplu Çıkış Depo",
-                    isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo"),
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: _topluCikisDepoController,
-                    enabled: enable,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.cikisDepoKodu.toStringIfNotNull ?? "")),
-                    onClear: () => viewModel.setTopluCikisDepoKodu(null),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(
-                        context,
-                        viewModel.model.cikisDepoKodu,
-                      );
-                      if (result != null) {
-                        _topluCikisDepoController.text = result.depoTanimi ?? "";
-                        viewModel.setTopluCikisDepoKodu(result);
-                      }
-                    },
-                    validator: (value) {
-                      if (value == "" && !(model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo") ?? false)) {
+                ],
+              ),
+            if (model.getEditTipiEnum?.depoTransferiMi ?? false)
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Toplu Çıkış Depo",
+                      isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo"),
+                      readOnly: true,
+                      suffixMore: true,
+                      controller: _topluCikisDepoController,
+                      enabled: enable,
+                      valueWidget: Observer(
+                        builder: (_) => Text(viewModel.model.cikisDepoKodu.toStringIfNotNull ?? ""),
+                      ),
+                      onClear: () => viewModel.setTopluCikisDepoKodu(null),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(
+                          context,
+                          viewModel.model.cikisDepoKodu,
+                        );
+                        if (result != null) {
+                          _topluCikisDepoController.text = result.depoTanimi ?? "";
+                          viewModel.setTopluCikisDepoKodu(result);
+                        }
+                      },
+                      validator: (value) {
+                        if (value == "" && !(model.getEditTipiEnum?.bosGecilmeyecekAlanlar("toplu_depo") ?? false)) {
+                          return null;
+                        }
+                        if (model.cikisDepoKodu == model.girisDepoKodu) {
+                          return "Giriş ve Çıkış depolar aynı olamaz.";
+                        }
                         return null;
-                      }
-                      if (model.cikisDepoKodu == model.girisDepoKodu) {
-                        return "Giriş ve Çıkış depolar aynı olamaz.";
-                      }
-                      return null;
-                    },
+                      },
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Toplu Giriş Depo",
-                    readOnly: true,
-                    isMust: true,
-                    //  && model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
-                    suffixMore: true,
-                    controller: _topluGirisDepoController,
-                    enabled: enable,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.girisDepoKodu.toStringIfNotNull ?? "")),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(
-                        context,
-                        viewModel.model.girisDepoKodu,
-                        subeKodu: model.cikisSubeKodu,
-                      );
-                      if (result != null) {
-                        _topluGirisDepoController.text = result.depoTanimi ?? "";
-                        viewModel.setTopluGirisDepoKodu(result);
-                      }
-                    },
-                    validator: (value) {
-                      if (value == "") {
-                        return "Depo Kodu boş bırakılamaz.";
-                      }
-                      if (model.cikisDepoKodu == model.girisDepoKodu) {
-                        return "Giriş ve Çıkış depolar aynı olamaz.";
-                      }
-                      return null;
-                    },
+                  Expanded(
+                    child: CustomTextField(
+                      labelText: "Toplu Giriş Depo",
+                      readOnly: true,
+                      isMust: true,
+                      //  && model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
+                      suffixMore: true,
+                      controller: _topluGirisDepoController,
+                      enabled: enable,
+                      valueWidget: Observer(
+                        builder: (_) => Text(viewModel.model.girisDepoKodu.toStringIfNotNull ?? ""),
+                      ),
+                      onTap: () async {
+                        final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(
+                          context,
+                          viewModel.model.girisDepoKodu,
+                          subeKodu: model.cikisSubeKodu,
+                        );
+                        if (result != null) {
+                          _topluGirisDepoController.text = result.depoTanimi ?? "";
+                          viewModel.setTopluGirisDepoKodu(result);
+                        }
+                      },
+                      validator: (value) {
+                        if (value == "") {
+                          return "Depo Kodu boş bırakılamaz.";
+                        }
+                        if (model.cikisDepoKodu == model.girisDepoKodu) {
+                          return "Giriş ve Çıkış depolar aynı olamaz.";
+                        }
+                        return null;
+                      },
+                    ),
                   ),
-                ),
-              ],
-            ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi ?? false),
+                ],
+              ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -683,6 +691,14 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       if (result != null) {
                         _ozelKod1Controller.text = result.aciklama ?? "";
                         viewModel.setOzelKod1(result.kod);
+                        if (model.kalemList.ext.isNotNullOrEmpty) {
+                          await dialogManager.showAreYouSureDialog(() async {
+                            final isSuccess = await viewModel.fiyatGuncelle();
+                            if (isSuccess) {
+                              dialogManager.showSuccesDialog("Fiyatlar Güncellendi");
+                            }
+                          }, title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?");
+                        }
                       }
                     },
                   ),
@@ -734,7 +750,8 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (yetkiController.topluDepoKullan(model.getEditTipiEnum))
+                if (yetkiController.topluDepoKullan(model.getEditTipiEnum) &&
+                    model.getEditTipiEnum?.depoTransferiMi != true)
                   Expanded(
                     child: CustomTextField(
                       labelText: "Toplu Depo",
@@ -755,7 +772,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         }
                       },
                     ),
-                  ).yetkiVarMi(model.getEditTipiEnum?.depoTransferiMi != true),
+                  ),
                 if (yetkiController.projeUygulamasiAcikMi &&
                     !(viewModel.model.getEditTipiEnum?.gizlenecekAlanlar("proje") ?? false))
                   Expanded(

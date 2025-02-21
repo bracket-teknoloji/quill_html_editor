@@ -423,15 +423,22 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       onClear: () => model.ozelKod2 = null,
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
                       onTap: () async {
-                        final ListOzelKodTum? result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
+                        final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
                           context,
                           viewModel.model.ozelKod1,
                         );
                         if (result != null) {
+                          ozelKod1Controller.text = result.aciklama ?? "";
                           viewModel.setOzelKod1(result.kod);
-                          ozelKod1Controller.text = result.aciklama ?? result.kod ?? "";
+                          if (model.kalemList.ext.isNotNullOrEmpty) {
+                            await dialogManager.showAreYouSureDialog(() async {
+                              final isSuccess = await viewModel.fiyatGuncelle();
+                              if (isSuccess) {
+                                dialogManager.showSuccesDialog("Fiyatlar Güncellendi");
+                              }
+                            }, title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?");
+                          }
                         }
-                        // var result = await bottomSheetDialogManager.showBottomSheetDialog(context, title: "Özel Kod 1");
                       },
                     ),
                   ),

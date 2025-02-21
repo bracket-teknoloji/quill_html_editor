@@ -1,5 +1,7 @@
 import "package:mobx/mobx.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../model/param_model.dart";
@@ -9,7 +11,7 @@ part "base_siparisler_genel_view_model.g.dart";
 
 final class BaseSiparislerGenelViewModel = _BaseSiparislerGenelViewModelBase with _$BaseSiparislerGenelViewModel;
 
-abstract class _BaseSiparislerGenelViewModelBase with Store {
+abstract class _BaseSiparislerGenelViewModelBase with Store, MobxNetworkMixin {
   @observable
   bool kdvDahil = BaseSiparisEditModel.instance.kdvDahilMi ?? false;
 
@@ -108,5 +110,22 @@ abstract class _BaseSiparislerGenelViewModelBase with Store {
       default:
     }
     BaseSiparisEditModel.setInstance(model);
+  }
+
+
+  @action
+  Future<bool> fiyatGuncelle() async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveFatura,
+      bodyModel: BaseSiparisEditModel(),
+      showLoading: true,
+      data: BaseSiparisEditModel.forOzelKod1FiyatGuncelleme(model),
+    );
+    if (result.isSuccess) {
+      model.kalemList = result.dataList.firstOrNull?.kalemList;
+      BaseSiparisEditModel.setInstance(model);
+      return true;
+    }
+    return false;
   }
 }

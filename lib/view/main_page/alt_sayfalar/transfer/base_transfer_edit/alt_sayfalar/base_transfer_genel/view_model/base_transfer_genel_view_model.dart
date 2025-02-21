@@ -1,4 +1,6 @@
 import "package:mobx/mobx.dart";
+import "package:picker/core/base/view_model/mobx_network_mixin.dart";
+import "package:picker/core/init/network/login/api_urls.dart";
 
 import "../../../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -11,7 +13,7 @@ part "base_transfer_genel_view_model.g.dart";
 
 final class BaseTransferGenelViewModel = _BaseTransferGenelViewModelBase with _$BaseTransferGenelViewModel;
 
-abstract class _BaseTransferGenelViewModelBase with Store {
+abstract class _BaseTransferGenelViewModelBase with Store, MobxNetworkMixin {
   final Map<String, String> hareketTuruMap = <String, String>{
     "Masraf Merkezi": "A",
     "Depolar": "B",
@@ -217,5 +219,22 @@ abstract class _BaseTransferGenelViewModelBase with Store {
       default:
     }
     BaseSiparisEditModel.setInstance(model);
+  }
+
+
+  @action
+  Future<bool> fiyatGuncelle() async {
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveFatura,
+      bodyModel: BaseSiparisEditModel(),
+      showLoading: true,
+      data: BaseSiparisEditModel.forOzelKod1FiyatGuncelleme(model),
+    );
+    if (result.isSuccess) {
+      model.kalemList = result.dataList.firstOrNull?.kalemList;
+      BaseSiparisEditModel.setInstance(model);
+      return true;
+    }
+    return false;
   }
 }

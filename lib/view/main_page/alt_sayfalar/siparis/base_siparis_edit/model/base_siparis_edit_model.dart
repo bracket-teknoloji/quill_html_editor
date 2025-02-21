@@ -311,6 +311,8 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     tag: "FaturaModel",
   );
 
+  factory BaseSiparisEditModel.forOzelKod1FiyatGuncelleme(BaseSiparisEditModel model) => model..islemKodu = 13;
+
   factory BaseSiparisEditModel.fromCariListesiModel(CariListesiModel model) => BaseSiparisEditModel(
     cariKodu: model.cariKodu,
     cariAdi: model.cariAdi,
