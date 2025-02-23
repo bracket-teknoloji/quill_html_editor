@@ -506,6 +506,7 @@ final class YetkiController {
   bool get hizliTahsilatSil => _isTrue(_yetkiModel?.finansHizliTahsilatKayitlariSil);
   bool referansKoduSorulsun(bool tahsilatMi) => tahsilatMi ? tahsilatReferansKoduSorulsun : odemeReferansKoduSorulsun;
   bool referansKodu(String? hesapTipi) {
+    if (hesapTipi == null) return false;
     if (!(_paramModel?.muhasebeEntegre ?? false)) return false;
     if (!(_paramModel?.muhFislerdeRefKodSorulsun ?? false)) return false;
     return switch (hesapTipi) {

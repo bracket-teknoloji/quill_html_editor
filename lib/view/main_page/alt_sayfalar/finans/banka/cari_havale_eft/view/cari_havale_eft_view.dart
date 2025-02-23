@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
@@ -74,14 +76,17 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _aciklamaController = TextEditingController();
     _referansKoduController = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      viewModel
-        ..setCariModel(
-          await networkManager.getCariModel(CariRequestModel(kod: [widget.cariListesiModel?.cariKodu ?? ""])),
-        )
-        ..setTarih(await dialogManager.showDateTimePicker());
+      if (yetkiController.varsayilanMuhRefKodu case final muhRefKodu?) {
+        viewModel.setReferansKodu(muhRefKodu.hesapKodu);
+        _referansKoduController.text = muhRefKodu.hesapAdi ?? "";
+      }
+      viewModel.setTarih(await dialogManager.showDateTimePicker());
       _tarihController.text = viewModel.model.tarih.toDateString;
       if (widget.cariListesiModel != null) {
         viewModel
+          ..setCariModel(
+            await networkManager.getCariModel(CariRequestModel(kod: [widget.cariListesiModel?.cariKodu ?? ""])),
+          )
           ..setCariKodu(widget.cariListesiModel?.cariKodu)
           ..setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu)
           ..setDovizTipi(widget.cariListesiModel?.dovizKodu);
@@ -546,39 +551,20 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     controller: _aciklamaController,
                     onChanged: viewModel.setAciklama,
                   ),
+                  Observer(
+                    builder: (_) {
+                      log("Cari Hesap Referans Kodu: ${viewModel.cariModel?.muhHesapTipi}");
+                      log("Banka Hesap Referans Kodu: ${viewModel.bankaModel?.muhasebeHesapTipi}");
+                      if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
+                          yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi)) {
+                        // if (viewModel.model.cariyiBorclandir ?? false)
+                        // if (!yetkiController.referansKodu("") && !yetkiController.referansKoduSorulsun(false)) {
 
-                  if (yetkiController.adminMi)
-                    Observer(
-                      builder: (_) {
-                        if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) &&
-                            yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi)) {
-                          if (viewModel.model.cariyiBorclandir ?? false) {
-                            if (!yetkiController.referansKodu("") && !yetkiController.referansKoduSorulsun(false)) {
-                              return CustomTextField(
-                                labelText: "Referans Kodu",
-                                controller: _referansKoduController,
-                                isMust: true,
-                                readOnly: true,
-                                onTap: () async {
-                                  final result = await bottomSheetDialogManager.showReferansKodBottomSheetDialog(
-                                    context,
-                                    viewModel.model.hedefHesapReferansKodu,
-                                  );
-                                  if (result != null) {
-                                    _referansKoduController.text = result.tanimi ?? "";
-                                    viewModel.setReferansKodu(result.kodu);
-                                  }
-                                },
-                              );
-                            } else {
-                              return const SizedBox.shrink();
-                            }
-                          }
-                        }
                         return CustomTextField(
                           labelText: "Referans Kodu",
                           controller: _referansKoduController,
                           isMust: true,
+                          enabled: yetkiController.adminMi,
                           readOnly: true,
                           suffixMore: true,
                           valueWidget: Observer(builder: (_) => Text(viewModel.model.hedefHesapReferansKodu ?? "")),
@@ -593,8 +579,11 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                             }
                           },
                         );
-                      },
-                    ),
+                      }
+                      if (viewModel.model.hedefHesapReferansKodu != null) viewModel.setReferansKodu(null);
+                      return const SizedBox.shrink();
+                    },
+                  ),
                 ],
               ).paddingAll(UIHelper.lowSize),
         ),
@@ -603,9 +592,9 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   );
 
   void setGirisCikis(int value) {
-    viewModel.setGc(value == 0 ? null : true);
     if (value == 0) {
       viewModel
+        ..setGc(null)
         ..setTCMBBankaKodu(null)
         ..setTCMBSubeKodu(null)
         ..setBankaHesapNo(null)
@@ -619,6 +608,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
         _tcmbSubeKoduController.text = parametreModel.finansBankaTcmbSubeKodu ?? "";
       }
       viewModel
+        ..setGc(true)
         ..setTCMBSubeKodu(_tcmbSubeKoduController.text)
         ..setBankaHesapNo(_bankaHesapNoController.text)
         ..setIBAN(_ibanController.text);
@@ -628,11 +618,11 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
   Future<void> getCari() async {
     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
     if (result is CariListesiModel) {
-      viewModel.setCariModel(result);
       _cariController.text = result.cariAdi ?? "";
       _plasiyerController.text = result.plasiyerAciklama ?? "";
       _aciklamaController.text = "EFT/HAVALE - ${result.cariAdi ?? ""}";
       viewModel
+        ..setCariModel(result)
         ..setAciklama(_aciklamaController.text)
         ..setPlasiyerKodu(result.plasiyerKodu)
         ..setCariKodu(result.cariKodu)

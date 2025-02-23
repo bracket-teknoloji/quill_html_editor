@@ -63,12 +63,13 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   void setTarih(DateTime? tarih) => model = model.copyWith(tarih: tarih.dateTimeWithoutTime);
 
   @action
-  void setDekontNo(String? dekontNo) => model = model.copyWith(dekontBelgeNo: dekontNo != "" ? dekontNo : null);
+  void setDekontNo(String? dekontNo) =>
+      model = model.copyWith(dekontBelgeNo: dekontNo?.isNotEmpty ?? false ? dekontNo : null);
 
   @action
   void setHesapNo(BankaListesiModel? hesapNo) {
     bankaModel = hesapNo;
-    model = model.copyWith(hesapKodu: hesapNo?.hesapKodu != "" ? hesapNo?.hesapKodu : null);
+    model = model.copyWith(hesapKodu: hesapNo?.hesapKodu?.isNotEmpty ?? false ? hesapNo?.hesapKodu : null);
     setBankaDovizliMi(hesapNo?.dovizAdi != null);
     if (!model.dovizliMi) {
       setDovizTipi(hesapNo?.dovizTipi);
@@ -76,7 +77,8 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  void setCariKodu(String? cariKodu) => model = model.copyWith(cariKodu: cariKodu != "" ? cariKodu : null);
+  void setCariKodu(String? cariKodu) =>
+      model = model.copyWith(cariKodu: cariKodu?.isNotEmpty ?? false ? cariKodu : null);
 
   @action
   void setDovizTipi(int? dovizTipi) => model = model.copyWith(dovizTipi: dovizTipi != 0 ? dovizTipi : null);
@@ -92,31 +94,34 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setMasrafMuhKodu(String? masrafMuhKodu) =>
-      model = model.copyWith(masrafMuhKodu: masrafMuhKodu != "" ? masrafMuhKodu : null);
+      model = model.copyWith(masrafMuhKodu: masrafMuhKodu?.isNotEmpty ?? false ? masrafMuhKodu : null);
 
   @action
   void setPlasiyerKodu(String? plasiyerKodu) =>
-      model = model.copyWith(plasiyerKodu: plasiyerKodu != "" ? plasiyerKodu : null);
+      model = model.copyWith(plasiyerKodu: plasiyerKodu?.isNotEmpty ?? false ? plasiyerKodu : null);
 
   @action
-  void setProjeKodu(String? projeKodu) => model = model.copyWith(projeKodu: projeKodu != "" ? projeKodu : null);
+  void setProjeKodu(String? projeKodu) =>
+      model = model.copyWith(projeKodu: projeKodu?.isNotEmpty ?? false ? projeKodu : null);
 
   @action
-  void setAciklama(String? aciklama) => model = model.copyWith(aciklama: aciklama != "" ? aciklama : null);
+  void setAciklama(String? aciklama) =>
+      model = model.copyWith(aciklama: aciklama?.isNotEmpty ?? false ? aciklama : null);
 
   @action
   void setTCMBBankaKodu(String? tcmbBankaKodu) =>
-      model = model.copyWith(tcmbBankaKodu: tcmbBankaKodu != "" ? tcmbBankaKodu : null);
+      model = model.copyWith(tcmbBankaKodu: tcmbBankaKodu?.isNotEmpty ?? false ? tcmbBankaKodu : null);
 
   @action
   void setTCMBSubeKodu(String? tcmbSubeKodu) =>
-      model = model.copyWith(tcmbSubeKodu: tcmbSubeKodu != "" ? tcmbSubeKodu : null);
+      model = model.copyWith(tcmbSubeKodu: tcmbSubeKodu?.isNotEmpty ?? false ? tcmbSubeKodu : null);
 
   @action
-  void setIBAN(String? iban) => model = model.copyWith(iban: iban != "" ? iban : null);
+  void setIBAN(String? iban) => model = model.copyWith(iban: iban?.isNotEmpty ?? false ? iban : null);
 
   @action
-  void setBankaHesapNo(String? hesapNo) => model = model.copyWith(hesapNo: hesapNo != "" ? hesapNo : null);
+  void setBankaHesapNo(String? hesapNo) =>
+      model = model.copyWith(hesapNo: hesapNo?.isNotEmpty ?? false ? hesapNo : null);
 
   @action
   void setDovizKurlariListesi(List<DovizKurlariModel>? value) => dovizKurlariListesi = value?.asObservable();

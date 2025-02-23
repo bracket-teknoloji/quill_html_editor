@@ -76,6 +76,22 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
     });
   }
 
+  late final _$bankaModelAtom =
+      Atom(name: '_CariHavaleEftViewModelBase.bankaModel', context: context);
+
+  @override
+  BankaListesiModel? get bankaModel {
+    _$bankaModelAtom.reportRead();
+    return super.bankaModel;
+  }
+
+  @override
+  set bankaModel(BankaListesiModel? value) {
+    _$bankaModelAtom.reportWrite(value, super.bankaModel, () {
+      super.bankaModel = value;
+    });
+  }
+
   late final _$bankaDovizliMiAtom = Atom(
       name: '_CariHavaleEftViewModelBase.bankaDovizliMi', context: context);
 
@@ -336,12 +352,24 @@ mixin _$CariHavaleEftViewModel on _CariHavaleEftViewModelBase, Store {
   }
 
   @override
+  void setReferansKodu(String? referansKodu) {
+    final _$actionInfo = _$_CariHavaleEftViewModelBaseActionController
+        .startAction(name: '_CariHavaleEftViewModelBase.setReferansKodu');
+    try {
+      return super.setReferansKodu(referansKodu);
+    } finally {
+      _$_CariHavaleEftViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 model: ${model},
 dovizKurlariListesi: ${dovizKurlariListesi},
 bankaListesiRequestModel: ${bankaListesiRequestModel},
 cariModel: ${cariModel},
+bankaModel: ${bankaModel},
 bankaDovizliMi: ${bankaDovizliMi}
     ''';
   }

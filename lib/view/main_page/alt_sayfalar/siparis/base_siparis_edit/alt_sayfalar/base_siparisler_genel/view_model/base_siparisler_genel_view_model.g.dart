@@ -42,6 +42,15 @@ mixin _$BaseSiparislerGenelViewModel
     });
   }
 
+  late final _$fiyatGuncelleAsyncAction = AsyncAction(
+      '_BaseSiparislerGenelViewModelBase.fiyatGuncelle',
+      context: context);
+
+  @override
+  Future<bool> fiyatGuncelle() {
+    return _$fiyatGuncelleAsyncAction.run(() => super.fiyatGuncelle());
+  }
+
   late final _$_BaseSiparislerGenelViewModelBaseActionController =
       ActionController(
           name: '_BaseSiparislerGenelViewModelBase', context: context);

@@ -57,6 +57,15 @@ mixin _$BaseFaturaGenelViewModel on _BaseFaturaGenelViewModelBase, Store {
     });
   }
 
+  late final _$fiyatGuncelleAsyncAction = AsyncAction(
+      '_BaseFaturaGenelViewModelBase.fiyatGuncelle',
+      context: context);
+
+  @override
+  Future<bool> fiyatGuncelle() {
+    return _$fiyatGuncelleAsyncAction.run(() => super.fiyatGuncelle());
+  }
+
   late final _$_BaseFaturaGenelViewModelBaseActionController =
       ActionController(name: '_BaseFaturaGenelViewModelBase', context: context);
 

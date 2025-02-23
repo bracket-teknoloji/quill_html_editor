@@ -41,6 +41,15 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
     });
   }
 
+  late final _$fiyatGuncelleAsyncAction = AsyncAction(
+      '_BaseTransferGenelViewModelBase.fiyatGuncelle',
+      context: context);
+
+  @override
+  Future<bool> fiyatGuncelle() {
+    return _$fiyatGuncelleAsyncAction.run(() => super.fiyatGuncelle());
+  }
+
   late final _$_BaseTransferGenelViewModelBaseActionController =
       ActionController(
           name: '_BaseTransferGenelViewModelBase', context: context);
