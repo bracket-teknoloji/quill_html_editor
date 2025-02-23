@@ -37,17 +37,17 @@ private void referansGosterGizle() {
   }
  }
 
- private void referansGosterGizle() {
-  b.layoutReferansKodu.visibleIf(_islemCariEFTHavale && (cariMuhReferansVisible() || bankaMuhReferansVisible()));
-  if (b.layoutReferansKodu.isVisible()) {
-   KullaniciYetkiResponseModel kulYetki = PrefManager.getInstance().getKullaniciYetkiResponseModel();
-   if (kulYetki != null && !kulYetki.varsayilan_MuhasebeReferansKodu.isEmpty()) {
-    b.layoutReferansKodu.setKeyValue(kulYetki.varsayilan_MuhasebeReferansKodu, kulYetki.varsayilan_MuhasebeReferansTanimi);
-    b.layoutReferansKodu.setViewEnable(_profilModel.kullanici_AdminMi);
-   } else {
-    b.layoutReferansKodu.clearKeyValue();
-   }
+private void referansGosterGizle() {
+ b.layoutReferansKodu.visibleIf(_islemCariEFTHavale && (cariMuhReferansVisible() || bankaMuhReferansVisible()));
+ if (b.layoutReferansKodu.isVisible()) {
+  KullaniciYetkiResponseModel kulYetki = PrefManager.getInstance().getKullaniciYetkiResponseModel();
+  if (kulYetki != null && !kulYetki.varsayilan_MuhasebeReferansKodu.isEmpty()) {
+   b.layoutReferansKodu.setKeyValue(kulYetki.varsayilan_MuhasebeReferansKodu, kulYetki.varsayilan_MuhasebeReferansTanimi);
+   b.layoutReferansKodu.setViewEnable(_profilModel.kullanici_AdminMi);
   } else {
    b.layoutReferansKodu.clearKeyValue();
   }
+ } else {
+  b.layoutReferansKodu.clearKeyValue();
  }
+}
