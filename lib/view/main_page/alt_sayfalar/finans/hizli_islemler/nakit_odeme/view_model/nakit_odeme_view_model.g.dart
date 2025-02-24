@@ -48,6 +48,22 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
     });
   }
 
+  late final _$cariModelAtom =
+      Atom(name: '_NakitOdemeViewModelBase.cariModel', context: context);
+
+  @override
+  CariListesiModel? get cariModel {
+    _$cariModelAtom.reportRead();
+    return super.cariModel;
+  }
+
+  @override
+  set cariModel(CariListesiModel? value) {
+    _$cariModelAtom.reportWrite(value, super.cariModel, () {
+      super.cariModel = value;
+    });
+  }
+
   late final _$modelAtom =
       Atom(name: '_NakitOdemeViewModelBase.model', context: context);
 
@@ -170,6 +186,17 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
 
   late final _$_NakitOdemeViewModelBaseActionController =
       ActionController(name: '_NakitOdemeViewModelBase', context: context);
+
+  @override
+  void setCariModel(CariListesiModel? value) {
+    final _$actionInfo = _$_NakitOdemeViewModelBaseActionController.startAction(
+        name: '_NakitOdemeViewModelBase.setCariModel');
+    try {
+      return super.setCariModel(value);
+    } finally {
+      _$_NakitOdemeViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setCariBakiye(double? value) {
@@ -384,6 +411,7 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
   String toString() {
     return '''
 cariBakiye: ${cariBakiye},
+cariModel: ${cariModel},
 model: ${model},
 dovizKurlariListesi: ${dovizKurlariListesi},
 muhaRefList: ${muhaRefList},

@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
@@ -21,6 +22,9 @@ final class NakitOdemeViewModel = _NakitOdemeViewModelBase with _$NakitOdemeView
 abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   @observable
   double? cariBakiye;
+
+  @observable
+  CariListesiModel? cariModel;
 
   @observable
   TahsilatRequestModel model = TahsilatRequestModel(
@@ -55,6 +59,9 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
 
   @computed
   String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+
+  @action
+  void setCariModel(CariListesiModel? value) => cariModel = value;
 
   @action
   void setCariBakiye(double? value) => cariBakiye = value;
