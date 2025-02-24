@@ -69,7 +69,7 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
         Visibility(
           visible: !widget.model.isGoruntule,
           child: CustomTextField(
-            labelText: "Stok Kodu / Barkod Giriniz",
+            labelText: "Stok Kodu/Barkod Giriniz",
             controller: _searchTextController,
             onSubmitted: (p0) async {
               if (p0.ext.isNotNullOrNoEmpty) {

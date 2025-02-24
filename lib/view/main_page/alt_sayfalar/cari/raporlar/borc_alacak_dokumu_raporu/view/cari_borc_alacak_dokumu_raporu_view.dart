@@ -48,7 +48,7 @@ final class _CariBorcAlacakDokumuRaporuViewState extends BaseState<CariBorcAlaca
     builder:
         (_) => PDFViewerView(
           filterBottomSheet: filterBottomSheet,
-          title: "Borç / Alacak Dökümü",
+          title: "Borç/Alacak Dökümü",
           pdfData: viewModel.pdfModel,
         ),
   );

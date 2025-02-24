@@ -72,7 +72,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
       children: <Widget>[
         if (!widget.model.isGoruntule)
           CustomTextField(
-            labelText: "Stok Kodu / Barkod Giriniz",
+            labelText: "Stok Kodu/Barkod Giriniz",
             readOnly: BaseSiparisEditModel.instance.getEditTipiEnum?.kalemlerKlavyeAcilmasin,
             controller: _searchTextController,
             onSubmitted: (p0) async {

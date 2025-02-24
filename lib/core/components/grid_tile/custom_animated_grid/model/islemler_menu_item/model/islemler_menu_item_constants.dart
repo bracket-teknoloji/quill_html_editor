@@ -630,7 +630,7 @@ final class IslemlerMenuItemConstants<T> {
           if (newModel.cariIl != null || newModel.cariIlce != null)
             BottomSheetModel(
               title: "İl/ İlçe",
-              value: "${newModel.cariIl ?? ""} / ${newModel.cariIlce ?? ""}",
+              value: "${newModel.cariIl ?? ""}/${newModel.cariIlce ?? ""}",
               groupValue: true,
             ),
           if (newModel.vergiDairesi != null || newModel.vergiNumarasi != null)

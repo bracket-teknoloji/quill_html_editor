@@ -102,7 +102,7 @@ abstract final class MenuItemConstants {
             ),
             GridItemModel.item(
               name: "cari_Rap_BorcAlacakDokumu",
-              title: "Borç / Alacak Dökümü",
+              title: "Borç/Alacak Dökümü",
               route: "/mainPage/cariBorcAlacakDokumu",
             ),
             GridItemModel.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", route: "/mainPage/cariStokEkstre"),
@@ -352,6 +352,8 @@ abstract final class MenuItemConstants {
         GridItemModel.item(name: "genel_DovizKurlari", title: "Döviz Kurları", route: "/dovizKurlari"),
         GridItemModel.item(name: "ayarlar_FirmaAyarlari", title: "Firmalar", route: "/addCompany"),
         GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
+        if (kDebugMode)
+          GridItemModel.item(name: "genel_BelgeKontrol", title: "Belge Kontrol", route: "mainPage/belgeKontrol"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/surumYenilikleri"),
         if (AccountModel.instance.adminMi)
           GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
@@ -533,6 +535,7 @@ abstract final class MenuItemConstants {
             // GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", route: "/mainPage/siparisSiparisKarlikRaporu"),
             // GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
             // GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),
+            ..._getSerbestRapor(SerbestRaporDetayKodEnum.siparis),
           ],
         ),
       ],
@@ -549,7 +552,7 @@ abstract final class MenuItemConstants {
         GridItemModel.item(name: "stok_StokListesi", title: "Stok Listesi", route: "/mainPage/stokListesi"),
         GridItemModel.item(name: "stok_BarkodTanimlama", title: "Barkod Tanımla", route: "/mainPage/stokBarkodTanimla"),
         GridItemModel.item(name: "stok_FiyatGorEkrani", title: "Fiyat Gör", route: "/mainPage/stokFiyatGor"),
-        GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi",  route: "/mainPage/stokFiyatGecmisi"),
+        GridItemModel.item(name: "stok_FiyatGecmisi", title: "Fiyat Geçmişi", route: "/mainPage/stokFiyatGecmisi"),
         GridItemModel.item(name: "yazdirma_Stok_Etiketi", title: "Yazdır", route: "/mainPage/stokYazdir"),
         GridItemModel.item(name: "stok_Paketleme", title: "Paketleme", route: "/mainPage/paketleme"),
         GridItemModel.altmenu(
