@@ -172,6 +172,7 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
 
   Future<File?> get getFile async {
     if (kIsWeb) {
+      dialogManager.showErrorSnackBar("Bu özellik web üzerinde çalışmamaktadır.");
       return null;
     }
     final appStorage = await getApplicationDocumentsDirectory();
@@ -182,8 +183,9 @@ final class _GenelPdfViewState extends BaseState<GenelPdfView> {
     await fileWriter.close();
     if (file.lengthSync() > 0) {
       viewModel.changePdfFile(file);
+      return file;
     }
-    return file.lengthSync() > 0 ? file : null;
+    return null;
   }
 
   void showContextMenu(BuildContext context, PdfTextSelectionChangedDetails details) {
