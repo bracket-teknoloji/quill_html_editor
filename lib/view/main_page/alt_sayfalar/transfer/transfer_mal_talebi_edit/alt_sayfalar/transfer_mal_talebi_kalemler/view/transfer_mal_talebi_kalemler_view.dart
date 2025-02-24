@@ -59,7 +59,7 @@ class _TransferMalTalebiKalemlerViewState extends BaseState<TransferMalTalebiKal
     children: [
       if (widget.model.enable)
         CustomTextField(
-          labelText: "Stok kodu / barkod giriniz",
+          labelText: "Stok kodu/barkod giriniz",
           onSubmitted: (value) async {
             final result = await Get.toNamed("mainPage/depoTalepStokRehberi", arguments: value);
             if (result is! StokListesiModel) return;

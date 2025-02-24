@@ -87,6 +87,11 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
     _aciklama3Controller = TextEditingController();
     _raporKoduController = TextEditingController();
     _cariRaporKoduController = TextEditingController();
+
+    if (yetkiController.varsayilanMuhRefKodu case final muhRefKodu?) {
+      viewModel.setReferans(MuhasebeReferansModel(kodu: muhRefKodu.hesapKodu, tanimi: muhRefKodu.hesapAdi));
+      _referansKoduController.text = muhRefKodu.hesapAdi ?? "";
+    }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.model?.vadeTarihi != null) {
         await initModel();
@@ -299,38 +304,39 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
             controller: _duzenlendigiYerController,
             onChanged: viewModel.setDuzenlendigiYer,
           ).yetkiVarMi(!widget.cekSenetListesiEnum.cekMi),
-          CustomTextField(
-            labelText: "Referans Kodu",
-            controller: _referansKoduController,
-            isMust: true,
-            suffixMore: true,
-            valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
-            onTap: () async {
-              if (viewModel.muhaRefList.ext.isNullOrEmpty) {
-                await viewModel.getMuhaRefList();
-              }
-              final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                context,
-                title: "Referans Kodu",
-                groupValue: viewModel.model.refKod,
-                children:
-                    viewModel.muhaRefList!
-                        .map(
-                          (e) => BottomSheetModel(
-                            title: e.tanimi ?? "",
-                            description: e.kodu,
-                            value: e,
-                            groupValue: e.kodu,
-                          ),
-                        )
-                        .toList(),
-              );
-              if (result is MuhasebeReferansModel) {
-                _referansKoduController.text = result.tanimi ?? "";
-                viewModel.setReferans(result);
-              }
-            },
-          ).yetkiVarMi(widget.model?.refKodSorulsunMu ?? false),
+          if (yetkiController.referansKodu(viewModel.bankModel?.muhasebeHesapTipi))
+            CustomTextField(
+              labelText: "Referans Kodu",
+              controller: _referansKoduController,
+              isMust: true,
+              suffixMore: true,
+              valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+              onTap: () async {
+                if (viewModel.muhaRefList.ext.isNullOrEmpty) {
+                  await viewModel.getMuhaRefList();
+                }
+                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                  context,
+                  title: "Referans Kodu",
+                  groupValue: viewModel.model.refKod,
+                  children:
+                      viewModel.muhaRefList!
+                          .map(
+                            (e) => BottomSheetModel(
+                              title: e.tanimi ?? "",
+                              description: e.kodu,
+                              value: e,
+                              groupValue: e.kodu,
+                            ),
+                          )
+                          .toList(),
+                );
+                if (result is MuhasebeReferansModel) {
+                  _referansKoduController.text = result.tanimi ?? "";
+                  viewModel.setReferans(result);
+                }
+              },
+            ).yetkiVarMi(widget.model?.refKodSorulsunMu ?? false),
           CustomTextField(
             labelText: "Banka",
             controller: _bankaController,
@@ -485,7 +491,7 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
     );
     if (result is BankaListesiModel) {
       _bankaHesapKoduController.text = result.hesapKodu ?? "";
-      viewModel.setBankaHesapKodu(result.hesapKodu);
+      viewModel..setBankaHesapKodu(result.hesapKodu)..setBankModel(result);
     }
   }
 

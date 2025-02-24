@@ -75,11 +75,11 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _projeController = TextEditingController();
     _aciklamaController = TextEditingController();
     _referansKoduController = TextEditingController();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
       if (yetkiController.varsayilanMuhRefKodu case final muhRefKodu?) {
         viewModel.setReferansKodu(muhRefKodu.hesapKodu);
         _referansKoduController.text = muhRefKodu.hesapAdi ?? "";
       }
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       viewModel.setTarih(await dialogManager.showDateTimePicker());
       _tarihController.text = viewModel.model.tarih.toDateString;
       if (widget.cariListesiModel != null) {

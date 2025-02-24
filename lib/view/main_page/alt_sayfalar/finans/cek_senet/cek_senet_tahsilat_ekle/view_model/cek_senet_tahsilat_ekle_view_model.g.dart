@@ -43,6 +43,22 @@ mixin _$CekSenetTahsilatEkleViewModel
     });
   }
 
+  late final _$bankModelAtom = Atom(
+      name: '_CekSenetTahsilatEkleViewModelBase.bankModel', context: context);
+
+  @override
+  BankaListesiModel? get bankModel {
+    _$bankModelAtom.reportRead();
+    return super.bankModel;
+  }
+
+  @override
+  set bankModel(BankaListesiModel? value) {
+    _$bankModelAtom.reportWrite(value, super.bankModel, () {
+      super.bankModel = value;
+    });
+  }
+
   late final _$muhaRefListAtom = Atom(
       name: '_CekSenetTahsilatEkleViewModelBase.muhaRefList', context: context);
 
@@ -87,6 +103,18 @@ mixin _$CekSenetTahsilatEkleViewModel
         .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setModel');
     try {
       return super.setModel(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBankModel(BankaListesiModel? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setBankModel');
+    try {
+      return super.setBankModel(value);
     } finally {
       _$_CekSenetTahsilatEkleViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -414,6 +442,7 @@ mixin _$CekSenetTahsilatEkleViewModel
     return '''
 model: ${model},
 dovizKurlariListesi: ${dovizKurlariListesi},
+bankModel: ${bankModel},
 muhaRefList: ${muhaRefList}
     ''';
   }
