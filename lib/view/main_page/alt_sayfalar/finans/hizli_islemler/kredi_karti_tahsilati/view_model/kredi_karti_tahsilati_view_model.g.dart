@@ -67,6 +67,38 @@ mixin _$KrediKartiTahsilatiViewModel
     });
   }
 
+  late final _$cariModelAtom = Atom(
+      name: '_KrediKartiTahsilatiViewModelBase.cariModel', context: context);
+
+  @override
+  CariListesiModel? get cariModel {
+    _$cariModelAtom.reportRead();
+    return super.cariModel;
+  }
+
+  @override
+  set cariModel(CariListesiModel? value) {
+    _$cariModelAtom.reportWrite(value, super.cariModel, () {
+      super.cariModel = value;
+    });
+  }
+
+  late final _$bankModelAtom = Atom(
+      name: '_KrediKartiTahsilatiViewModelBase.bankModel', context: context);
+
+  @override
+  BankaListesiModel? get bankModel {
+    _$bankModelAtom.reportRead();
+    return super.bankModel;
+  }
+
+  @override
+  set bankModel(BankaListesiModel? value) {
+    _$bankModelAtom.reportWrite(value, super.bankModel, () {
+      super.bankModel = value;
+    });
+  }
+
   late final _$bankaSozlesmesiListAtom = Atom(
       name: '_KrediKartiTahsilatiViewModelBase.bankaSozlesmesiList',
       context: context);
@@ -217,6 +249,30 @@ mixin _$KrediKartiTahsilatiViewModel
   late final _$_KrediKartiTahsilatiViewModelBaseActionController =
       ActionController(
           name: '_KrediKartiTahsilatiViewModelBase', context: context);
+
+  @override
+  void setCariModel(CariListesiModel? value) {
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setCariModel');
+    try {
+      return super.setCariModel(value);
+    } finally {
+      _$_KrediKartiTahsilatiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBankModel(BankaListesiModel? value) {
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setBankModel');
+    try {
+      return super.setBankModel(value);
+    } finally {
+      _$_KrediKartiTahsilatiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setCariBakiye(double? value) {
@@ -542,6 +598,8 @@ mixin _$KrediKartiTahsilatiViewModel
 cariBakiye: ${cariBakiye},
 appBarSubTitle: ${appBarSubTitle},
 seriList: ${seriList},
+cariModel: ${cariModel},
+bankModel: ${bankModel},
 bankaSozlesmesiList: ${bankaSozlesmesiList},
 bankaHesaplariList: ${bankaHesaplariList},
 muhaRefList: ${muhaRefList},

@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/banka_sozlesmesi_model.dart";
@@ -32,6 +33,12 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   ObservableList<SeriModel>? seriList;
 
   @observable
+  CariListesiModel? cariModel;
+
+  @observable
+  BankaListesiModel? bankModel;
+
+  @observable
   ObservableList<BankaSozlesmesiModel>? bankaSozlesmesiList;
 
   @observable
@@ -55,6 +62,12 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
 
   @computed
   String? get getCariBakiye => cariBakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
+
+  @action
+  void setCariModel(CariListesiModel? value) => cariModel = value;
+
+  @action
+  void setBankModel(BankaListesiModel? value) => bankModel = value;
 
   @action
   void setCariBakiye(double? value) => cariBakiye = value;

@@ -66,7 +66,13 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");
     _projekoduController = TextEditingController();
     _aciklamaController = TextEditingController();
+
+    if (yetkiController.varsayilanMuhRefKodu case final muhRefKodu?) {
+      viewModel.setReferansKodu(muhRefKodu.hesapKodu);
+      _referansKoduController.text = muhRefKodu.hesapAdi ?? "";
+    }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      viewModel.setCariModel(widget.cariListesiModel);
       if (userModel.kullaniciYetki?.kkartiTahsilatYontemi == null && !AccountModel.instance.adminMi) {
         await dialogManager.showAlertDialog(
           "Tahsilat yöntemi belirsiz.\nNetfect > Picker > Kullanıcı Özel Yetkilendirme ekranından kredi kartı tahsilatı yöntemi belirleyin.",
@@ -380,35 +386,42 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                     },
                   ),
                 ),
-              if (yetkiController.referansKoduSorulsun(true))
-                Expanded(
-                  child: CustomTextField(
-                    labelText: "Referans Kodu",
-                    controller: _referansKoduController,
-                    isMust: true,
-                    readOnly: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
-                    onTap: () async {
-                      if (viewModel.muhaRefList.ext.isNullOrEmpty) {
-                        await viewModel.getMuhaRefList();
-                      }
-                      final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                        context,
-                        title: "Referans Kodu",
-                        groupValue: viewModel.model.refKod,
-                        children:
-                            viewModel.muhaRefList!
-                                .map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu))
-                                .toList(),
+
+              Expanded(
+                child: Observer(
+                  builder: (_) {
+                    if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
+                        yetkiController.referansKodu(viewModel.bankModel?.muhasebeHesapTipi))
+                      return CustomTextField(
+                        labelText: "Referans Kodu",
+                        controller: _referansKoduController,
+                        isMust: true,
+                        readOnly: true,
+                        suffixMore: true,
+                        valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+                        onTap: () async {
+                          if (viewModel.muhaRefList.ext.isNullOrEmpty) {
+                            await viewModel.getMuhaRefList();
+                          }
+                          final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                            context,
+                            title: "Referans Kodu",
+                            groupValue: viewModel.model.refKod,
+                            children:
+                                viewModel.muhaRefList!
+                                    .map((e) => BottomSheetModel(title: e.tanimi ?? "", value: e, groupValue: e.kodu))
+                                    .toList(),
+                          );
+                          if (result is MuhasebeReferansModel) {
+                            _referansKoduController.text = result.tanimi ?? "";
+                            viewModel.setReferansKodu(result.kodu);
+                          }
+                        },
                       );
-                      if (result is MuhasebeReferansModel) {
-                        _referansKoduController.text = result.tanimi ?? "";
-                        viewModel.setReferansKodu(result.kodu);
-                      }
-                    },
-                  ),
+                    return const SizedBox.shrink();
+                  },
                 ),
+              ),
             ],
           ),
           CustomTextField(labelText: "Açıklama", controller: _aciklamaController, onChanged: viewModel.setAciklama),
@@ -425,6 +438,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
       _cariController.text = result.cariAdi ?? "";
       _plasiyerController.text = result.plasiyerAciklama ?? "";
       viewModel
+        ..setCariModel(result)
         ..setAciklama(result.cariAdi)
         ..setCariKodu(result.cariKodu)
         ..setHesapKodu(result.cariKodu)
@@ -496,6 +510,11 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
       await viewModel.getBankaHesaplari();
     }
     if (viewModel.bankaHesaplariList.ext.isNotNullOrEmpty) {
+      // final result = await bottomSheetDialogManager.showBankaHesaplariBottomSheetDialog(
+      //   context,
+      //   viewModel.,
+
+      // );
       final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
         context,
         title: "Banka Hesapları",
@@ -515,6 +534,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
       if (result is BankaListesiModel) {
         _hesapController.text = result.hesapAdi ?? "";
         viewModel
+          ..setBankModel(result)
           ..setHesapKodu(result.hesapKodu)
           ..setHedefAciklama(result.hesapAdi)
           ..setHesapTipi("B");
