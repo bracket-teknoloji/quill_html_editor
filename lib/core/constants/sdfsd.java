@@ -1,53 +1,20 @@
-private void referansGosterGizle() {
-  b.layoutReferansKodu.visibleIf(_islemCariEFTHavale && cariMuhReferansVisible());
-  if (b.layoutReferansKodu.isVisible()) {
-   KullaniciYetkiResponseModel kulYetki = PrefManager.getInstance().getKullaniciYetkiResponseModel();
-   if (kulYetki != null && !kulYetki.varsayilan_MuhasebeReferansKodu.isEmpty()) {
-    b.layoutReferansKodu.setKeyValue(kulYetki.varsayilan_MuhasebeReferansKodu, kulYetki.varsayilan_MuhasebeReferansTanimi);
-    b.layoutReferansKodu.setViewEnable(_profilModel.kullanici_AdminMi);
-   } else {
-    b.layoutReferansKodu.clearKeyValue();
+public boolean ozelKod1TablodanMi() {
+  //tablodan ise rehberden seçilir, değilse combobox şeklinde gelir.
+  boolean satisMi = BelgeUtils.belgeSatisMi(_BelgeTuru) || BelgeUtils.datMi(_BelgeTuru) || BelgeUtils.ambarMi(_BelgeTuru);
+  boolean alisMi = BelgeUtils.belgeAlisMi(_BelgeTuru);
+  if (satisMi)
+   return SatisOzelKod1Tablodan;
+  else if (alisMi)
+   return AlisOzelKod1Tablodan;
+  else if (BelgeUtils.talepTeklifMi(_BelgeTuru))
+   return _getTalTekParamModel(_BelgeTuru).OZEL_KOD1_TABLODAN.equalsIgnoreCase("E");
+  else
+   return false;
+ }
+_dialogBinderOzelKod1._initKeyGizle = true;
+   for (OzelKodResponseModel m : _paramModel.getOzelKod1List()) {
+    _dialogBinderOzelKod1.addItem(m.Kod, m.getKodAciklama(), m, false);
    }
-  } else {
-   b.layoutReferansKodu.clearKeyValue();
-  }
- }
- private boolean cariMuhReferansVisible() {
-  CariResponseModel cariModel = b.layoutCari.getCariModel();
-  if (cariModel != null && _paramModel.MuhasebeEntegre && _paramModel.MuhFislerdeRefKodSorulsun) {
-   return (cariModel.MuhHesapTipi.equals("A") && _paramModel.MuhFislerdeRefKodSorulsun_Aktif) ||
-     (cariModel.MuhHesapTipi.equals("P") && _paramModel.MuhFislerdeRefKodSorulsun_Pasif) ||
-     (cariModel.MuhHesapTipi.equals("G") && _paramModel.MuhFislerdeRefKodSorulsun_Gelir) ||
-     (cariModel.MuhHesapTipi.equals("I") && _paramModel.MuhFislerdeRefKodSorulsun_Gider) ||
-     (cariModel.MuhHesapTipi.equals("N") && _paramModel.MuhFislerdeRefKodSorulsun_Nazim);
-  } else {
-   return false;
-  }
- }
-
- private boolean bankaMuhReferansVisible() {
-  if (_selectedKaynakHesap != null && _paramModel.MuhasebeEntegre && _paramModel.MuhFislerdeRefKodSorulsun) {
-   return (_selectedKaynakHesap.MuhasebeHesapTipi.equals("A") && _paramModel.MuhFislerdeRefKodSorulsun_Aktif) ||
-     (_selectedKaynakHesap.MuhasebeHesapTipi.equals("P") && _paramModel.MuhFislerdeRefKodSorulsun_Pasif) ||
-     (_selectedKaynakHesap.MuhasebeHesapTipi.equals("G") && _paramModel.MuhFislerdeRefKodSorulsun_Gelir) ||
-     (_selectedKaynakHesap.MuhasebeHesapTipi.equals("I") && _paramModel.MuhFislerdeRefKodSorulsun_Gider) ||
-     (_selectedKaynakHesap.MuhasebeHesapTipi.equals("N") && _paramModel.MuhFislerdeRefKodSorulsun_Nazim);
-  } else {
-   return false;
-  }
- }
-
-private void referansGosterGizle() {
- b.layoutReferansKodu.visibleIf(_islemCariEFTHavale && (cariMuhReferansVisible() || bankaMuhReferansVisible()));
- if (b.layoutReferansKodu.isVisible()) {
-  KullaniciYetkiResponseModel kulYetki = PrefManager.getInstance().getKullaniciYetkiResponseModel();
-  if (kulYetki != null && !kulYetki.varsayilan_MuhasebeReferansKodu.isEmpty()) {
-   b.layoutReferansKodu.setKeyValue(kulYetki.varsayilan_MuhasebeReferansKodu, kulYetki.varsayilan_MuhasebeReferansTanimi);
-   b.layoutReferansKodu.setViewEnable(_profilModel.kullanici_AdminMi);
-  } else {
-   b.layoutReferansKodu.clearKeyValue();
-  }
- } else {
-  b.layoutReferansKodu.clearKeyValue();
- }
-}
+   if (_yeniKayitMi && _paramModel.ozelKod1TablodanMi() == false) {
+    _dialogBinderOzelKod1.selectFirst();
+   }
