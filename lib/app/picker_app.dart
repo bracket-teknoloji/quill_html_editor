@@ -30,14 +30,16 @@ final class PickerApp extends StatelessWidget {
     alignment: Alignment.center,
     child: ClipRRect(
       borderRadius:
-          context.isLandscape
+          !context.isPhone && context.isLandscape
               ? const BorderRadius.only(
                 topLeft: Radius.circular(UIHelper.highSize),
                 topRight: Radius.circular(UIHelper.highSize),
               )
               : BorderRadius.zero,
       child: Container(
-        constraints: BoxConstraints(maxWidth: context.isLandscape ? getWidth(context) : double.infinity),
+        constraints: BoxConstraints(
+          maxWidth: !context.isPhone && context.isLandscape ? getWidth(context) : double.infinity,
+        ),
         child: const PickerMaterialApp(),
       ),
     ),
