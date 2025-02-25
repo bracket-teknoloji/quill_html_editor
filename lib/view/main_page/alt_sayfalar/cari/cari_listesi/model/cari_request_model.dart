@@ -1,3 +1,5 @@
+import "dart:convert";
+
 import "package:freezed_annotation/freezed_annotation.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -78,4 +80,6 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
 
   @override
   CariRequestModel fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
+
+  Map<String, dynamic> toJsonWithArray() => toJson()..["KOD"] = null..["KOD"] = jsonEncode(kod);
 }
