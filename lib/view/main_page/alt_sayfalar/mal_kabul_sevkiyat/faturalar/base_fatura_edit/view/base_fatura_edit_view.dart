@@ -290,6 +290,14 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                     : null
             ..belgeNo = null;
         }
+        if (!yetkiController.ozelKod1TablodanMi(widget.model.editTipiEnum)) {
+          final List<ListOzelKodTum> list =
+              parametreModel.listOzelKodTum
+                  ?.where((element) => element.belgeTipi == "S" && element.fiyatSirasi != 0)
+                  .toList() ??
+              <ListOzelKodTum>[];
+          BaseSiparisEditModel.instance.ozelKod1 = list.firstOrNull?.kod;
+        }
         _cariKoduController.text = widget.model.model?.cariAdi ?? "";
         if (widget.model.editTipiEnum?.siparisBaglantisiVarMi ?? false) {
           final result = await getSiparisBaglantisi();

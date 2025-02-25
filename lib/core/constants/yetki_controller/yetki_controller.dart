@@ -1271,4 +1271,14 @@ final class YetkiController {
   bool get alisTalebiGoruntule => _isTrue(_yetkiModel?.taltekAtal);
   bool get satisTalebiGoruntule => _isTrue(_yetkiModel?.taltekStal);
   bool get cariKartiGoruntuleme => _isTrue(_yetkiModel?.cariCariKarti);
+
+  bool ozelKod1TablodanMi(EditTipiEnum? editTipi) {
+    if (!editTipi.talepTeklifMi) {
+      return _isTrue(
+        (editTipi?.satisMi ?? false) ? _paramModel?.satisOzelKod1Tablodan : _paramModel?.alisOzelKod1Tablodan,
+        skipAdmin: true,
+      );
+    }
+    return _isTrue(_paramModel?.talTekParam?.firstOrNull?.ozelKod1Tablodan == "E", skipAdmin: true);
+  }
 }

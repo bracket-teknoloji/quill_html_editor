@@ -113,6 +113,8 @@ final class ParamModel {
   String? alisEkAciklamaTanimi16;
   @JsonKey(name: "AlisOzelKod1Tablodan")
   bool? alisOzelKod1Tablodan;
+  @JsonKey(name: "SatisOzelKod1Tablodan")
+  bool? satisOzelKod1Tablodan;
   @JsonKey(name: "AlisKosulAktif")
   bool? alisKosulAktif;
   @JsonKey(name: "AlisFarkliTeslimCariAktif")
