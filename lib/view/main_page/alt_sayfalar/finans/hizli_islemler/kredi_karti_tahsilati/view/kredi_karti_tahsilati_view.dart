@@ -7,6 +7,7 @@ import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/banka_sozlesmesi_model.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/muhasebe_referans_model.dart";
+import "package:picker/core/base/model/seri_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
@@ -56,7 +57,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     _cariController = TextEditingController(text: widget.cariListesiModel?.cariAdi ?? "");
     _kasaController = TextEditingController();
     _sozlesmeController = TextEditingController();
-    _seriController = TextEditingController();
+    _seriController = TextEditingController(text: userModel.kullaniciYetki?.dekSeriKKartiTahsilati);
     _hesapController = TextEditingController();
     _tutarController = TextEditingController(
       text: widget.cariListesiModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
@@ -82,6 +83,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
       }
       viewModel
         ..setTutar(widget.cariListesiModel?.bakiye?.abs())
+        ..setSeri(SeriModel(seriNo: userModel.kullaniciYetki?.dekSeriKKartiTahsilati))
         ..setKktYontemi(userModel.kullaniciYetki?.kkartiTahsilatYontemi);
       if (AccountModel.instance.adminMi) {
         await tahsilatYontemiDialog();
@@ -108,14 +110,14 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         await getCari();
       }
       if (viewModel.model.kktYontemi == "D") {
-        await getSeri();
+        if (userModel.kullaniciYetki?.dekSeriKKartiTahsilati == null) await getSeri();
         viewModel.setAppBarSubTitle("Dekont");
         if (viewModel.model.dekontSeri == null) return;
         // viewModel.setPickerBelgeTuru("KKT");
         await getBankaHesaplari();
         if (viewModel.model.hesapKodu == null) return;
       }
-      if (viewModel.model.kktYontemi == "K" || viewModel.model.kktYontemi == "H") {
+      if (viewModel.model.kktYontemi case ("K" || "H")) {
         viewModel.setHesapTipi("C");
         await getKasa();
         await viewModel.getSiradakiKod();
@@ -391,10 +393,11 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                 child: Observer(
                   builder: (_) {
                     if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
-                        yetkiController.referansKodu(viewModel.bankModel?.muhasebeHesapTipi))
+                        yetkiController.referansKodu(viewModel.bankModel?.muhasebeHesapTipi)) {
                       return CustomTextField(
                         labelText: "Referans Kodu",
                         controller: _referansKoduController,
+                        enabled: yetkiController.adminMi,
                         isMust: true,
                         readOnly: true,
                         suffixMore: true,
@@ -418,6 +421,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                           }
                         },
                       );
+                    }
                     return const SizedBox.shrink();
                   },
                 ),
@@ -472,6 +476,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(
       context,
       viewModel.model.kasaKodu,
+      tahsilatMi: true,
     );
     if (result != null) {
       _kasaController.text = result.kasaTanimi ?? "";
@@ -520,7 +525,9 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
         title: "Banka Hesapları",
         groupValue: viewModel.model.hesapKodu,
         children:
-            viewModel.bankaHesaplariList!
+            viewModel.bankaHesaplariList
+                ?.where((e) => userModel.kullaniciYetki?.kkartiHesaplar?.contains(e.hesapKodu) ?? false)
+                .toList()
                 .map(
                   (e) => BottomSheetModel(
                     title: e.hesapAdi ?? "",

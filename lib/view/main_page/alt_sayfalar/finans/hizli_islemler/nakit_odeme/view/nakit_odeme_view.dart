@@ -62,10 +62,14 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       text: widget.cariListesiModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
     );
     _plasiyerController = TextEditingController(text: widget.cariListesiModel?.plasiyerAciklama ?? "");
-    _projekoduController = TextEditingController();
+    _projekoduController = TextEditingController(text: yetkiController.varsayilanProje?.projeAciklama ?? "");
     _referansKoduController = TextEditingController();
     _kasaHareketiAciklamaController = TextEditingController();
     _cariHareketiAciklamaController = TextEditingController();
+    if (yetkiController.varsayilanMuhRefKodu case final muhRefKodu?) {
+      viewModel.setReferansKodu(muhRefKodu.hesapKodu);
+      _referansKoduController.text = muhRefKodu.hesapAdi ?? "";
+    }
     viewModel
       ..setTahsilatmi(widget.tahsilatMi == true)
       ..setDovizTutari(widget.cariListesiModel?.dovBakiye?.abs())
@@ -80,9 +84,12 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
             plasiyerAciklama: widget.cariListesiModel!.plasiyerAciklama,
             plasiyerKodu: widget.cariListesiModel!.plasiyerKodu,
           ),
-        );
+        )
+        ..setProjekodu(yetkiController.varsayilanProje?.projeKodu)
+        ..setTarih(DateTime.now().dateTimeWithoutTime);
     }
 
+    _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (widget.cariListesiModel == null) {
         await getCari();
@@ -96,8 +103,6 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       if (viewModel.model.kasaKodu == null) return;
       await viewModel.getSiradakiKod();
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
-      viewModel.setTarih(DateTime.now().dateTimeWithoutTime);
-      _tarihController.text = viewModel.model.tarih?.toDateString ?? "";
     });
 
     super.initState();
@@ -202,6 +207,13 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                   ),
                 ),
               ],
+            ),
+            Observer(
+              builder:
+                  (_) => Text(
+                    "Bakiye: ${viewModel.kasa?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? ""}",
+                    style: TextStyle(color: UIHelper.getColorWithValue(viewModel.kasa?.bakiye ?? 0)),
+                  ).paddingAll(UIHelper.lowSize),
             ),
             CustomTextField(
               labelText: "Cari",
@@ -404,6 +416,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                   return CustomTextField(
                     labelText: "Referans Kodu",
                     controller: _referansKoduController,
+                    enabled: yetkiController.adminMi,
                     isMust: true,
                     readOnly: true,
                     suffixMore: true,

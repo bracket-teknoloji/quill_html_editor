@@ -75,17 +75,19 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
     _projeController = TextEditingController();
     _aciklamaController = TextEditingController();
     _referansKoduController = TextEditingController();
-      if (yetkiController.varsayilanMuhRefKodu case final muhRefKodu?) {
-        viewModel.setReferansKodu(muhRefKodu.hesapKodu);
-        _referansKoduController.text = muhRefKodu.hesapAdi ?? "";
-      }
+    if (yetkiController.varsayilanMuhRefKodu case final muhRefKodu?) {
+      viewModel.setReferansKodu(muhRefKodu.hesapKodu);
+      _referansKoduController.text = muhRefKodu.hesapAdi ?? "";
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       viewModel.setTarih(await dialogManager.showDateTimePicker());
       _tarihController.text = viewModel.model.tarih.toDateString;
       if (widget.cariListesiModel != null) {
         viewModel
           ..setCariModel(
-            await networkManager.getCariModel(CariRequestModel(kod: [widget.cariListesiModel?.cariKodu ?? ""])),
+            await networkManager.getCariModel(
+              CariRequestModel(kod: [widget.cariListesiModel?.cariKodu ?? ""], secildi: "E", belgeTuru: "DCE", plasiyerKisitiYok: true, eFaturaGoster: true),
+            ),
           )
           ..setCariKodu(widget.cariListesiModel?.cariKodu)
           ..setPlasiyerKodu(widget.cariListesiModel?.plasiyerKodu)
@@ -555,8 +557,10 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     builder: (_) {
                       log("Cari Hesap Referans Kodu: ${viewModel.cariModel?.muhHesapTipi}");
                       log("Banka Hesap Referans Kodu: ${viewModel.bankaModel?.muhasebeHesapTipi}");
-                      if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
-                          yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi)) {
+                      if ((yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
+                              yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi) &&
+                                  yetkiController.varsayilanMuhRefKodu == null) &&
+                          !yetkiController.referansKoduSorulsun(false)) {
                         // if (viewModel.model.cariyiBorclandir ?? false)
                         // if (!yetkiController.referansKodu("") && !yetkiController.referansKoduSorulsun(false)) {
 
@@ -580,7 +584,7 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                           },
                         );
                       }
-                      if (viewModel.model.hedefHesapReferansKodu != null) viewModel.setReferansKodu(null);
+                      // if (viewModel.model.hedefHesapReferansKodu != null) viewModel.setReferansKodu(null);
                       return const SizedBox.shrink();
                     },
                   ),

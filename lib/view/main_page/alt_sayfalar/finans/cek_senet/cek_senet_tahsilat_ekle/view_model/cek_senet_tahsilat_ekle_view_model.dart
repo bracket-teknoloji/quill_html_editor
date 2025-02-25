@@ -1,4 +1,5 @@
 import "package:mobx/mobx.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
@@ -21,6 +22,8 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
   @observable
   BankaListesiModel? bankModel;
   @observable
+  CariListesiModel? cariModel;
+  @observable
   ObservableList<MuhasebeReferansModel>? muhaRefList;
 
   @action
@@ -28,6 +31,8 @@ abstract class _CekSenetTahsilatEkleViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void setBankModel(BankaListesiModel? value) => bankModel = value;
+  @action
+  void setCariModel(CariListesiModel? value) => cariModel = value;
 
   @action
   void setBankaHesapKodu(String? value) => model = model.copyWith(verenKodu: value);

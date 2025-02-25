@@ -19,6 +19,7 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/extensions/widget_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/banka/banka_listesi/model/banka_listesi_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
@@ -93,6 +94,19 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
       _referansKoduController.text = muhRefKodu.hesapAdi ?? "";
     }
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      if (widget.model?.cariRaporKodu != null) {
+        viewModel.setCariModel(
+          await networkManager.getCariModel(
+            CariRequestModel(
+              kod: [widget.model?.cariRaporKodu ?? ""],
+              secildi: "E",
+              belgeTuru: "DCE",
+              plasiyerKisitiYok: true,
+              eFaturaGoster: true,
+            ),
+          ),
+        );
+      }
       if (widget.model?.vadeTarihi != null) {
         await initModel();
       } else {
@@ -304,39 +318,46 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
             controller: _duzenlendigiYerController,
             onChanged: viewModel.setDuzenlendigiYer,
           ).yetkiVarMi(!widget.cekSenetListesiEnum.cekMi),
-          if (yetkiController.referansKodu(viewModel.bankModel?.muhasebeHesapTipi))
-            CustomTextField(
-              labelText: "Referans Kodu",
-              controller: _referansKoduController,
-              isMust: true,
-              suffixMore: true,
-              valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
-              onTap: () async {
-                if (viewModel.muhaRefList.ext.isNullOrEmpty) {
-                  await viewModel.getMuhaRefList();
-                }
-                final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                  context,
-                  title: "Referans Kodu",
-                  groupValue: viewModel.model.refKod,
-                  children:
-                      viewModel.muhaRefList!
-                          .map(
-                            (e) => BottomSheetModel(
-                              title: e.tanimi ?? "",
-                              description: e.kodu,
-                              value: e,
-                              groupValue: e.kodu,
-                            ),
-                          )
-                          .toList(),
-                );
-                if (result is MuhasebeReferansModel) {
-                  _referansKoduController.text = result.tanimi ?? "";
-                  viewModel.setReferans(result);
-                }
-              },
-            ).yetkiVarMi(widget.model?.refKodSorulsunMu ?? false),
+          Observer(
+            builder:
+                (_) => CustomTextField(
+                  labelText: "Referans Kodu",
+                  controller: _referansKoduController,
+                  isMust: true,
+                  suffixMore: true,
+                  enabled: yetkiController.adminMi,
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.refKod ?? "")),
+                  onTap: () async {
+                    if (viewModel.muhaRefList.ext.isNullOrEmpty) {
+                      await viewModel.getMuhaRefList();
+                    }
+                    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                      context,
+                      title: "Referans Kodu",
+                      groupValue: viewModel.model.refKod,
+                      children:
+                          viewModel.muhaRefList!
+                              .map(
+                                (e) => BottomSheetModel(
+                                  title: e.tanimi ?? "",
+                                  description: e.kodu,
+                                  value: e,
+                                  groupValue: e.kodu,
+                                ),
+                              )
+                              .toList(),
+                    );
+                    if (result is MuhasebeReferansModel) {
+                      _referansKoduController.text = result.tanimi ?? "";
+                      viewModel.setReferans(result);
+                    }
+                  },
+                ).yetkiVarMi(
+                  (widget.model?.refKodSorulsunMu ?? false) &&
+                      (yetkiController.referansKodu(viewModel.bankModel?.muhasebeHesapTipi) ||
+                          yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi)),
+                ),
+          ),
           CustomTextField(
             labelText: "Banka",
             controller: _bankaController,
@@ -491,7 +512,9 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
     );
     if (result is BankaListesiModel) {
       _bankaHesapKoduController.text = result.hesapKodu ?? "";
-      viewModel..setBankaHesapKodu(result.hesapKodu)..setBankModel(result);
+      viewModel
+        ..setBankaHesapKodu(result.hesapKodu)
+        ..setBankModel(result);
     }
   }
 

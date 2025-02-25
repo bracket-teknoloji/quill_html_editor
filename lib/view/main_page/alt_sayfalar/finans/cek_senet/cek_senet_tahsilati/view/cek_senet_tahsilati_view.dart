@@ -45,7 +45,8 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
     _cariController = TextEditingController();
     _plasiyerController = TextEditingController();
     _projeController = TextEditingController();
-
+    viewModel.setProjeKodu(yetkiController.varsayilanProje);
+    _projeController.text = yetkiController.varsayilanProje?.projeAciklama ?? "";
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       viewModel.model.belgeTipi = widget.cekSenetListesiEnum.belgeTipi;
       viewModel.setGirisTarihi(DateTime.now());
@@ -322,6 +323,7 @@ final class _CekSenetTahsilatiViewState extends BaseState<CekSenetTahsilatiView>
       final result = await Get.toNamed(
         widget.cekSenetListesiEnum.tahsilatEkleRoute,
         arguments: CekSenetKalemlerModel(
+          cariRaporKodu: viewModel.cariListesiModel?.cariKodu,
           refKodSorulsunMu:
               yetkiController.referansKodu(viewModel.cariListesiModel?.muhHesapTipi) &&
               viewModel.cariListesiModel?.muhKodu != null,
