@@ -38,14 +38,13 @@ mixin _$KullaniciYetkiModel {
   @JsonKey(name: "yetkiliKasalar")
   set yetkiliKasalar(List<String>? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "kkartiHesaplar")
-  List<dynamic>? get kkartiHesaplar => throw _privateConstructorUsedError;
+  List<String>? get kkartiHesaplar => throw _privateConstructorUsedError;
   @JsonKey(name: "kkartiHesaplar")
-  set kkartiHesaplar(List<dynamic>? value) =>
-      throw _privateConstructorUsedError;
+  set kkartiHesaplar(List<String>? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "kkartiKasalar")
-  List<dynamic>? get kkartiKasalar => throw _privateConstructorUsedError;
+  List<String>? get kkartiKasalar => throw _privateConstructorUsedError;
   @JsonKey(name: "kkartiKasalar")
-  set kkartiKasalar(List<dynamic>? value) => throw _privateConstructorUsedError;
+  set kkartiKasalar(List<String>? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "acikHesapLimiti")
   double? get acikHesapLimiti => throw _privateConstructorUsedError;
   @JsonKey(name: "acikHesapLimiti")
@@ -325,8 +324,8 @@ abstract class $KullaniciYetkiModelCopyWith<$Res> {
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
       @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
-      @JsonKey(name: "kkartiHesaplar") List<dynamic>? kkartiHesaplar,
-      @JsonKey(name: "kkartiKasalar") List<dynamic>? kkartiKasalar,
+      @JsonKey(name: "kkartiHesaplar") List<String>? kkartiHesaplar,
+      @JsonKey(name: "kkartiKasalar") List<String>? kkartiKasalar,
       @JsonKey(name: "acikHesapLimiti") double? acikHesapLimiti,
       @JsonKey(name: "acikHesapTolerans") double? acikHesapTolerans,
       @JsonKey(name: "acikHesapLimitiBelgeTipleri")
@@ -499,11 +498,11 @@ class _$KullaniciYetkiModelCopyWithImpl<$Res, $Val extends KullaniciYetkiModel>
       kkartiHesaplar: freezed == kkartiHesaplar
           ? _value.kkartiHesaplar
           : kkartiHesaplar // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       kkartiKasalar: freezed == kkartiKasalar
           ? _value.kkartiKasalar
           : kkartiKasalar // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       acikHesapLimiti: freezed == acikHesapLimiti
           ? _value.acikHesapLimiti
           : acikHesapLimiti // ignore: cast_nullable_to_non_nullable
@@ -754,8 +753,8 @@ abstract class _$$KullaniciYetkiModelImplCopyWith<$Res>
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
       @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
-      @JsonKey(name: "kkartiHesaplar") List<dynamic>? kkartiHesaplar,
-      @JsonKey(name: "kkartiKasalar") List<dynamic>? kkartiKasalar,
+      @JsonKey(name: "kkartiHesaplar") List<String>? kkartiHesaplar,
+      @JsonKey(name: "kkartiKasalar") List<String>? kkartiKasalar,
       @JsonKey(name: "acikHesapLimiti") double? acikHesapLimiti,
       @JsonKey(name: "acikHesapTolerans") double? acikHesapTolerans,
       @JsonKey(name: "acikHesapLimitiBelgeTipleri")
@@ -926,11 +925,11 @@ class __$$KullaniciYetkiModelImplCopyWithImpl<$Res>
       kkartiHesaplar: freezed == kkartiHesaplar
           ? _value.kkartiHesaplar
           : kkartiHesaplar // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       kkartiKasalar: freezed == kkartiKasalar
           ? _value.kkartiKasalar
           : kkartiKasalar // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<String>?,
       acikHesapLimiti: freezed == acikHesapLimiti
           ? _value.acikHesapLimiti
           : acikHesapLimiti // ignore: cast_nullable_to_non_nullable
@@ -1265,10 +1264,10 @@ class _$KullaniciYetkiModelImpl implements _KullaniciYetkiModel {
   List<String>? yetkiliKasalar;
   @override
   @JsonKey(name: "kkartiHesaplar")
-  List<dynamic>? kkartiHesaplar;
+  List<String>? kkartiHesaplar;
   @override
   @JsonKey(name: "kkartiKasalar")
-  List<dynamic>? kkartiKasalar;
+  List<String>? kkartiKasalar;
   @override
   @JsonKey(name: "acikHesapLimiti")
   double? acikHesapLimiti;
@@ -1464,8 +1463,8 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
       @JsonKey(name: "eIrsOnEki") String? eIrsOnEki,
       @JsonKey(name: "eIrsAmbarOnEki") String? eIrsAmbarOnEki,
       @JsonKey(name: "yetkiliKasalar") List<String>? yetkiliKasalar,
-      @JsonKey(name: "kkartiHesaplar") List<dynamic>? kkartiHesaplar,
-      @JsonKey(name: "kkartiKasalar") List<dynamic>? kkartiKasalar,
+      @JsonKey(name: "kkartiHesaplar") List<String>? kkartiHesaplar,
+      @JsonKey(name: "kkartiKasalar") List<String>? kkartiKasalar,
       @JsonKey(name: "acikHesapLimiti") double? acikHesapLimiti,
       @JsonKey(name: "acikHesapTolerans") double? acikHesapTolerans,
       @JsonKey(name: "acikHesapLimitiBelgeTipleri")
@@ -1564,14 +1563,14 @@ abstract class _KullaniciYetkiModel implements KullaniciYetkiModel {
   set yetkiliKasalar(List<String>? value);
   @override
   @JsonKey(name: "kkartiHesaplar")
-  List<dynamic>? get kkartiHesaplar;
+  List<String>? get kkartiHesaplar;
   @JsonKey(name: "kkartiHesaplar")
-  set kkartiHesaplar(List<dynamic>? value);
+  set kkartiHesaplar(List<String>? value);
   @override
   @JsonKey(name: "kkartiKasalar")
-  List<dynamic>? get kkartiKasalar;
+  List<String>? get kkartiKasalar;
   @JsonKey(name: "kkartiKasalar")
-  set kkartiKasalar(List<dynamic>? value);
+  set kkartiKasalar(List<String>? value);
   @override
   @JsonKey(name: "acikHesapLimiti")
   double? get acikHesapLimiti;

@@ -17,8 +17,12 @@ _$KullaniciYetkiModelImpl _$$KullaniciYetkiModelImplFromJson(
       yetkiliKasalar: (json['yetkiliKasalar'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      kkartiHesaplar: json['kkartiHesaplar'] as List<dynamic>?,
-      kkartiKasalar: json['kkartiKasalar'] as List<dynamic>?,
+      kkartiHesaplar: (json['kkartiHesaplar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      kkartiKasalar: (json['kkartiKasalar'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       acikHesapLimiti: (json['acikHesapLimiti'] as num?)?.toDouble(),
       acikHesapTolerans: (json['acikHesapTolerans'] as num?)?.toDouble(),
       acikHesapLimitiBelgeTipleri:

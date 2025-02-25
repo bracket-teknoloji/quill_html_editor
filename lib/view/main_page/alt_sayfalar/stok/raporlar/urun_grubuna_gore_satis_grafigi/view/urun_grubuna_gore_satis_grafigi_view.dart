@@ -3,8 +3,6 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
-import "package:picker/core/constants/extensions/number_extensions.dart";
-import "package:picker/core/constants/ondalik_utils.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
@@ -269,15 +267,12 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                 pieChartValue: viewModel.modelList?.map((element) => element.netTutar ?? 0).toList() ?? [],
                 pieChartTitle:
                     viewModel.modelList
-                        ?.map(
-                          (element) =>
-                              "${element.grupAdi ?? element.grupKodu} %${element.oran.commaSeparatedWithDecimalDigits(OndalikEnum.oran)}",
-                        )
+                        ?.map((element) => "${element.grupAdi ?? element.grupKodu}")
                         .toList()
                         .cast<String>() ??
                     [],
               ),
-        ),
+        ).paddingOnly(bottom: UIHelper.highSize * 10),
       ],
     ).paddingAll(UIHelper.lowSize),
   );

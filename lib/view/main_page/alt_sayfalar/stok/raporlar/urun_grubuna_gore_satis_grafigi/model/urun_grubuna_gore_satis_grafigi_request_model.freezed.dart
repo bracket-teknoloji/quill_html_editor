@@ -243,7 +243,8 @@ class __$$UrunGrubunaGoreSatisGrafigiRequestModelImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.pascal)
 class _$UrunGrubunaGoreSatisGrafigiRequestModelImpl
     extends _UrunGrubunaGoreSatisGrafigiRequestModel {
   _$UrunGrubunaGoreSatisGrafigiRequestModelImpl(
