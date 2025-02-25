@@ -834,7 +834,7 @@ final class IslemlerMenuItemConstants<T> {
   );
   GridItemModel get borcSenedi => GridItemModel.islemler(
     title: "Borç Senedi",
-    isEnabled: _userModel?.finansCekBorc,
+    isEnabled: _userModel?.finansSenetBorc,
     iconData: Icons.local_atm_outlined,
     onTap: () async => await Get.toNamed("/mainPage/senetBorcTahsilat", arguments: model),
   );
