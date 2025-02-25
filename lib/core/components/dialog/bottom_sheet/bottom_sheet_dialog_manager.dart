@@ -1350,12 +1350,19 @@ final class BottomSheetDialogManager {
     return null;
   }
 
-  Future<KasaList?> showKasaBottomSheetDialog(BuildContext context, dynamic groupValue) async {
+  Future<KasaList?> showKasaBottomSheetDialog(
+    BuildContext context,
+    dynamic groupValue, {
+    bool tahsilatMi = false,
+  }) async {
     final List<KasaList> list =
         (_paramModel?.kasaList ?? <KasaList>[])
             .where(
               (element) =>
-                  _kullaniciYetkiModel?.yetkiliKasalar?.contains(element.kasaKodu) == true ||
+                  (_kullaniciYetkiModel?.yetkiliKasalar?.contains(element.kasaKodu) == true &&
+                      (tahsilatMi
+                          ? (_kullaniciYetkiModel?.kkartiKasalar?.contains(element.kasaKodu) ?? false)
+                          : true)) ||
                   AccountModel.instance.adminMi,
             )
             .toList();
