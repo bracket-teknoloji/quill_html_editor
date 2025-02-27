@@ -83,9 +83,9 @@ final class AppThemeDark extends AppTheme {
       endIndent: UIHelper.midSize,
       indent: UIHelper.midSize,
     ),
-    progressIndicatorTheme: const ProgressIndicatorThemeData(
+    progressIndicatorTheme: ProgressIndicatorThemeData(
       color: UIHelper.primaryColor,
-      linearTrackColor: Colors.transparent,
+      linearTrackColor: Colors.white.withValues(alpha: 0.3),
       circularTrackColor: Colors.transparent,
       linearMinHeight: 2,
     ),
