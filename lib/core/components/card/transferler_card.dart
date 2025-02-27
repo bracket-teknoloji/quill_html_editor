@@ -30,6 +30,7 @@ final class TransferlerCard extends StatefulWidget {
     this.showMiktar,
     this.showEkAciklama,
     this.showVade,
+    this.isGetData = false,
     this.onDeleted,
     this.index,
   });
@@ -40,6 +41,7 @@ final class TransferlerCard extends StatefulWidget {
   final bool? showVade;
   final bool? showEkAciklama;
   final Function? onDeleted;
+  final bool isGetData;
   final int? index;
 
   @override
@@ -76,147 +78,154 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
         );
       },
       onTap:
-          () async => await bottomSheetDialogManager.showBottomSheetDialog(
-            context,
-            title: model.belgeNo ?? "",
-            children: [
-              BottomSheetModel(
-                title: loc.generalStrings.view,
-                iconWidget: Icons.preview_outlined,
-                onTap: () async {
-                  Get.back();
-                  await Get.toNamed(
-                    "/mainPage/transferEdit",
-                    arguments: BaseEditModel(
-                      model: model,
-                      baseEditEnum: BaseEditEnum.goruntule,
-                      editTipiEnum: widget.editTipiEnum,
-                    ),
-                  );
-                },
-              ),
-              if ((widget.editTipiEnum.duzenlensinMi && !model.basariliMi) &&
-                  (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true))
-                BottomSheetModel(
-                  title: loc.generalStrings.edit,
-                  iconWidget: Icons.edit_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await Get.toNamed(
-                      "/mainPage/transferEdit",
-                      arguments: BaseEditModel(
-                        model: model,
-                        baseEditEnum: BaseEditEnum.duzenle,
-                        editTipiEnum: widget.editTipiEnum,
-                      ),
-                    );
-                    if (result is BaseSiparisEditModel) {
-                      if (widget.model.isNew == true) {
-                        CacheManager.removeTransferEditList(model.belgeNo ?? "");
-                      }
-                      widget.onUpdated?.call(result);
-                    }
-                  },
-                ),
-              if ((widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi) || model.efatOnayDurumKodu == "1")
-                BottomSheetModel(
-                  title: loc.generalStrings.delete,
-                  iconWidget: Icons.delete_outline_outlined,
-                  onTap: () async {
-                    Get.back();
-                    return dialogManager.showAreYouSureDialog(() async {
-                      if (widget.model.isNew == true) {
-                        try {
-                          CacheManager.removeTransferEditList(model.belgeNo ?? "");
-                          dialogManager.showSuccessSnackBar("Silindi");
-                          widget.onDeleted?.call();
-                          return;
-                        } catch (e) {
-                          dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+          widget.isGetData
+              ? () => Get.back(result: widget.model)
+              : () async => await bottomSheetDialogManager.showBottomSheetDialog(
+                context,
+                title: model.belgeNo ?? "",
+                children: [
+                  BottomSheetModel(
+                    title: loc.generalStrings.view,
+                    iconWidget: Icons.preview_outlined,
+                    onTap: () async {
+                      Get.back();
+                      await Get.toNamed(
+                        "/mainPage/transferEdit",
+                        arguments: BaseEditModel(
+                          model: model,
+                          baseEditEnum: BaseEditEnum.goruntule,
+                          editTipiEnum: widget.editTipiEnum,
+                        ),
+                      );
+                    },
+                  ),
+                  if ((widget.editTipiEnum.duzenlensinMi && !model.basariliMi) &&
+                      (widget.model.aFaturaMi ? !widget.model.eBelgeMi : true))
+                    BottomSheetModel(
+                      title: loc.generalStrings.edit,
+                      iconWidget: Icons.edit_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final result = await Get.toNamed(
+                          "/mainPage/transferEdit",
+                          arguments: BaseEditModel(
+                            model: model,
+                            baseEditEnum: BaseEditEnum.duzenle,
+                            editTipiEnum: widget.editTipiEnum,
+                          ),
+                        );
+                        if (result is BaseSiparisEditModel) {
+                          if (widget.model.isNew == true) {
+                            CacheManager.removeTransferEditList(model.belgeNo ?? "");
+                          }
+                          widget.onUpdated?.call(result);
                         }
-                        return;
-                      }
-                      final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(widget.model.toJson()));
-                      if (result.isSuccess) {
-                        dialogManager.showSuccessSnackBar("Silindi");
-                        widget.onDeleted?.call();
-                      }
-                    });
-                  },
-                ),
-              if (widget.editTipiEnum.aciklamaDuzenlensinMi)
-                BottomSheetModel(
-                  title: "Açıklama Düzenle",
-                  iconWidget: Icons.edit_note_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final result = await Get.toNamed(widget.editTipiEnum.aciklamaDuzenleRoute, arguments: widget.model);
-                    if (result != null) {
-                      widget.onUpdated?.call(widget.model);
-                    }
-                  },
-                ),
-              if (widget.model.remoteTempBelgeEtiketi == null && widget.editTipiEnum.yazdirilsinMi)
-                BottomSheetModel(
-                  title: loc.generalStrings.print,
-                  iconWidget: Icons.print_outlined,
-                  onTap: () async {
-                    Get.back();
-                    final PrintModel printModel = PrintModel(
-                      raporOzelKod: widget.editTipiEnum.getPrintValue,
-                      etiketSayisi: 1,
-                      dicParams: DicParams(
-                        belgeNo: widget.model.belgeNo ?? "",
-                        belgeTipi: widget.model.getEditTipiEnum?.rawValue,
-                        cariKodu: widget.model.cariKodu,
-                      ),
-                    );
-                    await bottomSheetDialogManager.showPrintBottomSheetDialog(
-                      context,
-                      printModel,
-                      true,
-                      true,
-                      editTipiEnum: widget.editTipiEnum,
-                    );
-                  },
-                ),
-              if (widget.model.remoteTempBelgeEtiketi == null)
-                BottomSheetModel(
-                  title: loc.generalStrings.actions,
-                  iconWidget: Icons.list_alt_outlined,
-                  onTap: () async {
-                    Get.back();
-                    await dialogManager.showTransferGridViewDialog(
-                      model: widget.model,
-                      onSelected: (value) {
-                        if (value) widget.onUpdated?.call(widget.model);
                       },
-                    );
-                  },
-                ),
-              if (widget.model.eBelgeCheckBoxMi)
-                BottomSheetModel(
-                  title: "E-Belge İşlemleri",
-                  iconWidget: Icons.receipt_long_outlined,
-                  onTap: () async {
-                    Get.back();
-                    // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
-                    // final BaseSiparisEditModel newModel = widget.model.copyWith(
-                    //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
-                    // );
-                    final result = await dialogManager.showEBelgeGridViewDialog(
-                      model: widget.model,
-                      onSelected: (value) {
-                        if (value) widget.onUpdated?.call(widget.model);
+                    ),
+                  if ((widget.editTipiEnum.silinsinMi && widget.model.silinebilirMi) || model.efatOnayDurumKodu == "1")
+                    BottomSheetModel(
+                      title: loc.generalStrings.delete,
+                      iconWidget: Icons.delete_outline_outlined,
+                      onTap: () async {
+                        Get.back();
+                        return dialogManager.showAreYouSureDialog(() async {
+                          if (widget.model.isNew == true) {
+                            try {
+                              CacheManager.removeTransferEditList(model.belgeNo ?? "");
+                              dialogManager.showSuccessSnackBar("Silindi");
+                              widget.onDeleted?.call();
+                              return;
+                            } catch (e) {
+                              dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                            }
+                            return;
+                          }
+                          final result = await networkManager.deleteFatura(
+                            EditFaturaModel.fromJson(widget.model.toJson()),
+                          );
+                          if (result.isSuccess) {
+                            dialogManager.showSuccessSnackBar("Silindi");
+                            widget.onDeleted?.call();
+                          }
+                        });
                       },
-                    );
-                    if (result == true) {
-                      widget.onUpdated?.call(widget.model);
-                    }
-                  },
-                ),
-            ],
-          ),
+                    ),
+                  if (widget.editTipiEnum.aciklamaDuzenlensinMi)
+                    BottomSheetModel(
+                      title: "Açıklama Düzenle",
+                      iconWidget: Icons.edit_note_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final result = await Get.toNamed(
+                          widget.editTipiEnum.aciklamaDuzenleRoute,
+                          arguments: widget.model,
+                        );
+                        if (result != null) {
+                          widget.onUpdated?.call(widget.model);
+                        }
+                      },
+                    ),
+                  if (widget.model.remoteTempBelgeEtiketi == null && widget.editTipiEnum.yazdirilsinMi)
+                    BottomSheetModel(
+                      title: loc.generalStrings.print,
+                      iconWidget: Icons.print_outlined,
+                      onTap: () async {
+                        Get.back();
+                        final PrintModel printModel = PrintModel(
+                          raporOzelKod: widget.editTipiEnum.getPrintValue,
+                          etiketSayisi: 1,
+                          dicParams: DicParams(
+                            belgeNo: widget.model.belgeNo ?? "",
+                            belgeTipi: widget.model.getEditTipiEnum?.rawValue,
+                            cariKodu: widget.model.cariKodu,
+                          ),
+                        );
+                        await bottomSheetDialogManager.showPrintBottomSheetDialog(
+                          context,
+                          printModel,
+                          true,
+                          true,
+                          editTipiEnum: widget.editTipiEnum,
+                        );
+                      },
+                    ),
+                  if (widget.model.remoteTempBelgeEtiketi == null)
+                    BottomSheetModel(
+                      title: loc.generalStrings.actions,
+                      iconWidget: Icons.list_alt_outlined,
+                      onTap: () async {
+                        Get.back();
+                        await dialogManager.showTransferGridViewDialog(
+                          model: widget.model,
+                          onSelected: (value) {
+                            if (value) widget.onUpdated?.call(widget.model);
+                          },
+                        );
+                      },
+                    ),
+                  if (widget.model.eBelgeCheckBoxMi)
+                    BottomSheetModel(
+                      title: "E-Belge İşlemleri",
+                      iconWidget: Icons.receipt_long_outlined,
+                      onTap: () async {
+                        Get.back();
+                        // final result = await networkManager.getCariModel(CariRequestModel.fromBaseSiparisEditModel(model));
+                        // final BaseSiparisEditModel newModel = widget.model.copyWith(
+                        //   efaturaMi: result?.efaturaMi ?? false ? "E" : "H",
+                        // );
+                        final result = await dialogManager.showEBelgeGridViewDialog(
+                          model: widget.model,
+                          onSelected: (value) {
+                            if (value) widget.onUpdated?.call(widget.model);
+                          },
+                        );
+                        if (result == true) {
+                          widget.onUpdated?.call(widget.model);
+                        }
+                      },
+                    ),
+                ],
+              ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

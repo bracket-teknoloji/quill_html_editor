@@ -36,7 +36,8 @@ import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/talep_teklif_listesi_view_model.dart";
 
 final class TalepTeklifListesiView extends StatefulWidget {
-  const TalepTeklifListesiView({required this.talepTeklifEnum, super.key});
+  const TalepTeklifListesiView({required this.talepTeklifEnum, super.key, this.isGetData = false});
+  final bool isGetData;
   final TalepTeklifEnum talepTeklifEnum;
 
   @override
@@ -217,6 +218,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                 builder:
                     (_) => TalepTeklifCard(
                       model: item,
+                      isGetData: widget.isGetData,
                       talepTeklifEnum: widget.talepTeklifEnum,
                       editTipiEnum: EditTipiEnum.values.firstWhere(
                         (element) => element.rawValue == widget.talepTeklifEnum.rawValue,
@@ -389,7 +391,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
           ),
           Row(
             children: [
-              Expanded(
+              if (yetkiController.plasiyerUygulamasiAcikMi) Expanded(
                 child: CustomTextField(
                   labelText: "Plasiyer",
                   controller: _plasiyerController,
@@ -411,7 +413,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
                     }
                   },
                 ),
-              ).yetkiVarMi(yetkiController.plasiyerUygulamasiAcikMi),
+              ),
             ],
           ),
           CustomWidgetWithLabel(

@@ -150,7 +150,10 @@ final class _SiparislerViewState extends BaseState<SiparislerView> {
                     },
                   )
                   : AppBarTitle(
-                    title: "${widget.widgetModel.editTipiEnum.musteriMi ? "Müşteri" : "Satıcı"} Siparişleri",
+                    title:
+                        widget.widgetModel.isGetData != true
+                            ? "${widget.widgetModel.editTipiEnum.musteriMi ? "Müşteri" : "Satıcı"} Siparişleri"
+                            : "${widget.widgetModel.editTipiEnum.musteriMi ? "Müşteri" : "Satıcı"} Siparişi seçiniz",
                     subtitle: viewModel.musteriSiparisleriList?.length.toString(),
                   ),
     ),
