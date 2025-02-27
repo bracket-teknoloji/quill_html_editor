@@ -1,4 +1,5 @@
 import "package:picker/core/base/view/belge_kontrol/view/belge_kontrol_view.dart";
+import "package:picker/core/base/view/belge_kontrol_edit/view/belge_kontrol_edit_view.dart";
 import "package:picker/core/base/view/kullanici_haritasi/view/kullanici_haritasi_view.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/fatura_karlilik_raporu/view/fatura_karlilik_raporu_view.dart";
@@ -55,6 +56,7 @@ final class PickerMaterialApp extends StatelessWidget {
     popGesture: true,
     debugShowCheckedModeBanner: false,
     locale: Get.deviceLocale,
+
     fallbackLocale: const Locale("en"),
     supportedLocales: const <Locale>[Locale("tr"), Locale("en")],
     localizationsDelegates: const <LocalizationsDelegate>[
@@ -73,6 +75,7 @@ final class PickerMaterialApp extends StatelessWidget {
         PointerDeviceKind.trackpad,
       },
     ),
+
     opaqueRoute: false,
     theme: AppThemeLight.instance?.theme,
     darkTheme: AppThemeDark.instance?.theme,
@@ -124,6 +127,8 @@ final class PickerMaterialApp extends StatelessWidget {
         popGesture: false,
         children: <GetPage>[
           GetPage(name: "/belgeKontrol", page: BelgeKontrolView.new),
+          GetPage(name: "/belgeEkle", page: () => const BelgeKontrolEditView.add()),
+          GetPage(name: "/belgeDuzenle", page: () => const BelgeKontrolEditView.edit()),
           GetPage(name: "/genelRehber", page: () => GenelRehberView(model: Get.arguments)),
           GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
           GetPage(name: "/siparisRehberi", page: () => SiparisRehberiView(model: Get.arguments)),
@@ -521,15 +526,15 @@ final class PickerMaterialApp extends StatelessWidget {
           //* Talep Teklif
           GetPage(
             name: "/talTekSatisTalep",
-            page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTalep),
+            page: () => TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTalep, isGetData: Get.arguments),
           ),
           GetPage(
             name: "/talTekSatisTeklif",
-            page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTeklif),
+            page: () => TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.satisTeklif, isGetData: Get.arguments),
           ),
           GetPage(
             name: "/talTekAlisTalep",
-            page: () => const TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTalep),
+            page: () => TalepTeklifListesiView(talepTeklifEnum: TalepTeklifEnum.alisTalep, isGetData: Get.arguments),
           ),
 
           //* * Talep Teklif Edit
@@ -550,14 +555,17 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
 
           //* Transfer
-          GetPage(name: "/transferDepo", page: () => const TransferlerView(editTipiEnum: EditTipiEnum.depoTransferi)),
+          GetPage(
+            name: "/transferDepo",
+            page: () => TransferlerView(editTipiEnum: EditTipiEnum.depoTransferi, isGetData: Get.arguments),
+          ),
           GetPage(
             name: "/transferAmbarGiris",
-            page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarGirisi),
+            page: () => TransferlerView(editTipiEnum: EditTipiEnum.ambarGirisi, isGetData: Get.arguments),
           ),
           GetPage(
             name: "/transferAmbarCikis",
-            page: () => const TransferlerView(editTipiEnum: EditTipiEnum.ambarCikisi),
+            page: () => TransferlerView(editTipiEnum: EditTipiEnum.ambarCikisi, isGetData: Get.arguments),
           ),
           GetPage(name: "/transferMalTalebi", page: () => const TransferMalTalebiListesiView(talepMi: true)),
           GetPage(name: "/transferMalToplama", page: () => const TransferMalTalebiListesiView(talepMi: false)),
