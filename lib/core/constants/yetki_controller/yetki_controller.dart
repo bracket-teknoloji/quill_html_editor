@@ -28,7 +28,7 @@ final class YetkiController {
 
   ParamModel? get _paramModel => _anaVeri?.paramModel;
 
-  ProfilYetkiModel? get _yetkiModel => _userModel?.profilYetki;
+  ProfilYetkiModel? get _profilYetkiModel => _userModel?.profilYetki;
 
   KullaniciYetkiModel? get _kullaniciYetkiModel => _userModel?.kullaniciYetki;
 
@@ -55,8 +55,8 @@ final class YetkiController {
           (element) => _isTrue(
             _kullaniciYetkiModel?.sirketDepoYetkiTuru == null
                 ? (_kullaniciYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu) ??
-                    _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu))
-                : _yetkiModel?.sirketAktifDepolar?.contains(element.depoKodu),
+                    _profilYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu))
+                : _profilYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu),
           ),
         )
         .toList();
@@ -93,7 +93,7 @@ final class YetkiController {
   bool topluDepoKullan(EditTipiEnum? editTipi) =>
       editTipi?.satisMi == true ? satisTopluDepoKullan : alisTopluDepoKullan;
   bool projeYetkisiVarMi(String? projeKodu) => _isTrue(
-    _yetkiModel?.sirketAktifProjeler == null || (_yetkiModel?.sirketAktifProjeler?.contains(projeKodu) ?? true),
+    _profilYetkiModel?.sirketAktifProjeler == null || (_profilYetkiModel?.sirketAktifProjeler?.contains(projeKodu) ?? true),
   );
   bool genIsk1AktifMi(EditTipiEnum? editTipi) =>
       editTipi?.satisMi == true ? siparisSSGenIsk1AktifMi : siparisMSGenIsk1AktifMi;
@@ -101,9 +101,9 @@ final class YetkiController {
       editTipi?.satisMi == true ? siparisSSGenIsk2AktifMi : siparisMSGenIsk2AktifMi;
   bool genIsk3AktifMi(EditTipiEnum? editTipi) =>
       editTipi?.satisMi == true ? siparisSSGenIsk3AktifMi : siparisMSGenIsk3AktifMi;
-  bool get genelDovizEkle => _isTrue(_yetkiModel?.genelDovizKurlariEkle);
-  bool get genelDovizDuzenle => _isTrue(_yetkiModel?.genelDovizKurlariDuzelt);
-  bool get genelDovizSil => _isTrue(_yetkiModel?.genelDovizKurlariSil);
+  bool get genelDovizEkle => _isTrue(_profilYetkiModel?.genelDovizKurlariEkle);
+  bool get genelDovizDuzenle => _isTrue(_profilYetkiModel?.genelDovizKurlariDuzelt);
+  bool get genelDovizSil => _isTrue(_profilYetkiModel?.genelDovizKurlariSil);
   bool muhRefSorulsun(EditTipiEnum? editTipi) {
     if (editTipi.talepTeklifMi) {
       return taltekMuhRefSorulsun;
@@ -122,7 +122,7 @@ final class YetkiController {
   bool get kontrolluBelgeAktarimAktif => _isTrue(_paramModel?.kontrolluBelgeAktarimAktif, skipAdmin: true);
   bool kontrolluAktarBelgeTipleri(String? belgeTuru) =>
       _isTrue(
-        kontrolluBelgeAktarimAktif && (_yetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(belgeTuru) ?? false),
+        kontrolluBelgeAktarimAktif && (_profilYetkiModel?.sirketKontrolluAktarBelgeTipleri?.contains(belgeTuru) ?? false),
       ) &&
       !adminMi;
 
@@ -156,56 +156,56 @@ final class YetkiController {
   bool get satisEkAlan2AktifMi => _isTrue(_paramModel?.satisSatirdaEkAlan2Aktif, skipAdmin: true);
 
   //! TEMSİLCİ
-  bool get temsilciProfilKdvDahilMi => _isTrue(_yetkiModel?.temsilciProfilKdvDahil, skipAdmin: true);
+  bool get temsilciProfilKdvDahilMi => _isTrue(_profilYetkiModel?.temsilciProfilKdvDahil, skipAdmin: true);
   bool get temsilciProfilSatisPerformansiniGizle =>
-      _isTrue(_yetkiModel?.temsilciProfilSatisPerformansiniGizle, skipAdmin: true);
+      _isTrue(_profilYetkiModel?.temsilciProfilSatisPerformansiniGizle, skipAdmin: true);
   bool get temsilciProfilAylaraGoreSatisiGizle =>
-      _isTrue(_yetkiModel?.temsilciProfilAylaraGoreSatisiGizle, skipAdmin: true);
+      _isTrue(_profilYetkiModel?.temsilciProfilAylaraGoreSatisiGizle, skipAdmin: true);
   bool get temsilciProfilAylaraGoreTahsilatiGizle =>
-      _isTrue(_yetkiModel?.temsilciProfilAylaraGoreTahsilatiGizle, skipAdmin: true);
+      _isTrue(_profilYetkiModel?.temsilciProfilAylaraGoreTahsilatiGizle, skipAdmin: true);
 
   //! CARİ
 
-  bool get cariListesi => _isTrue(_yetkiModel?.cariCariListesi);
-  bool get cariRapStokSatisOzeti => _isTrue(_yetkiModel?.cariRapStokSatisOzeti);
-  bool get cariListesiRiskGorebilir => _isTrue(_yetkiModel?.cariCariListesiRiskGorebilir);
-  bool get cariToplamGorunmesin => _isTrue(_yetkiModel?.cariToplamGorunmesin, skipAdmin: true);
+  bool get cariListesi => _isTrue(_profilYetkiModel?.cariCariListesi);
+  bool get cariRapStokSatisOzeti => _isTrue(_profilYetkiModel?.cariRapStokSatisOzeti);
+  bool get cariListesiRiskGorebilir => _isTrue(_profilYetkiModel?.cariCariListesiRiskGorebilir);
+  bool get cariToplamGorunmesin => _isTrue(_profilYetkiModel?.cariToplamGorunmesin, skipAdmin: true);
 
   //* Cari Kartı
-  bool get cariKarti => _isTrue(_yetkiModel?.cariCariKarti);
-  bool get cariKartiYeniKayit => _isTrue(_yetkiModel?.cariCariKartiKaydet);
-  bool get cariKartiDuzenleme => _isTrue(_yetkiModel?.cariCariKartiDuzelt);
-  bool get cariKartiSilme => _isTrue(_yetkiModel?.cariCariKartiSil);
+  bool get cariKarti => _isTrue(_profilYetkiModel?.cariCariKarti);
+  bool get cariKartiYeniKayit => _isTrue(_profilYetkiModel?.cariCariKartiKaydet);
+  bool get cariKartiDuzenleme => _isTrue(_profilYetkiModel?.cariCariKartiDuzelt);
+  bool get cariKartiSilme => _isTrue(_profilYetkiModel?.cariCariKartiSil);
   bool get cariKartiRotasUygulamasiAcikMi => _isTrue(_paramModel?.cariRotaUygulamasi == "E", skipAdmin: true);
 
   bool cariKartiDegistirilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.cariCariKartiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.cariCariKartiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
 
   //* Cari Hareketleri
-  bool get cariHareketleri => _isTrue(_yetkiModel?.cariCariHareketleri);
-  bool get cariHareketleriYeniKayit => _isTrue(_yetkiModel?.cariCariHarKaydet);
-  bool get cariHareketleriDuzenleme => _isTrue(_yetkiModel?.cariCariHarDuzelt);
-  bool get cariHareketleriSilme => _isTrue(_yetkiModel?.cariCariHarSil);
-  bool get cariHareketleriHarDetayGorsun => _isTrue(_yetkiModel?.cariCariHareketleriHarDetayGorsun);
-  bool get cariHareketleriPlasiyerKendiniGorsun => _isTrue(_yetkiModel?.stokCariHarPlasiyerKendiniGorsun);
+  bool get cariHareketleri => _isTrue(_profilYetkiModel?.cariCariHareketleri);
+  bool get cariHareketleriYeniKayit => _isTrue(_profilYetkiModel?.cariCariHarKaydet);
+  bool get cariHareketleriDuzenleme => _isTrue(_profilYetkiModel?.cariCariHarDuzelt);
+  bool get cariHareketleriSilme => _isTrue(_profilYetkiModel?.cariCariHarSil);
+  bool get cariHareketleriHarDetayGorsun => _isTrue(_profilYetkiModel?.cariCariHareketleriHarDetayGorsun);
+  bool get cariHareketleriPlasiyerKendiniGorsun => _isTrue(_profilYetkiModel?.stokCariHarPlasiyerKendiniGorsun);
 
   //* Cari Aktivite
-  bool get cariAktivite => _isTrue(_yetkiModel?.cariAktivite);
+  bool get cariAktivite => _isTrue(_profilYetkiModel?.cariAktivite);
   bool get cariAktiviteDetayliMi => _isTrue(_paramModel?.cariAktiviteUygulamasi == "D", skipAdmin: true);
-  bool get cariAktiviteYeniKayit => _isTrue(_yetkiModel?.cariAktiviteEkle);
-  bool get cariAktiviteDuzenleme => _isTrue(_yetkiModel?.cariAktiviteDuzelt);
-  bool get cariAktiviteSilme => _isTrue(_yetkiModel?.cariAktiviteSil);
-  bool get cariBakiyeGosterimTumuMu => _isTrue(_yetkiModel?.cariBakiyeGosterim == "T");
-  bool get cariBakiyeGosterimKendiCarileriMi => _isTrue(_yetkiModel?.cariBakiyeGosterim == "K", skipAdmin: true);
-  bool get cariAktiviteAtayabilir => _isTrue(_yetkiModel?.cariAktiviteAtayabilir);
-  bool get cariAktiviteBitirmeyiGeriAl => _isTrue(_yetkiModel?.cariAktiviteBitirmeyiGeriAl);
+  bool get cariAktiviteYeniKayit => _isTrue(_profilYetkiModel?.cariAktiviteEkle);
+  bool get cariAktiviteDuzenleme => _isTrue(_profilYetkiModel?.cariAktiviteDuzelt);
+  bool get cariAktiviteSilme => _isTrue(_profilYetkiModel?.cariAktiviteSil);
+  bool get cariBakiyeGosterimTumuMu => _isTrue(_profilYetkiModel?.cariBakiyeGosterim == "T");
+  bool get cariBakiyeGosterimKendiCarileriMi => _isTrue(_profilYetkiModel?.cariBakiyeGosterim == "K", skipAdmin: true);
+  bool get cariAktiviteAtayabilir => _isTrue(_profilYetkiModel?.cariAktiviteAtayabilir);
+  bool get cariAktiviteBitirmeyiGeriAl => _isTrue(_profilYetkiModel?.cariAktiviteBitirmeyiGeriAl);
 
   //! STOK
 
-  bool get stokListesi => _isTrue(_yetkiModel?.stokStokListesi);
-  bool get stokFiyatGorEkrani => _isTrue(_yetkiModel?.stokFiyatGorEkrani);
+  bool get stokListesi => _isTrue(_profilYetkiModel?.stokStokListesi);
+  bool get stokFiyatGorEkrani => _isTrue(_profilYetkiModel?.stokFiyatGorEkrani);
   bool stokFiyatGorEkraniGorunecekAlanlar(String value) =>
-      _isTrue(_yetkiModel?.stokFiyatGorEkraniGorunecekAlanlar?.contains(value));
+      _isTrue(_profilYetkiModel?.stokFiyatGorEkraniGorunecekAlanlar?.contains(value));
   bool get _stokSatisFiyatGor => [
     "satis_doviz_fiyati",
     "satis_fiyat1",
@@ -222,58 +222,58 @@ final class YetkiController {
   ].any(stokFiyatGorEkraniGorunecekAlanlar);
   bool stokSatisTuruneGoreFiyatGor(EditTipiEnum? editTipi) =>
       editTipi?.satisMi == true ? _stokSatisFiyatGor : _stokAlisFiyatGor;
-  bool get stokFiyatGoster => _isTrue(!_isTrue(_yetkiModel?.stokStokKartiFiyatlariGizle));
-  bool get stokAlisFiyatGoster => _isTrue(!_isTrue(_yetkiModel?.stokStokKartiAlisFiyatiGizle));
-  bool get stokSatisFiyatGoster => _isTrue(!_isTrue(_yetkiModel?.stokStokKartiSatisFiyatiGizle));
-  bool get stokFiyatOzeti => _isTrue(_yetkiModel?.stokFiyatOzeti);
+  bool get stokFiyatGoster => _isTrue(!_isTrue(_profilYetkiModel?.stokStokKartiFiyatlariGizle));
+  bool get stokAlisFiyatGoster => _isTrue(!_isTrue(_profilYetkiModel?.stokStokKartiAlisFiyatiGizle));
+  bool get stokSatisFiyatGoster => _isTrue(!_isTrue(_profilYetkiModel?.stokStokKartiSatisFiyatiGizle));
+  bool get stokFiyatOzeti => _isTrue(_profilYetkiModel?.stokFiyatOzeti);
 
   bool stokListesiExtraAlanlar(String value) =>
-      _isTrue(_yetkiModel?.stokStokListesiExtraAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.stokStokListesiExtraAlanlar?.contains(value), skipAdmin: true);
 
   //* Seri İşlemleri
   bool get seriIslemleri => _isTrue(_paramModel?.seriUygulamasiAcik);
   // bool get seriIslemEkle => _isTrue(_yetkiModel?.kaydet)
 
   //* Stok Kartı
-  bool get stokKarti => _isTrue(_yetkiModel?.stokStokKarti);
+  bool get stokKarti => _isTrue(_profilYetkiModel?.stokStokKarti);
   bool get stokDepoBakiyeDurumu => _isTrue(
-    _yetkiModel?.stokDepoBakiyeDurumu == null
+    _profilYetkiModel?.stokDepoBakiyeDurumu == null
         ? true
-        : _yetkiModel?.stokDepoBakiyeDurumu == "E"
+        : _profilYetkiModel?.stokDepoBakiyeDurumu == "E"
         ? true
         : false,
   );
-  bool get stokKartiYeniKayit => _isTrue(_yetkiModel?.stokStokKartiKaydet);
-  bool get stokKartiDuzenleme => _isTrue(_yetkiModel?.stokStokKartiDuzelt);
-  bool get stokKartiSilme => _isTrue(_yetkiModel?.stokStokKartiSil);
-  bool get stokSatisFiyatiGizle => _isTrue(_yetkiModel?.stokStokKartiSatisFiyatiGizle);
+  bool get stokKartiYeniKayit => _isTrue(_profilYetkiModel?.stokStokKartiKaydet);
+  bool get stokKartiDuzenleme => _isTrue(_profilYetkiModel?.stokStokKartiDuzelt);
+  bool get stokKartiSilme => _isTrue(_profilYetkiModel?.stokStokKartiSil);
+  bool get stokSatisFiyatiGizle => _isTrue(_profilYetkiModel?.stokStokKartiSatisFiyatiGizle);
 
   //* Stok Hareketleri
-  bool get stokHareketleriStokHareketleri => _isTrue(_yetkiModel?.stokStokHareketleri);
-  bool get stokHareketleriStokYeniKayit => _isTrue(_yetkiModel?.stokStokHarKaydet);
-  bool get stokHareketleriStokDuzenleme => _isTrue(_yetkiModel?.stokStokHarDuzelt);
-  bool get stokHareketleriStokSilme => _isTrue(_yetkiModel?.stokStokHarSil);
-  bool get stokHareketleriPlasiyerKendiniGorsun => _isTrue(_yetkiModel?.stokStokHarPlasiyerKendiniGorsun);
-  bool get stokHareketDetayiniGizle => _isTrue(_yetkiModel?.stokHareketDetayiniGizle ?? false, skipAdmin: true);
+  bool get stokHareketleriStokHareketleri => _isTrue(_profilYetkiModel?.stokStokHareketleri);
+  bool get stokHareketleriStokYeniKayit => _isTrue(_profilYetkiModel?.stokStokHarKaydet);
+  bool get stokHareketleriStokDuzenleme => _isTrue(_profilYetkiModel?.stokStokHarDuzelt);
+  bool get stokHareketleriStokSilme => _isTrue(_profilYetkiModel?.stokStokHarSil);
+  bool get stokHareketleriPlasiyerKendiniGorsun => _isTrue(_profilYetkiModel?.stokStokHarPlasiyerKendiniGorsun);
+  bool get stokHareketDetayiniGizle => _isTrue(_profilYetkiModel?.stokHareketDetayiniGizle ?? false, skipAdmin: true);
 
   //* Stok Resim
-  bool get stokResimGoster => _isTrue(_yetkiModel?.stokResimGoster);
-  bool get stokResimEkle => _isTrue(_yetkiModel?.stokResimGosterEkle);
-  bool get stokResimSil => _isTrue(_yetkiModel?.stokResimGosterSil);
+  bool get stokResimGoster => _isTrue(_profilYetkiModel?.stokResimGoster);
+  bool get stokResimEkle => _isTrue(_profilYetkiModel?.stokResimGosterEkle);
+  bool get stokResimSil => _isTrue(_profilYetkiModel?.stokResimGosterSil);
 
   //* Stok Barkod
-  bool get stokBarkodKontrol => _isTrue(_yetkiModel?.stokBarkodKontrol);
-  bool get stokBarkodTanimla => _isTrue(_yetkiModel?.stokBarkodTanimlama);
-  bool get stokBarkodKayitlari => _isTrue(_yetkiModel?.stokBarkodKayitlari);
-  bool get stokBarkodEkle => _isTrue(_yetkiModel?.stokBarkodKayitlariEkle);
-  bool get stokBarkodDuzenle => _isTrue(_yetkiModel?.stokBarkodKayitlariDuzelt);
-  bool get stokBarkodSil => _isTrue(_yetkiModel?.stokBarkodKayitlariSil);
-  bool get stokBarkodStokKartiGorunsun => _isTrue(_yetkiModel?.stokBarkodKayitlariGecerliOlcuBirimleri?.isNotEmpty);
+  bool get stokBarkodKontrol => _isTrue(_profilYetkiModel?.stokBarkodKontrol);
+  bool get stokBarkodTanimla => _isTrue(_profilYetkiModel?.stokBarkodTanimlama);
+  bool get stokBarkodKayitlari => _isTrue(_profilYetkiModel?.stokBarkodKayitlari);
+  bool get stokBarkodEkle => _isTrue(_profilYetkiModel?.stokBarkodKayitlariEkle);
+  bool get stokBarkodDuzenle => _isTrue(_profilYetkiModel?.stokBarkodKayitlariDuzelt);
+  bool get stokBarkodSil => _isTrue(_profilYetkiModel?.stokBarkodKayitlariSil);
+  bool get stokBarkodStokKartiGorunsun => _isTrue(_profilYetkiModel?.stokBarkodKayitlariGecerliOlcuBirimleri?.isNotEmpty);
   List<BarkodTipiEnum> get stokBarkodGecerliBarkodTipleri =>
       BarkodTipiEnum.values
           .where(
             (element) =>
-                _yetkiModel?.stokBarkodKayitlariGecerliBarkodTipleri?.any(
+                _profilYetkiModel?.stokBarkodKayitlariGecerliBarkodTipleri?.any(
                   (element2) => element2 == element.barkodTipi,
                 ) ??
                 adminMi,
@@ -281,16 +281,16 @@ final class YetkiController {
           .toList();
 
   bool stokBarkodGorunecekAlanlar(String value) => _isTrue(
-    (_yetkiModel?.stokBarkodTanimlamaGorunecekAlanlar.ext.isNullOrEmpty ?? false) ||
-        (_yetkiModel?.stokBarkodTanimlamaGorunecekAlanlar?.contains(value) ?? false),
+    (_profilYetkiModel?.stokBarkodTanimlamaGorunecekAlanlar.ext.isNullOrEmpty ?? false) ||
+        (_profilYetkiModel?.stokBarkodTanimlamaGorunecekAlanlar?.contains(value) ?? false),
   );
 
   //* Paketleme
-  bool get stokPaketlemeSil => _isTrue(_yetkiModel?.stokPaketlemeSil);
-  bool get stokPaketlemeEkle => _isTrue(_yetkiModel?.stokPaketlemeEkle);
-  bool get stokPaketlemeCoklu => _isTrue(_yetkiModel?.stokPaketlemeCoklu);
-  bool get stokPaketlemeDigerKulKayitGorebilir => _isTrue(_yetkiModel?.stokPaketlemeDigerKulKayitGorebilir == "E");
-  bool get stokPaketlemeOnaySormasin => _isTrue(_yetkiModel?.stokPaketlemeOnaySormasin == "E", skipAdmin: true);
+  bool get stokPaketlemeSil => _isTrue(_profilYetkiModel?.stokPaketlemeSil);
+  bool get stokPaketlemeEkle => _isTrue(_profilYetkiModel?.stokPaketlemeEkle);
+  bool get stokPaketlemeCoklu => _isTrue(_profilYetkiModel?.stokPaketlemeCoklu);
+  bool get stokPaketlemeDigerKulKayitGorebilir => _isTrue(_profilYetkiModel?.stokPaketlemeDigerKulKayitGorebilir == "E");
+  bool get stokPaketlemeOnaySormasin => _isTrue(_profilYetkiModel?.stokPaketlemeOnaySormasin == "E", skipAdmin: true);
 
   bool get teslimCarideBaglanmisCarilerSecilsinMi {
     if (cariTeslimCariSatisBaglanmisCarilerSecilsinMi) {
@@ -304,17 +304,17 @@ final class YetkiController {
   }
 
   bool get cariTeslimCariSatisBaglanmisCarilerSecilsinMi =>
-      _yetkiModel?.cariTeslimCariSatisBaglanmisCarilerSecilsin == "E";
+      _profilYetkiModel?.cariTeslimCariSatisBaglanmisCarilerSecilsin == "E";
 
-  bool get cariTeslimCariRehberSadeceSecsin => _yetkiModel?.cariTeslimCariRehberSadeceSecsin == "E";
+  bool get cariTeslimCariRehberSadeceSecsin => _profilYetkiModel?.cariTeslimCariRehberSadeceSecsin == "E";
 
   //! Sipariş
-  bool get siparisMSDurumRaporuFiyatGor => _isTrue(_yetkiModel?.siparisMusteriSiparisiDurumRaporuFiyatGor);
-  bool get siparisSSDurumRaporuFiyatGor => _isTrue(_yetkiModel?.siparisSaticiSiparisiDurumRaporuFiyatGor);
+  bool get siparisMSDurumRaporuFiyatGor => _isTrue(_profilYetkiModel?.siparisMusteriSiparisiDurumRaporuFiyatGor);
+  bool get siparisSSDurumRaporuFiyatGor => _isTrue(_profilYetkiModel?.siparisSaticiSiparisiDurumRaporuFiyatGor);
   bool _musteriSiparisiMi(EditTipiEnum? editTipi) => editTipi?.musteriMi == true;
   bool get siparisKdvDahilMi {
-    if (_yetkiModel?.siparisMusSipKdvDurumu == "D") return true;
-    if (_yetkiModel?.siparisMusSipKdvDurumu == "H") return false;
+    if (_profilYetkiModel?.siparisMusSipKdvDurumu == "D") return true;
+    if (_profilYetkiModel?.siparisMusSipKdvDurumu == "H") return false;
     return !genellikleKdvHaricMi;
   }
 
@@ -340,8 +340,8 @@ final class YetkiController {
       _musteriSiparisiMi(editTipi)
           ? _paramModel?.satisSatirKademeliIskontoSayisi ?? 0
           : _paramModel?.alisSatirKademeliIskontoSayisi ?? 0;
-  bool get msOnayIslemleri => _isTrue(_yetkiModel?.siparisMusSipOnayIslemleri);
-  bool get ssOnayIslemleri => _isTrue(_yetkiModel?.siparisSaticiSipOnayIslemleri);
+  bool get msOnayIslemleri => _isTrue(_profilYetkiModel?.siparisMusSipOnayIslemleri);
+  bool get ssOnayIslemleri => _isTrue(_profilYetkiModel?.siparisSaticiSipOnayIslemleri);
 
   bool siparisOnayIslemleri(String? belgeTuru) {
     if (belgeTuru == "MS") {
@@ -400,25 +400,25 @@ final class YetkiController {
 
   //* Müşteri Siparişi
   //😳SatisSatirKademeliIskontoSayisi => 0 ise kademeli iskonto yok demektir. Kaç tane varsa o kadar genisk ve geniskTipi gelecek
-  String? get siparisMSOzelKod1Degeri => _yetkiModel?.siparisMusSipOzelKod1Degeri;
-  String? get siparisMSOzelKod2Degeri => _yetkiModel?.siparisMusSipOzelKod2Degeri;
+  String? get siparisMSOzelKod1Degeri => _profilYetkiModel?.siparisMusSipOzelKod1Degeri;
+  String? get siparisMSOzelKod2Degeri => _profilYetkiModel?.siparisMusSipOzelKod2Degeri;
   bool get siparisMSFiyatDegistirilmesin =>
-      _isTrue(_yetkiModel?.siparisMusteriSiparisiFiyatDegistirilmesin, skipAdmin: true);
+      _isTrue(_profilYetkiModel?.siparisMusteriSiparisiFiyatDegistirilmesin, skipAdmin: true);
   bool get satisOzelKod1AktifMi => _isTrue(_paramModel?.satisOzelKod1Aktif ?? false, skipAdmin: true);
   bool get satisOzelKod2AktifMi => _isTrue(_paramModel?.satisOzelKod2Aktif, skipAdmin: true);
   bool get siparisMSGenIsk1AktifMi => _isTrue(_paramModel?.satisGenIsk1Aktif, skipAdmin: true);
   bool get siparisMSGenIsk2AktifMi => _isTrue(_paramModel?.satisGenIsk2Aktif, skipAdmin: true);
   bool get siparisMSGenIsk3AktifMi => _isTrue(_paramModel?.satisGenIsk3Aktif, skipAdmin: true);
-  bool get siparisMSDuzelt => _isTrue(_yetkiModel?.siparisMusteriSiparisiDuzelt);
-  bool get siparisMSKaydet => _isTrue(_yetkiModel?.siparisMusteriSiparisiKaydet);
-  bool get siparisMSSil => _isTrue(_yetkiModel?.siparisMusteriSiparisiSil);
-  bool get siparisMSCariKoduDegistir => _isTrue(_yetkiModel?.siparisMusSipCariKoduDegistir);
-  bool get siparisMSKapalilarListelenmesin => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapalilarListelenmesin);
-  bool get siparisMSBirim1denKaydet => _isTrue(_yetkiModel?.siparisMusSipBirim1DenKaydet);
-  bool get siparisMSKapatmaIslemi => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
-  bool get siparisMSOnayIslemleri => _isTrue(_yetkiModel?.siparisMusSipOnayIslemleri);
-  bool get siparisMSSonFiyatGoster => _isTrue(_yetkiModel?.siparisMusteriSiparisiSonFiyatGoster);
-  bool get siparisMSDigerSekmesiGoster => _isTrue(_yetkiModel?.siparisMusSipDigerSekmesiGoster);
+  bool get siparisMSDuzelt => _isTrue(_profilYetkiModel?.siparisMusteriSiparisiDuzelt);
+  bool get siparisMSKaydet => _isTrue(_profilYetkiModel?.siparisMusteriSiparisiKaydet);
+  bool get siparisMSSil => _isTrue(_profilYetkiModel?.siparisMusteriSiparisiSil);
+  bool get siparisMSCariKoduDegistir => _isTrue(_profilYetkiModel?.siparisMusSipCariKoduDegistir);
+  bool get siparisMSKapalilarListelenmesin => _isTrue(_profilYetkiModel?.siparisMusteriSiparisiKapalilarListelenmesin);
+  bool get siparisMSBirim1denKaydet => _isTrue(_profilYetkiModel?.siparisMusSipBirim1DenKaydet);
+  bool get siparisMSKapatmaIslemi => _isTrue(_profilYetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
+  bool get siparisMSOnayIslemleri => _isTrue(_profilYetkiModel?.siparisMusSipOnayIslemleri);
+  bool get siparisMSSonFiyatGoster => _isTrue(_profilYetkiModel?.siparisMusteriSiparisiSonFiyatGoster);
+  bool get siparisMSDigerSekmesiGoster => _isTrue(_profilYetkiModel?.siparisMusSipDigerSekmesiGoster);
   bool get siparisMSKosulAktifMi => _isTrue(_paramModel?.satisKosulAktif, skipAdmin: true);
   bool get siparisMSKosulSatirdaSor => _isTrue(_paramModel?.satisKosulSatirdaSor, skipAdmin: true);
   bool get siparisMSFarkliTeslimCariAktif => _isTrue(_paramModel?.satisFarkliTeslimCariAktif, skipAdmin: true);
@@ -434,30 +434,30 @@ final class YetkiController {
   bool get siparisMSsatirdaTeslimTarihiSor => _isTrue(_paramModel?.satisSatirdaTeslimTarihiSor, skipAdmin: true);
 
   bool siparisMSEkstraAlanlari(String value) =>
-      _isTrue(_yetkiModel?.siparisMusSipEkstraAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.siparisMusSipEkstraAlanlar?.contains(value), skipAdmin: true);
 
   // bool get siparisMSbelgeKopyala => _isTrue(_yetkiModel?.siparisMusSipBelge);
   ///? Eğer içeriyorsa boş geçilecek
   bool siparisMSBosGecilecekAlanMi(String alan) =>
-      _isTrue(!(_yetkiModel?.siparisMusSipBosGecilmeyecekAlanlar?.contains(alan) ?? false));
+      _isTrue(!(_profilYetkiModel?.siparisMusSipBosGecilmeyecekAlanlar?.contains(alan) ?? false));
 
   ///? Eğer içeriyorsa gizlenecek
   bool siparisMSGizlenecekAlanMi(String alan) =>
-      _isTrue(!(_yetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan) ?? false));
+      _isTrue(!(_profilYetkiModel?.siparisMusteriSiparisiGizlenecekAlanlar?.contains(alan) ?? false));
   bool get siparisMSKontrolAciklamasiAktifMi =>
       _isTrue(_paramModel?.fatuKontrolAciklamasiAktif?.contains("MS"), skipAdmin: true);
 
   ///? Eğer içeriyorsa değiştirilemeyecek
   bool siparisMSDegismeyecekAlanMi(String alan) =>
-      _isTrue(!(_yetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan) ?? false));
+      _isTrue(!(_profilYetkiModel?.siparisMusteriSiparisiDegismeyecekAlanlar?.contains(alan) ?? false));
 
   ///? Eğer içeriyorsa gösterilecek (Sipariş için)
   bool siparisMSAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari == null
+    _profilYetkiModel?.siparisMusteriSiparisiAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.siparisMusteriSiparisiAciklamaAlanlari?.contains(index)) ??
             false,
   );
 
@@ -468,29 +468,29 @@ final class YetkiController {
   bool siparisSSSatirAciklamaAlanlari(int? index) =>
       (_paramModel?.alisSatirdaAciklamalarAktif ?? false) &&
       (index == null
-          ? _isTrue(_yetkiModel?.siparisSaticiSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty)
-          : _isTrue(_yetkiModel?.siparisSaticiSiparisiSatirAciklamaAlanlari?.contains(index) ?? false));
+          ? _isTrue(_profilYetkiModel?.siparisSaticiSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty)
+          : _isTrue(_profilYetkiModel?.siparisSaticiSiparisiSatirAciklamaAlanlari?.contains(index) ?? false));
 
   bool siparisMSSatirAciklamaAlanlari(int? index) =>
       (_paramModel?.satisSatirdaAciklamalarAktif ?? false) &&
       (index == null
-          ? _isTrue(_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty)
-          : _isTrue(_yetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index) ?? false));
+          ? _isTrue(_profilYetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.ext.isNotNullOrEmpty)
+          : _isTrue(_profilYetkiModel?.siparisMusteriSiparisiSatirAciklamaAlanlari?.contains(index) ?? false));
 
   //* Satıcı Siparişi
 
   bool get siparisSSFiyatDegistirilmesin =>
-      _isTrue(_yetkiModel?.siparisSaticiSiparisiFiyatDegistirilmesin, skipAdmin: true);
+      _isTrue(_profilYetkiModel?.siparisSaticiSiparisiFiyatDegistirilmesin, skipAdmin: true);
   bool get siparisSSKdvDahilMi => _isTrue(_paramModel?.alisGenellikleKdvHaric, skipAdmin: true);
   bool get siparisSSGenIsk1AktifMi => _isTrue(_paramModel?.alisGenIsk1Aktif, skipAdmin: true);
   bool get siparisSSGenIsk2AktifMi => _isTrue(_paramModel?.alisGenIsk2Aktif, skipAdmin: true);
   bool get siparisSSGenIsk3AktifMi => _isTrue(_paramModel?.alisGenIsk3Aktif, skipAdmin: true);
-  bool get siparisSSDuzelt => _isTrue(_yetkiModel?.siparisSaticiSiparisiDuzelt);
-  bool get siparisSSKaydet => _isTrue(_yetkiModel?.siparisSaticiSiparisiKaydet);
-  bool get siparisSSSil => _isTrue(_yetkiModel?.siparisSaticiSiparisiSil);
-  bool get siparisSSKapalilarListelenmesin => _isTrue(_yetkiModel?.siparisSaticiSiparisiKapalilarListelenmesin);
-  bool get siparisSSBirim1denKaydet => _isTrue(_yetkiModel?.siparisSaticiSipBirim1DenKaydet);
-  bool get siparisSSDigerSekmesiGoster => _isTrue(_yetkiModel?.siparisSaticiSipDigerSekmesiGoster);
+  bool get siparisSSDuzelt => _isTrue(_profilYetkiModel?.siparisSaticiSiparisiDuzelt);
+  bool get siparisSSKaydet => _isTrue(_profilYetkiModel?.siparisSaticiSiparisiKaydet);
+  bool get siparisSSSil => _isTrue(_profilYetkiModel?.siparisSaticiSiparisiSil);
+  bool get siparisSSKapalilarListelenmesin => _isTrue(_profilYetkiModel?.siparisSaticiSiparisiKapalilarListelenmesin);
+  bool get siparisSSBirim1denKaydet => _isTrue(_profilYetkiModel?.siparisSaticiSipBirim1DenKaydet);
+  bool get siparisSSDigerSekmesiGoster => _isTrue(_profilYetkiModel?.siparisSaticiSipDigerSekmesiGoster);
   bool get siparisSSKosulAktifMi => _isTrue(_paramModel?.alisKosulAktif, skipAdmin: true);
   bool get siparisSSFarkliTeslimCariAktif => _isTrue(_paramModel?.alisFarkliTeslimCariAktif, skipAdmin: true);
   bool get siparisSSMiktar2Sor => _isTrue(_paramModel?.alisMiktar2Sor, skipAdmin: true);
@@ -503,7 +503,7 @@ final class YetkiController {
   // bool get siparisSSISk1YuzdeSor => _isTrue(_paramModel?.alisSatirIsk1YuzdeSor);
 
   //! FİNANS
-  bool get hizliTahsilatSil => _isTrue(_yetkiModel?.finansHizliTahsilatKayitlariSil);
+  bool get hizliTahsilatSil => _isTrue(_profilYetkiModel?.finansHizliTahsilatKayitlariSil);
   bool referansKoduSorulsun(bool tahsilatMi) => tahsilatMi ? tahsilatReferansKoduSorulsun : odemeReferansKoduSorulsun;
   bool referansKodu(String? hesapTipi) {
     if (hesapTipi == null) return false;
@@ -520,117 +520,117 @@ final class YetkiController {
   }
 
   //* Kasa
-  bool get kasaListesi => _isTrue(_yetkiModel?.finansKasaListesi);
-  bool get finansKasaIslemleri => _isTrue(_yetkiModel?.finansKasaIslemleri);
-  bool get finansKasaIslemleriSil => _isTrue(_yetkiModel?.finansKasaIslemleriSil);
+  bool get kasaListesi => _isTrue(_profilYetkiModel?.finansKasaListesi);
+  bool get finansKasaIslemleri => _isTrue(_profilYetkiModel?.finansKasaIslemleri);
+  bool get finansKasaIslemleriSil => _isTrue(_profilYetkiModel?.finansKasaIslemleriSil);
   bool get tahsilatReferansKoduSorulsun => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGelir, skipAdmin: true);
   bool get odemeReferansKoduSorulsun => _isTrue(_paramModel?.muhFislerdeRefKodSorulsunGider, skipAdmin: true);
 
   //* Banka
   bool kayitliHesapTipiMi(int value) => _paramModel?.kayitliBankaHesapTipleri?.contains(value) ?? false;
-  bool get bankaKayitSilinsinMi => _isTrue(_yetkiModel?.yoneticiBankaIslemleriSil);
+  bool get bankaKayitSilinsinMi => _isTrue(_profilYetkiModel?.yoneticiBankaIslemleriSil);
 
-  bool get musteriCekSil => _isTrue(_yetkiModel?.finansMcekSil);
-  bool get musteriSenetSil => _isTrue(_yetkiModel?.finansMsenSil);
-  bool get borcCekSil => _isTrue(_yetkiModel?.finansBcekSil);
-  bool get borcSenetSil => _isTrue(_yetkiModel?.finansBsenSil);
+  bool get musteriCekSil => _isTrue(_profilYetkiModel?.finansMcekSil);
+  bool get musteriSenetSil => _isTrue(_profilYetkiModel?.finansMsenSil);
+  bool get borcCekSil => _isTrue(_profilYetkiModel?.finansBcekSil);
+  bool get borcSenetSil => _isTrue(_profilYetkiModel?.finansBsenSil);
 
-  bool get bankaCariEftHavale => _isTrue(_yetkiModel?.yoneticiBankaIslemCariEft);
+  bool get bankaCariEftHavale => _isTrue(_profilYetkiModel?.yoneticiBankaIslemCariEft);
 
-  bool get musteriCekCariHesabaCirola => _isTrue(_yetkiModel?.finansMcekCariyeCiro);
-  bool get musteriSenetCariHesabaCirola => _isTrue(_yetkiModel?.finansMsenCariyeCiro);
+  bool get musteriCekCariHesabaCirola => _isTrue(_profilYetkiModel?.finansMcekCariyeCiro);
+  bool get musteriSenetCariHesabaCirola => _isTrue(_profilYetkiModel?.finansMsenCariyeCiro);
 
-  bool get musteriCekTahsilHesabinaCirola => _isTrue(_yetkiModel?.finansMcekTahsileCiro);
-  bool get musteriSenetTahsilHesabinaCirola => _isTrue(_yetkiModel?.finansMsenTahsileCiro);
+  bool get musteriCekTahsilHesabinaCirola => _isTrue(_profilYetkiModel?.finansMcekTahsileCiro);
+  bool get musteriSenetTahsilHesabinaCirola => _isTrue(_profilYetkiModel?.finansMsenTahsileCiro);
 
-  bool get musteriCekTahsilDekontu => _isTrue(_yetkiModel?.finansMcekTahsilDekontu);
-  bool get musteriSenetTahsilDekontu => _isTrue(_yetkiModel?.finansMsenTahsilDekontu);
+  bool get musteriCekTahsilDekontu => _isTrue(_profilYetkiModel?.finansMcekTahsilDekontu);
+  bool get musteriSenetTahsilDekontu => _isTrue(_profilYetkiModel?.finansMsenTahsilDekontu);
 
-  bool get musteriCekEkle => _isTrue(_yetkiModel?.finansMcekEkle);
-  bool get musteriSenetEkle => _isTrue(_yetkiModel?.finansMsenEkle);
-  bool get borcCekEkle => _isTrue(_yetkiModel?.finansBcekEkle);
-  bool get borcSenetEkle => _isTrue(_yetkiModel?.finansBsenEkle);
+  bool get musteriCekEkle => _isTrue(_profilYetkiModel?.finansMcekEkle);
+  bool get musteriSenetEkle => _isTrue(_profilYetkiModel?.finansMsenEkle);
+  bool get borcCekEkle => _isTrue(_profilYetkiModel?.finansBcekEkle);
+  bool get borcSenetEkle => _isTrue(_profilYetkiModel?.finansBsenEkle);
 
-  bool get musteriCekHareketler => _isTrue(_yetkiModel?.finansMcekHareketler);
-  bool get musteriSenetHareketler => _isTrue(_yetkiModel?.finansMsenHareketler);
-  bool get borcCekHareketler => _isTrue(_yetkiModel?.finansBcekHareketler);
-  bool get borcSenetHareketler => _isTrue(_yetkiModel?.finansBsenHareketler);
+  bool get musteriCekHareketler => _isTrue(_profilYetkiModel?.finansMcekHareketler);
+  bool get musteriSenetHareketler => _isTrue(_profilYetkiModel?.finansMsenHareketler);
+  bool get borcCekHareketler => _isTrue(_profilYetkiModel?.finansBcekHareketler);
+  bool get borcSenetHareketler => _isTrue(_profilYetkiModel?.finansBsenHareketler);
 
   //! SEVKİYAT
 
-  bool sevkiyatSatisFatBelgeTipleri(int? value) => _isTrue(_yetkiModel?.sevkiyatSatisFatBelgeTipleri?.contains(value));
+  bool sevkiyatSatisFatBelgeTipleri(int? value) => _isTrue(_profilYetkiModel?.sevkiyatSatisFatBelgeTipleri?.contains(value));
   bool sevkiyatSatisIrsBelgeTipleri(int? value) =>
-      _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiBelgeTipleri?.contains(value));
+      _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiBelgeTipleri?.contains(value));
 
   bool get sevkiyatSatisFatFiyatDegistirilmesin =>
-      _isTrue(_yetkiModel?.sevkiyatSatisFatFiyatDegistirilmesin, skipAdmin: true);
-  bool get satisIrsFiyatGor => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiFiyatGor);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisFatFiyatDegistirilmesin, skipAdmin: true);
+  bool get satisIrsFiyatGor => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiFiyatGor);
 
   bool get satisCariDovizTipiniKullan => _isTrue(_paramModel?.satisCariDovizTipiniKullan);
   bool get alisCariDovizTipiniKullan => _isTrue(_paramModel?.alisCariDovizTipiniKullan);
 
-  bool get satisFatEkle => _isTrue(_yetkiModel?.sevkiyatSatisFatKaydet);
-  bool get satisFatDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisFatDuzelt);
-  bool get satisFatSil => _isTrue(_yetkiModel?.sevkiyatSatisFatSil);
-  bool get satisFatBirim1denKaydet => _isTrue(_yetkiModel?.sevkiyatSatisFatBirim1DenKaydet, skipAdmin: true);
+  bool get satisFatEkle => _isTrue(_profilYetkiModel?.sevkiyatSatisFatKaydet);
+  bool get satisFatDuzenle => _isTrue(_profilYetkiModel?.sevkiyatSatisFatDuzelt);
+  bool get satisFatSil => _isTrue(_profilYetkiModel?.sevkiyatSatisFatSil);
+  bool get satisFatBirim1denKaydet => _isTrue(_profilYetkiModel?.sevkiyatSatisFatBirim1DenKaydet, skipAdmin: true);
 
-  bool get satisIrsEkle => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiKayit);
-  bool get satisIrsDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiDuzeltme);
-  bool get satisIrsSil => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiSilme);
-  bool get satisIrsBirim1denKaydet => _isTrue(_yetkiModel?.sevkiyatSatisIrsBirim1DenKaydet, skipAdmin: true);
+  bool get satisIrsEkle => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiKayit);
+  bool get satisIrsDuzenle => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiDuzeltme);
+  bool get satisIrsSil => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiSilme);
+  bool get satisIrsBirim1denKaydet => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsBirim1DenKaydet, skipAdmin: true);
 
   bool satisIrsDegistirilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiDegismeyecekAlanlar?.contains(index), skipAdmin: true);
   bool satisFatDegistirilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.sevkiyatSatisFatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisFatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
   bool alisIrsDegistirilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.malKabulAlisIrsDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.malKabulAlisIrsDegismeyecekAlanlar?.contains(index), skipAdmin: true);
   bool alisFatDegistirilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.malKabulAlisFatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.malKabulAlisFatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
 
   bool satisIrsBosGecilmeyecekAlanlar(String? value) =>
-      _isTrue(_yetkiModel?.sevkiyatSatisIrsBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisIrsBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
   bool satisFatBosGecilmeyecekAlanlar(String? value) =>
-      _isTrue(_yetkiModel?.sevkiyatSatisFatBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisFatBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
   bool alisIrsBosGecilmeyecekAlanlar(String? value) =>
-      _isTrue(_yetkiModel?.malKabulAlisIrsBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.malKabulAlisIrsBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
   bool alisFatBosGecilmeyecekAlanlar(String? value) =>
-      _isTrue(_yetkiModel?.malKabulAlisFatBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.malKabulAlisFatBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
 
   bool satisIrsGizlenecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool satisFatGizlenecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisFatGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool alisIrsGizlenecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.malKabulAlisIrsGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool alisFatGizlenecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.malKabulAlisFatGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.malKabulAlisFatGizlenecekAlanlar?.contains(index), skipAdmin: true);
 
-  bool get satisFatDigerSekmesiGelsin => _isTrue(_yetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
-  bool get satisIrsDigerSekmesiGelsin => _isTrue(_yetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);
+  bool get satisFatDigerSekmesiGelsin => _isTrue(_profilYetkiModel?.sevkiyatSatisFatDigerSekmesiGoster);
+  bool get satisIrsDigerSekmesiGelsin => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsDigerSekmesiGoster);
 
   //! MAL KABUL
-  String? get malKabulAlisIrsOzelKod1Degeri => _yetkiModel?.malKabulAlisIrsOzelKod1Degeri;
-  String? get malKabulAlisIrsOzelKod2Degeri => _yetkiModel?.malKabulAlisIrsOzelKod2Degeri;
+  String? get malKabulAlisIrsOzelKod1Degeri => _profilYetkiModel?.malKabulAlisIrsOzelKod1Degeri;
+  String? get malKabulAlisIrsOzelKod2Degeri => _profilYetkiModel?.malKabulAlisIrsOzelKod2Degeri;
   bool malKabulAlisFatBelgeTipleri(int? value) =>
-      _isTrue(_yetkiModel?.malKabulAlisFaturasiBelgeTipleri?.contains(value));
-  bool malKabulAlisIrsBelgeTipleri(int? value) => _isTrue(_yetkiModel?.malKabulAlisIrsBelgeTipleri?.contains(value));
+      _isTrue(_profilYetkiModel?.malKabulAlisFaturasiBelgeTipleri?.contains(value));
+  bool malKabulAlisIrsBelgeTipleri(int? value) => _isTrue(_profilYetkiModel?.malKabulAlisIrsBelgeTipleri?.contains(value));
 
-  bool get malKabulFiyatDegistirilmesin => _isTrue(_yetkiModel?.malKabulFiyatDegistirilmesin, skipAdmin: true);
-  bool get alisIrsFiyatGor => _isTrue(_yetkiModel?.malKabulAlisIrsaliyesiFiyatGor);
+  bool get malKabulFiyatDegistirilmesin => _isTrue(_profilYetkiModel?.malKabulFiyatDegistirilmesin, skipAdmin: true);
+  bool get alisIrsFiyatGor => _isTrue(_profilYetkiModel?.malKabulAlisIrsaliyesiFiyatGor);
 
-  bool get alisFatEkle => _isTrue(_yetkiModel?.malKabulAlisFaturasiKaydet);
-  bool get alisFatDuzenle => _isTrue(_yetkiModel?.malKabulAlisFaturasiDuzelt);
-  bool get alisFatSil => _isTrue(_yetkiModel?.malKabulAlisFaturasiSil);
-  bool get alisFatBirim1denKaydet => _isTrue(_yetkiModel?.malKabulAlisFatBirim1DenKaydet, skipAdmin: true);
+  bool get alisFatEkle => _isTrue(_profilYetkiModel?.malKabulAlisFaturasiKaydet);
+  bool get alisFatDuzenle => _isTrue(_profilYetkiModel?.malKabulAlisFaturasiDuzelt);
+  bool get alisFatSil => _isTrue(_profilYetkiModel?.malKabulAlisFaturasiSil);
+  bool get alisFatBirim1denKaydet => _isTrue(_profilYetkiModel?.malKabulAlisFatBirim1DenKaydet, skipAdmin: true);
 
-  bool get alisIrsEkle => _isTrue(_yetkiModel?.malKabulSatinAlmaKaydet);
-  bool get alisIrsDuzenle => _isTrue(_yetkiModel?.malKabulSatinAlmaDuzelt);
-  bool get alisIrsSil => _isTrue(_yetkiModel?.malKabulSatinAlmaSil);
-  bool get alisIrsBirim1denKaydet => _isTrue(_yetkiModel?.malKabulAlisIrsBirim1DenKaydet, skipAdmin: true);
+  bool get alisIrsEkle => _isTrue(_profilYetkiModel?.malKabulSatinAlmaKaydet);
+  bool get alisIrsDuzenle => _isTrue(_profilYetkiModel?.malKabulSatinAlmaDuzelt);
+  bool get alisIrsSil => _isTrue(_profilYetkiModel?.malKabulSatinAlmaSil);
+  bool get alisIrsBirim1denKaydet => _isTrue(_profilYetkiModel?.malKabulAlisIrsBirim1DenKaydet, skipAdmin: true);
 
-  bool get alisFatDigerSekmesiGelsin => _isTrue(_yetkiModel?.malKabulAlisFatDigerSekmesiGoster);
-  bool get alisIrsDigerSekmesiGelsin => _isTrue(_yetkiModel?.malKabulAlisFatDigerSekmesiGoster);
+  bool get alisFatDigerSekmesiGelsin => _isTrue(_profilYetkiModel?.malKabulAlisFatDigerSekmesiGoster);
+  bool get alisIrsDigerSekmesiGelsin => _isTrue(_profilYetkiModel?.malKabulAlisFatDigerSekmesiGoster);
   // bool get satisFatEkle => _isTrue(_yetkiModel?.ekle);
 
   //! E-FATURA
@@ -638,13 +638,13 @@ final class YetkiController {
       _isTrue(satisMi ? _paramModel?.satisOzelKod1Aktif : _paramModel?.alisOzelKod1Aktif, skipAdmin: true);
   bool ebelgeOzelKod2AktifMi(bool satisMi) =>
       _isTrue(satisMi ? _paramModel?.satisOzelKod2Aktif : _paramModel?.alisOzelKod2Aktif, skipAdmin: true);
-  bool get ebelgeEFatura => _isTrue((_yetkiModel?.ebelgeEFat ?? false) && (_paramModel?.eFaturaAktif ?? false));
-  bool get ebelgeEFaturaGelenKutusu => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatGelenKutusu);
-  bool get ebelgeEFaturaGidenKutusu => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatSorgula);
-  bool get ebelgeEFaturaGonder => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatGonder);
-  bool get ebelgeEFaturaSorgula => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatSorgula);
-  bool get ebelgeEFaturaGoruntule => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatGoruntule);
-  bool get ebelgeEFaturaTaslakSil => ebelgeEFatura && _isTrue(_yetkiModel?.ebelgeEFatTaslakSil);
+  bool get ebelgeEFatura => _isTrue((_profilYetkiModel?.ebelgeEFat ?? false) && (_paramModel?.eFaturaAktif ?? false));
+  bool get ebelgeEFaturaGelenKutusu => ebelgeEFatura && _isTrue(_profilYetkiModel?.ebelgeEFatGelenKutusu);
+  bool get ebelgeEFaturaGidenKutusu => ebelgeEFatura && _isTrue(_profilYetkiModel?.ebelgeEFatSorgula);
+  bool get ebelgeEFaturaGonder => ebelgeEFatura && _isTrue(_profilYetkiModel?.ebelgeEFatGonder);
+  bool get ebelgeEFaturaSorgula => ebelgeEFatura && _isTrue(_profilYetkiModel?.ebelgeEFatSorgula);
+  bool get ebelgeEFaturaGoruntule => ebelgeEFatura && _isTrue(_profilYetkiModel?.ebelgeEFatGoruntule);
+  bool get ebelgeEFaturaTaslakSil => ebelgeEFatura && _isTrue(_profilYetkiModel?.ebelgeEFatTaslakSil);
   bool get eFaturaAktif => _isTrue(_paramModel?.eFaturaAktif, skipAdmin: true);
   bool get eFaturaSenaryoDegistir => ebelgeEFatura && _isTrue(_paramModel?.eFaturaSenaryoDegistir);
   bool eFaturaSerisindenMi(String belgeNo) => _isTrue(
@@ -654,13 +654,13 @@ final class YetkiController {
   );
 
   bool get ebelgeEIrsaliye =>
-      _isTrue((_yetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
-  bool get ebelgeEIrsaliyeGelenKutusu => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeGelenKutusu);
-  bool get ebelgeEIrsaliyeGidenKutusu => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeGidenKutusu);
-  bool get ebelgeEIrsaliyeGonder => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeGonder);
-  bool get ebelgeEIrsaliyeSorgula => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliye);
-  bool get ebelgeEIrsaliyeGoruntule => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeGoruntule);
-  bool get ebelgeEIrsaliyeTaslakSil => ebelgeEIrsaliye && _isTrue(_yetkiModel?.ebelgeEIrsaliyeTaslakSil);
+      _isTrue((_profilYetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
+  bool get ebelgeEIrsaliyeGelenKutusu => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliyeGelenKutusu);
+  bool get ebelgeEIrsaliyeGidenKutusu => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliyeGidenKutusu);
+  bool get ebelgeEIrsaliyeGonder => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliyeGonder);
+  bool get ebelgeEIrsaliyeSorgula => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliye);
+  bool get ebelgeEIrsaliyeGoruntule => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliyeGoruntule);
+  bool get ebelgeEIrsaliyeTaslakSil => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliyeTaslakSil);
   bool get eIrsaliyeAktif => ebelgeEIrsaliye && _isTrue(_paramModel?.eIrsaliyeAktif);
   bool eIrsaliyeSerisindenMi(String belgeNo) =>
       ebelgeEIrsaliye &&
@@ -670,14 +670,14 @@ final class YetkiController {
         skipAdmin: true,
       );
 
-  bool get ebelgeEArsiv => _isTrue((_yetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eArsivAktif ?? false));
+  bool get ebelgeEArsiv => _isTrue((_profilYetkiModel?.ebelgeEArsiv ?? false) && (_paramModel?.eArsivAktif ?? false));
   // bool get ebelgeEArsivGelenKutusu => _isTrue(_yetkiModel?.ebelgeEArsivGelenKutusu);
   bool get ebelgeEArsivGidenKutusu =>
-      ebelgeEArsiv && _isTrue((_paramModel?.eIrsaliyeAktif ?? false) && (_yetkiModel?.ebelgeEArsivSorgula ?? false));
-  bool get ebelgeEArsivGonder => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivGonder);
-  bool get ebelgeEArsivSorgula => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivSorgula);
-  bool get ebelgeEArsivGoruntule => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivGoruntule);
-  bool get ebelgeEArsivTaslakSil => ebelgeEArsiv && _isTrue(_yetkiModel?.ebelgeEArsivTaslakSil);
+      ebelgeEArsiv && _isTrue((_paramModel?.eIrsaliyeAktif ?? false) && (_profilYetkiModel?.ebelgeEArsivSorgula ?? false));
+  bool get ebelgeEArsivGonder => ebelgeEArsiv && _isTrue(_profilYetkiModel?.ebelgeEArsivGonder);
+  bool get ebelgeEArsivSorgula => ebelgeEArsiv && _isTrue(_profilYetkiModel?.ebelgeEArsivSorgula);
+  bool get ebelgeEArsivGoruntule => ebelgeEArsiv && _isTrue(_profilYetkiModel?.ebelgeEArsivGoruntule);
+  bool get ebelgeEArsivTaslakSil => ebelgeEArsiv && _isTrue(_profilYetkiModel?.ebelgeEArsivTaslakSil);
   bool get eArsivAktif => ebelgeEArsiv && _isTrue(_paramModel?.eArsivAktif);
   bool eArsivSerisindenMi(String belgeNo) =>
       ebelgeEArsiv &&
@@ -688,23 +688,23 @@ final class YetkiController {
       );
 
   //! SAYIM
-  bool get sayimEkle => _isTrue(_yetkiModel?.sayimSerbest);
-  bool get sayimSil => _isTrue(_yetkiModel?.sayimSerbestSil);
-  bool get sayimHemenKaydet => _isTrue(_yetkiModel?.sayimHemenKaydet);
-  bool get sayimDepoFarkRaporu => _isTrue(_yetkiModel?.sayimDepoFarkRaporu);
-  bool get sayimSayimRaporu => _isTrue(_yetkiModel?.sayimRaporu);
-  bool sayimEkAlanlar(int? value) => _isTrue(_yetkiModel?.sayimEkAlanlar?.contains(value), skipAdmin: true);
+  bool get sayimEkle => _isTrue(_profilYetkiModel?.sayimSerbest);
+  bool get sayimSil => _isTrue(_profilYetkiModel?.sayimSerbestSil);
+  bool get sayimHemenKaydet => _isTrue(_profilYetkiModel?.sayimHemenKaydet);
+  bool get sayimDepoFarkRaporu => _isTrue(_profilYetkiModel?.sayimDepoFarkRaporu);
+  bool get sayimSayimRaporu => _isTrue(_profilYetkiModel?.sayimRaporu);
+  bool sayimEkAlanlar(int? value) => _isTrue(_profilYetkiModel?.sayimEkAlanlar?.contains(value), skipAdmin: true);
   bool sayimGizlenecekAlanlar(String? value) =>
-      _isTrue(_yetkiModel?.sayimGizlenecekAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sayimGizlenecekAlanlar?.contains(value), skipAdmin: true);
   bool sayimDegistirilmeyecekAlanlar(String? value) =>
-      _isTrue(_yetkiModel?.sayimDegismeyecekAlanlar?.contains(value), skipAdmin: true);
-  int get sayimVarsayilanOlcuBirimi => _yetkiModel?.sayimVarsayilanOlcuBirimi ?? 1;
+      _isTrue(_profilYetkiModel?.sayimDegismeyecekAlanlar?.contains(value), skipAdmin: true);
+  int get sayimVarsayilanOlcuBirimi => _profilYetkiModel?.sayimVarsayilanOlcuBirimi ?? 1;
 
   //! TALEP TEKLİF
-  String? get satisTeklifOzelKod1Degeri => _yetkiModel?.taltekStekOzelKod1Degeri;
-  String? get satisTeklifOzelKod2Degeri => _yetkiModel?.taltekStekOzelKod2Degeri;
-  String? get satisTalebiOzelKod1Degeri => _yetkiModel?.taltekStalOzelKod1Degeri;
-  String? get satisTalebiOzelKod2Degeri => _yetkiModel?.taltekStalOzelKod2Degeri;
+  String? get satisTeklifOzelKod1Degeri => _profilYetkiModel?.taltekStekOzelKod1Degeri;
+  String? get satisTeklifOzelKod2Degeri => _profilYetkiModel?.taltekStekOzelKod2Degeri;
+  String? get satisTalebiOzelKod1Degeri => _profilYetkiModel?.taltekStalOzelKod1Degeri;
+  String? get satisTalebiOzelKod2Degeri => _profilYetkiModel?.taltekStalOzelKod2Degeri;
 
   String? talepTeklifEkAciklamaAdi(bool satisMi) =>
       satisMi ? _paramModel?.satisEkMaliyet2Adi : _paramModel?.alisEkMaliyet2Adi;
@@ -715,39 +715,39 @@ final class YetkiController {
       ) ??
       0;
 
-  bool get satisTeklifiFiyatDegistirilmesin => _isTrue(_yetkiModel?.taltekStekFiyatDegistirilmesin, skipAdmin: true);
-  bool get satisTalebiFiyatDegistirilmesin => _isTrue(_yetkiModel?.taltekStalFiyatDegistirilmesin, skipAdmin: true);
+  bool get satisTeklifiFiyatDegistirilmesin => _isTrue(_profilYetkiModel?.taltekStekFiyatDegistirilmesin, skipAdmin: true);
+  bool get satisTalebiFiyatDegistirilmesin => _isTrue(_profilYetkiModel?.taltekStalFiyatDegistirilmesin, skipAdmin: true);
 
-  bool get satisTeklifiSil => _isTrue(_yetkiModel?.taltekStekSil);
-  bool get alisTalebiSil => _isTrue(_yetkiModel?.taltekAtalSil);
-  bool get satisTalebiSil => _isTrue(_yetkiModel?.taltekStalSil);
+  bool get satisTeklifiSil => _isTrue(_profilYetkiModel?.taltekStekSil);
+  bool get alisTalebiSil => _isTrue(_profilYetkiModel?.taltekAtalSil);
+  bool get satisTalebiSil => _isTrue(_profilYetkiModel?.taltekStalSil);
 
-  bool get satisTeklifiYazdir => _isTrue(_yetkiModel?.yazdirmaSatisTeklifi);
-  bool get alisTalebiYazdir => _isTrue(_yetkiModel?.yazdirmaAtal);
-  bool get satisTalebiYazdir => _isTrue(_yetkiModel?.yazdirmaSatisTalebi);
+  bool get satisTeklifiYazdir => _isTrue(_profilYetkiModel?.yazdirmaSatisTeklifi);
+  bool get alisTalebiYazdir => _isTrue(_profilYetkiModel?.yazdirmaAtal);
+  bool get satisTalebiYazdir => _isTrue(_profilYetkiModel?.yazdirmaSatisTalebi);
 
-  bool get satisTeklifiDuzenle => _isTrue(_yetkiModel?.taltekStekDuzelt);
-  bool get alisTalebiDuzenle => _isTrue(_yetkiModel?.taltekAtalDuzelt);
-  bool get satisTalebiDuzenle => _isTrue(_yetkiModel?.taltekStalDuzelt);
+  bool get satisTeklifiDuzenle => _isTrue(_profilYetkiModel?.taltekStekDuzelt);
+  bool get alisTalebiDuzenle => _isTrue(_profilYetkiModel?.taltekAtalDuzelt);
+  bool get satisTalebiDuzenle => _isTrue(_profilYetkiModel?.taltekStalDuzelt);
 
-  bool get satisTeklifiEkle => _isTrue(_yetkiModel?.taltekStekKaydet);
-  bool get alisTalebiEkle => _isTrue(_yetkiModel?.taltekAtalKaydet);
-  bool get satisTalebiEkle => _isTrue(_yetkiModel?.taltekStalKaydet);
+  bool get satisTeklifiEkle => _isTrue(_profilYetkiModel?.taltekStekKaydet);
+  bool get alisTalebiEkle => _isTrue(_profilYetkiModel?.taltekAtalKaydet);
+  bool get satisTalebiEkle => _isTrue(_profilYetkiModel?.taltekStalKaydet);
 
   bool talepTeklifSatisTeklifiAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.taltekStekAciklamaAlanlari == null
+    _profilYetkiModel?.taltekStekAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.taltekStekAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.taltekStekAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.taltekStekAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.taltekStekAciklamaAlanlari?.contains(index)) ??
             true,
   );
   bool talepTeklifAlisTalebiAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.taltekAtalAciklamaAlanlari == null
+    _profilYetkiModel?.taltekAtalAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.taltekAtalAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.taltekAtalAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.taltekAtalAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.taltekAtalAciklamaAlanlari?.contains(index)) ??
             false,
   );
 
@@ -764,84 +764,84 @@ final class YetkiController {
 
   // bool get stekDigersSekmesiGelsin => _isTrue(_yetkiModel?.diger);
 
-  bool get stekOnayIslemleri => _isTrue(_yetkiModel?.taltekStekOnayIslemleri ?? false);
+  bool get stekOnayIslemleri => _isTrue(_profilYetkiModel?.taltekStekOnayIslemleri ?? false);
   bool get stekKdvDahilMi {
-    if (_yetkiModel?.taltekStekKdvDurumu == "D") return true;
-    if (_yetkiModel?.taltekStekKdvDurumu == "H") return false;
+    if (_profilYetkiModel?.taltekStekKdvDurumu == "D") return true;
+    if (_profilYetkiModel?.taltekStekKdvDurumu == "H") return false;
     return !genellikleKdvHaricMi;
   }
 
-  bool get stalOnayIslemleri => _isTrue(_yetkiModel?.taltekStalOnayIslemleri ?? false);
+  bool get stalOnayIslemleri => _isTrue(_profilYetkiModel?.taltekStalOnayIslemleri ?? false);
 
   bool get stalKdvDahilMi {
-    if (_yetkiModel?.taltekStalKdvDurumu == "D") return true;
-    if (_yetkiModel?.taltekStalKdvDurumu == "H") return false;
+    if (_profilYetkiModel?.taltekStalKdvDurumu == "D") return true;
+    if (_profilYetkiModel?.taltekStalKdvDurumu == "H") return false;
     return !genellikleKdvHaricMi;
   }
 
-  bool get atalOnayIslemleri => _isTrue(_yetkiModel?.taltekAtalOnayIslemleri ?? false);
+  bool get atalOnayIslemleri => _isTrue(_profilYetkiModel?.taltekAtalOnayIslemleri ?? false);
 
   // bool get satisTeklifiDigerSekmesiGelsin => _isTrue(_yetkiModel);
 
   //! Rehberden Stok Secilmesin
-  bool get satisFatRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.sevkiyatSatisFatStokRehberiAcilmasin ?? false));
-  bool get satisIrsRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.sevkiyatSatisIrsStokRehberiAcilmasin ?? false));
-  bool get alisFatRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.malKabulAlisFatStokRehberiAcilmasin ?? false));
-  bool get alisIrsRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.malKabulAlisIrsStokRehberiAcilmasin ?? false));
-  bool get transferDatRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.transferDatStokRehberiAcilmasin ?? false));
-  bool get transferAGRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.transferAgStokRehberiAcilmasin ?? false));
-  bool get transferACRehberdenStokSecilsin => _isTrue(!(_yetkiModel?.transferAcStokRehberiAcilmasin ?? false));
+  bool get satisFatRehberdenStokSecilsin => _isTrue(!(_profilYetkiModel?.sevkiyatSatisFatStokRehberiAcilmasin ?? false));
+  bool get satisIrsRehberdenStokSecilsin => _isTrue(!(_profilYetkiModel?.sevkiyatSatisIrsStokRehberiAcilmasin ?? false));
+  bool get alisFatRehberdenStokSecilsin => _isTrue(!(_profilYetkiModel?.malKabulAlisFatStokRehberiAcilmasin ?? false));
+  bool get alisIrsRehberdenStokSecilsin => _isTrue(!(_profilYetkiModel?.malKabulAlisIrsStokRehberiAcilmasin ?? false));
+  bool get transferDatRehberdenStokSecilsin => _isTrue(!(_profilYetkiModel?.transferDatStokRehberiAcilmasin ?? false));
+  bool get transferAGRehberdenStokSecilsin => _isTrue(!(_profilYetkiModel?.transferAgStokRehberiAcilmasin ?? false));
+  bool get transferACRehberdenStokSecilsin => _isTrue(!(_profilYetkiModel?.transferAcStokRehberiAcilmasin ?? false));
 
   //! Kalem Klavye Açılmasın
-  bool get satisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisFatKlavyeEngelle, skipAdmin: true);
-  bool get satisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.sevkiyatSatisIrsKlavyeEngelle, skipAdmin: true);
-  bool get alisFatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisFatKlavyeEngelle, skipAdmin: true);
-  bool get alisIrsKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.malKabulAlisIrsKlavyeEngelle, skipAdmin: true);
-  bool get transferDatKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferDatKlavyeEngelle, skipAdmin: true);
-  bool get transferAGKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferAgKlavyeEngelle, skipAdmin: true);
-  bool get transferACKalemKlavyeAcilmasin => _isTrue(_yetkiModel?.transferAcKlavyeEngelle, skipAdmin: true);
+  bool get satisFatKalemKlavyeAcilmasin => _isTrue(_profilYetkiModel?.sevkiyatSatisFatKlavyeEngelle, skipAdmin: true);
+  bool get satisIrsKalemKlavyeAcilmasin => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsKlavyeEngelle, skipAdmin: true);
+  bool get alisFatKalemKlavyeAcilmasin => _isTrue(_profilYetkiModel?.malKabulAlisFatKlavyeEngelle, skipAdmin: true);
+  bool get alisIrsKalemKlavyeAcilmasin => _isTrue(_profilYetkiModel?.malKabulAlisIrsKlavyeEngelle, skipAdmin: true);
+  bool get transferDatKalemKlavyeAcilmasin => _isTrue(_profilYetkiModel?.transferDatKlavyeEngelle, skipAdmin: true);
+  bool get transferAGKalemKlavyeAcilmasin => _isTrue(_profilYetkiModel?.transferAgKlavyeEngelle, skipAdmin: true);
+  bool get transferACKalemKlavyeAcilmasin => _isTrue(_profilYetkiModel?.transferAcKlavyeEngelle, skipAdmin: true);
 
   //! Barkodlu Giriş
-  bool get satisFatBarkodUrunGirisi => _isTrue(_yetkiModel?.sevkiyatSatisFatBarkodluGiris);
-  bool get satisIrsBarkodUrunGirisi => _isTrue(_yetkiModel?.sevkiyatSatisIrsBarkodluGiris);
-  bool get alisFatBarkodUrunGirisi => _isTrue(_yetkiModel?.malKabulAlisFatBarkodluGiris);
-  bool get alisIrsBarkodUrunGirisi => _isTrue(_yetkiModel?.malKabulAlisIrsBarkodluGiris);
-  bool get transferDatBarkodUrunGirisi => _isTrue(_yetkiModel?.transferDatBarkodluGiris);
-  bool get transferAGBarkodUrunGirisi => _isTrue(_yetkiModel?.transferAgBarkodluGiris);
-  bool get transferACBarkodUrunGirisi => _isTrue(_yetkiModel?.transferAcBarkodluGiris);
+  bool get satisFatBarkodUrunGirisi => _isTrue(_profilYetkiModel?.sevkiyatSatisFatBarkodluGiris);
+  bool get satisIrsBarkodUrunGirisi => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsBarkodluGiris);
+  bool get alisFatBarkodUrunGirisi => _isTrue(_profilYetkiModel?.malKabulAlisFatBarkodluGiris);
+  bool get alisIrsBarkodUrunGirisi => _isTrue(_profilYetkiModel?.malKabulAlisIrsBarkodluGiris);
+  bool get transferDatBarkodUrunGirisi => _isTrue(_profilYetkiModel?.transferDatBarkodluGiris);
+  bool get transferAGBarkodUrunGirisi => _isTrue(_profilYetkiModel?.transferAgBarkodluGiris);
+  bool get transferACBarkodUrunGirisi => _isTrue(_profilYetkiModel?.transferAcBarkodluGiris);
 
   //! Okutulan Ürün Otomatik Eklensin
   bool get satisFatBarkodUrunOtomatikEkle =>
-      _isTrue(_yetkiModel?.sevkiyatSatisFaturasiKalemDetaySorulmasin, skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisFaturasiKalemDetaySorulmasin, skipAdmin: true);
   bool get satisIrsBarkodUrunOtomatikEkle =>
-      _isTrue(_yetkiModel?.sevkiyatSatisIrsKalemDetaySorulmasin, skipAdmin: true);
-  bool get alisFatBarkodUrunOtomatikEkle => _isTrue(_yetkiModel?.malKabulAlisFatKalemDetaySorulmasin, skipAdmin: true);
-  bool get alisIrsBarkodUrunOtomatikEkle => _isTrue(_yetkiModel?.malKabulAlisIrsKalemDetaySorulmasin, skipAdmin: true);
-  bool get transferDatBarkodUrunOtomatikEkle => _isTrue(_yetkiModel?.transferDatKalemDetaySorulmasin, skipAdmin: true);
-  bool get transferAGBarkodUrunOtomatikEkle => _isTrue(_yetkiModel?.transferAgKalemDetaySorulmasin, skipAdmin: true);
-  bool get transferACBarkodUrunOtomatikEkle => _isTrue(_yetkiModel?.transferAcKalemDetaySorulmasin, skipAdmin: true);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisIrsKalemDetaySorulmasin, skipAdmin: true);
+  bool get alisFatBarkodUrunOtomatikEkle => _isTrue(_profilYetkiModel?.malKabulAlisFatKalemDetaySorulmasin, skipAdmin: true);
+  bool get alisIrsBarkodUrunOtomatikEkle => _isTrue(_profilYetkiModel?.malKabulAlisIrsKalemDetaySorulmasin, skipAdmin: true);
+  bool get transferDatBarkodUrunOtomatikEkle => _isTrue(_profilYetkiModel?.transferDatKalemDetaySorulmasin, skipAdmin: true);
+  bool get transferAGBarkodUrunOtomatikEkle => _isTrue(_profilYetkiModel?.transferAgKalemDetaySorulmasin, skipAdmin: true);
+  bool get transferACBarkodUrunOtomatikEkle => _isTrue(_profilYetkiModel?.transferAcKalemDetaySorulmasin, skipAdmin: true);
 
   //! Kalem Düzeltilsin
-  bool get satisFatKalemDuzeltilsin => _isTrue(!(_yetkiModel?.sevkiyatSatisFatKalemDuzeltilemesin ?? false));
-  bool get satisIrsKalemDuzeltilsin => _isTrue(!(_yetkiModel?.sevkiyatSatisIrsKalemDuzeltilemesin ?? false));
-  bool get alisFatKalemDuzeltilsin => _isTrue(!(_yetkiModel?.malKabulAlisFatKalemDuzeltilemesin ?? false));
-  bool get alisIrsKalemDuzeltilsin => _isTrue(!(_yetkiModel?.malKabulAlisIrsKalemDuzeltilemesin ?? false));
-  bool get transferDatKalemDuzeltilsin => _isTrue(!(_yetkiModel?.transferDatKalemDuzeltilemesin ?? false));
-  bool get transferAGKalemDuzeltilsin => _isTrue(!(_yetkiModel?.transferAgKalemDuzeltilemesin ?? false));
-  bool get transferACKalemDuzeltilsin => _isTrue(!(_yetkiModel?.transferAcKalemDuzeltilemesin ?? false));
+  bool get satisFatKalemDuzeltilsin => _isTrue(!(_profilYetkiModel?.sevkiyatSatisFatKalemDuzeltilemesin ?? false));
+  bool get satisIrsKalemDuzeltilsin => _isTrue(!(_profilYetkiModel?.sevkiyatSatisIrsKalemDuzeltilemesin ?? false));
+  bool get alisFatKalemDuzeltilsin => _isTrue(!(_profilYetkiModel?.malKabulAlisFatKalemDuzeltilemesin ?? false));
+  bool get alisIrsKalemDuzeltilsin => _isTrue(!(_profilYetkiModel?.malKabulAlisIrsKalemDuzeltilemesin ?? false));
+  bool get transferDatKalemDuzeltilsin => _isTrue(!(_profilYetkiModel?.transferDatKalemDuzeltilemesin ?? false));
+  bool get transferAGKalemDuzeltilsin => _isTrue(!(_profilYetkiModel?.transferAgKalemDuzeltilemesin ?? false));
+  bool get transferACKalemDuzeltilsin => _isTrue(!(_profilYetkiModel?.transferAcKalemDuzeltilemesin ?? false));
 
   //! Barkod2 Sor
-  bool get transferDATBarkod2Sor => _isTrue(_yetkiModel?.transferDatBarkod2Sor);
+  bool get transferDATBarkod2Sor => _isTrue(_profilYetkiModel?.transferDatBarkod2Sor);
 
   //! FATURA
-  String? get satisFaturaOzelKod1Degeri => _yetkiModel?.sevkiyatSatisFatOzelKod1Degeri;
-  String? get satisFaturaOzelKod2Degeri => _yetkiModel?.sevkiyatSatisFatOzelKod2Degeri;
-  String? get satisIrsaliyeOzelKod1Degeri => _yetkiModel?.sevkiyatSatisIrsOzelKod1Degeri;
-  String? get satisIrsaliyeOzelKod2Degeri => _yetkiModel?.sevkiyatSatisIrsOzelKod2Degeri;
+  String? get satisFaturaOzelKod1Degeri => _profilYetkiModel?.sevkiyatSatisFatOzelKod1Degeri;
+  String? get satisFaturaOzelKod2Degeri => _profilYetkiModel?.sevkiyatSatisFatOzelKod2Degeri;
+  String? get satisIrsaliyeOzelKod1Degeri => _profilYetkiModel?.sevkiyatSatisIrsOzelKod1Degeri;
+  String? get satisIrsaliyeOzelKod2Degeri => _profilYetkiModel?.sevkiyatSatisIrsOzelKod2Degeri;
   bool get alistaSiparisKullan => _isTrue(_paramModel?.alistaSiparisKullan, skipAdmin: true);
   bool get satistaSiparisKullan => _isTrue(_paramModel?.satistaSiparisKullan, skipAdmin: true);
 
-  bool get sevkiyatFiyatDegistirilmesin => _isTrue(_yetkiModel?.sevkiyatFiyatDegistirilmesin, skipAdmin: true);
+  bool get sevkiyatFiyatDegistirilmesin => _isTrue(_profilYetkiModel?.sevkiyatFiyatDegistirilmesin, skipAdmin: true);
 
   bool faturaAciklamaAlanlari(EditTipiEnum? editTipi, int index) => switch (editTipi) {
     EditTipiEnum.satisFatura => satisFaturaAciklamaAlanlari(index),
@@ -859,123 +859,123 @@ final class YetkiController {
   };
 
   bool get alisFaturaSiparisBaglantisi => _isTrue(
-    _yetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "E" || _yetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "O",
+    _profilYetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "E" || _profilYetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "O",
   );
   bool get satisFaturaSiparisBaglantisi => _isTrue(
-    _yetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "E" || _yetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "O",
+    _profilYetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "E" || _profilYetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "O",
   );
   bool get alisIrsaliyesiSiparisBaglantisi =>
-      _isTrue(_yetkiModel?.malKabulAlisIrsSipBagSecenegi == "E" || _yetkiModel?.malKabulAlisIrsSipBagSecenegi == "O");
+      _isTrue(_profilYetkiModel?.malKabulAlisIrsSipBagSecenegi == "E" || _profilYetkiModel?.malKabulAlisIrsSipBagSecenegi == "O");
   bool get satisIrsaliyesiSiparisBaglantisi => _isTrue(
-    _yetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "E" ||
-        _yetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "O",
+    _profilYetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "E" ||
+        _profilYetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "O",
   );
 
   bool get alisFaturasiFaturaSiparisBaglantisiOpsiyonelMi =>
-      _isTrue(_yetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "O");
+      _isTrue(_profilYetkiModel?.malKabulAlisFaturasiSipBagSecenegi == "O");
   bool get satisFaturasiFaturaSiparisBaglantisiOpsiyonelMi =>
-      _isTrue(_yetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "O");
+      _isTrue(_profilYetkiModel?.sevkiyatSatisFaturasiSipBagSecenegi == "O");
   bool get alisIrsaliyesiFaturaSiparisBaglantisiOpsiyonelMi =>
-      _isTrue(_yetkiModel?.malKabulAlisIrsSipBagSecenegi == "O");
+      _isTrue(_profilYetkiModel?.malKabulAlisIrsSipBagSecenegi == "O");
   bool get satisIrsaliyesiFaturaSiparisBaglantisiOpsiyonelMi =>
-      _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "O");
+      _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiSipBagSecenegi == "O");
 
   // Sipariş Bağlantısı çoklu seçim
-  bool get alisFaturasiFaturaSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.malKabulAlisFatSipBagCokluSecim);
-  bool get satisFaturasiFaturaSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.sevkiyatSatisFatSipBagCokluSecim);
-  bool get alisIrsaliyesiFaturaSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.malKabulAlisIrsSipBagCokluSecim);
-  bool get satisIrsaliyesiFaturaSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.sevkiyatSatisIrsSipBagCokluSecim);
-  bool get transferDatSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferDatSipBagCokluSecim);
-  bool get transferAgSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferAgSipBagCokluSecim);
-  bool get transferAcSiparisBaglantisiCokluSecim => _isTrue(_yetkiModel?.transferAcSipBagCokluSecim);
+  bool get alisFaturasiFaturaSiparisBaglantisiCokluSecim => _isTrue(_profilYetkiModel?.malKabulAlisFatSipBagCokluSecim);
+  bool get satisFaturasiFaturaSiparisBaglantisiCokluSecim => _isTrue(_profilYetkiModel?.sevkiyatSatisFatSipBagCokluSecim);
+  bool get alisIrsaliyesiFaturaSiparisBaglantisiCokluSecim => _isTrue(_profilYetkiModel?.malKabulAlisIrsSipBagCokluSecim);
+  bool get satisIrsaliyesiFaturaSiparisBaglantisiCokluSecim => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsSipBagCokluSecim);
+  bool get transferDatSiparisBaglantisiCokluSecim => _isTrue(_profilYetkiModel?.transferDatSipBagCokluSecim);
+  bool get transferAgSiparisBaglantisiCokluSecim => _isTrue(_profilYetkiModel?.transferAgSipBagCokluSecim);
+  bool get transferAcSiparisBaglantisiCokluSecim => _isTrue(_profilYetkiModel?.transferAcSipBagCokluSecim);
 
   bool get alisFaturasiSiparisBaglantisiTamamiSeciliGelsin =>
-      _isTrue(_yetkiModel?.malKabulAlisFatSipBagTumKalemlerSecilsin);
+      _isTrue(_profilYetkiModel?.malKabulAlisFatSipBagTumKalemlerSecilsin);
   bool get satisFaturasiSiparisBaglantisiTamamiSeciliGelsin =>
-      _isTrue(_yetkiModel?.sevkiyatSatisFatSipBagTumKalemlerSecilsin);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisFatSipBagTumKalemlerSecilsin);
   bool get alisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin =>
-      _isTrue(_yetkiModel?.malKabulAlisIrsSipBagTumKalemlerSecilsin);
+      _isTrue(_profilYetkiModel?.malKabulAlisIrsSipBagTumKalemlerSecilsin);
   bool get satisIrsaliyesiSiparisBaglantisiTamamiSeciliGelsin =>
-      _isTrue(_yetkiModel?.sevkiyatSatisIrsSipBagTumKalemlerSecilsin);
-  bool get transferDatSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.transferDatSipBagTumKalemlerSecilsin);
-  bool get transferAgSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.transferAgSipBagTumKalemlerSecilsin);
-  bool get transferAcSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_yetkiModel?.transferAcSipBagTumKalemlerSecilsin);
+      _isTrue(_profilYetkiModel?.sevkiyatSatisIrsSipBagTumKalemlerSecilsin);
+  bool get transferDatSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_profilYetkiModel?.transferDatSipBagTumKalemlerSecilsin);
+  bool get transferAgSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_profilYetkiModel?.transferAgSipBagTumKalemlerSecilsin);
+  bool get transferAcSiparisBaglantisiTamamiSeciliGelsin => _isTrue(_profilYetkiModel?.transferAcSipBagTumKalemlerSecilsin);
 
   bool alisFaturaAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.malKabulAlisFatAciklamaAlanlari == null
+    _profilYetkiModel?.malKabulAlisFatAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.malKabulAlisFatAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.malKabulAlisFatAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.malKabulAlisFatAciklamaAlanlari?.contains(index)) ??
             false,
   );
   bool alisIrsaliyeAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.malKabulAlisIrsAciklamaAlanlari == null
+    _profilYetkiModel?.malKabulAlisIrsAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.malKabulAlisIrsAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.malKabulAlisIrsAciklamaAlanlari?.contains(index)) ??
             false,
   );
   bool satisFaturaAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari.ext.isNullOrEmpty ?? false
+    _profilYetkiModel?.sevkiyatSatisFatAciklamaAlanlari.ext.isNullOrEmpty ?? false
         ? false
         : (index < 1
-                ? _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.sevkiyatSatisFatAciklamaAlanlari?.contains(index)) ??
             false,
   );
   bool satisIrsaliyeAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari == null
+    _profilYetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.sevkiyatSatisIrsaliyesiAciklamaAlanlari?.contains(index)) ??
             false,
   );
 
-  bool get sevkiyatSatisFaturaAciklamaDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisFatAciklamaDuzenle);
-  bool get sevkiyatSatisIrsaliyesiAciklamaDuzenle => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesiAciklamaDuzenle);
-  bool get malKabulAlisFaturaAciklamaDuzenle => _isTrue(_yetkiModel?.malKabulAlisFatAciklamaDuzenle);
-  bool get malKabulAlisIrsaliyesiAciklamaDuzenle => _isTrue(_yetkiModel?.malKabulAlisIrsAciklamaDuzenle);
+  bool get sevkiyatSatisFaturaAciklamaDuzenle => _isTrue(_profilYetkiModel?.sevkiyatSatisFatAciklamaDuzenle);
+  bool get sevkiyatSatisIrsaliyesiAciklamaDuzenle => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesiAciklamaDuzenle);
+  bool get malKabulAlisFaturaAciklamaDuzenle => _isTrue(_profilYetkiModel?.malKabulAlisFatAciklamaDuzenle);
+  bool get malKabulAlisIrsaliyesiAciklamaDuzenle => _isTrue(_profilYetkiModel?.malKabulAlisIrsAciklamaDuzenle);
 
   //! TRANSFER
 
-  String? get transferAcVarsayilanCikisYeri => _yetkiModel?.transferAcVarsayilanCikisYeri;
-  String? get transferACOzelKod1Degeri => _yetkiModel?.transferAcOzelKod1Degeri;
-  String? get transferACOzelKod2Degeri => _yetkiModel?.transferAcOzelKod2Degeri;
+  String? get transferAcVarsayilanCikisYeri => _profilYetkiModel?.transferAcVarsayilanCikisYeri;
+  String? get transferACOzelKod1Degeri => _profilYetkiModel?.transferAcOzelKod1Degeri;
+  String? get transferACOzelKod2Degeri => _profilYetkiModel?.transferAcOzelKod2Degeri;
   bool get transferIsEmriSorulsun => _isTrue(_paramModel?.satisSatirdaIsEmriSorulsun, skipAdmin: true);
 
   //* Görüntüle
-  bool get transferDatGoruntule => _isTrue(_yetkiModel?.transferDat);
-  bool get transferAGGoruntule => _isTrue(_yetkiModel?.transferAg);
-  bool get transferACGoruntule => _isTrue(_yetkiModel?.transferAc);
+  bool get transferDatGoruntule => _isTrue(_profilYetkiModel?.transferDat);
+  bool get transferAGGoruntule => _isTrue(_profilYetkiModel?.transferAg);
+  bool get transferACGoruntule => _isTrue(_profilYetkiModel?.transferAc);
 
   //* Ekle
-  bool get transferDatEkle => _isTrue(_yetkiModel?.transferDatKaydet);
-  bool get transferAGEkle => _isTrue(_yetkiModel?.transferAgKaydet);
-  bool get transferACEkle => _isTrue(_yetkiModel?.transferAcKaydet);
+  bool get transferDatEkle => _isTrue(_profilYetkiModel?.transferDatKaydet);
+  bool get transferAGEkle => _isTrue(_profilYetkiModel?.transferAgKaydet);
+  bool get transferACEkle => _isTrue(_profilYetkiModel?.transferAcKaydet);
 
   //* Düzenle
-  bool get transferDatDuzenle => _isTrue(_yetkiModel?.transferDatDuzelt);
-  bool get transferAGDuzenle => _isTrue(_yetkiModel?.transferAgDuzelt);
-  bool get transferACDuzenle => _isTrue(_yetkiModel?.transferAcDuzelt);
+  bool get transferDatDuzenle => _isTrue(_profilYetkiModel?.transferDatDuzelt);
+  bool get transferAGDuzenle => _isTrue(_profilYetkiModel?.transferAgDuzelt);
+  bool get transferACDuzenle => _isTrue(_profilYetkiModel?.transferAcDuzelt);
 
   //* Sil
-  bool get transferDatSil => _isTrue(_yetkiModel?.transferDatSil);
-  bool get transferAGSil => _isTrue(_yetkiModel?.transferAgSil);
-  bool get transferACSil => _isTrue(_yetkiModel?.transferAcSil);
-  bool get transferMalTalebiSil => _isTrue(_yetkiModel?.transferDepoTalebi);
+  bool get transferDatSil => _isTrue(_profilYetkiModel?.transferDatSil);
+  bool get transferAGSil => _isTrue(_profilYetkiModel?.transferAgSil);
+  bool get transferACSil => _isTrue(_profilYetkiModel?.transferAcSil);
+  bool get transferMalTalebiSil => _isTrue(_profilYetkiModel?.transferDepoTalebi);
 
   //* Birim1den Kaydet
-  bool get transferDatBirim1Kaydet => _isTrue(_yetkiModel?.transferDatBirim1DenKaydet, skipAdmin: true);
-  bool get transferAGBirim1Kaydet => _isTrue(_yetkiModel?.transferAgBirim1DenKaydet, skipAdmin: true);
-  bool get transferACBirim1Kaydet => _isTrue(_yetkiModel?.transferAcBirim1DenKaydet, skipAdmin: true);
+  bool get transferDatBirim1Kaydet => _isTrue(_profilYetkiModel?.transferDatBirim1DenKaydet, skipAdmin: true);
+  bool get transferAGBirim1Kaydet => _isTrue(_profilYetkiModel?.transferAgBirim1DenKaydet, skipAdmin: true);
+  bool get transferACBirim1Kaydet => _isTrue(_profilYetkiModel?.transferAcBirim1DenKaydet, skipAdmin: true);
 
   //* Fiyat Gör
-  bool get transferDatFiyatGor => _isTrue(_yetkiModel?.transferDatFiyatGor);
-  bool get transferAGFiyatGor => _isTrue(_yetkiModel?.transferAgFiyatGor);
-  bool get transferACFiyatGor => _isTrue(_yetkiModel?.transferAcFiyatGor);
+  bool get transferDatFiyatGor => _isTrue(_profilYetkiModel?.transferDatFiyatGor);
+  bool get transferAGFiyatGor => _isTrue(_profilYetkiModel?.transferAgFiyatGor);
+  bool get transferACFiyatGor => _isTrue(_profilYetkiModel?.transferAcFiyatGor);
 
   bool get transferEkMaliyet1GizlenecekMi =>
       transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet1);
@@ -985,292 +985,292 @@ final class YetkiController {
       transferLokalDatGizlenecekAlanlar(ProfilResponseModel.faturaGizlenecekAlanEkMaliyet3);
 
   bool get transferDepoMalToplamaFazlaTeslimatYapabilir =>
-      _isTrue(_yetkiModel?.transferDepoTalebiMalTopFazlaTeslimat == "E");
+      _isTrue(_profilYetkiModel?.transferDepoTalebiMalTopFazlaTeslimat == "E");
 
   bool transferDatAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.transferDatAciklamaAlanlari == null
+    _profilYetkiModel?.transferDatAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.transferDatAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.transferDatAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.transferDatAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.transferDatAciklamaAlanlari?.contains(index)) ??
             false,
   );
 
   bool transferAGAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.transferAgAciklamaAlanlari == null
+    _profilYetkiModel?.transferAgAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.transferAgAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.transferAgAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.transferAgAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.transferAgAciklamaAlanlari?.contains(index)) ??
             false,
   );
 
   bool transferACAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.transferAcAciklamaAlanlari == null
+    _profilYetkiModel?.transferAcAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.transferAcAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.transferAcAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.transferAcAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.transferAcAciklamaAlanlari?.contains(index)) ??
             false,
   );
 
   //* lokal DAT
 
-  bool get transferDatDigerSekmesiGoster => _isTrue(_yetkiModel?.transferDatDigerSekmesiGoster);
+  bool get transferDatDigerSekmesiGoster => _isTrue(_profilYetkiModel?.transferDatDigerSekmesiGoster);
 
   //TODO Sayfaya parametreleri ekle
   bool transferLokalDatDegistirilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferDatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferDatDegismeyecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalDatBosGecilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferDatBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferDatBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalDatGizlenecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferDatGizlenecekAlanlar?.contains(index), skipAdmin: true);
-  bool get transferDatAciklamaDuzenle => _isTrue(_yetkiModel?.transferDatAciklamaDuzenle);
+      _isTrue(_profilYetkiModel?.transferDatGizlenecekAlanlar?.contains(index), skipAdmin: true);
+  bool get transferDatAciklamaDuzenle => _isTrue(_profilYetkiModel?.transferDatAciklamaDuzenle);
 
-  String? get transferLokalDatHareketTuru => _yetkiModel?.transferDatVarsayilanHarTuru;
+  String? get transferLokalDatHareketTuru => _profilYetkiModel?.transferDatVarsayilanHarTuru;
   bool get transferLokalDatHarTuruDegismesin =>
-      _isTrue(_yetkiModel?.transferDatVarsayilanHarTuruDegistiremesin, skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferDatVarsayilanHarTuruDegistiremesin, skipAdmin: true);
 
   bool get transferLokalDatSiparisBaglantisi => _isTrue(
-    _paramModel?.satisDatSiparisTakibi == "E" && _yetkiModel?.transferDatSipBagSecenegi != "H",
+    _paramModel?.satisDatSiparisTakibi == "E" && _profilYetkiModel?.transferDatSipBagSecenegi != "H",
     skipAdmin: true,
   );
-  bool get transferLokalDatSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferDatSipBagSecenegi == "O");
+  bool get transferLokalDatSiparisBaglantisiOpsiyonelMi => _isTrue(_profilYetkiModel?.transferDatSipBagSecenegi == "O");
 
   DepoList? get transferLokalDatCikisDepo =>
       _paramModel?.depoList
-          ?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanCikisDepo)
+          ?.where((element) => element.depoKodu == _profilYetkiModel?.transferDatVarsayilanCikisDepo)
           .firstOrNull;
   DepoList? get transferLokalDatGirisDepo =>
       _paramModel?.depoList
-          ?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanGirisDepo)
+          ?.where((element) => element.depoKodu == _profilYetkiModel?.transferDatVarsayilanGirisDepo)
           .firstOrNull;
 
   bool get transferDatLokalDATSeciliGelmesin =>
-      _isTrue(_yetkiModel?.transferDatLokalDatSeciliGelmesin, skipAdmin: true);
-  bool get transferDatCarininDepoGetir => _isTrue(_yetkiModel?.transferDatDepoCaridenGelsin, skipAdmin: true);
-  bool get transferDatEIrsaliyeIsaretleyemesin => _isTrue(_yetkiModel?.transferDatEIrsIsaretleyemesin);
-  bool get transferDatOnay => _isTrue(_yetkiModel?.transferDatOnayIslemleri);
+      _isTrue(_profilYetkiModel?.transferDatLokalDatSeciliGelmesin, skipAdmin: true);
+  bool get transferDatCarininDepoGetir => _isTrue(_profilYetkiModel?.transferDatDepoCaridenGelsin, skipAdmin: true);
+  bool get transferDatEIrsaliyeIsaretleyemesin => _isTrue(_profilYetkiModel?.transferDatEIrsIsaretleyemesin);
+  bool get transferDatOnay => _isTrue(_profilYetkiModel?.transferDatOnayIslemleri);
   // bool get transferDatKayittanSonraBasimYap => _isTrue(_yetkiModel?.transferkayit);
 
   //* Ambar Giriş Fişi
 
   MasrafKoduRehberiModel? get transferAgMasrafKodu =>
-      _yetkiModel?.transferAgVarsayilanMasrafKodu != null
+      _profilYetkiModel?.transferAgVarsayilanMasrafKodu != null
           ? MasrafKoduRehberiModel(
-            masrafKodu: _yetkiModel?.transferAgVarsayilanMasrafKodu,
-            masrafAdi: _yetkiModel?.transferAgVarsayilanMasrafKodu,
+            masrafKodu: _profilYetkiModel?.transferAgVarsayilanMasrafKodu,
+            masrafAdi: _profilYetkiModel?.transferAgVarsayilanMasrafKodu,
           )
           : null;
   bool transferLokalAgDegistirilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferAgDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferAgDegismeyecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalAgBosGecilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferAgBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferAgBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalAgGizlenecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferAgGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferAgGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalAgAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.transferAgAciklamaAlanlari == null
+    _profilYetkiModel?.transferAgAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.transferAgAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.transferAgAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.transferAgAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.transferAgAciklamaAlanlari?.contains(index)) ??
             false,
   );
-  bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAgDigerSekmesiGoster);
+  bool get transferAgDigerSekmesiGoster => _isTrue(_profilYetkiModel?.transferAgDigerSekmesiGoster);
   // bool get transferAgDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAg);
-  bool get transferAgAciklamaDuzenle => _isTrue(_yetkiModel?.transferAgAciklamaDuzenle);
+  bool get transferAgAciklamaDuzenle => _isTrue(_profilYetkiModel?.transferAgAciklamaDuzenle);
 
   bool get transferAgSiparisBaglantisi =>
-      _isTrue(_yetkiModel?.transferAgSipBagSecenegi == "E" || _yetkiModel?.transferAgSipBagSecenegi == "O");
-  bool get transferAgSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferAgSipBagSecenegi == "O");
+      _isTrue(_profilYetkiModel?.transferAgSipBagSecenegi == "E" || _profilYetkiModel?.transferAgSipBagSecenegi == "O");
+  bool get transferAgSiparisBaglantisiOpsiyonelMi => _isTrue(_profilYetkiModel?.transferAgSipBagSecenegi == "O");
 
   DepoList? get transferAgCikisDepo =>
       _paramModel?.depoList
-          ?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanCikisDepo)
+          ?.where((element) => element.depoKodu == _profilYetkiModel?.transferDatVarsayilanCikisDepo)
           .firstOrNull;
   DepoList? get transferAgGirisDepo =>
       _paramModel?.depoList
-          ?.where((element) => element.depoKodu == _yetkiModel?.transferDatVarsayilanGirisDepo)
+          ?.where((element) => element.depoKodu == _profilYetkiModel?.transferDatVarsayilanGirisDepo)
           .firstOrNull;
 
   //* Ambar Çıkış Fişi
 
   MasrafKoduRehberiModel? get transferAcMasrafKodu =>
-      _yetkiModel?.transferAcVarsayilanMasrafKodu != null
+      _profilYetkiModel?.transferAcVarsayilanMasrafKodu != null
           ? MasrafKoduRehberiModel(
-            masrafKodu: _yetkiModel?.transferAcVarsayilanMasrafKodu,
-            masrafAdi: _yetkiModel?.transferAcVarsayilanMasrafKodu,
+            masrafKodu: _profilYetkiModel?.transferAcVarsayilanMasrafKodu,
+            masrafAdi: _profilYetkiModel?.transferAcVarsayilanMasrafKodu,
           )
           : null;
   bool transferLokalAcDegistirilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferAcDegismeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferAcDegismeyecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalAcBosGecilmeyecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferAcBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferAcBosGecilmeyecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalAcGizlenecekAlanlar(String? index) =>
-      _isTrue(_yetkiModel?.transferAcGizlenecekAlanlar?.contains(index), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.transferAcGizlenecekAlanlar?.contains(index), skipAdmin: true);
   bool transferLokalAcAciklamaAlanlari(int index) => _isTrue(
-    _yetkiModel?.transferAcAciklamaAlanlari == null
+    _profilYetkiModel?.transferAcAciklamaAlanlari == null
         ? false
         : (index < 1
-                ? _yetkiModel?.transferAcAciklamaAlanlari?.isNotEmpty
-                : _yetkiModel?.transferAcAciklamaAlanlari?.contains(index)) ??
+                ? _profilYetkiModel?.transferAcAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.transferAcAciklamaAlanlari?.contains(index)) ??
             false,
   );
-  bool get transferAcDigerSekmesiGoster => _isTrue(_yetkiModel?.transferAcDigerSekmesiGoster);
-  bool get transferAcAciklamaDuzenle => _isTrue(_yetkiModel?.transferAcAciklamaDuzenle);
+  bool get transferAcDigerSekmesiGoster => _isTrue(_profilYetkiModel?.transferAcDigerSekmesiGoster);
+  bool get transferAcAciklamaDuzenle => _isTrue(_profilYetkiModel?.transferAcAciklamaDuzenle);
 
   bool get transferAcSiparisBaglantisi =>
-      _isTrue(_yetkiModel?.transferAcSipBagSecenegi == "E" || _yetkiModel?.transferAcSipBagSecenegi == "O");
-  bool get transferAcSiparisBaglantisiOpsiyonelMi => _isTrue(_yetkiModel?.transferAcSipBagSecenegi == "O");
+      _isTrue(_profilYetkiModel?.transferAcSipBagSecenegi == "E" || _profilYetkiModel?.transferAcSipBagSecenegi == "O");
+  bool get transferAcSiparisBaglantisiOpsiyonelMi => _isTrue(_profilYetkiModel?.transferAcSipBagSecenegi == "O");
 
   DepoList? get transferAcVarsayilanDepo =>
-      _paramModel?.depoList?.where((element) => element.depoKodu == _yetkiModel?.transferAcVarsayilanDepo).firstOrNull;
+      _paramModel?.depoList?.where((element) => element.depoKodu == _profilYetkiModel?.transferAcVarsayilanDepo).firstOrNull;
 
-  bool get transferAcEIrsaliyeIsaretleyemesin => _isTrue(_yetkiModel?.transferAcEIrsIsaretleyemesin);
+  bool get transferAcEIrsaliyeIsaretleyemesin => _isTrue(_profilYetkiModel?.transferAcEIrsIsaretleyemesin);
 
   //! Üretim
 
   //* Üretim Sonu Kaydı
-  bool get uretimSonuKaydiEkle => _isTrue(_yetkiModel?.uretimUskKaydet);
-  bool get uretimSonuKaydiDuzenle => _isTrue(_yetkiModel?.uretimUskDuzelt);
-  bool get uretimSonuKaydiSil => _isTrue(_yetkiModel?.uretimUskSil);
-  bool get uretimSonuKalemliYapi => _isTrue(_yetkiModel?.uretimUskKalemliYapi, skipAdmin: true);
-  String? get uretimSonuDepoOnceligi => _yetkiModel?.uretimUskDepoOnceligi;
+  bool get uretimSonuKaydiEkle => _isTrue(_profilYetkiModel?.uretimUskKaydet);
+  bool get uretimSonuKaydiDuzenle => _isTrue(_profilYetkiModel?.uretimUskDuzelt);
+  bool get uretimSonuKaydiSil => _isTrue(_profilYetkiModel?.uretimUskSil);
+  bool get uretimSonuKalemliYapi => _isTrue(_profilYetkiModel?.uretimUskKalemliYapi, skipAdmin: true);
+  String? get uretimSonuDepoOnceligi => _profilYetkiModel?.uretimUskDepoOnceligi;
 
   bool uretimSonuGizlenecekAlanlar(String value) =>
-      _isTrue(_yetkiModel?.uretimUskGizlenecekAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.uretimUskGizlenecekAlanlar?.contains(value), skipAdmin: true);
   bool uretimSonuDegismeyecekAlanlar(String value) =>
-      _isTrue(_yetkiModel?.uretimUskDegismeyecekAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.uretimUskDegismeyecekAlanlar?.contains(value), skipAdmin: true);
   bool uretimSonuBosGecilmeyecekAlanlar(String value) =>
-      _isTrue(_yetkiModel?.uretimUskBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
+      _isTrue(_profilYetkiModel?.uretimUskBosGecilmeyecekAlanlar?.contains(value), skipAdmin: true);
 
   //* İş Emirleri
-  bool get uretimIsEmriEkle => _isTrue(_yetkiModel?.uretimIsEmriEkle);
-  bool get uretimIsEmriDuzenle => _isTrue(_yetkiModel?.uretimIsEmriDuzelt);
-  bool get uretimIsEmriSil => _isTrue(_yetkiModel?.uretimIsEmriSil);
+  bool get uretimIsEmriEkle => _isTrue(_profilYetkiModel?.uretimIsEmriEkle);
+  bool get uretimIsEmriDuzenle => _isTrue(_profilYetkiModel?.uretimIsEmriDuzelt);
+  bool get uretimIsEmriSil => _isTrue(_profilYetkiModel?.uretimIsEmriSil);
 
   //! Yazdırma
-  bool get yazdirmaStokEtiketi => _isTrue(_yetkiModel?.yazdirmaStokEtiketi);
-  bool get yazdirmaMusSip => _isTrue(_yetkiModel?.yazdirmaMusSip);
-  bool get yazdirmaSaticiSip => _isTrue(_yetkiModel?.yazdirmaSaticiSip);
-  bool get yazdirmaAlisFat => _isTrue(_yetkiModel?.yazdirmaAlisFat);
-  bool get yazdirmaSatisFat => _isTrue(_yetkiModel?.yazdirmaSatisFat);
-  bool get yazdirmaAlisIrs => _isTrue(_yetkiModel?.yazdirmaAlisIrs);
-  bool get yazdirmaSatisIrs => _isTrue(_yetkiModel?.yazdirmaSatisIrs);
-  bool get yazdirmaSatisTeklifi => _isTrue(_yetkiModel?.yazdirmaSatisTeklifi);
-  bool get yazdirmaSatisTalebi => _isTrue(_yetkiModel?.yazdirmaSatisTalebi);
-  bool get yazdirmaDepoTransferi => _isTrue(_yetkiModel?.yazdirmaDat);
-  bool get yazdirmaAmbarGirisi => _isTrue(_yetkiModel?.yazdirmaAmbarGiris);
-  bool get yazdirmaAmbarCikisi => _isTrue(_yetkiModel?.yazdirmaAmbarCikis);
-  bool get yazdirmaCariHareket => _isTrue(_yetkiModel?.yazdirmaCariHareket);
-  bool get yazdirmaSayim => _isTrue(_yetkiModel?.yazdirmaSayim);
-  bool get yazdirmaHucre => _isTrue(_yetkiModel?.yazdirmaHucreEtiketi);
-  bool get yazdirmaPaketlemeEtiketi => _isTrue(_yetkiModel?.yazdirmaPaketlemeEtiketi);
+  bool get yazdirmaStokEtiketi => _isTrue(_profilYetkiModel?.yazdirmaStokEtiketi);
+  bool get yazdirmaMusSip => _isTrue(_profilYetkiModel?.yazdirmaMusSip);
+  bool get yazdirmaSaticiSip => _isTrue(_profilYetkiModel?.yazdirmaSaticiSip);
+  bool get yazdirmaAlisFat => _isTrue(_profilYetkiModel?.yazdirmaAlisFat);
+  bool get yazdirmaSatisFat => _isTrue(_profilYetkiModel?.yazdirmaSatisFat);
+  bool get yazdirmaAlisIrs => _isTrue(_profilYetkiModel?.yazdirmaAlisIrs);
+  bool get yazdirmaSatisIrs => _isTrue(_profilYetkiModel?.yazdirmaSatisIrs);
+  bool get yazdirmaSatisTeklifi => _isTrue(_profilYetkiModel?.yazdirmaSatisTeklifi);
+  bool get yazdirmaSatisTalebi => _isTrue(_profilYetkiModel?.yazdirmaSatisTalebi);
+  bool get yazdirmaDepoTransferi => _isTrue(_profilYetkiModel?.yazdirmaDat);
+  bool get yazdirmaAmbarGirisi => _isTrue(_profilYetkiModel?.yazdirmaAmbarGiris);
+  bool get yazdirmaAmbarCikisi => _isTrue(_profilYetkiModel?.yazdirmaAmbarCikis);
+  bool get yazdirmaCariHareket => _isTrue(_profilYetkiModel?.yazdirmaCariHareket);
+  bool get yazdirmaSayim => _isTrue(_profilYetkiModel?.yazdirmaSayim);
+  bool get yazdirmaHucre => _isTrue(_profilYetkiModel?.yazdirmaHucreEtiketi);
+  bool get yazdirmaPaketlemeEtiketi => _isTrue(_profilYetkiModel?.yazdirmaPaketlemeEtiketi);
 
   //! Otomatik PDF Gör
-  bool get siparisMSOtomatikPDFGor => _isTrue(_yetkiModel?.siparisMusSipOtoPdfGor, skipAdmin: true);
-  bool get siparisSSOtomatikPDFGor => _isTrue(_yetkiModel?.siparisSaticiSipOtoPdfGor, skipAdmin: true);
-  bool get malKabulAlisIrsOtomatikPDFGor => _isTrue(_yetkiModel?.malKabulAlisIrsOtoPdfGor, skipAdmin: true);
-  bool get sevkiyatSatisIrsOtomatikPDFGor => _isTrue(_yetkiModel?.sevkiyatSatisIrsOtoPdfGor, skipAdmin: true);
-  bool get sevkiyatSatFatOtomatikPDFGor => _isTrue(_yetkiModel?.sevkiyatSatisFatOtoPdfGor, skipAdmin: true);
-  bool get transferDatOtomatikPDFGor => _isTrue(_yetkiModel?.transferDatOtoPdfGor, skipAdmin: true);
-  bool get transferAcOtomatikPDFGor => _isTrue(_yetkiModel?.transferAcOtoPdfGor, skipAdmin: true);
-  bool get transferAgOtomatikPDFGor => _isTrue(_yetkiModel?.transferAgOtoPdfGor, skipAdmin: true);
+  bool get siparisMSOtomatikPDFGor => _isTrue(_profilYetkiModel?.siparisMusSipOtoPdfGor, skipAdmin: true);
+  bool get siparisSSOtomatikPDFGor => _isTrue(_profilYetkiModel?.siparisSaticiSipOtoPdfGor, skipAdmin: true);
+  bool get malKabulAlisIrsOtomatikPDFGor => _isTrue(_profilYetkiModel?.malKabulAlisIrsOtoPdfGor, skipAdmin: true);
+  bool get sevkiyatSatisIrsOtomatikPDFGor => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsOtoPdfGor, skipAdmin: true);
+  bool get sevkiyatSatFatOtomatikPDFGor => _isTrue(_profilYetkiModel?.sevkiyatSatisFatOtoPdfGor, skipAdmin: true);
+  bool get transferDatOtomatikPDFGor => _isTrue(_profilYetkiModel?.transferDatOtoPdfGor, skipAdmin: true);
+  bool get transferAcOtomatikPDFGor => _isTrue(_profilYetkiModel?.transferAcOtoPdfGor, skipAdmin: true);
+  bool get transferAgOtomatikPDFGor => _isTrue(_profilYetkiModel?.transferAgOtoPdfGor, skipAdmin: true);
 
   //! Kopyala
-  bool get kopyalaMusSip => _isTrue(_yetkiModel?.siparisMusSipBelgeKopyala);
-  bool get kopyalaAlisTalebi => _isTrue(_yetkiModel?.taltekAtalBelgeKopyala);
-  bool get kopyalaAmbarGirisi => _isTrue(_yetkiModel?.transferAgBelgeKopyala);
-  bool get kopyalaAmbarCikisi => _isTrue(_yetkiModel?.transferAcBelgeKopyala);
+  bool get kopyalaMusSip => _isTrue(_profilYetkiModel?.siparisMusSipBelgeKopyala);
+  bool get kopyalaAlisTalebi => _isTrue(_profilYetkiModel?.taltekAtalBelgeKopyala);
+  bool get kopyalaAmbarGirisi => _isTrue(_profilYetkiModel?.transferAgBelgeKopyala);
+  bool get kopyalaAmbarCikisi => _isTrue(_profilYetkiModel?.transferAcBelgeKopyala);
 
   //! Cari Kodu Değiştir
-  bool get cariKoduDegistirMusSip => _isTrue(_yetkiModel?.siparisMusSipCariKoduDegistir);
-  bool get cariKoduDegistirSaticiSip => _isTrue(_yetkiModel?.siparisSaticiSipCariKoduDegistir);
-  bool get cariKoduDegistirAlisFat => _isTrue(_yetkiModel?.malKabulAlisFatCariKoduDegistir);
-  bool get cariKoduDegistirSatisFat => _isTrue(_yetkiModel?.sevkiyatSatisFatCariKoduDegistir);
-  bool get cariKoduDegistirAlisIrs => _isTrue(_yetkiModel?.malKabulAlisIrsCariKoduDegistir);
-  bool get cariKoduDegistirSatisIrs => _isTrue(_yetkiModel?.sevkiyatSatisIrsCariKoduDegistir);
-  bool get cariKoduDegistirSatisTeklifi => _isTrue(_yetkiModel?.taltekStekCariKoduDegistir);
-  bool get cariKoduDegistirSatisTalebi => _isTrue(_yetkiModel?.taltekStalCariKoduDegistir);
-  bool get cariKoduDegistirAlisTalebi => _isTrue(_yetkiModel?.taltekAtalCariKoduDegistir);
+  bool get cariKoduDegistirMusSip => _isTrue(_profilYetkiModel?.siparisMusSipCariKoduDegistir);
+  bool get cariKoduDegistirSaticiSip => _isTrue(_profilYetkiModel?.siparisSaticiSipCariKoduDegistir);
+  bool get cariKoduDegistirAlisFat => _isTrue(_profilYetkiModel?.malKabulAlisFatCariKoduDegistir);
+  bool get cariKoduDegistirSatisFat => _isTrue(_profilYetkiModel?.sevkiyatSatisFatCariKoduDegistir);
+  bool get cariKoduDegistirAlisIrs => _isTrue(_profilYetkiModel?.malKabulAlisIrsCariKoduDegistir);
+  bool get cariKoduDegistirSatisIrs => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsCariKoduDegistir);
+  bool get cariKoduDegistirSatisTeklifi => _isTrue(_profilYetkiModel?.taltekStekCariKoduDegistir);
+  bool get cariKoduDegistirSatisTalebi => _isTrue(_profilYetkiModel?.taltekStalCariKoduDegistir);
+  bool get cariKoduDegistirAlisTalebi => _isTrue(_profilYetkiModel?.taltekAtalCariKoduDegistir);
 
   //! Kapatma İşlemi
-  bool get belgeKapatMusSip => _isTrue(_yetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
-  bool get belgeKapatSaticiSip => _isTrue(_yetkiModel?.siparisSaticiSiparisiKapatmaIslemi);
+  bool get belgeKapatMusSip => _isTrue(_profilYetkiModel?.siparisMusteriSiparisiKapatmaIslemi);
+  bool get belgeKapatSaticiSip => _isTrue(_profilYetkiModel?.siparisSaticiSiparisiKapatmaIslemi);
 
   //! Max Genel İskonto 1
-  double? get msMaxGenelIskonto1 => _yetkiModel?.siparisMusSipMaxGenIsk1;
-  double? get sfMaxGenelIskonto1 => _yetkiModel?.sevkiyatSatisFatMaxGenIsk1;
-  double? get siMaxGenelIskonto1 => _yetkiModel?.sevkiyatSatisIrsMaxGenIsk1;
+  double? get msMaxGenelIskonto1 => _profilYetkiModel?.siparisMusSipMaxGenIsk1;
+  double? get sfMaxGenelIskonto1 => _profilYetkiModel?.sevkiyatSatisFatMaxGenIsk1;
+  double? get siMaxGenelIskonto1 => _profilYetkiModel?.sevkiyatSatisIrsMaxGenIsk1;
 
   //! Max Genel İskonto 2
-  double? get msMaxGenelIskonto2 => _yetkiModel?.siparisMusSipMaxGenIsk2;
-  double? get sfMaxGenelIskonto2 => _yetkiModel?.sevkiyatSatisFatMaxGenIsk2;
-  double? get siMaxGenelIskonto2 => _yetkiModel?.sevkiyatSatisIrsMaxGenIsk2;
+  double? get msMaxGenelIskonto2 => _profilYetkiModel?.siparisMusSipMaxGenIsk2;
+  double? get sfMaxGenelIskonto2 => _profilYetkiModel?.sevkiyatSatisFatMaxGenIsk2;
+  double? get siMaxGenelIskonto2 => _profilYetkiModel?.sevkiyatSatisIrsMaxGenIsk2;
 
   //! Max Genel İskonto 3
-  double? get msMaxGenelIskonto3 => _yetkiModel?.siparisMusSipMaxGenIsk3;
-  double? get sfMaxGenelIskonto3 => _yetkiModel?.sevkiyatSatisFatMaxGenIsk3;
-  double? get siMaxGenelIskonto3 => _yetkiModel?.sevkiyatSatisIrsMaxGenIsk3;
+  double? get msMaxGenelIskonto3 => _profilYetkiModel?.siparisMusSipMaxGenIsk3;
+  double? get sfMaxGenelIskonto3 => _profilYetkiModel?.sevkiyatSatisFatMaxGenIsk3;
+  double? get siMaxGenelIskonto3 => _profilYetkiModel?.sevkiyatSatisIrsMaxGenIsk3;
 
   //! Max Satır İskonto 1
-  double? get msMaxSatirIskonto1 => _yetkiModel?.siparisMusSipMaxSatIsk1;
-  double? get sfMaxSatirIskonto1 => _yetkiModel?.sevkiyatSatisFatMaxSatIsk1;
-  double? get siMaxSatirIskonto1 => _yetkiModel?.sevkiyatSatisIrsMaxSatIsk1;
+  double? get msMaxSatirIskonto1 => _profilYetkiModel?.siparisMusSipMaxSatIsk1;
+  double? get sfMaxSatirIskonto1 => _profilYetkiModel?.sevkiyatSatisFatMaxSatIsk1;
+  double? get siMaxSatirIskonto1 => _profilYetkiModel?.sevkiyatSatisIrsMaxSatIsk1;
 
   //! Max Satır İskonto 2
-  double? get msMaxSatirIskonto2 => _yetkiModel?.siparisMusSipMaxSatIsk2;
-  double? get sfMaxSatirIskonto2 => _yetkiModel?.sevkiyatSatisFatMaxSatIsk2;
-  double? get siMaxSatirIskonto2 => _yetkiModel?.sevkiyatSatisIrsMaxSatIsk2;
+  double? get msMaxSatirIskonto2 => _profilYetkiModel?.siparisMusSipMaxSatIsk2;
+  double? get sfMaxSatirIskonto2 => _profilYetkiModel?.sevkiyatSatisFatMaxSatIsk2;
+  double? get siMaxSatirIskonto2 => _profilYetkiModel?.sevkiyatSatisIrsMaxSatIsk2;
 
   //! Max Satır İskonto 3
-  double? get msMaxSatirIskonto3 => _yetkiModel?.siparisMusSipMaxSatIsk3;
-  double? get sfMaxSatirIskonto3 => _yetkiModel?.sevkiyatSatisFatMaxSatIsk3;
-  double? get siMaxSatirIskonto3 => _yetkiModel?.sevkiyatSatisIrsMaxSatIsk3;
+  double? get msMaxSatirIskonto3 => _profilYetkiModel?.siparisMusSipMaxSatIsk3;
+  double? get sfMaxSatirIskonto3 => _profilYetkiModel?.sevkiyatSatisFatMaxSatIsk3;
+  double? get siMaxSatirIskonto3 => _profilYetkiModel?.sevkiyatSatisIrsMaxSatIsk3;
 
   //! Max Satır İskonto 4
-  double? get msMaxSatirIskonto4 => _yetkiModel?.siparisMusSipMaxSatIsk4;
-  double? get sfMaxSatirIskonto4 => _yetkiModel?.sevkiyatSatisFatMaxSatIsk4;
-  double? get siMaxSatirIskonto4 => _yetkiModel?.sevkiyatSatisIrsMaxSatIsk4;
+  double? get msMaxSatirIskonto4 => _profilYetkiModel?.siparisMusSipMaxSatIsk4;
+  double? get sfMaxSatirIskonto4 => _profilYetkiModel?.sevkiyatSatisFatMaxSatIsk4;
+  double? get siMaxSatirIskonto4 => _profilYetkiModel?.sevkiyatSatisIrsMaxSatIsk4;
 
   //! Max Satır İskonto 5
-  double? get msMaxSatirIskonto5 => _yetkiModel?.siparisMusSipMaxSatIsk5;
-  double? get sfMaxSatirIskonto5 => _yetkiModel?.sevkiyatSatisFatMaxSatIsk5;
-  double? get siMaxSatirIskonto5 => _yetkiModel?.sevkiyatSatisIrsMaxSatIsk5;
+  double? get msMaxSatirIskonto5 => _profilYetkiModel?.siparisMusSipMaxSatIsk5;
+  double? get sfMaxSatirIskonto5 => _profilYetkiModel?.sevkiyatSatisFatMaxSatIsk5;
+  double? get siMaxSatirIskonto5 => _profilYetkiModel?.sevkiyatSatisIrsMaxSatIsk5;
 
   //! Max Satır İskonto 6
-  double? get msMaxSatirIskonto6 => _yetkiModel?.siparisMusSipMaxSatIsk6;
-  double? get sfMaxSatirIskonto6 => _yetkiModel?.sevkiyatSatisFatMaxSatIsk6;
-  double? get siMaxSatirIskonto6 => _yetkiModel?.sevkiyatSatisIrsMaxSatIsk6;
+  double? get msMaxSatirIskonto6 => _profilYetkiModel?.siparisMusSipMaxSatIsk6;
+  double? get sfMaxSatirIskonto6 => _profilYetkiModel?.sevkiyatSatisFatMaxSatIsk6;
+  double? get siMaxSatirIskonto6 => _profilYetkiModel?.sevkiyatSatisIrsMaxSatIsk6;
 
   //! Max İskonto Uygulaması
-  bool get msMaxIskontoUygula => _isTrue(_yetkiModel?.siparisMusSipMaxIskUygulamasi);
-  bool get sfMaxIskontoUygula => _isTrue(_yetkiModel?.sevkiyatSatisFatMaxIskUygulamasi);
-  bool get siMaxIskontoUygula => _isTrue(_yetkiModel?.sevkiyatSatisIrsMaxIskUygulamasi);
+  bool get msMaxIskontoUygula => _isTrue(_profilYetkiModel?.siparisMusSipMaxIskUygulamasi);
+  bool get sfMaxIskontoUygula => _isTrue(_profilYetkiModel?.sevkiyatSatisFatMaxIskUygulamasi);
+  bool get siMaxIskontoUygula => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsMaxIskUygulamasi);
 
   //! Sigma
-  bool get sigmaOlcumGirisi => _isTrue(_yetkiModel?.sigmaOlcumGir);
-  bool get sigmaOlcumKaydet => _isTrue(_yetkiModel?.sigmaOlcumGirKaydet);
-  bool get sigmaOlcumDuzelt => _isTrue(_yetkiModel?.sigmaOlcumGirDuzelt);
-  bool get sigmaOlcumGirSil => _isTrue(_yetkiModel?.sigmaOlcumGirSil);
-  bool get sigmaTeknikResim => _isTrue(_yetkiModel?.sigmaTeknikResim);
-  bool get sigmaKontrolPlani => _isTrue(_yetkiModel?.sigmaKontrolPlani);
+  bool get sigmaOlcumGirisi => _isTrue(_profilYetkiModel?.sigmaOlcumGir);
+  bool get sigmaOlcumKaydet => _isTrue(_profilYetkiModel?.sigmaOlcumGirKaydet);
+  bool get sigmaOlcumDuzelt => _isTrue(_profilYetkiModel?.sigmaOlcumGirDuzelt);
+  bool get sigmaOlcumGirSil => _isTrue(_profilYetkiModel?.sigmaOlcumGirSil);
+  bool get sigmaTeknikResim => _isTrue(_profilYetkiModel?.sigmaTeknikResim);
+  bool get sigmaKontrolPlani => _isTrue(_profilYetkiModel?.sigmaKontrolPlani);
 
   //! Hücre
-  bool get hucreHareketleri => _isTrue(_yetkiModel?.hucreHareketleri);
+  bool get hucreHareketleri => _isTrue(_profilYetkiModel?.hucreHareketleri);
 
   //! Görüntüle
 
-  bool get siparisMSGoruntule => _isTrue(_yetkiModel?.siparisMusteriSiparisi);
-  bool get siparisSSGoruntule => _isTrue(_yetkiModel?.siparisSaticiSiparisi);
-  bool get satisFatGoruntule => _isTrue(_yetkiModel?.sevkiyatSatisFat);
-  bool get satisIrsGoruntule => _isTrue(_yetkiModel?.sevkiyatSatisIrsaliyesi);
-  bool get alisFatGoruntule => _isTrue(_yetkiModel?.malKabulAlisFaturasi);
-  bool get alisIrsGoruntule => _isTrue(_yetkiModel?.malKabulSatinAlma);
-  bool get satisTeklifiGoruntule => _isTrue(_yetkiModel?.taltekStek);
-  bool get alisTalebiGoruntule => _isTrue(_yetkiModel?.taltekAtal);
-  bool get satisTalebiGoruntule => _isTrue(_yetkiModel?.taltekStal);
-  bool get cariKartiGoruntuleme => _isTrue(_yetkiModel?.cariCariKarti);
+  bool get siparisMSGoruntule => _isTrue(_profilYetkiModel?.siparisMusteriSiparisi);
+  bool get siparisSSGoruntule => _isTrue(_profilYetkiModel?.siparisSaticiSiparisi);
+  bool get satisFatGoruntule => _isTrue(_profilYetkiModel?.sevkiyatSatisFat);
+  bool get satisIrsGoruntule => _isTrue(_profilYetkiModel?.sevkiyatSatisIrsaliyesi);
+  bool get alisFatGoruntule => _isTrue(_profilYetkiModel?.malKabulAlisFaturasi);
+  bool get alisIrsGoruntule => _isTrue(_profilYetkiModel?.malKabulSatinAlma);
+  bool get satisTeklifiGoruntule => _isTrue(_profilYetkiModel?.taltekStek);
+  bool get alisTalebiGoruntule => _isTrue(_profilYetkiModel?.taltekAtal);
+  bool get satisTalebiGoruntule => _isTrue(_profilYetkiModel?.taltekStal);
+  bool get cariKartiGoruntuleme => _isTrue(_profilYetkiModel?.cariCariKarti);
 
   bool ozelKod1TablodanMi(EditTipiEnum? editTipi) {
     if (!editTipi.talepTeklifMi) {
@@ -1281,4 +1281,14 @@ final class YetkiController {
     }
     return _isTrue(_paramModel?.talTekParam?.firstOrNull?.ozelKod1Tablodan == "E", skipAdmin: true);
   }
+
+  String? get satisFatTekrarEdenBarkod => _profilYetkiModel?.sevkiyatSatisFaturasiTekrarEdenBarkod;
+  String? get satisIrsTekrarEdenBarkod => _profilYetkiModel?.sevkiyatSatisIrsTekrarEdenBarkod;
+  String? get alisFatTekrarEdenBarkod => _profilYetkiModel?.malKabulAlisFatTekrarEdenBarkod;
+  String? get alisIrsTekrarEdenBarkod => _profilYetkiModel?.malKabulAlisIrsTekrarEdenBarkod;
+  String? get transferAGTekrarEdenBarkod => _profilYetkiModel?.transferAgTekrarEdenBarkod;
+  String? get transferACTekrarEdenBarkod => _profilYetkiModel?.transferAcTekrarEdenBarkod;
+  String? get transferDatTekrarEdenBarkod => _profilYetkiModel?.transferDatTekrarEdenBarkod;
+  String? get siparisMSTekrarEdenBarkod => _profilYetkiModel?.siparisMusSipTekrarEdenBarkod;
+  String? get siparisSSTekrarEdenBarkod => _profilYetkiModel?.siparisSatSipTekrarEdenBarkod;
 }

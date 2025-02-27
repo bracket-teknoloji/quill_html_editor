@@ -186,6 +186,19 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.belgesizIslem => "Belgesiz İşlem",
   };
 
+  String? get tekrarEdenBarkod => switch (this) {
+    EditTipiEnum.musteri => yetkiController.siparisMSTekrarEdenBarkod,
+    EditTipiEnum.satici => yetkiController.siparisSSTekrarEdenBarkod,
+    EditTipiEnum.satisFatura => yetkiController.satisFatTekrarEdenBarkod,
+    EditTipiEnum.satisIrsaliye => yetkiController.satisIrsTekrarEdenBarkod,
+    EditTipiEnum.alisFatura => yetkiController.alisFatTekrarEdenBarkod,
+    EditTipiEnum.alisIrsaliye => yetkiController.alisIrsTekrarEdenBarkod,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatTekrarEdenBarkod,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAGTekrarEdenBarkod,
+    EditTipiEnum.ambarCikisi => yetkiController.transferACTekrarEdenBarkod,
+    _ => null,
+  };
+
   String? get ozelKod1 => switch (this) {
     EditTipiEnum.musteri => yetkiController.siparisMSOzelKod1Degeri,
     EditTipiEnum.satisFatura => yetkiController.satisFaturaOzelKod1Degeri,
