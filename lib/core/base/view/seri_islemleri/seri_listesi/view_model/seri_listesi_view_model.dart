@@ -51,6 +51,13 @@ abstract class _SeriListesiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void removeSeriListWithIndex(int index) {
+    kalemModel = kalemModel.copyWith(
+      seriList: kalemModel.seriList?..removeAt(index),
+    );
+  }
+
+  @action
   Future<void> getStok() async {
     final result = await networkManager.getStokModel(StokRehberiRequestModel.fromKalemModel(kalemModel));
     if (result != null) {

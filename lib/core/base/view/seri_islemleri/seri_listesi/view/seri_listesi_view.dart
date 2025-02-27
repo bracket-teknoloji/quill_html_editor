@@ -41,7 +41,7 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
           viewModel.kalanMiktar != 0) {
         dialogManager.showAreYouSureDialog(() async {
           await seriNoUret();
-        }, title: "Otomatik Seri Üretilsin Mi?",);
+        }, title: "Otomatik Seri Üretilsin Mi?");
       }
     });
     super.initState();
@@ -62,6 +62,12 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
         IconButton(
           onPressed: () {
             if (viewModel.kalanMiktar == 0) {
+              viewModel.setKalemModel(
+                viewModel.kalemModel.copyWith(
+                  seriList:
+                      viewModel.kalemModel.seriList?.where((element) => ![null, 0].contains(element.miktar)).toList(),
+                ),
+              );
               Get.back(result: viewModel.kalemModel.seriList);
             } else {
               dialogManager.showErrorSnackBar("Kalan Miktar (${viewModel.kalanMiktar})");
@@ -227,7 +233,7 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
                               onTap: () {
                                 Get.back();
                                 dialogManager.showAreYouSureDialog(() {
-                                  viewModel.removeSeriList(model.seri1 ?? "");
+                                  viewModel.removeSeriListWithIndex(index);
                                 });
                               },
                             ),
