@@ -46,13 +46,17 @@ final class _LeftDrawerState extends BaseState<LeftDrawer> {
             ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      
       children: [
         Flexible(
           child: Stack(
+            fit: StackFit.expand,
             children: [
               LoginWaveWidget(foreoregroundColor: theme.colorScheme.surfaceContainerLow),
               ListTile(
+                minVerticalPadding: 0,
                 style: ListTileStyle.drawer,
+
                 title: const Text("Favoriler", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 trailing: IconButton(
                   onPressed: () {
