@@ -13,17 +13,18 @@ _$BelgeKontrolModelImpl _$$BelgeKontrolModelImplFromJson(
       belgeTipi: json['BELGE_TIPI'] as String?,
       belgeNo: json['BELGE_NO'] as String?,
       cariKodu: json['CARI_KODU'] as String?,
+      islemKodu: (json['ISLEM_KODU'] as num?)?.toInt(),
       belgeTarihi: json['BELGE_TARIHI'] == null
           ? null
           : DateTime.parse(json['BELGE_TARIHI'] as String),
-      miktar: (json['MIKTAR'] as num?)?.toInt(),
-      tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toInt(),
+      miktar: (json['MIKTAR'] as num?)?.toDouble(),
+      tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
       kayityapankul: json['KAYITYAPANKUL'] as String?,
       kayittarihi: json['KAYITTARIHI'] == null
           ? null
           : DateTime.parse(json['KAYITTARIHI'] as String),
       cariAdi: json['CARI_ADI'] as String?,
-      kalanMiktar: (json['KALAN_MIKTAR'] as num?)?.toInt(),
+      kalanMiktar: (json['KALAN_MIKTAR'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$$BelgeKontrolModelImplToJson(
@@ -33,6 +34,7 @@ Map<String, dynamic> _$$BelgeKontrolModelImplToJson(
       if (instance.belgeTipi case final value?) 'BELGE_TIPI': value,
       if (instance.belgeNo case final value?) 'BELGE_NO': value,
       if (instance.cariKodu case final value?) 'CARI_KODU': value,
+      if (instance.islemKodu case final value?) 'ISLEM_KODU': value,
       if (instance.belgeTarihi?.toIso8601String() case final value?)
         'BELGE_TARIHI': value,
       if (instance.miktar case final value?) 'MIKTAR': value,

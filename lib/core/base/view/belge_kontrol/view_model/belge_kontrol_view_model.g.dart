@@ -9,6 +9,15 @@ part of 'belge_kontrol_view_model.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
+  Computed<ObservableList<BelgeKontrolModel>?>? _$filteredListComputed;
+
+  @override
+  ObservableList<BelgeKontrolModel>? get filteredList =>
+      (_$filteredListComputed ??= Computed<ObservableList<BelgeKontrolModel>?>(
+              () => super.filteredList,
+              name: '_BelgeKontrolViewModelBase.filteredList'))
+          .value;
+
   late final _$observableListAtom =
       Atom(name: '_BelgeKontrolViewModelBase.observableList', context: context);
 
@@ -22,6 +31,22 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
   set observableList(ObservableList<BelgeKontrolModel>? value) {
     _$observableListAtom.reportWrite(value, super.observableList, () {
       super.observableList = value;
+    });
+  }
+
+  late final _$requestModelAtom =
+      Atom(name: '_BelgeKontrolViewModelBase.requestModel', context: context);
+
+  @override
+  BelgeKontrolRequestModel get requestModel {
+    _$requestModelAtom.reportRead();
+    return super.requestModel;
+  }
+
+  @override
+  set requestModel(BelgeKontrolRequestModel value) {
+    _$requestModelAtom.reportWrite(value, super.requestModel, () {
+      super.requestModel = value;
     });
   }
 
@@ -65,8 +90,38 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 
+  late final _$deletekontrolAsyncAction =
+      AsyncAction('_BelgeKontrolViewModelBase.deletekontrol', context: context);
+
+  @override
+  Future<GenericResponseModel<NetworkManagerMixin>> deletekontrol(int id) {
+    return _$deletekontrolAsyncAction.run(() => super.deletekontrol(id));
+  }
+
   late final _$_BelgeKontrolViewModelBaseActionController =
       ActionController(name: '_BelgeKontrolViewModelBase', context: context);
+
+  @override
+  void setBaslangicTarihi(String? value) {
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setBaslangicTarihi');
+    try {
+      return super.setBaslangicTarihi(value);
+    } finally {
+      _$_BelgeKontrolViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setBitisTarihi(String? value) {
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setBitisTarihi');
+    try {
+      return super.setBitisTarihi(value);
+    } finally {
+      _$_BelgeKontrolViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setObservableList(List<BelgeKontrolModel>? list) {
@@ -105,8 +160,10 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
   String toString() {
     return '''
 observableList: ${observableList},
+requestModel: ${requestModel},
 isSearchBarOpen: ${isSearchBarOpen},
-searchText: ${searchText}
+searchText: ${searchText},
+filteredList: ${filteredList}
     ''';
   }
 }
