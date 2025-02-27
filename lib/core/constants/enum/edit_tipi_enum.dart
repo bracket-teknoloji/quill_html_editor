@@ -933,7 +933,16 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.satisIrsaliye => "/mainPage/sevkiyatSatisIrsaliyesi",
     EditTipiEnum.alisFatura => "/mainPage/malKabulAlisFaturasi",
     EditTipiEnum.alisIrsaliye => "/mainPage/malKabulAlisIrsaliyesi",
-    _ => "",
+    EditTipiEnum.musteri => "/mainPage/siparisMusteriSiparisi",
+    EditTipiEnum.satici => "/mainPage/siparisSaticiSiparisi",
+    EditTipiEnum.satisTeklifi => "/mainPage/talTekSatisTeklif",
+    EditTipiEnum.alisTalebi => "/mainPage/talTekAlisTalep",
+    EditTipiEnum.satisTalebi => "/mainPage/talTekSatisTalep",
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => "/mainPage/transferDepo",
+    EditTipiEnum.ambarGirisi => "/mainPage/transferAmbarGirisi",
+    EditTipiEnum.ambarCikisi => "/mainPage/transferAmbarCikisi",
+
+    _ => throw Exception("List route bulunamadı"),
   };
 
   String get aciklamaDuzenleRoute => switch (this) {
