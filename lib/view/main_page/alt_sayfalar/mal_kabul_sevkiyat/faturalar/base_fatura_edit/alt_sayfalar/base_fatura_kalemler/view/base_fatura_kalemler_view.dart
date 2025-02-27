@@ -411,10 +411,6 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
                   stokAlisKdv: stokModel.alisKdv,
                   stokSatisKdv: stokModel.satisKdv,
                   paketMi: stokModel.paketMi,
-                  kdvOrani:
-                      BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi == true
-                          ? stokModel.satisKdv
-                          : stokModel.alisKdv,
                   seriGirislerdeAcik: stokModel.seriGirislerdeAcik,
                   seriCikislardaAcik: stokModel.seriCikislardaAcik,
                   seriMiktarKadarSor: stokModel.seriMiktarKadarSor,
@@ -465,6 +461,13 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         belgeNo: model.belgeNo,
       ),
     );
+
+    final isStokKoduExists = model.kalemList?.any((element) => element.stokKodu == stokModel?.stokKodu) ?? false;
+    final isBarkodExists =
+        model.kalemList?.any(
+          (element) => isStokKoduExists && (element.barkodList?.any((element2) => element2.barkod == result) ?? false),
+        ) ??
+        false;
     if (stokModel == null) {
       if (!(model.getEditTipiEnum?.urunOtomatikEklensin ?? false)) {
         await Get.toNamed("/mainPage/stokRehberi", arguments: result);
@@ -474,18 +477,58 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         );
       }
     } else {
+      if (isBarkodExists && model.getEditTipiEnum?.tekrarEdenBarkod == "EY" ||
+          isStokKoduExists && model.getEditTipiEnum?.tekrarEdenBarkod == "E") {
+        return dialogManager.showAlertDialog("Bu barkod zaten eklenmiş.");
+      }
       final bool satisMi = model.getEditTipiEnum?.satisMi ?? false;
       final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)
         ..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
       if (model.getEditTipiEnum?.urunOtomatikEklensin ?? false) {
-        BaseSiparisEditModel.instance.kalemList ??= [];
-        BaseSiparisEditModel.instance.kalemList?.add(kalemModel);
+        if ((stokModel.miktar ?? 0) <= 0) {
+          dialogManager.showAlertDialog("Stok miktarı 0 veya daha az olduğu için eklenemez.");
+          return;
+        }
+        if (isStokKoduExists && model.getEditTipiEnum?.tekrarEdenBarkod == "M") {
+          // add miktar into existing kalem
+          final kalem = model.kalemList?.firstWhereOrNull((element) => element.stokKodu == stokModel.stokKodu);
+          if (kalem != null) {
+            kalem.miktar = (kalem.miktar ?? 0) + (stokModel.miktar ?? 0);
+          }
+          BaseSiparisEditModel.instance.kalemList = model.kalemList;
+        } else {
+          BaseSiparisEditModel.instance.kalemList ??= [];
+          BaseSiparisEditModel.instance.kalemList?.add(kalemModel);
+        }
       } else {
+        if (isStokKoduExists && (model.getEditTipiEnum?.tekrarEdenBarkod?.startsWith("S") ?? false)) {
+          bool devamMi = false;
+          await dialogManager.showAreYouSureDialog(() {
+            devamMi = true;
+          }, title: "${stokModel.stokKodu} - ${stokModel.stokAdi} ürün listenizde mevcut.\nYine de eklensin mi?");
+          if (!devamMi) return;
+        }
         final stok = await Get.toNamed("/kalemEkle", arguments: kalemModel);
         if (stok is! KalemModel) return;
+        if (isStokKoduExists) {
+          if (model.getEditTipiEnum?.tekrarEdenBarkod?.endsWith("M") ?? false) {
+            kalemBirlestir(stokModel, stok);
+          }
+        }
       }
     }
     _searchTextController.clear();
     viewModel.updateKalemList();
+  }
+
+  void kalemBirlestir(StokListesiModel stokModel, KalemModel stok) {
+    final kalem = model.kalemList?.firstWhereOrNull((element) => element.stokKodu == stokModel.stokKodu);
+    if (kalem != null) {
+      model.kalemList?.removeLast();
+      kalem.miktar = (kalem.miktar ?? 0) + (stok.miktar ?? 0);
+      kalem.seriList?.addAll(stok.seriList ?? []);
+      kalem.barkodList?.add(BarkodList(barkod: stok.barkod, miktar: stok.miktar, miktar2: stok.miktar2));
+    }
+    BaseSiparisEditModel.instance.kalemList = model.kalemList;
   }
 }

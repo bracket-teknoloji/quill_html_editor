@@ -697,7 +697,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                             if (isSuccess) {
                               dialogManager.showSuccesDialog("Fiyatlar Güncellendi");
                             }
-                          }, title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?");
+                          }, title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?",);
                         }
                       }
                     },

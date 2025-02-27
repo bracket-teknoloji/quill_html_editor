@@ -443,7 +443,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                     if (BaseSiparisEditModel.instance.efattanTutar != null && tabController.index == 2)
                       BottomSheetModel(
                         title: "Kalemleri KDV'ye Göre Birleştir",
-                        iconWidget: Icons.person_outline_outlined,
+                        iconWidget: Icons.edit_outlined,
                         onTap: () async {
                           Get.back();
                           final List<KalemModel> newList = [];

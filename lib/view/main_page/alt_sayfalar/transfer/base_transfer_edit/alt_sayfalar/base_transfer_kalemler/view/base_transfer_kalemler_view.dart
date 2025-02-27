@@ -364,51 +364,33 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
   }
 
   Future<void> getBarkodStok() async {
-    String? barkod2;
     final result = await Get.toNamed("/qr");
     if (result == null) return;
-    if (model.getEditTipiEnum?.barkod2Sor ?? false) {
-      barkod2 = await bottomSheetDialogManager.showBottomSheetDialog(
-        context,
-        title: "Barkod 2 Giriniz",
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CustomTextField(
-              labelText: "Barkod 2",
-              controller: _searchTextController,
-              suffix: IconButton(
-                onPressed: () async => Get.back(result: await Get.toNamed("/qr")),
-                icon: const Icon(Icons.qr_code_scanner),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                Get.back(result: _searchTextController.text);
-              },
-              child: const Text("Ara"),
-            ),
-          ],
-        ),
-      );
-    }
+    _searchTextController.text = result;
     final stokModel = await networkManager.getStokModel(
       StokRehberiRequestModel(
-        okutuldu: true,
-        barkod2: barkod2,
-        menuKodu: "COMM_FADE",
         oto: model.getEditTipiEnum?.urunOtomatikEklensin ?? false ? "E" : null,
         stokKodu: result,
+        menuKodu: "COMM_FADE",
         ozelKod1: model.ozelKod1,
         ozelKod2: model.ozelKod2,
         belgeTarihi: model.tarih.toDateString,
+        okutuldu: true,
         cariKodu: model.cariKodu,
         belgeTipi: model.getEditTipiEnum?.rawValue,
+        faturaTipi: 2,
         faturaHedefDepo: model.hedefDepo,
         faturaDepoKodu: model.girisDepoKodu,
         belgeNo: model.belgeNo,
       ),
     );
+
+    final isStokKoduExists = model.kalemList?.any((element) => element.stokKodu == stokModel?.stokKodu) ?? false;
+    final isBarkodExists =
+        model.kalemList?.any(
+          (element) => isStokKoduExists && (element.barkodList?.any((element2) => element2.barkod == result) ?? false),
+        ) ??
+        false;
     if (stokModel == null) {
       if (!(model.getEditTipiEnum?.urunOtomatikEklensin ?? false)) {
         await Get.toNamed("/mainPage/stokRehberi", arguments: result);
@@ -418,18 +400,58 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
         );
       }
     } else {
+      if (isBarkodExists && model.getEditTipiEnum?.tekrarEdenBarkod == "EY" ||
+          isStokKoduExists && model.getEditTipiEnum?.tekrarEdenBarkod == "E") {
+        return dialogManager.showAlertDialog("Bu barkod zaten eklenmiş.");
+      }
       final bool satisMi = model.getEditTipiEnum?.satisMi ?? false;
       final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)
         ..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
       if (model.getEditTipiEnum?.urunOtomatikEklensin ?? false) {
-        BaseSiparisEditModel.instance.kalemList ??= [];
-        BaseSiparisEditModel.instance.kalemList?.add(kalemModel);
+        if ((stokModel.miktar ?? 0) <= 0) {
+          dialogManager.showAlertDialog("Stok miktarı 0 veya daha az olduğu için eklenemez.");
+          return;
+        }
+        if (isStokKoduExists && model.getEditTipiEnum?.tekrarEdenBarkod == "M") {
+          // add miktar into existing kalem
+          final kalem = model.kalemList?.firstWhereOrNull((element) => element.stokKodu == stokModel.stokKodu);
+          if (kalem != null) {
+            kalem.miktar = (kalem.miktar ?? 0) + (stokModel.miktar ?? 0);
+          }
+          BaseSiparisEditModel.instance.kalemList = model.kalemList;
+        } else {
+          BaseSiparisEditModel.instance.kalemList ??= [];
+          BaseSiparisEditModel.instance.kalemList?.add(kalemModel);
+        }
       } else {
+        if (isStokKoduExists && (model.getEditTipiEnum?.tekrarEdenBarkod?.startsWith("S") ?? false)) {
+          bool devamMi = false;
+          await dialogManager.showAreYouSureDialog(() {
+            devamMi = true;
+          }, title: "${stokModel.stokKodu} - ${stokModel.stokAdi} ürün listenizde mevcut.\nYine de eklensin mi?");
+          if (!devamMi) return;
+        }
         final stok = await Get.toNamed("/kalemEkle", arguments: kalemModel);
         if (stok is! KalemModel) return;
+        if (isStokKoduExists) {
+          if (model.getEditTipiEnum?.tekrarEdenBarkod?.endsWith("M") ?? false) {
+            kalemBirlestir(stokModel, stok);
+          }
+        }
       }
     }
     _searchTextController.clear();
     viewModel.updateKalemList();
+  }
+
+  void kalemBirlestir(StokListesiModel stokModel, KalemModel stok) {
+    final kalem = model.kalemList?.firstWhereOrNull((element) => element.stokKodu == stokModel.stokKodu);
+    if (kalem != null) {
+      model.kalemList?.removeLast();
+      kalem.miktar = (kalem.miktar ?? 0) + (stok.miktar ?? 0);
+      kalem.seriList?.addAll(stok.seriList ?? []);
+      kalem.barkodList?.add(BarkodList(barkod: stok.barkod, miktar: stok.miktar, miktar2: stok.miktar2));
+    }
+    BaseSiparisEditModel.instance.kalemList = model.kalemList;
   }
 }

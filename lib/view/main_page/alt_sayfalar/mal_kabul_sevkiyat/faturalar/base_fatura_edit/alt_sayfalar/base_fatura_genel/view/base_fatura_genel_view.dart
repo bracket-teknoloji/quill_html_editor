@@ -991,21 +991,24 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
   }
 
   Future<void> getBelgeNo(bool? siparistenKopyalaMi, {String? seri}) async {
-    final result = await networkManager.dioGet<BaseSiparisEditModel>(
-      path: ApiUrls.getSiradakiBelgeNo,
-      bodyModel: BaseSiparisEditModel(),
-      queryParameters: {
-        "Seri": (seri != null || _belgeNoController.text != "") ? seri ?? _belgeNoController.text : "",
-        "BelgeTipi": widget.model.editTipiEnum?.rawValue,
-        "EIrsaliye": model.eBelgeMi ? "E" : "H",
-        "CariKodu": model.cariKodu ?? "",
-      },
-      showLoading: true,
-    );
-    if (result.isSuccess) {
-      viewModel.setBelgeNo(result.dataList.firstOrNull?.belgeNo, siparistenKopyalaMi);
-      if (siparistenKopyalaMi ?? false) {}
-      _belgeNoController.text = model.belgeNo ?? "";
+    if ((widget.model.editTipiEnum?.satisMi ?? false) ||
+        (!(widget.model.editTipiEnum?.satisMi ?? false) && (parametreModel.alisFisSeriTakibiVar ?? false))) {
+      final result = await networkManager.dioGet<BaseSiparisEditModel>(
+        path: ApiUrls.getSiradakiBelgeNo,
+        bodyModel: BaseSiparisEditModel(),
+        queryParameters: {
+          "Seri": (seri != null || _belgeNoController.text != "") ? seri ?? _belgeNoController.text : "",
+          "BelgeTipi": widget.model.editTipiEnum?.rawValue,
+          "EIrsaliye": model.eBelgeMi ? "E" : "H",
+          "CariKodu": model.cariKodu ?? "",
+        },
+        showLoading: true,
+      );
+      if (result.isSuccess) {
+        viewModel.setBelgeNo(result.dataList.firstOrNull?.belgeNo, siparistenKopyalaMi);
+        if (siparistenKopyalaMi ?? false) {}
+        _belgeNoController.text = model.belgeNo ?? "";
+      }
     }
   }
 
