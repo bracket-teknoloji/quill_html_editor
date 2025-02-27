@@ -211,7 +211,7 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     },
                   ),
                 ),
-              Expanded(
+              if (!yetkiController.sayimGizlenecekAlanlar("miktar")) Expanded(
                 child: CustomTextField(
                   labelText: "Miktar",
                   isMust: true,
@@ -224,7 +224,7 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
                   enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
                   controller: miktarController,
-                  suffix: Wrap(
+                  suffix:  (!yetkiController.sayimDegistirilmeyecekAlanlar("miktar")) ?  Wrap(
                     children: [
                       IconButton(
                         onPressed: () {
@@ -243,9 +243,9 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                         icon: const Icon(Icons.add),
                       ),
                     ],
-                  ).yetkiVarMi(!yetkiController.sayimDegistirilmeyecekAlanlar("miktar")),
+                  ) : null,
                 ),
-              ).yetkiVarMi(!yetkiController.sayimGizlenecekAlanlar("miktar")),
+              ),
             ],
           ),
 

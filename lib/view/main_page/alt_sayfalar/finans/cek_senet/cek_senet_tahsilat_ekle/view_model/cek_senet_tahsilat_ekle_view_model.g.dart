@@ -59,6 +59,22 @@ mixin _$CekSenetTahsilatEkleViewModel
     });
   }
 
+  late final _$cariModelAtom = Atom(
+      name: '_CekSenetTahsilatEkleViewModelBase.cariModel', context: context);
+
+  @override
+  CariListesiModel? get cariModel {
+    _$cariModelAtom.reportRead();
+    return super.cariModel;
+  }
+
+  @override
+  set cariModel(CariListesiModel? value) {
+    _$cariModelAtom.reportWrite(value, super.cariModel, () {
+      super.cariModel = value;
+    });
+  }
+
   late final _$muhaRefListAtom = Atom(
       name: '_CekSenetTahsilatEkleViewModelBase.muhaRefList', context: context);
 
@@ -115,6 +131,18 @@ mixin _$CekSenetTahsilatEkleViewModel
         .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setBankModel');
     try {
       return super.setBankModel(value);
+    } finally {
+      _$_CekSenetTahsilatEkleViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCariModel(CariListesiModel? value) {
+    final _$actionInfo = _$_CekSenetTahsilatEkleViewModelBaseActionController
+        .startAction(name: '_CekSenetTahsilatEkleViewModelBase.setCariModel');
+    try {
+      return super.setCariModel(value);
     } finally {
       _$_CekSenetTahsilatEkleViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -443,6 +471,7 @@ mixin _$CekSenetTahsilatEkleViewModel
 model: ${model},
 dovizKurlariListesi: ${dovizKurlariListesi},
 bankModel: ${bankModel},
+cariModel: ${cariModel},
 muhaRefList: ${muhaRefList}
     ''';
   }

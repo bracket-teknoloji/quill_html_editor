@@ -266,6 +266,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisEkAciklamaTanimi15 = json['AlisEkAciklamaTanimi15'] as String?
   ..alisEkAciklamaTanimi16 = json['AlisEkAciklamaTanimi16'] as String?
   ..alisOzelKod1Tablodan = json['AlisOzelKod1Tablodan'] as bool?
+  ..satisOzelKod1Tablodan = json['SatisOzelKod1Tablodan'] as bool?
   ..alisKosulAktif = json['AlisKosulAktif'] as bool?
   ..alisFarkliTeslimCariAktif = json['AlisFarkliTeslimCariAktif'] as bool?
   ..alisMalFazMiktarIskontoAcik = json['AlisMalFazMiktarIskontoAcik'] as bool?
@@ -639,6 +640,8 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
         'AlisEkAciklamaTanimi16': value,
       if (instance.alisOzelKod1Tablodan case final value?)
         'AlisOzelKod1Tablodan': value,
+      if (instance.satisOzelKod1Tablodan case final value?)
+        'SatisOzelKod1Tablodan': value,
       if (instance.alisKosulAktif case final value?) 'AlisKosulAktif': value,
       if (instance.alisFarkliTeslimCariAktif case final value?)
         'AlisFarkliTeslimCariAktif': value,
