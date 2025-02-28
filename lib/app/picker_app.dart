@@ -1,5 +1,7 @@
 import "package:picker/core/base/view/belge_kontrol/view/belge_kontrol_view.dart";
 import "package:picker/core/base/view/belge_kontrol_edit/view/belge_kontrol_edit_view.dart";
+import "package:picker/core/base/view/belge_kontrol_kalem_edit/view/belge_kontrol_kalem_edit_view.dart";
+import "package:picker/core/base/view/belge_kontrol_kalemler/view/belge_kontrol_kalemler_view.dart";
 import "package:picker/core/base/view/kullanici_haritasi/view/kullanici_haritasi_view.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/fatura_karlilik_raporu/view/fatura_karlilik_raporu_view.dart";
@@ -129,6 +131,8 @@ final class PickerMaterialApp extends StatelessWidget {
           GetPage(name: "/belgeKontrol", page: BelgeKontrolView.new),
           GetPage(name: "/belgeEkle", page: () => const BelgeKontrolEditView.add()),
           GetPage(name: "/belgeDuzenle", page: () => const BelgeKontrolEditView.edit()),
+          GetPage(name: "/belgeKalemler", page: () =>  BelgeKontrolKalemlerView(belgeKontrolModel: Get.arguments)),
+          GetPage(name: "/belgeKalemlerEdit", page: () =>  BelgeKontrolKalemEditView(belgeKontrolModel: Get.arguments)),
           GetPage(name: "/genelRehber", page: () => GenelRehberView(model: Get.arguments)),
           GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
           GetPage(name: "/siparisRehberi", page: () => SiparisRehberiView(model: Get.arguments)),

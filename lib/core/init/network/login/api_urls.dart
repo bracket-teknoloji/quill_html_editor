@@ -123,6 +123,7 @@ abstract final class ApiUrls {
   static const String talepTeklifSiparislestir = "Fatura/TalepTeklifSiparislestir";
   static const String saveIrsaliyedenFatura = "Fatura/SaveIrsaliyedenFatura";
   static const String getBelgekontrolBelgeleri = "Fatura/GetBelgekontrolBelgeleri";
+  static const String getBelgekontrolKalemleri = "Fatura/GetBelgekontrolKalemleri";
   static const String saveBelgeKontrol = "Fatura/SaveBelgeKontrol";
 
   //* Temsilci
