@@ -19,7 +19,12 @@ abstract class _BelgeKontrolViewModelBase
   ObservableList<BelgeKontrolModel>? observableList;
 
   @observable
+
+  @observable
   BelgeKontrolRequestModel requestModel = BelgeKontrolRequestModel(durum: "T");
+
+  @action
+  void setFilterValue(String value) => requestModel = requestModel.copyWith(durum: value);
 
   @action
   void setBaslangicTarihi(String? value) => requestModel.baslamaTarihi = value != "" ? value : null;
@@ -32,11 +37,12 @@ abstract class _BelgeKontrolViewModelBase
     if (searchText == null || searchText!.isEmpty) return observableList;
     return observableList
         ?.where(
-          (element) => [
-            if (element.belgeNo != null) element.belgeNo,
-            if (element.cariAdi != null) element.cariAdi,
-            if (element.cariKodu != null) element.cariKodu,
-          ].cast<String>().any((element2) => element2.contains(searchText!)),
+          (element) =>
+              [
+                if (element.belgeNo != null) element.belgeNo,
+                if (element.cariAdi != null) element.cariAdi,
+                if (element.cariKodu != null) element.cariKodu,
+              ].cast<String>().any((element2) => element2.contains(searchText!)),
         )
         .toList()
         .asObservable();
@@ -85,4 +91,5 @@ abstract class _BelgeKontrolViewModelBase
   @override
   @action
   void setSearchText(String? value) => searchText = value;
+
 }

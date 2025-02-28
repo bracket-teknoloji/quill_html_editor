@@ -40,6 +40,10 @@ mixin _$BelgeKontrolModel {
   int? get islemKodu => throw _privateConstructorUsedError;
   @JsonKey(name: "ISLEM_KODU")
   set islemKodu(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "SIRA")
+  int? get sira => throw _privateConstructorUsedError;
+  @JsonKey(name: "SIRA")
+  set sira(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: "BELGE_TARIHI")
   DateTime? get belgeTarihi => throw _privateConstructorUsedError;
   @JsonKey(name: "BELGE_TARIHI")
@@ -68,6 +72,10 @@ mixin _$BelgeKontrolModel {
   double? get kalanMiktar => throw _privateConstructorUsedError;
   @JsonKey(name: "KALAN_MIKTAR")
   set kalanMiktar(double? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "STOK_KODU")
+  String? get stokKodu => throw _privateConstructorUsedError;
+  @JsonKey(name: "STOK_KODU")
+  set stokKodu(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this BelgeKontrolModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -91,13 +99,15 @@ abstract class $BelgeKontrolModelCopyWith<$Res> {
       @JsonKey(name: "BELGE_NO") String? belgeNo,
       @JsonKey(name: "CARI_KODU") String? cariKodu,
       @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+      @JsonKey(name: "SIRA") int? sira,
       @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
       @JsonKey(name: "MIKTAR") double? miktar,
       @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
       @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
       @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
       @JsonKey(name: "CARI_ADI") String? cariAdi,
-      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar});
+      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+      @JsonKey(name: "STOK_KODU") String? stokKodu});
 }
 
 /// @nodoc
@@ -120,6 +130,7 @@ class _$BelgeKontrolModelCopyWithImpl<$Res, $Val extends BelgeKontrolModel>
     Object? belgeNo = freezed,
     Object? cariKodu = freezed,
     Object? islemKodu = freezed,
+    Object? sira = freezed,
     Object? belgeTarihi = freezed,
     Object? miktar = freezed,
     Object? tamamlananMiktar = freezed,
@@ -127,6 +138,7 @@ class _$BelgeKontrolModelCopyWithImpl<$Res, $Val extends BelgeKontrolModel>
     Object? kayittarihi = freezed,
     Object? cariAdi = freezed,
     Object? kalanMiktar = freezed,
+    Object? stokKodu = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -149,6 +161,10 @@ class _$BelgeKontrolModelCopyWithImpl<$Res, $Val extends BelgeKontrolModel>
           ? _value.islemKodu
           : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      sira: freezed == sira
+          ? _value.sira
+          : sira // ignore: cast_nullable_to_non_nullable
+              as int?,
       belgeTarihi: freezed == belgeTarihi
           ? _value.belgeTarihi
           : belgeTarihi // ignore: cast_nullable_to_non_nullable
@@ -177,6 +193,10 @@ class _$BelgeKontrolModelCopyWithImpl<$Res, $Val extends BelgeKontrolModel>
           ? _value.kalanMiktar
           : kalanMiktar // ignore: cast_nullable_to_non_nullable
               as double?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -195,13 +215,15 @@ abstract class _$$BelgeKontrolModelImplCopyWith<$Res>
       @JsonKey(name: "BELGE_NO") String? belgeNo,
       @JsonKey(name: "CARI_KODU") String? cariKodu,
       @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+      @JsonKey(name: "SIRA") int? sira,
       @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
       @JsonKey(name: "MIKTAR") double? miktar,
       @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
       @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
       @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
       @JsonKey(name: "CARI_ADI") String? cariAdi,
-      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar});
+      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+      @JsonKey(name: "STOK_KODU") String? stokKodu});
 }
 
 /// @nodoc
@@ -222,6 +244,7 @@ class __$$BelgeKontrolModelImplCopyWithImpl<$Res>
     Object? belgeNo = freezed,
     Object? cariKodu = freezed,
     Object? islemKodu = freezed,
+    Object? sira = freezed,
     Object? belgeTarihi = freezed,
     Object? miktar = freezed,
     Object? tamamlananMiktar = freezed,
@@ -229,6 +252,7 @@ class __$$BelgeKontrolModelImplCopyWithImpl<$Res>
     Object? kayittarihi = freezed,
     Object? cariAdi = freezed,
     Object? kalanMiktar = freezed,
+    Object? stokKodu = freezed,
   }) {
     return _then(_$BelgeKontrolModelImpl(
       id: freezed == id
@@ -251,6 +275,10 @@ class __$$BelgeKontrolModelImplCopyWithImpl<$Res>
           ? _value.islemKodu
           : islemKodu // ignore: cast_nullable_to_non_nullable
               as int?,
+      sira: freezed == sira
+          ? _value.sira
+          : sira // ignore: cast_nullable_to_non_nullable
+              as int?,
       belgeTarihi: freezed == belgeTarihi
           ? _value.belgeTarihi
           : belgeTarihi // ignore: cast_nullable_to_non_nullable
@@ -279,6 +307,10 @@ class __$$BelgeKontrolModelImplCopyWithImpl<$Res>
           ? _value.kalanMiktar
           : kalanMiktar // ignore: cast_nullable_to_non_nullable
               as double?,
+      stokKodu: freezed == stokKodu
+          ? _value.stokKodu
+          : stokKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -292,13 +324,15 @@ class _$BelgeKontrolModelImpl extends _BelgeKontrolModel {
       @JsonKey(name: "BELGE_NO") this.belgeNo,
       @JsonKey(name: "CARI_KODU") this.cariKodu,
       @JsonKey(name: "ISLEM_KODU") this.islemKodu,
+      @JsonKey(name: "SIRA") this.sira,
       @JsonKey(name: "BELGE_TARIHI") this.belgeTarihi,
       @JsonKey(name: "MIKTAR") this.miktar,
       @JsonKey(name: "TAMAMLANAN_MIKTAR") this.tamamlananMiktar,
       @JsonKey(name: "KAYITYAPANKUL") this.kayityapankul,
       @JsonKey(name: "KAYITTARIHI") this.kayittarihi,
       @JsonKey(name: "CARI_ADI") this.cariAdi,
-      @JsonKey(name: "KALAN_MIKTAR") this.kalanMiktar})
+      @JsonKey(name: "KALAN_MIKTAR") this.kalanMiktar,
+      @JsonKey(name: "STOK_KODU") this.stokKodu})
       : super._();
 
   factory _$BelgeKontrolModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -320,6 +354,9 @@ class _$BelgeKontrolModelImpl extends _BelgeKontrolModel {
   @JsonKey(name: "ISLEM_KODU")
   int? islemKodu;
   @override
+  @JsonKey(name: "SIRA")
+  int? sira;
+  @override
   @JsonKey(name: "BELGE_TARIHI")
   DateTime? belgeTarihi;
   @override
@@ -340,6 +377,9 @@ class _$BelgeKontrolModelImpl extends _BelgeKontrolModel {
   @override
   @JsonKey(name: "KALAN_MIKTAR")
   double? kalanMiktar;
+  @override
+  @JsonKey(name: "STOK_KODU")
+  String? stokKodu;
 
   /// Create a copy of BelgeKontrolModel
   /// with the given fields replaced by the non-null parameter values.
@@ -360,19 +400,20 @@ class _$BelgeKontrolModelImpl extends _BelgeKontrolModel {
 
 abstract class _BelgeKontrolModel extends BelgeKontrolModel {
   factory _BelgeKontrolModel(
-          {@JsonKey(name: "ID") int? id,
-          @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
-          @JsonKey(name: "BELGE_NO") String? belgeNo,
-          @JsonKey(name: "CARI_KODU") String? cariKodu,
-          @JsonKey(name: "ISLEM_KODU") int? islemKodu,
-          @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
-          @JsonKey(name: "MIKTAR") double? miktar,
-          @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
-          @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
-          @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
-          @JsonKey(name: "CARI_ADI") String? cariAdi,
-          @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar}) =
-      _$BelgeKontrolModelImpl;
+      {@JsonKey(name: "ID") int? id,
+      @JsonKey(name: "BELGE_TIPI") String? belgeTipi,
+      @JsonKey(name: "BELGE_NO") String? belgeNo,
+      @JsonKey(name: "CARI_KODU") String? cariKodu,
+      @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+      @JsonKey(name: "SIRA") int? sira,
+      @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
+      @JsonKey(name: "MIKTAR") double? miktar,
+      @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
+      @JsonKey(name: "KAYITYAPANKUL") String? kayityapankul,
+      @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
+      @JsonKey(name: "CARI_ADI") String? cariAdi,
+      @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+      @JsonKey(name: "STOK_KODU") String? stokKodu}) = _$BelgeKontrolModelImpl;
   _BelgeKontrolModel._() : super._();
 
   factory _BelgeKontrolModel.fromJson(Map<String, dynamic> json) =
@@ -403,6 +444,11 @@ abstract class _BelgeKontrolModel extends BelgeKontrolModel {
   int? get islemKodu;
   @JsonKey(name: "ISLEM_KODU")
   set islemKodu(int? value);
+  @override
+  @JsonKey(name: "SIRA")
+  int? get sira;
+  @JsonKey(name: "SIRA")
+  set sira(int? value);
   @override
   @JsonKey(name: "BELGE_TARIHI")
   DateTime? get belgeTarihi;
@@ -438,6 +484,11 @@ abstract class _BelgeKontrolModel extends BelgeKontrolModel {
   double? get kalanMiktar;
   @JsonKey(name: "KALAN_MIKTAR")
   set kalanMiktar(double? value);
+  @override
+  @JsonKey(name: "STOK_KODU")
+  String? get stokKodu;
+  @JsonKey(name: "STOK_KODU")
+  set stokKodu(String? value);
 
   /// Create a copy of BelgeKontrolModel
   /// with the given fields replaced by the non-null parameter values.

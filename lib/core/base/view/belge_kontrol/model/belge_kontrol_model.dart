@@ -14,6 +14,7 @@ class BelgeKontrolModel with _$BelgeKontrolModel, NetworkManagerMixin {
     @JsonKey(name: "BELGE_NO") String? belgeNo,
     @JsonKey(name: "CARI_KODU") String? cariKodu,
     @JsonKey(name: "ISLEM_KODU") int? islemKodu,
+    @JsonKey(name: "SIRA") int? sira,
     @JsonKey(name: "BELGE_TARIHI") DateTime? belgeTarihi,
     @JsonKey(name: "MIKTAR") double? miktar,
     @JsonKey(name: "TAMAMLANAN_MIKTAR") double? tamamlananMiktar,
@@ -21,10 +22,14 @@ class BelgeKontrolModel with _$BelgeKontrolModel, NetworkManagerMixin {
     @JsonKey(name: "KAYITTARIHI") DateTime? kayittarihi,
     @JsonKey(name: "CARI_ADI") String? cariAdi,
     @JsonKey(name: "KALAN_MIKTAR") double? kalanMiktar,
+    @JsonKey(name: "STOK_KODU") String? stokKodu,
   }) = _BelgeKontrolModel;
   BelgeKontrolModel._();
 
   factory BelgeKontrolModel.fromJson(Map<String, dynamic> json) => _$BelgeKontrolModelFromJson(json);
+
+  factory BelgeKontrolModel.forKalemler(BelgeKontrolModel model) =>
+      BelgeKontrolModel(id: model.id, belgeTipi: model.belgeTipi, belgeNo: model.belgeNo, cariKodu: model.cariKodu);
 
   @override
   NetworkManagerMixin? fromJson(Map<String, dynamic> json) => BelgeKontrolModel.fromJson(json);

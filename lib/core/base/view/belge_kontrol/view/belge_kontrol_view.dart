@@ -5,9 +5,11 @@ import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/belge_kontrol/view_model/belge_kontrol_view_model.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
+import "package:picker/core/components/helper_widgets/custom_label_widget.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
+import "package:picker/core/components/slide_controller/view/slide_controller_view.dart";
 import "package:picker/core/components/textfield/custom_app_bar_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
@@ -49,7 +51,7 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(appBar: _appBar(), floatingActionButton: _fab(), body: _body());
+  Widget build(BuildContext context) => BaseScaffold(appBar: _appBar(), floatingActionButton: _fab(), body: _body());
 
   AppBar _appBar() => AppBar(
     title: Observer(
@@ -70,7 +72,7 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
   );
 
   Widget _fab() => CustomFloatingActionButton(
-    isScrolledDown: true,
+    isScrolledDown: yetkiController.genelBelgeKontrolEkle,
     onPressed: () async {
       if (await Get.toNamed("/mainPage/belgeEkle") == true) {
         await viewModel.resetList();
@@ -90,6 +92,22 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
         baslangicTarihiController: baslangicTarihiController,
         bitisTarihiController: bitisTarihiController,
       ),
+      CustomWidgetWithLabel(
+        text: "Tamamlanma Durumu",
+        child: Observer(
+          builder:
+              (_) => SlideControllerWidget(
+                childrenTitleList: ["Tümü", "Kalan", "Tamamlanan"],
+                filterOnChanged: (index) {
+                  viewModel
+                    ..setFilterValue(["T", "K", "B"][index ?? 0])
+                    ..resetList();
+                },
+                childrenValueList: ["T", "K", "B"],
+                groupValue: viewModel.requestModel.durum,
+              ),
+        ),
+      ),
       Expanded(
         child: Observer(
           builder:
@@ -101,7 +119,7 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
                       color: (item.isTamamlandi
                               ? ColorPalette.mantis
                               : item.isDevamEdiyor
-                              ? Colors.orange
+                              ? ColorPalette.gamboge
                               : null)
                           ?.withValues(alpha: 0.3),
                       child: ListTile(
@@ -120,19 +138,21 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
                                       context,
                                       title: loc.generalStrings.options,
                                       children: [
-                                        BottomSheetModel(
+                                        if (yetkiController.genelBelgeKontrolSil)BottomSheetModel(
                                           title: loc.generalStrings.delete,
                                           iconWidget: Icons.delete_outline_outlined,
-                                          onTap: () async {
+                                          onTap: () {
                                             if (item.id case final id?) {
                                               Get.back();
-                                              final result = await viewModel.deletekontrol(id);
-                                              if (result.isSuccess) {
-                                                dialogManager.showSuccessSnackBar(
-                                                  result.message ?? "Başarıyla silindi",
-                                                );
-                                                await viewModel.resetList();
-                                              }
+                                              dialogManager.showAreYouSureDialog(() async {
+                                                final result = await viewModel.deletekontrol(id);
+                                                if (result.isSuccess) {
+                                                  dialogManager.showSuccessSnackBar(
+                                                    result.message ?? "Başarıyla silindi",
+                                                  );
+                                                  await viewModel.resetList();
+                                                }
+                                              });
                                             }
                                           },
                                         ),
@@ -168,6 +188,10 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
                             // Text(item.tedarikciKodu ?? ""),
                           ],
                         ),
+                        onTap: () async {
+                          await Get.toNamed("/mainPage/belgeKalemler", arguments: item);
+                          viewModel.resetList();
+                        },
                       ),
                     ),
               ),

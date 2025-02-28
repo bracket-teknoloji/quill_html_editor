@@ -102,6 +102,17 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
       ActionController(name: '_BelgeKontrolViewModelBase', context: context);
 
   @override
+  void setFilterValue(String value) {
+    final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
+        .startAction(name: '_BelgeKontrolViewModelBase.setFilterValue');
+    try {
+      return super.setFilterValue(value);
+    } finally {
+      _$_BelgeKontrolViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setBaslangicTarihi(String? value) {
     final _$actionInfo = _$_BelgeKontrolViewModelBaseActionController
         .startAction(name: '_BelgeKontrolViewModelBase.setBaslangicTarihi');
