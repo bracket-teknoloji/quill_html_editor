@@ -39,9 +39,9 @@ class _BelgeKontrolEditViewState extends BaseState<BelgeKontrolEditView> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => BaseScaffold(
     appBar: AppBar(
-      title: const AppBarTitle(title: "Belge Kontrol"),
+      title: AppBarTitle(title: "Belge Kontrol", subtitle: widget.editTipi.getName),
       actions: [
         IconButton(
           onPressed: () {
@@ -78,7 +78,7 @@ class _BelgeKontrolEditViewState extends BaseState<BelgeKontrolEditView> {
                 title: "Belge Türü Seçiniz",
                 groupValue: viewModel.belgeKontrolModel.belgeTipi,
                 children:
-                    EditTipiEnum.values
+                    yetkiController.genelBelgeKontrolBelgeTipleri
                         .map((e) => BottomSheetModel(title: e.getName, value: e, groupValue: e.rawValue))
                         .toList(),
               );
@@ -125,8 +125,8 @@ class _BelgeKontrolEditViewState extends BaseState<BelgeKontrolEditView> {
   );
 
   void setBelge(BaseSiparisEditModel result) {
-      viewModel.setBelge(result);
-      belgeNoController.text = result.belgeNo ?? "";
+    viewModel.setBelge(result);
+    belgeNoController.text = result.belgeNo ?? "";
   }
 
   void belgeTipiSecinizSnackBar() => dialogManager.showErrorSnackBar("Lütfen önce belge tipi seçiniz");
