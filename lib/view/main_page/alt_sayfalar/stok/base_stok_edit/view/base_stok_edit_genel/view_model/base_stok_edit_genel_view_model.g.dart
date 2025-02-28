@@ -148,6 +148,17 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
   }
 
   @override
+  void setGrupKodu(int index, BaseGrupKoduModel model) {
+    final _$actionInfo = _$_BaseStokEditGenelViewModelBaseActionController
+        .startAction(name: '_BaseStokEditGenelViewModelBase.setGrupKodu');
+    try {
+      return super.setGrupKodu(index, model);
+    } finally {
+      _$_BaseStokEditGenelViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 stokListesiModel: ${stokListesiModel},

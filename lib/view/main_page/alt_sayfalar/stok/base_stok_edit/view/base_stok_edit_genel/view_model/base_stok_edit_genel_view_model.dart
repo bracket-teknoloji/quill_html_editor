@@ -66,6 +66,26 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setGrupKodu(int index, BaseGrupKoduModel model) {
+    switch (index) {
+      case 0:
+        stokListesiModel = stokListesiModel.copyWith(grupKodu: model.grupKodu, grupTanimi: model.grupAdi);
+      case 1:
+        stokListesiModel = stokListesiModel.copyWith(kod1: model.grupKodu, kod1Tanimi: model.grupAdi);
+      case 2:
+        stokListesiModel = stokListesiModel.copyWith(kod2: model.grupKodu, kod2Tanimi: model.grupAdi);
+      case 3:
+        stokListesiModel = stokListesiModel.copyWith(kod3: model.grupKodu, kod3Tanimi: model.grupAdi);
+      case 4:
+        stokListesiModel = stokListesiModel.copyWith(kod4: model.grupKodu, kod4Tanimi: model.grupAdi);
+      case 5:
+        stokListesiModel = stokListesiModel.copyWith(kod5: model.grupKodu, kod5Tanimi: model.grupAdi);
+    }
+    StokListesiModel.setInstance(stokListesiModel);
+    
+  }
+
+  @action
   Future<void> getData() async {
     final result = await networkManager.dioGet<StokDetayModel>(
       path: ApiUrls.getStokDetay,

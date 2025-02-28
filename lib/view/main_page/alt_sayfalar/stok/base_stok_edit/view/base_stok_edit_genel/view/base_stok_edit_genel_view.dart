@@ -569,38 +569,41 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       child: CustomTextField(
                         enabled: enable,
                         controller: grupKoduController,
-                        readOnly: true,
-                        suffixMore: true,
-                        onTap: () async {
-                          if (!(viewModel.grupKodlariMap?.containsKey(0) ?? false)) {
-                            dialogManager.showLoadingDialog("Grup Kodları Yükleniyor...");
-                            viewModel.changeGrupKoduListesi(
-                              0,
-                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 0),
+                        onChanged: (value) => viewModel.setGrupKodu(0, BaseGrupKoduModel(grupKodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(stokModel.grupTanimi ?? "")),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            if (!(viewModel.grupKodlariMap?.containsKey(0) ?? false)) {
+                              dialogManager.showLoadingDialog("Grup Kodları Yükleniyor...");
+                              viewModel.changeGrupKoduListesi(
+                                0,
+                                await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 0),
+                              );
+                              dialogManager.hideAlertDialog;
+                            }
+                            final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              title: "Grup Kodu",
+                              groupValue: stokModel.grupKodu,
+                              children:
+                                  viewModel.grupKodlariMap?[0]
+                                      ?.map(
+                                        (e) => BottomSheetModel(
+                                          title: "${e.grupAdi}",
+                                          description: e.grupKodu,
+                                          groupValue: e.grupKodu,
+                                          value: e,
+                                        ),
+                                      )
+                                      .toList() ??
+                                  [],
                             );
-                            dialogManager.hideAlertDialog;
-                          }
-                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                            context,
-                            title: "Grup Kodu",
-                            groupValue: stokModel.grupKodu,
-                            children:
-                                viewModel.grupKodlariMap?[0]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList() ??
-                                [],
-                          );
-                          if (result == null) return;
-                          grupKoduController.text = result.grupAdi ?? "";
-                          stokModel.grupKodu = result.grupKodu;
-                        },
+                            if (result == null) return;
+                            grupKoduController.text = result.grupKodu ?? "";
+                            viewModel.setGrupKodu(0, result);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
                         labelText: "Grup Kodu",
                       ),
                     ),
@@ -608,38 +611,41 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       child: CustomTextField(
                         enabled: enable,
                         controller: kod1Controller,
-                        readOnly: true,
-                        onTap: () async {
-                          if (!(viewModel.grupKodlariMap?.containsKey(1) ?? false)) {
-                            dialogManager.showLoadingDialog("Kod 1 Yükleniyor...");
-                            viewModel.changeGrupKoduListesi(
-                              1,
-                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 1),
+                        onChanged: (value) => viewModel.setGrupKodu(1, BaseGrupKoduModel(grupKodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(stokModel.kod1Tanimi ?? "")),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            if (!(viewModel.grupKodlariMap?.containsKey(1) ?? false)) {
+                              dialogManager.showLoadingDialog("Kod 1 Yükleniyor...");
+                              viewModel.changeGrupKoduListesi(
+                                1,
+                                await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 1),
+                              );
+                              dialogManager.hideAlertDialog;
+                            }
+                            final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              title: "Kod 1",
+                              groupValue: stokModel.kod1,
+                              children:
+                                  viewModel.grupKodlariMap?[1]
+                                      ?.map(
+                                        (e) => BottomSheetModel(
+                                          title: "${e.grupAdi}",
+                                          description: e.grupKodu,
+                                          groupValue: e.grupKodu,
+                                          value: e,
+                                        ),
+                                      )
+                                      .toList() ??
+                                  [],
                             );
-                            dialogManager.hideAlertDialog;
-                          }
-                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                            context,
-                            title: "Kod 1",
-                            groupValue: stokModel.kod1,
-                            children:
-                                viewModel.grupKodlariMap?[1]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList() ??
-                                [],
-                          );
-                          if (result == null) return;
-                          kod1Controller.text = result.grupKodu ?? "";
-                          stokModel.kod1 = result.grupAdi;
-                        },
-                        suffixMore: true,
+                            if (result == null) return;
+                            kod1Controller.text = result.grupKodu ?? "";
+                            viewModel.setGrupKodu(1, result);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
                         labelText: "Kod1",
                       ),
                     ),
@@ -651,39 +657,42 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       child: CustomTextField(
                         enabled: enable,
                         controller: kod2Controller,
-                        readOnly: true,
-                        onTap: () async {
-                          if (!(viewModel.grupKodlariMap?.containsKey(2) ?? false)) {
-                            dialogManager.showLoadingDialog("Kod 2 Yükleniyor...");
-                            viewModel.changeGrupKoduListesi(
-                              2,
-                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 2),
+                        onChanged: (value) => viewModel.setGrupKodu(2, BaseGrupKoduModel(grupKodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(stokModel.kod2Tanimi ?? "")),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            if (!(viewModel.grupKodlariMap?.containsKey(2) ?? false)) {
+                              dialogManager.showLoadingDialog("Kod 2 Yükleniyor...");
+                              viewModel.changeGrupKoduListesi(
+                                2,
+                                await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 2),
+                              );
+                              dialogManager.hideAlertDialog;
+                            }
+                            final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              title: "Kod 2",
+                              groupValue: stokModel.kod2,
+                              children:
+                                  viewModel.grupKodlariMap?[2]
+                                      ?.map(
+                                        (e) => BottomSheetModel(
+                                          title: "${e.grupAdi}",
+                                          description: e.grupKodu,
+                                          groupValue: e.grupKodu,
+                                          value: e,
+                                        ),
+                                      )
+                                      .toList() ??
+                                  [],
                             );
-                            dialogManager.hideAlertDialog;
-                          }
-                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                            context,
-                            title: "Kod 2",
-                            groupValue: stokModel.kod2,
-                            children:
-                                viewModel.grupKodlariMap?[2]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList() ??
-                                [],
-                          );
 
-                          if (result == null) return;
-                          kod2Controller.text = result.grupKodu ?? "";
-                          stokModel.kod2 = result.grupAdi;
-                        },
-                        suffixMore: true,
+                            if (result == null) return;
+                            kod2Controller.text = result.grupKodu ?? "";
+                            viewModel.setGrupKodu(2, result);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
                         labelText: "Kod2",
                       ),
                     ),
@@ -691,37 +700,40 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       child: CustomTextField(
                         enabled: enable,
                         controller: kod3Controller,
-                        readOnly: true,
-                        onTap: () async {
-                          if (!(viewModel.grupKodlariMap?.containsKey(3) ?? false)) {
-                            dialogManager.showLoadingDialog("Kod 3 Yükleniyor...");
-                            viewModel.changeGrupKoduListesi(
-                              3,
-                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 3),
+                        onChanged: (value) => viewModel.setGrupKodu(3, BaseGrupKoduModel(grupKodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(stokModel.kod3Tanimi ?? "")),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            if (!(viewModel.grupKodlariMap?.containsKey(3) ?? false)) {
+                              dialogManager.showLoadingDialog("Kod 3 Yükleniyor...");
+                              viewModel.changeGrupKoduListesi(
+                                3,
+                                await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 3),
+                              );
+                              dialogManager.hideAlertDialog;
+                            }
+                            final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              title: "Kod 3",
+                              groupValue: stokModel.kod3,
+                              children:
+                                  viewModel.grupKodlariMap?[3]
+                                      ?.map(
+                                        (e) => BottomSheetModel(
+                                          title: "${e.grupAdi}",
+                                          description: e.grupKodu,
+                                          groupValue: e.grupKodu,
+                                          value: e,
+                                        ),
+                                      )
+                                      .toList(),
                             );
-                            dialogManager.hideAlertDialog;
-                          }
-                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                            context,
-                            title: "Kod 3",
-                            groupValue: stokModel.kod3,
-                            children:
-                                viewModel.grupKodlariMap?[3]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList(),
-                          );
-                          if (result == null) return;
-                          kod3Controller.text = result.grupKodu ?? "";
-                          stokModel.kod3 = result.grupAdi;
-                        },
-                        suffixMore: true,
+                            if (result == null) return;
+                            kod3Controller.text = result.grupKodu ?? "";
+                            viewModel.setGrupKodu(3, result);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
                         labelText: "Kod3",
                       ),
                     ),
@@ -732,37 +744,40 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                     Expanded(
                       child: CustomTextField(
                         enabled: enable,
-                        readOnly: true,
-                        onTap: () async {
-                          if (!(viewModel.grupKodlariMap?.containsKey(4) ?? false)) {
-                            dialogManager.showLoadingDialog("Kod 4 Yükleniyor...");
-                            viewModel.changeGrupKoduListesi(
-                              4,
-                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 4),
+                        onChanged: (value) => viewModel.setGrupKodu(4, BaseGrupKoduModel(grupKodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(stokModel.kod4Tanimi ?? "")),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            if (!(viewModel.grupKodlariMap?.containsKey(4) ?? false)) {
+                              dialogManager.showLoadingDialog("Kod 4 Yükleniyor...");
+                              viewModel.changeGrupKoduListesi(
+                                4,
+                                await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 4),
+                              );
+                              dialogManager.hideAlertDialog;
+                            }
+                            final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              title: "Kod 4",
+                              groupValue: stokModel.kod4,
+                              children:
+                                  viewModel.grupKodlariMap?[4]
+                                      ?.map(
+                                        (e) => BottomSheetModel(
+                                          title: "${e.grupAdi}",
+                                          description: e.grupKodu,
+                                          groupValue: e.grupKodu,
+                                          value: e,
+                                        ),
+                                      )
+                                      .toList(),
                             );
-                            dialogManager.hideAlertDialog;
-                          }
-                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                            context,
-                            title: "Kod 4",
-                            groupValue: stokModel.kod4,
-                            children:
-                                viewModel.grupKodlariMap?[4]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList(),
-                          );
-                          if (result == null) return;
-                          kod4Controller.text = result.grupKodu ?? "";
-                          stokModel.kod4 = result.grupAdi;
-                        },
-                        suffixMore: true,
+                            if (result == null) return;
+                            kod4Controller.text = result.grupKodu ?? "";
+                            viewModel.setGrupKodu(4, result);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
                         controller: kod4Controller,
                         labelText: "Kod4",
                       ),
@@ -771,37 +786,40 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                       child: CustomTextField(
                         enabled: enable,
                         controller: kod5Controller,
-                        readOnly: true,
-                        onTap: () async {
-                          if (!(viewModel.grupKodlariMap?.containsKey(5) ?? false)) {
-                            dialogManager.showLoadingDialog("Kod 5 Yükleniyor...");
-                            viewModel.changeGrupKoduListesi(
-                              5,
-                              await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 5),
+                        onChanged: (value) => viewModel.setGrupKodu(5, BaseGrupKoduModel(grupKodu: value)),
+                        valueWidget: Observer(builder: (_) => Text(stokModel.kod5Tanimi ?? "")),
+                        suffix: IconButton(
+                          onPressed: () async {
+                            if (!(viewModel.grupKodlariMap?.containsKey(5) ?? false)) {
+                              dialogManager.showLoadingDialog("Kod 5 Yükleniyor...");
+                              viewModel.changeGrupKoduListesi(
+                                5,
+                                await networkManager.getGrupKod(name: GrupKoduEnum.stok, grupNo: 5),
+                              );
+                              dialogManager.hideAlertDialog;
+                            }
+                            final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+                              context,
+                              title: "Kod 5",
+                              groupValue: stokModel.kod5,
+                              children:
+                                  viewModel.grupKodlariMap?[5]
+                                      ?.map(
+                                        (e) => BottomSheetModel(
+                                          title: "${e.grupAdi}",
+                                          description: e.grupKodu,
+                                          groupValue: e.grupKodu,
+                                          value: e,
+                                        ),
+                                      )
+                                      .toList(),
                             );
-                            dialogManager.hideAlertDialog;
-                          }
-                          final BaseGrupKoduModel? result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-                            context,
-                            title: "Kod 5",
-                            groupValue: stokModel.kod5,
-                            children:
-                                viewModel.grupKodlariMap?[5]
-                                    ?.map(
-                                      (e) => BottomSheetModel(
-                                        title: "${e.grupAdi}",
-                                        description: e.grupKodu,
-                                        groupValue: e.grupKodu,
-                                        value: e,
-                                      ),
-                                    )
-                                    .toList(),
-                          );
-                          if (result == null) return;
-                          kod5Controller.text = result.grupKodu ?? "";
-                          stokModel.kod5 = result.grupAdi;
-                        },
-                        suffixMore: true,
+                            if (result == null) return;
+                            kod5Controller.text = result.grupKodu ?? "";
+                            viewModel.setGrupKodu(5, result);
+                          },
+                          icon: const Icon(Icons.more_horiz_outlined),
+                        ),
                         labelText: "Kod5",
                       ),
                     ),
