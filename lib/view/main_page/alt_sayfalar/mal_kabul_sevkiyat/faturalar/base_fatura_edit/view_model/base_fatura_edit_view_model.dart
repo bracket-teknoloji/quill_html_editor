@@ -38,7 +38,7 @@ abstract class _BaseFaturaEditViewModelBase with Store {
   }
 
   @observable
-  bool updateKalemler = false;
+  bool updateKalemler = true;
 
   @action
   void changeUpdateKalemler() => updateKalemler = !updateKalemler;

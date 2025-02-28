@@ -4,6 +4,7 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:get/get_connect/http/src/utils/utils.dart";
 import "package:kartal/kartal.dart";
 import "package:uuid/uuid.dart";
 
@@ -466,12 +467,12 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                                 );
                               }
                             }
-                            BaseSiparisEditModel.instance.kalemList = newList;
-                            if (tabController.index == 2) {
-                              tabController.animateTo(3);
-                              await Future.delayed(const Duration(milliseconds: 500));
-                              tabController.animateTo(2);
-                            }
+                            viewModel
+                              ..changeUpdateKalemler()
+                              ..setKalemList(newList);
+                            await Future.delayed(const Duration(milliseconds: 200));
+
+                            viewModel.changeUpdateKalemler();
                             // setState(() {});
                           }
                         },
@@ -627,7 +628,14 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
               },
             ),
             if (widget.model.editTipiEnum?.digerSekmesiGoster ?? false) BaseFaturaDigerView(model: model),
-            BaseFaturaKalemlerView(model: model),
+            Observer(
+              builder: (_) {
+                if (viewModel.updateKalemler) {
+                  return BaseFaturaKalemlerView(model: model);
+                }
+                return const Center(child: CircularProgressIndicator.adaptive());
+              },
+            ),
             BaseFaturaToplamlarView(model: model),
           ],
         ),
