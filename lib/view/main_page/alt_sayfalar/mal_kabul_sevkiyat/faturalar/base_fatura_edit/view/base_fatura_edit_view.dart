@@ -4,7 +4,6 @@ import "dart:developer";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:get/get_connect/http/src/utils/utils.dart";
 import "package:kartal/kartal.dart";
 import "package:uuid/uuid.dart";
 
