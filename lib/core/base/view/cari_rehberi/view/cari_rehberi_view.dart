@@ -8,7 +8,6 @@ import "package:picker/core/components/button/elevated_buttons/bottom_appbar_but
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/floating_action_button/custom_floating_action_button.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
-import "package:picker/core/components/shimmer/list_view_shimmer.dart";
 import "package:picker/core/components/textfield/custom_text_field.dart";
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
@@ -169,39 +168,6 @@ final class _CariRehberiViewState extends BaseState<CariRehberiView> {
           items: viewModel.observableList,
           itemBuilder: (item) => CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E"),
         ),
-  );
-  @Deprecated("")
-  RefreshIndicator body2() => RefreshIndicator.adaptive(
-    onRefresh: viewModel.resetList,
-    child: Observer(
-      builder: (_) {
-        if (viewModel.observableList.ext.isNullOrEmpty) {
-          if (viewModel.observableList != null) {
-            //* Eğer cariListesi boş ise
-            return const Center(child: Text("Cari Bulunamadı"));
-          } else {
-            //* Eğer cariListesi null ise
-            return const ListViewShimmer();
-          }
-        } else {
-          //* Eğer cariListesi boş veya null değilse
-          return ListView.builder(
-            controller: scrollController,
-            itemCount: viewModel.observableList != null ? (viewModel.observableList!.length + 1) : 0,
-            itemBuilder: (context, index) {
-              if (index == viewModel.observableList!.length) {
-                return Visibility(
-                  visible: viewModel.dahaVarMi,
-                  child: const Center(child: CircularProgressIndicator.adaptive()),
-                );
-              }
-              final CariListesiModel item = viewModel.observableList![index];
-              return CariRehberiCard(model: item, teslimCariMi: widget.cariRequestModel.teslimCari == "E");
-            },
-          );
-        }
-      },
-    ),
   );
 
   AppBarButton get siralaButton => AppBarButton(
