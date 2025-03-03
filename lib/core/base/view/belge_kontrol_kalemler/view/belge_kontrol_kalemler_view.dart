@@ -5,6 +5,8 @@ import "package:picker/core/base/view/belge_kontrol/model/belge_kontrol_model.da
 import "package:picker/core/base/view/belge_kontrol_kalemler/model/belge_kontrol_kalemler_model.dart";
 import "package:picker/core/base/view/belge_kontrol_kalemler/view_model/belge_kontrol_kalemler_view_model.dart";
 import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
+import "package:picker/core/components/bottom_bar/bottom_bar.dart";
+import "package:picker/core/components/button/elevated_buttons/footer_button.dart";
 import "package:picker/core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
@@ -47,7 +49,8 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
   }
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(appBar: _appBar(), body: _body().paddingAll(UIHelper.lowSize));
+  Widget build(BuildContext context) =>
+      BaseScaffold(appBar: _appBar(), body: _body().paddingAll(UIHelper.lowSize), bottomNavigationBar: bottomBar());
 
   AppBar _appBar() => AppBar(
     title: Observer(
@@ -55,7 +58,9 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
         if (viewModel.isSearchBarOpen) {
           return CustomAppBarTextField(onChanged: viewModel.setSearchText);
         }
-        return AppBarTitle(title: "Belge Kontrol", subtitle: widget.belgeKontrolModel.belgeNo);
+        return Observer(
+          builder: (_) => AppBarTitle(title: "Belge Kontrol", subtitle: "${viewModel.filteredList?.length ?? 0}"),
+        );
       },
     ),
     actions: [
@@ -75,24 +80,6 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
           children: [
             if (widget.belgeKontrolModel.cariKodu != null) Text("Cari Kodu: ${widget.belgeKontrolModel.cariKodu}"),
             if (widget.belgeKontrolModel.cariAdi != null) Text("Cari Adı: ${widget.belgeKontrolModel.cariAdi}"),
-            Observer(
-              builder:
-                  (_) => Text(
-                    "Miktar: ${viewModel.filteredList?.map((e) => e.miktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}",
-                  ),
-            ),
-            Observer(
-              builder:
-                  (_) => Text(
-                    "Kont. Miktar: ${viewModel.filteredList?.map((e) => e.tamamlananMiktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}",
-                  ),
-            ),
-            Observer(
-              builder:
-                  (_) => Text(
-                    "Kalan Miktar: ${viewModel.filteredList?.map((e) => e.kalanMiktar).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}",
-                  ),
-            ),
           ],
         ).paddingAll(UIHelper.lowSize),
       ),
@@ -208,5 +195,56 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
         }
       },
     ),
+  );
+
+  BottomBarWidget bottomBar() => BottomBarWidget(
+    isScrolledDown: true,
+    children: [
+      FooterButton(
+        children: [
+          const Text("Miktar"),
+          Observer(
+            builder:
+                (_) => Text(
+                  viewModel.filteredList
+                          ?.map((e) => e.miktar)
+                          .sum
+                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                      "0",
+                ),
+          ),
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Kont. Miktar"),
+          Observer(
+            builder:
+                (_) => Text(
+                  viewModel.filteredList
+                          ?.map((e) => e.tamamlananMiktar)
+                          .sum
+                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                      "0",
+                ),
+          ),
+        ],
+      ),
+      FooterButton(
+        children: [
+          const Text("Kalan Miktar"),
+          Observer(
+            builder:
+                (_) => Text(
+                  viewModel.filteredList
+                          ?.map((e) => e.kalanMiktar)
+                          .sum
+                          .commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ??
+                      "0",
+                ),
+          ),
+        ],
+      ),
+    ],
   );
 }
