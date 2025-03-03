@@ -55,7 +55,6 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
                           BoxShadow(
                             color: const Color.fromARGB(255, 86, 86, 86).withAlpha(60),
                             blurRadius: 30.0,
-
                             offset: const Offset(0.0, 3.0),
                           ),
                         ],
