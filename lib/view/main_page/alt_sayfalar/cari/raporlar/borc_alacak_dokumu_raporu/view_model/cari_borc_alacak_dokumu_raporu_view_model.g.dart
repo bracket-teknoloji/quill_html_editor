@@ -75,6 +75,32 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
   }
 
   @override
+  void isDovizli(bool value) {
+    final _$actionInfo =
+        _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
+            name: '_CariBorcAlacakDokumuRaporuViewModelBase.isDovizli');
+    try {
+      return super.isDovizli(value);
+    } finally {
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setDovizTipleri(List<int>? dovizTipleri) {
+    final _$actionInfo =
+        _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
+            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setDovizTipleri');
+    try {
+      return super.setDovizTipleri(dovizTipleri);
+    } finally {
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSirala(String? value) {
     final _$actionInfo =
         _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
@@ -120,6 +146,19 @@ mixin _$CariBorcAlacakDokumuRaporuViewModel
             name: '_CariBorcAlacakDokumuRaporuViewModelBase.setBittar');
     try {
       return super.setBittar(value);
+    } finally {
+      _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSifirHaric(bool value) {
+    final _$actionInfo =
+        _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController.startAction(
+            name: '_CariBorcAlacakDokumuRaporuViewModelBase.setSifirHaric');
+    try {
+      return super.setSifirHaric(value);
     } finally {
       _$_CariBorcAlacakDokumuRaporuViewModelBaseActionController
           .endAction(_$actionInfo);

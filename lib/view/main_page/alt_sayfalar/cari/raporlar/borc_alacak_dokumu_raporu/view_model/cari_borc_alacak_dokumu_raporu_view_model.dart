@@ -32,6 +32,17 @@ abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
   void resetFuture() => futureController = ObservableFuture.value(false);
 
   @action
+  void isDovizli(bool value) =>
+      pdfModel = pdfModel.copyWith(
+        raporOzelKod: value ? "Rapor_CariDovizliBorcAlacakDokumu" : "Rapor_CariBorcAlacakDokumu",
+      );
+
+  @action
+  void setDovizTipleri(List<int>? dovizTipleri) {
+    pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(dovizTipleri: dovizTipleri));
+  }
+
+  @action
   void setSirala(String? value) => pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(sirala: value));
 
   @action
@@ -43,4 +54,8 @@ abstract class _CariBorcAlacakDokumuRaporuViewModelBase with Store {
 
   @action
   void setBittar(String? value) => pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(bittar: value));
+
+  @action
+  void setSifirHaric(bool value) =>
+      pdfModel = pdfModel.copyWith(dicParams: pdfModel.dicParams?.copyWith(sifirHaric: value ? "E" : null));
 }
