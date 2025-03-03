@@ -41,8 +41,8 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   @override
   void initState() {
     viewModel
-      ..setDizaynId(widget.dizaynList?.id)
-      ..setEtiketSayisi(widget.dizaynList?.kopyaSayisi);
+      ..setDizaynId(widget.dizaynList?.id);
+      // ..setEtiketSayisi(widget.dizaynList?.kopyaSayisi);
 
     super.initState();
   }

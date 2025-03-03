@@ -19,22 +19,23 @@ final class _ServisIslemleriViewState extends BaseState<ServisIslemleriView> {
   ServisIslemleriViewModel viewModel = ServisIslemleriViewModel();
 
   @override
-  Widget build(BuildContext context) => BaseScaffold(
-    appBar: AppBar(title: AppBarTitle(title: loc.serviceOperations.serviceOperationsTitle)),
-    body: ListView.builder(
-      itemCount: itemList.length,
-      itemBuilder: (context, index) {
-        final BottomSheetModel model = itemList[index];
-        return Card(
-          child: ListTile(
-            leading: Icon(model.iconWidget),
-            title: Text(model.title),
-            subtitle: Text(model.description ?? ""),
-            onTap: model.onTap,
-          ),
-        );
-      },
-    ).paddingAll(UIHelper.lowSize),
+  Widget build(BuildContext context) => BaseScaffold(appBar: appBar(), body: body().paddingAll(UIHelper.lowSize));
+
+  AppBar appBar() => AppBar(title: AppBarTitle(title: loc.serviceOperations.serviceOperationsTitle));
+
+  ListView body() => ListView.builder(
+    itemCount: itemList.length,
+    itemBuilder: (context, index) {
+      final BottomSheetModel model = itemList[index];
+      return Card(
+        child: ListTile(
+          leading: Icon(model.iconWidget),
+          title: Text(model.title),
+          subtitle: Text(model.description ?? ""),
+          onTap: model.onTap,
+        ),
+      );
+    },
   );
 
   List<BottomSheetModel> get itemList => [

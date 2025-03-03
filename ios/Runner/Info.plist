@@ -8,6 +8,8 @@
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
 		<string>Picker</string>
+		<key>NSBluetoothAlwaysUsageDescription</key>
+		<string>Bluetooth access to connect 58mm or 80mm thermal printers</string>
 		<key>CFBundleLocalizations</key>
 		<array>
 			<string>tr</string>
@@ -48,7 +50,7 @@
 		<key>CFBundleSignature</key>
 		<string>????</string>
 		<key>CFBundleVersion</key>
-		<string>393</string>
+		<string>394</string>
 		<key>FirebaseAppDelegateProxyEnabled</key>
 		<true />
 		<key>ITSAppUsesNonExemptEncryption</key>
