@@ -260,12 +260,13 @@ abstract final class MenuItemConstants {
               route: "/mainPage/musteriSenetleri",
             ),
             GridItemModel.item(name: "finans_Senet_Borc", title: "Borç Senetleri", route: "/mainPage/borcSenetleri"),
-            GridItemModel.altmenu(
-              name: null,
-              title: "Raporlar",
-              icon: "monitoring",
-              altMenuler: _getSerbestRapor(SerbestRaporDetayKodEnum.senet),
-            ),
+            if (_getSerbestRapor(SerbestRaporDetayKodEnum.senet).isNotEmpty)
+              GridItemModel.altmenu(
+                name: null,
+                title: "Raporlar",
+                icon: "monitoring",
+                altMenuler: _getSerbestRapor(SerbestRaporDetayKodEnum.senet),
+              ),
           ],
         ),
         GridItemModel.item(
@@ -535,10 +536,6 @@ abstract final class MenuItemConstants {
               title: "Stok İhtiyaç Raporu",
               route: "/mainPage/siparisStokIhtiyacRaporu",
             ),
-            // GridItemModel.item(name: "siparis_SaticiSiparisi_DurumRaporu", title: "Satıcı Sİparişi Durum Raporu", route: "/mainPage/siparisSaticiSiparisiDurumRaporu"),
-            // GridItemModel.item(name: "siparis_MusSip_KarlilikRaporu", title: "Sipariş Karlılık Raporu", route: "/mainPage/siparisSiparisKarlikRaporu"),
-            // GridItemModel.item(name: "siparis_MusSip_TeslimRaporu", title: "Müşteri Siparişi Teslim Raporu", route: "/mainPage/siparisMusteriSiparisiTeslimRaporu"),
-            // GridItemModel.item(name: "siparis_SaticiSip_TeslimRaporu", title: "Satıcı Siparişi Teslim Raporu", route: "/mainPage/siparisSaticiSiparisiTeslimRaporu"),
             ..._getSerbestRapor(SerbestRaporDetayKodEnum.siparis),
           ],
         ),
