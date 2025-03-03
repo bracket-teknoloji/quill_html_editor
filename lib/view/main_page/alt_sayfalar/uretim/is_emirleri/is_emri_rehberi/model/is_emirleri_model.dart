@@ -1,4 +1,7 @@
+import "dart:ui";
+
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/core/constants/color_palette.dart";
 
 import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/base_stok_mixin.dart";
@@ -42,4 +45,15 @@ class IsEmirleriModel with _$IsEmirleriModel, NetworkManagerMixin, BaseStokMixin
 
   @override
   IsEmirleriModel fromJson(Map<String, dynamic> json) => _$IsEmirleriModelFromJson(json);
+
+  Color? get cardColor {
+    if ((tamamlanan ?? 0) > 0) {
+      if (tamamlanan == miktar) {
+        return ColorPalette.mantis;
+      }
+      return ColorPalette.gamboge;
+    } else {
+      return null;
+    }
+  }
 }

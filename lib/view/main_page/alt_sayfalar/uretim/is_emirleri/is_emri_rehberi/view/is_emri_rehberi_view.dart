@@ -132,6 +132,7 @@ final class _IsEmriRehberiViewState extends BaseState<IsEmriRehberiView> {
           items: viewModel.observableList,
           itemBuilder:
               (item) => Card(
+                color: item.cardColor?.withValues(alpha: 0.3),
                 child: ListTile(
                   onTap: () {
                     if (widget.isGetData ?? false) {
