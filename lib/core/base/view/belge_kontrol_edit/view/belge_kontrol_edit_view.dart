@@ -10,7 +10,7 @@ import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
-class BelgeKontrolEditView extends StatefulWidget {
+final class BelgeKontrolEditView extends StatefulWidget {
   const BelgeKontrolEditView.add({super.key}) : editTipi = BaseEditEnum.ekle;
   const BelgeKontrolEditView.edit({super.key}) : editTipi = BaseEditEnum.duzenle;
   final BaseEditEnum editTipi;
@@ -19,7 +19,7 @@ class BelgeKontrolEditView extends StatefulWidget {
   State<BelgeKontrolEditView> createState() => _BelgeKontrolEditViewState();
 }
 
-class _BelgeKontrolEditViewState extends BaseState<BelgeKontrolEditView> {
+final class _BelgeKontrolEditViewState extends BaseState<BelgeKontrolEditView> {
   final BelgeKontrolEditViewModel viewModel = BelgeKontrolEditViewModel();
   late final TextEditingController belgeTipiController;
   late final TextEditingController belgeNoController;
