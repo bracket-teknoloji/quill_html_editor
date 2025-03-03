@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../core/components/appbar/appbar_prefered_sized_bottom.dart";
@@ -11,7 +10,6 @@ import "../../../../../../../core/components/button/elevated_buttons/footer_butt
 import "../../../../../../../core/components/card/kasa_listesi_card.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/list_view/refreshable_list_view.dart";
-import "../../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
@@ -19,7 +17,6 @@ import "../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../core/constants/ui_helper/ui_helper.dart";
-import "../model/kasa_listesi_model.dart";
 import "../view_model/kasa_listesi_view_model.dart";
 
 final class KasaListesiView extends StatefulWidget {
@@ -54,7 +51,7 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
     // extendBody: false,
     // extendBodyBehindAppBar: false,
     appBar: appBar(),
-    body: body2(),
+    body: body(),
     bottomNavigationBar: bottomAppBar(),
   );
 
@@ -109,7 +106,7 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
     ),
   );
 
-  Widget body2() => Observer(
+  Widget body() => Observer(
     builder:
         (_) => RefreshableListView(
           onRefresh: viewModel.resetList,
@@ -125,40 +122,6 @@ final class _KasaListesiViewState extends BaseState<KasaListesiView> {
                 },
               ),
         ),
-  );
-
-  Widget body() => RefreshIndicator.adaptive(
-    onRefresh: () async {
-      viewModel.setObservableList(null);
-      await viewModel.getData();
-    },
-    child: Observer(
-      builder:
-          (_) =>
-              viewModel.getKasaListesi == null
-                  ? const ListViewShimmer()
-                  : viewModel.getKasaListesi.ext.isNullOrEmpty
-                  ? const Center(child: Text("Kasa bulunamadı"))
-                  : Observer(
-                    builder:
-                        (_) => ListView.builder(
-                          padding: UIHelper.lowPadding,
-                          itemCount: viewModel.getKasaListesi?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            final KasaListesiModel? item = viewModel.getKasaListesi?[index];
-                            return KasaListesiCard(
-                              item: item,
-                              onSelected: (p0) async {
-                                if (p0) {
-                                  viewModel.setObservableList(null);
-                                  await viewModel.getData();
-                                }
-                              },
-                            );
-                          },
-                        ),
-                  ),
-    ),
   );
 
   BottomBarWidget bottomAppBar() => BottomBarWidget(
