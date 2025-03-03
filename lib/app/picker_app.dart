@@ -1,3 +1,4 @@
+import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/belge_kontrol/view/belge_kontrol_view.dart";
 import "package:picker/core/base/view/belge_kontrol_edit/view/belge_kontrol_edit_view.dart";
 import "package:picker/core/base/view/belge_kontrol_kalem_edit/view/belge_kontrol_kalem_edit_view.dart";
@@ -131,8 +132,8 @@ final class PickerMaterialApp extends StatelessWidget {
           GetPage(name: "/belgeKontrol", page: BelgeKontrolView.new),
           GetPage(name: "/belgeEkle", page: () => const BelgeKontrolEditView.add()),
           GetPage(name: "/belgeDuzenle", page: () => const BelgeKontrolEditView.edit()),
-          GetPage(name: "/belgeKalemler", page: () =>  BelgeKontrolKalemlerView(belgeKontrolModel: Get.arguments)),
-          GetPage(name: "/belgeKalemlerEdit", page: () =>  BelgeKontrolKalemEditView(belgeKontrolModel: Get.arguments)),
+          GetPage(name: "/belgeKalemler", page: () => BelgeKontrolKalemlerView(belgeKontrolModel: Get.arguments)),
+          GetPage(name: "/belgeKalemlerEdit", page: () => BelgeKontrolKalemEditView(belgeKontrolModel: Get.arguments)),
           GetPage(name: "/genelRehber", page: () => GenelRehberView(model: Get.arguments)),
           GetPage(name: "/kalemRehberi", page: () => KalemRehberiView(model: Get.arguments)),
           GetPage(name: "/siparisRehberi", page: () => SiparisRehberiView(model: Get.arguments)),
@@ -164,7 +165,10 @@ final class PickerMaterialApp extends StatelessWidget {
           GetPage(name: "/cariDovizliEkstre", page: () => CariDovizliEkstreView(model: Get.arguments)),
           GetPage(name: "/cariStokEkstre", page: () => StokEkstreView(model: Get.arguments)),
           GetPage(name: "/cariBorcAlacakDokumu", page: () => CariBorcAlacakDokumuRaporuView(model: Get.arguments)),
-          GetPage(name: "/cariDovizliBorcAlacakDokumu", page: () => CariBorcAlacakDokumuRaporuView.dovizli(model: Get.arguments)),
+          GetPage(
+            name: "/cariDovizliBorcAlacakDokumu",
+            page: () => CariBorcAlacakDokumuRaporuView.dovizli(model: Get.arguments),
+          ),
           GetPage(name: "/cariYaslandirmaRaporu", page: () => YaslandirmaRaporuView(model: Get.arguments)),
           GetPage(name: "/cariDovizBakiyeRaporu", page: () => DovizBakiyeRaporuView(model: Get.arguments)),
           GetPage(name: "/cariHareketRaporu", page: () => CariHareketRaporuView(model: Get.arguments)),
@@ -671,10 +675,16 @@ final class PickerMaterialApp extends StatelessWidget {
 
     builder: (context, child) {
       if (child != null) {
-        return SizedBox(
-          width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? getWidth(context) : null,
-          child: child,
-        );
+        if (context.isLandscape) {
+          if (context.device.isIOSDevice) return SafeArea(top: false, bottom: false, child: child);
+          if (kIsWeb) {
+            return SizedBox(
+              width: (kIsWeb && (Get.context?.isLandscape ?? false)) ? getWidth(context) : null,
+              child: child,
+            );
+          }
+        }
+        return child;
       }
       return const SizedBox.shrink();
     },

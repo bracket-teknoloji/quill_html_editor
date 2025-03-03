@@ -26,7 +26,7 @@ final class _EndDrawerState extends BaseState<EndDrawer> {
   @override
   Widget build(BuildContext context) => Drawer(
     shape:
-        kIsWeb
+        (kIsWeb && context.isLandscape)
             ? null
             : const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(

@@ -1,4 +1,3 @@
-import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
@@ -36,17 +35,17 @@ final class _LeftDrawerState extends BaseState<LeftDrawer> {
   @override
   Widget build(BuildContext context) => Drawer(
     shape:
-        kIsWeb
-            ? null
-            : const RoundedRectangleBorder(
+        !context.isLandscape
+            ? const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(UIHelper.highSize),
                 bottomRight: Radius.circular(UIHelper.highSize),
               ),
-            ),
+            )
+            : const RoundedRectangleBorder(),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      
+
       children: [
         Flexible(
           child: Stack(
