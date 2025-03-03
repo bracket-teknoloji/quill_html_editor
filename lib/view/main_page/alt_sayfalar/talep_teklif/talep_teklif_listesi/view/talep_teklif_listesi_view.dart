@@ -19,7 +19,6 @@ import "../../../../../../core/components/floating_action_button/custom_floating
 import "../../../../../../core/components/helper_widgets/custom_label_widget.dart";
 import "../../../../../../core/components/list_view/rapor_filtre_date_time_bottom_sheet/view/rapor_filtre_date_time_bottom_sheet_view.dart";
 import "../../../../../../core/components/list_view/refreshable_list_view.dart";
-import "../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../core/components/slide_controller/view/slide_controller_view.dart";
 import "../../../../../../core/components/textfield/custom_app_bar_text_field.dart";
 import "../../../../../../core/components/textfield/custom_text_field.dart";
@@ -32,7 +31,6 @@ import "../../../../../../core/constants/extensions/widget_extensions.dart";
 import "../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
-import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../view_model/talep_teklif_listesi_view_model.dart";
 
 final class TalepTeklifListesiView extends StatefulWidget {
@@ -237,51 +235,6 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
         ),
   );
 
-  RefreshIndicator body2() => RefreshIndicator.adaptive(
-    onRefresh: viewModel.resetList,
-    child: Observer(
-      builder: (_) {
-        if (viewModel.observableList == null) {
-          return const ListViewShimmer();
-        } else if (viewModel.observableList!.isEmpty) {
-          return const Center(child: Text("Kayıt Bulunamadı."));
-        } else {
-          return ListView.builder(
-            controller: _scrollController,
-            primary: false,
-            padding: UIHelper.lowPadding,
-            itemCount: viewModel.observableList!.length + (viewModel.dahaVarMi ? 1 : 0),
-            itemBuilder: (_, index) {
-              if (index == viewModel.observableList!.length) {
-                return const Center(child: CircularProgressIndicator.adaptive());
-              }
-              final BaseSiparisEditModel item = viewModel.observableList![index];
-              return Observer(
-                builder:
-                    (_) => TalepTeklifCard(
-                      model: item,
-                      talepTeklifEnum: widget.talepTeklifEnum,
-                      editTipiEnum: EditTipiEnum.values.firstWhere(
-                        (element) => element.rawValue == widget.talepTeklifEnum.rawValue,
-                      ),
-                      showEkAciklama: viewModel.ekstraAlanlarMap["EK"] ?? false,
-                      showMiktar: viewModel.ekstraAlanlarMap["MİK"] ?? false,
-                      showVade: viewModel.ekstraAlanlarMap["VADE"] ?? false,
-                      onDeleted: () async => viewModel.resetList(),
-                      onUpdated: (value) async {
-                        if (value) {
-                          viewModel.resetList();
-                        }
-                      },
-                    ),
-              );
-            },
-          );
-        }
-      },
-    ),
-  );
-
   Observer bottomBar() => Observer(
     builder:
         (_) => BottomBarWidget(
@@ -391,29 +344,30 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
           ),
           Row(
             children: [
-              if (yetkiController.plasiyerUygulamasiAcikMi) Expanded(
-                child: CustomTextField(
-                  labelText: "Plasiyer",
-                  controller: _plasiyerController,
-                  suffixMore: true,
-                  readOnly: true,
-                  onClear: () => viewModel.setArrPlasiyerKodu(null),
-                  onTap: () async {
-                    final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
-                      context,
-                      groupValues:
-                          ((jsonDecode(viewModel.siparislerRequestModel.arrPlasiyerKodu ?? "[]")) as List)
-                              .map((e) => e as String)
-                              .toList(),
-                    );
-                    if (result.ext.isNotNullOrEmpty) {
-                      _plasiyerController.text = result!.map((e) => e.plasiyerAciklama).join(", ");
+              if (yetkiController.plasiyerUygulamasiAcikMi)
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Plasiyer",
+                    controller: _plasiyerController,
+                    suffixMore: true,
+                    readOnly: true,
+                    onClear: () => viewModel.setArrPlasiyerKodu(null),
+                    onTap: () async {
+                      final result = await bottomSheetDialogManager.showPlasiyerListesiBottomSheetDialog(
+                        context,
+                        groupValues:
+                            ((jsonDecode(viewModel.siparislerRequestModel.arrPlasiyerKodu ?? "[]")) as List)
+                                .map((e) => e as String)
+                                .toList(),
+                      );
+                      if (result.ext.isNotNullOrEmpty) {
+                        _plasiyerController.text = result!.map((e) => e.plasiyerAciklama).join(", ");
 
-                      viewModel.setArrPlasiyerKodu(result.map((e) => e.plasiyerKodu.toString()).toList());
-                    }
-                  },
+                        viewModel.setArrPlasiyerKodu(result.map((e) => e.plasiyerKodu.toString()).toList());
+                      }
+                    },
+                  ),
                 ),
-              ),
             ],
           ),
           CustomWidgetWithLabel(

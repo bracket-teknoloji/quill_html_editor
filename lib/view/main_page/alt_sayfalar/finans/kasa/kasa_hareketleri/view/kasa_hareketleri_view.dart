@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
-import "package:kartal/kartal.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 
 import "../../../../../../../core/base/state/base_state.dart";
@@ -10,7 +9,6 @@ import "../../../../../../../core/components/bottom_bar/bottom_bar.dart";
 import "../../../../../../../core/components/button/elevated_buttons/footer_button.dart";
 import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
 import "../../../../../../../core/components/list_view/refreshable_list_view.dart";
-import "../../../../../../../core/components/shimmer/list_view_shimmer.dart";
 import "../../../../../../../core/components/wrap/appbar_title.dart";
 import "../../../../../../../core/constants/color_palette.dart";
 import "../../../../../../../core/constants/enum/badge_color_enum.dart";
@@ -82,56 +80,6 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
           items: viewModel.observableList,
           itemBuilder: kasaHareketleriCard,
         ),
-  );
-
-  Column body2() => Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-      Card(
-        child: Observer(
-          builder:
-              (_) => Text(
-                "Devir Tutarı: ${(widget.model?.dovizli == "E" ? widget.model?.dovizDevirTutari : widget.model?.devirTutari).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
-              ).paddingAll(UIHelper.lowSize).paddingOnly(left: UIHelper.midSize),
-        ),
-      ).paddingSymmetric(horizontal: UIHelper.lowSize),
-      Expanded(
-        child: RefreshIndicator.adaptive(
-          onRefresh: () async => await viewModel.resetList(),
-          child: Observer(
-            builder: (_) {
-              if (viewModel.observableList.ext.isNullOrEmpty) {
-                if (viewModel.observableList != null) {
-                  return const Center(child: Text("Kasa hareketi bulunamadı."));
-                } else {
-                  return const ListViewShimmer();
-                }
-              }
-              return Observer(
-                builder:
-                    (_) => ListView.builder(
-                      padding: UIHelper.lowPadding,
-                      primary: false,
-                      controller: _scrollController,
-                      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                      itemCount:
-                          viewModel.observableList != null
-                              ? ((viewModel.observableList?.length ?? 0) + (viewModel.dahaVarMi ? 1 : 0))
-                              : 0,
-                      itemBuilder: (context, index) {
-                        if (index == (viewModel.observableList?.length ?? 0)) {
-                          return const Center(child: CircularProgressIndicator.adaptive());
-                        }
-                        final item = viewModel.observableList?[index];
-                        return kasaHareketleriCard(item);
-                      },
-                    ),
-              );
-            },
-          ),
-        ),
-      ),
-    ],
   );
 
   Card kasaHareketleriCard(KasaIslemleriModel? item) => Card(
