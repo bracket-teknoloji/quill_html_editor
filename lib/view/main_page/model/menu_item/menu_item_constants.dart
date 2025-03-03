@@ -105,6 +105,11 @@ abstract final class MenuItemConstants {
               title: "Borç/Alacak Dökümü",
               route: "/mainPage/cariBorcAlacakDokumu",
             ),
+            GridItemModel.item(
+              name: "cari_Rap_DovizliBorcAlacakDokumu",
+              title: "Dövizli Borç/Alacak Dökümü",
+              route: "/mainPage/cariDovizliBorcAlacakDokumu",
+            ),
             GridItemModel.item(name: "cari_Rap_StokEkstre", title: "Stok Ekstresi", route: "/mainPage/cariStokEkstre"),
             GridItemModel.item(
               name: "cari_Rap_Yaslandirma",
@@ -352,8 +357,7 @@ abstract final class MenuItemConstants {
         GridItemModel.item(name: "genel_DovizKurlari", title: "Döviz Kurları", route: "/dovizKurlari"),
         GridItemModel.item(name: "ayarlar_FirmaAyarlari", title: "Firmalar", route: "/addCompany"),
         GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
-        if (kDebugMode)
-          GridItemModel.item(name: "genel_BelgeKontrol", title: "Belge Kontrol", route: "mainPage/belgeKontrol"),
+        GridItemModel.item(name: "genel_BelgeKontrol", title: "Belge Kontrol", route: "mainPage/belgeKontrol"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/surumYenilikleri"),
         if (AccountModel.instance.adminMi)
           GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),

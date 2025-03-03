@@ -392,6 +392,10 @@ mixin _$DicParams {
   set tempBelgeId(String? value) => throw _privateConstructorUsedError;
   String? get irsDahil => throw _privateConstructorUsedError;
   set irsDahil(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(toJson: _dovizTipleriToJson)
+  List<int>? get dovizTipleri => throw _privateConstructorUsedError;
+  @JsonKey(toJson: _dovizTipleriToJson)
+  set dovizTipleri(List<int>? value) => throw _privateConstructorUsedError;
 
   /// Serializes this DicParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -457,7 +461,8 @@ abstract class $DicParamsCopyWith<$Res> {
       String? hucreKodu,
       String? kalemId,
       String? tempBelgeId,
-      String? irsDahil});
+      String? irsDahil,
+      @JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri});
 }
 
 /// @nodoc
@@ -524,6 +529,7 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
     Object? kalemId = freezed,
     Object? tempBelgeId = freezed,
     Object? irsDahil = freezed,
+    Object? dovizTipleri = freezed,
   }) {
     return _then(_value.copyWith(
       belgeNo: null == belgeNo
@@ -722,6 +728,10 @@ class _$DicParamsCopyWithImpl<$Res, $Val extends DicParams>
           ? _value.irsDahil
           : irsDahil // ignore: cast_nullable_to_non_nullable
               as String?,
+      dovizTipleri: freezed == dovizTipleri
+          ? _value.dovizTipleri
+          : dovizTipleri // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ) as $Val);
   }
 }
@@ -783,7 +793,8 @@ abstract class _$$DicParamsImplCopyWith<$Res>
       String? hucreKodu,
       String? kalemId,
       String? tempBelgeId,
-      String? irsDahil});
+      String? irsDahil,
+      @JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri});
 }
 
 /// @nodoc
@@ -848,6 +859,7 @@ class __$$DicParamsImplCopyWithImpl<$Res>
     Object? kalemId = freezed,
     Object? tempBelgeId = freezed,
     Object? irsDahil = freezed,
+    Object? dovizTipleri = freezed,
   }) {
     return _then(_$DicParamsImpl(
       belgeNo: null == belgeNo
@@ -1046,6 +1058,10 @@ class __$$DicParamsImplCopyWithImpl<$Res>
           ? _value.irsDahil
           : irsDahil // ignore: cast_nullable_to_non_nullable
               as String?,
+      dovizTipleri: freezed == dovizTipleri
+          ? _value.dovizTipleri
+          : dovizTipleri // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
@@ -1102,7 +1118,8 @@ class _$DicParamsImpl implements _DicParams {
       this.hucreKodu,
       this.kalemId,
       this.tempBelgeId,
-      this.irsDahil});
+      this.irsDahil,
+      @JsonKey(toJson: _dovizTipleriToJson) this.dovizTipleri});
 
   factory _$DicParamsImpl.fromJson(Map<String, dynamic> json) =>
       _$$DicParamsImplFromJson(json);
@@ -1205,6 +1222,9 @@ class _$DicParamsImpl implements _DicParams {
   String? tempBelgeId;
   @override
   String? irsDahil;
+  @override
+  @JsonKey(toJson: _dovizTipleriToJson)
+  List<int>? dovizTipleri;
 
   /// Create a copy of DicParams
   /// with the given fields replaced by the non-null parameter values.
@@ -1224,55 +1244,57 @@ class _$DicParamsImpl implements _DicParams {
 
 abstract class _DicParams implements DicParams {
   factory _DicParams(
-      {required String belgeNo,
-      String? cariKodu,
-      String? teslimCariKodu,
-      String? stokKodu,
-      String? sifirHaric,
-      String? maliyetTipi,
-      String? tlHarDokulsun,
-      String? depoKodlari,
-      String? haricStokKodlari,
-      String? haricStokGrupKodlari,
-      String? dovizTipi,
-      String? bastar,
-      String? bittar,
-      String? grupKodu,
-      String? borcAlacak,
-      String? refTarih,
-      String? tarihTipi,
-      String? kod1,
-      String? kod2,
-      String? kod3,
-      String? kod4,
-      String? kod5,
-      String? kapali,
-      String? durum,
-      String? vergiNo,
-      String? plasiyerKodu,
-      String? aralikTipi,
-      String? sirala,
-      String? bakiyeDurumu,
-      String? caharInckey,
-      String? belgeTipi,
-      String? isemriNo,
-      String? dinamikParam,
-      String? kasaharInckey,
-      String? uretimFiyatiDahil,
-      String? fiyatTipi,
-      String? tblnfStokfiyatgecmisiId,
-      String? gorunecekAlanlar,
-      int? miktar,
-      String? yapkod,
-      String? opkodu,
-      String? kasaKodu,
-      String? muhasebeKodu,
-      String? filtre,
-      String? depoKodu,
-      String? hucreKodu,
-      String? kalemId,
-      String? tempBelgeId,
-      String? irsDahil}) = _$DicParamsImpl;
+          {required String belgeNo,
+          String? cariKodu,
+          String? teslimCariKodu,
+          String? stokKodu,
+          String? sifirHaric,
+          String? maliyetTipi,
+          String? tlHarDokulsun,
+          String? depoKodlari,
+          String? haricStokKodlari,
+          String? haricStokGrupKodlari,
+          String? dovizTipi,
+          String? bastar,
+          String? bittar,
+          String? grupKodu,
+          String? borcAlacak,
+          String? refTarih,
+          String? tarihTipi,
+          String? kod1,
+          String? kod2,
+          String? kod3,
+          String? kod4,
+          String? kod5,
+          String? kapali,
+          String? durum,
+          String? vergiNo,
+          String? plasiyerKodu,
+          String? aralikTipi,
+          String? sirala,
+          String? bakiyeDurumu,
+          String? caharInckey,
+          String? belgeTipi,
+          String? isemriNo,
+          String? dinamikParam,
+          String? kasaharInckey,
+          String? uretimFiyatiDahil,
+          String? fiyatTipi,
+          String? tblnfStokfiyatgecmisiId,
+          String? gorunecekAlanlar,
+          int? miktar,
+          String? yapkod,
+          String? opkodu,
+          String? kasaKodu,
+          String? muhasebeKodu,
+          String? filtre,
+          String? depoKodu,
+          String? hucreKodu,
+          String? kalemId,
+          String? tempBelgeId,
+          String? irsDahil,
+          @JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri}) =
+      _$DicParamsImpl;
 
   factory _DicParams.fromJson(Map<String, dynamic> json) =
       _$DicParamsImpl.fromJson;
@@ -1424,6 +1446,11 @@ abstract class _DicParams implements DicParams {
   @override
   String? get irsDahil;
   set irsDahil(String? value);
+  @override
+  @JsonKey(toJson: _dovizTipleriToJson)
+  List<int>? get dovizTipleri;
+  @JsonKey(toJson: _dovizTipleriToJson)
+  set dovizTipleri(List<int>? value);
 
   /// Create a copy of DicParams
   /// with the given fields replaced by the non-null parameter values.

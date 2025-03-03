@@ -162,6 +162,14 @@ class DicParams with _$DicParams {
     String? kalemId,
     String? tempBelgeId,
     String? irsDahil,
+    @JsonKey(toJson: _dovizTipleriToJson) List<int>? dovizTipleri,
   }) = _DicParams;
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
+}
+
+String _dovizTipleriToJson(List<int>? values) {
+  if (values == null) {
+    return "";
+  }
+  return values.join(";");
 }
