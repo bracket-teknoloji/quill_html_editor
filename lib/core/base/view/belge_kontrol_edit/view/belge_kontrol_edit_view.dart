@@ -90,10 +90,11 @@ class _BelgeKontrolEditViewState extends BaseState<BelgeKontrolEditView> {
             },
           ),
           CustomTextField(
-            labelText: "Belge no",
+            labelText: "Belge No",
             controller: belgeNoController,
             suffixMore: true,
             readOnly: true,
+            isMust: true,
             suffix: IconButton(
               onPressed: () async {
                 if (viewModel.belgeKontrolModel.belgeTipi == null) {
