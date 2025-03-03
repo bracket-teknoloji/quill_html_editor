@@ -17,9 +17,7 @@ abstract class _BelgeKontrolViewModelBase
   @override
   @observable
   ObservableList<BelgeKontrolModel>? observableList;
-
-  @observable
-
+  
   @observable
   BelgeKontrolRequestModel requestModel = BelgeKontrolRequestModel(durum: "T");
 
@@ -37,12 +35,11 @@ abstract class _BelgeKontrolViewModelBase
     if (searchText == null || searchText!.isEmpty) return observableList;
     return observableList
         ?.where(
-          (element) =>
-              [
-                if (element.belgeNo != null) element.belgeNo,
-                if (element.cariAdi != null) element.cariAdi,
-                if (element.cariKodu != null) element.cariKodu,
-              ].cast<String>().any((element2) => element2.contains(searchText!)),
+          (element) => [
+            if (element.belgeNo != null) element.belgeNo,
+            if (element.cariAdi != null) element.cariAdi,
+            if (element.cariKodu != null) element.cariKodu,
+          ].cast<String>().any((element2) => element2.contains(searchText!)),
         )
         .toList()
         .asObservable();
@@ -78,7 +75,10 @@ abstract class _BelgeKontrolViewModelBase
 
   @override
   @action
-  void changeSearchBarStatus() => isSearchBarOpen = !isSearchBarOpen;
+  void changeSearchBarStatus() {
+    isSearchBarOpen = !isSearchBarOpen;
+    if (!isSearchBarOpen) searchText = null;
+  }
 
   @override
   @observable
@@ -91,5 +91,4 @@ abstract class _BelgeKontrolViewModelBase
   @override
   @action
   void setSearchText(String? value) => searchText = value;
-
 }
