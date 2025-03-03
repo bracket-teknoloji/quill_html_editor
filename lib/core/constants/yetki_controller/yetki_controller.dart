@@ -1324,7 +1324,7 @@ final class YetkiController {
   bool get genelBelgeKontrolSil => _isTrue(_profilYetkiModel?.genelBelgeKontrolSil);
   bool get genelBelgeKontrolBarkodOkutulsun => _isTrue(_profilYetkiModel?.genelBelgeKontrolBarkodOkutsun == "E");
   List<EditTipiEnum> get genelBelgeKontrolBelgeTipleri =>
-      EditTipiEnum.values
+      [EditTipiEnum.satisIrsaliye, EditTipiEnum.satisFatura, EditTipiEnum.depoTransferi]
           .where((element) => _isTrue(_profilYetkiModel?.genelBelgeKontrolBelgeTipleri?.contains(element.rawValue)))
           .toList();
 }
