@@ -33,7 +33,7 @@ abstract class _BaseFaturaEditViewModelBase with Store {
 
   @action
   void setKalemList(List<KalemModel>? value) {
-    baseSiparisEditModel = baseSiparisEditModel.copyWith(kalemList: value);
+    baseSiparisEditModel = BaseSiparisEditModel.instance.copyWith(kalemList: value);
     BaseSiparisEditModel.setInstance(baseSiparisEditModel);
   }
 
