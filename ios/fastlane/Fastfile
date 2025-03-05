@@ -26,11 +26,11 @@ platform :ios do
       clean: true,
       use_bundle_exec: false
     )
-    build_app(workspace: "Runner.xcworkspace", scheme: "Runner", clean: true)
+    build_app(workspace: 'Runner.xcworkspace', scheme: 'Runner', clean: true)
     upload_to_testflight(
-      ipa: "Runner.ipa",
-      apple_id: "6451071838",
-      skip_waiting_for_build_processing: true,
+      ipa: 'Runner.ipa',
+      apple_id: '6451071838',
+      skip_waiting_for_build_processing: true
     )
   end
 end
@@ -38,9 +38,9 @@ platform :ios do
   desc 'Upload to TestFlight'
   lane :toTestFlight do
     upload_to_testflight(
-      ipa: "Runner.ipa",
-      apple_id: "6451071838",
-      skip_waiting_for_build_processing: true,
+      ipa: 'Runner.ipa',
+      apple_id: '6451071838',
+      skip_waiting_for_build_processing: true
     )
   end
 end
