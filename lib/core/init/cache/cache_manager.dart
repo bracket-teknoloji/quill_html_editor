@@ -4,6 +4,7 @@ import "dart:developer";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:hive_flutter/hive_flutter.dart";
+import "package:picker/core/base/model/yazici_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../view/add_company/model/account_model.dart";
@@ -46,9 +47,13 @@ final class CacheManager {
       ..registerAdapter(StokListAdapter())
       ..registerAdapter(SeriListImplAdapter())
       ..registerAdapter(BarkodListAdapter())
-      ..registerAdapter(DepoListAdapter());
+      ..registerAdapter(DepoListAdapter())
+      ..registerAdapter(YaziciModelAdapter())
+      ..registerAdapter(YaziciTipiAdapter());
     initHiveBoxes();
   }
+
+  // final koymadım. Çünkü constructor'ın içinde yüklenmiyorlar.
   static late Box tokenBox;
   static late Box preferencesBox;
   static late Box companiesBox;
@@ -73,7 +78,7 @@ final class CacheManager {
   static late Box<ListSiparisEditModel> transferEditListBox;
   static late Box<int> finansOzelRaporOrderBox;
   static late Box<String> webCihazKimligiBox;
-
+  static late Box<YaziciModel> yaziciBox;
   static late Box<Map> profilParametreBox;
 
   static final CacheManager _instance = CacheManager._init();
@@ -106,6 +111,7 @@ final class CacheManager {
     transferEditListBox = await Hive.openBox<ListSiparisEditModel>("transferEditList");
     finansOzelRaporOrderBox = await Hive.openBox<int>("finansOzelRaporOrder");
     webCihazKimligiBox = await Hive.openBox<String>("webCihazKimligi");
+    yaziciBox = await Hive.openBox<YaziciModel>("yazici");
     // profilParametreBox.clear();
     // await verifiedUsersBox.clear();
     // await hesapBilgileriBox.clear();
@@ -186,10 +192,7 @@ final class CacheManager {
             ?.list
             ?.where((element) => element.siparisTipi == siparisTipi)
             .toList();
-    if (result == null) {
-      return [];
-    }
-    return result;
+    return result ?? [];
   }
 
   static BaseSiparisEditModel? getTaltekEdit(String key) => talepTeklifEditBox.get(key);
@@ -377,17 +380,13 @@ final class CacheManager {
   static void removeSiparisEdit(String key) => siparisEditBox.delete(key);
   static void removeSiparisEditList(String belgeNo) {
     final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.belgeNo == belgeNo);
-    }
+    if (list != null) list.removeWhere((element) => element.belgeNo == belgeNo);
     siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
   }
 
   static Future<bool> removeSiparisEditListWithUuid(String? uuid) async {
     final list = siparisEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.uuid == uuid);
-    }
+    if (list != null) list.removeWhere((element) => element.uuid == uuid);
     await siparisEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
     return true;
   }
@@ -395,17 +394,13 @@ final class CacheManager {
   static void removeFaturaEdit(String key) => faturaEditBox.delete(key);
   static void removeFaturaEditList(String belgeNo) {
     final list = faturaEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.belgeNo == belgeNo);
-    }
+    if (list != null) list.removeWhere((element) => element.belgeNo == belgeNo);
     faturaEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
   }
 
   static Future<bool> removeFaturaEditListWithUuid(String? uuid) async {
     final list = faturaEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.uuid == uuid);
-    }
+    if (list != null) list.removeWhere((element) => element.uuid == uuid);
     await faturaEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
     return true;
   }
@@ -413,17 +408,13 @@ final class CacheManager {
   static void removeTransferEdit(String key) => transferEditBox.delete(key);
   static void removeTransferEditList(String belgeNo) {
     final list = transferEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.belgeNo == belgeNo);
-    }
+    if (list != null) list.removeWhere((element) => element.belgeNo == belgeNo);
     transferEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
   }
 
   static Future<bool> removeTransferEditListWithUuid(String? uuid) async {
     final list = transferEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.uuid == uuid);
-    }
+    if (list != null) list.removeWhere((element) => element.uuid == uuid);
     await transferEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
     return true;
   }
@@ -431,20 +422,25 @@ final class CacheManager {
   static void removeTaltekEdit(String key) => talepTeklifEditBox.delete(key);
   static void removeTaltekEditList(String belgeNo) {
     final list = talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.belgeNo == belgeNo);
-    }
+    if (list != null) list.removeWhere((element) => element.belgeNo == belgeNo);
     talepTeklifEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
   }
 
   static Future<bool> removeTaltekEditListWithUuid(String? uuid) async {
     final list = talepTeklifEditListBox.get(StaticVariables.getSiparisString)?.list;
-    if (list != null) {
-      list.removeWhere((element) => element.uuid == uuid);
-    }
+    if (list != null) list.removeWhere((element) => element.uuid == uuid);
     await talepTeklifEditListBox.put(StaticVariables.getSiparisString, ListSiparisEditModel(list: list));
     return true;
   }
 
-  //* Helper
+  void addYazici(YaziciModel value) => yaziciBox.put(value.macAdresi, value);
+
+  void removeYazici(String key) => yaziciBox.delete(key);
+
+  void replaceYazici(YaziciModel value) {
+    removeYazici(value.macAdresi);
+    yaziciBox.put(value.macAdresi, value);
+  }
+
+  List<YaziciModel> getYazicilar() => yaziciBox.values.toList();
 }
