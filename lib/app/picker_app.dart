@@ -4,6 +4,9 @@ import "package:picker/core/base/view/belge_kontrol_edit/view/belge_kontrol_edit
 import "package:picker/core/base/view/belge_kontrol_kalem_edit/view/belge_kontrol_kalem_edit_view.dart";
 import "package:picker/core/base/view/belge_kontrol_kalemler/view/belge_kontrol_kalemler_view.dart";
 import "package:picker/core/base/view/kullanici_haritasi/view/kullanici_haritasi_view.dart";
+import "package:picker/core/base/view/yazici_edit/view/yazici_edit_view.dart";
+import "package:picker/core/base/view/yazici_listesi/view/yazici_listesi_view.dart";
+import "package:picker/core/base/view/yazici_rehberi/view/yazici_rehberi_view.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/fatura_karlilik_raporu/view/fatura_karlilik_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/depo_ta%C5%9Fep_toplananlar/view/depo_talep_toplananlar_view.dart";
@@ -114,6 +117,10 @@ final class PickerMaterialApp extends StatelessWidget {
       ),
       //* Seri İşlemleri
       GetPage(name: "/seriListesi", page: () => SeriListesiView(kalemModel: Get.arguments)),
+      GetPage(name: "/kayitliYazicilar", page: YaziciListesiView.new),
+      GetPage(name: "/yaziciRehberi", page: YaziciRehberiView.new),
+      GetPage(name: "/yaziciEkle", page: YaziciEditView.ekle),
+      GetPage(name: "/yaziciDuzenle", page: YaziciEditView.duzenle),
       GetPage(name: "/seriDetayi", page: () => SeriDetayiView(seriDetayiModel: Get.arguments)),
       GetPage(name: "/seriHareketleri", page: () => SeriHareketleriView(model: Get.arguments)),
       GetPage(name: "/seriGirisi", page: () => SeriGirisiView(seriHareketleriModel: Get.arguments)),
