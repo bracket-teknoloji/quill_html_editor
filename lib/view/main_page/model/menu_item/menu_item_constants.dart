@@ -361,7 +361,7 @@ abstract final class MenuItemConstants {
         GridItemModel.item(name: "genel_BelgeKontrol", title: "Belge Kontrol", route: "mainPage/belgeKontrol"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/surumYenilikleri"),
         if (AccountModel.instance.isDebug)
-        GridItemModel.item(name: null, title: "Yazıcılar", route: "/kayitliYazicilar"),
+          GridItemModel.item(name: null, title: "Yazıcılar", route: "/kayitliYazicilar"),
         if (AccountModel.instance.adminMi)
           GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
       ],
@@ -403,8 +403,7 @@ abstract final class MenuItemConstants {
           title: "Alış İrsaliyesi",
           route: "/mainPage/malKabulAlisIrsaliyesi",
         ),
-        // GridItemModel.item(name: "mkbl_MalKabul", title: "Alış İrsaliyesi"),
-        GridItemModel.item(name: "malKabul_Mustahsil", title: "Müstahsil Makbuzu"),
+        // GridItemModel.item(name: "malKabul_Mustahsil", title: "Müstahsil Makbuzu"),
         GridItemModel.altmenu(
           name: "malKabul_AlisIrs_Raporlar",
           title: "Raporlar",
