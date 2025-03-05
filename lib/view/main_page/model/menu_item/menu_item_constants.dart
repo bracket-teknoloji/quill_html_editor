@@ -360,6 +360,8 @@ abstract final class MenuItemConstants {
         GridItemModel.item(name: "ayarlar_Oturumlar", title: "Oturumlar", route: "/oturumlar"),
         GridItemModel.item(name: "genel_BelgeKontrol", title: "Belge Kontrol", route: "mainPage/belgeKontrol"),
         GridItemModel.item(name: null, title: "Sürüm Yenilikleri", route: "/surumYenilikleri"),
+        if (AccountModel.instance.isDebug)
+        GridItemModel.item(name: null, title: "Yazıcılar", route: "/kayitliYazicilar"),
         if (AccountModel.instance.adminMi)
           GridItemModel.item(name: null, title: "Servis İşlemleri", route: "/servisIslemleri"),
       ],
