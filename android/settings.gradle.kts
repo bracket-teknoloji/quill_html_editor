@@ -1,5 +1,3 @@
-import java.io.File
-
 pluginManagement {
     val flutterSdkPath: String = run {
         val localPropertiesFile = file("local.properties")
@@ -28,7 +26,7 @@ pluginManagement {
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
     id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
-    id("com.android.application") version "8.8.0" apply false
+    id("com.android.application") version "8.9.0" apply false
     id("org.jetbrains.kotlin.android") version "2.0.20" apply false
     id("com.google.gms.google-services") version "4.4.0" apply false
     id("com.google.firebase.crashlytics") version "2.9.9" apply false
