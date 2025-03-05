@@ -46,7 +46,9 @@ final class _FiyatGecmisiViewState extends BaseState<FiyatGecmisiView> {
     baslangicTarihiController = TextEditingController();
     bitisTarihiController = TextEditingController();
     fiyatTipiController = TextEditingController();
-    getData();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await getData();
+    });
     super.initState();
   }
 
