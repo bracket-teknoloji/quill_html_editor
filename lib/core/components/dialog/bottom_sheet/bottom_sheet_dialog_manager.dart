@@ -57,7 +57,7 @@ import "model/bottom_sheet_model.dart";
 import "view_model/bottom_sheet_state_manager.dart";
 
 final class BottomSheetDialogManager {
-  BottomSheetStateManager viewModel = BottomSheetStateManager();
+  final BottomSheetStateManager _viewModel = BottomSheetStateManager();
   final NetworkManager _networkManager = NetworkManager();
   final YetkiController _yetkiController = YetkiController();
   ParamModel? get _paramModel => CacheManager.getAnaVeri?.paramModel;
@@ -237,14 +237,14 @@ final class BottomSheetDialogManager {
   }) async {
     // List<T>? list;
 
-    if (viewModel.isSelectedListMap?[title] == null) {
-      viewModel.changeIsSelectedListMap(
+    if (_viewModel.isSelectedListMap?[title] == null) {
+      _viewModel.changeIsSelectedListMap(
         title,
         List.generate(children!.length, (index) => groupValues?.contains(children[index].groupValue) ?? false),
       );
     } else {
-      if (children!.length != viewModel.isSelectedListMap?[title]!.length) {
-        viewModel.changeIsSelectedListMap(
+      if (children!.length != _viewModel.isSelectedListMap?[title]!.length) {
+        _viewModel.changeIsSelectedListMap(
           title,
           List.generate(children.length, (index) => groupValues?.contains(children[index].groupValue) ?? false),
         );
@@ -275,10 +275,10 @@ final class BottomSheetDialogManager {
                 builder:
                     (_) => CheckboxListTile(
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: viewModel.isSelectedListMap?[title]?[index] ?? false,
+                      value: _viewModel.isSelectedListMap?[title]?[index] ?? false,
                       title: Text(children?[index].title ?? ""),
                       onChanged: (value) {
-                        viewModel.changeIndexIsSelectedListMap(title, index, value!);
+                        _viewModel.changeIndexIsSelectedListMap(title, index, value!);
                         // viewModel.isSelectedListMap![title]![index] = value!;
                         list = selectedChecker(children, title, onlyValue);
                         if (children?[index].onTap != null) {
@@ -308,7 +308,7 @@ final class BottomSheetDialogManager {
     required Object? groupValue,
     List<BottomSheetModel<T>>? children,
   }) async {
-    viewModel.setUnFilteredList(children);
+    _viewModel.setUnFilteredList(children);
     final double height = children!.map((e) => e.descriptionWidget != null || e.description != null ? 65.0 : 55.0).sum;
     //FocusScope.of(context).unfocus();
     final result = await showModalBottomSheet<T>(
@@ -340,8 +340,8 @@ final class BottomSheetDialogManager {
                           splashColor: Colors.transparent,
                         ).paddingSymmetric(vertical: UIHelper.lowSize),
                         const Divider(thickness: 2, endIndent: 0, indent: 0),
-                        if ((children.length) > 15) SearchField(viewModel: viewModel).paddingAll(UIHelper.midSize),
-                        if (viewModel.getFilteredList.ext.isNotNullOrEmpty)
+                        if ((children.length) > 15) SearchField(viewModel: _viewModel).paddingAll(UIHelper.midSize),
+                        if (_viewModel.getFilteredList.ext.isNotNullOrEmpty)
                           SizedBox(
                             height: height < Get.height * 0.8 ? height : Get.height * 0.8,
                             child: Scrollbar(
@@ -357,9 +357,9 @@ final class BottomSheetDialogManager {
                                                 children: [
                                                   Wrap(
                                                     children: <Widget>[
-                                                      ...List.generate(viewModel.getFilteredList!.length, (index) {
+                                                      ...List.generate(_viewModel.getFilteredList!.length, (index) {
                                                         final BottomSheetModel? item =
-                                                            viewModel.getFilteredList?[index];
+                                                            _viewModel.getFilteredList?[index];
                                                         return Observer(
                                                           builder:
                                                               (_) => Wrap(
@@ -403,7 +403,7 @@ final class BottomSheetDialogManager {
                                                                             : null,
                                                                   ).paddingSymmetric(horizontal: UIHelper.midSize),
                                                                   if (index !=
-                                                                      (viewModel.getFilteredList?.length ?? 0) - 1)
+                                                                      (_viewModel.getFilteredList?.length ?? 0) - 1)
                                                                     const Padding(
                                                                       padding: UIHelper.lowPaddingVertical,
                                                                       child: Divider(),
@@ -432,14 +432,14 @@ final class BottomSheetDialogManager {
             ),
           ),
     );
-    viewModel.searchValue = null;
+    _viewModel.searchValue = null;
     return result;
   }
 
   List<T> selectedChecker<T>(List<BottomSheetModel>? children, String title, [bool? onlyValue = false]) {
     final List<T> list = [];
-    for (int i = 0; i < viewModel.isSelectedListMap![title]!.length; i++) {
-      if (viewModel.isSelectedListMap![title]![i]) {
+    for (int i = 0; i < _viewModel.isSelectedListMap![title]!.length; i++) {
+      if (_viewModel.isSelectedListMap![title]![i]) {
         list.add(children![i].value ?? (onlyValue == true ? null : children[i].title));
       }
     }
@@ -447,7 +447,7 @@ final class BottomSheetDialogManager {
   }
 
   void clearSelectedData() {
-    viewModel.deleteIsSelectedListMap();
+    _viewModel.deleteIsSelectedListMap();
   }
 
   Future<DepoList?> showDepoBottomSheetDialog(BuildContext context, int? groupValue) async =>
@@ -601,16 +601,16 @@ final class BottomSheetDialogManager {
     required List<BaseGrupKoduModel>? groupValues,
     bool? kullanimda,
   }) async {
-    if (viewModel.grupKoduList.ext.isNullOrEmpty) {
-      viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
+    if (_viewModel.grupKoduList.ext.isNullOrEmpty) {
+      _viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
     }
-    viewModel.filteredGrupKoduListFilter(grupKodu);
+    _viewModel.filteredGrupKoduListFilter(grupKodu);
     final result = await showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
       context,
       title: "Grup Kodu($grupKodu) Seçiniz",
       groupValues: groupValues,
       children:
-          viewModel.filteredGrupKoduList
+          _viewModel.filteredGrupKoduList
               ?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e, groupValue: e.grupKodu))
               .toList(),
     );
@@ -624,16 +624,16 @@ final class BottomSheetDialogManager {
     required int grupKodu,
     bool? kullanimda,
   }) async {
-    if (viewModel.grupKoduList.ext.isNullOrEmpty) {
-      viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
+    if (_viewModel.grupKoduList.ext.isNullOrEmpty) {
+      _viewModel.changeGrupKoduList(await _networkManager.getGrupKod(name: modul, grupNo: -1, kullanimda: kullanimda));
     }
-    viewModel.filteredGrupKoduListFilter(grupKodu);
+    _viewModel.filteredGrupKoduListFilter(grupKodu);
     final result = await showRadioBottomSheetDialog(
       context,
       title: "Grup Kodu Seçiniz",
       groupValue: groupValue,
       children:
-          viewModel.filteredGrupKoduList
+          _viewModel.filteredGrupKoduList
               ?.map((e) => BottomSheetModel(title: e.grupAdi ?? "", value: e, groupValue: e.grupKodu))
               .toList(),
     );
@@ -650,8 +650,8 @@ final class BottomSheetDialogManager {
     bool? alisMi,
     Map<String, dynamic>? queryParams,
   }) async {
-    if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
-      viewModel.changeMuhasebeKoduList(
+    if (_viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
+      _viewModel.changeMuhasebeKoduList(
         await _networkManager.getMuhasebeKodlari(queryParams: queryParams, stokMu: stokMu),
       );
     }
@@ -660,7 +660,7 @@ final class BottomSheetDialogManager {
       groupValue: groupValue,
       title: "Muhasebe Kodu Seçiniz",
       children:
-          viewModel.muhasebeKoduList
+          _viewModel.muhasebeKoduList
               ?.map(
                 (e) => BottomSheetModel(
                   title: e.adi ?? e.muhKodu.toStringIfNotNull ?? "",
@@ -685,14 +685,14 @@ final class BottomSheetDialogManager {
     String? hesapTipi,
     bool muhRefKodGelsin = false,
   }) async {
-    if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
+    if (_viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
       final Map<String, dynamic> queryparams = <String, dynamic>{
         "BelgeTipi": belgeTipi,
         "HesapTipi": hesapTipi ?? "A",
         "MuhRefKodGelsin": muhRefKodGelsin ? "E" : "H",
         "EkranTipi": "R",
       };
-      viewModel.changeMuhasebeKoduList(
+      _viewModel.changeMuhasebeKoduList(
         await _networkManager.getMuhasebeKodlari(stokMu: false, queryParams: queryparams),
       );
     }
@@ -701,7 +701,7 @@ final class BottomSheetDialogManager {
       title: "Muhasebe Kodu Seçiniz",
       groupValue: groupValue,
       children:
-          viewModel.muhasebeKoduList
+          _viewModel.muhasebeKoduList
               ?.map(
                 (e) => BottomSheetModel(
                   title: e.hesapAdi ?? e.hesapKodu ?? "",
@@ -720,14 +720,14 @@ final class BottomSheetDialogManager {
     MuhasebeBelgeTipiEnum? belgeTipi,
     String? hesapTipi,
   }) async {
-    if (viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
+    if (_viewModel.muhasebeKoduList.ext.isNullOrEmpty) {
       final Map<String, dynamic> queryparams = <String, dynamic>{
         "BelgeTipi": "",
         "HesapTipi": "",
         "MuhRefKodGelsin": "E",
         "EkranTipi": "R",
       };
-      viewModel.changeMuhasebeKoduList(
+      _viewModel.changeMuhasebeKoduList(
         await _networkManager.getMuhasebeKodlari(stokMu: false, queryParams: queryparams),
       );
     }
@@ -736,7 +736,7 @@ final class BottomSheetDialogManager {
       title: "Muhasebe Kodu Seçiniz",
       groupValue: groupValue,
       children:
-          viewModel.muhasebeKoduList
+          _viewModel.muhasebeKoduList
               ?.map(
                 (e) => BottomSheetModel(
                   title: e.hesapAdi ?? e.hesapKodu ?? "",
