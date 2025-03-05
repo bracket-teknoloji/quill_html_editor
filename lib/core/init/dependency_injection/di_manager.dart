@@ -1,6 +1,7 @@
 import "dart:developer";
 
 import "package:get_it/get_it.dart";
+import "package:picker/core/init/bluetooth/bluetooth_manager.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/dependency_injection/intectable_interface.dart";
 import "package:picker/core/init/location/location_manager.dart";
@@ -8,6 +9,7 @@ import "package:picker/core/init/location/location_manager.dart";
 abstract final class DIManager {
   static final _getIt = GetIt.I;
   static Future<void> init() async {
+    await lazyRegisterer<BluetoothManager>(BluetoothManager());
     await lazyRegisterer<LocationManager>(
       LocationManager(
         distanceFilterMeters: CacheManager.getAnaVeri?.paramModel?.genelKonumTakibiMetre ?? 100,
