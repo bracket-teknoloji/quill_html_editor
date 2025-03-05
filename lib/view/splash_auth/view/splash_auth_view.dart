@@ -6,6 +6,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
 
 import "../../../core/base/state/base_state.dart";
 import "../../../core/components/wave/login_wave_widget.dart";
@@ -32,6 +33,7 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
   void initState() {
     super.initState();
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((timeStamp) async {
+      await DIManager.init();
       try {
         await AccountModel.instance.init();
       } on Error catch (e) {
@@ -62,6 +64,7 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
       ),
     ),
     appBar: AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.transparent,
       systemOverlayStyle: theme.appBarTheme.systemOverlayStyle?.copyWith(
         systemNavigationBarColor: theme.colorScheme.surfaceContainer,

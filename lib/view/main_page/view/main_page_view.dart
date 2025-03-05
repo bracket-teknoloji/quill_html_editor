@@ -55,7 +55,6 @@ final class _MainPageViewState extends BaseState<MainPageView> {
           dialogManager.showInfoMaterialBanner(value.karsilamaBaslik ?? "", desc: value.karsilamaMesaji);
         }
       }
-      await DIManager.init();
       if (parametreModel.genelKonumTakibiYapilsin == "E") {
         await DIManager.read<LocationManager>().startTracking();
       }
