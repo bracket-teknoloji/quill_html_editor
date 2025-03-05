@@ -36,7 +36,9 @@ extension ListGenericNullCheck<T> on List<T?> {
 extension DizaynListExtensions on List<NetFectDizaynList> {
   List<NetFectDizaynList> filteredDizaynList(EditTipiEnum? editTipiEnum) {
     final ProfilYetkiModel profilYetkiModel = CacheManager.getAnaVeri?.userModel?.profilYetki ?? ProfilYetkiModel();
-    if (AccountModel.instance.adminMi) return this;
+    if (AccountModel.instance.adminMi) {
+      return where((element) => element.ozelKod == editTipiEnum?.getPrintValue).toList();
+    }
     return switch (editTipiEnum) {
       EditTipiEnum.satisTeklifi =>
         where(
