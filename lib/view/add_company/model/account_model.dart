@@ -223,11 +223,7 @@ final class AccountModel with NetworkManagerMixin {
     //!WEB
     if (kIsWeb) {
       platform = "web";
-      if (kDebugMode) {
-        cihazKimligi = "bty_debug";
-      } else {
-        cihazKimligi = CacheManager.instance.getWebCihazKimligi;
-      }
+      cihazKimligi = CacheManager.instance.getWebCihazKimligi;
     } //! ANDROID
     else if (Platform.isAndroid) {
       final androidInfo = await deviceInfo.androidInfo;
@@ -299,6 +295,9 @@ final class AccountModel with NetworkManagerMixin {
       }
     }
     kuruluHesaplar = CacheManager.accountsBox.values.map((e) => (e as AccountResponseModel).email).join(";");
+    if (kDebugMode) {
+      cihazKimligi = "bty_debug";
+    }
   }
 
   String get getKonumTarihi => DateTime.now().toDateTimeString() ?? "";
