@@ -2562,7 +2562,7 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel hucreList(List<dynamic>? hucreList);
 
-  KalemModel kalemModelHucreList(List<StokList>? kalemModelHucreList);
+  KalemModel kalemModelHucreList(List<StokListesiModel>? kalemModelHucreList);
 
   KalemModel seriList(List<SeriList>? seriList);
 
@@ -2867,7 +2867,7 @@ abstract class _$KalemModelCWProxy {
     int? olcuBirimKodu,
     int? sira,
     List<dynamic>? hucreList,
-    List<StokList>? kalemModelHucreList,
+    List<StokListesiModel>? kalemModelHucreList,
     List<SeriList>? seriList,
     List<dynamic>? tempBarkodList,
     String? belgeNo,
@@ -3053,7 +3053,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
   KalemModel hucreList(List<dynamic>? hucreList) => this(hucreList: hucreList);
 
   @override
-  KalemModel kalemModelHucreList(List<StokList>? kalemModelHucreList) =>
+  KalemModel kalemModelHucreList(List<StokListesiModel>? kalemModelHucreList) =>
       this(kalemModelHucreList: kalemModelHucreList);
 
   @override
@@ -3743,7 +3743,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       kalemModelHucreList: kalemModelHucreList == const $CopyWithPlaceholder()
           ? _value.kalemModelHucreList
           // ignore: cast_nullable_to_non_nullable
-          : kalemModelHucreList as List<StokList>?,
+          : kalemModelHucreList as List<StokListesiModel>?,
       seriList: seriList == const $CopyWithPlaceholder()
           ? _value.seriList
           // ignore: cast_nullable_to_non_nullable
@@ -4979,7 +4979,7 @@ class KalemModelAdapter extends TypeAdapter<KalemModel> {
       olcuBirimKodu: fields[7] as int?,
       sira: fields[8] as int?,
       hucreList: (fields[9] as List?)?.cast<dynamic>(),
-      kalemModelHucreList: (fields[10] as List?)?.cast<StokList>(),
+      kalemModelHucreList: (fields[10] as List?)?.cast<StokListesiModel>(),
       seriList: (fields[11] as List?)?.cast<SeriList>(),
       tempBarkodList: (fields[12] as List?)?.cast<dynamic>(),
       belgeNo: fields[13] as String?,
@@ -5980,7 +5980,7 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       sira: (json['SIRA'] as num?)?.toInt(),
       hucreList: json['HUCRE_LIST'] as List<dynamic>?,
       kalemModelHucreList: (json['KALEM_MODEL_HUCRE_LIST'] as List<dynamic>?)
-          ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => StokListesiModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       seriList: (json['SeriList'] as List<dynamic>?)
           ?.map((e) => SeriList.fromJson(e as Map<String, dynamic>))

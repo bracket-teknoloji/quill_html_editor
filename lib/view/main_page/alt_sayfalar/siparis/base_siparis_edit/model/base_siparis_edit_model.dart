@@ -318,6 +318,7 @@ final class BaseSiparisEditModel with NetworkManagerMixin {
     cariAdi: model.cariAdi,
     dovizAdi: model.dovizAdi,
     cariDovizli: model.dovizli,
+    efaturaSenaryo: model.efaturaTipi,
     plasiyerAciklama: model.plasiyerAciklama,
     plasiyerKodu: model.plasiyerKodu,
   );
@@ -1475,7 +1476,7 @@ final class KalemModel with NetworkManagerMixin {
 
   factory KalemModel.fromJson(Map<String, dynamic> json) => _$KalemModelFromJson(json);
 
-  factory KalemModel.fromStokList(StokList model) => KalemModel(
+  factory KalemModel.fromStokList(StokListesiModel model) => KalemModel(
     brutFiyat: model.bulunanFiyat,
     stokAlisKdv: model.alisKdv,
     stokSatisKdv: model.satisKdv,
@@ -1565,7 +1566,7 @@ final class KalemModel with NetworkManagerMixin {
   @HiveField(9)
   List<dynamic>? hucreList;
   @HiveField(10)
-  List<StokList>? kalemModelHucreList;
+  List<StokListesiModel>? kalemModelHucreList;
   @HiveField(11)
   @JsonKey(name: "SeriList")
   List<SeriList>? seriList;
