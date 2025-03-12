@@ -16,9 +16,10 @@ abstract final class OndalikUtils {
   static int get baseOran => baseModel?.oran ?? 2;
   static int get baseDovizTutari => baseModel?.doviz ?? 2;
   static int get baseDovizFiyati => baseModel?.dovizFiyati ?? 4;
+  static int maxOndalik = 8;
 }
 
-enum OndalikEnum { miktar, fiyat, tutar, kur, oran, dovizTutari, dovizFiyati }
+enum OndalikEnum { miktar, fiyat, tutar, kur, oran, dovizTutari, dovizFiyati, maxOndalik }
 
 extension OndalikEnumExtension on OndalikEnum {
   int get ondalik => switch (this) {
@@ -29,5 +30,6 @@ extension OndalikEnumExtension on OndalikEnum {
     OndalikEnum.oran => OndalikUtils.baseOran,
     OndalikEnum.dovizTutari => OndalikUtils.baseDovizTutari,
     OndalikEnum.dovizFiyati => OndalikUtils.baseDovizFiyati,
+    OndalikEnum.maxOndalik => OndalikUtils.maxOndalik,
   };
 }
