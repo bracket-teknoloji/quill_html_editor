@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
+import "package:share_plus/share_plus.dart";
 
 import "../../../../../../../../core/base/state/base_state.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
@@ -49,6 +50,7 @@ final class _BaseCariEditBankaViewState extends BaseState<BaseCariEditBankaView>
                                 onPressed: () {
                                   Clipboard.setData(ClipboardData(text: cariDetayModel.bankaList?[index].ibanno ?? ""));
                                   dialogManager.showInfoSnackBar("IBAN numarası kopyalandı.");
+                                  Share.share(cariDetayModel.bankaList?[index].ibanno ?? "");
                                 },
                                 icon: const Icon(Icons.share_outlined),
                               ),

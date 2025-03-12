@@ -803,7 +803,7 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                   ],
                 ),
               ),
-            if (parametreModel.eFaturaAktif == true && (widget.model?.isDuzenle ?? false))
+            if (parametreModel.eFaturaAktif == true)
               CustomWidgetWithLabel(
                 text: "E-İşlemler",
                 child: Column(
@@ -837,14 +837,17 @@ final class _CariEditDigerViewState extends BaseState<CariEditDigerView> {
                         },
                       ),
                     ElevatedButton(
-                      onPressed: () async {
-                        final result = await viewModel.postFaturaTipi();
-                        if (result.isSuccess) {
-                          dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                        } else {
-                          dialogManager.showErrorSnackBar(result.message ?? "Hata");
-                        }
-                      },
+                      onPressed:
+                          enabled
+                              ? () async {
+                                final result = await viewModel.postFaturaTipi();
+                                if (result.isSuccess) {
+                                  dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                                } else {
+                                  dialogManager.showErrorSnackBar(result.message ?? "Hata");
+                                }
+                              }
+                              : null,
                       child: Observer(
                         builder: (_) => Text("E-Fatura Mükellefiyetini ${viewModel.efaturaButonAciklama}"),
                       ),

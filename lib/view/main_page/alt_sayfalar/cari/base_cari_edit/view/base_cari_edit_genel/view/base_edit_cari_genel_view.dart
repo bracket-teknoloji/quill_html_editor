@@ -106,7 +106,7 @@ final class BaseEditCariGenelViewState extends BaseState<BaseEditCariGenelView> 
     );
     plasiyerController = TextEditingController(
       text:
-          parametreModel.plasiyerList
+          parametreModel.plasiyerListTumu
               ?.firstWhereOrNull((element) => element.plasiyerKodu == viewModel.model?.plasiyerKodu)
               ?.plasiyerAciklama,
     );
