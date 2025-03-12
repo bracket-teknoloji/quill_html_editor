@@ -51,6 +51,17 @@ mixin _$YaziciListesiViewModel on _YaziciListesiViewModelBase, Store {
   }
 
   @override
+  void removeYaziciListesi(YaziciModel value) {
+    final _$actionInfo = _$_YaziciListesiViewModelBaseActionController
+        .startAction(name: '_YaziciListesiViewModelBase.removeYaziciListesi');
+    try {
+      return super.removeYaziciListesi(value);
+    } finally {
+      _$_YaziciListesiViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 yaziciListesi: ${yaziciListesi}
