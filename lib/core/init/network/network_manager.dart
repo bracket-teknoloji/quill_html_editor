@@ -11,6 +11,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart" hide FormData, Response;
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
+
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/doviz_kurlari_model.dart";
@@ -63,7 +64,13 @@ final class NetworkManager {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) => handler.next(options),
-        onError: (e, handler) {
+        onError: (e, handler) async {
+          // if (!await Permission.nearbyWifiDevices.isGranted) {
+          //   handler.next(
+          //     DioException(requestOptions: RequestOptions(), message: "Nearby WiFi devices permission not granted."),
+          //   );
+          //   return;
+          // }
           switch (e.type) {
             case DioExceptionType.connectionError:
               handler.next(
