@@ -3,7 +3,10 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/ek_rehber_request_model.dart";
+import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
+import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -682,7 +685,6 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                     controller: _ozelKod1Controller,
                     enabled: enable,
                     valueWidget: Observer(builder: (_) => Text(viewModel.model.ozelKod1 ?? "")),
-                    onClear: () => viewModel.setOzelKod1(null),
                     onTap: () async {
                       final result = await bottomSheetDialogManager.showOzelKod1BottomSheetDialog(
                         context,
@@ -697,13 +699,13 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                             if (isSuccess) {
                               dialogManager.showSuccesDialog("Fiyatlar Güncellendi");
                             }
-                          }, title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?",);
+                          }, title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?");
                         }
                       }
                     },
                   ),
                   //TODO Yetkiyi kontrol et
-                ).yetkiVarMi(yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false) && false),
+                ).yetkiVarMi(yetkiController.ebelgeOzelKod1AktifMi(model.getEditTipiEnum?.satisMi ?? false)),
                 Expanded(
                   child: CustomTextField(
                     labelText: "Özel Kod 2",
@@ -798,14 +800,13 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                   ),
               ],
             ),
-            if (!(widget.model.editTipiEnum?.ambarGirisiMi ?? false) &&
-                (viewModel.model.getEditTipiEnum?.aciklamaDuzenlensinMi ?? false))
+            if (!(widget.model.editTipiEnum?.ambarGirisiMi ?? false))
               CustomTextField(
                 labelText: "Açıklama",
                 enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
                 isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A"),
-                maxLength: StaticVariables.maxAciklamaLength,
                 controllerText: viewModel.model.aciklama,
+                maxLength: StaticVariables.maxAciklamaLength,
                 onChanged: (value) => viewModel.model.aciklama = value,
               ),
 
@@ -819,8 +820,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A1") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A1"),
+                        suffixMore: getEkRehberById(1) != null,
+                        readOnly: getEkRehberById(1) != null,
+                        onClear: () => viewModel.setAciklama(1, null),
+                        onTap: () async => await getGenelRehber(1),
+                        onChanged: (value) => viewModel.setAciklama(1, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(1, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi1
@@ -833,8 +838,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A2") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A2"),
+                        suffixMore: getEkRehberById(2) != null,
+                        readOnly: getEkRehberById(2) != null,
+                        onClear: () => viewModel.setAciklama(2, null),
+                        onTap: () async => await getGenelRehber(2),
+                        onChanged: (value) => viewModel.setAciklama(2, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(2, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi2
@@ -847,8 +856,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A3") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A3"),
+                        suffixMore: getEkRehberById(3) != null,
+                        readOnly: getEkRehberById(3) != null,
+                        onClear: () => viewModel.setAciklama(3, null),
+                        onTap: () async => await getGenelRehber(3),
+                        onChanged: (value) => viewModel.setAciklama(3, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(3, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi3
@@ -861,8 +874,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A4") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A4"),
+                        suffixMore: getEkRehberById(4) != null,
+                        readOnly: getEkRehberById(4) != null,
+                        onClear: () => viewModel.setAciklama(4, null),
+                        onTap: () async => await getGenelRehber(4),
+                        onChanged: (value) => viewModel.setAciklama(4, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(4, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi4
@@ -875,8 +892,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A5") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A5"),
+                        suffixMore: getEkRehberById(5) != null,
+                        readOnly: getEkRehberById(5) != null,
+                        onClear: () => viewModel.setAciklama(5, null),
+                        onTap: () async => await getGenelRehber(5),
+                        onChanged: (value) => viewModel.setAciklama(5, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(5, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi5
@@ -889,8 +910,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A6") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A6"),
+                        suffixMore: getEkRehberById(6) != null,
+                        readOnly: getEkRehberById(6) != null,
+                        onClear: () => viewModel.setAciklama(6, null),
+                        onTap: () async => await getGenelRehber(6),
+                        onChanged: (value) => viewModel.setAciklama(6, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(6, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi6
@@ -903,8 +928,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A7") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A7"),
+                        suffixMore: getEkRehberById(12) != null,
+                        readOnly: getEkRehberById(12) != null,
+                        onClear: () => viewModel.setAciklama(12, null),
+                        onTap: () async => await getGenelRehber(12),
+                        onChanged: (value) => viewModel.setAciklama(7, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(7, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi7
@@ -917,8 +946,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A8") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A8"),
+                        suffixMore: getEkRehberById(8) != null,
+                        readOnly: getEkRehberById(8) != null,
+                        onClear: () => viewModel.setAciklama(8, null),
+                        onTap: () async => await getGenelRehber(8),
+                        onChanged: (value) => viewModel.setAciklama(8, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(8, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi8
@@ -931,8 +964,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A9") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A9"),
+                        suffixMore: getEkRehberById(9) != null,
+                        readOnly: getEkRehberById(9) != null,
+                        onClear: () => viewModel.setAciklama(9, null),
+                        onTap: () async => await getGenelRehber(9),
+                        onChanged: (value) => viewModel.setAciklama(9, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(9, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi9
@@ -945,8 +982,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A10") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A10"),
+                        suffixMore: getEkRehberById(10) != null,
+                        readOnly: getEkRehberById(10) != null,
+                        onClear: () => viewModel.setAciklama(10, null),
+                        onTap: () async => await getGenelRehber(10),
+                        onChanged: (value) => viewModel.setAciklama(10, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(10, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi10
@@ -959,8 +1000,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A11") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A11"),
+                        suffixMore: getEkRehberById(11) != null,
+                        readOnly: getEkRehberById(11) != null,
+                        onClear: () => viewModel.setAciklama(11, null),
+                        onTap: () async => await getGenelRehber(11),
+                        onChanged: (value) => viewModel.setAciklama(11, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(11, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi11
@@ -973,8 +1018,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A12") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A12"),
+                        suffixMore: getEkRehberById(12) != null,
+                        readOnly: getEkRehberById(12) != null,
+                        onClear: () => viewModel.setAciklama(12, null),
+                        onTap: () async => await getGenelRehber(12),
+                        onChanged: (value) => viewModel.setAciklama(12, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(12, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi12
@@ -987,8 +1036,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A13") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A13"),
+                        suffixMore: getEkRehberById(13) != null,
+                        readOnly: getEkRehberById(13) != null,
+                        onClear: () => viewModel.setAciklama(13, null),
+                        onTap: () async => await getGenelRehber(13),
+                        onChanged: (value) => viewModel.setAciklama(13, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(13, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi13
@@ -1001,8 +1054,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A14") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A14"),
+                        suffixMore: getEkRehberById(14) != null,
+                        readOnly: getEkRehberById(14) != null,
+                        onClear: () => viewModel.setAciklama(14, null),
+                        onTap: () async => await getGenelRehber(14),
+                        onChanged: (value) => viewModel.setAciklama(14, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(14, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi14
@@ -1015,8 +1072,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A15") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A15"),
+                        suffixMore: getEkRehberById(15) != null,
+                        readOnly: getEkRehberById(15) != null,
+                        onClear: () => viewModel.setAciklama(15, null),
+                        onTap: () async => await getGenelRehber(15),
+                        onChanged: (value) => viewModel.setAciklama(15, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(15, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi15
@@ -1029,8 +1090,12 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       CustomTextField(
                         enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A16") ?? false),
                         isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A16"),
+                        suffixMore: getEkRehberById(16) != null,
+                        readOnly: getEkRehberById(16) != null,
+                        onClear: () => viewModel.setAciklama(16, null),
+                        onTap: () async => await getGenelRehber(16),
+                        onChanged: (value) => viewModel.setAciklama(16, GenelRehberModel(kodu: value)),
                         maxLength: StaticVariables.maxAciklamaLength,
-                        onChanged: (value) => viewModel.setAciklama(16, value),
                         labelText:
                             (model.getEditTipiEnum?.satisMi ?? false
                                 ? parametreModel.satisEkAciklamaTanimi16
@@ -1062,6 +1127,98 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
     if (result.isSuccess) {
       BaseSiparisEditModel.instance.belgeNo = result.dataList.firstOrNull?.belgeNo;
       _belgeNoController.text = BaseSiparisEditModel.instance.belgeNo ?? "";
+    }
+  }
+
+  EkRehberlerModel? getEkRehberById(int? id) {
+    if (userModel.ekRehberler.ext.isNullOrEmpty) return null;
+    if ((model.getEditTipiEnum?.fiyatGrubuGorunsunMu ?? false) &&
+        parametreModel.satisFiyatGrubuSorulacakAlan == id.toStringIfNotNull) {
+      return EkRehberlerModel(alan: "ACIK${id ?? ""}", baslik: "Fiyat Grubu");
+    }
+    return userModel.ekRehberler?.firstWhereOrNull(
+      (element) =>
+          element.alan == "ACIK${id ?? ""}" && element.ekran == BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
+    );
+  }
+
+  Future<void> getGenelRehber(int? id) async {
+    if (id == null) {
+      dialogManager.showErrorSnackBar("ID bulunamadı.");
+      return;
+    }
+    final ekRehberModel = getEkRehberById(id);
+    EkRehberRequestModel ekRehberRequestModel = EkRehberRequestModel(
+      belgeNo: model.belgeNo,
+      belgeTipi: model.getEditTipiEnum?.rawValue,
+      belgeTarihi: model.tarih,
+      id: ekRehberModel?.id,
+      cariKodu: model.cariKodu,
+      baslik: ekRehberModel?.baslik,
+    );
+    final isFiyatGrubu =
+        (model.getEditTipiEnum?.fiyatGrubuGorunsunMu ?? false) &&
+        parametreModel.satisFiyatGrubuSorulacakAlan == id.toStringIfNotNull;
+    if (isFiyatGrubu) {
+      ekRehberRequestModel = ekRehberRequestModel.copyWith(rehberKodu: 2, baslik: "Fiyat Grubu");
+    } else {
+      ekRehberRequestModel = ekRehberRequestModel.copyWith(rehberKodu: 8);
+    }
+    if (ekRehberModel != null) {
+      var result = await Get.toNamed("mainPage/genelRehber", arguments: ekRehberRequestModel);
+      if (result == null) return;
+      result = result as GenelRehberModel;
+      switch (id) {
+        case 1:
+          _aciklama1Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(1, result);
+        case 2:
+          _aciklama2Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(2, result);
+        case 3:
+          _aciklama3Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(3, result);
+        case 4:
+          _aciklama4Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(4, result);
+        case 5:
+          _aciklama5Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(5, result);
+        case 6:
+          _aciklama6Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(6, result);
+        case 7:
+          _aciklama7Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(7, result);
+        case 8:
+          _aciklama8Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(8, result);
+        case 9:
+          _aciklama9Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(9, result);
+        case 10:
+          _aciklama10Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(10, result);
+        case 11:
+          _aciklama11Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(11, result);
+        case 12:
+          _aciklama12Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(12, result);
+        case 13:
+          _aciklama13Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(13, result);
+        case 14:
+          _aciklama14Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(14, result);
+        case 15:
+          _aciklama15Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(15, result);
+        case 16:
+          _aciklama16Controller.text = result.kodu ?? "";
+          viewModel.setAciklama(16, result);
+        default:
+      }
     }
   }
 }

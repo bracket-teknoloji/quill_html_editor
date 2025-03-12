@@ -299,7 +299,7 @@ mixin _$BaseTransferGenelViewModel on _BaseTransferGenelViewModelBase, Store {
   }
 
   @override
-  void setAciklama(int index, String? value) {
+  void setAciklama(int index, GenelRehberModel? value) {
     final _$actionInfo = _$_BaseTransferGenelViewModelBaseActionController
         .startAction(name: '_BaseTransferGenelViewModelBase.setAciklama');
     try {
