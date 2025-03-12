@@ -254,7 +254,8 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
                       );
                     },
                   ),
-                  topluIskontoBottomSheetModel(context),
+                  if (BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty)
+                    topluIskontoBottomSheetModel(context),
                   BottomSheetModel(
                     title: "PDF Görüntüle",
                     iconWidget: Icons.picture_as_pdf_outlined,
@@ -631,7 +632,9 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
       showLoading: true,
     );
     if (result.isSuccess) {
-      CacheManager.removeSiparisEditList(BaseSiparisEditModel.instance.belgeNo ?? "");
+      instance.kalemList = null;
+
+      CacheManager.removeSiparisEditList(instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
       return true;
     } else {

@@ -40,9 +40,8 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   void initState() {
-    viewModel
-      ..setDizaynId(widget.dizaynList?.id);
-      // ..setEtiketSayisi(widget.dizaynList?.kopyaSayisi);
+    viewModel.setDizaynId(widget.dizaynList?.id);
+    // ..setEtiketSayisi(widget.dizaynList?.kopyaSayisi);
 
     super.initState();
   }

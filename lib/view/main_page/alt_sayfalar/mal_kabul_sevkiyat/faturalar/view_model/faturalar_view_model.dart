@@ -1,6 +1,5 @@
 import "dart:convert";
 
-import "package:collection/collection.dart";
 import "package:flutter/material.dart";
 import "package:kartal/kartal.dart";
 import "package:mobx/mobx.dart";
@@ -333,12 +332,9 @@ abstract class _FaturalarViewModelBase
       if (page > 1) {
         addObservableList(result.dataList);
       } else {
-        setObservableList(
-          ((CacheManager.getFaturaEditLists(editTipiEnum)?.toList().cast<BaseSiparisEditModel>() ??
-                    <BaseSiparisEditModel>[])
-                ..mapIndexed((index, element) => element..index = index).toList()) +
-              result.dataList,
-        );
+        final cachedList = CacheManager.getFaturaEditLists(editTipiEnum);
+        setObservableList(cachedList);
+        addObservableList(result.dataList);
         setParamData(result.paramData ?? {});
       }
       if (result.dataList.length >= parametreModel.sabitSayfalamaOgeSayisi) {

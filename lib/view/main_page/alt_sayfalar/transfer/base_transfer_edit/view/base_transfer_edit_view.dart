@@ -289,7 +289,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                                 ),
                               );
                               await showPdfView(pdfModel);
-                            }, title: "PDF görüntülemek ister misiniz?",);
+                            }, title: "PDF görüntülemek ister misiniz?");
                           }
                           await CacheManager.removeTransferEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                           BaseSiparisEditModel.resetInstance();
@@ -591,6 +591,7 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
       showLoading: true,
     );
     if (result.isSuccess) {
+      instance.kalemList = null;
       CacheManager.removeTransferEditList(instance.belgeNo ?? "");
       dialogManager.showSuccessSnackBar("Kayıt Başarılı");
 

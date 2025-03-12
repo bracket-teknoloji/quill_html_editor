@@ -323,12 +323,13 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                 ..cariAdi = cariModel.cariAdi
                 ..cariKodu = cariModel.cariKodu
                 ..tipi = BaseSiparisEditModel.instance.belgeTipi
+                ..efaturaSenaryo = cariModel.efaturaSenaryo
                 ..kosulKodu = cariModel.kosulKodu;
               if (cariModel.plasiyerKodu != null) {
                 BaseSiparisEditModel.instance
                   ..plasiyerKodu = cariModel.plasiyerKodu
                   ..plasiyerAciklama =
-                      parametreModel.plasiyerList
+                      parametreModel.plasiyerListTumu
                           ?.firstWhereOrNull((element) => element.plasiyerKodu == cariModel.plasiyerKodu)
                           ?.plasiyerAciklama;
               }
@@ -356,6 +357,8 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           ..belgeTipi = widget.model.editTipiEnum?.varsayilanBelgeTipi
           ..siparisTipi = model.editTipiEnum
           ..isNew = true
+          ..efaturaSenaryo = widget.model.model?.efaturaSenaryo
+          ..efaturaTipi = widget.model.model?.efaturaSenaryo
           ..belgeTuru = widget.model.editTipiEnum?.rawValue
           ..projeAciklama ??= yetkiController.varsayilanProje?.projeAciklama
           ..projeKodu ??= yetkiController.varsayilanProje?.projeKodu
@@ -786,7 +789,8 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
       showLoading: true,
     );
     if (result.isSuccess) {
-      CacheManager.removeFaturaEditList(instance.belgeNo ?? "");
+      instance.kalemList = null;
+      CacheManager.removeFaturaEditListWithUuid(instance.uuid ?? "");
       dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
       return true;
     } else {
