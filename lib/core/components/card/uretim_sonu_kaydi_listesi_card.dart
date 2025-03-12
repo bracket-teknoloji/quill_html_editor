@@ -83,7 +83,9 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
                         if (model.cikisDepo != null) Text("Çıkış Depo: ${model.cikisDepo}"),
                         if (model.girisDepo != null) Text("Giriş Depo: ${model.girisDepo}"),
                         Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-                        Text("Hurda/Fir: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+                        Text(
+                          "${(yetkiController.uretimFireUygulamasi) ? "Hurda/Fire Mik" : "Miktar 2"}: ${model.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+                        ),
                       ],
                     ),
                   Text(model.aciklama ?? ""),
