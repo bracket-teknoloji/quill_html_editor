@@ -389,7 +389,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
 
   Future<void> showCariGrid(CariListesiModel object) async {
     await dialogManager.showCariGridViewDialog(
-      object,
+      await networkManager.getCariModel(CariRequestModel(kod: [object.cariKodu!])),
       islemTipi: IslemTipiEnum.cariListesi,
       onSelected: (p0) {
         if (p0) viewModel.resetList();
