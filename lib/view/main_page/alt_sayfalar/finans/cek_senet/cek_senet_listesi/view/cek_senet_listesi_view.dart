@@ -150,30 +150,31 @@ final class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                       (_) => Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          CustomWidgetWithLabel(
-                            text: "Yeri",
-                            child: Observer(
-                              builder:
-                                  (_) => SlideControllerWidget(
-                                    childrenTitleList: viewModel.yeriMap.keys.toList(),
-                                    childrenValueList: viewModel.yeriMap.values.toList(),
-                                    filterOnChanged: (index) {
-                                      viewModel.setYeri(viewModel.yeriMap.values.toList()[index ?? 0]);
-                                      if (viewModel.cekSenetListesiRequestModel.yer == "C") {
-                                        _bankaController.clear();
-                                      } else if (viewModel.cekSenetListesiRequestModel.yer == "T" ||
-                                          viewModel.cekSenetListesiRequestModel.yer == "E") {
-                                        _verilenCariController.clear();
-                                      } else {
-                                        _verilenCariController.clear();
-                                        _bankaController.clear();
-                                        viewModel.setVerilenCari(null);
-                                      }
-                                    },
-                                    groupValue: viewModel.cekSenetListesiRequestModel.yer,
-                                  ),
+                          if (widget.cekSenetListesiEnum == CekSenetListesiEnum.cekMusteri)
+                            CustomWidgetWithLabel(
+                              text: "Yeri",
+                              child: Observer(
+                                builder:
+                                    (_) => SlideControllerWidget(
+                                      childrenTitleList: viewModel.yeriMap.keys.toList(),
+                                      childrenValueList: viewModel.yeriMap.values.toList(),
+                                      filterOnChanged: (index) {
+                                        viewModel.setYeri(viewModel.yeriMap.values.toList()[index ?? 0]);
+                                        if (viewModel.cekSenetListesiRequestModel.yer == "C") {
+                                          _bankaController.clear();
+                                        } else if (viewModel.cekSenetListesiRequestModel.yer == "T" ||
+                                            viewModel.cekSenetListesiRequestModel.yer == "E") {
+                                          _verilenCariController.clear();
+                                        } else {
+                                          _verilenCariController.clear();
+                                          _bankaController.clear();
+                                          viewModel.setVerilenCari(null);
+                                        }
+                                      },
+                                      groupValue: viewModel.cekSenetListesiRequestModel.yer,
+                                    ),
+                              ),
                             ),
-                          ),
                           CustomWidgetWithLabel(
                             text: "Durumu",
                             child: Observer(
@@ -243,7 +244,7 @@ final class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                               ),
                             ),
                           if (viewModel.cekSenetListesiRequestModel.yer == "T" ||
-                              viewModel.cekSenetListesiRequestModel.yer == "E")
+                              viewModel.cekSenetListesiRequestModel.yer == "E" || widget.cekSenetListesiEnum == CekSenetListesiEnum.cekBorc)
                             CustomTextField(
                               labelText: "Banka",
                               controller: _bankaController,
