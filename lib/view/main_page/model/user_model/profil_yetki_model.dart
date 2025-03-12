@@ -2171,6 +2171,10 @@ final class ProfilYetkiModel {
   String? transferDepoTalebiRehberdenStokSecilmesin;
   @JsonKey(name: "stok_CariHar_GizlenecekAlanlar")
   List<String>? stokCariHarGizlenecekAlanlar;
+  @JsonKey(name: "transfer_DAT_OzelKod1Degeri")
+  String? transferDatOzelKod1Degeri;
+  @JsonKey(name: "transfer_DAT_OzelKod2Degeri")
+  String? transferDatOzelKod2Degeri;
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 

@@ -526,7 +526,10 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..eMailSslKullan = json['eMail_SSLKullan'] as bool?
   ..sevkEmriMalTopFazlaTeslimat = json['SevkEmriMalTopFazlaTeslimat'] as String?
   ..sayKull1S = json['say_Kull1S'] as String?
-  ..sayKull2S = json['say_Kull2S'] as String?;
+  ..sayKull2S = json['say_Kull2S'] as String?
+  ..sayKull3S = json['say_Kull3S'] as String?
+  ..sayKull4S = json['say_Kull4S'] as String?
+  ..sayKull5S = json['say_Kull5S'] as String?;
 
 Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
     <String, dynamic>{
@@ -1021,6 +1024,9 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
         'SevkEmriMalTopFazlaTeslimat': value,
       if (instance.sayKull1S case final value?) 'say_Kull1S': value,
       if (instance.sayKull2S case final value?) 'say_Kull2S': value,
+      if (instance.sayKull3S case final value?) 'say_Kull3S': value,
+      if (instance.sayKull4S case final value?) 'say_Kull4S': value,
+      if (instance.sayKull5S case final value?) 'say_Kull5S': value,
     };
 
 CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) =>

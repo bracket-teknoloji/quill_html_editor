@@ -1975,7 +1975,11 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..stokCariHarGizlenecekAlanlar =
           (json['stok_CariHar_GizlenecekAlanlar'] as List<dynamic>?)
               ?.map((e) => e as String)
-              .toList();
+              .toList()
+      ..transferDatOzelKod1Degeri =
+          json['transfer_DAT_OzelKod1Degeri'] as String?
+      ..transferDatOzelKod2Degeri =
+          json['transfer_DAT_OzelKod2Degeri'] as String?;
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
     <String, dynamic>{
@@ -4103,6 +4107,10 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
         'transfer_DepoTalebi_RehberdenStokSecilmesin': value,
       if (instance.stokCariHarGizlenecekAlanlar case final value?)
         'stok_CariHar_GizlenecekAlanlar': value,
+      if (instance.transferDatOzelKod1Degeri case final value?)
+        'transfer_DAT_OzelKod1Degeri': value,
+      if (instance.transferDatOzelKod2Degeri case final value?)
+        'transfer_DAT_OzelKod2Degeri': value,
     };
 
 const _$BarkodSayisiSaklanacakAlanEnumMap = {

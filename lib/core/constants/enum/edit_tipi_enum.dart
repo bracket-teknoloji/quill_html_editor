@@ -207,6 +207,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.satisTeklifi => yetkiController.satisTeklifOzelKod1Degeri,
     EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOzelKod1Degeri,
     EditTipiEnum.ambarCikisi => yetkiController.transferACOzelKod1Degeri,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDATVarsayilanOzelKod1,
     _ => null,
   };
 
@@ -218,6 +219,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.satisTeklifi => yetkiController.satisTeklifOzelKod2Degeri,
     EditTipiEnum.alisIrsaliye => yetkiController.malKabulAlisIrsOzelKod2Degeri,
     EditTipiEnum.ambarCikisi => yetkiController.transferACOzelKod2Degeri,
+    EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDATVarsayilanOzelKod2,
     _ => null,
   };
 
@@ -848,35 +850,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
     _ => false,
   };
 
-  void setEditModel() {
-    switch (this) {
-      case EditTipiEnum.musteri:
-      case EditTipiEnum.satici:
-        CacheManager.setSiparisEdit(BaseSiparisEditModel.instance);
-      case EditTipiEnum.satisFatura:
-      case EditTipiEnum.satisIrsaliye:
-      case EditTipiEnum.alisFatura:
-      case EditTipiEnum.alisIrsaliye:
-        CacheManager.setFaturaEdit(BaseSiparisEditModel.instance);
-      case EditTipiEnum.satisTeklifi:
-      case EditTipiEnum.alisTalebi:
-      case EditTipiEnum.satisTalebi:
-        CacheManager.setTalepTeklifEdit(BaseSiparisEditModel.instance);
-      case EditTipiEnum.depoTransferi:
-      case EditTipiEnum.olcumdenDepoTransferi:
-      case EditTipiEnum.ambarGirisi:
-      case EditTipiEnum.ambarCikisi:
-        CacheManager.setTransferEdit(BaseSiparisEditModel.instance);
-      case EditTipiEnum.cari:
-      case EditTipiEnum.isEmri:
-      case EditTipiEnum.altIsEmri:
-      case EditTipiEnum.isEmriTakip:
-      case EditTipiEnum.uretimSonuKaydi:
-      case EditTipiEnum.uretim:
-      case EditTipiEnum.paket:
-      case EditTipiEnum.belgesizIslem:
-    }
-  }
+
 
   void get addEditListItem {
     switch (this) {

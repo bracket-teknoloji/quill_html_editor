@@ -1163,6 +1163,9 @@ final class YetkiController {
   bool get uretimSonuKaydiSil => _isTrue(_profilYetkiModel?.uretimUskSil);
   bool get uretimSonuKalemliYapi => _isTrue(_profilYetkiModel?.uretimUskKalemliYapi, skipAdmin: true);
   String? get uretimSonuDepoOnceligi => _profilYetkiModel?.uretimUskDepoOnceligi;
+  bool get uretimFireUygulamasi => _isTrue(_paramModel?.uretimFireUyg, skipAdmin: true);
+  bool get uretimFireDetayUygulamasi =>
+      _isTrue(_paramModel?.uretimFireDetayUyg, skipAdmin: true) && uretimFireUygulamasi;
 
   bool uretimSonuGizlenecekAlanlar(String value) =>
       _isTrue(_profilYetkiModel?.uretimUskGizlenecekAlanlar?.contains(value), skipAdmin: true);
@@ -1318,6 +1321,9 @@ final class YetkiController {
   String? get transferDatTekrarEdenBarkod => _profilYetkiModel?.transferDatTekrarEdenBarkod;
   String? get siparisMSTekrarEdenBarkod => _profilYetkiModel?.siparisMusSipTekrarEdenBarkod;
   String? get siparisSSTekrarEdenBarkod => _profilYetkiModel?.siparisSatSipTekrarEdenBarkod;
+
+  String? get transferDATVarsayilanOzelKod1 => _profilYetkiModel?.transferDatOzelKod1Degeri;
+  String? get transferDATVarsayilanOzelKod2 => _profilYetkiModel?.transferDatOzelKod2Degeri;
 
   //! Belge Kontrol
   bool get genelBelgeKontrolEkle => _isTrue(_profilYetkiModel?.genelBelgeKontrolEkle);
