@@ -40,6 +40,8 @@ mixin _$StokBottomSheetModel {
   set belgeTipi(String? value) => throw _privateConstructorUsedError;
   String? get cariKodu => throw _privateConstructorUsedError;
   set cariKodu(String? value) => throw _privateConstructorUsedError;
+  int? get faturaDepoKodu => throw _privateConstructorUsedError;
+  set faturaDepoKodu(int? value) => throw _privateConstructorUsedError;
   String? get ekranTipi => throw _privateConstructorUsedError;
   set ekranTipi(String? value) => throw _privateConstructorUsedError;
   int? get faturaTipi => throw _privateConstructorUsedError;
@@ -113,6 +115,7 @@ abstract class $StokBottomSheetModelCopyWith<$Res> {
       String? belgeTarihi,
       String? belgeTipi,
       String? cariKodu,
+      int? faturaDepoKodu,
       String? ekranTipi,
       int? faturaTipi,
       String? resimGoster,
@@ -159,6 +162,7 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
     Object? belgeTarihi = freezed,
     Object? belgeTipi = freezed,
     Object? cariKodu = freezed,
+    Object? faturaDepoKodu = freezed,
     Object? ekranTipi = freezed,
     Object? faturaTipi = freezed,
     Object? resimGoster = freezed,
@@ -219,6 +223,10 @@ class _$StokBottomSheetModelCopyWithImpl<$Res,
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      faturaDepoKodu: freezed == faturaDepoKodu
+          ? _value.faturaDepoKodu
+          : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
@@ -314,6 +322,7 @@ abstract class _$$StokBottomSheetModelImplCopyWith<$Res>
       String? belgeTarihi,
       String? belgeTipi,
       String? cariKodu,
+      int? faturaDepoKodu,
       String? ekranTipi,
       int? faturaTipi,
       String? resimGoster,
@@ -357,6 +366,7 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
     Object? belgeTarihi = freezed,
     Object? belgeTipi = freezed,
     Object? cariKodu = freezed,
+    Object? faturaDepoKodu = freezed,
     Object? ekranTipi = freezed,
     Object? faturaTipi = freezed,
     Object? resimGoster = freezed,
@@ -417,6 +427,10 @@ class __$$StokBottomSheetModelImplCopyWithImpl<$Res>
           ? _value.cariKodu
           : cariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      faturaDepoKodu: freezed == faturaDepoKodu
+          ? _value.faturaDepoKodu
+          : faturaDepoKodu // ignore: cast_nullable_to_non_nullable
+              as int?,
       ekranTipi: freezed == ekranTipi
           ? _value.ekranTipi
           : ekranTipi // ignore: cast_nullable_to_non_nullable
@@ -508,6 +522,7 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
       this.belgeTarihi,
       this.belgeTipi,
       this.cariKodu,
+      this.faturaDepoKodu,
       this.ekranTipi = "R",
       this.faturaTipi,
       this.resimGoster,
@@ -552,6 +567,8 @@ class _$StokBottomSheetModelImpl extends _StokBottomSheetModel {
   String? belgeTipi;
   @override
   String? cariKodu;
+  @override
+  int? faturaDepoKodu;
   @override
   @JsonKey()
   String? ekranTipi;
@@ -626,6 +643,7 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
       String? belgeTarihi,
       String? belgeTipi,
       String? cariKodu,
+      int? faturaDepoKodu,
       String? ekranTipi,
       int? faturaTipi,
       String? resimGoster,
@@ -679,6 +697,9 @@ abstract class _StokBottomSheetModel extends StokBottomSheetModel {
   @override
   String? get cariKodu;
   set cariKodu(String? value);
+  @override
+  int? get faturaDepoKodu;
+  set faturaDepoKodu(int? value);
   @override
   String? get ekranTipi;
   set ekranTipi(String? value);

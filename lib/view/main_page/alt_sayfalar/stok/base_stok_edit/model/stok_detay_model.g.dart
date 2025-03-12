@@ -125,7 +125,7 @@ StokDetayModel _$StokDetayModelFromJson(Map<String, dynamic> json) =>
           .toList()
       ..yapList = json['YapList'] as List<dynamic>?
       ..stokList = (json['StokList'] as List<dynamic>?)
-          ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => StokListesiModel.fromJson(e as Map<String, dynamic>))
           .toList()
       ..fiyatList = (json['FiyatList'] as List<dynamic>?)
           ?.map((e) => FiyatList.fromJson(e as Map<String, dynamic>))

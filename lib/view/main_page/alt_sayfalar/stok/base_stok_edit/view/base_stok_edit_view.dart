@@ -130,18 +130,27 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
         }
       },
     ),
-    if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala)
+    if (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
+        widget.model!.baseEditEnum != BaseEditEnum.kopyala &&
+        yetkiController.stokFiyatGoster)
       const BaseStokEditFiyatListesiView(),
-    if (yetkiController.stokFiyatGoster) BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
+    if (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
+        widget.model!.baseEditEnum != BaseEditEnum.kopyala &&
+        yetkiController.stokFiyatGoster)
+      BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
     if (parametreModel.mapStokKullSahalar != null) BaseStokEditEkBilgilerView(model: widget.model?.baseEditEnum),
     BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
   ];
 
   List<Widget> get tabs => [
     Tab(child: Text(loc.generalStrings.general)),
-    if (widget.model!.baseEditEnum != BaseEditEnum.ekle && widget.model!.baseEditEnum != BaseEditEnum.kopyala)
+    if (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
+        widget.model!.baseEditEnum != BaseEditEnum.kopyala &&
+        yetkiController.stokFiyatGoster)
       const Tab(child: Text("Fiyat Listesi", maxLines: 2, textAlign: TextAlign.center)),
-    if (yetkiController.stokFiyatGoster) const Tab(child: Text("Fiyat")),
+     if (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
+        widget.model!.baseEditEnum != BaseEditEnum.kopyala &&
+        yetkiController.stokFiyatGoster)const Tab(child: Text("Fiyat")),
     if (parametreModel.mapStokKullSahalar != null)
       const Tab(child: Text("Ek Bilgiler", maxLines: 2, textAlign: TextAlign.center)),
     const Tab(child: Text("Seriler")),

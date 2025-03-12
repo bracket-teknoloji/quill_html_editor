@@ -58,16 +58,6 @@ mixin _$BaseStokEditGenelViewModel on _BaseStokEditGenelViewModelBase, Store {
     });
   }
 
-  late final _$setStokDetayModelAsyncAction = AsyncAction(
-      '_BaseStokEditGenelViewModelBase.setStokDetayModel',
-      context: context);
-
-  @override
-  Future<void> setStokDetayModel(StokDetayModel? value) {
-    return _$setStokDetayModelAsyncAction
-        .run(() => super.setStokDetayModel(value));
-  }
-
   late final _$getDataAsyncAction =
       AsyncAction('_BaseStokEditGenelViewModelBase.getData', context: context);
 

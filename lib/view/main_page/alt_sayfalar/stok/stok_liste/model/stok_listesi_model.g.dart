@@ -73,7 +73,7 @@ abstract class _$StokListesiModelCWProxy {
 
   StokListesiModel stokFiyatList(List<dynamic>? stokFiyatList);
 
-  StokListesiModel stokList(List<StokList>? stokList);
+  StokListesiModel stokList(List<StokListesiModel>? stokList);
 
   StokListesiModel alisDovizAdi(String? alisDovizAdi);
 
@@ -279,7 +279,7 @@ abstract class _$StokListesiModelCWProxy {
     int? satDovTip,
     int? subeKodu,
     List<dynamic>? stokFiyatList,
-    List<StokList>? stokList,
+    List<StokListesiModel>? stokList,
     String? alisDovizAdi,
     String? barkod1,
     String? barkod2,
@@ -492,7 +492,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
       this(stokFiyatList: stokFiyatList);
 
   @override
-  StokListesiModel stokList(List<StokList>? stokList) =>
+  StokListesiModel stokList(List<StokListesiModel>? stokList) =>
       this(stokList: stokList);
 
   @override
@@ -1045,7 +1045,7 @@ class _$StokListesiModelCWProxyImpl implements _$StokListesiModelCWProxy {
       stokList: stokList == const $CopyWithPlaceholder()
           ? _value.stokList
           // ignore: cast_nullable_to_non_nullable
-          : stokList as List<StokList>?,
+          : stokList as List<StokListesiModel>?,
       alisDovizAdi: alisDovizAdi == const $CopyWithPlaceholder()
           ? _value.alisDovizAdi
           // ignore: cast_nullable_to_non_nullable
@@ -1385,254 +1385,6 @@ extension $StokListesiModelCopyWith on StokListesiModel {
 }
 
 // **************************************************************************
-// TypeAdapterGenerator
-// **************************************************************************
-
-class StokListAdapter extends TypeAdapter<StokList> {
-  @override
-  final int typeId = 2;
-
-  @override
-  StokList read(BinaryReader reader) {
-    final numOfFields = reader.readByte();
-    final fields = <int, dynamic>{
-      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
-    };
-    return StokList(
-      stokKodu: fields[10] as String?,
-      stokAdi: fields[8] as String?,
-      alisKdv: fields[0] as double?,
-      satisKdv: fields[7] as double?,
-      stokFiyatList: (fields[9] as List?)?.cast<dynamic>(),
-      stokList: (fields[11] as List?)?.cast<dynamic>(),
-      bulunanFiyat: fields[1] as double?,
-      paketMi: fields[6] as String?,
-      koliBilesenMiktari: fields[4] as double?,
-      koliBilesenOrani: fields[5] as double?,
-      koliBilesenFiyatorandan: fields[2] as String?,
-      koliBilesenKolikdv: fields[3] as String?,
-      depoKodu: fields[12] as int?,
-      bakiye: fields[13] as double?,
-    )
-      ..muhdetayAdi = fields[14] as String?
-      ..alisFiat1 = fields[15] as double?
-      ..alisFiat2 = fields[16] as double?
-      ..alisFiat3 = fields[17] as double?
-      ..alisFiat4 = fields[18] as double?
-      ..satisFiat1 = fields[19] as double?
-      ..satisFiat2 = fields[20] as double?
-      ..satisFiat3 = fields[21] as double?
-      ..satisFiat4 = fields[22] as double?
-      ..olcuBirimi = fields[23] as String?
-      ..olcuBirimi2 = fields[24] as String?
-      ..olcuBirimi3 = fields[25] as String?
-      ..olcuBirimi2Pay = fields[26] as double?
-      ..olcuBirimi2Payda = fields[27] as double?
-      ..olcuBirimi3Pay = fields[28] as double?
-      ..olcuBirimi3Payda = fields[29] as double?
-      ..barkod1 = fields[30] as String?
-      ..barkod2 = fields[31] as String?
-      ..barkod3 = fields[32] as String?
-      ..kayityapankul = fields[33] as String?
-      ..kayittarihi = fields[34] as DateTime?
-      ..grupKodu = fields[35] as String?
-      ..grupTanimi = fields[36] as String?
-      ..kod1 = fields[37] as String?
-      ..kod1Tanimi = fields[38] as String?
-      ..kod2 = fields[39] as String?
-      ..kod2Tanimi = fields[40] as String?
-      ..kod3 = fields[41] as String?
-      ..kod3Tanimi = fields[42] as String?
-      ..kod4 = fields[43] as String?
-      ..kod4Tanimi = fields[44] as String?
-      ..kod5 = fields[45] as String?
-      ..kod5Tanimi = fields[46] as String?
-      ..seriCikislardaAcik = fields[47] as bool?
-      ..seriGirislerdeAcik = fields[48] as bool?
-      ..seriMiktarKadarSor = fields[49] as bool?
-      ..seriBakiyeKontrolu = fields[50] as bool?
-      ..seriGiristeOtomatikMi = fields[51] as bool?
-      ..seriCikistaOtomatikMi = fields[52] as bool?
-      ..duzeltmetarihi = fields[53] as DateTime?
-      ..duzeltmeyapankul = fields[54] as String?
-      ..fiatBirimi = fields[55] as int?
-      ..kilitGenel = fields[56] as String?
-      ..kilitSaticisip = fields[57] as String?
-      ..kilitMussip = fields[58] as String?
-      ..kilitAlis = fields[59] as String?
-      ..kilitSatis = fields[60] as String?
-      ..subeKodu = fields[61] as int?
-      ..muhdetayKodu = fields[62] as int?
-      ..alisDovTip = fields[63] as int?
-      ..dovAlisFiat = fields[64] as double?
-      ..alisDovizAdi = fields[65] as String?
-      ..satDovTip = fields[66] as int?
-      ..dovSatisFiat = fields[67] as double?
-      ..satisDovizAdi = fields[68] as String?
-      ..ureticiKodu = fields[69] as String?
-      ..birimAgirlik = fields[70] as double?;
-  }
-
-  @override
-  void write(BinaryWriter writer, StokList obj) {
-    writer
-      ..writeByte(71)
-      ..writeByte(0)
-      ..write(obj.alisKdv)
-      ..writeByte(1)
-      ..write(obj.bulunanFiyat)
-      ..writeByte(2)
-      ..write(obj.koliBilesenFiyatorandan)
-      ..writeByte(3)
-      ..write(obj.koliBilesenKolikdv)
-      ..writeByte(4)
-      ..write(obj.koliBilesenMiktari)
-      ..writeByte(5)
-      ..write(obj.koliBilesenOrani)
-      ..writeByte(6)
-      ..write(obj.paketMi)
-      ..writeByte(7)
-      ..write(obj.satisKdv)
-      ..writeByte(8)
-      ..write(obj.stokAdi)
-      ..writeByte(9)
-      ..write(obj.stokFiyatList)
-      ..writeByte(10)
-      ..write(obj.stokKodu)
-      ..writeByte(11)
-      ..write(obj.stokList)
-      ..writeByte(12)
-      ..write(obj.depoKodu)
-      ..writeByte(13)
-      ..write(obj.bakiye)
-      ..writeByte(14)
-      ..write(obj.muhdetayAdi)
-      ..writeByte(15)
-      ..write(obj.alisFiat1)
-      ..writeByte(16)
-      ..write(obj.alisFiat2)
-      ..writeByte(17)
-      ..write(obj.alisFiat3)
-      ..writeByte(18)
-      ..write(obj.alisFiat4)
-      ..writeByte(19)
-      ..write(obj.satisFiat1)
-      ..writeByte(20)
-      ..write(obj.satisFiat2)
-      ..writeByte(21)
-      ..write(obj.satisFiat3)
-      ..writeByte(22)
-      ..write(obj.satisFiat4)
-      ..writeByte(23)
-      ..write(obj.olcuBirimi)
-      ..writeByte(24)
-      ..write(obj.olcuBirimi2)
-      ..writeByte(25)
-      ..write(obj.olcuBirimi3)
-      ..writeByte(26)
-      ..write(obj.olcuBirimi2Pay)
-      ..writeByte(27)
-      ..write(obj.olcuBirimi2Payda)
-      ..writeByte(28)
-      ..write(obj.olcuBirimi3Pay)
-      ..writeByte(29)
-      ..write(obj.olcuBirimi3Payda)
-      ..writeByte(30)
-      ..write(obj.barkod1)
-      ..writeByte(31)
-      ..write(obj.barkod2)
-      ..writeByte(32)
-      ..write(obj.barkod3)
-      ..writeByte(33)
-      ..write(obj.kayityapankul)
-      ..writeByte(34)
-      ..write(obj.kayittarihi)
-      ..writeByte(35)
-      ..write(obj.grupKodu)
-      ..writeByte(36)
-      ..write(obj.grupTanimi)
-      ..writeByte(37)
-      ..write(obj.kod1)
-      ..writeByte(38)
-      ..write(obj.kod1Tanimi)
-      ..writeByte(39)
-      ..write(obj.kod2)
-      ..writeByte(40)
-      ..write(obj.kod2Tanimi)
-      ..writeByte(41)
-      ..write(obj.kod3)
-      ..writeByte(42)
-      ..write(obj.kod3Tanimi)
-      ..writeByte(43)
-      ..write(obj.kod4)
-      ..writeByte(44)
-      ..write(obj.kod4Tanimi)
-      ..writeByte(45)
-      ..write(obj.kod5)
-      ..writeByte(46)
-      ..write(obj.kod5Tanimi)
-      ..writeByte(47)
-      ..write(obj.seriCikislardaAcik)
-      ..writeByte(48)
-      ..write(obj.seriGirislerdeAcik)
-      ..writeByte(49)
-      ..write(obj.seriMiktarKadarSor)
-      ..writeByte(50)
-      ..write(obj.seriBakiyeKontrolu)
-      ..writeByte(51)
-      ..write(obj.seriGiristeOtomatikMi)
-      ..writeByte(52)
-      ..write(obj.seriCikistaOtomatikMi)
-      ..writeByte(53)
-      ..write(obj.duzeltmetarihi)
-      ..writeByte(54)
-      ..write(obj.duzeltmeyapankul)
-      ..writeByte(55)
-      ..write(obj.fiatBirimi)
-      ..writeByte(56)
-      ..write(obj.kilitGenel)
-      ..writeByte(57)
-      ..write(obj.kilitSaticisip)
-      ..writeByte(58)
-      ..write(obj.kilitMussip)
-      ..writeByte(59)
-      ..write(obj.kilitAlis)
-      ..writeByte(60)
-      ..write(obj.kilitSatis)
-      ..writeByte(61)
-      ..write(obj.subeKodu)
-      ..writeByte(62)
-      ..write(obj.muhdetayKodu)
-      ..writeByte(63)
-      ..write(obj.alisDovTip)
-      ..writeByte(64)
-      ..write(obj.dovAlisFiat)
-      ..writeByte(65)
-      ..write(obj.alisDovizAdi)
-      ..writeByte(66)
-      ..write(obj.satDovTip)
-      ..writeByte(67)
-      ..write(obj.dovSatisFiat)
-      ..writeByte(68)
-      ..write(obj.satisDovizAdi)
-      ..writeByte(69)
-      ..write(obj.ureticiKodu)
-      ..writeByte(70)
-      ..write(obj.birimAgirlik);
-  }
-
-  @override
-  int get hashCode => typeId.hashCode;
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is StokListAdapter &&
-          runtimeType == other.runtimeType &&
-          typeId == other.typeId;
-}
-
-// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
@@ -1674,7 +1426,7 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       subeKodu: (json['SUBE_KODU'] as num?)?.toInt(),
       stokFiyatList: json['STOK_FIYAT_LIST'] as List<dynamic>?,
       stokList: (json['STOK_LIST'] as List<dynamic>?)
-          ?.map((e) => StokList.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => StokListesiModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       alisDovizAdi: json['ALIS_DOVIZ_ADI'] as String?,
       barkod1: json['BARKOD1'] as String?,
@@ -1780,7 +1532,12 @@ StokListesiModel _$StokListesiModelFromJson(Map<String, dynamic> json) =>
       ..bulunanEkalan2 = json['BULUNAN_EKALAN2'] as String?
       ..bulunanHucre = json['BULUNAN_HUCRE'] as String?
       ..bulunanDepo = (json['BULUNAN_DEPO'] as num?)?.toInt()
-      ..acikMussipMiktari = (json['ACIK_MUSSIP_MIKTARI'] as num?)?.toDouble();
+      ..acikMussipMiktari = (json['ACIK_MUSSIP_MIKTARI'] as num?)?.toDouble()
+      ..stokSayimBakiye = (json['STOK_SAYIM_BAKIYE'] as num?)?.toDouble()
+      ..koliBilesenFiyatorandan = json['KOLI_BILESEN_FIYATORANDAN'] as String?
+      ..koliBilesenKolikdv = json['KOLI_BILESEN_KOLIKDV'] as String?
+      ..koliBilesenMiktari = (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble()
+      ..koliBilesenOrani = (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble();
 
 Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
     <String, dynamic>{
@@ -1937,89 +1694,8 @@ Map<String, dynamic> _$StokListesiModelToJson(StokListesiModel instance) =>
       if (instance.bulunanDepo case final value?) 'BULUNAN_DEPO': value,
       if (instance.acikMussipMiktari case final value?)
         'ACIK_MUSSIP_MIKTARI': value,
-    };
-
-StokList _$StokListFromJson(Map<String, dynamic> json) => StokList(
-      stokKodu: json['STOK_KODU'] as String?,
-      stokAdi: json['STOK_ADI'] as String?,
-      alisKdv: (json['ALIS_KDV'] as num?)?.toDouble(),
-      satisKdv: (json['SATIS_KDV'] as num?)?.toDouble(),
-      stokFiyatList: json['STOK_FIYAT_LIST'] as List<dynamic>?,
-      stokList: json['STOK_LIST'] as List<dynamic>?,
-      bulunanFiyat: (json['BULUNAN_FIYAT'] as num?)?.toDouble(),
-      paketMi: json['PAKET_MI'] as String?,
-      koliBilesenMiktari: (json['KOLI_BILESEN_MIKTARI'] as num?)?.toDouble(),
-      koliBilesenOrani: (json['KOLI_BILESEN_ORANI'] as num?)?.toDouble(),
-      koliBilesenFiyatorandan: json['KOLI_BILESEN_FIYATORANDAN'] as String?,
-      koliBilesenKolikdv: json['KOLI_BILESEN_KOLIKDV'] as String?,
-      depoKodu: (json['DEPO_KODU'] as num?)?.toInt(),
-      bakiye: (json['BAKIYE'] as num?)?.toDouble(),
-    )
-      ..muhdetayAdi = json['MUHDETAY_ADI'] as String?
-      ..alisFiat1 = (json['ALIS_FIAT1'] as num?)?.toDouble()
-      ..alisFiat2 = (json['ALIS_FIAT2'] as num?)?.toDouble()
-      ..alisFiat3 = (json['ALIS_FIAT3'] as num?)?.toDouble()
-      ..alisFiat4 = (json['ALIS_FIAT4'] as num?)?.toDouble()
-      ..satisFiat1 = (json['SATIS_FIAT1'] as num?)?.toDouble()
-      ..satisFiat2 = (json['SATIS_FIAT2'] as num?)?.toDouble()
-      ..satisFiat3 = (json['SATIS_FIAT3'] as num?)?.toDouble()
-      ..satisFiat4 = (json['SATIS_FIAT4'] as num?)?.toDouble()
-      ..olcuBirimi = json['OLCU_BIRIMI'] as String?
-      ..olcuBirimi2 = json['OLCU_BIRIMI2'] as String?
-      ..olcuBirimi3 = json['OLCU_BIRIMI3'] as String?
-      ..olcuBirimi2Pay = (json['OLCU_BIRIMI2_PAY'] as num?)?.toDouble()
-      ..olcuBirimi2Payda = (json['OLCU_BIRIMI2_PAYDA'] as num?)?.toDouble()
-      ..olcuBirimi3Pay = (json['OLCU_BIRIMI3_PAY'] as num?)?.toDouble()
-      ..olcuBirimi3Payda = (json['OLCU_BIRIMI3_PAYDA'] as num?)?.toDouble()
-      ..barkod1 = json['BARKOD1'] as String?
-      ..barkod2 = json['BARKOD2'] as String?
-      ..barkod3 = json['BARKOD3'] as String?
-      ..kayityapankul = json['KAYITYAPANKUL'] as String?
-      ..kayittarihi = json['KAYITTARIHI'] == null
-          ? null
-          : DateTime.parse(json['KAYITTARIHI'] as String)
-      ..grupKodu = json['GRUP_KODU'] as String?
-      ..grupTanimi = json['GRUP_TANIMI'] as String?
-      ..kod1 = json['KOD1'] as String?
-      ..kod1Tanimi = json['KOD1_TANIMI'] as String?
-      ..kod2 = json['KOD2'] as String?
-      ..kod2Tanimi = json['KOD2_TANIMI'] as String?
-      ..kod3 = json['KOD3'] as String?
-      ..kod3Tanimi = json['KOD3_TANIMI'] as String?
-      ..kod4 = json['KOD4'] as String?
-      ..kod4Tanimi = json['KOD4_TANIMI'] as String?
-      ..kod5 = json['KOD5'] as String?
-      ..kod5Tanimi = json['KOD5_TANIMI'] as String?
-      ..seriCikislardaAcik = json['SERI_CIKISLARDA_ACIK'] as bool?
-      ..seriGirislerdeAcik = json['SERI_GIRISLERDE_ACIK'] as bool?
-      ..seriMiktarKadarSor = json['SERI_MIKTAR_KADAR_SOR'] as bool?
-      ..seriBakiyeKontrolu = json['SERI_BAKIYE_KONTROLU'] as bool?
-      ..seriGiristeOtomatikMi = json['SERI_GIRISTE_OTOMATIK_MI'] as bool?
-      ..seriCikistaOtomatikMi = json['SERI_CIKISTA_OTOMATIK_MI'] as bool?
-      ..duzeltmetarihi = json['DUZELTMETARIHI'] == null
-          ? null
-          : DateTime.parse(json['DUZELTMETARIHI'] as String)
-      ..duzeltmeyapankul = json['DUZELTMEYAPANKUL'] as String?
-      ..fiatBirimi = (json['FIAT_BIRIMI'] as num?)?.toInt()
-      ..kilitGenel = json['KILIT_GENEL'] as String?
-      ..kilitSaticisip = json['KILIT_SATICISIP'] as String?
-      ..kilitMussip = json['KILIT_MUSSIP'] as String?
-      ..kilitAlis = json['KILIT_ALIS'] as String?
-      ..kilitSatis = json['KILIT_SATIS'] as String?
-      ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt()
-      ..muhdetayKodu = (json['MUHDETAY_KODU'] as num?)?.toInt()
-      ..alisDovTip = (json['ALIS_DOV_TIP'] as num?)?.toInt()
-      ..dovAlisFiat = (json['DOV_ALIS_FIAT'] as num?)?.toDouble()
-      ..alisDovizAdi = json['ALIS_DOVIZ_ADI'] as String?
-      ..satDovTip = (json['SAT_DOV_TIP'] as num?)?.toInt()
-      ..dovSatisFiat = (json['DOV_SATIS_FIAT'] as num?)?.toDouble()
-      ..satisDovizAdi = json['SATIS_DOVIZ_ADI'] as String?
-      ..ureticiKodu = json['URETICI_KODU'] as String?
-      ..birimAgirlik = (json['BIRIM_AGIRLIK'] as num?)?.toDouble();
-
-Map<String, dynamic> _$StokListToJson(StokList instance) => <String, dynamic>{
-      if (instance.alisKdv case final value?) 'ALIS_KDV': value,
-      if (instance.bulunanFiyat case final value?) 'BULUNAN_FIYAT': value,
+      if (instance.stokSayimBakiye case final value?)
+        'STOK_SAYIM_BAKIYE': value,
       if (instance.koliBilesenFiyatorandan case final value?)
         'KOLI_BILESEN_FIYATORANDAN': value,
       if (instance.koliBilesenKolikdv case final value?)
@@ -2028,82 +1704,6 @@ Map<String, dynamic> _$StokListToJson(StokList instance) => <String, dynamic>{
         'KOLI_BILESEN_MIKTARI': value,
       if (instance.koliBilesenOrani case final value?)
         'KOLI_BILESEN_ORANI': value,
-      if (instance.paketMi case final value?) 'PAKET_MI': value,
-      if (instance.satisKdv case final value?) 'SATIS_KDV': value,
-      if (instance.stokAdi case final value?) 'STOK_ADI': value,
-      if (instance.stokFiyatList case final value?) 'STOK_FIYAT_LIST': value,
-      if (instance.stokKodu case final value?) 'STOK_KODU': value,
-      if (instance.stokList case final value?) 'STOK_LIST': value,
-      if (instance.depoKodu case final value?) 'DEPO_KODU': value,
-      if (instance.bakiye case final value?) 'BAKIYE': value,
-      if (instance.muhdetayAdi case final value?) 'MUHDETAY_ADI': value,
-      if (instance.alisFiat1 case final value?) 'ALIS_FIAT1': value,
-      if (instance.alisFiat2 case final value?) 'ALIS_FIAT2': value,
-      if (instance.alisFiat3 case final value?) 'ALIS_FIAT3': value,
-      if (instance.alisFiat4 case final value?) 'ALIS_FIAT4': value,
-      if (instance.satisFiat1 case final value?) 'SATIS_FIAT1': value,
-      if (instance.satisFiat2 case final value?) 'SATIS_FIAT2': value,
-      if (instance.satisFiat3 case final value?) 'SATIS_FIAT3': value,
-      if (instance.satisFiat4 case final value?) 'SATIS_FIAT4': value,
-      if (instance.olcuBirimi case final value?) 'OLCU_BIRIMI': value,
-      if (instance.olcuBirimi2 case final value?) 'OLCU_BIRIMI2': value,
-      if (instance.olcuBirimi3 case final value?) 'OLCU_BIRIMI3': value,
-      if (instance.olcuBirimi2Pay case final value?) 'OLCU_BIRIMI2_PAY': value,
-      if (instance.olcuBirimi2Payda case final value?)
-        'OLCU_BIRIMI2_PAYDA': value,
-      if (instance.olcuBirimi3Pay case final value?) 'OLCU_BIRIMI3_PAY': value,
-      if (instance.olcuBirimi3Payda case final value?)
-        'OLCU_BIRIMI3_PAYDA': value,
-      if (instance.barkod1 case final value?) 'BARKOD1': value,
-      if (instance.barkod2 case final value?) 'BARKOD2': value,
-      if (instance.barkod3 case final value?) 'BARKOD3': value,
-      if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
-      if (instance.kayittarihi?.toIso8601String() case final value?)
-        'KAYITTARIHI': value,
-      if (instance.grupKodu case final value?) 'GRUP_KODU': value,
-      if (instance.grupTanimi case final value?) 'GRUP_TANIMI': value,
-      if (instance.kod1 case final value?) 'KOD1': value,
-      if (instance.kod1Tanimi case final value?) 'KOD1_TANIMI': value,
-      if (instance.kod2 case final value?) 'KOD2': value,
-      if (instance.kod2Tanimi case final value?) 'KOD2_TANIMI': value,
-      if (instance.kod3 case final value?) 'KOD3': value,
-      if (instance.kod3Tanimi case final value?) 'KOD3_TANIMI': value,
-      if (instance.kod4 case final value?) 'KOD4': value,
-      if (instance.kod4Tanimi case final value?) 'KOD4_TANIMI': value,
-      if (instance.kod5 case final value?) 'KOD5': value,
-      if (instance.kod5Tanimi case final value?) 'KOD5_TANIMI': value,
-      if (instance.seriCikislardaAcik case final value?)
-        'SERI_CIKISLARDA_ACIK': value,
-      if (instance.seriGirislerdeAcik case final value?)
-        'SERI_GIRISLERDE_ACIK': value,
-      if (instance.seriMiktarKadarSor case final value?)
-        'SERI_MIKTAR_KADAR_SOR': value,
-      if (instance.seriBakiyeKontrolu case final value?)
-        'SERI_BAKIYE_KONTROLU': value,
-      if (instance.seriGiristeOtomatikMi case final value?)
-        'SERI_GIRISTE_OTOMATIK_MI': value,
-      if (instance.seriCikistaOtomatikMi case final value?)
-        'SERI_CIKISTA_OTOMATIK_MI': value,
-      if (instance.duzeltmetarihi?.toIso8601String() case final value?)
-        'DUZELTMETARIHI': value,
-      if (instance.duzeltmeyapankul case final value?)
-        'DUZELTMEYAPANKUL': value,
-      if (instance.fiatBirimi case final value?) 'FIAT_BIRIMI': value,
-      if (instance.kilitGenel case final value?) 'KILIT_GENEL': value,
-      if (instance.kilitSaticisip case final value?) 'KILIT_SATICISIP': value,
-      if (instance.kilitMussip case final value?) 'KILIT_MUSSIP': value,
-      if (instance.kilitAlis case final value?) 'KILIT_ALIS': value,
-      if (instance.kilitSatis case final value?) 'KILIT_SATIS': value,
-      if (instance.subeKodu case final value?) 'SUBE_KODU': value,
-      if (instance.muhdetayKodu case final value?) 'MUHDETAY_KODU': value,
-      if (instance.alisDovTip case final value?) 'ALIS_DOV_TIP': value,
-      if (instance.dovAlisFiat case final value?) 'DOV_ALIS_FIAT': value,
-      if (instance.alisDovizAdi case final value?) 'ALIS_DOVIZ_ADI': value,
-      if (instance.satDovTip case final value?) 'SAT_DOV_TIP': value,
-      if (instance.dovSatisFiat case final value?) 'DOV_SATIS_FIAT': value,
-      if (instance.satisDovizAdi case final value?) 'SATIS_DOVIZ_ADI': value,
-      if (instance.ureticiKodu case final value?) 'URETICI_KODU': value,
-      if (instance.birimAgirlik case final value?) 'BIRIM_AGIRLIK': value,
     };
 
 DepoBakiyeListe _$DepoBakiyeListeFromJson(Map<String, dynamic> json) =>

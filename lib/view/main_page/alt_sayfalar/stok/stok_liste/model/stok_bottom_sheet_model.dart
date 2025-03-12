@@ -23,6 +23,7 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
     String? belgeTarihi,
     String? belgeTipi,
     String? cariKodu,
+    int? faturaDepoKodu,
     @Default("R") String? ekranTipi,
     int? faturaTipi,
     String? resimGoster,
@@ -60,30 +61,24 @@ class StokBottomSheetModel with _$StokBottomSheetModel, NetworkManagerMixin {
 
   Map<String, dynamic> toJsonWithList() {
     final data = toJson();
-    data["ArrGrupKodu"] =
-        (arrGrupKodu?.map((e) => e.grupKodu).toList().ext.isNullOrEmpty ?? false)
-            ? null
-            : arrGrupKodu?.map((e) => e.grupKodu).toList();
-    data["ArrKod1"] =
-        (arrKod1?.map((e) => e.kod1 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false)
-            ? null
-            : arrKod1?.map((e) => e.kod1 ?? e.grupKodu).toList();
-    data["ArrKod2"] =
-        (arrKod2?.map((e) => e.kod2 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false)
-            ? null
-            : arrKod2?.map((e) => e.kod2 ?? e.grupKodu).toList();
-    data["ArrKod3"] =
-        (arrKod3?.map((e) => e.kod3 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false)
-            ? null
-            : arrKod3?.map((e) => e.kod3 ?? e.grupKodu).toList();
-    data["ArrKod4"] =
-        (arrKod4?.map((e) => e.kod4 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false)
-            ? null
-            : arrKod4?.map((e) => e.kod4 ?? e.grupKodu).toList();
-    data["ArrKod5"] =
-        (arrKod5?.map((e) => e.kod5 ?? e.grupKodu).toList().ext.isNullOrEmpty ?? false)
-            ? null
-            : arrKod5?.map((e) => e.kod5 ?? e.grupKodu).toList();
+    if (arrGrupKodu?.map((e) => e.grupKodu).toList().ext.isNotNullOrEmpty ?? false) {
+      data["ArrGrupKodu"] = arrGrupKodu?.map((e) => e.grupKodu).toList();
+    }
+    if (arrKod1?.map((e) => e.kod1).toList().ext.isNotNullOrEmpty ?? false) {
+      data["ArrKod1"] = arrKod1?.map((e) => e.kod1).toList();
+    }
+    if (arrKod2?.map((e) => e.kod2).toList().ext.isNotNullOrEmpty ?? false) {
+      data["ArrKod2"] = arrKod2?.map((e) => e.kod2).toList();
+    }
+    if (arrKod3?.map((e) => e.kod3).toList().ext.isNotNullOrEmpty ?? false) {
+      data["ArrKod3"] = arrKod3?.map((e) => e.kod3).toList();
+    }
+    if (arrKod4?.map((e) => e.kod4).toList().ext.isNotNullOrEmpty ?? false) {
+      data["ArrKod4"] = arrKod4?.map((e) => e.kod4).toList();
+    }
+    if (arrKod5?.map((e) => e.kod5).toList().ext.isNotNullOrEmpty ?? false) {
+      data["ArrKod5"] = arrKod5?.map((e) => e.kod5).toList();
+    }
     return data;
   }
 }

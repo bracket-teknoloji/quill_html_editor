@@ -1,4 +1,5 @@
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:get/get.dart";
 import "package:hive_flutter/hive_flutter.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
@@ -13,7 +14,7 @@ final class StokDetayModel with NetworkManagerMixin {
   StokDetayModel();
   //singleton
   static StokDetayModel? _instance;
-  static StokDetayModel get instance => _instance ??= StokDetayModel()..stokList = [StokList()];
+  static StokDetayModel get instance => _instance ??= StokDetayModel()..stokList = [StokListesiModel()];
 
   //setter for singleton
   static void setInstance(StokDetayModel? value) => _instance = value;
@@ -24,7 +25,7 @@ final class StokDetayModel with NetworkManagerMixin {
   @JsonKey(name: "YapList")
   List<dynamic>? yapList;
   @JsonKey(name: "StokList")
-  List<StokList>? stokList;
+  List<StokListesiModel>? stokList;
   @JsonKey(name: "FiyatList")
   List<FiyatList>? fiyatList;
   @override
@@ -32,6 +33,8 @@ final class StokDetayModel with NetworkManagerMixin {
 
   @override
   Map<String, dynamic> toJson() => _$StokDetayModelToJson(this);
+
+  StokListesiModel? getStokList(String stokKodu) => stokList?.firstWhereOrNull((element) => element.stokKodu == stokKodu);
 }
 
 @JsonSerializable(explicitToJson: true)

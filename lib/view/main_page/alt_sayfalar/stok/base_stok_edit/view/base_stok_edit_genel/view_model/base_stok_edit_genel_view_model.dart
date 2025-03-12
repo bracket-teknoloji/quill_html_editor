@@ -27,13 +27,6 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
     grupKodlariMap?[grupkodu] = value;
   }
 
-  @action
-  Future<void> setStokDetayModel(StokDetayModel? value) async {
-    if (value != null) {
-      stokDetayModel = value;
-      StokDetayModel.setInstance(stokDetayModel);
-    }
-  }
 
   @action
   void setAdi(String? value) {

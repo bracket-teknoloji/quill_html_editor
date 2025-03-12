@@ -66,7 +66,6 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
   late final TextEditingController kod3Controller;
   late final TextEditingController kod4Controller;
   late final TextEditingController kod5Controller;
-  // StokDetayModel? model;
   List<StokOlcuBirimleriModel>? olcuBirimleriList;
   bool get enable => widget.model != BaseEditEnum.goruntule;
 
@@ -74,63 +73,47 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
 
   @override
   void initState() {
-    final firstStokList = viewModel.stokDetayModel.stokList?.firstOrNull;
     stokKoduController = TextEditingController(text: stokModel.stokKodu);
     stokAdiController = TextEditingController(text: stokModel.stokAdi);
     depoController = TextEditingController(
       text:
           CacheManager.getAnaVeri?.paramModel?.depoList
-              ?.firstWhereOrNull((element) => element.depoKodu == (firstStokList?.depoKodu ?? stokModel.depoKodu))
+              ?.firstWhereOrNull((element) => element.depoKodu == (stokModel.depoKodu))
               ?.depoTanimi ??
           "",
     );
-    muhasebeDetayKoduController = TextEditingController(text: firstStokList?.muhdetayAdi ?? stokModel.muhdetayAdi);
-    olcuBirimi1Controller = TextEditingController(text: firstStokList?.olcuBirimi ?? stokModel.olcuBirimi);
-    olcuBirimi2Controller = TextEditingController(text: firstStokList?.olcuBirimi2 ?? stokModel.olcuBirimi2);
+    muhasebeDetayKoduController = TextEditingController(text: stokModel.muhdetayAdi);
+    olcuBirimi1Controller = TextEditingController(text: stokModel.olcuBirimi);
+    olcuBirimi2Controller = TextEditingController(text: stokModel.olcuBirimi2);
     olcuBirimi2PayController = TextEditingController(
-      text: (firstStokList?.olcuBirimi2Pay ?? stokModel.olcuBirimi2Pay).commaSeparatedWithDecimalDigits(
-        OndalikEnum.oran,
-      ),
+      text: stokModel.olcuBirimi2Pay.commaSeparatedWithDecimalDigits(OndalikEnum.maxOndalik),
     );
     olcuBirimi2PaydaController = TextEditingController(
-      text: (firstStokList?.olcuBirimi2Payda ?? stokModel.olcuBirimi2Payda).commaSeparatedWithDecimalDigits(
-        OndalikEnum.oran,
-      ),
+      text: stokModel.olcuBirimi2Payda.commaSeparatedWithDecimalDigits(OndalikEnum.maxOndalik),
     );
-    olcuBirimi3Controller = TextEditingController(text: firstStokList?.olcuBirimi3 ?? stokModel.olcuBirimi3);
+    olcuBirimi3Controller = TextEditingController(text: stokModel.olcuBirimi3);
     olcuBirimi3PayController = TextEditingController(
-      text: (firstStokList?.olcuBirimi3Pay ?? stokModel.olcuBirimi3Pay).commaSeparatedWithDecimalDigits(
-        OndalikEnum.oran,
-      ),
+      text: stokModel.olcuBirimi3Pay.commaSeparatedWithDecimalDigits(OndalikEnum.maxOndalik),
     );
     olcuBirimi3PaydaController = TextEditingController(
-      text: (firstStokList?.olcuBirimi3Payda ?? stokModel.olcuBirimi3Payda).commaSeparatedWithDecimalDigits(
-        OndalikEnum.oran,
-      ),
+      text: stokModel.olcuBirimi3Payda.commaSeparatedWithDecimalDigits(OndalikEnum.maxOndalik),
     );
-    barkod1Controller = TextEditingController(text: firstStokList?.barkod1 ?? stokModel.barkod1);
-    barkod2Controller = TextEditingController(text: firstStokList?.barkod2 ?? stokModel.barkod2);
-    barkod3Controller = TextEditingController(text: firstStokList?.barkod3 ?? stokModel.barkod3);
+    barkod1Controller = TextEditingController(text: stokModel.barkod1);
+    barkod2Controller = TextEditingController(text: stokModel.barkod2);
+    barkod3Controller = TextEditingController(text: stokModel.barkod3);
     subeController = TextEditingController(
       text:
           subeList.ext.isNotNullOrEmpty
-              ? subeList
-                  .where(
-                    (element) => element.subeKodu == firstStokList?.subeKodu || element.subeKodu == stokModel.subeKodu,
-                  )
-                  .firstOrNull
-                  ?.subeAdi
+              ? subeList.where((element) => element.subeKodu == stokModel.subeKodu).firstOrNull?.subeAdi
               : null,
     ); //text: model?.stokAdi
-    ureticiKoduController = TextEditingController(
-      text: firstStokList?.ureticiKodu ?? stokModel.ureticiKodu,
-    ); //text: model?.stokAdi
-    grupKoduController = TextEditingController(text: firstStokList?.grupKodu ?? stokModel.grupKodu);
-    kod1Controller = TextEditingController(text: firstStokList?.kod1 ?? stokModel.kod1);
-    kod2Controller = TextEditingController(text: firstStokList?.kod2 ?? stokModel.kod2);
-    kod3Controller = TextEditingController(text: firstStokList?.kod3 ?? stokModel.kod3);
-    kod4Controller = TextEditingController(text: firstStokList?.kod4 ?? stokModel.kod4);
-    kod5Controller = TextEditingController(text: firstStokList?.kod5 ?? stokModel.kod5);
+    ureticiKoduController = TextEditingController(text: stokModel.ureticiKodu); //text: model?.stokAdi
+    grupKoduController = TextEditingController(text: stokModel.grupKodu);
+    kod1Controller = TextEditingController(text: stokModel.kod1);
+    kod2Controller = TextEditingController(text: stokModel.kod2);
+    kod3Controller = TextEditingController(text: stokModel.kod3);
+    kod4Controller = TextEditingController(text: stokModel.kod4);
+    kod5Controller = TextEditingController(text: stokModel.kod5);
     if (subeController.text == "") {
       subeController.text = "Şubelerde Ortak";
       stokModel.subeKodu = -1;
@@ -561,6 +544,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                 CustomTextField(
                   enabled: enable,
                   labelText: "Üretici Kodu",
+                  controller: ureticiKoduController,
                   onChanged: (p0) => stokModel.ureticiKodu = p0,
                 ),
                 Row(

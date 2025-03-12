@@ -33,9 +33,13 @@ abstract class _BaseStokEditingViewModelBase with Store, MobxNetworkMixin {
       showLoading: true,
       queryParameters: {"stokKodu": stokListesiModel?.stokKodu ?? ""},
     );
+    isSuccess = result.isSuccess;
     if (result.isSuccess) {
       StokDetayModel.setInstance(result.dataList.firstOrNull as StokDetayModel);
-      isSuccess = true;
+      final StokListesiModel? stokList = StokDetayModel.instance.getStokList(StokDetayModel.instance.stokKodu ?? "");
+      if (stokList case final value?) {
+        StokListesiModel.setInstance(value);
+      }
     }
   }
 }
