@@ -9,6 +9,7 @@ import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:picker/src/sewoo.dart";
 
 import "app/picker_app.dart";
 import "core/init/app_info/app_info.dart";
@@ -23,6 +24,7 @@ import "view/add_company/model/account_model.dart";
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheManager.instance.initHiveBoxes();
+  SewooPrinter().printText("Merhaba");
   //* AccountModel'i splashAuthView'da init ediyoruz.
   // await AccountModel.instance.init();
   //* Firebase Crashlytics
@@ -76,3 +78,5 @@ Future<void> firebaseInitialized() async {
     };
   }
 }
+
+class SewooPrinter extends Sewoo {}

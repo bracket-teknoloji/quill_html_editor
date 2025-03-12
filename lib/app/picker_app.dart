@@ -573,15 +573,15 @@ final class PickerMaterialApp extends StatelessWidget {
           //* Transfer
           GetPage(
             name: "/transferDepo",
-            page: () => TransferlerView(editTipiEnum: EditTipiEnum.depoTransferi, isGetData: Get.arguments),
+            page: () => TransferlerView(editTipiEnum: EditTipiEnum.depoTransferi, isGetData: Get.arguments ?? false),
           ),
           GetPage(
             name: "/transferAmbarGiris",
-            page: () => TransferlerView(editTipiEnum: EditTipiEnum.ambarGirisi, isGetData: Get.arguments),
+            page: () => TransferlerView(editTipiEnum: EditTipiEnum.ambarGirisi, isGetData: Get.arguments ?? false),
           ),
           GetPage(
             name: "/transferAmbarCikis",
-            page: () => TransferlerView(editTipiEnum: EditTipiEnum.ambarCikisi, isGetData: Get.arguments),
+            page: () => TransferlerView(editTipiEnum: EditTipiEnum.ambarCikisi, isGetData: Get.arguments ?? false),
           ),
           GetPage(name: "/transferMalTalebi", page: () => const TransferMalTalebiListesiView(talepMi: true)),
           GetPage(name: "/transferMalToplama", page: () => const TransferMalTalebiListesiView(talepMi: false)),
