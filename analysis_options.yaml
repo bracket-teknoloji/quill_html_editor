@@ -21,6 +21,7 @@ format:
   exclude:
   - "**/*.g.dart"
   - "**/*.freezed.dart"
+  - "lib/src/source_out_path.dart"
 
 formatter:
   page_width: 120

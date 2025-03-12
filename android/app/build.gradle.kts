@@ -65,7 +65,7 @@ android {
         applicationId = "com.bracket23.picker"
         minSdk = 24
         targetSdk = flutter.targetSdkVersion
-        versionCode = 342
+        versionCode = 347
         versionName = flutterVersionName
     }
 
@@ -92,4 +92,5 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.1")
     implementation("androidx.activity:activity-ktx:1.10.1")
     implementation("com.google.android.play:integrity:1.4.0")
+    implementation(files("libs/Sewoo_Android_1113.jar"))
 }
