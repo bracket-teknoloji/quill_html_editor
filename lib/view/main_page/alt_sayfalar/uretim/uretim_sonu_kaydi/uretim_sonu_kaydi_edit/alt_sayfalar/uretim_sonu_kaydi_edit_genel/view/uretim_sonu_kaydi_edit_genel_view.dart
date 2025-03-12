@@ -429,10 +429,12 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
   );
 
   CustomTextField hurdaFireMiktariField() => CustomTextField(
-    labelText: "Hurda/Fire Miktarı",
+    labelText: miktar2Title,
     enabled: isEnabled,
     controller: hurdaFireMiktariController,
     isFormattedString: true,
+    suffixMore: yetkiController.uretimFireDetayUygulamasi,
+     
     keyboardType: const TextInputType.numberWithOptions(decimal: true),
     onChanged: (value) => viewModel.setHurdaMiktari(value.toDoubleWithFormattedString),
   );
@@ -542,4 +544,10 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
       );
     },
   );
+
+  String get miktar2Title {
+    if (!yetkiController.uretimFireUygulamasi) return "Miktar 2";
+    if (yetkiController.uretimFireDetayUygulamasi) return "Hurda/Fire Bilgileri";
+    return "Hurda/Fire Miktarı";
+  }
 }

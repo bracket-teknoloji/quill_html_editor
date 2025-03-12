@@ -112,7 +112,9 @@ final class _UretimSonuKaydiEditKalemlerViewState extends BaseState<UretimSonuKa
             children: [
               Text("Kodu: ${item.stokKodu}"),
               Text("Miktar: ${item.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
-              Text("Hurda/Fire Mik: ${item.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}"),
+              Text(
+                "${(yetkiController.uretimFireUygulamasi) ? "Hurda/Fire Mik" : "Miktar 2"}: ${item.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}",
+              ),
               Text("İşlendi: ${item.stoklaraIslendi == "E" ? "Evet" : "Hayır"}"),
               Text("Maliyet Fiyatı: ${item.maliyetFiyati.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat)}"),
               Text("BarkodSay: ${item.barkod ?? ""}"),

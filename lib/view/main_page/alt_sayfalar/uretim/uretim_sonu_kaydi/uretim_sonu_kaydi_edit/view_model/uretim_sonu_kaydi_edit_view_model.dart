@@ -104,7 +104,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
       if (item.girisdepoKodu != null) {
         requestModel = requestModel.copyWith(girisDepo: item.girisdepoKodu);
         requestModel = requestModel.copyWith(cikisDepo: item.cikisdepoKodu);
-        setModel(item.copyWith(girisDepo: item.girisdepoKodu, cikisDepo: item.cikisdepoKodu));
+        // setModel(item.copyWith(girisDepo: item.girisdepoKodu, cikisDepo: item.cikisdepoKodu));
       }
     }
   }
