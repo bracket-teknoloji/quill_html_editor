@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/constants/extensions/date_time_extensions.dart";
 
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/model/base_stok_mixin.dart";
@@ -99,7 +100,37 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     child: Form(
       key: StaticVariables.instance.sayimGenelFormKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          Observer(
+            builder:
+                (_) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    if (viewModel.stokModel case final stok?)
+                      ...[
+                        Observer(
+                          builder:
+                              (_) => Text(
+                                "Stok Bakiye: ${stok.stokSayimBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${stok.getOlcuBirimi}",
+                              ),
+                        ),
+                        Observer(
+                          builder:
+                              (_) => Text(
+                                "Sayım Miktarı: ${viewModel.filtreModel.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${stok.getOlcuBirimi}",
+                              ),
+                        ),
+                        Observer(
+                          builder:
+                              (_) => Text(
+                                "Fark: ${((stok.stokSayimBakiye ?? 0) - (viewModel.filtreModel.getMiktar ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.miktar)} ${stok.getOlcuBirimi}",
+                              ),
+                        ),
+                      ].map((e) => Card(child: e.paddingAll(UIHelper.lowSize))),
+                  ],
+                ),
+          ),
           Observer(
             builder:
                 (_) => Card(
@@ -163,9 +194,23 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
             onTap: () async {
               final stokModel = await Get.toNamed(
                 "mainPage/stokListesiOzel",
-                arguments: StokBottomSheetModel.fromSayimFiltreModel(viewModel.filtreModel),
+                arguments:
+                    StokBottomSheetModel.fromSayimFiltreModel(viewModel.filtreModel)
+                      ..belgeTipi = "SAYI"
+                      ..faturaDepoKodu = viewModel.filtreModel.depoKodu,
               );
-              await setStok(stokModel);
+              await setStok(
+                await networkManager.getStokModel(
+                  StokRehberiRequestModel(
+                    stokKodu: stokModel?.stokKodu,
+                    belgeTipi: "SAYI",
+                    faturaDepoKodu: viewModel.filtreModel.depoKodu,
+                    belgeTarihi: DateTime.now().toDateString,
+                    belgeNo: viewModel.filtreModel.id.toString(),
+                    okutuldu: true,
+                  ),
+                ),
+              );
               //    final stokModel = await Get.toNamed("mainPage/stokListesiOzel", arguments: StokBottomSheetModel(
               //   arrGrupKodu: viewModel.filtreModel.arrGrupKodu
               // ));
@@ -211,41 +256,45 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                     },
                   ),
                 ),
-              if (!yetkiController.sayimGizlenecekAlanlar("miktar")) Expanded(
-                child: CustomTextField(
-                  labelText: "Miktar",
-                  isMust: true,
-                  focusNode: stokFocusNode,
-                  isFormattedString: true,
+              if (!yetkiController.sayimGizlenecekAlanlar("miktar"))
+                Expanded(
+                  child: CustomTextField(
+                    labelText: "Miktar",
+                    isMust: true,
+                    focusNode: stokFocusNode,
+                    isFormattedString: true,
 
-                  keyboardType: const TextInputType.numberWithOptions(
-                    decimal: true,
-                  ), // readOnly: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
-                  onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
-                  enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
-                  controller: miktarController,
-                  suffix:  (!yetkiController.sayimDegistirilmeyecekAlanlar("miktar")) ?  Wrap(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          viewModel.decreaseMiktar();
-                          miktarController.text =
-                              "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
-                        },
-                        icon: const Icon(Icons.remove),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          viewModel.increaseMiktar();
-                          miktarController.text =
-                              "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
-                        },
-                        icon: const Icon(Icons.add),
-                      ),
-                    ],
-                  ) : null,
+                    keyboardType: const TextInputType.numberWithOptions(
+                      decimal: true,
+                    ), // readOnly: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
+                    onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
+                    enabled: !yetkiController.sayimDegistirilmeyecekAlanlar("miktar"),
+                    controller: miktarController,
+                    suffix:
+                        (!yetkiController.sayimDegistirilmeyecekAlanlar("miktar"))
+                            ? Wrap(
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    viewModel.decreaseMiktar();
+                                    miktarController.text =
+                                        "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+                                  },
+                                  icon: const Icon(Icons.remove),
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    viewModel.increaseMiktar();
+                                    miktarController.text =
+                                        "${viewModel.filtreModel.miktar?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}";
+                                  },
+                                  icon: const Icon(Icons.add),
+                                ),
+                              ],
+                            )
+                            : null,
+                  ),
                 ),
-              ),
             ],
           ),
 
@@ -298,15 +347,35 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
             splitCount: 2,
             children: [
               if (yetkiController.sayimEkAlanlar(1))
-                CustomTextField(labelText: "Ek Alan 1", controller: ekAlan1Controller, onChanged: viewModel.setEkAlan1),
+                CustomTextField(
+                  labelText: parametreModel.sayKull1S ?? "Ek Alan 1",
+                  controller: ekAlan1Controller,
+                  onChanged: viewModel.setEkAlan1,
+                ),
               if (yetkiController.sayimEkAlanlar(2))
-                CustomTextField(labelText: "Ek Alan 2", controller: ekAlan2Controller, onChanged: viewModel.setEkAlan2),
+                CustomTextField(
+                  labelText: parametreModel.sayKull2S ?? "Ek Alan 2",
+                  controller: ekAlan2Controller,
+                  onChanged: viewModel.setEkAlan2,
+                ),
               if (yetkiController.sayimEkAlanlar(3))
-                CustomTextField(labelText: "Ek Alan 3", controller: ekAlan3Controller, onChanged: viewModel.setEkAlan3),
+                CustomTextField(
+                  labelText: parametreModel.sayKull3S ?? "Ek Alan 3",
+                  controller: ekAlan3Controller,
+                  onChanged: viewModel.setEkAlan3,
+                ),
               if (yetkiController.sayimEkAlanlar(4))
-                CustomTextField(labelText: "Ek Alan 4", controller: ekAlan4Controller, onChanged: viewModel.setEkAlan4),
+                CustomTextField(
+                  labelText: parametreModel.sayKull4S ?? "Ek Alan 4",
+                  controller: ekAlan4Controller,
+                  onChanged: viewModel.setEkAlan4,
+                ),
               if (yetkiController.sayimEkAlanlar(5))
-                CustomTextField(labelText: "Ek Alan 5", controller: ekAlan5Controller, onChanged: viewModel.setEkAlan5),
+                CustomTextField(
+                  labelText: parametreModel.sayKull5S ?? "Ek Alan 5",
+                  controller: ekAlan5Controller,
+                  onChanged: viewModel.setEkAlan5,
+                ),
             ],
           ),
           Observer(
@@ -322,26 +391,28 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                   onTap: changeOlcuBirimi,
                 ).yetkiVarMi(viewModel.filtreModel.stokKodu != null),
           ),
-          Card(
-            child: Observer(
-              builder:
-                  (_) => SwitchListTile.adaptive(
-                    value: viewModel.hemenKaydetsinMi,
-                    onChanged: viewModel.setHemenKaydet,
-                    title: const Text("Stok Seçildiğinde Hemen Kaydet"),
-                  ),
+          if (!yetkiController.adminMi && !yetkiController.sayimHemenKaydet)
+            Card(
+              child: Observer(
+                builder:
+                    (_) => SwitchListTile.adaptive(
+                      value: viewModel.hemenKaydetsinMi,
+                      onChanged: viewModel.setHemenKaydet,
+                      title: const Text("Stok Seçildiğinde Hemen Kaydet"),
+                    ),
+              ),
             ),
-          ).yetkiVarMi(!yetkiController.adminMi && !yetkiController.sayimHemenKaydet),
-          Card(
-            child: Observer(
-              builder:
-                  (_) => SwitchListTile.adaptive(
-                    value: viewModel.otomatikEtiketYazdir,
-                    onChanged: viewModel.setOtomatikEtiketYazdir,
-                    title: const Text("Otomatik Sayım Etiketi Yazdır"),
-                  ),
+          if (yetkiController.yazdirmaSayim)
+            Card(
+              child: Observer(
+                builder:
+                    (_) => SwitchListTile.adaptive(
+                      value: viewModel.otomatikEtiketYazdir,
+                      onChanged: viewModel.setOtomatikEtiketYazdir,
+                      title: const Text("Otomatik Sayım Etiketi Yazdır"),
+                    ),
+              ),
             ),
-          ).yetkiVarMi(yetkiController.yazdirmaSayim),
         ],
       ).paddingAll(UIHelper.lowSize),
     ),
@@ -374,7 +445,7 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
         bool result = false;
         await dialogManager.showAreYouSureDialog(() async {
           result = true;
-        }, title: "Seçilen stok filtrelere uymamaktadır. Bu stoğu kullanmak istiyor musunuz?",);
+        }, title: "Seçilen stok filtrelere uymamaktadır. Bu stoğu kullanmak istiyor musunuz?");
         if (!result) {
           return;
         }
