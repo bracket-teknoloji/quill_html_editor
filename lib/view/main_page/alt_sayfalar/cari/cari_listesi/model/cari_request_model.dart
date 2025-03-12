@@ -1,12 +1,11 @@
 import "dart:convert";
 
 import "package:freezed_annotation/freezed_annotation.dart";
+import "package:picker/app/picker_app_imports.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../finans/cek_senet/cek_senet_tahsilati/model/save_cek_senet_model.dart";
-import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "cari_listesi_model.dart";
 
 part "cari_request_model.freezed.dart";
 part "cari_request_model.g.dart";
@@ -48,7 +47,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     sayfa: 1,
     eFaturaGoster: true,
     plasiyerKisitiYok: true,
-    belgeTuru: model.belgeTuru,
+    belgeTuru: model.getEditTipiEnum?.rawValue,
   );
 
   factory CariRequestModel.fromCariListesiModel(CariListesiModel model) => CariRequestModel(
@@ -81,5 +80,8 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
   @override
   CariRequestModel fromJson(Map<String, dynamic> json) => _$CariRequestModelFromJson(json);
 
-  Map<String, dynamic> toJsonWithArray() => toJson()..["KOD"] = null..["KOD"] = jsonEncode(kod);
+  Map<String, dynamic> toJsonWithArray() =>
+      toJson()
+        ..["KOD"] = null
+        ..["KOD"] = jsonEncode(kod);
 }
