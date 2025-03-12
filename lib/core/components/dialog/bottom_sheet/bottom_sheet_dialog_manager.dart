@@ -2,6 +2,7 @@
 
 import "dart:developer";
 
+import "package:animated_text_kit/animated_text_kit.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_image_compress/flutter_image_compress.dart";
@@ -87,7 +88,12 @@ final class BottomSheetDialogManager {
       useSafeArea: true,
       constraints: BoxConstraints.loose(
         Size(
-          MediaQuery.sizeOf(context).width * (context.isLandscape ? 0.4 : 1),
+          MediaQuery.sizeOf(context).width *
+              (context.isLandscape
+                  ? kIsWeb
+                      ? 0.4
+                      : 0.6
+                  : 1),
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),
@@ -102,7 +108,16 @@ final class BottomSheetDialogManager {
                 children: [
                   ListTile(
                     contentPadding: UIHelper.lowPadding,
-                    title: Text(title, style: context.theme.textTheme.titleMedium).paddingOnly(left: UIHelper.lowSize),
+                    title: AnimatedTextKit(
+                      animatedTexts: [
+                        TyperAnimatedText(
+                          title,
+                          textStyle: context.theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                      totalRepeatCount: 1,
+                      displayFullTextOnTap: true,
+                    ).paddingOnly(left: UIHelper.lowSize),
                     trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
                     splashColor: Colors.transparent,
                   ).paddingSymmetric(vertical: UIHelper.lowSize),
@@ -318,7 +333,12 @@ final class BottomSheetDialogManager {
       isScrollControlled: true,
       constraints: BoxConstraints.loose(
         Size(
-          MediaQuery.sizeOf(context).width * (context.isLandscape ? 0.4 : 1),
+          MediaQuery.sizeOf(context).width *
+              (context.isLandscape
+                  ? kIsWeb
+                      ? 0.4
+                      : 0.6
+                  : 1),
           MediaQuery.sizeOf(context).height * 0.9,
         ),
       ),
@@ -332,9 +352,15 @@ final class BottomSheetDialogManager {
                       children: <Widget>[
                         ListTile(
                           contentPadding: UIHelper.lowPadding,
-                          title: Text(
-                            title,
-                            style: context.theme.textTheme.titleMedium,
+                          title: AnimatedTextKit(
+                            animatedTexts: [
+                              TyperAnimatedText(
+                                title,
+                                textStyle: context.theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                            totalRepeatCount: 1,
+                            displayFullTextOnTap: true,
                           ).paddingOnly(left: UIHelper.lowSize),
                           trailing: IconButton(icon: const Icon(Icons.close), onPressed: Get.back),
                           splashColor: Colors.transparent,
