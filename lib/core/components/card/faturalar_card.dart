@@ -133,7 +133,7 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                         return dialogManager.showAreYouSureDialog(() async {
                           if (model.isNew == true) {
                             try {
-                              CacheManager.removeFaturaEditList(model.belgeNo ?? "");
+                              CacheManager.removeFaturaEditListWithUuid(model.uuid ?? "");
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();
                               return;
@@ -350,9 +350,11 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                 children: <Text>[Text("Miktar: ${model.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}")],
               ),
             ],
-            if (widget.showEkAciklama == true && aciklamaList().ext.isNotNullOrEmpty)
+            if (widget.showEkAciklama == true && (aciklamaList().ext.isNotNullOrEmpty || model.aciklama != null)) ...[
               const Divider(indent: 0, endIndent: 0).paddingSymmetric(vertical: UIHelper.midSize),
-            ...aciklamaList(),
+              if (model.aciklama case final value?) Text("Belge Açıklaması: $value"),
+              ...aciklamaList(),
+            ],
           ],
         ),
       ),
