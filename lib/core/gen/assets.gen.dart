@@ -448,6 +448,9 @@ class LottieGenImage {
     bool? addRepaintBoundary,
     FilterQuality? filterQuality,
     void Function(String)? onWarning,
+    _lottie.LottieDecoder? decoder,
+    _lottie.RenderCache? renderCache,
+    bool? backgroundLoading,
   }) {
     return _lottie.Lottie.asset(
       _assetName,
@@ -472,6 +475,9 @@ class LottieGenImage {
       addRepaintBoundary: addRepaintBoundary,
       filterQuality: filterQuality,
       onWarning: onWarning,
+      decoder: decoder,
+      renderCache: renderCache,
+      backgroundLoading: backgroundLoading,
     );
   }
 
