@@ -1165,7 +1165,7 @@ final class YetkiController {
   String? get uretimSonuDepoOnceligi => _profilYetkiModel?.uretimUskDepoOnceligi;
   bool get uretimFireUygulamasi => _isTrue(_paramModel?.uretimFireUyg, skipAdmin: true);
   bool get uretimFireDetayUygulamasi =>
-      _isTrue(_paramModel?.uretimFireDetayUyg, skipAdmin: true) && uretimFireUygulamasi;
+      _isTrue(_paramModel?.uretimFireDetayUyg) && uretimFireUygulamasi;
 
   bool uretimSonuGizlenecekAlanlar(String value) =>
       _isTrue(_profilYetkiModel?.uretimUskGizlenecekAlanlar?.contains(value), skipAdmin: true);
