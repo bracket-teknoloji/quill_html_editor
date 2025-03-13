@@ -517,6 +517,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..seriOpsiyonelSahalar = (json['SeriOpsiyonelSahalar'] as num?)?.toInt()
   ..uretimMiktar2Uyg = json['UretimMiktar2Uyg'] as bool?
   ..uretimFireUyg = json['UretimFireUyg'] as bool?
+  ..uretimFireDetayUyg = json['UretimFireDetayUyg'] as bool?
   ..netsisOzelParamFaturaOzelIletisimVergisi =
       json['NetsisOzelParam_FaturaOzelIletisimVergisi'] as bool?
   ..eMailSunucu = json['eMail_Sunucu'] as String?
@@ -1013,6 +1014,8 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
       if (instance.uretimMiktar2Uyg case final value?)
         'UretimMiktar2Uyg': value,
       if (instance.uretimFireUyg case final value?) 'UretimFireUyg': value,
+      if (instance.uretimFireDetayUyg case final value?)
+        'UretimFireDetayUyg': value,
       if (instance.netsisOzelParamFaturaOzelIletisimVergisi case final value?)
         'NetsisOzelParam_FaturaOzelIletisimVergisi': value,
       if (instance.eMailSunucu case final value?) 'eMail_Sunucu': value,
