@@ -333,7 +333,7 @@ abstract class _FaturalarViewModelBase
         addObservableList(result.dataList);
       } else {
         final cachedList = CacheManager.getFaturaEditLists(editTipiEnum);
-        setObservableList(cachedList);
+        setObservableList(cachedList ?? []);
         addObservableList(result.dataList);
         setParamData(result.paramData ?? {});
       }
