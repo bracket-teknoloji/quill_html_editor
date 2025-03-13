@@ -1449,6 +1449,7 @@ final class KalemModel with NetworkManagerMixin {
     this.tamamlananMiktar,
     this.detayId,
     this.kayityapankul,
+    this.fireListe,
   });
 
   factory KalemModel.forTalepTeklifSiparislestir(KalemModel model) =>
@@ -1542,7 +1543,7 @@ final class KalemModel with NetworkManagerMixin {
       if (model.bulunanSerilot3 case final value?) newSeri.seri3 = value;
       if (model.bulunanSerilot4 case final value?) newSeri.seri4 = value;
     }
-    return kalemModel..seriList = [if (newSeri.miktar != null && newSeri.miktar != 0)newSeri];
+    return kalemModel..seriList = [if (newSeri.miktar != null && newSeri.miktar != 0) newSeri];
   }
   @HiveField(0)
   @JsonKey(defaultValue: false, name: "ISKONTO_1_ORAN_MI")
@@ -1854,6 +1855,7 @@ final class KalemModel with NetworkManagerMixin {
   int? detayId;
   @HiveField(152)
   String? kayityapankul;
+  List<KalemFireModel>? fireListe;
 
   double koliBilesenOrandan(double bilesenOrani) {
     final double toplamOran = kalemList?.map((e) => e.koliBilesenOrani).toList().sum ?? 0;
@@ -2079,4 +2081,21 @@ class BarkodList {
   double? miktar2;
 
   Map<String, dynamic> toJson() => _$BarkodListToJson(this);
+}
+
+@JsonSerializable(fieldRename: FieldRename.pascal)
+@CopyWith()
+final class KalemFireModel with NetworkManagerMixin {
+  KalemFireModel({this.kodu, this.tanimi, this.miktar});
+
+  factory KalemFireModel.fromJson(Map<String, dynamic> json) => _$KalemFireModelFromJson(json);
+  String? kodu;
+  String? tanimi;
+  double? miktar;
+
+  @override
+  NetworkManagerMixin? fromJson(Map<String, dynamic> json) => _$KalemFireModelFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$KalemFireModelToJson(this);
 }

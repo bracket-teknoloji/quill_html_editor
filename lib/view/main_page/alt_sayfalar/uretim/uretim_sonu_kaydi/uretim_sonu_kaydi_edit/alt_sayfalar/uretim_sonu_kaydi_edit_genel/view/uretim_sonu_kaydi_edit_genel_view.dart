@@ -78,9 +78,11 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
       ..setRequestModel(widget.requestModel)
       ..setOnSave(widget.onSave)
       ..setEkAlanlarList(widget.ekAlanlarList);
-    if (!widget.model.baseEditEnum.ekleMi && widget.model.model != null) {
-      viewModel.setModel(widget.model.model);
-      viewModel.requestModel.kalemList = [widget.model.model!];
+    if (!widget.model.baseEditEnum.ekleMi) {
+      if (widget.model.model case final value?) {
+        viewModel.setModel(value);
+        viewModel.requestModel.kalemList = [value];
+      }
     }
     viewModel.kalemliMi = yetkiController.uretimSonuKalemliYapi;
     ekAlanlarControllers = [];
@@ -107,7 +109,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     if (viewModel.ekAlanlarList != null) {
       ekAlanlarControllers.addAll(
         List.generate(
-          viewModel.ekAlanlarList!.length,
+          viewModel.ekAlanlarList?.length ?? 0,
           (index) => TextEditingController(text: model?.ekAlanlar?[index] ?? ""),
         ),
       );
@@ -123,6 +125,8 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
         if (result != null) {
           belgeNoController.text = result;
         }
+        await girisDepoOnTap();
+        await cikisDepoOnTap();
       } else {
         // await viewModel.getKalemler();
         // viewModel.setModel(widget.model.model);
@@ -143,8 +147,13 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
           viewModel.kalem?.maliyetTutari.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat) ?? "";
       ekAlan1Controller.text = viewModel.kalem?.ekalan1 ?? "";
       miktarController.text = viewModel.kalem?.miktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
-      hurdaFireMiktariController.text =
-          viewModel.kalem?.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
+      if (yetkiController.uretimFireDetayUygulamasi) {
+        hurdaFireMiktariController.text =
+            "Toplam (${viewModel.kalem?.fireListe?.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0}) | ${viewModel.kalem?.fireListe?.length ?? 0} Kalem";
+      } else {
+        hurdaFireMiktariController.text =
+            viewModel.kalem?.miktar2.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? "";
+      }
       ekAlan1Controller.text = viewModel.kalem?.ekalan1 ?? "";
       ekAlan2Controller.text = viewModel.kalem?.ekalan2 ?? "";
       aciklamaController.text = model?.aciklama ?? "";
@@ -302,13 +311,15 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     suffixMore: true,
     readOnly: true,
     valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.cikisDepo.toStringIfNotNull ?? "")),
-    onTap: () async {
-      final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, model?.cikisDepo);
-      if (result == null) return;
-      viewModel.setCikisDepo(result);
-      cikisDepoController.text = result.depoTanimi ?? "";
-    },
+    onTap: cikisDepoOnTap,
   );
+
+  Future<void> cikisDepoOnTap() async {
+    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, model?.cikisDepo);
+    if (result == null) return;
+    viewModel.setCikisDepo(result);
+    cikisDepoController.text = result.depoTanimi ?? "";
+  }
 
   CustomTextField girisDepoField() => CustomTextField(
     labelText: "Giriş Depo",
@@ -318,13 +329,15 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     suffixMore: true,
     readOnly: true,
     valueWidget: Observer(builder: (_) => Text(viewModel.requestModel.girisDepo.toStringIfNotNull ?? "")),
-    onTap: () async {
-      final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, model?.girisDepo);
-      if (result == null) return;
-      viewModel.setGirisDepo(result);
-      girisDepoController.text = result.depoTanimi ?? "";
-    },
+    onTap: girisDepoOnTap,
   );
+
+  Future<void> girisDepoOnTap() async {
+    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, model?.girisDepo);
+    if (result == null) return;
+    viewModel.setGirisDepo(result);
+    girisDepoController.text = result.depoTanimi ?? "";
+  }
 
   CustomTextField projeField() => CustomTextField(
     labelText: "Proje",
@@ -433,9 +446,20 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     enabled: isEnabled,
     controller: hurdaFireMiktariController,
     isFormattedString: true,
+    readOnly: !yetkiController.uretimFireDetayUygulamasi,
     suffixMore: yetkiController.uretimFireDetayUygulamasi,
-     
     keyboardType: const TextInputType.numberWithOptions(decimal: true),
+    onTap:
+        yetkiController.uretimFireDetayUygulamasi
+            ? () async {
+              final result = await Get.toNamed("mainPage/uretimFireBilgileri", arguments: viewModel.kalem);
+              if (result case final List<KalemFireModel> value?) {
+                viewModel.setKalemFireList(value);
+                hurdaFireMiktariController.text =
+                    "Toplam (${value.map((e) => e.miktar ?? 0).sum.commaSeparatedWithDecimalDigits(OndalikEnum.miktar)}) | ${value.length} Kalem";
+              }
+            }
+            : null,
     onChanged: (value) => viewModel.setHurdaMiktari(value.toDoubleWithFormattedString),
   );
 

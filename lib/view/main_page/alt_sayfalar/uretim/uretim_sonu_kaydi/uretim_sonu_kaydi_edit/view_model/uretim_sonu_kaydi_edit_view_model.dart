@@ -73,6 +73,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
         model?.copyWith(
           cikisDepoAdi: item?.cikisDepoAdi,
           girisDepoAdi: item?.girisDepoAdi,
+          fireListe: item?.fireListe,
           girisdepoKodu: item?.girisDepo,
           cikisdepoKodu: item?.cikisDepo,
         ),

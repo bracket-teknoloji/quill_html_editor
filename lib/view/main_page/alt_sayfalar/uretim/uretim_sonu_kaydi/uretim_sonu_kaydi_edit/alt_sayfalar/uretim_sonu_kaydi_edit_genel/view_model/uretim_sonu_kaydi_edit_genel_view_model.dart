@@ -77,6 +77,9 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setMiktar(double? miktar) => setModel(kalem?.copyWith(miktar: miktar));
 
   @action
+  void setKalemFireList(List<KalemFireModel>? list) => setModel(kalem?.copyWith(fireListe: list));
+
+  @action
   void setHurdaMiktari(double? miktar) => setModel(kalem?.copyWith(miktar2: miktar));
 
   @action

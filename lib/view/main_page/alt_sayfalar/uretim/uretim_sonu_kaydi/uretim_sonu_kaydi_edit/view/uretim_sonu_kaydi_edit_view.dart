@@ -65,7 +65,6 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
         await Future.delayed(const Duration(milliseconds: 100));
         if (StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate() == false &&
             tabController.index == 1) {
-          // get back first tab
           tabController.animateTo(0);
         }
       });

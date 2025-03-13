@@ -714,6 +714,19 @@ final class NetworkManager {
     return null;
   }
 
+  Future<List<KalemFireModel>?> getKalemFireModel() async {
+    final result = await dioPost<KullanicilarModel>(
+      path: ApiUrls.getGenelRehber,
+      bodyModel: const KullanicilarModel(),
+      showLoading: true,
+      data: {"RehberKodu": 9},
+    );
+    if (result.isSuccess) {
+      return result.dataList.map((e) => KalemFireModel(kodu: e.kodu, tanimi: e.adi)).toList();
+    }
+    return null;
+  }
+
   Future<BaseSiparisEditModel?> getFatura(BuildContext context, SiparisEditRequestModel model) async {
     final result = await dioGet<BaseSiparisEditModel>(
       path: ApiUrls.getFaturalar,

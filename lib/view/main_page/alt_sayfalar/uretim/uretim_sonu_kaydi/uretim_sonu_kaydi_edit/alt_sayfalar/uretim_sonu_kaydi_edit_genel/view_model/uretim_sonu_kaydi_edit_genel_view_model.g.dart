@@ -173,6 +173,19 @@ mixin _$UretimSonuKaydiEditGenelViewModel
   }
 
   @override
+  void setKalemFireList(List<KalemFireModel>? list) {
+    final _$actionInfo =
+        _$_UretimSonuKaydiEditViewModelBaseActionController.startAction(
+            name: '_UretimSonuKaydiEditViewModelBase.setKalemFireList');
+    try {
+      return super.setKalemFireList(list);
+    } finally {
+      _$_UretimSonuKaydiEditViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setHurdaMiktari(double? miktar) {
     final _$actionInfo = _$_UretimSonuKaydiEditViewModelBaseActionController
         .startAction(name: '_UretimSonuKaydiEditViewModelBase.setHurdaMiktari');

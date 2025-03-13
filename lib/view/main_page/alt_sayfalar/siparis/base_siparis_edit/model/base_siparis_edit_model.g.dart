@@ -2850,6 +2850,8 @@ abstract class _$KalemModelCWProxy {
 
   KalemModel kayityapankul(String? kayityapankul);
 
+  KalemModel fireListe(List<KalemFireModel>? fireListe);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -3010,6 +3012,7 @@ abstract class _$KalemModelCWProxy {
     double? tamamlananMiktar,
     int? detayId,
     String? kayityapankul,
+    List<KalemFireModel>? fireListe,
   });
 }
 
@@ -3537,6 +3540,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
       this(kayityapankul: kayityapankul);
 
   @override
+  KalemModel fireListe(List<KalemFireModel>? fireListe) =>
+      this(fireListe: fireListe);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -3698,6 +3705,7 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
     Object? tamamlananMiktar = const $CopyWithPlaceholder(),
     Object? detayId = const $CopyWithPlaceholder(),
     Object? kayityapankul = const $CopyWithPlaceholder(),
+    Object? fireListe = const $CopyWithPlaceholder(),
   }) {
     return KalemModel(
       iskonto1OranMi: iskonto1OranMi == const $CopyWithPlaceholder()
@@ -4315,6 +4323,10 @@ class _$KalemModelCWProxyImpl implements _$KalemModelCWProxy {
           ? _value.kayityapankul
           // ignore: cast_nullable_to_non_nullable
           : kayityapankul as String?,
+      fireListe: fireListe == const $CopyWithPlaceholder()
+          ? _value.fireListe
+          // ignore: cast_nullable_to_non_nullable
+          : fireListe as List<KalemFireModel>?,
     );
   }
 }
@@ -4323,6 +4335,77 @@ extension $KalemModelCopyWith on KalemModel {
   /// Returns a callable class that can be used as follows: `instanceOfKalemModel.copyWith(...)` or like so:`instanceOfKalemModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$KalemModelCWProxy get copyWith => _$KalemModelCWProxyImpl(this);
+}
+
+abstract class _$KalemFireModelCWProxy {
+  KalemFireModel kodu(String? kodu);
+
+  KalemFireModel tanimi(String? tanimi);
+
+  KalemFireModel miktar(double? miktar);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemFireModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// KalemFireModel(...).copyWith(id: 12, name: "My name")
+  /// ````
+  KalemFireModel call({
+    String? kodu,
+    String? tanimi,
+    double? miktar,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfKalemFireModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfKalemFireModel.copyWith.fieldName(...)`
+class _$KalemFireModelCWProxyImpl implements _$KalemFireModelCWProxy {
+  const _$KalemFireModelCWProxyImpl(this._value);
+
+  final KalemFireModel _value;
+
+  @override
+  KalemFireModel kodu(String? kodu) => this(kodu: kodu);
+
+  @override
+  KalemFireModel tanimi(String? tanimi) => this(tanimi: tanimi);
+
+  @override
+  KalemFireModel miktar(double? miktar) => this(miktar: miktar);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `KalemFireModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// KalemFireModel(...).copyWith(id: 12, name: "My name")
+  /// ````
+  KalemFireModel call({
+    Object? kodu = const $CopyWithPlaceholder(),
+    Object? tanimi = const $CopyWithPlaceholder(),
+    Object? miktar = const $CopyWithPlaceholder(),
+  }) {
+    return KalemFireModel(
+      kodu: kodu == const $CopyWithPlaceholder()
+          ? _value.kodu
+          // ignore: cast_nullable_to_non_nullable
+          : kodu as String?,
+      tanimi: tanimi == const $CopyWithPlaceholder()
+          ? _value.tanimi
+          // ignore: cast_nullable_to_non_nullable
+          : tanimi as String?,
+      miktar: miktar == const $CopyWithPlaceholder()
+          ? _value.miktar
+          // ignore: cast_nullable_to_non_nullable
+          : miktar as double?,
+    );
+  }
+}
+
+extension $KalemFireModelCopyWith on KalemFireModel {
+  /// Returns a callable class that can be used as follows: `instanceOfKalemFireModel.copyWith(...)` or like so:`instanceOfKalemFireModel.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$KalemFireModelCWProxy get copyWith => _$KalemFireModelCWProxyImpl(this);
 }
 
 // **************************************************************************
@@ -6136,6 +6219,9 @@ KalemModel _$KalemModelFromJson(Map<String, dynamic> json) => KalemModel(
       tamamlananMiktar: (json['TAMAMLANAN_MIKTAR'] as num?)?.toDouble(),
       detayId: (json['DETAY_ID'] as num?)?.toInt(),
       kayityapankul: json['KAYITYAPANKUL'] as String?,
+      fireListe: (json['FIRE_LISTE'] as List<dynamic>?)
+          ?.map((e) => KalemFireModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
@@ -6323,6 +6409,8 @@ Map<String, dynamic> _$KalemModelToJson(KalemModel instance) =>
         'TAMAMLANAN_MIKTAR': value,
       if (instance.detayId case final value?) 'DETAY_ID': value,
       if (instance.kayityapankul case final value?) 'KAYITYAPANKUL': value,
+      if (instance.fireListe?.map((e) => e.toJson()).toList() case final value?)
+        'FIRE_LISTE': value,
     };
 
 BarkodList _$BarkodListFromJson(Map<String, dynamic> json) => BarkodList(
@@ -6336,4 +6424,18 @@ Map<String, dynamic> _$BarkodListToJson(BarkodList instance) =>
       if (instance.barkod case final value?) 'BARKOD': value,
       if (instance.miktar case final value?) 'MIKTAR': value,
       if (instance.miktar2 case final value?) 'MIKTAR2': value,
+    };
+
+KalemFireModel _$KalemFireModelFromJson(Map<String, dynamic> json) =>
+    KalemFireModel(
+      kodu: json['Kodu'] as String?,
+      tanimi: json['Tanimi'] as String?,
+      miktar: (json['Miktar'] as num?)?.toDouble(),
+    );
+
+Map<String, dynamic> _$KalemFireModelToJson(KalemFireModel instance) =>
+    <String, dynamic>{
+      if (instance.kodu case final value?) 'Kodu': value,
+      if (instance.tanimi case final value?) 'Tanimi': value,
+      if (instance.miktar case final value?) 'Miktar': value,
     };

@@ -14,6 +14,7 @@ import "package:picker/view/main_page/alt_sayfalar/transfer/depo_talep_mal_topla
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/depo_talep_kalem_detay/view/depo_talep_kalem_detay_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/view/transfer_mal_talebi_edit_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view/transfer_mal_talebi_listesi_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_fire_bilgileri/view/uretim_fire_bilgileri_view.dart";
 
 import "picker_app_imports.dart";
 
@@ -621,6 +622,7 @@ final class PickerMaterialApp extends StatelessWidget {
           //* * Üretim Sonu Kaydı
           GetPage(name: "/uretimSonuKaydi", page: UretimSonuKaydiListesiView.new),
           GetPage(name: "/uretimSonuKaydiEdit", page: () => UretimSonuKaydiEditView(model: Get.arguments)),
+          GetPage(name: "/uretimFireBilgileri", page: () => UretimFireBilgileriView(model: Get.arguments)),
           GetPage(name: "/uretimSonuKaydiKalemEdit", page: () => UretimSonuKaydiKalemEkleView(model: Get.arguments)),
           GetPage(name: "/uretimSonuRaporu", page: () => UretimSonuRaporuView(model: Get.arguments)),
           GetPage(name: "/uskSeriListesi", page: () => UretimSonuKaydiSeriListesi(model: Get.arguments)),
