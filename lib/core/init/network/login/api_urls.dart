@@ -43,6 +43,7 @@ abstract final class ApiUrls {
   static const String saveCari = "Cari/SaveCari";
   static const String saveCariHareket = "Cari/SaveCariHareket";
   static const String getCariharitasi = "Cari/GetCariHaritasi";
+  static const String saveOzelHesapKapatma = "Cari/SaveOzelHesapKapatma";
 
   //* E-Belge
   static const String eBelgeIslemi = "EBelge/EBelgeIslemi";

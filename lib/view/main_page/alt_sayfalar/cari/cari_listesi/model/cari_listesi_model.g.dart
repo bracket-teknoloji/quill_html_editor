@@ -249,8 +249,6 @@ abstract class _$CariListesiModelCWProxy {
 
   CariListesiModel genIsk1O(double? genIsk1O);
 
-  CariListesiModel hesapTutmaSekli(String? hesapTutmaSekli);
-
   CariListesiModel irsaliyeRiskOrani(double? irsaliyeRiskOrani);
 
   CariListesiModel isletmeKodu(int? isletmeKodu);
@@ -423,7 +421,6 @@ abstract class _$CariListesiModelCWProxy {
     String? faxNo,
     int? fiyatSirasi,
     double? genIsk1O,
-    String? hesapTutmaSekli,
     double? irsaliyeRiskOrani,
     int? isletmeKodu,
     String? kayitYapanKullanici,
@@ -864,10 +861,6 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
   CariListesiModel genIsk1O(double? genIsk1O) => this(genIsk1O: genIsk1O);
 
   @override
-  CariListesiModel hesapTutmaSekli(String? hesapTutmaSekli) =>
-      this(hesapTutmaSekli: hesapTutmaSekli);
-
-  @override
   CariListesiModel irsaliyeRiskOrani(double? irsaliyeRiskOrani) =>
       this(irsaliyeRiskOrani: irsaliyeRiskOrani);
 
@@ -1079,7 +1072,6 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
     Object? faxNo = const $CopyWithPlaceholder(),
     Object? fiyatSirasi = const $CopyWithPlaceholder(),
     Object? genIsk1O = const $CopyWithPlaceholder(),
-    Object? hesapTutmaSekli = const $CopyWithPlaceholder(),
     Object? irsaliyeRiskOrani = const $CopyWithPlaceholder(),
     Object? isletmeKodu = const $CopyWithPlaceholder(),
     Object? kayitYapanKullanici = const $CopyWithPlaceholder(),
@@ -1589,10 +1581,6 @@ class _$CariListesiModelCWProxyImpl implements _$CariListesiModelCWProxy {
           ? _value.genIsk1O
           // ignore: cast_nullable_to_non_nullable
           : genIsk1O as double?,
-      hesapTutmaSekli: hesapTutmaSekli == const $CopyWithPlaceholder()
-          ? _value.hesapTutmaSekli
-          // ignore: cast_nullable_to_non_nullable
-          : hesapTutmaSekli as String?,
       irsaliyeRiskOrani: irsaliyeRiskOrani == const $CopyWithPlaceholder()
           ? _value.irsaliyeRiskOrani
           // ignore: cast_nullable_to_non_nullable
@@ -1828,7 +1816,6 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       faxNo: fields[127] as String?,
       fiyatSirasi: fields[144] as int?,
       genIsk1O: fields[126] as double?,
-      hesapTutmaSekli: fields[118] as String?,
       irsaliyeRiskOrani: fields[142] as double?,
       isletmeKodu: fields[119] as int?,
       kayitYapanKullanici: fields[131] as String?,
@@ -1857,7 +1844,7 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
   @override
   void write(BinaryWriter writer, CariListesiModel obj) {
     writer
-      ..writeByte(144)
+      ..writeByte(143)
       ..writeByte(0)
       ..write(obj.cariKodu)
       ..writeByte(1)
@@ -2092,8 +2079,6 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..write(obj.sahisSirketiMi)
       ..writeByte(117)
       ..write(obj.odemeKodu)
-      ..writeByte(118)
-      ..write(obj.hesapTutmaSekli)
       ..writeByte(119)
       ..write(obj.isletmeKodu)
       ..writeByte(120)
@@ -2289,7 +2274,6 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       faxNo: json['FAX_NO'] as String?,
       fiyatSirasi: (json['FIYAT_SIRASI'] as num?)?.toInt(),
       genIsk1O: (json['GEN_ISK1_O'] as num?)?.toDouble(),
-      hesapTutmaSekli: json['HESAP_TUTMA_SEKLI'] as String?,
       irsaliyeRiskOrani: (json['IRSALIYE_RISK_ORANI'] as num?)?.toDouble(),
       isletmeKodu: (json['ISLETME_KODU'] as num?)?.toInt(),
       kayitYapanKullanici: json['KAYIT_YAPAN_KULLANICI'] as String?,
@@ -2444,8 +2428,6 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
       if (instance.kilitTipi case final value?) 'KILIT_TIPI': value,
       if (instance.sahisSirketiMi case final value?) 'SAHIS_SIRKETI_MI': value,
       if (instance.odemeKodu case final value?) 'ODEME_KODU': value,
-      if (instance.hesapTutmaSekli case final value?)
-        'HESAP_TUTMA_SEKLI': value,
       if (instance.isletmeKodu case final value?) 'ISLETME_KODU': value,
       if (instance.plasiyerAdi case final value?) 'PLASIYER_ADI': value,
       if (instance.kurFarkiBorcMuhKodu case final value?)

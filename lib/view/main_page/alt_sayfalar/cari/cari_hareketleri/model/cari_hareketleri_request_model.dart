@@ -15,7 +15,9 @@ class CariHareketleriRequestModel with _$CariHareketleriRequestModel {
     String? arrHareketTuru,
     String? baslamaTarihi,
     String? bitisTarihi,
-    String? ba,
+    @JsonKey(name: "BA") String? ba,
+    String? menuKodu,
+    String? kapatilmis,
   }) = _CariHareketleriRequestModel;
 
   factory CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) =>

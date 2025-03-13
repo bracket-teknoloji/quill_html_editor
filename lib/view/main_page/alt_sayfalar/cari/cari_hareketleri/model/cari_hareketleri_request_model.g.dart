@@ -17,7 +17,9 @@ _$CariHareketleriRequestModelImpl _$$CariHareketleriRequestModelImplFromJson(
       arrHareketTuru: json['ArrHareketTuru'] as String?,
       baslamaTarihi: json['BaslamaTarihi'] as String?,
       bitisTarihi: json['BitisTarihi'] as String?,
-      ba: json['Ba'] as String?,
+      ba: json['BA'] as String?,
+      menuKodu: json['MenuKodu'] as String?,
+      kapatilmis: json['Kapatilmis'] as String?,
     );
 
 Map<String, dynamic> _$$CariHareketleriRequestModelImplToJson(
@@ -32,5 +34,7 @@ Map<String, dynamic> _$$CariHareketleriRequestModelImplToJson(
       if (instance.arrHareketTuru case final value?) 'ArrHareketTuru': value,
       if (instance.baslamaTarihi case final value?) 'BaslamaTarihi': value,
       if (instance.bitisTarihi case final value?) 'BitisTarihi': value,
-      if (instance.ba case final value?) 'Ba': value,
+      if (instance.ba case final value?) 'BA': value,
+      if (instance.menuKodu case final value?) 'MenuKodu': value,
+      if (instance.kapatilmis case final value?) 'Kapatilmis': value,
     };

@@ -8,6 +8,7 @@ import "package:picker/core/base/view/yazici_edit/view/yazici_edit_view.dart";
 import "package:picker/core/base/view/yazici_listesi/view/yazici_listesi_view.dart";
 import "package:picker/core/base/view/yazici_rehberi/view/yazici_rehberi_view.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/ozel_hesap_kapatma/view/ozel_hesap_kapatma_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/fatura_karlilik_raporu/view/fatura_karlilik_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/depo_ta%C5%9Fep_toplananlar/view/depo_talep_toplananlar_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/depo_talep_mal_toplama/view/depo_talep_mal_toplama_view.dart";
@@ -208,6 +209,7 @@ final class PickerMaterialApp extends StatelessWidget {
           GetPage(name: "/bankaIslemleri", page: BankaIslemleriView.new),
           GetPage(name: "/bankaHareketleri", page: () => BankaHareketleriView(model: Get.arguments)),
           GetPage(name: "/cariEFTHavale", page: () => CariHavaleEftView(cariListesiModel: Get.arguments)),
+          GetPage(name: "/ozelHesapKapatma", page: () => OzelHesapKapatmaView(cariModel: Get.arguments)),
           GetPage(name: "/bankaKasaTransferi", page: BankaKasaTransferiView.new),
           GetPage(
             name: "/hesaplarArasiVirman",

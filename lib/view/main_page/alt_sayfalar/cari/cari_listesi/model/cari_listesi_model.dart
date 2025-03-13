@@ -136,7 +136,6 @@ final class CariListesiModel with NetworkManagerMixin {
     this.faxNo,
     this.fiyatSirasi,
     this.genIsk1O,
-    this.hesapTutmaSekli,
     this.irsaliyeRiskOrani,
     this.isletmeKodu,
     this.kayitYapanKullanici,
@@ -446,8 +445,6 @@ final class CariListesiModel with NetworkManagerMixin {
   bool? sahisSirketiMi;
   @HiveField(117)
   String? odemeKodu;
-  @HiveField(118)
-  String? hesapTutmaSekli;
   @HiveField(119)
   int? isletmeKodu;
   @HiveField(120)

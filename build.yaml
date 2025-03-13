@@ -7,7 +7,7 @@ targets:
           include_if_null: false
           create_to_json: true
           field_rename: screamingSnake
-      freezed:
+      freezed|freezed:
         options:
           immutable: true
           union_key: type

@@ -86,7 +86,13 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
         viewModel
           ..setCariModel(
             await networkManager.getCariModel(
-              CariRequestModel(kod: [widget.cariListesiModel?.cariKodu ?? ""], secildi: "E", belgeTuru: "DCE", plasiyerKisitiYok: true, eFaturaGoster: true),
+              CariRequestModel(
+                kod: [widget.cariListesiModel?.cariKodu ?? ""],
+                secildi: "E",
+                belgeTuru: "DCE",
+                plasiyerKisitiYok: true,
+                eFaturaGoster: true,
+              ),
             ),
           )
           ..setCariKodu(widget.cariListesiModel?.cariKodu)
@@ -153,6 +159,9 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                 final result = await viewModel.postData();
                 if (result.isSuccess) {
                   dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
+                  if (result.paramData?["CAHAR_INCKEY"] != null && yetkiController.ozelHesapKapatmaIslemi) {
+                    await Get.toNamed("mainPage/ozelHesapKapatma", arguments: viewModel.cariModel?..alacakToplami = viewModel.model.tutar..aciklama1 = viewModel.model.aciklama);
+                  }
                   Get.back(result: result.isSuccess);
                 }
               });

@@ -1333,4 +1333,8 @@ final class YetkiController {
       [EditTipiEnum.satisIrsaliye, EditTipiEnum.satisFatura, EditTipiEnum.depoTransferi]
           .where((element) => _isTrue(_profilYetkiModel?.genelBelgeKontrolBelgeTipleri?.contains(element.rawValue)))
           .toList();
+
+
+          bool get ozelHesapKapatmaIslemi => _isTrue(_profilYetkiModel?.cariOzelHesapKapatma);
+          bool get ozelHesapKapatmaIslemiSil => _isTrue(_profilYetkiModel?.cariOzelHesapKapatmaSil);
 }

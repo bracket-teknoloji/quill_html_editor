@@ -40,8 +40,14 @@ mixin _$CariHareketleriRequestModel {
   set baslamaTarihi(String? value) => throw _privateConstructorUsedError;
   String? get bitisTarihi => throw _privateConstructorUsedError;
   set bitisTarihi(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: "BA")
   String? get ba => throw _privateConstructorUsedError;
+  @JsonKey(name: "BA")
   set ba(String? value) => throw _privateConstructorUsedError;
+  String? get menuKodu => throw _privateConstructorUsedError;
+  set menuKodu(String? value) => throw _privateConstructorUsedError;
+  String? get kapatilmis => throw _privateConstructorUsedError;
+  set kapatilmis(String? value) => throw _privateConstructorUsedError;
 
   /// Serializes this CariHareketleriRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -70,7 +76,9 @@ abstract class $CariHareketleriRequestModelCopyWith<$Res> {
       String? arrHareketTuru,
       String? baslamaTarihi,
       String? bitisTarihi,
-      String? ba});
+      @JsonKey(name: "BA") String? ba,
+      String? menuKodu,
+      String? kapatilmis});
 }
 
 /// @nodoc
@@ -98,6 +106,8 @@ class _$CariHareketleriRequestModelCopyWithImpl<$Res,
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
     Object? ba = freezed,
+    Object? menuKodu = freezed,
+    Object? kapatilmis = freezed,
   }) {
     return _then(_value.copyWith(
       siralama: freezed == siralama
@@ -136,6 +146,14 @@ class _$CariHareketleriRequestModelCopyWithImpl<$Res,
           ? _value.ba
           : ba // ignore: cast_nullable_to_non_nullable
               as String?,
+      menuKodu: freezed == menuKodu
+          ? _value.menuKodu
+          : menuKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kapatilmis: freezed == kapatilmis
+          ? _value.kapatilmis
+          : kapatilmis // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -158,7 +176,9 @@ abstract class _$$CariHareketleriRequestModelImplCopyWith<$Res>
       String? arrHareketTuru,
       String? baslamaTarihi,
       String? bitisTarihi,
-      String? ba});
+      @JsonKey(name: "BA") String? ba,
+      String? menuKodu,
+      String? kapatilmis});
 }
 
 /// @nodoc
@@ -185,6 +205,8 @@ class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
     Object? ba = freezed,
+    Object? menuKodu = freezed,
+    Object? kapatilmis = freezed,
   }) {
     return _then(_$CariHareketleriRequestModelImpl(
       siralama: freezed == siralama
@@ -223,6 +245,14 @@ class __$$CariHareketleriRequestModelImplCopyWithImpl<$Res>
           ? _value.ba
           : ba // ignore: cast_nullable_to_non_nullable
               as String?,
+      menuKodu: freezed == menuKodu
+          ? _value.menuKodu
+          : menuKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
+      kapatilmis: freezed == kapatilmis
+          ? _value.kapatilmis
+          : kapatilmis // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -241,7 +271,9 @@ class _$CariHareketleriRequestModelImpl
       this.arrHareketTuru,
       this.baslamaTarihi,
       this.bitisTarihi,
-      this.ba});
+      @JsonKey(name: "BA") this.ba,
+      this.menuKodu,
+      this.kapatilmis});
 
   factory _$CariHareketleriRequestModelImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -265,7 +297,12 @@ class _$CariHareketleriRequestModelImpl
   @override
   String? bitisTarihi;
   @override
+  @JsonKey(name: "BA")
   String? ba;
+  @override
+  String? menuKodu;
+  @override
+  String? kapatilmis;
 
   /// Create a copy of CariHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -295,7 +332,9 @@ abstract class _CariHareketleriRequestModel
       String? arrHareketTuru,
       String? baslamaTarihi,
       String? bitisTarihi,
-      String? ba}) = _$CariHareketleriRequestModelImpl;
+      @JsonKey(name: "BA") String? ba,
+      String? menuKodu,
+      String? kapatilmis}) = _$CariHareketleriRequestModelImpl;
 
   factory _CariHareketleriRequestModel.fromJson(Map<String, dynamic> json) =
       _$CariHareketleriRequestModelImpl.fromJson;
@@ -327,8 +366,16 @@ abstract class _CariHareketleriRequestModel
   String? get bitisTarihi;
   set bitisTarihi(String? value);
   @override
+  @JsonKey(name: "BA")
   String? get ba;
+  @JsonKey(name: "BA")
   set ba(String? value);
+  @override
+  String? get menuKodu;
+  set menuKodu(String? value);
+  @override
+  String? get kapatilmis;
+  set kapatilmis(String? value);
 
   /// Create a copy of CariHareketleriRequestModel
   /// with the given fields replaced by the non-null parameter values.
