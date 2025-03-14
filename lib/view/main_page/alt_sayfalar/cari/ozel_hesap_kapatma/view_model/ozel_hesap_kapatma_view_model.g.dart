@@ -25,6 +25,22 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
     });
   }
 
+  late final _$selectedListAtom = Atom(
+      name: '_OzelHesapKapatmaViewModelBase.selectedList', context: context);
+
+  @override
+  ObservableList<CariHareketleriModel> get selectedList {
+    _$selectedListAtom.reportRead();
+    return super.selectedList;
+  }
+
+  @override
+  set selectedList(ObservableList<CariHareketleriModel> value) {
+    _$selectedListAtom.reportWrite(value, super.selectedList, () {
+      super.selectedList = value;
+    });
+  }
+
   late final _$cariHareketleriRequestModelAtom = Atom(
       name: '_OzelHesapKapatmaViewModelBase.cariHareketleriRequestModel',
       context: context);
@@ -43,6 +59,24 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
     });
   }
 
+  late final _$ozelHesapKapatmaSaveModelAtom = Atom(
+      name: '_OzelHesapKapatmaViewModelBase.ozelHesapKapatmaSaveModel',
+      context: context);
+
+  @override
+  OzelHesapKapatmaSaveModel get ozelHesapKapatmaSaveModel {
+    _$ozelHesapKapatmaSaveModelAtom.reportRead();
+    return super.ozelHesapKapatmaSaveModel;
+  }
+
+  @override
+  set ozelHesapKapatmaSaveModel(OzelHesapKapatmaSaveModel value) {
+    _$ozelHesapKapatmaSaveModelAtom
+        .reportWrite(value, super.ozelHesapKapatmaSaveModel, () {
+      super.ozelHesapKapatmaSaveModel = value;
+    });
+  }
+
   late final _$getDataAsyncAction =
       AsyncAction('_OzelHesapKapatmaViewModelBase.getData', context: context);
 
@@ -54,6 +88,17 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
   late final _$_OzelHesapKapatmaViewModelBaseActionController =
       ActionController(
           name: '_OzelHesapKapatmaViewModelBase', context: context);
+
+  @override
+  void checkSelectedList(bool value, CariHareketleriModel model) {
+    final _$actionInfo = _$_OzelHesapKapatmaViewModelBaseActionController
+        .startAction(name: '_OzelHesapKapatmaViewModelBase.checkSelectedList');
+    try {
+      return super.checkSelectedList(value, model);
+    } finally {
+      _$_OzelHesapKapatmaViewModelBaseActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setObservableList(List<CariHareketleriModel>? list) {
@@ -70,7 +115,9 @@ mixin _$OzelHesapKapatmaViewModel on _OzelHesapKapatmaViewModelBase, Store {
   String toString() {
     return '''
 observableList: ${observableList},
-cariHareketleriRequestModel: ${cariHareketleriRequestModel}
+selectedList: ${selectedList},
+cariHareketleriRequestModel: ${cariHareketleriRequestModel},
+ozelHesapKapatmaSaveModel: ${ozelHesapKapatmaSaveModel}
     ''';
   }
 }

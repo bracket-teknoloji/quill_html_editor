@@ -1838,13 +1838,13 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       vadeUyarisi: fields[140] as String?,
       webAdresi: fields[129] as String?,
       yurtIciDovizKodu: fields[125] as int?,
-    );
+    )..ozelKapatmaIncKey = fields[145] as int?;
   }
 
   @override
   void write(BinaryWriter writer, CariListesiModel obj) {
     writer
-      ..writeByte(143)
+      ..writeByte(144)
       ..writeByte(0)
       ..write(obj.cariKodu)
       ..writeByte(1)
@@ -2130,7 +2130,9 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..writeByte(143)
       ..write(obj.konumMetre)
       ..writeByte(144)
-      ..write(obj.fiyatSirasi);
+      ..write(obj.fiyatSirasi)
+      ..writeByte(145)
+      ..write(obj.ozelKapatmaIncKey);
   }
 
   @override
@@ -2296,7 +2298,7 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       vadeUyarisi: json['VADE_UYARISI'] as String?,
       webAdresi: json['WEB_ADRESI'] as String?,
       yurtIciDovizKodu: (json['YURT_ICI_DOVIZ_KODU'] as num?)?.toInt(),
-    );
+    )..ozelKapatmaIncKey = (json['OZEL_KAPATMA_INC_KEY'] as num?)?.toInt();
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
     <String, dynamic>{
@@ -2463,6 +2465,8 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
         'IRSALIYE_RISK_ORANI': value,
       if (instance.konumMetre case final value?) 'KONUM_METRE': value,
       if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
+      if (instance.ozelKapatmaIncKey case final value?)
+        'OZEL_KAPATMA_INC_KEY': value,
     };
 
 BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()

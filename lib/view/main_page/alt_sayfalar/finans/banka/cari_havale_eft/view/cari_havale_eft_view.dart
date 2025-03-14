@@ -160,7 +160,14 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                 if (result.isSuccess) {
                   dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
                   if (result.paramData?["CAHAR_INCKEY"] != null && yetkiController.ozelHesapKapatmaIslemi) {
-                    await Get.toNamed("mainPage/ozelHesapKapatma", arguments: viewModel.cariModel?..alacakToplami = viewModel.model.tutar..aciklama1 = viewModel.model.aciklama);
+                    await Get.toNamed(
+                      "mainPage/ozelHesapKapatma",
+                      arguments:
+                          viewModel.cariModel
+                            ?..alacakToplami = viewModel.model.tutar
+                            ..ozelKapatmaIncKey = int.tryParse(result.paramData?["CAHAR_INCKEY"])
+                            ..aciklama1 = viewModel.model.aciklama,
+                    );
                   }
                   Get.back(result: result.isSuccess);
                 }
@@ -194,34 +201,6 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                               ),
                         ),
                   ).paddingAll(UIHelper.lowSize),
-                  // Observer(
-                  //   builder: (_) => SwitchListTile.adaptive(
-                  //     contentPadding: EdgeInsets.zero,
-                  //     title: const Text("Bankaya Para Girişi", style: TextStyle(fontWeight: FontWeight.bold)),
-                  //     value: viewModel.model.cariyiBorclandir == false,
-                  //     // ignore: unnecessary_lambdas
-                  //     onChanged: (value) async {
-                  //       viewModel.setGc(!value);
-                  //       if (value) {
-                  //         viewModel.setTCMBBankaKodu(null);
-                  //         viewModel.setTCMBSubeKodu(null);
-                  //         viewModel.setBankaHesapNo(null);
-                  //         viewModel.setIBAN(null);
-                  //       } else {
-                  //         if (_tcmbBankaKoduController.text.isEmpty) {
-                  //           _tcmbBankaKoduController.text = parametreModel.finansBankaTcmbBankaKodu ?? "";
-                  //         }
-                  //         viewModel.setTCMBBankaKodu(_tcmbBankaKoduController.text);
-                  //         if (_tcmbSubeKoduController.text.isEmpty) {
-                  //           _tcmbSubeKoduController.text = parametreModel.finansBankaTcmbSubeKodu ?? "";
-                  //         }
-                  //         viewModel.setTCMBSubeKodu(_tcmbSubeKoduController.text);
-                  //         viewModel.setBankaHesapNo(_bankaHesapNoController.text);
-                  //         viewModel.setIBAN(_ibanController.text);
-                  //       }
-                  //     },
-                  //   ),
-                  // ).paddingAll(UIHelper.lowSize),
                   Row(
                     children: [
                       Expanded(
@@ -566,10 +545,8 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
                     builder: (_) {
                       log("Cari Hesap Referans Kodu: ${viewModel.cariModel?.muhHesapTipi}");
                       log("Banka Hesap Referans Kodu: ${viewModel.bankaModel?.muhasebeHesapTipi}");
-                      if ((yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
-                              yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi) &&
-                                  yetkiController.varsayilanMuhRefKodu == null) &&
-                          !yetkiController.referansKoduSorulsun(false)) {
+                      if (yetkiController.referansKodu(viewModel.cariModel?.muhHesapTipi) ||
+                          yetkiController.referansKodu(viewModel.bankaModel?.muhasebeHesapTipi)) {
                         // if (viewModel.model.cariyiBorclandir ?? false)
                         // if (!yetkiController.referansKodu("") && !yetkiController.referansKoduSorulsun(false)) {
 

@@ -38,7 +38,9 @@ CariHareketleriModel _$CariHareketleriModelFromJson(
       ..dovizAlacak = (json['DOVIZ_ALACAK'] as num?)?.toDouble()
       ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt()
       ..ebelgeTuru = json['EBELGE_TURU'] as String?
-      ..resmiBelgeNo = json['RESMI_BELGE_NO'] as String?;
+      ..resmiBelgeNo = json['RESMI_BELGE_NO'] as String?
+      ..raporKodu = json['RAPOR_KODU'] as String?
+      ..kapatilmisTutar = (json['KAPATILMIS_TUTAR'] as num?)?.toDouble();
 
 Map<String, dynamic> _$CariHareketleriModelToJson(
         CariHareketleriModel instance) =>
@@ -73,4 +75,6 @@ Map<String, dynamic> _$CariHareketleriModelToJson(
       if (instance.subeKodu case final value?) 'SUBE_KODU': value,
       if (instance.ebelgeTuru case final value?) 'EBELGE_TURU': value,
       if (instance.resmiBelgeNo case final value?) 'RESMI_BELGE_NO': value,
+      if (instance.raporKodu case final value?) 'RAPOR_KODU': value,
+      if (instance.kapatilmisTutar case final value?) 'KAPATILMIS_TUTAR': value,
     };
