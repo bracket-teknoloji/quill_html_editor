@@ -1,5 +1,6 @@
+import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
-import "package:picker/app/picker_app_imports.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/model/base_edit_model.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/components/badge/colorful_badge.dart";
@@ -12,11 +13,13 @@ import "package:picker/core/components/textfield/custom_app_bar_text_field.dart"
 import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/enum/badge_color_enum.dart";
+import "package:picker/core/constants/enum/base_edit_enum.dart";
 import "package:picker/core/constants/enum/depo_mal_toplama_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view_model/transfer_mal_talebi_listesi_view_model.dart";
 
 final class TransferMalTalebiListesiView extends StatefulWidget {

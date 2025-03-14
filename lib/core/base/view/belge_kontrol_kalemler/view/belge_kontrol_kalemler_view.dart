@@ -1,5 +1,6 @@
+import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
-import "package:picker/app/picker_app_imports.dart";
+import "package:get/get.dart";
 import "package:picker/core/base/state/base_state.dart";
 import "package:picker/core/base/view/belge_kontrol/model/belge_kontrol_model.dart";
 import "package:picker/core/base/view/belge_kontrol_kalemler/model/belge_kontrol_kalemler_model.dart";
@@ -18,6 +19,7 @@ import "package:picker/core/constants/extensions/iterable_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
 
 final class BelgeKontrolKalemlerView extends StatefulWidget {
   const BelgeKontrolKalemlerView({required this.belgeKontrolModel, super.key});

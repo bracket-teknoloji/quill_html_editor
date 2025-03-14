@@ -39,9 +39,7 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
                   : viewModel.stokModel?.seriCikistaOtomatikMi) ??
               false) &&
           viewModel.kalanMiktar != 0) {
-        dialogManager.showAreYouSureDialog(() async {
-          await seriNoUret();
-        }, title: "Otomatik Seri Üretilsin Mi?");
+        dialogManager.showAreYouSureDialog(() async => await seriNoUret(), title: "Otomatik Seri Üretilsin Mi?");
       }
     });
     super.initState();

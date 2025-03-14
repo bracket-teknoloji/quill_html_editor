@@ -1,7 +1,9 @@
 import "dart:convert";
 
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:picker/app/picker_app_imports.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/tahsilat_request_model.dart";

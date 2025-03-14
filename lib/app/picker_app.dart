@@ -1,23 +1,4 @@
-import "package:kartal/kartal.dart";
-import "package:picker/core/base/view/belge_kontrol/view/belge_kontrol_view.dart";
-import "package:picker/core/base/view/belge_kontrol_edit/view/belge_kontrol_edit_view.dart";
-import "package:picker/core/base/view/belge_kontrol_kalem_edit/view/belge_kontrol_kalem_edit_view.dart";
-import "package:picker/core/base/view/belge_kontrol_kalemler/view/belge_kontrol_kalemler_view.dart";
-import "package:picker/core/base/view/kullanici_haritasi/view/kullanici_haritasi_view.dart";
-import "package:picker/core/base/view/yazici_edit/view/yazici_edit_view.dart";
-import "package:picker/core/base/view/yazici_listesi/view/yazici_listesi_view.dart";
-import "package:picker/core/base/view/yazici_rehberi/view/yazici_rehberi_view.dart";
-import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/cari/ozel_hesap_kapatma/view/ozel_hesap_kapatma_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/fatura_karlilik_raporu/view/fatura_karlilik_raporu_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/depo_ta%C5%9Fep_toplananlar/view/depo_talep_toplananlar_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/depo_talep_mal_toplama/view/depo_talep_mal_toplama_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/alt_sayfalar/depo_talep_kalem_detay/view/depo_talep_kalem_detay_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_edit/view/transfer_mal_talebi_edit_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/transfer_mal_talebi_listesi/view/transfer_mal_talebi_listesi_view.dart";
-import "package:picker/view/main_page/alt_sayfalar/uretim/uretim_sonu_kaydi/uretim_sonu_kaydi_edit/alt_sayfalar/uretim_fire_bilgileri/view/uretim_fire_bilgileri_view.dart";
-
-import "picker_app_imports.dart";
+part of "picker_app_imports.dart";
 
 final class PickerApp extends StatelessWidget {
   const PickerApp({super.key});

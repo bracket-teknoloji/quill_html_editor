@@ -1,8 +1,8 @@
 import "package:mobx/mobx.dart";
-import "package:picker/app/picker_app_imports.dart";
 import "package:picker/core/base/view/belge_kontrol/model/belge_kontrol_model.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 
 part "belge_kontrol_edit_view_model.g.dart";
 

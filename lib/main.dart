@@ -9,9 +9,9 @@ import "package:firebase_messaging/firebase_messaging.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
+import "package:picker/app/picker_app_imports.dart";
 import "package:picker/src/sewoo.dart";
 
-import "app/picker_app.dart";
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
 import "core/init/dependency_injection/network_dependency_injection.dart";

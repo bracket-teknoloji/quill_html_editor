@@ -148,9 +148,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
         widget.model!.baseEditEnum != BaseEditEnum.kopyala &&
         yetkiController.stokFiyatGoster)
       const Tab(child: Text("Fiyat Listesi", maxLines: 2, textAlign: TextAlign.center)),
-     if (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
-        widget.model!.baseEditEnum != BaseEditEnum.kopyala &&
-        yetkiController.stokFiyatGoster)const Tab(child: Text("Fiyat")),
+    if (yetkiController.stokFiyatGoster) const Tab(child: Text("Fiyat")),
     if (parametreModel.mapStokKullSahalar != null)
       const Tab(child: Text("Ek Bilgiler", maxLines: 2, textAlign: TextAlign.center)),
     const Tab(child: Text("Seriler")),

@@ -8,10 +8,7 @@ import "../ondalik_utils.dart";
 extension NumExtensionWithFixedDigits on num? {
   String commaSeparatedWithDecimalDigits(OndalikEnum decimalDigits) {
     if (this != null) {
-      final f = NumberFormat.decimalPatternDigits(
-        locale: "TR",
-        decimalDigits: this! % 1 == 0 ? 0 : decimalDigits.ondalik,
-      );
+      final f = NumberFormat.decimalPatternDigits(locale: "TR", decimalDigits: decimalDigits.ondalik);
       final String finalValue = f.format(this);
       if (finalValue == "-0,00") {
         return "0";

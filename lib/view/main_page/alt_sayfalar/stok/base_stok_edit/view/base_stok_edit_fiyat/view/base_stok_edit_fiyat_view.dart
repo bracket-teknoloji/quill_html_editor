@@ -15,7 +15,6 @@ import "../../../../../../../../core/constants/ondalik_utils.dart";
 import "../../../../../../../../core/constants/ui_helper/ui_helper.dart";
 import "../../../../../../../../core/init/network/login/api_urls.dart";
 import "../../../../stok_liste/model/stok_listesi_model.dart";
-
 import "../view_model/base_stok_edit_fiyat_view_model.dart";
 
 final class BaseStokEditFiyatView extends StatefulWidget {
@@ -143,7 +142,6 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                     );
                     if (result != null) {
                       alisKdvOraniController.text = result.commaSeparatedWithDecimalDigits(OndalikEnum.oran);
-                      result;
                       stokListesiModel.alisKdv = result;
                     }
                   },
@@ -220,8 +218,6 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                         onTap: () async {
                           final MapEntry? result = await getDovizList();
                           if (result != null) {
-                            result.key;
-                            result.value;
                             stokListesiModel.alisDovTip = result.key;
                             stokListesiModel.alisDovizAdi = result.value;
                             alisDovizTipiController.text = result.value;
@@ -278,7 +274,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                     );
                     if (result != null) {
                       satisKdvOraniController.text = result.toString();
-                      result;
+
                       stokListesiModel.satisKdv = result;
                     }
                   },
@@ -357,9 +353,7 @@ final class _BaseStokEditFiyatViewState extends BaseState<BaseStokEditFiyatView>
                           final MapEntry? result = await getDovizList();
                           if (result != null) {
                             satisDovizTipiController.text = result.value;
-                            result.key;
                             stokListesiModel.satisDovizAdi = result.value;
-                            result.value;
                             stokListesiModel.satDovTip = result.key;
                           }
                         },

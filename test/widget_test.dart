@@ -7,7 +7,7 @@
 
 import "package:flutter/material.dart";
 import "package:flutter_test/flutter_test.dart";
-import "package:picker/app/picker_app.dart";
+import "package:picker/app/picker_app_imports.dart";
 
 void main() {
   testWidgets("Counter increments smoke test", (tester) async {

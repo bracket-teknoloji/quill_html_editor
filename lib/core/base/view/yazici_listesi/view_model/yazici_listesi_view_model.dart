@@ -1,6 +1,6 @@
 import "package:mobx/mobx.dart";
-import "package:picker/app/picker_app_imports.dart";
 import "package:picker/core/base/model/yazici_model.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 part "yazici_listesi_view_model.g.dart";
 
