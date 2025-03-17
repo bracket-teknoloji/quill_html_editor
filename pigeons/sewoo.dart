@@ -6,7 +6,7 @@ import "package:pigeon/pigeon.dart";
     swiftOptions: SwiftOptions(fileSpecificClassNameComponent: "Sewoo"),
     dartOptions: DartOptions(),
     dartOut: "lib/src/sewoo.dart",
-    swiftOut: "ios/Runner/Sewoo.swift",
+    swiftOut: "ios/Runner/Sewoo.generated.swift",
     kotlinOut: "android/app/src/main/kotlin/com/bracket23/picker/Sewoo.kt",
   ),
 )
@@ -15,4 +15,8 @@ import "package:pigeon/pigeon.dart";
 abstract class Sewoo {
   @async
   bool printText(String text);
+
+  @async
+  bool printImage(List<int> image);
+
 }
