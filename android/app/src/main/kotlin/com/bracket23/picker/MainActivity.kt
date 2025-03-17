@@ -41,4 +41,9 @@ class SewooPrinter : Sewoo {
         println(message)
         callback(Result.success(true))
     }
+
+    override fun printImage(image: List<Long>, callback: (Result<Boolean>) -> Unit) {
+
+        callback(Result.success(true))
+    }
 }
