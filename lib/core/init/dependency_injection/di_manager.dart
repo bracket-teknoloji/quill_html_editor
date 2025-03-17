@@ -4,6 +4,7 @@ import "package:get_it/get_it.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
 import "package:picker/core/init/dependency_injection/intectable_interface.dart";
 import "package:picker/core/init/location/location_manager.dart";
+import "package:picker/main.dart";
 
 abstract final class DIManager {
   static final _getIt = GetIt.I;
@@ -14,6 +15,7 @@ abstract final class DIManager {
         timeFilter: Duration(minutes: CacheManager.getAnaVeri?.paramModel?.genelKonumTakibiDakika ?? 2),
       ),
     );
+    await lazyRegisterer(SewooPrinter());
   }
 
   static Future<void> lazyRegisterer<T extends InjectableInterface>(T object) async {

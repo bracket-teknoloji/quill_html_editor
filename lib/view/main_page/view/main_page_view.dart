@@ -10,6 +10,7 @@ import "package:picker/core/base/model/teklif_iste_model.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/location/location_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
+import "package:picker/main.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../core/base/state/base_state.dart";
@@ -142,6 +143,11 @@ final class _MainPageViewState extends BaseState<MainPageView> {
                   ),
     ),
     actions: [
+      if (kDebugMode)
+        IconButton(
+          onPressed: () async => await DIManager.read<SewooPrinter>().printText("Picker iOS Deneme"),
+          icon: const Icon(Icons.print_outlined),
+        ),
       if (kDebugMode)
         IconButton(
           onPressed: () async {

@@ -1,11 +1,11 @@
 {
-    "name": "picker",
+    "name": "Picker - Netsis ERP",
     "short_name": "picker",
     "start_url": ".",
-    "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "display": "minimal-ui",
+    "background_color": "#bd3d17",
+    "theme_color": "#bd3d17",
+    "description": "Picker artık her yerde!",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

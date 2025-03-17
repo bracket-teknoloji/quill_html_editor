@@ -66,6 +66,7 @@ final class PickerMaterialApp extends StatelessWidget {
     ),
 
     opaqueRoute: false,
+    color: UIHelper.primaryColor,
     theme: AppThemeLight.instance?.theme,
     darkTheme: AppThemeDark.instance?.theme,
     themeMode: CacheManager.getProfilParametre.temaModu,
