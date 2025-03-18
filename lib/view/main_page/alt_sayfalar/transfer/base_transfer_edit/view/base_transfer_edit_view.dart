@@ -8,7 +8,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/view/main_page/alt_sayfalar/siparis/siparisler/model/siparisler_request_model.dart";
-import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_diger/view/base_talep_teklif_diger_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_diger/view/base_transfer_diger_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_genel/view/base_transfer_genel_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_kalemler/view/base_transfer_kalemler_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/transfer/base_transfer_edit/alt_sayfalar/base_transfer_toplamlar/view/base_transfer_toplamlar_view.dart";
@@ -251,8 +251,9 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
   Widget build(BuildContext context) => PopScope(
     canPop: widget.model.baseEditEnum.goruntuleMi,
     onPopInvokedWithResult: (didPop, value) async {
-      if (didPop) {
-        return;
+      if (didPop) return;
+      if (tabController.index == 1) {
+        tabController.animateTo(0);
       }
       await dialogManager.showAreYouSureDialog(() {
         Get.back(result: true);

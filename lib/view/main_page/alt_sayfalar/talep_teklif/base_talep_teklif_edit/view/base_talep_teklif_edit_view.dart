@@ -225,8 +225,9 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
   Widget build(BuildContext context) => PopScope(
     canPop: widget.model.baseEditEnum.goruntuleMi,
     onPopInvokedWithResult: (didPop, value) async {
-      if (didPop) {
-        return;
+      if (didPop) return;
+      if (tabController.index == 1) {
+        tabController.animateTo(0);
       }
       await dialogManager.showAreYouSureDialog(() {
         Get.back(result: true);
@@ -262,7 +263,7 @@ final class _BaseTalepTeklifEditingViewState extends BaseState<BaseTalepTeklifEd
                               ),
                             );
                             await showPdfView(pdfModel);
-                          }, title: "PDF görüntülemek ister misiniz?",);
+                          }, title: "PDF görüntülemek ister misiniz?");
                           await CacheManager.removeTaltekEditListWithUuid(BaseSiparisEditModel.instance.uuid);
                           BaseSiparisEditModel.resetInstance();
                           if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {

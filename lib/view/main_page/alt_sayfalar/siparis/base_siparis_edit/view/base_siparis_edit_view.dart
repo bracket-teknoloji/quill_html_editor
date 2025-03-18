@@ -219,8 +219,9 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
   Widget build(BuildContext context) => PopScope(
     canPop: widget.model.baseEditEnum.goruntuleMi,
     onPopInvokedWithResult: (didPop, value) async {
-      if (didPop) {
-        return;
+      if (didPop) return;
+      if (tabController.index == 1) {
+        tabController.animateTo(0);
       }
       await dialogManager.showAreYouSureDialog(() {
         Get.back();

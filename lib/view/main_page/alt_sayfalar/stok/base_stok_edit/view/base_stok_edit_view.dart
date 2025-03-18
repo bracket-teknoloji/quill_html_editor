@@ -134,10 +134,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
         widget.model!.baseEditEnum != BaseEditEnum.kopyala &&
         yetkiController.stokFiyatGoster)
       const BaseStokEditFiyatListesiView(),
-    if (widget.model!.baseEditEnum != BaseEditEnum.ekle &&
-        widget.model!.baseEditEnum != BaseEditEnum.kopyala &&
-        yetkiController.stokFiyatGoster)
-      BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
+    if (yetkiController.stokFiyatGoster) BaseStokEditFiyatView(model: widget.model?.baseEditEnum),
     if (parametreModel.mapStokKullSahalar != null) BaseStokEditEkBilgilerView(model: widget.model?.baseEditEnum),
     BaseStokEditSerilerView(model: widget.model?.baseEditEnum),
   ];
