@@ -183,7 +183,7 @@ abstract class _CariListesiViewModelBase
     super.changeScrollStatus(position);
     if (position.pixels == position.maxScrollExtent && dahaVarMi) {
       await getData();
-      isScrollDown = false;
+      // isScrollDown = false;
     }
   }
 

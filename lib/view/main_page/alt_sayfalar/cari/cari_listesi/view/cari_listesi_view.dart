@@ -45,7 +45,7 @@ import "../view_model/cari_listesi_view_model.dart";
 
 final class CariListesiView extends StatefulWidget {
   const CariListesiView({super.key, this.isGetData = false, this.cariRequestModel});
-  final bool isGetData;
+  final bool? isGetData;
   final CariRequestModel? cariRequestModel;
 
   @override
@@ -91,7 +91,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       _scrollController.addListener(() async {
         viewModel.changeScrollStatus(_scrollController.position);
       });
-      if (widget.isGetData) viewModel.changeSearchBar();
+      if (widget.isGetData ?? false) viewModel.changeSearchBar();
       BottomSheetResponseModel.instance.clear();
       BottomSheetStateManager().deleteIsSelectedListMap();
       viewModel.changeSiralama(CacheManager.getProfilParametre.cariListesiSirala);
@@ -139,7 +139,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                     },
                   )
                   : AppBarTitle(
-                    title: widget.isGetData ? "Cari Seçiniz" : "Cari Listesi",
+                    title: (widget.isGetData ?? false) ? "Cari Seçiniz" : "Cari Listesi",
                     subtitle: "${viewModel.observableList?.length ?? ""}",
                   )),
     ),
@@ -295,7 +295,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
       child: ListTile(
         onLongPress: () => showCariGrid(item),
         onTap: () {
-          if (widget.isGetData) {
+          if (widget.isGetData ?? false) {
             Get.back(result: item);
           } else {
             cariBottomSheet(context, item);
@@ -975,7 +975,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
   );
 
   bool bakiyeGorunsunMu(CariListesiModel model) {
-    if (widget.isGetData && !yetkiController.adminMi && !yetkiController.cariListesi) return false;
+    if ((widget.isGetData ?? false) && !yetkiController.adminMi && !yetkiController.cariListesi) return false;
     if (widget.cariRequestModel?.teslimCari == "E" && yetkiController.cariTeslimCariRehberSadeceSecsin) return false;
     if (yetkiController.cariBakiyeGosterimTumuMu) return true;
     if (userModel.plasiyerKodu == null || userModel.plasiyerKodu != model.plasiyerKodu) return false;
