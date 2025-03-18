@@ -133,6 +133,7 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
         return ListView.builder(
           itemCount: items!.length,
           primary: false,
+          padding: UIHelper.lowPadding.add(const EdgeInsets.only(bottom: 100)),
           physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           // items nullcheck yapıldığı için ünlem koyabiliriz.
           itemBuilder: (context, index) => itemBuilder(items![index]),
@@ -142,6 +143,7 @@ final class RefreshableListView<T extends NetworkManagerMixin> extends Stateless
       return ListView.builder(
         controller: scrollController,
         primary: false,
+        padding: UIHelper.lowPadding.add(const EdgeInsets.only(bottom: 100)),
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
 
         // DahaVarMi [true] ise [CircularProgressIndicator] görünür.

@@ -40,5 +40,8 @@ mixin ScrollControllableMixin<T extends NetworkManagerMixin> on ListableMixin<T>
     } else if (position.userScrollDirection == ScrollDirection.reverse) {
       isScrollDown = false;
     }
+    if (position.pixels == position.maxScrollExtent) {
+      isScrollDown = true;
+    }
   }
 }
