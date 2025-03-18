@@ -1,3 +1,5 @@
+import "dart:developer";
+
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:quill_html_editor/quill_html_editor.dart";
@@ -31,6 +33,10 @@ final class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerV
   void initState() {
     // _htmlController = HtmlEditorController();
     controller = QuillEditorController();
+    controller.setText(model.ekAciklama ?? "");
+    log("red ${Colors.red.r} ${Colors.red.red}");
+    log("green ${Colors.red.g} ${Colors.red.green}");
+    log("blue ${Colors.red.b} ${Colors.red.blue}");
     super.initState();
   }
 
@@ -52,14 +58,14 @@ final class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerV
           child: QuillHtmlEditor(
             hintText: "Buraya notlarınızı yazabilirsiniz...",
             hintTextStyle: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5), fontSize: 16),
-            text: model.ekAciklama ?? "",
+
             controller: controller,
             isEnabled: enable,
             minHeight: height,
             padding: const EdgeInsets.only(left: UIHelper.midSize, top: UIHelper.lowSize),
             textStyle: TextStyle(color: theme.colorScheme.onSurface),
             backgroundColor: theme.colorScheme.surface,
-            onTextChanged: (text) => model.ekAciklama = text != "" ? text : null,
+            onTextChanged: (text) => BaseSiparisEditModel.instance.ekAciklama = text != "" ? text : null,
             onEditorCreated: () async {
               if (model.ekAciklama != null) {
                 await controller.insertText(model.ekAciklama ?? "");
