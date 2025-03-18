@@ -181,8 +181,7 @@ final class _EBelgeGelenGidenKutusuViewState extends BaseState<EBelgeGelenGidenK
                   : ListView.builder(
                     primary: false,
                     controller: _scrollController,
-                    shrinkWrap: true,
-                    padding: UIHelper.lowPadding,
+                    padding: UIHelper.lowPadding.add(const EdgeInsets.only(bottom: 100)),
                     itemCount: (viewModel.eBelgeListesi?.length ?? 0) + 1,
                     itemBuilder: (context, index) {
                       if (index < (viewModel.eBelgeListesi?.length ?? 0)) {
