@@ -519,27 +519,46 @@ final class BottomSheetDialogManager {
     dynamic groupValue, {
     String? filter,
     int? subeKodu,
-  }) async {
-    final List<DepoList> depoList = _paramModel?.depoList ?? <DepoList>[];
-    final List<DepoList> filteredDepoList = depoList.where((element) => element.subeKodu == subeKodu).toList();
-    return await showRadioBottomSheetDialog(
-      context,
-      title: "Depo seç",
-      groupValue: groupValue,
-      children:
-          filteredDepoList
-              .map(
-                (e) => BottomSheetModel(
-                  title: e.depoTanimi ?? "",
-                  description: e.depoKodu.toStringIfNotNull,
-                  value: e,
-                  groupValue: e.depoKodu,
-                ),
-              )
-              .toList(),
-      // children: CacheManager.getAnaVeri?.userModel?.profilYetki?.sirketAktifDepolar,
-    );
-  }
+  }) async => await showRadioBottomSheetDialog(
+    context,
+    title: "Depo seç",
+    groupValue: groupValue,
+    children:
+        _yetkiController.yetkiliDepoList
+            ?.map(
+              (e) => BottomSheetModel(
+                title: e.depoTanimi ?? "",
+                description: e.depoKodu.toStringIfNotNull,
+                value: e,
+                groupValue: e.depoKodu,
+              ),
+            )
+            .toList(),
+    // children: CacheManager.getAnaVeri?.userModel?.profilYetki?.sirketAktifDepolar,
+  );
+
+  Future<DepoList?> showTransferTopluDepoBottomSheetDialog(
+    BuildContext context,
+    dynamic groupValue, {
+    String? filter,
+    int? subeKodu,
+  }) async => await showRadioBottomSheetDialog(
+    context,
+    title: "Depo seç",
+    groupValue: groupValue,
+    children:
+        _yetkiController.yetkiliDatDepoList
+            ?.map(
+              (e) => BottomSheetModel(
+                title: e.depoTanimi ?? "",
+                description: e.depoKodu.toStringIfNotNull,
+                value: e,
+                groupValue: e.depoKodu,
+              ),
+            )
+            .toList(),
+    // children: CacheManager.getAnaVeri?.userModel?.profilYetki?.sirketAktifDepolar,
+  );
 
   Future<ListCariOdemeKodu?> showOdemeKoduBottomSheetDialog(BuildContext context, dynamic groupValue) async =>
       await showRadioBottomSheetDialog(

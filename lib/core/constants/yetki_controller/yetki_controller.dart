@@ -1,6 +1,7 @@
 import "package:collection/collection.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
+import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "package:picker/view/main_page/model/user_model/kullanici_yetki_model.dart";
 
@@ -45,7 +46,7 @@ final class YetkiController {
   //! GENEL
 
   bool get adminMi => _userModel?.admin ?? false;
-  List<DepoList>? get yetkiliDepoList {
+  List<DepoList>? get _yetkiliDepoList {
     if (_kullaniciYetkiModel?.sirketDepoYetkiTuru == "T" || adminMi) return _paramModel?.depoList;
     if (_isTrue(_kullaniciYetkiModel?.sirketDepoYetkiTuru == null)) {
       return _paramModel?.depoList;
@@ -61,6 +62,24 @@ final class YetkiController {
         )
         .toList();
   }
+
+  List<DepoList>? get yetkiliDepoList =>
+      _yetkiliDepoList
+          ?.where(
+            (element) =>
+                [AccountModel.instance.aktifSubeKodu, null].contains(element.subeKodu) &&
+                _isTrue(_kullaniciYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu)),
+          )
+          .toList();
+
+  List<DepoList>? get yetkiliDatDepoList =>
+      _paramModel?.depoList
+          ?.where(
+            (element) =>
+                [AccountModel.instance.aktifSubeKodu, null].contains(element.subeKodu) &&
+                _isTrue(_kullaniciYetkiModel?.sirketDatYetkiliDepolar?.contains(element.depoKodu)),
+          )
+          .toList();
 
   // Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   PlasiyerList? get varsayilanPlasiyer =>
@@ -1164,8 +1183,7 @@ final class YetkiController {
   bool get uretimSonuKalemliYapi => _isTrue(_profilYetkiModel?.uretimUskKalemliYapi, skipAdmin: true);
   String? get uretimSonuDepoOnceligi => _profilYetkiModel?.uretimUskDepoOnceligi;
   bool get uretimFireUygulamasi => _isTrue(_paramModel?.uretimFireUyg, skipAdmin: true);
-  bool get uretimFireDetayUygulamasi =>
-      _isTrue(_paramModel?.uretimFireDetayUyg) && uretimFireUygulamasi;
+  bool get uretimFireDetayUygulamasi => _isTrue(_paramModel?.uretimFireDetayUyg) && uretimFireUygulamasi;
 
   bool uretimSonuGizlenecekAlanlar(String value) =>
       _isTrue(_profilYetkiModel?.uretimUskGizlenecekAlanlar?.contains(value), skipAdmin: true);
@@ -1334,7 +1352,6 @@ final class YetkiController {
           .where((element) => _isTrue(_profilYetkiModel?.genelBelgeKontrolBelgeTipleri?.contains(element.rawValue)))
           .toList();
 
-
-          bool get ozelHesapKapatmaIslemi => _isTrue(_profilYetkiModel?.cariOzelHesapKapatma);
-          bool get ozelHesapKapatmaIslemiSil => _isTrue(_profilYetkiModel?.cariOzelHesapKapatmaSil);
+  bool get ozelHesapKapatmaIslemi => _isTrue(_profilYetkiModel?.cariOzelHesapKapatma);
+  bool get ozelHesapKapatmaIslemiSil => _isTrue(_profilYetkiModel?.cariOzelHesapKapatmaSil);
 }
