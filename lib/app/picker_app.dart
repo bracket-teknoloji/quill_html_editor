@@ -486,6 +486,7 @@ final class PickerMaterialApp extends StatelessWidget {
                 () =>
                     FaturalarView(editTipiEnum: EditTipiEnum.satisFatura, isGetData: true, isFromRapor: Get.arguments),
           ),
+          GetPage(name: "/malToplama", page: MalToplamaView.new),
           GetPage(
             name: "/sevkiyatSatisIrsaliyesi",
             page: () => FaturalarView(editTipiEnum: EditTipiEnum.satisIrsaliye, isGetData: Get.arguments),

@@ -45,6 +45,7 @@ import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_ekle/vie
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_girisi/view/olcum_girisi_listesi_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/proses_ekle/view/proses_ekle_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/faturalastir/view/irsaliye_faturalastir_view.dart";
+import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/mal_toplama/view/mal_toplama_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/fatura_karlilik_raporu/view/fatura_karlilik_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/mal_kabul_sevkiyat/raporlar/mal_kabul_sevkiyat_kalem_raporu/view/mal_kabul_sevkiyat_kalem_raporu_view.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/depo_fark_raporu/view/depo_fark_raporu_view.dart";

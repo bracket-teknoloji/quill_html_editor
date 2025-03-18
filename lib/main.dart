@@ -50,6 +50,7 @@ void main() async {
 }
 
 Future<void> firebaseInitialized() async {
+  if (kIsWeb) return;
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform, name: "flutter-picker");
   await FirebaseAppCheck.instance.activate(
     // webProvider: ReCaptchaV3Provider("recaptcha-v3-site-key"),
@@ -62,7 +63,7 @@ Future<void> firebaseInitialized() async {
     vapidKey:
         !kIsWeb ? null : "BI5k1LDDt7zt4u57TwYvprSQ5p4KGOeMysQkIvi2yds00wuPaTNPg641os6uLOKxMmvGw14PekF92Jv-pl0qLvE",
   );
-  log("fcmToken: ${AccountModel.instance.fcmToken}");
+  log("${AccountModel.instance.fcmToken}", name: "fcmToken");
   if (kIsWeb || await AppTrackingTransparency.requestTrackingAuthorization() == TrackingStatus.authorized) {
     FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
     // messaging.
