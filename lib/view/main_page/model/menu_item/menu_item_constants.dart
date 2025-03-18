@@ -450,7 +450,7 @@ abstract final class MenuItemConstants {
           title: "Satış İrsaliyesi",
           route: "/mainPage/sevkiyatSatisIrsaliyesi",
         ),
-        GridItemModel.item(name: "sevkemri_MalToplama", title: "Mal Toplama", route: "/mainPage/malToplama"),
+        if (AccountModel.instance.isDebug) GridItemModel.item(name: "sevkemri_MalToplama", title: "Mal Toplama", route: "/mainPage/malToplama"),
         GridItemModel.altmenu(
           name: "malKabul_SatisIrs_Raporlar",
           title: "Raporlar",

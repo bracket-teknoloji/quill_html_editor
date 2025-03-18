@@ -41,7 +41,7 @@ final class TransferlerCard extends StatefulWidget {
   final bool? showVade;
   final bool? showEkAciklama;
   final Function? onDeleted;
-  final bool isGetData;
+  final bool? isGetData;
   final int? index;
 
   @override
@@ -78,7 +78,7 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
         );
       },
       onTap:
-          widget.isGetData
+          widget.isGetData == true
               ? () => Get.back(result: widget.model)
               : () async => await bottomSheetDialogManager.showBottomSheetDialog(
                 context,

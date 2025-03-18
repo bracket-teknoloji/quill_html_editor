@@ -29,7 +29,7 @@ import "../view_model/transferler_view_model.dart";
 
 final class TransferlerView extends StatefulWidget {
   const TransferlerView({required this.editTipiEnum, this.isGetData = false, super.key});
-  final bool isGetData;
+  final bool? isGetData;
   final EditTipiEnum editTipiEnum;
 
   @override
@@ -216,7 +216,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
               (item) => TransferlerCard(
                 index: item.index,
                 model: item,
-                isGetData: widget.isGetData,
+                isGetData: widget.isGetData ?? false,
                 editTipiEnum: widget.editTipiEnum,
                 showEkAciklama: viewModel.ekstraAlanlarMap["EK"],
                 showMiktar: viewModel.ekstraAlanlarMap["MİK"],

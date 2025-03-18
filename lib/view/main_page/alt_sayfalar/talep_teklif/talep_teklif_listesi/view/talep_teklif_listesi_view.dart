@@ -35,7 +35,7 @@ import "../view_model/talep_teklif_listesi_view_model.dart";
 
 final class TalepTeklifListesiView extends StatefulWidget {
   const TalepTeklifListesiView({required this.talepTeklifEnum, super.key, this.isGetData = false});
-  final bool isGetData;
+  final bool? isGetData;
   final TalepTeklifEnum talepTeklifEnum;
 
   @override

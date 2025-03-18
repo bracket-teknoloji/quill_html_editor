@@ -84,6 +84,8 @@ dependencies:
   
   quill_html_editor:
     path: packages/quill_html_editor
+  # quilll_html_editor_v2:
+  #   path: packages/quill_html_editor_v2  
   freezed_annotation: ^2.4.1
   uuid: ^4.1.0
   number_text_input_formatter: ^1.0.0+7
