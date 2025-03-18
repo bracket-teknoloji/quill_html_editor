@@ -325,7 +325,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                       valueWidget: Observer(builder: (_) => Text(viewModel.model.topluDepo.toStringIfNotNull ?? "")),
                       onClear: () => viewModel.setTopluDepoKodu(null),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+                        final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(
                           context,
                           viewModel.model.topluDepo,
                         );

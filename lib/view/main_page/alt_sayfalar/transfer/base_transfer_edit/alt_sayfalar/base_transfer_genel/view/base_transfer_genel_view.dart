@@ -617,7 +617,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                       ),
                       onClear: () => viewModel.setTopluCikisDepoKodu(null),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(
+                        final result = await bottomSheetDialogManager.showTransferTopluDepoBottomSheetDialog(
                           context,
                           viewModel.model.cikisDepoKodu,
                         );
@@ -650,7 +650,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
                         builder: (_) => Text(viewModel.model.girisDepoKodu.toStringIfNotNull ?? ""),
                       ),
                       onTap: () async {
-                        final result = await bottomSheetDialogManager.showTopluDepoBottomSheetDialog(
+                        final result = await bottomSheetDialogManager.showTransferTopluDepoBottomSheetDialog(
                           context,
                           viewModel.model.girisDepoKodu,
                           subeKodu: model.cikisSubeKodu,
