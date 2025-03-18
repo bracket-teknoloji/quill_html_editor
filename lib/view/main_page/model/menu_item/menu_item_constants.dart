@@ -39,31 +39,31 @@ abstract final class MenuItemConstants {
               []
           : [];
 
-  static List<GridItemModel> get getGridItemModel =>
-      _serbestRapor
-          .map(
-            (e) => GridItemModel.serbestRaporlar(
-              name: e.detayKod,
-              title: e.dizaynAdi ?? "",
-              color: ColorPalette.asparagus,
-              arguments: e,
-            ),
-          )
-          .toList();
+  // static List<GridItemModel> get getGridItemModel =>
+  //     _serbestRapor
+  //         .map(
+  //           (e) => GridItemModel.serbestRaporlar(
+  //             name: e.detayKod,
+  //             title: e.dizaynAdi ?? "",
+  //             color: ColorPalette.asparagus,
+  //             arguments: e,
+  //           ),
+  //         )
+  //         .toList();
 
   static List<GridItemModel>? get getCariSerbestRapor => _getSerbestRapor.call(SerbestRaporDetayKodEnum.cari);
 
   static List<GridItemModel>? get getStokSerbestRapor => _getSerbestRapor.call(SerbestRaporDetayKodEnum.stok);
   static List<GridItemModel> _getSerbestRapor(SerbestRaporDetayKodEnum detayKod) {
     final List<NetFectDizaynList> serbestRaporList =
-        _serbestRapor.where((element) => element.detayKod == detayKod.detayKod).toList();
+        _serbestRapor.where((element) => detayKod.hepsiMi || (element.detayKod == detayKod.detayKod)).toList();
     if (serbestRaporList.ext.isNullOrEmpty ||
         (CacheManager.getAnaVeri!.userModel?.profilYetki?.yazdirmaSerbest != true &&
             AccountModel.instance.admin != "E")) {
       return [];
     }
     return List.generate(
-      _serbestRapor.where((element) => element.detayKod == detayKod.detayKod).length,
+      _serbestRapor.where((element) => detayKod.hepsiMi || (element.detayKod == detayKod.detayKod)).length,
       (index) => GridItemModel.serbestRaporlar(
         title: serbestRaporList[index].dizaynAdi ?? "",
         arguments: serbestRaporList[index],
@@ -72,7 +72,7 @@ abstract final class MenuItemConstants {
     );
   }
 
-  static List<GridItemModel> gridItemModel = [
+  static List<GridItemModel> get gridItemModel => [
     //*Cari
     //*
     GridItemModel.anamenu(
@@ -160,17 +160,13 @@ abstract final class MenuItemConstants {
           name: "ebelge_EIrsaliyeGelenKutusu",
           title: "Gelen Kutusu",
           route: "/mainPage/eBelgeGelenKutusu",
-          yetkiListesi: [_yetkiController.ebelgeEFaturaGelenKutusu, _yetkiController.ebelgeEIrsaliyeGelenKutusu],
+          yetkiListesi: _gelenKutusuYetkiler,
         ), // onTap: () => Get.to(PDFViewerView())),
         GridItemModel.item(
           name: "ebelge_EIrsaliyeGidenKutusu",
           title: "Giden Kutusu",
           route: "/mainPage/eBelgeGidenKutusu",
-          yetkiListesi: [
-            _yetkiController.ebelgeEFaturaGidenKutusu,
-            _yetkiController.ebelgeEIrsaliyeGidenKutusu,
-            _yetkiController.ebelgeEArsivGidenKutusu,
-          ],
+          yetkiListesi: _gidenKutusuYetkiler,
         ),
         GridItemModel.item(
           name: "ebelge_EFatCariGuncelle",
@@ -454,6 +450,7 @@ abstract final class MenuItemConstants {
           title: "Satış İrsaliyesi",
           route: "/mainPage/sevkiyatSatisIrsaliyesi",
         ),
+        GridItemModel.item(name: "sevkemri_MalToplama", title: "Mal Toplama", route: "/mainPage/malToplama"),
         GridItemModel.altmenu(
           name: "malKabul_SatisIrs_Raporlar",
           title: "Raporlar",
@@ -633,9 +630,24 @@ abstract final class MenuItemConstants {
       icon: "offer",
       color: ColorPalette.mulberry,
       altMenuler: <GridItemModel>[
-        GridItemModel.item(name: "taltek_STEK", title: "Satış Teklifi", route: "/mainPage/talTekSatisTeklif"),
-        GridItemModel.item(name: "taltek_STAL", title: "Satın Alma Talebi", route: "/mainPage/talTekAlisTalep"),
-        GridItemModel.item(name: "taltek_STAL", title: "Satış Talebi", route: "/mainPage/talTekSatisTalep"),
+        GridItemModel.item(
+          name: "taltek_STEK",
+          title: "Satış Teklifi",
+          route: "/mainPage/talTekSatisTeklif",
+          arguments: false,
+        ),
+        GridItemModel.item(
+          name: "taltek_STAL",
+          title: "Satın Alma Talebi",
+          route: "/mainPage/talTekAlisTalep",
+          arguments: false,
+        ),
+        GridItemModel.item(
+          name: "taltek_STAL",
+          title: "Satış Talebi",
+          route: "/mainPage/talTekSatisTalep",
+          arguments: false,
+        ),
       ],
     ),
 
@@ -707,10 +719,7 @@ abstract final class MenuItemConstants {
       title: "Serbest Raporlar",
       icon: "monitoring",
       color: ColorPalette.asparagus,
-      altMenuler: <GridItemModel>[
-        ...groupBySerbestRaporList(),
-        // ...List.generate(_serbestRapor?.length ?? 0, (index) => GridItemModel.serbestRaporlar(title: _serbestRapor?[index].dizaynAdi ?? "", arguments: _serbestRapor?[index])),
-      ],
+      altMenuler: groupBySerbestRaporList(),
     ),
     GridItemModel.anamenu(
       name: MenuItemsEnum.kalkon,
@@ -723,16 +732,32 @@ abstract final class MenuItemConstants {
           name: "kalite_kontrol_Raporlar",
           title: "Raporlar",
           icon: "monitoring",
-          altMenuler: <GridItemModel>[..._getSerbestRapor(SerbestRaporDetayKodEnum.kaliteKontrol)],
+          altMenuler: _getSerbestRapor(SerbestRaporDetayKodEnum.kaliteKontrol),
         ),
       ],
     ),
   ];
 
+  static List<bool> get _gidenKutusuYetkiler => [
+    _yetkiController.ebelgeEFaturaGidenKutusu,
+    _yetkiController.ebelgeEIrsaliyeGidenKutusu,
+    _yetkiController.ebelgeEArsivGidenKutusu,
+  ];
+
+  static List<bool> get _gelenKutusuYetkiler => [
+    _yetkiController.ebelgeEFaturaGelenKutusu,
+    _yetkiController.ebelgeEIrsaliyeGelenKutusu,
+  ];
+
   static List<GridItemModel> getList() => gridItemModel.where((element) => element.yetkiKontrol).toList();
 
-  List<GridItemModel?> getAltMenuList(String name) =>
-      getGridItemModel.where((element) => element.name == name).toList();
+  List<GridItemModel?> getAltMenuList(String name) {
+    if (SerbestRaporDetayKodEnum.values.firstWhereOrNull((element) => element.detayKod == name) case final value?) {
+      return _getSerbestRapor(value).where((element) => element.name == name).toList();
+    } else {
+      return [];
+    }
+  }
 
   static List<GridItemModel> groupBySerbestRaporList() {
     if (_serbestRapor.length >= 16) {
@@ -755,7 +780,7 @@ abstract final class MenuItemConstants {
       });
       return result.values.sortedBy((element) => element.menuTipi).toList();
     } else {
-      return getGridItemModel;
+      return _getSerbestRapor(SerbestRaporDetayKodEnum.hepsi);
     }
   }
 }

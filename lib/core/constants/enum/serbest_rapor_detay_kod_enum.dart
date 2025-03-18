@@ -1,8 +1,10 @@
-enum SerbestRaporDetayKodEnum { cari, stok, kasa, cek, senet, finans, kaliteKontrol, siparis }
+enum SerbestRaporDetayKodEnum { cari, stok, kasa, cek, senet, finans, kaliteKontrol, siparis , hepsi}
 
 extension SerbestRaporDetayKodEnumExtension on SerbestRaporDetayKodEnum {
   //return capitalized with method
   String get value => "${toString().split('.').last[0].toUpperCase()}${toString().split('.').last.substring(1)}";
+
+  bool get hepsiMi => this == SerbestRaporDetayKodEnum.hepsi;
 
   String get detayKod => switch (this) {
     SerbestRaporDetayKodEnum.cari => "Cari",
@@ -13,5 +15,6 @@ extension SerbestRaporDetayKodEnumExtension on SerbestRaporDetayKodEnum {
     SerbestRaporDetayKodEnum.finans => "Finans",
     SerbestRaporDetayKodEnum.siparis => "Sipariş",
     SerbestRaporDetayKodEnum.kaliteKontrol => "Kalite Kontrol",
+    SerbestRaporDetayKodEnum.hepsi => "Hepsi",
   };
 }

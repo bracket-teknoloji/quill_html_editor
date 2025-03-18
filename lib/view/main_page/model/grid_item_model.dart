@@ -112,7 +112,7 @@ final class GridItemModel {
         return true;
       }
       if (yetkiListesi != null) {
-        return yetkiListesi!.any((element) => element);
+        return yetkiListesi!.any((element) => element) && (_cacheManager?.profilYetki?.toJson()[name] ?? false);
       } else {
         final result = route != null ? _cacheManager?.profilYetki?.toJson()[name] : false;
         return result ?? false;
