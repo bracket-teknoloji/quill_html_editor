@@ -1435,6 +1435,9 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       }
       viewModel.setYapKod(stokListesiModel?.yapkod);
       if (editTipi?.satisMi == true ? yetkiController.satisMiktar1Gelsin : yetkiController.alisMiktar1Gelsin) {
+        if (viewModel.kalemModel.isKoli) {
+          viewModel.setMiktar2(1);
+        }
         viewModel.setMiktar(1);
       }
       if (widget.kalemModel == null) {
