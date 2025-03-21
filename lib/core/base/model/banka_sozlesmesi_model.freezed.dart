@@ -32,6 +32,8 @@ mixin _$BankaSozlesmesiModel {
   set baslamaTarihi(DateTime? value) => throw _privateConstructorUsedError;
   DateTime? get bitisTarihi => throw _privateConstructorUsedError;
   set bitisTarihi(DateTime? value) => throw _privateConstructorUsedError;
+  int? get taksitBitis => throw _privateConstructorUsedError;
+  set taksitBitis(int? value) => throw _privateConstructorUsedError;
 
   /// Serializes this BankaSozlesmesiModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,7 +57,8 @@ abstract class $BankaSozlesmesiModelCopyWith<$Res> {
       String? krediKartiTanimi,
       String? bankaTanimi,
       DateTime? baslamaTarihi,
-      DateTime? bitisTarihi});
+      DateTime? bitisTarihi,
+      int? taksitBitis});
 }
 
 /// @nodoc
@@ -80,6 +83,7 @@ class _$BankaSozlesmesiModelCopyWithImpl<$Res,
     Object? bankaTanimi = freezed,
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
+    Object? taksitBitis = freezed,
   }) {
     return _then(_value.copyWith(
       sozlesmeKodu: freezed == sozlesmeKodu
@@ -106,6 +110,10 @@ class _$BankaSozlesmesiModelCopyWithImpl<$Res,
           ? _value.bitisTarihi
           : bitisTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      taksitBitis: freezed == taksitBitis
+          ? _value.taksitBitis
+          : taksitBitis // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -124,7 +132,8 @@ abstract class _$$BankaSozlesmesiModelImplCopyWith<$Res>
       String? krediKartiTanimi,
       String? bankaTanimi,
       DateTime? baslamaTarihi,
-      DateTime? bitisTarihi});
+      DateTime? bitisTarihi,
+      int? taksitBitis});
 }
 
 /// @nodoc
@@ -146,6 +155,7 @@ class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>
     Object? bankaTanimi = freezed,
     Object? baslamaTarihi = freezed,
     Object? bitisTarihi = freezed,
+    Object? taksitBitis = freezed,
   }) {
     return _then(_$BankaSozlesmesiModelImpl(
       sozlesmeKodu: freezed == sozlesmeKodu
@@ -172,6 +182,10 @@ class __$$BankaSozlesmesiModelImplCopyWithImpl<$Res>
           ? _value.bitisTarihi
           : bitisTarihi // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      taksitBitis: freezed == taksitBitis
+          ? _value.taksitBitis
+          : taksitBitis // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -185,7 +199,8 @@ class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
       this.krediKartiTanimi,
       this.bankaTanimi,
       this.baslamaTarihi,
-      this.bitisTarihi})
+      this.bitisTarihi,
+      this.taksitBitis})
       : super._();
 
   factory _$BankaSozlesmesiModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -203,6 +218,8 @@ class _$BankaSozlesmesiModelImpl extends _BankaSozlesmesiModel {
   DateTime? baslamaTarihi;
   @override
   DateTime? bitisTarihi;
+  @override
+  int? taksitBitis;
 
   /// Create a copy of BankaSozlesmesiModel
   /// with the given fields replaced by the non-null parameter values.
@@ -229,7 +246,8 @@ abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
       String? krediKartiTanimi,
       String? bankaTanimi,
       DateTime? baslamaTarihi,
-      DateTime? bitisTarihi}) = _$BankaSozlesmesiModelImpl;
+      DateTime? bitisTarihi,
+      int? taksitBitis}) = _$BankaSozlesmesiModelImpl;
   _BankaSozlesmesiModel._() : super._();
 
   factory _BankaSozlesmesiModel.fromJson(Map<String, dynamic> json) =
@@ -253,6 +271,9 @@ abstract class _BankaSozlesmesiModel extends BankaSozlesmesiModel {
   @override
   DateTime? get bitisTarihi;
   set bitisTarihi(DateTime? value);
+  @override
+  int? get taksitBitis;
+  set taksitBitis(int? value);
 
   /// Create a copy of BankaSozlesmesiModel
   /// with the given fields replaced by the non-null parameter values.

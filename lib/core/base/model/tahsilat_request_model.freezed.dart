@@ -123,6 +123,8 @@ mixin _$TahsilatRequestModel {
   String? get kaynakHesapReferansKodu => throw _privateConstructorUsedError;
   set kaynakHesapReferansKodu(String? value) =>
       throw _privateConstructorUsedError;
+  int? get taksitSayisi => throw _privateConstructorUsedError;
+  set taksitSayisi(int? value) => throw _privateConstructorUsedError;
 
   /// Serializes this TahsilatRequestModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -188,7 +190,8 @@ abstract class $TahsilatRequestModelCopyWith<$Res> {
       double? tahsilatBakiye,
       double? odemeBakiye,
       String? hedefHesapReferansKodu,
-      String? kaynakHesapReferansKodu});
+      String? kaynakHesapReferansKodu,
+      int? taksitSayisi});
 }
 
 /// @nodoc
@@ -255,6 +258,7 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
     Object? odemeBakiye = freezed,
     Object? hedefHesapReferansKodu = freezed,
     Object? kaynakHesapReferansKodu = freezed,
+    Object? taksitSayisi = freezed,
   }) {
     return _then(_value.copyWith(
       aciklama: freezed == aciklama
@@ -449,6 +453,10 @@ class _$TahsilatRequestModelCopyWithImpl<$Res,
           ? _value.kaynakHesapReferansKodu
           : kaynakHesapReferansKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      taksitSayisi: freezed == taksitSayisi
+          ? _value.taksitSayisi
+          : taksitSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -509,7 +517,8 @@ abstract class _$$TahsilatRequestModelImplCopyWith<$Res>
       double? tahsilatBakiye,
       double? odemeBakiye,
       String? hedefHesapReferansKodu,
-      String? kaynakHesapReferansKodu});
+      String? kaynakHesapReferansKodu,
+      int? taksitSayisi});
 }
 
 /// @nodoc
@@ -573,6 +582,7 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
     Object? odemeBakiye = freezed,
     Object? hedefHesapReferansKodu = freezed,
     Object? kaynakHesapReferansKodu = freezed,
+    Object? taksitSayisi = freezed,
   }) {
     return _then(_$TahsilatRequestModelImpl(
       aciklama: freezed == aciklama
@@ -767,6 +777,10 @@ class __$$TahsilatRequestModelImplCopyWithImpl<$Res>
           ? _value.kaynakHesapReferansKodu
           : kaynakHesapReferansKodu // ignore: cast_nullable_to_non_nullable
               as String?,
+      taksitSayisi: freezed == taksitSayisi
+          ? _value.taksitSayisi
+          : taksitSayisi // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -822,7 +836,8 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
       this.tahsilatBakiye,
       this.odemeBakiye,
       this.hedefHesapReferansKodu,
-      this.kaynakHesapReferansKodu})
+      this.kaynakHesapReferansKodu,
+      this.taksitSayisi})
       : super._();
 
   factory _$TahsilatRequestModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -926,6 +941,8 @@ class _$TahsilatRequestModelImpl extends _TahsilatRequestModel {
   String? hedefHesapReferansKodu;
   @override
   String? kaynakHesapReferansKodu;
+  @override
+  int? taksitSayisi;
 
   /// Create a copy of TahsilatRequestModel
   /// with the given fields replaced by the non-null parameter values.
@@ -994,7 +1011,8 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
       double? tahsilatBakiye,
       double? odemeBakiye,
       String? hedefHesapReferansKodu,
-      String? kaynakHesapReferansKodu}) = _$TahsilatRequestModelImpl;
+      String? kaynakHesapReferansKodu,
+      int? taksitSayisi}) = _$TahsilatRequestModelImpl;
   _TahsilatRequestModel._() : super._();
 
   factory _TahsilatRequestModel.fromJson(Map<String, dynamic> json) =
@@ -1148,6 +1166,9 @@ abstract class _TahsilatRequestModel extends TahsilatRequestModel {
   @override
   String? get kaynakHesapReferansKodu;
   set kaynakHesapReferansKodu(String? value);
+  @override
+  int? get taksitSayisi;
+  set taksitSayisi(int? value);
 
   /// Create a copy of TahsilatRequestModel
   /// with the given fields replaced by the non-null parameter values.

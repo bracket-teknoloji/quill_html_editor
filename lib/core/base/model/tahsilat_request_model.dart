@@ -58,6 +58,7 @@ class TahsilatRequestModel with _$TahsilatRequestModel, NetworkManagerMixin {
     double? odemeBakiye,
     String? hedefHesapReferansKodu,
     String? kaynakHesapReferansKodu,
+    int? taksitSayisi,
   }) = _TahsilatRequestModel;
   TahsilatRequestModel._();
 

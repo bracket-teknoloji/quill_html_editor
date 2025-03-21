@@ -99,6 +99,23 @@ mixin _$KrediKartiTahsilatiViewModel
     });
   }
 
+  late final _$sozlesmeModelAtom = Atom(
+      name: '_KrediKartiTahsilatiViewModelBase.sozlesmeModel',
+      context: context);
+
+  @override
+  BankaSozlesmesiModel? get sozlesmeModel {
+    _$sozlesmeModelAtom.reportRead();
+    return super.sozlesmeModel;
+  }
+
+  @override
+  set sozlesmeModel(BankaSozlesmesiModel? value) {
+    _$sozlesmeModelAtom.reportWrite(value, super.sozlesmeModel, () {
+      super.sozlesmeModel = value;
+    });
+  }
+
   late final _$bankaSozlesmesiListAtom = Atom(
       name: '_KrediKartiTahsilatiViewModelBase.bankaSozlesmesiList',
       context: context);
@@ -423,6 +440,44 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   @override
+  void setTaksitSayisi(int? value) {
+    final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
+        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setTaksitSayisi');
+    try {
+      return super.setTaksitSayisi(value);
+    } finally {
+      _$_KrediKartiTahsilatiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void increaseTaksitSayisi() {
+    final _$actionInfo =
+        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+            name: '_KrediKartiTahsilatiViewModelBase.increaseTaksitSayisi');
+    try {
+      return super.increaseTaksitSayisi();
+    } finally {
+      _$_KrediKartiTahsilatiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decreaseTaksitSayisi() {
+    final _$actionInfo =
+        _$_KrediKartiTahsilatiViewModelBaseActionController.startAction(
+            name: '_KrediKartiTahsilatiViewModelBase.decreaseTaksitSayisi');
+    try {
+      return super.decreaseTaksitSayisi();
+    } finally {
+      _$_KrediKartiTahsilatiViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setSeriList(List<SeriModel>? value) {
     final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
         .startAction(name: '_KrediKartiTahsilatiViewModelBase.setSeriList');
@@ -557,11 +612,11 @@ mixin _$KrediKartiTahsilatiViewModel
   }
 
   @override
-  void setSozlesmeKodu(String? value) {
+  void setSozlesme(BankaSozlesmesiModel? value) {
     final _$actionInfo = _$_KrediKartiTahsilatiViewModelBaseActionController
-        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setSozlesmeKodu');
+        .startAction(name: '_KrediKartiTahsilatiViewModelBase.setSozlesme');
     try {
-      return super.setSozlesmeKodu(value);
+      return super.setSozlesme(value);
     } finally {
       _$_KrediKartiTahsilatiViewModelBaseActionController
           .endAction(_$actionInfo);
@@ -600,6 +655,7 @@ appBarSubTitle: ${appBarSubTitle},
 seriList: ${seriList},
 cariModel: ${cariModel},
 bankModel: ${bankModel},
+sozlesmeModel: ${sozlesmeModel},
 bankaSozlesmesiList: ${bankaSozlesmesiList},
 bankaHesaplariList: ${bankaHesaplariList},
 muhaRefList: ${muhaRefList},

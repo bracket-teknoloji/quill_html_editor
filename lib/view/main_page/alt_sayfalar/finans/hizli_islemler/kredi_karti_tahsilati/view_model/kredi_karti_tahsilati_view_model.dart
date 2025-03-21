@@ -39,6 +39,9 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   BankaListesiModel? bankModel;
 
   @observable
+  BankaSozlesmesiModel? sozlesmeModel;
+
+  @observable
   ObservableList<BankaSozlesmesiModel>? bankaSozlesmesiList;
 
   @observable
@@ -106,6 +109,25 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   void setTutar(double? value) => model = model.copyWith(tutar: value);
 
   @action
+  void setTaksitSayisi(int? value) => model = model.copyWith(taksitSayisi: value);
+
+  @action
+  void increaseTaksitSayisi() {
+    if (model.taksitSayisi == null) {
+      model = model.copyWith(taksitSayisi: 0);
+    }
+    
+    model = model.copyWith(taksitSayisi: (model.taksitSayisi ?? 0) + 1);
+  }
+
+  @action
+  void decreaseTaksitSayisi() {
+    if (model.taksitSayisi != null && model.taksitSayisi! > 0) {
+      model = model.copyWith(taksitSayisi: model.taksitSayisi! - 1);
+    }
+  }
+
+  @action
   void setSeriList(List<SeriModel>? value) {
     if (value != null) {
       seriList = value.asObservable();
@@ -143,7 +165,15 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
   void setHesapTipi(String? value) => model = model.copyWith(hesapTipi: value);
 
   @action
-  void setSozlesmeKodu(String? value) => model = model.copyWith(sozlesmeKodu: value);
+  void setSozlesme(BankaSozlesmesiModel? value) {
+    model = model.copyWith(sozlesmeKodu: value?.sozlesmeKodu);
+    sozlesmeModel = value;
+    if (value?.taksitBitis != null) {
+      setTaksitSayisi(0);
+    } else {
+      setTaksitSayisi(null);
+    }
+  }
 
   @action
   void setReferansKodu(String? value) => model = model.copyWith(refKod: value);

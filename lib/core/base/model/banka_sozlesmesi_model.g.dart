@@ -19,6 +19,7 @@ _$BankaSozlesmesiModelImpl _$$BankaSozlesmesiModelImplFromJson(
       bitisTarihi: json['BITIS_TARIHI'] == null
           ? null
           : DateTime.parse(json['BITIS_TARIHI'] as String),
+      taksitBitis: (json['TAKSIT_BITIS'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$BankaSozlesmesiModelImplToJson(
@@ -33,4 +34,5 @@ Map<String, dynamic> _$$BankaSozlesmesiModelImplToJson(
         'BASLAMA_TARIHI': value,
       if (instance.bitisTarihi?.toIso8601String() case final value?)
         'BITIS_TARIHI': value,
+      if (instance.taksitBitis case final value?) 'TAKSIT_BITIS': value,
     };

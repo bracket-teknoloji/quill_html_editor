@@ -43,6 +43,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
   late final TextEditingController _seriController;
   late final TextEditingController _hesapController;
   late final TextEditingController _tutarController;
+  late final TextEditingController _taksitController;
   late final TextEditingController _krediKartiNoController;
   late final TextEditingController _referansKoduController;
   late final TextEditingController _plasiyerController;
@@ -59,6 +60,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     _sozlesmeController = TextEditingController();
     _seriController = TextEditingController(text: userModel.kullaniciYetki?.dekSeriKKartiTahsilati);
     _hesapController = TextEditingController();
+    _taksitController = TextEditingController();
     _tutarController = TextEditingController(
       text: widget.cariListesiModel?.bakiye?.abs().commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
     );
@@ -119,7 +121,12 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
       }
       if (viewModel.model.kktYontemi case ("K" || "H")) {
         viewModel.setHesapTipi("C");
-        await getKasa();
+        if (yetkiController.varsayilanKrediKartiKasa case final kasa?) {
+          viewModel.setKasaKodu(kasa.kasaKodu);
+          _kasaController.text = kasa.kasaTanimi ?? "";
+        } else {
+          await getKasa();
+        }
         await viewModel.getSiradakiKod();
         if (viewModel.model.kasaKodu == null) return;
       }
@@ -147,6 +154,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     _seriController.dispose();
     _hesapController.dispose();
     _tutarController.dispose();
+    _taksitController.dispose();
     _krediKartiNoController.dispose();
     _referansKoduController.dispose();
     _plasiyerController.dispose();
@@ -289,6 +297,58 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
                     ).yetkiVarMi(viewModel.model.kktYontemi == "H"),
                   ],
                 ),
+          ),
+          Observer(
+            builder: (_) {
+              if (viewModel.sozlesmeModel?.taksitBitis case final taksit?) {
+                return CustomTextField(
+                  labelText: "Taksit",
+                  controller: _taksitController,
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value case null || "") {
+                      return "Taksit sayısı boş bırakılamaz";
+                    }
+                    final int? taksitValue = int.tryParse(value);
+                    if (taksitValue == null) {
+                      return "Taksit sayısı geçersiz";
+                    }
+                    if (taksitValue < 0) {
+                      return "Taksit sayısı 0'dan küçük olamaz";
+                    }
+                    if (taksitValue > taksit) {
+                      return "Taksit sayısı $taksit den büyük olamaz";
+                    }
+
+                    return null;
+                  },
+                  onChanged: (value) => viewModel.setTaksitSayisi(int.tryParse(value) ?? 0),
+                  suffix: Wrap(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          viewModel.decreaseTaksitSayisi();
+                          _taksitController.text = viewModel.model.taksitSayisi.commaSeparatedWithDecimalDigits(
+                            OndalikEnum.miktar,
+                          );
+                        },
+                        icon: const Icon(Icons.remove),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          viewModel.increaseTaksitSayisi();
+                          _taksitController.text = viewModel.model.taksitSayisi.commaSeparatedWithDecimalDigits(
+                            OndalikEnum.miktar,
+                          );
+                        },
+                        icon: const Icon(Icons.add),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              return const SizedBox.shrink();
+            },
           ),
           Observer(
             builder:
@@ -497,7 +557,10 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
               .map(
                 (e) => BottomSheetModel(
                   title: e.sozlesmeAdi ?? "",
-                  description: e.bankaTanimi,
+                  descriptionWidget: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [Text("Taksitler: (0-${e.taksitBitis ?? 0})"), Text("Banka: ${e.bankaTanimi ?? ""}")],
+                  ),
                   value: e,
                   groupValue: e.sozlesmeKodu,
                 ),
@@ -506,7 +569,7 @@ final class _KrediKartiTahsilatiViewState extends BaseState<KrediKartiTahsilatiV
     );
     if (result is BankaSozlesmesiModel) {
       _sozlesmeController.text = result.sozlesmeAdi ?? "";
-      viewModel.setSozlesmeKodu(result.sozlesmeKodu);
+      viewModel.setSozlesme(result);
     }
   }
 
