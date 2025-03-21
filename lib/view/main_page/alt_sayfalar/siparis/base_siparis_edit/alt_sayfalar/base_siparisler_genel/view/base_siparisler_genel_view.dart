@@ -125,7 +125,8 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                   model
                     ..cariAdi = result.cariAdi ?? ""
                     ..cariKodu = result.cariKodu ?? ""
-                    ..vadeGunu = result.vadeGunu ?? 0;
+                    ..vadeGunu = result.vadeGunu
+                    ..vadeTarihi = DateTime.now().add(Duration(days: result.vadeGunu ?? 0)).dateTimeWithoutTime;
                   cariController.text = result.cariAdi ?? "";
                   if (yetkiController.plasiyerUygulamasiAcikMi) {
                     model

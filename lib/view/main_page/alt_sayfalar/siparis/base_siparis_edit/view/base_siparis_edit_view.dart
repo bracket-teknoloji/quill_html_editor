@@ -172,17 +172,17 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
           );
         }
         if (cariModel is CariListesiModel) {
-          BaseSiparisEditModel.instance.tag = "FaturaModel";
-          BaseSiparisEditModel.instance.vadeGunu = cariModel.vadeGunu;
-          BaseSiparisEditModel.instance.vadeTarihi =
-              DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime;
-          BaseSiparisEditModel.instance.siparisTipi = model.editTipiEnum;
-          BaseSiparisEditModel.instance.plasiyerAciklama = cariModel.plasiyerAciklama;
-          BaseSiparisEditModel.instance.plasiyerKodu = cariModel.plasiyerKodu;
-          BaseSiparisEditModel.instance.cariAdi = cariModel.cariAdi;
-          BaseSiparisEditModel.instance.cariKodu = cariModel.cariKodu;
-          BaseSiparisEditModel.instance.kosulKodu = cariModel.kosulKodu;
-          BaseSiparisEditModel.instance.belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
+          BaseSiparisEditModel.instance
+            ..tag = "FaturaModel"
+            ..vadeGunu = cariModel.vadeGunu
+            ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
+            ..siparisTipi = model.editTipiEnum
+            ..plasiyerAciklama = cariModel.plasiyerAciklama
+            ..plasiyerKodu = cariModel.plasiyerKodu
+            ..cariAdi = cariModel.cariAdi
+            ..cariKodu = cariModel.cariKodu
+            ..kosulKodu = cariModel.kosulKodu
+            ..belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
         }
       }
       if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
@@ -200,9 +200,10 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
               return element;
             }).toList();
       }
-      BaseSiparisEditModel.instance.belgeTuru ??= widget.model.editTipiEnum?.rawValue;
-      BaseSiparisEditModel.instance.islemeBaslamaTarihi = DateTime.now();
-      BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
+      BaseSiparisEditModel.instance
+        ..islemeBaslamaTarihi = DateTime.now()
+        ..belgeTuru ??= widget.model.editTipiEnum?.rawValue
+        ..pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
       viewModel.setLoading(false);
     });
     super.initState();
@@ -620,6 +621,11 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
         ..kalemList =
             instance.kalemList?.map((element) => element..vadeTarihi = DateTime.now().dateTimeWithoutTime).toList()
         ..kalemler = instance.kalemList;
+    }
+    if (yetkiController.satirdaVade(widget.model.editTipiEnum!)) {
+      instance
+        ..vadeGunu = null
+        ..vadeTarihi = null;
     }
     if (instance.isNew == true || (instance.isTempBelge && instance.islemId == null)) {
       const uuid = Uuid();

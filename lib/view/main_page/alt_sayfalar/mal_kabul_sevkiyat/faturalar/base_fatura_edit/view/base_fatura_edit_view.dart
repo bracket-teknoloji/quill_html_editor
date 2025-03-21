@@ -340,8 +340,11 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           final result = await Get.toNamed("/mainPage/cariListesiOzel");
           if (result != null) {
             if (result is CariListesiModel) {
-              BaseSiparisEditModel.instance.cariKodu = result.cariKodu;
-              BaseSiparisEditModel.instance.cariAdi = result.cariAdi;
+              BaseSiparisEditModel.instance
+                ..cariKodu = result.cariKodu
+                ..cariAdi = result.cariAdi
+                ..vadeGunu = result.vadeGunu
+                ..vadeTarihi = DateTime.now().add(Duration(days: result.vadeGunu ?? 0)).dateTimeWithoutTime;
               if (result.plasiyerKodu != null) {
                 BaseSiparisEditModel.instance
                   ..plasiyerKodu = result.plasiyerKodu
@@ -769,6 +772,11 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
       kayittarihi: DateTime.now().dateTimeWithoutTime,
       kalemler: instance.kalemList?.map((e) => e..siparisSira = e.sira).toList(),
     );
+    if (yetkiController.satirdaVade(widget.model.editTipiEnum!)) {
+      newInstance
+        ..vadeGunu = null
+        ..vadeTarihi = null;
+    }
     if (widget.model.baseEditEnum == BaseEditEnum.duzenle) {
       newInstance
         ..mevcutBelgeNo = widget.model.model?.belgeNo

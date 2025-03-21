@@ -302,8 +302,10 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                     ..setPlasiyer(
                       PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu),
                     );
-                  viewModel.model.vadeGunu = cariModel.vadeGunu;
-                  viewModel.model.efaturaTipi = cariModel.efaturaTipi;
+                  viewModel.model
+                    ..vadeGunu = cariModel.vadeGunu
+                    ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
+                    ..efaturaTipi = cariModel.efaturaTipi;
                   _plasiyerController.text = cariModel.plasiyerAciklama ?? "";
                   _belgeNoController.clear();
                   await getBelgeNo(
