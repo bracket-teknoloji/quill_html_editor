@@ -99,7 +99,12 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
         viewModel.setPlasiyerKodu(yetkiController.varsayilanPlasiyer);
         _plasiyerController.text = yetkiController.varsayilanPlasiyer?.plasiyerAciklama ?? "";
       }
-      await getKasa();
+      if (yetkiController.varsayilanNakitKasa case final kasa?) {
+        _kasaController.text = kasa.kasaTanimi ?? "";
+        await setkasa(kasa);
+      } else {
+        await getKasa();
+      }
       if (viewModel.model.kasaKodu == null) return;
       await viewModel.getSiradakiKod();
       _belgeNoController.text = viewModel.model.belgeNo ?? "";
@@ -473,25 +478,29 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
       viewModel.model.kasaKodu,
     );
     if (result is KasaList) {
-      viewModel.setKasa(result);
-      _kasaController.text = result.kasaTanimi ?? "";
-      _cariHareketiAciklamaController.text = "Nakit ${viewModel.formTipi} (${result.kasaKodu ?? ""})";
-      if (result.dovizli == "E") {
-        _dovizTipiController.text = result.dovizAdi ?? " ";
-        viewModel
-          ..setHedefAciklama(_cariHareketiAciklamaController.text)
-          ..setDovizTipi(result.dovizli == "E" ? result.dovizTipi ?? 0 : null);
-        _dovizTipiController.text = result.dovizli == "E" ? result.dovizAdi ?? mainCurrency : "";
-        if (result.dovizAdi != null) {
-          await getDovizDialog();
-        }
-      } else {
-        if (viewModel.model.dovizTipi != null || viewModel.model.dovizTipi != 0) {
-          viewModel.setDovizTipi(0);
-          _dovizTipiController.text = mainCurrency;
-          _dovizKuruController.clear();
-          _dovizTutariController.clear();
-        }
+      setkasa(result);
+    }
+  }
+
+  Future<void> setkasa(KasaList kasa) async {
+    viewModel.setKasa(kasa);
+    _kasaController.text = kasa.kasaTanimi ?? "";
+    _cariHareketiAciklamaController.text = "Nakit ${viewModel.formTipi} (${kasa.kasaKodu ?? ""})";
+    if (kasa.dovizli == "E") {
+      _dovizTipiController.text = kasa.dovizAdi ?? " ";
+      viewModel
+        ..setHedefAciklama(_cariHareketiAciklamaController.text)
+        ..setDovizTipi(kasa.dovizli == "E" ? kasa.dovizTipi ?? 0 : null);
+      _dovizTipiController.text = kasa.dovizli == "E" ? kasa.dovizAdi ?? mainCurrency : "";
+      if (kasa.dovizAdi != null) {
+        await getDovizDialog();
+      }
+    } else {
+      if (viewModel.model.dovizTipi != null || viewModel.model.dovizTipi != 0) {
+        viewModel.setDovizTipi(0);
+        _dovizTipiController.text = mainCurrency;
+        _dovizKuruController.clear();
+        _dovizTutariController.clear();
       }
     }
   }
