@@ -604,7 +604,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.satisIrsaliye => yetkiController.satisIrsFiyatGor,
     EditTipiEnum.alisIrsaliye => yetkiController.alisIrsFiyatGor,
     EditTipiEnum.depoTransferi => yetkiController.transferDatFiyatGor,
-    EditTipiEnum.ambarGirisi => yetkiController.transferACFiyatGor,
+    EditTipiEnum.ambarGirisi => yetkiController.transferAGFiyatGor,
     EditTipiEnum.ambarCikisi => yetkiController.transferACFiyatGor,
     _ => true,
   };
@@ -849,8 +849,6 @@ extension EditTipiEnumExtension on EditTipiEnum {
     EditTipiEnum.cari => true,
     _ => false,
   };
-
-
 
   void get addEditListItem {
     switch (this) {
