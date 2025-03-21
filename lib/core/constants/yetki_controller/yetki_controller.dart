@@ -75,9 +75,10 @@ final class YetkiController {
   List<DepoList>? get yetkiliDatDepoList =>
       _paramModel?.depoList
           ?.where(
-            (element) =>
-                [AccountModel.instance.aktifSubeKodu, null].contains(element.subeKodu) &&
-                _isTrue(_kullaniciYetkiModel?.sirketDatYetkiliDepolar?.contains(element.depoKodu)),
+            (element) => _isTrue(
+              (_kullaniciYetkiModel?.sirketDatYetkiliDepolar.ext.isNullOrEmpty ?? false) ||
+                  (_kullaniciYetkiModel?.sirketDatYetkiliDepolar?.contains(element.depoKodu) ?? false),
+            ),
           )
           .toList();
 
@@ -106,6 +107,13 @@ final class YetkiController {
             projeAciklama: _kullaniciYetkiModel?.varsayilanProjeTanimi,
           )
           : null;
+
+  KasaList? get varsayilanNakitKasa => _paramModel?.kasaList?.firstWhereOrNull(
+    (element) => element.kasaKodu == _kullaniciYetkiModel?.varsayilanNakitKasa,
+  );
+  KasaList? get varsayilanKrediKartiKasa => _paramModel?.kasaList?.firstWhereOrNull(
+    (element) => element.kasaKodu == _kullaniciYetkiModel?.varsayilanKrediKartiKasa,
+  );
 
   bool get alisTopluDepoKullan => _isTrue(_paramModel?.alisTopluDepoAktif);
   bool get satisTopluDepoKullan => _isTrue(_paramModel?.satisTopluDepoAktif);
@@ -1354,4 +1362,13 @@ final class YetkiController {
 
   bool get ozelHesapKapatmaIslemi => _isTrue(_profilYetkiModel?.cariOzelHesapKapatma);
   bool get ozelHesapKapatmaIslemiSil => _isTrue(_profilYetkiModel?.cariOzelHesapKapatmaSil);
+
+  bool get _alisSatirdaVade => _isTrue(_paramModel?.alisSatirBazindaVade, skipAdmin: true);
+  bool get _satisSatirdaVade => _isTrue(_paramModel?.satisSatirBazindaVade, skipAdmin: true);
+  bool satirdaVade(EditTipiEnum editTipi) {
+    if (editTipi.faturaMi || editTipi.irsaliyeMi || editTipi.siparisMi) {
+      return editTipi.satisMi ? _satisSatirdaVade : _alisSatirdaVade;
+    }
+    return false;
+  }
 }
