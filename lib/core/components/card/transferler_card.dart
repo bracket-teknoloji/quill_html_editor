@@ -297,24 +297,32 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
           if (model.cariAdi != null) Text(model.cariAdi ?? "").paddingSymmetric(vertical: UIHelper.lowSize),
           if (model.resmiBelgeNo != null)
             Text("Resmi Belge No: ${model.resmiBelgeNo ?? ""}").paddingSymmetric(vertical: UIHelper.lowSize),
+
+          if (model.cariKodu != null) Text("Cari Kodu: ${model.cariKodu ?? ""}"),
           CustomLayoutBuilder.divideInHalf(
             children: [
-              if (model.hedefDepo != null && model.topluDepo != null)
-                Text("Toplu Depo: ${model.topluDepo} => ${model.hedefDepo}"),
-              Text("Tipi: ${model.lokalDat == "E" ? "Lokal Transfer" : ""}"),
+              if (!(model.getEditTipiEnum?.depoTransferiMi ?? false)) ...[
+                Text("Vade günü: ${model.vadeGunu ?? 0}"),
+                Text("Toplu Depo: ${model.topluDepo ?? "0"}"),
+              ] else ...[
+                if (model.hedefDepo != null && model.topluDepo != null)
+                  Text("Toplu Depo: ${model.topluDepo} => ${model.hedefDepo}"),
+                Text("Tipi: ${model.lokalDat == "E" ? "Lokal Transfer" : ""}"),
+              ],
               Text("Kalem Adedi: ${model.kalemAdedi ?? ""}"),
-              if (model.cariKodu != null) Text("Cari Kodu: ${model.cariKodu ?? ""}"),
               // Text("Plasiyer: ${model.plasiyerAciklama ?? ""}", overflow: TextOverflow.ellipsis, maxLines: 1),
               if (widget.showVade == true) Text("Vade Günü: ${widget.model.vadeGunu ?? "0"}"),
-              if (model.dovizTutari != null && model.dovizAdi != null)
-                Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}"),
-              Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
-              Text(
-                "Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-              ),
-              Text(
-                "Genel Toplam: ${(model.genelToplam ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-              ),
+              if (model.getEditTipiEnum?.fiyatGor == true) ...[
+                if (model.dovizTutari != null && model.dovizAdi != null)
+                  Text("Döviz Toplamı: ${model.dovizTutari ?? ""} ${model.dovizAdi ?? ""}"),
+                Text("KDV: ${model.kdv.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency"),
+                Text(
+                  "Ara Toplam: ${model.getAraToplam2.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                ),
+                Text(
+                  "Genel Toplam: ${(model.genelToplam ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                ),
+              ],
             ],
           ),
           if (widget.showMiktar == true)
