@@ -665,42 +665,46 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
                   onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
                 ),
               ),
-            Expanded(
-              child: CustomTextField(
-                labelText: "Vade Günü",
-                enabled: enable,
-                controller: vadeGunuController,
-                keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  model.vadeGunu = int.tryParse(value);
-                  viewModel.setVadeTarihi(DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0)));
-                },
-                valueWidget: Observer(builder: (_) => Text(viewModel.model.vadeTarihi?.toDateString ?? "")),
-                suffix: IconButton(
-                  onPressed: () async {
-                    final date = await dialogManager.showDateTimePicker(
-                      initialDate: model.vadeTarihi ?? DateTime.now(),
+            if (!(model.getEditTipiEnum?.gizlenecekAlanlar("vade_gunu") ?? false) &&
+                !yetkiController.satirdaVade(model.getEditTipiEnum!))
+              Expanded(
+                child: CustomTextField(
+                  labelText: "Vade Günü",
+                  enabled: enable,
+                  controller: vadeGunuController,
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    model.vadeGunu = int.tryParse(value);
+                    viewModel.setVadeTarihi(
+                      DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0)),
                     );
-                    // final date = await showDatePicker(
-                    //   context: context,
-                    //   initialDate: model.vadeTarihi ?? DateTime.now(),
-                    //   firstDate: model.tarih ?? DateTime.now(),
-                    //   lastDate: DateTime.now().add(const Duration(days: 365)),
-                    // );
-                    if (date != null) {
-                      // model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
-                      viewModel.setVadeTarihi(date);
-                      model.vadeGunu =
-                          viewModel.model.vadeTarihi.dateTimeWithoutTime
-                              ?.difference(DateTime.now().dateTimeWithoutTime!)
-                              .inDays;
-                      vadeGunuController.text = model.vadeGunu.toString();
-                    }
                   },
-                  icon: const Icon(Icons.calendar_today),
+                  valueWidget: Observer(builder: (_) => Text(viewModel.model.vadeTarihi?.toDateString ?? "")),
+                  suffix: IconButton(
+                    onPressed: () async {
+                      final date = await dialogManager.showDateTimePicker(
+                        initialDate: model.vadeTarihi ?? DateTime.now(),
+                      );
+                      // final date = await showDatePicker(
+                      //   context: context,
+                      //   initialDate: model.vadeTarihi ?? DateTime.now(),
+                      //   firstDate: model.tarih ?? DateTime.now(),
+                      //   lastDate: DateTime.now().add(const Duration(days: 365)),
+                      // );
+                      if (date != null) {
+                        // model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
+                        viewModel.setVadeTarihi(date);
+                        model.vadeGunu =
+                            viewModel.model.vadeTarihi.dateTimeWithoutTime
+                                ?.difference(DateTime.now().dateTimeWithoutTime!)
+                                .inDays;
+                        vadeGunuController.text = model.vadeGunu.toString();
+                      }
+                    },
+                    icon: const Icon(Icons.calendar_today),
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ],

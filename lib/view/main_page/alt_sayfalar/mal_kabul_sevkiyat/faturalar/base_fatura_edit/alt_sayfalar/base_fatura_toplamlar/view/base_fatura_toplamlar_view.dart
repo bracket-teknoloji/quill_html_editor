@@ -524,7 +524,8 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
           ),
           Row(
             children: <Widget>[
-              if (!(model.getEditTipiEnum?.gizlenecekAlanlar("vade_gunu") ?? false))
+              if (!(model.getEditTipiEnum?.gizlenecekAlanlar("vade_gunu") ?? false) &&
+                  !yetkiController.satirdaVade(model.getEditTipiEnum!))
                 Expanded(
                   child: CustomTextField(
                     labelText: "Vade Günü",
