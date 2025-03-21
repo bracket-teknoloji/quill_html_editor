@@ -530,7 +530,12 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..sayKull2S = json['say_Kull2S'] as String?
   ..sayKull3S = json['say_Kull3S'] as String?
   ..sayKull4S = json['say_Kull4S'] as String?
-  ..sayKull5S = json['say_Kull5S'] as String?;
+  ..sayKull5S = json['say_Kull5S'] as String?
+  ..alisSatirBazindaVade = json['AlisSatirBazindaVade'] as bool?
+  ..satisSatirBazindaVade = json['SatisSatirBazindaVade'] as bool?
+  ..netOpenXePosta = json['NetOpenXEPosta'] as String?
+  ..netOpenXLog = json['NetOpenXLog'] as String?
+  ..sayfalamaKayitSayisi = (json['SayfalamaKayitSayisi'] as num?)?.toInt();
 
 Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
     <String, dynamic>{
@@ -1030,6 +1035,14 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
       if (instance.sayKull3S case final value?) 'say_Kull3S': value,
       if (instance.sayKull4S case final value?) 'say_Kull4S': value,
       if (instance.sayKull5S case final value?) 'say_Kull5S': value,
+      if (instance.alisSatirBazindaVade case final value?)
+        'AlisSatirBazindaVade': value,
+      if (instance.satisSatirBazindaVade case final value?)
+        'SatisSatirBazindaVade': value,
+      if (instance.netOpenXePosta case final value?) 'NetOpenXEPosta': value,
+      if (instance.netOpenXLog case final value?) 'NetOpenXLog': value,
+      if (instance.sayfalamaKayitSayisi case final value?)
+        'SayfalamaKayitSayisi': value,
     };
 
 CariAktiviteTipleri _$CariAktiviteTipleriFromJson(Map<String, dynamic> json) =>

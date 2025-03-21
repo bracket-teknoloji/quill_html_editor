@@ -71,6 +71,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   late final TextEditingController muhKoduController;
   late final TextEditingController muhRefKoduController;
   late final TextEditingController serilerController;
+  late final TextEditingController vadeController;
   late final TextEditingController aciklama1Controller;
   late final TextEditingController aciklama2Controller;
   late final TextEditingController aciklama3Controller;
@@ -597,6 +598,22 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                   if (result is YapilandirmaRehberiModel) {
                     yapKodController.text = result.yapacik ?? "";
                     viewModel.setYapKod(result.yapkod);
+                  }
+                },
+              ),
+            if (yetkiController.satirdaVade(editTipi!))
+              CustomTextField(
+                labelText: "Vade Tarihi",
+                isMust: true,
+                isDateTime: true,
+                controller: vadeController,
+                readOnly: true,
+                onClear: () => viewModel.kalemModel.vadeTarihi = null,
+                onTap: () async {
+                  final result = await dialogManager.showDateTimePicker();
+                  if (result != null) {
+                    vadeController.text = result.toDateString;
+                    viewModel.kalemModel.vadeTarihi = result;
                   }
                 },
               ),
@@ -1321,6 +1338,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     muhKoduController = TextEditingController();
     muhRefKoduController = TextEditingController();
     serilerController = TextEditingController();
+    vadeController = TextEditingController();
     aciklama1Controller = TextEditingController();
     aciklama2Controller = TextEditingController();
     aciklama3Controller = TextEditingController();
@@ -1453,6 +1471,14 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
           ..dovizAdi ??= editTipi?.satisMi == true ? viewModel.model?.satisDovizAdi : viewModel.model?.alisDovizAdi;
       }
     }
+    if (yetkiController.satirdaVade(editTipi!) && viewModel.kalemModel.vadeTarihi == null) {
+      if (model.vadeTarihi != null) {
+        viewModel.kalemModel.vadeTarihi = model.vadeTarihi;
+      } else {
+        viewModel.kalemModel.vadeTarihi = DateTime.now().add(Duration(days: model.vadeGunu ?? 0));
+      }
+    }
+    vadeController.text = viewModel.kalemModel.vadeTarihi?.toDateString ?? "";
     kalemAdiController.text =
         viewModel.kalemModel.kalemAdi ?? viewModel.model?.stokAdi ?? viewModel.model?.stokKodu ?? "";
     ekAlan1Controller.text = viewModel.kalemModel.ekalan1 ?? model.masrafKodu ?? "";
@@ -1635,6 +1661,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
     muhKoduController.dispose();
     muhRefKoduController.dispose();
     serilerController.dispose();
+    vadeController.dispose();
     aciklama1Controller.dispose();
     aciklama2Controller.dispose();
     aciklama3Controller.dispose();

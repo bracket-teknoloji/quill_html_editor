@@ -539,6 +539,16 @@ final class ParamModel {
   String? sayKull4S;
   @JsonKey(name: "say_Kull5S")
   String? sayKull5S;
+  @JsonKey(name: "AlisSatirBazindaVade")
+  bool? alisSatirBazindaVade;
+  @JsonKey(name: "SatisSatirBazindaVade")
+  bool? satisSatirBazindaVade;
+  @JsonKey(name: "NetOpenXEPosta")
+  String? netOpenXePosta;
+  @JsonKey(name: "NetOpenXLog")
+  String? netOpenXLog;
+  @JsonKey(name: "SayfalamaKayitSayisi")
+  int? sayfalamaKayitSayisi;
   Map<String, dynamic> toJson() => _$ParamModelToJson(this);
 }
 

@@ -236,6 +236,8 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
                         Text(
                           "Kur: ${kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency}",
                         ),
+                      if (yetkiController.satirdaVade(model.getEditTipiEnum!))
+                        Text("Vade Tarihi: ${kalemModel.vadeTarihi?.toDateString ?? ""}"),
                       if (model.getEditTipiEnum?.fiyatGor == true && kalemModel.otvTutar != null)
                         Text.rich(
                           TextSpan(
@@ -457,7 +459,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         belgeTipi: model.getEditTipiEnum?.rawValue,
         faturaTipi: 2,
         faturaHedefDepo: model.hedefDepo,
-        faturaDepoKodu: model.girisDepoKodu,
+        faturaDepoKodu: model.cikisDepoKodu,
         belgeNo: model.belgeNo,
       ),
     );
@@ -503,9 +505,10 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
       } else {
         if (isStokKoduExists && (model.getEditTipiEnum?.tekrarEdenBarkod?.startsWith("S") ?? false)) {
           bool devamMi = false;
-          await dialogManager.showAreYouSureDialog(() {
-            devamMi = true;
-          }, title: "${stokModel.stokKodu} - ${stokModel.stokAdi} ürün listenizde mevcut.\nYine de eklensin mi?");
+          await dialogManager.showAreYouSureDialog(
+            () => devamMi = true,
+            title: "${stokModel.stokKodu} - ${stokModel.stokAdi} ürün listenizde mevcut.\nYine de eklensin mi?",
+          );
           if (!devamMi) return;
         }
         final stok = await Get.toNamed("/kalemEkle", arguments: kalemModel);

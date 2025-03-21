@@ -380,7 +380,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
         belgeTipi: model.getEditTipiEnum?.rawValue,
         faturaTipi: 2,
         faturaHedefDepo: model.hedefDepo,
-        faturaDepoKodu: model.girisDepoKodu,
+        faturaDepoKodu: model.cikisDepoKodu,
         belgeNo: model.belgeNo,
       ),
     );
@@ -393,7 +393,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
         false;
     if (stokModel == null) {
       if (!(model.getEditTipiEnum?.urunOtomatikEklensin ?? false)) {
-        await Get.toNamed("/mainPage/stokRehberi", arguments: result);
+        await Get.toNamed("/mainPage/stokRe hberi", arguments: result);
       } else {
         dialogManager.showAlertDialog(
           "Barkod bulunamadı.\nSadece Barkodlu Stoklar Eklenebilir.\nOkutulan barkod: $result",

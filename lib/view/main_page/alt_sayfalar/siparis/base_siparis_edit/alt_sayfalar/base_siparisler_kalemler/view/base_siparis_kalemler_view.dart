@@ -220,10 +220,13 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
                             ],
                           ),
                         ),
+
                       if (kalemModel.dovizKuru != null)
                         Text(
                           "Kur: ${kalemModel.dovizKuru.commaSeparatedWithDecimalDigits(OndalikEnum.dovizFiyati)} ${kalemModel.dovizAdi ?? mainCurrency}",
                         ),
+                      if (yetkiController.satirdaVade(model.getEditTipiEnum!))
+                        Text("Vade Tarihi: ${kalemModel.vadeTarihi?.toDateString ?? ""}"),
                       if (kalemModel.brutFiyat != null)
                         Text.rich(
                           TextSpan(
