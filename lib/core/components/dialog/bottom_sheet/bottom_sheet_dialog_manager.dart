@@ -531,6 +531,7 @@ final class BottomSheetDialogManager {
                 description: e.depoKodu.toStringIfNotNull,
                 value: e,
                 groupValue: e.depoKodu,
+                descriptionWidget: e.hucreTakibi == "E" ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
               ),
             )
             .toList(),
