@@ -45,9 +45,11 @@ platform :android do
       }
     end
     gradle(task: 'clean')
-    gradle(task: 'assemble', build_type: 'Release', properties: { 'versionCode' => latest_release[:buildVersion].to_i + 1 }, flags: '-Ptarget=lib/main.dart')
+    gradle(task: 'assemble', build_type: 'Release',
+           properties: { 'versionCode' => latest_release[:buildVersion].to_i + 1 }, flags: '-Ptarget=lib/main.dart')
     output_path = '/Users/bracketteknoloji/Desktop/development/picker/build/app/outputs/flutter-apk/'
-    output_json_path = '/Users/bracketteknoloji/Desktop/development/Picker/android/app/build/outputs/apk/release/output-metadata.json'
+    output_json_path =
+      '/Users/bracketteknoloji/Desktop/development/Picker/android/app/build/outputs/apk/release/output-metadata.json'
     build_output = load_json(json_path: output_json_path)
     elements = build_output['elements'][0]
     apk_path = output_path + elements['outputFile']

@@ -1,52 +1,3130 @@
 {
-  "rightDrawer": {
-    "save": "Kaydet",
-    "profile": "Profil",
-    "executiveUser": "Yetkili Kullanıcı",
-    "exit": "Çıkış",
-    "changeCompany": "Şirket Değiştir",
-    "remote": "Uzak",
-    "local": "Yerel",
-    "releaseNotes": "Sürüm Yenilikleri",
-    "themeChange": "Temayı Değiştir",
-    "darkMode": "Karanlık Tema"
-  },
-  "serviceOperations": {
-    "isWebServicesWorking": "Web Servisleri Çalışıyor Mu?",
-    "isWebServicesWorkingSubtitle": "Web servislerinin çalışıp çalışmadığını kontrol eder.",
-    "updateService": "Servisi Güncelle",
-    "updateServiceSubtitle": "Servisi güncellemek için kullanılır.",
-    "dbUpdate": "Veri Tabanını Güncelle",
-    "dbUpdateSubtitle": "SQL veritabanını güncellemek için kullanılır.",
-    "serviceOperationsTitle": "Servis İşlemleri",
-    "netOpenXKernelStatus": "NetOpenX Kernel Durumu",
-    "netOpenXKernelStatusSubTitle": "NetOpenX Kernel Durumunu öğrenmenizi sağlar.",
-    "eFaturaDLLKayitla": "E-Fatura DLL Kayıtla",
-    "eFaturaDLLKayitlaSubTitle": "E-faturaların DLL kayıtlarını oluşturur.",
-    "netOpenXCreateKernel": "NetOpenX Kernel Oluştur",
-    "netOpenXCreateKernelSubTitle": "NetOpenX Kernel'i Oluşturmak için kullanabilirsiniz.",
-    "netfectWinServiceRestart": "NetFect Windows Sunucularını Yeniden Başlat",
-    "netfectWinServiceRestartSubTitle": "NetFect Windows Sunucularını Yeniden Başlatmak için bunu kullanabilirsiniz."
-  },
-  "generalStrings": {
-    "save": "Kaydet",
-    "success": "Başarılı",
-    "error": "Hata",
-    "filter": "Filtrele",
-    "sort": "Sırala",
-    "options": "Seçenekler",
-    "edit": "Düzenle",
-    "print": "Yazdır",
-    "delete": "Sil",
-    "view": "Görüntüle",
-    "actions": "İşlemler",
-    "other": "Diğer",
-    "general": "Genel",
-    "warning": "Uyarı",
-    "refresh": "Yenile",
-    "apply": "Uygula",
-    "themeChange": "Tema Değiştir",
-    "cancel": "İptal",
-    "ok": "Tamam"
-  }
+  "Success": true,
+  "Data": [
+    {
+      "ParamModel": {
+        "sevkEmriYeniKullaniciSistemi": true,
+        "fatuEkMaliyet3FieldVar": true,
+        "ParamYuklendi": true,
+        "KULLANICI": "icakmak",
+        "SIRKET": "BRACKETDEMO",
+        "ISLETME_KODU": 1,
+        "MapCariKullSahalar": {
+          "1S": "A1",
+          "2S": "A2",
+          "3S": "A3",
+          "4S": "A4",
+          "5S": "A5",
+          "6S": "A6",
+          "7S": "A7",
+          "8S": "A8",
+          "1N": "N1",
+          "2N": "N2",
+          "3N": "N3",
+          "4N": "N4",
+          "5N": "N5",
+          "6N": "N6",
+          "7N": "N7",
+          "8N": "N8"
+        },
+        "MapCariEkAlanlar": [
+          {
+            "caption": "Cari Ek Alan 2 Test",
+            "fieldName": "KT_CARI_EKALAN2",
+            "_veriTipi": "varchar"
+          }
+        ],
+        "ClientTimeoutSeconds": 120,
+        "_NetsisOndalikResponseModel": [
+          {
+            "MODUL": "T",
+            "MIKTAR": 2,
+            "FIYAT": 6,
+            "TUTAR": 2,
+            "KUR": 4,
+            "DOVIZ": 2,
+            "DOVIZ_FIYATI": 4,
+            "ORAN": 2
+          }
+        ],
+        "DepoList": [
+          {
+            "DEPO_KODU": 1,
+            "DEPO_TANIMI": "MERKEZ DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 2,
+            "DEPO_TANIMI": "ŞUBE DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 3,
+            "DEPO_TANIMI": "FASON DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 4,
+            "DEPO_TANIMI": "ANTREPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 5,
+            "DEPO_TANIMI": "EMANET DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 6,
+            "DEPO_TANIMI": "SEVKİYAT DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 7,
+            "DEPO_TANIMI": "HIZMET DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 9,
+            "DEPO_TANIMI": "HAMMADDE",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 11,
+            "DEPO_TANIMI": "1.SB DEPO 1",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H",
+            "SUBE_KODU": 1
+          },
+          {
+            "DEPO_KODU": 12,
+            "DEPO_TANIMI": "1.SB DEPO 2",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H",
+            "SUBE_KODU": 1
+          },
+          {
+            "DEPO_KODU": 17,
+            "DEPO_TANIMI": "YARI MAMUL DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 18,
+            "DEPO_TANIMI": "MAMUL DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 19,
+            "DEPO_TANIMI": "KALİTE KONTROL DEPOS",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 20,
+            "DEPO_TANIMI": "2.ŞUBE DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H",
+            "SUBE_KODU": 2
+          },
+          {
+            "DEPO_KODU": 21,
+            "DEPO_TANIMI": "EKSİ BAKİYELİ DEPO",
+            "BAKIYE_TAKIBI": "H",
+            "HUCRE_TAKIBI": "H"
+          },
+          {
+            "DEPO_KODU": 22,
+            "DEPO_TANIMI": "DİNAMİK DEPO",
+            "BAKIYE_TAKIBI": "E",
+            "HUCRE_TAKIBI": "E"
+          }
+        ],
+        "DovizList": [
+          {
+            "DOVIZ_KODU": 0,
+            "DOVIZ_TIPI": 0,
+            "ISIM": "TL"
+          },
+          {
+            "DOVIZ_KODU": 1,
+            "DOVIZ_TIPI": 1,
+            "ISIM": "$",
+            "ALIS": 36.5922,
+            "SATIS": 36.6582,
+            "EF_ALIS": 36.5666,
+            "EF_SATIS": 36.7131
+          },
+          {
+            "DOVIZ_KODU": 2,
+            "DOVIZ_TIPI": 2,
+            "ISIM": "€",
+            "ALIS": 40.0133,
+            "SATIS": 40.0854,
+            "EF_ALIS": 39.9853,
+            "EF_SATIS": 40.1455
+          }
+        ],
+        "SatirAcikBaslikList": [
+          {
+            "BELGE_KODU": "1",
+            "ACIKLAMA1": "SF1",
+            "ACIKLAMA2": "SF2",
+            "ACIKLAMA3": "SF3",
+            "ACIKLAMA4": "SF4",
+            "ACIKLAMA5": "SF5",
+            "ACIKLAMA6": "SF6",
+            "ACIKLAMA7": "SF7",
+            "ACIKLAMA8": "SF8",
+            "ACIKLAMA9": "SF9",
+            "ACIKLAMA10": "SF10"
+          },
+          {
+            "BELGE_KODU": "3",
+            "ACIKLAMA1": "SI1",
+            "ACIKLAMA2": "SI2",
+            "ACIKLAMA3": "SI3"
+          },
+          {
+            "BELGE_KODU": "6",
+            "ACIKLAMA1": "MS1",
+            "ACIKLAMA2": "MS2",
+            "ACIKLAMA3": "MS3",
+            "ACIKLAMA4": "MS4",
+            "ACIKLAMA5": "MS5",
+            "ACIKLAMA6": "MS6",
+            "ACIKLAMA7": "MS7",
+            "ACIKLAMA8": "MS8",
+            "ACIKLAMA9": "MS9",
+            "ACIKLAMA10": "MS10"
+          },
+          {
+            "BELGE_KODU": "7",
+            "ACIKLAMA1": "özel açıklama 1"
+          },
+          {
+            "BELGE_KODU": "H",
+            "ACIKLAMA1": "1",
+            "ACIKLAMA2": "2",
+            "ACIKLAMA3": "3",
+            "ACIKLAMA4": "4",
+            "ACIKLAMA5": "5",
+            "ACIKLAMA6": "6",
+            "ACIKLAMA7": "7",
+            "ACIKLAMA8": "8",
+            "ACIKLAMA9": "9",
+            "ACIKLAMA10": "10"
+          }
+        ],
+        "KasaList": [
+          {
+            "KASA_KODU": "101",
+            "KASA_TANIMI": "DOLAR KASASI",
+            "SUBE_KODU": 0,
+            "DOVIZLI": "E",
+            "DOVIZ_TIPI": 1,
+            "KKART_KASASI": false,
+            "TOPLAM_GIRIS": 28412.5914,
+            "TOPLAM_CIKIS": 41570.986,
+            "BAKIYE": -13158.3946,
+            "DEVIRLI_BAKIYE": -13158.3946,
+            "DEVIR_TUTARI": 0.0,
+            "DOVIZ_TOPLAM_GIRIS": 1022.0,
+            "DOVIZ_TOPLAM_CIKIS": 1485.72,
+            "DOVIZ_BAKIYE": -463.72,
+            "DEVIRLI_DOVIZ_BAKIYE": 536.28,
+            "DOVIZ_DEVIR_TUTARI": 1000.0,
+            "DOVIZ_ADI": "$"
+          },
+          {
+            "KASA_KODU": "102",
+            "KASA_TANIMI": "EURO KASASI",
+            "SUBE_KODU": 0,
+            "DOVIZLI": "E",
+            "DOVIZ_TIPI": 2,
+            "KKART_KASASI": false,
+            "TOPLAM_GIRIS": 39646.122345,
+            "TOPLAM_CIKIS": 4336.5551,
+            "BAKIYE": 35309.567245,
+            "DEVIRLI_BAKIYE": 35309.567245,
+            "DEVIR_TUTARI": 0.0,
+            "DOVIZ_TOPLAM_GIRIS": 1012.40374224,
+            "DOVIZ_TOPLAM_CIKIS": 151.0,
+            "DOVIZ_BAKIYE": 861.40374224,
+            "DEVIRLI_DOVIZ_BAKIYE": 1111.40374224,
+            "DOVIZ_DEVIR_TUTARI": 250.0,
+            "DOVIZ_ADI": "€"
+          },
+          {
+            "KASA_KODU": "103",
+            "KASA_TANIMI": "GARANTİ POS",
+            "SUBE_KODU": 0,
+            "DOVIZLI": "H",
+            "DOVIZ_TIPI": 0,
+            "KKART_KASASI": false,
+            "TOPLAM_GIRIS": 1361.0,
+            "TOPLAM_CIKIS": 2523.4363,
+            "BAKIYE": -1162.4363,
+            "DEVIRLI_BAKIYE": -1162.4363,
+            "DEVIR_TUTARI": 0.0,
+            "DOVIZ_TOPLAM_GIRIS": 0.0,
+            "DOVIZ_TOPLAM_CIKIS": 0.0,
+            "DOVIZ_BAKIYE": 0.0,
+            "DEVIRLI_DOVIZ_BAKIYE": 0.0,
+            "DOVIZ_DEVIR_TUTARI": 0.0
+          },
+          {
+            "KASA_KODU": "104",
+            "KASA_TANIMI": "KRON KASA",
+            "SUBE_KODU": 0,
+            "DOVIZLI": "E",
+            "DOVIZ_TIPI": 4,
+            "KKART_KASASI": false,
+            "TOPLAM_GIRIS": 274.26,
+            "TOPLAM_CIKIS": 0.0,
+            "BAKIYE": 274.26,
+            "DEVIRLI_BAKIYE": 274.26,
+            "DEVIR_TUTARI": 0.0,
+            "DOVIZ_TOPLAM_GIRIS": 10.0,
+            "DOVIZ_TOPLAM_CIKIS": 0.0,
+            "DOVIZ_BAKIYE": 10.0,
+            "DEVIRLI_DOVIZ_BAKIYE": 60.0,
+            "DOVIZ_DEVIR_TUTARI": 50.0
+          },
+          {
+            "KASA_KODU": "10000008",
+            "KASA_TANIMI": "TEST KASA",
+            "SUBE_KODU": 0,
+            "DOVIZLI": "H",
+            "DOVIZ_TIPI": 0,
+            "KKART_KASASI": false,
+            "TOPLAM_GIRIS": 649744.14,
+            "TOPLAM_CIKIS": 1170.0,
+            "BAKIYE": 648574.14,
+            "DEVIRLI_BAKIYE": 648574.14,
+            "DEVIR_TUTARI": 0.0,
+            "DOVIZ_TOPLAM_GIRIS": 0.0,
+            "DOVIZ_TOPLAM_CIKIS": 0.0,
+            "DOVIZ_BAKIYE": 0.0,
+            "DEVIRLI_DOVIZ_BAKIYE": 0.0,
+            "DOVIZ_DEVIR_TUTARI": 0.0
+          },
+          {
+            "KASA_KODU": "0104",
+            "KASA_TANIMI": "TEST KASA 2",
+            "SUBE_KODU": 0,
+            "DOVIZLI": "H",
+            "DOVIZ_TIPI": 0,
+            "KKART_KASASI": false,
+            "TOPLAM_GIRIS": 24709.54,
+            "TOPLAM_CIKIS": 15550.78,
+            "BAKIYE": 9158.76,
+            "DEVIRLI_BAKIYE": 9158.76,
+            "DEVIR_TUTARI": 0.0,
+            "DOVIZ_TOPLAM_GIRIS": 0.0,
+            "DOVIZ_TOPLAM_CIKIS": 0.0,
+            "DOVIZ_BAKIYE": 0.0,
+            "DEVIRLI_DOVIZ_BAKIYE": 0.0,
+            "DOVIZ_DEVIR_TUTARI": 0.0
+          },
+          {
+            "KASA_KODU": "100",
+            "KASA_TANIMI": "TL KASASI",
+            "SUBE_KODU": 0,
+            "DOVIZLI": "H",
+            "DOVIZ_TIPI": 0,
+            "KKART_KASASI": false,
+            "TOPLAM_GIRIS": 136371.006305,
+            "TOPLAM_CIKIS": 51762.1477,
+            "BAKIYE": 84608.858605,
+            "DEVIRLI_BAKIYE": 109608.858605,
+            "DEVIR_TUTARI": 25000.0,
+            "DOVIZ_TOPLAM_GIRIS": 0.0,
+            "DOVIZ_TOPLAM_CIKIS": 0.0,
+            "DOVIZ_BAKIYE": 0.0,
+            "DEVIRLI_DOVIZ_BAKIYE": 0.0,
+            "DOVIZ_DEVIR_TUTARI": 0.0
+          }
+        ],
+        "PlasiyerList": [
+          {
+            "PLASIYER_KODU": "BY",
+            "PLASIYER_ACIKLAMA": "BURAK TALHA YILMAZ"
+          },
+          {
+            "PLASIYER_KODU": "DM",
+            "PLASIYER_ACIKLAMA": "DEMO PLASIYER"
+          },
+          {
+            "PLASIYER_KODU": "TD",
+            "PLASIYER_ACIKLAMA": "TAHA DURMUŞ"
+          },
+          {
+            "PLASIYER_KODU": "TEST",
+            "PLASIYER_ACIKLAMA": "TESTTT"
+          },
+          {
+            "PLASIYER_KODU": "IC",
+            "PLASIYER_ACIKLAMA": "İLHAMİ ÇAKMAK"
+          },
+          {
+            "PLASIYER_KODU": "İS",
+            "PLASIYER_ACIKLAMA": "İSMAİL D."
+          },
+          {
+            "PLASIYER_KODU": "ZY",
+            "PLASIYER_ACIKLAMA": "ZEKİ YILMAZ"
+          }
+        ],
+        "PlasiyerListTumu": [
+          {
+            "PLASIYER_KODU": "BY",
+            "PLASIYER_ACIKLAMA": "BURAK TALHA YILMAZ"
+          },
+          {
+            "PLASIYER_KODU": "DM",
+            "PLASIYER_ACIKLAMA": "DEMO PLASIYER"
+          },
+          {
+            "PLASIYER_KODU": "TD",
+            "PLASIYER_ACIKLAMA": "TAHA DURMUŞ"
+          },
+          {
+            "PLASIYER_KODU": "TEST",
+            "PLASIYER_ACIKLAMA": "TESTTT"
+          },
+          {
+            "PLASIYER_KODU": "IC",
+            "PLASIYER_ACIKLAMA": "İLHAMİ ÇAKMAK"
+          },
+          {
+            "PLASIYER_KODU": "İS",
+            "PLASIYER_ACIKLAMA": "İSMAİL D."
+          },
+          {
+            "PLASIYER_KODU": "ZY",
+            "PLASIYER_ACIKLAMA": "ZEKİ YILMAZ"
+          }
+        ],
+        "ProjeList": [
+          {
+            "PROJE_KODU": "0000",
+            "PROJE_ACIKLAMA": "proje 0000",
+            "AKTIF": "E"
+          },
+          {
+            "PROJE_KODU": "100",
+            "PROJE_ACIKLAMA": "PROJE - 1",
+            "AKTIF": "E"
+          },
+          {
+            "PROJE_KODU": "101",
+            "PROJE_ACIKLAMA": "PROJE - 2",
+            "AKTIF": "E"
+          },
+          {
+            "PROJE_KODU": "103",
+            "PROJE_ACIKLAMA": "PROJE - 3",
+            "AKTIF": "E"
+          },
+          {
+            "PROJE_KODU": "G",
+            "AKTIF": "E"
+          },
+          {
+            "PROJE_KODU": "P01",
+            "PROJE_ACIKLAMA": "YENİ PROJE 1",
+            "AKTIF": "E"
+          },
+          {
+            "PROJE_KODU": "P02",
+            "PROJE_ACIKLAMA": "YENİ PROJE 2",
+            "AKTIF": "E"
+          },
+          {
+            "PROJE_KODU": "R",
+            "AKTIF": "E"
+          }
+        ],
+        "SubeList": [
+          {
+            "SIRKET": "BRACKETDEMO",
+            "ISLETME_KODU": 1,
+            "SUBE_ADI": "BRACKET",
+            "ISLETME_ADI": "BRACKET TEKNOLOJİ SAN. TİC. LTD. ŞTİ",
+            "LOKAL_DEPO_AKTIF": true,
+            "MERKEZMI": "E",
+            "ADRES": "ERENLER MH. 1201 SK. NO:5, Meydan 54 AVM, A Blok, Ofis 38",
+            "TELEFON": "0850 303 58 82",
+            "FAKS": "0850 303 58 82",
+            "EMAIL": "destek@bracket.com.tr",
+            "IL_ADI": "SAKARYA",
+            "ILCE": "ERENLER",
+            "VERGI_NUMARASI": "1870699214",
+            "VERGI_DAIRESI": "ALİ FUAT CEBESOY",
+            "PARA_BIRIMI": "TL",
+            "PARA_BIRIMI_KUSURAT": "KR"
+          },
+          {
+            "SIRKET": "BRACKETDEMO",
+            "ISLETME_KODU": 1,
+            "SUBE_KODU": 1,
+            "SUBE_ADI": "İNTERNET SATIŞLARI ŞUBESİ",
+            "ISLETME_ADI": "BRACKET TEKNOLOJİ SAN. TİC. LTD. ŞTİ",
+            "LOKAL_DEPO_AKTIF": true,
+            "CARI_KODU": "120.0001",
+            "CARI_ADI": "PERAKENDE CARİSİ",
+            "ADRES": "Erenler Mah, 1201 Sk, No 5, Meydan 54 AVM, A Blok, Ofis 38",
+            "TELEFON": "0850 303 5882",
+            "EMAIL": "destek@bracket.com.tr",
+            "IL_ADI": "SAKARYA",
+            "ILCE": "ERENLER",
+            "VERGI_NUMARASI": "1870699214",
+            "VERGI_DAIRESI": "ALİ FUAT CEBESOY"
+          },
+          {
+            "SIRKET": "BRACKETDEMO",
+            "ISLETME_KODU": 1,
+            "SUBE_KODU": 2,
+            "SUBE_ADI": "TEST ŞUBE",
+            "ISLETME_ADI": "BRACKET TEKNOLOJİ SAN. TİC. LTD. ŞTİ",
+            "LOKAL_DEPO_AKTIF": true,
+            "ADRES": "Neviye Mahallesi Şehit Fatih Kara Caddesi Arifiye/Sakarya",
+            "TELEFON": "05555555555",
+            "EMAIL": "testsube@gmail.com",
+            "IL_ADI": "SAKARYA",
+            "ILCE": "Arifiye",
+            "VERGI_DAIRESI": "ALİ FUAT CEBESOY"
+          }
+        ],
+        "TalTekParam": [
+          {
+            "TIP": 0,
+            "BELGE_TIPI": "ATAL",
+            "DOVIZ_TAKIP": "E",
+            "SATIR_ISKONTOSU": "H",
+            "SATIR_ISKONTO_SAYISI": "3",
+            "FARKLI_BIRIMLERDEN_ISLEM": "E",
+            "FARKLI_TESLIM_YERI": "E",
+            "DEPO_STOK_KARTINDAN_GELSIN": "E",
+            "EKACIKLAMALAR_AKTIF": "E",
+            "OZEL_KOD1_AKTIF": "E",
+            "OZEL_KOD1_SECIM11": "R",
+            "OZEL_KOD1_SECIM21": "S",
+            "OZEL_KOD1_SECIM31": "T",
+            "OZEL_KOD1_SECIM41": "U",
+            "OZEL_KOD2_AKTIF": "E",
+            "ACIKLAR1": "Talep Eden Kullanıcı",
+            "ACIKLAR2": "Talep Eden Departman",
+            "SATIRDA_KDV_SOR": "E",
+            "SATIR_TESLIM_TAR_SOR": "E",
+            "DOVIZ_TAKIP_HANGISI": 4,
+            "SATIR_EKALAN2_KULLAN": "E",
+            "HIZMET_UYGULAMASI": "H",
+            "HIZMET_DEPO_KODU": 6,
+            "KALEMLERDE_ACIKLAMA_AKTIF": "E"
+          },
+          {
+            "TIP": 1,
+            "BELGE_TIPI": "ATEK",
+            "SATIR_ISKONTO_SAYISI": "3",
+            "EKACIKLAMALAR_AKTIF": "E",
+            "OZEL_KOD1_AKTIF": "E",
+            "OZEL_KOD1_SECIM11": "N",
+            "OZEL_KOD1_SECIM21": "O",
+            "OZEL_KOD1_SECIM31": "P",
+            "OZEL_KOD1_SECIM41": "R",
+            "DOVIZ_TAKIP_HANGISI": 0,
+            "HIZMET_DEPO_KODU": 0
+          },
+          {
+            "TIP": 2,
+            "BELGE_TIPI": "STAL",
+            "ONAY_SISTEMI_KULLAN": "H",
+            "DOVIZ_TAKIP": "E",
+            "SATIR_ISKONTO_SAYISI": "3",
+            "KDV_HARIC": "H",
+            "KDV_DAHIL_HARIC_SOR": "E",
+            "DEPO_STOK_KARTINDAN_GELSIN": "H",
+            "EKACIKLAMALAR_AKTIF": "E",
+            "OZEL_KOD1_AKTIF": "E",
+            "OZEL_KOD1_SECIM11": "J",
+            "OZEL_KOD1_SECIM21": "K",
+            "OZEL_KOD1_SECIM31": "L",
+            "OZEL_KOD1_SECIM41": "M",
+            "OZEL_KOD2_AKTIF": "E",
+            "OZEL_KOD2_TABLODAN": "H",
+            "DOVIZ_TAKIP_HANGISI": 1,
+            "HIZMET_DEPO_KODU": 0,
+            "MUHREFKOD_SORULSUN": "H",
+            "TOPLU_DEPO_KULLAN": "E"
+          },
+          {
+            "TIP": 3,
+            "BELGE_TIPI": "STEK",
+            "KOSUL_AKTIF": "E",
+            "ONAY_SISTEMI_KULLAN": "E",
+            "DOVIZ_TAKIP": "E",
+            "SATIR_ISKONTOSU": "E",
+            "SATIR_ISKONTO_SAYISI": "4",
+            "YUZDE_SORULSUN": "E",
+            "MAL_FAZLASI_ISKONTO": "E",
+            "GEN_ISK1_AKTIF": "E",
+            "GEN_ISK1_ADI": "Isk 1",
+            "GEN_ISK2_AKTIF": "E",
+            "GEN_ISK2_ADI": "Isk 2",
+            "GEN_ISK3_AKTIF": "E",
+            "GEN_ISK3_ADI": "Isk 3",
+            "KDV_HARIC": "H",
+            "KDV_DAHIL_HARIC_SOR": "E",
+            "FARKLI_BIRIMLERDEN_ISLEM": "E",
+            "FARKLI_TESLIM_YERI": "E",
+            "DEPO_STOK_KARTINDAN_GELSIN": "E",
+            "EKACIKLAMALAR_AKTIF": "E",
+            "OZEL_KOD1_AKTIF": "E",
+            "OZEL_KOD1_TABLODAN": "H",
+            "OZEL_KOD1_SECIM11": "E",
+            "OZEL_KOD1_SECIM21": "F",
+            "OZEL_KOD1_SECIM31": "G",
+            "OZEL_KOD1_SECIM41": "H",
+            "OZEL_KOD2_AKTIF": "E",
+            "OZEL_KOD2_TABLODAN": "E",
+            "ACIKLAMA_AKTIF": "E",
+            "ACIKLAR1": "ILGILI KISI",
+            "ACIKLAR2": "TEKLIF KONUSU",
+            "SATIRDA_KDV_SOR": "E",
+            "SATIR_TESLIM_TAR_SOR": "E",
+            "DOVIZ_TAKIP_HANGISI": 4,
+            "SATIR_EKALAN2_KULLAN": "E",
+            "HIZMET_UYGULAMASI": "H",
+            "HIZMET_DEPO_KODU": 0,
+            "MIKTAR2_SOR": "E",
+            "KALEMLERDE_ACIKLAMA_AKTIF": "E",
+            "MIKTAR_BIR_GELSIN": "E",
+            "MUHREFKOD_SORULSUN": "H",
+            "VARSAYILAN_MUHREFKOD": "123456",
+            "TUTARDAN_BIRIM_FIATA": "E",
+            "CARI_ISK_SATIRA_UYGULA": "E",
+            "MIKTAR_SIFIR_OLAMAZ": "H",
+            "TOPLU_DEPO_KULLAN": "H",
+            "FAT_ALTM1_VARMI": "E",
+            "FAT_ALTM2_VARMI": "E",
+            "FAT_ALTM1_TANIM": "Teklif Ek Mal 1",
+            "FAT_ALTM2_TANIM": "Teklif Ek Mal 2",
+            "KDV_SIFIRLANACAK_OZELKOD2": "H",
+            "KOSUL_SATIRDA_AKTIF": "H"
+          }
+        ],
+        "CekSenParam": [
+          {
+            "BELGE_TIPI": "BCEK",
+            "DOVIZ_AKTIF": "H",
+            "VERILEN_KODU_ISTENSIN": "E",
+            "EK_ACIKLAMA_KULLAN": "E",
+            "CIKISTA_BANKA_KODU": "E"
+          },
+          {
+            "BELGE_TIPI": "MCEK",
+            "DOVIZ_AKTIF": "E",
+            "VERILEN_KODU_ISTENSIN": "E",
+            "EK_ACIKLAMA_KULLAN": "E"
+          },
+          {
+            "BELGE_TIPI": "BSEN",
+            "DOVIZ_AKTIF": "E",
+            "VERILEN_KODU_ISTENSIN": "E",
+            "EK_ACIKLAMA_KULLAN": "E"
+          },
+          {
+            "BELGE_TIPI": "MSEN",
+            "DOVIZ_AKTIF": "E",
+            "VERILEN_KODU_ISTENSIN": "E",
+            "EK_ACIKLAMA_KULLAN": "H"
+          }
+        ],
+        "ListOzelKodTum": [
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "A",
+            "KOD": "1",
+            "ACIKLAMA": "Fiyat 1",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "A",
+            "KOD": "2",
+            "ACIKLAMA": "Fiyat 2",
+            "FIYAT_SIRASI": 2
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "A",
+            "KOD": "3",
+            "ACIKLAMA": "Fiyat 3",
+            "FIYAT_SIRASI": 3
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "A",
+            "KOD": "4",
+            "ACIKLAMA": "Fiyat 4",
+            "FIYAT_SIRASI": 4
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "S",
+            "KOD": "T",
+            "ACIKLAMA": "T",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "S",
+            "KOD": "H",
+            "ACIKLAMA": "H",
+            "FIYAT_SIRASI": 2
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "S",
+            "KOD": "N",
+            "ACIKLAMA": "N",
+            "FIYAT_SIRASI": 3
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "S",
+            "KOD": "D",
+            "ACIKLAMA": "D",
+            "FIYAT_SIRASI": 4
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "ATAL",
+            "KOD": "R",
+            "ACIKLAMA": "R",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "ATAL",
+            "KOD": "S",
+            "ACIKLAMA": "S",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "ATAL",
+            "KOD": "T",
+            "ACIKLAMA": "T",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "ATAL",
+            "KOD": "U",
+            "ACIKLAMA": "U",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "ATEK",
+            "KOD": "N",
+            "ACIKLAMA": "N",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "ATEK",
+            "KOD": "O",
+            "ACIKLAMA": "O",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "ATEK",
+            "KOD": "P",
+            "ACIKLAMA": "P",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "ATEK",
+            "KOD": "R",
+            "ACIKLAMA": "R",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "STAL",
+            "KOD": "J",
+            "ACIKLAMA": "J",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "STAL",
+            "KOD": "K",
+            "ACIKLAMA": "K",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "STAL",
+            "KOD": "L",
+            "ACIKLAMA": "L",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "STAL",
+            "KOD": "M",
+            "ACIKLAMA": "M",
+            "FIYAT_SIRASI": 1
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "STEK",
+            "KOD": "E",
+            "ACIKLAMA": "E",
+            "FIYAT_SIRASI": 2
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "STEK",
+            "KOD": "F",
+            "ACIKLAMA": "F",
+            "FIYAT_SIRASI": 2
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "STEK",
+            "KOD": "G",
+            "ACIKLAMA": "G",
+            "FIYAT_SIRASI": 2
+          },
+          {
+            "KOD_TIPI": 1,
+            "BELGE_TIPI": "STEK",
+            "KOD": "H",
+            "ACIKLAMA": "H",
+            "FIYAT_SIRASI": 2
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "A",
+            "KOD": "1",
+            "ACIKLAMA": "4/10 TEVKIFAT",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "A",
+            "KOD": "G",
+            "ACIKLAMA": "Özel Kod 2 G",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "A",
+            "KOD": "H",
+            "ACIKLAMA": "Özel Kod 2 H",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "S",
+            "KOD": "1",
+            "ACIKLAMA": "4/10 TEVKIFAT",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "S",
+            "KOD": "G",
+            "ACIKLAMA": "Özel Kod 2 G",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "S",
+            "KOD": "H",
+            "ACIKLAMA": "Özel Kod 2 H",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "ATAL",
+            "KOD": "1",
+            "ACIKLAMA": "4/10 TEVKIFAT",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "ATAL",
+            "KOD": "G",
+            "ACIKLAMA": "Özel Kod 2 G",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "ATAL",
+            "KOD": "H",
+            "ACIKLAMA": "Özel Kod 2 H",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "ATEK",
+            "KOD": "1",
+            "ACIKLAMA": "4/10 TEVKIFAT",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "ATEK",
+            "KOD": "G",
+            "ACIKLAMA": "Özel Kod 2 G",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "ATEK",
+            "KOD": "H",
+            "ACIKLAMA": "Özel Kod 2 H",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "STAL",
+            "KOD": "1",
+            "ACIKLAMA": "4/10 TEVKIFAT",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "STAL",
+            "KOD": "G",
+            "ACIKLAMA": "Özel Kod 2 G",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "STAL",
+            "KOD": "H",
+            "ACIKLAMA": "Özel Kod 2 H",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "STEK",
+            "KOD": "1",
+            "ACIKLAMA": "4/10 TEVKIFAT",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "STEK",
+            "KOD": "G",
+            "ACIKLAMA": "Özel Kod 2 G",
+            "FIYAT_SIRASI": 0
+          },
+          {
+            "KOD_TIPI": 2,
+            "BELGE_TIPI": "STEK",
+            "KOD": "H",
+            "ACIKLAMA": "Özel Kod 2 H",
+            "FIYAT_SIRASI": 0
+          }
+        ],
+        "ListIskTip": [
+          {
+            "ISKONTO_TIPI": 1,
+            "ACIKLAMA": "TEST ISK TIP 1"
+          },
+          {
+            "ISKONTO_TIPI": 2,
+            "ACIKLAMA": "TEST ISK TIP 2"
+          },
+          {
+            "ISKONTO_TIPI": 3,
+            "ACIKLAMA": "TEST ISK TIP 3"
+          }
+        ],
+        "ListCariOdemeKodu": [
+          {
+            "ODEME_KODU": "01",
+            "ACIKLAMA": "12 ay taksitli"
+          },
+          {
+            "ODEME_KODU": "ABC",
+            "ACIKLAMA": "DENEME TEST"
+          }
+        ],
+        "YaziciList": [
+          {
+            "YAZICI_ADI": "Mal_Toplama_Yazici",
+            "YAZICI_TIPI": "windows"
+          },
+          {
+            "YAZICI_ADI": "Mal_Kontrol_Yazici",
+            "YAZICI_TIPI": "windows"
+          },
+          {
+            "YAZICI_ADI": "Stok_Etiket_Yazici",
+            "YAZICI_TIPI": "windows"
+          },
+          {
+            "YAZICI_ADI": "Seri_Etiket_Yazici",
+            "YAZICI_TIPI": "windows",
+            "ACIKLAMA": "Seri Etiket Yazıcısı"
+          },
+          {
+            "YAZICI_ADI": "Hucre_Etiket_Yazici",
+            "YAZICI_TIPI": "windows",
+            "ACIKLAMA": "Hücre Etiketi Yazıcısı"
+          },
+          {
+            "YAZICI_ADI": "Godex G300",
+            "YAZICI_TIPI": "windows",
+            "ACIKLAMA": "Godex Yazıcı"
+          },
+          {
+            "YAZICI_ADI": "Microsoft XPS Document Writer",
+            "YAZICI_TIPI": "windows"
+          },
+          {
+            "YAZICI_ADI": "MF210 Series",
+            "YAZICI_TIPI": "windows",
+            "ACIKLAMA": "Canon MF217w"
+          }
+        ],
+        "NetFectDizaynList": [
+          {
+            "ID": 13307,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "aa",
+            "DOSYA_ADI": "Rapor_Fatura_a.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"OZEL_ALAN\",\"parametreTanimi\":\"Özel Alan\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13185,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Açıkkart Seri 1.etiket",
+            "DOSYA_ADI": "PickerSeriEtiket1.repx",
+            "OZEL_KOD": "SeriEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13186,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Açıkkart seri 2.etiket",
+            "DOSYA_ADI": "PickerSeriEtiketi2.repx",
+            "OZEL_KOD": "SeriEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13282,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "ALIS FATURASI (8X8)",
+            "OZEL_KOD": "AlisFaturasi",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 5048,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Alış Faturası Özel Dizayn",
+            "DOSYA_ADI": "TekFaturaOrtak.repx",
+            "OZEL_KOD": "AlisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"OZEL_ALAN\",\"parametreTanimi\":\"Özel Alan\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false,\"varsayilanDeger\":\"EE\"}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13171,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Alış İrs Kalem Etiketi",
+            "DOSYA_ADI": "AlisIrsStokEtiket.repx",
+            "OZEL_KOD": "AlisIrsaliyesi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"MIKTAR\",\"parametreTanimi\":\"MIKTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SERI_NO\",\"parametreTanimi\":\"Seri no\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"TEST_PARAM\",\"parametreTanimi\":\"Test Boolean\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"TARIH\",\"parametreTanimi\":\"Tarih\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13242,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Alış İrsaliye Stok Etiketi",
+            "DOSYA_ADI": "Kalem Bazında Alış İrsaliye Etiketi.repx",
+            "OZEL_KOD": "AlisIrsaliyesi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13179,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Ambar Çıkış",
+            "DOSYA_ADI": "Rapor_Ambar.repx",
+            "OZEL_KOD": "AmbarCikis",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13180,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Ambar Giriş",
+            "OZEL_KOD": "AmbarGiris",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 3019,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Arçelik Özel Etiket",
+            "DOSYA_ADI": "AtasanArcelikEtiket.repx",
+            "OZEL_KOD": "SevkiyatEtiket",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"Sevkemri Numarası\",\"degerTemizlenmesin\":true,\"enterIslemYap\":false},{\"parametreAdi\":\"TAKIPNO\",\"parametreTanimi\":\"Takip Numarası\",\"degerTemizlenmesin\":false,\"enterIslemYap\":true},{\"parametreAdi\":\"KOPYA_SAYISI\",\"parametreTanimi\":\"Kopya Sayısı\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13187,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Bom-teklif",
+            "DOSYA_ADI": "Bom-teklif.repx",
+            "OZEL_KOD": "SatisTeklifi",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13188,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "bom-teklif-2",
+            "DOSYA_ADI": "BOMTEKLIF.repx",
+            "OZEL_KOD": "SatisTeklifi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13166,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Bracket Ürün Etiketi(Silmeyin)",
+            "DOSYA_ADI": "ürün.repx",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13244,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Cari Fatura Listesi",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Genel",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13311,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Çin Satış Raporu",
+            "DOSYA_ADI": "Plasiyer Son Durum.repx",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Cari",
+            "PARAMETRELER": "[{\"parametreAdi\":\"PLASIYERLER\",\"parametreTanimi\":\"Plasiyerler\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"Baş. Tarihi\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"Bit. Tarihi\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 4037,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "DAT",
+            "DOSYA_ADI": "DAT.repx",
+            "OZEL_KOD": "DepoTransferi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 2,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 9119,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "DAT 80mm",
+            "DOSYA_ADI": "PosFisiFatura.repx",
+            "OZEL_KOD": "DepoTransferi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 8116,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Depo Transferi Etiketi Kurutlu",
+            "DOSYA_ADI": "test.repx",
+            "OZEL_KOD": "DepoTransferi",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "H",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13277,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Depozito Raporu",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Cari",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13338,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "E-Belge Basım (E-Arsiv E-Fatura)",
+            "DOSYA_ADI": "PiclerEfatEar100150.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"BASTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"BITTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13223,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "E-Fat 100*150",
+            "DOSYA_ADI": "PickerEFat80.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 9120,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "E-Fat 80",
+            "DOSYA_ADI": "PickerEFat80.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13136,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "E-İrsaliye 80",
+            "DOSYA_ADI": "EIrsaliye80.repx",
+            "OZEL_KOD": "SatisIrsaliyesi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13181,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "HamMadde1",
+            "DOSYA_ADI": "HamMadde1.repx",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13182,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "HamMadde2",
+            "DOSYA_ADI": "HamMadde1.repx",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 2016,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Hücre Etiketi",
+            "DOSYA_ADI": "HucreEtiket.repx",
+            "OZEL_KOD": "HucreEtiket",
+            "VARSAYILAN_MI": true,
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13170,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "İş Emri",
+            "OZEL_KOD": "IsEmri",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13206,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Mal Kontrol",
+            "DOSYA_ADI": "Rapor_MalKontrol.repx",
+            "OZEL_KOD": "MalKontrol",
+            "PARAMETRELER": "[{\"parametreAdi\":\"KULLANICI_ADI\",\"parametreTanimi\":\"KULLANICI_ADI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BILGISAYAR_ADI\",\"parametreTanimi\":\"BILGISAYAR_ADI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13142,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "MERT_CIVATA_EKSTRA",
+            "DOSYA_ADI": "Rapor_CariStokEkstre.repx",
+            "PARAMETRELER": "[{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"BASTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"BITTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13139,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "metin.test",
+            "DOSYA_ADI": "YeniRapor.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13161,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Musteri Siparisi TEST",
+            "DOSYA_ADI": "TekSiparisOrtak.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13316,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Müşteri Döviz Ciro",
+            "DOSYA_ADI": "Rapor_SatisYapilmayanCariler.repx",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Cari",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"BASTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"BITTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SIRALA\",\"parametreTanimi\":\"SIRALA\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"PLASIYER_KODU\",\"parametreTanimi\":\"Plasiyer Kodu\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13317,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Müşteri Döviz Ciro Stoklu",
+            "DOSYA_ADI": "Rapor_SatisYapilmayanCariler.repx",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Cari",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"BASTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"BITTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SIRALA\",\"parametreTanimi\":\"SIRALA\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"PLASIYERLER\",\"parametreTanimi\":\"Plasiyer Kodu\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13154,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Müşteri Sip Özel",
+            "DOSYA_ADI": "Rapor_Siparis.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13239,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Müşteri Sipairşi (80)",
+            "DOSYA_ADI": "EIrs80.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13204,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Müşteri Siparişi 3",
+            "DOSYA_ADI": "TekSiparisOrtak.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13203,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Müşteri Siparişi Deneme",
+            "DOSYA_ADI": "TekSiparisOrtak.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13195,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Müşteri Siparişi Özel",
+            "OZEL_KOD": "MusteriSiparisi",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13264,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "OzelMsip (Kopya)",
+            "DOSYA_ADI": "ResSip.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13266,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "OzelMsip Yusuf",
+            "DOSYA_ADI": "ResSip.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 3036,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Paketleme Test",
+            "DOSYA_ADI": "PaketlemeEtiketi.repx",
+            "OZEL_KOD": "Paketleme",
+            "VARSAYILAN_MI": true,
+            "PARAMETRELER": "[{\"parametreAdi\":\"PAKET_KODU\",\"parametreTanimi\":\"Paket Kodu\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13183,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "PALET",
+            "DOSYA_ADI": "PALET.repx",
+            "OZEL_KOD": "SevkiyatEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13310,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Plasiyer Son Durum",
+            "DOSYA_ADI": "Plasiyer Son Durum.repx",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Cari",
+            "PARAMETRELER": "[{\"parametreAdi\":\"PLASIYERLER\",\"parametreTanimi\":\"Plasiyerler\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"Baş. Tarihi\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"Bit. Tarihi\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13334,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Proforma Fatura (TL)",
+            "DOSYA_ADI": "Rapor_Siparis.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"TEMP_BELGE_ID\",\"parametreTanimi\":\"TEMP_BELGE_ID\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13332,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Proforma Fatura Dövizli",
+            "DOSYA_ADI": "Rapor_Siparis.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"TEMP_BELGE_ID\",\"parametreTanimi\":\"TEMP_BELGE_ID\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 7058,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Raf Etiketi 310x900 (Dikey)",
+            "DOSYA_ADI": "RafEtiket_bykuruyemis.repx",
+            "OZEL_KOD": "StokEtiket",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"FIYAT_TIPI\",\"parametreTanimi\":\"FIYAT_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 9116,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Raf Etiketi 58x40",
+            "DOSYA_ADI": "RafEtiket_bykuruyemis.repx",
+            "OZEL_KOD": "StokEtiket",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"FIYAT_TIPI\",\"parametreTanimi\":\"FIYAT_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13265,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "SATFATOZEL",
+            "DOSYA_ADI": "TekFaturaOrtakK.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"OZEL_ALAN\",\"parametreTanimi\":\"Özel Alan\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13267,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "SATFATOZEL YUSUF",
+            "DOSYA_ADI": "TekFaturaOrtakK.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"OZEL_ALAN\",\"parametreTanimi\":\"Özel Alan\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13272,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "SATFATOZEL YUSUF (Kopya)",
+            "DOSYA_ADI": "TekFaturaOrtakK.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"OZEL_ALAN\",\"parametreTanimi\":\"Özel Alan\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13315,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "SATFATOZEL YUSUF (Kopya) (Kopya)",
+            "DOSYA_ADI": "TekFaturaOrtakK.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"OZEL_ALAN\",\"parametreTanimi\":\"Özel Alan\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 4041,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satıcı Siparişi",
+            "DOSYA_ADI": "TekSiparisOrtak.repx",
+            "OZEL_KOD": "SaticiSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 7055,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satış Fat 80 Nokta Vuruşlu",
+            "DOSYA_ADI": "SatisFat80Nokta.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 12127,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satış Fat 80mm BuPiliç",
+            "DOSYA_ADI": "SatiFat80.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 5047,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satış Faturası",
+            "DOSYA_ADI": "TekFaturaOrtak.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13173,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satış İrs Kalem Etiketi",
+            "OZEL_KOD": "SatisIrsaliyesi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"MIKTAR\",\"parametreTanimi\":\"MIKTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SERI_NO\",\"parametreTanimi\":\"Seri no\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"TEST_PARAM\",\"parametreTanimi\":\"Test Boolean\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"TARIH\",\"parametreTanimi\":\"Tarih\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 3024,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satış İrsaliyesi",
+            "DOSYA_ADI": "SevkIrsaliyesi.repx",
+            "OZEL_KOD": "SatisIrsaliyesi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\"}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 3034,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satış Teklifi",
+            "DOSYA_ADI": "SatisTeklifi_Dovizli.repx",
+            "OZEL_KOD": "SatisTeklifi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 3037,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satış Teklifi (TL)",
+            "DOSYA_ADI": "SatisTeklifi_TRY.repx",
+            "OZEL_KOD": "SatisTeklifi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13308,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Satışı Yapılmayan Müşteriler",
+            "DOSYA_ADI": "Rapor_SatisYapilmayanCariler.repx",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Cari",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"BASTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"BITTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SIRALA\",\"parametreTanimi\":\"SIRALA\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"PLASIYER_KODU\",\"parametreTanimi\":\"Plasiyer Kodu\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13229,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "SatisFaurasiYusuf E-Fat 100*150 Ornek",
+            "OZEL_KOD": "SatisFaturasi",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13168,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Sayım Etiketi 60x24",
+            "DOSYA_ADI": "StokEtiket.repx",
+            "OZEL_KOD": "Sayim",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13169,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Sayım Etiketi 90x57",
+            "DOSYA_ADI": "SayimEtiketi_90x57.repx",
+            "OZEL_KOD": "Sayim",
+            "VARSAYILAN_MI": true,
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"KALEM_ID\",\"parametreTanimi\":\"KALEM_ID\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13190,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "SayimFarkiRaporu",
+            "DOSYA_ADI": "SayimFarkiRaporu.repx",
+            "OZEL_KOD": "Sayim",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13135,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Serbest Dizayn Demo",
+            "DOSYA_ADI": "StokEtiket.repx",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Stok",
+            "PARAMETRELER": "[{\"parametreAdi\":\"PARAM_TEST\",\"parametreTanimi\":\"PARAM_TEST\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"BASTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"BITTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_VKN\",\"parametreTanimi\":\"CARI_VKN\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"PLASIYER_KODU\",\"parametreTanimi\":\"PLASIYER_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"STOK_GRUP_KODU\",\"parametreTanimi\":\"STOK_GRUP_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_GRUP_KODU\",\"parametreTanimi\":\"CARI_GRUP_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"STOK_KOD5\",\"parametreTanimi\":\"STOK_KOD5\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"DOVIZ_TIPI\",\"parametreTanimi\":\"DOVIZ_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"MUHASEBE_KODU\",\"parametreTanimi\":\"MUHASEBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13314,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Serbest Rapor Link",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Genel",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13347,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "SerbestRapor1",
+            "DOSYA_ADI": "SerbestRapor1.repx",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Sipariş",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"BASTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"BITTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13189,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Seri Etiketi Atasan",
+            "DOSYA_ADI": "AtasanMakineSeriParcala.repx",
+            "OZEL_KOD": "SeriEtiket",
+            "PARAMETRELER": "[{\"parametreAdi\":\"KULLANICI\",\"parametreTanimi\":\"KULLANICI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SERI_EKRAN_TIPI\",\"parametreTanimi\":\"SERI_EKRAN_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 7056,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Seri Etiketi TEST",
+            "DOSYA_ADI": "SatisFat80.repx",
+            "OZEL_KOD": "SeriEtiket",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 3017,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Sevkiyat Etiketi",
+            "DOSYA_ADI": "StokEtiket.repx",
+            "OZEL_KOD": "SevkiyatEtiket",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":true,\"enterIslemYap\":false},{\"parametreAdi\":\"MIKTAR\",\"parametreTanimi\":\"MIKTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":true}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 6052,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Sipariş 80",
+            "DOSYA_ADI": "SatisFat80.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13354,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Stok Etiketi",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13176,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Stok Etiketi (40x20)",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 2013,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Stok Etiketi 1 (NQR TEST)",
+            "DOSYA_ADI": "StokEtiket.repx",
+            "OZEL_KOD": "StokEtiket",
+            "VARSAYILAN_MI": true,
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 11125,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Stok Etiketi 40x40",
+            "DOSYA_ADI": "StokEtiket.repx",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 9117,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Stok Etiketi 58x40",
+            "DOSYA_ADI": "StokEtiket.repx",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13165,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Stok Etiketi 60 x 28",
+            "DOSYA_ADI": "StokEtiket.repx",
+            "OZEL_KOD": "StokEtiket",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"MIKTAR\",\"parametreTanimi\":\"MIKTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"KULLANICI\",\"parametreTanimi\":\"Kullanıcı\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13192,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Stok Etiketi Test",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13345,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Stok Satış Raporu",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Stok",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13286,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "StokEtiketiNQR",
+            "OZEL_KOD": "StokEtiket",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 6055,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Tahsilat 80",
+            "DOSYA_ADI": "TahsilatFisi_80.repx",
+            "OZEL_KOD": "TahsilatMakbuzu",
+            "PARAMETRELER": "[{\"parametreAdi\":\"CAHAR_INCKEY\",\"parametreTanimi\":\"CAHAR_INCKEY\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13309,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Tahsilat Yapılmayan Cariler",
+            "DOSYA_ADI": "Rapor_SatisYapilmayanCariler.repx",
+            "OZEL_KOD": "Serbest",
+            "DETAY_KOD": "Cari",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BASTAR\",\"parametreTanimi\":\"BASTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BITTAR\",\"parametreTanimi\":\"BITTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SIRALA\",\"parametreTanimi\":\"SIRALA\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"PLASIYER_KODU\",\"parametreTanimi\":\"Plasiyer Kodu\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13137,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Teklif Proforma Dövizli",
+            "DOSYA_ADI": "SatisTeklifi_Proforma_TRY.repx",
+            "OZEL_KOD": "SatisTeklifi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 7064,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Teklif Proforma TL",
+            "DOSYA_ADI": "SatisTeklifi_Proforma_TRY.repx",
+            "OZEL_KOD": "SatisTeklifi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13279,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Teslim Detaylı Siparis İcmali",
+            "OZEL_KOD": "Serbest",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13341,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "test",
+            "DOSYA_ADI": "Ornek_NFEtiketBasim_StokEtiketiii.repx",
+            "OZEL_KOD": "AlisIrsaliyesi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 7065,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "TEST1234",
+            "DOSYA_ADI": "Rapor_Siparis.repx",
+            "OZEL_KOD": "AlisFaturasi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"SUBE_KODU\",\"parametreTanimi\":\"SUBE_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13245,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Untad İrsaliye",
+            "DOSYA_ADI": "SatisIrsaiyeUntad.repx",
+            "OZEL_KOD": "SatisIrsaliyesi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 11127,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Uzman Kablo Stok Seri 40x20",
+            "DOSYA_ADI": "StokEtiketUzmanKablo.repx",
+            "OZEL_KOD": "AlisIrsaliyesi",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"FIYAT_TIPI\",\"parametreTanimi\":\"FIYAT_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"YAPKOD\",\"parametreTanimi\":\"YAPILANDIRMA KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13141,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "UzmanKablo",
+            "DOSYA_ADI": "UzmanKabloSevkEtiketi.repx",
+            "PARAMETRELER": "[{\"parametreAdi\":\"BELGE_NO\",\"parametreTanimi\":\"BELGE_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"BELGE_TIPI\",\"parametreTanimi\":\"BELGE_TIPI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"CARI_KODU\",\"parametreTanimi\":\"CARI_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 7103,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "ÜSK",
+            "DOSYA_ADI": "USKEtiket.repx",
+            "OZEL_KOD": "USK",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"ISEMRI_NO\",\"parametreTanimi\":\"ISEMRI_NO\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"DINAMIK_PARAM\",\"parametreTanimi\":\"DINAMIK_PARAM\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"ACIKLAMA\",\"parametreTanimi\":\"Açıklama\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13200,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Vaw_40X20",
+            "DOSYA_ADI": "StokEtiket.repx",
+            "OZEL_KOD": "Sayim",
+            "PARAMETRELER": "[{\"parametreAdi\":\"STOK_KODU\",\"parametreTanimi\":\"STOK_KODU\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"MIKTAR\",\"parametreTanimi\":\"MIKTAR\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false},{\"parametreAdi\":\"KULLANICI\",\"parametreTanimi\":\"KULLANICI\",\"degerTemizlenmesin\":false,\"enterIslemYap\":false}]",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": 13157,
+            "DIZAYN_YERI": "O",
+            "DIZAYN_YOLU": "\\\\192.168.3.20\\NetFectDizayn",
+            "DIZAYN_ADI": "Vergi",
+            "DOSYA_ADI": "vergi.repx",
+            "OZEL_KOD": "OdemeMakbuzu",
+            "KOPYA_SAYISI": 1,
+            "SABLON_VAR": "E",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -1,
+            "DIZAYN_ADI": "Satış Teklifi (Varsayılan)",
+            "DOSYA_ADI": "Rapor_SatisTeklifi.repx",
+            "OZEL_KOD": "SatisTeklifi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -2,
+            "DIZAYN_ADI": "Depo Transferi (Varsayılan)",
+            "DOSYA_ADI": "Rapor_DAT.repx",
+            "OZEL_KOD": "DepoTransferi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -3,
+            "DIZAYN_ADI": "Alış Fat. (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Fatura.repx",
+            "OZEL_KOD": "AlisFaturasi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -4,
+            "DIZAYN_ADI": "Satış Fat. (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Fatura.repx",
+            "OZEL_KOD": "SatisFaturasi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -5,
+            "DIZAYN_ADI": "Müşteri Sip. (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Siparis.repx",
+            "OZEL_KOD": "MusteriSiparisi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -6,
+            "DIZAYN_ADI": "Satıcı Sip. (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Siparis.repx",
+            "OZEL_KOD": "SaticiSiparisi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -7,
+            "DIZAYN_ADI": "Satın Alma Talebi (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Talep.repx",
+            "OZEL_KOD": "SatinAlmaTalebi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -8,
+            "DIZAYN_ADI": "Sevk İrsaliyesi (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Irsaliye.repx",
+            "OZEL_KOD": "SatisIrsaliyesi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -9,
+            "DIZAYN_ADI": "Tahsilat Makbuzu (Varsayılan)",
+            "DOSYA_ADI": "Rapor_TahsilatFisi.repx",
+            "OZEL_KOD": "TahsilatMakbuzu",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -10,
+            "DIZAYN_ADI": "Ödeme Makbuzu (Varsayılan)",
+            "DOSYA_ADI": "Rapor_TahsilatFisi.repx",
+            "OZEL_KOD": "OdemeMakbuzu",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -11,
+            "DIZAYN_ADI": "Alış İrsaliyesi (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Irsaliye.repx",
+            "OZEL_KOD": "AlisIrsaliyesi",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -12,
+            "DIZAYN_ADI": "Müstahsil Makbuzu (Varsayılan)",
+            "DOSYA_ADI": "Rapor_MustahsilMakbuzu.repx",
+            "OZEL_KOD": "MustahsilMakbuzu",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -13,
+            "DIZAYN_ADI": "Ambar Çıkış (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Ambar.repx",
+            "OZEL_KOD": "AmbarCikis",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -14,
+            "DIZAYN_ADI": "Ambar Giriş (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Ambar.repx",
+            "OZEL_KOD": "AmbarGiris",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -15,
+            "DIZAYN_ADI": "Sayım Raporu (Varsayılan)",
+            "DOSYA_ADI": "Rapor_Sayim.repx",
+            "OZEL_KOD": "Sayim",
+            "AKTIF": "E"
+          },
+          {
+            "ID": -16,
+            "DIZAYN_ADI": "Satış Talebi (Varsayılan)",
+            "DOSYA_ADI": "Rapor_SatisTalebi.repx",
+            "OZEL_KOD": "SatisTalebi",
+            "AKTIF": "E"
+          }
+        ],
+        "MapStokGrupAdlari": {
+          "GRUP_KODU": "Genel Kod",
+          "KOD1": null,
+          "KOD2": null,
+          "KOD3": null,
+          "KOD4": null,
+          "KOD5": null
+        },
+        "MustahsilParam": {
+          "STOPAJ_ORANI": 1.1,
+          "FON_ORANI": 1.2,
+          "BORSA_ORANI": 1.3,
+          "BAGKUR_ORANI": 4,
+          "BAGKUR_YB": "Y",
+          "MERA_ORANI": 7.5,
+          "BORSA_UCRET_DUZENLEMESI": "E"
+        },
+        "ListFatuEkMaliyet": [
+          {
+            "NO": 1,
+            "BELGE_TIPI": "MS",
+            "ADI": "Ek mal. 1"
+          },
+          {
+            "NO": 1,
+            "BELGE_TIPI": "SI",
+            "ADI": "Ek mal. 1"
+          },
+          {
+            "NO": 1,
+            "BELGE_TIPI": "SF",
+            "ADI": "Ek mal. 1"
+          },
+          {
+            "NO": 2,
+            "BELGE_TIPI": "MS",
+            "ADI": "TEVKİFAT"
+          },
+          {
+            "NO": 2,
+            "BELGE_TIPI": "SI",
+            "ADI": "TEVKİFAT"
+          },
+          {
+            "NO": 2,
+            "BELGE_TIPI": "SF",
+            "ADI": "TEVKİFAT"
+          },
+          {
+            "NO": 3,
+            "BELGE_TIPI": "MS",
+            "ADI": "Ek Mal 3"
+          },
+          {
+            "NO": 3,
+            "BELGE_TIPI": "SI",
+            "ADI": "Ek Mal 3"
+          },
+          {
+            "NO": 3,
+            "BELGE_TIPI": "SF",
+            "ADI": "Ek Mal 3"
+          },
+          {
+            "NO": 1,
+            "BELGE_TIPI": "SS",
+            "ADI": "Alış Ek Mal 1"
+          },
+          {
+            "NO": 1,
+            "BELGE_TIPI": "AI",
+            "ADI": "Alış Ek Mal 1"
+          },
+          {
+            "NO": 1,
+            "BELGE_TIPI": "AF",
+            "ADI": "Alış Ek Mal 1"
+          },
+          {
+            "NO": 2,
+            "BELGE_TIPI": "SS",
+            "ADI": "Alış Ek Mal 2"
+          },
+          {
+            "NO": 2,
+            "BELGE_TIPI": "AI",
+            "ADI": "Alış Ek Mal 2"
+          },
+          {
+            "NO": 2,
+            "BELGE_TIPI": "AF",
+            "ADI": "Alış Ek Mal 2"
+          },
+          {
+            "NO": 3,
+            "BELGE_TIPI": "SS",
+            "ADI": "Alış Ek Mal 3"
+          },
+          {
+            "NO": 3,
+            "BELGE_TIPI": "AI",
+            "ADI": "Alış Ek Mal 3"
+          },
+          {
+            "NO": 3,
+            "BELGE_TIPI": "AF",
+            "ADI": "Alış Ek Mal 3"
+          },
+          {
+            "NO": 1,
+            "BELGE_TIPI": "STEK",
+            "ADI": "Teklif Ek Mal 1"
+          },
+          {
+            "NO": 2,
+            "BELGE_TIPI": "STEK",
+            "ADI": "Teklif Ek Mal 2"
+          }
+        ],
+        "MapKdvSifirBelgeTipiOzelKod2": {
+          "DC": "Q",
+          "AC": "Q",
+          "MS": "Q",
+          "SI": "Q",
+          "SF": "Q",
+          "STEK": "H"
+        },
+        "LokalDepoUygulamasiAcik": true,
+        "EsnekYapilandir": true,
+        "OzelFiyatSistemi": true,
+        "SadeceOzelFiyatSistemi": "E",
+        "OtvliStoklarVar": true,
+        "MapStokKullSahalar": {
+          "1S": "Marka",
+          "2S": "Model",
+          "3S": "Renk",
+          "8S": "STOK_KULL8S",
+          "1N": "Adet"
+        },
+        "MapStokEkAlanlar": [
+          {
+            "caption": "Stok Ek Alan 1",
+            "fieldName": "KT_STOK_EK",
+            "_veriTipi": "varchar"
+          },
+          {
+            "caption": "Tedarikçi",
+            "fieldName": "KT_STOK_TEDARIKCI",
+            "_veriTipi": "varchar"
+          },
+          {
+            "caption": "B2B",
+            "fieldName": "KT_STOK_B2B",
+            "_veriTipi": "char"
+          }
+        ],
+        "KarmaKoliUyg": "E",
+        "AlisEkAciklamalarAktif": true,
+        "AlisEkAciklamaTanimi1": "Alış Açık. 1",
+        "AlisEkAciklamaTanimi2": "Alış Açık. 2",
+        "AlisEkAciklamaTanimi3": "Alış Açık. 3",
+        "AlisEkAciklamaTanimi4": "Alış Açık. 4",
+        "AlisEkAciklamaTanimi5": "Alış Açık. 5",
+        "AlisEkAciklamaTanimi6": "Alış Açık. 6",
+        "AlisEkAciklamaTanimi7": "Alış Açık. 7",
+        "AlisEkAciklamaTanimi8": "Alış Açık. 8",
+        "AlisEkAciklamaTanimi9": "Alış Açık. 9",
+        "AlisEkAciklamaTanimi10": "Alış Açık. 10",
+        "AlisEkAciklamaTanimi11": "Alış Açık. 11",
+        "AlisEkAciklamaTanimi12": "Alış Açık. 12",
+        "AlisEkAciklamaTanimi13": "Alış Açık. 13",
+        "AlisEkAciklamaTanimi14": "Alış Açık. 14",
+        "AlisEkAciklamaTanimi15": "Alış Açık. 15",
+        "AlisEkAciklamaTanimi16": "Alış Açık. 16",
+        "AlisOzelKod1Tablodan": true,
+        "AlisFarkliTeslimCariAktif": true,
+        "AlisMalFazMiktarIskontoAcik": true,
+        "AlisSatirKademeliIskontoAcik": true,
+        "AlisSatirKademeliIskontoSayisi": 2,
+        "AlisGenIsk1Aktif": true,
+        "AlisGenIsk2Aktif": true,
+        "AlisGenIsk3Aktif": true,
+        "AlisTopluDepoAktif": true,
+        "AlisStokDepoKarttanGelsin": true,
+        "AlisGenellikleKDVHaric": true,
+        "AlisFarkliOlcuBirimleriKullan": true,
+        "AlisDovizAktif": true,
+        "AlisSatirdaKDVSor": true,
+        "AlisSatirdaAciklamalarAktif": true,
+        "AlisSatirdaEkAlan2Aktif": true,
+        "AlisEkMaliyet2Aktif": true,
+        "AlisEkMaliyet2Adi": "Alış Ek Mal 2",
+        "AlisTevkifatPay": 2,
+        "AlisTevkifatPayda": 7,
+        "AlisFaturaFiyatSifirGecilsin": true,
+        "AlisFazlaTeslimat": true,
+        "AlisDovizTakipHangiDeger": 2,
+        "AlisHizmetAktif": true,
+        "AlisHizmetDepoKodu": 6,
+        "AlisMiktar2Sor": true,
+        "AlisSatirdaTeslimTarihiSor": true,
+        "AlisFisSeriTakibiVar": true,
+        "AlisEkAlan1Aktif": true,
+        "AlisTutardanFiyataGecilsin": true,
+        "AlisCariIskSatiraUygula": true,
+        "AlisEkMaliyet1KdvOrani": 20.0,
+        "AlisIhracatMiktarStoklaraGecsin": true,
+        "AlisSatirBazindaVade": true,
+        "SeriUygulamasiAcik": true,
+        "SirketDovizUygulamasiAcik": true,
+        "SirketDovizUygulamasiDovizKodu": 1,
+        "PlasiyerUygulamasi": true,
+        "ParaBirimi": "TL",
+        "MuhasebeEntegre": true,
+        "MuhFislerdeRefKodSorulsun": true,
+        "MuhFislerdeRefKodSorulsun_Aktif": true,
+        "MuhFislerdeRefKodSorulsun_Pasif": true,
+        "MuhFislerdeRefKodSorulsun_Gelir": true,
+        "MuhFislerdeRefKodSorulsun_Gider": true,
+        "MuhFislerdeRefKodSorulsun_Nazim": true,
+        "BankaEntegre": true,
+        "BagliCariVar": true,
+        "ProjeUygulamasiAcik": true,
+        "SatisEkAciklamalarAktif": true,
+        "SatisEkAciklamaTanimi1": "Teslim Edilecek Kişi",
+        "SatisEkAciklamaTanimi2": "B2B Email",
+        "SatisEkAciklamaTanimi3": "Masraf Kodu",
+        "SatisEkAciklamaTanimi4": "Masraf Yeri",
+        "SatisEkAciklamaTanimi5": "Sipariş Notu",
+        "SatisEkAciklamaTanimi6": "S.A.S No",
+        "SatisEkAciklamaTanimi7": "B2B Sepet Id",
+        "SatisEkAciklamaTanimi8": "Tam Teslimat",
+        "SatisEkAciklamaTanimi9": "Satış Açık. 9",
+        "SatisEkAciklamaTanimi10": "Satış Açık. 10",
+        "SatisEkAciklamaTanimi11": "Satış Açık. 11",
+        "SatisEkAciklamaTanimi12": "Satış Açık. 12",
+        "SatisEkAciklamaTanimi13": "Satış Açık. 13",
+        "SatisEkAciklamaTanimi14": "Satış Açık. 14",
+        "SatisEkAciklamaTanimi15": "Satış Açık. 15",
+        "SatisEkAciklamaTanimi16": "Satış Açık. 16",
+        "SatisOzelKod1Aktif": true,
+        "SatisOzelKod2Aktif": true,
+        "SatisSatirIsk1YuzdeSor": true,
+        "SatisFarkliTeslimCariAktif": true,
+        "SatisMalFazMiktarIskontoAcik": true,
+        "SatisSatirKademeliIskontoAcik": true,
+        "SatisSatirKademeliIskontoSayisi": 2,
+        "SatisGenIsk1Aktif": true,
+        "SatisGenIsk2Aktif": true,
+        "SatisGenIsk3Aktif": true,
+        "SatisTopluDepoAktif": true,
+        "SatisStokDepoKarttanGelsin": true,
+        "SatisGenellikleKDVHaric": true,
+        "SatisAciklamaAlaniGorunsun": true,
+        "SatisFarkliOlcuBirimleriKullan": true,
+        "SatisCariRiskTakibi": "H",
+        "SatisMusteriSiptenSaticiSipAktif": true,
+        "SatisDovizAktif": true,
+        "SatisSatirdaKDVSor": true,
+        "SatisSatirdaAciklamalarAktif": true,
+        "SatisSatirdaEkAlan2Aktif": true,
+        "SatisEkMaliyet2Aktif": true,
+        "SatisEkMaliyet2Adi": "TEVKİFAT",
+        "SatisTevkifatPay": 9,
+        "SatisTevkifatPayda": 10,
+        "SatisFaturaFiyatSifirGecilsin": true,
+        "SatisFazlaTeslimat": true,
+        "SatisDovizTakipHangiDeger": 2,
+        "SatisHizmetAktif": true,
+        "SatisHizmetDepoKodu": 7,
+        "SatisMiktar2Sor": true,
+        "SatisSubeDATOnaylansin": true,
+        "SatisSipOnayAktif": true,
+        "SatisSatirdaTeslimTarihiSor": true,
+        "SatisSatirdaIsEmriSorulsun": true,
+        "SatisFisSeriTakibiVar": true,
+        "SatisMuhRefKodSorulsun": true,
+        "SatisIrsCariHesaba": true,
+        "SatisEkAlan1Aktif": true,
+        "SatisDATSiparisTakibi": "E",
+        "SatisIrsFatuSipVadeDegissin": "E",
+        "SatisEkMaliyet1KdvOrani": 20.0,
+        "SatisIhracatMiktarStoklaraGecsin": true,
+        "KonsinyeUygulamasi": true,
+        "SatisSatirBazindaVade": true,
+        "FatuAlisTeslimCarideBaglanmisCarilerSecilsin": true,
+        "MSenetDovizAktif": true,
+        "MCekDovizAktif": true,
+        "MCekAciklamaAktif": true,
+        "SeriUrunBazindaTekOlsun": true,
+        "SeriGirislerdeOtomatik": true,
+        "SerideYilOlsun": true,
+        "SerideAyOlsun": true,
+        "SerideGunOlsun": true,
+        "SeriUzunlugu": 20,
+        "SeriOpsiyonelSahalar": 63,
+        "SeriEkAlanList": [
+          "miktar2",
+          "skt",
+          "seri3",
+          "seri4",
+          "acik3",
+          "acik4"
+        ],
+        "EFaturaAktif": true,
+        "Seri_EFatura": "EFT",
+        "EFaturaSenaryoDegistir": true,
+        "EIrsaliyeAktif": true,
+        "SeriEIrsaliye": "EIR",
+        "SeriEIrsaliyeYanit": "EIY",
+        "ArrEIrsSeri": [
+          "EIR"
+        ],
+        "ArrEFatSeri": [
+          "EFT",
+          "BRC",
+          "EFA"
+        ],
+        "ArrEArSeri": [
+          "AFT"
+        ],
+        "EArsivAktif": true,
+        "Seri_EArsiv": "AFT",
+        "UretimMiktar2Uyg": true,
+        "UretimFireUyg": true,
+        "UretimFireDetayUyg": true,
+        "UretimEkAlanKullan": true,
+        "OzelFaturaIadeMaliyetiZorunlu": true,
+        "KayitliBankaHesapTipleri": [
+          0,
+          5,
+          6,
+          14,
+          15,
+          17
+        ],
+        "KKNoZorunluDegil": true,
+        "FifoLifoYontem": "Y",
+        "CariAktiviteUygulamasi": "D",
+        "CariAktiviteTipleri": [
+          {
+            "AKTIVITE_TIPI": 1,
+            "AKTIVITE_ADI": "ISYERI KAPALI"
+          },
+          {
+            "AKTIVITE_TIPI": 2,
+            "AKTIVITE_ADI": "URUN IHTIYACI YOK"
+          },
+          {
+            "AKTIVITE_TIPI": 3,
+            "AKTIVITE_ADI": "MUSAIT DEGIL"
+          },
+          {
+            "AKTIVITE_TIPI": 4,
+            "AKTIVITE_ADI": "TAHSILAT YAPILDI"
+          },
+          {
+            "AKTIVITE_TIPI": 5,
+            "AKTIVITE_ADI": "SIPARIS ALINDI"
+          },
+          {
+            "AKTIVITE_TIPI": 6,
+            "AKTIVITE_ADI": "TEKLIF VERILDI"
+          },
+          {
+            "AKTIVITE_TIPI": 7,
+            "AKTIVITE_ADI": "TEKNIK DESTEK"
+          },
+          {
+            "AKTIVITE_TIPI": 8,
+            "AKTIVITE_ADI": "DIGER2"
+          }
+        ],
+        "SatisCariDovizTipiniKullan": true,
+        "AlisCariDovizTipiniKullan": true,
+        "AlisTeslimCarideBaglanmisCarilerSecilsin": true,
+        "Fatu_KontrolAciklamasiAktif": [],
+        "SatisFiyatGrubuSorulacakAlan": "2",
+        "Siparis_FarkliSubeUyg": "False",
+        "SatisIskEkSahadanGelsin": "E",
+        "SatisIsk1Saha": "KULL1N",
+        "SatisIsk1Kullanim": "E",
+        "Uretim_MalTop_HangiHucrede": true,
+        "Uretim_MalTop_FazlaTeslimYapilabilir": true,
+        "Uretim_USK_SeriGirilsin": true,
+        "Finans_BankaIslemModulu": "B",
+        "Finans_BankaTcmbBankaKodu": "0064",
+        "Finans_BankaTcmbSubeKodu": "02020",
+        "Finans_CekSenOzelOrtalamaVadeGunuHesapla": [
+          "MCEK",
+          "MSEN"
+        ],
+        "Stok_Yap_RehberTipi": "K",
+        "Stok_KanbanBarkodEslemeUyg": "E",
+        "Stok_SeriParcalamaUyg": "E",
+        "Stok_DetayliAramaAlanlar": [
+          {
+            "SearchField": "INGILIZCE_ISIM",
+            "Name": "İngilizce İsim"
+          },
+          {
+            "SearchField": "BILGI",
+            "Name": "Bilgi"
+          },
+          {
+            "SearchField": "KULL1S",
+            "Name": "Marka"
+          },
+          {
+            "SearchField": "KULL2S",
+            "Name": "Model"
+          },
+          {
+            "SearchField": "KULL3S",
+            "Name": "Renk"
+          },
+          {
+            "SearchField": "KULL4S",
+            "Name": "KULL4S"
+          },
+          {
+            "SearchField": "KULL5S",
+            "Name": "KULL5S"
+          },
+          {
+            "SearchField": "KULL6S",
+            "Name": "KULL6S"
+          },
+          {
+            "SearchField": "KULL7S",
+            "Name": "KULL7S"
+          },
+          {
+            "SearchField": "KULL8S",
+            "Name": "STOK_KULL8S"
+          },
+          {
+            "SearchField": "KULL1N",
+            "Name": "Adet"
+          },
+          {
+            "SearchField": "KULL2N",
+            "Name": "KULL2N"
+          },
+          {
+            "SearchField": "KULL3N",
+            "Name": "KULL3N"
+          },
+          {
+            "SearchField": "KULL4N",
+            "Name": "KULL4N"
+          },
+          {
+            "SearchField": "KULL5N",
+            "Name": "KULL5N"
+          },
+          {
+            "SearchField": "KULL6N",
+            "Name": "KULL6N"
+          },
+          {
+            "SearchField": "KULL7N",
+            "Name": "KULL7N"
+          },
+          {
+            "SearchField": "KULL8N",
+            "Name": "KULL8N"
+          }
+        ],
+        "eMail_Sunucu": "smtp.yandex.com.tr",
+        "eMail_MailAdresi": "bilgi@edisket.com",
+        "eMail_Parola": "123654bg*",
+        "eMail_Port": 587,
+        "eMail_SSLKullan": true,
+        "Genel_KonumTakibiYapilsin": "E",
+        "Genel_KonumTakibiDakika": 1,
+        "Genel_KonumTakibiMetre": 100,
+        "UetdsEsyaAktif": true,
+        "SatistaSiparisKullan": true,
+        "AlistaSiparisKullan": true,
+        "NetOpenXEPosta": "H",
+        "NetOpenXLog": "H",
+        "SayfalamaKayitSayisi": 30,
+        "SipOtoEslestir": true,
+        "SevkEmriTerminalFatura": true,
+        "SevkEmriTerminalIrsaliye": true,
+        "SevkEmriTerminalTransfer": true,
+        "SevkEmriHucreKontrol": true,
+        "SevkEmriMalTopFazlaTeslimat": "E",
+        "SevkEmriMalTopGorunecekAlanlar": [
+          "sip_no"
+        ],
+        "Seri_SevkIrsaliye": "Q",
+        "FaturaSatisIadeUygulamasi": true,
+        "say_Kull1S": "Test1",
+        "say_Kull2S": "Test2",
+        "say_Kull3S": "test3",
+        "say_Kull4S": "Test4",
+        "say_Kull5S": "test5",
+        "KontrolluBelgeAktarimAktif": true,
+        "KontrolluBelgeAktarimBelgeNoGoster": [
+          "KKT",
+          "NAT",
+          "NAO",
+          "MUT",
+          "MUO"
+        ],
+        "EMustahsilAktif": true
+      },
+      "UserModel": {
+        "ID": 3012,
+        "KULADI": "icakmak",
+        "PAROLA": "8520",
+        "ADI": "İlhami",
+        "SOYADI": "ÇAKMAK",
+        "ERP_KULLANICI": "netsis",
+        "ERP_PAROLA": "net1",
+        "ADMIN": "E",
+        "ADMIN_MI": true,
+        "KULLANICI_YETKI": "{\"ADMIN_MI\":false,\"varsayilan_MuhasebeReferansTanimi\":\"TEST REF KODU 02\",\"siparis_MusSip_BakiyesizStokSecilmesin\":false,\"sevkiyat_SatisIrs_BakiyesizStokSecilmesin\":false,\"sevkiyat_SatisFat_BakiyesizStokSecilmesin\":false,\"bagliPlasiyerler\":[],\"cariRehPlaEslesmesinBelgeTipleri\":[],\"varsayilan_MuhasebeReferansKodu\":\"REF02\",\"yetkiliKasalar\":[],\"kkartiHesaplar\":[],\"kkartiKasalar\":[],\"acikHesapLimiti\":0.0,\"acikHesapTolerans\":0.0,\"acikHesapLimitiBelgeTipleri\":[],\"stok_FiltreSQLTipi\":\"S\",\"cari_FiltreSQLTipi\":\"S\",\"hizliTahsilat_SozlesmeKodlari\":[],\"siparis_MusSip_EkstraAlanlar\":[],\"sirket_aktifDepolar\":[],\"sirket_DAT_YetkiliDepolar\":[],\"sirket_alisDepo\":0,\"sirket_satisDepo\":0,\"transfer_DAT_VarsayilanCikisDepo\":0,\"transfer_DAT_VarsayilanGirisDepo\":0}",
+        "PICKER_YETKILI": "E",
+        "YETKILI_SUBELER_JSON": "[{\"SIRKET\":\"BRACKETDEMO\",\"YIL\":0,\"ISLETME_KODU\":1,\"SUBE_KODU\":0,\"SUBE_ADI\":\"BRACKET\",\"ISLETME_ADI\":\"BRACKET TEKNOLOJİ SAN. TİC. LTD. ŞTİ\",\"LOKAL_DEPO_AKTIF\":false,\"isDevredilmis\":false},{\"SIRKET\":\"BRACKETDEMO\",\"YIL\":0,\"ISLETME_KODU\":1,\"SUBE_KODU\":1,\"SUBE_ADI\":\"İNTERNET SATIŞLARI ŞUBESİ\",\"ISLETME_ADI\":\"BRACKET TEKNOLOJİ SAN. TİC. LTD. ŞTİ\",\"LOKAL_DEPO_AKTIF\":false,\"isDevredilmis\":false},{\"SIRKET\":\"BRACKETDEMO\",\"YIL\":0,\"ISLETME_KODU\":1,\"SUBE_KODU\":2,\"SUBE_ADI\":\"TEST ŞUBE\",\"ISLETME_ADI\":\"BRACKET TEKNOLOJİ SAN. TİC. LTD. ŞTİ\",\"LOKAL_DEPO_AKTIF\":false,\"isDevredilmis\":false}]",
+        "KONUM_ENLEM": 40.7396976,
+        "KONUM_BOYLAM": 30.410197,
+        "EKREHBERLER": [
+          {
+            "ID": 2,
+            "BASLIK": "Test Rehber",
+            "EKRAN": "SF",
+            "ALAN": "EKALAN2"
+          },
+          {
+            "ID": 3,
+            "BASLIK": "Satır Açıklama",
+            "EKRAN": "SF",
+            "ALAN": "SATIR_ACIK2"
+          },
+          {
+            "ID": 4,
+            "BASLIK": "Seri Rehberi (Özel)",
+            "EKRAN": "SF",
+            "ALAN": "EKALAN1"
+          },
+          {
+            "ID": 6,
+            "BASLIK": "Test Rehber Sip",
+            "EKRAN": "MS",
+            "ALAN": "ACIK2"
+          },
+          {
+            "ID": 7,
+            "BASLIK": "Test Rehber",
+            "EKRAN": "SF",
+            "ALAN": "ACIK5"
+          },
+          {
+            "ID": 9,
+            "BASLIK": "deneme",
+            "EKRAN": "DC",
+            "ALAN": "ACIK1"
+          }
+        ],
+        "AD_SOYAD": "İlhami ÇAKMAK"
+      },
+      "ServiceVersion": "1.2.0.4",
+      "LangVersion": "1.0.2.0",
+      "SirketModel": {
+        "SIRKET": "BRACKETDEMO",
+        "YIL": 2025,
+        "ISLETME_KODU": 1,
+        "SUBE_ADI": "BRACKET",
+        "ISLETME_ADI": "BRACKET TEKNOLOJİ SAN. TİC. LTD. ŞTİ",
+        "MERKEZMI": "True",
+        "ADRES": "ERENLER MH. 1201 SK. NO:5, Meydan 54 AVM, A Blok, Ofis 38",
+        "TELEFON": "0850 303 58 82",
+        "FAKS": "0850 303 58 82",
+        "EMAIL": "destek@bracket.com.tr",
+        "IL_ADI": "SAKARYA",
+        "ILCE": "ERENLER",
+        "VERGI_NUMARASI": "1870699214",
+        "VERGI_DAIRESI": "ALİ FUAT CEBESOY",
+        "PARA_BIRIMI": "TL",
+        "PARA_BIRIMI_KUSURAT": "KR"
+      },
+      "LangModel": {
+        "DilKodu": "tr",
+        "DilAciklama": "Türkçe",
+        "genel_SurumYenilikleri": "Sürüm Yenilikleri",
+        "genel_ParametreleriYukle": "Parametreleri Yükle",
+        "genel_ProgramAyarlari": "Uygulama Ayarları",
+        "genel_ParametrelerYukleniyor": "Parametreler Yükleniyor...",
+        "menuMalKabul": "Mal Kabul",
+        "menuMalKabulSatinAlma": "Alış İrsaliyesi",
+        "menuMalKabulIade": "Alış İrsaliyesi (İade)",
+        "menuTransfer": "Transfer",
+        "menuTransferDAT": "Depolar Arası Transfer",
+        "menuTransferAmbarGirisFisi": "Ambar Giriş Fişi",
+        "menuTransferAmbarCikisFisi": "Ambar Çıkış Fişi",
+        "menuHucreTakibi": "Hücre Takibi",
+        "menuHucreTakibiYerlestir": "Hücre Yerleştir",
+        "menuHucreTakibiBosalt": "Hücre Boşalt",
+        "menuHucreTakibiTransfer": "Hücre Transferi",
+        "menuHucreTakibiAra": "Hücre Ara",
+        "menuHucreTakibiListe": "Hücre Listesi",
+        "menuSevkiyat": "Sevkiyat",
+        "menuSevkiyatSatisIrsaliyesi": "Satış İrsaliyesi",
+        "menuSevkiyatMalToplama": "Mal Toplama",
+        "menuSayim": "Sayım",
+        "menuSayimSayim": "Sayım",
+        "menuSiparis": "Sipariş",
+        "menuMusteriSiparisi": "Müşteri Siparişleri",
+        "menuSaticiSiparisi": "Satıcı Siparişleri",
+        "menuCari": "Cari",
+        "menuCariListesi": "Cari Listesi",
+        "menuStok": "Stok",
+        "menuStokListesi": "Stok Listesi",
+        "menuYonetici": "Yönetici",
+        "menuBanka": "Banka",
+        "menuBankaListesi": "Banka Listesi",
+        "menuTahsilat": "Tahsilat",
+        "menuTahsilatYap": "Tahsilat Yap",
+        "menuTahsilatKayitlari": "Kayıtlar",
+        "menuNakitOdeme": "Nakit Ödeme",
+        "menuKKTahsilat": "Kredi Kartı Tahsilatı",
+        "menuNakitTahsilat": "Nakit Tahsilat",
+        "menuSenetTahsilati": "Senet Tahsilatı",
+        "menuCekTahsilati": "Çek Tahsilatı",
+        "menuAyarlar": "Ayarlar",
+        "menuFirmalar": "Firmalar",
+        "menuTemsilci": "Temsilci",
+        "menuProfilim": "Profilim",
+        "menuAlisFaturasi": "Alış Faturası",
+        "menuSatisFaturasi": "Satış Faturası",
+        "genelSirketDegistir": "Şirket Değiştir",
+        "genelSirketOturumuKapat": "Çıkış",
+        "genelGuncelSurumuIndir": "Güncel Sürümü İndir",
+        "genelLutfenBekleyin": "Lütfen Bekleyin",
+        "genelKaydet": "Kaydet",
+        "genelTamam": "Tamam",
+        "genelHayir": "Hayır",
+        "genelEvet": "Evet",
+        "genelIptal": "İptal",
+        "genelSil": "Sil",
+        "genelDuzenle": "Düzenle",
+        "genelSirket": "Şirket",
+        "genelIsletme": "İşletme",
+        "genelSube": "Şube",
+        "genelFirmaEkle": "Firma Ekle",
+        "genelKayitAdi": "Kayıt Adı",
+        "genelKullaniciAdi": "Kullanıcı Adı",
+        "genelSifre": "Şifre",
+        "genelRevizyon": "Revizyon",
+        "genelTarih": "Tarih",
+        "genelBelgeNo": "Belge No",
+        "genelCari": "Cari",
+        "genelSiparisTipi": "Sipariş Tipi",
+        "genelProje": "Proje",
+        "genelPlasiyer": "Plasiyer",
+        "genelKDVDahil": "KDV Dahil",
+        "genelAciklama": "Açıklama",
+        "genelMiktar": "Miktar",
+        "genelTutar": "Tutar",
+        "genelBirimFiyat": "Birim Fiyat",
+        "genelKDV": "KDV",
+        "genelStokKodu": "Stok Kodu",
+        "genelBrutTutar": "Brüt Tutar",
+        "genelMalFazIsk": "Mal.Faz.İsk.",
+        "genelMalFazTutari": "Mal.Faz.Tutarı",
+        "genelMalFazMiktari": "Mal.Faz.Mik.",
+        "genelSatirIsk": "Sat.İsk.",
+        "genelGenelToplam": "Genel Toplam",
+        "genelGenelIskonto": "Gen.İsk.",
+        "genelStokSeviyesi": "Stok Seviyesi",
+        "genelOlcuBirimi": "Ölçü Birimi",
+        "genelDepo": "Depo",
+        "genelCikisDepo": "Çıkış Depo",
+        "genelGirisDepo": "Giriş Depo",
+        "genelDovizTipi": "Döviz Tipi",
+        "genelTLFiyati": "TL Fiyatı",
+        "genelIskonto": "İskonto",
+        "genelSeriler": "Seriler",
+        "genelSeri": "Seri",
+        "genelHucreler": "Hücreler",
+        "genelBelge": "Belge",
+        "genelCariKodu": "Cari Kodu",
+        "genelCariAdi": "Cari Adı",
+        "genelKalemMiktari": "Kalem Miktarı",
+        "genelHucre": "Hücre",
+        "genelBarkod": "Barkod",
+        "genelKalem": "Kalem",
+        "genelGoruntule": "Görüntüle",
+        "genelSecenekler": "Seçenekler",
+        "genelEkle": "Ekle",
+        "genelYenile": "Yenile",
+        "genelFiltrele": "Filtrele",
+        "genelSirala": "Sırala",
+        "genelEkAciklamalar": "Ek Açıklamalar",
+        "genelIthalat": "İthalat",
+        "genelYeniBelge": "Yeni Belge",
+        "genelYurtici": "Yurtiçi",
+        "genelYurtdisi": "Yurtdışı",
+        "genelDevir": "Devir",
+        "genelDepolar": "Depolar",
+        "genelUretim": "Üretim",
+        "genelMuhtelif": "Muhtelif",
+        "genelKonsinye": "Konsinye",
+        "genelXRehberi": "{0} Rehberi",
+        "genelAlisIrsaliyesi": "Alış İrsaliyesi",
+        "genelSatisIrsaliyesi": "Satış İrsaliyesi",
+        "genelAlisFaturasi": "Alış Faturası",
+        "genelSatisFaturasi": "Satış Faturası",
+        "genelIade": "İade",
+        "genelXGiriniz": "{0} giriniz.",
+        "genelXSeciniz": "{0} seçiniz.",
+        "genelXSilinsinMi": "{0} silinsin mi ?",
+        "genelKayitSilinsinMi": "Kayıt silinsin mi ?",
+        "genelKaydedilsinMi": "Kayıt yapılsın mı ?",
+        "genelEksikBilgiler": "Eksik Bilgiler",
+        "genelMiktarGiriniz": "Miktar giriniz.",
+        "genelDovizSeciniz": "Döviz seçiniz.",
+        "genelOlcuBirimiSeciniz": "Ölçü birimi seçiniz.",
+        "genelPlasiyerSeciniz": "Plasiyer seçiniz.",
+        "genelProjeSeciniz": "Proje seçiniz.",
+        "genelCariSeciniz": "Cari seçiniz.",
+        "genelTarihSeciniz": "Tarih seçiniz.",
+        "genelIthalatTipiSeciniz": "İthalat tipi seçiniz.",
+        "genelGirisDepoSeciniz": "Giriş depo seçiniz.",
+        "genelGirisVeCikisDepolarAyni": "Giriş ve çıkış depolar aynı.",
+        "genelAciklamaGiriniz": "Açıklama giriniz.",
+        "genelOzelKod1Seciniz": "Özel kod 1 seçiniz.",
+        "genelOzelKod2Seciniz": "Özel kod 2 seçiniz.",
+        "genelStokSeciniz": "Stok seçiniz.",
+        "genelHareketTuruSeciniz": "Hareket türü seçiniz.",
+        "genelHucreMiktarlariUyumsuz": "Hücre miktarları uyumsuz.",
+        "genelSeriMiktarlariUyumsuz": "Seri miktarları uyumsuz.",
+        "genelXBulunamadi": "{0} bulunamadı.",
+        "genelMuhasebeKoduSeciniz": "Muhasebe kodu seçiniz.",
+        "genelFiyatGiriniz": "Fiyat giriniz.",
+        "genelAdet": "Adet",
+        "genelAramaIcinEnAzXHarfGiriniz": "Arama için en az {0} harf giriniz.",
+        "genelAra": "Ara",
+        "genelDovizKuru": "Döviz Kuru",
+        "genelTemizle": "Temizle",
+        "genelFisNo": "Fiş No",
+        "genelBelgeTuruSeciniz": "Belge türü seçiniz.",
+        "genelHucreSeciniz": "Hücre seçiniz.",
+        "genelHucreBakiyesi": "Hücre bakiyesi",
+        "genelIslemBasarili": "İşlem başarılı.",
+        "genelIslemBasarisiz": "İşlem başarısız !",
+        "genelDepoSeciniz": "Depo seçiniz.",
+        "genelBelgeSeciniz": "Belge seçiniz.",
+        "genelBelgeTuru": "Belge Türü",
+        "genelBelgeTarihi": "Belge Tarihi",
+        "genelIslemMiktari": "İşlem Miktarı",
+        "genelKaynakHucreSeciniz": "Kaynak hücre seçiniz.",
+        "genelHedefHucreSeciniz": "Hedef hücre seçiniz.",
+        "genelKaynakVeHedefHucrelerAyni": "Kaynak ve hedef hücreler aynı.",
+        "genelYetersizBakiye": "Yetersiz bakiye.",
+        "genelHedefHucre": "Hedef Hücre",
+        "genelKaynakHucre": "Kaynak Hücre",
+        "genelStokAdi": "Stok Adı",
+        "genelBakiye": "Bakiye",
+        "genelHareketler": "Hareketler",
+        "genelDetaylar": "Detaylar",
+        "genelDepoBakiyeDurumu": "Depo Bakiye Durumu",
+        "genelArti": "Artı",
+        "genelEksi": "Eksi",
+        "genelSifir": "Sıfır",
+        "genelGrupKodu": "Grup Kodu",
+        "genelKod": "Kod",
+        "genelXHareketleri": "{0} Hareketleri",
+        "genelArtan": "Artan",
+        "genelAzalan": "Azalan",
+        "genelXDetaylari": "{0} Detayları",
+        "genelFiyat": "Fiyat",
+        "genelAdi": "Adı",
+        "genelKodu": "Kodu",
+        "genelSeriCikistaAktif": "Çıkışta seri aktif",
+        "genelSeriGiristeAktif": "Girişte seri aktif",
+        "genelSeriMiktarKadarSor": "Miktar kadar seri girişi",
+        "genelSeriBakiyeTakibiVar": "Çıkışta seri bakiyesi kontrol ediliyor",
+        "genelAlis": "Alış",
+        "genelSatis": "Satış",
+        "genelSatisFiyati": "Satış Fiyatı",
+        "genelAlisFiyati": "Alış Fiyatı",
+        "genelBaslamaTarihi": "Başlama Tarihi",
+        "genelBitisTarihi": "Bitiş Tarihi",
+        "genelSayilanlar": "Sayılanlar",
+        "genelMalToplama": "Mal Toplama",
+        "genelMalKontrol": "Mal Kontrol",
+        "genelKullaniciyaGonder": "Kullanıcıya Gönder",
+        "genelDepodaYok": "Depoda Yok",
+        "genelToplananMallar": "Toplanan Mallar",
+        "genelMalKontroleGonder": "Mal Kontrole Gönder",
+        "genelTamamlandi": "Tamamlandı",
+        "genelIslemiOnayliyorMusunuz": "İşlemi onaylıyor musunuz ?",
+        "genelTamamla": "Tamamla",
+        "genelKullanicilar": "Kullanıcılar",
+        "genelCariKoduBos": "Cari kodu boş.",
+        "genelHucreIslemTuruBos": "Hücre işlem türü boş.",
+        "genelKullaniciAdiVeyaSifreYanlis": "Kullanıcı adı veya şifre yanlış.",
+        "genelKullaniciKilitliDurumda": "Kullanıcı kilitli durumda.",
+        "genelStokKoduBos": "Stok kodu boş.",
+        "genelBelgeZatenKayitli": "Belge zaten kayıtlı.",
+        "genelKayitYapildi": "Kayıt yapıldı.",
+        "genelMusteriSiparisi": "Müşteri Siparişi",
+        "genelSaticiSiparisi": "Satıcı Siparişi",
+        "genelStokKarti": "Stok Kartı",
+        "genelYazdir": "Yazdır",
+        "genelNetFiyat": "Net Fiyat",
+        "genelBrutFiyat": "Brüt Fiyat",
+        "genelProfilim": "Profilim",
+        "genelKullaniciBulunamadi": "Kullanıcı bulunamadı.",
+        "genelKayitBulunamadi": "Kayıt bulunamadı.",
+        "genelCariEFaturaMukellefidir": "Cari, e-fatura mükellefi.",
+        "genelCariEArsivMukellefidir": "Cari, e-arşiv mükellefi.",
+        "genelCariIleTeslimCariAyniOlamaz": "Cari ile teslim cari aynı olamaz.",
+        "genelYeniBelgeNo": "Yeni belge numarası",
+        "genelStokHareketleri": "Stok Hareketleri",
+        "genelBelgeKayitliDegisiklikYapilamaz": "Belge kayıtlı olduğu için değişiklik yapılamıyor.",
+        "genelBelgeTipi": "Belge Tipi",
+        "genelBelgeTipiSeciniz": "Belge tipi seçiniz.",
+        "genelKasa": "Kasa",
+        "genelKasaSeciniz": "Kasa seçiniz.",
+        "genel15HaneliBelgeGiriniz": "15 haneli belge no giriniz.",
+        "genelBelgeSerisiniKontrolEdin": "Belge serisini kontrol edin.",
+        "genelTopluDepo": "Toplu Depo",
+        "genelXXXSeciniz": "{0} seçiniz.",
+        "genelEFatura": "E-Fatura",
+        "genelEArsiv": "E-Arşiv",
+        "genelEsnekYapilandirma": "Yapılandırma",
+        "genelYapilandirmaKodu": "Yap. Kodu",
+        "genelIslemler": "İşlemler",
+        "genelBankaIslemleri": "Banka İşlemleri",
+        "genelGelen": "Gelen",
+        "genelGonderilen": "Gönderilen",
+        "genelBaslama": "Başlama",
+        "genelBitis": "Bitiş",
+        "genelCariEFTKaydi": "Cari EFT/Havale Kaydı",
+        "BankayaParaGirisi": "Bankaya Para Girişi",
+        "BankadanParaCikisi": "Bankadan Para Çıkışı",
+        "BankaHesabi": "Banka Hesabı",
+        "HareketDetayi": "Hareket Detayı",
+        "IslemTuru": "İşlem Türü",
+        "MobilCariEFTIslemi": "Cari EFT/Havale İşlemi (Mobil)",
+        "MobilHesaplarArasiEFT": "Hesaplar Arası EFT/Havale İşlemi (Mobil)",
+        "MobilHesaplarArasiVirman": "Hesaplar Arası Virman (Mobil)",
+        "XXXBos": "{0} boş.",
+        "Tahsilat": "Tahsilat",
+        "Odeme": "Ödeme",
+        "HucreBakiyeDurumu": "Hücre Bakiye Durumu",
+        "HucreHareketleri": "Hücre Hareketleri",
+        "SiparisDurumRaporu": "Sipariş Durum Raporu",
+        "Olustur": "Oluştur",
+        "faturaTabGenel": "Genel",
+        "faturaTabKalem": "Kalemler",
+        "faturaTabToplamlar": "Toplamlar",
+        "faturaOzelKod1": "Özel Kod 1",
+        "faturaOzelKod2": "Özel Kod 2",
+        "faturaKosul": "Koşul",
+        "faturaHareketTuru": "Hareket Türü",
+        "faturaCikisYeri": "Çıkış Yeri",
+        "faturaMasrafKodu": "Masraf Kodu",
+        "faturaFarkliTeslimat": "Farklı Teslim Cari",
+        "faturaIthalatTipi": "İth.İhr. Tipi",
+        "faturaIthalatRefNo": "İth.İhr.Ref.No",
+        "faturaIskontoToplami": "Toplam İsk.",
+        "faturaAraToplam": "Ara Toplam",
+        "faturaKDVTutari": "KDV Tutarı",
+        "faturaMasrafMerkezi": "Masraf Merkezi",
+        "faturaAnaMalGrubu": "Ana Mal Grubu",
+        "faturaMalGrubu": "Mal Grubu",
+        "faturaSerbest": "Serbest",
+        "faturaGenelToplamEksiyeDustu": "Genel toplam eksiye düşüyor.",
+        "faturaCikisYeriSeciniz": "Çıkış yeri seçiniz.",
+        "faturaMasrafKoduSeciniz": "Masraf kodu seçiniz.",
+        "faturaFarkliTeslimCariSeciniz": "Farklı teslim cari seçiniz.",
+        "faturaKalemGiriniz": "Kalem giriniz.",
+        "faturaSeriEFaturaIcinKullaniliyor": "Seri E-Fatura için kullanılıyor.",
+        "faturaSeriEArsivIcinKullaniliyor": "Seri E-Arşiv için kullanılıyor.",
+        "faturaSeriXXXIleBaslamali": "Seri {0} ile başlamalı.",
+        "faturaEFaturaOlusturulmus": "E-Fatura oluşturulmuş.",
+        "faturaEArsivOlusturulmus": "E-Arşiv oluşturulmuş.",
+        "depoGiris": "Giriş",
+        "depoCikis": "Çıkış",
+        "depoKalan": "Kalan",
+        "servisKullaniciDogrulamaServisiCalismiyor": "Kullanıcı doğrulama servisi çalışmıyor.",
+        "servisKullaniciDogrulanamadi": "Kullanıcı doğrulanamadı.",
+        "servisOzelKodNoTanimliDegil": "Özel kod no tanımlı değil.",
+        "servisPickerBelgeTuruTanimliDegil": "Picker belge türü tanımlı değil.",
+        "servisPickerYetkinizBulunmuyor": "Picker yetkiniz bulunmuyor.",
+        "servisSunucuHatasi": "Sunucu Hatası",
+        "servisYeniBelgeNoAlinamadi": "Yeni belge no alınamadı."
+      },
+      "MenuList": [
+        "CARI",
+        "CARI_CARI",
+        "EBEL",
+        "YONE",
+        "GNEL_BEKO",
+        "GNEL_SRAP",
+        "HTAK",
+        "MKBL",
+        "SYIM",
+        "SEVK",
+        "SEMR",
+        "SIPA",
+        "STOK",
+        "STOK_PKET",
+        "TAHS",
+        "TEKL",
+        "TEMS",
+        "TRNS",
+        "URET",
+        "KALKON",
+        "UETD"
+      ]
+    }
+  ]
 }
