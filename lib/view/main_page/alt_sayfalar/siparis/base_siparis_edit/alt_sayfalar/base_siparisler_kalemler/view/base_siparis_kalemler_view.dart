@@ -74,6 +74,7 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
             controller: _searchTextController,
             onSubmitted: (p0) async {
               if (p0.ext.isNotNullOrNoEmpty) {
+                _searchTextController.clear();
                 await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
                 viewModel.updateKalemList();
               }
