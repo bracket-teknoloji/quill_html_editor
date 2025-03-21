@@ -3,18 +3,10 @@ import "dart:developer";
 import "package:esc_pos_utils_plus/esc_pos_utils_plus.dart";
 import "package:flutter_blue_plus/flutter_blue_plus.dart";
 import "package:picker/core/base/model/yazici_model.dart";
-import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/dependency_injection/intectable_interface.dart";
 import "package:print_bluetooth_thermal/print_bluetooth_thermal.dart";
 
 final class BluetoothManager implements InjectableInterface {
-
-  factory BluetoothManager() {
-    if (!DIManager.isRegistered<BluetoothManager>()) {
-      DIManager.lazyRegisterer<BluetoothManager>(BluetoothManager());
-    }
-      return DIManager.read<BluetoothManager>();
-  }
 
   Stream<List<YaziciModel>> scanForDevices({void Function()? onError}) async* {
     FlutterBluePlus.adapterState.listen((state) {

@@ -8,7 +8,6 @@ import "package:picker/core/components/floating_action_button/custom_floating_ac
 import "package:picker/core/components/list_view/refreshable_list_view.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
 import "package:picker/core/init/bluetooth/bluetooth_manager.dart";
-import "package:picker/core/init/dependency_injection/di_manager.dart";
 
 class YaziciListesiView extends StatefulWidget {
   const YaziciListesiView({super.key});
@@ -54,14 +53,14 @@ class _YaziciListesiViewState extends BaseState<YaziciListesiView> {
                   title: Text(item.yaziciAdi ?? ""),
                   subtitle: Text(item.macAdresi),
                   leading: StreamBuilder<bool>(
-                    stream: DIManager.read<BluetoothManager>().isDeviceConnected(item.macAdresi),
+                    stream: BluetoothManager().isDeviceConnected(item.macAdresi),
                     builder:
                         (context, snapshot) => IconButton(
                           onPressed: () async {
                             if (snapshot.data != true) {
-                              await DIManager.read<BluetoothManager>().connectToDevice(item.macAdresi);
+                              await BluetoothManager().connectToDevice(item.macAdresi);
                             } else {
-                              await DIManager.read<BluetoothManager>().disconnectFromDevice();
+                              await BluetoothManager().disconnectFromDevice();
                             }
                             viewModel.setYaziciListesi();
                           },
@@ -75,14 +74,14 @@ class _YaziciListesiViewState extends BaseState<YaziciListesiView> {
                     children: [
                       IconButton(
                         onPressed: () async {
-                          DIManager.read<BluetoothManager>().printText();
+                          BluetoothManager().printText();
                         },
                         icon: const Icon(Icons.print_outlined),
                       ),
                       IconButton(
                         onPressed: () {
                           dialogManager.showAreYouSureDialog(() async {
-                            await DIManager.read<BluetoothManager>().disconnectFromDevice();
+                            await BluetoothManager().disconnectFromDevice();
                             viewModel.removeYaziciListesi(item);
                           });
                         },
