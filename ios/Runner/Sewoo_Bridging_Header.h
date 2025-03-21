@@ -8,11 +8,11 @@
 #ifndef Sewoo_Bridging_Header_h
 #define Sewoo_Bridging_Header_h
 
-#import "CallbackData.h"
-#import "EABluetoothPort.h"
-#import "EPLPrinter.h"
-#import "PortDirect.h"
-#import "PortInterface.h"
-#import "WiFiPortInterface.h"
+#import "../PrinterLibrary/include/CallbackData.h"
+#import "../PrinterLibrary/include/EABluetoothPort.h"
+#import "../PrinterLibrary/include/EPLPrinter.h"
+#import "../PrinterLibrary/include/PortDirect.h"
+#import "../PrinterLibrary/include/PortInterface.h"
+#import "../PrinterLibrary/include/WiFiPortInterface.h"
 
 #endif /* Sewoo_Bridging_Header_h */
