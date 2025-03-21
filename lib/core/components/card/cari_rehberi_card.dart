@@ -27,7 +27,17 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
     onRightClick: onLongPress,
     child: Card(
       child: ListTile(
-        onTap: () => widget.onPressed != null ? widget.onPressed!(model) : Get.back(result: widget.model),
+        onTap: () {
+          if (widget.onPressed == null) {
+            if (widget.model.kilitliMi) {
+              dialogManager.showAlertDialog("Cari tüm işlemler için kilitli durumda.");
+              return;
+            }
+            Get.back(result: widget.model);
+          } else {
+            widget.onPressed!(model);
+          }
+        },
         onLongPress: onLongPress,
         leading: CircleAvatar(
           backgroundColor: UIHelper.getColorWithValue(model.bakiye ?? 0.0),
@@ -62,7 +72,7 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
                       ),
                     if (model.boylam != null)
                       const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
-                    if (model.kilit == "E")
+                    if (model.kilitliMi)
                       const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
                   ].map((e) => e.paddingOnly(top: UIHelper.lowSize, right: UIHelper.lowSize)).toList(),
             ),

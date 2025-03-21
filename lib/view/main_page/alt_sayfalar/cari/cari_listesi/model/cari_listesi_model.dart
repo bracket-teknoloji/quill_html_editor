@@ -507,6 +507,8 @@ final class CariListesiModel with NetworkManagerMixin {
   Map<String, dynamic> toJson() => _$CariListesiModelToJson(this);
 
   bool get muhtelifMi => cariKodu == "0" * 15;
+
+  bool get kilitliMi => kilit == "E";
 }
 
 @JsonSerializable(explicitToJson: true)

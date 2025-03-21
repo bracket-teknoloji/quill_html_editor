@@ -296,6 +296,10 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
         onLongPress: () => showCariGrid(item),
         onTap: () {
           if (widget.isGetData ?? false) {
+            if (item.kilitliMi) {
+              dialogManager.showAlertDialog("Cari tüm işlemler için kilitli durumda.");
+              return;
+            }
             Get.back(result: item);
           } else {
             cariBottomSheet(context, item);
@@ -330,7 +334,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
                       ),
                     if (item.boylam != null)
                       const ColorfulBadge(label: Text("Konum"), badgeColorEnum: BadgeColorEnum.konum),
-                    if (item.kilit == "E")
+                    if (item.kilitliMi)
                       const ColorfulBadge(label: Text("Kilitli"), badgeColorEnum: BadgeColorEnum.kilitli),
                     // object.boylam != null && object.enlem != null ? const Badge(label: Text(("Konum"))) : const SizedBox.shrink(),
                     // object.dovizAdi != null ? Badge(label: Text(("Dövizli ${object.dovizAdi}"))) : const SizedBox.shrink(),
