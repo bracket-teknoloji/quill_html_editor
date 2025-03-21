@@ -1,5 +1,3 @@
-import "dart:developer";
-
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:quill_html_editor/quill_html_editor.dart";
@@ -31,20 +29,14 @@ final class _BaseSiparislerDigerViewState extends BaseState<BaseSiparislerDigerV
 
   @override
   void initState() {
-    // _htmlController = HtmlEditorController();
     controller = QuillEditorController();
     controller.setText(model.ekAciklama ?? "");
-    log("red ${Colors.red.r} ${Colors.red.red}");
-    log("green ${Colors.red.g} ${Colors.red.green}");
-    log("blue ${Colors.red.b} ${Colors.red.blue}");
     super.initState();
   }
 
   @override
   void dispose() {
-    if (controller.isEnable) {
-      controller.dispose();
-    }
+    if (controller.isEnable) controller.dispose();
     // _htmlController.disable();
     super.dispose();
   }
