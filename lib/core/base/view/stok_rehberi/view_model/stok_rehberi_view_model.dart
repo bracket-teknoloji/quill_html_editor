@@ -177,6 +177,7 @@ abstract class _StokRehberiViewModelBase
       path: ApiUrls.getStoklar,
       data: getRequestModel.toJsonWithList(),
       bodyModel: StokListesiModel(),
+      showLoading: page == 1,
     );
     if (result.isSuccess) {
       if (result.dataList.any((element) => element.otvUygula != null)) {

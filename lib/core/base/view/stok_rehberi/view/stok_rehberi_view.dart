@@ -69,17 +69,21 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
       );
     }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!(instance.getEditTipiEnum?.rehberdenStokSecilsin ?? false)) {
+        await dialogManager.showAlertDialog("Bu işlemi gerçekleştiremezsiniz. Rehberden stok seçilmesi kapalı.");
+        Get.back();
+        return;
+      }
       if (widget.searchText != null) {
         viewModel.setSearchText(widget.searchText);
         _searchTextController.text = widget.searchText!;
       }
       // if (parametreModel.satisFiyatGrubuSorulacakAlan != null && instance.getEditTipiEnum?.satisMi == true &&)
       focusNode.requestFocus();
-      await viewModel.getGrupKodlari();
       await viewModel.getData();
       if (viewModel.observableList?.length == 1 &&
-          viewModel.observableList?.first.okutulanBarkod?.startsWith("NQR") == true) {
-        await Get.toNamed(
+          (viewModel.observableList?.first.okutulanBarkod?.startsWith("NQR") ?? false)) {
+        await Get.offAndToNamed(
           (widget.isTalepTeklif ?? false) ? "/talepTeklifKalemEkle" : "/kalemEkle",
           arguments: viewModel.observableList?.first,
         );
@@ -132,6 +136,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         controller: grupKoduController,
                         readOnly: true,
                         onTap: () async {
+                          if (viewModel.grupKodlari == null) {}
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -153,6 +158,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         controller: kod1Controller,
                         readOnly: true,
                         onTap: () async {
+                          if (viewModel.grupKodlari == null) {}
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -178,6 +184,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         controller: kod2Controller,
                         readOnly: true,
                         onTap: () async {
+                          if (viewModel.grupKodlari == null) {}
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -199,6 +206,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         controller: kod3Controller,
                         readOnly: true,
                         onTap: () async {
+                          if (viewModel.grupKodlari == null) {}
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -224,6 +232,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         controller: kod4Controller,
                         readOnly: true,
                         onTap: () async {
+                          if (viewModel.grupKodlari == null) {}
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -245,6 +254,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         controller: kod5Controller,
                         readOnly: true,
                         onTap: () async {
+                          if (viewModel.grupKodlari == null) {}
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
