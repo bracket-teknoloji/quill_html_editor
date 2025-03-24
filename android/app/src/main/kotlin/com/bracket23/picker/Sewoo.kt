@@ -63,6 +63,7 @@ private open class SewooPigeonCodec : StandardMessageCodec() {
 interface Sewoo {
   fun printText(text: String, callback: (Result<Boolean>) -> Unit)
   fun printImage(image: List<Long>, callback: (Result<Boolean>) -> Unit)
+  fun printPDF(pdfData: List<Long>, width: Long, height: Long, callback: (Result<Boolean>) -> Unit)
 
   companion object {
     /** The codec used by Sewoo. */
@@ -100,6 +101,28 @@ interface Sewoo {
             val args = message as List<Any?>
             val imageArg = args[0] as List<Long>
             api.printImage(imageArg) { result: Result<Boolean> ->
+              val error = result.exceptionOrNull()
+              if (error != null) {
+                reply.reply(wrapError(error))
+              } else {
+                val data = result.getOrNull()
+                reply.reply(wrapResult(data))
+              }
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.picker.Sewoo.printPDF$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val args = message as List<Any?>
+            val pdfDataArg = args[0] as List<Long>
+            val widthArg = args[1] as Long
+            val heightArg = args[2] as Long
+            api.printPDF(pdfDataArg, widthArg, heightArg) { result: Result<Boolean> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(wrapError(error))

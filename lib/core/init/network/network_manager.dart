@@ -545,9 +545,9 @@ final class NetworkManager {
 
   //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
   //Sadece succes döndürüyor.
-  Future<GenericResponseModel> postPrint({required PrintModel model}) async => await dioPost<SiradakiBelgeNoModel>(
+  Future<GenericResponseModel<BasePdfModel>> postPrint({required PrintModel model}) async => await dioPost<BasePdfModel>(
     path: ApiUrls.print,
-    bodyModel: SiradakiBelgeNoModel(),
+    bodyModel: BasePdfModel(),
     data: model.toJson(),
     showLoading: true,
   );

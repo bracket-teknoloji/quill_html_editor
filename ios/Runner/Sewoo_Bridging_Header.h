@@ -11,6 +11,7 @@
 #import "../PrinterLibrary/include/CallbackData.h"
 #import "../PrinterLibrary/include/EABluetoothPort.h"
 #import "../PrinterLibrary/include/EPLPrinter.h"
+#import "../PrinterLibrary/include/ESCPOSPrinter.h"
 #import "../PrinterLibrary/include/PortDirect.h"
 #import "../PrinterLibrary/include/PortInterface.h"
 #import "../PrinterLibrary/include/WiFiPortInterface.h"

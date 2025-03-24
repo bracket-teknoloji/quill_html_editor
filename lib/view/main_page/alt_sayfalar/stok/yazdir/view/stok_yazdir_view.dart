@@ -1,6 +1,11 @@
+import "dart:convert";
+
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
+import "package:picker/main.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -388,8 +393,20 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
 
   Future<void> postPrint() async {
     if (formKey.currentState?.validate() ?? false) {
-      final result = await networkManager.postPrint(model: viewModel.printModel);
+      final result = await networkManager.postPrint(
+        model: viewModel.printModel.copyWith(yaziciAdi: "SW_2CCF", yazdir: null),
+      );
       if (result.isSuccess) {
+        final pdfModel = result.dataList.first;
+        if (kDebugMode) {
+          DIManager.read<SewooPrinter>().printPDF(
+            base64Decode(pdfModel.byteData ?? "").toList(),
+            (pdfModel.reportWidth ?? 70).toInt(),
+            (pdfModel.reportHeight ?? 70).toInt(),
+          );
+        } else {
+          return postPrint();
+        }
         dialogManager.showSuccesDialog(result.message ?? loc.generalStrings.success);
         if (widget.model != null) {
           Get.back(result: result.isSuccess);

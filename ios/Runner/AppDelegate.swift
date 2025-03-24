@@ -23,52 +23,60 @@ import UIKit
 
 class SewooPrinter: Sewoo {
 
-  let eplPrinter = EPLPrinter()
+    init() {
+        var errCode: Int = 0
+        errCode = escpPrinter.openPort("bluetooth", withPortParam: 9100)
+        if(errCode >= 0)
+        {
+            NSLog("Bağlandı")
+        }
+        else
+        {
+            NSLog("Bağlanamadı")
+        }
 
-  var media_type: Int32 = LK_EPL_LABEL
+    }
+ 
+  let escpPrinter = ESCPOSPrinter()
 
   func printText(text: String, completion: @escaping (Result<Bool, any Error>) -> Void) {
-    NSLog("Pigeon iOS: \(text)")
-    eplPrinter.setupPrinter(
-      "104", withHeight: "152", withMedia: media_type, withGapHeight: "3", withOffset: "0",
-      withDensity: 8, withSpeed: 6, withRotate180: 0, withCutMode: 0)
-
-    eplPrinter.printDeviceFont(
-      400, withY: 400, withRotation: 0, withFontNumber: 3, withHoriExpand: 1, withVertExpand: 1,
-      withReverse: 0, withData: text)
-    eplPrinter.printDeviceFont(
-      400, withY: 400, withRotation: 90, withFontNumber: 3, withHoriExpand: 1, withVertExpand: 1,
-      withReverse: 0, withData: text)
-    eplPrinter.printDeviceFont(
-      400, withY: 400, withRotation: 180, withFontNumber: 3, withHoriExpand: 1, withVertExpand: 1,
-      withReverse: 0, withData: text)
-    eplPrinter.printDeviceFont(
-      400, withY: 400, withRotation: 270, withFontNumber: 3, withHoriExpand: 1, withVertExpand: 1,
-      withReverse: 0, withData: text)
-
-    eplPrinter.endPage(1)
+    let barCodeData: String = "1234567890"
+     NSLog("Pigeon iOS: \(text)")
+  
+    escpPrinter.print("CODE128\r\n")
+    escpPrinter.printBarCode(
+      barCodeData, withSymbology: BCS_CODE128, withHeight: 70, withWidth: BCS_3WIDTH,
+      withAlignment: ALIGNMENT_CENTER, withHRI: HRI_TEXT_BELOW)
     completion(.success(true))
   }
+    
+    
   func printImage(image: [Int64], completion: @escaping (Result<Bool, Error>) -> Void) {
     let byteData = Data(bytes: image, count: image.count * MemoryLayout<Int64>.size)
 
-    if let uiImage = UIImage(data: byteData) {
-      eplPrinter.openPort("bluetooth", withPortParam: 9100)
-      eplPrinter.setupPrinter(
-        "104", withHeight: "152", withMedia: media_type, withGapHeight: "3", withOffset: "0",
-        withDensity: 8, withSpeed: 6, withRotate180: 0, withCutMode: 0)
+      if UIImage(data: byteData) != nil {
 
-      eplPrinter.print(
-        uiImage,
-        withPrintX: 0,
-        withPrintY: 0,
-        withBrightness: 1
-      )
-      eplPrinter.endPage(1)
       completion(.success(true))
     } else {
       // UIImage oluşturulamadı
       completion(.failure(NSError(domain: "ImageConversionError", code: 0, userInfo: nil)))
     }
   }
+    
+    func printPDF(
+        pdfData: [Int64],
+        width: Int64,
+        height: Int64,
+        completion: @escaping (Result<Bool, any Error>) -> Void
+    ) {
+        var byteData = Data()
+            for int in pdfData {
+                var value = int
+                let byteArray = withUnsafeBytes(of: &value) { Data($0) }
+                byteData.append(byteArray)
+            }
+        if let img = UIImage(data: byteData) {
+            escpPrinter.print(img, withAlignment:1, withSize:1,withBrightness:1)
+        }
+    }
 }

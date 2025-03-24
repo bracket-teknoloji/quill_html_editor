@@ -8,13 +8,6 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
 	<string>Picker</string>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Bluetooth access to connect 58mm or 80mm thermal printers</string>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>tr</string>
-		<string>en</string>
-	</array>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
@@ -26,21 +19,17 @@
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
-	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
-	<string>Uygulamamız, arka planda da konum takibi yaparak size daha iyi bir deneyim sunar.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Uygulama kapalıyken de konum takibi yapmak istiyoruz.</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Konumunuzu belirlemek için uygulamamızın konum verilerine erişmesi gerekiyor.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Bu izin, kullanıcının konumunu belirlemek için kullanılan diğer izinlerin yanı sıra
-			gereklidir. Lütfen uygulamamızın konum verilerine erişmesine izin verin.</string>
 	<key>CFBundleGetInfoString</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>7.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>tr</string>
+		<string>en</string>
+	</array>
 	<key>CFBundleName</key>
 	<string>picker</string>
 	<key>CFBundlePackageType</key>
@@ -61,10 +50,21 @@
 	<true/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
-	<key>NSHumanReadableCopyright</key>
-	<string></string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Bluetooth access to connect 58mm or 80mm thermal printers</string>
 	<key>NSCameraUsageDescription</key>
 	<string>QR kodu okutabilmek için lütfen bunu onaylayın.</string>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
+	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
+	<string>Uygulamamız, arka planda da konum takibi yaparak size daha iyi bir deneyim sunar.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Konumunuzu belirlemek için uygulamamızın konum verilerine erişmesi gerekiyor.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Uygulama kapalıyken de konum takibi yapmak istiyoruz.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Bu izin, kullanıcının konumunu belirlemek için kullanılan diğer izinlerin yanı sıra
+			gereklidir. Lütfen uygulamamızın konum verilerine erişmesine izin verin.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Fotoğraflarınıza erişmek için lütfen bunu onaylayın.</string>
 	<key>NSUserTrackingUsageDescription</key>
@@ -81,6 +81,10 @@
 	<false/>
 	<key>UIStatusBarStyle</key>
 	<string></string>
+	<key>UISupportedExternalAccessoryProtocols</key>
+	<array>
+		<string>com.mobileprinter.datapath</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -98,9 +102,5 @@
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UISupportedExternalAccessoryProtocols</key>
-	<array>
-		<string>com.mobileprinter.datapath</string>
-	</array>
 </dict>
 </plist>

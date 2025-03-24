@@ -18,4 +18,7 @@ abstract class Sewoo {
 
   @async
   bool printImage(List<int> image);
+
+  @async
+  bool printPDF(List<int> pdfData, int width, int height);
 }

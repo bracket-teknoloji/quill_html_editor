@@ -91,6 +91,7 @@ class SewooPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
 protocol Sewoo {
   func printText(text: String, completion: @escaping (Result<Bool, Error>) -> Void)
   func printImage(image: [Int64], completion: @escaping (Result<Bool, Error>) -> Void)
+  func printPDF(pdfData: [Int64], width: Int64, height: Int64, completion: @escaping (Result<Bool, Error>) -> Void)
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
@@ -132,6 +133,25 @@ class SewooSetup {
       }
     } else {
       printImageChannel.setMessageHandler(nil)
+    }
+    let printPDFChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.picker.Sewoo.printPDF\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    if let api = api {
+      printPDFChannel.setMessageHandler { message, reply in
+        let args = message as! [Any?]
+        let pdfDataArg = args[0] as! [Int64]
+        let widthArg = args[1] as! Int64
+        let heightArg = args[2] as! Int64
+        api.printPDF(pdfData: pdfDataArg, width: widthArg, height: heightArg) { result in
+          switch result {
+          case .success(let res):
+            reply(wrapResult(res))
+          case .failure(let error):
+            reply(wrapError(error))
+          }
+        }
+      }
+    } else {
+      printPDFChannel.setMessageHandler(nil)
     }
   }
 }
