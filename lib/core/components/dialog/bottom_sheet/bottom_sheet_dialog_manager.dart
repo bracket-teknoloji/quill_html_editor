@@ -488,7 +488,7 @@ final class BottomSheetDialogManager {
                   (e) => BottomSheetModel(
                     title: e.depoTanimi ?? "",
                     description: e.depoKodu.toStringIfNotNull,
-                    descriptionWidget: e.hucreTakibi == "E" ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
+                    descriptionWidget: e.hucreTakibiMi ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
                     value: e,
                     groupValue: e.depoKodu,
                   ),
@@ -501,8 +501,8 @@ final class BottomSheetDialogManager {
         title: "Depo seç",
         groupValue: groupValue,
         children:
-            _paramModel?.depoList
-                ?.where((element) => element.hucreTakibi == "E")
+            _yetkiController.yetkiliDepoList
+                ?.where((element) => element.hucreTakibiMi)
                 .map(
                   (e) => BottomSheetModel(
                     title: e.depoTanimi ?? "",
@@ -531,7 +531,7 @@ final class BottomSheetDialogManager {
                 description: e.depoKodu.toStringIfNotNull,
                 value: e,
                 groupValue: e.depoKodu,
-                descriptionWidget: e.hucreTakibi == "E" ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
+                descriptionWidget: e.hucreTakibiMi ? const ColorfulBadge(label: Text("Hücre Takibi")) : null,
               ),
             )
             .toList(),

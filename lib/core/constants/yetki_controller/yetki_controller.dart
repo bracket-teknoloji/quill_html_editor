@@ -47,10 +47,7 @@ final class YetkiController {
 
   bool get adminMi => _userModel?.admin ?? false;
   List<DepoList>? get _yetkiliDepoList {
-    if (_kullaniciYetkiModel?.sirketDepoYetkiTuru == "T" || adminMi) return _paramModel?.depoList;
-    if (_isTrue(_kullaniciYetkiModel?.sirketDepoYetkiTuru == null)) {
-      return _paramModel?.depoList;
-    }
+    if (["T", null].contains(_kullaniciYetkiModel?.sirketDepoYetkiTuru) || adminMi) return _paramModel?.depoList;
     return _paramModel?.depoList
         ?.where(
           (element) => _isTrue(
@@ -63,24 +60,28 @@ final class YetkiController {
         .toList();
   }
 
-  List<DepoList>? get yetkiliDepoList =>
-      _yetkiliDepoList
-          ?.where(
-            (element) =>
-                [AccountModel.instance.aktifSubeKodu, null].contains(element.subeKodu) &&
-                _isTrue(_kullaniciYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu)),
-          )
-          .toList();
+  List<DepoList>? get yetkiliDepoList {
+    if (_kullaniciYetkiModel?.sirketDepoYetkiTuru == "T" || adminMi) return _paramModel?.depoList;
+    return _yetkiliDepoList
+        ?.where(
+          (element) =>
+              [AccountModel.instance.aktifSubeKodu, null].contains(element.subeKodu) &&
+              _isTrue(_kullaniciYetkiModel?.sirketAktifDepolar?.contains(element.depoKodu)),
+        )
+        .toList();
+  }
 
-  List<DepoList>? get yetkiliDatDepoList =>
-      _paramModel?.depoList
-          ?.where(
-            (element) => _isTrue(
-              (_kullaniciYetkiModel?.sirketDatYetkiliDepolar.ext.isNullOrEmpty ?? false) ||
-                  (_kullaniciYetkiModel?.sirketDatYetkiliDepolar?.contains(element.depoKodu) ?? false),
-            ),
-          )
-          .toList();
+  List<DepoList>? get yetkiliDatDepoList {
+    if (_kullaniciYetkiModel?.sirketDepoYetkiTuru == "T" || adminMi) return _paramModel?.depoList;
+    return _paramModel?.depoList
+        ?.where(
+          (element) => _isTrue(
+            (_kullaniciYetkiModel?.sirketDatYetkiliDepolar.ext.isNullOrEmpty ?? false) ||
+                (_kullaniciYetkiModel?.sirketDatYetkiliDepolar?.contains(element.depoKodu) ?? false),
+          ),
+        )
+        .toList();
+  }
 
   // Future<BaseProjeModel?> get varsayilanProje async => (await NetworkManager().getProjeData())?.where((element) => element.projeKodu == _yetkiModel?.sirketProjeKodu).firstOrNull;
   PlasiyerList? get varsayilanPlasiyer =>
@@ -1370,5 +1371,14 @@ final class YetkiController {
       return editTipi.satisMi ? _satisSatirdaVade : _alisSatirdaVade;
     }
     return false;
+  }
+
+  bool get _satisAciklamaAlaniGorunsun => _isTrue(_paramModel?.satisAciklamaAlaniGorunsun, skipAdmin: true);
+
+  bool get _alisAciklamaAlaniGorunsun => _isTrue(_paramModel?.alisAciklamaAlaniGorunsun, skipAdmin: true);
+
+  bool aciklamaAlaniGorunsun(EditTipiEnum? editTipi) {
+    if (editTipi == null) return false;
+    return editTipi.satisMi ? _satisAciklamaAlaniGorunsun : _alisAciklamaAlaniGorunsun;
   }
 }

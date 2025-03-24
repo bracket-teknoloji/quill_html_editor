@@ -471,6 +471,8 @@ final class ParamModel {
   double? alisEkMaliyet1KdvOrani;
   @JsonKey(name: "SatisAciklamaAlaniGorunsun")
   bool? satisAciklamaAlaniGorunsun;
+  @JsonKey(name: "AlisAciklamaAlaniGorunsun")
+  bool? alisAciklamaAlaniGorunsun;
   @JsonKey(name: "SatisMusteriSiptenSaticiSipAktif")
   bool? satisMusteriSiptenSaticiSipAktif;
   @JsonKey(name: "SatisSipOnayAktif")
@@ -598,11 +600,13 @@ final class DepoList {
   String? bakiyeTakibi;
   @JsonKey(name: "HUCRE_TAKIBI")
   @HiveField(3)
-  String? hucreTakibi;
+  String? _hucreTakibi;
   @JsonKey(name: "SUBE_KODU")
   @HiveField(4)
   int? subeKodu;
   Map<String, dynamic> toJson() => _$DepoListToJson(this);
+
+  bool get hucreTakibiMi => _hucreTakibi == "E";
 }
 
 @JsonSerializable(createFactory: true)

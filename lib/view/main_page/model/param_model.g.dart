@@ -20,7 +20,7 @@ class DepoListAdapter extends TypeAdapter<DepoList> {
       ..depoKodu = fields[0] as int?
       ..depoTanimi = fields[1] as String?
       ..bakiyeTakibi = fields[2] as String?
-      ..hucreTakibi = fields[3] as String?
+      .._hucreTakibi = fields[3] as String?
       ..subeKodu = fields[4] as int?;
   }
 
@@ -35,7 +35,7 @@ class DepoListAdapter extends TypeAdapter<DepoList> {
       ..writeByte(2)
       ..write(obj.bakiyeTakibi)
       ..writeByte(3)
-      ..write(obj.hucreTakibi)
+      ..write(obj._hucreTakibi)
       ..writeByte(4)
       ..write(obj.subeKodu);
   }
@@ -488,6 +488,7 @@ ParamModel _$ParamModelFromJson(Map<String, dynamic> json) => ParamModel()
   ..alisEkMaliyet1KdvOrani =
       (json['AlisEkMaliyet1KdvOrani'] as num?)?.toDouble()
   ..satisAciklamaAlaniGorunsun = json['SatisAciklamaAlaniGorunsun'] as bool?
+  ..alisAciklamaAlaniGorunsun = json['AlisAciklamaAlaniGorunsun'] as bool?
   ..satisMusteriSiptenSaticiSipAktif =
       json['SatisMusteriSiptenSaticiSipAktif'] as bool?
   ..satisSipOnayAktif = json['SatisSipOnayAktif'] as bool?
@@ -977,6 +978,8 @@ Map<String, dynamic> _$ParamModelToJson(ParamModel instance) =>
         'AlisEkMaliyet1KdvOrani': value,
       if (instance.satisAciklamaAlaniGorunsun case final value?)
         'SatisAciklamaAlaniGorunsun': value,
+      if (instance.alisAciklamaAlaniGorunsun case final value?)
+        'AlisAciklamaAlaniGorunsun': value,
       if (instance.satisMusteriSiptenSaticiSipAktif case final value?)
         'SatisMusteriSiptenSaticiSipAktif': value,
       if (instance.satisSipOnayAktif case final value?)
@@ -1080,14 +1083,12 @@ DepoList _$DepoListFromJson(Map<String, dynamic> json) => DepoList()
   ..depoKodu = (json['DEPO_KODU'] as num?)?.toInt()
   ..depoTanimi = json['DEPO_TANIMI'] as String?
   ..bakiyeTakibi = json['BAKIYE_TAKIBI'] as String?
-  ..hucreTakibi = json['HUCRE_TAKIBI'] as String?
   ..subeKodu = (json['SUBE_KODU'] as num?)?.toInt();
 
 Map<String, dynamic> _$DepoListToJson(DepoList instance) => <String, dynamic>{
       if (instance.depoKodu case final value?) 'DEPO_KODU': value,
       if (instance.depoTanimi case final value?) 'DEPO_TANIMI': value,
       if (instance.bakiyeTakibi case final value?) 'BAKIYE_TAKIBI': value,
-      if (instance.hucreTakibi case final value?) 'HUCRE_TAKIBI': value,
       if (instance.subeKodu case final value?) 'SUBE_KODU': value,
     };
 
