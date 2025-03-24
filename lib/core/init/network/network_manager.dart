@@ -11,7 +11,6 @@ import "package:flutter/material.dart";
 import "package:get/get.dart" hide FormData, Response;
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
-
 import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/doviz_kurlari_model.dart";
@@ -608,6 +607,26 @@ final class NetworkManager {
     );
     if (result.isSuccess) {
       return result.dataList.firstOrNull;
+    }
+    return null;
+  }
+
+  Future<GenericResponseModel<StokListesiModel>> getStokResponseModel(StokRehberiRequestModel model) async =>
+      await dioPost<StokListesiModel>(
+        path: ApiUrls.getStoklar,
+        bodyModel: StokListesiModel(),
+        showLoading: true,
+        data: model.toJson(),
+      );
+  Future<List<StokListesiModel>?> getStokModelList(StokRehberiRequestModel model) async {
+    final result = await dioPost<StokListesiModel>(
+      path: ApiUrls.getStoklar,
+      bodyModel: StokListesiModel(),
+      showLoading: true,
+      data: model.toJson(),
+    );
+    if (result.isSuccess) {
+      return result.dataList;
     }
     return null;
   }
