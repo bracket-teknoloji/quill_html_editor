@@ -1,4 +1,4 @@
-enum SerbestRaporDetayKodEnum { cari, stok, kasa, cek, senet, finans, kaliteKontrol, siparis , hepsi}
+enum SerbestRaporDetayKodEnum { cari, stok, kasa, cek, senet, finans, kaliteKontrol, siparis, hepsi }
 
 extension SerbestRaporDetayKodEnumExtension on SerbestRaporDetayKodEnum {
   //return capitalized with method

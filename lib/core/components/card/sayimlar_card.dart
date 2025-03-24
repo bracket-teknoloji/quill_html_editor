@@ -152,7 +152,7 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
                 if (result.isSuccess) {
                   widget.onChanged(true);
                 }
-              }, title: "Sayıma ait tüm bilgiler silinir. Bu işlem geri alınamaz. Kayıt silinsin mi?",);
+              }, title: "Sayıma ait tüm bilgiler silinir. Bu işlem geri alınamaz. Kayıt silinsin mi?");
             },
           ),
         if (yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi)

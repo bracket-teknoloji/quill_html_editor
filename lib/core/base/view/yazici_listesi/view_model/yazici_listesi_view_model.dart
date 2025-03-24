@@ -7,7 +7,6 @@ part "yazici_listesi_view_model.g.dart";
 class YaziciListesiViewModel = _YaziciListesiViewModelBase with _$YaziciListesiViewModel;
 
 abstract class _YaziciListesiViewModelBase with Store {
-
   @observable
   ObservableList<YaziciModel>? yaziciListesi;
 
@@ -24,6 +23,5 @@ abstract class _YaziciListesiViewModelBase with Store {
   void removeYaziciListesi(YaziciModel value) {
     CacheManager.instance.removeYazici(value.macAdresi);
     setYaziciListesi();
-}
-
+  }
 }

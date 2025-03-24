@@ -292,7 +292,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                               } else {
                                 dialogManager.showErrorSnackBar(result.message ?? "");
                               }
-                            }, title: "Bu hareket kaydını silmek istediğinizden emin misiniz?",);
+                            }, title: "Bu hareket kaydını silmek istediğinizden emin misiniz?");
                           },
                         ),
                       if (item.kasaMi)

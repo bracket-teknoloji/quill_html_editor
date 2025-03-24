@@ -138,24 +138,25 @@ final class _BelgeKontrolViewState extends BaseState<BelgeKontrolView> {
                                       context,
                                       title: loc.generalStrings.options,
                                       children: [
-                                        if (yetkiController.genelBelgeKontrolSil)BottomSheetModel(
-                                          title: loc.generalStrings.delete,
-                                          iconWidget: Icons.delete_outline_outlined,
-                                          onTap: () {
-                                            if (item.id case final id?) {
-                                              Get.back();
-                                              dialogManager.showAreYouSureDialog(() async {
-                                                final result = await viewModel.deletekontrol(id);
-                                                if (result.isSuccess) {
-                                                  dialogManager.showSuccessSnackBar(
-                                                    result.message ?? "Başarıyla silindi",
-                                                  );
-                                                  await viewModel.resetList();
-                                                }
-                                              });
-                                            }
-                                          },
-                                        ),
+                                        if (yetkiController.genelBelgeKontrolSil)
+                                          BottomSheetModel(
+                                            title: loc.generalStrings.delete,
+                                            iconWidget: Icons.delete_outline_outlined,
+                                            onTap: () {
+                                              if (item.id case final id?) {
+                                                Get.back();
+                                                dialogManager.showAreYouSureDialog(() async {
+                                                  final result = await viewModel.deletekontrol(id);
+                                                  if (result.isSuccess) {
+                                                    dialogManager.showSuccessSnackBar(
+                                                      result.message ?? "Başarıyla silindi",
+                                                    );
+                                                    await viewModel.resetList();
+                                                  }
+                                                });
+                                              }
+                                            },
+                                          ),
                                       ],
                                     );
                                   },

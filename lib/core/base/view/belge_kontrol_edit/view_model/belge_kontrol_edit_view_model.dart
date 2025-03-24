@@ -21,7 +21,12 @@ abstract class _BelgeKontrolEditViewModelBase with Store, MobxNetworkMixin {
 
   @action
   Future<bool> saveData() async {
-    final result = await networkManager.dioPost(path: ApiUrls.saveBelgeKontrol, bodyModel: BelgeKontrolModel(),showLoading: true, data: belgeKontrolModel.toJson());
+    final result = await networkManager.dioPost(
+      path: ApiUrls.saveBelgeKontrol,
+      bodyModel: BelgeKontrolModel(),
+      showLoading: true,
+      data: belgeKontrolModel.toJson(),
+    );
     return result.isSuccess;
   }
 }

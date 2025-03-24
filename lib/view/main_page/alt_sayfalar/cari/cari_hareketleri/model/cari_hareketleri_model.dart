@@ -35,7 +35,7 @@ final class CariHareketleriModel with NetworkManagerMixin {
   String? resmiBelgeNo;
   String? raporKodu;
   double? kapatilmisTutar;
-  bool get borcHareketiMi => (borc ??0) > 0;
+  bool get borcHareketiMi => (borc ?? 0) > 0;
 
   bool get devirMi => hareketKodu == "A";
 

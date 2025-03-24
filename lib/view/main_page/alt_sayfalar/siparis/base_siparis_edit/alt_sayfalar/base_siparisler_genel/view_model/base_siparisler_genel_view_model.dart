@@ -112,7 +112,6 @@ abstract class _BaseSiparislerGenelViewModelBase with Store, MobxNetworkMixin {
     BaseSiparisEditModel.setInstance(model);
   }
 
-
   @action
   Future<bool> fiyatGuncelle() async {
     final result = await networkManager.dioPost(

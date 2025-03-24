@@ -52,9 +52,7 @@ abstract class _SeriListesiViewModelBase with Store, MobxNetworkMixin {
 
   @action
   void removeSeriListWithIndex(int index) {
-    kalemModel = kalemModel.copyWith(
-      seriList: kalemModel.seriList?..removeAt(index),
-    );
+    kalemModel = kalemModel.copyWith(seriList: kalemModel.seriList?..removeAt(index));
   }
 
   @action

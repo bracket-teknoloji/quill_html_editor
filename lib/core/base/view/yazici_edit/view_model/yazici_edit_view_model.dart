@@ -6,7 +6,6 @@ part "yazici_edit_view_model.g.dart";
 class YaziciEditViewModel = _YaziciEditViewModelBase with _$YaziciEditViewModel;
 
 abstract class _YaziciEditViewModelBase with Store {
-
   @observable
   YaziciModel yaziciModel = YaziciModel();
 
@@ -24,5 +23,4 @@ abstract class _YaziciEditViewModelBase with Store {
 
   @action
   void setYaziciTipi(YaziciTipi value) => yaziciModel = yaziciModel.copyWith(yaziciTipi: value);
-  
 }

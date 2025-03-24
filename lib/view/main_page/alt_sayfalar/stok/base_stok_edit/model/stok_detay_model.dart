@@ -34,7 +34,8 @@ final class StokDetayModel with NetworkManagerMixin {
   @override
   Map<String, dynamic> toJson() => _$StokDetayModelToJson(this);
 
-  StokListesiModel? getStokList(String stokKodu) => stokList?.firstWhereOrNull((element) => element.stokKodu == stokKodu);
+  StokListesiModel? getStokList(String stokKodu) =>
+      stokList?.firstWhereOrNull((element) => element.stokKodu == stokKodu);
 }
 
 @JsonSerializable(explicitToJson: true)

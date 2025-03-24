@@ -235,6 +235,6 @@ final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayi
         widget.update.call(widget.cariHareketleriModel.refkey);
         dialogManager.showSuccessSnackBar(result.message ?? "");
       }
-    }, title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",);
+    }, title: "Bu kasa kaydını silmek istediğinizden emin misiniz?");
   }
 }

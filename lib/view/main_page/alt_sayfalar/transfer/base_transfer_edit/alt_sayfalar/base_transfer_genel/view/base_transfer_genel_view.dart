@@ -801,15 +801,15 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
               ],
             ),
             if (!(widget.model.editTipiEnum?.ambarGirisiMi ?? false))
-            if (yetkiController.aciklamaAlaniGorunsun(model.getEditTipiEnum))
-              CustomTextField(
-                labelText: "Açıklama",
-                enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
-                isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A"),
-                controllerText: viewModel.model.aciklama,
-                maxLength: StaticVariables.maxAciklamaLength,
-                onChanged: (value) => viewModel.model.aciklama = value,
-              ),
+              if (yetkiController.aciklamaAlaniGorunsun(model.getEditTipiEnum))
+                CustomTextField(
+                  labelText: "Açıklama",
+                  enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
+                  isMust: model.getEditTipiEnum?.bosGecilmeyecekAlanlar("A"),
+                  controllerText: viewModel.model.aciklama,
+                  maxLength: StaticVariables.maxAciklamaLength,
+                  onChanged: (value) => viewModel.model.aciklama = value,
+                ),
 
             if (yetkiController.faturaAciklamaAlanlari(model.getEditTipiEnum, 0))
               CustomWidgetWithLabel(

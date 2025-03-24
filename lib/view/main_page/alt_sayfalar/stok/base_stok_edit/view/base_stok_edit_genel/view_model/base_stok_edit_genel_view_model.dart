@@ -27,7 +27,6 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
     grupKodlariMap?[grupkodu] = value;
   }
 
-
   @action
   void setAdi(String? value) {
     stokListesiModel = stokListesiModel.copyWith(stokAdi: value);
@@ -75,7 +74,6 @@ abstract class _BaseStokEditGenelViewModelBase with Store, MobxNetworkMixin {
         stokListesiModel = stokListesiModel.copyWith(kod5: model.grupKodu, kod5Tanimi: model.grupAdi);
     }
     StokListesiModel.setInstance(stokListesiModel);
-    
   }
 
   @action

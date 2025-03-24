@@ -116,7 +116,7 @@ abstract class _KrediKartiTahsilatiViewModelBase with Store, MobxNetworkMixin {
     if (model.taksitSayisi == null) {
       model = model.copyWith(taksitSayisi: 0);
     }
-    
+
     model = model.copyWith(taksitSayisi: (model.taksitSayisi ?? 0) + 1);
   }
 

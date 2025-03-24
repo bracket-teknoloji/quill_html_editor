@@ -7,7 +7,6 @@ import "package:picker/core/init/dependency_injection/intectable_interface.dart"
 import "package:print_bluetooth_thermal/print_bluetooth_thermal.dart";
 
 final class BluetoothManager implements InjectableInterface {
-
   Stream<List<YaziciModel>> scanForDevices({void Function()? onError}) async* {
     FlutterBluePlus.adapterState.listen((state) {
       log(state.toString());

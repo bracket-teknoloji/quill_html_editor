@@ -419,7 +419,7 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         if (result.isSuccess) {
           dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
         }
-      }, title: "E-Belge Eşleştirilsin mi?",);
+      }, title: "E-Belge Eşleştirilsin mi?");
     },
   );
   BottomSheetModel get eBelgeEslestirmeIptali => BottomSheetModel(
@@ -442,7 +442,7 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         if (result.isSuccess) {
           dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
         }
-      }, title: "E-Belge Eşleştirme İptal Edilsin mi?",);
+      }, title: "E-Belge Eşleştirme İptal Edilsin mi?");
     },
   );
 
@@ -633,7 +633,7 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
         if (result.isSuccess) {
           dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
         }
-      }, title: "İptal Tarihi: ${result.toDateString}\nFatura harici yolla iptal edilsin mi?",);
+      }, title: "İptal Tarihi: ${result.toDateString}\nFatura harici yolla iptal edilsin mi?");
     },
   );
 
@@ -657,7 +657,7 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
           if (result != null) {
             widget.onRefresh.call(true);
           }
-        }, title: "Cari Kodu Bulunamadı. Oluşturulsun Mu?",);
+        }, title: "Cari Kodu Bulunamadı. Oluşturulsun Mu?");
         if (result == null) {
           return;
         }

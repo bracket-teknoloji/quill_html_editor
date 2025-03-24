@@ -244,7 +244,8 @@ final class _CekSenetListesiViewState extends BaseState<CekSenetListesiView> {
                               ),
                             ),
                           if (viewModel.cekSenetListesiRequestModel.yer == "T" ||
-                              viewModel.cekSenetListesiRequestModel.yer == "E" || widget.cekSenetListesiEnum == CekSenetListesiEnum.cekBorc)
+                              viewModel.cekSenetListesiRequestModel.yer == "E" ||
+                              widget.cekSenetListesiEnum == CekSenetListesiEnum.cekBorc)
                             CustomTextField(
                               labelText: "Banka",
                               controller: _bankaController,

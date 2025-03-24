@@ -7,7 +7,7 @@ part "banka_sozlesmesi_model.g.dart";
 
 @unfreezed
 class BankaSozlesmesiModel with _$BankaSozlesmesiModel, NetworkManagerMixin {
-  factory  BankaSozlesmesiModel({
+  factory BankaSozlesmesiModel({
     String? sozlesmeKodu,
     String? sozlesmeAdi,
     String? krediKartiTanimi,

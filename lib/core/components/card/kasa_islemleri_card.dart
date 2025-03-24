@@ -141,7 +141,7 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
       } else {
         dialogManager.showErrorSnackBar(result.message ?? "");
       }
-    }, title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",);
+    }, title: "Bu kasa kaydını silmek istediğinizden emin misiniz?");
   }
 
   Future<void> showMakbuz(bool tahsilatMi) async {

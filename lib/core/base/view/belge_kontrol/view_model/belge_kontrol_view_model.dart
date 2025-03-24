@@ -17,7 +17,7 @@ abstract class _BelgeKontrolViewModelBase
   @override
   @observable
   ObservableList<BelgeKontrolModel>? observableList;
-  
+
   @observable
   BelgeKontrolRequestModel requestModel = BelgeKontrolRequestModel(durum: "T");
 

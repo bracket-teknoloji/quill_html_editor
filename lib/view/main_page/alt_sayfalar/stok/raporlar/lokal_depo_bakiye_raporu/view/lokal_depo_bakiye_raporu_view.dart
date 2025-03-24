@@ -116,7 +116,10 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   controller: depoController,
                   readOnly: true,
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, int.tryParse(viewModel.pdfModel.dicParams?.depoKodu ?? "") ?? 0);
+                    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
+                      context,
+                      int.tryParse(viewModel.pdfModel.dicParams?.depoKodu ?? "") ?? 0,
+                    );
                     if (result != null) {
                       depoController.text = result.depoTanimi ?? "";
                       viewModel.pdfModel.dicParams?.depoKodlari = result.depoKodu.toStringIfNotNull ?? "";

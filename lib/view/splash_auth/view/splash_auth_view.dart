@@ -148,7 +148,7 @@ final class _SplashAuthViewState extends BaseState<SplashAuthView> {
                                 children: [
                                   Image.network(
                                     viewModel.accountResponseModel?.karsilamaResimUrl ?? "",
-                                    
+
                                     errorBuilder:
                                         (context, error, stackTrace) => const Icon(Icons.error_outline_outlined),
                                   ),

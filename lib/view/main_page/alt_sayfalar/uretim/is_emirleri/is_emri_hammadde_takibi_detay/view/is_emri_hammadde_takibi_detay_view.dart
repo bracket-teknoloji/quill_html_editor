@@ -156,7 +156,7 @@ final class _IsEmriHammaddeTakibiDetayViewState extends BaseState<IsEmriHammadde
             }
           });
         }
-      }, title: result.message,);
+      }, title: result.message);
     }
   }
 }

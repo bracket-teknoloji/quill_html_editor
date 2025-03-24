@@ -362,7 +362,7 @@ final class IslemlerMenuItemConstants<T> {
           bool? result;
           await _dialogManager.showAreYouSureDialog(() async {
             result = true;
-          }, title: "Kiliti kapatmak istediğinize emin misiniz?",);
+          }, title: "Kiliti kapatmak istediğinize emin misiniz?");
           if (result == true) {
             return await kilitRequest(siparisModel, 1);
           }
@@ -377,7 +377,7 @@ final class IslemlerMenuItemConstants<T> {
           bool? result;
           await _dialogManager.showAreYouSureDialog(() async {
             result = true;
-          }, title: "Kiliti açmak istediğinize emin misiniz?",);
+          }, title: "Kiliti açmak istediğinize emin misiniz?");
           if (result == true) {
             return await kilitRequest(siparisModel, 2);
           }

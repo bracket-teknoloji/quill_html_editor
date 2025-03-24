@@ -18,5 +18,4 @@ abstract class Sewoo {
 
   @async
   bool printImage(List<int> image);
-
 }
