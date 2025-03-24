@@ -65,7 +65,7 @@ android {
         applicationId = "com.bracket23.picker"
         minSdk = 24
         targetSdk = flutter.targetSdkVersion
-        versionCode = 361
+        versionCode = 366
         versionName = flutterVersionName
     }
 
@@ -78,6 +78,10 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            ndk {
+                //noinspection ChromeOsAbiSupport
+                abiFilters += setOf("arm64-v8a")
+            }
         }
     }
     buildToolsVersion = "34.0.0"
