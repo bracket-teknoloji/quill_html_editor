@@ -140,6 +140,11 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       ),
       IconButton(
         onPressed: () {
+          if ((viewModel.kalemModel.miktar ?? 0) > 0 &&
+              viewModel.kalemModel.seriList?.length == 1 &&
+              viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.firstOrNull?.miktar) {
+            viewModel.kalemModel.seriList?.firstOrNull?.miktar = viewModel.kalemModel.miktar;
+          }
           if (viewModel.model?.seriMiktarKadarSor == true &&
               viewModel.kalemModel.miktar != viewModel.kalemModel.seriList?.length &&
               seriliMi) {
@@ -610,7 +615,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                 readOnly: true,
                 onClear: () => viewModel.kalemModel.vadeTarihi = null,
                 onTap: () async {
-                  final result = await dialogManager.showDateTimePicker();
+                  final result = await dialogManager.showDateTimePicker(initialDate: viewModel.kalemModel.vadeTarihi);
                   if (result != null) {
                     vadeController.text = result.toDateString;
                     viewModel.kalemModel.vadeTarihi = result;
@@ -751,7 +756,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                               }
                               return null;
                             },
-                            onChanged: (value) => viewModel.setMiktar(value.toDoubleWithFormattedString),
+                            onChanged: (value) {
+                              viewModel.setMiktar(value.toDoubleWithFormattedString);
+                              formKey.currentState?.validate();
+                            },
                             suffix: Wrap(
                               children: [
                                 IconButton(
@@ -1355,7 +1363,14 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   Future<void> getData() async {
     if (widget.stokListesiModel != null) {
       viewModel.setModel(widget.stokListesiModel);
-    } else if (widget.kalemModel != null) {
+      if (widget.stokListesiModel?.okutulanBarkod != null) {
+        viewModel.setKalemModel(
+          KalemModel.fromBarkodModel(widget.stokListesiModel!)
+            ..kdvOrani =
+                editTipi?.satisMi ?? false ? widget.stokListesiModel?.satisKdv : widget.stokListesiModel?.alisKdv,
+        );
+      }
+    } else if (widget.kalemModel != null || widget.stokListesiModel?.okutulanBarkod == null) {
       viewModel.setKalemModel(widget.kalemModel);
       await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
     } else {
@@ -1423,9 +1438,15 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
   }
 
   Future<void> controllerFiller() async {
-    if (widget.kalemModel != null && widget.kalemModel?.sira != null) {
+    if (widget.kalemModel != null &&
+        widget.kalemModel?.sira != null &&
+        widget.stokListesiModel?.okutulanBarkod == null) {
       viewModel.setKalemModel(widget.kalemModel);
-      await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
+      // if (widget.stokListesiModel == null) {
+      // await viewModel.getData(StokRehberiRequestModel.fromKalemModel(widget.kalemModel!));
+      // } else {
+      //   viewModel.setModel(widget.stokListesiModel);
+      // }
       if (editTipi?.ambarFisiMi == true) {
         viewModel.setKdvOrani(0);
       }
