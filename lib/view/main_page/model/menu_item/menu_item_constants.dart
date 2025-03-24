@@ -366,7 +366,7 @@ abstract final class MenuItemConstants {
     //* Hücre Takibi
     //*
     if (_anaVeri?.paramModel?.lokalDepoUygulamasiAcik == true &&
-        _anaVeri?.paramModel?.depoList?.any((element) => element.hucreTakibi == "E") == true)
+        _anaVeri?.paramModel?.depoList?.any((element) => element.hucreTakibiMi) == true)
       GridItemModel.anamenu(
         name: MenuItemsEnum.hucreTakibi,
         title: "Hücre Takibi",

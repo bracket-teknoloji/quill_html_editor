@@ -318,5 +318,5 @@ final class _HucreTransferiViewState extends BaseState<HucreTransferiView> {
 
   Future<void> emptyHucreDialog() => dialogManager.showAlertDialog("Kaynak Hücre Seçiniz.");
 
-  List<DepoList>? get depoList => parametreModel.depoList?.where((element) => element.hucreTakibi == "E").toList();
+  List<DepoList>? get depoList => parametreModel.depoList?.where((element) => element.hucreTakibiMi).toList();
 }

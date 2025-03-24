@@ -190,7 +190,7 @@ final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                       await viewModel.setGirisKasa(result);
                       girisKasaController.text = result.kasaTanimi ?? "";
                       aciklamaController.text = viewModel.aciklamaString;
-                      if (result.dovizli == "E" && result.dovizTipi != 0) {
+                      if (result.dovizliMi && result.dovizTipi != 0) {
                         dovizTipiController.text = result.dovizAdi ?? " ";
                         await getDovizDialog();
                       } else {

@@ -272,7 +272,7 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
                               builder: (_) => Text(viewModel.model.dovizTipi.toStringIfNotNull ?? ""),
                             ),
                             onTap: () async {
-                              if (viewModel.kasa?.dovizli == "E") {
+                              if (viewModel.kasa?.dovizliMi ?? false) {
                                 return;
                               }
                               final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
@@ -486,12 +486,12 @@ final class _NakitOdemeViewState extends BaseState<NakitOdemeView> {
     viewModel.setKasa(kasa);
     _kasaController.text = kasa.kasaTanimi ?? "";
     _cariHareketiAciklamaController.text = "Nakit ${viewModel.formTipi} (${kasa.kasaKodu ?? ""})";
-    if (kasa.dovizli == "E") {
+    if (kasa.dovizliMi) {
       _dovizTipiController.text = kasa.dovizAdi ?? " ";
       viewModel
         ..setHedefAciklama(_cariHareketiAciklamaController.text)
-        ..setDovizTipi(kasa.dovizli == "E" ? kasa.dovizTipi ?? 0 : null);
-      _dovizTipiController.text = kasa.dovizli == "E" ? kasa.dovizAdi ?? mainCurrency : "";
+        ..setDovizTipi(kasa.dovizliMi ? kasa.dovizTipi ?? 0 : null);
+      _dovizTipiController.text = kasa.dovizliMi ? kasa.dovizAdi ?? mainCurrency : "";
       if (kasa.dovizAdi != null) {
         await getDovizDialog();
       }

@@ -129,7 +129,8 @@ final class _OlcumBelgeEditViewState extends BaseState<OlcumBelgeEditView> {
                       }
                     },
                   ),
-                if (viewModel.model?.belge?.firstOrNull?.kontrolPlaniVarmi == "E" && yetkiController.sigmaKontrolPlani)
+                if ((viewModel.model?.belge?.firstOrNull?.kontrolPlaniVarMi ?? false) &&
+                    yetkiController.sigmaKontrolPlani)
                   BottomSheetModel(
                     title: "Kontrol Planlarını Görüntüle",
                     iconWidget: Icons.picture_as_pdf_outlined,

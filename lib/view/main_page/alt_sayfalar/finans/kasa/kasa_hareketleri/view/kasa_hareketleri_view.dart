@@ -35,7 +35,7 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
   void initState() {
     _scrollController = ScrollController();
     viewModel
-      ..setDovizAdi(widget.model?.dovizli == "E" ? widget.model?.dovizAdi : mainCurrency)
+      ..setDovizAdi(widget.model?.dovizliMi ?? false ? widget.model?.dovizAdi : mainCurrency)
       ..setKasaKodu(widget.model?.kasaKodu);
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
@@ -149,7 +149,7 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                 const Text("Gelir"),
                 Observer(
                   builder: (_) {
-                    if (widget.model?.dovizli == "E") {
+                    if (widget.model?.dovizliMi ?? false) {
                       return Text(
                         "${((viewModel.paramData?["TOPLAM_GELIR_DOVIZ"] as double? ?? 0) + (widget.model?.dovizDevirTutari ?? 0)).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
                         style: const TextStyle(color: ColorPalette.mantis),
@@ -169,7 +169,7 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                 const Text("Gider"),
                 Observer(
                   builder: (_) {
-                    if (widget.model?.dovizli == "E") {
+                    if (widget.model?.dovizliMi ?? false) {
                       return Text(
                         "${(viewModel.paramData?["TOPLAM_GIDER_DOVIZ"] as double?).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
                         style: const TextStyle(color: ColorPalette.persianRed),
@@ -190,10 +190,10 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
                 Observer(
                   builder:
                       (_) => Text(
-                        "${(widget.model?.dovizli == "E" ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
+                        "${(widget.model?.dovizliMi ?? false ? widget.model?.devirliDovizBakiye : widget.model?.devirliBakiye).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${viewModel.dovizAdi}",
                         style: TextStyle(
                           color: UIHelper.getColorWithValue(
-                            (widget.model?.dovizli == "E"
+                            (widget.model?.dovizliMi ?? false
                                     ? widget.model?.devirliDovizBakiye
                                     : widget.model?.devirliBakiye) ??
                                 0,

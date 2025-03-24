@@ -32,4 +32,7 @@ class KasaListesiModel with _$KasaListesiModel, NetworkManagerMixin {
 
   @override
   KasaListesiModel fromJson(Map<String, dynamic> json) => _$KasaListesiModelFromJson(json);
+
+
+  bool get dovizliMi => dovizli == "E";
 }

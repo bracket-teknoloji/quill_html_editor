@@ -75,6 +75,8 @@ class OlcumBelgeModel with _$OlcumBelgeModel, NetworkManagerMixin {
 
   @override
   OlcumBelgeModel fromJson(Map<String, dynamic> json) => _$OlcumBelgeModelFromJson(json);
+
+  bool get kontrolPlaniVarMi => kontrolPlaniVarmi == "E";
 }
 
 @unfreezed

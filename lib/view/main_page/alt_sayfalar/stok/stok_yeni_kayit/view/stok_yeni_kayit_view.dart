@@ -194,7 +194,7 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
                       context,
                       title: "Depo",
                       children:
-                          viewModel.anaVeri?.paramModel?.depoList
+                          yetkiController.yetkiliDepoList
                               ?.map(
                                 (e) => BottomSheetModel(
                                   title: e.depoTanimi ?? "",

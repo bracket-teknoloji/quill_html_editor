@@ -149,5 +149,5 @@ final class _BaseHucreGenelViewState extends BaseState<BaseHucreGenelView> {
     ).paddingAll(UIHelper.lowSize),
   );
 
-  List<DepoList>? get depoList => parametreModel.depoList?.where((element) => element.hucreTakibi == "E").toList();
+  List<DepoList>? get depoList => parametreModel.depoList?.where((element) => element.hucreTakibiMi).toList();
 }

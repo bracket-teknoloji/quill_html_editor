@@ -1543,7 +1543,7 @@ final class KalemModel with NetworkManagerMixin {
       if (model.bulunanSerilot3 case final value?) newSeri.seri3 = value;
       if (model.bulunanSerilot4 case final value?) newSeri.seri4 = value;
     }
-    return kalemModel..seriList = [if (newSeri.miktar != null && newSeri.miktar != 0) newSeri];
+    return kalemModel.copyWith(seriList: [newSeri]);
   }
   @HiveField(0)
   @JsonKey(defaultValue: false, name: "ISKONTO_1_ORAN_MI")

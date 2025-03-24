@@ -1,10 +1,6 @@
-import "package:get/get.dart";
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
-import "../../../../../../../core/components/dialog/bottom_sheet/model/bottom_sheet_model.dart";
-import "../../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../../core/init/cache/cache_manager.dart";
 
 part "lokal_depo_bakiye_raporu_view_model.g.dart";
 
@@ -18,16 +14,6 @@ abstract class _LokalDepoBakiyeRaporuViewModelBase with Store {
     dicParams: DicParams(belgeNo: "")..sifirHaric = "H",
   );
 
-  List<BottomSheetModel>? bottomSheetList =
-      CacheManager.getAnaVeri?.paramModel?.depoList
-          ?.map(
-            (e) => BottomSheetModel(
-              title: e.depoTanimi ?? "",
-              description: e.depoKodu.toStringIfNotNull ?? "",
-              onTap: () => Get.back(result: e.depoKodu.toStringIfNotNull),
-            ),
-          )
-          .toList();
   @observable
   bool sifirHaricValue = false;
 

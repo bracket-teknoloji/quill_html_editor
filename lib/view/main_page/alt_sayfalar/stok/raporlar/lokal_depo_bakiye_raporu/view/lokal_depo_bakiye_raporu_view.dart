@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/extensions/number_extensions.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -115,14 +116,10 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   controller: depoController,
                   readOnly: true,
                   onTap: () async {
-                    final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                      context,
-                      title: "Depo",
-                      children: viewModel.bottomSheetList,
-                    );
+                    final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(context, int.tryParse(viewModel.pdfModel.dicParams?.depoKodu ?? "") ?? 0);
                     if (result != null) {
-                      depoController.text = result ?? "";
-                      viewModel.pdfModel.dicParams?.depoKodlari = result ?? "";
+                      depoController.text = result.depoTanimi ?? "";
+                      viewModel.pdfModel.dicParams?.depoKodlari = result.depoKodu.toStringIfNotNull ?? "";
                     }
                   },
                   suffixMore: true,

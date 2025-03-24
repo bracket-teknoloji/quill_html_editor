@@ -801,6 +801,7 @@ final class BaseTransferGenelViewState extends BaseState<BaseTransferGenelView> 
               ],
             ),
             if (!(widget.model.editTipiEnum?.ambarGirisiMi ?? false))
+            if (yetkiController.aciklamaAlaniGorunsun(model.getEditTipiEnum))
               CustomTextField(
                 labelText: "Açıklama",
                 enabled: enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("A") ?? false),
