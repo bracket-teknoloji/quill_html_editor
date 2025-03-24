@@ -101,6 +101,7 @@ final class PickerMaterialApp extends StatelessWidget {
       ),
       //* Seri İşlemleri
       GetPage(name: "/seriListesi", page: () => SeriListesiView(kalemModel: Get.arguments)),
+      GetPage(name: "/seriListesiOzel", page: () => SeriListesiView.goruntule(kalemModel: Get.arguments)),
       GetPage(name: "/kayitliYazicilar", page: YaziciListesiView.new),
       GetPage(name: "/yaziciRehberi", page: YaziciRehberiView.new),
       GetPage(name: "/yaziciEkle", page: YaziciEditView.ekle),

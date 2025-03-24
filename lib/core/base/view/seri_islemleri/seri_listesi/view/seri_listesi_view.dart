@@ -19,8 +19,11 @@ import "../model/seri_detayi_model.dart";
 import "../view_model/seri_listesi_view_model.dart";
 
 final class SeriListesiView extends StatefulWidget {
-  const SeriListesiView({required this.kalemModel, super.key});
+  const SeriListesiView({required this.kalemModel, super.key}) : isGoruntule = false;
+  const SeriListesiView.goruntule({required this.kalemModel, super.key}) : isGoruntule = true;
   final KalemModel kalemModel;
+
+  final bool isGoruntule;
 
   @override
   State<SeriListesiView> createState() => _SeriListesiViewState();
@@ -57,22 +60,23 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
       ),
       actions: [
         // IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
-        IconButton(
-          onPressed: () {
-            if (viewModel.kalanMiktar == 0) {
-              viewModel.setKalemModel(
-                viewModel.kalemModel.copyWith(
-                  seriList:
-                      viewModel.kalemModel.seriList?.where((element) => ![null, 0].contains(element.miktar)).toList(),
-                ),
-              );
-              Get.back(result: viewModel.kalemModel.seriList);
-            } else {
-              dialogManager.showErrorSnackBar("Kalan Miktar (${viewModel.kalanMiktar})");
-            }
-          },
-          icon: const Icon(Icons.check_outlined),
-        ),
+        if (!widget.isGoruntule)
+          IconButton(
+            onPressed: () {
+              if (viewModel.kalanMiktar == 0) {
+                viewModel.setKalemModel(
+                  viewModel.kalemModel.copyWith(
+                    seriList:
+                        viewModel.kalemModel.seriList?.where((element) => ![null, 0].contains(element.miktar)).toList(),
+                  ),
+                );
+                Get.back(result: viewModel.kalemModel.seriList);
+              } else {
+                dialogManager.showErrorSnackBar("Kalan Miktar (${viewModel.kalanMiktar})");
+              }
+            },
+            icon: const Icon(Icons.check_outlined),
+          ),
       ],
     ),
     body: Column(
@@ -207,34 +211,36 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
                           context,
                           title: model.seri1 ?? "",
                           children: [
-                            BottomSheetModel(
-                              title: loc.generalStrings.edit,
-                              iconWidget: Icons.edit_outlined,
-                              onTap: () async {
-                                Get.back();
-                                final result = await Get.toNamed(
-                                  "/seriDetayi",
-                                  arguments: SeriDetayiModel(
-                                    kalanMiktar: (viewModel.kalanMiktar.toDouble() + (model.miktar ?? 0)).toInt(),
-                                    hareketMiktari: viewModel.hareketMiktari,
-                                    seriList: model,
-                                  ),
-                                );
-                                if (result is SeriList) {
-                                  viewModel.updateSeriList(result, model.seri1 ?? "");
-                                }
-                              },
-                            ),
-                            BottomSheetModel(
-                              title: loc.generalStrings.delete,
-                              iconWidget: Icons.delete_outline_outlined,
-                              onTap: () {
-                                Get.back();
-                                dialogManager.showAreYouSureDialog(() {
-                                  viewModel.removeSeriListWithIndex(index);
-                                });
-                              },
-                            ),
+                            if (!widget.isGoruntule) ...[
+                              BottomSheetModel(
+                                title: loc.generalStrings.edit,
+                                iconWidget: Icons.edit_outlined,
+                                onTap: () async {
+                                  Get.back();
+                                  final result = await Get.toNamed(
+                                    "/seriDetayi",
+                                    arguments: SeriDetayiModel(
+                                      kalanMiktar: (viewModel.kalanMiktar.toDouble() + (model.miktar ?? 0)).toInt(),
+                                      hareketMiktari: viewModel.hareketMiktari,
+                                      seriList: model,
+                                    ),
+                                  );
+                                  if (result is SeriList) {
+                                    viewModel.updateSeriList(result, model.seri1 ?? "");
+                                  }
+                                },
+                              ),
+                              BottomSheetModel(
+                                title: loc.generalStrings.delete,
+                                iconWidget: Icons.delete_outline_outlined,
+                                onTap: () {
+                                  Get.back();
+                                  dialogManager.showAreYouSureDialog(() {
+                                    viewModel.removeSeriListWithIndex(index);
+                                  });
+                                },
+                              ),
+                            ],
                             BottomSheetModel(title: loc.generalStrings.print, iconWidget: Icons.print_outlined),
                           ],
                         );

@@ -340,6 +340,15 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
                 viewModel.removeAtKalemList(index);
               });
             },
+          ), if (viewModel.kalemList?[index].seriliMi ?? false)
+          BottomSheetModel(
+            title: "Seri Listesi",
+            iconWidget: Icons.dynamic_form_outlined,
+            onTap: () {
+              Get
+                ..back()
+                ..toNamed("/seriListesiOzel", arguments: model);
+            },
           ),
         BottomSheetModel(
           title: "Stok İşlemleri",

@@ -79,11 +79,21 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
             readOnly: BaseSiparisEditModel.instance.getEditTipiEnum?.kalemlerKlavyeAcilmasin,
             controller: _searchTextController,
             onSubmitted: (p0) async {
-              if (p0.ext.isNotNullOrNoEmpty) {
-                _searchTextController.clear();
-                await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
-                viewModel.updateKalemList();
-              }
+              if (p0.ext.isNullOrEmpty) return;
+              await getBarkodStok(isQR: false);
+              // _searchTextController.clear();
+              // final stokModel = await networkManager.getStokModel(
+              //   StokRehberiRequestModel(stokKodu: p0, okutuldu: true),
+              // );
+              // if (stokModel != null) {
+              //   await Get.toNamed("/kalemEkle", arguments: stokModel..okutulanBarkod = p0);
+              // } else {
+              //   if (model.getEditTipiEnum?.rehberdenStokSecilsin ?? false) {
+              //     await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
+              //   } else {
+              //     dialogManager.showErrorSnackBar("$p0 numaralı stok bulunamadı.");
+              //   }
+              // }
             },
             suffix: IconButton(onPressed: getBarkodStok, icon: const Icon(Icons.qr_code_scanner)),
           ).paddingOnly(top: UIHelper.lowSize),
@@ -301,6 +311,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
               children: <BottomSheetModel>[
                 if (AccountModel.instance.isDebug)
                   BottomSheetModel(title: "Stok Etiketi Yazdır", iconWidget: Icons.print_outlined),
+
                 BottomSheetModel(
                   title: "Stok İşlemleri",
                   iconWidget: Icons.list_alt_outlined,
@@ -368,6 +379,16 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
               return dialogManager.showAreYouSureDialog(() {
                 viewModel.removeAtKalemList(index);
               });
+            },
+          ),
+        if (model.seriliMi)
+          BottomSheetModel(
+            title: "Seri Listesi",
+            iconWidget: Icons.dynamic_form_outlined,
+            onTap: () {
+              Get
+                ..back()
+                ..toNamed("/seriListesiOzel", arguments: model);
             },
           ),
         if (widget.model.baseEditEnum == BaseEditEnum.taslak && (model.kalemEBelgedenMi))
@@ -443,11 +464,21 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
     );
   }
 
-  Future<void> getBarkodStok() async {
-    final result = await Get.toNamed("/qr");
-    if (result == null) return;
-    _searchTextController.text = result;
-    final stokModel = await networkManager.getStokModel(
+  Future<void> getBarkodStok({bool isQR = true}) async {
+    String result = "";
+    if (isQR) {
+      final qr = await Get.toNamed("/qr");
+      if (qr is String) {
+        result = qr;
+      } else {
+        return;
+      }
+    } else {
+      result = _searchTextController.text;
+    }
+
+    _searchTextController.clear();
+    final responseModel = await networkManager.getStokResponseModel(
       StokRehberiRequestModel(
         oto: model.getEditTipiEnum?.urunOtomatikEklensin ?? false ? "E" : null,
         stokKodu: result,
@@ -464,6 +495,11 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         belgeNo: model.belgeNo,
       ),
     );
+    if (!responseModel.isSuccess) return;
+    final stokModel = responseModel.dataList.firstOrNull;
+    if (!isQR) {
+      stokModel?.okutulanBarkod = result;
+    }
 
     final isStokKoduExists = model.kalemList?.any((element) => element.stokKodu == stokModel?.stokKodu) ?? false;
     final isBarkodExists =
@@ -472,11 +508,12 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
         ) ??
         false;
     if (stokModel == null) {
-      if (!(model.getEditTipiEnum?.urunOtomatikEklensin ?? false)) {
+      if (!(model.getEditTipiEnum?.urunOtomatikEklensin ?? false) &&
+          (model.getEditTipiEnum?.rehberdenStokSecilsin ?? false)) {
         await Get.toNamed("/mainPage/stokRehberi", arguments: result);
       } else {
         dialogManager.showAlertDialog(
-          "Barkod bulunamadı.\nSadece Barkodlu Stoklar Eklenebilir.\nOkutulan barkod: $result",
+          "Barkod bulunamadı.\nSadece Barkodlu Stoklar Otomatik Eklenebilir.\nOkutulan barkod: $result",
         );
       }
     } else {
@@ -484,17 +521,17 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
           isStokKoduExists && model.getEditTipiEnum?.tekrarEdenBarkod == "E") {
         return dialogManager.showAlertDialog("Bu barkod zaten eklenmiş.");
       }
-      final bool satisMi = model.getEditTipiEnum?.satisMi ?? false;
-      final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)
-        ..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
       if (model.getEditTipiEnum?.urunOtomatikEklensin ?? false) {
-        if ((stokModel.miktar ?? 0) <= 0) {
+        final bool satisMi = model.getEditTipiEnum?.satisMi ?? false;
+        final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)
+          ..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
+        if ((kalemModel.miktar ?? 0) <= 0) {
           dialogManager.showAlertDialog("Stok miktarı 0 veya daha az olduğu için eklenemez.");
           return;
         }
         if (isStokKoduExists && model.getEditTipiEnum?.tekrarEdenBarkod == "M") {
           // add miktar into existing kalem
-          final kalem = model.kalemList?.firstWhereOrNull((element) => element.stokKodu == stokModel.stokKodu);
+          final kalem = model.kalemList?.firstWhereOrNull((element) => element.stokKodu == kalemModel.stokKodu);
           if (kalem != null) {
             kalem.miktar = (kalem.miktar ?? 0) + (stokModel.miktar ?? 0);
           }
@@ -512,9 +549,8 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
           );
           if (!devamMi) return;
         }
-        final stok = await Get.toNamed("/kalemEkle", arguments: kalemModel);
-        if (stok is! KalemModel) return;
-        if (isStokKoduExists) {
+        final stok = await Get.toNamed("/kalemEkle", arguments: stokModel);
+        if (isStokKoduExists && stok is KalemModel) {
           if (model.getEditTipiEnum?.tekrarEdenBarkod?.endsWith("M") ?? false) {
             kalemBirlestir(stokModel, stok);
           }

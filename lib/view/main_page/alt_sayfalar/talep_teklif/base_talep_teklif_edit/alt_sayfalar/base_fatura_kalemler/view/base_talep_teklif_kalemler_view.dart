@@ -314,13 +314,13 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
     // trailing: IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert_outlined)),
   );
 
-  Future<void> listTileBottomSheet(BuildContext context, int index, {KalemModel? model}) async {
+  Future<void> listTileBottomSheet(BuildContext context, int index, {required KalemModel model}) async {
     await bottomSheetDialogManager.showBottomSheetDialog(
       context,
       title: viewModel.kalemList?[index].stokAdi ?? "",
       children:
           [
-            if (!widget.model.isGoruntule && model?.siparisNo == null)
+            if (!widget.model.isGoruntule && model.siparisNo == null)
               BottomSheetModel(
                 title: loc.generalStrings.edit,
                 iconWidget: Icons.edit_outlined,
@@ -333,7 +333,7 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
                   viewModel.updateKalemList();
                 },
               ),
-            if (!widget.model.isGoruntule && model?.siparisNo == null)
+            if (!widget.model.isGoruntule && model.siparisNo == null)
               BottomSheetModel(
                 title: loc.generalStrings.delete,
                 iconWidget: Icons.delete_outline_outlined,
@@ -342,6 +342,16 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
                   return dialogManager.showAreYouSureDialog(() {
                     viewModel.removeAtKalemList(index);
                   });
+                },
+              ),
+            if (model.seriliMi)
+              BottomSheetModel(
+                title: "Seri Listesi",
+                iconWidget: Icons.dynamic_form_outlined,
+                onTap: () {
+                  Get
+                    ..back()
+                    ..toNamed("/seriListesiOzel", arguments: model);
                 },
               ),
             BottomSheetModel(
