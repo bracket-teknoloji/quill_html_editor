@@ -104,13 +104,15 @@ final class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
           iconWidget: Icons.delete_outline_outlined,
           onTap: () async {
             Get.back();
-            dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.deleteItem(model);
-              if (result == true) {
-                dialogManager.showSuccessSnackBar(loc.generalStrings.success);
-                await viewModel.getData();
-              }
-            });
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                final result = await viewModel.deleteItem(model);
+                if (result == true) {
+                  dialogManager.showSuccessSnackBar(loc.generalStrings.success);
+                  await viewModel.getData();
+                }
+              },
+            );
           },
         ),
         BottomSheetModel(

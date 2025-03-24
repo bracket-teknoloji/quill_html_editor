@@ -51,13 +51,15 @@ final class _BelgeKontrolEditViewState extends BaseState<BelgeKontrolEditView> {
             if (viewModel.belgeKontrolModel.belgeNo == null) {
               return dialogManager.showErrorSnackBar("Lütfen belge no seçiniz");
             }
-            dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.saveData();
-              if (result) {
-                Get.back(result: true);
-                dialogManager.showSuccessSnackBar("Kayıt başarılı");
-              }
-            });
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                final result = await viewModel.saveData();
+                if (result) {
+                  Get.back(result: true);
+                  dialogManager.showSuccessSnackBar("Kayıt başarılı");
+                }
+              },
+            );
           },
           icon: const Icon(Icons.save_outlined),
         ),

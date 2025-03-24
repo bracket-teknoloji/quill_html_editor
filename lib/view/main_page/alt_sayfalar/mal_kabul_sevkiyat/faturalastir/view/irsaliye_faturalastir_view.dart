@@ -73,13 +73,15 @@ final class _IrsaliyeFaturalastirViewState extends BaseState<IrsaliyeFaturalasti
             if (formKey.currentState?.validate() != true) {
               return;
             }
-            dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.sendFatura();
-              if (result.isSuccess) {
-                Get.back(result: true);
-                dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-              }
-            });
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                final result = await viewModel.sendFatura();
+                if (result.isSuccess) {
+                  Get.back(result: true);
+                  dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                }
+              },
+            );
           },
           icon: const Icon(Icons.save_outlined),
         ),

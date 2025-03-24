@@ -124,17 +124,19 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
             iconWidget: Icons.stop_outlined,
             onTap: () async {
               Get.back();
-              dialogManager.showAreYouSureDialog(() async {
-                final result = await networkManager.dioPost(
-                  path: ApiUrls.saveSayim,
-                  bodyModel: SayimListesiModel(),
-                  showLoading: true,
-                  data: SayimFiltreModel(islemKodu: 5, belgeNo: widget.model.fisno).toJson(),
-                );
-                if (result.isSuccess) {
-                  widget.onChanged(true);
-                }
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  final result = await networkManager.dioPost(
+                    path: ApiUrls.saveSayim,
+                    bodyModel: SayimListesiModel(),
+                    showLoading: true,
+                    data: SayimFiltreModel(islemKodu: 5, belgeNo: widget.model.fisno).toJson(),
+                  );
+                  if (result.isSuccess) {
+                    widget.onChanged(true);
+                  }
+                },
+              );
             },
           ),
         if (yetkiController.sayimSil && widget.model.serbestMi)
@@ -143,16 +145,19 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
             iconWidget: Icons.delete_outline_outlined,
             onTap: () async {
               Get.back();
-              dialogManager.showAreYouSureDialog(() async {
-                final result = await networkManager.dioPost(
-                  path: ApiUrls.saveSayim,
-                  bodyModel: SayimListesiModel(),
-                  data: SayimFiltreModel(islemKodu: 3, belgeNo: widget.model.fisno).toJson(),
-                );
-                if (result.isSuccess) {
-                  widget.onChanged(true);
-                }
-              }, title: "Sayıma ait tüm bilgiler silinir. Bu işlem geri alınamaz. Kayıt silinsin mi?");
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  final result = await networkManager.dioPost(
+                    path: ApiUrls.saveSayim,
+                    bodyModel: SayimListesiModel(),
+                    data: SayimFiltreModel(islemKodu: 3, belgeNo: widget.model.fisno).toJson(),
+                  );
+                  if (result.isSuccess) {
+                    widget.onChanged(true);
+                  }
+                },
+                title: "Sayıma ait tüm bilgiler silinir. Bu işlem geri alınamaz. Kayıt silinsin mi?",
+              );
             },
           ),
         if (yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi)

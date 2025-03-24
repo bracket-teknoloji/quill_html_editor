@@ -128,26 +128,28 @@ final class TransferlerCardState extends BaseState<TransferlerCard> {
                       iconWidget: Icons.delete_outline_outlined,
                       onTap: () async {
                         Get.back();
-                        return dialogManager.showAreYouSureDialog(() async {
-                          if (widget.model.isNew == true) {
-                            try {
-                              CacheManager.removeTransferEditList(model.belgeNo ?? "");
+                        return dialogManager.showAreYouSureDialog(
+                          onYes: () async {
+                            if (widget.model.isNew == true) {
+                              try {
+                                CacheManager.removeTransferEditList(model.belgeNo ?? "");
+                                dialogManager.showSuccessSnackBar("Silindi");
+                                widget.onDeleted?.call();
+                                return;
+                              } catch (e) {
+                                dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                              }
+                              return;
+                            }
+                            final result = await networkManager.deleteFatura(
+                              EditFaturaModel.fromJson(widget.model.toJson()),
+                            );
+                            if (result.isSuccess) {
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();
-                              return;
-                            } catch (e) {
-                              dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                             }
-                            return;
-                          }
-                          final result = await networkManager.deleteFatura(
-                            EditFaturaModel.fromJson(widget.model.toJson()),
-                          );
-                          if (result.isSuccess) {
-                            dialogManager.showSuccessSnackBar("Silindi");
-                            widget.onDeleted?.call();
-                          }
-                        });
+                          },
+                        );
                       },
                     ),
                   if (widget.editTipiEnum.aciklamaDuzenlensinMi)

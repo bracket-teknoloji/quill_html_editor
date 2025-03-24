@@ -160,18 +160,20 @@ final class _OlcumEkleViewState extends BaseState<OlcumEkleView> {
               dialogManager.showAlertDialog("Seri numarasını doldurunuz.");
               return;
             }
-            dialogManager.showAreYouSureDialog(() async {
-              if (widget.model.belge?.firstOrNull?.yarimOlcumYapabilirmi == "E" ||
-                  (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false)) {
-                final result = await viewModel.sendData(widget.baseEditEnum);
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
-                  Get.back(result: true);
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                if (widget.model.belge?.firstOrNull?.yarimOlcumYapabilirmi == "E" ||
+                    (viewModel.requestModel.prosesler?.every((element) => element.sonuc != null) ?? false)) {
+                  final result = await viewModel.sendData(widget.baseEditEnum);
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? loc.generalStrings.success);
+                    Get.back(result: true);
+                  }
+                } else {
+                  dialogManager.showAlertDialog("Proseslerin Sonuçları Boş Bırakılamaz");
                 }
-              } else {
-                dialogManager.showAlertDialog("Proseslerin Sonuçları Boş Bırakılamaz");
-              }
-            });
+              },
+            );
           },
           icon: const Icon(Icons.save_outlined),
         ).yetkiVarMi(

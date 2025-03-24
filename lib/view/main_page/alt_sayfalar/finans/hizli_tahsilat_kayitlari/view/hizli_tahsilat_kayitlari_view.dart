@@ -141,13 +141,15 @@ final class _HizliTahsilatKayitlariViewState extends BaseState<HizliTahsilatKayi
                 iconWidget: Icons.delete_outline_outlined,
                 onTap: () async {
                   Get.back();
-                  dialogManager.showAreYouSureDialog(() async {
-                    final result = await viewModel.deleteHizliTahsilat(item.inckeyno!);
-                    if (result.isSuccess) {
-                      await viewModel.resetList();
-                      dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                    }
-                  });
+                  dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      final result = await viewModel.deleteHizliTahsilat(item.inckeyno!);
+                      if (result.isSuccess) {
+                        await viewModel.resetList();
+                        dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                      }
+                    },
+                  );
                 },
               ),
             BottomSheetModel(

@@ -76,13 +76,15 @@ final class _SeriGirisiViewState extends BaseState<SeriGirisiView> {
         icon: const Icon(Icons.save_outlined),
         onPressed: () async {
           if (_formKey.currentState!.validate()) {
-            dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.postData();
-              if (result) {
-                Get.back(result: true);
-                dialogManager.showSuccessSnackBar("İşlem başarılı");
-              }
-            });
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                final result = await viewModel.postData();
+                if (result) {
+                  Get.back(result: true);
+                  dialogManager.showSuccessSnackBar("İşlem başarılı");
+                }
+              },
+            );
           }
         },
       ),

@@ -143,9 +143,11 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            dialogManager.showAreYouSureDialog(() async {
-                              widget.resetFiltreModel();
-                            });
+                            dialogManager.showAreYouSureDialog(
+                              onYes: () async {
+                                widget.resetFiltreModel();
+                              },
+                            );
                           },
                           child: Text(loc.generalStrings.cancel),
                         ).paddingSymmetric(horizontal: UIHelper.lowSize),
@@ -153,13 +155,15 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            dialogManager.showAreYouSureDialog(() async {
-                              final result = await viewModel.deleteItem();
-                              if (result == true) {
-                                dialogManager.showSuccessSnackBar("Başarıyla silindi");
-                                widget.resetFiltreModel();
-                              }
-                            });
+                            dialogManager.showAreYouSureDialog(
+                              onYes: () async {
+                                final result = await viewModel.deleteItem();
+                                if (result == true) {
+                                  dialogManager.showSuccessSnackBar("Başarıyla silindi");
+                                  widget.resetFiltreModel();
+                                }
+                              },
+                            );
                           },
                           child: Text(loc.generalStrings.delete),
                         ),
@@ -443,9 +447,12 @@ final class _SayimGirisiViewState extends BaseState<SayimGirisiView> {
     if (!viewModel.isStokValid(stokModel)) {
       if (AccountModel.instance.adminMi) {
         bool result = false;
-        await dialogManager.showAreYouSureDialog(() async {
-          result = true;
-        }, title: "Seçilen stok filtrelere uymamaktadır. Bu stoğu kullanmak istiyor musunuz?");
+        await dialogManager.showAreYouSureDialog(
+          onYes: () async {
+            result = true;
+          },
+          title: "Seçilen stok filtrelere uymamaktadır. Bu stoğu kullanmak istiyor musunuz?",
+        );
         if (!result) {
           return;
         }

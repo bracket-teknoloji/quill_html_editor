@@ -156,10 +156,12 @@ final class _DekontEditKalemlerViewState extends BaseState<DekontEditKalemlerVie
           iconWidget: Icons.delete_outline_outlined,
           onTap: () async {
             Get.back();
-            dialogManager.showAreYouSureDialog(() {
-              viewModel.removeKalemler(index);
-              widget.onChanged(viewModel.kalemler?.length ?? 0);
-            });
+            dialogManager.showAreYouSureDialog(
+              onYes: () {
+                viewModel.removeKalemler(index);
+                widget.onChanged(viewModel.kalemler?.length ?? 0);
+              },
+            );
           },
         ),
       ],

@@ -97,14 +97,16 @@ final class _BankaKasaTransferiViewState extends BaseState<BankaKasaTransferiVie
                 dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
                 return;
               }
-              await dialogManager.showAreYouSureDialog(() async {
-                viewModel.setGuid(const Uuid().v4());
-                final result = await viewModel.saveTahsilat();
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? "");
-                  Get.back(result: true);
-                }
-              });
+              await dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  viewModel.setGuid(const Uuid().v4());
+                  final result = await viewModel.saveTahsilat();
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "");
+                    Get.back(result: true);
+                  }
+                },
+              );
             }
           },
           icon: const Icon(Icons.save_outlined),

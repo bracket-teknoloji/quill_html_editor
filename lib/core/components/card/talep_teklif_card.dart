@@ -136,26 +136,28 @@ final class _TalepTeklifCardState extends BaseState<TalepTeklifCard> {
                         iconWidget: Icons.delete_outline_outlined,
                         onTap: () {
                           Get.back();
-                          return dialogManager.showAreYouSureDialog(() async {
-                            if (model.isNew == true) {
-                              try {
-                                CacheManager.removeTaltekEditList(model.belgeNo ?? "");
+                          return dialogManager.showAreYouSureDialog(
+                            onYes: () async {
+                              if (model.isNew == true) {
+                                try {
+                                  CacheManager.removeTaltekEditList(model.belgeNo ?? "");
+                                  dialogManager.showSuccessSnackBar("Silindi");
+                                  widget.onDeleted?.call();
+                                  return;
+                                } catch (e) {
+                                  await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                                }
+                                return;
+                              }
+                              final result = await networkManager.deleteFatura(
+                                EditFaturaModel.fromSiparislerModel(model),
+                              );
+                              if (result.isSuccess) {
                                 dialogManager.showSuccessSnackBar("Silindi");
                                 widget.onDeleted?.call();
-                                return;
-                              } catch (e) {
-                                await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                               }
-                              return;
-                            }
-                            final result = await networkManager.deleteFatura(
-                              EditFaturaModel.fromSiparislerModel(model),
-                            );
-                            if (result.isSuccess) {
-                              dialogManager.showSuccessSnackBar("Silindi");
-                              widget.onDeleted?.call();
-                            }
-                          });
+                            },
+                          );
                         },
                       ),
                     if (widget.editTipiEnum.aciklamaDuzenlensinMi)

@@ -288,13 +288,15 @@ final class _SeriHareketleriViewState extends BaseState<SeriHareketleriView> {
                                   onTap: () async {
                                     Get.back();
                                     if (item.devirMi) {
-                                      dialogManager.showAreYouSureDialog(() async {
-                                        final result = await viewModel.deleteSeriHareket(item);
-                                        if (result) {
-                                          dialogManager.showAlertDialog(loc.generalStrings.success);
-                                          await viewModel.getData();
-                                        }
-                                      });
+                                      dialogManager.showAreYouSureDialog(
+                                        onYes: () async {
+                                          final result = await viewModel.deleteSeriHareket(item);
+                                          if (result) {
+                                            dialogManager.showAlertDialog(loc.generalStrings.success);
+                                            await viewModel.getData();
+                                          }
+                                        },
+                                      );
                                     } else {
                                       islemHataDialog();
                                     }

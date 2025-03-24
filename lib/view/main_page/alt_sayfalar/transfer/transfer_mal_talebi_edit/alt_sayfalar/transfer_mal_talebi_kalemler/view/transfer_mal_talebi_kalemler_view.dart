@@ -159,10 +159,12 @@ class _TransferMalTalebiKalemlerViewState extends BaseState<TransferMalTalebiKal
                                   iconWidget: Icons.delete_outline_outlined,
                                   onTap: () {
                                     Get.back();
-                                    dialogManager.showAreYouSureDialog(() async {
-                                      await viewModel.removeKalem(item);
-                                      dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-                                    });
+                                    dialogManager.showAreYouSureDialog(
+                                      onYes: () async {
+                                        await viewModel.removeKalem(item);
+                                        dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
+                                      },
+                                    );
                                   },
                                 ),
                               BottomSheetModel(

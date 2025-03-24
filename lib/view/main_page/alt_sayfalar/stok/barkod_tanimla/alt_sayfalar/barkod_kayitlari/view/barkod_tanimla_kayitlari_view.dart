@@ -69,15 +69,17 @@ final class _BarkodTanimlaKayitlariViewState extends BaseState<BarkodTanimlaKayi
                               iconWidget: Icons.delete_outline_outlined,
                               onTap: () {
                                 Get.back();
-                                dialogManager.showAreYouSureDialog(() async {
-                                  final result = await viewModel.deleteItem(item);
-                                  if (result) {
-                                    dialogManager.showSuccessSnackBar(
-                                      "${item.barkod} barkodlu kayıt başarıyla silindi.",
-                                    );
-                                    await viewModel.getData();
-                                  }
-                                });
+                                dialogManager.showAreYouSureDialog(
+                                  onYes: () async {
+                                    final result = await viewModel.deleteItem(item);
+                                    if (result) {
+                                      dialogManager.showSuccessSnackBar(
+                                        "${item.barkod} barkodlu kayıt başarıyla silindi.",
+                                      );
+                                      await viewModel.getData();
+                                    }
+                                  },
+                                );
                               },
                             ),
                         ],

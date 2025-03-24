@@ -73,9 +73,11 @@ final class _PaketIcerigiViewState extends BaseState<PaketIcerigiView> {
     item: item,
     kilitliMi: widget.model.kilit == "E",
     onDeleted: () {
-      dialogManager.showAreYouSureDialog(() async {
-        await viewModel.getData();
-      });
+      dialogManager.showAreYouSureDialog(
+        onYes: () async {
+          await viewModel.getData();
+        },
+      );
     },
   );
 }

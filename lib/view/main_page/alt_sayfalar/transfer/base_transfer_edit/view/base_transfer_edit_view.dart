@@ -255,10 +255,12 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
       if (tabController.index == 1) {
         tabController.animateTo(0);
       }
-      await dialogManager.showAreYouSureDialog(() {
-        Get.back(result: true);
-        BaseSiparisEditModel.resetInstance();
-      });
+      await dialogManager.showAreYouSureDialog(
+        onYes: () {
+          Get.back(result: true);
+          BaseSiparisEditModel.resetInstance();
+        },
+      );
     },
     child: BaseScaffold(
       appBar: AppBar(
@@ -276,36 +278,41 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                   visible: viewModel.isLastPage && kaydetButonuYetki,
                   child: IconButton(
                     onPressed: () async {
-                      dialogManager.showAreYouSureDialog(() async {
-                        if (await postData()) {
-                          Get.back(result: BaseSiparisEditModel.instance.belgeNo);
-                          if (!(widget.model.editTipiEnum?.otoPDFGor ?? false)) {
-                            await dialogManager.showAreYouSureDialog(() async {
-                              final PdfModel pdfModel = PdfModel(
-                                raporOzelKod: BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue ?? "",
-                                dicParams: DicParams(
-                                  belgeNo: BaseSiparisEditModel.instance.belgeNo ?? "",
-                                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                                  belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
+                      dialogManager.showAreYouSureDialog(
+                        onYes: () async {
+                          if (await postData()) {
+                            Get.back(result: BaseSiparisEditModel.instance.belgeNo);
+                            if (!(widget.model.editTipiEnum?.otoPDFGor ?? false)) {
+                              await dialogManager.showAreYouSureDialog(
+                                onYes: () async {
+                                  final PdfModel pdfModel = PdfModel(
+                                    raporOzelKod: BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue ?? "",
+                                    dicParams: DicParams(
+                                      belgeNo: BaseSiparisEditModel.instance.belgeNo ?? "",
+                                      cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                                      belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
+                                    ),
+                                  );
+                                  await showPdfView(pdfModel);
+                                },
+                                title: "PDF görüntülemek ister misiniz?",
+                              );
+                            }
+                            await CacheManager.removeTransferEditListWithUuid(BaseSiparisEditModel.instance.uuid);
+                            BaseSiparisEditModel.resetInstance();
+                            if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
+                              BaseSiparisEditModel.instance.isNew = true;
+                              Get.toNamed(
+                                "/mainPage/TalTekEdit",
+                                arguments: BaseEditModel<BaseSiparisEditModel>(
+                                  baseEditEnum: BaseEditEnum.ekle,
+                                  editTipiEnum: model.editTipiEnum,
                                 ),
                               );
-                              await showPdfView(pdfModel);
-                            }, title: "PDF görüntülemek ister misiniz?");
+                            }
                           }
-                          await CacheManager.removeTransferEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                          BaseSiparisEditModel.resetInstance();
-                          if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
-                            BaseSiparisEditModel.instance.isNew = true;
-                            Get.toNamed(
-                              "/mainPage/TalTekEdit",
-                              arguments: BaseEditModel<BaseSiparisEditModel>(
-                                baseEditEnum: BaseEditEnum.ekle,
-                                editTipiEnum: model.editTipiEnum,
-                              ),
-                            );
-                          }
-                        }
-                      });
+                        },
+                      );
                     },
                     icon: const Icon(Icons.save_outlined),
                   ),

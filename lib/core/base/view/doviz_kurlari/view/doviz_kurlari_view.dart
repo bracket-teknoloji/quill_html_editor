@@ -223,17 +223,19 @@ final class _DovizKurlariViewState extends BaseState<DovizKurlariView> {
                 iconWidget: Icons.delete_outline,
                 onTap: () {
                   Get.back();
-                  dialogManager.showAreYouSureDialog(() async {
-                    final result = await networkManager.dioPost<DovizKurlariModel>(
-                      path: ApiUrls.deleteDovizKuru,
-                      bodyModel: DovizKurlariModel(),
-                      data: {"DovizTipi": item.dovizTipi, "Tarih": item.tarih.toDateString},
-                    );
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar("Başarıyla Silindi");
-                      await viewModel.getData();
-                    }
-                  });
+                  dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      final result = await networkManager.dioPost<DovizKurlariModel>(
+                        path: ApiUrls.deleteDovizKuru,
+                        bodyModel: DovizKurlariModel(),
+                        data: {"DovizTipi": item.dovizTipi, "Tarih": item.tarih.toDateString},
+                      );
+                      if (result.isSuccess) {
+                        dialogManager.showSuccessSnackBar("Başarıyla Silindi");
+                        await viewModel.getData();
+                      }
+                    },
+                  );
                 },
               ),
           ],

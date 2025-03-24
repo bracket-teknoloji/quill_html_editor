@@ -336,9 +336,11 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
             iconWidget: Icons.delete_outline_outlined,
             onTap: () {
               Get.back();
-              return dialogManager.showAreYouSureDialog(() {
-                viewModel.removeAtKalemList(index);
-              });
+              return dialogManager.showAreYouSureDialog(
+                onYes: () {
+                  viewModel.removeAtKalemList(index);
+                },
+              );
             },
           ),
         if (viewModel.kalemList?[index].seriliMi ?? false)

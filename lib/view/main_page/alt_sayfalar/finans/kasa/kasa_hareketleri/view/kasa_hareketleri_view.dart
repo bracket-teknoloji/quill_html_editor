@@ -94,15 +94,17 @@ final class _KasaHareketleriViewState extends BaseState<KasaHareketleriView> {
               iconWidget: Icons.delete_outline_outlined,
               onTap: () {
                 Get.back();
-                dialogManager.showAreYouSureDialog(() async {
-                  final result = await viewModel.deleteData(item?.inckeyno);
-                  if (result.isSuccess) {
-                    dialogManager.showSuccessSnackBar("${(result.message) ?? "Başarılı"} ${item?.inckeyno}");
-                    viewModel.observableList?.remove(item);
-                  } else {
-                    dialogManager.showErrorSnackBar(result.message ?? "Başarısız");
-                  }
-                });
+                dialogManager.showAreYouSureDialog(
+                  onYes: () async {
+                    final result = await viewModel.deleteData(item?.inckeyno);
+                    if (result.isSuccess) {
+                      dialogManager.showSuccessSnackBar("${(result.message) ?? "Başarılı"} ${item?.inckeyno}");
+                      viewModel.observableList?.remove(item);
+                    } else {
+                      dialogManager.showErrorSnackBar(result.message ?? "Başarısız");
+                    }
+                  },
+                );
               },
             ),
           ],

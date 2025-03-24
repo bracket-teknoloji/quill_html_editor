@@ -91,13 +91,15 @@ final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
               return;
             }
             viewModel.setAciklama(aciklamaController.text);
-            await dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.postData();
-              if (result.isSuccess) {
-                Get.back(result: true);
-                dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
-              }
-            });
+            await dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                final result = await viewModel.postData();
+                if (result.isSuccess) {
+                  Get.back(result: true);
+                  dialogManager.showSuccessSnackBar(result.message ?? "Kayıt Başarılı");
+                }
+              },
+            );
           }
         },
         icon: const Icon(Icons.save_outlined),

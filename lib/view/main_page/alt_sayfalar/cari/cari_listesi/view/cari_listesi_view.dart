@@ -495,21 +495,23 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
             iconWidget: Icons.delete_outline,
             onTap: () async {
               Get.back();
-              dialogManager.showAreYouSureDialog(() async {
-                dialogManager.showLoadingDialog("Cari Siliniyor...");
-                final result = await networkManager.dioPost<CariListesiModel>(
-                  path: ApiUrls.deleteCari,
-                  bodyModel: CariListesiModel(),
-                  queryParameters: {"CariKodu": object.cariKodu ?? ""},
-                );
-                dialogManager.hideAlertDialog;
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar("${object.cariAdi} adlı cari silindi");
-                  viewModel.resetList();
-                } else {
-                  dialogManager.showErrorSnackBar(result.message ?? "");
-                }
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  dialogManager.showLoadingDialog("Cari Siliniyor...");
+                  final result = await networkManager.dioPost<CariListesiModel>(
+                    path: ApiUrls.deleteCari,
+                    bodyModel: CariListesiModel(),
+                    queryParameters: {"CariKodu": object.cariKodu ?? ""},
+                  );
+                  dialogManager.hideAlertDialog;
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar("${object.cariAdi} adlı cari silindi");
+                    viewModel.resetList();
+                  } else {
+                    dialogManager.showErrorSnackBar(result.message ?? "");
+                  }
+                },
+              );
             },
           ),
         if (yetkiController.cariHareketleri)

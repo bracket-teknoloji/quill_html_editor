@@ -57,16 +57,18 @@ class _DepoTalepToplananlarViewState extends BaseState<DepoTalepToplananlarView>
                   title: Text(item.stokAdi ?? ""),
                   trailing: IconButton(
                     onPressed: () async {
-                      dialogManager.showAreYouSureDialog(() async {
-                        final result = await viewModel.deleteKalem(item.id!);
-                        if (result) {
-                          await viewModel.getKalemler(widget.model.id!);
-                          if (viewModel.kalemList.ext.isNullOrEmpty) {
-                            Get.back(result: result);
+                      dialogManager.showAreYouSureDialog(
+                        onYes: () async {
+                          final result = await viewModel.deleteKalem(item.id!);
+                          if (result) {
+                            await viewModel.getKalemler(widget.model.id!);
+                            if (viewModel.kalemList.ext.isNullOrEmpty) {
+                              Get.back(result: result);
+                            }
+                            dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
                           }
-                          dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-                        }
-                      });
+                        },
+                      );
                     },
                     icon: const Icon(Icons.delete_outline_outlined),
                   ),

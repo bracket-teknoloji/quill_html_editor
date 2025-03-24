@@ -66,17 +66,19 @@ final class CariAktiviteDetayiEditViewState extends BaseState<CariAktiviteDetayi
           onPressed: () async {
             GenericResponseModel<NetworkManagerMixin>? result;
             if (formKey.currentState?.validate() == true) {
-              dialogManager.showAreYouSureDialog(() async {
-                viewModel.model.kayittarihi = DateTime.now();
-                if (widget.model?.baseEditEnum?.duzenleMi == true) {
-                  result = await viewModel.getData();
-                }
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  viewModel.model.kayittarihi = DateTime.now();
+                  if (widget.model?.baseEditEnum?.duzenleMi == true) {
+                    result = await viewModel.getData();
+                  }
 
-                if ((result?.isSuccess ?? false) || (widget.model?.baseEditEnum?.ekleMi == true)) {
-                  Get.back(result: viewModel.model..kayittarihi = DateTime.now());
-                  dialogManager.showSuccessSnackBar(loc.generalStrings.success);
-                }
-              });
+                  if ((result?.isSuccess ?? false) || (widget.model?.baseEditEnum?.ekleMi == true)) {
+                    Get.back(result: viewModel.model..kayittarihi = DateTime.now());
+                    dialogManager.showSuccessSnackBar(loc.generalStrings.success);
+                  }
+                },
+              );
             }
           },
         ),

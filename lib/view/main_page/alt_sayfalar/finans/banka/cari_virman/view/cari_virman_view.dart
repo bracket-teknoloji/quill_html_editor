@@ -94,13 +94,15 @@ final class _CariVirmanViewState extends BaseState<CariVirmanView> {
         IconButton(
           onPressed: () async {
             if (formKey.currentState?.validate() == true) {
-              dialogManager.showAreYouSureDialog(() async {
-                final result = await viewModel.sendData();
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
-                  Get.back(result: true);
-                }
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  final result = await viewModel.sendData();
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
+                    Get.back(result: true);
+                  }
+                },
+              );
             }
           },
           icon: const Icon(Icons.save_outlined),

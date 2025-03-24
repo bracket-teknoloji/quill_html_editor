@@ -114,13 +114,15 @@ final class _IsEmriHammaddeTakibiDetayViewState extends BaseState<IsEmriHammadde
                                   ? IconButton(
                                     icon: const Icon(Icons.delete_outline_outlined),
                                     onPressed: () async {
-                                      dialogManager.showAreYouSureDialog(() async {
-                                        final result = await viewModel.deleteItem(item);
-                                        if (result) {
-                                          dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-                                          viewModel.getData();
-                                        }
-                                      });
+                                      dialogManager.showAreYouSureDialog(
+                                        onYes: () async {
+                                          final result = await viewModel.deleteItem(item);
+                                          if (result) {
+                                            dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
+                                            viewModel.getData();
+                                          }
+                                        },
+                                      );
                                     },
                                   )
                                   : null,
@@ -137,26 +139,31 @@ final class _IsEmriHammaddeTakibiDetayViewState extends BaseState<IsEmriHammadde
     if (controller.text.isEmpty) return;
     final result = await viewModel.setBarkod(value);
     if (result.isSuccess) {
-      dialogManager.showAreYouSureDialog(() async {
-        final selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
-          context,
-          groupValue: 0,
-          title: "Alternatif seçiniz",
-          children: List.generate(viewModel.observableList?.length ?? 0, (index) {
-            final item = viewModel.observableList?[index];
-            return BottomSheetModel(title: item?.hamAdi ?? "", description: item?.hamKodu, value: item);
-          }),
-        );
-        if (selectedItem != null) {
-          dialogManager.showAreYouSureDialog(() async {
-            final result = await viewModel.addItem(value, selectedItem.hamKodu ?? "");
-            if (result) {
-              dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
-              viewModel.getData();
-            }
-          });
-        }
-      }, title: result.message);
+      dialogManager.showAreYouSureDialog(
+        onYes: () async {
+          final selectedItem = await bottomSheetDialogManager.showRadioBottomSheetDialog(
+            context,
+            groupValue: 0,
+            title: "Alternatif seçiniz",
+            children: List.generate(viewModel.observableList?.length ?? 0, (index) {
+              final item = viewModel.observableList?[index];
+              return BottomSheetModel(title: item?.hamAdi ?? "", description: item?.hamKodu, value: item);
+            }),
+          );
+          if (selectedItem != null) {
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                final result = await viewModel.addItem(value, selectedItem.hamKodu ?? "");
+                if (result) {
+                  dialogManager.showSuccessSnackBar("Silme işlemi başarılı");
+                  viewModel.getData();
+                }
+              },
+            );
+          }
+        },
+        title: result.message,
+      );
     }
   }
 }

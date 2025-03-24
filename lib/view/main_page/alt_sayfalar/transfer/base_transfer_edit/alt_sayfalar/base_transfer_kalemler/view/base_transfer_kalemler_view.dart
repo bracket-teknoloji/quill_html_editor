@@ -343,9 +343,11 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
             iconWidget: Icons.delete_outline_outlined,
             onTap: () {
               Get.back();
-              return dialogManager.showAreYouSureDialog(() {
-                viewModel.removeAtKalemList(index);
-              });
+              return dialogManager.showAreYouSureDialog(
+                onYes: () {
+                  viewModel.removeAtKalemList(index);
+                },
+              );
             },
           ),
         if (model.seriliMi)
@@ -452,7 +454,7 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
         if (isStokKoduExists && (model.getEditTipiEnum?.tekrarEdenBarkod?.startsWith("S") ?? false)) {
           bool devamMi = false;
           await dialogManager.showAreYouSureDialog(
-            () => devamMi = true,
+            onYes: () => devamMi = true,
             title: "${stokModel.stokKodu} - ${stokModel.stokAdi} ürün listenizde mevcut.\nYine de eklensin mi?",
           );
           if (!devamMi) return;

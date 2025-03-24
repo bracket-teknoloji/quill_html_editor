@@ -27,9 +27,11 @@ final class _MuhtelifCariEkleViewState extends BaseState<MuhtelifCariEkleView> {
             if (cariModel.adi.ext.isNullOrEmpty) {
               dialogManager.showAlertDialog("Unvan Giriniz.");
             } else {
-              dialogManager.showAreYouSureDialog(() {
-                Get.back(result: cariModel);
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () {
+                  Get.back(result: cariModel);
+                },
+              );
             }
           },
           icon: const Icon(Icons.check_circle, color: UIHelper.primaryColor),

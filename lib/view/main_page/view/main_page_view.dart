@@ -341,7 +341,7 @@ final class _MainPageViewState extends BaseState<MainPageView> {
 
   Future<void> getTeklif() async {
     dialogManager.showAreYouSureDialog(
-      () async {
+      onYes: () async {
         final result = await networkManager.dioPost(
           path: ApiUrls.teklifIste,
           bodyModel: const TeklifIsteModel(),

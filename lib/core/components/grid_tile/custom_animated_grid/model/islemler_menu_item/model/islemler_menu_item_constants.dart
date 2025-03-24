@@ -360,9 +360,12 @@ final class IslemlerMenuItemConstants<T> {
         iconData: Icons.lock_outline,
         onTap: () async {
           bool? result;
-          await _dialogManager.showAreYouSureDialog(() async {
-            result = true;
-          }, title: "Kiliti kapatmak istediğinize emin misiniz?");
+          await _dialogManager.showAreYouSureDialog(
+            onYes: () async {
+              result = true;
+            },
+            title: "Kiliti kapatmak istediğinize emin misiniz?",
+          );
           if (result == true) {
             return await kilitRequest(siparisModel, 1);
           }
@@ -375,9 +378,12 @@ final class IslemlerMenuItemConstants<T> {
         iconData: Icons.lock_open_outlined,
         onTap: () async {
           bool? result;
-          await _dialogManager.showAreYouSureDialog(() async {
-            result = true;
-          }, title: "Kiliti açmak istediğinize emin misiniz?");
+          await _dialogManager.showAreYouSureDialog(
+            onYes: () async {
+              result = true;
+            },
+            title: "Kiliti açmak istediğinize emin misiniz?",
+          );
           if (result == true) {
             return await kilitRequest(siparisModel, 2);
           }
@@ -727,17 +733,19 @@ final class IslemlerMenuItemConstants<T> {
                   child: ElevatedButton(
                     onPressed: () {
                       if (controller.text != "") {
-                        _dialogManager.showAreYouSureDialog(() async {
-                          final result = await _networkManager.dioPost<KodDegistirModel>(
-                            path: ApiUrls.kodDegistir,
-                            bodyModel: KodDegistirModel(),
-                            data: kodDegistirModel.toJson(),
-                          );
-                          if (result.isSuccess) {
-                            Get.back();
-                            _dialogManager.showSuccessSnackBar("Başarılı");
-                          }
-                        });
+                        _dialogManager.showAreYouSureDialog(
+                          onYes: () async {
+                            final result = await _networkManager.dioPost<KodDegistirModel>(
+                              path: ApiUrls.kodDegistir,
+                              bodyModel: KodDegistirModel(),
+                              data: kodDegistirModel.toJson(),
+                            );
+                            if (result.isSuccess) {
+                              Get.back();
+                              _dialogManager.showSuccessSnackBar("Başarılı");
+                            }
+                          },
+                        );
                       } else {
                         _dialogManager.showAlertDialog("Lütfen Cari Kodu Giriniz");
                       }
@@ -802,20 +810,22 @@ final class IslemlerMenuItemConstants<T> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  await _dialogManager.showAreYouSureDialog(() async {
-                    final result = await _networkManager.dioPost<SiparisEditRequestModel>(
-                      path: ApiUrls.saveFatura,
-                      showLoading: true,
-                      bodyModel: SiparisEditRequestModel(),
-                      data: newModel,
-                    );
-                    if (result.isSuccess) {
-                      Get.back(result: true);
-                      _dialogManager.showSuccessSnackBar("Başarılı");
-                    } else {
-                      Get.back();
-                    }
-                  });
+                  await _dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      final result = await _networkManager.dioPost<SiparisEditRequestModel>(
+                        path: ApiUrls.saveFatura,
+                        showLoading: true,
+                        bodyModel: SiparisEditRequestModel(),
+                        data: newModel,
+                      );
+                      if (result.isSuccess) {
+                        Get.back(result: true);
+                        _dialogManager.showSuccessSnackBar("Başarılı");
+                      } else {
+                        Get.back();
+                      }
+                    },
+                  );
                 },
                 child: const Text("Kaydet"),
               ).paddingAll(UIHelper.lowSize),
@@ -1887,9 +1897,11 @@ final class IslemlerMenuItemConstants<T> {
       iconData: Icons.delete_outline,
       onTap: () async {
         bool boolean = false;
-        await _dialogManager.showAreYouSureDialog(() async {
-          boolean = true;
-        });
+        await _dialogManager.showAreYouSureDialog(
+          onYes: () async {
+            boolean = true;
+          },
+        );
         if (boolean) {
           final result = await _networkManager.dioPost<EBelgeListesiModel>(
             path: ApiUrls.eBelgeIslemi,
@@ -1929,9 +1941,11 @@ final class IslemlerMenuItemConstants<T> {
       iconData: Icons.hub_outlined,
       onTap: () async {
         bool boolean = false;
-        await _dialogManager.showAreYouSureDialog(() async {
-          boolean = true;
-        });
+        await _dialogManager.showAreYouSureDialog(
+          onYes: () async {
+            boolean = true;
+          },
+        );
         if (boolean) {
           final result = await _networkManager.dioPost<EBelgeListesiModel>(
             path: ApiUrls.eBelgeIslemi,
@@ -1958,9 +1972,11 @@ final class IslemlerMenuItemConstants<T> {
       iconData: Icons.delete_outline_outlined,
       onTap: () async {
         bool boolean = false;
-        await _dialogManager.showAreYouSureDialog(() async {
-          boolean = true;
-        });
+        await _dialogManager.showAreYouSureDialog(
+          onYes: () async {
+            boolean = true;
+          },
+        );
         if (boolean) {
           final result = await _networkManager.dioPost<EBelgeListesiModel>(
             path: ApiUrls.eBelgeIslemi,
@@ -2052,9 +2068,11 @@ final class IslemlerMenuItemConstants<T> {
                       return;
                     }
                     bool boolean = false;
-                    await _dialogManager.showAreYouSureDialog(() async {
-                      boolean = true;
-                    });
+                    await _dialogManager.showAreYouSureDialog(
+                      onYes: () async {
+                        boolean = true;
+                      },
+                    );
                     if (boolean) {
                       final result = await _networkManager.dioPost<BaseSiparisEditModel>(
                         path: ApiUrls.saveFatura,

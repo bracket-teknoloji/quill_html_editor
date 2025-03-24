@@ -404,22 +404,25 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
     iconWidget: Icons.link_outlined,
     onTap: () async {
       Get.back();
-      await dialogManager.showAreYouSureDialog(() async {
-        final result = await networkManager.dioPost(
-          path: ApiUrls.eBelgeIslemi,
-          bodyModel: EBelgeListesiModel(),
-          showLoading: true,
-          data:
-              (EBelgeIslemModel.fromEBelgeListesiModel(model)
-                    ..islemKodu = EBelgeIslemKoduEnum.eBelgeBirlestir.value
-                    ..kutuTuru = "GET")
-                  .toJson(),
-        );
-        widget.onRefresh.call(result.isSuccess);
-        if (result.isSuccess) {
-          dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-        }
-      }, title: "E-Belge Eşleştirilsin mi?");
+      await dialogManager.showAreYouSureDialog(
+        onYes: () async {
+          final result = await networkManager.dioPost(
+            path: ApiUrls.eBelgeIslemi,
+            bodyModel: EBelgeListesiModel(),
+            showLoading: true,
+            data:
+                (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                      ..islemKodu = EBelgeIslemKoduEnum.eBelgeBirlestir.value
+                      ..kutuTuru = "GET")
+                    .toJson(),
+          );
+          widget.onRefresh.call(result.isSuccess);
+          if (result.isSuccess) {
+            dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+          }
+        },
+        title: "E-Belge Eşleştirilsin mi?",
+      );
     },
   );
   BottomSheetModel get eBelgeEslestirmeIptali => BottomSheetModel(
@@ -427,22 +430,25 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
     iconWidget: Icons.close_outlined,
     onTap: () async {
       Get.back();
-      await dialogManager.showAreYouSureDialog(() async {
-        final result = await networkManager.dioPost(
-          path: ApiUrls.eBelgeIslemi,
-          bodyModel: EBelgeListesiModel(),
-          showLoading: true,
-          data:
-              (EBelgeIslemModel.fromEBelgeListesiModel(model)
-                    ..islemKodu = EBelgeIslemKoduEnum.eBelgeEslestirmeIptali.value
-                    ..kutuTuru = "GET")
-                  .toJson(),
-        );
-        widget.onRefresh.call(result.isSuccess);
-        if (result.isSuccess) {
-          dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-        }
-      }, title: "E-Belge Eşleştirme İptal Edilsin mi?");
+      await dialogManager.showAreYouSureDialog(
+        onYes: () async {
+          final result = await networkManager.dioPost(
+            path: ApiUrls.eBelgeIslemi,
+            bodyModel: EBelgeListesiModel(),
+            showLoading: true,
+            data:
+                (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                      ..islemKodu = EBelgeIslemKoduEnum.eBelgeEslestirmeIptali.value
+                      ..kutuTuru = "GET")
+                    .toJson(),
+          );
+          widget.onRefresh.call(result.isSuccess);
+          if (result.isSuccess) {
+            dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+          }
+        },
+        title: "E-Belge Eşleştirme İptal Edilsin mi?",
+      );
     },
   );
 
@@ -588,22 +594,24 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
     iconWidget: Icons.delete_outline_outlined,
     onTap: () async {
       Get.back();
-      await dialogManager.showAreYouSureDialog(() async {
-        final result = await networkManager.dioPost(
-          path: ApiUrls.eBelgeIslemi,
-          bodyModel: EBelgeListesiModel(),
-          showLoading: true,
-          data:
-              (EBelgeIslemModel.fromEBelgeListesiModel(model)
-                    ..islemKodu = EBelgeIslemKoduEnum.eBelgeZarfSil.value
-                    ..kutuTuru = "GIK")
-                  .toJson(),
-        );
-        widget.onRefresh.call(result.isSuccess);
-        if (result.isSuccess) {
-          dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-        }
-      });
+      await dialogManager.showAreYouSureDialog(
+        onYes: () async {
+          final result = await networkManager.dioPost(
+            path: ApiUrls.eBelgeIslemi,
+            bodyModel: EBelgeListesiModel(),
+            showLoading: true,
+            data:
+                (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                      ..islemKodu = EBelgeIslemKoduEnum.eBelgeZarfSil.value
+                      ..kutuTuru = "GIK")
+                    .toJson(),
+          );
+          widget.onRefresh.call(result.isSuccess);
+          if (result.isSuccess) {
+            dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+          }
+        },
+      );
     },
   );
 
@@ -618,22 +626,25 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
       } else {
         model.iptalTarihi = result;
       }
-      await dialogManager.showAreYouSureDialog(() async {
-        final result = await networkManager.dioPost(
-          path: ApiUrls.eBelgeIslemi,
-          bodyModel: EBelgeListesiModel(),
-          showLoading: true,
-          data:
-              (EBelgeIslemModel.fromEBelgeListesiModel(model)
-                    ..islemKodu = EBelgeIslemKoduEnum.eBelgeHariciYollaFaturaIptali.value
-                    ..kutuTuru = "GIK")
-                  .toJson(),
-        );
-        widget.onRefresh.call(result.isSuccess);
-        if (result.isSuccess) {
-          dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-        }
-      }, title: "İptal Tarihi: ${result.toDateString}\nFatura harici yolla iptal edilsin mi?");
+      await dialogManager.showAreYouSureDialog(
+        onYes: () async {
+          final result = await networkManager.dioPost(
+            path: ApiUrls.eBelgeIslemi,
+            bodyModel: EBelgeListesiModel(),
+            showLoading: true,
+            data:
+                (EBelgeIslemModel.fromEBelgeListesiModel(model)
+                      ..islemKodu = EBelgeIslemKoduEnum.eBelgeHariciYollaFaturaIptali.value
+                      ..kutuTuru = "GIK")
+                    .toJson(),
+          );
+          widget.onRefresh.call(result.isSuccess);
+          if (result.isSuccess) {
+            dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+          }
+        },
+        title: "İptal Tarihi: ${result.toDateString}\nFatura harici yolla iptal edilsin mi?",
+      );
     },
   );
 
@@ -643,21 +654,24 @@ final class _EFaturaListesiCardState extends BaseState<EFaturaListesiCard> {
     onTap: () async {
       Get.back();
       if (widget.eBelgeListesiModel.seciliCariKodu == null) {
-        final result = await dialogManager.showAreYouSureDialog(() async {
-          final result = await Get.toNamed(
-            "/mainPage/cariEdit",
-            arguments: BaseEditModel<CariListesiModel>(
-              model:
-                  CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
-                    ..hesaptutmasekli = "Y"
-                    ..vadeGunu = 0,
-              baseEditEnum: BaseEditEnum.kopyala,
-            ),
-          );
-          if (result != null) {
-            widget.onRefresh.call(true);
-          }
-        }, title: "Cari Kodu Bulunamadı. Oluşturulsun Mu?");
+        final result = await dialogManager.showAreYouSureDialog(
+          onYes: () async {
+            final result = await Get.toNamed(
+              "/mainPage/cariEdit",
+              arguments: BaseEditModel<CariListesiModel>(
+                model:
+                    CariListesiModel.fromEBelgeListesiModel(widget.eBelgeListesiModel)
+                      ..hesaptutmasekli = "Y"
+                      ..vadeGunu = 0,
+                baseEditEnum: BaseEditEnum.kopyala,
+              ),
+            );
+            if (result != null) {
+              widget.onRefresh.call(true);
+            }
+          },
+          title: "Cari Kodu Bulunamadı. Oluşturulsun Mu?",
+        );
         if (result == null) {
           return;
         }

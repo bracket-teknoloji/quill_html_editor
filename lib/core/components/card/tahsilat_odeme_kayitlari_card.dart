@@ -224,17 +224,20 @@ final class _TahsilatOdemeKayitlariCardState extends BaseState<TahsilatOdemeKayi
 
   Future<void> deleteData() async {
     Get.back();
-    await dialogManager.showAreYouSureDialog(() async {
-      final result = await networkManager.dioPost<KasaIslemleriModel>(
-        path: ApiUrls.deleteKasaHareket,
-        bodyModel: KasaIslemleriModel(),
-        queryParameters: {"REFKEY": widget.cariHareketleriModel.refkey},
-        showLoading: true,
-      );
-      if (result.isSuccess) {
-        widget.update.call(widget.cariHareketleriModel.refkey);
-        dialogManager.showSuccessSnackBar(result.message ?? "");
-      }
-    }, title: "Bu kasa kaydını silmek istediğinizden emin misiniz?");
+    await dialogManager.showAreYouSureDialog(
+      onYes: () async {
+        final result = await networkManager.dioPost<KasaIslemleriModel>(
+          path: ApiUrls.deleteKasaHareket,
+          bodyModel: KasaIslemleriModel(),
+          queryParameters: {"REFKEY": widget.cariHareketleriModel.refkey},
+          showLoading: true,
+        );
+        if (result.isSuccess) {
+          widget.update.call(widget.cariHareketleriModel.refkey);
+          dialogManager.showSuccessSnackBar(result.message ?? "");
+        }
+      },
+      title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",
+    );
   }
 }

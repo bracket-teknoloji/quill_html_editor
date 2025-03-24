@@ -109,15 +109,17 @@ final class _IsEmriEditViewState extends BaseState<IsEmriEditView> {
           IconButton(
             onPressed: () {
               if (!formkey.currentState!.validate()) return;
-              dialogManager.showAreYouSureDialog(() async {
-                final result = await viewModel.sendData();
-                if (result.isSuccess) {
-                  Get.back(result: true);
-                  dialogManager.showSuccessSnackBar(
-                    result.message ?? "${viewModel.model?.isemriNo} başarıyla kaydedildi.",
-                  );
-                }
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  final result = await viewModel.sendData();
+                  if (result.isSuccess) {
+                    Get.back(result: true);
+                    dialogManager.showSuccessSnackBar(
+                      result.message ?? "${viewModel.model?.isemriNo} başarıyla kaydedildi.",
+                    );
+                  }
+                },
+              );
             },
             icon: const Icon(Icons.save_outlined),
           ),

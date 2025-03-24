@@ -94,11 +94,11 @@ final class _DekontKalemEkleViewState extends BaseState<DekontKalemEkleView> {
       if (didPop) {
         return;
       }
-      await dialogManager.showAreYouSureDialog(Get.back, title: "Çıkış Yapmak İstediğinize Emin Misiniz?");
+      await dialogManager.showAreYouSureDialog(onYes: Get.back, title: "Çıkış Yapmak İstediğinize Emin Misiniz?");
     },
     // onWillPop: () async {
     //   bool? result;
-    //   await dialogManager.showAreYouSureDialog(
+    //   await dialogManager.showAreYouSureDialog(onYes:
     //     () async {
     //       result = true;
     //     },

@@ -85,7 +85,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
         Get.back(result: true);
         return;
       }
-      await dialogManager.showAreYouSureDialog(() => Get.back(result: true));
+      await dialogManager.showAreYouSureDialog(onYes: () => Get.back(result: true));
     },
     child: DefaultTabController(
       length: tabLength,
@@ -101,7 +101,7 @@ final class _BaseStokEditingViewState extends BaseState<BaseStokEditingView> wit
               child: IconButton(
                 onPressed: () async {
                   if (validate.isEmpty) {
-                    dialogManager.showAreYouSureDialog(postData);
+                    dialogManager.showAreYouSureDialog(onYes: postData);
                   } else {
                     dialogManager.showEmptyFieldDialog(
                       validate.keys,

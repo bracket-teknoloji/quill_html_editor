@@ -60,7 +60,7 @@ final class _UretimSonuKaydiListesiCardState extends BaseState<UretimSonuKaydiLi
               iconWidget: Icons.delete_outline_outlined,
               onTap: () async {
                 Get.back();
-                dialogManager.showAreYouSureDialog(widget.onChanged);
+                dialogManager.showAreYouSureDialog(onYes: widget.onChanged);
               },
             ),
           ],

@@ -123,13 +123,15 @@ final class _PaketlemeListesiViewState extends BaseState<PaketlemeListesiView> {
             iconWidget: Icons.delete_outline_outlined,
             onTap: () async {
               Get.back();
-              dialogManager.showAreYouSureDialog(() async {
-                final result = await viewModel.deleteItem(item.id);
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                  await viewModel.getData();
-                }
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  final result = await viewModel.deleteItem(item.id);
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                    await viewModel.getData();
+                  }
+                },
+              );
             },
           ),
         //TODO : bir yere gitmiyor

@@ -158,26 +158,28 @@ final class _SiparislerCardState extends BaseState<SiparislerCard> {
                           iconWidget: Icons.delete_outline_outlined,
                           onTap: () {
                             Get.back();
-                            return dialogManager.showAreYouSureDialog(() async {
-                              if (widget.model.isNew == true) {
-                                try {
-                                  CacheManager.removeSiparisEditList(widget.model.belgeNo ?? "");
+                            return dialogManager.showAreYouSureDialog(
+                              onYes: () async {
+                                if (widget.model.isNew == true) {
+                                  try {
+                                    CacheManager.removeSiparisEditList(widget.model.belgeNo ?? "");
+                                    dialogManager.showSuccessSnackBar("Silindi");
+                                    widget.onDeleted?.call();
+                                    return;
+                                  } catch (e) {
+                                    await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                                  }
+                                  return;
+                                }
+                                final result = await networkManager.deleteFatura(
+                                  EditFaturaModel().fromJson(widget.model.toJson()),
+                                );
+                                if (result.isSuccess) {
                                   dialogManager.showSuccessSnackBar("Silindi");
                                   widget.onDeleted?.call();
-                                  return;
-                                } catch (e) {
-                                  await dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                                 }
-                                return;
-                              }
-                              final result = await networkManager.deleteFatura(
-                                EditFaturaModel().fromJson(widget.model.toJson()),
-                              );
-                              if (result.isSuccess) {
-                                dialogManager.showSuccessSnackBar("Silindi");
-                                widget.onDeleted?.call();
-                              }
-                            });
+                              },
+                            );
                           },
                         ),
                       BottomSheetModel(

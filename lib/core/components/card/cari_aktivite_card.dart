@@ -92,17 +92,19 @@ final class _CariAktiviteCardState extends BaseState<CariAktiviteCard> {
                 iconWidget: Icons.delete_outline_outlined,
                 onTap: () async {
                   Get.back();
-                  dialogManager.showAreYouSureDialog(() async {
-                    final result = await networkManager.dioPost(
-                      path: ApiUrls.saveAktivite,
-                      bodyModel: CariAktiviteListesiModel(),
-                      data: CariAktiviteListesiModel(id: model.id, islemKodu: 3),
-                    );
-                    if (result.isSuccess) {
-                      dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-                      widget.onRefresh.call(true);
-                    }
-                  });
+                  dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      final result = await networkManager.dioPost(
+                        path: ApiUrls.saveAktivite,
+                        bodyModel: CariAktiviteListesiModel(),
+                        data: CariAktiviteListesiModel(id: model.id, islemKodu: 3),
+                      );
+                      if (result.isSuccess) {
+                        dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+                        widget.onRefresh.call(true);
+                      }
+                    },
+                  );
                 },
               ),
             if (model.bittiMi && yetkiController.cariAktiviteBitirmeyiGeriAl && yetkiController.cariAktiviteDuzenleme)

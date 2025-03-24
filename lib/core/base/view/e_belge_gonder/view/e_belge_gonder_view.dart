@@ -307,7 +307,7 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                                             viewModel.siparisEditModel.eIrsaliyeSerisindenMi) {
                                           bool isOk = false;
                                           await dialogManager.showAreYouSureDialog(
-                                            () => isOk = true,
+                                            onYes: () => isOk = true,
                                             title:
                                                 "E-İrsaliye Bilgisi girilmemiş. E-İrsaliye bilgilerini girmek istiyor musunuz?",
                                           );
@@ -315,25 +315,27 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                                             await getEIrsaliyeBilgiler();
                                           }
                                         }
-                                        dialogManager.showAreYouSureDialog(() async {
-                                          final result = await viewModel.sendTaslak();
-                                          if (result.isSuccess) {
-                                            final BaseSiparisEditModel? siparisModel = await networkManager
-                                                .getBaseSiparisEditModel(
-                                                  SiparisEditRequestModel.fromSiparislerModel(
-                                                    viewModel.siparisEditModel,
-                                                  ),
+                                        dialogManager.showAreYouSureDialog(
+                                          onYes: () async {
+                                            final result = await viewModel.sendTaslak();
+                                            if (result.isSuccess) {
+                                              final BaseSiparisEditModel? siparisModel = await networkManager
+                                                  .getBaseSiparisEditModel(
+                                                    SiparisEditRequestModel.fromSiparislerModel(
+                                                      viewModel.siparisEditModel,
+                                                    ),
+                                                  );
+                                              if (siparisModel != null) {
+                                                viewModel
+                                                  ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
+                                                  ..setSiparisModel(siparisModel);
+                                                dialogManager.showSuccessSnackBar(
+                                                  result.message ?? loc.generalStrings.success,
                                                 );
-                                            if (siparisModel != null) {
-                                              viewModel
-                                                ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
-                                                ..setSiparisModel(siparisModel);
-                                              dialogManager.showSuccessSnackBar(
-                                                result.message ?? loc.generalStrings.success,
-                                              );
+                                              }
                                             }
-                                          }
-                                        });
+                                          },
+                                        );
                                       },
                                       label: const Text("Taslak Oluştur"),
                                       icon: const Icon(Icons.add),
@@ -355,23 +357,27 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                                 if (_taslakSil)
                                   ElevatedButton(
                                     onPressed: () async {
-                                      dialogManager.showAreYouSureDialog(() async {
-                                        final result = await viewModel.deleteTaslak();
-                                        if (result.isSuccess) {
-                                          final BaseSiparisEditModel? siparisModel = await networkManager
-                                              .getBaseSiparisEditModel(
-                                                SiparisEditRequestModel.fromSiparislerModel(viewModel.siparisEditModel),
+                                      dialogManager.showAreYouSureDialog(
+                                        onYes: () async {
+                                          final result = await viewModel.deleteTaslak();
+                                          if (result.isSuccess) {
+                                            final BaseSiparisEditModel? siparisModel = await networkManager
+                                                .getBaseSiparisEditModel(
+                                                  SiparisEditRequestModel.fromSiparislerModel(
+                                                    viewModel.siparisEditModel,
+                                                  ),
+                                                );
+                                            if (siparisModel != null) {
+                                              dialogManager.showSuccessSnackBar(
+                                                result.message ?? loc.generalStrings.success,
                                               );
-                                          if (siparisModel != null) {
-                                            dialogManager.showSuccessSnackBar(
-                                              result.message ?? loc.generalStrings.success,
-                                            );
-                                            viewModel
-                                              ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
-                                              ..setSiparisModel(siparisModel);
+                                              viewModel
+                                                ..setModel(EBelgeListesiModel.faturaGonder(siparisModel))
+                                                ..setSiparisModel(siparisModel);
+                                            }
                                           }
-                                        }
-                                      });
+                                        },
+                                      );
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: ColorPalette.persianRed,
@@ -389,16 +395,18 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                                       arguments: model.copyWith(taslak: "E"),
                                     );
                                     if (result == true) {
-                                      dialogManager.showAreYouSureDialog(() async {
-                                        final result = await viewModel.sendEBelge();
-                                        if (result.isSuccess) {
-                                          dialogManager.showSuccessSnackBar(
-                                            result.message ?? loc.generalStrings.success,
-                                          );
+                                      dialogManager.showAreYouSureDialog(
+                                        onYes: () async {
+                                          final result = await viewModel.sendEBelge();
+                                          if (result.isSuccess) {
+                                            dialogManager.showSuccessSnackBar(
+                                              result.message ?? loc.generalStrings.success,
+                                            );
 
-                                          Get.back(result: true);
-                                        }
-                                      });
+                                            Get.back(result: true);
+                                          }
+                                        },
+                                      );
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(
@@ -413,16 +421,18 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                                 if (_canSendEBelge)
                                   ElevatedButton(
                                     onPressed: () async {
-                                      dialogManager.showAreYouSureDialog(() async {
-                                        final result = await viewModel.sendEBelge();
-                                        if (result.isSuccess) {
-                                          dialogManager.showSuccessSnackBar(
-                                            result.message ?? loc.generalStrings.success,
-                                          );
+                                      dialogManager.showAreYouSureDialog(
+                                        onYes: () async {
+                                          final result = await viewModel.sendEBelge();
+                                          if (result.isSuccess) {
+                                            dialogManager.showSuccessSnackBar(
+                                              result.message ?? loc.generalStrings.success,
+                                            );
 
-                                          Get.back(result: true);
-                                        }
-                                      });
+                                            Get.back(result: true);
+                                          }
+                                        },
+                                      );
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: ColorPalette.mantis,

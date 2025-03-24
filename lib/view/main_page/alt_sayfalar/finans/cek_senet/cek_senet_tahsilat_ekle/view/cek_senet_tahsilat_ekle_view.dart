@@ -151,9 +151,11 @@ final class _CekSenetTahsilatEkleViewState extends BaseState<CekSenetTahsilatEkl
       IconButton(
         onPressed: () async {
           if (_formKey.currentState?.validate() ?? false) {
-            await dialogManager.showAreYouSureDialog(() {
-              Get.back(result: viewModel.model);
-            });
+            await dialogManager.showAreYouSureDialog(
+              onYes: () {
+                Get.back(result: viewModel.model);
+              },
+            );
           }
         },
         icon: const Icon(Icons.check_outlined),

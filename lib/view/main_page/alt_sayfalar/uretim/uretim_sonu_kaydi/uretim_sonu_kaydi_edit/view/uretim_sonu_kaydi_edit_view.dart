@@ -91,12 +91,14 @@ final class _UretimSonuKaydiEditViewState extends BaseState<UretimSonuKaydiEditV
                         StaticVariables.instance.uretimSonuGenelFormKey.currentState?.validate() != true) {
                       return;
                     }
-                    dialogManager.showAreYouSureDialog(() async {
-                      final result = await viewModel.saveUSK();
-                      if (!result.isSuccess) return;
-                      Get.back(result: true);
-                      dialogManager.showSuccessSnackBar("Üretim Sonu Kaydı başarıyla kaydedildi.");
-                    });
+                    dialogManager.showAreYouSureDialog(
+                      onYes: () async {
+                        final result = await viewModel.saveUSK();
+                        if (!result.isSuccess) return;
+                        Get.back(result: true);
+                        dialogManager.showSuccessSnackBar("Üretim Sonu Kaydı başarıyla kaydedildi.");
+                      },
+                    );
                   },
                   icon: const Icon(Icons.save_outlined),
                 ),

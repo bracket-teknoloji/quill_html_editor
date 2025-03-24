@@ -99,11 +99,13 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
                     title: "Sayımı Bitir",
                     iconWidget: Icons.stop_outlined,
                     onTap: () async {
-                      dialogManager.showAreYouSureDialog(() async {
-                        if (await viewModel.sayimiBitir()) {
-                          Get.back(result: true);
-                        }
-                      });
+                      dialogManager.showAreYouSureDialog(
+                        onYes: () async {
+                          if (await viewModel.sayimiBitir()) {
+                            Get.back(result: true);
+                          }
+                        },
+                      );
                     },
                   ),
                 if (yetkiController.sayimDepoFarkRaporu && widget.model.serbestMi)

@@ -128,20 +128,23 @@ final class _KasaIslemleriCardState extends BaseState<KasaIslemleriCard> {
 
   Future<void> deleteData() async {
     Get.back();
-    await dialogManager.showAreYouSureDialog(() async {
-      final result = await networkManager.dioPost<KasaIslemleriModel>(
-        path: ApiUrls.deleteKasaHareket,
-        bodyModel: KasaIslemleriModel(),
-        queryParameters: {"INCKEYNO": model.inckeyno},
-        showLoading: true,
-      );
-      if (result.isSuccess) {
-        widget.onDeleted?.call(model.inckeyno);
-        dialogManager.showSuccessSnackBar(result.message ?? "");
-      } else {
-        dialogManager.showErrorSnackBar(result.message ?? "");
-      }
-    }, title: "Bu kasa kaydını silmek istediğinizden emin misiniz?");
+    await dialogManager.showAreYouSureDialog(
+      onYes: () async {
+        final result = await networkManager.dioPost<KasaIslemleriModel>(
+          path: ApiUrls.deleteKasaHareket,
+          bodyModel: KasaIslemleriModel(),
+          queryParameters: {"INCKEYNO": model.inckeyno},
+          showLoading: true,
+        );
+        if (result.isSuccess) {
+          widget.onDeleted?.call(model.inckeyno);
+          dialogManager.showSuccessSnackBar(result.message ?? "");
+        } else {
+          dialogManager.showErrorSnackBar(result.message ?? "");
+        }
+      },
+      title: "Bu kasa kaydını silmek istediğinizden emin misiniz?",
+    );
   }
 
   Future<void> showMakbuz(bool tahsilatMi) async {

@@ -216,13 +216,15 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                     return;
                   }
                   Get.back();
-                  dialogManager.showAreYouSureDialog(() async {
-                    final result = await viewModel.deleteMalTalebi(item.id!);
-                    if (result) {
-                      dialogManager.showSuccessSnackBar("${item.id} numaralı kayıt Silindi");
-                      await viewModel.resetList();
-                    }
-                  });
+                  dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      final result = await viewModel.deleteMalTalebi(item.id!);
+                      if (result) {
+                        dialogManager.showSuccessSnackBar("${item.id} numaralı kayıt Silindi");
+                        await viewModel.resetList();
+                      }
+                    },
+                  );
                 },
               ),
             if (item.isKapali)
@@ -235,13 +237,15 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                     return;
                   }
                   Get.back();
-                  dialogManager.showAreYouSureDialog(() async {
-                    final result = await viewModel.talebiAc(item.id!);
-                    if (result) {
-                      dialogManager.showSuccessSnackBar("${item.id} numaralı talep açıldı");
-                      await viewModel.resetList();
-                    }
-                  });
+                  dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      final result = await viewModel.talebiAc(item.id!);
+                      if (result) {
+                        dialogManager.showSuccessSnackBar("${item.id} numaralı talep açıldı");
+                        await viewModel.resetList();
+                      }
+                    },
+                  );
                 },
               ),
             if (!item.isKapali)
@@ -254,13 +258,15 @@ final class _TransferMalTalebiListesiViewState extends BaseState<TransferMalTale
                     return;
                   }
                   Get.back();
-                  dialogManager.showAreYouSureDialog(() async {
-                    final result = await viewModel.talebiKapat(item.id!);
-                    if (result) {
-                      dialogManager.showSuccessSnackBar("${item.id} numaralı talep kapatıldı");
-                      await viewModel.resetList();
-                    }
-                  });
+                  dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      final result = await viewModel.talebiKapat(item.id!);
+                      if (result) {
+                        dialogManager.showSuccessSnackBar("${item.id} numaralı talep kapatıldı");
+                        await viewModel.resetList();
+                      }
+                    },
+                  );
                 },
               ),
           ],

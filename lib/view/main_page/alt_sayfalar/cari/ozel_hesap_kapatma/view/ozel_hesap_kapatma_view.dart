@@ -73,13 +73,15 @@ class _OzelHesapKapatmaViewState extends BaseState<OzelHesapKapatmaView> {
             dialogManager.showInfoSnackBar("Özel hesap kapatılacak hareket seçilmedi");
             return;
           }
-          dialogManager.showAreYouSureDialog(() async {
-            final result = await viewModel.postData();
-            if (result.isSuccess) {
-              dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-              Get.back(result: true);
-            }
-          });
+          dialogManager.showAreYouSureDialog(
+            onYes: () async {
+              final result = await viewModel.postData();
+              if (result.isSuccess) {
+                dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                Get.back(result: true);
+              }
+            },
+          );
         },
         icon: const Icon(Icons.check_outlined),
       ),

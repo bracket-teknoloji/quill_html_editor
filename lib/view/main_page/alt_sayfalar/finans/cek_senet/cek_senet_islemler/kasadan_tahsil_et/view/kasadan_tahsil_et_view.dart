@@ -80,18 +80,20 @@ final class _KasadanTahsilEtViewState extends BaseState<KasadanTahsilEtView> {
         IconButton(
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              dialogManager.showAreYouSureDialog(() async {
-                if (viewModel.model.tutar case (null || 0.0)) {
-                  dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
-                  return;
-                }
-                viewModel.model.guid = const Uuid().v4();
-                final result = await viewModel.postData();
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                  Get.back(result: true);
-                }
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  if (viewModel.model.tutar case (null || 0.0)) {
+                    dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+                    return;
+                  }
+                  viewModel.model.guid = const Uuid().v4();
+                  final result = await viewModel.postData();
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                    Get.back(result: true);
+                  }
+                },
+              );
               // await viewModel.saveData();
               // await Get.back(result: true);
             }

@@ -169,9 +169,11 @@ final class _BelgeKontrolKalemlerViewState extends BaseState<BelgeKontrolKalemle
                   iconWidget: Icons.delete_outline_outlined,
                   onTap: () {
                     Get.back();
-                    dialogManager.showAreYouSureDialog(() async {
-                      await viewModel.deleteKalem(item);
-                    });
+                    dialogManager.showAreYouSureDialog(
+                      onYes: () async {
+                        await viewModel.deleteKalem(item);
+                      },
+                    );
                   },
                 ),
               BottomSheetModel(

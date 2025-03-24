@@ -1160,18 +1160,20 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   void deleteStok(String stokKodu) {
     Get.back();
-    dialogManager.showAreYouSureDialog(() async {
-      final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
-        bodyModel: StokListesiModel(),
-        path: ApiUrls.deleteStok,
-        queryParameters: {"Kod": stokKodu},
-        showLoading: true,
-      );
-      if (response.isSuccess) {
-        dialogManager.showSuccessSnackBar("Başarıyla Silindi");
-        viewModel.resetList();
-      }
-    });
+    dialogManager.showAreYouSureDialog(
+      onYes: () async {
+        final GenericResponseModel response = await networkManager.dioPost<StokListesiModel>(
+          bodyModel: StokListesiModel(),
+          path: ApiUrls.deleteStok,
+          queryParameters: {"Kod": stokKodu},
+          showLoading: true,
+        );
+        if (response.isSuccess) {
+          dialogManager.showSuccessSnackBar("Başarıyla Silindi");
+          viewModel.resetList();
+        }
+      },
+    );
   }
 
   Future<void> getGrupKodlariBottomSheet(int value) async {

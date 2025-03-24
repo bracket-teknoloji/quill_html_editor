@@ -140,7 +140,7 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
         Get.back(result: false);
         return;
       }
-      await dialogManager.showAreYouSureDialog(() => Get.back(result: false));
+      await dialogManager.showAreYouSureDialog(onYes: () => Get.back(result: false));
     },
     child: BaseScaffold(
       // bottomNavigationBar: NavigationBar(destinations: const [Tab(child: Text(loc.generalStrings.general)), Tab(child: Text(loc.generalStrings.general))]),
@@ -157,7 +157,7 @@ final class _BasCariEditingViewState extends BaseState<BaseCariEditingView> with
                 if (validate.isEmpty) {
                   final result = await vergiNoChecker();
                   if (result) {
-                    await dialogManager.showAreYouSureDialog(() async => await postData());
+                    await dialogManager.showAreYouSureDialog(onYes: () async => await postData());
                   }
                 } else {
                   await dialogManager.showEmptyFieldDialog(

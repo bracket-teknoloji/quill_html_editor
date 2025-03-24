@@ -64,9 +64,11 @@ final class _CariAktiviteDetayCardState extends BaseState<CariAktiviteDetayCard>
               iconWidget: Icons.delete_outline_outlined,
               onTap: () async {
                 Get.back();
-                dialogManager.showAreYouSureDialog(() async {
-                  widget.onAktiviteSil.call();
-                });
+                dialogManager.showAreYouSureDialog(
+                  onYes: () async {
+                    widget.onAktiviteSil.call();
+                  },
+                );
               },
             ),
           ],

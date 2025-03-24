@@ -130,24 +130,26 @@ final class _FaturalarCardState extends BaseState<FaturalarCard> {
                       iconWidget: Icons.delete_outline_outlined,
                       onTap: () async {
                         Get.back();
-                        return dialogManager.showAreYouSureDialog(() async {
-                          if (model.isNew == true) {
-                            try {
-                              CacheManager.removeFaturaEditListWithUuid(model.uuid ?? "");
+                        return dialogManager.showAreYouSureDialog(
+                          onYes: () async {
+                            if (model.isNew == true) {
+                              try {
+                                CacheManager.removeFaturaEditListWithUuid(model.uuid ?? "");
+                                dialogManager.showSuccessSnackBar("Silindi");
+                                widget.onDeleted?.call();
+                                return;
+                              } catch (e) {
+                                dialogManager.showAlertDialog("Hata Oluştu.\n$e");
+                              }
+                              return;
+                            }
+                            final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(model.toJson()));
+                            if (result.isSuccess) {
                               dialogManager.showSuccessSnackBar("Silindi");
                               widget.onDeleted?.call();
-                              return;
-                            } catch (e) {
-                              dialogManager.showAlertDialog("Hata Oluştu.\n$e");
                             }
-                            return;
-                          }
-                          final result = await networkManager.deleteFatura(EditFaturaModel.fromJson(model.toJson()));
-                          if (result.isSuccess) {
-                            dialogManager.showSuccessSnackBar("Silindi");
-                            widget.onDeleted?.call();
-                          }
-                        });
+                          },
+                        );
                       },
                     ),
                   if (widget.editTipiEnum.aciklamaDuzenlensinMi)

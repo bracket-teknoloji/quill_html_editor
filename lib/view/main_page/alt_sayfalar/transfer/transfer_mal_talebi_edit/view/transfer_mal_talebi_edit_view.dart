@@ -71,13 +71,15 @@ final class _TransferMalTalebiEditViewState extends BaseState<TransferMalTalebiE
               dialogManager.showErrorSnackBar("Giriş depo seçmelisiniz");
               return;
             }
-            dialogManager.showAreYouSureDialog(() async {
-              final result = await viewModel.save(widget.model.isEkle);
-              if (result) {
-                Get.back(result: true);
-                dialogManager.showSuccessSnackBar("İşlem başarılı");
-              }
-            });
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                final result = await viewModel.save(widget.model.isEkle);
+                if (result) {
+                  Get.back(result: true);
+                  dialogManager.showSuccessSnackBar("İşlem başarılı");
+                }
+              },
+            );
           },
           icon: const Icon(Icons.save_outlined),
         ),

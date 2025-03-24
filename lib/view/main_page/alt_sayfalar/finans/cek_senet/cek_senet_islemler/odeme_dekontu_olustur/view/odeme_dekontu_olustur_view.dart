@@ -86,14 +86,16 @@ final class _OdemeDekontuOlusturViewState extends BaseState<OdemeDekontuOlusturV
         IconButton(
           onPressed: () async {
             if (_formKey.currentState?.validate() ?? false) {
-              dialogManager.showAreYouSureDialog(() async {
-                viewModel.model.guid = const Uuid().v4();
-                final result = await viewModel.postData();
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
-                  Get.back(result: true);
-                }
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  viewModel.model.guid = const Uuid().v4();
+                  final result = await viewModel.postData();
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "İşlem Başarılı");
+                    Get.back(result: true);
+                  }
+                },
+              );
             }
           },
           icon: const Icon(Icons.save_outlined),

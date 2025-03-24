@@ -80,10 +80,12 @@ class _YaziciListesiViewState extends BaseState<YaziciListesiView> {
                       ),
                       IconButton(
                         onPressed: () {
-                          dialogManager.showAreYouSureDialog(() async {
-                            await BluetoothManager().disconnectFromDevice();
-                            viewModel.removeYaziciListesi(item);
-                          });
+                          dialogManager.showAreYouSureDialog(
+                            onYes: () async {
+                              await BluetoothManager().disconnectFromDevice();
+                              viewModel.removeYaziciListesi(item);
+                            },
+                          );
                         },
                         icon: const Icon(Icons.delete_outline_outlined),
                       ),

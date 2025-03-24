@@ -62,11 +62,13 @@ final class _AccountsViewState extends BaseState<AccountsView> {
                             title: loc.generalStrings.delete,
                             onTap: () {
                               Get.back();
-                              dialogManager.showAreYouSureDialog(() {
-                                CacheManager.removeAccounts(account.email ?? "");
-                                CacheManager.resetVerifiedUser();
-                                setState(() {});
-                              });
+                              dialogManager.showAreYouSureDialog(
+                                onYes: () {
+                                  CacheManager.removeAccounts(account.email ?? "");
+                                  CacheManager.resetVerifiedUser();
+                                  setState(() {});
+                                },
+                              );
                             },
                           ),
                           BottomSheetModel(

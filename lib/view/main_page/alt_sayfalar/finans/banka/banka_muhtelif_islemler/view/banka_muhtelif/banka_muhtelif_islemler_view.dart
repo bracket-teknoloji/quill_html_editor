@@ -89,13 +89,15 @@ final class _BankaMuhtelifIslemlerViewState extends BaseState<BankaMuhtelifIslem
       IconButton(
         onPressed: () async {
           if (_formKey.currentState?.validate() ?? false) {
-            dialogManager.showAreYouSureDialog(() async {
-              viewModel.model.guid = const Uuid().v4();
-              final result = await viewModel.postData();
-              if (result.isSuccess) {
-                Get.back();
-              }
-            });
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                viewModel.model.guid = const Uuid().v4();
+                final result = await viewModel.postData();
+                if (result.isSuccess) {
+                  Get.back();
+                }
+              },
+            );
           }
         },
         icon: const Icon(Icons.save_outlined),

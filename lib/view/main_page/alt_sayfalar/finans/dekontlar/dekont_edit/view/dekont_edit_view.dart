@@ -126,7 +126,7 @@ final class _DekontEditViewState extends BaseState<DekontEditView> with TickerPr
       if (didPop) {
         return;
       }
-      await dialogManager.showAreYouSureDialog(Get.back);
+      await dialogManager.showAreYouSureDialog(onYes: Get.back);
     },
     child: BaseScaffold(
       appBar: AppBar(
@@ -173,13 +173,15 @@ final class _DekontEditViewState extends BaseState<DekontEditView> with TickerPr
         dialogManager.showErrorSnackBar("Hesap kodu boş olan kalem var.");
         _tabController.animateTo(1);
       } else {
-        dialogManager.showAreYouSureDialog(() async {
-          final result = await viewModel.postData();
-          if (result.isSuccess) {
-            dialogManager.showSuccessSnackBar("İşlem Başarılı");
-            Get.back();
-          }
-        });
+        dialogManager.showAreYouSureDialog(
+          onYes: () async {
+            final result = await viewModel.postData();
+            if (result.isSuccess) {
+              dialogManager.showSuccessSnackBar("İşlem Başarılı");
+              Get.back();
+            }
+          },
+        );
       }
     },
     icon: const Icon(Icons.save_outlined),

@@ -280,19 +280,22 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                           iconWidget: Icons.delete_outline_outlined,
                           onTap: () async {
                             Get.back();
-                            await dialogManager.showAreYouSureDialog(() async {
-                              final result = await networkManager.dioPost(
-                                path: ApiUrls.deleteCariHareket,
-                                bodyModel: CariHareketleriModel(),
-                                queryParameters: {"INCKEYNO": item.inckeyno},
-                              );
-                              if (result.isSuccess) {
-                                dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
-                                await viewModel.getData();
-                              } else {
-                                dialogManager.showErrorSnackBar(result.message ?? "");
-                              }
-                            }, title: "Bu hareket kaydını silmek istediğinizden emin misiniz?");
+                            await dialogManager.showAreYouSureDialog(
+                              onYes: () async {
+                                final result = await networkManager.dioPost(
+                                  path: ApiUrls.deleteCariHareket,
+                                  bodyModel: CariHareketleriModel(),
+                                  queryParameters: {"INCKEYNO": item.inckeyno},
+                                );
+                                if (result.isSuccess) {
+                                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı");
+                                  await viewModel.getData();
+                                } else {
+                                  dialogManager.showErrorSnackBar(result.message ?? "");
+                                }
+                              },
+                              title: "Bu hareket kaydını silmek istediğinizden emin misiniz?",
+                            );
                           },
                         ),
                       if (item.kasaMi)

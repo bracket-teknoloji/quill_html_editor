@@ -99,18 +99,20 @@ final class _HesaplarArasiIslemViewState extends BaseState<HesaplarArasiIslemVie
         IconButton(
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              await dialogManager.showAreYouSureDialog(() async {
-                if (viewModel.model.tutar case (null || 0.0)) {
-                  dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
-                  return;
-                }
-                viewModel.setGuid(const Uuid().v4());
-                final result = await viewModel.saveTahsilat();
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? "");
-                  Get.back(result: true);
-                }
-              });
+              await dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  if (viewModel.model.tutar case (null || 0.0)) {
+                    dialogManager.showErrorSnackBar("Tutar boş bırakılamaz!");
+                    return;
+                  }
+                  viewModel.setGuid(const Uuid().v4());
+                  final result = await viewModel.saveTahsilat();
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "");
+                    Get.back(result: true);
+                  }
+                },
+              );
             }
           },
           icon: const Icon(Icons.save_outlined),

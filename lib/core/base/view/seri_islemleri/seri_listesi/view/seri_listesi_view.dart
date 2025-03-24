@@ -42,7 +42,7 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
                   : viewModel.stokModel?.seriCikistaOtomatikMi) ??
               false) &&
           viewModel.kalanMiktar != 0) {
-        dialogManager.showAreYouSureDialog(() async => await seriNoUret(), title: "Otomatik Seri Üretilsin Mi?");
+        dialogManager.showAreYouSureDialog(onYes: () async => await seriNoUret(), title: "Otomatik Seri Üretilsin Mi?");
       }
     });
     super.initState();
@@ -235,9 +235,11 @@ final class _SeriListesiViewState extends BaseState<SeriListesiView> {
                                 iconWidget: Icons.delete_outline_outlined,
                                 onTap: () {
                                   Get.back();
-                                  dialogManager.showAreYouSureDialog(() {
-                                    viewModel.removeSeriListWithIndex(index);
-                                  });
+                                  dialogManager.showAreYouSureDialog(
+                                    onYes: () {
+                                      viewModel.removeSeriListWithIndex(index);
+                                    },
+                                  );
                                 },
                               ),
                             ],

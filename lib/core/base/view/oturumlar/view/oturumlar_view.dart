@@ -77,10 +77,12 @@ final class _OturumlarViewState extends BaseState<OturumlarView> {
                             iconWidget: Icons.logout_outlined,
                             onTap: () async {
                               Get.back();
-                              dialogManager.showAreYouSureDialog(() async {
-                                viewModel.logout(item);
-                                await viewModel.getData();
-                              });
+                              dialogManager.showAreYouSureDialog(
+                                onYes: () async {
+                                  viewModel.logout(item);
+                                  await viewModel.getData();
+                                },
+                              );
                             },
                           ),
                         ],

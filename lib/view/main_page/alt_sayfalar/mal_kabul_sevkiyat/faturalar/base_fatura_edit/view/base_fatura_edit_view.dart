@@ -266,7 +266,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
             BaseSiparisEditModel.instance.kalemList.ext.isNotNullOrEmpty &&
             !widget.model.isGoruntule) {
           dialogManager.showAreYouSureDialog(
-            () async {
+            onYes: () async {
               await dovizGuncelle();
             },
             title:
@@ -414,10 +414,12 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
       if (tabController.index == 1) {
         tabController.animateTo(0);
       }
-      await dialogManager.showAreYouSureDialog(() {
-        BaseSiparisEditModel.resetInstance();
-        Get.back();
-      });
+      await dialogManager.showAreYouSureDialog(
+        onYes: () {
+          BaseSiparisEditModel.resetInstance();
+          Get.back();
+        },
+      );
     },
     child: DefaultTabController(
       length: widget.model.editTipiEnum?.digerSekmesiGoster ?? false ? 4 : 3,
@@ -587,23 +589,25 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                     child: IconButton(
                       onPressed: () async {
                         if (StaticVariables.instance.faturaToplamlarFormKey.currentState?.validate() != true) return;
-                        await dialogManager.showAreYouSureDialog(() async {
-                          if (await postData()) {
-                            await CacheManager.removeFaturaEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                            Get.back(result: BaseSiparisEditModel.instance);
-                            if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
-                              BaseSiparisEditModel.resetInstance();
-                              BaseSiparisEditModel.instance.isNew = true;
-                              await Get.toNamed(
-                                "/mainPage/faturaEdit",
-                                arguments: BaseEditModel<SiparisEditRequestModel>(
-                                  baseEditEnum: BaseEditEnum.ekle,
-                                  editTipiEnum: model.editTipiEnum,
-                                ),
-                              );
+                        await dialogManager.showAreYouSureDialog(
+                          onYes: () async {
+                            if (await postData()) {
+                              await CacheManager.removeFaturaEditListWithUuid(BaseSiparisEditModel.instance.uuid);
+                              Get.back(result: BaseSiparisEditModel.instance);
+                              if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
+                                BaseSiparisEditModel.resetInstance();
+                                BaseSiparisEditModel.instance.isNew = true;
+                                await Get.toNamed(
+                                  "/mainPage/faturaEdit",
+                                  arguments: BaseEditModel<SiparisEditRequestModel>(
+                                    baseEditEnum: BaseEditEnum.ekle,
+                                    editTipiEnum: model.editTipiEnum,
+                                  ),
+                                );
+                              }
                             }
-                          }
-                        });
+                          },
+                        );
                       },
                       icon: const Icon(Icons.save_outlined),
                     ),
@@ -986,9 +990,12 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                   }
                   Get.back(result: true);
                   if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.dovizliMi) ?? false) {
-                    dialogManager.showAreYouSureDialog(() async {
-                      await dovizGuncelle();
-                    }, title: "Döviz Kurları Güncellensin mi?");
+                    dialogManager.showAreYouSureDialog(
+                      onYes: () async {
+                        await dovizGuncelle();
+                      },
+                      title: "Döviz Kurları Güncellensin mi?",
+                    );
                   } else {
                     dialogManager.showInfoSnackBar("Güncellenecek dövizli kalem bulunamadı.");
                   }

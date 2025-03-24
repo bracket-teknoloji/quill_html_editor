@@ -72,17 +72,19 @@ final class _DekontlarCardState extends BaseState<DekontlarCard> {
 
   Future<void> deleteDekont() async {
     Get.back();
-    dialogManager.showAreYouSureDialog(() async {
-      final result = await networkManager.dioPost(
-        path: ApiUrls.deleteDekont,
-        showLoading: true,
-        bodyModel: DekontListesiModel(),
-        queryParameters: {"DekontNo": model.dekontNo, "Seri": model.seri},
-      );
-      if (result.isSuccess) {
-        dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
-        widget.onSelected.call(true);
-      }
-    });
+    dialogManager.showAreYouSureDialog(
+      onYes: () async {
+        final result = await networkManager.dioPost(
+          path: ApiUrls.deleteDekont,
+          showLoading: true,
+          bodyModel: DekontListesiModel(),
+          queryParameters: {"DekontNo": model.dekontNo, "Seri": model.seri},
+        );
+        if (result.isSuccess) {
+          dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
+          widget.onSelected.call(true);
+        }
+      },
+    );
   }
 }

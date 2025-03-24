@@ -96,7 +96,7 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
         child: IconButton(
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
-              dialogManager.showAreYouSureDialog(postData);
+              dialogManager.showAreYouSureDialog(onYes: postData);
             }
           },
           icon: const Icon(Icons.save_outlined),

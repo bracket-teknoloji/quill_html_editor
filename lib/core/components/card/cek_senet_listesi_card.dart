@@ -168,25 +168,27 @@ final class _CekSenetListesiCardState extends BaseState<CekSenetListesiCard> {
 
   Future<void> deleteCekSenet() async {
     Get.back();
-    await dialogManager.showAreYouSureDialog(() async {
-      final result = await networkManager.dioPost(
-        path: ApiUrls.deleteCekSenet,
-        bodyModel: EditFaturaModel(),
-        showLoading: true,
-        data:
-            DeleteCekSenetModel(
-              belgeNo: model.belgeNo,
-              belgeTipi: model.belgeTipi,
-              islemKodu: 5,
-              pickerTahsilatTuru: model.belgeTipi,
-              tag: "CekSenetBordroModel",
-            ).toJson(),
-      );
-      if (result.isSuccess) {
-        dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
-        widget.onUpdate?.call(result.isSuccess);
-      }
-    });
+    await dialogManager.showAreYouSureDialog(
+      onYes: () async {
+        final result = await networkManager.dioPost(
+          path: ApiUrls.deleteCekSenet,
+          bodyModel: EditFaturaModel(),
+          showLoading: true,
+          data:
+              DeleteCekSenetModel(
+                belgeNo: model.belgeNo,
+                belgeTipi: model.belgeTipi,
+                islemKodu: 5,
+                pickerTahsilatTuru: model.belgeTipi,
+                tag: "CekSenetBordroModel",
+              ).toJson(),
+        );
+        if (result.isSuccess) {
+          dialogManager.showSuccessSnackBar(result.message ?? "Silme işlemi başarılı");
+          widget.onUpdate?.call(result.isSuccess);
+        }
+      },
+    );
   }
 
   Future<void> showTahsilatMakbuzu() async {

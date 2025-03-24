@@ -432,12 +432,15 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                           ozelKod1Controller.text = result.aciklama ?? "";
                           viewModel.setOzelKod1(result.kod);
                           if (model.kalemList.ext.isNotNullOrEmpty) {
-                            await dialogManager.showAreYouSureDialog(() async {
-                              final isSuccess = await viewModel.fiyatGuncelle();
-                              if (isSuccess) {
-                                dialogManager.showSuccesDialog("Fiyatlar Güncellendi");
-                              }
-                            }, title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?");
+                            await dialogManager.showAreYouSureDialog(
+                              onYes: () async {
+                                final isSuccess = await viewModel.fiyatGuncelle();
+                                if (isSuccess) {
+                                  dialogManager.showSuccesDialog("Fiyatlar Güncellendi");
+                                }
+                              },
+                              title: "Özel kod değiştirildi, fiyatları güncellemek istiyor musunuz?",
+                            );
                           }
                         }
                       },

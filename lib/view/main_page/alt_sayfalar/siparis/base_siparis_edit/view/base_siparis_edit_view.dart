@@ -224,10 +224,12 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
       if (tabController.index == 1) {
         tabController.animateTo(0);
       }
-      await dialogManager.showAreYouSureDialog(() {
-        Get.back();
-        BaseSiparisEditModel.resetInstance();
-      });
+      await dialogManager.showAreYouSureDialog(
+        onYes: () {
+          Get.back();
+          BaseSiparisEditModel.resetInstance();
+        },
+      );
     },
     child: BaseScaffold(
       appBar: AppBar(
@@ -394,24 +396,26 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
                   visible: viewModel.isLastPage && kaydetButonuYetki,
                   child: IconButton(
                     onPressed: () async {
-                      dialogManager.showAreYouSureDialog(() async {
-                        if (await postData()) {
-                          final BaseSiparisEditModel instance = BaseSiparisEditModel.instance;
-                          await CacheManager.removeSiparisEditListWithUuid(instance.uuid);
-                          Get.back(result: instance);
-                          if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
-                            BaseSiparisEditModel.resetInstance();
-                            BaseSiparisEditModel.instance.isNew = true;
-                            Get.toNamed(
-                              "/mainPage/siparisEdit",
-                              arguments: BaseEditModel<SiparisEditRequestModel>(
-                                baseEditEnum: BaseEditEnum.ekle,
-                                editTipiEnum: model.editTipiEnum,
-                              ),
-                            );
+                      dialogManager.showAreYouSureDialog(
+                        onYes: () async {
+                          if (await postData()) {
+                            final BaseSiparisEditModel instance = BaseSiparisEditModel.instance;
+                            await CacheManager.removeSiparisEditListWithUuid(instance.uuid);
+                            Get.back(result: instance);
+                            if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
+                              BaseSiparisEditModel.resetInstance();
+                              BaseSiparisEditModel.instance.isNew = true;
+                              Get.toNamed(
+                                "/mainPage/siparisEdit",
+                                arguments: BaseEditModel<SiparisEditRequestModel>(
+                                  baseEditEnum: BaseEditEnum.ekle,
+                                  editTipiEnum: model.editTipiEnum,
+                                ),
+                              );
+                            }
                           }
-                        }
-                      });
+                        },
+                      );
                     },
                     icon: const Icon(Icons.save_outlined),
                   ),

@@ -344,21 +344,23 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                               if (model.hareketTuruAciklama == "Devir" && yetkiController.stokHareketleriStokSilme) {
                                 final SlidableAction slidableAction = SlidableAction(
                                   onPressed: (context) async {
-                                    dialogManager.showAreYouSureDialog(() async {
-                                      final result = await networkManager.dioPost<StokHareketleriModel>(
-                                        path: ApiUrls.deleteStokHareket,
-                                        bodyModel: StokHareketleriModel(),
-                                        queryParameters: {"INCKEYNO": model.inckeyno.toString()},
-                                      );
-                                      if (result.isSuccess) {
-                                        dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
-                                        viewModel.setStokHareketleri(await getData()!);
-                                      } else {
-                                        dialogManager.showErrorSnackBar(
-                                          "Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}",
+                                    dialogManager.showAreYouSureDialog(
+                                      onYes: () async {
+                                        final result = await networkManager.dioPost<StokHareketleriModel>(
+                                          path: ApiUrls.deleteStokHareket,
+                                          bodyModel: StokHareketleriModel(),
+                                          queryParameters: {"INCKEYNO": model.inckeyno.toString()},
                                         );
-                                      }
-                                    });
+                                        if (result.isSuccess) {
+                                          dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
+                                          viewModel.setStokHareketleri(await getData()!);
+                                        } else {
+                                          dialogManager.showErrorSnackBar(
+                                            "Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}",
+                                          );
+                                        }
+                                      },
+                                    );
                                   },
                                   icon: Icons.delete_forever,
                                   backgroundColor: theme.colorScheme.onPrimary,

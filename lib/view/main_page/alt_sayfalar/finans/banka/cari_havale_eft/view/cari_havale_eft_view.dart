@@ -154,24 +154,26 @@ final class _CariHavaleEftViewState extends BaseState<CariHavaleEftView> {
         IconButton(
           onPressed: () async {
             if (_formKey.currentState?.validate() == true) {
-              await dialogManager.showAreYouSureDialog(() async {
-                viewModel.model.guid = const Uuid().v4();
-                final result = await viewModel.postData();
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
-                  if (result.paramData?["CAHAR_INCKEY"] != null && yetkiController.ozelHesapKapatmaIslemi) {
-                    await Get.toNamed(
-                      "mainPage/ozelHesapKapatma",
-                      arguments:
-                          viewModel.cariModel
-                            ?..alacakToplami = viewModel.model.tutar
-                            ..ozelKapatmaIncKey = int.tryParse(result.paramData?["CAHAR_INCKEY"])
-                            ..aciklama1 = viewModel.model.aciklama,
-                    );
+              await dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  viewModel.model.guid = const Uuid().v4();
+                  final result = await viewModel.postData();
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar(result.message ?? "İşlem başarılı.");
+                    if (result.paramData?["CAHAR_INCKEY"] != null && yetkiController.ozelHesapKapatmaIslemi) {
+                      await Get.toNamed(
+                        "mainPage/ozelHesapKapatma",
+                        arguments:
+                            viewModel.cariModel
+                              ?..alacakToplami = viewModel.model.tutar
+                              ..ozelKapatmaIncKey = int.tryParse(result.paramData?["CAHAR_INCKEY"])
+                              ..aciklama1 = viewModel.model.aciklama,
+                      );
+                    }
+                    Get.back(result: result.isSuccess);
                   }
-                  Get.back(result: result.isSuccess);
-                }
-              });
+                },
+              );
             }
           },
           icon: const Icon(Icons.save_outlined),

@@ -72,22 +72,24 @@ final class _StokYeniKayitViewState extends BaseState<StokYeniKayitView> {
           onPressed: () async {
             //check if form is valid
             if ((key.currentState as FormState).validate()) {
-              dialogManager.showAreYouSureDialog(() async {
-                dialogManager.showLoadingDialog("Kaydediliyor");
-                viewModel.setStokKodu(stokKoduController.text);
-                final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
-                  path: ApiUrls.saveStokHareket,
-                  bodyModel: StokYeniKayitModel(),
-                  data: viewModel.model.toJson(),
-                );
-                dialogManager.hideAlertDialog;
-                if (result.isSuccess) {
-                  dialogManager.showSuccessSnackBar("Kayıt başarılı");
-                  Get.back();
-                } else {
-                  dialogManager.showErrorSnackBar("Kayıt başarısız");
-                }
-              });
+              dialogManager.showAreYouSureDialog(
+                onYes: () async {
+                  dialogManager.showLoadingDialog("Kaydediliyor");
+                  viewModel.setStokKodu(stokKoduController.text);
+                  final GenericResponseModel result = await networkManager.dioPost<StokYeniKayitModel>(
+                    path: ApiUrls.saveStokHareket,
+                    bodyModel: StokYeniKayitModel(),
+                    data: viewModel.model.toJson(),
+                  );
+                  dialogManager.hideAlertDialog;
+                  if (result.isSuccess) {
+                    dialogManager.showSuccessSnackBar("Kayıt başarılı");
+                    Get.back();
+                  } else {
+                    dialogManager.showErrorSnackBar("Kayıt başarısız");
+                  }
+                },
+              );
             }
           },
           icon: const Icon(Icons.save_outlined),

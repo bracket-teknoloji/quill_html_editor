@@ -339,9 +339,11 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
                 iconWidget: Icons.delete_outline_outlined,
                 onTap: () {
                   Get.back();
-                  return dialogManager.showAreYouSureDialog(() {
-                    viewModel.removeAtKalemList(index);
-                  });
+                  return dialogManager.showAreYouSureDialog(
+                    onYes: () {
+                      viewModel.removeAtKalemList(index);
+                    },
+                  );
                 },
               ),
             if (model.seriliMi)

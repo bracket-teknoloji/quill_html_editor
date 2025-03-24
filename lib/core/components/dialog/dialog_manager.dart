@@ -169,7 +169,7 @@ final class DialogManager {
           ),
         ),
       ).show();
-  Future showAreYouSureDialog(void Function() onYes, {String? title, String? yesButtonText}) async =>
+  Future showAreYouSureDialog({required void Function() onYes, String? title, String? yesButtonText}) async =>
       await _areYouSureDialog(onYes, title, yesButtonText: yesButtonText).show();
 
   void showSuccesDialog(String? description) =>

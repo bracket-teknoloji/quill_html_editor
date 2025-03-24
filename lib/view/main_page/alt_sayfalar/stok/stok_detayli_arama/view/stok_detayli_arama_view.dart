@@ -49,9 +49,11 @@ final class _StokDetayliAramaViewState extends BaseState<StokDetayliAramaView> {
       actions: [
         IconButton(
           onPressed: () {
-            dialogManager.showAreYouSureDialog(() async {
-              Get.back(result: true);
-            });
+            dialogManager.showAreYouSureDialog(
+              onYes: () async {
+                Get.back(result: true);
+              },
+            );
           },
           icon: const Icon(Icons.delete_outline_outlined),
         ),

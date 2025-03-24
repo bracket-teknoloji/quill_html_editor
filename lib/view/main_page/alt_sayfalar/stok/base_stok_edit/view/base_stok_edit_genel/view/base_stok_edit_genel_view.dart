@@ -208,9 +208,11 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
                               if (sourceType is ImageSource) {
                                 viewModel.setImage(await imageCompresser(sourceType));
                               } else if (sourceType == "") {
-                                dialogManager.showAreYouSureDialog(() {
-                                  viewModel.setImage(null);
-                                });
+                                dialogManager.showAreYouSureDialog(
+                                  onYes: () {
+                                    viewModel.setImage(null);
+                                  },
+                                );
                               }
                             },
                           ),
