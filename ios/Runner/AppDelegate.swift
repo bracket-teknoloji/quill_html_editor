@@ -22,8 +22,10 @@ import UIKit
 }
 
 class SewooPrinter: Sewoo {
-
-    init() {
+ 
+  let escpPrinter = ESCPOSPrinter()
+    
+    func openPort() -> Bool {
         var errCode: Int = 0
         errCode = escpPrinter.openPort("bluetooth", withPortParam: 9100)
         if(errCode >= 0)
@@ -34,10 +36,12 @@ class SewooPrinter: Sewoo {
         {
             NSLog("Bağlanamadı")
         }
-
+        return errCode >= 0
     }
- 
-  let escpPrinter = ESCPOSPrinter()
+    
+    func closePort() -> Bool {
+      return true
+    }
 
   func printText(text: String, completion: @escaping (Result<Bool, any Error>) -> Void) {
     let barCodeData: String = "1234567890"
@@ -77,6 +81,8 @@ class SewooPrinter: Sewoo {
             }
         if let img = UIImage(data: byteData) {
             escpPrinter.print(img, withAlignment:1, withSize:1,withBrightness:1)
+            
+            completion(.success(true))
         }
     }
 }

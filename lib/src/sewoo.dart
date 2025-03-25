@@ -16,9 +16,8 @@ class _PigeonCodec extends StandardMessageCodec {
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is int) {
-      buffer
-        ..putUint8(4)
-        ..putInt64(value);
+      buffer.putUint8(4);
+      buffer.putInt64(value);
     } else {
       super.writeValue(buffer, value);
     }
@@ -46,6 +45,58 @@ class Sewoo {
   static const MessageCodec<Object?> pigeonChannelCodec = _PigeonCodec();
 
   final String pigeonVar_messageChannelSuffix;
+
+  Future<bool> openPort() async {
+    final String pigeonVar_channelName = "dev.flutter.pigeon.picker.Sewoo.openPort$pigeonVar_messageChannelSuffix";
+    final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final List<Object?>? pigeonVar_replyList = await pigeonVar_channel.send(null) as List<Object?>?;
+    if (pigeonVar_replyList == null) {
+      throw _createConnectionError(pigeonVar_channelName);
+    } else if (pigeonVar_replyList.length > 1) {
+      throw PlatformException(
+        code: pigeonVar_replyList[0]! as String,
+        message: pigeonVar_replyList[1] as String?,
+        details: pigeonVar_replyList[2],
+      );
+    } else if (pigeonVar_replyList[0] == null) {
+      throw PlatformException(
+        code: "null-error",
+        message: "Host platform returned null value for non-null return value.",
+      );
+    } else {
+      return (pigeonVar_replyList[0] as bool?)!;
+    }
+  }
+
+  Future<bool> closePort() async {
+    final String pigeonVar_channelName = "dev.flutter.pigeon.picker.Sewoo.closePort$pigeonVar_messageChannelSuffix";
+    final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final List<Object?>? pigeonVar_replyList = await pigeonVar_channel.send(null) as List<Object?>?;
+    if (pigeonVar_replyList == null) {
+      throw _createConnectionError(pigeonVar_channelName);
+    } else if (pigeonVar_replyList.length > 1) {
+      throw PlatformException(
+        code: pigeonVar_replyList[0]! as String,
+        message: pigeonVar_replyList[1] as String?,
+        details: pigeonVar_replyList[2],
+      );
+    } else if (pigeonVar_replyList[0] == null) {
+      throw PlatformException(
+        code: "null-error",
+        message: "Host platform returned null value for non-null return value.",
+      );
+    } else {
+      return (pigeonVar_replyList[0] as bool?)!;
+    }
+  }
 
   Future<bool> printText(String text) async {
     final String pigeonVar_channelName = "dev.flutter.pigeon.picker.Sewoo.printText$pigeonVar_messageChannelSuffix";

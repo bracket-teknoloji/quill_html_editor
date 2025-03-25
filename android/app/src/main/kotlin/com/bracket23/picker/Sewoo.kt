@@ -61,6 +61,8 @@ private open class SewooPigeonCodec : StandardMessageCodec() {
  * Generated interface from Pigeon that represents a handler of messages from Flutter.
  */
 interface Sewoo {
+  fun openPort(): Boolean
+  fun closePort(): Boolean
   fun printText(text: String, callback: (Result<Boolean>) -> Unit)
   fun printImage(image: List<Long>, callback: (Result<Boolean>) -> Unit)
   fun printPDF(pdfData: List<Long>, width: Long, height: Long, callback: (Result<Boolean>) -> Unit)
@@ -74,6 +76,36 @@ interface Sewoo {
     @JvmOverloads
     fun setUp(binaryMessenger: BinaryMessenger, api: Sewoo?, messageChannelSuffix: String = "") {
       val separatedMessageChannelSuffix = if (messageChannelSuffix.isNotEmpty()) ".$messageChannelSuffix" else ""
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.picker.Sewoo.openPort$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.openPort())
+            } catch (exception: Throwable) {
+              wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.picker.Sewoo.closePort$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.closePort())
+            } catch (exception: Throwable) {
+              wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
       run {
         val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.picker.Sewoo.printText$separatedMessageChannelSuffix", codec)
         if (api != null) {

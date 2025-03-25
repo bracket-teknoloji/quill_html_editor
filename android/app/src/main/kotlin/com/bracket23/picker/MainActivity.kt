@@ -46,4 +46,8 @@ class SewooPrinter : Sewoo {
 
         callback(Result.success(true))
     }
+
+    override fun printPDF(pdfData: List<Long>, width: Long, height: Long, callback: (Result<Boolean>) -> Unit) {
+        callback(Result.success(true))
+    }
 }

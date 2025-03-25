@@ -81,7 +81,9 @@ Future<void> firebaseInitialized() async {
 }
 
 class SewooPrinter extends Sewoo implements InjectableInterface {
-  SewooPrinter() : super(messageChannelSuffix: "");
+  SewooPrinter() : super(messageChannelSuffix: "") {
+  openPort();
+  }
   @override
   Future<void> load() async {}
 }

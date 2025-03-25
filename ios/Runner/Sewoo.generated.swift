@@ -89,6 +89,8 @@ class SewooPigeonCodec: FlutterStandardMessageCodec, @unchecked Sendable {
 ///
 /// Generated protocol from Pigeon that represents a handler of messages from Flutter.
 protocol Sewoo {
+  func openPort() throws -> Bool
+  func closePort() throws -> Bool
   func printText(text: String, completion: @escaping (Result<Bool, Error>) -> Void)
   func printImage(image: [Int64], completion: @escaping (Result<Bool, Error>) -> Void)
   func printPDF(pdfData: [Int64], width: Int64, height: Int64, completion: @escaping (Result<Bool, Error>) -> Void)
@@ -100,6 +102,32 @@ class SewooSetup {
   /// Sets up an instance of `Sewoo` to handle messages through the `binaryMessenger`.
   static func setUp(binaryMessenger: FlutterBinaryMessenger, api: Sewoo?, messageChannelSuffix: String = "") {
     let channelSuffix = messageChannelSuffix.count > 0 ? ".\(messageChannelSuffix)" : ""
+    let openPortChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.picker.Sewoo.openPort\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    if let api = api {
+      openPortChannel.setMessageHandler { _, reply in
+        do {
+          let result = try api.openPort()
+          reply(wrapResult(result))
+        } catch {
+          reply(wrapError(error))
+        }
+      }
+    } else {
+      openPortChannel.setMessageHandler(nil)
+    }
+    let closePortChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.picker.Sewoo.closePort\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    if let api = api {
+      closePortChannel.setMessageHandler { _, reply in
+        do {
+          let result = try api.closePort()
+          reply(wrapResult(result))
+        } catch {
+          reply(wrapError(error))
+        }
+      }
+    } else {
+      closePortChannel.setMessageHandler(nil)
+    }
     let printTextChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.picker.Sewoo.printText\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       printTextChannel.setMessageHandler { message, reply in
