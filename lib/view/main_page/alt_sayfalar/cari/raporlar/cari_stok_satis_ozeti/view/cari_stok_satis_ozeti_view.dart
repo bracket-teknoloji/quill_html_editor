@@ -337,7 +337,7 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
     if (viewModel.model != null) {
       cariController.text = viewModel.model?.cariAdi ?? "";
       final map = {
-        if (viewModel.model?.cariKodu case final value?) "CariKodu": value,
+        "CariKodu": viewModel.model?.cariKodu ?? "",
         "EkranTipi": "L",
         if (bitisTarihiController.text case (!= "" && != null)) "BitisTarihi": bitisTarihiController.text,
         if (viewModel.donemTipiList[viewModel.donemTipiIndex] case final value) "DonemTipi": value,
@@ -345,9 +345,9 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
         "SIRALAMA": viewModel.sirala,
         if (baslangicTarihiController.text case (!= "" && != null)) "BaslamaTarihi": baslangicTarihiController.text,
         "IrsDahil": viewModel.irsDahil ? "E" : null,
-        "BelgeTuru": "",
-        "CariKodu": "",
         "BelgeNo": "",
+        "PickerBelgeTuru": "",
+        "TeslimCariKodu": "",
         if (viewModel.arrStokGrupKodu.ext.isNotNullOrEmpty)
           "ArrStokGrupKodu": jsonEncode(viewModel.arrStokGrupKodu.toList()),
         if (viewModel.arrStokKod1.ext.isNotNullOrEmpty) "ArrStokKod1": jsonEncode(viewModel.arrStokKod1.toList()),
@@ -356,7 +356,7 @@ final class _CariStokSatisOzetiViewState extends BaseState<CariStokSatisOzetiVie
         if (viewModel.arrStokKod4.ext.isNotNullOrEmpty) "ArrStokKod4": jsonEncode(viewModel.arrStokKod4.toList()),
         if (viewModel.arrStokKod5.ext.isNotNullOrEmpty) "ArrStokKod5": jsonEncode(viewModel.arrStokKod5.toList()),
       };
-      final result = await networkManager.dioPost<CariStokSatisOzetiModel>(
+      final result = await networkManager.dioGet<CariStokSatisOzetiModel>(
         path: ApiUrls.getFaturaKalemleri,
         bodyModel: CariStokSatisOzetiModel(),
         queryParameters: map,
