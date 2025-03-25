@@ -35,6 +35,9 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   @observable
   BaseSiparisEditModel siparisEditModel;
 
+  @observable
+  ObservableList<DizaynModel>? dizaynList;
+
   @computed
   Future<CariListesiModel?> get getCariModel async {
     if (cariModel != null) {
@@ -84,6 +87,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
       // },
     );
     if (result.isSuccess) {
+      dizaynList = result.dataList.asObservable();
       return result.dataList;
     } else {
       return [];

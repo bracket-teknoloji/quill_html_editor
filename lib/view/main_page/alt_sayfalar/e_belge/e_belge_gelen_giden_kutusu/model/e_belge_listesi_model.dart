@@ -237,6 +237,8 @@ extension EBelgeListesiModelExtensions on EBelgeListesiModel {
 
   bool get faturaIslendiMi => faturaIslendi == "E";
 
+  bool get internetFaturasiMi => internetFaturasi ?? false;
+
   bool get dekontIslendiMi => dekontIslendi == "E";
 
   bool get iptalEdildiMi => iptalEdildi == "E";

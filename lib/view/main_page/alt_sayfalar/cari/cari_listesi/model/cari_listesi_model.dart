@@ -499,6 +499,14 @@ final class CariListesiModel with NetworkManagerMixin {
   int? fiyatSirasi;
   @HiveField(145)
   int? ozelKapatmaIncKey;
+  @HiveField(146)
+  String? dznEars;
+  @HiveField(147)
+  String? dznEarsInt;
+  @HiveField(148)
+  String? dznEfat;
+  @HiveField(149)
+  String? dznEirs;
 
   @override
   CariListesiModel fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);

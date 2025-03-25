@@ -1838,13 +1838,18 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       vadeUyarisi: fields[140] as String?,
       webAdresi: fields[129] as String?,
       yurtIciDovizKodu: fields[125] as int?,
-    )..ozelKapatmaIncKey = fields[145] as int?;
+    )
+      ..ozelKapatmaIncKey = fields[145] as int?
+      ..dznEars = fields[146] as String?
+      ..dznEarsInt = fields[147] as String?
+      ..dznEfat = fields[148] as String?
+      ..dznEirs = fields[149] as String?;
   }
 
   @override
   void write(BinaryWriter writer, CariListesiModel obj) {
     writer
-      ..writeByte(144)
+      ..writeByte(148)
       ..writeByte(0)
       ..write(obj.cariKodu)
       ..writeByte(1)
@@ -2132,7 +2137,15 @@ class CariListesiModelAdapter extends TypeAdapter<CariListesiModel> {
       ..writeByte(144)
       ..write(obj.fiyatSirasi)
       ..writeByte(145)
-      ..write(obj.ozelKapatmaIncKey);
+      ..write(obj.ozelKapatmaIncKey)
+      ..writeByte(146)
+      ..write(obj.dznEars)
+      ..writeByte(147)
+      ..write(obj.dznEarsInt)
+      ..writeByte(148)
+      ..write(obj.dznEfat)
+      ..writeByte(149)
+      ..write(obj.dznEirs);
   }
 
   @override
@@ -2298,7 +2311,12 @@ CariListesiModel _$CariListesiModelFromJson(Map<String, dynamic> json) =>
       vadeUyarisi: json['VADE_UYARISI'] as String?,
       webAdresi: json['WEB_ADRESI'] as String?,
       yurtIciDovizKodu: (json['YURT_ICI_DOVIZ_KODU'] as num?)?.toInt(),
-    )..ozelKapatmaIncKey = (json['OZEL_KAPATMA_INC_KEY'] as num?)?.toInt();
+    )
+      ..ozelKapatmaIncKey = (json['OZEL_KAPATMA_INC_KEY'] as num?)?.toInt()
+      ..dznEars = json['DZN_EARS'] as String?
+      ..dznEarsInt = json['DZN_EARS_INT'] as String?
+      ..dznEfat = json['DZN_EFAT'] as String?
+      ..dznEirs = json['DZN_EIRS'] as String?;
 
 Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
     <String, dynamic>{
@@ -2467,6 +2485,10 @@ Map<String, dynamic> _$CariListesiModelToJson(CariListesiModel instance) =>
       if (instance.fiyatSirasi case final value?) 'FIYAT_SIRASI': value,
       if (instance.ozelKapatmaIncKey case final value?)
         'OZEL_KAPATMA_INC_KEY': value,
+      if (instance.dznEars case final value?) 'DZN_EARS': value,
+      if (instance.dznEarsInt case final value?) 'DZN_EARS_INT': value,
+      if (instance.dznEfat case final value?) 'DZN_EFAT': value,
+      if (instance.dznEirs case final value?) 'DZN_EIRS': value,
     };
 
 BakiyeModel _$BakiyeModelFromJson(Map<String, dynamic> json) => BakiyeModel()

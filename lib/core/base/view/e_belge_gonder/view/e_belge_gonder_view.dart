@@ -261,7 +261,10 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                     builder:
                         (_) => SwitchListTile.adaptive(
                           value: model.internetFaturasi ?? false,
-                          onChanged: viewModel.setInternetFaturasi,
+                          onChanged: (value) {
+                            viewModel.setInternetFaturasi(value);
+                            getDizayn(otomatikSec: true);
+                          },
                           title: const Text("İnternet Tipli"),
                         ),
                   ),
@@ -467,24 +470,52 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
   }
 
   Future<void> getDizayn({bool? otomatikSec}) async {
-    final result = await viewModel.getDizayn();
-    if (result.length == 1 && (otomatikSec ?? false)) {
-      _dizaynController.text = result.firstOrNull?.dizaynAdi ?? "";
-      viewModel.model.dizaynAdi = result.firstOrNull?.dizaynKodu;
-      viewModel.setDizaynNo(result.firstOrNull?.id ?? 0);
+    if (viewModel.dizaynList.ext.isNullOrEmpty) {
+      await viewModel.getDizayn();
+    }
+    final dizaynList = viewModel.dizaynList ?? <DizaynModel>[];
+    if (otomatikSec ?? false) {
+      DizaynModel? dizaynModel;
+      if (dizaynList.length == 1) {
+        _dizaynController.text = dizaynList.firstOrNull?.dizaynAdi ?? "";
+        viewModel.model.dizaynAdi = dizaynList.firstOrNull?.dizaynKodu;
+        viewModel.setDizaynNo(dizaynList.firstOrNull?.id ?? 0);
+      }
+      if (viewModel.model.eFaturaMi) {
+        dizaynModel = dizaynList.firstWhereOrNull((element) => element.dizaynKodu == widget.model.cariModel?.dznEfat);
+      }
+      if (viewModel.model.eArsivMi) {
+        if (viewModel.model.internetFaturasiMi) {
+          dizaynModel = dizaynList
+              .where((element) => (element.modulId) == (viewModel.model.internetFaturasiMi ? 101 : 100))
+              .toList()
+              .firstWhereOrNull((element) => element.dizaynKodu == widget.model.cariModel?.dznEarsInt);
+        } else {
+          dizaynModel = dizaynList.firstWhereOrNull((element) => element.dizaynKodu == widget.model.cariModel?.dznEars);
+        }
+      }
+      if (viewModel.model.eIrsaliyeMi) {
+        dizaynModel = dizaynList.firstWhereOrNull((element) => element.dizaynKodu == widget.model.cariModel?.dznEirs);
+      }
+      if (dizaynModel != null) {
+        viewModel.setDizaynNo(dizaynModel.id ?? 0);
+        _dizaynController.text = dizaynModel.dizaynAdi ?? "";
+        viewModel.model.dizaynAdi = dizaynModel.dizaynKodu;
+      }
     } else {
-      if (result.any((element) => element.varsayilanMi ?? false) && (otomatikSec ?? false)) {
-        _dizaynController.text = result.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynAdi ?? "";
-        viewModel.model.dizaynAdi = result.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynKodu;
-        viewModel.setDizaynNo(result.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.id ?? 0);
+      if (dizaynList.any((element) => element.varsayilanMi ?? false) && (otomatikSec ?? false)) {
+        _dizaynController.text =
+            dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynAdi ?? "";
+        viewModel.model.dizaynAdi = dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynKodu;
+        viewModel.setDizaynNo(dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.id ?? 0);
         return;
       }
       final selectedDizaynModel = await bottomSheetDialogManager.showRadioBottomSheetDialog(
         context,
         title: "Dizayn Seçiniz",
         groupValue: viewModel.model.dizaynNo,
-        children: List.generate(result.length, (index) {
-          final DizaynModel dizaynModel = result[index];
+        children: List.generate(dizaynList.length, (index) {
+          final DizaynModel dizaynModel = dizaynList[index];
           return BottomSheetModel(
             title: dizaynModel.dizaynTamAd,
             description: dizaynModel.id.toStringIfNotNull,

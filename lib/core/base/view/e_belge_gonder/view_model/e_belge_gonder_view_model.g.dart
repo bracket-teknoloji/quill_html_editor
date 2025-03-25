@@ -81,6 +81,22 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
     });
   }
 
+  late final _$dizaynListAtom =
+      Atom(name: '_EBelgeGonderViewModelBase.dizaynList', context: context);
+
+  @override
+  ObservableList<DizaynModel>? get dizaynList {
+    _$dizaynListAtom.reportRead();
+    return super.dizaynList;
+  }
+
+  @override
+  set dizaynList(ObservableList<DizaynModel>? value) {
+    _$dizaynListAtom.reportWrite(value, super.dizaynList, () {
+      super.dizaynList = value;
+    });
+  }
+
   late final _$getDizaynAsyncAction =
       AsyncAction('_EBelgeGonderViewModelBase.getDizayn', context: context);
 
@@ -238,6 +254,7 @@ model: ${model},
 cariModel: ${cariModel},
 eIrsaliyeModel: ${eIrsaliyeModel},
 siparisEditModel: ${siparisEditModel},
+dizaynList: ${dizaynList},
 getCariModel: ${getCariModel}
     ''';
   }
