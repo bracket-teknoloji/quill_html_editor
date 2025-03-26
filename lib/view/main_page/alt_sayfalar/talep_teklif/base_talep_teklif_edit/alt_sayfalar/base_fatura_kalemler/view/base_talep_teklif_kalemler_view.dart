@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -363,6 +364,10 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
                 Get.back();
                 return dialogManager.showStokGridViewDialog(
                   StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "",
+                cariModel: CariListesiModel(
+                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                  cariAdi: BaseSiparisEditModel.instance.cariAdi,
+                ),
                 );
               },
             ),
