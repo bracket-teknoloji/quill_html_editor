@@ -1,3 +1,4 @@
+import "package:animated_text_kit/animated_text_kit.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
@@ -83,7 +84,8 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
         islemTipi: widget.islemTipi,
         raporlar: getRaporList(widget.islemTipi),
         siparisTipi: widget.siparisTipi,
-        model: widget.cariListesiModel ?? widget.model,
+        model: widget.model,
+        cariModel: widget.cariListesiModel,
       );
       viewModel.setGridItemModel(islemlerResult.islemlerList.nullCheckWithGeneric);
     }
@@ -113,9 +115,16 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
           ),
           Expanded(
             child: SizedBox(
-              child: Text(
-                widget.title ?? loc.generalStrings.actions,
-                style: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis),
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  TypewriterAnimatedText(
+                    widget.title ?? loc.generalStrings.actions,
+                    speed: const Duration(milliseconds: 100),
+                    textStyle: theme.appBarTheme.titleTextStyle?.copyWith(overflow: TextOverflow.ellipsis),
+                  ),
+                ],
+                totalRepeatCount: 1,
+                displayFullTextOnTap: true,
               ).paddingOnly(left: UIHelper.midSize),
             ),
           ),
@@ -182,10 +191,7 @@ final class _CustomAnimatedGridViewState extends BaseState<CustomAnimatedGridVie
                                           if (item.route != null && item.menuTipi != "SR") {
                                             Get
                                               ..back()
-                                              ..toNamed(
-                                                item.route ?? "",
-                                                arguments: widget.cariListesiModel ?? widget.model,
-                                              );
+                                              ..toNamed(item.route ?? "", arguments: widget.model);
                                           } else {
                                             Get.back();
                                             final result = await item.onTap?.call();
