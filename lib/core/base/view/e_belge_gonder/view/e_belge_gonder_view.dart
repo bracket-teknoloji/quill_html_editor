@@ -283,14 +283,11 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
                   children: [
                     if (!viewModel.siparisEditModel.taslakMi && viewModel.siparisEditModel.eIrsaliyeSerisindenMi)
                       Expanded(
-                        child: Observer(
-                          builder:
-                              (_) => ElevatedButton.icon(
-                                onPressed: () async => await getEIrsaliyeBilgiler(),
-                                label: const Text("E-İrsaliye Bilgileri"),
-                                icon: const Icon(Icons.save_outlined),
-                              ).paddingAll(UIHelper.lowSize),
-                        ),
+                        child: ElevatedButton.icon(
+                          onPressed: () async => await getEIrsaliyeBilgiler(),
+                          label: const Text("E-İrsaliye Bilgileri"),
+                          icon: const Icon(Icons.save_outlined),
+                        ).paddingAll(UIHelper.lowSize),
                       ),
                     Expanded(
                       child: Observer(
@@ -473,8 +470,17 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     if (viewModel.dizaynList.ext.isNullOrEmpty) {
       await viewModel.getDizayn();
     }
-    final dizaynList = viewModel.dizaynList ?? <DizaynModel>[];
+
+    final dizaynList =
+        (viewModel.dizaynList ?? <DizaynModel>[]).where((element) => element.modulId == modulID).toList();
     if (otomatikSec ?? false) {
+      if (dizaynList.any((element) => element.varsayilanMi ?? false) && viewModel.model.dizaynNo == null) {
+        _dizaynController.text =
+            dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynAdi ?? "";
+        viewModel.model.dizaynAdi = dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynKodu;
+        viewModel.setDizaynNo(dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.id ?? 0);
+        return;
+      }
       DizaynModel? dizaynModel;
       if (dizaynList.length == 1) {
         _dizaynController.text = dizaynList.firstOrNull?.dizaynAdi ?? "";
@@ -483,18 +489,15 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
       }
       if (viewModel.model.eFaturaMi) {
         dizaynModel = dizaynList.firstWhereOrNull((element) => element.dizaynKodu == widget.model.cariModel?.dznEfat);
-      }
-      if (viewModel.model.eArsivMi) {
+      } else if (viewModel.model.eArsivMi) {
         if (viewModel.model.internetFaturasiMi) {
-          dizaynModel = dizaynList
-              .where((element) => (element.modulId) == (viewModel.model.internetFaturasiMi ? 101 : 100))
-              .toList()
-              .firstWhereOrNull((element) => element.dizaynKodu == widget.model.cariModel?.dznEarsInt);
+          dizaynModel = dizaynList.toList().firstWhereOrNull(
+            (element) => element.dizaynKodu == widget.model.cariModel?.dznEarsInt,
+          );
         } else {
           dizaynModel = dizaynList.firstWhereOrNull((element) => element.dizaynKodu == widget.model.cariModel?.dznEars);
         }
-      }
-      if (viewModel.model.eIrsaliyeMi) {
+      } else if (viewModel.model.eIrsaliyeMi) {
         dizaynModel = dizaynList.firstWhereOrNull((element) => element.dizaynKodu == widget.model.cariModel?.dznEirs);
       }
       if (dizaynModel != null) {
@@ -503,13 +506,6 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
         viewModel.model.dizaynAdi = dizaynModel.dizaynKodu;
       }
     } else {
-      if (dizaynList.any((element) => element.varsayilanMi ?? false) && (otomatikSec ?? false)) {
-        _dizaynController.text =
-            dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynAdi ?? "";
-        viewModel.model.dizaynAdi = dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.dizaynKodu;
-        viewModel.setDizaynNo(dizaynList.firstWhereOrNull((element) => element.varsayilanMi ?? false)?.id ?? 0);
-        return;
-      }
       final selectedDizaynModel = await bottomSheetDialogManager.showRadioBottomSheetDialog(
         context,
         title: "Dizayn Seçiniz",
@@ -544,5 +540,12 @@ final class _EBelgeGonderViewState extends BaseState<EBelgeGonderView> {
     if (viewModel.siparisEditModel.eFaturaSerisindenMi) return yetkiController.ebelgeEFaturaGonder;
     if (viewModel.siparisEditModel.eIrsaliyeSerisindenMi) return yetkiController.ebelgeEIrsaliyeGonder;
     return false;
+  }
+
+  int get modulID {
+    if (viewModel.siparisEditModel.eArsivSerisindenMi) return viewModel.model.internetFaturasiMi ? 101 : 100;
+    if (viewModel.siparisEditModel.eFaturaSerisindenMi) return 99;
+    if (viewModel.siparisEditModel.eIrsaliyeSerisindenMi) return 104;
+    return 0;
   }
 }

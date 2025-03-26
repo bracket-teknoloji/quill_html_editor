@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/stok/stok_liste/model/stok_listesi_model.dart";
@@ -493,7 +494,13 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                       (item) => Card(
                         child: ListTile(
                           onLongPress: () async {
-                            dialogManager.showStokGridViewDialog(await getSelectedData(item));
+                            dialogManager.showStokGridViewDialog(
+                              await getSelectedData(item),
+                              cariModel:
+                                  instance.cariKodu == null ? null : CariListesiModel()
+                                    ?..cariKodu = instance.cariKodu
+                                    ..cariAdi = instance.cariAdi,
+                            );
                           },
                           onTap: () async {
                             if (item.kilitliMi) {

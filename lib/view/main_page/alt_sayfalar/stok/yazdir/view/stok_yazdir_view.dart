@@ -400,7 +400,7 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
         final pdfModel = result.dataList.first;
         if (kDebugMode) {
           DIManager.read<SewooPrinter>().printPDF(
-            base64Decode(pdfModel.byteData ?? "").toList(),
+            base64Decode(pdfModel.byteData ?? ""),
             (pdfModel.reportWidth ?? 70).toInt(),
             (pdfModel.reportHeight ?? 70).toInt(),
           );
