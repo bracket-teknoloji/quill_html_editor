@@ -442,6 +442,21 @@ final class PickerMaterialApp extends StatelessWidget {
                   cariModel: Get.arguments is CariListesiModel ? Get.arguments : null,
                 ),
           ),
+          GetPage(
+            name: "/stokCariHareketleri",
+            page:
+                () {
+                  if (Get.arguments is List) {
+                    final stokModel = Get.arguments[0] as StokListesiModel;
+                    final cariModel = Get.arguments[1] as CariListesiModel;
+                    return StokHareketleriView(model: stokModel, cariModel: cariModel);
+                  }
+                  return StokHareketleriView(
+                  model: Get.arguments is StokListesiModel ? Get.arguments : null,
+                  cariModel: Get.arguments is CariListesiModel ? Get.arguments : null,
+                );
+                },
+          ),
           GetPage(name: "/stokYeniKayit", page: () => StokYeniKayitView(model: Get.arguments)),
           GetPage(name: "/fiyatOzeti", page: () => FiyatOzetiView(model: Get.arguments)),
           GetPage(name: "/paketleme", page: PaketlemeListesiView.new),

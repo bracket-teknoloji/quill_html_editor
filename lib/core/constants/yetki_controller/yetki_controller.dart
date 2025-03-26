@@ -788,6 +788,15 @@ final class YetkiController {
             false,
   );
 
+  bool talepTeklifSatisTalebiAciklamaAlanlari(int index) => _isTrue(
+    _profilYetkiModel?.taltekStalAciklamaAlanlari == null
+        ? false
+        : (index < 1
+                ? _profilYetkiModel?.taltekStalAciklamaAlanlari?.isNotEmpty
+                : _profilYetkiModel?.taltekStalAciklamaAlanlari?.contains(index)) ??
+            false,
+  );
+
   bool taltekOnayIslemleri(String? belgeTuru) {
     if (belgeTuru == "STEK") {
       return stekOnayIslemleri;
@@ -897,6 +906,7 @@ final class YetkiController {
     EditTipiEnum.ambarCikisi => transferLokalAcAciklamaAlanlari(index),
     EditTipiEnum.satisTeklifi => talepTeklifSatisTeklifiAciklamaAlanlari(index),
     EditTipiEnum.alisTalebi => talepTeklifAlisTalebiAciklamaAlanlari(index),
+    EditTipiEnum.satisTalebi => talepTeklifSatisTalebiAciklamaAlanlari(index),
     EditTipiEnum.satici => true,
     EditTipiEnum.depoTransferi || EditTipiEnum.olcumdenDepoTransferi => transferDatAciklamaAlanlari(index),
     _ => false,

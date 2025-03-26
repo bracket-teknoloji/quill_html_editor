@@ -1,5 +1,6 @@
 import "dart:developer";
 
+import "package:flutter/foundation.dart";
 import "package:get_it/get_it.dart";
 import "package:picker/core/init/bluetooth/bluetooth_manager.dart";
 import "package:picker/core/init/cache/cache_manager.dart";
@@ -17,7 +18,7 @@ abstract final class DIManager {
       ),
     );
     await lazyRegisterer(BluetoothManager());
-    await lazyRegisterer(SewooPrinter());
+    if (kDebugMode) await lazyRegisterer(SewooPrinter());
   }
 
   static Future<void> lazyRegisterer<T extends InjectableInterface>(T object) async {

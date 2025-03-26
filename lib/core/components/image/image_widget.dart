@@ -1,4 +1,9 @@
+import "dart:developer";
+
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
+import "package:picker/main.dart";
 
 import "../../base/state/base_state.dart";
 import "../../constants/ui_helper/ui_helper.dart";
@@ -24,7 +29,11 @@ final class _ImageWidgetState extends BaseState<ImageWidget> with AutomaticKeepA
         if (snapshot.hasData) {
           child = InkWell(
             borderRadius: UIHelper.lowBorderRadius,
-            onTap: widget.onTap,
+            onTap: () {
+              widget.onTap?.call();
+              log(snapshot.data!.bytes.toString());
+              if (kDebugMode) DIManager.read<SewooPrinter>().printImage(snapshot.data!.bytes);
+            },
             child: ClipRRect(
               borderRadius: UIHelper.lowBorderRadius,
               child: Container(
