@@ -3,7 +3,7 @@ description: Yeni Picker Deneyimi!
 
 publish_to: "none"
 
-version: 1.9.4+301
+version: 1.9.5+301
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
@@ -86,7 +86,7 @@ dependencies:
     path: packages/quill_html_editor
   # quilll_html_editor_v2:
   #   path: packages/quill_html_editor_v2  
-  freezed_annotation: ^2.4.1
+  freezed_annotation: ^3.0.0
   uuid: ^4.1.0
   number_text_input_formatter: ^1.0.0+7
   talker_dio_logger: ^4.0.2
@@ -121,12 +121,12 @@ dev_dependencies:
   copy_with_extension_gen: ^6.0.0
   flutter_launcher_icons: ^0.14.1
   flutter_lints: ^5.0.0
-  flutter_native_splash: ^2.3.3
+  # flutter_native_splash: ^2.3.3
   hive_generator: ^2.0.1
   mobx_codegen: ^2.6.1
   change_app_package_name: ^1.1.0
   rename: ^3.0.0
-  freezed: ^2.5.2
+  freezed: ^3.0.0-0.0.dev
   injectable_generator: ^2.3.0
   flutter_gen_runner: ^5.3.2
   very_good_analysis: ^7.0.0
@@ -150,18 +150,18 @@ flutter_launcher_icons:
     generate: true
     image_path: "assets/app_icon/beyaz_1024.png"
 
-flutter_native_splash:
-  color: "#ffffff"
-  color_dark: "#201A19"
-  image: "assets/app_icon/beyaz_400.png"
-  image_dark: "assets/app_icon/beyaz_400.png"
-  fill: false
-  android: true
-  ios: true
-  web: true
-  macos: false
-  windows: true
-  linux: false
+# flutter_native_splash:
+#   color: "#ffffff"
+#   color_dark: "#201A19"
+#   image: "assets/app_icon/beyaz_400.png"
+#   image_dark: "assets/app_icon/beyaz_400.png"
+#   fill: false
+#   android: true
+#   ios: true
+#   web: true
+#   macos: false
+#   windows: true
+#   linux: false
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
