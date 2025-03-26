@@ -148,7 +148,7 @@ class SewooSetup {
     let printImageChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.picker.Sewoo.printImage\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       printImageChannel.setMessageHandler { message, reply in
-        let args = message as! [Any?]
+        
         let imageArg = args[0] as! [Int64]
         api.printImage(image: imageArg) { result in
           switch result {

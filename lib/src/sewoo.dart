@@ -16,8 +16,8 @@ class _PigeonCodec extends StandardMessageCodec {
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is int) {
-      buffer.putUint8(4);
-      buffer.putInt64(value);
+      buffer..putUint8(4)
+      ..putInt64(value);
     } else {
       super.writeValue(buffer, value);
     }

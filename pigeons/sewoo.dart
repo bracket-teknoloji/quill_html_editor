@@ -3,7 +3,7 @@ import "package:pigeon/pigeon.dart";
 @ConfigurePigeon(
   PigeonOptions(
     kotlinOptions: KotlinOptions(package: "com.bracket25.sewoo"),
-    swiftOptions: SwiftOptions(fileSpecificClassNameComponent: "Sewoo", ),
+    swiftOptions: SwiftOptions(fileSpecificClassNameComponent: "Sewoo"),
     dartOptions: DartOptions(),
     dartOut: "lib/src/sewoo.dart",
     swiftOut: "ios/Runner/Sewoo.generated.swift",
