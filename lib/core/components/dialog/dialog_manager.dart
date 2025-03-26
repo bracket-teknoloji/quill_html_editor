@@ -432,6 +432,7 @@ final class DialogManager {
   Future<dynamic> showStokGridViewDialog(
     StokListesiModel? model, {
     IslemTipiEnum? tip,
+    CariListesiModel? cariModel,
     Function(bool)? onSelected,
   }) async {
     if (_yetkiController.stokListesi) {
@@ -439,6 +440,7 @@ final class DialogManager {
         body: CustomAnimatedGridView<StokListesiModel>(
           model: model,
           title: model?.stokAdi,
+          cariListesiModel: cariModel,
           islemTipi: tip ?? IslemTipiEnum.stok,
           onSelected: onSelected,
         ),

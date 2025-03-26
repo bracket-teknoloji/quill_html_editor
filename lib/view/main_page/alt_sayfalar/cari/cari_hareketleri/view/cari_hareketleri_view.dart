@@ -118,7 +118,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
           onPressed: () {
             dialogManager.showGridViewDialog(
               CustomAnimatedGridView(
-                cariListesiModel: widget.cari,
+                model: widget.cari,
                 islemTipi: IslemTipiEnum.cari,
                 title: widget.cari?.cariAdi,
                 onSelected: (value) async {

@@ -59,12 +59,17 @@ final class IslemlerMenuItemConstants<T> {
     required this.islemTipi,
     List<GridItemModel>? raporlar,
     this.model,
+    this.cariModel,
     this.siparisTipi,
   }) {
     if (islemTipi == IslemTipiEnum.stok) {
       islemlerList
         ..add(stokKarti)
-        ..add(kopyala)
+        ..add(kopyala);
+      if (cariModel != null) {
+        islemlerList.add(stokCariHareketleri(cariModel!));
+      }
+      islemlerList
         ..add(stokHareketleri)
         ..add(stokYazdir)
         ..add(hucreHareketleri)
@@ -293,6 +298,7 @@ final class IslemlerMenuItemConstants<T> {
   EditTipiEnum? siparisTipi;
   List<GridItemModel> islemlerList = [];
   T? model;
+  CariListesiModel? cariModel;
   // T? get model2 => model;
   DialogManager get _dialogManager => DialogManager();
   NetworkManager get _networkManager => NetworkManager();
@@ -313,6 +319,23 @@ final class IslemlerMenuItemConstants<T> {
     iconData: Icons.sync_alt_outlined,
     title: "Stok Hareketleri",
     onTap: () async => Get.toNamed("mainPage/stokHareketleri", arguments: model),
+  );
+
+  GridItemModel stokCariHareketleri(CariListesiModel cariModel) => GridItemModel.islemler(
+    isEnabled: _yetkiController.stokHareketleriStokHareketleri,
+    iconData: Icons.autorenew_outlined,
+    title: "Stok Cari Hareketleri",
+    onTap:
+        () async => Get.toNamed(
+          "mainPage/stokCariHareketleri",
+          arguments: [
+            // ilki stok model olmak zorunda
+            model,
+            // ikincinin de cari model olması gerekiyor
+            // O yüzden bu route'a yönlendirme yapma.
+            cariModel,
+          ],
+        ),
   );
   GridItemModel get cariAktivite => GridItemModel.islemler(
     iconData: Icons.sync_alt_outlined,

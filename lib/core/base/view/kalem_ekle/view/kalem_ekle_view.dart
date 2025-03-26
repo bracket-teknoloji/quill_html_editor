@@ -8,6 +8,7 @@ import "package:picker/core/base/model/ek_rehber_request_model.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
 import "package:picker/core/base/view/kalem_ekle/model/stok_fiyati_model.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 import "package:text_scroll/text_scroll.dart";
 
@@ -223,7 +224,13 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
 
   FloatingActionButton fab() => FloatingActionButton(
     onPressed: () async {
-      dialogManager.showStokGridViewDialog(viewModel.model);
+      dialogManager.showStokGridViewDialog(
+        viewModel.model,
+        cariModel: CariListesiModel(
+          cariKodu: BaseSiparisEditModel.instance.cariKodu,
+          cariAdi: BaseSiparisEditModel.instance.cariAdi,
+        ),
+      );
     },
     child: const Icon(Icons.open_in_new_outlined),
   );

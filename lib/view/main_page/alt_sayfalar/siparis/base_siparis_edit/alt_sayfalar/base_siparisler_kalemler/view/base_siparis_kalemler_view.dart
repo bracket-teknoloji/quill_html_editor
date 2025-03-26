@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../core/base/state/base_state.dart";
@@ -343,16 +344,6 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
               );
             },
           ),
-        if (viewModel.kalemList?[index].seriliMi ?? false)
-          BottomSheetModel(
-            title: "Seri Listesi",
-            iconWidget: Icons.dynamic_form_outlined,
-            onTap: () {
-              Get
-                ..back()
-                ..toNamed("/seriListesiOzel", arguments: model);
-            },
-          ),
         BottomSheetModel(
           title: "Stok İşlemleri",
           iconWidget: Icons.list_alt_outlined,
@@ -360,6 +351,10 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
             Get.back();
             return dialogManager.showStokGridViewDialog(
               StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "",
+                cariModel: CariListesiModel(
+                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                  cariAdi: BaseSiparisEditModel.instance.cariAdi,
+                ),
             );
           },
         ),

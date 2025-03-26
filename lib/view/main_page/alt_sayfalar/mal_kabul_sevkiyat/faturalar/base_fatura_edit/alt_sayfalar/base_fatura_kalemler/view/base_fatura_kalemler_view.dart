@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/add_company/model/account_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -383,7 +384,7 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
               );
             },
           ),
-        if (model.seriliMi)
+        if (model.seriTamamMi)
           BottomSheetModel(
             title: "Seri Listesi",
             iconWidget: Icons.dynamic_form_outlined,
@@ -459,7 +460,13 @@ final class _BaseFaturaKalemlerViewState extends BaseState<BaseFaturaKalemlerVie
               if (stokList == null) {
                 return;
               }
-              return dialogManager.showStokGridViewDialog(stokList);
+              return dialogManager.showStokGridViewDialog(
+                stokList,
+                cariModel: CariListesiModel(
+                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                  cariAdi: BaseSiparisEditModel.instance.cariAdi,
+                ),
+              );
             },
           ),
       ],

@@ -545,7 +545,7 @@ final class _CariListesiViewState extends BaseState<CariListesiView> {
               Get.back();
               dialogManager.showGridViewDialog(
                 CustomAnimatedGridView(
-                  cariListesiModel: object,
+                  model: object,
                   islemTipi: IslemTipiEnum.cariRapor,
                   title: object.cariAdi ?? object.cariKodu,
                 ),
