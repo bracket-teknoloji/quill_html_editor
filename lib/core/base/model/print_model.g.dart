@@ -18,6 +18,7 @@ _$PrintModelImpl _$$PrintModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DicParams.fromJson(json['DIC_PARAMS'] as Map<String, dynamic>),
       standart: json['STANDART'] as bool?,
+      exportTipi: json['EXPORT_TIPI'] as String?,
     );
 
 Map<String, dynamic> _$$PrintModelImplToJson(_$PrintModelImpl instance) =>
@@ -30,4 +31,5 @@ Map<String, dynamic> _$$PrintModelImplToJson(_$PrintModelImpl instance) =>
       if (instance.yaziciTipi case final value?) 'YAZICI_TIPI': value,
       if (instance.dicParams?.toJson() case final value?) 'DIC_PARAMS': value,
       if (instance.standart case final value?) 'STANDART': value,
+      if (instance.exportTipi case final value?) 'EXPORT_TIPI': value,
     };

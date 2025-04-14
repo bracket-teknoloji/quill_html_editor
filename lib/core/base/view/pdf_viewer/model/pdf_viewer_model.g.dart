@@ -139,5 +139,6 @@ Map<String, dynamic> _$$DicParamsImplToJson(_$DicParamsImpl instance) =>
       if (instance.kalemId case final value?) 'KALEM_ID': value,
       if (instance.tempBelgeId case final value?) 'TEMP_BELGE_ID': value,
       if (instance.irsDahil case final value?) 'IRS_DAHIL': value,
-      'DOVIZ_TIPLERI': _dovizTipleriToJson(instance.dovizTipleri),
+      if (_dovizTipleriToJson(instance.dovizTipleri) case final value?)
+        'DOVIZ_TIPLERI': value,
     };

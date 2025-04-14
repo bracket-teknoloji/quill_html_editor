@@ -64,10 +64,95 @@ private func nilOrValue<T>(_ value: Any?) -> T? {
   return value as! T?
 }
 
+/// Generated class from Pigeon that represents data sent in messages.
+struct PrinterList {
+  var printers: [PrinterDetails]
+
+
+  // swift-format-ignore: AlwaysUseLowerCamelCase
+  static func fromList(_ pigeonVar_list: [Any?]) -> PrinterList? {
+    let printers = pigeonVar_list[0] as! [PrinterDetails]
+
+    return PrinterList(
+      printers: printers
+    )
+  }
+  func toList() -> [Any?] {
+    return [
+      printers
+    ]
+  }
+}
+
+/// Generated class from Pigeon that represents data sent in messages.
+struct PrinterDetails {
+  var connected: Bool
+  var connectionID: Int64
+  var name: String
+  var modelNumber: String
+  var serialNumber: String
+  var width: Int64? = nil
+  var height: Int64? = nil
+
+
+  // swift-format-ignore: AlwaysUseLowerCamelCase
+  static func fromList(_ pigeonVar_list: [Any?]) -> PrinterDetails? {
+    let connected = pigeonVar_list[0] as! Bool
+    let connectionID = pigeonVar_list[1] as! Int64
+    let name = pigeonVar_list[2] as! String
+    let modelNumber = pigeonVar_list[3] as! String
+    let serialNumber = pigeonVar_list[4] as! String
+    let width: Int64? = nilOrValue(pigeonVar_list[5])
+    let height: Int64? = nilOrValue(pigeonVar_list[6])
+
+    return PrinterDetails(
+      connected: connected,
+      connectionID: connectionID,
+      name: name,
+      modelNumber: modelNumber,
+      serialNumber: serialNumber,
+      width: width,
+      height: height
+    )
+  }
+  func toList() -> [Any?] {
+    return [
+      connected,
+      connectionID,
+      name,
+      modelNumber,
+      serialNumber,
+      width,
+      height,
+    ]
+  }
+}
+
 private class SewooPigeonCodecReader: FlutterStandardReader {
+  override func readValue(ofType type: UInt8) -> Any? {
+    switch type {
+    case 129:
+      return PrinterList.fromList(self.readValue() as! [Any?])
+    case 130:
+      return PrinterDetails.fromList(self.readValue() as! [Any?])
+    default:
+      return super.readValue(ofType: type)
+    }
+  }
 }
 
 private class SewooPigeonCodecWriter: FlutterStandardWriter {
+  override func writeValue(_ value: Any) {
+    if let value = value as? PrinterList {
+      super.writeByte(129)
+      super.writeValue(value.toList())
+    } else if let value = value as? PrinterDetails {
+      super.writeByte(130)
+      super.writeValue(value.toList())
+    } else {
+      super.writeValue(value)
+    }
+  }
 }
 
 private class SewooPigeonCodecReaderWriter: FlutterStandardReaderWriter {
@@ -92,8 +177,9 @@ protocol Sewoo {
   func openPort() throws -> Bool
   func closePort() throws -> Bool
   func printText(text: String, completion: @escaping (Result<Bool, Error>) -> Void)
-  func printImage(image: [Int64], completion: @escaping (Result<Bool, Error>) -> Void)
-  func printPDF(pdfData: [Int64], width: Int64, height: Int64, completion: @escaping (Result<Bool, Error>) -> Void)
+  func printImage(image: FlutterStandardTypedData, width: Int64, height: Int64, completion: @escaping (Result<Bool, Error>) -> Void)
+  func printPDF(pdfData: FlutterStandardTypedData, width: Int64, height: Int64, completion: @escaping (Result<Bool, Error>) -> Void)
+  func checkConnectedAccessories() throws -> PrinterList?
 }
 
 /// Generated setup class from Pigeon to handle messages through the `binaryMessenger`.
@@ -148,9 +234,11 @@ class SewooSetup {
     let printImageChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.picker.Sewoo.printImage\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
     if let api = api {
       printImageChannel.setMessageHandler { message, reply in
-        
-        let imageArg = args[0] as! [Int64]
-        api.printImage(image: imageArg) { result in
+        let args = message as! [Any?]
+        let imageArg = args[0] as! FlutterStandardTypedData
+        let widthArg = args[1] as! Int64
+        let heightArg = args[2] as! Int64
+        api.printImage(image: imageArg, width: widthArg, height: heightArg) { result in
           switch result {
           case .success(let res):
             reply(wrapResult(res))
@@ -166,7 +254,7 @@ class SewooSetup {
     if let api = api {
       printPDFChannel.setMessageHandler { message, reply in
         let args = message as! [Any?]
-        let pdfDataArg = args[0] as! [Int64]
+        let pdfDataArg = args[0] as! FlutterStandardTypedData
         let widthArg = args[1] as! Int64
         let heightArg = args[2] as! Int64
         api.printPDF(pdfData: pdfDataArg, width: widthArg, height: heightArg) { result in
@@ -180,6 +268,19 @@ class SewooSetup {
       }
     } else {
       printPDFChannel.setMessageHandler(nil)
+    }
+    let checkConnectedAccessoriesChannel = FlutterBasicMessageChannel(name: "dev.flutter.pigeon.picker.Sewoo.checkConnectedAccessories\(channelSuffix)", binaryMessenger: binaryMessenger, codec: codec)
+    if let api = api {
+      checkConnectedAccessoriesChannel.setMessageHandler { _, reply in
+        do {
+          let result = try api.checkConnectedAccessories()
+          reply(wrapResult(result))
+        } catch {
+          reply(wrapError(error))
+        }
+      }
+    } else {
+      checkConnectedAccessoriesChannel.setMessageHandler(nil)
     }
   }
 }

@@ -130,6 +130,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
               raporOzelKod: widget.pdfData?.raporOzelKod ?? "",
               standart: true,
               etiketSayisi: 1,
+              dizaynId: widget.pdfData?.dizaynId,
               dicParams: widget.pdfData?.dicParams,
             );
             await bottomSheetDialogManager.showPrintBottomSheetDialog(context, printModel, false, false);

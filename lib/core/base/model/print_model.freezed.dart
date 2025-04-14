@@ -28,6 +28,7 @@ mixin _$PrintModel {
   String? get yaziciTipi => throw _privateConstructorUsedError;
   DicParams? get dicParams => throw _privateConstructorUsedError;
   bool? get standart => throw _privateConstructorUsedError;
+  String? get exportTipi => throw _privateConstructorUsedError;
 
   /// Serializes this PrintModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -53,7 +54,8 @@ abstract class $PrintModelCopyWith<$Res> {
       String? yaziciAdi,
       String? yaziciTipi,
       DicParams? dicParams,
-      bool? standart});
+      bool? standart,
+      String? exportTipi});
 
   $DicParamsCopyWith<$Res>? get dicParams;
 }
@@ -81,6 +83,7 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
     Object? yaziciTipi = freezed,
     Object? dicParams = freezed,
     Object? standart = freezed,
+    Object? exportTipi = freezed,
   }) {
     return _then(_value.copyWith(
       raporOzelKod: null == raporOzelKod
@@ -115,6 +118,10 @@ class _$PrintModelCopyWithImpl<$Res, $Val extends PrintModel>
           ? _value.standart
           : standart // ignore: cast_nullable_to_non_nullable
               as bool?,
+      exportTipi: freezed == exportTipi
+          ? _value.exportTipi
+          : exportTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -149,7 +156,8 @@ abstract class _$$PrintModelImplCopyWith<$Res>
       String? yaziciAdi,
       String? yaziciTipi,
       DicParams? dicParams,
-      bool? standart});
+      bool? standart,
+      String? exportTipi});
 
   @override
   $DicParamsCopyWith<$Res>? get dicParams;
@@ -176,6 +184,7 @@ class __$$PrintModelImplCopyWithImpl<$Res>
     Object? yaziciTipi = freezed,
     Object? dicParams = freezed,
     Object? standart = freezed,
+    Object? exportTipi = freezed,
   }) {
     return _then(_$PrintModelImpl(
       raporOzelKod: null == raporOzelKod
@@ -210,6 +219,10 @@ class __$$PrintModelImplCopyWithImpl<$Res>
           ? _value.standart
           : standart // ignore: cast_nullable_to_non_nullable
               as bool?,
+      exportTipi: freezed == exportTipi
+          ? _value.exportTipi
+          : exportTipi // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -225,7 +238,8 @@ class _$PrintModelImpl extends _PrintModel {
       this.yaziciAdi,
       this.yaziciTipi,
       this.dicParams,
-      this.standart})
+      this.standart,
+      this.exportTipi})
       : super._();
 
   factory _$PrintModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -248,6 +262,8 @@ class _$PrintModelImpl extends _PrintModel {
   final DicParams? dicParams;
   @override
   final bool? standart;
+  @override
+  final String? exportTipi;
 
   /// Create a copy of PrintModel
   /// with the given fields replaced by the non-null parameter values.
@@ -274,7 +290,8 @@ abstract class _PrintModel extends PrintModel {
       final String? yaziciAdi,
       final String? yaziciTipi,
       final DicParams? dicParams,
-      final bool? standart}) = _$PrintModelImpl;
+      final bool? standart,
+      final String? exportTipi}) = _$PrintModelImpl;
   _PrintModel._() : super._();
 
   factory _PrintModel.fromJson(Map<String, dynamic> json) =
@@ -296,6 +313,8 @@ abstract class _PrintModel extends PrintModel {
   DicParams? get dicParams;
   @override
   bool? get standart;
+  @override
+  String? get exportTipi;
 
   /// Create a copy of PrintModel
   /// with the given fields replaced by the non-null parameter values.

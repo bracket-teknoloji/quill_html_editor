@@ -45,12 +45,88 @@ class FlutterError (
   override val message: String? = null,
   val details: Any? = null
 ) : Throwable()
+
+/** Generated class from Pigeon that represents data sent in messages. */
+data class PrinterList (
+  val printers: List<PrinterDetails>
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): PrinterList {
+      val printers = pigeonVar_list[0] as List<PrinterDetails>
+      return PrinterList(printers)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      printers,
+    )
+  }
+}
+
+/** Generated class from Pigeon that represents data sent in messages. */
+data class PrinterDetails (
+  val connected: Boolean,
+  val connectionID: Long,
+  val name: String,
+  val modelNumber: String,
+  val serialNumber: String,
+  val width: Long? = null,
+  val height: Long? = null
+)
+ {
+  companion object {
+    fun fromList(pigeonVar_list: List<Any?>): PrinterDetails {
+      val connected = pigeonVar_list[0] as Boolean
+      val connectionID = pigeonVar_list[1] as Long
+      val name = pigeonVar_list[2] as String
+      val modelNumber = pigeonVar_list[3] as String
+      val serialNumber = pigeonVar_list[4] as String
+      val width = pigeonVar_list[5] as Long?
+      val height = pigeonVar_list[6] as Long?
+      return PrinterDetails(connected, connectionID, name, modelNumber, serialNumber, width, height)
+    }
+  }
+  fun toList(): List<Any?> {
+    return listOf(
+      connected,
+      connectionID,
+      name,
+      modelNumber,
+      serialNumber,
+      width,
+      height,
+    )
+  }
+}
 private open class SewooPigeonCodec : StandardMessageCodec() {
   override fun readValueOfType(type: Byte, buffer: ByteBuffer): Any? {
-    return     super.readValueOfType(type, buffer)
+    return when (type) {
+      129.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          PrinterList.fromList(it)
+        }
+      }
+      130.toByte() -> {
+        return (readValue(buffer) as? List<Any?>)?.let {
+          PrinterDetails.fromList(it)
+        }
+      }
+      else -> super.readValueOfType(type, buffer)
+    }
   }
   override fun writeValue(stream: ByteArrayOutputStream, value: Any?)   {
-    super.writeValue(stream, value)
+    when (value) {
+      is PrinterList -> {
+        stream.write(129)
+        writeValue(stream, value.toList())
+      }
+      is PrinterDetails -> {
+        stream.write(130)
+        writeValue(stream, value.toList())
+      }
+      else -> super.writeValue(stream, value)
+    }
   }
 }
 
@@ -64,8 +140,9 @@ interface Sewoo {
   fun openPort(): Boolean
   fun closePort(): Boolean
   fun printText(text: String, callback: (Result<Boolean>) -> Unit)
-  fun printImage(image: List<Long>, callback: (Result<Boolean>) -> Unit)
-  fun printPDF(pdfData: List<Long>, width: Long, height: Long, callback: (Result<Boolean>) -> Unit)
+  fun printImage(image: LongArray, width: Long, height: Long, callback: (Result<Boolean>) -> Unit)
+  fun printPDF(pdfData: LongArray, width: Long, height: Long, callback: (Result<Boolean>) -> Unit)
+  fun checkConnectedAccessories(): PrinterList?
 
   companion object {
     /** The codec used by Sewoo. */
@@ -131,8 +208,10 @@ interface Sewoo {
         if (api != null) {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
-            val imageArg = args[0] as List<Long>
-            api.printImage(imageArg) { result: Result<Boolean> ->
+            val imageArg = args[0] as LongArray
+            val widthArg = args[1] as Long
+            val heightArg = args[2] as Long
+            api.printImage(imageArg, widthArg, heightArg) { result: Result<Boolean> ->
               val error = result.exceptionOrNull()
               if (error != null) {
                 reply.reply(wrapError(error))
@@ -151,7 +230,7 @@ interface Sewoo {
         if (api != null) {
           channel.setMessageHandler { message, reply ->
             val args = message as List<Any?>
-            val pdfDataArg = args[0] as List<Long>
+            val pdfDataArg = args[0] as LongArray
             val widthArg = args[1] as Long
             val heightArg = args[2] as Long
             api.printPDF(pdfDataArg, widthArg, heightArg) { result: Result<Boolean> ->
@@ -163,6 +242,21 @@ interface Sewoo {
                 reply.reply(wrapResult(data))
               }
             }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.picker.Sewoo.checkConnectedAccessories$separatedMessageChannelSuffix", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped: List<Any?> = try {
+              listOf(api.checkConnectedAccessories())
+            } catch (exception: Throwable) {
+              wrapError(exception)
+            }
+            reply.reply(wrapped)
           }
         } else {
           channel.setMessageHandler(null)

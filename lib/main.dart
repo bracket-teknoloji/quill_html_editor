@@ -10,8 +10,6 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:picker/app/picker_app_imports.dart";
-import "package:picker/core/init/dependency_injection/intectable_interface.dart";
-import "package:picker/src/sewoo.dart";
 
 import "core/init/app_info/app_info.dart";
 import "core/init/cache/cache_manager.dart";
@@ -78,12 +76,4 @@ Future<void> firebaseInitialized() async {
       return true;
     };
   }
-}
-
-class SewooPrinter extends Sewoo implements InjectableInterface {
-  SewooPrinter() : super(messageChannelSuffix: "") {
-  openPort();
-  }
-  @override
-  Future<void> load() async {}
 }

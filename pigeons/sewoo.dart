@@ -21,8 +21,34 @@ abstract class Sewoo {
   bool printText(String text);
 
   @async
-  bool printImage(List<int> image);
+  bool printImage(Int64List image, int width, int height);
 
   @async
-  bool printPDF(List<int> pdfData, int width, int height);
+  bool printPDF(Int64List pdfData, int width, int height);
+
+  PrinterList? checkConnectedAccessories();
+}
+
+final class PrinterList {
+  PrinterList({required this.printers});
+  List<PrinterDetails> printers;
+}
+
+final class PrinterDetails {
+  PrinterDetails({
+    required this.connected,
+    required this.connectionID,
+    required this.name,
+    required this.modelNumber,
+    required this.serialNumber,
+    required this.width,
+    required this.height,
+  });
+  bool connected;
+  int connectionID;
+  String name;
+  String modelNumber;
+  String serialNumber;
+  int? width;
+  int? height;
 }

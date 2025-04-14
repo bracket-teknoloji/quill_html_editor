@@ -7,8 +7,7 @@ part "print_model.freezed.dart";
 part "print_model.g.dart";
 
 @freezed
-@immutable
-class PrintModel with _$PrintModel, NetworkManagerMixin {
+abstract class PrintModel with _$PrintModel, NetworkManagerMixin {
   factory PrintModel({
     required String raporOzelKod,
     int? dizaynId,
@@ -18,9 +17,11 @@ class PrintModel with _$PrintModel, NetworkManagerMixin {
     String? yaziciTipi,
     DicParams? dicParams,
     bool? standart,
+    String? exportTipi,
   }) = _PrintModel;
   PrintModel._();
 
+  // TODO export tipi bluetooth ise "IMG" olacak
   factory PrintModel.fromJson(Map<String, dynamic> json) => _$PrintModelFromJson(json);
 
   @override

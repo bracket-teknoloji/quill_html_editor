@@ -11,6 +11,60 @@ import "package:flutter/services.dart";
 PlatformException _createConnectionError(String channelName) =>
     PlatformException(code: "channel-error", message: 'Unable to establish connection on channel: "$channelName".');
 
+class PrinterList {
+  PrinterList({required this.printers});
+
+  List<PrinterDetails> printers;
+
+  Object encode() => <Object?>[printers];
+
+  static PrinterList decode(Object result) {
+    result as List<Object?>;
+    return PrinterList(printers: (result[0] as List<Object?>?)!.cast<PrinterDetails>());
+  }
+}
+
+class PrinterDetails {
+  PrinterDetails({
+    required this.connected,
+    required this.connectionID,
+    required this.name,
+    required this.modelNumber,
+    required this.serialNumber,
+    this.width,
+    this.height,
+  });
+
+  bool connected;
+
+  int connectionID;
+
+  String name;
+
+  String modelNumber;
+
+  String serialNumber;
+
+  int? width;
+
+  int? height;
+
+  Object encode() => <Object?>[connected, connectionID, name, modelNumber, serialNumber, width, height];
+
+  static PrinterDetails decode(Object result) {
+    result as List<Object?>;
+    return PrinterDetails(
+      connected: result[0]! as bool,
+      connectionID: result[1]! as int,
+      name: result[2]! as String,
+      modelNumber: result[3]! as String,
+      serialNumber: result[4]! as String,
+      width: result[5] as int?,
+      height: result[6] as int?,
+    );
+  }
+}
+
 class _PigeonCodec extends StandardMessageCodec {
   const _PigeonCodec();
   @override
@@ -18,6 +72,12 @@ class _PigeonCodec extends StandardMessageCodec {
     if (value is int) {
       buffer..putUint8(4)
       ..putInt64(value);
+    } else if (value is PrinterList) {
+      buffer.putUint8(129);
+      writeValue(buffer, value.encode());
+    } else if (value is PrinterDetails) {
+      buffer.putUint8(130);
+      writeValue(buffer, value.encode());
     } else {
       super.writeValue(buffer, value);
     }
@@ -26,6 +86,10 @@ class _PigeonCodec extends StandardMessageCodec {
   @override
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
+      case 129:
+        return PrinterList.decode(readValue(buffer)!);
+      case 130:
+        return PrinterDetails.decode(readValue(buffer)!);
       default:
         return super.readValueOfType(type, buffer);
     }
@@ -124,14 +188,15 @@ class Sewoo {
     }
   }
 
-  Future<bool> printImage(List<int> image) async {
+  Future<bool> printImage(Int64List image, int width, int height) async {
     final String pigeonVar_channelName = "dev.flutter.pigeon.picker.Sewoo.printImage$pigeonVar_messageChannelSuffix";
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
       pigeonChannelCodec,
       binaryMessenger: pigeonVar_binaryMessenger,
     );
-    final List<Object?>? pigeonVar_replyList = await pigeonVar_channel.send(<Object?>[image]) as List<Object?>?;
+    final List<Object?>? pigeonVar_replyList =
+        await pigeonVar_channel.send(<Object?>[image, width, height]) as List<Object?>?;
     if (pigeonVar_replyList == null) {
       throw _createConnectionError(pigeonVar_channelName);
     } else if (pigeonVar_replyList.length > 1) {
@@ -150,7 +215,7 @@ class Sewoo {
     }
   }
 
-  Future<bool> printPDF(List<int> pdfData, int width, int height) async {
+  Future<bool> printPDF(Int64List pdfData, int width, int height) async {
     final String pigeonVar_channelName = "dev.flutter.pigeon.picker.Sewoo.printPDF$pigeonVar_messageChannelSuffix";
     final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
       pigeonVar_channelName,
@@ -174,6 +239,28 @@ class Sewoo {
       );
     } else {
       return (pigeonVar_replyList[0] as bool?)!;
+    }
+  }
+
+  Future<PrinterList?> checkConnectedAccessories() async {
+    final String pigeonVar_channelName =
+        "dev.flutter.pigeon.picker.Sewoo.checkConnectedAccessories$pigeonVar_messageChannelSuffix";
+    final BasicMessageChannel<Object?> pigeonVar_channel = BasicMessageChannel<Object?>(
+      pigeonVar_channelName,
+      pigeonChannelCodec,
+      binaryMessenger: pigeonVar_binaryMessenger,
+    );
+    final List<Object?>? pigeonVar_replyList = await pigeonVar_channel.send(null) as List<Object?>?;
+    if (pigeonVar_replyList == null) {
+      throw _createConnectionError(pigeonVar_channelName);
+    } else if (pigeonVar_replyList.length > 1) {
+      throw PlatformException(
+        code: pigeonVar_replyList[0]! as String,
+        message: pigeonVar_replyList[1] as String?,
+        details: pigeonVar_replyList[2],
+      );
+    } else {
+      return (pigeonVar_replyList[0] as PrinterList?);
     }
   }
 }

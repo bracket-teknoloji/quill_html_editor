@@ -7,10 +7,10 @@ import "package:flutter_staggered_animations/flutter_staggered_animations.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/teklif_iste_model.dart";
+import "package:picker/core/init/bluetooth/sewoo_printer.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/location/location_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
-import "package:picker/main.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 
 import "../../../core/base/state/base_state.dart";

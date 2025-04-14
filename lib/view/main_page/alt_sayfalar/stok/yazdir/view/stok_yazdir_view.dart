@@ -4,8 +4,8 @@ import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/init/bluetooth/sewoo_printer.dart";
 import "package:picker/core/init/dependency_injection/di_manager.dart";
-import "package:picker/main.dart";
 
 import "../../../../../../core/base/state/base_state.dart";
 import "../../../../../../core/base/view/pdf_viewer/model/pdf_viewer_model.dart";
@@ -103,26 +103,24 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
         IconButton(
           icon: const Icon(Icons.picture_as_pdf_outlined),
           onPressed: () async {
-            if (formKey.currentState?.validate() == true) {
+            if (formKey.currentState?.validate() != true) {
               return;
             }
-            if (viewModel.printModel is NetFectDizaynList) {
-              // Get.back();
-              Get.to(
-                () => PDFViewerView(
-                  title: viewModel.printModel.raporOzelKod,
-                  pdfData: PdfModel(
-                    dizaynId: viewModel.printModel.dizaynId,
-                    raporOzelKod: viewModel.printModel.raporOzelKod,
-                    etiketSayisi: viewModel.printModel.etiketSayisi,
-                    dicParams: DicParams(stokKodu: widget.model?.stokKodu, belgeNo: ""),
-                  ),
+            // Get.back();
+            Get.to(
+              () => PDFViewerView(
+                title: viewModel.printModel.raporOzelKod,
+                pdfData: PdfModel(
+                  dizaynId: viewModel.printModel.dizaynId,
+                  raporOzelKod: viewModel.printModel.raporOzelKod,
+                  etiketSayisi: viewModel.printModel.etiketSayisi,
+                  dicParams: DicParams(stokKodu: widget.model?.stokKodu, belgeNo: ""),
                 ),
-              );
-            }
+              ),
+            );
           },
         ),
-        IconButton(icon: const Icon(Icons.print_outlined), onPressed: () async => postPrint()),
+        IconButton(icon: const Icon(Icons.print_outlined), onPressed: postPrint),
       ],
     ),
     body: Form(
@@ -358,25 +356,20 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
   }
 
   Future<void> setYazici() async {
-    final List<YaziciList>? yaziciList =
-        parametreModel.yaziciList
-            ?.where(
-              (element) =>
-                  profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == element.yaziciAdi) ??
-                  true,
-            )
-            .toList();
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+    // final List<YaziciList>? yaziciList =
+    //     parametreModel.yaziciList
+    //         ?.where(
+    //           (element) =>
+    //               profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == element.yaziciAdi) ??
+    //               true,
+    //         )
+    //         .toList();
+    final result = await bottomSheetDialogManager.showYaziciBottomSheetDialog(
       context,
-      title: "Yazıcı",
-      children: List.generate(
-        yaziciList?.length ?? 0,
-        (index) => BottomSheetModel(
-          title: yaziciList?[index].aciklama ?? yaziciList?[index].yaziciAdi ?? "",
-          value: yaziciList?[index],
-          description: yaziciList?[index].aciklama != null ? (yaziciList?[index].yaziciAdi ?? "") : null,
-        ),
-      ),
+      viewModel.printModel.yaziciAdi,
+      filter:
+          (item) =>
+              profilYetkiModel.yazdirmaStokEtiketiYazicilari?.any((element2) => element2 == item.yaziciAdi) ?? true,
     );
     if (result is YaziciList) {
       yaziciController.text = result.aciklama ?? result.yaziciAdi ?? "";
@@ -400,7 +393,7 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
         final pdfModel = result.dataList.first;
         if (kDebugMode) {
           DIManager.read<SewooPrinter>().printPDF(
-            base64Decode(pdfModel.byteData ?? ""),
+            base64Decode(pdfModel.byteData ?? "").buffer.asInt64List(),
             (pdfModel.reportWidth ?? 70).toInt(),
             (pdfModel.reportHeight ?? 70).toInt(),
           );

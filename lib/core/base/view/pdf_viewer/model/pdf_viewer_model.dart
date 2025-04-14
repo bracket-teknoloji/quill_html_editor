@@ -167,9 +167,9 @@ class DicParams with _$DicParams {
   factory DicParams.fromJson(Map<String, dynamic> json) => _$DicParamsFromJson(json);
 }
 
-String _dovizTipleriToJson(List<int>? values) {
+String? _dovizTipleriToJson(List<int>? values) {
   if (values == null) {
-    return "";
+    return null;
   }
   return values.join(";");
 }

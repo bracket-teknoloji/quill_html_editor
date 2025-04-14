@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import "dart:convert";
 import "dart:developer";
 
 import "package:animated_text_kit/animated_text_kit.dart";
@@ -11,7 +12,7 @@ import "package:get/get.dart";
 import "package:image_picker/image_picker.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/base_bottom_sheet_response_model.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
+import "package:picker/core/base/model/base_pdf_model.dart";
 import "package:picker/core/base/model/base_proje_model.dart";
 import "package:picker/core/base/model/e_fatura_ozel_kod_model.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
@@ -32,6 +33,8 @@ import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/icon_helper.dart";
 import "package:picker/core/constants/yetki_controller/yetki_controller.dart";
+import "package:picker/core/init/bluetooth/sewoo_printer.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
 import "package:picker/core/init/network/login/api_urls.dart";
 import "package:picker/core/init/network/network_manager.dart";
 import "package:picker/view/add_company/model/account_model.dart";
@@ -902,29 +905,46 @@ final class BottomSheetDialogManager {
     return doviz;
   }
 
-  Future<YaziciList?> showYaziciBottomSheetDialog(BuildContext context, dynamic groupValue) async {
-    final List<YaziciList>? yaziciList = _paramModel?.yaziciList;
+  Future<YaziciList?> showYaziciBottomSheetDialog(
+    BuildContext context,
+    dynamic groupValue, {
+    bool Function(YaziciList)? filter,
+  }) async {
+    final List<YaziciList> yaziciList = <YaziciList>[...?_paramModel?.yaziciList];
+    if (kDebugMode) {
+      if (await DIManager.read<SewooPrinter>().checkConnectedAccessories() case final value?) {
+        for (final element in value.printers) {
+          yaziciList.add(
+            YaziciList()
+              ..yaziciAdi = element.name
+              ..yaziciTipi = "SEWOO_FIS",
+          );
+        }
+      }
+    }
     final result = await showRadioBottomSheetDialog(
       context,
       title: "Yazıcı Seçiniz",
       groupValue: groupValue,
       children:
           yaziciList
-              ?.map(
+              .where(filter ?? (item) => true)
+              .map(
                 (e) => BottomSheetModel(
                   title: e.aciklama ?? e.yaziciAdi ?? "",
                   description: e.yaziciAdi,
                   value: e,
                   groupValue: e.yaziciAdi,
+
+                  descriptionWidget: e.yaziciTipi == "SEWOO_FIS" ? const ColorfulBadge(label: Text("SEWOO_FIS")) : null,
                   onTap: () {
                     Get.back(result: e);
                   },
                 ),
               )
-              .toList() ??
-          [].cast<BottomSheetModel>(),
+              .toList(),
     );
-    if (result != null && result is YaziciList) {
+    if (result != null) {
       return result;
     }
     return null;
@@ -952,6 +972,8 @@ final class BottomSheetDialogManager {
                   title: e.dizaynAdi ?? e.detayKod ?? "",
                   value: e,
                   groupValue: e.detayKod ?? e.ozelKod,
+
+                  description: e.id.toStringIfNotNull,
                 ),
               )
               .toList(),
@@ -1473,27 +1495,64 @@ final class BottomSheetDialogManager {
     EditTipiEnum? editTipiEnum,
   }) async {
     if (printModel.yaziciAdi == null) {
-      final List<YaziciList?> yaziciListe = _paramModel?.yaziciList ?? <YaziciList?>[];
+      final List<YaziciList> yaziciListe = <YaziciList>[...?_paramModel?.yaziciList];
+      if (kDebugMode) {
+        if (await DIManager.read<SewooPrinter>().checkConnectedAccessories() case final value?) {
+          for (final element in value.printers) {
+            yaziciListe.add(
+              YaziciList()
+                ..yaziciAdi = element.name
+                ..yaziciTipi = "SEWOO_FIS",
+            );
+          }
+        }
+      }
       if (yaziciListe.length == 1) {
         printModel = printModel.copyWith(
-          yaziciAdi: yaziciListe.first?.yaziciAdi,
-          yaziciTipi: yaziciListe.first?.yaziciTipi,
+          yaziciAdi: yaziciListe.first.yaziciAdi,
+          yaziciTipi: yaziciListe.first.yaziciTipi,
+          exportTipi: "IMG",
         );
       } else if (yaziciListe.length > 1) {
-        final result = await showBottomSheetDialog(
+        final result = await showRadioBottomSheetDialog(
           context,
+          groupValue: printModel.yaziciAdi,
           title: "Yazıcı Seçiniz",
-          children: yaziciListe.map((e) => BottomSheetModel(title: e?.yaziciAdi ?? "", value: e)).toList(),
+          children:
+              yaziciListe
+                  .map(
+                    (e) => BottomSheetModel(
+                      title: e.yaziciAdi ?? "",
+                      value: e,
+                      groupValue: e.yaziciAdi,
+                      descriptionWidget:
+                          e.yaziciTipi == "SEWOO_FIS" ? const ColorfulBadge(label: Text("SEWOO_FIS")) : null,
+                    ),
+                  )
+                  .toList(),
         );
         if (result != null) {
-          printModel = printModel.copyWith(yaziciAdi: result.yaziciAdi, yaziciTipi: result.yaziciTipi);
+          printModel = printModel.copyWith(
+            yaziciAdi: result.yaziciTipi != "SEWOO_FIS" ? result.yaziciAdi : null,
+            yaziciTipi: result.yaziciTipi,
+            yazdir: result.yaziciTipi != "SEWOO_FIS" ? true : null,
+            exportTipi: result.yaziciTipi != "SEWOO_FIS" ? null : "IMG",
+            standart: result.yaziciTipi == "SEWOO_FIS" ? null : printModel.standart,
+            dicParams: printModel.dicParams?.copyWith(dovizTipleri: null),
+          );
         } else {
           return null;
         }
       } else {
         final YaziciList? yaziciList = await showYaziciBottomSheetDialog(context, null);
         if (yaziciList != null) {
-          printModel = printModel.copyWith(yaziciAdi: yaziciList.yaziciAdi, yaziciTipi: yaziciList.yaziciTipi);
+          printModel = printModel.copyWith(
+            yaziciAdi: yaziciList.yaziciAdi,
+            yaziciTipi: yaziciList.yaziciTipi,
+            yazdir: yaziciList.yaziciTipi != "SEWOO_FIS" ? true : null,
+            exportTipi: yaziciList.yaziciTipi != "SEWOO_FIS" ? null : "IMG",
+            standart: yaziciList.yaziciTipi == "SEWOO_FIS" ? null : printModel.standart,
+          );
         } else {
           return null;
         }
@@ -1509,10 +1568,21 @@ final class BottomSheetDialogManager {
       if (dizaynListe.length == 1) {
         printModel = printModel.copyWith(dizaynId: dizaynListe.first?.id);
       } else if (dizaynListe.length > 1) {
-        final result = await showBottomSheetDialog(
+        final result = await showRadioBottomSheetDialog(
           context,
           title: "Dizayn Seçiniz",
-          children: dizaynListe.map((e) => BottomSheetModel(title: e?.dizaynAdi ?? "", value: e)).toList(),
+          groupValue: printModel.dizaynId,
+          children:
+              dizaynListe
+                  .map(
+                    (e) => BottomSheetModel(
+                      title: e?.dizaynAdi ?? "",
+                      value: e,
+                      groupValue: e?.id,
+                      description: e?.id.toStringIfNotNull,
+                    ),
+                  )
+                  .toList(),
         );
         if (result != null) {
           printModel = printModel.copyWith(dizaynId: result.id);
@@ -1591,9 +1661,19 @@ final class BottomSheetDialogManager {
             ),
             ElevatedButton(
               onPressed: () async {
-                final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(
-                  model: printModel,
-                );
+                final GenericResponseModel<BasePdfModel> result = await _networkManager.postPrint(model: printModel);
+                if (!result.isSuccess) return;
+                if (printModel.yaziciTipi == "SEWOO_FIS") {
+                  final pdfModel = result.dataList.firstOrNull;
+                  await DIManager.read<SewooPrinter>().printPDF(
+                    base64Decode(pdfModel?.byteData ?? "").buffer.asInt64List(),
+                    pdfModel?.reportWidth?.toInt() ?? 0,
+                    pdfModel?.reportHeight?.toInt() ?? 0,
+                  );
+                  if (result.isSuccess) {
+                    DialogManager().showSuccessSnackBar("Yazdırıldı.");
+                  }
+                }
                 if (result.isSuccess) {
                   DialogManager().showSuccessSnackBar("Yazdırıldı.");
                 }
@@ -1611,7 +1691,20 @@ final class BottomSheetDialogManager {
         return returnValue;
       }
     } else {
-      final GenericResponseModel<NetworkManagerMixin> result = await _networkManager.postPrint(model: printModel);
+      final GenericResponseModel<BasePdfModel> result = await _networkManager.postPrint(model: printModel);
+      if (!result.isSuccess) return null;
+      if (printModel.yaziciTipi == "SEWOO_FIS") {
+        final pdfModel = result.dataList.firstOrNull;
+        await DIManager.read<SewooPrinter>().printImage(
+          base64Decode(pdfModel?.byteData ?? "").buffer.asInt64List(),
+          pdfModel?.reportWidth?.toInt() ?? 0,
+           pdfModel?.reportHeight?.toInt() ?? 0,
+        );
+        if (result.isSuccess) {
+          DialogManager().showSuccessSnackBar("Yazdırıldı.");
+          return printModel;
+        }
+      }
       if (result.isSuccess) {
         DialogManager().showSuccessSnackBar("Yazdırıldı.");
         return printModel;
