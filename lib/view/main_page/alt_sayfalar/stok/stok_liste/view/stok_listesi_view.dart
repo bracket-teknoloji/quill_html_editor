@@ -118,19 +118,6 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
 
   AppBar appBar() => AppBar(
     // controller: scrollController,
-    leading: IconButton(
-      onPressed: () {
-        if (viewModel.isSearchBarOpen) {
-          viewModel
-            ..changeSearchBarStatus()
-            ..setSearchText("")
-            ..resetList();
-        } else {
-          Get.back();
-        }
-      },
-      icon: const Icon(Icons.arrow_back_outlined),
-    ),
     title: Observer(
       builder:
           (_) =>

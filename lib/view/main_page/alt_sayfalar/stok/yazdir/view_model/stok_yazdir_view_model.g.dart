@@ -45,6 +45,22 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     });
   }
 
+  late final _$stokAdiAtom =
+      Atom(name: '_StokYazdirViewModelBase.stokAdi', context: context);
+
+  @override
+  String? get stokAdi {
+    _$stokAdiAtom.reportRead();
+    return super.stokAdi;
+  }
+
+  @override
+  set stokAdi(String? value) {
+    _$stokAdiAtom.reportWrite(value, super.stokAdi, () {
+      super.stokAdi = value;
+    });
+  }
+
   late final _$showYapilandirmaAtom =
       Atom(name: '_StokYazdirViewModelBase.showYapilandirma', context: context);
 
@@ -277,6 +293,7 @@ mixin _$StokYazdirViewModel on _StokYazdirViewModelBase, Store {
     return '''
 stokSecildigindeYazdir: ${stokSecildigindeYazdir},
 yaziciVeDizayniHatirla: ${yaziciVeDizayniHatirla},
+stokAdi: ${stokAdi},
 showYapilandirma: ${showYapilandirma},
 stokListesiModel: ${stokListesiModel},
 printModel: ${printModel}

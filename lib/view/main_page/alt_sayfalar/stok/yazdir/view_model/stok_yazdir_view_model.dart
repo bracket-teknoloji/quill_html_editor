@@ -20,6 +20,9 @@ abstract class _StokYazdirViewModelBase with Store {
   bool yaziciVeDizayniHatirla = false;
 
   @observable
+  String? stokAdi;
+
+  @observable
   bool showYapilandirma = false;
 
   @observable
@@ -97,6 +100,7 @@ abstract class _StokYazdirViewModelBase with Store {
 
   @action
   void setStokKodu(StokListesiModel? model) {
+    stokAdi = model?.stokAdi;
     printModel = printModel.copyWith(dicParams: printModel.dicParams?.copyWith(stokKodu: model?.stokKodu));
     stokListesiModel = model;
   }
