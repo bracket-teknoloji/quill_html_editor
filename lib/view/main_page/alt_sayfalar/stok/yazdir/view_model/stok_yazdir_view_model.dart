@@ -17,7 +17,7 @@ abstract class _StokYazdirViewModelBase with Store {
   bool stokSecildigindeYazdir = CacheManager.getProfilParametre.stokSecildigindeYazdir;
 
   @observable
-  bool yaziciVeDizayniHatirla = false;
+  bool yaziciVeDizayniHatirla = CacheManager.getProfilParametre.stokYazdirDizaynVeYaziciHatirla;
 
   @observable
   String? stokAdi;

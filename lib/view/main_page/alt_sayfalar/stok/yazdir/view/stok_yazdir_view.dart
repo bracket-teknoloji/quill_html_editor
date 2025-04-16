@@ -63,10 +63,11 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
       text: viewModel.printModel.dicParams?.miktar.toStringIfNotNull ?? "",
     );
     kopyaSayisiController = TextEditingController(text: viewModel.printModel.etiketSayisi.toStringIfNotNull ?? "");
-    viewModel.changeStokSecildigindeYazdir(CacheManager.getProfilParametre.stokYazdirDizaynVeYaziciHatirla);
+    viewModel
+      ..changeYaziciVeDizayniHatirla(CacheManager.getProfilParametre.stokYazdirDizaynVeYaziciHatirla)
+      ..changeStokSecildigindeYazdir(CacheManager.getProfilParametre.stokSecildigindeYazdir);
     if (viewModel.stokSecildigindeYazdir) {
       viewModel
-        ..changeYaziciVeDizayniHatirla(true)
         ..setDizaynId(CacheManager.getProfilParametre.netFectDizaynList?.id)
         ..setYaziciAdi(CacheManager.getProfilParametre.yaziciList?.yaziciAdi);
       dizaynController.text = CacheManager.getProfilParametre.netFectDizaynList?.dizaynAdi ?? "";
