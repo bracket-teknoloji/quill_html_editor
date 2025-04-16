@@ -688,7 +688,7 @@ final class YetkiController {
   );
 
   bool get ebelgeEIrsaliye =>
-      _isTrue((_profilYetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false));
+      _isTrue(_profilYetkiModel?.ebelgeEIrsaliye ?? false) && (_paramModel?.eIrsaliyeAktif ?? false);
   bool get ebelgeEIrsaliyeGelenKutusu => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliyeGelenKutusu);
   bool get ebelgeEIrsaliyeGidenKutusu => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliyeGidenKutusu);
   bool get ebelgeEIrsaliyeGonder => ebelgeEIrsaliye && _isTrue(_profilYetkiModel?.ebelgeEIrsaliyeGonder);
