@@ -1,6 +1,7 @@
 package com.bracket23.picker
 
 import androidx.annotation.NonNull
+import com.bracket25.sewoo.PrinterList
 import com.bracket25.sewoo.Sewoo
 import com.sewoo.jpos.printer.CPCLPrinter
 import com.sewoo.jpos.printer.ESCPOSPrinter
@@ -32,11 +33,25 @@ class SewooPrinter : Sewoo {
         callback(Result.success(true))
     }
 
-    override fun printImage(image: List<Long>, callback: (Result<Boolean>) -> Unit) {
-        callback(Result.success(true))
+    override fun printImage(
+        image: LongArray,
+        width: Long,
+        height: Long,
+        callback: (Result<Boolean>) -> Unit
+    ) {
     }
 
-    override fun printPDF(pdfData: List<Long>, width: Long, height: Long, callback: (Result<Boolean>) -> Unit) {
-        callback(Result.success(true))
+    override fun printPDF(
+        pdfData: LongArray,
+        width: Long,
+        height: Long,
+        callback: (Result<Boolean>) -> Unit
+    ) {
+        TODO("Not yet implemented")
     }
+
+    override fun checkConnectedAccessories(): PrinterList? {
+        TODO("Not yet implemented")
+    }
+
 }

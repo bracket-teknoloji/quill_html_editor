@@ -39,7 +39,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>412</string>
+	<string>414</string>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<true/>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -81,10 +81,10 @@
 	<false/>
 	<key>UIStatusBarStyle</key>
 	<string></string>
-	<key>UISupportedExternalAccessoryProtocols</key>
+	<!-- <key>UISupportedExternalAccessoryProtocols</key>
 	<array>
 		<string>com.mobileprinter.datapath</string>
-	</array>
+	</array> -->
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

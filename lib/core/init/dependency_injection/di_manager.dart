@@ -1,6 +1,5 @@
 import "dart:developer";
 
-import "package:flutter/foundation.dart";
 import "package:get_it/get_it.dart";
 import "package:picker/core/init/bluetooth/bluetooth_manager.dart";
 import "package:picker/core/init/bluetooth/sewoo_printer.dart";

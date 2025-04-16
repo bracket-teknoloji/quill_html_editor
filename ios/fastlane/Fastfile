@@ -26,7 +26,19 @@ platform :ios do
       clean: true,
       use_bundle_exec: false
     )
-    build_app(workspace: 'Runner.xcworkspace', scheme: 'Runner', clean: true)
+    build_app(
+      workspace: 'Runner.xcworkspace',
+      scheme: 'Runner',
+      clean: true,
+      export_method: 'app-store',
+      export_options: {
+        provisioningProfiles: {
+          'com.bracket23.picker' => 'picker-dist',
+          'com.bracket23.picker.ImageNotification' => 'picker-image-notification',
+        },
+        "signingStyle": 'manual'
+    },
+    )
     upload_to_testflight(
       ipa: 'Runner.ipa',
       apple_id: '6451071838',

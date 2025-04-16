@@ -384,7 +384,7 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
     }
   }
 
-  Future<void> postPrint() async {
+  Future<void> postPrint2() async {
     if (formKey.currentState?.validate() ?? false) {
       final result = await networkManager.postPrint(
         model: viewModel.printModel.copyWith(yaziciAdi: "SW_2CCF", yazdir: null),
@@ -397,9 +397,19 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
             (pdfModel.reportWidth ?? 70).toInt(),
             (pdfModel.reportHeight ?? 70).toInt(),
           );
-        } else {
-          return postPrint();
         }
+        dialogManager.showSuccesDialog(result.message ?? loc.generalStrings.success);
+        if (widget.model != null) {
+          Get.back(result: result.isSuccess);
+        }
+      }
+    }
+  }
+
+  Future<void> postPrint() async {
+    if (formKey.currentState?.validate() ?? false) {
+      final result = await networkManager.postPrint(model: viewModel.printModel);
+      if (result.isSuccess) {
         dialogManager.showSuccesDialog(result.message ?? loc.generalStrings.success);
         if (widget.model != null) {
           Get.back(result: result.isSuccess);
