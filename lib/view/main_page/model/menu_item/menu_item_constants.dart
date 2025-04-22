@@ -737,6 +737,15 @@ abstract final class MenuItemConstants {
         ),
       ],
     ),
+    if (AccountModel.instance.isDebug)GridItemModel.anamenu(
+      name: null,
+      title: "Payker",
+      iconData: Icons.add_card_outlined,
+      color: ColorPalette.carminePink,
+      altMenuler: <GridItemModel>[
+        GridItemModel.item(name: null, title: "Ödeme Al", route: "/mainPage/paykerTahsilat"),
+      ],
+    ),
   ];
 
   static List<bool> get _gidenKutusuYetkiler => [

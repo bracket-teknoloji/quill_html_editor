@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/stok_rehberi/model/stok_rehberi_request_model.dart";
 import "package:picker/core/components/layout/custom_layout_builder.dart";
 import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
@@ -72,25 +73,12 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
           visible: !widget.model.isGoruntule,
           child: CustomTextField(
             labelText: "Stok Kodu / Barkod Giriniz",
+            readOnly: BaseSiparisEditModel.instance.getEditTipiEnum?.kalemlerKlavyeAcilmasin,
             controller: _searchTextController,
             onSubmitted: (p0) async {
-              if (p0.ext.isNotNullOrNoEmpty) {
-                _searchTextController.clear();
-                await Get.toNamed("/mainPage/stokRehberi", arguments: p0);
-                viewModel.updateKalemList();
-              }
+              if (p0.ext.isNotNullOrNoEmpty) await getBarkodStok(isQR: false);
             },
-            suffix: IconButton(
-              onPressed: () async {
-                final result = await Get.toNamed("/qr");
-                if (result != null) {
-                  _searchTextController.text = result;
-                  await Get.toNamed("/mainPage/stokRehberi", arguments: result);
-                  viewModel.updateKalemList();
-                }
-              },
-              icon: const Icon(Icons.qr_code_scanner),
-            ),
+            suffix: IconButton(onPressed: getBarkodStok, icon: const Icon(Icons.qr_code_scanner)),
           ).paddingOnly(top: UIHelper.lowSize),
         ),
         Expanded(
@@ -351,14 +339,105 @@ final class _BaseSiparisKalemlerViewState extends BaseState<BaseSiparisKalemlerV
             Get.back();
             return dialogManager.showStokGridViewDialog(
               StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "",
-                cariModel: CariListesiModel(
-                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                  cariAdi: BaseSiparisEditModel.instance.cariAdi,
-                ),
+              cariModel: CariListesiModel(
+                cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                cariAdi: BaseSiparisEditModel.instance.cariAdi,
+              ),
             );
           },
         ),
       ],
     );
+  }
+
+  Future<void> getBarkodStok({bool isQR = true}) async {
+    String result = "";
+    if (isQR) {
+      final qr = await Get.toNamed("/qr");
+      if (qr is String) {
+        result = qr;
+      } else {
+        return;
+      }
+    } else {
+      result = _searchTextController.text;
+    }
+
+    _searchTextController.clear();
+    final responseModel = await networkManager.getStokResponseModel(
+      StokRehberiRequestModel(
+        oto: model.getEditTipiEnum?.urunOtomatikEklensin ?? false ? "E" : null,
+        stokKodu: result,
+        menuKodu: "COMM_FADE",
+        ozelKod1: model.ozelKod1,
+        ozelKod2: model.ozelKod2,
+        belgeTarihi: model.tarih.toDateString,
+        okutuldu: true,
+        cariKodu: model.cariKodu,
+        belgeTipi: model.getEditTipiEnum?.rawValue,
+        faturaTipi: 2,
+        faturaHedefDepo: model.hedefDepo,
+        faturaDepoKodu: model.cikisDepoKodu,
+        belgeNo: model.belgeNo,
+      ),
+    );
+    if (!responseModel.isSuccess) return;
+    final stokModel = responseModel.dataList.firstOrNull;
+    if (!isQR) {
+      stokModel?.okutulanBarkod = result;
+    }
+
+    final isStokKoduExists = model.kalemList?.any((element) => element.stokKodu == stokModel?.stokKodu) ?? false;
+    final isBarkodExists =
+        model.kalemList?.any(
+          (element) => isStokKoduExists && (element.barkodList?.any((element2) => element2.barkod == result) ?? false),
+        ) ??
+        false;
+    if (stokModel == null) {
+      if (!(model.getEditTipiEnum?.urunOtomatikEklensin ?? false) &&
+          (model.getEditTipiEnum?.rehberdenStokSecilsin ?? false)) {
+        await Get.toNamed("/mainPage/stokRehberi", arguments: result);
+      } else {
+        dialogManager.showAlertDialog(
+          "Barkod bulunamadı.\nSadece Barkodlu Stoklar Otomatik Eklenebilir.\nOkutulan barkod: $result",
+        );
+      }
+    } else {
+      if (isBarkodExists && model.getEditTipiEnum?.tekrarEdenBarkod == "EY" ||
+          isStokKoduExists && model.getEditTipiEnum?.tekrarEdenBarkod == "E") {
+        return dialogManager.showAlertDialog("Bu barkod zaten eklenmiş.");
+      }
+      if (model.getEditTipiEnum?.urunOtomatikEklensin ?? false) {
+        final bool satisMi = model.getEditTipiEnum?.satisMi ?? false;
+        final KalemModel kalemModel = KalemModel.fromBarkodModel(stokModel)
+          ..kdvOrani = satisMi ? stokModel.satisKdv : stokModel.alisKdv;
+        if ((kalemModel.miktar ?? 0) <= 0) {
+          dialogManager.showAlertDialog("Stok miktarı 0 veya daha az olduğu için eklenemez.");
+          return;
+        }
+        if (isStokKoduExists && model.getEditTipiEnum?.tekrarEdenBarkod == "M") {
+          // add miktar into existing kalem
+          final kalem = model.kalemList?.firstWhereOrNull((element) => element.stokKodu == kalemModel.stokKodu);
+          if (kalem != null) {
+            kalem.miktar = (kalem.miktar ?? 0) + (stokModel.miktar ?? 0);
+          }
+          BaseSiparisEditModel.instance.kalemList = model.kalemList;
+        } else {
+          BaseSiparisEditModel.instance.kalemList ??= [];
+          BaseSiparisEditModel.instance.kalemList?.add(kalemModel);
+        }
+      } else {
+        if (isStokKoduExists && (model.getEditTipiEnum?.tekrarEdenBarkod?.startsWith("S") ?? false)) {
+          bool devamMi = false;
+          await dialogManager.showAreYouSureDialog(
+            onYes: () => devamMi = true,
+            title: "${stokModel.stokKodu} - ${stokModel.stokAdi} ürün listenizde mevcut.\nYine de eklensin mi?",
+          );
+          if (!devamMi) return;
+        }
+      }
+    }
+    _searchTextController.clear();
+    viewModel.updateKalemList();
   }
 }

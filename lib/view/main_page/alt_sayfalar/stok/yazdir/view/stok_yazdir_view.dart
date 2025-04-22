@@ -35,7 +35,7 @@ final class StokYazdirView extends StatefulWidget {
 }
 
 final class _StokYazdirViewState extends BaseState<StokYazdirView> {
-  StokYazdirViewModel viewModel = StokYazdirViewModel();
+  final StokYazdirViewModel viewModel = StokYazdirViewModel();
   late final TextEditingController stokController;
   late final TextEditingController yapilandirmaKoduController;
   late final TextEditingController dizaynController;
@@ -66,7 +66,7 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
     viewModel
       ..changeYaziciVeDizayniHatirla(CacheManager.getProfilParametre.stokYazdirDizaynVeYaziciHatirla)
       ..changeStokSecildigindeYazdir(CacheManager.getProfilParametre.stokSecildigindeYazdir);
-    if (viewModel.stokSecildigindeYazdir) {
+    if (viewModel.yaziciVeDizayniHatirla) {
       viewModel
         ..setDizaynId(CacheManager.getProfilParametre.netFectDizaynList?.id)
         ..setYaziciAdi(CacheManager.getProfilParametre.yaziciList?.yaziciAdi);

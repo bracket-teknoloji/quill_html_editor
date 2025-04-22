@@ -44,8 +44,8 @@ final class BaseFaturaGenelView extends StatefulWidget {
 }
 
 final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
+  final BaseFaturaGenelViewModel viewModel = BaseFaturaGenelViewModel();
   BaseEditModel<SiparisEditRequestModel> get siparisModel => widget.model;
-  BaseFaturaGenelViewModel viewModel = BaseFaturaGenelViewModel();
   BaseSiparisEditModel get model => BaseSiparisEditModel.instance;
   bool get isEkle => siparisModel.isEkle || siparisModel.isKopyala || siparisModel.isRevize || siparisModel.isTaslak;
   bool get enable => widget.model.enable;

@@ -37,6 +37,7 @@ final class CustomTextField extends StatefulWidget {
     this.isTime,
     this.descriptionWidget,
     this.obscureText = false,
+    this.hintText, this.autofillHints,
   }) : onDateChange = null;
 
   const CustomTextField.dateTime({
@@ -59,6 +60,7 @@ final class CustomTextField extends StatefulWidget {
     this.onChanged,
     this.onClear,
     this.obscureText = false,
+    this.hintText, this.autofillHints,
   }) : isDateTime = true,
        isFormattedString = false,
        keyboardType = null,
@@ -91,6 +93,8 @@ final class CustomTextField extends StatefulWidget {
   final bool? isDateTime;
   final bool? isTime;
   final bool obscureText;
+  final String? hintText;
+  final String? autofillHints;
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -131,6 +135,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
           if (widget.keyboardType == TextInputType.phone) AutofillHints.telephoneNumber,
           if (widget.keyboardType == TextInputType.streetAddress) AutofillHints.streetAddressLine1,
           if (widget.keyboardType == TextInputType.url) AutofillHints.url,
+          if (widget.autofillHints case final value?) value,
         ],
         textInputAction: TextInputAction.next,
         keyboardType: widget.keyboardType,
@@ -165,6 +170,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
             widget.isFormattedString == true
                 ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter]
                 : widget.inputFormatter,
+
         // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
         maxLength: widget.maxLength,
         validator: (widget.enabled != false ? validator : null),
@@ -172,6 +178,8 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
         obscureText: widget.obscureText,
         readOnly: widget.readOnly ?? false,
         decoration: InputDecoration(
+          hintText: widget.hintText,
+          hintStyle: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.5)),
           enabled: widget.enabled ?? true,
           floatingLabelBehavior: FloatingLabelBehavior.always,
           errorStyle: const TextStyle(color: UIHelper.primaryColor, fontWeight: FontWeight.bold),
@@ -181,7 +189,6 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
             gapPadding: 0,
           ),
           border: OutlineInputBorder(borderRadius: UIHelper.highBorderRadius),
-          // border: ,
           suffixIcon:
               widget.suffix != null || widget.isDateTime == true || widget.isTime == true || widget.suffixMore == true
                   ? Row(

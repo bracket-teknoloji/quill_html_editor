@@ -18,6 +18,7 @@ abstract final class ColorPalette {
   static const Color marineBlue = Color.fromRGBO(132, 182, 190, 1);
   static const Color asparagus = Color.fromRGBO(114, 148, 115, 1);
   static const Color surfGreen = Color.fromRGBO(2, 181, 159, 1);
+  static const Color carminePink = Color.fromRGBO(231, 76, 60, 1);
 
   // With Opacity
   static Color persianRedWithOpacity = persianRed.withValues(alpha: 0.5);

@@ -1437,8 +1437,10 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
       );
       fiyatController.text = viewModel.kalemModel.brutFiyat.commaSeparatedWithDecimalDigits(OndalikEnum.fiyat);
     } else {
-      viewModel.kalemModel.dovizKuru = null;
-      viewModel.kalemModel.dovizliFiyat = null;
+      viewModel.kalemModel
+        ..dovizKuru = null
+        ..dovizliFiyat = null
+        ..dovizFiyati = null;
       dovizKuruController.clear();
       dovizFiyatiController.clear();
     }

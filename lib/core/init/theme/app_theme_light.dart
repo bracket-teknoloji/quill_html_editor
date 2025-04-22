@@ -45,6 +45,16 @@ final class AppThemeLight extends AppTheme {
         shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
       ),
     ),
+    expansionTileTheme: ExpansionTileThemeData(
+      iconColor: UIHelper.primaryColor,
+      collapsedIconColor: UIHelper.primaryColor,
+      collapsedTextColor: UIHelper.primaryColor,
+      textColor: UIHelper.primaryColor,
+      expansionAnimationStyle: AnimationStyle(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeInOutQuint,
+      ),
+    ),
     toggleButtonsTheme: ToggleButtonsThemeData(borderRadius: UIHelper.lowBorderRadius),
     brightness: Brightness.light,
     textTheme: GoogleFonts.dmSansTextTheme().apply(

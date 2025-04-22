@@ -668,6 +668,9 @@ final class PickerMaterialApp extends StatelessWidget {
           ),
           GetPage(name: "/belgeRehberi", page: () => BelgeRehberiView(model: Get.arguments)),
 
+          //* Payker
+          GetPage(name: "/paykerTahsilat", page: PaykerTahsilatView.new),
+
           //* Serbest Raporlar
           //*
           GetPage(
