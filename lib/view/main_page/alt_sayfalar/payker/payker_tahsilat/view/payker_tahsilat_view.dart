@@ -1,3 +1,4 @@
+import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_credit_card/flutter_credit_card.dart";
@@ -213,10 +214,14 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
                           RegExp(r"(\d{4})"),
                           (match) => "${match.group(1)} ",
                         ); // Her 4 karakterde bir boşluk ekle
-                        _cardNumberController.value = TextEditingValue(
-                          text: formattedValue,
-                          selection: TextSelection.collapsed(offset: formattedValue.length),
-                        );
+                    if (kIsWeb) {
+                      _cardNumberController.value = TextEditingValue(
+                        text: formattedValue,
+                        selection: TextSelection.collapsed(offset: formattedValue.length),
+                      );
+                    } else {
+                      _cardNumberController.text = formattedValue;
+                    }
                     // _cardNumberController.text = formattedValue.trim(); // Sonundaki boşluğu kaldır
 
                     _viewModel.setCardNumber(value);
@@ -253,12 +258,17 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
                         inputFormatter: [LengthLimitingTextInputFormatter(4)],
                         onChanged: (value) {
                           // format as MM/YY
-                          _expiryDateController.value = TextEditingValue(
-                            text: value
-                                .replaceAll(RegExp(r"\s+"), "")
-                                .replaceAllMapped(RegExp(r"(\d{2})(?=\d)"), (match) => "${match.group(1)}/"),
-                            selection: TextSelection.collapsed(offset: value.length),
-                          );
+                          final formattedValue = value
+                              .replaceAll(RegExp(r"\s+"), "")
+                              .replaceAllMapped(RegExp(r"(\d{2})(?=\d)"), (match) => "${match.group(1)}/");
+                          if (kIsWeb) {
+                            _expiryDateController.value = TextEditingValue(
+                              text: formattedValue,
+                              selection: TextSelection.collapsed(offset: value.length),
+                            );
+                          } else {
+                            _expiryDateController.text = formattedValue;
+                          }
                           // _expiryDateController.text = value
                           //     .replaceAll(RegExp(r"\s+"), "")
                           //     .replaceAllMapped(RegExp(r"(\d{2})(?=\d)"), (match) => "${match.group(1)}/");

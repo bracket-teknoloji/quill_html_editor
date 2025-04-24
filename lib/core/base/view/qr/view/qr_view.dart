@@ -6,7 +6,6 @@ import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:mobile_scanner/mobile_scanner.dart";
-import "package:permission_handler/permission_handler.dart";
 
 import "../../../../components/wrap/appbar_title.dart";
 // import "package:qr_code_scanner/qr_code_scanner.dart";
