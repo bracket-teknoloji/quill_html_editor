@@ -63,7 +63,7 @@ dependencies:
   json_annotation: ^4.9.0
 
   #QR
-  mobile_scanner: ^6.0.2
+  mobile_scanner: ^6.0.10
   flutter_image_compress: ^2.0.3
   syncfusion_flutter_pdfviewer: ^28.1.37
   collection: ^1.17.2
@@ -79,7 +79,6 @@ dependencies:
   print_bluetooth_thermal: ^1.1.6
   flutter_blue_plus: ^1.35.3
   esc_pos_utils_plus: ^2.0.4
-  
   quill_html_editor:
     path: packages/quill_html_editor
   freezed_annotation: ^2.4.1
@@ -95,7 +94,7 @@ dependencies:
   syncfusion_localizations: ^28.1.39
   open_filex:
     git:
-        url: https://github.com/mufassalhussain/open_filex
+      url: https://github.com/mufassalhussain/open_filex
   animated_text_kit: ^4.2.2
   text_scroll: ^0.2.0
   package_info_plus: ^8.1.0

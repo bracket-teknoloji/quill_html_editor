@@ -101,18 +101,26 @@ final class _QRScannerState extends BaseState<QRScannerView> with WidgetsBinding
     ),
     body: Stack(
       children: [
-        Stack(fit: StackFit.expand, children: [buildQrView(context), buildResult()]),
+        Stack(fit: StackFit.expand, children: [buildQrView(), buildResult()]),
         Center(child: CustomPaint(painter: BorderPainter(), child: SizedBox(width: width * 0.7, height: width * 0.7))),
       ],
     ),
   );
 
-  Widget buildQrView(BuildContext context) => MobileScanner(controller: qrViewController, onDetect: _onQRViewCreated);
+  Widget buildQrView() => MobileScanner(
+    controller: qrViewController,
+    onDetect: _onQRViewCreated,
+    onDetectError: (error, stackTrace) {
+      // Handle error
+      debugPrint("Error: $error");
+      debugPrint("StackTrace: $stackTrace");
+    },
+  );
   Future<void> _onQRViewCreated(BarcodeCapture barcode) async {
-    final PermissionStatus status = await Permission.camera.status;
-    if (status.isDenied) {
-      await Permission.camera.request();
-    }
+    // final PermissionStatus status = await Permission.camera.request();
+    // if (status.isDenied) {
+    //   return;
+    // }
     if (kIsWeb) {
       MobileScannerPlatform.instance.setBarcodeLibraryScriptUrl("bracket.com.tr");
     }
