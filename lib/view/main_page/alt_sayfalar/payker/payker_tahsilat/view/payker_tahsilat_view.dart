@@ -9,6 +9,7 @@ import "package:picker/core/components/wrap/appbar_title.dart";
 import "package:picker/core/constants/color_palette.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
+import "package:picker/core/gen/assets.gen.dart";
 import "package:picker/view/main_page/alt_sayfalar/payker/payker_tahsilat/view_model/payker_tahsilat_view_model.dart";
 
 final class PaykerTahsilatView extends StatefulWidget {
@@ -151,32 +152,16 @@ final class _PaykerTahsilatViewState extends State<PaykerTahsilatView> {
                   padding: 25,
                   cardNumber: _viewModel.cardNumber,
                   expiryDate: _viewModel.expiryDate,
+                  backgroundImage: Assets.background.paykerCard2Background.path,
                   cardHolderName: _viewModel.cardHolderName,
                   cvvCode: _viewModel.cvvCode,
-                  cardBgColor: ColorPalette.carminePink,
+                  cardBgColor: ColorPalette.mantis,
                   showBackView: _viewModel.showBackView,
                   enableFloatingCard: true,
-
                   labelCardHolder: "Kart Sahibi",
                   labelExpiredDate:
                       "${DateTime.now().month.toString().padLeft(2, '0')}/${DateTime.now().year.toString().substring(2)}",
                   labelValidThru: "SKT",
-                  glassmorphismConfig: Glassmorphism(
-                    blurX: 10,
-                    blurY: 20,
-                    gradient: const LinearGradient(
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
-                      tileMode: TileMode.mirror,
-                      colors: [
-                        ColorPalette.dodgerBlue,
-                        ColorPalette.mountbattenPink,
-                        ColorPalette.mulberry,
-                        ColorPalette.carminePink,
-                      ],
-                    ),
-                  ),
-
                   isHolderNameVisible: true,
                   onCreditCardWidgetChange: (p0) {},
                   obscureCardCvv: false,

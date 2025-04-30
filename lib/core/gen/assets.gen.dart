@@ -54,8 +54,12 @@ class $AssetsBackgroundGen {
   /// File path: assets/background/bg2.png
   AssetGenImage get bg2 => const AssetGenImage('assets/background/bg2.png');
 
+  /// File path: assets/background/payker-card-2-background.png
+  AssetGenImage get paykerCard2Background =>
+      const AssetGenImage('assets/background/payker-card-2-background.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [bg1, bg2];
+  List<AssetGenImage> get values => [bg1, bg2, paykerCard2Background];
 }
 
 class $AssetsIconsGen {
