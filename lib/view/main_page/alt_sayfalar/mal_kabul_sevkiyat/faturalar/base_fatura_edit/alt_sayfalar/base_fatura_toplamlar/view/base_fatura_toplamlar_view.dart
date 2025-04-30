@@ -300,7 +300,8 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          if (!(model.getEditTipiEnum?.gizlenecekAlanlar("genel_iskontolar") ?? false)) ...[
+          if (!(model.getEditTipiEnum?.gizlenecekAlanlar("genel_iskontolar") ?? false) &&
+              (model.getEditTipiEnum?.fiyatGor ?? false)) ...[
             Row(
               children:
                   <CustomTextField>[
@@ -489,6 +490,7 @@ final class _BaseFaturaToplamlarViewState extends BaseState<BaseFaturaToplamlarV
           Row(
             children: <Widget>[
               if (yetkiController.siparisEkMaliyet2GizlenecekMi &&
+                  (model.getEditTipiEnum?.fiyatGor ?? false) &&
                   yetkiController.ekMaliyet2Aktif(model.getEditTipiEnum))
                 Expanded(
                   child: CustomTextField(

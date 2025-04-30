@@ -452,263 +452,279 @@ final class _BaseSiparisToplamlarViewState extends BaseState<BaseSiparisToplamla
 
   Padding textFields() => Padding(
     padding: UIHelper.lowPaddingHorizontal,
-    child: Column(
-      children: [
-        Row(
-          children:
-              [
-                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
-                  CustomTextField(
-                    labelText: "Gen. İsk 1",
-                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                    enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
-                    controller: genelIskonto1Controller,
-                    isFormattedString: true,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    onChanged: (p0) => viewModel.setGenIsk1(p0.toDoubleWithFormattedString),
-                    valueWidget: Observer(
-                      builder:
-                          (_) => Text(
-                            viewModel.isGenIsk1T
-                                ? "%${(viewModel.model.genIsk1o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                                : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+    child:
+        !(model.getEditTipiEnum?.fiyatGor ?? false)
+            ? null
+            : Column(
+              children: [
+                Row(
+                  children:
+                      [
+                        if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
+                          CustomTextField(
+                            labelText: "Gen. İsk 1",
+                            //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                            enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
+                            controller: genelIskonto1Controller,
+                            isFormattedString: true,
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            onChanged: (p0) => viewModel.setGenIsk1(p0.toDoubleWithFormattedString),
+                            valueWidget: Observer(
+                              builder:
+                                  (_) => Text(
+                                    viewModel.isGenIsk1T
+                                        ? "%${(viewModel.model.genIsk1o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
+                                        : "${(viewModel.model.genIsk1t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                  ),
+                            ),
+                            suffix: IconButton(
+                              onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller),
+                              icon: Observer(
+                                builder:
+                                    (_) =>
+                                        Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined),
+                              ),
+                            ),
                           ),
-                    ),
-                    suffix: IconButton(
-                      onPressed: () => viewModel.changeGenIsk1O(genelIskonto1Controller),
-                      icon: Observer(
-                        builder: (_) => Icon(viewModel.isGenIsk1T ? Icons.payments_outlined : Icons.percent_outlined),
-                      ),
-                    ),
-                  ),
-                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) &&
-                    !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
-                  CustomTextField(
-                    labelText: "İsk.Tipi 1",
-                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                    enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
-                    readOnly: true,
-                    suffixMore: true,
-                    controller: iskontoTipi1Controller,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk1Tipi?.toStringIfNotNull ?? "")),
+                        if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) &&
+                            !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk1") ?? false))
+                          CustomTextField(
+                            labelText: "İsk.Tipi 1",
+                            //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                            enabled: enable && yetkiController.siparisGenIsk1AktifMi(model.getEditTipiEnum),
+                            readOnly: true,
+                            suffixMore: true,
+                            controller: iskontoTipi1Controller,
+                            valueWidget: Observer(
+                              builder: (_) => Text(viewModel.model.genisk1Tipi?.toStringIfNotNull ?? ""),
+                            ),
 
-                    onClear: () => viewModel.setIskTipi1(null),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
-                        context,
-                        viewModel.model.genisk1Tipi,
-                      );
-                      if (result != null) {
-                        viewModel.setIskTipi1(result.iskontoTipi);
-                        iskontoTipi1Controller.text = result.aciklama ?? "";
-                      }
-                    },
-                  ),
-              ].map((e) => Expanded(child: e)).toList(),
-        ),
-        Row(
-          children:
-              [
-                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
-                  CustomTextField(
-                    labelText: "Gen. İsk 2",
-                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                    enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
-                    controller: genelIskonto2Controller,
-                    isFormattedString: true,
-                    keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                    valueWidget: Observer(
-                      builder:
-                          (_) => Text(
-                            viewModel.isGenIsk2T
-                                ? "%${(viewModel.model.genIsk2o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                                : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                            onClear: () => viewModel.setIskTipi1(null),
+                            onTap: () async {
+                              final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
+                                context,
+                                viewModel.model.genisk1Tipi,
+                              );
+                              if (result != null) {
+                                viewModel.setIskTipi1(result.iskontoTipi);
+                                iskontoTipi1Controller.text = result.aciklama ?? "";
+                              }
+                            },
                           ),
-                    ),
-                    onChanged: (p0) => viewModel.setGenIsk2(p0.toDoubleWithFormattedString),
-                    suffix: IconButton(
-                      onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
-                      icon: Observer(
-                        builder: (_) => Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined),
+                      ].map((e) => Expanded(child: e)).toList(),
+                ),
+                Row(
+                  children:
+                      [
+                        if (!(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
+                          CustomTextField(
+                            labelText: "Gen. İsk 2",
+                            //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                            enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
+                            controller: genelIskonto2Controller,
+                            isFormattedString: true,
+                            keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                            valueWidget: Observer(
+                              builder:
+                                  (_) => Text(
+                                    viewModel.isGenIsk2T
+                                        ? "%${(viewModel.model.genIsk2o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
+                                        : "${(viewModel.model.genIsk2t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                  ),
+                            ),
+                            onChanged: (p0) => viewModel.setGenIsk2(p0.toDoubleWithFormattedString),
+                            suffix: IconButton(
+                              onPressed: () => viewModel.changeGenIsk2O(genelIskonto2Controller),
+                              icon: Observer(
+                                builder:
+                                    (_) =>
+                                        Icon(viewModel.isGenIsk2T ? Icons.payments_outlined : Icons.percent_outlined),
+                              ),
+                            ),
+                          ),
+                        if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) &&
+                            !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
+                          CustomTextField(
+                            labelText: "İsk.Tipi 2",
+                            //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                            enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
+                            readOnly: true,
+                            isFormattedString: true,
+                            suffixMore: true,
+                            valueWidget: Observer(
+                              builder: (_) => Text(viewModel.model.genisk2Tipi?.toStringIfNotNull ?? ""),
+                            ),
+                            controller: iskontoTipi2Controller,
+                            onClear: () => viewModel.setIskTipi2(null),
+                            onTap: () async {
+                              final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
+                                context,
+                                viewModel.model.genisk2Tipi,
+                              );
+                              if (result != null) {
+                                viewModel.setIskTipi2(result.iskontoTipi);
+                                iskontoTipi2Controller.text = result.aciklama ?? "";
+                              }
+                            },
+                          ),
+                      ].map((e) => Expanded(child: e)).toList(),
+                ),
+                Row(
+                  children:
+                      [
+                        CustomTextField(
+                          labelText: "Gen. İsk 3",
+                          //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                          enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
+                          isFormattedString: true,
+                          controller: genelIskonto3Controller,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          onChanged: (p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
+                          valueWidget: Observer(
+                            builder:
+                                (_) => Text(
+                                  viewModel.isGenIsk3T
+                                      ? "%${(viewModel.model.genIsk3o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
+                                      : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                ),
+                          ),
+                          suffix: IconButton(
+                            onPressed: () => viewModel.changeGenIsk3O(genelIskonto3Controller),
+                            icon: Observer(
+                              builder:
+                                  (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined),
+                            ),
+                          ),
+                        ),
+                        if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) &&
+                            !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk3") ?? false))
+                          CustomTextField(
+                            labelText: "İsk.Tipi 3",
+                            //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
+                            enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
+                            suffixMore: true,
+                            readOnly: true,
+                            controller: iskontoTipi3Controller,
+                            valueWidget: Observer(
+                              builder: (_) => Text(viewModel.model.genisk3Tipi?.toStringIfNotNull ?? ""),
+                            ),
+                            onClear: () => viewModel.setIskTipi3(null),
+                            onTap: () async {
+                              final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
+                                context,
+                                viewModel.model.genisk3Tipi,
+                              );
+                              if (result != null) {
+                                viewModel.setIskTipi3(result.iskontoTipi);
+                                iskontoTipi3Controller.text = result.aciklama ?? "";
+                              }
+                            },
+                          ),
+                      ].map((e) => Expanded(child: e)).toList(),
+                ),
+                Row(
+                  children: [
+                    if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Ek Mal. 1",
+                          enabled: enable,
+                          controller: ekMal1Controller,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          onChanged:
+                              (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                        ),
                       ),
-                    ),
-                  ),
-                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) &&
-                    !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk2") ?? false))
-                  CustomTextField(
-                    labelText: "İsk.Tipi 2",
-                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                    enabled: enable && yetkiController.siparisGenIsk2AktifMi(model.getEditTipiEnum),
-                    readOnly: true,
-                    isFormattedString: true,
-                    suffixMore: true,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk2Tipi?.toStringIfNotNull ?? "")),
-                    controller: iskontoTipi2Controller,
-                    onClear: () => viewModel.setIskTipi2(null),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
-                        context,
-                        viewModel.model.genisk2Tipi,
-                      );
-                      if (result != null) {
-                        viewModel.setIskTipi2(result.iskontoTipi);
-                        iskontoTipi2Controller.text = result.aciklama ?? "";
-                      }
-                    },
-                  ),
-              ].map((e) => Expanded(child: e)).toList(),
-        ),
-        Row(
-          children:
-              [
-                CustomTextField(
-                  labelText: "Gen. İsk 3",
-                  //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                  enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
-                  isFormattedString: true,
-                  controller: genelIskonto3Controller,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (p0) => viewModel.setGenIsk3(p0.toDoubleWithFormattedString),
-                  valueWidget: Observer(
-                    builder:
-                        (_) => Text(
-                          viewModel.isGenIsk3T
-                              ? "%${(viewModel.model.genIsk3o ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.oran)}"
-                              : "${(viewModel.model.genIsk3t ?? 0).commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                    if (yetkiController.siparisEkMaliyet2GizlenecekMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
+                          enabled: enable,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
+                          controller: tevkifatController,
+                          inputFormatter: [FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
+                          suffix: IconButton(
+                            onPressed: () async {
+                              final result = await bottomSheetDialogManager.showBottomSheetDialog(
+                                context,
+                                title: "Tevkifat Oranı",
+                                children: List.generate(
+                                  viewModel.tevkifatMap.length,
+                                  (index) => BottomSheetModel(
+                                    title: viewModel.tevkifatMap.keys.toList()[index],
+                                    value: viewModel.tevkifatMap.values.toList()[index],
+                                  ),
+                                ),
+                              );
+                              if (result != null) {
+                                viewModel.setTevkifat(result);
+                                tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
+                              }
+                            },
+                            icon: const Icon(Icons.more_horiz_outlined),
+                          ),
+                          // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
                         ),
-                  ),
-                  suffix: IconButton(
-                    onPressed: () => viewModel.changeGenIsk3O(genelIskonto3Controller),
-                    icon: Observer(
-                      builder: (_) => Icon(viewModel.isGenIsk3T ? Icons.payments_outlined : Icons.percent_outlined),
-                    ),
-                  ),
+                      ),
+                  ],
                 ),
-                if (!(model.getEditTipiEnum?.gizlenecekAlanlar("isk_tipleri") ?? false) &&
-                    !(model.getEditTipiEnum?.gizlenecekAlanlar("gen_isk3") ?? false))
-                  CustomTextField(
-                    labelText: "İsk.Tipi 3",
-                    //? Değişmeyecek alansa gizlesin diye tersini aldım. Değişmeyecekse "true" dönüyor.
-                    enabled: enable && yetkiController.siparisGenIsk3AktifMi(model.getEditTipiEnum),
-                    suffixMore: true,
-                    readOnly: true,
-                    controller: iskontoTipi3Controller,
-                    valueWidget: Observer(builder: (_) => Text(viewModel.model.genisk3Tipi?.toStringIfNotNull ?? "")),
-                    onClear: () => viewModel.setIskTipi3(null),
-                    onTap: () async {
-                      final result = await bottomSheetDialogManager.showIskontoTipiBottomSheetDialog(
-                        context,
-                        viewModel.model.genisk3Tipi,
-                      );
-                      if (result != null) {
-                        viewModel.setIskTipi3(result.iskontoTipi);
-                        iskontoTipi3Controller.text = result.aciklama ?? "";
-                      }
-                    },
-                  ),
-              ].map((e) => Expanded(child: e)).toList(),
-        ),
-        Row(
-          children: [
-            if (!yetkiController.siparisMSEkMaliyet2AktifMi)
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Ek Mal. 1",
-                  enabled: enable,
-                  controller: ekMal1Controller,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
-                ),
-              ),
-            if (yetkiController.siparisEkMaliyet2GizlenecekMi)
-              Expanded(
-                child: CustomTextField(
-                  labelText: yetkiController.siparisSatisEkMaliyet2Adi(model.getEditTipiEnum) ?? "Tevkifat",
-                  enabled: enable,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true, signed: true),
-                  controller: tevkifatController,
-                  inputFormatter: [FilteringTextInputFormatter.allow(RegExp(r"[\d+\-\.]"))],
-                  suffix: IconButton(
-                    onPressed: () async {
-                      final result = await bottomSheetDialogManager.showBottomSheetDialog(
-                        context,
-                        title: "Tevkifat Oranı",
-                        children: List.generate(
-                          viewModel.tevkifatMap.length,
-                          (index) => BottomSheetModel(
-                            title: viewModel.tevkifatMap.keys.toList()[index],
-                            value: viewModel.tevkifatMap.values.toList()[index],
+                Row(
+                  children: [
+                    if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Ek Mal. 3",
+                          enabled: enable,
+                          controller: ekMal3Controller,
+                          keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                          onChanged:
+                              (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
+                        ),
+                      ),
+                    if (!(model.getEditTipiEnum?.gizlenecekAlanlar("vade_gunu") ?? false) &&
+                        !yetkiController.satirdaVade(model.getEditTipiEnum!))
+                      Expanded(
+                        child: CustomTextField(
+                          labelText: "Vade Günü",
+                          enabled: enable,
+                          controller: vadeGunuController,
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) {
+                            model.vadeGunu = int.tryParse(value);
+                            viewModel.setVadeTarihi(
+                              DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0)),
+                            );
+                          },
+                          valueWidget: Observer(builder: (_) => Text(viewModel.model.vadeTarihi?.toDateString ?? "")),
+                          suffix: IconButton(
+                            onPressed: () async {
+                              final date = await dialogManager.showDateTimePicker(
+                                initialDate: model.vadeTarihi ?? DateTime.now(),
+                              );
+                              // final date = await showDatePicker(
+                              //   context: context,
+                              //   initialDate: model.vadeTarihi ?? DateTime.now(),
+                              //   firstDate: model.tarih ?? DateTime.now(),
+                              //   lastDate: DateTime.now().add(const Duration(days: 365)),
+                              // );
+                              if (date != null) {
+                                // model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
+                                viewModel.setVadeTarihi(date);
+                                model.vadeGunu =
+                                    viewModel.model.vadeTarihi.dateTimeWithoutTime
+                                        ?.difference(DateTime.now().dateTimeWithoutTime!)
+                                        .inDays;
+                                vadeGunuController.text = model.vadeGunu.toString();
+                              }
+                            },
+                            icon: const Icon(Icons.calendar_today),
                           ),
                         ),
-                      );
-                      if (result != null) {
-                        viewModel.setTevkifat(result);
-                        tevkifatController.text = (-result * viewModel.model.kdvTutari).toString();
-                      }
-                    },
-                    icon: const Icon(Icons.more_horiz_outlined),
-                  ),
-                  // onChanged: (value) => model.ekMaliyet2Tutari = double.tryParse(value),
+                      ),
+                  ],
                 ),
-              ),
-          ],
-        ),
-        Row(
-          children: [
-            if (!yetkiController.siparisMSEkMaliyet2AktifMi)
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Ek Mal. 3",
-                  enabled: enable,
-                  controller: ekMal3Controller,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  onChanged: (value) => viewModel.setEkMal1(double.tryParse(value.replaceAll(RegExp(r","), "."))),
-                ),
-              ),
-            if (!(model.getEditTipiEnum?.gizlenecekAlanlar("vade_gunu") ?? false) &&
-                !yetkiController.satirdaVade(model.getEditTipiEnum!))
-              Expanded(
-                child: CustomTextField(
-                  labelText: "Vade Günü",
-                  enabled: enable,
-                  controller: vadeGunuController,
-                  keyboardType: TextInputType.number,
-                  onChanged: (value) {
-                    model.vadeGunu = int.tryParse(value);
-                    viewModel.setVadeTarihi(
-                      DateTime.now().dateTimeWithoutTime?.add(Duration(days: model.vadeGunu ?? 0)),
-                    );
-                  },
-                  valueWidget: Observer(builder: (_) => Text(viewModel.model.vadeTarihi?.toDateString ?? "")),
-                  suffix: IconButton(
-                    onPressed: () async {
-                      final date = await dialogManager.showDateTimePicker(
-                        initialDate: model.vadeTarihi ?? DateTime.now(),
-                      );
-                      // final date = await showDatePicker(
-                      //   context: context,
-                      //   initialDate: model.vadeTarihi ?? DateTime.now(),
-                      //   firstDate: model.tarih ?? DateTime.now(),
-                      //   lastDate: DateTime.now().add(const Duration(days: 365)),
-                      // );
-                      if (date != null) {
-                        // model.vadeGunu = (model.tarih?.difference(date).inDays ?? 0) * -1;
-                        viewModel.setVadeTarihi(date);
-                        model.vadeGunu =
-                            viewModel.model.vadeTarihi.dateTimeWithoutTime
-                                ?.difference(DateTime.now().dateTimeWithoutTime!)
-                                .inDays;
-                        vadeGunuController.text = model.vadeGunu.toString();
-                      }
-                    },
-                    icon: const Icon(Icons.calendar_today),
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ],
-    ),
+              ],
+            ),
   );
 
   void initControllers() {

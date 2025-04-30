@@ -594,7 +594,7 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                           value: viewModel.kdvDahil,
                           onChanged:
                               (enable && !(model.getEditTipiEnum?.degistirilmeyecekAlanlar("kdv_dahil_haric") ?? false))
-                                  ? (value) => viewModel.changeKdvDahil(value)
+                                  ? viewModel.changeKdvDahil
                                   : null,
                         ),
                   ),

@@ -263,6 +263,7 @@ final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplam
         Column(
           children: [
             if (yetkiController.genIsk1AktifMi(model.getEditTipiEnum) &&
+                (model.getEditTipiEnum?.fiyatGor ?? false) &&
                 !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false))
               Row(
                 children:
@@ -316,6 +317,7 @@ final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplam
                     ].map((e) => Expanded(child: e)).toList(),
               ),
             if (yetkiController.genIsk2AktifMi(model.getEditTipiEnum) &&
+                (model.getEditTipiEnum?.fiyatGor ?? false) &&
                 !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false))
               Row(
                 children:
@@ -369,6 +371,7 @@ final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplam
                     ].map((e) => Expanded(child: e)).toList(),
               ),
             if (yetkiController.genIsk3AktifMi(model.getEditTipiEnum) &&
+                (model.getEditTipiEnum?.fiyatGor ?? false) &&
                 !(BaseSiparisEditModel.instance.getEditTipiEnum?.depoTransferiMi ?? false))
               Row(
                 children:
@@ -471,7 +474,7 @@ final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplam
         ),
         Row(
           children: <Widget>[
-            if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+            if (!yetkiController.siparisMSEkMaliyet2AktifMi && (model.getEditTipiEnum?.fiyatGor ?? false))
               Expanded(
                 child: CustomTextField(
                   labelText: "Ek Mal. 3",
@@ -521,7 +524,7 @@ final class _BaseTransferToplamlarViewState extends BaseState<BaseTransferToplam
         ),
         Row(
           children: <Widget>[
-            if (!yetkiController.siparisMSEkMaliyet2AktifMi)
+            if (!yetkiController.siparisMSEkMaliyet2AktifMi && (model.getEditTipiEnum?.fiyatGor ?? false))
               Expanded(
                 child: CustomTextField(
                   labelText: "Ek Mal. 1",

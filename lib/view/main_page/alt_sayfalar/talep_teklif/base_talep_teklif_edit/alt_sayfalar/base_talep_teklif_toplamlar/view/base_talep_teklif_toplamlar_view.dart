@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../../../../core/base/state/base_state.dart";
@@ -96,23 +97,24 @@ final class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklif
                           ],
                         ),
                       ),
-                      Text.rich(
-                        TextSpan(
-                          children: <InlineSpan>[
-                            const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: ColorPalette.slateGray)),
-                            TextSpan(
-                              text:
-                                  "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                              style: const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            if (model.dovizliMi)
+                      if (model.getEditTipiEnum?.fiyatGor ?? false)
+                        Text.rich(
+                          TextSpan(
+                            children: <InlineSpan>[
+                              const TextSpan(text: "Brüt Tutar\n", style: TextStyle(color: ColorPalette.slateGray)),
                               TextSpan(
                                 text:
-                                    "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                                    "${model.toplamBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
-                          ],
+                              if (model.dovizliMi)
+                                TextSpan(
+                                  text:
+                                      "\n${model.toplamDovizBrutTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)}",
+                                ),
+                            ],
+                          ),
                         ),
-                      ),
                       Text.rich(
                         TextSpan(
                           children: <InlineSpan>[
@@ -148,7 +150,7 @@ final class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklif
                             ],
                           ),
                         ),
-                      if (model.stekMi)
+                      if (model.stekMi && (model.getEditTipiEnum?.fiyatGor ?? false))
                         Observer(
                           builder:
                               (_) => Text.rich(
@@ -172,69 +174,78 @@ final class _BaseTalepTeklifToplamlarViewState extends BaseState<BaseTalepTeklif
                                 ),
                               ),
                         ),
-                      Observer(
-                        builder:
-                            (_) => Text.rich(
-                              TextSpan(
-                                children: <InlineSpan>[
-                                  const TextSpan(text: "Ara Toplam\n", style: TextStyle(color: ColorPalette.slateGray)),
-                                  TextSpan(
-                                    text:
-                                        "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  if (model.dovizliMi)
+                      if (model.getEditTipiEnum?.fiyatGor ?? false)
+                        Observer(
+                          builder:
+                              (_) => Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    const TextSpan(
+                                      text: "Ara Toplam\n",
+                                      style: TextStyle(color: ColorPalette.slateGray),
+                                    ),
                                     TextSpan(
                                       text:
-                                          "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                                          "${viewModel.model.getAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                      style: const TextStyle(fontWeight: FontWeight.bold),
                                     ),
-                                ],
+                                    if (model.dovizliMi)
+                                      TextSpan(
+                                        text:
+                                            "\n${viewModel.model.getDovizliAraToplam.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                                      ),
+                                  ],
+                                ),
                               ),
-                            ),
-                      ),
-                      Observer(
-                        builder:
-                            (_) => Text.rich(
-                              TextSpan(
-                                children: <InlineSpan>[
-                                  const TextSpan(text: "KDV Tutarı\n", style: TextStyle(color: ColorPalette.slateGray)),
-                                  TextSpan(
-                                    text:
-                                        "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  if (model.dovizliMi)
+                        ),
+                      if (model.getEditTipiEnum?.fiyatGor ?? false)
+                        Observer(
+                          builder:
+                              (_) => Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    const TextSpan(
+                                      text: "KDV Tutarı\n",
+                                      style: TextStyle(color: ColorPalette.slateGray),
+                                    ),
                                     TextSpan(
                                       text:
-                                          "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                                          "${viewModel.model.kdvTutari.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                      style: const TextStyle(fontWeight: FontWeight.bold),
                                     ),
-                                ],
+                                    if (model.dovizliMi)
+                                      TextSpan(
+                                        text:
+                                            "\n${model.dovizliKdv.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                                      ),
+                                  ],
+                                ),
                               ),
-                            ),
-                      ),
-                      Observer(
-                        builder:
-                            (_) => Text.rich(
-                              TextSpan(
-                                children: <InlineSpan>[
-                                  const TextSpan(
-                                    text: "Genel Toplam\n",
-                                    style: TextStyle(color: ColorPalette.slateGray),
-                                  ),
-                                  TextSpan(
-                                    text:
-                                        "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
-                                    style: const TextStyle(fontWeight: FontWeight.bold),
-                                  ),
-                                  if (model.dovizliMi)
+                        ),
+                      if (model.getEditTipiEnum?.fiyatGor ?? false)
+                        Observer(
+                          builder:
+                              (_) => Text.rich(
+                                TextSpan(
+                                  children: <InlineSpan>[
+                                    const TextSpan(
+                                      text: "Genel Toplam\n",
+                                      style: TextStyle(color: ColorPalette.slateGray),
+                                    ),
                                     TextSpan(
                                       text:
-                                          "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                                          "${viewModel.model.genelToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} $mainCurrency",
+                                      style: const TextStyle(fontWeight: FontWeight.bold),
                                     ),
-                                ],
+                                    if (model.dovizliMi)
+                                      TextSpan(
+                                        text:
+                                            "\n${model.genelDovizToplamTutar.commaSeparatedWithDecimalDigits(OndalikEnum.dovizTutari)}",
+                                      ),
+                                  ],
+                                ),
                               ),
-                            ),
-                      ),
+                        ),
                     ].map((e) => e is SizedBox ? null : SizedBox(width: constraints.maxWidth / 3, child: e)).toList().nullCheckWithGeneric,
               ),
         ),
