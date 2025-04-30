@@ -3,7 +3,7 @@ import "package:flutter/material.dart";
 final class BaseScaffold extends Scaffold {
   const BaseScaffold({
     super.body,
-    AppBar? super.appBar,
+    super.appBar,
     final Color? backgroundColor,
     // final FloatingActionButtonLocation? floatingActionButtonLocation,
     // final Widget? floatingActionButton,

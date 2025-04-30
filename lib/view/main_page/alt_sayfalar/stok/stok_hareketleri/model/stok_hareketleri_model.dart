@@ -1,4 +1,6 @@
+import "package:get/get.dart";
 import "package:json_annotation/json_annotation.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 
@@ -46,4 +48,9 @@ final class StokHareketleriModel with NetworkManagerMixin {
   double? get dovizliNetFiyat => (stharNf ?? 0) / (dovizKuru ?? 0);
 
   double? get dovizliNetTutar => (dovizliNetFiyat ?? 0) * (stharGcmik ?? 0);
+
+  EditTipiEnum? get editTipi {
+    if (hareketTuruAciklama == "Depo Transferi") return EditTipiEnum.depoTransferi;
+    return EditTipiEnum.values.firstWhereOrNull((element) => element.getName == belgeTipiAciklama);
+  }
 }

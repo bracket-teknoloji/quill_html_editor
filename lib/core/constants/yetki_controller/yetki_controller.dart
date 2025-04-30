@@ -255,6 +255,8 @@ final class YetkiController {
   bool get stokFiyatGoster => _isTrue(!_isTrue(_profilYetkiModel?.stokStokKartiFiyatlariGizle));
   bool get stokAlisFiyatGoster => _isTrue(!_isTrue(_profilYetkiModel?.stokStokKartiAlisFiyatiGizle));
   bool get stokSatisFiyatGoster => _isTrue(!_isTrue(_profilYetkiModel?.stokStokKartiSatisFiyatiGizle));
+  bool stokEditTipineGorefiyatGor(EditTipiEnum? value) =>
+      value?.satisMi ?? false ? stokSatisFiyatGoster : stokAlisFiyatGoster;
   bool get stokFiyatOzeti => _isTrue(_profilYetkiModel?.stokFiyatOzeti);
 
   bool stokListesiExtraAlanlar(String value) =>
