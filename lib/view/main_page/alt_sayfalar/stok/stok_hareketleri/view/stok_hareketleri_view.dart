@@ -391,18 +391,15 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                                 children2.add(
                                   SlidableAction(
                                     onPressed: (context) async {
-                                      final editTipi = EditTipiEnum.values.firstWhereOrNull(
-                                        (element) => element.getName == model.belgeTipiAciklama,
-                                      );
+                                      final editTipi = model.editTipi;
                                       if (editTipi?.goruntulensinMi ?? false) {
                                         await Get.toNamed(
                                           editTipi?.getEditRoute ?? "",
                                           arguments: BaseEditModel<SiparisEditRequestModel>(
                                             baseEditEnum: BaseEditEnum.goruntule,
-                                            model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                            editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
-                                              (element) => element.getName == model.belgeTipiAciklama,
-                                            ),
+                                            model: SiparisEditRequestModel.fromStokHareketleriModel(model)
+                                              ..belgeTuru = editTipi?.rawValue,
+                                            editTipiEnum: editTipi,
                                           ),
                                         );
                                         viewModel.setStokHareketleri(await getData()!);
@@ -584,7 +581,8 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                 Expanded(child: Text("KDV %: ${model.stharKdv?.toInt() ?? 0}")),
             ],
           ),
-          if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("F"))
+          if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("F") &&
+              yetkiController.stokEditTipineGorefiyatGor(model.editTipi))
             Row(
               children: [
                 Expanded(
@@ -622,7 +620,8 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                 ),
               ],
             ),
-          if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("T"))
+          if (!viewModel.gizlenecekAlanlarList.map((e) => e.value).contains("T") &&
+              yetkiController.stokEditTipineGorefiyatGor(model.editTipi))
             Row(
               children: [
                 Expanded(
