@@ -608,7 +608,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             ],
                           ),
                           trailing: Text(
-                            "${item.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.tutar) ?? 0} ${item.olcuBirimi ?? ""}",
+                            "${item.bakiye?.commaSeparatedWithDecimalDigits(OndalikEnum.miktar) ?? 0} ${item.olcuBirimi ?? ""}",
                           ),
                         ),
                       ),
