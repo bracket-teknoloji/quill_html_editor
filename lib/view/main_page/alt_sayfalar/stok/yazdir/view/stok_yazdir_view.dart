@@ -275,7 +275,7 @@ final class _StokYazdirViewState extends BaseState<StokYazdirView> {
                       builder:
                           (_) => Switch.adaptive(
                             value: viewModel.stokSecildigindeYazdir,
-                            onChanged: (value) => viewModel.changeStokSecildigindeYazdir(value),
+                            onChanged: viewModel.changeStokSecildigindeYazdir,
                           ),
                     ),
                   ).paddingAll(UIHelper.lowSize),
