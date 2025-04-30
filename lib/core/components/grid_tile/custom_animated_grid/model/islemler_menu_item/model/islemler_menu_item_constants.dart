@@ -1376,6 +1376,13 @@ final class IslemlerMenuItemConstants<T> {
     onTap: () async {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+        if (siparisModel.muhtelifMi) {
+          _dialogManager.showAlertDialog(
+            "Muhtelif cari ile işleme devam edilemiyor. "
+            "Cari seçiniz veya cari kaydı oluşturunuz.",
+          );
+          return;
+        }
         final kalemler = await Get.toNamed(
           "mainPage/kalemRehberi",
           arguments: SiparislerRequestModel.fromBaseSiparisEditModel(siparisModel),
@@ -1384,7 +1391,6 @@ final class IslemlerMenuItemConstants<T> {
           final List<KalemModel> newKalemler =
               kalemler.map(KalemModel.forTalepTeklifSiparislestir).toList().cast<KalemModel>();
           final TextEditingController controller = TextEditingController();
-
           await getBelgeNo(controller, siparisModel);
           // ignore: use_build_context_synchronously
           return await _bottomSheetDialogManager.showBottomSheetDialog(
