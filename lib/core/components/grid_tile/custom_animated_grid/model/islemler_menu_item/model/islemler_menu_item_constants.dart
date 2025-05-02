@@ -8,6 +8,7 @@ import "package:get/get.dart";
 import "package:google_maps_flutter/google_maps_flutter.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/seri_islemleri/seri_hareketleri/model/seri_hareketleri_request_model.dart";
+import "package:picker/core/constants/enum/menu_list_enum.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:share_plus/share_plus.dart";
 
@@ -84,32 +85,48 @@ final class IslemlerMenuItemConstants<T> {
     } else if (islemTipi case (IslemTipiEnum.cari || IslemTipiEnum.cariListesi)) {
       if (model is CariListesiModel) {
         final CariListesiModel newModel = model as CariListesiModel;
+        if (_yetkiController.menuCheck(MenuItemsEnum.talepTeklif)) {
+          islemlerList
+            ..add(cariSatisTeklifi)
+            ..add(cariSatisTalebi);
+        }
+        if (_yetkiController.menuCheck(MenuItemsEnum.siparis)) {
+          islemlerList
+            ..add(cariMusteriSiparisi)
+            ..add(cariSaticiSiparisi);
+        }
+        if (_yetkiController.menuCheck(MenuItemsEnum.sevkiyat)) {
+          islemlerList
+            ..add(cariSatisIrsaliyesi)
+            ..add(cariSatisFaturasi);
+        }
+        if (_yetkiController.menuCheck(MenuItemsEnum.malKabul)) {
+          islemlerList
+            ..add(cariAlisIrsaliyesi)
+            ..add(cariAlisFaturasi);
+        }
+        if (_yetkiController.menuCheck(MenuItemsEnum.finans)) {
+          islemlerList
+            ..add(bankaCariEFTHavale(model: model as CariListesiModel))
+            ..add(nakitTahsilat(model))
+            ..add(nakitOdeme(model))
+            ..add(krediKartiTahsilati(model))
+            ..add(borcCeki)
+            ..add(borcSenedi)
+            ..add(cekTahsilati)
+            ..add(tahsilatSenedi)
+            ..add(cariVirman);
+        }
         islemlerList
-          ..add(cariSatisTeklifi)
-          ..add(cariSatisTalebi)
-          ..add(cariMusteriSiparisi)
-          ..add(cariSaticiSiparisi)
-          ..add(cariAlisIrsaliyesi)
-          ..add(cariAlisFaturasi)
-          ..add(cariSatisIrsaliyesi)
-          ..add(cariSatisFaturasi)
-          ..add(bankaCariEFTHavale(model: model as CariListesiModel))
-          ..add(nakitTahsilat(model))
-          ..add(nakitOdeme(model))
-          ..add(krediKartiTahsilati(model))
-          ..add(borcCeki)
-          ..add(borcSenedi)
-          ..add(cekTahsilati)
-          ..add(tahsilatSenedi)
-          ..add(cariVirman)
+          // diğer
           ..addIfConditionTrue(newModel.enlem != null, konumGoster)
           ..add(konumAta)
           ..add(paylas)
           ..addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala)
-          ..add(cariHareketleri)
-          ..add(stokHareketleri)
-          ..add(cariAktivite)
-          ..add(cariAktiviteKaydiGir)
+          ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.cari), cariHareketleri)
+          ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.stok), stokHareketleri)
+          ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.cari), cariAktivite)
+          ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.cari), cariAktiviteKaydiGir)
           ..addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi, cariKoduDegistir(newModel.cariKodu));
         if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
       }
@@ -170,24 +187,28 @@ final class IslemlerMenuItemConstants<T> {
 
       if (raporlar?.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar!);
     } else if (islemTipi == IslemTipiEnum.cariHareketleri) {
-      islemlerList
-        ..add(nakitOdeme(model))
-        ..add(nakitTahsilat(model))
-        ..add(krediKartiTahsilati(model))
-        ..add(tahsilatSenedi)
-        ..add(cekTahsilati)
-        ..add(borcCeki)
-        ..add(borcSenedi)
-        ..add(bankaCariEFTHavale(model: model as CariListesiModel));
+      if (_yetkiController.menuCheck(MenuItemsEnum.finans)) {
+        islemlerList
+          ..add(nakitOdeme(model))
+          ..add(nakitTahsilat(model))
+          ..add(krediKartiTahsilati(model))
+          ..add(tahsilatSenedi)
+          ..add(cekTahsilati)
+          ..add(borcCeki)
+          ..add(borcSenedi)
+          ..add(bankaCariEFTHavale(model: model as CariListesiModel));
+      }
     } else if (islemTipi == IslemTipiEnum.banka) {
-      islemlerList
-        ..addIfConditionTrue(model != null, bankaHareketleri)
-        ..add(bankaCariEFTHavale())
-        ..add(bankaKasaTransferi)
-        ..add(hesaplarArasiVirman)
-        ..add(hesaplarArasiEftHavale)
-        ..add(bankaMuhtelifTahsilat)
-        ..add(bnkaMuhtelifOdeme);
+      if (_yetkiController.menuCheck(MenuItemsEnum.finans)) {
+        islemlerList
+          ..addIfConditionTrue(model != null, bankaHareketleri)
+          ..add(bankaCariEFTHavale())
+          ..add(bankaKasaTransferi)
+          ..add(hesaplarArasiVirman)
+          ..add(hesaplarArasiEftHavale)
+          ..add(bankaMuhtelifTahsilat)
+          ..add(bnkaMuhtelifOdeme);
+      }
     } else if (islemTipi == IslemTipiEnum.cekSenet) {
       final CekSenetListesiModel cekModel = model as CekSenetListesiModel;
       if (cekModel.cekSenetListesiEnum.borcMu) {
@@ -206,30 +227,44 @@ final class IslemlerMenuItemConstants<T> {
           );
       }
     } else if (islemTipi == IslemTipiEnum.tahsilatOdeme) {
-      islemlerList
-        ..add(nakitOdeme(model))
-        ..add(nakitTahsilat(model))
-        ..add(krediKartiTahsilati(model))
-        ..add(tahsilatSenedi)
-        ..add(cekTahsilati)
-        ..add(borcSenedi)
-        ..add(borcCeki);
+      if (_yetkiController.menuCheck(MenuItemsEnum.finans)) {
+        islemlerList
+          ..add(nakitOdeme(model))
+          ..add(nakitTahsilat(model))
+          ..add(krediKartiTahsilati(model))
+          ..add(tahsilatSenedi)
+          ..add(cekTahsilati)
+          ..add(borcSenedi)
+          ..add(borcCeki);
+      }
     } else if (islemTipi == IslemTipiEnum.talepTeklif) {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
         islemlerList
           ..add(siparisPDFGoruntule)
-          ..addIfConditionTrue(!siparisModel.kapaliMi && siparisModel.stekMi, talTekRevizeEt)
-          ..addIfConditionTrue(siparisModel.atalMi && siparisModel.teklifSipariseDonerMi, saticiSiparisiOlustur)
-          ..addIfConditionTrue(
-            (siparisModel.stalMi || siparisModel.stekMi) && siparisModel.teklifSipariseDonerMi,
-            musteriSiparisiOlustur,
-          )
-          ..addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur)
-          ..addIfConditionTrue(
+          ..addIfConditionTrue(!siparisModel.kapaliMi && siparisModel.stekMi, talTekRevizeEt);
+        if (_yetkiController.menuCheck(MenuItemsEnum.siparis)) {
+          islemlerList
+            ..addIfConditionTrue(siparisModel.atalMi && siparisModel.teklifSipariseDonerMi, saticiSiparisiOlustur)
+            ..addIfConditionTrue(
+              (siparisModel.stalMi || siparisModel.stekMi) && siparisModel.teklifSipariseDonerMi,
+              musteriSiparisiOlustur,
+            );
+        }
+        if (_yetkiController.menuCheck(MenuItemsEnum.sevkiyat)) {
+          islemlerList
+            ..addIfConditionTrue(
+              siparisModel.stekMi && siparisModel.teklifFaturayaDonerMi && !siparisModel.irsaliyelestiMi,
+              siparistenFaturaOlustur,
+            )
+            ..addIfConditionTrue(siparisModel.stekMi && siparisModel.teklifIrsaliyeDonerMi, satisIrsaliyeOlustur);
+        } else if (_yetkiController.menuCheck(MenuItemsEnum.malKabul)) {
+          islemlerList.addIfConditionTrue(
             siparisModel.stekMi && siparisModel.teklifFaturayaDonerMi && !siparisModel.irsaliyelestiMi,
             siparistenFaturaOlustur,
-          )
+          );
+        }
+        islemlerList
           ..addIfConditionTrue(
             siparisModel.siparislestiMi || siparisModel.faturalastiMi || siparisModel.irsaliyelestiMi,
             belgeBaglantilari,
@@ -247,13 +282,25 @@ final class IslemlerMenuItemConstants<T> {
       }
     } else if (islemTipi == IslemTipiEnum.fatura) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
+
+      islemlerList.add(kopyala);
+      if (_yetkiController.menuCheck(MenuItemsEnum.sevkiyat)) {
+        islemlerList
+          ..addIfConditionTrue(siparisModel.getEditTipiEnum?.irsaliyeMi == true, irsaliyeFaturalastir)
+          ..addIfConditionTrue(
+            siparisModel.getEditTipiEnum?.alisIrsaliyesiMi == true && kDebugMode,
+            satisIrsaliyeOlustur,
+          )
+          ..addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
+      } else if (_yetkiController.menuCheck(MenuItemsEnum.malKabul)) {
+        islemlerList.addIfConditionTrue(siparisModel.getEditTipiEnum?.irsaliyeMi == true, irsaliyeFaturalastir);
+      }
       islemlerList
-        ..addIfConditionTrue(siparisModel.getEditTipiEnum?.irsaliyeMi == true, irsaliyeFaturalastir)
-        ..addIfConditionTrue(siparisModel.getEditTipiEnum?.alisIrsaliyesiMi == true && kDebugMode, satisIrsaliyeOlustur)
         ..add(siparisPDFGoruntule)
         ..add(siparisCariKoduDegistir)
-        ..add(faturaBelgeNoDegistir)
-        ..addIfConditionTrue(siparisModel.aFaturaMi, alistanSatisFaturasiOlustur);
+        ..add(faturaBelgeNoDegistir);
+
+      if (raporlar?.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar!);
     } else if (islemTipi == IslemTipiEnum.eBelge) {
       final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
       islemlerList
@@ -294,7 +341,7 @@ final class IslemlerMenuItemConstants<T> {
   BuildContext context;
   IslemlerMenuItemConstantsViewModel viewModel = IslemlerMenuItemConstantsViewModel();
   IslemTipiEnum islemTipi;
-  ThemeData get theme => AppThemeDark.instance?.theme ?? ThemeData();
+  ThemeData get _theme => AppThemeDark.instance?.theme ?? ThemeData();
   EditTipiEnum? siparisTipi;
   List<GridItemModel> islemlerList = [];
   T? model;
@@ -488,7 +535,7 @@ final class IslemlerMenuItemConstants<T> {
                   child: ElevatedButton(
                     onPressed: Get.back,
                     style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1)),
+                      backgroundColor: WidgetStateProperty.all(_theme.colorScheme.onSurface.withValues(alpha: 0.1)),
                     ),
                     child: const Text("İptal"),
                   ),
@@ -746,7 +793,7 @@ final class IslemlerMenuItemConstants<T> {
                   child: ElevatedButton(
                     onPressed: Get.back,
                     style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all(theme.colorScheme.onSurface.withValues(alpha: 0.1)),
+                      backgroundColor: WidgetStateProperty.all(_theme.colorScheme.onSurface.withValues(alpha: 0.1)),
                     ),
                     child: const Text("İptal"),
                   ),

@@ -1,6 +1,7 @@
 import "package:collection/collection.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/masraf_kodu/model/masraf_kodu_rehberi_model.dart";
+import "package:picker/core/constants/enum/menu_list_enum.dart";
 import "package:picker/view/add_company/model/account_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_muhasebe_kodu_model.dart";
 import "package:picker/view/main_page/model/user_model/kullanici_yetki_model.dart";
@@ -44,6 +45,8 @@ final class YetkiController {
   bool _isTrue(bool? value, {bool skipAdmin = false}) => (value ?? false) || (skipAdmin ? false : adminMi);
 
   //! GENEL
+
+  bool menuCheck(MenuItemsEnum menu) => CacheManager.getAnaVeri?.menuList?.any((element) => element == menu.yetkiName) ?? false;
 
   bool get adminMi => _userModel?.admin ?? false;
   List<DepoList>? get _yetkiliDepoList {
