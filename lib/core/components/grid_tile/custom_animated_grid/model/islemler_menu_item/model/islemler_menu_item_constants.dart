@@ -67,7 +67,7 @@ final class IslemlerMenuItemConstants<T> {
       islemlerList
         ..add(stokKarti)
         ..add(kopyala);
-      if (cariModel != null) {
+      if (cariModel != null && _yetkiController.menuCheck(MenuItemsEnum.cari) && _yetkiController.cariHareketleri) {
         islemlerList.add(stokCariHareketleri(cariModel!));
       }
       islemlerList
