@@ -73,7 +73,7 @@ final class IslemlerMenuItemConstants<T> {
       islemlerList
         ..add(stokHareketleri)
         ..add(stokYazdir)
-        ..add(hucreHareketleri)
+        ..addIfConditionTrue(_yetkiController.hucreHareketleri ,hucreHareketleri)
         ..add(depoBakiyeDurumu)
         ..add(fiyatGor)
         ..add(stokResimleri)
@@ -123,8 +123,11 @@ final class IslemlerMenuItemConstants<T> {
           ..add(konumAta)
           ..add(paylas)
           ..addIfConditionTrue(_yetkiController.cariKartiYeniKayit, kopyala)
-          ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.cari), cariHareketleri)
-          ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.stok), stokHareketleri)
+          ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.cari), cariHareketleri);
+        if (_yetkiController.menuCheck(MenuItemsEnum.stok)) {
+          islemlerList.addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.stok), stokHareketleri);
+        }
+        islemlerList
           ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.cari), cariAktivite)
           ..addIfConditionTrue(_yetkiController.menuCheck(MenuItemsEnum.cari), cariAktiviteKaydiGir)
           ..addIfConditionTrue(islemTipi == IslemTipiEnum.cariListesi, cariKoduDegistir(newModel.cariKodu));
