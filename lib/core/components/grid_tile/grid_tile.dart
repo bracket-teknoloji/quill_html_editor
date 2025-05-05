@@ -107,12 +107,8 @@ final class CustomGridTileState extends BaseState<CustomGridTile> {
               child: ValueListenableBuilder(
                 valueListenable: CacheManager.favorilerBox.listenable(),
                 builder: (context, value, child) {
-                  late final IconData icon;
-                  if (value.values.any((element) => element.title == widget.model?.title)) {
-                    icon = Icons.star;
-                  } else {
-                    icon = Icons.star_border;
-                  }
+                  IconData icon = Icons.star_border;
+                  if (value.values.any((element) => element.title == widget.model?.title)) icon = Icons.star;
                   return Icon(icon, size: 20, color: Colors.white);
                 },
               ),

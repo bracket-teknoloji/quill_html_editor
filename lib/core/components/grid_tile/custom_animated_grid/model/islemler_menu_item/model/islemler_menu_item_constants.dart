@@ -704,8 +704,8 @@ final class IslemlerMenuItemConstants<T> {
         title: "Paylaş",
         groupValues: List.generate(7, (index) => true),
         children: [
-          if (newModel.cariAdi != null) BottomSheetModel(title: "Ünvan", value: newModel.cariAdi, groupValue: true),
-          if (newModel.cariAdres != null) BottomSheetModel(title: "Adres", value: newModel.cariAdres, groupValue: true),
+          if (newModel.cariAdi case final value?) BottomSheetModel(title: "Ünvan", value: value, groupValue: true),
+          if (newModel.cariAdres case final value?) BottomSheetModel(title: "Adres", value: value, groupValue: true),
           if (newModel.cariIl != null || newModel.cariIlce != null)
             BottomSheetModel(
               title: "İl/ İlçe",
@@ -718,9 +718,9 @@ final class IslemlerMenuItemConstants<T> {
               value: "${newModel.vergiDairesi ?? ""} ${newModel.vergiNumarasi ?? ""}",
               groupValue: true,
             ),
-          if (newModel.cariTel != null) BottomSheetModel(title: "Telefon", value: newModel.cariTel, groupValue: true),
-          if (newModel.web != null) BottomSheetModel(title: "Web Sitesi", value: newModel.web, groupValue: true),
-          if (newModel.email != null) BottomSheetModel(title: "Mail", value: newModel.email, groupValue: true),
+          if (newModel.cariTel case final value?) BottomSheetModel(title: "Telefon", value: value, groupValue: true),
+          if (newModel.web case final value?) BottomSheetModel(title: "Web Sitesi", value: value, groupValue: true),
+          if (newModel.email case final value?) BottomSheetModel(title: "Mail", value: value, groupValue: true),
         ],
       );
       if (result.ext.isNotNullOrEmpty) {
