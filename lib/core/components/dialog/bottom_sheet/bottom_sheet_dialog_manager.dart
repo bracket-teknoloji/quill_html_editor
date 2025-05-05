@@ -1698,7 +1698,7 @@ final class BottomSheetDialogManager {
         await DIManager.read<SewooPrinter>().printImage(
           base64Decode(pdfModel?.byteData ?? "").buffer.asInt64List(),
           pdfModel?.reportWidth?.toInt() ?? 0,
-           pdfModel?.reportHeight?.toInt() ?? 0,
+          pdfModel?.reportHeight?.toInt() ?? 0,
         );
         if (result.isSuccess) {
           DialogManager().showSuccessSnackBar("Yazdırıldı.");

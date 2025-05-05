@@ -46,7 +46,8 @@ final class YetkiController {
 
   //! GENEL
 
-  bool menuCheck(MenuItemsEnum menu) => CacheManager.getAnaVeri?.menuList?.any((element) => element == menu.yetkiName) ?? false;
+  bool menuCheck(MenuItemsEnum menu) =>
+      CacheManager.getAnaVeri?.menuList?.any((element) => element == menu.yetkiName) ?? false;
 
   bool get adminMi => _userModel?.admin ?? false;
   List<DepoList>? get _yetkiliDepoList {

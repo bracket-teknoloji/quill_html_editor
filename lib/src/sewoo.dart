@@ -70,8 +70,9 @@ class _PigeonCodec extends StandardMessageCodec {
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
     if (value is int) {
-      buffer..putUint8(4)
-      ..putInt64(value);
+      buffer
+        ..putUint8(4)
+        ..putInt64(value);
     } else if (value is PrinterList) {
       buffer.putUint8(129);
       writeValue(buffer, value.encode());

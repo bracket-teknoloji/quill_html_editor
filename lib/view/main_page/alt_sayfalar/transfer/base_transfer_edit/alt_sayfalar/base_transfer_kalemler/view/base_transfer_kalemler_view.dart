@@ -368,10 +368,10 @@ final class _BaseTransferKalemlerViewState extends BaseState<BaseTransferKalemle
             Get.back();
             return dialogManager.showStokGridViewDialog(
               StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "",
-                cariModel: CariListesiModel(
-                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                  cariAdi: BaseSiparisEditModel.instance.cariAdi,
-                ),
+              cariModel: CariListesiModel(
+                cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                cariAdi: BaseSiparisEditModel.instance.cariAdi,
+              ),
             );
           },
         ),

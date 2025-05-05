@@ -73,7 +73,7 @@ final class IslemlerMenuItemConstants<T> {
       islemlerList
         ..add(stokHareketleri)
         ..add(stokYazdir)
-        ..addIfConditionTrue(_yetkiController.hucreHareketleri ,hucreHareketleri)
+        ..addIfConditionTrue(_yetkiController.hucreHareketleri, hucreHareketleri)
         ..add(depoBakiyeDurumu)
         ..add(fiyatGor)
         ..add(stokResimleri)

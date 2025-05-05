@@ -364,10 +364,10 @@ final class _BaseTalepTeklifKalemlerViewState extends BaseState<BaseTalepTeklifK
                 Get.back();
                 return dialogManager.showStokGridViewDialog(
                   StokListesiModel()..stokKodu = viewModel.kalemList?[index].stokKodu ?? "",
-                cariModel: CariListesiModel(
-                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                  cariAdi: BaseSiparisEditModel.instance.cariAdi,
-                ),
+                  cariModel: CariListesiModel(
+                    cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                    cariAdi: BaseSiparisEditModel.instance.cariAdi,
+                  ),
                 );
               },
             ),

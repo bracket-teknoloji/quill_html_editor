@@ -37,7 +37,8 @@ final class CustomTextField extends StatefulWidget {
     this.isTime,
     this.descriptionWidget,
     this.obscureText = false,
-    this.hintText, this.autofillHints,
+    this.hintText,
+    this.autofillHints,
   }) : onDateChange = null;
 
   const CustomTextField.dateTime({
@@ -60,7 +61,8 @@ final class CustomTextField extends StatefulWidget {
     this.onChanged,
     this.onClear,
     this.obscureText = false,
-    this.hintText, this.autofillHints,
+    this.hintText,
+    this.autofillHints,
   }) : isDateTime = true,
        isFormattedString = false,
        keyboardType = null,

@@ -545,12 +545,13 @@ final class NetworkManager {
 
   //SırakadiBelgeNoModel koyma sebebim boş bir modele ihtiyacımın olması.
   //Sadece succes döndürüyor.
-  Future<GenericResponseModel<BasePdfModel>> postPrint({required PrintModel model}) async => await dioPost<BasePdfModel>(
-    path: ApiUrls.print,
-    bodyModel: BasePdfModel(),
-    data: model.toJson(),
-    showLoading: true,
-  );
+  Future<GenericResponseModel<BasePdfModel>> postPrint({required PrintModel model}) async =>
+      await dioPost<BasePdfModel>(
+        path: ApiUrls.print,
+        bodyModel: BasePdfModel(),
+        data: model.toJson(),
+        showLoading: true,
+      );
 
   Future<List<StokMuhasebeKoduModel>> getMuhasebeKodlari({
     Map<String, dynamic>? queryParams,
