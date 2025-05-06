@@ -102,7 +102,7 @@ mixin _$CariDovizliEkstreViewModel on _CariDovizliEkstreViewModelBase, Store {
   }
 
   @override
-  void changeDovizValue(String value) {
+  void changeDovizValue(String? value) {
     final _$actionInfo = _$_CariDovizliEkstreViewModelBaseActionController
         .startAction(name: '_CariDovizliEkstreViewModelBase.changeDovizValue');
     try {

@@ -108,6 +108,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
             controller: cariController,
             readOnly: true,
             suffixMore: true,
+            onClear: () => viewModel.pdfModel.dicParams?.cariKodu = null,
             onTap: () async {
               final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
               if (result != null) {
@@ -143,6 +144,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                     labelText: "Plasiyer",
                     readOnly: true,
                     controller: plasiyerController,
+                    onClear: () => viewModel.pdfModel.dicParams?.plasiyerKodu = null,
                     onTap: () async {
                       final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                       if (plasiyerList != null) {
@@ -200,6 +202,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                   controller: grupKoduController,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.grupKodu = null,
                   onTap: () async => await getGrupKodu(0, grupKoduController),
                 ),
               ),
@@ -209,6 +212,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                   controller: kod1Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod1 = null,
                   onTap: () async => await getGrupKodu(1, kod1Controller),
                 ),
               ),
@@ -222,6 +226,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                   controller: kod2Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod2 = null,
                   onTap: () async => await getGrupKodu(2, kod2Controller),
                 ),
               ),
@@ -231,6 +236,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                   controller: kod3Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod3 = null,
                   onTap: () async => await getGrupKodu(3, kod3Controller),
                 ),
               ),
@@ -244,6 +250,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                   controller: kod4Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod4 = null,
                   onTap: () async => await getGrupKodu(4, kod4Controller),
                 ),
               ),
@@ -253,6 +260,7 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
                   controller: kod5Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod5 = null,
                   onTap: () async => await getGrupKodu(5, kod5Controller),
                 ),
               ),
@@ -282,12 +290,13 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
     final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList =
         grupKodList
             .where((e) => e.grupNo == grupNo)
-            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e))
+            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e, groupValue: e.grupKodu))
             .toList();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showBottomSheetDialog(
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog(
       context,
       title: "Grup Kodu",
+      groupValue: _getGrupKodu(grupNo),
       children: bottomSheetList,
     );
     if (result != null) {
@@ -311,4 +320,22 @@ final class _YaslandirmaRaporuViewState extends BaseState<YaslandirmaRaporuView>
   }
 
   void filterOnChanged(int? index) {}
+
+  String? _getGrupKodu(int grupNo) {
+    switch (grupNo) {
+      case 0:
+        return viewModel.pdfModel.dicParams?.grupKodu;
+      case 1:
+        return viewModel.pdfModel.dicParams?.kod1;
+      case 2:
+        return viewModel.pdfModel.dicParams?.kod2;
+      case 3:
+        return viewModel.pdfModel.dicParams?.kod3;
+      case 4:
+        return viewModel.pdfModel.dicParams?.kod4;
+      case 5:
+        return viewModel.pdfModel.dicParams?.kod5;
+    }
+    return null;
+  }
 }

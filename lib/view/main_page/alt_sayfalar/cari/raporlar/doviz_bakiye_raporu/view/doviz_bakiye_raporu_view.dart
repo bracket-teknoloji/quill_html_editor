@@ -96,6 +96,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
               controller: cariController,
               readOnly: true,
               suffixMore: true,
+              onClear: () => viewModel.pdfModel.dicParams?.cariKodu = null,
               onTap: () async {
                 final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result case final CariListesiModel result?) {
@@ -112,6 +113,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                       labelText: "Plasiyer",
                       controller: plasiyerController,
                       readOnly: true,
+                      onClear: () => viewModel.pdfModel.dicParams?.plasiyerKodu = null,
                       onTap: () async {
                         final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                         if (plasiyerList != null) {
@@ -157,6 +159,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                     controller: grupKoduController,
                     readOnly: true,
                     suffixMore: true,
+                    onClear: () => viewModel.pdfModel.dicParams?.grupKodu = null,
                     onTap: () async => await getGrupKodu(0, grupKoduController),
                   ),
                 ),
@@ -166,6 +169,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                     controller: kod1Controller,
                     readOnly: true,
                     suffixMore: true,
+                    onClear: () => viewModel.pdfModel.dicParams?.kod1 = null,
                     onTap: () async => await getGrupKodu(1, kod1Controller),
                   ),
                 ),
@@ -179,6 +183,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                     controller: kod2Controller,
                     readOnly: true,
                     suffixMore: true,
+                    onClear: () => viewModel.pdfModel.dicParams?.kod2 = null,
                     onTap: () async => await getGrupKodu(2, kod2Controller),
                   ),
                 ),
@@ -188,6 +193,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                     controller: kod3Controller,
                     readOnly: true,
                     suffixMore: true,
+                    onClear: () => viewModel.pdfModel.dicParams?.kod3 = null,
                     onTap: () async => await getGrupKodu(3, kod3Controller),
                   ),
                 ),
@@ -201,6 +207,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                     controller: kod4Controller,
                     readOnly: true,
                     suffixMore: true,
+                    onClear: () => viewModel.pdfModel.dicParams?.kod4 = null,
                     onTap: () async => await getGrupKodu(4, kod4Controller),
                   ),
                 ),
@@ -210,6 +217,7 @@ final class _DovizBakiyeRaporuViewState extends BaseState<DovizBakiyeRaporuView>
                     controller: kod5Controller,
                     readOnly: true,
                     suffixMore: true,
+                    onClear: () => viewModel.pdfModel.dicParams?.kod5 = null,
                     onTap: () async => await getGrupKodu(5, kod5Controller),
                   ),
                 ),

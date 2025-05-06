@@ -91,6 +91,7 @@ final class _CariDovizliEkstreViewState extends BaseState<CariDovizliEkstreView>
                   controller: dovizController,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.changeDovizValue(null),
                   onTap: () async {
                     List<DovizList>? dovizList = CacheManager.getAnaVeri?.paramModel?.dovizList;
                     dovizList = dovizList?.where((element) => element.dovizTipi != 0).toList();

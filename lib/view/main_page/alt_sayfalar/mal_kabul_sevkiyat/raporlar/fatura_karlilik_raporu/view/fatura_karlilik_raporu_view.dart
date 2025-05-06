@@ -97,6 +97,7 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                 controller: belgeNoController,
                 readOnly: true,
                 suffixMore: true,
+                onClear: () => viewModel.pdfModel.dicParams?.belgeNo = "",
                 onTap: () async {
                   final result = await Get.toNamed("/mainPage/sevkiyatSatisFaturasiOzel", arguments: true);
                   if (result is BaseSiparisEditModel) {
@@ -125,6 +126,7 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                     },
                     icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
                   ),
+                  onClear: () => viewModel.pdfModel.dicParams?.cariKodu = null,
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                     if (result is CariListesiModel) {
@@ -140,6 +142,7 @@ final class _FaturaKarlilikRaporuViewState extends BaseState<FaturaKarlilikRapor
                       labelText: "Plasiyer",
                       controller: plasiyerController,
                       readOnly: true,
+                      onClear: () => viewModel.pdfModel.dicParams?.plasiyerKodu = null,
                       onTap: () async {
                         final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                         if (plasiyerList != null) {

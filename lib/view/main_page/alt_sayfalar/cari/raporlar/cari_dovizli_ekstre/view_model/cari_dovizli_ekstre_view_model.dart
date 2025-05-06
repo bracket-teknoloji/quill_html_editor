@@ -22,7 +22,7 @@ abstract class _CariDovizliEkstreViewModelBase with Store {
   String? dovizValue;
 
   @action
-  void changeDovizValue(String value) => dovizValue = value;
+  void changeDovizValue(String? value) => dovizValue = value;
 
   @observable
   PdfModel pdfModel = PdfModel(

@@ -87,6 +87,7 @@ final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevk
               controller: belgeNoController,
               readOnly: true,
               suffixMore: true,
+              onClear: () => viewModel.pdfModel.dicParams?.belgeNo = "",
               onTap: () async {
                 final result = await Get.toNamed(widget.editTipiEnum.getListRoute, arguments: true);
                 if (result is BaseSiparisEditModel) {
@@ -114,6 +115,7 @@ final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevk
                 },
                 icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
               ),
+              onClear: () => viewModel.pdfModel.dicParams?.cariKodu = null,
               onTap: () async {
                 final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result is CariListesiModel) {
@@ -127,6 +129,7 @@ final class _MalKabulSevkiyatKalemRaporuViewState extends BaseState<MalKabulSevk
                 labelText: "Plasiyer",
                 controller: plasiyerController,
                 readOnly: true,
+                onClear: () => viewModel.pdfModel.dicParams?.plasiyerKodu = null,
                 onTap: () async {
                   final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                   if (plasiyerList != null) {

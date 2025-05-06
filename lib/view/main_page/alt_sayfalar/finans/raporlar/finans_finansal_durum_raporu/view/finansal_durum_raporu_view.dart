@@ -48,6 +48,7 @@ final class _FinansalDurumRaporuViewState extends BaseState<FinansalDurumRaporuV
             controller: gorunecekAlanlarController,
             readOnly: true,
             suffixMore: true,
+            onClear: () => viewModel.changeGorunecekAlanlar(""),
             onTap: () async {
               final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<MapEntry<String, String>>(
                 context,
