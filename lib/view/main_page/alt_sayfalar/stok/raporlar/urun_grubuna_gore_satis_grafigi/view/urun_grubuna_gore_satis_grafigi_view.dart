@@ -111,6 +111,10 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
               controller: grupNoController,
               readOnly: true,
               suffixMore: true,
+              onClear: () {
+                viewModel.model.grupNo = null;
+                viewModel.getData();
+              },
               onTap: () async {
                 final result = await bottomSheetDialogManager.showBottomSheetDialog(
                   context,
@@ -129,6 +133,10 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
               controller: cariController,
               readOnly: true,
               suffixMore: true,
+              onClear: () {
+                viewModel.model.cariKodu = null;
+                viewModel.getData();
+              },
               onTap: () async {
                 final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
                 if (result != null) {
@@ -144,6 +152,10 @@ final class _UrunGrubunaGoreSatisGrafigiViewState extends BaseState<UrunGrubunaG
                 controller: plasiyerController,
                 readOnly: true,
                 suffixMore: true,
+                onClear: () {
+                  viewModel.model.arrPlasiyerKodu = null;
+                  viewModel.getData();
+                },
                 onTap: () async {
                   final List<PlasiyerList>? plasiyerList = CacheManager.getAnaVeri?.paramModel?.plasiyerList;
                   if (plasiyerList != null) {
