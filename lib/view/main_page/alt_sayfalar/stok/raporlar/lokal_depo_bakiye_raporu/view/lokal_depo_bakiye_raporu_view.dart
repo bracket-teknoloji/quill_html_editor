@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
+import "package:picker/core/init/cache/cache_manager.dart";
 
 import "../../../../../../../core/base/model/base_grup_kodu_model.dart";
 import "../../../../../../../core/base/state/base_state.dart";
@@ -101,6 +102,7 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   controller: stokController,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.stokKodu = null,
                   onTap: () async {
                     final result = await Get.toNamed("/mainPage/stokListesi", arguments: true);
                     if (result != null) {
@@ -115,6 +117,7 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   labelText: "Depo",
                   controller: depoController,
                   readOnly: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.depoKodlari = null,
                   onTap: () async {
                     final result = await bottomSheetDialogManager.showDepoBottomSheetDialog(
                       context,
@@ -159,6 +162,7 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   controller: kod1Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod1 = null,
                   onTap: () async => await getGrupKodu(1, kod1Controller),
                 ),
               ),
@@ -172,6 +176,7 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   controller: kod2Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod2 = null,
                   onTap: () async => await getGrupKodu(2, kod2Controller),
                 ),
               ),
@@ -181,6 +186,7 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   controller: kod3Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod3 = null,
                   onTap: () async => await getGrupKodu(3, kod3Controller),
                 ),
               ),
@@ -194,6 +200,7 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   controller: kod4Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod4 = null,
                   onTap: () async => await getGrupKodu(4, kod4Controller),
                 ),
               ),
@@ -203,6 +210,7 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
                   controller: kod5Controller,
                   readOnly: true,
                   suffixMore: true,
+                  onClear: () => viewModel.pdfModel.dicParams?.kod5 = null,
                   onTap: () async => await getGrupKodu(5, kod5Controller),
                 ),
               ),
@@ -210,6 +218,11 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
           ),
           ElevatedButton(
             onPressed: () {
+              viewModel.pdfModel.dicParams?.depoKodlari ??= yetkiController.yetkiliDepoList
+                  ?.where((element) => (element.subeKodu ?? 0) == CacheManager.getVeriTabani["Şube"])
+                  .map((e) => e.depoKodu)
+                  .nonNulls
+                  .join(";");
               viewModel.setFuture();
               Get.back();
             },
@@ -232,11 +245,12 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
     final List<BottomSheetModel<BaseGrupKoduModel>> bottomSheetList =
         grupKodList
             .where((e) => e.grupNo == grupNo)
-            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e))
+            .map((e) => BottomSheetModel(title: e.grupKodu ?? "", value: e, groupValue: e.grupKodu))
             .toList();
     // ignore: use_build_context_synchronously
-    final result = await bottomSheetDialogManager.showBottomSheetDialog<BaseGrupKoduModel>(
+    final result = await bottomSheetDialogManager.showRadioBottomSheetDialog<BaseGrupKoduModel>(
       context,
+      groupValue: _getGrupKodu(grupNo),
       title: "Grup Kodu",
       children: bottomSheetList,
     );
@@ -256,6 +270,24 @@ final class _LokalDepoBakiyeRaporuViewState extends BaseState<LokalDepoBakiyeRap
         case 5:
           viewModel.pdfModel.dicParams?.kod5 = result.grupKodu ?? "";
       }
+    }
+    return null;
+  }
+
+  String? _getGrupKodu(int grupNo) {
+    switch (grupNo) {
+      case 0:
+        return viewModel.pdfModel.dicParams?.grupKodu;
+      case 1:
+        return viewModel.pdfModel.dicParams?.kod1;
+      case 2:
+        return viewModel.pdfModel.dicParams?.kod2;
+      case 3:
+        return viewModel.pdfModel.dicParams?.kod3;
+      case 4:
+        return viewModel.pdfModel.dicParams?.kod4;
+      case 5:
+        return viewModel.pdfModel.dicParams?.kod5;
     }
     return null;
   }
