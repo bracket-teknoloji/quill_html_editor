@@ -194,7 +194,10 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                       .toList();
             }
             if (widget.model.baseEditEnum.kopyalaMi) {
-              BaseSiparisEditModel.instance.tarih = DateTime.now().dateTimeWithoutTime;
+              BaseSiparisEditModel.instance
+                ..tarih = DateTime.now().dateTimeWithoutTime
+                ..plasiyerAciklama = widget.model.model?.plasiyerAciklama
+                ..plasiyerKodu = widget.model.model?.plasiyerKodu;
               if (yetkiController.kontrolluBelgeAktarimAktif) {
                 BaseSiparisEditModel.instance
                   ..remoteTempBelge =
@@ -243,8 +246,8 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
                 ..efaturaDurumAciklama = null
                 ..vadeGunu ??= cariModel.vadeGunu
                 ..vadeTarihi ??= DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
-                ..plasiyerAciklama = cariModel.plasiyerAciklama
-                ..plasiyerKodu = cariModel.plasiyerKodu
+                ..plasiyerAciklama ??= cariModel.plasiyerAciklama
+                ..plasiyerKodu ??= cariModel.plasiyerKodu
                 ..cariAdi = cariModel.cariAdi
                 ..cariKodu = cariModel.cariKodu
                 ..kosulKodu = cariModel.kosulKodu
@@ -654,6 +657,7 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
   );
 
   Future<void> dovizGuncelle() async {
+    viewModel.changeUpdateKalemler();
     final result = await networkManager.getDovizKurlari(
       BaseSiparisEditModel.instance.dovizTipi,
       tarih: BaseSiparisEditModel.instance.tarih,

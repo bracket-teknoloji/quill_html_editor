@@ -600,7 +600,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
     _ => false,
   };
 
-  bool get _fiyatGor => switch (this) {
+  bool get stokTipineBakmadanFiyatGor => switch (this) {
     EditTipiEnum.satisIrsaliye => yetkiController.satisIrsFiyatGor,
     EditTipiEnum.alisIrsaliye => yetkiController.alisIrsFiyatGor,
     EditTipiEnum.depoTransferi => yetkiController.transferDatFiyatGor,
@@ -609,7 +609,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
     _ => true,
   };
 
-  bool get fiyatGor => _fiyatGor && yetkiController.stokEditTipineGorefiyatGor(this);
+  bool get fiyatGor => stokTipineBakmadanFiyatGor && yetkiController.stokEditTipineGorefiyatGor(this);
 
   bool get digerSekmesiGoster => switch (this) {
     EditTipiEnum.musteri ||
