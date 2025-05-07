@@ -1144,7 +1144,7 @@ final class IslemlerMenuItemConstants<T> {
             arguments: BaseEditModel(
               model: cariModel,
               editTipiEnum: EditTipiEnum.cari,
-              baseEditEnum: BaseEditEnum.goruntule,
+              baseEditEnum: _yetkiController.cariKartiDuzenleme ? BaseEditEnum.duzenle : BaseEditEnum.goruntule,
             ),
           );
         }
