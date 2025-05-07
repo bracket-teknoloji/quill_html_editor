@@ -259,7 +259,7 @@ final class _PDFViewerViewState extends BaseState<PDFViewerView> {
       } else if (viewModel.futureController.value == null) {
         return const Center(child: CircularProgressIndicator.adaptive());
       } else {
-        return const Center();
+        return Center(child: Text("PDF bulunamadı.", style: Theme.of(context).textTheme.headlineSmall));
       }
     },
   );
