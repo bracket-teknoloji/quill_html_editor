@@ -1010,7 +1010,7 @@ final class _KalemEkleViewState extends BaseState<KalemEkleView> {
                       ),
                     ),
                   ),
-                if (editTipi?.fiyatGor == true && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false))
+                if (editTipi?.stokTipineBakmadanFiyatGor == true && !(editTipi?.gizlenecekAlanlar("fiyat") ?? false))
                   Expanded(
                     child: Observer(
                       builder:
