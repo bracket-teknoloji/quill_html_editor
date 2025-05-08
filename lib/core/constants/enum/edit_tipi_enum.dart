@@ -224,7 +224,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   };
 
   bool get rehberdenStokSecilsin {
-    if (!barkodluUrunGirisi) return true;
+    if (!barkodluUrunGirisi && barkodluUrunGirisiOlabilirMi) return true;
     return switch (this) {
       EditTipiEnum.satisFatura => yetkiController.satisFatRehberdenStokSecilsin,
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsRehberdenStokSecilsin,
@@ -234,7 +234,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatRehberdenStokSecilsin,
       EditTipiEnum.ambarGirisi => yetkiController.transferAGRehberdenStokSecilsin,
       EditTipiEnum.ambarCikisi => yetkiController.transferACRehberdenStokSecilsin,
-      _ => false,
+      _ => true,
     };
   }
 
@@ -251,7 +251,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   };
 
   bool get kalemlerKlavyeAcilmasin {
-    if (!barkodluUrunGirisi) return true;
+    if (!barkodluUrunGirisi && barkodluUrunGirisiOlabilirMi) return true;
     return switch (this) {
       EditTipiEnum.satisFatura => yetkiController.satisFatKalemKlavyeAcilmasin,
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsKalemKlavyeAcilmasin,
@@ -261,9 +261,21 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatKalemKlavyeAcilmasin,
       EditTipiEnum.ambarGirisi => yetkiController.transferAGKalemKlavyeAcilmasin,
       EditTipiEnum.ambarCikisi => yetkiController.transferACKalemKlavyeAcilmasin,
-      _ => true,
+      _ => false,
     };
   }
+
+  bool get barkodluUrunGirisiOlabilirMi => switch (this) {
+    EditTipiEnum.satisFatura ||
+    EditTipiEnum.satisIrsaliye ||
+    EditTipiEnum.alisFatura ||
+    EditTipiEnum.alisIrsaliye ||
+    EditTipiEnum.depoTransferi ||
+    EditTipiEnum.olcumdenDepoTransferi ||
+    EditTipiEnum.ambarGirisi ||
+    EditTipiEnum.ambarCikisi => true,
+    _ => false,
+  };
 
   bool get maxIskontoUygula => switch (this) {
     EditTipiEnum.satisFatura => yetkiController.sfMaxIskontoUygula,
@@ -336,7 +348,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   };
 
   bool get urunOtomatikEklensin {
-    if (!barkodluUrunGirisi) return true;
+    if (!barkodluUrunGirisi && barkodluUrunGirisiOlabilirMi) return true;
     return switch (this) {
       EditTipiEnum.satisFatura => yetkiController.satisFatBarkodUrunOtomatikEkle,
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsBarkodUrunOtomatikEkle,
@@ -351,7 +363,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
   }
 
   bool get kalemDuzeltilsin {
-    if (!barkodluUrunGirisi) return true;
+    if (!barkodluUrunGirisi && barkodluUrunGirisiOlabilirMi) return true;
     return switch (this) {
       EditTipiEnum.satisFatura => yetkiController.satisFatKalemDuzeltilsin,
       EditTipiEnum.satisIrsaliye => yetkiController.satisIrsKalemDuzeltilsin,
