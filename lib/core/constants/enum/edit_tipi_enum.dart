@@ -261,7 +261,7 @@ extension EditTipiEnumExtension on EditTipiEnum {
       EditTipiEnum.olcumdenDepoTransferi => yetkiController.transferDatKalemKlavyeAcilmasin,
       EditTipiEnum.ambarGirisi => yetkiController.transferAGKalemKlavyeAcilmasin,
       EditTipiEnum.ambarCikisi => yetkiController.transferACKalemKlavyeAcilmasin,
-      _ => false,
+      _ => true,
     };
   }
 
