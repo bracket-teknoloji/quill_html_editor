@@ -23,6 +23,7 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
     String? islemId,
     String? mevcutBelgeNo,
     String? yeniBelgeNo,
+    String? yeniCariKodu,
     String? mevcutCariKodu,
     @Default({}) Map? paramMap,
     @Default("FaturaModel") String? tag,
@@ -46,6 +47,7 @@ class EditFaturaModel with NetworkManagerMixin, _$EditFaturaModel {
     yeniBelgeNo: model.yeniBelgeNo,
     kalemler: model.kalemList,
     tipi: model.tipi,
+    yeniCariKodu: model.yeniCariKodu,
     belgeTipi: model.tipi,
   );
 

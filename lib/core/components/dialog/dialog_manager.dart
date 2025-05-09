@@ -180,8 +180,8 @@ final class DialogManager {
         onOk: () {},
       ).show();
 
-  void showInfoDialog(String? description) =>
-      _baseDialog(
+  Future<void> showInfoDialog(String? description) async=>
+      await _baseDialog(
         dialogType: DialogType.info,
         btnOkText: "Tamam",
         body: Text(description ?? "", textAlign: TextAlign.center),

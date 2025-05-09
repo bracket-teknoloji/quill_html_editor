@@ -1426,17 +1426,23 @@ final class IslemlerMenuItemConstants<T> {
     onTap: () async {
       if (model is BaseSiparisEditModel) {
         final BaseSiparisEditModel siparisModel = model as BaseSiparisEditModel;
-        if (siparisModel.muhtelifMi) {
-          _dialogManager.showAlertDialog(
-            "Muhtelif cari ile işleme devam edilemiyor. "
-            "Cari seçiniz veya cari kaydı oluşturunuz.",
-          );
-          return;
-        }
+
         final kalemler = await Get.toNamed(
           "mainPage/kalemRehberi",
           arguments: SiparislerRequestModel.fromBaseSiparisEditModel(siparisModel),
         );
+        if (siparisModel.muhtelifMi) {
+          await _dialogManager.showInfoDialog(
+            "Muhtelif cari ile işleme devam edilemiyor. "
+            "Cari seçiniz veya cari kaydı oluşturunuz.",
+          );
+          final cariModel = await Get.toNamed("mainPage/cariListesi", arguments: true);
+          if (cariModel is CariListesiModel) {
+            siparisModel.yeniCariKodu = cariModel.cariKodu;
+          } else {
+            return;
+          }
+        }
         if (kalemler != null && kalemler is List<KalemModel>) {
           final List<KalemModel> newKalemler =
               kalemler.map(KalemModel.forTalepTeklifSiparislestir).toList().cast<KalemModel>();
@@ -1468,6 +1474,8 @@ final class IslemlerMenuItemConstants<T> {
                       data:
                           EditFaturaModel.fromSiparislerModel(
                             siparisModel
+                              ..belgeTipi = null
+                              ..tipi = null
                               ..yeniBelgeNo = controller.text
                               ..kalemList = newKalemler,
                           ).toJson(),

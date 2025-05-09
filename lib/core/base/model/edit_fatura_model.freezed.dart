@@ -33,6 +33,7 @@ mixin _$EditFaturaModel {
   String? get islemId => throw _privateConstructorUsedError;
   String? get mevcutBelgeNo => throw _privateConstructorUsedError;
   String? get yeniBelgeNo => throw _privateConstructorUsedError;
+  String? get yeniCariKodu => throw _privateConstructorUsedError;
   String? get mevcutCariKodu => throw _privateConstructorUsedError;
   Map<dynamic, dynamic>? get paramMap => throw _privateConstructorUsedError;
   String? get tag => throw _privateConstructorUsedError;
@@ -70,6 +71,7 @@ abstract class $EditFaturaModelCopyWith<$Res> {
       String? islemId,
       String? mevcutBelgeNo,
       String? yeniBelgeNo,
+      String? yeniCariKodu,
       String? mevcutCariKodu,
       Map<dynamic, dynamic>? paramMap,
       String? tag,
@@ -106,6 +108,7 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
     Object? islemId = freezed,
     Object? mevcutBelgeNo = freezed,
     Object? yeniBelgeNo = freezed,
+    Object? yeniCariKodu = freezed,
     Object? mevcutCariKodu = freezed,
     Object? paramMap = freezed,
     Object? tag = freezed,
@@ -159,6 +162,10 @@ class _$EditFaturaModelCopyWithImpl<$Res, $Val extends EditFaturaModel>
       yeniBelgeNo: freezed == yeniBelgeNo
           ? _value.yeniBelgeNo
           : yeniBelgeNo // ignore: cast_nullable_to_non_nullable
+              as String?,
+      yeniCariKodu: freezed == yeniCariKodu
+          ? _value.yeniCariKodu
+          : yeniCariKodu // ignore: cast_nullable_to_non_nullable
               as String?,
       mevcutCariKodu: freezed == mevcutCariKodu
           ? _value.mevcutCariKodu
@@ -216,6 +223,7 @@ abstract class _$$EditFaturaModelImplCopyWith<$Res>
       String? islemId,
       String? mevcutBelgeNo,
       String? yeniBelgeNo,
+      String? yeniCariKodu,
       String? mevcutCariKodu,
       Map<dynamic, dynamic>? paramMap,
       String? tag,
@@ -250,6 +258,7 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
     Object? islemId = freezed,
     Object? mevcutBelgeNo = freezed,
     Object? yeniBelgeNo = freezed,
+    Object? yeniCariKodu = freezed,
     Object? mevcutCariKodu = freezed,
     Object? paramMap = freezed,
     Object? tag = freezed,
@@ -304,6 +313,10 @@ class __$$EditFaturaModelImplCopyWithImpl<$Res>
           ? _value.yeniBelgeNo
           : yeniBelgeNo // ignore: cast_nullable_to_non_nullable
               as String?,
+      yeniCariKodu: freezed == yeniCariKodu
+          ? _value.yeniCariKodu
+          : yeniCariKodu // ignore: cast_nullable_to_non_nullable
+              as String?,
       mevcutCariKodu: freezed == mevcutCariKodu
           ? _value.mevcutCariKodu
           : mevcutCariKodu // ignore: cast_nullable_to_non_nullable
@@ -355,6 +368,7 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
       this.islemId,
       this.mevcutBelgeNo,
       this.yeniBelgeNo,
+      this.yeniCariKodu,
       this.mevcutCariKodu,
       final Map<dynamic, dynamic>? paramMap = const {},
       this.tag = "FaturaModel",
@@ -394,6 +408,8 @@ class _$EditFaturaModelImpl extends _EditFaturaModel {
   final String? mevcutBelgeNo;
   @override
   final String? yeniBelgeNo;
+  @override
+  final String? yeniCariKodu;
   @override
   final String? mevcutCariKodu;
   final Map<dynamic, dynamic>? _paramMap;
@@ -459,6 +475,7 @@ abstract class _EditFaturaModel extends EditFaturaModel {
       final String? islemId,
       final String? mevcutBelgeNo,
       final String? yeniBelgeNo,
+      final String? yeniCariKodu,
       final String? mevcutCariKodu,
       final Map<dynamic, dynamic>? paramMap,
       final String? tag,
@@ -496,6 +513,8 @@ abstract class _EditFaturaModel extends EditFaturaModel {
   String? get mevcutBelgeNo;
   @override
   String? get yeniBelgeNo;
+  @override
+  String? get yeniCariKodu;
   @override
   String? get mevcutCariKodu;
   @override
