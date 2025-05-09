@@ -78,8 +78,7 @@ final class IslemlerMenuItemConstants<T> {
         ..add(fiyatGor)
         ..add(stokResimleri)
         ..add(stokFiyatOzeti)
-        ..add(seriHareketleri)
-        ..add(seriBakiyeleri);
+        ..addAllIf(_yetkiController.seriUygulamasiAcikMi, [seriHareketleri, seriBakiyeleri]);
 
       if (raporlar!.firstOrNull?.altMenuVarMi ?? false) islemlerList.addAll(raporlar);
     } else if (islemTipi case (IslemTipiEnum.cari || IslemTipiEnum.cariListesi)) {
@@ -663,7 +662,7 @@ final class IslemlerMenuItemConstants<T> {
   GridItemModel get seriBakiyeleri => GridItemModel.islemler(
     title: "Seri Bakiye Durumu",
     isEnabled:
-        (_userModel?.stokSeriHar == true &&
+        ((_yetkiController.stokDepoBakiyeDurumu || _userModel?.stokSeriHar == true) &&
             ((model as StokListesiModel).seriCikislardaAcik == true ||
                 (model as StokListesiModel).seriGirislerdeAcik == true)) ||
         AccountModel.instance.adminMi,
