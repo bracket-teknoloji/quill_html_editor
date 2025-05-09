@@ -29,7 +29,7 @@ abstract class _SeriHareketleriViewModelBase with Store, MobxNetworkMixin {
   SeriHareketleriRequestModel requestModel = SeriHareketleriRequestModel(sirala: "TARIH_ZA");
 
   @observable
-  ObservableList<SeriHareketleriModel>? seriHareketleriList;
+  ObservableList<SeriHareketleriModel>? seriHareketleriList = <SeriHareketleriModel>[].asObservable();
 
   @computed
   ObservableList<SeriHareketleriModel>? get filteredList {
