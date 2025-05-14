@@ -203,7 +203,7 @@ final class _CariHareketleriViewState extends BaseState<CariHareketleriView> {
                           title: loc.generalStrings.view,
                           onTap: () async {
                             Get.back();
-                            if (item.faturaMi) {
+                            if (item.faturaMi || item.irsaliyeMi) {
                               await Get.toNamed(
                                 "/mainPage/faturaEdit",
                                 arguments: BaseEditModel(

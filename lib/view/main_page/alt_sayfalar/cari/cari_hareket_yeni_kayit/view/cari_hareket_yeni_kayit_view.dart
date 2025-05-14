@@ -116,10 +116,11 @@ final class _CariYeniKayitViewState extends BaseState<CariYeniKayitView> {
                 (_) => ToggleButtons(
                   isSelected: viewModel.isSelected,
                   constraints: BoxConstraints(minWidth: width / 2.1, minHeight: 50),
-                  children: viewModel.toggleButtonLabelList.map(Text.new).toList(),
                   onPressed:
-                      (index) =>
-                          widget.model?.baseEditEnum.goruntuleMi ?? false ? null : viewModel.setIsSelected(index),
+                      widget.model?.baseEditEnum.goruntuleMi ?? false
+                          ? null
+                          : (index) => viewModel.setIsSelected(index),
+                  children: viewModel.toggleButtonLabelList.map(Text.new).toList(),
                 ),
           ).paddingSymmetric(vertical: UIHelper.lowSize),
           CustomTextField(

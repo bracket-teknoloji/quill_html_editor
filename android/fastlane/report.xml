@@ -5,37 +5,37 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000269">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.000194">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: firebase_app_distribution_get_latest_release" time="0.694824">
+      <testcase classname="fastlane.lanes" name="1: firebase_app_distribution_get_latest_release" time="1.334263">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: clean" time="7.177549">
+      <testcase classname="fastlane.lanes" name="2: clean" time="30.169556">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: assembleRelease" time="333.267842">
+      <testcase classname="fastlane.lanes" name="3: assembleRelease" time="301.22479">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: load_json" time="0.004025">
+      <testcase classname="fastlane.lanes" name="4: load_json" time="0.001612">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: git_branch" time="0.017793">
+      <testcase classname="fastlane.lanes" name="5: git_branch" time="0.014189">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: firebase_app_distribution" time="20.373981">
+      <testcase classname="fastlane.lanes" name="6: firebase_app_distribution" time="16.972932">
         
       </testcase>
     

@@ -49,6 +49,12 @@ final class CariHareketleriModel with NetworkManagerMixin {
 
   bool get satisFaturaMi => belgeTipi == "SF";
 
+  bool get irsaliyeMi => alisIrsaliyeMi || satisIrsaliyeMi;
+
+  bool get alisIrsaliyeMi => belgeTipi == "AI";
+
+  bool get satisIrsaliyeMi => belgeTipi == "SI";
+
   bool get musteriCekMi => hareketKodu == "G";
 
   bool get musteriSenediMi => hareketKodu == "E";

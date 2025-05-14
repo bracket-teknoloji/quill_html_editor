@@ -3,7 +3,7 @@ description: Yeni Picker Deneyimi!
 
 publish_to: "none"
 
-version: 1.9.7+301
+version: 1.9.8+301
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
