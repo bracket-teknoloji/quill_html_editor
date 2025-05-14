@@ -57,9 +57,9 @@ final class AccountResponseModel with NetworkManagerMixin {
   @HiveField(21)
   dynamic bayiKodu;
   @HiveField(22)
-  dynamic bayiEmail;
+  String? bayiEmail;
   @HiveField(23)
-  dynamic bayiUnvan;
+  String? bayiUnvan;
   @HiveField(24)
   bool? bracketCihazi;
   @HiveField(25)

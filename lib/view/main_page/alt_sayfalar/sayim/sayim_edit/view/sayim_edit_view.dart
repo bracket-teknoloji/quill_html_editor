@@ -73,7 +73,7 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
                       );
                       final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(
                         context,
-                        "",
+                        null,
                       );
                       if (sayimFiltre == null) return;
                       pdfModel.dicParams?.filtre =

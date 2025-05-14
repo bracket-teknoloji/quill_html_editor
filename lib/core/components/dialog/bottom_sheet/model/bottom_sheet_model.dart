@@ -17,7 +17,7 @@ final class BottomSheetModel<T> {
   final Widget? descriptionWidget;
   final String? icon;
   final T? value;
-  final dynamic groupValue;
+  final Object? groupValue;
   Function()? onTap;
   final IconData? iconWidget;
 }

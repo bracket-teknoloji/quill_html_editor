@@ -807,11 +807,11 @@ final class MapStokGrupAdlari {
   factory MapStokGrupAdlari.fromJson(Map<String, dynamic> json) => _$MapStokGrupAdlariFromJson(json);
 
   String? grupKodu;
-  dynamic kod1;
-  dynamic kod2;
-  dynamic kod3;
-  dynamic kod4;
-  dynamic kod5;
+  String? kod1;
+  String? kod2;
+  String? kod3;
+  String? kod4;
+  String? kod5;
   Map<String, dynamic> toJson() => _$MapStokGrupAdlariToJson(this);
 }
 

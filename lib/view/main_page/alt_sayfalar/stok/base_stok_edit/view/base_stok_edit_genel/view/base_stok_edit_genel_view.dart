@@ -315,7 +315,7 @@ final class _BaseStokEditGenelViewState extends BaseState<BaseStokEditGenelView>
             onTap: () async {
               final StokMuhasebeKoduModel? result = await bottomSheetDialogManager.showMuhasebeKoduBottomSheetDialog(
                 context,
-                groupValue: stokModel.muhdetayKodu,
+                groupValue: stokModel.muhdetayKodu.toStringIfNotNull,
                 stokMu: true,
               );
               if (result != null) {

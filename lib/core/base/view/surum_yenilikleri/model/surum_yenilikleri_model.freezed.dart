@@ -25,10 +25,10 @@ mixin _$SurumYenilikleriModel {
   set surumKodu(int? value) => throw _privateConstructorUsedError;
   String? get versiyon => throw _privateConstructorUsedError;
   set versiyon(String? value) => throw _privateConstructorUsedError;
-  dynamic get surumAdi => throw _privateConstructorUsedError;
-  set surumAdi(dynamic value) => throw _privateConstructorUsedError;
-  dynamic get yer => throw _privateConstructorUsedError;
-  set yer(dynamic value) => throw _privateConstructorUsedError;
+  String? get surumAdi => throw _privateConstructorUsedError;
+  set surumAdi(String? value) => throw _privateConstructorUsedError;
+  String? get yer => throw _privateConstructorUsedError;
+  set yer(String? value) => throw _privateConstructorUsedError;
   List<ValueList>? get liste => throw _privateConstructorUsedError;
   set liste(List<ValueList>? value) => throw _privateConstructorUsedError;
   List<String>? get listAciklama => throw _privateConstructorUsedError;
@@ -55,8 +55,8 @@ abstract class $SurumYenilikleriModelCopyWith<$Res> {
   $Res call(
       {int? surumKodu,
       String? versiyon,
-      dynamic surumAdi,
-      dynamic yer,
+      String? surumAdi,
+      String? yer,
       List<ValueList>? liste,
       List<String>? listAciklama,
       DateTime? tarih});
@@ -98,11 +98,11 @@ class _$SurumYenilikleriModelCopyWithImpl<$Res,
       surumAdi: freezed == surumAdi
           ? _value.surumAdi
           : surumAdi // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       yer: freezed == yer
           ? _value.yer
           : yer // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       liste: freezed == liste
           ? _value.liste
           : liste // ignore: cast_nullable_to_non_nullable
@@ -131,8 +131,8 @@ abstract class _$$SurumYenilikleriModelImplCopyWith<$Res>
   $Res call(
       {int? surumKodu,
       String? versiyon,
-      dynamic surumAdi,
-      dynamic yer,
+      String? surumAdi,
+      String? yer,
       List<ValueList>? liste,
       List<String>? listAciklama,
       DateTime? tarih});
@@ -172,11 +172,11 @@ class __$$SurumYenilikleriModelImplCopyWithImpl<$Res>
       surumAdi: freezed == surumAdi
           ? _value.surumAdi
           : surumAdi // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       yer: freezed == yer
           ? _value.yer
           : yer // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as String?,
       liste: freezed == liste
           ? _value.liste
           : liste // ignore: cast_nullable_to_non_nullable
@@ -214,9 +214,9 @@ class _$SurumYenilikleriModelImpl extends _SurumYenilikleriModel {
   @override
   String? versiyon;
   @override
-  dynamic surumAdi;
+  String? surumAdi;
   @override
-  dynamic yer;
+  String? yer;
   @override
   List<ValueList>? liste;
   @override
@@ -245,8 +245,8 @@ abstract class _SurumYenilikleriModel extends SurumYenilikleriModel {
   factory _SurumYenilikleriModel(
       {int? surumKodu,
       String? versiyon,
-      dynamic surumAdi,
-      dynamic yer,
+      String? surumAdi,
+      String? yer,
       List<ValueList>? liste,
       List<String>? listAciklama,
       DateTime? tarih}) = _$SurumYenilikleriModelImpl;
@@ -262,11 +262,11 @@ abstract class _SurumYenilikleriModel extends SurumYenilikleriModel {
   String? get versiyon;
   set versiyon(String? value);
   @override
-  dynamic get surumAdi;
-  set surumAdi(dynamic value);
+  String? get surumAdi;
+  set surumAdi(String? value);
   @override
-  dynamic get yer;
-  set yer(dynamic value);
+  String? get yer;
+  set yer(String? value);
   @override
   List<ValueList>? get liste;
   set liste(List<ValueList>? value);

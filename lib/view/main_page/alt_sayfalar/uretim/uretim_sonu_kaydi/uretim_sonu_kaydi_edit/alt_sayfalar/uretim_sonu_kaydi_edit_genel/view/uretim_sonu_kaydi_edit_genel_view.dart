@@ -348,7 +348,7 @@ final class _UretimSonuKaydiEditGenelViewState extends BaseState<UretimSonuKaydi
     readOnly: true,
     valueWidget: Observer(builder: (_) => Text(viewModel.kalem?.projeKodu ?? "")),
     onTap: () async {
-      final item = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.kalem);
+      final item = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, viewModel.kalem?.projeKodu);
       if (item is BaseProjeModel) {
         viewModel.setProje(item);
         projeController.text = item.projeAciklama ?? "";

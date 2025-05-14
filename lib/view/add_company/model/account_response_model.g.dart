@@ -39,8 +39,8 @@ class AccountResponseModelAdapter extends TypeAdapter<AccountResponseModel> {
       ..uzaktanMi = fields[19] as bool?
       ..serviceDebug = fields[20] as bool?
       ..bayiKodu = fields[21] as dynamic
-      ..bayiEmail = fields[22] as dynamic
-      ..bayiUnvan = fields[23] as dynamic
+      ..bayiEmail = fields[22] as String?
+      ..bayiUnvan = fields[23] as String?
       ..bracketCihazi = fields[24] as bool?
       ..sozlesmeUyarisi = fields[25] as bool?
       ..sozlesmeUyarisiGoster = fields[26] as bool?
@@ -153,8 +153,8 @@ AccountResponseModel _$AccountResponseModelFromJson(
       ..uzaktanMi = json['UZAKTAN_MI'] as bool? ?? true
       ..serviceDebug = json['SERVICE_DEBUG'] as bool?
       ..bayiKodu = json['BAYI_KODU']
-      ..bayiEmail = json['BAYI_EMAIL']
-      ..bayiUnvan = json['BAYI_UNVAN']
+      ..bayiEmail = json['BAYI_EMAIL'] as String?
+      ..bayiUnvan = json['BAYI_UNVAN'] as String?
       ..bracketCihazi = json['BRACKET_CIHAZI'] as bool?
       ..sozlesmeUyarisi = json['SOZLESME_UYARISI'] as bool?
       ..sozlesmeUyarisiGoster = json['SOZLESME_UYARISI_GOSTER'] as bool?

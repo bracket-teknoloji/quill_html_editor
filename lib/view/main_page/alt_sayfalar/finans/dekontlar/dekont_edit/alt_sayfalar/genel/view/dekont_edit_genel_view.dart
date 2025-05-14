@@ -113,7 +113,10 @@ final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
   }
 
   Future<void> setSeri() async {
-    final result = await bottomSheetDialogManager.showSeriKodBottomSheetDialog(context, true);
+    final result = await bottomSheetDialogManager.showSeriKodBottomSheetDialog(
+      context,
+      viewModel.dekontIslemlerRequestModel.dekontSeri,
+    );
     if (result != null) {
       _seriController.text = result.aciklama ?? "";
       viewModel.setSeri(result);
@@ -121,7 +124,10 @@ final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
   }
 
   Future<void> setPlasiyer() async {
-    final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(context, true);
+    final result = await bottomSheetDialogManager.showPlasiyerBottomSheetDialog(
+      context,
+      viewModel.dekontIslemlerRequestModel.plasiyerKodu,
+    );
     if (result != null) {
       _plasiyerController.text = result.plasiyerAciklama ?? "";
       viewModel.setPlasiyerKodu(result);
@@ -129,7 +135,10 @@ final class _DekontEditGenelViewState extends BaseState<DekontEditGenelView> {
   }
 
   Future<void> setProje() async {
-    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(context, true);
+    final result = await bottomSheetDialogManager.showProjeBottomSheetDialog(
+      context,
+      viewModel.dekontIslemlerRequestModel.projeKodu,
+    );
     if (result != null) {
       _projeController.text = result.projeAciklama ?? result.projeKodu ?? "";
       viewModel.setProjeKodu(result);

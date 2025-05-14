@@ -23,7 +23,7 @@ final class CariHareketlerCard extends StatefulWidget {
   const CariHareketlerCard({required this.cariHareketleriModel, super.key, this.onTap, this.dovizTipi});
   final String? dovizTipi;
   final CariHareketleriModel cariHareketleriModel;
-  final dynamic Function()? onTap;
+  final void Function()? onTap;
 
   @override
   State<CariHareketlerCard> createState() => _CariHareketlerCardState();

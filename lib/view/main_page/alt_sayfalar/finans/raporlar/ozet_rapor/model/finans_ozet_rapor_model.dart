@@ -14,5 +14,5 @@ class FinansOzetRaporModel with _$FinansOzetRaporModel, NetworkManagerMixin {
   factory FinansOzetRaporModel.fromJson(Map<String, dynamic> json) => _$FinansOzetRaporModelFromJson(json);
 
   @override
-  FinansOzetRaporModel fromJson(dynamic json) => _$FinansOzetRaporModelFromJson(json);
+  FinansOzetRaporModel fromJson(Map<String, dynamic> json) => _$FinansOzetRaporModelFromJson(json);
 }

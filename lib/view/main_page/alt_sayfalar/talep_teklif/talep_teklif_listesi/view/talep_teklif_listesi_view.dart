@@ -653,7 +653,7 @@ final class _TalepTeklifListesiViewState extends BaseState<TalepTeklifListesiVie
     );
   }
 
-  Future<void> grupKodlariBottomSheet(int index, dynamic groupValues, List<BaseGrupKoduModel>? list) async {
+  Future<void> grupKodlariBottomSheet(int index, String? groupValues, List<BaseGrupKoduModel>? list) async {
     final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog<BaseGrupKoduModel>(
       context,
       title: "Grup Kodu Seçiniz",

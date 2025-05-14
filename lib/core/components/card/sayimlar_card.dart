@@ -180,7 +180,7 @@ final class _SayimlarCardState extends BaseState<SayimlarCard> {
                 raporOzelKod: DizaynOzelKodEnum.sayim.ozelKodAdi,
                 dicParams: DicParams(belgeNo: widget.model.fisno ?? ""),
               );
-              final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(context, "");
+              final sayimFiltre = await bottomSheetDialogManager.showSayimFiltresiBottomSheetDialog(context, null);
               if (sayimFiltre == null) return;
               pdfModel.dicParams?.filtre =
                   DepoFarkRaporuFiltreEnum.values

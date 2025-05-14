@@ -279,7 +279,7 @@ final class _SerbestRaporlarViewState extends BaseState<SerbestRaporlarView> {
       //     title: "Döviz Seçiniz", children: dovizList.map((e) => BottomSheetModel(title: e.dovizKodu.toStringIfNotNull ?? "", onTap: () => Get.back(result: e))).toList());
       final result = await bottomSheetDialogManager.showDovizBottomSheetDialog(
         context,
-        viewModel.pdfModel.dicParams?.dovizTipi,
+        int.tryParse(viewModel.pdfModel.dicParams?.dovizTipi ?? ""),
       );
       if (result != null) {
         viewModel.changeDicParams(model.adi ?? "", result.dovizKodu.toString(), controllerValue: result.isim);

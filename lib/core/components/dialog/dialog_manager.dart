@@ -180,7 +180,7 @@ final class DialogManager {
         onOk: () {},
       ).show();
 
-  Future<void> showInfoDialog(String? description) async=>
+  Future<void> showInfoDialog(String? description) async =>
       await _baseDialog(
         dialogType: DialogType.info,
         btnOkText: "Tamam",
@@ -672,10 +672,7 @@ final class DialogManager {
               ),
               Expanded(
                 child: TextButton(
-                  onPressed: () {
-                    final dynamic result = {};
-                    Get.back(result: result);
-                  },
+                  onPressed: () => Get.back(result: {}),
                   child: const Text("İptal", textAlign: TextAlign.justify),
                 ),
               ),

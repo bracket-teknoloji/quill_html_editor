@@ -1281,11 +1281,11 @@ Map<String, dynamic> _$MapKdvSifirBelgeTipiOzelKod2ToJson(
 MapStokGrupAdlari _$MapStokGrupAdlariFromJson(Map<String, dynamic> json) =>
     MapStokGrupAdlari()
       ..grupKodu = json['GrupKodu'] as String?
-      ..kod1 = json['Kod1']
-      ..kod2 = json['Kod2']
-      ..kod3 = json['Kod3']
-      ..kod4 = json['Kod4']
-      ..kod5 = json['Kod5'];
+      ..kod1 = json['Kod1'] as String?
+      ..kod2 = json['Kod2'] as String?
+      ..kod3 = json['Kod3'] as String?
+      ..kod4 = json['Kod4'] as String?
+      ..kod5 = json['Kod5'] as String?;
 
 Map<String, dynamic> _$MapStokGrupAdlariToJson(MapStokGrupAdlari instance) =>
     <String, dynamic>{

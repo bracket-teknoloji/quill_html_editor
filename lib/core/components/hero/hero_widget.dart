@@ -2,10 +2,10 @@ import "package:flutter/material.dart";
 
 import "../../base/state/base_state.dart";
 
-final class HeroWidget extends StatefulWidget {
-  const HeroWidget({required this.child, super.key, this.tag});
+final class HeroWidget<T> extends StatefulWidget {
+  const HeroWidget({required this.child, required this.tag, super.key});
   final Widget child;
-  final dynamic tag;
+  final T tag;
 
   @override
   State<HeroWidget> createState() => _HeroWidgetState();

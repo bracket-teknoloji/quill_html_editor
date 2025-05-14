@@ -10,8 +10,8 @@ class SurumYenilikleriModel with _$SurumYenilikleriModel, NetworkManagerMixin {
   factory SurumYenilikleriModel({
     int? surumKodu,
     String? versiyon,
-    dynamic surumAdi,
-    dynamic yer,
+    String? surumAdi,
+    String? yer,
     List<ValueList>? liste,
     List<String>? listAciklama,
     DateTime? tarih,

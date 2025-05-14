@@ -4,7 +4,7 @@ final class FooterButton extends StatelessWidget {
   const FooterButton({required this.children, super.key, this.color, this.onPressed});
   final Color? color;
   final List<Widget> children;
-  final dynamic Function()? onPressed;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) => ElevatedButton(

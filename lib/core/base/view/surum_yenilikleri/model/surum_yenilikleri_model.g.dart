@@ -11,8 +11,8 @@ _$SurumYenilikleriModelImpl _$$SurumYenilikleriModelImplFromJson(
     _$SurumYenilikleriModelImpl(
       surumKodu: (json['SURUM_KODU'] as num?)?.toInt(),
       versiyon: json['VERSIYON'] as String?,
-      surumAdi: json['SURUM_ADI'],
-      yer: json['YER'],
+      surumAdi: json['SURUM_ADI'] as String?,
+      yer: json['YER'] as String?,
       liste: (json['LISTE'] as List<dynamic>?)
           ?.map((e) => ValueList.fromJson(e as Map<String, dynamic>))
           .toList(),

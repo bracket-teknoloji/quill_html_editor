@@ -253,7 +253,7 @@ final class _TransferlerViewState extends BaseState<TransferlerView> {
             suffixMore: true,
             valueWidget: Observer(builder: (_) => Text(viewModel.faturaRequestModel.ozelKod2 ?? "")),
             onTap: () async {
-              final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, true);
+              final result = await bottomSheetDialogManager.showOzelKod2BottomSheetDialog(context, viewModel.faturaRequestModel.ozelKod2);
               if (result is ListOzelKodTum) {
                 ozelKod2Controller.text = result.aciklama ?? "";
                 viewModel.setOzelKod2(result.kod);

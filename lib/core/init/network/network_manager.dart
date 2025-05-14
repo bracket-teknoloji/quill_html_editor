@@ -151,7 +151,7 @@ final class NetworkManager {
 
   Future<TokenModel?> getToken({
     Map<String, dynamic>? headers,
-    dynamic data,
+    Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
   }) async {
     // final FormData formData = FormData.fromMap(data);
@@ -185,7 +185,7 @@ final class NetworkManager {
     required String path,
     required T bodyModel,
     Map<String, String>? headers,
-    dynamic data,
+    Map<String, dynamic>? data,
     Map<String, dynamic>? queryParameters,
     bool addQuery = true,
     bool addSirketBilgileri = true,
@@ -253,7 +253,7 @@ final class NetworkManager {
     required String path,
     required T bodyModel,
     Map<String, String>? headers,
-    dynamic data,
+    Object? data,
     Map<String, dynamic>? queryParameters,
     bool addQuery = true,
     bool addSirketBilgileri = true,

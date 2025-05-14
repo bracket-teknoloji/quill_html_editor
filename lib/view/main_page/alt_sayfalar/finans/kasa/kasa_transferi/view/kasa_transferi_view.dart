@@ -186,7 +186,7 @@ final class _KasaTransferiViewState extends BaseState<KasaTransferiView> {
                   onTap: () async {
                     final KasaList? result = await bottomSheetDialogManager.showKasaBottomSheetDialog(
                       context,
-                      viewModel..model.hesapKodu,
+                      viewModel.model.hesapKodu,
                     );
                     if (result is KasaList) {
                       await viewModel.setGirisKasa(result);

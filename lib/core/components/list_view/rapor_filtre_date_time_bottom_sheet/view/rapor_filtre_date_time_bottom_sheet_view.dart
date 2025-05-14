@@ -23,9 +23,9 @@ final class RaporFiltreDateTimeBottomSheetView extends StatefulWidget {
   final TextEditingController baslangicTarihiController;
   final TextEditingController bitisTarihiController;
   final void Function(int? index) filterOnChanged;
-  final dynamic Function()? baslangicOnTap;
+  final Future<void> Function()? baslangicOnTap;
   final bool? isChanged;
-  final dynamic Function()? bitisOnTap;
+  final Future<void> Function()? bitisOnTap;
   final bool? showBugunFirst;
   final bool canChangeFuture;
 

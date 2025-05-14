@@ -16,7 +16,7 @@ final class CompanyModel with NetworkManagerMixin {
   @JsonKey(name: "isDevredilmis")
   bool? isDevredilmis;
   @override
-  CompanyModel fromJson(dynamic json) => _$CompanyModelFromJson(json);
+  CompanyModel fromJson(Map<String, dynamic> json) => _$CompanyModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$CompanyModelToJson(this);
