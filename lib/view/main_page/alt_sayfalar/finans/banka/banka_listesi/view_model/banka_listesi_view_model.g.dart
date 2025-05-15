@@ -20,6 +20,16 @@ mixin _$BankaListesiViewModel on _BankaListesiViewModelBase, Store {
                   name:
                       '_BankaListesiViewModelBase.groupedWithHesapTipiAdiList'))
           .value;
+  Computed<ObservableList<List<BankaListesiModel>>>?
+      _$groupedWithBankNameComputed;
+
+  @override
+  ObservableList<List<BankaListesiModel>> get groupedWithBankName =>
+      (_$groupedWithBankNameComputed ??=
+              Computed<ObservableList<List<BankaListesiModel>>>(
+                  () => super.groupedWithBankName,
+                  name: '_BankaListesiViewModelBase.groupedWithBankName'))
+          .value;
 
   late final _$searchBarAtom =
       Atom(name: '_BankaListesiViewModelBase.searchBar', context: context);
@@ -205,7 +215,8 @@ errorText: ${errorText},
 searchValue: ${searchValue},
 bankaListesi: ${bankaListesi},
 model: ${model},
-groupedWithHesapTipiAdiList: ${groupedWithHesapTipiAdiList}
+groupedWithHesapTipiAdiList: ${groupedWithHesapTipiAdiList},
+groupedWithBankName: ${groupedWithBankName}
     ''';
   }
 }

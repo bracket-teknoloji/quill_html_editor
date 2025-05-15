@@ -77,6 +77,22 @@ abstract class _BankaListesiViewModelBase with Store, MobxNetworkMixin {
         .asObservable();
   }
 
+  @computed
+  ObservableList<List<BankaListesiModel>> get groupedWithBankName {
+    if (bankaListesi == null) return <ObservableList<BankaListesiModel>>[].asObservable();
+    // create a list of filtered items by searchValue
+    final filteredList =
+        bankaListesi
+            ?.where((element) => element.hesapAdi?.toLowerCase().contains(searchValue?.toLowerCase() ?? "") ?? true)
+            .toList()
+            .asObservable();
+    final groupedList = groupBy(filteredList ?? <BankaListesiModel>[], (e) => e.bankaAdi);
+    return groupedList.values
+        .toList()
+        .sorted((a, b) => a.firstOrNull?.hesapTipi?.compareTo(b.firstOrNull?.hesapTipi ?? 0) ?? 0)
+        .asObservable();
+  }
+
   @action
   void setSearchBar() => searchBar = !searchBar;
 
