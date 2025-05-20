@@ -273,10 +273,11 @@ final class _BankaListesiViewState extends BaseState<BankaListesiView> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(item.hesapKodu ?? ""),
-                          if (yetkiController.alisIrsFiyatGor) Text(
-                            "${item.bakiyeDovizli.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
-                            style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye), fontSize: 12),
-                          ),
+                          if (yetkiController.alisIrsFiyatGor)
+                            Text(
+                              "${item.bakiyeDovizli.commaSeparatedWithDecimalDigits(OndalikEnum.tutar)} ${item.dovizAdi ?? mainCurrency}",
+                              style: TextStyle(color: UIHelper.getColorWithValue(item.bakiye), fontSize: 12),
+                            ),
                         ],
                       ),
                       Text(item.subeAdi ?? ""),

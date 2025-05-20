@@ -396,7 +396,7 @@ final class BottomSheetDialogManager {
                                                                   RadioListTile(
                                                                     toggleable: true,
                                                                     activeColor: UIHelper.primaryColor,
-                                                                    onChanged: ( value) {
+                                                                    onChanged: (value) {
                                                                       if (item?.onTap != null) {
                                                                         item?.onTap!();
                                                                       } else {
