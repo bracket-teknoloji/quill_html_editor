@@ -136,8 +136,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         labelText: "Grup Kodu",
                         controller: grupKoduController,
                         readOnly: true,
+                        onClear: () => viewModel.setGrupKodu(null),
                         onTap: () async {
-                          if (viewModel.grupKodlari == null) {}
+                          await getGrupKodlari();
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -158,8 +159,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         labelText: "Kod 1",
                         controller: kod1Controller,
                         readOnly: true,
+                        onClear: () => viewModel.changeArrKod1(null),
                         onTap: () async {
-                          if (viewModel.grupKodlari == null) {}
+                          await getGrupKodlari();
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -184,8 +186,10 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         labelText: "Kod 2",
                         controller: kod2Controller,
                         readOnly: true,
+
+                        onClear: () => viewModel.changeArrKod2(null),
                         onTap: () async {
-                          if (viewModel.grupKodlari == null) {}
+                          await getGrupKodlari();
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -206,8 +210,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         labelText: "Kod 3",
                         controller: kod3Controller,
                         readOnly: true,
+                        onClear: () => viewModel.changeArrKod3(null),
                         onTap: () async {
-                          if (viewModel.grupKodlari == null) {}
+                          await getGrupKodlari();
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -232,8 +237,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         labelText: "Kod 4",
                         controller: kod4Controller,
                         readOnly: true,
+                        onClear: () => viewModel.changeArrKod4(null),
                         onTap: () async {
-                          if (viewModel.grupKodlari == null) {}
+                          await getGrupKodlari();
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -254,8 +260,9 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                         labelText: "Kod 5",
                         controller: kod5Controller,
                         readOnly: true,
+                        onClear: () => viewModel.changeArrKod5(null),
                         onTap: () async {
-                          if (viewModel.grupKodlari == null) {}
+                          await getGrupKodlari();
                           final result = await bottomSheetDialogManager.showGrupKoduCheckBoxBottomSheetDialog(
                             context,
                             modul: GrupKoduEnum.stok,
@@ -359,6 +366,12 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
       ),
     ],
   );
+
+  Future<void> getGrupKodlari() async {
+    if (viewModel.grupKodlari.ext.isNullOrEmpty) {
+      await viewModel.getGrupKodlari();
+    }
+  }
 
   Observer? fab() {
     if (yetkiController.stokKartiYeniKayit) {
@@ -662,6 +675,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
   }
 
   Future<void> getGrupKodlariBottomSheet(int value) async {
+    await getGrupKodlari();
     List<BaseGrupKoduModel>? selectedList = [];
     switch (value) {
       case 0:

@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/model/ek_rehber_request_model.dart";
 import "package:picker/core/base/view/genel_rehber/model/genel_rehber_model.dart";
+import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_request_model.dart";
 import "package:picker/view/main_page/model/user_model/ek_rehberler_model.dart";
 
 import "../../../../../../../../core/base/model/base_edit_model.dart";
@@ -119,25 +120,90 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
               suffixMore: true,
               controller: cariController,
               valueWidget: Observer(builder: (_) => Text(viewModel.model.cariKodu ?? "")),
+              suffix:
+                  isEkle
+                      ? IconButton(
+                        onPressed: () async {
+                          if (cariController.text.isEmpty) {
+                            dialogManager.showAlertDialog("Önce Cari Seçiniz");
+                            return;
+                          }
+                          final result = await networkManager.getCariModel(
+                            CariRequestModel(kod: [viewModel.model.cariKodu ?? ""]),
+                          );
+                          if (result != null) {
+                            dialogManager.showCariIslemleriGridViewDialog(result);
+                          }
+                        },
+                        icon: const Icon(Icons.open_in_new_outlined, color: UIHelper.primaryColor),
+                      )
+                      : null,
               onTap: () async {
-                final result = await Get.toNamed("mainPage/cariListesi", arguments: true);
-                if (result != null && result is CariListesiModel) {
-                  model
-                    ..cariAdi = result.cariAdi ?? ""
-                    ..cariKodu = result.cariKodu ?? ""
-                    ..vadeGunu = result.vadeGunu
-                    ..vadeTarihi = DateTime.now().add(Duration(days: result.vadeGunu ?? 0)).dateTimeWithoutTime;
-                  cariController.text = result.cariAdi ?? "";
-                  if (yetkiController.plasiyerUygulamasiAcikMi) {
-                    model
-                      ..plasiyerAciklama = result.plasiyerAciklama
-                      ..plasiyerKodu = result.plasiyerKodu;
-                    plasiyerController.text = result.plasiyerAciklama ?? result.plasiyerKodu ?? "";
+                final result = await Get.toNamed(
+                  "mainPage/cariRehberi",
+                  arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
+                );
+                if (result is CariListesiModel) {
+                  CariListesiModel? cariModel = await networkManager.getCariModel(
+                    CariRequestModel.fromCariListesiModel(result),
+                  );
+                  if (cariModel!.bagliMi && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)) {
+                    teslimCariController.text = cariModel.cariAdi ?? "";
+                    viewModel
+                      ..setTeslimCariAdi(cariModel.cariAdi)
+                      ..setTeslimCariKodu(cariModel.cariKodu);
+                    cariModel = await networkManager.getCariModel(CariRequestModel(kod: [cariModel.bagliCari ?? ""]));
+                    if (cariModel == null) {
+                      dialogManager.showAlertDialog("Cari bulunamadı");
+                      return;
+                    }
+                    cariModel.tempCariModel = result;
                   }
-                  if (!yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)) {
-                    cariController.text = result.cariAdi ?? "";
-                    model.teslimCariAdi = result.cariAdi;
+                  cariController.text = cariModel.cariAdi ?? "";
+                  // _plasiyerController.text = result.plasiyerAciklama ?? "";
+                  if (!result.bagliMi) {
+                    viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
+                    viewModel.model.cariTitle =
+                        cariModel.efaturaCarisi == "E"
+                            ? "E-Fatura"
+                            : cariModel.efaturaCarisi == "H"
+                            ? "E-Arşiv"
+                            : null;
+                    viewModel.setPlasiyer(
+                      PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu),
+                    );
+
+                    plasiyerController.text = cariModel.plasiyerAciklama ?? "";
+                    viewModel.model
+                      ..vadeGunu = cariModel.vadeGunu
+                      ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
+                      ..efaturaTipi = cariModel.efaturaTipi;
+                  } else if (yetkiController.teslimCariBaglanmisCarilerSecilsinMi(model.getEditTipiEnum)) {
+                    viewModel.model.efaturaSenaryo = cariModel.tempCariModel?.efaturaSenaryo;
+                    viewModel.model.cariTitle =
+                        cariModel.tempCariModel?.efaturaCarisi == "E"
+                            ? "E-Fatura"
+                            : cariModel.tempCariModel?.efaturaCarisi == "H"
+                            ? "E-Arşiv"
+                            : null;
+                    viewModel.setPlasiyer(
+                      PlasiyerList(
+                        plasiyerAciklama: cariModel.tempCariModel?.plasiyerAciklama,
+                        plasiyerKodu: cariModel.tempCariModel?.plasiyerKodu,
+                      ),
+                    );
+                    plasiyerController.text = cariModel.tempCariModel?.plasiyerAciklama ?? "";
+                    viewModel.model
+                      ..vadeGunu = cariModel.tempCariModel?.vadeGunu
+                      ..vadeTarihi =
+                          DateTime.now().add(Duration(days: cariModel.tempCariModel?.vadeGunu ?? 0)).dateTimeWithoutTime
+                      ..efaturaTipi = cariModel.tempCariModel?.efaturaTipi;
                   }
+                  viewModel
+                    ..setCariAdi(cariModel.cariAdi)
+                    ..setCariKodu(cariModel.cariKodu);
+                  belgeNoController.clear();
+                  await getBelgeNo();
                 }
               },
             ),
@@ -149,6 +215,7 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                 readOnly: true,
                 suffixMore: true,
                 controller: teslimCariController,
+                valueWidget: Observer(builder: (_) => Text(viewModel.model.teslimCari ?? "")),
                 suffix:
                     yetkiController.cariTeslimCariSatisBaglanmisCarilerSecilsinMi
                         ? null

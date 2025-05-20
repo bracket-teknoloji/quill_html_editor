@@ -58,6 +58,30 @@ abstract class _BaseSiparislerGenelViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
+  void setCariAdi(String? value) {
+    model = model.copyWith(cariAdi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setCariKodu(String? value) {
+    model = model.copyWith(cariKodu: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setTeslimCariAdi(String? value) {
+    model = model.copyWith(teslimCariAdi: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
+  void setTeslimCariKodu(String? value) {
+    model = model.copyWith(teslimCari: value);
+    BaseSiparisEditModel.setInstance(model);
+  }
+
+  @action
   void setPlasiyer(PlasiyerList? value) {
     model = model.copyWith(plasiyerKodu: value?.plasiyerKodu, plasiyerAciklama: value?.plasiyerAciklama);
     BaseSiparisEditModel.setInstance(model);

@@ -128,6 +128,56 @@ mixin _$BaseSiparislerGenelViewModel
   }
 
   @override
+  void setCariAdi(String? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setCariAdi');
+    try {
+      return super.setCariAdi(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setCariKodu(String? value) {
+    final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
+        .startAction(name: '_BaseSiparislerGenelViewModelBase.setCariKodu');
+    try {
+      return super.setCariKodu(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTeslimCariAdi(String? value) {
+    final _$actionInfo =
+        _$_BaseSiparislerGenelViewModelBaseActionController.startAction(
+            name: '_BaseSiparislerGenelViewModelBase.setTeslimCariAdi');
+    try {
+      return super.setTeslimCariAdi(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setTeslimCariKodu(String? value) {
+    final _$actionInfo =
+        _$_BaseSiparislerGenelViewModelBaseActionController.startAction(
+            name: '_BaseSiparislerGenelViewModelBase.setTeslimCariKodu');
+    try {
+      return super.setTeslimCariKodu(value);
+    } finally {
+      _$_BaseSiparislerGenelViewModelBaseActionController
+          .endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setPlasiyer(PlasiyerList? value) {
     final _$actionInfo = _$_BaseSiparislerGenelViewModelBaseActionController
         .startAction(name: '_BaseSiparislerGenelViewModelBase.setPlasiyer');

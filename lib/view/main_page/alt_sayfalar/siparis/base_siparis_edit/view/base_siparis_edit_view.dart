@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/view/cari_rehberi/model/cari_listesi_request_model.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
@@ -162,7 +163,10 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
         BaseSiparisEditModel.instance.isNew = true;
         CariListesiModel? cariModel;
         if (widget.model.model?.cariKodu == null) {
-          final result = await Get.toNamed("/mainPage/cariListesiOzel");
+          final result = await Get.toNamed(
+            "/mainPage/cariRehberi",
+            arguments: CariListesiRequestModel(belgeTuru: widget.model.editTipiEnum?.rawValue),
+          );
           if (result is CariListesiModel) {
             cariModel = result;
           }
@@ -171,18 +175,24 @@ final class _BaseSiparisEditingViewState extends BaseState<BaseSiparisEditingVie
             CariRequestModel.fromBaseSiparisEditModel(BaseSiparisEditModel.instance),
           );
         }
-        if (cariModel is CariListesiModel) {
+        if (cariModel case final CariListesiModel? value) {
+          if (value!.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
+            cariModel = await networkManager.getCariModel(
+              CariRequestModel.fromCariListesiModel(cariModel!.copyWith(cariKodu: value.bagliCari)),
+            );
+            cariModel?.tempCariModel = value;
+          }
           BaseSiparisEditModel.instance
             ..tag = "FaturaModel"
-            ..vadeGunu = cariModel.vadeGunu
-            ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
+            ..vadeGunu = cariModel?.vadeGunu
+            ..vadeTarihi = DateTime.now().add(Duration(days: cariModel?.vadeGunu ?? 0)).dateTimeWithoutTime
             ..siparisTipi = model.editTipiEnum
-            ..plasiyerAciklama = cariModel.plasiyerAciklama
-            ..plasiyerKodu = cariModel.plasiyerKodu
-            ..cariAdi = cariModel.cariAdi
-            ..cariKodu = cariModel.cariKodu
-            ..kosulKodu = cariModel.kosulKodu
-            ..belgeTipi = int.tryParse(cariModel.odemeTipi ?? "0");
+            ..cariKodu = cariModel?.cariKodu
+            ..cariAdi = cariModel?.cariAdi
+            ..teslimCari = cariModel?.tempCariModel?.cariKodu
+            ..teslimCariAdi = cariModel?.tempCariModel?.cariAdi
+            ..kosulKodu = cariModel?.kosulKodu
+            ..belgeTipi = int.tryParse(cariModel?.odemeTipi ?? "0");
         }
       }
       if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
