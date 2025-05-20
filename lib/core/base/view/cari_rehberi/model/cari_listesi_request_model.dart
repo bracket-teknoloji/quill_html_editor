@@ -39,6 +39,7 @@ class CariListesiRequestModel with _$CariListesiRequestModel, NetworkManagerMixi
     String? sehir,
     String? siparisKarsilanmaDurumu,
     String? searchText,
+    String? secildi,
   }) = _CariListesiRequestModel;
   CariListesiRequestModel._();
 

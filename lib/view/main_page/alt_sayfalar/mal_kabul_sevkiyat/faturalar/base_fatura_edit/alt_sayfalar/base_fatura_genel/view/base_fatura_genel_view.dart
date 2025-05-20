@@ -286,27 +286,64 @@ final class BaseFaturaGenelViewState extends BaseState<BaseFaturaGenelView> {
                   arguments: CariListesiRequestModel(belgeTuru: model.getEditTipiEnum?.rawValue),
                 );
                 if (result is CariListesiModel) {
-                  final cariModel = await networkManager.getCariModel(CariRequestModel.fromCariListesiModel(result));
-                  _cariController.text = cariModel!.cariAdi ?? "";
+                  CariListesiModel? cariModel = await networkManager.getCariModel(
+                    CariRequestModel.fromCariListesiModel(result),
+                  );
+                  if (cariModel!.bagliMi && yetkiController.siparisFarkliTeslimCariAktif(model.getEditTipiEnum)) {
+                    _teslimCariController.text = cariModel.cariAdi ?? "";
+                    viewModel
+                      ..setTeslimCariAdi(cariModel.cariAdi)
+                      ..setTeslimCariKodu(cariModel.cariKodu);
+                    cariModel = await networkManager.getCariModel(CariRequestModel(kod: [cariModel.bagliCari ?? ""]));
+                    if (cariModel == null) {
+                      dialogManager.showAlertDialog("Cari bulunamadı");
+                      return;
+                    }
+                    cariModel.tempCariModel = result;
+                  }
+                  _cariController.text = cariModel.cariAdi ?? "";
                   // _plasiyerController.text = result.plasiyerAciklama ?? "";
-                  viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
-                  viewModel.model.cariTitle =
-                      cariModel.efaturaCarisi == "E"
-                          ? "E-Fatura"
-                          : cariModel.efaturaCarisi == "H"
-                          ? "E-Arşiv"
-                          : null;
-                  viewModel
-                    ..setCariAdi(cariModel.cariAdi)
-                    ..setCariKodu(cariModel.cariKodu)
-                    ..setPlasiyer(
+                  if (!result.bagliMi) {
+                    viewModel.model.efaturaSenaryo = cariModel.efaturaSenaryo;
+                    viewModel.model.cariTitle =
+                        cariModel.efaturaCarisi == "E"
+                            ? "E-Fatura"
+                            : cariModel.efaturaCarisi == "H"
+                            ? "E-Arşiv"
+                            : null;
+                    viewModel.setPlasiyer(
                       PlasiyerList(plasiyerAciklama: cariModel.plasiyerAciklama, plasiyerKodu: cariModel.plasiyerKodu),
                     );
-                  viewModel.model
-                    ..vadeGunu = cariModel.vadeGunu
-                    ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
-                    ..efaturaTipi = cariModel.efaturaTipi;
-                  _plasiyerController.text = cariModel.plasiyerAciklama ?? "";
+
+                    _plasiyerController.text = cariModel.plasiyerAciklama ?? "";
+                    viewModel.model
+                      ..vadeGunu = cariModel.vadeGunu
+                      ..vadeTarihi = DateTime.now().add(Duration(days: cariModel.vadeGunu ?? 0)).dateTimeWithoutTime
+                      ..efaturaTipi = cariModel.efaturaTipi;
+                  } else if (yetkiController.teslimCariBaglanmisCarilerSecilsinMi(model.getEditTipiEnum)) {
+                    viewModel.model.efaturaSenaryo = cariModel.tempCariModel?.efaturaSenaryo;
+                    viewModel.model.cariTitle =
+                        cariModel.tempCariModel?.efaturaCarisi == "E"
+                            ? "E-Fatura"
+                            : cariModel.tempCariModel?.efaturaCarisi == "H"
+                            ? "E-Arşiv"
+                            : null;
+                    viewModel.setPlasiyer(
+                      PlasiyerList(
+                        plasiyerAciklama: cariModel.tempCariModel?.plasiyerAciklama,
+                        plasiyerKodu: cariModel.tempCariModel?.plasiyerKodu,
+                      ),
+                    );
+                    _plasiyerController.text = cariModel.tempCariModel?.plasiyerAciklama ?? "";
+                    viewModel.model
+                      ..vadeGunu = cariModel.tempCariModel?.vadeGunu
+                      ..vadeTarihi =
+                          DateTime.now().add(Duration(days: cariModel.tempCariModel?.vadeGunu ?? 0)).dateTimeWithoutTime
+                      ..efaturaTipi = cariModel.tempCariModel?.efaturaTipi;
+                  }
+                  viewModel
+                    ..setCariAdi(cariModel.cariAdi)
+                    ..setCariKodu(cariModel.cariKodu);
                   _belgeNoController.clear();
                   await getBelgeNo(
                     widget.model.baseEditEnum.siparistenKopyalaMi,

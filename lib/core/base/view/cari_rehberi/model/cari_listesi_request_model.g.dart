@@ -54,6 +54,7 @@ _$CariListesiRequestModelImpl _$$CariListesiRequestModelImplFromJson(
       sehir: json['Sehir'] as String?,
       siparisKarsilanmaDurumu: json['SiparisKarsilanmaDurumu'] as String?,
       searchText: json['SearchText'] as String?,
+      secildi: json['Secildi'] as String?,
     );
 
 Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
@@ -90,4 +91,5 @@ Map<String, dynamic> _$$CariListesiRequestModelImplToJson(
       if (instance.siparisKarsilanmaDurumu case final value?)
         'SiparisKarsilanmaDurumu': value,
       if (instance.searchText case final value?) 'SearchText': value,
+      if (instance.secildi case final value?) 'Secildi': value,
     };

@@ -56,6 +56,7 @@ class CariRequestModel with _$CariRequestModel, NetworkManagerMixin {
     kod: [model.cariKodu ?? ""],
     // sayfa: 1,
     eFaturaGoster: true,
+    secildi: "E",
     plasiyerKisitiYok: true,
     // belgeTuru: model,
   );

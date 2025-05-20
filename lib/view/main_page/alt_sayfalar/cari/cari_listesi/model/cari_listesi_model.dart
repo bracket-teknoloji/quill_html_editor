@@ -507,6 +507,8 @@ final class CariListesiModel with NetworkManagerMixin {
   String? dznEfat;
   @HiveField(149)
   String? dznEirs;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  CariListesiModel? tempCariModel;
 
   @override
   CariListesiModel fromJson(Map<String, dynamic> json) => _$CariListesiModelFromJson(json);
@@ -517,6 +519,8 @@ final class CariListesiModel with NetworkManagerMixin {
   bool get muhtelifMi => cariKodu == "0" * 15;
 
   bool get kilitliMi => kilit == "E";
+
+  bool get bagliMi => bagliCari?.isNotEmpty ?? false;
 }
 
 @JsonSerializable(explicitToJson: true)

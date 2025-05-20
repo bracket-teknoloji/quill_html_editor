@@ -596,6 +596,28 @@ final class YetkiController {
 
   //! SEVKİYAT
 
+  bool teslimCariBaglanmisCarilerSecilsinMi(EditTipiEnum? editTipi) {
+    bool? value;
+    if (editTipi?.satisMi ?? false) {
+      value = _satisTeslimCariBaglanmisCarilerSecilsinMi ?? _paramModel?.satisTeslimCarideBaglanmisCarilerSecilsin;
+    } else {
+      value = _alisTeslimCariBaglanmisCarilerSecilsinMi ?? _paramModel?.alisTeslimCarideBaglanmisCarilerSecilsin;
+    }
+    return _isTrue(value);
+  }
+
+  bool? get _satisTeslimCariBaglanmisCarilerSecilsinMi {
+    if (_profilYetkiModel?.cariTeslimCariSatisBaglanmisCarilerSecilsin case final String? value) {
+      return _isTrue(value == "E");
+    }
+  }
+
+  bool? get _alisTeslimCariBaglanmisCarilerSecilsinMi {
+    if (_profilYetkiModel?.cariTeslimCariSatisBaglanmisCarilerSecilsin case final String? value) {
+      return _isTrue(value == "E");
+    }
+  }
+
   bool sevkiyatSatisFatBelgeTipleri(int? value) =>
       _isTrue(_profilYetkiModel?.sevkiyatSatisFatBelgeTipleri?.contains(value));
   bool sevkiyatSatisIrsBelgeTipleri(int? value) =>

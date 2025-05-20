@@ -340,18 +340,30 @@ final class _BaseFaturaEditViewState extends BaseState<BaseFaturaEditView> with 
           }
         }
         if (BaseSiparisEditModel.instance.cariKodu == null) {
-          final result = await Get.toNamed("/mainPage/cariListesiOzel");
+          final result = await Get.toNamed(
+            "/mainPage/cariRehberi",
+            arguments: CariListesiRequestModel(belgeTuru: widget.model.editTipiEnum?.rawValue),
+          );
           if (result != null) {
-            if (result is CariListesiModel) {
+            if (result case CariListesiModel? cari) {
+              if (cari!.bagliMi && yetkiController.teslimCariBaglanmisCarilerSecilsinMi(widget.model.editTipiEnum)) {
+                cari = await networkManager.getCariModel(
+                  CariRequestModel.fromCariListesiModel(cari.copyWith(cariKodu: cari.bagliCari)),
+                );
+                cari?.tempCariModel = result;
+              }
+
               BaseSiparisEditModel.instance
-                ..cariKodu = result.cariKodu
-                ..cariAdi = result.cariAdi
-                ..vadeGunu = result.vadeGunu
-                ..vadeTarihi = DateTime.now().add(Duration(days: result.vadeGunu ?? 0)).dateTimeWithoutTime;
-              if (result.plasiyerKodu != null) {
+                ..cariKodu = cari?.cariKodu
+                ..cariAdi = cari?.cariAdi
+                ..teslimCari = cari?.tempCariModel?.cariKodu
+                ..teslimCariAdi = cari?.tempCariModel?.cariAdi
+                ..vadeGunu = cari?.vadeGunu
+                ..vadeTarihi = DateTime.now().add(Duration(days: cari?.vadeGunu ?? 0)).dateTimeWithoutTime;
+              if (cari?.plasiyerKodu != null) {
                 BaseSiparisEditModel.instance
-                  ..plasiyerKodu = result.plasiyerKodu
-                  ..plasiyerAciklama = result.plasiyerAciklama;
+                  ..plasiyerKodu = cari?.plasiyerKodu
+                  ..plasiyerAciklama = cari?.plasiyerAciklama;
               }
             }
           }

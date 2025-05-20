@@ -27,7 +27,7 @@ final class _CariRehberiCardState extends BaseState<CariRehberiCard> {
     onRightClick: onLongPress,
     child: Card(
       child: ListTile(
-        onTap: () {
+        onTap: () async {
           if (widget.onPressed == null) {
             if (widget.model.kilitliMi) {
               dialogManager.showAlertDialog("Cari tüm işlemler için kilitli durumda.");

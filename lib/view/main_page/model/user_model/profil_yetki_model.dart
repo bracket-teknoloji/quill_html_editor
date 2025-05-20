@@ -1261,6 +1261,8 @@ final class ProfilYetkiModel {
   String? cariTeslimCariRehberSadeceSecsin;
   @JsonKey(name: "cari_TeslimCari_SatisBaglanmisCarilerSecilsin")
   String? cariTeslimCariSatisBaglanmisCarilerSecilsin;
+  @JsonKey(name: "cari_TeslimCari_AlisBaglanmisCarilerSecilsin")
+  String? cariTeslimCariAlisBaglanmisCarilerSecilsin;
   @JsonKey(name: "cari_Raporlar")
   bool? cariRaporlar;
   @JsonKey(name: "cari_Rap_Ekstre")
@@ -2175,6 +2177,8 @@ final class ProfilYetkiModel {
   String? transferDatOzelKod1Degeri;
   @JsonKey(name: "transfer_DAT_OzelKod2Degeri")
   String? transferDatOzelKod2Degeri;
+  @JsonKey(name: "transfer_DepoTalebi_BildirimKullanicilar")
+  List<String>? transferDepoTalebiBildirimKullanicilar;
 
   Map<String, dynamic> toJson() => _$ProfilYetkiModelToJson(this);
 

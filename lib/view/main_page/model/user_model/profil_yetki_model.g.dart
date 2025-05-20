@@ -1208,6 +1208,8 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
           json['cari_TeslimCari_RehberSadeceSecsin'] as String?
       ..cariTeslimCariSatisBaglanmisCarilerSecilsin =
           json['cari_TeslimCari_SatisBaglanmisCarilerSecilsin'] as String?
+      ..cariTeslimCariAlisBaglanmisCarilerSecilsin =
+          json['cari_TeslimCari_AlisBaglanmisCarilerSecilsin'] as String?
       ..cariRaporlar = json['cari_Raporlar'] as bool?
       ..cariRapEkstre = json['cari_Rap_Ekstre'] as bool?
       ..cariRapStokEkstre = json['cari_Rap_StokEkstre'] as bool?
@@ -1979,7 +1981,11 @@ ProfilYetkiModel _$ProfilYetkiModelFromJson(Map<String, dynamic> json) =>
       ..transferDatOzelKod1Degeri =
           json['transfer_DAT_OzelKod1Degeri'] as String?
       ..transferDatOzelKod2Degeri =
-          json['transfer_DAT_OzelKod2Degeri'] as String?;
+          json['transfer_DAT_OzelKod2Degeri'] as String?
+      ..transferDepoTalebiBildirimKullanicilar =
+          (json['transfer_DepoTalebi_BildirimKullanicilar'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList();
 
 Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
     <String, dynamic>{
@@ -3225,6 +3231,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
       if (instance.cariTeslimCariSatisBaglanmisCarilerSecilsin
           case final value?)
         'cari_TeslimCari_SatisBaglanmisCarilerSecilsin': value,
+      if (instance.cariTeslimCariAlisBaglanmisCarilerSecilsin case final value?)
+        'cari_TeslimCari_AlisBaglanmisCarilerSecilsin': value,
       if (instance.cariRaporlar case final value?) 'cari_Raporlar': value,
       if (instance.cariRapEkstre case final value?) 'cari_Rap_Ekstre': value,
       if (instance.cariRapStokEkstre case final value?)
@@ -4111,6 +4119,8 @@ Map<String, dynamic> _$ProfilYetkiModelToJson(ProfilYetkiModel instance) =>
         'transfer_DAT_OzelKod1Degeri': value,
       if (instance.transferDatOzelKod2Degeri case final value?)
         'transfer_DAT_OzelKod2Degeri': value,
+      if (instance.transferDepoTalebiBildirimKullanicilar case final value?)
+        'transfer_DepoTalebi_BildirimKullanicilar': value,
     };
 
 const _$BarkodSayisiSaklanacakAlanEnumMap = {
