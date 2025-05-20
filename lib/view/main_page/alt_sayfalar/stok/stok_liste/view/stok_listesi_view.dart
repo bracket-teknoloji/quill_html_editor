@@ -761,7 +761,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
                             [
                               if (item.seriCikislardaAcik == true)
                                 const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
-                              if (item.kilitliMi)
+                              if (item.genelKilitliMi)
                                 ColorfulBadge(
                                   label: Text("Kilitli (${item.kilitTipi})"),
                                   badgeColorEnum: BadgeColorEnum.hata,
@@ -907,7 +907,7 @@ final class _StokListesiViewState extends BaseState<StokListesiView> {
               children: [
                 if (item.seriCikislardaAcik == true)
                   const ColorfulBadge(label: Text("Seri"), badgeColorEnum: BadgeColorEnum.seri),
-                if (item.kilitliMi)
+                if (item.genelKilitliMi)
                   ColorfulBadge(label: Text("Kilitli (${item.kilitTipi})"), badgeColorEnum: BadgeColorEnum.hata),
                 if (item.alisDovTip != null || item.satDovTip != null)
                   const ColorfulBadge(label: Text("Dövizli"), badgeColorEnum: BadgeColorEnum.dovizli),

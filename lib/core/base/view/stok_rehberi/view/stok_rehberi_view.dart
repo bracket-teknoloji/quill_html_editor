@@ -503,10 +503,12 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                             );
                           },
                           onTap: () async {
-                            if (item.kilitliMi) {
-                              return dialogManager.showAlertDialog(
-                                "Kilitli olduğu için bu işlemi gerçekleştiremezsiniz.\nKilit tipi: ${item.kilitTipi}",
-                              );
+                            if (BaseSiparisEditModel.instance.getEditTipiEnum case final value?) {
+                              if (item.kilitKontrol(value)) {
+                                return dialogManager.showAlertDialog(
+                                  "Kilitli olduğu için bu işlemi gerçekleştiremezsiniz.\nKilit tipi: ${item.kilitTipi}",
+                                );
+                              }
                             }
                             StokListesiModel? stokModel;
                             if (instance.kalemEkliMi(item)) {
@@ -583,7 +585,7 @@ final class _StokRehberiViewState extends BaseState<StokRehberiView> {
                                     ),
                                   if (item.yapilandirmaAktif == true)
                                     const ColorfulBadge(label: Text("Es.Yap."), badgeColorEnum: BadgeColorEnum.esYap),
-                                  if (item.kilitliMi)
+                                  if (item.genelKilitliMi)
                                     ColorfulBadge(
                                       label: Text("Kilitli (${item.kilitTipi})"),
                                       badgeColorEnum: BadgeColorEnum.hata,

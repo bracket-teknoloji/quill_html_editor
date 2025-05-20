@@ -2,6 +2,7 @@ import "package:copy_with_extension/copy_with_extension.dart";
 import "package:json_annotation/json_annotation.dart";
 import "package:kartal/kartal.dart";
 import "package:picker/core/base/view/kalem_ekle/model/stok_fiyati_model.dart";
+import "package:picker/core/constants/enum/edit_tipi_enum.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/base_stok_mixin.dart";
@@ -325,6 +326,8 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   bool get kilitliMi =>
       kilitGenel == "E" || kilitSaticisip == "E" || kilitMussip == "E" || kilitAlis == "E" || kilitSatis == "E";
 
+  bool get genelKilitliMi => kilitGenel == "E";
+
   String? get kilitTipi {
     if (kilitGenel == "E") return "Genel";
     if (kilitSaticisip == "E") return "Satıcı";
@@ -334,18 +337,27 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
     return null;
   }
 
+  bool kilitKontrol(EditTipiEnum editTipi) {
+    if (genelKilitliMi) return true;
+    if (editTipi == EditTipiEnum.musteri) return kilitMussip == "E";
+    if (editTipi == EditTipiEnum.satici) return kilitSaticisip == "E";
+    if (editTipi.satisMi) return kilitSatis == "E";
+    if (!editTipi.satisMi) return kilitAlis == "E";
+    return false;
+  }
+
   @override
   StokListesiModel fromJson(Map<String, dynamic> json) => _$StokListesiModelFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);
 
-  static StokListesiModel get instance {
+  StokListesiModel get instance {
     _instance ??= StokListesiModel._init()..stokList = [];
     return _instance!;
   }
 
-  static void setInstance(StokListesiModel? instance) => _instance = instance;
+  void setInstance(StokListesiModel? instance) => _instance = instance;
 
   bool get dovizliMi => fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
   String? olcuBirimiSelector(int? olcu) {
