@@ -352,12 +352,12 @@ final class StokListesiModel with NetworkManagerMixin, BaseStokMixin {
   @override
   Map<String, dynamic> toJson() => _$StokListesiModelToJson(this);
 
-  StokListesiModel get instance {
+  static StokListesiModel get instance {
     _instance ??= StokListesiModel._init()..stokList = [];
     return _instance!;
   }
 
-  void setInstance(StokListesiModel? instance) => _instance = instance;
+  static void setInstance(StokListesiModel? instance) => _instance = instance;
 
   bool get dovizliMi => fiatBirimi != 0 && (satDovTip != null || alisDovTip != null);
   String? olcuBirimiSelector(int? olcu) {
