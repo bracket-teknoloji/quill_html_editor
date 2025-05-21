@@ -58,7 +58,7 @@ mixin _$IrsaliyeFaturalastirViewModel
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendFatura() {
+  Future<GenericResponseModel<EditFaturaModel>> sendFatura() {
     return _$sendFaturaAsyncAction.run(() => super.sendFatura());
   }
 

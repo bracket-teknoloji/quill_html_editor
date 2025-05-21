@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
@@ -28,7 +27,7 @@ abstract class _SayimEditViewModelBase with Store, MobxNetworkMixin {
   void setTabIndex(int value) => tabIndex = value;
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData(int depoKodu) async => await networkManager.dioPost(
+  Future<GenericResponseModel<SayimListesiModel>> sendData(int depoKodu) async => await networkManager.dioPost(
     path: ApiUrls.saveSayim,
     bodyModel: SayimListesiModel(),
     data: SingletonModels.sayimListesi?.filtre?.copyWith(depoKodu: depoKodu).toJson(),

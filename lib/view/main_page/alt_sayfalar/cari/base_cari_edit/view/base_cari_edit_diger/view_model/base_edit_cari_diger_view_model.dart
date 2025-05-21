@@ -1,7 +1,6 @@
 import "package:mobx/mobx.dart";
 
 import "../../../../../../../../core/base/model/base_grup_kodu_model.dart";
-import "../../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../../core/constants/extensions/number_extensions.dart";
@@ -210,7 +209,7 @@ abstract class _BaseEditCariDigerViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postFaturaTipi() async {
+  Future<GenericResponseModel<CariListesiModel>> postFaturaTipi() async {
     final result = await networkManager.dioPost(
       path: ApiUrls.saveCari,
       bodyModel: CariListesiModel(),

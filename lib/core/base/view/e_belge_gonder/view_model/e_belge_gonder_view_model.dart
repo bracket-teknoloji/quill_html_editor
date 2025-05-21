@@ -8,7 +8,6 @@ import "../../../../../view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_
 import "../../../../../view/main_page/alt_sayfalar/e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
 import "../../../../init/network/login/api_urls.dart";
-import "../../../model/base_network_mixin.dart";
 import "../../../model/generic_response_model.dart";
 import "../../../view_model/mobx_network_mixin.dart";
 import "../model/model/dizayn_model.dart";
@@ -106,7 +105,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
       );
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendTaslak() async {
+  Future<GenericResponseModel<EBelgeListesiModel>> sendTaslak() async {
     final newModel = model.taslakGonder;
     if (siparisEditModel.eirsBilgiModel?.sevktar == null && siparisEditModel.eIrsaliyeSerisindenMi) {
       newModel.eirsBilgi = eIrsaliyeModel;
@@ -128,7 +127,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendSenaryo() async {
+  Future<GenericResponseModel<EBelgeListesiModel>> sendSenaryo() async {
     final result = await networkManager.dioPost(
       path: ApiUrls.eBelgeIslemi,
       bodyModel: model,
@@ -144,7 +143,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendEBelge() async {
+  Future<GenericResponseModel<EBelgeListesiModel>> sendEBelge() async {
     final result = await networkManager.dioPost(
       path: ApiUrls.eBelgeIslemi,
       bodyModel: model,
@@ -160,7 +159,7 @@ abstract class _EBelgeGonderViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteTaslak() async {
+  Future<GenericResponseModel<EBelgeListesiModel>> deleteTaslak() async {
     final result = await networkManager.dioPost(
       path: ApiUrls.eBelgeIslemi,
       bodyModel: model,

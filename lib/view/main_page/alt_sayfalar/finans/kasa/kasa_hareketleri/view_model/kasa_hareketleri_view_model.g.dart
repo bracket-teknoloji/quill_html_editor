@@ -121,7 +121,7 @@ mixin _$KasaHareketleriViewModel on _KasaHareketleriViewModelBase, Store {
       AsyncAction('_KasaHareketleriViewModelBase.deleteData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteData(int? inckeyNo) {
+  Future<GenericResponseModel<KasaIslemleriModel>> deleteData(int? inckeyNo) {
     return _$deleteDataAsyncAction.run(() => super.deleteData(inckeyNo));
   }
 

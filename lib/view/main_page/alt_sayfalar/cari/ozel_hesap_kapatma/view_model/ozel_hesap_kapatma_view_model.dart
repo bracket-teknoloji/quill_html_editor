@@ -1,5 +1,4 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view_model/listable_mixin.dart";
 import "package:picker/core/base/view_model/mobx_network_mixin.dart";
@@ -75,7 +74,7 @@ abstract class _OzelHesapKapatmaViewModelBase with Store, MobxNetworkMixin, List
   @action
   void setObservableList(List<CariHareketleriModel>? list) => observableList = list?.asObservable();
 
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() => networkManager.dioPost(
+  Future<GenericResponseModel<OzelHesapKapatmaSaveModel>> postData() => networkManager.dioPost(
     path: ApiUrls.saveOzelHesapKapatma,
     bodyModel: OzelHesapKapatmaSaveModel(),
     showLoading: true,

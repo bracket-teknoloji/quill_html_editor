@@ -2,7 +2,6 @@ import "dart:convert";
 
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -127,7 +126,7 @@ abstract class _BankaKasaTransferiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveTahsilat() async =>
+  Future<GenericResponseModel<BankaListesiModel>> saveTahsilat() async =>
       await networkManager.dioPost<BankaListesiModel>(
         path: ApiUrls.saveTahsilat,
         bodyModel: BankaListesiModel(),

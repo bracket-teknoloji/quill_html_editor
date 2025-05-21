@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../../core/constants/enum/cek_senet_listesi_enum.dart";
@@ -43,7 +42,7 @@ abstract class _KasadanTahsilEtViewModelBase with Store, MobxNetworkMixin {
   void setKasaHarAciklama(String? value) => model = model.copyWith(aciklama: value);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost(
+  Future<GenericResponseModel<SaveCekSenetModel>> postData() async => await networkManager.dioPost(
     path: ApiUrls.saveTahsilat,
     bodyModel: SaveCekSenetModel(),
     data: model.toJson(),

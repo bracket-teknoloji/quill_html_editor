@@ -45,7 +45,7 @@ final class _CustomLineChartState extends BaseState<CustomLineChart> {
                     getTooltipColor: (touchedSpot) => touchedSpot.bar.color ?? UIHelper.primaryColor,
                     fitInsideHorizontally: true,
                     fitInsideVertically: true,
-                    tooltipRoundedRadius: 8,
+                    tooltipBorderRadius: BorderRadius.circular(8),
                     getTooltipItems:
                         (touchedBarSpots) =>
                             touchedBarSpots.map((barSpot) {

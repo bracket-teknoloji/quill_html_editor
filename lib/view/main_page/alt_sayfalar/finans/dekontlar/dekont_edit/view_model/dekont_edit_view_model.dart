@@ -1,7 +1,6 @@
 import "package:mobx/mobx.dart";
 import "package:uuid/uuid.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -34,7 +33,7 @@ abstract class _DekontEditViewModelBase with Store, MobxNetworkMixin {
   void setKalemSayisi(int value) => kalemSayisi = value;
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async {
+  Future<GenericResponseModel<DekontIslemlerModel>> postData() async {
     SingletonDekontIslemlerRequestModel.instance.guid = const Uuid().v4();
     SingletonDekontIslemlerRequestModel.instance.kalemler
         ?.map((e) => e.tarih = SingletonDekontIslemlerRequestModel.instance.tarih)

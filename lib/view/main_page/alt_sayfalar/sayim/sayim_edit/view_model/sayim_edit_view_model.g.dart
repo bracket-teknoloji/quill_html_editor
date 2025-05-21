@@ -53,7 +53,7 @@ mixin _$SayimEditViewModel on _SayimEditViewModelBase, Store {
       AsyncAction('_SayimEditViewModelBase.sendData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData(int depoKodu) {
+  Future<GenericResponseModel<SayimListesiModel>> sendData(int depoKodu) {
     return _$sendDataAsyncAction.run(() => super.sendData(depoKodu));
   }
 

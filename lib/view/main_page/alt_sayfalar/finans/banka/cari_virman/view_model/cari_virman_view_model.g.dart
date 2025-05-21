@@ -37,7 +37,7 @@ mixin _$CariVirmanViewModel on _CariVirmanViewModelBase, Store {
       AsyncAction('_CariVirmanViewModelBase.sendData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() {
+  Future<GenericResponseModel<TahsilatRequestModel>> sendData() {
     return _$sendDataAsyncAction.run(() => super.sendData());
   }
 

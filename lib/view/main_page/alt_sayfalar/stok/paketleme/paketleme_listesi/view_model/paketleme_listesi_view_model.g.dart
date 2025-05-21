@@ -96,7 +96,7 @@ mixin _$PaketlemeListesiViewModel on _PaketlemeListesiViewModelBase, Store {
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(int? paketID) {
+  Future<GenericResponseModel<PaketlemeListesiModel>> deleteItem(int? paketID) {
     return _$deleteItemAsyncAction.run(() => super.deleteItem(paketID));
   }
 

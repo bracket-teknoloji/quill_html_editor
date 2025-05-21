@@ -29,7 +29,7 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
       AsyncAction('_BarkodTanimlaEditViewModelBase.sendData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() {
+  Future<GenericResponseModel<BarkodTanimlaKayitlariModel>> sendData() {
     return _$sendDataAsyncAction.run(() => super.sendData());
   }
 
@@ -38,7 +38,7 @@ mixin _$BarkodTanimlaEditViewModel on _BarkodTanimlaEditViewModelBase, Store {
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> getBarkod() {
+  Future<GenericResponseModel<StokOlcuBirimleriModel>> getBarkod() {
     return _$getBarkodAsyncAction.run(() => super.getBarkod());
   }
 

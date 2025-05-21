@@ -45,8 +45,7 @@ mixin _$EvraklarViewModel on _EvraklarViewModelBase, Store {
       AsyncAction('_EvraklarViewModelBase.deleteEvrak', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(
-      EvraklarModel model) {
+  Future<GenericResponseModel<EvraklarModel>> deleteEvrak(EvraklarModel model) {
     return _$deleteEvrakAsyncAction.run(() => super.deleteEvrak(model));
   }
 

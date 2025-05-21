@@ -2,7 +2,6 @@ import "dart:convert";
 
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
@@ -147,7 +146,7 @@ abstract class _CariHavaleEftViewModelBase with Store, MobxNetworkMixin {
     }
   }
 
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
+  Future<GenericResponseModel<DovizKurlariModel>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
     path: ApiUrls.saveDekont,
     bodyModel: DovizKurlariModel(),
     showLoading: true,

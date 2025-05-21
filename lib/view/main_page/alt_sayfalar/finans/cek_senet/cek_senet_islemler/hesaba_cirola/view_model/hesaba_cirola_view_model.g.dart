@@ -45,7 +45,7 @@ mixin _$HesabaCirolaViewModel on _HesabaCirolaViewModelBase, Store {
       AsyncAction('_HesabaCirolaViewModelBase.saveData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> saveData() {
+  Future<GenericResponseModel<SaveCekSenetModel>> saveData() {
     return _$saveDataAsyncAction.run(() => super.saveData());
   }
 

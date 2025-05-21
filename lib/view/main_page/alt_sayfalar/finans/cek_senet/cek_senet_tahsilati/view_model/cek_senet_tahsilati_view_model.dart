@@ -1,7 +1,6 @@
 import "package:collection/collection.dart";
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -83,7 +82,7 @@ abstract class _CekSenetTahsilatiViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<SaveCekSenetModel>(
+  Future<GenericResponseModel<SaveCekSenetModel>> postData() async => await networkManager.dioPost<SaveCekSenetModel>(
     path: ApiUrls.saveCekSenetler,
     bodyModel: SaveCekSenetModel(),
     data: model.toJson(),

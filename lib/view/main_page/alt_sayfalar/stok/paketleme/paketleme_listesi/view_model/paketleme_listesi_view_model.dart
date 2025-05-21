@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/listable_mixin.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -69,7 +68,7 @@ abstract class _PaketlemeListesiViewModelBase
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(int? paketID) async {
+  Future<GenericResponseModel<PaketlemeListesiModel>> deleteItem(int? paketID) async {
     final result = await networkManager.dioPost(
       path: ApiUrls.savePaket,
       bodyModel: PaketlemeListesiModel(),

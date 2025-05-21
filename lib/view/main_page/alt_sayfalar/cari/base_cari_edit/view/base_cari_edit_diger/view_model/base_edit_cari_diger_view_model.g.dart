@@ -38,7 +38,7 @@ mixin _$BaseEditCariDigerViewModel on _BaseEditCariDigerViewModelBase, Store {
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> postFaturaTipi() {
+  Future<GenericResponseModel<CariListesiModel>> postFaturaTipi() {
     return _$postFaturaTipiAsyncAction.run(() => super.postFaturaTipi());
   }
 

@@ -1,7 +1,6 @@
 import "package:mobx/mobx.dart";
 import "package:uuid/uuid.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/ek_alanlar_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -113,7 +112,7 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
   void setEkAlanlarList(List<EkAlanlarModel>? dataList) => ekAlanlarList = dataList?.asObservable();
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveUSK() async => networkManager.dioPost(
+  Future<GenericResponseModel<UretimSonuKaydiEditModel>> saveUSK() async => networkManager.dioPost(
     path: ApiUrls.saveUSK,
     bodyModel: UretimSonuKaydiEditModel(),
     data: requestModel.copyWith(guid: const Uuid().v4()).toJson(),

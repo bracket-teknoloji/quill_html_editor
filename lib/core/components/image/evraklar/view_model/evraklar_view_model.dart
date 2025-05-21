@@ -2,7 +2,6 @@ import "package:mobx/mobx.dart";
 
 import "../../../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_model.dart";
 import "../../../../../view/main_page/alt_sayfalar/finans/cek_senet/cek_senet_evraklar/model/evraklar_request_model.dart";
-import "../../../../base/model/base_network_mixin.dart";
 import "../../../../base/model/generic_response_model.dart";
 import "../../../../base/view_model/listable_mixin.dart";
 import "../../../../base/view_model/mobx_network_mixin.dart";
@@ -42,7 +41,7 @@ abstract class _EvraklarViewModelBase with Store, MobxNetworkMixin, ListableMixi
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(EvraklarModel model) async {
+  Future<GenericResponseModel<EvraklarModel>> deleteEvrak(EvraklarModel model) async {
     setRefresh(true);
     final result = await networkManager.dioPost(
       path: ApiUrls.saveEvrak,

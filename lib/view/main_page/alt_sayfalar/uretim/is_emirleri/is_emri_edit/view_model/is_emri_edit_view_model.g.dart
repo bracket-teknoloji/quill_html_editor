@@ -37,7 +37,7 @@ mixin _$IsEmriEditViewModel on _IsEmriEditViewModelBase, Store {
       AsyncAction('_IsEmriEditViewModelBase.sendData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() {
+  Future<GenericResponseModel<IsEmirleriModel>> sendData() {
     return _$sendDataAsyncAction.run(() => super.sendData());
   }
 

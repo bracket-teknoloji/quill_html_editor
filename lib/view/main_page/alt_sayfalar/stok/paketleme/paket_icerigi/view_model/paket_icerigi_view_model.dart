@@ -8,7 +8,6 @@ import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paket_icerigi/
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_edit_request_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/stok/paketleme/paketleme_listesi/model/paketleme_listesi_request_model.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 
 part "paket_icerigi_view_model.g.dart";
@@ -48,7 +47,7 @@ abstract class _PaketIcerigiViewModelBase with Store, MobxNetworkMixin, Listable
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem({int? id, int? paketID}) async {
+  Future<GenericResponseModel<PaketIcerigiModel>> deleteItem({int? id, int? paketID}) async {
     final result = await networkManager.dioPost(
       path: ApiUrls.savePaket,
       bodyModel: PaketIcerigiModel(),

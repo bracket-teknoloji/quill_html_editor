@@ -32,7 +32,7 @@ final class AppThemeDark extends AppTheme {
       builders: {TargetPlatform.android: FadeForwardsPageTransitionsBuilder(backgroundColor: UIHelper.primaryColor)},
     ),
     actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       indicatorColor: UIHelper.primaryColor,
       labelColor: UIHelper.primaryColor,
       labelPadding: UIHelper.lowPadding,
@@ -120,14 +120,14 @@ final class AppThemeDark extends AppTheme {
       ),
     ),
     iconTheme: IconThemeData(color: colorManager.primary, size: 30),
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
       actionsPadding: EdgeInsets.zero,
       alignment: Alignment.center,
       contentTextStyle: const TextStyle(fontSize: 16),
       // elevation: 0,
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       elevation: 0.4,
       color: colorManager.surfaceContainer,
       shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),

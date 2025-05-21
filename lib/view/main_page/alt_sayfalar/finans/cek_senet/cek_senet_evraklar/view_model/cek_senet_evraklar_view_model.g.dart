@@ -58,8 +58,7 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(
-      EvraklarModel model) {
+  Future<GenericResponseModel<EvraklarModel>> deleteEvrak(EvraklarModel model) {
     return _$deleteEvrakAsyncAction.run(() => super.deleteEvrak(model));
   }
 
@@ -68,8 +67,7 @@ mixin _$CekSenetEvraklarViewModel on _CekSenetEvraklarViewModelBase, Store {
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> uploadEvrak(
-      EvraklarModel model) {
+  Future<GenericResponseModel<EvraklarModel>> uploadEvrak(EvraklarModel model) {
     return _$uploadEvrakAsyncAction.run(() => super.uploadEvrak(model));
   }
 

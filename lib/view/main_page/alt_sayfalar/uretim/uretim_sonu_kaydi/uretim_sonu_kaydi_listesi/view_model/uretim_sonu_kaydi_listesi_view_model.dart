@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/listable_mixin.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -77,7 +76,7 @@ abstract class _UretimSonuKaydiListesiViewModelBase
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(KalemModel item) async => await networkManager.dioPost(
+  Future<GenericResponseModel<KalemModel>> deleteItem(KalemModel item) async => await networkManager.dioPost(
     path: ApiUrls.deleteUSK,
     bodyModel: KalemModel(),
     showLoading: true,

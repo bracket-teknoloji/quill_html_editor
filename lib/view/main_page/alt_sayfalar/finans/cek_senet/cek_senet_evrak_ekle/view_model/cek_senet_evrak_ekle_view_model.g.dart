@@ -49,7 +49,7 @@ mixin _$CekSenetEvrakEkleViewModel on _CekSenetEvrakEkleViewModelBase, Store {
       AsyncAction('_CekSenetEvrakEkleViewModelBase.saveData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> saveData() {
+  Future<GenericResponseModel<CekSenetListesiModel>> saveData() {
     return _$saveDataAsyncAction.run(() => super.saveData());
   }
 

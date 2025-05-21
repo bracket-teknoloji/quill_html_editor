@@ -180,7 +180,7 @@ mixin _$NakitOdemeViewModel on _NakitOdemeViewModelBase, Store {
       AsyncAction('_NakitOdemeViewModelBase.postData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+  Future<GenericResponseModel<DovizKurlariModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 

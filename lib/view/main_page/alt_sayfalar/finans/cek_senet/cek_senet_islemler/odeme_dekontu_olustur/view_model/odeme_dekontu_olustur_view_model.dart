@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -38,7 +37,7 @@ abstract class _OdemeDekontuOlusturViewModelBase with Store, MobxNetworkMixin {
   @action
   void setAciklama(String? aciklama) => model = model.copyWith(aciklama: aciklama);
 
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
+  Future<GenericResponseModel<TahsilatRequestModel>> postData() async =>
       await networkManager.dioPost<TahsilatRequestModel>(
         path: ApiUrls.saveDekont,
         bodyModel: TahsilatRequestModel(),

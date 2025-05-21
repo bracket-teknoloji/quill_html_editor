@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -74,7 +73,7 @@ abstract class _IsEmriEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(
+  Future<GenericResponseModel<IsEmirleriModel>> sendData() async => await networkManager.dioPost(
     path: ApiUrls.saveIsEmri,
     showLoading: true,
     bodyModel: IsEmirleriModel(),

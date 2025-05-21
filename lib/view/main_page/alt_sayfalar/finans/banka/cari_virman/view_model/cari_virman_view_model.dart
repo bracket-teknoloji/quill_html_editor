@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/model/tahsilat_request_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -62,7 +61,7 @@ abstract class _CariVirmanViewModelBase with Store, MobxNetworkMixin {
   void setHedefAciklama(String? aciklama) => requestModel = requestModel.copyWith(hedefAciklama: aciklama);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(
+  Future<GenericResponseModel<TahsilatRequestModel>> sendData() async => await networkManager.dioPost(
     path: ApiUrls.saveDekont,
     bodyModel: TahsilatRequestModel(),
     showLoading: true,

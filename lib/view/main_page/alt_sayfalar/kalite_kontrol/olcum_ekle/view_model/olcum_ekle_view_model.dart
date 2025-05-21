@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../core/constants/enum/base_edit_enum.dart";
@@ -40,7 +39,7 @@ abstract class _OlcumEkleViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData(BaseEditEnum baseEditEnum) async {
+  Future<GenericResponseModel<OlcumEkleModel>> sendData(BaseEditEnum baseEditEnum) async {
     OlcumEkleModel newReqModel = requestModel;
     if (baseEditEnum.ekleMi) {
       newReqModel = newReqModel.copyWith(

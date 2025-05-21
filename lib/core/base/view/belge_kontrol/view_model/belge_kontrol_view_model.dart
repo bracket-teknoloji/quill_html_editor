@@ -1,5 +1,4 @@
 import "package:mobx/mobx.dart";
-import "package:picker/core/base/model/base_network_mixin.dart";
 import "package:picker/core/base/model/generic_response_model.dart";
 import "package:picker/core/base/view/belge_kontrol/model/belge_kontrol_model.dart";
 import "package:picker/core/base/view/belge_kontrol/model/belge_kontrol_request_model.dart";
@@ -67,7 +66,7 @@ abstract class _BelgeKontrolViewModelBase
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deletekontrol(int id) async => await networkManager.dioPost(
+  Future<GenericResponseModel<BelgeKontrolModel>> deletekontrol(int id) async => await networkManager.dioPost(
     path: ApiUrls.saveBelgeKontrol,
     data: BelgeKontrolModel(id: id, islemKodu: 3).toJson(),
     bodyModel: BelgeKontrolModel(),

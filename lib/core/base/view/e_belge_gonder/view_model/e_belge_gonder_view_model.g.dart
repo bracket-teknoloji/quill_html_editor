@@ -117,7 +117,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
       AsyncAction('_EBelgeGonderViewModelBase.sendTaslak', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendTaslak() {
+  Future<GenericResponseModel<EBelgeListesiModel>> sendTaslak() {
     return _$sendTaslakAsyncAction.run(() => super.sendTaslak());
   }
 
@@ -125,7 +125,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
       AsyncAction('_EBelgeGonderViewModelBase.sendSenaryo', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendSenaryo() {
+  Future<GenericResponseModel<EBelgeListesiModel>> sendSenaryo() {
     return _$sendSenaryoAsyncAction.run(() => super.sendSenaryo());
   }
 
@@ -133,7 +133,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
       AsyncAction('_EBelgeGonderViewModelBase.sendEBelge', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendEBelge() {
+  Future<GenericResponseModel<EBelgeListesiModel>> sendEBelge() {
     return _$sendEBelgeAsyncAction.run(() => super.sendEBelge());
   }
 
@@ -141,7 +141,7 @@ mixin _$EBelgeGonderViewModel on _EBelgeGonderViewModelBase, Store {
       AsyncAction('_EBelgeGonderViewModelBase.deleteTaslak', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteTaslak() {
+  Future<GenericResponseModel<EBelgeListesiModel>> deleteTaslak() {
     return _$deleteTaslakAsyncAction.run(() => super.deleteTaslak());
   }
 

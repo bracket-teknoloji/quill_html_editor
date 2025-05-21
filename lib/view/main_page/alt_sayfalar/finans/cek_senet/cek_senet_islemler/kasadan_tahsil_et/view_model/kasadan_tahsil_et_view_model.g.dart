@@ -41,7 +41,7 @@ mixin _$KasadanTahsilEtViewModel on _KasadanTahsilEtViewModelBase, Store {
       AsyncAction('_KasadanTahsilEtViewModelBase.postData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+  Future<GenericResponseModel<SaveCekSenetModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 

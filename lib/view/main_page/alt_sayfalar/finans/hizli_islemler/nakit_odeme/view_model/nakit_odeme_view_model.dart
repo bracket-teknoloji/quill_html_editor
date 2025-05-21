@@ -2,7 +2,6 @@ import "package:mobx/mobx.dart";
 import "package:picker/view/main_page/alt_sayfalar/cari/cari_listesi/model/cari_listesi_model.dart";
 import "package:uuid/uuid.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/model/muhasebe_referans_model.dart";
@@ -185,7 +184,7 @@ abstract class _NakitOdemeViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
+  Future<GenericResponseModel<DovizKurlariModel>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
     path: ApiUrls.saveTahsilat,
     bodyModel: DovizKurlariModel(),
     showLoading: true,

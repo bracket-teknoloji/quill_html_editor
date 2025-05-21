@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -41,7 +40,7 @@ abstract class _CariAktiviteDetayiViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> getData() async => networkManager.dioPost(
+  Future<GenericResponseModel<CariAktiviteListesiModel>> getData() async => networkManager.dioPost(
     path: ApiUrls.saveAktivite,
     bodyModel: CariAktiviteListesiModel(),
     data: {"DETAY_MODEL": model.toJson(), "ISLEM_KODU": 4},

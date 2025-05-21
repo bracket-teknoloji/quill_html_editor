@@ -8,7 +8,6 @@ import "package:picker/view/main_page/alt_sayfalar/kalite_kontrol/olcum_belge_ed
 import "package:picker/view/main_page/alt_sayfalar/stok/base_stok_edit/model/stok_detay_model.dart";
 import "package:picker/view/main_page/model/param_model.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 
@@ -149,7 +148,7 @@ abstract class _OlcumBelgeEditViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteOlcum(int? id) async => await networkManager.dioGet(
+  Future<GenericResponseModel<OlcumBelgeEditModel>> deleteOlcum(int? id) async => await networkManager.dioGet(
     path: ApiUrls.olcumSil,
     bodyModel: OlcumBelgeEditModel(),
     queryParameters: {"id": id},

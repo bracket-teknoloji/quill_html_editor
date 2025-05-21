@@ -209,7 +209,7 @@ mixin _$MuhtelifOdemeViewModel on _MuhtelifOdemeViewModelBase, Store {
       AsyncAction('_MuhtelifOdemeViewModelBase.postData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+  Future<GenericResponseModel<DovizKurlariModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 

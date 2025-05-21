@@ -135,7 +135,7 @@ mixin _$KasaTransferiViewModel on _KasaTransferiViewModelBase, Store {
       AsyncAction('_KasaTransferiViewModelBase.postData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+  Future<GenericResponseModel<DovizKurlariModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 

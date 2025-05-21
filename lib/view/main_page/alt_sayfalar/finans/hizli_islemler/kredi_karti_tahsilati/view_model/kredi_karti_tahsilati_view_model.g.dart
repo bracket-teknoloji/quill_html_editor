@@ -259,7 +259,7 @@ mixin _$KrediKartiTahsilatiViewModel
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+  Future<GenericResponseModel<DovizKurlariModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 

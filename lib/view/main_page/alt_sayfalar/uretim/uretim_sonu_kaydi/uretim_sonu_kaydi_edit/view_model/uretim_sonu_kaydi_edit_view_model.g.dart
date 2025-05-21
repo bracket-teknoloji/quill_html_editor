@@ -126,7 +126,7 @@ mixin _$UretimSonuKaydiEditViewModel
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> saveUSK() {
+  Future<GenericResponseModel<UretimSonuKaydiEditModel>> saveUSK() {
     return _$saveUSKAsyncAction.run(() => super.saveUSK());
   }
 

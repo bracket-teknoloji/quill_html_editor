@@ -1,7 +1,6 @@
 import "package:mobx/mobx.dart";
 
 import "../../../../view/main_page/alt_sayfalar/siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
-import "../../../base/model/base_network_mixin.dart";
 import "../../../base/model/generic_response_model.dart";
 import "../../../base/view_model/mobx_network_mixin.dart";
 import "../../../init/network/login/api_urls.dart";
@@ -66,7 +65,7 @@ abstract class AciklamaDuzenleViewModelBase with Store, MobxNetworkMixin {
   void setTalepTeklifListesiModel(BaseSiparisEditModel value) => editModel = value;
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async =>
+  Future<GenericResponseModel<BaseSiparisEditModel>> postData() async =>
       await networkManager.dioPost<BaseSiparisEditModel>(
         path: ApiUrls.saveFatura,
         bodyModel: BaseSiparisEditModel(),

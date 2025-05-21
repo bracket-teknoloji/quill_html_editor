@@ -29,7 +29,7 @@ mixin _$CariAktiviteDetayiViewModel on _CariAktiviteDetayiViewModelBase, Store {
       AsyncAction('_CariAktiviteDetayiViewModelBase.getData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> getData() {
+  Future<GenericResponseModel<CariAktiviteListesiModel>> getData() {
     return _$getDataAsyncAction.run(() => super.getData());
   }
 

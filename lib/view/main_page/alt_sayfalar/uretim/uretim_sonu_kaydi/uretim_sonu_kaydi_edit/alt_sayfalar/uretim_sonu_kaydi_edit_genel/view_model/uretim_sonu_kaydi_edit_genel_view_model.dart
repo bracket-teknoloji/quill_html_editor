@@ -165,9 +165,4 @@ abstract class _UretimSonuKaydiEditViewModelBase with Store, MobxNetworkMixin {
     }
     return null;
   }
-
-  // @action
-  // Future<GenericResponseModel<NetworkManagerMixin>> saveData() async {
-  //   final result = await networkManager.dioPost(path: ApiUrls.saveU, bodyModel: bodyModel)
-  // }
 }

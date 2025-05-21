@@ -64,7 +64,7 @@ mixin _$CariAktiviteGenelViewModel on CariAktiviteGenelViewModelBase, Store {
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> saveCariAktivite() {
+  Future<GenericResponseModel<CariAktiviteListesiModel>> saveCariAktivite() {
     return _$saveCariAktiviteAsyncAction.run(() => super.saveCariAktivite());
   }
 

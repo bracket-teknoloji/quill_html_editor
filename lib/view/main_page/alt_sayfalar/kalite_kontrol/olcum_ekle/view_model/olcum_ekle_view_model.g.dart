@@ -29,7 +29,7 @@ mixin _$OlcumEkleViewModel on _OlcumEkleViewModelBase, Store {
       AsyncAction('_OlcumEkleViewModelBase.sendData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData(
+  Future<GenericResponseModel<OlcumEkleModel>> sendData(
       BaseEditEnum baseEditEnum) {
     return _$sendDataAsyncAction.run(() => super.sendData(baseEditEnum));
   }

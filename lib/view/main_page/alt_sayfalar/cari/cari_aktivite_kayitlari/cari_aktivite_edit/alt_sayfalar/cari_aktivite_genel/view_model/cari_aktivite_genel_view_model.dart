@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../../core/base/model/kullanicilar_model.dart";
 import "../../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -112,7 +111,7 @@ abstract class CariAktiviteGenelViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveCariAktivite() async {
+  Future<GenericResponseModel<CariAktiviteListesiModel>> saveCariAktivite() async {
     model = model.copyWith(islemKodu: baseEditEnum.islemKodu);
     if (aktiviteBitirilsinMi) {
       model = model.copyWith(bittar: DateTime.now());

@@ -29,7 +29,7 @@ final class AppThemeLight extends AppTheme {
     ),
     colorSchemeSeed: UIHelper.primaryColor,
     actionIconTheme: ActionIconThemeData(backButtonIconBuilder: (context) => const Icon(Icons.arrow_back_outlined)),
-    tabBarTheme: const TabBarTheme(
+    tabBarTheme: const TabBarThemeData(
       indicatorColor: UIHelper.primaryColor,
       labelColor: UIHelper.primaryColor,
       labelPadding: UIHelper.lowPadding,
@@ -45,15 +45,12 @@ final class AppThemeLight extends AppTheme {
         shape: WidgetStateProperty.all(RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius)),
       ),
     ),
-    expansionTileTheme: ExpansionTileThemeData(
+    expansionTileTheme: const ExpansionTileThemeData(
       iconColor: UIHelper.primaryColor,
       collapsedIconColor: UIHelper.primaryColor,
       collapsedTextColor: UIHelper.primaryColor,
       textColor: UIHelper.primaryColor,
-      expansionAnimationStyle: AnimationStyle(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInOutQuint,
-      ),
+      expansionAnimationStyle: AnimationStyle(duration: Duration(milliseconds: 200), curve: Curves.easeInOutQuint),
     ),
     toggleButtonsTheme: ToggleButtonsThemeData(borderRadius: UIHelper.lowBorderRadius),
     brightness: Brightness.light,
@@ -122,13 +119,13 @@ final class AppThemeLight extends AppTheme {
       ),
     ),
     iconTheme: IconThemeData(color: colorManager.primary, size: 30),
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       shape: RoundedRectangleBorder(borderRadius: UIHelper.lowBorderRadius),
       actionsPadding: EdgeInsets.zero,
       alignment: Alignment.center,
       contentTextStyle: const TextStyle(fontSize: 14),
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       elevation: 0.4,
       color: colorManager.surfaceContainer,
       shape: RoundedRectangleBorder(borderRadius: UIHelper.midBorderRadius),

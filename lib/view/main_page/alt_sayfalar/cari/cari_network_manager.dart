@@ -2,7 +2,6 @@ import "dart:developer";
 
 import "../../../../core/base/model/base_edit_siradaki_kod_model.dart";
 import "../../../../core/base/model/base_grup_kodu_model.dart";
-import "../../../../core/base/model/base_network_mixin.dart";
 import "../../../../core/base/model/generic_response_model.dart";
 import "../../../../core/components/dialog/dialog_manager.dart";
 import "../../../../core/constants/enum/grup_kodu_enums.dart";
@@ -50,8 +49,8 @@ final class CariNetworkManager {
     return result.dataList;
   }
 
-  static Future<GenericResponseModel<NetworkManagerMixin>> getCariListesi() async {
-    final GenericResponseModel<NetworkManagerMixin> responseKosullar = await networkManager.dioGet<CariKosullarModel>(
+  static Future<GenericResponseModel<CariKosullarModel>> getCariListesi() async {
+    final GenericResponseModel<CariKosullarModel> responseKosullar = await networkManager.dioGet<CariKosullarModel>(
       path: ApiUrls.getKosullar,
       bodyModel: CariKosullarModel(),
     );

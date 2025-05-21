@@ -2,7 +2,6 @@ import "package:mobx/mobx.dart";
 import "package:uuid/uuid.dart";
 
 import "../../../../../../../core/base/model/banka_sozlesmesi_model.dart";
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/base_proje_model.dart";
 import "../../../../../../../core/base/model/doviz_kurlari_model.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
@@ -167,7 +166,7 @@ abstract class _MuhtelifOdemeViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
+  Future<GenericResponseModel<DovizKurlariModel>> postData() async => await networkManager.dioPost<DovizKurlariModel>(
     path: ApiUrls.saveTahsilat,
     bodyModel: DovizKurlariModel(),
     showLoading: true,

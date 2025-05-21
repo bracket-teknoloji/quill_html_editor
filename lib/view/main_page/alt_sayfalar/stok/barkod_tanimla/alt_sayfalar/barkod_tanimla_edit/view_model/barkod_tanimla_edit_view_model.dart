@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../../core/constants/enum/barkod_tipi_enum.dart";
@@ -34,7 +33,7 @@ abstract class _BarkodTanimlaEditViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? value) => model = model.copyWith(aciklama: value);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendData() async => await networkManager.dioPost(
+  Future<GenericResponseModel<BarkodTanimlaKayitlariModel>> sendData() async => await networkManager.dioPost(
     path: ApiUrls.saveStok,
     bodyModel: BarkodTanimlaKayitlariModel(),
     showLoading: true,
@@ -47,7 +46,7 @@ abstract class _BarkodTanimlaEditViewModelBase with Store, MobxNetworkMixin {
   );
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> getBarkod() async => await networkManager.dioPost(
+  Future<GenericResponseModel<StokOlcuBirimleriModel>> getBarkod() async => await networkManager.dioPost(
     path: ApiUrls.barkodUret,
     bodyModel: StokOlcuBirimleriModel(),
     showLoading: true,

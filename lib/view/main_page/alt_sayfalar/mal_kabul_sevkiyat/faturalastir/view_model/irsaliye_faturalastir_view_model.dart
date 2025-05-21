@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../core/base/model/edit_fatura_model.dart";
 import "../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -58,7 +57,7 @@ abstract class _IrsaliyeFaturalastirViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> sendFatura() async => await networkManager.dioPost(
+  Future<GenericResponseModel<EditFaturaModel>> sendFatura() async => await networkManager.dioPost(
     path: ApiUrls.saveIrsaliyedenFatura,
     bodyModel: requestModel,
     data: requestModel.toJson(),

@@ -3,7 +3,6 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/listable_mixin.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
@@ -81,7 +80,7 @@ abstract class _KasaHareketleriViewModelBase
 
   @action
   // return GenericResponseModel(success: true);
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteData(int? inckeyNo) async =>
+  Future<GenericResponseModel<KasaIslemleriModel>> deleteData(int? inckeyNo) async =>
       await networkManager.dioPost<KasaIslemleriModel>(
         path: ApiUrls.deleteKasaHareket,
         bodyModel: KasaIslemleriModel(),

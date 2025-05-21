@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -34,6 +33,6 @@ abstract class _CekSenetEvrakEkleViewModelBase with Store, MobxNetworkMixin {
   void setAciklama(String? aciklama) => model = model.copyWith(aciklama: aciklama);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveData() async =>
+  Future<GenericResponseModel<CekSenetListesiModel>> saveData() async =>
       await networkManager.dioPost(path: ApiUrls.saveEvrak, bodyModel: CekSenetListesiModel(), data: model.toJson());
 }

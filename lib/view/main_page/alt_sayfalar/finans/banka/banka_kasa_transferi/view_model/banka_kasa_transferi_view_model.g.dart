@@ -108,7 +108,7 @@ mixin _$BankaKasaTransferiViewModel on _BankaKasaTransferiViewModelBase, Store {
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> saveTahsilat() {
+  Future<GenericResponseModel<BankaListesiModel>> saveTahsilat() {
     return _$saveTahsilatAsyncAction.run(() => super.saveTahsilat());
   }
 

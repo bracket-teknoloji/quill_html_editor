@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../../core/constants/extensions/date_time_extensions.dart";
@@ -43,7 +42,7 @@ abstract class _HesabaCirolaViewModelBase with Store, MobxNetworkMixin {
   void setPlasiyerKodu(String? value) => model = model.copyWith(plasiyerKodu: value);
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> saveData() async => await networkManager.dioPost(
+  Future<GenericResponseModel<SaveCekSenetModel>> saveData() async => await networkManager.dioPost(
     path: ApiUrls.saveCekSenetler,
     showLoading: true,
     bodyModel: SaveCekSenetModel(),

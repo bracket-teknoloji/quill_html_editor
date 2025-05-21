@@ -61,7 +61,7 @@ mixin _$DekontEditViewModel on _DekontEditViewModelBase, Store {
       AsyncAction('_DekontEditViewModelBase.postData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+  Future<GenericResponseModel<DekontIslemlerModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 

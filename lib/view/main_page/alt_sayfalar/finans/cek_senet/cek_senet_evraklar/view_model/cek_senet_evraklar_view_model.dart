@@ -1,6 +1,5 @@
 import "package:mobx/mobx.dart";
 
-import "../../../../../../../core/base/model/base_network_mixin.dart";
 import "../../../../../../../core/base/model/generic_response_model.dart";
 import "../../../../../../../core/base/view_model/mobx_network_mixin.dart";
 import "../../../../../../../core/init/network/login/api_urls.dart";
@@ -31,7 +30,7 @@ abstract class _CekSenetEvraklarViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteEvrak(EvraklarModel model) async {
+  Future<GenericResponseModel<EvraklarModel>> deleteEvrak(EvraklarModel model) async {
     final result = await networkManager.dioPost(
       path: ApiUrls.saveEvrak,
       bodyModel: EvraklarModel(),
@@ -41,7 +40,7 @@ abstract class _CekSenetEvraklarViewModelBase with Store, MobxNetworkMixin {
   }
 
   @action
-  Future<GenericResponseModel<NetworkManagerMixin>> uploadEvrak(EvraklarModel model) async {
+  Future<GenericResponseModel<EvraklarModel>> uploadEvrak(EvraklarModel model) async {
     final result = await networkManager.dioPost(
       path: ApiUrls.saveEvrak,
       bodyModel: EvraklarModel(),

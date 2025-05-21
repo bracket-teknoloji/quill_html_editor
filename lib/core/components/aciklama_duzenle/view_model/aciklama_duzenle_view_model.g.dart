@@ -29,7 +29,7 @@ mixin _$AciklamaDuzenleViewModel on AciklamaDuzenleViewModelBase, Store {
       AsyncAction('AciklamaDuzenleViewModelBase.postData', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> postData() {
+  Future<GenericResponseModel<BaseSiparisEditModel>> postData() {
     return _$postDataAsyncAction.run(() => super.postData());
   }
 

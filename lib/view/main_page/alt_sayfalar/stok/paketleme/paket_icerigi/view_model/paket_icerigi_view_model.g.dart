@@ -61,7 +61,7 @@ mixin _$PaketIcerigiViewModel on _PaketIcerigiViewModelBase, Store {
       AsyncAction('_PaketIcerigiViewModelBase.deleteItem', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(
+  Future<GenericResponseModel<PaketIcerigiModel>> deleteItem(
       {int? id, int? paketID}) {
     return _$deleteItemAsyncAction
         .run(() => super.deleteItem(id: id, paketID: paketID));

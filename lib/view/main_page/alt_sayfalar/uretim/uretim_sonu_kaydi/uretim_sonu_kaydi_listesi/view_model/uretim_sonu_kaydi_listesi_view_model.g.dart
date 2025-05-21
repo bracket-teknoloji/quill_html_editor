@@ -92,8 +92,7 @@ mixin _$UretimSonuKaydiListesiViewModel
       context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> deleteItem(
-      KalemModel item) {
+  Future<GenericResponseModel<KalemModel>> deleteItem(KalemModel item) {
     return _$deleteItemAsyncAction.run(() => super.deleteItem(item));
   }
 

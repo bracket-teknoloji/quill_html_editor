@@ -94,7 +94,7 @@ mixin _$BelgeKontrolViewModel on _BelgeKontrolViewModelBase, Store {
       AsyncAction('_BelgeKontrolViewModelBase.deletekontrol', context: context);
 
   @override
-  Future<GenericResponseModel<NetworkManagerMixin>> deletekontrol(int id) {
+  Future<GenericResponseModel<BelgeKontrolModel>> deletekontrol(int id) {
     return _$deletekontrolAsyncAction.run(() => super.deletekontrol(id));
   }
 
