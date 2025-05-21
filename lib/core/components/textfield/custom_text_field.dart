@@ -142,7 +142,7 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
         textInputAction: TextInputAction.next,
         keyboardType: widget.keyboardType,
         focusNode: widget.focusNode,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
+        autovalidateMode: widget.readOnly == true ? AutovalidateMode.onUnfocus : AutovalidateMode.onUserInteraction,
         onTap: () async {
           if (widget.onDateChange != null) {
             widget.onDateChange!.call(
@@ -168,10 +168,9 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
         },
         onChanged: widget.onChanged,
         onFieldSubmitted: widget.onSubmitted,
-        inputFormatters:
-            widget.isFormattedString == true
-                ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter]
-                : widget.inputFormatter,
+        inputFormatters: widget.isFormattedString == true
+            ? <TextInputFormatter>[TextFieldFormatterHelper.turkishFormatter]
+            : widget.inputFormatter,
 
         // onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
         maxLength: widget.maxLength,
@@ -193,106 +192,102 @@ final class _CustomTextFieldState extends BaseState<CustomTextField> {
           border: OutlineInputBorder(borderRadius: UIHelper.highBorderRadius),
           suffixIcon:
               widget.suffix != null || widget.isDateTime == true || widget.isTime == true || widget.suffixMore == true
-                  ? Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      if (widget.suffix != null) widget.suffix!,
-                      if (widget.onClear != null)
-                        Observer(
-                          builder:
-                              (_) => Visibility(
-                                visible: (viewModel.showClearButton) && (widget.isMust != true),
-                                child: IconButton(
-                                  style: ButtonStyle(
-                                    padding: WidgetStateProperty.all(EdgeInsets.zero),
-                                    splashFactory: NoSplash.splashFactory,
-                                  ),
-                                  padding: EdgeInsets.zero,
-                                  constraints: const BoxConstraints(),
-                                  onPressed: () {
-                                    controller.clear();
-                                    widget.onClear!();
-                                    // viewModel.setShowClearButton(false);
-                                  },
-                                  icon: const Icon(Icons.close),
-                                ),
-                              ),
-                        ),
-                      if (widget.isDateTime == true)
-                        IconButton(
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(),
-                          onPressed: widget.onTap,
-                          icon: const Icon(Icons.date_range_outlined),
-                          style: ButtonStyle(
-                            padding: WidgetStateProperty.all(EdgeInsets.zero),
-                            splashFactory: NoSplash.splashFactory,
-                          ),
-                        ),
-                      if (widget.isTime == true)
-                        IconButton(
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(),
-                          onPressed: widget.onTap,
-                          icon: const Icon(Icons.access_time_outlined),
-                          style: ButtonStyle(
-                            padding: WidgetStateProperty.all(EdgeInsets.zero),
-                            splashFactory: NoSplash.splashFactory,
-                          ),
-                        ),
+              ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    if (widget.suffix != null) widget.suffix!,
+                    if (widget.onClear != null)
                       Observer(
-                        builder:
-                            (_) => Visibility(
-                              visible:
-                                  ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null) &&
-                                  widget.suffixMore == true,
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                onPressed: widget.onTap,
-                                icon: const Icon(Icons.more_horiz_outlined),
-                                style: ButtonStyle(
-                                  padding: WidgetStateProperty.all(EdgeInsets.zero),
-                                  splashFactory: NoSplash.splashFactory,
-                                ),
-                              ),
+                        builder: (_) => Visibility(
+                          visible: (viewModel.showClearButton) && (widget.isMust != true),
+                          child: IconButton(
+                            style: ButtonStyle(
+                              padding: WidgetStateProperty.all(EdgeInsets.zero),
+                              splashFactory: NoSplash.splashFactory,
                             ),
-                      ),
-                    ],
-                  )
-                  : null,
-          label:
-              widget.labelText != null
-                  ? Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(
-                              text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
-                              style:
-                                  (widget.enabled != false ? (widget.isMust ?? false) : false)
-                                      ? const TextStyle(color: UIHelper.primaryColor)
-                                      : ((widget.controller?.text == "")
-                                          ? TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.6))
-                                          : TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8))),
-                            ),
-                            if (widget.valueText != null)
-                              TextSpan(
-                                text: " ${widget.valueText ?? ""}",
-                                style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.3), fontSize: 12),
-                              ),
-                            if (widget.descriptionWidget != null) widget.descriptionWidget!,
-                          ],
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                            onPressed: () {
+                              controller.clear();
+                              widget.onClear!();
+                              // viewModel.setShowClearButton(false);
+                            },
+                            icon: const Icon(Icons.close),
+                          ),
                         ),
-                        // style: const TextStyle(fontSize: 15),
                       ),
-                      // if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
-                      if (widget.valueWidget != null) Flexible(child: widget.valueWidget!),
-                    ],
-                  )
-                  : null,
+                    if (widget.isDateTime == true)
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        onPressed: widget.onTap,
+                        icon: const Icon(Icons.date_range_outlined),
+                        style: ButtonStyle(
+                          padding: WidgetStateProperty.all(EdgeInsets.zero),
+                          splashFactory: NoSplash.splashFactory,
+                        ),
+                      ),
+                    if (widget.isTime == true)
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        onPressed: widget.onTap,
+                        icon: const Icon(Icons.access_time_outlined),
+                        style: ButtonStyle(
+                          padding: WidgetStateProperty.all(EdgeInsets.zero),
+                          splashFactory: NoSplash.splashFactory,
+                        ),
+                      ),
+                    Observer(
+                      builder: (_) => Visibility(
+                        visible:
+                            ((!viewModel.showClearButton && widget.onClear != null) || widget.onClear == null) &&
+                            widget.suffixMore == true,
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: widget.onTap,
+                          icon: const Icon(Icons.more_horiz_outlined),
+                          style: ButtonStyle(
+                            padding: WidgetStateProperty.all(EdgeInsets.zero),
+                            splashFactory: NoSplash.splashFactory,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              : null,
+          label: widget.labelText != null
+              ? Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(
+                            text: (widget.labelText ?? "") + ((widget.valueWidget != null) ? " " : ""),
+                            style: (widget.enabled != false ? (widget.isMust ?? false) : false)
+                                ? const TextStyle(color: UIHelper.primaryColor)
+                                : ((widget.controller?.text == "")
+                                      ? TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.6))
+                                      : TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.8))),
+                          ),
+                          if (widget.valueText != null)
+                            TextSpan(
+                              text: " ${widget.valueText ?? ""}",
+                              style: TextStyle(color: ColorPalette.slateGray.withValues(alpha: 0.3), fontSize: 12),
+                            ),
+                          if (widget.descriptionWidget != null) widget.descriptionWidget!,
+                        ],
+                      ),
+                      // style: const TextStyle(fontSize: 15),
+                    ),
+                    // if (widget.valueWidget != null) SizedBox(width: UIHelper.lowSize),
+                    if (widget.valueWidget != null) Flexible(child: widget.valueWidget!),
+                  ],
+                )
+              : null,
         ),
       ).paddingAll(UIHelper.lowSize),
     ),

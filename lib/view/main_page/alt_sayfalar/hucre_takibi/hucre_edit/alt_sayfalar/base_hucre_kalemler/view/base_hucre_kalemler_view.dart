@@ -64,10 +64,9 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
         children: [
           Card(
             child: ListTile(
-              title:
-                  (viewModel.model.belgeModel?.cariAdi != null)
-                      ? Text("Cari Adı: ${viewModel.model.belgeModel?.cariAdi}")
-                      : null,
+              title: (viewModel.model.belgeModel?.cariAdi != null)
+                  ? Text("Cari Adı: ${viewModel.model.belgeModel?.cariAdi}")
+                  : null,
               subtitle: CustomLayoutBuilder(
                 splitCount: 2,
                 children: [
@@ -189,7 +188,7 @@ final class _BaseHucreKalemlerViewState extends BaseState<BaseHucreKalemlerView>
     if (result is BaseStokMixin) {
       stokController.text = result.stokKodu ?? "";
       stokAdiController.text = result.stokAdi ?? "";
-      olcuBirimiController.text = result.getOlcuBirimi ?? "";
+      olcuBirimiController.text = result.getOlcuBirimi;
       kalemMiktariController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
       islemYapilacakMiktarController.text = result.getMiktar.commaSeparatedWithDecimalDigits(OndalikEnum.miktar);
       viewModel.setStok(result);

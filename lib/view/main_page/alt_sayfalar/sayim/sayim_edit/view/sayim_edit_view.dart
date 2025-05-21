@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:flutter_mobx/flutter_mobx.dart";
 import "package:get/get.dart";
 import "package:kartal/kartal.dart";
+import "package:picker/core/base/model/print_model.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
 
 import "../../../../../../core/base/model/base_edit_model.dart";
 import "../../../../../../core/base/state/base_state.dart";
@@ -15,8 +17,6 @@ import "../../../../../../core/constants/enum/depo_fark_raporu_filtre_enum.dart"
 import "../../../../../../core/constants/enum/dizayn_ozel_kod_enum.dart";
 import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
-import "../../../../../../core/constants/static_variables/singleton_models.dart";
-import "../../../../../../core/constants/static_variables/static_variables.dart";
 import "../../../../../../core/init/cache/cache_manager.dart";
 import "../../../../model/param_model.dart";
 import "../../../siparis/base_siparis_edit/model/base_siparis_edit_model.dart";
@@ -36,17 +36,31 @@ final class SayimEditView extends StatefulWidget {
 final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProviderStateMixin {
   late final TabController controller;
   SayimListesiModel get model => widget.model;
-  final SayimEditViewModel viewModel = SayimEditViewModel();
+  SayimEditViewModel get viewModel => DIManager.read<SayimEditViewModel>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
-    SingletonModels.setSayimListesi = model;
-    SingletonModels.setFiltreModel = model.filtre?.copyWith(belgeNo: model.fisno, islemKodu: 1);
+    DIManager.lazyRegisterer(SayimEditViewModel());
+    viewModel
+      ..setSayimListesiModel(model)
+      ..setStokModel(model.stokModel)
+      ..setFiltreModel(model.filtre?.copyWith(belgeNo: model.fisno, islemKodu: 1));
+    // SingletonModels.setFiltreModel = model.filtre?.copyWith(belgeNo: model.fisno, islemKodu: 1);
     controller = TabController(length: 2, vsync: this);
     controller.addListener(() {
       viewModel.setTabIndex(controller.index);
+      if (viewModel.filterText != "") {
+        viewModel.filterText = "";
+      }
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    DIManager.delete<SayimEditViewModel>();
+    super.dispose();
   }
 
   @override
@@ -76,10 +90,9 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
                         null,
                       );
                       if (sayimFiltre == null) return;
-                      pdfModel.dicParams?.filtre =
-                          DepoFarkRaporuFiltreEnum.values
-                              .indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi)
-                              .toStringIfNotNull;
+                      pdfModel.dicParams?.filtre = DepoFarkRaporuFiltreEnum.values
+                          .indexWhere((element) => element.filtreAdi == sayimFiltre.filtreAdi)
+                          .toStringIfNotNull;
                       // final result = await bottomSheetDialogManager.showDizaynBottomSheetDialog(context, groupValue);
                       final dizayn = await bottomSheetDialogManager.showDizaynBottomSheetDialog(
                         context,
@@ -155,75 +168,102 @@ final class _SayimEditViewState extends BaseState<SayimEditView> with TickerProv
           icon: const Icon(Icons.more_vert_outlined),
         ),
         Observer(
-          builder:
-              (_) =>
-                  viewModel.indexSifirMi
-                      ? IconButton(onPressed: () async => await saveSayim(), icon: const Icon(Icons.save_outlined))
-                      : const SizedBox.shrink(),
+          builder: (_) => viewModel.indexSifirMi
+              ? IconButton(onPressed: () async => await saveSayim(), icon: const Icon(Icons.save_outlined))
+              : const SizedBox.shrink(),
         ),
       ],
       bottom: TabBar(
         controller: controller,
-        tabs: const [Tab(child: Text("Sayım Girişi")), Tab(child: Text("Sayılanlar"))],
+        tabs: [
+          const Tab(child: Text("Sayım Girişi")),
+          Tab(
+            child: Observer(
+              builder: (_) => Text(
+                "Sayılanlar ${viewModel.sayimListesi.ext.isNotNullOrEmpty ? "(${viewModel.sayimListesi!.length})" : ""}",
+              ),
+            ),
+          ),
+        ],
       ),
     ),
     body: TabBarView(
       controller: controller,
       children: [
-        Observer(builder: (_) => SayimGirisiView(onStokSelected: saveSayim, resetFiltreModel: resetFiltreModel)),
+        Observer(
+          builder: (_) =>
+              SayimGirisiView(onStokSelected: saveSayim, resetFiltreModel: resetFiltreModel, formKey: formKey),
+        ),
         Observer(builder: (_) => SayimSayilanlarView(onEdit: onEdit)),
       ],
     ),
   );
 
-  Future<void> saveSayim() async {
-    if (!StaticVariables.instance.isSayimValid) {
+  Future<bool> saveSayim() async {
+    if (formKey.currentState?.validate() != true) {
       dialogManager.showErrorSnackBar("Gerekli alanları doldurunuz.");
-      return;
+      return false;
     }
     if (model.depoKodu == null) {
       dialogManager.showErrorSnackBar("Depo bilgisi eksik.");
-      return;
+      return false;
     }
     final result = await viewModel.sendData(model.depoKodu!);
-    if (!result.isSuccess) return;
+    if (!result.isSuccess) return false;
     dialogManager.showSuccessSnackBar(result.message ?? "Başarılı");
     if (CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir) {
-      SingletonModels.sayimPrintModel = SingletonModels.sayimPrintModel.copyWith(
-        dicParams: SingletonModels.sayimPrintModel.dicParams?.copyWith(
-          kalemId: SingletonModels.sayimListesi?.filtre?.id.toStringIfNotNull,
-          stokKodu: SingletonModels.sayimListesi?.filtre?.stokKodu,
-        ),
-      );
+      viewModel
+        ..setPrintModel(viewModel.printModel)
+        ..setPrintModel(
+          viewModel.printModel.copyWith(
+            dicParams: viewModel.printModel.dicParams?.copyWith(
+              kalemId: viewModel.filtreModel.id.toStringIfNotNull,
+              stokKodu: viewModel.filtreModel.stokKodu,
+            ),
+          ),
+        );
+      // SingletonModels.sayimPrintModel = SingletonModels.sayimPrintModel.copyWith(
+      //   dicParams: SingletonModels.sayimPrintModel.dicParams?.copyWith(
+      //     kalemId: SingletonModels.sayimListesi?.filtre?.id.toStringIfNotNull,
+      //     stokKodu: SingletonModels.sayimListesi?.filtre?.stokKodu,
+      //   ),
+      // );
       final printModel = await bottomSheetDialogManager.showPrintBottomSheetDialog(
         context,
-        SingletonModels.sayimPrintModel,
-        SingletonModels.sayimPrintModel.dizaynId == null,
-        SingletonModels.sayimPrintModel.etiketSayisi == null,
+        viewModel.printModel,
+        viewModel.printModel.dizaynId == null,
+        viewModel.printModel.etiketSayisi == null,
       );
       if (printModel != null) {
-        SingletonModels.sayimPrintModel = printModel;
+        viewModel.setPrintModel(printModel);
+        // SingletonModels.sayimPrintModel = printModel;
       }
     }
-    // if (CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir) {
-    //   await bottomSheetDialogManager.showPrintBottomSheetDialog(context, PrintModel(raporOzelKod: "raporOzelKod"), true, true);
-    // }
+    if (CacheManager.getProfilParametre.sayimOtomatikEtiketYazdir) {
+      await bottomSheetDialogManager.showPrintBottomSheetDialog(
+        context,
+        PrintModel(raporOzelKod: "raporOzelKod"),
+        true,
+        true,
+      );
+    }
     resetFiltreModel();
+    return true;
   }
 
   void resetFiltreModel() {
-    SingletonModels.setSayimListesi =
-        SingletonModels.sayimListesi
-          ?..filtre = widget.model.filtre?.copyWith(belgeNo: widget.model.fisno, islemKodu: 1);
-    controller.animateTo(1);
+    SayimGirisiView.onReset();
+    viewModel.setFiltreModel(model.filtre?.copyWith(belgeNo: model.fisno, islemKodu: 1));
+    // controller.animateTo(1);
   }
 
   Future<void> onEdit(SayimFiltreModel model) async {
     final stok = await networkManager.getStokModel(StokRehberiRequestModel(stokKodu: model.stokKodu));
-    SingletonModels.setSayimListesi = SingletonModels.sayimListesi?.copyWith(
-      filtre: widget.model.filtre?.copyWith(belgeNo: widget.model.fisno, islemKodu: 1),
-      stokModel: stok,
-    );
+    viewModel
+      ..setStokModel(stok)
+      ..setFiltreModel(
+        model.copyWith(belgeNo: model.fisno, islemKodu: 1, stokAdi: stok?.stokAdi, stokKodu: stok?.stokKodu),
+      );
     controller.animateTo(0);
   }
 }

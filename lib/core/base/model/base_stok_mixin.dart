@@ -7,7 +7,7 @@ mixin BaseStokMixin {
   String? get stokAdi;
   String? get olcuBirimi => null;
   String? get belgeOlcuBirimAdi => null;
-  String? get getOlcuBirimi => olcuBirimi ?? belgeOlcuBirimAdi;
+  String get getOlcuBirimi => olcuBirimi ?? belgeOlcuBirimAdi ?? "";
 
   double? get netMiktar => null;
   double? get miktar => null;

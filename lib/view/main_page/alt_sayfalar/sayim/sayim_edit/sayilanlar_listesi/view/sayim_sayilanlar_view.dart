@@ -13,7 +13,8 @@ import "package:picker/core/constants/extensions/date_time_extensions.dart";
 import "package:picker/core/constants/extensions/number_extensions.dart";
 import "package:picker/core/constants/ondalik_utils.dart";
 import "package:picker/core/constants/ui_helper/ui_helper.dart";
-import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/sayilanlar_listesi/view_model/sayim_sayilanlar_view_model.dart";
+import "package:picker/core/init/dependency_injection/di_manager.dart";
+import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_edit/view_model/sayim_edit_view_model.dart";
 import "package:picker/view/main_page/alt_sayfalar/sayim/sayim_listesi/model/sayim_listesi_model.dart";
 
 import "../../../../../../../core/base/model/print_model.dart";
@@ -27,7 +28,7 @@ final class SayimSayilanlarView extends StatefulWidget {
 }
 
 final class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
-  final SayimSayilanlarViewModel viewModel = SayimSayilanlarViewModel();
+  SayimEditViewModel get viewModel => DIManager.read<SayimEditViewModel>();
 
   @override
   void initState() {
@@ -43,12 +44,11 @@ final class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
       CustomTextField(labelText: "Ara", onChanged: viewModel.setFilterText),
       Expanded(
         child: Observer(
-          builder:
-              (_) => RefreshableListView(
-                onRefresh: viewModel.getData,
-                items: viewModel.sayimListesi,
-                itemBuilder: sayilanlarCard,
-              ),
+          builder: (_) => RefreshableListView(
+            onRefresh: viewModel.getData,
+            items: viewModel.sayimListesi,
+            itemBuilder: sayilanlarCard,
+          ),
         ),
       ),
     ],
@@ -94,7 +94,7 @@ final class SayimSayilanlarViewState extends BaseState<SayimSayilanlarView> {
           iconWidget: Icons.edit_outlined,
           onTap: () async {
             Get.back();
-            final result = await viewModel.getSelectedItem(model.id);
+            final result = await viewModel.getSelectedItem(model);
             if (result == null) return;
             widget.onEdit.call(result.copyWith(duzenleMi: true));
           },
