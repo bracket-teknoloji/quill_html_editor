@@ -124,6 +124,24 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
                   isEkle
                       ? IconButton(
                         onPressed: () async {
+
+// public boolean isSatisTeslimCarideBaglanmisCarilerSecilsin(String belgeTuru) {
+// 		boolean result = false;
+// 		if (BelgeUtils.belgeSatisMi(belgeTuru)) {
+// 			if (cari_TeslimCari_SatisBaglanmisCarilerSecilsin.isEmpty()) {
+// 				result = PrefManager.getInstance().getParamsModel().SatisTeslimCarideBaglanmisCarilerSecilsin;
+// 			} else if (cari_TeslimCari_SatisBaglanmisCarilerSecilsin.equalsIgnoreCase("E")) {
+// 				result = true;
+// 			}
+// 		} else if (BelgeUtils.belgeAlisMi(belgeTuru)) {
+// 			if (cari_TeslimCari_AlisBaglanmisCarilerSecilsin.isEmpty()) {
+// 				result = PrefManager.getInstance().getParamsModel().AlisTeslimCarideBaglanmisCarilerSecilsin;
+// 			} else if (cari_TeslimCari_AlisBaglanmisCarilerSecilsin.equalsIgnoreCase("E")) {
+// 				result = true;
+// 			}
+// 		}
+// 		return result;
+// 	}
                           if (cariController.text.isEmpty) {
                             dialogManager.showAlertDialog("Önce Cari Seçiniz");
                             return;
@@ -1163,3 +1181,4 @@ final class _BaseSiparislerGenelViewState extends BaseState<BaseSiparislerGenelV
     return getEkRehberById(id)!.baslik;
   }
 }
+
