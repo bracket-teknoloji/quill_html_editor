@@ -85,12 +85,13 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
     }
 
     if (widget.model.model is BaseSiparisEditModel) {
-      model =
-          BaseEditModel<SiparisEditRequestModel>()
-            ..model = SiparisEditRequestModel.forDepolarArasiTransfer(widget.model.model as BaseSiparisEditModel);
+      model = BaseEditModel<SiparisEditRequestModel>()
+        ..model = SiparisEditRequestModel.forDepolarArasiTransfer(widget.model.model as BaseSiparisEditModel);
       model
         ..baseEditEnum = widget.model.baseEditEnum
         ..editTipiEnum = widget.model.editTipiEnum;
+    } else if (widget.model.model is SiparisEditRequestModel) {
+      model = widget.model as BaseEditModel<SiparisEditRequestModel>;
     } else {
       model = BaseEditModel<SiparisEditRequestModel>()..model = SiparisEditRequestModel();
       model
@@ -172,8 +173,9 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
           ..topluCikisDepoTanimi = widget.model.model?.topluCikisDepoTanimi
           ..girisDepoKodu ??= widget.model.model?.hedefDepo
           ..cariAdi ??= widget.model.model?.cariAdi
-          ..cikisYeri ??=
-              widget.model.editTipiEnum?.ambarCikisiMi == true ? yetkiController.transferAcVarsayilanCikisYeri : null
+          ..cikisYeri ??= widget.model.editTipiEnum?.ambarCikisiMi == true
+              ? yetkiController.transferAcVarsayilanCikisYeri
+              : null
           ..cariKodu ??= widget.model.model?.cariKodu
           ..hareketTuru = widget.model.model?.hareketTuru
           ..projeAciklama = yetkiController.varsayilanProje?.projeAciklama
@@ -218,19 +220,16 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
       BaseSiparisEditModel.instance.pickerBelgeTuru ??= widget.model.editTipiEnum?.rawValue;
 
       if (BaseSiparisEditModel.instance.kalemList?.any((element) => element.olcuBirimCarpani != null) ?? false) {
-        BaseSiparisEditModel.instance.kalemList =
-            BaseSiparisEditModel.instance.kalemList?.map((element) {
-              if (element.olcuBirimCarpani != null) {
-                element
-                  ..gercekMiktar = element.miktar
-                  ..miktar =
-                      (element.miktar ?? 0) *
-                      ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null)
-                          ? 1
-                          : element.olcuBirimCarpani!);
-              }
-              return element;
-            }).toList();
+        BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((element) {
+          if (element.olcuBirimCarpani != null) {
+            element
+              ..gercekMiktar = element.miktar
+              ..miktar =
+                  (element.miktar ?? 0) *
+                  ((element.olcuBirimCarpani == 0 || element.olcuBirimCarpani == null) ? 1 : element.olcuBirimCarpani!);
+          }
+          return element;
+        }).toList();
       }
       viewModel.setLoading(false);
     });
@@ -273,50 +272,49 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
         actions: [
           seceneklerButton(context),
           Observer(
-            builder:
-                (_) => Visibility(
-                  visible: viewModel.isLastPage && kaydetButonuYetki,
-                  child: IconButton(
-                    onPressed: () async {
-                      dialogManager.showAreYouSureDialog(
-                        onYes: () async {
-                          if (await postData()) {
-                            Get.back(result: BaseSiparisEditModel.instance.belgeNo);
-                            if (!(widget.model.editTipiEnum?.otoPDFGor ?? false)) {
-                              await dialogManager.showAreYouSureDialog(
-                                onYes: () async {
-                                  final PdfModel pdfModel = PdfModel(
-                                    raporOzelKod: BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue ?? "",
-                                    dicParams: DicParams(
-                                      belgeNo: BaseSiparisEditModel.instance.belgeNo ?? "",
-                                      cariKodu: BaseSiparisEditModel.instance.cariKodu,
-                                      belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
-                                    ),
-                                  );
-                                  await showPdfView(pdfModel);
-                                },
-                                title: "PDF görüntülemek ister misiniz?",
-                              );
-                            }
-                            await CacheManager.removeTransferEditListWithUuid(BaseSiparisEditModel.instance.uuid);
-                            BaseSiparisEditModel.resetInstance();
-                            if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
-                              BaseSiparisEditModel.instance.isNew = true;
-                              Get.toNamed(
-                                "/mainPage/TalTekEdit",
-                                arguments: BaseEditModel<BaseSiparisEditModel>(
-                                  baseEditEnum: BaseEditEnum.ekle,
-                                  editTipiEnum: model.editTipiEnum,
+            builder: (_) => Visibility(
+              visible: viewModel.isLastPage && kaydetButonuYetki,
+              child: IconButton(
+                onPressed: () async {
+                  dialogManager.showAreYouSureDialog(
+                    onYes: () async {
+                      if (await postData()) {
+                        Get.back(result: BaseSiparisEditModel.instance.belgeNo);
+                        if (!(widget.model.editTipiEnum?.otoPDFGor ?? false)) {
+                          await dialogManager.showAreYouSureDialog(
+                            onYes: () async {
+                              final PdfModel pdfModel = PdfModel(
+                                raporOzelKod: BaseSiparisEditModel.instance.getEditTipiEnum?.getPrintValue ?? "",
+                                dicParams: DicParams(
+                                  belgeNo: BaseSiparisEditModel.instance.belgeNo ?? "",
+                                  cariKodu: BaseSiparisEditModel.instance.cariKodu,
+                                  belgeTipi: BaseSiparisEditModel.instance.getEditTipiEnum?.rawValue,
                                 ),
                               );
-                            }
-                          }
-                        },
-                      );
+                              await showPdfView(pdfModel);
+                            },
+                            title: "PDF görüntülemek ister misiniz?",
+                          );
+                        }
+                        await CacheManager.removeTransferEditListWithUuid(BaseSiparisEditModel.instance.uuid);
+                        BaseSiparisEditModel.resetInstance();
+                        if (viewModel.yeniKaydaHazirlaMi && widget.model.isEkle) {
+                          BaseSiparisEditModel.instance.isNew = true;
+                          Get.toNamed(
+                            "/mainPage/TalTekEdit",
+                            arguments: BaseEditModel<BaseSiparisEditModel>(
+                              baseEditEnum: BaseEditEnum.ekle,
+                              editTipiEnum: model.editTipiEnum,
+                            ),
+                          );
+                        }
+                      }
                     },
-                    icon: const Icon(Icons.save_outlined),
-                  ),
-                ),
+                  );
+                },
+                icon: const Icon(Icons.save_outlined),
+              ),
+            ),
           ),
         ],
         bottom: TabBar(
@@ -330,26 +328,24 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
         ),
       ),
       body: Observer(
-        builder:
-            (_) => TabBarView(
-              controller: tabController,
-              physics: viewModel.isValid ? null : const NeverScrollableScrollPhysics(),
-              children:
-                  [
-                    Observer(
-                      builder: (_) {
-                        if (viewModel.showLoading) {
-                          return const Center(child: CircularProgressIndicator.adaptive());
-                        } else {
-                          return BaseTransferGenelView(model: model);
-                        }
-                      },
-                    ),
-                    if (widget.model.editTipiEnum?.digerSekmesiGoster ?? false) BaseTransferDigerView(model: model),
-                    BaseTransferKalemlerView(model: model),
-                    BaseTransferToplamlarView(model: model),
-                  ].whereNot((element) => element is SizedBox).toList(),
+        builder: (_) => TabBarView(
+          controller: tabController,
+          physics: viewModel.isValid ? null : const NeverScrollableScrollPhysics(),
+          children: [
+            Observer(
+              builder: (_) {
+                if (viewModel.showLoading) {
+                  return const Center(child: CircularProgressIndicator.adaptive());
+                } else {
+                  return BaseTransferGenelView(model: model);
+                }
+              },
             ),
+            if (widget.model.editTipiEnum?.digerSekmesiGoster ?? false) BaseTransferDigerView(model: model),
+            BaseTransferKalemlerView(model: model),
+            BaseTransferToplamlarView(model: model),
+          ].whereNot((element) => element is SizedBox).toList(),
+        ),
       ),
     ),
   );
@@ -402,21 +398,20 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                 );
                 String dovizInfo = "";
                 if (result != null) {
-                  BaseSiparisEditModel.instance.kalemList =
-                      BaseSiparisEditModel.instance.kalemList?.map((e) {
-                        if (!e.dovizliMi) return e;
-                        final dovizModel = result.firstWhereOrNull((element) => element.dovizTipi == e.dovizTipi);
-                        if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
-                          e
-                            ..dovizKuru = dovizModel?.dovSatis
-                            ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovSatis ?? 0);
-                        } else {
-                          e
-                            ..dovizKuru = dovizModel?.dovAlis
-                            ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovAlis ?? 0);
-                        }
-                        return e;
-                      }).toList();
+                  BaseSiparisEditModel.instance.kalemList = BaseSiparisEditModel.instance.kalemList?.map((e) {
+                    if (!e.dovizliMi) return e;
+                    final dovizModel = result.firstWhereOrNull((element) => element.dovizTipi == e.dovizTipi);
+                    if (BaseSiparisEditModel.instance.getEditTipiEnum?.satisMi ?? false) {
+                      e
+                        ..dovizKuru = dovizModel?.dovSatis
+                        ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovSatis ?? 0);
+                    } else {
+                      e
+                        ..dovizKuru = dovizModel?.dovAlis
+                        ..brutFiyat = (e.dovizliBrutTutar) * (dovizModel?.dovAlis ?? 0);
+                    }
+                    return e;
+                  }).toList();
                   viewModel.changeUpdateKalemler();
                   for (final DovizKurlariModel element in result) {
                     final selectedDovizList = BaseSiparisEditModel.instance.kalemList?.where(
@@ -444,70 +439,69 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
   BottomSheetModel topluIskontoBottomSheetModel(BuildContext context) => BottomSheetModel(
     title: "Toplu İskonto Girişi",
     iconWidget: Icons.add_outlined,
-    onTap:
-        viewModel.model.kalemList.ext.isNullOrEmpty
-            ? () {
-              Get.back();
-              return dialogManager.showAlertDialog("Önce kalem girmeniz gerekiyor.");
-            }
-            : () async {
-              Get.back();
-              final List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
-              final List<double?>? iskontoList = kalemList?.map((e) => e.iskonto1).toList();
-              await bottomSheetDialogManager.showBottomSheetDialog(
-                context,
-                title: "Toplu İskonto Girişi",
-                body: SafeArea(
-                  child: Column(
-                    children: [
-                      Container(
-                        constraints: BoxConstraints(maxHeight: height * 0.8),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: kalemList?.length ?? 0,
-                          itemBuilder: (context, index) {
-                            final KalemModel? model = kalemList?[index];
-                            final TextEditingController controller = TextEditingController(
-                              text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNotNull,
-                            );
-                            return topluIskontoListTile(model, iskontoList, index, controller);
-                          },
-                        ),
+    onTap: viewModel.model.kalemList.ext.isNullOrEmpty
+        ? () {
+            Get.back();
+            return dialogManager.showAlertDialog("Önce kalem girmeniz gerekiyor.");
+          }
+        : () async {
+            Get.back();
+            final List<KalemModel>? kalemList = BaseSiparisEditModel.instance.kalemList;
+            final List<double?>? iskontoList = kalemList?.map((e) => e.iskonto1).toList();
+            await bottomSheetDialogManager.showBottomSheetDialog(
+              context,
+              title: "Toplu İskonto Girişi",
+              body: SafeArea(
+                child: Column(
+                  children: [
+                    Container(
+                      constraints: BoxConstraints(maxHeight: height * 0.8),
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: kalemList?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          final KalemModel? model = kalemList?[index];
+                          final TextEditingController controller = TextEditingController(
+                            text: (model?.iskonto1.toIntIfDouble ?? 0).toStringIfNotNull,
+                          );
+                          return topluIskontoListTile(model, iskontoList, index, controller);
+                        },
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: Get.back,
-                              style: ButtonStyle(
-                                backgroundColor: WidgetStateProperty.all(
-                                  theme.colorScheme.onSurface.withValues(alpha: 0.1),
-                                ),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: Get.back,
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStateProperty.all(
+                                theme.colorScheme.onSurface.withValues(alpha: 0.1),
                               ),
-                              child: const Text("İptal"),
                             ),
+                            child: const Text("İptal"),
                           ),
-                          SizedBox(width: width * 0.02),
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {
-                                kalemList?.forEach((element) {
-                                  element.iskonto1 = iskontoList?[kalemList.indexOf(element)];
-                                });
-                                viewModel.changeUpdateKalemler();
-                                setState(() {});
-                                Get.back();
-                              },
-                              child: const Text("Kaydet"),
-                            ),
+                        ),
+                        SizedBox(width: width * 0.02),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              kalemList?.forEach((element) {
+                                element.iskonto1 = iskontoList?[kalemList.indexOf(element)];
+                              });
+                              viewModel.changeUpdateKalemler();
+                              setState(() {});
+                              Get.back();
+                            },
+                            child: const Text("Kaydet"),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-              );
-            },
+              ),
+            );
+          },
   );
 
   ListTile topluIskontoListTile(
@@ -577,19 +571,16 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
       instance.yeniKayit = true;
     }
     if (instance.getEditTipiEnum?.birim1denGelsin ?? false) {
-      instance.kalemList =
-          instance.kalemList
-              ?.map(
-                (e) =>
-                    e
-                      ..olcuBirimKodu = 1
-                      ..miktar =
-                          (e.miktar ?? 0) /
-                          ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!)
-                      ..gercekMiktar = null
-                      ..olcuBirimCarpani = null,
-              )
-              .toList();
+      instance.kalemList = instance.kalemList
+          ?.map(
+            (e) => e
+              ..olcuBirimKodu = 1
+              ..miktar =
+                  (e.miktar ?? 0) / ((e.olcuBirimCarpani == 0 || e.olcuBirimCarpani == null) ? 1 : e.olcuBirimCarpani!)
+              ..gercekMiktar = null
+              ..olcuBirimCarpani = null,
+          )
+          .toList();
     }
     const uuid = Uuid();
     final result = await networkManager.dioPost<BaseSiparisEditModel>(
@@ -626,10 +617,9 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
       Get.to(
         () => PDFViewerView(
           title: result.dizaynAdi ?? "Serbest Raporlar",
-          pdfData:
-              pdfModel
-                ?..dizaynId = result.id
-                ..etiketSayisi = result.kopyaSayisi,
+          pdfData: pdfModel
+            ?..dizaynId = result.id
+            ..etiketSayisi = result.kopyaSayisi,
         ),
       );
     }
@@ -680,9 +670,8 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
           readOnly: true,
           suffixMore: true,
           valueWidget: Observer(
-            builder:
-                (_) =>
-                    Text((jsonDecode(viewModel.baseSiparisEditModel.arrBelgeNo ?? "[]") as List?)?.firstOrNull ?? ""),
+            builder: (_) =>
+                Text((jsonDecode(viewModel.baseSiparisEditModel.arrBelgeNo ?? "[]") as List?)?.firstOrNull ?? ""),
           ),
           onClear: () => viewModel.setBelgeNo(null),
           onTap: () async {
@@ -695,8 +684,10 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
               ),
             );
             if (result is List) {
-              final List<BaseSiparisEditModel> list =
-                  result.map((e) => e as BaseSiparisEditModel).toList().cast<BaseSiparisEditModel>();
+              final List<BaseSiparisEditModel> list = result
+                  .map((e) => e as BaseSiparisEditModel)
+                  .toList()
+                  .cast<BaseSiparisEditModel>();
               viewModel.setBelgeNo(list);
               if (list.length == 1) {
                 // if (_cariKoduController.text.isEmpty) {
@@ -735,24 +726,21 @@ final class _BaseTransferEditingViewState extends BaseState<BaseTransferEditingV
                 BaseSiparisEditModel.instance.cariAdi = cariModel?.cariAdi;
                 BaseSiparisEditModel.instance.cariKodu = cariModel?.cariKodu;
                 BaseSiparisEditModel.instance.vadeGunu = cariModel?.vadeGunu;
-                list =
-                    list
-                        .map(
-                          (e) =>
-                              e
-                                ..miktar = e.kalan
-                                ..kalan = 0,
-                        )
-                        .toList();
+                list = list
+                    .map(
+                      (e) => e
+                        ..miktar = e.kalan
+                        ..kalan = 0,
+                    )
+                    .toList();
                 viewModel.setKalemList(list);
                 if (_cariKoduController.text.isEmpty) {
                   final cariModel = await getCari();
-                  viewModel.baseSiparisEditModel.cariTitle =
-                      cariModel?.efaturaCarisi == "E"
-                          ? "E-Fatura"
-                          : cariModel?.efaturaCarisi == "H"
-                          ? "E-Arşiv"
-                          : null;
+                  viewModel.baseSiparisEditModel.cariTitle = cariModel?.efaturaCarisi == "E"
+                      ? "E-Fatura"
+                      : cariModel?.efaturaCarisi == "H"
+                      ? "E-Arşiv"
+                      : null;
                   viewModel.baseSiparisEditModel.efaturaTipi = cariModel?.efaturaTipi;
                   viewModel.baseSiparisEditModel.vadeGunu = cariModel?.vadeGunu;
                   viewModel.baseSiparisEditModel.plasiyerAciklama = cariModel?.plasiyerAciklama;

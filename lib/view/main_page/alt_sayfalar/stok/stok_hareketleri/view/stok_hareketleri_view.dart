@@ -84,37 +84,34 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
 
   AppBar appBar() => AppBar(
     title: Observer(
-      builder:
-          (_) =>
-              viewModel.searchBar
-                  ? CustomAppBarTextField(
-                    onFieldSubmitted: (value) async {
-                      await getData();
-                      if (value == "") {
-                        return;
-                      } else {
-                        viewModel.setStokHareketleri(
-                          viewModel.stokHareketleri!
-                              .where((element) => element.fisno?.toLowerCase().contains(value.toLowerCase()) ?? false)
-                              .toList(),
-                        );
-                      }
-                    },
-                  )
-                  : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? widget.stokKodu ?? ""),
+      builder: (_) => viewModel.searchBar
+          ? CustomAppBarTextField(
+              onFieldSubmitted: (value) async {
+                await getData();
+                if (value == "") {
+                  return;
+                } else {
+                  viewModel.setStokHareketleri(
+                    viewModel.stokHareketleri!
+                        .where((element) => element.fisno?.toLowerCase().contains(value.toLowerCase()) ?? false)
+                        .toList(),
+                  );
+                }
+              },
+            )
+          : AppBarTitle(title: "Stok Hareketleri", subtitle: widget.model?.stokAdi ?? widget.stokKodu ?? ""),
     ),
     actions: [
       Observer(
-        builder:
-            (_) => IconButton(
-              onPressed: () {
-                if (viewModel.searchBar) {
-                  getData();
-                }
-                viewModel.changeSearchBar();
-              },
-              icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
-            ),
+        builder: (_) => IconButton(
+          onPressed: () {
+            if (viewModel.searchBar) {
+              getData();
+            }
+            viewModel.changeSearchBar();
+          },
+          icon: Icon(viewModel.searchBar ? Icons.search_off_outlined : Icons.search_outlined),
+        ),
       ),
       IconButton(
         onPressed: () async {
@@ -172,74 +169,70 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
                     text: "Hareket Yönü",
                     child: Center(
                       child: Observer(
-                        builder:
-                            (_) => SlideControllerWidget(
-                              scroll: false,
-                              childrenTitleList: viewModel.hareketYonuList,
-                              filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
-                              childrenValueList: viewModel.isSelected,
-                              groupValue: viewModel.isSelectedGroupValue,
-                            ),
+                        builder: (_) => SlideControllerWidget(
+                          scroll: false,
+                          childrenTitleList: viewModel.hareketYonuList,
+                          filterOnChanged: (index) => viewModel.changeIsSelected(index ?? 0),
+                          childrenValueList: viewModel.isSelected,
+                          groupValue: viewModel.isSelectedGroupValue,
+                        ),
                       ),
                     ),
                   ),
                   Observer(
-                    builder:
-                        (_) => CustomTextField(
-                          labelText: "Hareket Türü",
-                          readOnly: true,
-                          controller: _hareketTuruController,
-                          controllerText: viewModel.arrHareketTuru?.join(", "),
-                          onTap: () async {
-                            bottomSheetDialogManager.clearSelectedData();
-                            final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
-                              context,
-                              title: "Hareket Türü",
-                              groupValues: viewModel.arrHareketTuru,
-                              children:
-                                  viewModel.hareketTuruMap.entries
-                                      .map((e) => BottomSheetModel(title: e.key, value: e, groupValue: e.value))
-                                      .toList(),
-                            );
-                            if (result != null) {
-                              _hareketTuruController.text = result.map((e) => e.key).join(", ");
-                              viewModel.changeArrHareketTuru(result.map((e) => e.value).toList());
-                            }
-                          },
-                          suffixMore: true,
-                        ),
+                    builder: (_) => CustomTextField(
+                      labelText: "Hareket Türü",
+                      readOnly: true,
+                      controller: _hareketTuruController,
+                      controllerText: viewModel.arrHareketTuru?.join(", "),
+                      onTap: () async {
+                        bottomSheetDialogManager.clearSelectedData();
+                        final result = await bottomSheetDialogManager.showCheckBoxBottomSheetDialog(
+                          context,
+                          title: "Hareket Türü",
+                          groupValues: viewModel.arrHareketTuru,
+                          children: viewModel.hareketTuruMap.entries
+                              .map((e) => BottomSheetModel(title: e.key, value: e, groupValue: e.value))
+                              .toList(),
+                        );
+                        if (result != null) {
+                          _hareketTuruController.text = result.map((e) => e.key).join(", ");
+                          viewModel.changeArrHareketTuru(result.map((e) => e.value).toList());
+                        }
+                      },
+                      suffixMore: true,
+                    ),
                   ),
                   Observer(
-                    builder:
-                        (_) => CustomTextField(
-                          labelText: "Cari",
-                          valueText: viewModel.cariListesiModel?.cariKodu ?? "",
-                          controllerText: viewModel.cariListesiModel?.cariAdi ?? "",
-                          readOnly: true,
-                          suffix: Wrap(
-                            children: [
-                              IconButton(
-                                onPressed: () {
-                                  if (viewModel.cariListesiModel != null) {
-                                    dialogManager.showCariGridViewDialog(viewModel.cariListesiModel);
-                                  } else {
-                                    dialogManager.showAlertDialog("Lütfen önce cari seçiniz.");
-                                  }
-                                },
-                                icon: const Icon(Icons.data_exploration_outlined, color: UIHelper.primaryColor),
-                              ),
-                              IconButton(
-                                onPressed: () async {
-                                  final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
-                                  if (result != null) {
-                                    viewModel.setCariListesiModel(result);
-                                  }
-                                },
-                                icon: const Icon(Icons.more_horiz_outlined),
-                              ),
-                            ],
+                    builder: (_) => CustomTextField(
+                      labelText: "Cari",
+                      valueText: viewModel.cariListesiModel?.cariKodu ?? "",
+                      controllerText: viewModel.cariListesiModel?.cariAdi ?? "",
+                      readOnly: true,
+                      suffix: Wrap(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              if (viewModel.cariListesiModel != null) {
+                                dialogManager.showCariGridViewDialog(viewModel.cariListesiModel);
+                              } else {
+                                dialogManager.showAlertDialog("Lütfen önce cari seçiniz.");
+                              }
+                            },
+                            icon: const Icon(Icons.data_exploration_outlined, color: UIHelper.primaryColor),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () async {
+                              final result = await Get.toNamed("/mainPage/cariListesi", arguments: true);
+                              if (result != null) {
+                                viewModel.setCariListesiModel(result);
+                              }
+                            },
+                            icon: const Icon(Icons.more_horiz_outlined),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                   Row(
                     children: [
@@ -326,164 +319,161 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
     builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.done) {
         return Observer(
-          builder:
-              (_) =>
-                  viewModel.stokHareketleri.ext.isNullOrEmpty
-                      ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
-                      : RefreshIndicator.adaptive(
-                        onRefresh: () async => getData(),
-                        child: SlidableAutoCloseBehavior(
-                          child: ListView.builder(
-                            primary: false,
-                            padding: UIHelper.lowPadding,
-                            physics: const AlwaysScrollableScrollPhysics(),
-                            itemCount: viewModel.stokHareketleri?.length ?? 0,
-                            itemBuilder: (context, index) {
-                              final StokHareketleriModel model = viewModel.stokHareketleri![index];
-                              final List<Widget> children2 = [];
-                              if (model.hareketTuruAciklama == "Devir" && yetkiController.stokHareketleriStokSilme) {
-                                final SlidableAction slidableAction = SlidableAction(
-                                  onPressed: (context) async {
-                                    dialogManager.showAreYouSureDialog(
-                                      onYes: () async {
-                                        final result = await networkManager.dioPost<StokHareketleriModel>(
-                                          path: ApiUrls.deleteStokHareket,
-                                          bodyModel: StokHareketleriModel(),
-                                          queryParameters: {"INCKEYNO": model.inckeyno.toString()},
-                                        );
-                                        if (result.isSuccess) {
-                                          dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
-                                          viewModel.setStokHareketleri(await getData()!);
-                                        } else {
-                                          dialogManager.showErrorSnackBar(
-                                            "Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}",
-                                          );
-                                        }
-                                      },
-                                    );
-                                  },
-                                  icon: Icons.delete_forever,
-                                  backgroundColor: theme.colorScheme.onPrimary,
-                                  foregroundColor: theme.colorScheme.primary,
-                                  label: loc.generalStrings.delete,
-                                );
-                                if (yetkiController.stokHareketleriStokSilme) {
-                                  children2.add(slidableAction);
-                                }
-                              }
-                              //😳 Aslında devir değil. Muhtelif yapmak lazım ama sadece devirin sayfası olduğu için böyle yaptım.
-                              //😳 "Muhtelif"
-                              if (model.hareketTuruAciklama == "Devir") {
-                                children2.add(
-                                  SlidableAction(
-                                    onPressed: (context) async {
-                                      await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
-                                      viewModel.setStokHareketleri(await getData()!);
-                                    },
-                                    icon: Icons.directions_walk_outlined,
-                                    backgroundColor: theme.colorScheme.onPrimary,
-                                    foregroundColor: theme.colorScheme.primary,
-                                    label: "Hareket\nDetayı",
-                                  ),
-                                );
-                              }
-                              if (!yetkiController.stokHareketDetayiniGizle) {
-                                children2.add(
-                                  SlidableAction(
-                                    onPressed: (context) async {
-                                      final editTipi = model.editTipi;
-                                      if (editTipi?.goruntulensinMi ?? false) {
-                                        await Get.toNamed(
-                                          editTipi?.getEditRoute ?? "",
-                                          arguments: BaseEditModel<SiparisEditRequestModel>(
-                                            baseEditEnum: BaseEditEnum.goruntule,
-                                            model: SiparisEditRequestModel.fromStokHareketleriModel(model)
-                                              ..belgeTuru = editTipi?.rawValue,
-                                            editTipiEnum: editTipi,
-                                          ),
-                                        );
-                                        viewModel.setStokHareketleri(await getData()!);
-                                      } else {
-                                        dialogManager.showErrorSnackBar("Bu belge tipi için yetkiniz bulunmamaktadır.");
-                                      }
-                                    },
-                                    icon: Icons.directions_walk_outlined,
-                                    backgroundColor: theme.colorScheme.onPrimary,
-                                    foregroundColor: theme.colorScheme.primary,
-                                    label: "Hareket Detayı",
-                                  ),
-                                );
-                              }
-                              return InkWell(
-                                onTap: () async {
-                                  if (widget.model != null) {
-                                    await bottomSheetDialogManager.showBottomSheetDialog(
-                                      context,
-                                      title: loc.generalStrings.options,
-                                      children: [
-                                        if (!yetkiController.stokHareketDetayiniGizle)
-                                          BottomSheetModel(
-                                            title: "Belgeyi Görüntüle",
-                                            iconWidget: Icons.preview_outlined,
-                                            onTap: () async {
-                                              final editTipi = EditTipiEnum.values.firstWhereOrNull(
-                                                (element) => element.getName == model.belgeTipiAciklama,
-                                              );
-                                              if (editTipi?.goruntulensinMi ?? false) {
-                                                await Get.toNamed(
-                                                  "mainPage/faturaEdit",
-                                                  arguments: BaseEditModel<SiparisEditRequestModel>(
-                                                    baseEditEnum: BaseEditEnum.goruntule,
-                                                    model: SiparisEditRequestModel.fromStokHareketleriModel(model),
-                                                    editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
-                                                      (element) => element.getName == model.belgeTipiAciklama,
-                                                    ),
-                                                  ),
-                                                );
-                                                viewModel.setStokHareketleri(await getData() ?? []);
-                                              } else {
-                                                dialogManager.showErrorSnackBar(
-                                                  "Bu belge tipi için yetkiniz bulunmamaktadır.",
-                                                );
-                                              }
-                                            },
-                                          ),
-                                        BottomSheetModel(
-                                          title: "Stok İşlemleri",
-                                          iconWidget: Icons.list_alt_outlined,
-                                          onTap: () {
-                                            Get.back();
-                                            dialogManager.showStokGridViewDialog(widget.model);
-                                          },
-                                        ),
-                                      ],
+          builder: (_) => viewModel.stokHareketleri.ext.isNullOrEmpty
+              ? const Center(child: Text("Stok Hareket Kaydı Bulunamadı."))
+              : RefreshIndicator.adaptive(
+                  onRefresh: () async => getData(),
+                  child: SlidableAutoCloseBehavior(
+                    child: ListView.builder(
+                      primary: false,
+                      padding: UIHelper.lowPadding,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      itemCount: viewModel.stokHareketleri?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        final StokHareketleriModel model = viewModel.stokHareketleri![index];
+                        final List<Widget> children2 = [];
+                        if (model.hareketTuruAciklama == "Devir" && yetkiController.stokHareketleriStokSilme) {
+                          final SlidableAction slidableAction = SlidableAction(
+                            onPressed: (context) async {
+                              dialogManager.showAreYouSureDialog(
+                                onYes: () async {
+                                  final result = await networkManager.dioPost<StokHareketleriModel>(
+                                    path: ApiUrls.deleteStokHareket,
+                                    bodyModel: StokHareketleriModel(),
+                                    queryParameters: {"INCKEYNO": model.inckeyno.toString()},
+                                  );
+                                  if (result.isSuccess) {
+                                    dialogManager.showSuccessSnackBar("Stok Hareket Kaydı Silindi.");
+                                    viewModel.setStokHareketleri(await getData()!);
+                                  } else {
+                                    dialogManager.showErrorSnackBar(
+                                      "Lütfen daha sonra tekrar deneyiniz.\n ${result.exceptionName}",
                                     );
                                   }
                                 },
-                                child: IntrinsicHeight(
-                                  child: Card(
-                                    child: Slidable(
-                                      enabled: children2.ext.isNotNullOrEmpty,
-                                      endActionPane: ActionPane(motion: const BehindMotion(), children: children2),
-                                      child: Row(
-                                        // crossAxisAlignment: CrossAxisAlignment.stretch,
-                                        children: [
-                                          listTile(model),
-                                          if (children2.ext.isNotNullOrEmpty)
-                                            Container(
-                                              width: UIHelper.lowSize,
-                                              decoration: const BoxDecoration(color: UIHelper.primaryColor),
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
                               );
                             },
+                            icon: Icons.delete_forever,
+                            backgroundColor: theme.colorScheme.onPrimary,
+                            foregroundColor: theme.colorScheme.primary,
+                            label: loc.generalStrings.delete,
+                          );
+                          if (yetkiController.stokHareketleriStokSilme) {
+                            children2.add(slidableAction);
+                          }
+                        }
+                        //😳 Aslında devir değil. Muhtelif yapmak lazım ama sadece devirin sayfası olduğu için böyle yaptım.
+                        //😳 "Muhtelif"
+                        if (model.hareketTuruAciklama == "Devir") {
+                          children2.add(
+                            SlidableAction(
+                              onPressed: (context) async {
+                                await Get.toNamed("mainPage/stokYeniKayit", arguments: model);
+                                viewModel.setStokHareketleri(await getData()!);
+                              },
+                              icon: Icons.directions_walk_outlined,
+                              backgroundColor: theme.colorScheme.onPrimary,
+                              foregroundColor: theme.colorScheme.primary,
+                              label: "Hareket\nDetayı",
+                            ),
+                          );
+                        }
+                        if (!yetkiController.stokHareketDetayiniGizle) {
+                          children2.add(
+                            SlidableAction(
+                              onPressed: (context) async {
+                                final editTipi = model.editTipi;
+                                if (editTipi?.goruntulensinMi ?? false) {
+                                  await Get.toNamed(
+                                    editTipi?.getEditRoute ?? "",
+                                    arguments: BaseEditModel<SiparisEditRequestModel>(
+                                      baseEditEnum: BaseEditEnum.goruntule,
+                                      model: SiparisEditRequestModel.fromStokHareketleriModel(
+                                        model,
+                                      ).copyWith(belgeTuru: editTipi?.rawValue, belgeTipi: editTipi?.rawValue),
+                                      editTipiEnum: editTipi,
+                                    ),
+                                  );
+                                  viewModel.setStokHareketleri(await getData()!);
+                                } else {
+                                  dialogManager.showErrorSnackBar("Bu belge tipi için yetkiniz bulunmamaktadır.");
+                                }
+                              },
+                              icon: Icons.directions_walk_outlined,
+                              backgroundColor: theme.colorScheme.onPrimary,
+                              foregroundColor: theme.colorScheme.primary,
+                              label: "Hareket Detayı",
+                            ),
+                          );
+                        }
+                        return InkWell(
+                          onTap: () async {
+                            if (widget.model != null) {
+                              await bottomSheetDialogManager.showBottomSheetDialog(
+                                context,
+                                title: loc.generalStrings.options,
+                                children: [
+                                  if (!yetkiController.stokHareketDetayiniGizle)
+                                    BottomSheetModel(
+                                      title: "Belgeyi Görüntüle",
+                                      iconWidget: Icons.preview_outlined,
+                                      onTap: () async {
+                                        final editTipi = model.editTipi;
+                                        if (editTipi?.goruntulensinMi ?? false) {
+                                          await Get.toNamed(
+                                            "mainPage/faturaEdit",
+                                            arguments: BaseEditModel<SiparisEditRequestModel>(
+                                              baseEditEnum: BaseEditEnum.goruntule,
+                                              model: SiparisEditRequestModel.fromStokHareketleriModel(model),
+                                              editTipiEnum: EditTipiEnum.values.firstWhereOrNull(
+                                                (element) => element.getName == model.belgeTipiAciklama,
+                                              ),
+                                            ),
+                                          );
+                                          viewModel.setStokHareketleri(await getData() ?? []);
+                                        } else {
+                                          dialogManager.showErrorSnackBar(
+                                            "Bu belge tipi için yetkiniz bulunmamaktadır.",
+                                          );
+                                        }
+                                      },
+                                    ),
+                                  BottomSheetModel(
+                                    title: "Stok İşlemleri",
+                                    iconWidget: Icons.list_alt_outlined,
+                                    onTap: () {
+                                      Get.back();
+                                      dialogManager.showStokGridViewDialog(widget.model);
+                                    },
+                                  ),
+                                ],
+                              );
+                            }
+                          },
+                          child: IntrinsicHeight(
+                            child: Card(
+                              child: Slidable(
+                                enabled: children2.ext.isNotNullOrEmpty,
+                                endActionPane: ActionPane(motion: const BehindMotion(), children: children2),
+                                child: Row(
+                                  // crossAxisAlignment: CrossAxisAlignment.stretch,
+                                  children: [
+                                    listTile(model),
+                                    if (children2.ext.isNotNullOrEmpty)
+                                      Container(
+                                        width: UIHelper.lowSize,
+                                        decoration: const BoxDecoration(color: UIHelper.primaryColor),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
         );
       } else {
         return const ListViewShimmer();
@@ -510,11 +500,10 @@ final class _StokHareketleriViewState extends BaseState<StokHareketleriView> {
         children: [
           const Text("Kalan"),
           Observer(
-            builder:
-                (_) => Text(
-                  viewModel.toplamBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
-                  style: TextStyle(color: UIHelper.getColorWithValue(viewModel.toplamBakiye)),
-                ),
+            builder: (_) => Text(
+              viewModel.toplamBakiye.commaSeparatedWithDecimalDigits(OndalikEnum.tutar),
+              style: TextStyle(color: UIHelper.getColorWithValue(viewModel.toplamBakiye)),
+            ),
           ),
         ],
       ),

@@ -147,7 +147,6 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     belgeNo: model?.fisno,
     cariKodu: model?.cariKodu,
     belgeTipi: model?.belgeTipi,
-    belgeTuru: EditTipiEnum.values.firstWhereOrNull((element) => element.getName == model?.belgeTipiAciklama)?.rawValue,
   );
   @override
   SiparisEditRequestModel fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);
