@@ -893,7 +893,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.10;
+				MARKETING_VERSION = 1.9.11;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1101,7 +1101,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.10;
+				MARKETING_VERSION = 1.9.11;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1142,7 +1142,7 @@
 					"$(PROJECT_DIR)/PrinterLibrary",
 					"$(PROJECT_DIR)/Runner/PrinterLibrary",
 				);
-				MARKETING_VERSION = 1.9.10;
+				MARKETING_VERSION = 1.9.11;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-Wno-quoted-include-in-framework-header";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bracket23.picker;

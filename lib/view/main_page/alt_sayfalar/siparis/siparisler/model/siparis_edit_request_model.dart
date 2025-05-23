@@ -1,9 +1,7 @@
 import "package:freezed_annotation/freezed_annotation.dart";
-import "package:get/get.dart";
 import "package:picker/core/constants/extensions/date_time_extensions.dart";
 
 import "../../../../../../core/base/model/base_network_mixin.dart";
-import "../../../../../../core/constants/enum/edit_tipi_enum.dart";
 import "../../../../../../core/constants/extensions/number_extensions.dart";
 import "../../../cari/cari_hareketleri/model/cari_hareketleri_model.dart";
 import "../../../e_belge/e_belge_gelen_giden_kutusu/model/e_belge_listesi_model.dart";
@@ -143,11 +141,8 @@ class SiparisEditRequestModel with NetworkManagerMixin, _$SiparisEditRequestMode
     eFaturaIncKeyNo: model?.inckeyno,
   );
 
-  factory SiparisEditRequestModel.fromStokHareketleriModel(StokHareketleriModel? model) => SiparisEditRequestModel(
-    belgeNo: model?.fisno,
-    cariKodu: model?.cariKodu,
-    belgeTipi: model?.belgeTipi,
-  );
+  factory SiparisEditRequestModel.fromStokHareketleriModel(StokHareketleriModel? model) =>
+      SiparisEditRequestModel(belgeNo: model?.fisno, cariKodu: model?.cariKodu, belgeTipi: model?.belgeTipi);
   @override
   SiparisEditRequestModel fromJson(Map<String, dynamic> json) => SiparisEditRequestModel.fromJson(json);
 }
